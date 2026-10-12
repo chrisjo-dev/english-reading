@@ -52,11 +52,21 @@ def main(day):
     mail = build_email.build(day)
     topic = build_email.parse(day)["topic"]
     wait_live(day, topic)
-    for e in call("GET", "/emails?ordering=-creation_date")["results"][:50]:
-        if (e.get("metadata") or {}).get("day") == day:
-            print(f"이미 만든 메일이 있어 건너뜀: {e['id']} ({e['status']})")
-            return
-    draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked", "metadata": {"day": day}})
+    draft = None
+    for e in call("GET", "/emails?ordering=-creation_date")["results"]:
+        if (e.get("metadata") or {}).get("day") != day:
+            continue
+        if e["status"] == "draft":
+            # 지난 실행이 초안만 만들고 실패한 경우: 그 초안을 최신 내용으로 고쳐 다시 보낸다.
+            draft = call("PATCH", f"/emails/{e['id']}", {**mail, "template": "naked"})
+            break
+        if e["status"] in ("errored", "throttled"):
+            # 일부 구독자에게 나갔을 수 있으므로 자동으로 다시 보내지 않고 실패로 드러낸다.
+            raise SystemExit(f"Buttondown 발송 오류 상태라 확인 필요: {e['id']} ({e['status']})")
+        print(f"이미 처리한 메일이 있어 건너뜀: {e['id']} ({e['status']})")
+        return
+    if draft is None:
+        draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked", "metadata": {"day": day}})
     call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
     for _ in range(30):
         status = call("GET", f"/emails/{draft['id']}")["status"]

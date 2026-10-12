@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 20
 
       - name: Pick day
         id: day
@@ -39,7 +39,10 @@ jobs:
           if [ -n "${{ inputs.day }}" ]; then
             day="${{ inputs.day }}"
           else
-            day=$(git diff --name-only --diff-filter=AM HEAD^ HEAD -- 'content/*.json' | sed -E 's#content/(.*)\.json#\1#' | sort | tail -1)
+            # 한 번에 여러 커밋이 push돼도 놓치지 않도록 push 직전 커밋과 비교한다.
+            base="${{ github.event.before }}"
+            git cat-file -e "$base" 2>/dev/null || base=HEAD^
+            day=$(git diff --name-only --diff-filter=AM "$base" HEAD -- 'content/*.json' | sed -E 's#content/(.*)\.json#\1#' | sort | tail -1)
           fi
           [ -n "$day" ] || { echo "no content change"; exit 1; }
           echo "day=$day" >> "$GITHUB_OUTPUT"
@@ -78,7 +81,7 @@ jobs:
           git add -A ${{ steps.day.outputs.day }} index.html archive
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "Publish ${{ steps.day.outputs.day }}"
-          git push
+          git push || { git pull --rebase origin main && git push; }
           # GITHUB_TOKEN 으로 한 push 는 Pages 빌드를 보장하지 않으므로 직접 요청한다.
           gh api -X POST repos/${{ github.repository }}/pages/builds
         env:
