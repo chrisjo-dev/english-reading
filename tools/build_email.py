@@ -77,6 +77,8 @@ def build(day):
     body = f"""<!-- buttondown-editor-mode: plaintext -->
 <div style="background:{BG};padding:16px 0;font-family:{FONT};word-break:keep-all;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
+<tr><td style="padding:0 0 12px;"><a href="{url}"><img src="{SITE}/{day}/thumb.png" width="560" alt="오늘은 {html.escape(d["topic"])} 이야기예요"
+  style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:20px;"></a></td></tr>
 <tr><td style="{card}">
   <p style="margin:0;font-size:14px;font-weight:600;color:{MUTED};">{d["date"]}</p>
   <h1 style="margin:6px 0 12px;font-size:24px;line-height:1.35;font-weight:800;color:{INK};">오늘은 <span style="color:{BLUE};">{html.escape(d["topic"])}</span> 이야기예요</h1>
