@@ -111,6 +111,7 @@
   .mine textarea:focus { border-color: var(--blue); background: #fff; }
   .mine textarea::placeholder { color: var(--muted); }
   .mine .tool { width: 100%; margin-top: 8px; flex: none; }
+  .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
   .top { position: relative; }
   .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
   .sub h2 { margin-bottom: 4px; }
@@ -161,7 +162,8 @@
     <div class="mine">
       <label for="mine">내 해석</label>
       <textarea id="mine" placeholder="1. &#10;2. &#10;3. &#10;4. &#10;5. &#10;6. " spellcheck="false"></textarea>
-      <button class="tool main" id="copymine" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>내 해석 복사해서 제출하기</span></button>
+      <button class="tool main" id="copymine" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>AI 피드백 요청문 복사</span></button>
+      <p class="mine-hint">지문, 내 해석, 피드백 요청이 함께 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장별로 고쳐 줘요.</p>
     </div>
   </section>
 
@@ -193,7 +195,7 @@
   <section class="card guide">
     <div class="step">STEP 4</div>
     <h2>먼저 해석해보세요</h2>
-    <p>모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 주세요. 다 쓰면 복사 버튼을 누르세요. 지문과 피드백 요청까지 함께 복사되니 그대로 붙여넣어 제출하면 됩니다.</p>
+    <p>모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 보세요. 다 쓰면 'AI 피드백 요청문 복사'를 눌러 평소 쓰는 AI 채팅(ChatGPT, Claude 등)에 붙여넣으세요. 어디를 잘 읽었고 어디를 놓쳤는지 문장별로 알려 줘요.</p>
   </section>
 
   <details class="card" id="answer">
@@ -297,10 +299,10 @@
   slowBtn.addEventListener('click', function () {
     rate = rate === 1 ? 0.8 : 1; slowBtn.classList.toggle('on', rate !== 1); player.playbackRate = rate;
   });
-  function copyText(text, btn, label) {
+  function copyText(text, btn, label, okText) {
     function done(ok) {
-      btn.lastChild.textContent = ok ? '복사됐어요' : '복사 실패';
-      setTimeout(function () { btn.lastChild.textContent = label; }, 1600);
+      btn.lastChild.textContent = ok ? (okText || '복사됐어요') : '복사 실패';
+      setTimeout(function () { btn.lastChild.textContent = label; }, okText ? 2600 : 1600);
     }
     function fallback() {
       var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
@@ -325,7 +327,7 @@
     if (!mine.value.trim()) { mine.focus(); return; }
     copyText([HEAD, passageBlock(), '[내 해석]\n' + mine.value.trim(),
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
-    ].join('\n\n'), copyMine, '내 해석 복사해서 제출하기');
+    ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
 </script>
 </body>
