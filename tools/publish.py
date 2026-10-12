@@ -16,6 +16,7 @@ import thumb  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://chrisjo-dev.github.io/english-reading"
+SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/english-reading"
 DAYS = "월화수목금토일"
 
 
@@ -57,6 +58,32 @@ def patch_page(day):
         page = page.replace(
             '<div class="date">',
             f'<img class="thumb" src="thumb.png" width="76" height="76" alt="">\n    <div class="date">',
+            1,
+        )
+    if 'class="card sub"' not in page:
+        page = page.replace(
+            "  .nav {",
+            "  .sub h2 { margin-bottom: 4px; }\n  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }\n"
+            "  .sub form { display: flex; gap: 8px; }\n"
+            "  .sub input { flex: 1; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg);"
+            " padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }\n"
+            "  .sub input:focus { border-color: var(--blue); background: #fff; }\n"
+            "  .sub button { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff;"
+            " font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }\n"
+            "  .sub .note { margin: 10px 0 0; font-size: 13px; color: var(--muted); }\n  .nav {",
+            1,
+        )
+        page = page.replace(
+            "</main>",
+            '  <section class="card sub">\n'
+            "    <h2>매일 아침 메일로 받기</h2>\n"
+            "    <p>새 지문이 올라오면 아침에 메일로 보내 드려요.</p>\n"
+            f'    <form action="{SUBSCRIBE}" method="post" target="_blank">\n'
+            '      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">\n'
+            '      <button type="submit">구독하기</button>\n'
+            "    </form>\n"
+            '    <p class="note">이메일은 뉴스레터 발송에만 쓰입니다. 언제든 메일 하단에서 수신거부할 수 있어요.</p>\n'
+            "  </section>\n</main>",
             1,
         )
     path.write_text(page, encoding="utf-8")

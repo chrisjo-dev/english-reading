@@ -113,6 +113,13 @@
   .mine .tool { width: 100%; margin-top: 8px; flex: none; }
   .top { position: relative; }
   .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
+  .sub h2 { margin-bottom: 4px; }
+  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }
+  .sub form { display: flex; gap: 8px; }
+  .sub input { flex: 1; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg); padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }
+  .sub input:focus { border-color: var(--blue); background: #fff; }
+  .sub button { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .sub .note { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
   .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
   .nav a { font-size: 14px; font-weight: 600; color: var(--blue); text-decoration: none; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
@@ -226,6 +233,15 @@
         <div class="ex">The researchers plan to <b>refine</b> the clock with stronger lasers and better crystals.</div></div>
     </div>
   </details>
+  <section class="card sub">
+    <h2>매일 아침 메일로 받기</h2>
+    <p>새 지문이 올라오면 아침에 메일로 보내 드려요.</p>
+    <form action="https://buttondown.com/api/emails/embed-subscribe/english-reading" method="post" target="_blank">
+      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">
+      <button type="submit">구독하기</button>
+    </form>
+    <p class="note">이메일은 뉴스레터 발송에만 쓰입니다. 언제든 메일 하단에서 수신거부할 수 있어요.</p>
+  </section>
 </main>
 
 <div class="bar"><button id="cta" type="button">해석 다 했어요, 정답 볼게요</button></div>
