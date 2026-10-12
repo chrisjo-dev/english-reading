@@ -101,35 +101,123 @@ def rebuild_lists():
         f'<body><p><a href="./{latest}/">오늘의 지문으로 이동</a></p></body></html>\n',
         encoding="utf-8",
     )
-    items = "\n".join(
-        f'      <a class="item" href="../{d}/"><img src="../{d}/thumb.png" width="56" height="56" alt="" loading="lazy">'
-        f'<span><span class="d">{label(d)}</span><span class="t">{html.escape(topic_of(d))}</span></span></a>'
-        for d in days
+    entries = [entry(d) for d in days]
+    cats = [c for c in thumb.CATS if any(e["cat"] == c for e in entries)]
+    chips = "".join(
+        f'<button type="button" class="chip" data-cat="{c}" aria-pressed="false">{thumb.CATS[c][0]}</button>' for c in cats
     )
-    (ROOT / "archive" / "index.html").write_text(f"""<!doctype html>
+    groups, month = [], None
+    for e in entries:
+        if e["month"] != month:
+            if month is not None:
+                groups.append("    </div>\n  </section>")
+            month = e["month"]
+            groups.append(f'  <section class="month">\n    <h2>{month}</h2>\n    <div class="card">')
+        groups.append(
+            f'      <a class="item" href="../{e["day"]}/" data-cat="{e["cat"]}" data-q="{html.escape(e["q"])}">'
+            f'<img src="../{e["day"]}/thumb.png" width="56" height="56" alt="" loading="lazy">'
+            f'<span><span class="d">{e["label"]}<span class="c">{e["cat_label"]}</span></span>'
+            f'<span class="t">{html.escape(e["topic"])}</span></span></a>'
+        )
+    groups.append("    </div>\n  </section>")
+    page = (ARCHIVE.replace("__OG_IMAGE__", f"{SITE}/{latest}/thumb.png")
+            .replace("__CHIPS__", chips).replace("__GROUPS__", "\n".join(groups)))
+    (ROOT / "archive" / "index.html").write_text(page, encoding="utf-8")
+
+
+def entry(day):
+    """목록 한 줄에 필요한 값. content JSON 이 있으면 분야와 주요 단어까지 검색어에 넣는다."""
+    d = dt.date.fromisoformat(day)
+    content = ROOT / "content" / f"{day}.json"
+    c = json.loads(content.read_text(encoding="utf-8")) if content.exists() else {}
+    topic = c.get("topic") or topic_of(day)
+    cat = c.get("category") or thumb.WEEKDAY[d.weekday()]
+    words = " ".join(f"{w} {m}" for w, m in c.get("words", []))
+    return {
+        "day": day, "topic": topic, "cat": cat, "cat_label": thumb.CATS[cat][0],
+        "label": label(day), "month": f"{d.year}년 {d.month}월",
+        "q": f"{topic} {thumb.CATS[cat][0]} {words}".lower(),
+    }
+
+
+# 지난 지문 페이지. 검색과 분야 필터, 30개씩 더 보기를 브라우저에서 처리한다(스크립트가 없어도 전체 목록은 보인다).
+ARCHIVE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light only"><title>지난 지문 | 매일 영어 읽기</title>
-<meta property="og:title" content="지난 지문 | 매일 영어 읽기"><meta property="og:image" content="{SITE}/{latest}/thumb.png">
+<meta property="og:title" content="지난 지문 | 매일 영어 읽기"><meta property="og:image" content="__OG_IMAGE__">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
-  body {{ margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; }}
-  main {{ max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }}
-  h1 {{ font-size: 26px; font-weight: 800; margin: 0 8px 16px; letter-spacing: -0.03em; }}
-  .card {{ background: #fff; border-radius: 20px; padding: 8px 20px; }}
-  .item {{ display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid #f2f4f6; color: inherit; text-decoration: none; }}
-  .item:first-child {{ border-top: 0; }}
-  .item img {{ flex: none; width: 56px; height: 56px; object-fit: cover; object-position: 100% 50%; }}
-  .d {{ display: block; font-size: 14px; color: #8b95a1; font-weight: 600; }}
-  .t {{ display: block; font-size: 17px; font-weight: 700; color: #191f28; margin-top: 2px; }}
+  body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
+  main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
+  h1 { font-size: 26px; font-weight: 800; margin: 0 8px 16px; letter-spacing: -0.03em; }
+  .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #3182f6; text-decoration: none; }
+  .search { display: block; width: 100%; box-sizing: border-box; height: 48px; border: 1.5px solid transparent; border-radius: 14px; background: #fff;
+            padding: 0 16px; font: 400 16px Pretendard, -apple-system, sans-serif; color: #191f28; outline: 0; }
+  .search:focus { border-color: #3182f6; }
+  .chips { display: flex; gap: 6px; overflow-x: auto; padding: 10px 0 4px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; height: 34px; padding: 0 14px; border: 0; border-radius: 10px; background: #fff; color: #4e5968;
+          font: 600 14px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: #3182f6; color: #fff; }
+  .month h2 { font-size: 15px; font-weight: 700; color: #4e5968; margin: 20px 8px 8px; }
+  .card { background: #fff; border-radius: 20px; padding: 4px 20px; }
+  .item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid #f2f4f6; color: inherit; text-decoration: none; }
+  .item.first { border-top: 0; }
+  .item img { flex: none; width: 56px; height: 56px; object-fit: cover; object-position: 100% 50%; }
+  .d { display: block; font-size: 14px; color: #8b95a1; font-weight: 600; }
+  .c { margin-left: 8px; font-size: 12px; color: #3182f6; }
+  .t { display: block; font-size: 17px; font-weight: 700; color: #191f28; margin-top: 2px; }
+  .empty { text-align: center; color: #8b95a1; font-size: 15px; padding: 40px 0; }
+  .more { display: block; width: 100%; height: 52px; margin-top: 16px; border: 0; border-radius: 14px; background: #e8f3ff; color: #3182f6;
+          font: 700 16px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  [hidden] { display: none !important; }
 </style></head>
 <body><main>
+  <a class="back" href="../">← 오늘의 지문</a>
   <h1>지난 지문</h1>
-  <div class="card">
-{items}
-  </div>
-</main></body></html>
-""", encoding="utf-8")
+  <input class="search" id="q" type="search" placeholder="주제나 단어로 찾기 (예: satellite, 핵시계)" aria-label="지난 지문 검색" autocomplete="off">
+  <div class="chips" role="group" aria-label="분야"><button type="button" class="chip" data-cat="" aria-pressed="true">전체</button>__CHIPS__</div>
+__GROUPS__
+  <p class="empty" id="empty" hidden>찾는 지문이 없어요.</p>
+  <button class="more" id="more" type="button" hidden>더 보기</button>
+</main>
+<script>
+  var PAGE = 30, shown = PAGE, cat = '';
+  var q = document.getElementById('q'), more = document.getElementById('more'), empty = document.getElementById('empty');
+  var items = [].slice.call(document.querySelectorAll('.item'));
+  var chips = [].slice.call(document.querySelectorAll('.chip'));
+  var months = [].slice.call(document.querySelectorAll('.month'));
+  function apply() {
+    var words = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var searching = words.length > 0 || cat !== '';
+    var matched = 0;
+    items.forEach(function (el) {
+      var ok = (!cat || el.dataset.cat === cat) && words.every(function (w) { return el.dataset.q.indexOf(w) !== -1; });
+      if (ok) matched++;
+      el.hidden = !ok || (!searching && matched > shown);
+    });
+    months.forEach(function (m) {
+      var visible = [].filter.call(m.querySelectorAll('.item'), function (el) { return !el.hidden; });
+      m.hidden = visible.length === 0;
+      [].forEach.call(m.querySelectorAll('.item'), function (el) { el.classList.toggle('first', el === visible[0]); });
+    });
+    empty.hidden = matched > 0;
+    more.hidden = searching || matched <= shown;
+  }
+  q.addEventListener('input', apply);
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      cat = c.dataset.cat;
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', String(x === c)); });
+      apply();
+    });
+  });
+  more.addEventListener('click', function () { shown += PAGE; apply(); });
+  apply();
+</script>
+</body></html>
+"""
 
 
 if __name__ == "__main__":
