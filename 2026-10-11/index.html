@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>오늘의 영어 읽기 · 10월 11일</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
+    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 16px; line-height: 1.6; letter-spacing: -0.01em;
+    word-break: keep-all; overflow-wrap: anywhere;
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 0 0 calc(96px + env(safe-area-inset-bottom)); }
+  .top { background: var(--card); padding: 28px 20px 24px; border-radius: 0 0 24px 24px; }
+  .date { font-size: 14px; font-weight: 600; color: var(--muted); }
+  h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 14px; letter-spacing: -0.03em; }
+  h1 em { font-style: normal; color: var(--blue); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 13px; font-weight: 600; padding: 5px 10px; border-radius: 8px; background: var(--bg); color: var(--sub); }
+  .chip.blue { background: var(--blue-soft); color: var(--blue); }
+  .card { background: var(--card); border-radius: 20px; margin: 12px 12px 0; padding: 22px 20px; }
+  .step { font-size: 13px; font-weight: 700; color: var(--blue); }
+  h2 { font-size: 20px; font-weight: 700; margin: 2px 0 16px; letter-spacing: -0.02em; }
+  .sent { display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .sent:first-of-type { border-top: 0; padding-top: 0; }
+  .sent:last-of-type { padding-bottom: 0; }
+  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+        background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
+        display: grid; place-items: center; }
+  .en { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
+  .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
+           background: var(--coral-soft); color: var(--coral); margin-left: 6px; vertical-align: 2px; }
+  .word { display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+          padding: 13px 0; border-top: 1px solid var(--line); }
+  .word:first-of-type { border-top: 0; padding-top: 0; }
+  .word:last-of-type { padding-bottom: 0; }
+  .word .w { font-size: 17px; font-weight: 700; letter-spacing: 0; }
+  .word .m { font-size: 15px; color: var(--sub); text-align: right; }
+  .point { background: var(--bg); border-radius: 14px; padding: 14px 16px; }
+  .point + .point { margin-top: 8px; }
+  .point strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .point p { margin: 0; font-size: 15px; color: var(--sub); }
+  code { font-family: inherit; font-weight: 600; color: var(--blue); letter-spacing: 0; }
+  .guide { background: var(--blue-soft); }
+  .guide h2 { margin-bottom: 6px; }
+  .guide p { margin: 0; font-size: 15px; color: var(--sub); }
+  details.card { padding: 0; overflow: hidden; }
+  summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+            gap: 12px; padding: 20px; min-height: 64px; }
+  summary::-webkit-details-marker { display: none; }
+  summary .t { font-size: 17px; font-weight: 700; }
+  summary .s { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 1px; }
+  summary svg { flex: none; width: 20px; height: 20px; color: var(--muted); transition: transform .2s; }
+  details[open] summary svg { transform: rotate(180deg); }
+  summary:active { background: #f9fafb; }
+  .body { padding: 0 20px 22px; }
+  .ko { font-size: 16px; line-height: 1.7; color: var(--ink); }
+  .adv { padding: 14px 0; border-top: 1px solid var(--line); }
+  .adv:first-of-type { border-top: 0; padding-top: 0; }
+  .adv:last-of-type { padding-bottom: 0; }
+  .adv .w { font-size: 17px; font-weight: 700; letter-spacing: 0; }
+  .adv .m { font-size: 15px; color: var(--sub); margin-top: 2px; }
+  .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
+             padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
+  .adv .ex b { color: var(--blue); font-weight: 700; }
+  .warn { color: var(--coral); font-weight: 600; }
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+         background: linear-gradient(rgba(242,244,246,0), var(--bg) 28%); }
+  .bar button { display: block; width: 100%; max-width: 528px; margin: 0 auto; height: 56px; border: 0; border-radius: 16px;
+                background: var(--blue); color: #fff; font: 700 17px Pretendard, -apple-system, sans-serif;
+                letter-spacing: -0.01em; cursor: pointer; }
+  .bar button:active { background: var(--blue-press); transform: scale(.985); }
+  .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
+  .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
+          font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
+          display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+  .tool.main { background: var(--blue-soft); color: var(--blue); }
+  .tool.on { background: var(--blue); color: #fff; }
+  .tool:active { transform: scale(.97); }
+  .tool svg { width: 16px; height: 16px; flex: none; }
+  .hint { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+  #passage .no { border: 0; padding: 0; cursor: pointer; font-family: inherit; }
+  #passage .sent.playing .no { background: var(--blue); color: #fff; }
+  #passage .sent.playing .en { color: var(--blue-press); }
+  .mine { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .mine label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .mine textarea { display: block; width: 100%; min-height: 168px; resize: vertical; border: 1.5px solid transparent;
+                   border-radius: 14px; background: var(--bg); color: var(--ink); padding: 14px 16px;
+                   font: 400 16px/1.7 Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; outline: 0; }
+  .mine textarea:focus { border-color: var(--blue); background: #fff; }
+  .mine textarea::placeholder { color: var(--muted); }
+  .mine .tool { width: 100%; margin-top: 8px; flex: none; }
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .nav a { font-size: 14px; font-weight: 600; color: var(--blue); text-decoration: none; }
+  .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+  .src a { color: var(--sub); }
+  @media (min-width: 600px) { .top { border-radius: 24px; margin: 12px 12px 0; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <div class="nav"><a href="../archive/">← 지난 지문</a></div>
+    <div class="date">10월 11일 일요일</div>
+    <h1>오늘은 <em>수직 농장</em> 이야기예요</h1>
+    <div class="chips">
+      <span class="chip blue">5문장</span>
+      <span class="chip">B1 위주</span>
+      <span class="chip">B2 1문장</span>
+      <span class="chip">약 3분</span>
+    </div>
+  </div>
+
+  <section class="card" id="passage">
+    <div class="step">STEP 1</div>
+    <h2>오늘의 지문</h2>
+    <div class="tools">
+      <button class="tool main" id="play" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span></button>
+      <button class="tool" id="slow" type="button">느리게 0.8x</button>
+      <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
+    </div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="en">A vertical farm opened in an old <b>warehouse</b> near the city center last spring.</div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="en">Instead of <b>soil</b> and sunlight, the plants grow on tall <b>shelves</b> under LED lights, and computers control the water and temperature.</div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="en">The farm, which is run by only twelve workers, produces about fifty thousand <b>heads of lettuce</b> every month.<span class="badge">B2</span></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="en">It uses <b>significantly</b> less water than a normal farm, but the <b>electricity bill</b> is still very high.</div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="en">The owners expect that it will take five more years to make a <b>profit</b>.</div></div>
+    <p class="hint">문장 번호를 누르면 그 문장만 들을 수 있어요.</p>
+    <div class="mine">
+      <label for="mine">내 해석</label>
+      <textarea id="mine" placeholder="1. &#10;2. &#10;3. &#10;4. &#10;5. " spellcheck="false"></textarea>
+      <button class="tool main" id="copymine" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>내 해석 복사해서 제출하기</span></button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="step">STEP 2</div>
+    <h2>주요 단어</h2>
+    <div class="word"><span class="w">warehouse</span><span class="m">창고</span></div>
+    <div class="word"><span class="w">soil</span><span class="m">흙, 토양</span></div>
+    <div class="word"><span class="w">shelves</span><span class="m">선반들 (shelf의 복수)</span></div>
+    <div class="word"><span class="w">heads of lettuce</span><span class="m">양상추 ~통 (head = 통, 포기)</span></div>
+    <div class="word"><span class="w">significantly</span><span class="m">상당히, 크게</span></div>
+    <div class="word"><span class="w">electricity bill</span><span class="m">전기 요금 (고지서)</span></div>
+    <div class="word"><span class="w">profit</span><span class="m">이익, 수익</span></div>
+  </section>
+
+  <section class="card">
+    <div class="step">STEP 3</div>
+    <h2>오늘의 체크 포인트</h2>
+    <div class="point">
+      <strong>큰 숫자 + 문장 중간·끝 정보</strong>
+      <p>3번 문장에 <code>fifty thousand</code>가 나와요. 읽는 순간 숫자로 바꿔 떠올려 보세요. 같은 문장의 <code>by only twelve workers</code>(누가 운영하는지)와 <code>every month</code>, 1번의 <code>last spring</code>도 빠뜨리지 마세요.</p>
+    </div>
+    <div class="point">
+      <strong>동사/숙어 의미</strong>
+      <p>5번의 <code>take five more years to make a profit</code>에서 take와 more가 각각 어떤 뜻인지 확인하세요. 3번의 <code>is run by</code>도 '달리다'가 아니에요.</p>
+    </div>
+  </section>
+
+  <section class="card guide">
+    <div class="step">STEP 4</div>
+    <h2>먼저 해석해보세요</h2>
+    <p>모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 주세요. 다 쓰면 복사 버튼을 누르세요. 지문과 피드백 요청까지 함께 복사되니 그대로 붙여넣어 제출하면 됩니다.</p>
+  </section>
+
+  <details class="card" id="answer">
+    <summary>
+      <span><span class="t">모범 해석</span><span class="s">해석을 마친 뒤에 펼쳐 보세요</span></span>
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+    </summary>
+    <div class="body">
+      <div class="sent"><span class="no">1</span><div class="ko">지난봄, 도심 근처의 오래된 창고에 수직 농장 하나가 문을 열었다.</div></div>
+      <div class="sent"><span class="no">2</span><div class="ko">흙과 햇빛 대신, 식물들은 LED 조명 아래 높은 선반들 위에서 자라고, 컴퓨터가 물과 온도를 조절한다.</div></div>
+      <div class="sent"><span class="no">3</span><div class="ko">겨우 12명의 직원이 운영하는 이 농장은 매달 양상추 약 5만 통(50,000통)을 생산한다.</div></div>
+      <div class="sent"><span class="no">4</span><div class="ko">일반 농장보다 물을 상당히 적게 쓰지만, 전기 요금은 여전히 매우 높다.</div></div>
+      <div class="sent"><span class="no">5</span><div class="ko">주인들은 이익을 내는 데 5년이 더 걸릴 것으로 예상한다.</div></div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항 · 눈에 익혀두는 용도예요</span></span>
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+    </summary>
+    <div class="body">
+      <div class="adv"><div class="w">facility</div><div class="m">시설 <span class="warn">· faculty(교수진, 능력)와 혼동 주의</span></div>
+        <div class="ex">The new <b>facility</b> opened in an old warehouse last spring.</div></div>
+      <div class="adv"><div class="w">cultivate</div><div class="m">재배하다, 기르다</div>
+        <div class="ex">The plants are <b>cultivated</b> on tall shelves under LED lights.</div></div>
+      <div class="adv"><div class="w">regulate</div><div class="m">조절하다, 규제하다 <span class="warn">· regular(규칙적인)와 혼동 주의</span></div>
+        <div class="ex">Computers <b>regulate</b> the water and temperature.</div></div>
+      <div class="adv"><div class="w">yield</div><div class="m">(수확물을) 내다; 수확량</div>
+        <div class="ex">The farm <b>yields</b> about fifty thousand heads of lettuce every month.</div></div>
+      <div class="adv"><div class="w">consume</div><div class="m">소비하다, 쓰다 <span class="warn">· assume(가정하다)와 혼동 주의</span></div>
+        <div class="ex">It <b>consumes</b> significantly less water than a normal farm.</div></div>
+      <div class="adv"><div class="w">substantially</div><div class="m">상당히, 크게 <span class="warn">· subsequently(그 후에)와 혼동 주의</span></div>
+        <div class="ex">It uses <b>substantially</b> less water than a normal farm.</div></div>
+      <div class="adv"><div class="w">anticipate</div><div class="m">예상하다 <span class="warn">· participate(참여하다)와 혼동 주의</span></div>
+        <div class="ex">The owners <b>anticipate</b> that it will take five more years to make a profit.</div></div>
+      <div class="adv"><div class="w">profitable</div><div class="m">수익성 있는 <span class="warn">· productive(생산적인)와 혼동 주의</span></div>
+        <div class="ex">The owners expect the farm to become <b>profitable</b> in five more years.</div></div>
+    </div>
+  </details>
+</main>
+
+<div class="bar"><button id="cta" type="button">해석 다 했어요, 정답 볼게요</button></div>
+
+<script>
+  var answer = document.getElementById('answer');
+  var cta = document.getElementById('cta');
+  function sync() { cta.textContent = answer.open ? '모범 해석 접기' : '해석 다 했어요, 정답 볼게요'; }
+  cta.addEventListener('click', function () {
+    answer.open = !answer.open;
+    if (answer.open) answer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  answer.addEventListener('toggle', sync);
+
+  var AUDIO = ["audio/s1.mp3", "audio/s2.mp3", "audio/s3.mp3", "audio/s4.mp3", "audio/s5.mp3"];
+  var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
+  var player = new Audio(), queue = [], rate = 1, token = 0;
+  var canSpeak = 'speechSynthesis' in window;
+  var playBtn = document.getElementById('play'), slowBtn = document.getElementById('slow'), copyBtn = document.getElementById('copy');
+  var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
+  function sentenceText(r) {
+    return [].map.call(r.querySelector('.en').childNodes, function (x) { return x.className === 'badge' ? '' : x.textContent; }).join('').trim();
+  }
+  function mark(i) { rows.forEach(function (r, k) { r.classList.toggle('playing', k === i); }); }
+  function stop() {
+    token++; player.pause(); if (canSpeak) speechSynthesis.cancel();
+    queue = []; mark(-1); playBtn.classList.remove('on'); playBtn.lastChild.textContent = '전체 듣기';
+  }
+  function next() {
+    if (!queue.length) { stop(); return; }
+    var i = queue.shift(), t = token; mark(i);
+    function after() { if (t === token) setTimeout(function () { if (t === token) next(); }, queue.length ? 450 : 0); }
+    if (AUDIO[i]) {
+      player.onended = after; player.src = AUDIO[i];
+      player.playbackRate = rate; player.play().catch(function () { if (t === token) stop(); });
+    } else if (canSpeak) {
+      var u = new SpeechSynthesisUtterance(sentenceText(rows[i]));
+      u.lang = 'en-US'; u.rate = rate * 0.9; u.onend = after; u.onerror = after; speechSynthesis.speak(u);
+    } else stop();
+  }
+  playBtn.addEventListener('click', function () {
+    if (playBtn.classList.contains('on')) { stop(); return; }
+    stop(); queue = rows.map(function (_, i) { return i; });
+    playBtn.classList.add('on'); playBtn.lastChild.textContent = '멈추기'; next();
+  });
+  rows.forEach(function (r, i) {
+    r.querySelector('.no').addEventListener('click', function () {
+      var same = r.classList.contains('playing'); stop(); if (!same) { queue = [i]; next(); }
+    });
+  });
+  slowBtn.addEventListener('click', function () {
+    rate = rate === 1 ? 0.8 : 1; slowBtn.classList.toggle('on', rate !== 1); player.playbackRate = rate;
+  });
+  function copyText(text, btn, label) {
+    function done(ok) {
+      btn.lastChild.textContent = ok ? '복사됐어요' : '복사 실패';
+      setTimeout(function () { btn.lastChild.textContent = label; }, 1600);
+    }
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done(ok);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    else fallback();
+  }
+  var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
+  var WEAK = '자주 틀리는 부분(문장 끝의 시간·수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  function passageBlock() {
+    return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
+  }
+  copyBtn.addEventListener('click', function () {
+    copyText([HEAD, passageBlock(),
+      '[요청]\n이 지문을 바탕으로 내 질문에 답해 주세요. 설명은 한국어 존댓말로, 내 수준에 맞춰 짧고 구체적으로 해 주세요. 지문 자체의 난이도는 바꾸지 마세요.\n' + WEAK
+    ].join('\n\n'), copyBtn, '지문 복사');
+  });
+  copyMine.addEventListener('click', function () {
+    if (!mine.value.trim()) { mine.focus(); return; }
+    copyText([HEAD, passageBlock(), '[내 해석]\n' + mine.value.trim(),
+      '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
+    ].join('\n\n'), copyMine, '내 해석 복사해서 제출하기');
+  });
+</script>
+</body>
+</html>
