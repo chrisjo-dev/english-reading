@@ -52,7 +52,9 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install -q pillow kokoro-onnx soundfile
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q pillow kokoro-onnx soundfile
 
       - uses: actions/cache@v4
         with:
@@ -60,14 +62,17 @@ jobs:
           key: kokoro-v1.0
 
       - name: Audio
-        # 음성이 실패해도 페이지는 브라우저 내장 음성으로 읽어 주므로 계속 진행한다.
-        continue-on-error: true
+        # 음성은 필수다. 3번까지 다시 시도하고, 그래도 실패하면 여기서 멈춰 메일을 보내지 않는다.
         run: |
           mkdir -p models
           base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
-          [ -f models/kokoro-v1.0.int8.onnx ] || curl -sSfL -o models/kokoro-v1.0.int8.onnx $base/kokoro-v1.0.int8.onnx
-          [ -f models/voices-v1.0.bin ] || curl -sSfL -o models/voices-v1.0.bin $base/voices-v1.0.bin
-          python tools/audio.py ${{ steps.day.outputs.day }} models
+          for i in 1 2 3; do
+            [ -f models/kokoro-v1.0.int8.onnx ] || curl -sSfL --retry 3 -o models/kokoro-v1.0.int8.onnx $base/kokoro-v1.0.int8.onnx || rm -f models/kokoro-v1.0.int8.onnx
+            [ -f models/voices-v1.0.bin ] || curl -sSfL --retry 3 -o models/voices-v1.0.bin $base/voices-v1.0.bin || rm -f models/voices-v1.0.bin
+            python tools/audio.py ${{ steps.day.outputs.day }} models && exit 0
+            echo "audio attempt $i failed"; sleep 20
+          done
+          exit 1
 
       - name: Build pages
         run: |
