@@ -1,12 +1,13 @@
 """새 날짜 폴더를 사이트에 붙인다. 같은 날짜로 여러 번 돌려도 결과가 같다.
 
-사용: python3 tools/publish.py 2026-10-12 [분야]
+사용: python3 tools/publish.py 2026-10-12 [분야]  (분야를 생략하면 content JSON 의 category)
 1. 썸네일(thumb.png) 생성
 2. 날짜 페이지에 OG 태그와 상단 썸네일 삽입
 3. 첫 화면(index.html)과 지난 지문(archive/index.html)을 날짜 폴더 목록으로 다시 생성
 """
 import datetime as dt
 import html
+import json
 import re
 import sys
 from pathlib import Path
@@ -133,7 +134,9 @@ def rebuild_lists():
 
 if __name__ == "__main__":
     day = sys.argv[1]
-    thumb.build(day, sys.argv[2] if len(sys.argv) > 2 else None)
+    content = ROOT / "content" / f"{day}.json"
+    cat = sys.argv[2] if len(sys.argv) > 2 else (json.loads(content.read_text(encoding="utf-8"))["category"] if content.exists() else None)
+    thumb.build(day, cat)
     patch_page(day)
     rebuild_lists()
     print(f"{SITE}/{day}/")

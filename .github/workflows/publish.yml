@@ -1,0 +1,92 @@
+# 예약 작업이 content/YYYY-MM-DD.json 을 push 하면
+# 음성, 페이지, 썸네일을 만들어 커밋하고, 배포된 페이지가 열리면 구독자에게 메일을 보낸다.
+name: publish
+
+on:
+  push:
+    branches: [main]
+    paths: ["content/*.json"]
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "YYYY-MM-DD"
+        required: true
+      send:
+        description: "오늘 날짜가 아니어도 메일 발송"
+        type: boolean
+        default: false
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Pick day
+        id: day
+        run: |
+          if [ -n "${{ inputs.day }}" ]; then
+            day="${{ inputs.day }}"
+          else
+            day=$(git diff --name-only --diff-filter=AM HEAD^ HEAD -- 'content/*.json' | sed -E 's#content/(.*)\.json#\1#' | sort | tail -1)
+          fi
+          [ -n "$day" ] || { echo "no content change"; exit 1; }
+          echo "day=$day" >> "$GITHUB_OUTPUT"
+          echo "today=$(TZ=Asia/Seoul date +%F)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -q pillow kokoro-onnx soundfile
+
+      - uses: actions/cache@v4
+        with:
+          path: models
+          key: kokoro-v1.0
+
+      - name: Audio
+        # 음성이 실패해도 페이지는 브라우저 내장 음성으로 읽어 주므로 계속 진행한다.
+        continue-on-error: true
+        run: |
+          mkdir -p models
+          base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
+          [ -f models/kokoro-v1.0.int8.onnx ] || curl -sSfL -o models/kokoro-v1.0.int8.onnx $base/kokoro-v1.0.int8.onnx
+          [ -f models/voices-v1.0.bin ] || curl -sSfL -o models/voices-v1.0.bin $base/voices-v1.0.bin
+          python tools/audio.py ${{ steps.day.outputs.day }} models
+
+      - name: Build pages
+        run: |
+          python tools/render.py ${{ steps.day.outputs.day }}
+          python tools/publish.py ${{ steps.day.outputs.day }}
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A ${{ steps.day.outputs.day }} index.html archive
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "Publish ${{ steps.day.outputs.day }}"
+          git push
+          # GITHUB_TOKEN 으로 한 push 는 Pages 빌드를 보장하지 않으므로 직접 요청한다.
+          gh api -X POST repos/${{ github.repository }}/pages/builds
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Send email
+        # 지난 날짜를 다시 만들 때는 보내지 않는다(수동 실행에서 send 를 켠 경우만 예외).
+        if: steps.day.outputs.day == steps.day.outputs.today || inputs.send
+        run: python tools/send_email.py ${{ steps.day.outputs.day }}
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
