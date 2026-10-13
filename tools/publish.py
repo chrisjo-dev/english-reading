@@ -176,7 +176,7 @@ def entry(lang, day):
 
 
 def rebuild_root():
-    """사이트 첫 화면(언어 선택)과 옛 주소(/YYYY-MM-DD/, /archive/) 이동 페이지를 만든다."""
+    """사이트 첫 화면(언어 선택)을 만든다."""
     cards = []
     for code, L in langs.LANGS.items():
         days = days_of(code)
@@ -188,12 +188,6 @@ def rebuild_root():
             f'<span class="today">오늘의 지문: {html.escape(topic_of(code, days[0]))} →</span></a>'
         )
     (ROOT / "index.html").write_text(ROOT_PAGE.replace("__CARDS__", "\n".join(cards)), encoding="utf-8")
-    # 예전에 보낸 메일과 링크(/YYYY-MM-DD/, /archive/)는 영어 페이지로 보낸다. 메일 속 썸네일 때문에 thumb.png 는 그대로 둔다.
-    for p in ROOT.iterdir():
-        if DATE_RE.fullmatch(p.name) and p.is_dir() and (ROOT / "en" / p.name).exists():
-            (p / "index.html").write_text(redirect(f"../en/{p.name}/", "영어 지문"), encoding="utf-8")
-    if (ROOT / "archive").exists():
-        (ROOT / "archive" / "index.html").write_text(redirect("../en/archive/", "지난 영어 지문"), encoding="utf-8")
 
 
 ROOT_PAGE = """<!doctype html>
