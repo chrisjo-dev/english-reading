@@ -4,7 +4,8 @@
       BUTTONDOWN_API_KEY=... python3 tools/send_email.py ja 2026-10-18 --weekly   (주간 단어 복습)
 - 페이지와 썸네일이 200 으로 열리고 페이지에 주제어가 보일 때만 보낸다(최대 10분 대기).
 - 같은 언어와 날짜로 이미 만든 메일(metadata.lang, metadata.day)이 있으면 보내지 않는다. 다시 실행해도 중복 발송되지 않는다.
-- 받는 사람은 구독자 metadata.lang 으로 거른다. 영어는 "ja 등 다른 언어가 아닌" 구독자 전부(언어 정보가 없는 예전 구독자 포함).
+- 받는 사람은 구독자 metadata.lang 으로 거른다. 영어는 "ja 등 다른 언어가 아닌" 구독자 전부.
+- Buttondown 필터는 lang 값이 없는 구독자를 not_equals 에서도 빼므로, 보내기 전에 lang 이 없는 구독자를 기본 언어(en)로 채운다.
 """
 import json
 import os
@@ -62,6 +63,24 @@ def audience(lang):
     return {"predicate": "and", "groups": [], "filters": rules}
 
 
+def subscribers():
+    path = "/subscribers?page_size=100"
+    while path:
+        data = call("GET", path)
+        yield from data["results"]
+        nxt = data.get("next")
+        path = nxt.split("/v1", 1)[1] if nxt else None
+
+
+def fill_missing_lang():
+    """구독 폼을 거치지 않은 구독자(기본 구독 페이지, 예전 폼)는 lang 이 없어 필터에서 빠진다. 기본 언어로 채운다."""
+    for sub in subscribers():
+        meta = sub.get("metadata") or {}
+        if sub.get("type") in ("regular", "unactivated") and not meta.get("lang"):
+            call("PATCH", f"/subscribers/{sub['id']}", {"metadata": {**meta, "lang": langs.DEFAULT}})
+            print(f"lang 채움: {sub['id']} -> {langs.DEFAULT}")
+
+
 def recent_emails(pages=5):
     path = "/emails?ordering=-creation_date"
     for _ in range(pages):
@@ -93,6 +112,7 @@ def send(mail, lang, key, value):
             raise SystemExit(f"Buttondown 발송 오류 상태라 확인 필요: {e['id']} ({e['status']})")
         print(f"이미 처리한 메일이 있어 건너뜀: {e['id']} ({e['status']})")
         return
+    fill_missing_lang()
     if draft is None:
         draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked",
                                           "filters": audience(lang), "metadata": {"lang": lang, key: value}})
