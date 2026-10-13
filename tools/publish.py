@@ -17,7 +17,7 @@ import langs  # noqa: E402
 import thumb  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://www.wspace.ai.kr"
+SITE = "https://read.wspace.ai.kr"
 SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/english-reading"
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 DAYS = "월화수목금토일"
