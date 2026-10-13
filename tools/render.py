@@ -105,7 +105,7 @@ def render(lang, day):
     )
     advanced = "".join(
         f'      <div class="adv"><div class="w">{marks(a["word"], "")}</div><div class="m">{esc(a["meaning"])}'
-        f'{WARN.format(esc(a["confuse"])) if a.get("confuse") else ""}</div>\n'
+        f'{WARN.format(ruby(esc(a["confuse"]))) if a.get("confuse") else ""}</div>\n'
         f'        <div class="ex">{marks(a["example"], "b")}</div></div>\n'
         for a in c["advanced"]
     )
