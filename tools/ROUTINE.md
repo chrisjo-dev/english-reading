@@ -52,7 +52,7 @@
 
 작업 디렉터리는 사이트 저장소 `chrisjo-dev/english-reading`의 clone입니다(main 브랜치). 날짜는 Asia/Seoul 기준 오늘 `YYYY-MM-DD`입니다.
 
-1. **이미 올라간 날인지 확인**: `content/en/YYYY-MM-DD.json`이 이미 있으면 새로 만들지 말고, PushNotification으로 "오늘 지문은 이미 올라가 있어요: https://chrisjo-dev.github.io/english-reading/en/YYYY-MM-DD/"만 보내고 끝냅니다.
+1. **이미 올라간 날인지 확인**: `content/en/YYYY-MM-DD.json`이 이미 있으면 새로 만들지 말고, PushNotification으로 "오늘 지문은 이미 올라가 있어요: https://www.wspace.ai.kr/en/YYYY-MM-DD/"만 보내고 끝냅니다.
 2. **content JSON 쓰기**: `tools/render.py` 맨 위 설명의 형식 그대로 `content/en/YYYY-MM-DD.json`을 씁니다.
    - `category`: 오늘 요일의 분야. 월·금 `science`, 화 `tech`, 수 `society`, 목 `future`, 토 `culture`, 일 `space`. 고른 소식이 그 분야와 너무 다르면 실제 내용에 맞는 값으로 바꿔도 됩니다.
    - `topic`: 한국어 주제어 하나(2~8자, 예: "핵시계", "수직 농장"). h1, 썸네일, 메일 제목에 그대로 쓰입니다.
@@ -66,5 +66,5 @@
    - 모든 문자열은 일반 텍스트로 씁니다(HTML 태그 금지).
 3. **검증**: `python3 tools/render.py en YYYY-MM-DD`를 실행해 오류 없이 끝나는지 확인합니다. 오류가 나면 JSON을 고쳐 다시 실행합니다. 이 명령이 만든 HTML 파일은 커밋하지 않습니다(Actions가 다시 만듭니다). `git checkout -- . && git clean -fd -- en/YYYY-MM-DD` 로 되돌린 뒤 content 파일만 남깁니다.
 4. **push**: `git add content/en/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add YYYY-MM-DD: 주제어" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 같은 작성자 줄을 붙이지 마세요. 다른 브랜치로 push하지 마세요. push가 거절되면 `git pull --rebase origin main` 후 한 번만 다시 push합니다.
-5. **알림**: PushNotification으로 짧게 알립니다. 예: "오늘의 영어 읽기(10/13, 주제: 핵시계)가 올라갔어요. 몇 분 뒤 열려요: https://chrisjo-dev.github.io/english-reading/en/YYYY-MM-DD/". 알림에는 지문 전문과 모범 해석을 넣지 않습니다.
+5. **알림**: PushNotification으로 짧게 알립니다. 예: "오늘의 영어 읽기(10/13, 주제: 핵시계)가 올라갔어요. 몇 분 뒤 열려요: https://www.wspace.ai.kr/en/YYYY-MM-DD/". 알림에는 지문 전문과 모범 해석을 넣지 않습니다.
 6. **마지막 답변**: 한두 문장과 페이지 주소, 끝에 `출처: [기사 제목](URL)` 한 줄. 모범 해석은 답변에 노출하지 않습니다. push까지 실패했다면 원인과 함께 그 사실을 분명히 적고, 알림에도 "오늘 지문 올리기 실패"라고 적습니다.

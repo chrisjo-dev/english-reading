@@ -52,4 +52,4 @@
 2. **content JSON 쓰기**: `tools/render.py` 맨 위 설명의 형식 그대로 `content/ja/YYYY-MM-DD.json`을 씁니다. 모든 문자열은 일반 텍스트(HTML 태그 금지).
 3. **검증**: `python3 tools/render.py ja YYYY-MM-DD`를 실행해 오류 없이 끝나는지 확인합니다. 만들어진 `ja/YYYY-MM-DD/index.html`에서 `{`나 `|`가 남아 있지 않은지(후리가나 표기 실수) `grep -c '[{|]' ja/YYYY-MM-DD/index.html`로 확인하고, 0이 아니면 JSON을 고칩니다(페이지의 다른 곳에도 `{`가 있으니 지문 부분을 직접 열어 확인). 확인이 끝나면 `git checkout -- . && git clean -fd -- ja/YYYY-MM-DD`로 되돌린 뒤 content 파일만 남깁니다.
 4. **push**: `git add content/ja/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add ja YYYY-MM-DD: 주제어" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 같은 작성자 줄을 붙이지 마세요. 다른 브랜치로 push하지 마세요. 거절되면 `git pull --rebase origin main` 후 한 번만 다시 push합니다.
-5. **마지막 답변**: 한두 문장과 페이지 주소 `https://chrisjo-dev.github.io/english-reading/ja/YYYY-MM-DD/`, 출처가 있으면 `출처: [기사 제목](URL)` 한 줄. 실패했다면 원인을 분명히 적습니다.
+5. **마지막 답변**: 한두 문장과 페이지 주소 `https://www.wspace.ai.kr/ja/YYYY-MM-DD/`, 출처가 있으면 `출처: [기사 제목](URL)` 한 줄. 실패했다면 원인을 분명히 적습니다.

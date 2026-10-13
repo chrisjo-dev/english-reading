@@ -16,7 +16,7 @@ import langs  # noqa: E402
 from render import ruby  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://chrisjo-dev.github.io/english-reading"
+SITE = "https://www.wspace.ai.kr"
 DAYS = "월화수목금토일"
 
 
