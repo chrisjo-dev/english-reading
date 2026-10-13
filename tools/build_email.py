@@ -1,6 +1,6 @@
-"""날짜 페이지(YYYY-MM-DD/index.html)에서 뉴스레터 메일 제목과 본문 HTML을 만든다.
+"""날짜 페이지(<언어>/YYYY-MM-DD/index.html)에서 뉴스레터 메일 제목과 본문 HTML을 만든다.
 
-사용: python3 tools/build_email.py 2026-10-12 > /tmp/email.json
+사용: python3 tools/build_email.py en 2026-10-12 > /tmp/email.json
 출력: {"subject": ..., "body": ...}  (body는 Buttondown에 그대로 넣는 HTML)
 """
 import html
@@ -9,9 +9,12 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import langs  # noqa: E402
+
 SITE = "https://chrisjo-dev.github.io/english-reading"
 BLUE, INK, SUB, MUTED, BG, HL = "#3182f6", "#191f28", "#4e5968", "#8b95a1", "#f2f4f6", "#fff3c4"
-FONT = "-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif"
+FONT = "-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic','Hiragino Sans','Noto Sans JP',sans-serif"
 
 
 def grab(pattern, text, flags=re.S):
@@ -21,8 +24,8 @@ def grab(pattern, text, flags=re.S):
     return m.group(1).strip()
 
 
-def parse(day):
-    page = (Path(__file__).resolve().parent.parent / day / "index.html").read_text(encoding="utf-8")
+def parse(lang, day):
+    page = (Path(__file__).resolve().parent.parent / lang / day / "index.html").read_text(encoding="utf-8")
     passage = grab(r'<section class="card" id="passage">(.*?)</section>', page)
     words_sec = grab(r'<h2>주요 단어</h2>(.*?)</section>', page)
     src = re.search(r'<p class="src">출처: <a href="([^"]+)"[^>]*>(.*?)</a></p>', page, re.S)
@@ -47,9 +50,10 @@ def sentence_html(raw):
     )
 
 
-def build(day):
-    d = parse(day)
-    url = f"{SITE}/{day}/"
+def build(lang, day):
+    L = langs.get(lang)
+    d = parse(lang, day)
+    url = f"{SITE}/{lang}/{day}/"
     chips = "".join(
         f'<span style="display:inline-block;font-size:13px;font-weight:600;padding:4px 9px;border-radius:8px;'
         f'margin:0 4px 4px 0;background:{"#e8f3ff" if i == 0 else BG};color:{BLUE if i == 0 else SUB};">{html.escape(c)}</span>'
@@ -77,7 +81,7 @@ def build(day):
     body = f"""<!-- buttondown-editor-mode: plaintext -->
 <div style="background:{BG};padding:16px 0;font-family:{FONT};word-break:keep-all;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
-<tr><td style="padding:0 0 12px;"><a href="{url}"><img src="{SITE}/{day}/thumb.png" width="560" alt="오늘은 {html.escape(d["topic"])} 이야기예요"
+<tr><td style="padding:0 0 12px;"><a href="{url}"><img src="{url}thumb.png" width="560" alt="오늘은 {html.escape(d["topic"])} 이야기예요"
   style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:20px;"></a></td></tr>
 <tr><td style="{card}">
   <p style="margin:0;font-size:14px;font-weight:600;color:{MUTED};">{d["date"]}</p>
@@ -103,14 +107,14 @@ def build(day):
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{words}</table>
 </td></tr>
 <tr><td style="padding:16px 8px 0;font-size:13px;color:{MUTED};text-align:center;">
-  <a href="{SITE}/archive/" style="color:{SUB};">지난 지문 모아 보기</a>
-  <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:{MUTED};">매일 아침 B1~B2 영어 지문을 보내 드려요.<br>
+  <a href="{SITE}/{lang}/archive/" style="color:{SUB};">지난 지문 모아 보기</a>
+  <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:{MUTED};">매일 아침 {L["level"]} {L["name"]} 지문을 보내 드려요.<br>
   더 받지 않으려면 <a href="{{{{ unsubscribe_url }}}}" style="color:{MUTED};">수신거부</a>를 눌러 주세요.</p>
 </td></tr>
 </table>
 </div>"""
-    return {"subject": f"오늘은 {d['topic']} 이야기예요 | 매일 영어 읽기", "body": body}
+    return {"subject": f"오늘은 {d['topic']} 이야기예요 | {L['site']}", "body": body}
 
 
 if __name__ == "__main__":
-    json.dump(build(sys.argv[1]), sys.stdout, ensure_ascii=False)
+    json.dump(build(sys.argv[1], sys.argv[2]), sys.stdout, ensure_ascii=False)

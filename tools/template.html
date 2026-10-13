@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
-<title>오늘의 영어 읽기 · {{date_short}}</title>
+<title>오늘의 {{name}} 읽기 · {{date_short}}</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
-<style>
+{{head_extra}}<style>
   :root {
     --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
     --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
@@ -89,6 +89,8 @@
   .tool.on { background: var(--blue); color: #fff; }
   .tool:active { transform: scale(.97); }
   .tool svg { width: 16px; height: 16px; flex: none; }
+  .tool.furi { width: 100%; flex: none; margin: -8px 0 16px; }
+  body.nofuri rt { visibility: hidden; }
   .hint { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
   #passage .no { border: 0; padding: 0; cursor: pointer; font-family: inherit; }
   #passage .sent.playing .no { background: var(--blue); color: #fff; }
@@ -128,7 +130,7 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
     </div>
-{{sentences}}    <p class="hint">문장 번호를 누르면 그 문장만 들을 수 있어요.</p>
+{{tools_extra}}{{sentences}}    <p class="hint">문장 번호를 누르면 그 문장만 들을 수 있어요.{{credit}}</p>
 {{source}}    <div class="mine">
       <label for="mine">내 해석</label>
       <textarea id="mine" placeholder="{{placeholder}}" spellcheck="false"></textarea>
@@ -191,7 +193,10 @@
   var playBtn = document.getElementById('play'), slowBtn = document.getElementById('slow'), copyBtn = document.getElementById('copy');
   var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
   function sentenceText(r) {
-    return [].map.call(r.querySelector('.en').childNodes, function (x) { return x.className === 'badge' ? '' : x.textContent; }).join('').trim();
+    // 배지와 후리가나(rt, rp)를 뺀 본문만 쓴다.
+    var c = r.querySelector('.en').cloneNode(true);
+    [].forEach.call(c.querySelectorAll('.badge, rt, rp'), function (x) { x.parentNode.removeChild(x); });
+    return c.textContent.trim();
   }
   function mark(i) { rows.forEach(function (r, k) { r.classList.toggle('playing', k === i); }); }
   function stop() {
@@ -207,7 +212,7 @@
       player.playbackRate = rate; player.play().catch(function () { if (t === token) stop(); });
     } else if (canSpeak) {
       var u = new SpeechSynthesisUtterance(sentenceText(rows[i]));
-      u.lang = 'en-US'; u.rate = rate * 0.9; u.onend = after; u.onerror = after; speechSynthesis.speak(u);
+      u.lang = '{{tts_lang}}'; u.rate = rate * 0.9; u.onend = after; u.onerror = after; speechSynthesis.speak(u);
     } else stop();
   }
   playBtn.addEventListener('click', function () {
@@ -237,10 +242,10 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
     else fallback();
   }
-  var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
-  var WEAK = '자주 틀리는 부분(문장 끝의 시간·수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  var HEAD = '{{copy_head}} 주제: ' + document.querySelector('h1 em').textContent + '.';
+  var WEAK = '{{copy_weak}}';
   function passageBlock() {
-    return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
+    return '[{{name}} 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }
   copyBtn.addEventListener('click', function () {
     copyText([HEAD, passageBlock(),
@@ -252,6 +257,12 @@
     copyText([HEAD, passageBlock(), '[내 해석]\n' + mine.value.trim(),
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
+  });
+  var furi = document.getElementById('furi');
+  if (furi) furi.addEventListener('click', function () {
+    var off = document.body.classList.toggle('nofuri');
+    furi.setAttribute('aria-pressed', String(!off));
+    furi.textContent = off ? '후리가나 켜기' : '후리가나 끄기';
   });
 </script>
 </body>

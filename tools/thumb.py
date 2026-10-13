@@ -1,6 +1,6 @@
-"""날짜 페이지의 주제어와 분야 일러스트로 썸네일(YYYY-MM-DD/thumb.png, 1200x630)을 만든다.
+"""날짜 페이지의 주제어와 분야 일러스트로 썸네일(<언어>/YYYY-MM-DD/thumb.png, 1200x630)을 만든다.
 
-사용: python3 tools/thumb.py 2026-10-12 [분야]
+사용: python3 tools/thumb.py en 2026-10-12 [분야]
 분야: science, tech, society, future, culture, space (생략하면 요일별 기본 분야)
 메일 상단, 날짜 페이지 상단, 링크 미리보기(OG)에 같은 이미지를 쓴다.
 """
@@ -11,6 +11,9 @@ import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import langs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 FONTS = Path(__file__).resolve().parent / "fonts"
@@ -135,11 +138,11 @@ def fit(d, text, weight, size, max_w):
     return font(weight, size)
 
 
-def build(day, cat=None):
+def build(lang, day, cat=None):
     date = dt.date.fromisoformat(day)
     cat = cat or WEEKDAY[date.weekday()]
     label, color, soft = CATS[cat]
-    page = (ROOT / day / "index.html").read_text(encoding="utf-8")
+    page = (ROOT / lang / day / "index.html").read_text(encoding="utf-8")
     topic = re.search(r"<h1>.*?<em>(.*?)</em>", page, re.S).group(1).strip()
 
     img = Image.new("RGBA", (W, H), (255, 255, 255, 255))
@@ -151,7 +154,7 @@ def build(day, cat=None):
     d = ImageDraw.Draw(img)
     # 왼쪽: 브랜드, 분야 칩, 주제어, 날짜
     x = 80 * S
-    d.text((x, 92 * S), "매일 영어 읽기", font=font("SemiBold", 30), fill=SUB)
+    d.text((x, 92 * S), langs.get(lang)["site"], font=font("SemiBold", 30), fill=SUB)
     chip = font("SemiBold", 26)
     cw = d.textlength(label, font=chip)
     d.rounded_rectangle((x, 230 * S, x + cw + 36 * S, 280 * S), 12 * S, fill=soft)
@@ -160,10 +163,10 @@ def build(day, cat=None):
     d.text((x, 470 * S), f"{date.month}월 {date.day}일 {DAYS[date.weekday()]}요일", font=font("SemiBold", 32), fill=SUB)
     d.rounded_rectangle((x, 520 * S, x + 64 * S, 528 * S), 4 * S, fill=color)
 
-    out = ROOT / day / "thumb.png"
+    out = ROOT / lang / day / "thumb.png"
     img.convert("RGB").resize((W // S, H // S), Image.LANCZOS).save(out, optimize=True)
     return out
 
 
 if __name__ == "__main__":
-    print(build(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None))
+    print(build(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None))

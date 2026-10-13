@@ -1,26 +1,31 @@
-"""그 주(오늘 포함 7일)의 주요 단어를 모아 복습 페이지 review/YYYY-MM-DD/index.html 을 만든다.
+"""그 주(오늘 포함 7일)의 주요 단어를 모아 복습 페이지 <언어>/review/YYYY-MM-DD/index.html 을 만든다.
 
-사용: python3 tools/weekly.py 2026-10-18          # 페이지 생성
-      python3 tools/weekly.py 2026-10-18 --email  # 메일 제목과 본문 JSON 출력
+사용: python3 tools/weekly.py en 2026-10-18          # 페이지 생성
+      python3 tools/weekly.py en 2026-10-18 --email  # 메일 제목과 본문 JSON 출력
 날짜는 복습을 보내는 날(보통 일요일)이고, 그날부터 6일 전까지의 content JSON 을 모은다.
 """
 import datetime as dt
 import html
 import json
+import re
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import langs  # noqa: E402
+from render import ruby  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://chrisjo-dev.github.io/english-reading"
 DAYS = "월화수목금토일"
 
 
-def collect(end):
+def collect(lang, end):
     end_d = dt.date.fromisoformat(end)
     out = []
     for i in range(6, -1, -1):
         d = (end_d - dt.timedelta(days=i)).isoformat()
-        f = ROOT / "content" / f"{d}.json"
+        f = ROOT / "content" / lang / f"{d}.json"
         if f.exists():
             c = json.loads(f.read_text(encoding="utf-8"))
             out.append({"day": d, "topic": c["topic"], "words": c["words"]})
@@ -33,20 +38,26 @@ def span(end):
     return f"{s.month}월 {s.day}일~{e.month}월 {e.day}일"
 
 
+def plain(word):
+    """메일용: {漢字|かんじ} 를 漢字(かんじ) 로."""
+    return re.sub(r"\{([^{}|]+)\|([^{}|]+)\}", r"\1(\2)", word)
+
+
 def short(day):
     d = dt.date.fromisoformat(day)
     return f"{d.month}/{d.day}({DAYS[d.weekday()]})"
 
 
-def build_page(end):
-    days = collect(end)
+def build_page(lang, end):
+    L = langs.get(lang)
+    days = collect(lang, end)
     if not days:
         raise SystemExit(f"{end} 까지 7일 동안 올라온 지문이 없어 복습을 만들지 않음")
     total = sum(len(x["words"]) for x in days)
     groups = []
     for x in days:
         cards = "".join(
-            f'<button class="w" type="button" aria-expanded="false"><span class="en">{html.escape(w)}</span>'
+            f'<button class="w" type="button" aria-expanded="false"><span class="en">{ruby(html.escape(w))}</span>'
             f'<span class="ko">{html.escape(m)}</span></button>'
             for w, m in x["words"]
         )
@@ -54,23 +65,24 @@ def build_page(end):
             f'  <section class="day">\n    <h2>{short(x["day"])} <a href="../../{x["day"]}/">{html.escape(x["topic"])}</a></h2>\n'
             f'    <div class="grid">{cards}</div>\n  </section>'
         )
-    page = PAGE.replace("__SPAN__", span(end)).replace("__TOTAL__", str(total)).replace("__COUNT__", str(len(days)))
-    page = page.replace("__GROUPS__", "\n".join(groups)).replace("__URL__", f"{SITE}/review/{end}/")
-    page = page.replace("__OG_IMAGE__", f"{SITE}/{days[-1]['day']}/thumb.png")
-    out = ROOT / "review" / end / "index.html"
+    page = PAGE.replace("__SITE__", L["site"]).replace("__HEAD_EXTRA__", L["head_extra"]).replace("__SPAN__", span(end)).replace("__TOTAL__", str(total)).replace("__COUNT__", str(len(days)))
+    page = page.replace("__GROUPS__", "\n".join(groups)).replace("__URL__", f"{SITE}/{lang}/review/{end}/")
+    page = page.replace("__OG_IMAGE__", f"{SITE}/{lang}/{days[-1]['day']}/thumb.png")
+    out = ROOT / lang / "review" / end / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
     return out
 
 
-def build_email(end):
-    days = collect(end)
-    url = f"{SITE}/review/{end}/"
-    font = "-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif"
+def build_email(lang, end):
+    L = langs.get(lang)
+    days = collect(lang, end)
+    url = f"{SITE}/{lang}/review/{end}/"
+    font = "-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic','Hiragino Sans','Noto Sans JP',sans-serif"
     rows = "".join(
         f'<tr><td style="padding:10px 0;border-top:1px solid #f2f4f6;font-size:13px;font-weight:700;color:#8b95a1;white-space:nowrap;vertical-align:top;">{short(x["day"])}</td>'
         f'<td style="padding:10px 0 10px 12px;border-top:1px solid #f2f4f6;font-size:16px;line-height:1.6;color:#191f28;">'
-        f'{", ".join(html.escape(w) for w, _ in x["words"])}</td></tr>'
+        f'{", ".join(html.escape(plain(w)) for w, _ in x["words"])}</td></tr>'
         for x in days
     )
     total = sum(len(x["words"]) for x in days)
@@ -88,23 +100,24 @@ def build_email(end):
     </td></tr></table>
 </td></tr>
 <tr><td style="padding:16px 8px 0;font-size:13px;color:#8b95a1;text-align:center;">
-  <a href="{SITE}/archive/" style="color:#4e5968;">지난 지문 모아 보기</a>
-  <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:#8b95a1;">매일 아침 B1~B2 영어 지문을, 일요일에는 한 주 단어 복습을 보내 드려요.<br>
+  <a href="{SITE}/{lang}/archive/" style="color:#4e5968;">지난 지문 모아 보기</a>
+  <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:#8b95a1;">매일 아침 {L["level"]} {L["name"]} 지문을, 일요일에는 한 주 단어 복습을 보내 드려요.<br>
   더 받지 않으려면 <a href="{{{{ unsubscribe_url }}}}" style="color:#8b95a1;">수신거부</a>를 눌러 주세요.</p>
 </td></tr>
 </table>
 </div>"""
-    return {"subject": f"이번 주 단어 {total}개 복습 ({span(end)}) | 매일 영어 읽기", "body": body, "url": url}
+    return {"subject": f"이번 주 단어 {total}개 복습 ({span(end)}) | {L['site']}", "body": body, "url": url}
 
 
 # 복습 페이지. 단어 카드를 누르면 뜻이 보인다. 날짜 페이지와 같은 색과 글꼴을 쓴다.
 PAGE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light only"><title>이번 주 단어 복습 | 매일 영어 읽기</title>
+<meta name="color-scheme" content="light only"><title>이번 주 단어 복습 | __SITE__</title>
 <meta name="description" content="__SPAN__ 동안 나온 주요 단어 __TOTAL__개를 뜻을 가리고 복습해요.">
-<meta property="og:title" content="이번 주 단어 복습 (__SPAN__) | 매일 영어 읽기">
+<meta property="og:title" content="이번 주 단어 복습 (__SPAN__) | __SITE__">
 <meta property="og:url" content="__URL__"><meta property="og:image" content="__OG_IMAGE__"><meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+__HEAD_EXTRA__
 <style>
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
   main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
@@ -153,6 +166,6 @@ __GROUPS__
 
 if __name__ == "__main__":
     if "--email" in sys.argv:
-        json.dump(build_email(sys.argv[1]), sys.stdout, ensure_ascii=False)
+        json.dump(build_email(sys.argv[1], sys.argv[2]), sys.stdout, ensure_ascii=False)
     else:
-        print(build_page(sys.argv[1]))
+        print(build_page(sys.argv[1], sys.argv[2]))

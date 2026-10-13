@@ -1,4 +1,4 @@
-# 일요일 아침, 그 주(오늘 포함 7일)의 주요 단어로 복습 페이지를 만들고 구독자에게 메일을 보낸다.
+# 일요일 아침, 언어마다 그 주(오늘 포함 7일)의 주요 단어로 복습 페이지를 만들고 그 언어 구독자에게 메일을 보낸다.
 name: weekly
 
 on:
@@ -9,6 +9,10 @@ on:
       day:
         description: "복습 기준일 YYYY-MM-DD (그날 포함 7일)"
         required: true
+      lang:
+        description: "언어 코드 (비우면 전체)"
+        required: false
+        default: ""
       send:
         description: "오늘 날짜가 아니어도 메일 발송"
         type: boolean
@@ -44,16 +48,26 @@ jobs:
 
       - run: pip install -q pillow
 
-      - name: Build review page
+      - name: Build review pages
+        id: build
         run: |
-          python tools/weekly.py ${{ steps.day.outputs.day }}
-          python -c "import sys; sys.path.insert(0, 'tools'); import publish; publish.rebuild_lists()"
+          built=
+          langs="${{ inputs.lang }}"
+          [ -n "$langs" ] || langs=$(python -c "import sys; sys.path.insert(0, 'tools'); import langs; print(' '.join(langs.LANGS))")
+          for lang in $langs; do
+            # 그 주에 지문이 하나도 없는 언어는 건너뛴다(weekly.py 가 실패로 끝남).
+            if python tools/weekly.py $lang ${{ steps.day.outputs.day }}; then
+              python -c "import sys; sys.path.insert(0, 'tools'); import publish; publish.rebuild_lists('$lang')"
+              built="$built $lang"
+            fi
+          done
+          echo "langs=$built" >> "$GITHUB_OUTPUT"
 
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A review archive
+          git add -A -- . ':!models'
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "Weekly review ${{ steps.day.outputs.day }}"
           git push || { git pull --rebase origin main && git push; }
@@ -63,6 +77,9 @@ jobs:
 
       - name: Send email
         if: steps.day.outputs.day == steps.day.outputs.today || inputs.send
-        run: python tools/send_email.py ${{ steps.day.outputs.day }} --weekly
+        run: |
+          for lang in ${{ steps.build.outputs.langs }}; do
+            python tools/send_email.py $lang ${{ steps.day.outputs.day }} --weekly
+          done
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
