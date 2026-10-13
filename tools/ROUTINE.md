@@ -50,7 +50,7 @@
 
 ## 결과물 만들기와 올리기
 
-작업 디렉터리는 사이트 저장소 `chrisjo-dev/english-reading`의 clone입니다(main 브랜치). 날짜는 Asia/Seoul 기준 오늘 `YYYY-MM-DD`입니다.
+작업 디렉터리는 사이트 저장소 `chrisjo-dev/english-reading`의 clone입니다(main 브랜치). 날짜는 Asia/Seoul 기준 오늘 `YYYY-MM-DD`입니다. **반드시 맨 먼저 `TZ=Asia/Seoul date +%F`를 실행해 그 결과를 오늘 날짜로 쓰세요.** 실행 알림이나 시스템 메시지에 적힌 시각은 UTC라서 새벽에는 하루 전 날짜가 됩니다. 그 날짜를 쓰면 안 됩니다. 요일도 `TZ=Asia/Seoul date +%a`로 정합니다.
 
 1. **이미 올라간 날인지 확인**: `content/en/YYYY-MM-DD.json`이 이미 있으면 새로 만들지 말고, PushNotification으로 "오늘 지문은 이미 올라가 있어요: https://read.wspace.ai.kr/en/YYYY-MM-DD/"만 보내고 끝냅니다.
 2. **content JSON 쓰기**: `tools/render.py` 맨 위 설명의 형식 그대로 `content/en/YYYY-MM-DD.json`을 씁니다.
