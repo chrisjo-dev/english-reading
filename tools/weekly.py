@@ -140,7 +140,10 @@ __HEAD_EXTRA__
   .w .ko { font-size: 14px; line-height: 1.5; color: #4e5968; visibility: hidden; }
   .w[aria-expanded="true"] { background: #e8f3ff; }
   .w[aria-expanded="true"] .ko { visibility: visible; }
-__FOOTER_CSS__</style></head>
+__FOOTER_CSS__</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
+     crossorigin="anonymous"></script>
+</head>
 <body><main>
   <a class="back" href="../../archive/">← 지난 지문</a>
   <div class="head">

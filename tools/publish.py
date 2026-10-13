@@ -243,7 +243,10 @@ ROOT_PAGE = """<!doctype html>
   .name { display: block; padding: 16px 20px 2px; font-size: 20px; font-weight: 800; }
   .lv { margin-left: 6px; font-size: 13px; font-weight: 700; color: #3182f6; }
   .today { display: block; padding: 0 20px 18px; font-size: 15px; color: #4e5968; }
-__FOOTER_CSS__</style></head>
+__FOOTER_CSS__</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
+     crossorigin="anonymous"></script>
+</head>
 <body><main>
   <h1>매일 외국어 읽기</h1>
   <p class="lead">매일 아침 짧은 지문 하나. 듣고, 해석하고, AI에게 피드백을 받아 보세요. 배우는 언어를 고르세요.</p>
@@ -291,7 +294,10 @@ ARCHIVE = r"""<!doctype html>
   .sub-wrap { margin-top: 28px; }
   .sub-wrap .card { padding: 22px 20px; }
   .sub-wrap h2 { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
-__SUB_CSS____INTRO_CSS____FOOTER_CSS__</style></head>
+__SUB_CSS____INTRO_CSS____FOOTER_CSS__</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
+     crossorigin="anonymous"></script>
+</head>
 <body><main>
   <a class="back" href="__TODAY__">오늘의 지문 바로 가기 →</a>
   <h1>__TITLE__</h1>
