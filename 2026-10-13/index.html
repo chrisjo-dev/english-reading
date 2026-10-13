@@ -114,13 +114,16 @@
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
   .top { position: relative; }
   .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
+  .sub { scroll-margin-top: 16px; }
   .sub h2 { margin-bottom: 4px; }
   .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }
   .sub form { display: flex; gap: 8px; }
   .sub input { flex: 1; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg); padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }
   .sub input:focus { border-color: var(--blue); background: #fff; }
   .sub button { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
-  .sub .note { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .sub .note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+  .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
+  .intro a { color: var(--blue); font-weight: 600; text-decoration: none; }
   .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
   .nav a { font-size: 14px; font-weight: 600; color: var(--blue); text-decoration: none; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
@@ -141,6 +144,7 @@
       <span class="chip">B2 1문장</span>
       <span class="chip">약 3분</span>
     </div>
+    <p class="intro">매일 아침 새로 올라오는 B1~B2 영어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요. <a href="#subscribe">메일로 받기</a></p>
   </div>
 
   <section class="card" id="passage">
@@ -237,14 +241,15 @@
         <div class="ex">The device does not yet have the <b>capability</b> to receive signals.</div></div>
     </div>
   </details>
-  <section class="card sub">
+  <section class="card sub" id="subscribe">
     <h2>매일 아침 메일로 받기</h2>
     <p>새 지문이 올라오면 아침에 메일로 보내 드려요.</p>
     <form action="https://buttondown.com/api/emails/embed-subscribe/english-reading" method="post" target="_blank">
       <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">
       <button type="submit">구독하기</button>
     </form>
-    <p class="note">이메일은 뉴스레터 발송에만 쓰입니다. 언제든 메일 하단에서 수신거부할 수 있어요.</p>
+    <p class="note">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>
+    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>
   </section>
 </main>
 

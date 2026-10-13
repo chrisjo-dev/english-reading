@@ -18,6 +18,35 @@ import thumb  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://chrisjo-dev.github.io/english-reading"
 SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/english-reading"
+
+
+# 처음 온 사람을 위한 한 줄 소개와 구독 칸. 날짜 페이지와 지난 지문 페이지에 같이 쓴다(색은 각 페이지의 CSS 변수).
+INTRO_CSS = ("  .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }\n"
+             "  .intro a { color: var(--blue); font-weight: 600; text-decoration: none; }\n")
+INTRO_HTML = '    <p class="intro">매일 아침 새로 올라오는 B1~B2 영어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요. <a href="#subscribe">메일로 받기</a></p>\n'
+SUB_CSS = (
+    "  .sub { scroll-margin-top: 16px; }\n"
+    "  .sub h2 { margin-bottom: 4px; }\n  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }\n"
+    "  .sub form { display: flex; gap: 8px; }\n"
+    "  .sub input { flex: 1; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg);"
+    " padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }\n"
+    "  .sub input:focus { border-color: var(--blue); background: #fff; }\n"
+    "  .sub button { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff;"
+    " font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }\n"
+    "  .sub .note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }\n"
+)
+SUB_HTML = (
+    '  <section class="card sub" id="subscribe">\n'
+    "    <h2>매일 아침 메일로 받기</h2>\n"
+    "    <p>새 지문이 올라오면 아침에 메일로 보내 드려요.</p>\n"
+    f'    <form action="{SUBSCRIBE}" method="post" target="_blank">\n'
+    '      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">\n'
+    '      <button type="submit">구독하기</button>\n'
+    "    </form>\n"
+    "    <p class=\"note\">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>\n"
+    '    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>\n'
+    "  </section>\n"
+)
 DAYS = "월화수목금토일"
 
 
@@ -62,31 +91,10 @@ def patch_page(day):
             1,
         )
     if 'class="card sub"' not in page:
-        page = page.replace(
-            "  .nav {",
-            "  .sub h2 { margin-bottom: 4px; }\n  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }\n"
-            "  .sub form { display: flex; gap: 8px; }\n"
-            "  .sub input { flex: 1; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg);"
-            " padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }\n"
-            "  .sub input:focus { border-color: var(--blue); background: #fff; }\n"
-            "  .sub button { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff;"
-            " font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }\n"
-            "  .sub .note { margin: 10px 0 0; font-size: 13px; color: var(--muted); }\n  .nav {",
-            1,
-        )
-        page = page.replace(
-            "</main>",
-            '  <section class="card sub">\n'
-            "    <h2>매일 아침 메일로 받기</h2>\n"
-            "    <p>새 지문이 올라오면 아침에 메일로 보내 드려요.</p>\n"
-            f'    <form action="{SUBSCRIBE}" method="post" target="_blank">\n'
-            '      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">\n'
-            '      <button type="submit">구독하기</button>\n'
-            "    </form>\n"
-            '    <p class="note">이메일은 뉴스레터 발송에만 쓰입니다. 언제든 메일 하단에서 수신거부할 수 있어요.</p>\n'
-            "  </section>\n</main>",
-            1,
-        )
+        page = page.replace("  .nav {", SUB_CSS + "  .intro {", 1)
+        page = page.replace("  .intro {", INTRO_CSS + "  .nav {", 1)
+        page = page.replace("</main>", SUB_HTML + "</main>", 1)
+        page = page.replace("\n  </div>\n\n  <section class=\"card\" id=\"passage\">", "\n" + INTRO_HTML + "  </div>\n\n  <section class=\"card\" id=\"passage\">", 1)
     path.write_text(page, encoding="utf-8")
 
 
@@ -121,7 +129,8 @@ def rebuild_lists():
         )
     groups.append("    </div>\n  </section>")
     page = (ARCHIVE.replace("__OG_IMAGE__", f"{SITE}/{latest}/thumb.png")
-            .replace("__CHIPS__", chips).replace("__GROUPS__", "\n".join(groups)))
+            .replace("__CHIPS__", chips).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
+            .replace("__SUB_HTML__", SUB_HTML).replace("__GROUPS__", "\n".join(groups)))
     (ROOT / "archive" / "index.html").write_text(page, encoding="utf-8")
 
 
@@ -148,6 +157,7 @@ ARCHIVE = r"""<!doctype html>
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
+  :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1; --blue: #3182f6; }
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
   main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
   h1 { font-size: 26px; font-weight: 800; margin: 0 8px 16px; letter-spacing: -0.03em; }
@@ -172,15 +182,21 @@ ARCHIVE = r"""<!doctype html>
   .more { display: block; width: 100%; height: 52px; margin-top: 16px; border: 0; border-radius: 14px; background: #e8f3ff; color: #3182f6;
           font: 700 16px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   [hidden] { display: none !important; }
-</style></head>
+  .sub-wrap { margin-top: 28px; }
+  .sub-wrap .card { padding: 22px 20px; }
+  .sub-wrap h2 { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
+__SUB_CSS____INTRO_CSS__</style></head>
 <body><main>
   <a class="back" href="../">← 오늘의 지문</a>
   <h1>지난 지문</h1>
+  <p class="intro" style="margin: -8px 8px 14px">매일 아침 새로 올라오는 B1~B2 영어 읽기예요. <a href="#subscribe">메일로 받기</a></p>
   <input class="search" id="q" type="search" placeholder="주제나 단어로 찾기 (예: satellite, 핵시계)" aria-label="지난 지문 검색" autocomplete="off">
   <div class="chips" role="group" aria-label="분야"><button type="button" class="chip" data-cat="" aria-pressed="true">전체</button>__CHIPS__</div>
 __GROUPS__
   <p class="empty" id="empty" hidden>찾는 지문이 없어요.</p>
   <button class="more" id="more" type="button" hidden>더 보기</button>
+  <div class="sub-wrap">
+__SUB_HTML__  </div>
 </main>
 <script>
   var PAGE = 30, shown = PAGE, cat = '';
