@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-06",
+  "category": "tech",
+  "topic": "중성미자",
+  "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "Every second, **billions** of tiny particles called **neutrinos** pass through your entire body without you feeling anything at all.", "b2": false},
+    {"en": "Most neutrinos come from the sun, but some travel from the far edges of the **universe** and carry enormous amounts of energy.", "b2": false},
+    {"en": "The IceCube **Observatory** in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to **detect** these particles.", "b2": false},
+    {"en": "When a neutrino **collides** with an ice molecule, it produces a brief **flash** of blue light that the sensors record.", "b2": false},
+    {"en": "Francis Halzen, the Belgian-American physicist who spent decades designing and building IceCube, was awarded the 2026 Nobel Prize in Physics on October 6 for this pioneering work.", "b2": true}
+  ],
+  "words": [
+    ["billions", "수십억 (의)"],
+    ["neutrino", "중성미자 (전하가 없는 아주 작은 입자)"],
+    ["observatory", "천문대, 관측소"],
+    ["detect", "감지하다, 탐지하다"],
+    ["collide", "충돌하다"],
+    ["flash", "섬광, 순간 빛남"]
+  ],
+  "points": [
+    {"title": "문장 끝 수량 정보", "body": "3번 문장의 숫자 정보가 끝 쪽에 있어요. `more than five thousand sensors`(5천여 개), `up to two and a half kilometres deep`(최대 2.5킬로미터 깊이) — 끝까지 읽어야 규모를 파악할 수 있어요."},
+    {"title": "수동태 by-agent", "body": "5번의 `was awarded the Nobel Prize`는 수동태예요. '상을 받았다'는 뜻이고, 수여 주체(by the committee)는 생략됐어요. `for this pioneering work`는 이유를 나타내는 문장 끝 정보예요."}
+  ],
+  "answers": [
+    "매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.",
+    "대부분의 중성미자는 태양에서 오지만, 일부는 우주의 먼 끝에서 날아와 엄청난 에너지를 지닌 채 도착한다.",
+    "남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.",
+    "중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.",
+    "수십 년에 걸쳐 아이스큐브를 설계하고 건설한 벨기에계 미국인 물리학자 프랜시스 할젠은 이 선구적인 연구로 2026년 10월 6일 노벨 물리학상을 수상했다."
+  ],
+  "advanced": [
+    {"word": "particle", "meaning": "입자", "confuse": "particular(특정한, 형용사)와 혼동 주의", "example": "A neutrino is a **particle** so tiny it can pass through a light-year of lead."},
+    {"word": "penetrate", "meaning": "통과하다, 침투하다", "confuse": null, "example": "Neutrinos can **penetrate** the entire Earth without hitting anything."},
+    {"word": "emit", "meaning": "방출하다, 내뿜다", "confuse": "omit(빠뜨리다)와 혼동 주의", "example": "The charged particle **emits** a faint blue glow as it moves through the ice."},
+    {"word": "astrophysical", "meaning": "천체물리학적", "confuse": "astronomical(천문학적)과 혼동 주의", "example": "IceCube proved that some neutrinos have an **astrophysical** origin far outside our galaxy."},
+    {"word": "pioneer", "meaning": "개척하다, 선구자가 되다", "confuse": null, "example": "Halzen **pioneered** the idea of turning natural Antarctic ice into a neutrino detector."},
+    {"word": "subatomic", "meaning": "원자보다 작은, 아원자의", "confuse": null, "example": "Neutrinos belong to a family of **subatomic** particles with almost no mass."},
+    {"word": "array", "meaning": "(많은 수의) 배열, 집합체", "confuse": null, "example": "An **array** of over five thousand sensors records every blue flash in the ice."}
+  ],
+  "source": {"title": "Francis Halzen wins 2026 Nobel Prize in Physics (Daily Maverick, 2026-10-06)", "url": "https://www.dailymaverick.co.za/article/2026-10-06-francis-halzen-wins-2026-nobel-prize-in-physics.md"}
+}

@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-10",
+  "category": "culture",
+  "topic": "아트 페어",
+  "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "The Affordable Art Fair is coming to Battersea Park in London from October 14 to 18, **bringing** together thousands of original works by both rising and **established** artists.", "b2": false},
+    {"en": "As its name **suggests**, the fair aims to make buying original art **accessible** to a wide audience, not only those with large budgets.", "b2": false},
+    {"en": "This year's **curator** is Yomi Adegoke, the bestselling author of *The List*, who chose five works she would pick for her own first art **collection**.", "b2": false},
+    {"en": "Her choices include paintings, photographs, and pieces that mix different materials, all made by artists from a wide range of countries.", "b2": false},
+    {"en": "Organisers hope events like this will encourage more young people to see art **collecting** not as a **luxury** for the very wealthy, but as something anyone can take their first steps into.", "b2": true}
+  ],
+  "words": [
+    ["established", "기성의, 확고한"],
+    ["accessible", "접근 가능한, 이용하기 쉬운"],
+    ["curator", "큐레이터, 전시 기획자"],
+    ["collection", "컬렉션, 소장품"],
+    ["collecting", "수집하기, 컬렉팅"],
+    ["luxury", "사치, 사치품"]
+  ],
+  "points": [
+    {"title": "suggests that = '시사하다'", "body": "2번의 `As its name suggests`는 '이름이 나타내듯이'예요. `suggest`가 '추천하다'뿐 아니라 '~을 시사하다, 나타내다'로도 쓰인다는 것을 기억하세요."},
+    {"title": "복수 -s", "body": "4번의 `paintings, photographs, and pieces` — 세 명사 모두 복수 -s가 붙어 있어요. 빠르게 읽다 복수 표시를 놓치기 쉬우니 확인하세요."}
+  ],
+  "answers": [
+    "어포더블 아트 페어가 10월 14일부터 18일까지 런던 배터시 파크에서 열리며, 신진 작가와 기성 작가의 오리지널 작품 수천 점을 한자리에 모은다.",
+    "이름이 나타내듯이, 이 행사는 큰 예산이 없어도 다양한 관람객이 오리지널 작품을 구매할 수 있도록 예술의 문턱을 낮추는 것을 목표로 한다.",
+    "올해의 큐레이터는 베스트셀러 소설 『더 리스트』의 작가 요미 아데고케로, 자신이 처음 컬렉션을 시작한다면 고를 작품 다섯 점을 직접 선정했다.",
+    "그녀의 선정 작품에는 다양한 재료를 혼합한 회화, 사진, 작품이 포함돼 있으며 모두 다양한 나라 출신의 작가들이 만든 것이다.",
+    "주최 측은 이런 행사들이 더 많은 젊은이들로 하여금 예술 수집을 아주 부유한 사람만의 사치가 아닌, 누구든 첫걸음을 내딛을 수 있는 무언가로 여기게 되길 바란다."
+  ],
+  "advanced": [
+    {"word": "contemporary", "meaning": "동시대의, 현대의", "confuse": "temporary(임시의)와 혼동 주의", "example": "The fair showcases both classic prints and **contemporary** works by living artists."},
+    {"word": "emerging", "meaning": "신진의, 떠오르는", "confuse": null, "example": "An **emerging** artist may be less well known, but their work is often more affordable."},
+    {"word": "commission", "meaning": "위탁 제작하다, 주문 제작", "confuse": "committee(위원회)와 혼동 주의", "example": "Some collectors **commission** an artist to create a piece for a specific wall or space."},
+    {"word": "gallery", "meaning": "갤러리, 화랑", "confuse": null, "example": "Over sixty **galleries** from around the world take part in the Affordable Art Fair."},
+    {"word": "medium", "meaning": "재료, 매체 (복수: media 또는 mediums)", "confuse": "media(매체들, 복수)와 구분", "example": "Oil paint is just one **medium**; artists also use charcoal, ink, and digital tools."},
+    {"word": "patron", "meaning": "후원자, 애호가", "confuse": null, "example": "Young buyers who start small often become long-term **patrons** of the arts."},
+    {"word": "appraise", "meaning": "감정하다, 평가하다", "confuse": "appreciate(감상하다, 감사하다)와 혼동 주의", "example": "An expert can **appraise** a work to estimate its current market value."}
+  ],
+  "source": {"title": "The Agenda: Best Things to Do in October 2026 (Marie Claire UK)", "url": "https://www.marieclaire.co.uk/life/food-drink/entertainment/the-agenda-best-things-to-do-in-october-2026"}
+}

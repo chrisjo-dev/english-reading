@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-04",
+  "category": "space",
+  "topic": "로만 망원경",
+  "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "NASA's newest space telescope, called Roman, launched into **orbit** aboard a SpaceX Falcon Heavy rocket on August 30, 2026.", "b2": false},
+    {"en": "Three weeks after launch, the team powered on its main camera — a 300-megapixel **infrared** **detector** that senses light invisible to the human eye.", "b2": false},
+    {"en": "Engineers ran a **calibration** test, rotated the **filter** wheel for the first time in space, and confirmed that all eighteen detectors were working as expected.", "b2": false},
+    {"en": "A single image from this camera covers a patch of sky larger than the full **moon**, which is about one hundred times more area than the Hubble Space Telescope.", "b2": false},
+    {"en": "Roman has been travelling toward a stable point roughly one and a half million kilometres from Earth, where science **observations** are set to begin in early 2027.", "b2": true}
+  ],
+  "words": [
+    ["orbit", "궤도"],
+    ["infrared", "적외선의, 적외선"],
+    ["detector", "탐지기, 감지기"],
+    ["calibration", "보정, 교정"],
+    ["filter", "필터, 여과 장치"],
+    ["observations", "관측들, 관찰들 (복수 -s 주의)"]
+  ],
+  "points": [
+    {"title": "문장 끝 정보: 수량과 시점", "body": "5번 문장은 핵심 정보가 끝에 몰려 있어요. `roughly one and a half million kilometres`(약 150만 킬로미터)와 `in early 2027` — 거리와 시점을 문장 끝에서 놓치지 말고 확인하세요."},
+    {"title": "큰 숫자", "body": "2번의 `300-megapixel`은 3억(300,000,000) 화소예요. 4번의 `one hundred times more area`는 '100배 더 넓은 면적'이라는 뜻입니다."}
+  ],
+  "answers": [
+    "NASA의 최신 우주 망원경 로만이 2026년 8월 30일 스페이스X 팰컨 헤비 로켓을 타고 궤도에 올랐다.",
+    "발사 3주 후, 연구팀은 육안에 보이지 않는 빛을 감지하는 3억 화소짜리 적외선 감지기인 주 카메라를 가동했다.",
+    "공학자들은 보정 테스트를 실시하고 우주에서 처음으로 필터 휠을 회전시킨 뒤, 18개의 감지기 모두 정상 작동함을 확인했다.",
+    "이 카메라로 찍은 이미지 한 장은 보름달보다 큰 하늘 영역을 담을 수 있는데, 이는 허블 우주 망원경보다 약 100배 넓은 범위다.",
+    "로만은 현재 지구에서 약 150만 킬로미터 떨어진 안정 지점을 향해 이동 중이며, 과학 관측은 2027년 초에 시작될 예정이다."
+  ],
+  "advanced": [
+    {"word": "infrared", "meaning": "적외선의", "confuse": "ultraviolet(자외선의)와 혼동 주의", "example": "Roman's **infrared** camera can detect heat and light from the most distant galaxies."},
+    {"word": "calibrate", "meaning": "보정하다, 교정하다", "confuse": null, "example": "Engineers must **calibrate** each detector before any scientific measurements can begin."},
+    {"word": "deploy", "meaning": "전개하다, 펼치다 (장비를)", "confuse": null, "example": "The solar panels were **deployed** within ninety minutes of the rocket's liftoff."},
+    {"word": "commission", "meaning": "가동을 시작하다, 취역시키다", "confuse": "committee(위원회)와 혼동 주의", "example": "Once the telescope is fully **commissioned**, it will survey the sky for five years."},
+    {"word": "pixel", "meaning": "화소, 픽셀", "confuse": null, "example": "With three hundred million **pixels**, the camera produces images of extraordinary detail."},
+    {"word": "aperture", "meaning": "조리개, 개구부 (빛이 들어오는 구멍)", "confuse": null, "example": "The **aperture** cover was deployed shortly after launch to protect the optics."},
+    {"word": "observation", "meaning": "관측, 관찰", "confuse": null, "example": "Science **observations** are expected to begin in early 2027 after commissioning is complete."}
+  ],
+  "source": {"title": "NASA's Roman Space Telescope Wide Field Instrument Has Been Activated (ScienceDaily, 2026-09-21)", "url": "https://sciencedaily.com/releases/2026/09/260921081058.htm"}
+}
