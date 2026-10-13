@@ -38,6 +38,14 @@ SUB_CSS = (
 )
 
 
+# wspace 전체 공통 하단. 애드센스 심사에서 정책 페이지로 가는 길이 모든 페이지에 있어야 한다.
+FOOTER_CSS = (".site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; "
+              "display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }\n")
+FOOTER_HTML = ('<footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a>'
+               '<a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a>'
+               '<a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>\n')
+
+
 def intro_html(lang):
     L = langs.get(lang)
     return (f'    <p class="intro">{L["intro"]} 듣고, 해석하고, AI에게 피드백을 받아 보세요. '
@@ -110,6 +118,10 @@ def patch_page(lang, day):
             f'<img class="thumb" src="thumb.png" width="76" height="76" alt="">\n    <div class="date">',
             1,
         )
+    if 'class="site-footer"' not in page:
+        page = page.replace("  .nav {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 110px; }\n  .nav {", 1)
+        page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
+        page = page.replace("<link rel=\"stylesheet\"", f'<link rel="canonical" href="{url}">\n<link rel="stylesheet"', 1)
     if 'class="card sub"' not in page:
         page = page.replace("  .nav {", SUB_CSS + "  .intro {", 1)
         page = page.replace("  .intro {", INTRO_CSS + "  .nav {", 1)
@@ -156,7 +168,8 @@ def rebuild_lists(lang):
                 .replace("__TITLE__", title).replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
                 .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
                 .replace("__CHIPS__", chips).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
-                .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups)))
+                .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
+                .replace("__CANONICAL__", f"{SITE}/{lang}/").replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
         out.mkdir(parents=True, exist_ok=True)
         (out / "index.html").write_text(page, encoding="utf-8")
 
@@ -189,7 +202,28 @@ def rebuild_root():
             f'<span class="name">{L["name"]} <span class="lv">{L["level"]}</span></span>'
             f'<span class="today">지문 {len(days)}개, 오늘: {html.escape(topic_of(code, days[0]))} →</span></a>'
         )
-    (ROOT / "index.html").write_text(ROOT_PAGE.replace("__CARDS__", "\n".join(cards)), encoding="utf-8")
+    page = (ROOT_PAGE.replace("__CARDS__", "\n".join(cards)).replace("__SITE__", SITE)
+            .replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
+    (ROOT / "index.html").write_text(page, encoding="utf-8")
+    write_sitemap()
+
+
+def write_sitemap():
+    """검색엔진용 사이트맵과 robots.txt. 언어 목록, 날짜 페이지, 주간 복습을 모두 싣는다."""
+    urls = [f"{SITE}/"]
+    for code in langs.LANGS:
+        days = days_of(code)
+        if not days:
+            continue
+        urls.append(f"{SITE}/{code}/")
+        urls += [f"{SITE}/{code}/{d}/" for d in days]
+        rdir = ROOT / code / "review"
+        if rdir.exists():
+            urls += [f"{SITE}/{code}/review/{r.name}/" for r in sorted(rdir.iterdir()) if r.is_dir()]
+    body = "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls)
+    (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
+                                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
 
 ROOT_PAGE = """<!doctype html>
@@ -197,6 +231,7 @@ ROOT_PAGE = """<!doctype html>
 <meta name="color-scheme" content="light only"><title>매일 외국어 읽기</title>
 <meta name="description" content="매일 아침 새로 올라오는 외국어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:title" content="매일 외국어 읽기"><meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__SITE__/">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
@@ -208,12 +243,13 @@ ROOT_PAGE = """<!doctype html>
   .name { display: block; padding: 16px 20px 2px; font-size: 20px; font-weight: 800; }
   .lv { margin-left: 6px; font-size: 13px; font-weight: 700; color: #3182f6; }
   .today { display: block; padding: 0 20px 18px; font-size: 15px; color: #4e5968; }
-</style></head>
+__FOOTER_CSS__</style></head>
 <body><main>
   <h1>매일 외국어 읽기</h1>
   <p class="lead">매일 아침 짧은 지문 하나. 듣고, 해석하고, AI에게 피드백을 받아 보세요. 배우는 언어를 고르세요.</p>
 __CARDS__
-</main></body></html>
+</main>
+__FOOTER__</body></html>
 """
 
 
@@ -223,6 +259,7 @@ ARCHIVE = r"""<!doctype html>
 <meta name="color-scheme" content="light only"><title>__TITLE__ | __SITE__</title>
 <meta property="og:title" content="지난 지문 | __SITE__"><meta property="og:image" content="__OG_IMAGE__">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__CANONICAL__">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1; --blue: #3182f6; }
@@ -254,7 +291,7 @@ ARCHIVE = r"""<!doctype html>
   .sub-wrap { margin-top: 28px; }
   .sub-wrap .card { padding: 22px 20px; }
   .sub-wrap h2 { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
-__SUB_CSS____INTRO_CSS__</style></head>
+__SUB_CSS____INTRO_CSS____FOOTER_CSS__</style></head>
 <body><main>
   <a class="back" href="__TODAY__">오늘의 지문 바로 가기 →</a>
   <h1>__TITLE__</h1>
@@ -267,7 +304,7 @@ __GROUPS__
   <div class="sub-wrap">
 __SUB_HTML__  </div>
 </main>
-<script>
+__FOOTER__<script>
   var PAGE = 30, shown = PAGE, cat = '';
   var q = document.getElementById('q'), more = document.getElementById('more'), empty = document.getElementById('empty');
   var items = [].slice.call(document.querySelectorAll('.item'));

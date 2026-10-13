@@ -14,6 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
 from render import ruby  # noqa: E402
+from publish import FOOTER_CSS, FOOTER_HTML  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://read.wspace.ai.kr"
@@ -67,6 +68,7 @@ def build_page(lang, end):
         )
     page = PAGE.replace("__SITE__", L["site"]).replace("__HEAD_EXTRA__", L["head_extra"]).replace("__SPAN__", span(end)).replace("__TOTAL__", str(total)).replace("__COUNT__", str(len(days)))
     page = page.replace("__GROUPS__", "\n".join(groups)).replace("__URL__", f"{SITE}/{lang}/review/{end}/")
+    page = page.replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML)
     page = page.replace("__OG_IMAGE__", f"{SITE}/{lang}/{days[-1]['day']}/thumb.png")
     out = ROOT / lang / "review" / end / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -138,7 +140,7 @@ __HEAD_EXTRA__
   .w .ko { font-size: 14px; line-height: 1.5; color: #4e5968; visibility: hidden; }
   .w[aria-expanded="true"] { background: #e8f3ff; }
   .w[aria-expanded="true"] .ko { visibility: visible; }
-</style></head>
+__FOOTER_CSS__</style></head>
 <body><main>
   <a class="back" href="../../archive/">← 지난 지문</a>
   <div class="head">
@@ -149,7 +151,7 @@ __HEAD_EXTRA__
   </div>
 __GROUPS__
 </main>
-<script>
+__FOOTER__<script>
   var cards = [].slice.call(document.querySelectorAll('.w')), all = document.getElementById('all'), open = false;
   cards.forEach(function (c) {
     c.addEventListener('click', function () { c.setAttribute('aria-expanded', String(c.getAttribute('aria-expanded') !== 'true')); });
