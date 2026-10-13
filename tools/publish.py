@@ -128,35 +128,37 @@ def rebuild_lists(lang):
     L = langs.get(lang)
     days = days_of(lang)
     latest = days[0]
-    (ROOT / lang / "index.html").write_text(redirect(f"./{latest}/", f"오늘의 {L['name']} 지문"), encoding="utf-8")
     entries = [entry(lang, d) for d in days]
+    rdir = ROOT / lang / "review"
+    reviews = sorted((p.name for p in rdir.glob("*") if p.is_dir()), reverse=True) if rdir.exists() else []
     cats = [c for c in thumb.CATS if any(e["cat"] == c for e in entries)]
     chips = "".join(
         f'<button type="button" class="chip" data-cat="{c}" aria-pressed="false">{thumb.CATS[c][0]}</button>' for c in cats
     )
-    groups, month = [], None
-    for e in entries:
-        if e["month"] != month:
-            if month is not None:
-                groups.append("    </div>\n  </section>")
-            month = e["month"]
-            groups.append(f'  <section class="month">\n    <h2>{month}</h2>\n    <div class="card">')
-        groups.append(
-            f'      <a class="item" href="../{e["day"]}/" data-cat="{e["cat"]}" data-q="{html.escape(e["q"])}">'
-            f'<img src="../{e["day"]}/thumb.png" width="56" height="56" alt="" loading="lazy">'
-            f'<span><span class="d">{e["label"]}<span class="c">{e["cat_label"]}</span></span>'
-            f'<span class="t">{html.escape(e["topic"])}</span></span></a>'
-        )
-    groups.append("    </div>\n  </section>")
-    rdir = ROOT / lang / "review"
-    reviews = sorted((p.name for p in rdir.glob("*") if p.is_dir()), reverse=True) if rdir.exists() else []
-    review = (f'  <a class="review" href="../review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
-    page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
-            .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
-            .replace("__CHIPS__", chips).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
-            .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups)))
-    (ROOT / lang / "archive").mkdir(parents=True, exist_ok=True)
-    (ROOT / lang / "archive" / "index.html").write_text(page, encoding="utf-8")
+    for out, p, home, title in ((ROOT / lang, "./", "../", f"{L['name']} 지문"),
+                                (ROOT / lang / "archive", "../", "../../", "지난 지문")):
+        groups, month = [], None
+        for e in entries:
+            if e["month"] != month:
+                if month is not None:
+                    groups.append("    </div>\n  </section>")
+                month = e["month"]
+                groups.append(f'  <section class="month">\n    <h2>{month}</h2>\n    <div class="card">')
+            groups.append(
+                f'      <a class="item" href="{p}{e["day"]}/" data-cat="{e["cat"]}" data-q="{html.escape(e["q"])}">'
+                f'<img src="{p}{e["day"]}/thumb.png" width="56" height="56" alt="" loading="lazy">'
+                f'<span><span class="d">{e["label"]}<span class="c">{e["cat_label"]}</span></span>'
+                f'<span class="t">{html.escape(e["topic"])}</span></span></a>'
+            )
+        groups.append("    </div>\n  </section>")
+        review = (f'  <a class="review" href="{p}review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
+        page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
+                .replace("__TITLE__", title).replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
+                .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
+                .replace("__CHIPS__", chips).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
+                .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups)))
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "index.html").write_text(page, encoding="utf-8")
 
 
 def entry(lang, day):
@@ -183,9 +185,9 @@ def rebuild_root():
         if not days:
             continue
         cards.append(
-            f'  <a class="lang" href="./{code}/{days[0]}/"><img src="./{code}/{days[0]}/thumb.png" alt="" width="1200" height="630">'
+            f'  <a class="lang" href="./{code}/"><img src="./{code}/{days[0]}/thumb.png" alt="" width="1200" height="630">'
             f'<span class="name">{L["name"]} <span class="lv">{L["level"]}</span></span>'
-            f'<span class="today">오늘의 지문: {html.escape(topic_of(code, days[0]))} →</span></a>'
+            f'<span class="today">지문 {len(days)}개, 오늘: {html.escape(topic_of(code, days[0]))} →</span></a>'
         )
     (ROOT / "index.html").write_text(ROOT_PAGE.replace("__CARDS__", "\n".join(cards)), encoding="utf-8")
 
@@ -218,7 +220,7 @@ __CARDS__
 # 지난 지문 페이지. 검색과 분야 필터, 30개씩 더 보기를 브라우저에서 처리한다(스크립트가 없어도 전체 목록은 보인다).
 ARCHIVE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light only"><title>지난 지문 | __SITE__</title>
+<meta name="color-scheme" content="light only"><title>__TITLE__ | __SITE__</title>
 <meta property="og:title" content="지난 지문 | __SITE__"><meta property="og:image" content="__OG_IMAGE__">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
@@ -254,9 +256,9 @@ ARCHIVE = r"""<!doctype html>
   .sub-wrap h2 { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
 __SUB_CSS____INTRO_CSS__</style></head>
 <body><main>
-  <a class="back" href="../">← 오늘의 지문</a>
-  <h1>지난 지문</h1>
-  <p class="intro" style="margin: -8px 8px 14px">__INTRO__ <a href="#subscribe">메일로 받기</a> <a href="../../">다른 언어</a></p>
+  <a class="back" href="__TODAY__">오늘의 지문 바로 가기 →</a>
+  <h1>__TITLE__</h1>
+  <p class="intro" style="margin: -8px 8px 14px">__INTRO__ <a href="#subscribe">메일로 받기</a> <a href="__HOME__">다른 언어</a></p>
 __REVIEW__  <input class="search" id="q" type="search" placeholder="주제나 단어로 찾기 (예: __SEARCH_EXAMPLE__)" aria-label="지난 지문 검색" autocomplete="off">
   <div class="chips" role="group" aria-label="분야"><button type="button" class="chip" data-cat="" aria-pressed="true">전체</button>__CHIPS__</div>
 __GROUPS__
