@@ -128,7 +128,9 @@ def rebuild_lists():
             f'<span class="t">{html.escape(e["topic"])}</span></span></a>'
         )
     groups.append("    </div>\n  </section>")
-    page = (ARCHIVE.replace("__OG_IMAGE__", f"{SITE}/{latest}/thumb.png")
+    reviews = sorted((p.name for p in (ROOT / "review").glob("*") if p.is_dir()), reverse=True) if (ROOT / "review").exists() else []
+    review = (f'  <a class="review" href="../review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
+    page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{latest}/thumb.png")
             .replace("__CHIPS__", chips).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
             .replace("__SUB_HTML__", SUB_HTML).replace("__GROUPS__", "\n".join(groups)))
     (ROOT / "archive" / "index.html").write_text(page, encoding="utf-8")
@@ -182,6 +184,7 @@ ARCHIVE = r"""<!doctype html>
   .more { display: block; width: 100%; height: 52px; margin-top: 16px; border: 0; border-radius: 14px; background: #e8f3ff; color: #3182f6;
           font: 700 16px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   [hidden] { display: none !important; }
+  .review { display: flex; justify-content: space-between; align-items: center; margin: 0 0 12px; padding: 14px 18px; border-radius: 16px; background: #e8f3ff; color: #3182f6; font-size: 15px; font-weight: 700; text-decoration: none; }
   .sub-wrap { margin-top: 28px; }
   .sub-wrap .card { padding: 22px 20px; }
   .sub-wrap h2 { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
@@ -190,7 +193,7 @@ __SUB_CSS____INTRO_CSS__</style></head>
   <a class="back" href="../">← 오늘의 지문</a>
   <h1>지난 지문</h1>
   <p class="intro" style="margin: -8px 8px 14px">매일 아침 새로 올라오는 B1~B2 영어 읽기예요. <a href="#subscribe">메일로 받기</a></p>
-  <input class="search" id="q" type="search" placeholder="주제나 단어로 찾기 (예: satellite, 핵시계)" aria-label="지난 지문 검색" autocomplete="off">
+__REVIEW__  <input class="search" id="q" type="search" placeholder="주제나 단어로 찾기 (예: satellite, 핵시계)" aria-label="지난 지문 검색" autocomplete="off">
   <div class="chips" role="group" aria-label="분야"><button type="button" class="chip" data-cat="" aria-pressed="true">전체</button>__CHIPS__</div>
 __GROUPS__
   <p class="empty" id="empty" hidden>찾는 지문이 없어요.</p>

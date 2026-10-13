@@ -1,0 +1,68 @@
+# 일요일 아침, 그 주(오늘 포함 7일)의 주요 단어로 복습 페이지를 만들고 구독자에게 메일을 보낸다.
+name: weekly
+
+on:
+  schedule:
+    - cron: "30 23 * * 6"   # 일요일 08:30 KST
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "복습 기준일 YYYY-MM-DD (그날 포함 7일)"
+        required: true
+      send:
+        description: "오늘 날짜가 아니어도 메일 발송"
+        type: boolean
+        default: false
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pick day
+        id: day
+        run: |
+          today=$(TZ=Asia/Seoul date +%F)
+          day="${{ inputs.day }}"
+          [ -n "$day" ] || day=$today
+          echo "today=$today" >> "$GITHUB_OUTPUT"
+          echo "day=$day" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -q pillow
+
+      - name: Build review page
+        run: |
+          python tools/weekly.py ${{ steps.day.outputs.day }}
+          python -c "import sys; sys.path.insert(0, 'tools'); import publish; publish.rebuild_lists()"
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A review archive
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "Weekly review ${{ steps.day.outputs.day }}"
+          git push || { git pull --rebase origin main && git push; }
+          gh api -X POST repos/${{ github.repository }}/pages/builds
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Send email
+        if: steps.day.outputs.day == steps.day.outputs.today || inputs.send
+        run: python tools/send_email.py ${{ steps.day.outputs.day }} --weekly
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}

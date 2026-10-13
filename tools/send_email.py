@@ -1,6 +1,7 @@
 """배포된 날짜 페이지를 확인한 뒤 Buttondown 으로 구독자에게 메일을 보낸다.
 
 사용: BUTTONDOWN_API_KEY=... python3 tools/send_email.py 2026-10-12
+      BUTTONDOWN_API_KEY=... python3 tools/send_email.py 2026-10-18 --weekly   (주간 단어 복습)
 - 페이지와 썸네일이 200 으로 열리고 페이지에 주제어가 보일 때만 보낸다(최대 10분 대기).
 - 같은 날짜로 이미 만든 메일(metadata.day)이 있으면 보내지 않는다. 다시 실행해도 중복 발송되지 않는다.
 """
@@ -32,15 +33,17 @@ def call(method, path, body=None):
         raise SystemExit(f"Buttondown {method} {path} -> {e.code}: {e.read().decode()[:300]}")
 
 
-def wait_live(day, topic):
-    url = f"{build_email.SITE}/{day}/"
+def wait_live(url, text, extra=None):
+    """url 이 200 으로 열리고 text 가 보이며, extra(썸네일 등)도 200 일 때까지 최대 10분 기다린다."""
     for _ in range(40):
         try:
             with urllib.request.urlopen(url + f"?v={time.time():.0f}", timeout=15) as r:
                 page = r.read().decode("utf-8")
-            with urllib.request.urlopen(url + "thumb.png", timeout=15) as r:
-                thumb_ok = r.status == 200
-            if topic in page and thumb_ok:
+            extra_ok = True
+            if extra:
+                with urllib.request.urlopen(extra, timeout=15) as r:
+                    extra_ok = r.status == 200
+            if text in page and extra_ok:
                 return
         except urllib.error.URLError:
             pass
@@ -48,13 +51,11 @@ def wait_live(day, topic):
     raise SystemExit(f"페이지가 열리지 않아 메일을 보내지 않음: {url}")
 
 
-def main(day):
-    mail = build_email.build(day)
-    topic = build_email.parse(day)["topic"]
-    wait_live(day, topic)
+def send(mail, key, value):
+    """metadata[key] == value 인 메일이 이미 있으면 보내지 않는다. 다시 실행해도 중복 발송되지 않는다."""
     draft = None
     for e in call("GET", "/emails?ordering=-creation_date")["results"]:
-        if (e.get("metadata") or {}).get("day") != day:
+        if (e.get("metadata") or {}).get(key) != value:
             continue
         if e["status"] == "draft":
             # 지난 실행이 초안만 만들고 실패한 경우: 그 초안을 최신 내용으로 고쳐 다시 보낸다.
@@ -66,7 +67,7 @@ def main(day):
         print(f"이미 처리한 메일이 있어 건너뜀: {e['id']} ({e['status']})")
         return
     if draft is None:
-        draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked", "metadata": {"day": day}})
+        draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked", "metadata": {key: value}})
     call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
     for _ in range(30):
         status = call("GET", f"/emails/{draft['id']}")["status"]
@@ -77,5 +78,23 @@ def main(day):
     raise SystemExit(f"발송 상태 확인 실패: {draft['id']} ({status})")
 
 
+def main(day):
+    mail = build_email.build(day)
+    url = f"{build_email.SITE}/{day}/"
+    wait_live(url, build_email.parse(day)["topic"], url + "thumb.png")
+    send(mail, "day", day)
+
+
+def main_weekly(end):
+    import weekly
+    mail = weekly.build_email(end)
+    url = mail.pop("url")
+    wait_live(url, weekly.span(end))
+    send(mail, "week", end)
+
+
 if __name__ == "__main__":
-    main(sys.argv[1])
+    if "--weekly" in sys.argv:
+        main_weekly(sys.argv[1])
+    else:
+        main(sys.argv[1])
