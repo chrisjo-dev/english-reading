@@ -12,6 +12,10 @@ on:
         description: "날짜 YYYY-MM-DD"
         required: true
 
+# 저장소에 쓰지 않으므로 읽기 권한만 준다.
+permissions:
+  contents: read
+
 jobs:
   catchup:
     runs-on: ubuntu-latest
