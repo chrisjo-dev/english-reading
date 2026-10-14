@@ -37,6 +37,11 @@ BADGE = '<span class="badge">{}</span>'
 WARN = ' <span class="warn">· {}</span>'
 
 
+# 출처가 없는 글도 성격을 밝힌다. 기사 없이 쓴 생활 주제 글과, 사례를 지어낸 예문을 구분한다.
+NO_SOURCE_NOTE = "특정 기사를 바탕으로 하지 않은 학습용 글입니다."
+EXAMPLE_NOTE = "실제 사례가 아니라 학습용으로 지어낸 이야기입니다. 등장하는 장소, 인물, 숫자는 예시입니다."
+
+
 def esc(s):
     return html.escape(s, quote=False)
 
@@ -92,8 +97,12 @@ def render(lang, day):
         for i, s in enumerate(c["sentences"])
     )
     src = c.get("source")
-    source = (f'    <p class="src">출처: <a href="{html.escape(src["url"])}" target="_blank" rel="noopener">{esc(src["title"])}</a></p>\n'
-              if src else "")
+    if src:
+        source = f'    <p class="src">출처: <a href="{html.escape(src["url"])}" target="_blank" rel="noopener">{esc(src["title"])}</a></p>\n'
+    elif c.get("example"):
+        source = f'    <p class="src">{EXAMPLE_NOTE}</p>\n'
+    else:
+        source = f'    <p class="src">{NO_SOURCE_NOTE}</p>\n'
     words = "".join(f'    <div class="word"><span class="w">{marks(w, "")}</span><span class="m">{esc(m)}</span></div>\n' for w, m in c["words"])
     points = "".join(
         f'    <div class="point">\n      <strong>{esc(p["title"])}</strong>\n      <p>{marks(p["body"], "code")}</p>\n    </div>\n'

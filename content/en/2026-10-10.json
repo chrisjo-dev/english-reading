@@ -6,7 +6,7 @@
   "sentences": [
     {"en": "The Affordable Art Fair is coming to Battersea Park in London from October 14 to 18, **bringing** together thousands of original works by both rising and **established** artists.", "b2": false},
     {"en": "As its name **suggests**, the fair aims to make buying original art **accessible** to a wide audience, not only those with large budgets.", "b2": false},
-    {"en": "This year's **curator** is Yomi Adegoke, the bestselling author of *The List*, who chose five works she would pick for her own first art **collection**.", "b2": false},
+    {"en": "This year's **curator** is Yomi Adegoke, the bestselling author of The List, who chose five works she would pick for her own first art **collection**.", "b2": false},
     {"en": "Her choices include paintings, photographs, and pieces that mix different materials, all made by artists from a wide range of countries.", "b2": false},
     {"en": "Organisers hope events like this will encourage more young people to see art **collecting** not as a **luxury** for the very wealthy, but as something anyone can take their first steps into.", "b2": true}
   ],

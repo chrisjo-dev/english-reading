@@ -62,9 +62,10 @@
    - `points`: 1~2개. `body` 안에서 지문 표현은 `` `표현` ``으로 감쌉니다.
    - `answers`: 문장 순서대로의 모범 해석.
    - `advanced`: 6~8개. `confuse`는 혼동 주의가 없으면 `null`, 있으면 "precious(소중한)와 혼동 주의" 형태. `example`의 해당 단어는 `**단어**`.
-   - `source`: 검색한 기사면 `{"title": "기사 제목 (매체, YYYY-MM-DD)", "url": "..."}`, 검색 없이 쓴 날은 `null`.
+   - `source`: 검색한 기사면 `{"title": "기사 제목 (매체, YYYY-MM-DD)", "url": "..."}`, 검색 없이 쓴 날은 `null`. 출처 없는 글은 페이지에 "특정 기사를 바탕으로 하지 않은 학습용 글"로 표시됩니다.
    - 모든 문자열은 일반 텍스트로 씁니다(HTML 태그 금지).
 3. **검증**: `python3 tools/render.py en YYYY-MM-DD`를 실행해 오류 없이 끝나는지 확인합니다. 오류가 나면 JSON을 고쳐 다시 실행합니다. 이 명령이 만든 HTML 파일은 커밋하지 않습니다(Actions가 다시 만듭니다). `git checkout -- . && git clean -fd -- en/YYYY-MM-DD` 로 되돌린 뒤 content 파일만 남깁니다.
+   그다음 `python3 tools/check_content.py en YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
 4. **push**: `git add content/en/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add YYYY-MM-DD: 주제어" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 같은 작성자 줄을 붙이지 마세요. 다른 브랜치로 push하지 마세요. push가 거절되면 `git pull --rebase origin main` 후 한 번만 다시 push합니다.
 5. **알림**: PushNotification으로 짧게 알립니다. 예: "오늘의 영어 읽기(10/13, 주제: 핵시계)가 올라갔어요. 몇 분 뒤 열려요: https://read.wspace.ai.kr/en/YYYY-MM-DD/". 알림에는 지문 전문과 모범 해석을 넣지 않습니다.
 6. **마지막 답변**: 한두 문장과 페이지 주소, 끝에 `출처: [기사 제목](URL)` 한 줄. 모범 해석은 답변에 노출하지 않습니다. push까지 실패했다면 원인과 함께 그 사실을 분명히 적고, 알림에도 "오늘 지문 올리기 실패"라고 적습니다.

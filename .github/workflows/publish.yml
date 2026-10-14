@@ -76,6 +76,14 @@ jobs:
           path: models
           key: kokoro-v1.0
 
+      - name: Check content
+        # 화면에 그대로 보일 마크다운 기호와 출처 없는 수치를 주석으로 드러낸다. 발행은 막지 않는다.
+        continue-on-error: true
+        run: |
+          for pair in ${{ steps.pick.outputs.pairs }}; do
+            python tools/check_content.py "${pair%%:*}" "${pair#*:}"
+          done
+
       - name: Audio
         # 음성은 필수다. 3번까지 다시 시도하고, 그래도 실패하면 여기서 멈춰 메일을 보내지 않는다.
         run: |

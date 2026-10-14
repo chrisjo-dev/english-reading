@@ -127,5 +127,6 @@
       "example": "The owners expect the farm to become **profitable** in five more years."
     }
   ],
-  "source": null
+  "source": null,
+  "example": true
 }
