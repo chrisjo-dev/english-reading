@@ -2,13 +2,13 @@
  "date": "2026-10-15",
  "langs": {
   "en": {
-   "count": 12,
-   "latest": "2026-10-14",
-   "topic": "나무 입양",
+   "count": 13,
+   "latest": "2026-10-15",
+   "topic": "로보택시",
    "sentences": [
-    "On hot summer days, a woman in Berlin carries a **bucket** of water to a tree near her home, and she has even given it a name: Linda.",
-    "She found the tree through a free app that shows a map of about nine hundred thousand street trees in the city.",
-    "When a tree needs water, it **appears** as an orange or red dot, and people can **adopt** it and get **advice** on how much water to give."
+    "Would you get into a taxi that drives itself?",
+    "This week, Uber started testing **self-driving** cars on the streets of Manchester, with a safety driver behind the wheel and no **passengers** on board.",
+    "For now, the cars are only **mapping** the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year."
    ]
   },
   "ja": {
@@ -23,6 +23,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-15",
+   "topic": "로보택시"
+  },
   {
    "lang": "ja",
    "day": "2026-10-15",
@@ -47,11 +52,6 @@
    "lang": "ja",
    "day": "2026-10-13",
    "topic": "동네 빵집"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-12",
-   "topic": "핵시계"
   }
  ]
 }
