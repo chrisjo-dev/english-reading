@@ -64,7 +64,6 @@ export default function Hero() {
           읽고, 듣고, AI에게 해석 피드백을 받아요.
         </p>
 
-        <span className="ghost g-tr" aria-hidden="true" />
         {answer && (
           <figure className="frag f-tr">
             <figcaption className="mono k">
@@ -83,7 +82,6 @@ export default function Hero() {
           </a>
         )}
 
-        <span className="ghost g-mail" aria-hidden="true" />
         <div className="frag f-mail" role="img" aria-label={`메일 알림: 매일 영어 읽기, 오늘은 ${en?.topic} 이야기예요, 07:02`}>
           <span className="ic">
             <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
@@ -98,7 +96,6 @@ export default function Hero() {
           <span className="mono">07:02</span>
         </div>
 
-        <span className="ghost g-words" aria-hidden="true" />
         {words.length > 0 && (
           <div className="frag f-words">
             <div className="mono k">
