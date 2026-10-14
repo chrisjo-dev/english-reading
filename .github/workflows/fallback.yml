@@ -62,6 +62,9 @@ jobs:
 
       - name: Commit and push
         if: steps.fallback.outputs.used_pairs != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          USED_PAIRS: ${{ steps.fallback.outputs.used_pairs }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -70,23 +73,21 @@ jobs:
             echo "커밋할 변경 없음"
             exit 0
           fi
-          pairs="${{ steps.fallback.outputs.used_pairs }}"
           msg="Fallback publish"
-          for pair in $pairs; do
+          for pair in $USED_PAIRS; do
             lang="${pair%%:*}"; day="${pair#*:}"
             msg="$msg ${lang}:${day} from pool"
           done
           git commit -m "$msg"
           git push || { git pull --rebase origin main && git push; }
-        env:
-          GH_TOKEN: ${{ github.token }}
 
       - name: Trigger publish
         if: steps.fallback.outputs.used_pairs != ''
         env:
           GH_TOKEN: ${{ github.token }}
+          USED_PAIRS: ${{ steps.fallback.outputs.used_pairs }}
         run: |
-          for pair in ${{ steps.fallback.outputs.used_pairs }}; do
+          for pair in $USED_PAIRS; do
             lang="${pair%%:*}"; day="${pair#*:}"
             echo "publish 트리거: $lang $day"
             gh workflow run publish.yml -f lang="$lang" -f day="$day"
@@ -96,32 +97,22 @@ jobs:
         if: steps.fallback.outputs.used_pairs != ''
         env:
           GH_TOKEN: ${{ github.token }}
+          USED_PAIRS: ${{ steps.fallback.outputs.used_pairs }}
         run: |
-          for pair in ${{ steps.fallback.outputs.used_pairs }}; do
+          for pair in $USED_PAIRS; do
             lang="${pair%%:*}"; day="${pair#*:}"
-            # remaining 값 파싱 (각 언어별로 저장된 output 읽기)
-            remaining_var="remaining_${lang}"
-            remaining="${{ steps.fallback.outputs[env.remaining_var] }}"
-            # GITHUB_OUTPUT 환경 변수에서 동적으로 읽기 어려우므로 /tmp/fallback_out.txt 에서 파싱
+            # /tmp/fallback_out.txt 에서 remaining 파싱
             remaining=$(grep "^USED $lang " /tmp/fallback_out.txt | awk '{print $5}')
 
             title="[비상 발행] $day $lang: 비축분 사용 (남은 ${remaining}개)"
-            body="@chrisjo-dev
-
-            **$lang** 언어의 오늘($day) 예약 발행 루틴이 실행되지 않아 비축분(pool)을 사용했습니다.
-
-            **확인할 곳:**
-            - claude.ai 예약 작업 실행 로그 (루틴 실패 여부)
-            - [publish 워크플로 실행 목록](../../actions/workflows/publish.yml)
-
-            **비축분 보충이 필요합니다.** \`tools/ROUTINE.pool.md\` 절차를 따라 pool 을 채워 주세요.
-
-            남은 비축분: **${remaining}개**"
+            # issue body 를 파일로 작성한다(heredoc 을 YAML 블록 안에 넣으면 @ 문자가 YAML 오류를 유발함)
+            printf '@chrisjo-dev\n\n**%s** 언어의 오늘(%s) 예약 발행 루틴이 실행되지 않아 비축분(pool)을 사용했습니다.\n\n**확인할 곳:**\n- claude.ai 예약 작업 실행 로그 (루틴 실패 여부)\n- [publish 워크플로 실행 목록](../../actions/workflows/publish.yml)\n\n**비축분 보충이 필요합니다.** `tools/ROUTINE.pool.md` 절차를 따라 pool 을 채워 주세요.\n\n남은 비축분: **%s개**\n' \
+              "$lang" "$day" "$remaining" > /tmp/issue_body.txt
 
             # 같은 제목의 열린 이슈가 있으면 중복 생성하지 않는다
             existing=$(gh issue list --search "$title" --state open --json number --jq 'length')
             if [ "$existing" -eq 0 ]; then
-              gh issue create --title "$title" --body "$body"
+              gh issue create --title "$title" --body-file /tmp/issue_body.txt
             else
               echo "이미 열린 이슈가 있어 건너뜀: $title"
             fi
@@ -141,6 +132,7 @@ jobs:
         if: steps.fallback.outputs.exit_code != '0'
         env:
           GH_TOKEN: ${{ github.token }}
+          FALLBACK_DAY: ${{ inputs.day }}
         run: |
           day="${FALLBACK_DAY:-$(TZ=Asia/Seoul date +%F)}"
           while IFS= read -r line; do
@@ -156,5 +148,3 @@ jobs:
             fi
           done < /tmp/fallback_out.txt
           exit 1
-        env:
-          FALLBACK_DAY: ${{ inputs.day }}
