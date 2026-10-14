@@ -1,0 +1,133 @@
+{
+  "date": "",
+  "category": "science",
+  "topic": "문어의 몸",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "An octopus may look strange from the outside, but its body is even stranger on the inside.",
+      "b2": false
+    },
+    {
+      "en": "It has three hearts: two pump blood through the **gills**, where the blood picks up oxygen, and the third sends that blood around the rest of the body.",
+      "b2": true
+    },
+    {
+      "en": "Its blood is blue, not red, because it uses a protein with **copper** to carry oxygen **instead of** the iron in our blood.",
+      "b2": false
+    },
+    {
+      "en": "About **two-thirds** of its nerve cells are not in its head but in its eight arms, which helps it move them with great skill.",
+      "b2": false
+    },
+    {
+      "en": "Special cells in its skin also let it change color quickly, so it can **blend in** with the rocks and plants around it.",
+      "b2": false
+    },
+    {
+      "en": "For scientists, the octopus is a good **reminder** that a clever mind can grow in a body very different from ours.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "gill",
+      "아가미"
+    ],
+    [
+      "copper",
+      "구리"
+    ],
+    [
+      "instead of",
+      "~대신에"
+    ],
+    [
+      "two-thirds",
+      "3분의 2"
+    ],
+    [
+      "nerve cell",
+      "신경 세포"
+    ],
+    [
+      "blend in",
+      "(주변과) 섞여 눈에 띄지 않다"
+    ],
+    [
+      "reminder",
+      "다시 일깨워 주는 것"
+    ]
+  ],
+  "points": [
+    {
+      "title": "분수 읽기",
+      "body": "`About two-thirds of its nerve cells`는 '신경 세포의 약 3분의 2'예요. 영어는 분자(two)를 먼저, 분모(thirds)를 서수로 읽고, 분자가 2 이상이면 분모에 -s를 붙여요."
+    },
+    {
+      "title": "not A but B",
+      "body": "`not in its head but in its eight arms`는 'A가 아니라 B'예요. but 뒤가 실제 정답이니, 머리가 아니라 여덟 개의 팔에 있다는 점을 잡으세요."
+    }
+  ],
+  "answers": [
+    "문어는 겉에서 보기에도 이상해 보일 수 있지만, 몸 안은 훨씬 더 이상하다.",
+    "문어는 심장이 세 개인데, 두 개는 혈액이 산소를 얻는 아가미로 피를 보내고, 세 번째 심장은 그 피를 몸의 나머지 부분으로 보낸다.",
+    "문어의 피는 빨간색이 아니라 파란색인데, 우리 피 속의 철 대신 구리가 들어 있는 단백질로 산소를 나르기 때문이다.",
+    "문어의 신경 세포 중 약 3분의 2는 머리가 아니라 여덟 개의 팔에 있고, 이것이 문어가 팔을 아주 능숙하게 움직이도록 돕는다.",
+    "피부의 특별한 세포 덕분에 문어는 색을 빠르게 바꿀 수도 있어서, 주변의 바위와 식물 사이에 섞여 들 수 있다.",
+    "과학자들에게 문어는 영리한 지능이 우리와 아주 다른 몸에서도 생겨날 수 있다는 것을 일깨워 주는 좋은 예다."
+  ],
+  "advanced": [
+    {
+      "word": "circulate",
+      "meaning": "순환시키다",
+      "confuse": null,
+      "example": "The third heart **circulates** blood around the body."
+    },
+    {
+      "word": "oxygenated",
+      "meaning": "산소가 공급된",
+      "confuse": null,
+      "example": "The main heart pumps **oxygenated** blood to the arms."
+    },
+    {
+      "word": "distributed",
+      "meaning": "분산된, 퍼져 있는",
+      "confuse": "contributed(기여한)와 혼동 주의",
+      "example": "The octopus has a **distributed** nervous system."
+    },
+    {
+      "word": "camouflage",
+      "meaning": "위장",
+      "confuse": null,
+      "example": "Its skin gives it excellent **camouflage** among rocks and plants."
+    },
+    {
+      "word": "dexterity",
+      "meaning": "손재주, 능숙함",
+      "confuse": null,
+      "example": "Its arms move with remarkable **dexterity**."
+    },
+    {
+      "word": "pigment",
+      "meaning": "색소",
+      "confuse": null,
+      "example": "Cells full of **pigment** let the octopus change color."
+    },
+    {
+      "word": "intelligence",
+      "meaning": "지능",
+      "confuse": "intelligible(이해할 수 있는)과 혼동 주의",
+      "example": "Octopus **intelligence** developed in a very different body."
+    }
+  ],
+  "source": {
+    "title": "Octopus (PBS Nature)",
+    "url": "https://www.pbs.org/wnet/nature/group/other-species/octopus/"
+  }
+}

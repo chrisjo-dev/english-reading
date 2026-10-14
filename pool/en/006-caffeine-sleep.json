@@ -1,0 +1,127 @@
+{
+  "date": "",
+  "category": "science",
+  "topic": "커피와 잠",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Minji drinks a large coffee late in the afternoon to finish her work, and that night she lies awake until very late.",
+      "b2": false
+    },
+    {
+      "en": "Her problem is easy to explain with a chemical in the brain called **adenosine**.",
+      "b2": false
+    },
+    {
+      "en": "While we are awake, adenosine slowly **builds up** in the brain, and the more there is, the sleepier we feel.",
+      "b2": false
+    },
+    {
+      "en": "Caffeine has a shape similar to adenosine, so it can sit in the places where adenosine would **normally** fit and **block** its message.",
+      "b2": true
+    },
+    {
+      "en": "The **tiredness** has not gone away; the brain just cannot feel it for a while, and caffeine can stay in the body for many hours.",
+      "b2": false
+    },
+    {
+      "en": "So the next day, Minji **switches** to drinking her last coffee before lunch.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "adenosine",
+      "아데노신 (졸음을 느끼게 하는 뇌 속 물질)"
+    ],
+    [
+      "build up",
+      "쌓이다, 점점 늘다"
+    ],
+    [
+      "normally",
+      "보통은, 원래는"
+    ],
+    [
+      "block",
+      "막다, 차단하다"
+    ],
+    [
+      "tiredness",
+      "피로, 피곤함"
+    ],
+    [
+      "switch",
+      "바꾸다, 전환하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "the 비교급, the 비교급",
+      "body": "`the more there is, the sleepier we feel`은 '그것이 많을수록 우리는 더 졸리다'예요. 앞 절이 조건, 뒤 절이 결과예요."
+    },
+    {
+      "title": "would normally",
+      "body": "`the places where adenosine would normally fit`은 '보통이라면 아데노신이 들어갈 자리'예요. 여기서 `would`는 과거가 아니라 '원래라면 ~할'이라는 뜻이에요."
+    }
+  ],
+  "answers": [
+    "민지는 일을 끝내려고 늦은 오후에 큰 커피를 마시고, 그날 밤 아주 늦게까지 잠들지 못한다.",
+    "민지의 문제는 아데노신이라는 뇌 속 화학 물질로 쉽게 설명할 수 있다.",
+    "우리가 깨어 있는 동안 아데노신은 뇌에 천천히 쌓이고, 그것이 많을수록 우리는 더 졸리다.",
+    "카페인은 아데노신과 모양이 비슷해서, 보통이라면 아데노신이 들어갈 자리에 대신 앉아 아데노신의 신호를 막을 수 있다.",
+    "피로가 사라진 것은 아니고 뇌가 한동안 그것을 느끼지 못할 뿐이며, 카페인은 몸에 여러 시간 동안 남아 있을 수 있다.",
+    "그래서 다음 날 민지는 마지막 커피를 점심 전에 마시는 것으로 바꾼다."
+  ],
+  "advanced": [
+    {
+      "word": "accumulate",
+      "meaning": "축적되다, 쌓이다",
+      "confuse": null,
+      "example": "Adenosine **accumulates** in the brain while we are awake."
+    },
+    {
+      "word": "alertness",
+      "meaning": "각성 상태, 기민함",
+      "confuse": null,
+      "example": "Caffeine increases **alertness** for a few hours."
+    },
+    {
+      "word": "mimic",
+      "meaning": "흉내 내다, 모방하다",
+      "confuse": null,
+      "example": "Caffeine **mimics** the shape of adenosine."
+    },
+    {
+      "word": "receptor",
+      "meaning": "수용체",
+      "confuse": "reception(접수, 환영)과 혼동 주의",
+      "example": "Caffeine sits in the brain's adenosine **receptors**."
+    },
+    {
+      "word": "temporarily",
+      "meaning": "일시적으로",
+      "confuse": null,
+      "example": "Caffeine only **temporarily** hides tiredness."
+    },
+    {
+      "word": "linger",
+      "meaning": "오래 남아 있다",
+      "confuse": null,
+      "example": "Caffeine can **linger** in the body until bedtime."
+    },
+    {
+      "word": "insomnia",
+      "meaning": "불면증",
+      "confuse": null,
+      "example": "A late coffee can lead to a night of **insomnia**."
+    }
+  ],
+  "source": null,
+  "example": true
+}

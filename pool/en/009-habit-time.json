@@ -1,0 +1,133 @@
+{
+  "date": "",
+  "category": "society",
+  "topic": "습관 만들기",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Many people believe that a new habit takes about three weeks to form, but research tells a more interesting story.",
+      "b2": false
+    },
+    {
+      "en": "In a study by the researcher Pippa Lally, volunteers tried to turn one new daily action into a **habit**.",
+      "b2": false
+    },
+    {
+      "en": "On **average**, it took sixty-six days before the action felt **automatic**, which is more than two months.",
+      "b2": false
+    },
+    {
+      "en": "However, the **range** was huge: for some people it took only eighteen days, while for others it took two hundred and fifty-four days.",
+      "b2": true
+    },
+    {
+      "en": "**In other words**, the time it takes **depends on** the person and the habit.",
+      "b2": false
+    },
+    {
+      "en": "So if your new habit still feels hard after a few weeks, it does not mean you have **failed**; you may simply need more time.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "habit",
+      "습관"
+    ],
+    [
+      "average",
+      "평균"
+    ],
+    [
+      "automatic",
+      "자동적인, 저절로 되는"
+    ],
+    [
+      "range",
+      "범위, 폭"
+    ],
+    [
+      "in other words",
+      "다시 말해"
+    ],
+    [
+      "depend on",
+      "~에 달려 있다"
+    ],
+    [
+      "fail",
+      "실패하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "큰 숫자 듣고 읽기",
+      "body": "`two hundred and fifty-four days`는 254일이에요. hundred 뒤의 and는 영국식 읽기에서 자주 들려요. `sixty-six days`(66일), `eighteen days`(18일)도 숫자로 바꿔 보세요."
+    },
+    {
+      "title": "take + 시간 + before",
+      "body": "`it took sixty-six days before the action felt automatic`은 '그 행동이 자동으로 느껴지기까지 66일이 걸렸다'예요. it took 뒤에 걸린 시간, before 뒤에 도달한 상태가 와요."
+    }
+  ],
+  "answers": [
+    "많은 사람이 새 습관이 자리 잡는 데 3주쯤 걸린다고 믿지만, 연구는 더 흥미로운 이야기를 들려준다.",
+    "연구자 피파 랠리의 연구에서, 참가자들은 새로운 일상 행동 하나를 습관으로 만들려고 했다.",
+    "평균적으로 그 행동이 자동으로 느껴지기까지 66일이 걸렸는데, 이는 두 달이 넘는 기간이다.",
+    "하지만 그 폭은 매우 컸다. 어떤 사람은 18일밖에 걸리지 않았지만, 다른 사람은 254일이 걸렸다.",
+    "다시 말해, 걸리는 시간은 사람과 습관에 따라 다르다.",
+    "그러니 새 습관이 몇 주가 지나도 여전히 힘들게 느껴진다면, 실패했다는 뜻이 아니라 그저 시간이 더 필요한 것일 수 있다."
+  ],
+  "advanced": [
+    {
+      "word": "establish",
+      "meaning": "자리 잡게 하다, 확립하다",
+      "confuse": null,
+      "example": "It took an average of sixty-six days to **establish** a new habit."
+    },
+    {
+      "word": "routine",
+      "meaning": "일상, 정해진 순서",
+      "confuse": null,
+      "example": "The volunteers added one new action to their daily **routine**."
+    },
+    {
+      "word": "consistently",
+      "meaning": "꾸준히, 일관되게",
+      "confuse": "constantly(끊임없이)와 혼동 주의",
+      "example": "They repeated the action **consistently** every day."
+    },
+    {
+      "word": "variation",
+      "meaning": "차이, 변동",
+      "confuse": null,
+      "example": "There was huge **variation** between people."
+    },
+    {
+      "word": "individual",
+      "meaning": "개인의, 개별적인",
+      "confuse": null,
+      "example": "The time needed depends on **individual** differences."
+    },
+    {
+      "word": "persist",
+      "meaning": "끈기 있게 계속하다",
+      "confuse": "insist(주장하다)와 혼동 주의",
+      "example": "If a habit still feels hard, **persist** a little longer."
+    },
+    {
+      "word": "effortless",
+      "meaning": "힘들이지 않는, 수월한",
+      "confuse": null,
+      "example": "After enough time, the action becomes **effortless**."
+    }
+  ],
+  "source": {
+    "title": "Does it really take 66 days to form a habit? We asked the expert, Dr Pippa Lally (University of Surrey)",
+    "url": "https://www.surrey.ac.uk/news/does-it-really-take-66-days-form-habit-we-asked-expert-dr-pippa-lally"
+  }
+}

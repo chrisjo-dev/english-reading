@@ -1,0 +1,133 @@
+{
+  "date": "",
+  "category": "culture",
+  "topic": "이모지의 시작",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Before emoji **spread** around the world, they began on Japanese mobile phones.",
+      "b2": false
+    },
+    {
+      "en": "In 1999, a designer named Shigetaka Kurita created a **set** of small pictures for a phone company in Japan.",
+      "b2": false
+    },
+    {
+      "en": "There were one hundred and seventy-six of them, and each one was drawn on a tiny **grid** of only twelve by twelve **pixels**.",
+      "b2": false
+    },
+    {
+      "en": "With so few dots, every picture had to be very simple, yet it still needed to show weather, food, or a feeling **at a glance**.",
+      "b2": true
+    },
+    {
+      "en": "The word emoji comes from Japanese: e means picture, and moji means **character**.",
+      "b2": false
+    },
+    {
+      "en": "Years later, the Museum of Modern Art in New York added the original set to its **collection**, treating these little pictures as real design.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "spread",
+      "퍼지다 (과거형도 spread)"
+    ],
+    [
+      "set",
+      "한 벌, 세트"
+    ],
+    [
+      "grid",
+      "격자"
+    ],
+    [
+      "pixel",
+      "화소, 픽셀"
+    ],
+    [
+      "at a glance",
+      "한눈에"
+    ],
+    [
+      "character",
+      "글자, 문자"
+    ],
+    [
+      "collection",
+      "소장품"
+    ]
+  ],
+  "points": [
+    {
+      "title": "숫자 읽기",
+      "body": "`one hundred and seventy-six`는 176이에요. `twelve by twelve pixels`는 '가로 12, 세로 12 픽셀'로, by는 크기를 말할 때 '곱하기, ~ x ~'를 뜻해요."
+    },
+    {
+      "title": "yet으로 이어지는 반전",
+      "body": "`every picture had to be very simple, yet it still needed to show ...`의 `yet`은 '그런데도'예요. 단순해야 했지만 그래도 많은 것을 보여 줘야 했다는 대비를 잡으세요."
+    }
+  ],
+  "answers": [
+    "이모지는 전 세계로 퍼지기 전에 일본 휴대폰에서 시작되었다.",
+    "1999년에 구리타 시게타카라는 디자이너가 일본의 한 휴대폰 회사를 위해 작은 그림 한 세트를 만들었다.",
+    "그림은 모두 176개였고, 하나하나가 가로세로 12픽셀밖에 되지 않는 작은 격자 위에 그려졌다.",
+    "점이 너무 적어서 모든 그림은 아주 단순해야 했지만, 그래도 날씨나 음식, 감정을 한눈에 보여 줘야 했다.",
+    "emoji라는 단어는 일본어에서 왔는데, e는 그림을, moji는 문자를 뜻한다.",
+    "몇 년 뒤 뉴욕 현대미술관은 이 원래 세트를 소장품에 추가해, 이 작은 그림들을 진짜 디자인으로 대했다."
+  ],
+  "advanced": [
+    {
+      "word": "originate",
+      "meaning": "비롯되다, 시작되다",
+      "confuse": null,
+      "example": "Emoji **originated** on Japanese mobile phones."
+    },
+    {
+      "word": "depict",
+      "meaning": "묘사하다, 그리다",
+      "confuse": null,
+      "example": "Each emoji **depicts** weather, food, or a feeling."
+    },
+    {
+      "word": "minimal",
+      "meaning": "최소한의, 아주 적은",
+      "confuse": "minimum(최소, 명사)과 품사를 구분",
+      "example": "The designer worked with a **minimal** number of pixels."
+    },
+    {
+      "word": "convey",
+      "meaning": "전달하다",
+      "confuse": "convoy(호송대)와 혼동 주의",
+      "example": "A tiny picture can **convey** a feeling at a glance."
+    },
+    {
+      "word": "acquire",
+      "meaning": "얻다, 취득하다",
+      "confuse": "inquire(묻다)와 혼동 주의",
+      "example": "The museum **acquired** the original set."
+    },
+    {
+      "word": "iconic",
+      "meaning": "상징적인",
+      "confuse": null,
+      "example": "The first emoji are now **iconic** pieces of design."
+    },
+    {
+      "word": "pioneering",
+      "meaning": "선구적인",
+      "confuse": null,
+      "example": "Kurita's **pioneering** work changed how we text."
+    }
+  ],
+  "source": {
+    "title": "The original set of emojis is now at the Museum of Modern Art (CBS News)",
+    "url": "https://www.cbsnews.com/amp/news/original-emojis-now-at-the-museum-of-modern-art"
+  }
+}
