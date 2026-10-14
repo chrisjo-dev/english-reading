@@ -1,0 +1,28 @@
+name: catchup
+
+# 그날 메일을 받지 못한 구독자(구독 언어 누락, 늦은 확인 등)에게만 같은 지문을 다시 보낸다.
+# 본 메일의 전달 기록이 쌓인 뒤 수동으로 실행한다. 이미 받은 사람에게는 다시 가지 않는다.
+on:
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: "언어 코드 (en, ja)"
+        required: true
+      day:
+        description: "날짜 YYYY-MM-DD"
+        required: true
+
+jobs:
+  catchup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Send to missed subscribers
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          LANG_CODE: ${{ inputs.lang }}
+          DAY: ${{ inputs.day }}
+        run: python tools/send_email.py "$LANG_CODE" "$DAY" --catchup

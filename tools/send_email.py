@@ -2,6 +2,7 @@
 
 사용: BUTTONDOWN_API_KEY=... python3 tools/send_email.py en 2026-10-12
       BUTTONDOWN_API_KEY=... python3 tools/send_email.py ja 2026-10-18 --weekly   (주간 단어 복습)
+      BUTTONDOWN_API_KEY=... python3 tools/send_email.py en 2026-10-14 --catchup  (그날 메일을 못 받은 구독자에게만 다시 보냄)
 - 페이지와 썸네일이 200 으로 열리고 페이지에 주제어가 보일 때만 보낸다(최대 10분 대기).
 - 같은 언어와 날짜로 이미 만든 메일(metadata.lang, metadata.day)이 있으면 보내지 않는다. 다시 실행해도 중복 발송되지 않는다.
 - 받는 사람은 구독자 metadata.lang 으로 거른다. 영어는 "ja 등 다른 언어가 아닌" 구독자 전부.
@@ -126,6 +127,74 @@ def send(mail, lang, key, value):
     raise SystemExit(f"발송 상태 확인 실패: {draft['id']} ({status})")
 
 
+def wants(sub, lang):
+    """audience() 와 같은 기준으로, 이 구독자가 lang 메일을 받아야 하는지."""
+    if sub.get("type") != "regular":
+        return False
+    sub_lang = (sub.get("metadata") or {}).get("lang") or langs.DEFAULT
+    if lang == langs.DEFAULT:
+        return sub_lang not in set(langs.LANGS) - {lang}
+    return sub_lang == lang
+
+
+def reached(email_id):
+    """이 메일에 대해 Buttondown 이벤트(전달, 반송 등)가 하나라도 남은 구독자. 반송된 주소도 다시 보내지 않는다."""
+    path = f"/events?email_id={email_id}"
+    seen = set()
+    while path:
+        data = call("GET", path)
+        seen.update(e["subscriber_id"] for e in data["results"] if e.get("subscriber_id"))
+        nxt = data.get("next")
+        path = nxt.split("/v1", 1)[1] if nxt else None
+    return seen
+
+
+def catchup(lang, day):
+    """그날 본 메일과 이전 보충 메일을 받지 못한 구독자에게만 같은 지문을 보낸다.
+
+    본 메일 발송 직후에는 전달 이벤트가 늦게 쌓일 수 있으므로, 발송 뒤 충분히 지나서 수동으로 실행한다.
+    """
+    issues = [e for e in recent_emails(pages=10)
+              if e["status"] == "sent" and (same_issue(e.get("metadata") or {}, lang, "day", day)
+                                           or (e.get("metadata") or {}).get("catchup_of") == f"{lang}:{day}")]
+    if not any((e.get("metadata") or {}).get("day") == day for e in issues):
+        raise SystemExit(f"{lang} {day} 본 메일이 없어 보충 발송하지 않음. 본 발송부터 하세요.")
+    fill_missing_lang()
+    got = set().union(*(reached(e["id"]) for e in issues))
+    targets = [sub for sub in subscribers() if wants(sub, lang) and sub["id"] not in got]
+    if not targets:
+        print(f"보충 대상 없음 ({lang} {day})")
+        return
+    tag = f"{lang}:{day}:{len(issues)}"
+    for sub in targets:
+        call("PATCH", f"/subscribers/{sub['id']}", {"metadata": {**(sub.get("metadata") or {}), "catchup": tag}})
+    try:
+        mail = build_email.build(lang, day)
+        note = ('<p style="max-width:560px;margin:0 auto 8px;font-size:13px;color:#6b7684;text-align:center;">'
+                '아침에 받지 못하신 분께 다시 보내 드려요.</p>\n')
+        mail["body"] = mail["body"].replace('<table role="presentation"', note + '<table role="presentation"', 1)
+        draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked",
+                                          "filters": {"predicate": "and", "groups": [], "filters": [
+                                              {"field": "subscriber.metadata.catchup", "operator": "equals", "value": tag}]},
+                                          "metadata": {"lang": lang, "catchup_of": f"{lang}:{day}"}})
+        call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
+        for _ in range(30):
+            if call("GET", f"/emails/{draft['id']}")["status"] == "sent":
+                print(f"catch-up sent {draft['id']} to {len(targets)}")
+                break
+            time.sleep(10)
+        else:
+            raise SystemExit(f"보충 발송 상태 확인 실패: {draft['id']}")
+    finally:
+        # 발송 대상 표시는 남겨 두지 않는다. 다음 보충은 이벤트 기록으로 다시 계산한다.
+        for sub in targets:
+            meta = {k: v for k, v in (sub.get("metadata") or {}).items() if k != "catchup"}
+            try:
+                call("PATCH", f"/subscribers/{sub['id']}", {"metadata": meta})
+            except SystemExit as exc:
+                print(f"표시 정리 실패, 다음 구독자로 계속: {sub['id']} {exc}")
+
+
 def main(lang, day):
     mail = build_email.build(lang, day)
     url = f"{build_email.SITE}/{lang}/{day}/"
@@ -145,5 +214,7 @@ if __name__ == "__main__":
     langs.get(sys.argv[1])
     if "--weekly" in sys.argv:
         main_weekly(sys.argv[1], sys.argv[2])
+    elif "--catchup" in sys.argv:
+        catchup(sys.argv[1], sys.argv[2])
     else:
         main(sys.argv[1], sys.argv[2])
