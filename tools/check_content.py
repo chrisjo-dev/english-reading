@@ -64,5 +64,12 @@ def main(paths):
 if __name__ == "__main__":
     if sys.argv[1:] == ["--all"]:
         main(sorted(ROOT.glob("content/*/*.json")))
+    elif sys.argv[1:] == ["--pool"]:
+        # pool/<lang>/*.json 파일을 모두 검사한다
+        pool_files = sorted(ROOT.glob("pool/*/*.json"))
+        if not pool_files:
+            print("pool 파일 없음")
+            sys.exit(0)
+        main(pool_files)
     else:
         main([ROOT / "content" / sys.argv[1] / f"{sys.argv[2]}.json"])

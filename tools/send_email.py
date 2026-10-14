@@ -8,6 +8,7 @@
 - 받는 사람은 구독자 metadata.lang 으로 거른다. 영어는 "ja 등 다른 언어가 아닌" 구독자 전부.
 - Buttondown 필터는 lang 값이 없는 구독자를 not_equals 에서도 빼므로, 보내기 전에 lang 이 없는 구독자를 기본 언어(en)로 채운다.
 """
+import datetime
 import json
 import os
 import sys
@@ -149,6 +150,21 @@ def reached(email_id):
     return seen
 
 
+def recently_sent(sent_at: str, now: datetime.datetime) -> bool:
+    """본 메일 발송 시각이 now 기준 30분 이내이면 True 를 반환한다(테스트 가능한 순수 함수).
+
+    sent_at 은 Buttondown API 의 publish_date 또는 creation_date 문자열(ISO 8601).
+    """
+    try:
+        sent = datetime.datetime.fromisoformat(sent_at.replace("Z", "+00:00"))
+        if sent.tzinfo is None:
+            sent = sent.replace(tzinfo=datetime.timezone.utc)
+        now_utc = now.astimezone(datetime.timezone.utc) if now.tzinfo else now.replace(tzinfo=datetime.timezone.utc)
+        return (now_utc - sent).total_seconds() < 1800
+    except (ValueError, TypeError, AttributeError):
+        return False
+
+
 def catchup(lang, day):
     """그날 본 메일과 이전 보충 메일을 받지 못한 구독자에게만 같은 지문을 보낸다.
 
@@ -159,6 +175,15 @@ def catchup(lang, day):
                                            or (e.get("metadata") or {}).get("catchup_of") == f"{lang}:{day}")]
     if not any((e.get("metadata") or {}).get("day") == day for e in issues):
         raise SystemExit(f"{lang} {day} 본 메일이 없어 보충 발송하지 않음. 본 발송부터 하세요.")
+
+    # 본 메일이 30분 이내에 발송됐으면 전달 이벤트가 아직 쌓이는 중일 수 있다. 건너뜀.
+    main_emails = [e for e in issues if (e.get("metadata") or {}).get("day") == day]
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+    for mi in main_emails:
+        sent_at = mi.get("publish_date") or mi.get("creation_date") or ""
+        if recently_sent(sent_at, now_utc):
+            print("본 메일 발송 30분 이내라 이번 보충은 건너뜀")
+            return
     fill_missing_lang()
     got = set().union(*(reached(e["id"]) for e in issues))
     targets = [sub for sub in subscribers() if wants(sub, lang) and sub["id"] not in got]
