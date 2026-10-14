@@ -191,11 +191,14 @@ def entry(lang, day):
 
 
 def rebuild_root():
-    """사이트 첫 화면이 읽는 latest.json 을 만든다. 첫 화면(index.html)은 ref-clone 정적 빌드로 따로 배포한다.
+    """사이트 첫 화면이 읽는 latest.json 을 만든다. 첫 화면(index.html)은 landing 정적 빌드로 따로 배포한다.
 
-    모양: {"date", "langs": {code: {"count", "latest", "topic", "sentences"(앞 3문장, 원문 표기 그대로)}}, "recent"(두 언어 최근 6편)}
+    모양: {"date", "words_total"(올라간 지문 전체의 주요 단어 수),
+           "langs": {code: {"count", "latest", "topic", "sentences"(앞 4문장, 원문 표기 그대로),
+                            "chips", "answer"(1번 모범 해석), "words"}},
+           "recent"(두 언어 최근 7일, 최대 14편. 첫 화면의 이번 주 달력과 주제 띠에 씀)}
     """
-    data, recent = {"date": "", "langs": {}, "recent": []}, []
+    data, recent = {"date": "", "words_total": 0, "langs": {}, "recent": []}, []
     for code in langs.LANGS:
         days = days_of(code)
         if not days:
@@ -205,12 +208,17 @@ def rebuild_root():
         data["langs"][code] = {
             "count": len(days), "latest": days[0],
             "topic": c.get("topic") or topic_of(code, days[0]),
-            "sentences": [s["en"] for s in c.get("sentences", [])[:3]],
+            "sentences": [s["en"] for s in c.get("sentences", [])[:4]],
+            "chips": c.get("chips", []), "answer": (c.get("answers") or [""])[0], "words": c.get("words", []),
         }
         data["date"] = max(data["date"], days[0])
-        recent += [{"lang": code, "day": d, "topic": entry(code, d)["topic"]} for d in days[:6]]
+        for d in days:
+            f = ROOT / "content" / code / f"{d}.json"
+            if f.exists():
+                data["words_total"] += len(json.loads(f.read_text(encoding="utf-8")).get("words", []))
+        recent += [{"lang": code, "day": d, "topic": entry(code, d)["topic"]} for d in days[:7]]
     order = list(langs.LANGS)
-    data["recent"] = sorted(recent, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)[:6]
+    data["recent"] = sorted(recent, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)[:14]
     (ROOT / "latest.json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     write_sitemap()
 

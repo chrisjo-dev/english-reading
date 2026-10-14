@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>매일 외국어 읽기 — 오늘의 지문</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+  :root {
+    --black: #111111;
+    --gray-dark: #333333;
+    --gray-mid: #666666;
+    --gray-light: #999999;
+    --gray-faint: #f5f5f5;
+    --border: #e0e0e0;
+    --accent: #1a56db;
+    --accent-light: #e8f0fe;
+    --white: #ffffff;
+    --tag-en: #1a56db;
+    --tag-ja: #c2410c;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    z-index: 100;
+  }
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    text-decoration: none;
+  }
+  .nav-logo span {
+    color: var(--accent);
+  }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--gray-mid);
+    text-decoration: none;
+    font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 40px 80px;
+    align-items: start;
+  }
+  .hero-left {
+    padding-top: 8px;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero-headline {
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--black);
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--gray-mid);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+  .proof-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .proof-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--gray-dark);
+    font-weight: 400;
+  }
+  .proof-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .email-row {
+    display: flex;
+    gap: 8px;
+  }
+  .email-input {
+    flex: 1;
+    height: 46px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-family: 'Pretendard', sans-serif;
+    color: var(--black);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .email-input:focus { border-color: var(--accent); }
+  .email-input::placeholder { color: var(--gray-light); }
+  .btn-primary {
+    height: 46px;
+    padding: 0 20px;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Pretendard', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #1444b8; }
+  .form-note {
+    font-size: 12px;
+    color: var(--gray-light);
+  }
+
+  /* PASSAGE CARD */
+  .passage-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .card-header {
+    padding: 16px 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .card-date {
+    font-size: 12px;
+    color: var(--gray-light);
+  }
+  .card-topic {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-dark);
+  }
+  .card-tabs {
+    display: flex;
+    gap: 0;
+  }
+  .tab-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Pretendard', sans-serif;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: var(--gray-light);
+    transition: all 0.15s;
+  }
+  .tab-btn.active-en {
+    color: var(--tag-en);
+    border-bottom-color: var(--tag-en);
+  }
+  .tab-btn.active-ja {
+    color: var(--tag-ja);
+    border-bottom-color: var(--tag-ja);
+  }
+  .card-body {
+    padding: 20px;
+  }
+  .level-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+  .sentences {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .sentence-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .sentence-num {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-light);
+    padding-top: 2px;
+    min-width: 16px;
+  }
+  .sentence-content {
+    flex: 1;
+  }
+  .sentence-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--black);
+  }
+  .sentence-text .kw {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 2px;
+    cursor: pointer;
+  }
+  .play-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    background: var(--white);
+    transition: all 0.15s;
+  }
+  .play-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+  .keywords-section {
+    background: var(--gray-faint);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+  }
+  .keywords-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 8px;
+  }
+  .keywords-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+  .keyword-item {
+    font-size: 13px;
+  }
+  .keyword-en {
+    font-weight: 600;
+    color: var(--black);
+  }
+  .keyword-ko {
+    color: var(--gray-mid);
+  }
+  .card-footer {
+    border-top: 1px solid var(--border);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .more-link {
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .more-link:hover { text-decoration: underline; }
+  .sentence-count {
+    font-size: 12px;
+    color: var(--gray-light);
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* STEPS */
+  .steps-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 40px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 40px;
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .step-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .step-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.01em;
+  }
+  .step-desc {
+    font-size: 14px;
+    color: var(--gray-mid);
+    line-height: 1.7;
+  }
+
+  /* RECENT */
+  .recent-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 64px;
+  }
+  .recent-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .recent-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .recent-lang {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .recent-lang.en { color: var(--tag-en); }
+  .recent-lang.ja { color: var(--tag-ja); }
+  .recent-topic {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+    letter-spacing: -0.01em;
+  }
+  .recent-date {
+    font-size: 11px;
+    color: var(--gray-light);
+    margin-top: auto;
+  }
+
+  /* FAQ */
+  .faq-section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 40px 64px;
+  }
+  .faq-item {
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--gray-mid);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 12px;
+    color: var(--gray-light);
+    text-decoration: none;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: var(--gray-light);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 40px 20px 48px;
+      gap: 40px;
+    }
+    .hero-headline { font-size: 28px; }
+    .email-row { flex-direction: column; }
+    .btn-primary { width: 100%; }
+    .steps-grid { grid-template-columns: 1fr; gap: 28px; }
+    .recent-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-section, .recent-section, .faq-section { padding-left: 20px; padding-right: 20px; }
+    footer { flex-direction: column; gap: 16px; align-items: flex-start; padding: 24px 20px; }
+    .footer-links { flex-wrap: wrap; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">매일 외국어 읽기<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#">오늘의 지문</a></li>
+    <li><a href="#">지난 지문</a></li>
+    <li><a href="#">이용 안내</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <!-- LEFT: PITCH -->
+  <div class="hero-left">
+    <div class="hero-eyebrow">무료 외국어 학습</div>
+    <h1 class="hero-headline">매일 아침,<br>외국어 한 편.</h1>
+    <p class="hero-sub">영어 B1~B2, 일본어 N4~N5 지문을<br>음성과 해석과 함께. 무료.</p>
+
+    <ul class="proof-list">
+      <li>
+        <svg class="proof-icon" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="8.5" stroke="#1a56db" stroke-width="1"/>
+          <path d="M6 9l2 2 4-4" stroke="#1a56db" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        문장마다 원어민 음성 — 귀로도 익힐 수 있습니다
+      </li>
+      <li>
+        <svg class="proof-icon" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="8.5" stroke="#1a56db" stroke-width="1"/>
+          <path d="M6 9l2 2 4-4" stroke="#1a56db" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        모범 해석과 핵심 단어를 함께 제공합니다
+      </li>
+      <li>
+        <svg class="proof-icon" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="8.5" stroke="#1a56db" stroke-width="1"/>
+          <path d="M6 9l2 2 4-4" stroke="#1a56db" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        AI 피드백 요청문 복사 버튼 — 내 해석을 AI에게 바로 보낼 수 있습니다
+      </li>
+    </ul>
+
+    <form class="email-form" onsubmit="return false;">
+      <div class="email-row">
+        <input class="email-input" type="email" placeholder="이메일 주소를 입력하세요">
+        <button class="btn-primary" type="submit">내일 아침부터 받기</button>
+      </div>
+      <span class="form-note">무료, 언제든 해지 가능합니다. 영어 또는 일본어 중 하나를 선택할 수 있습니다.</span>
+    </form>
+  </div>
+
+  <!-- RIGHT: PASSAGE CARD -->
+  <div class="passage-card">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="card-date">2026년 10월 14일</span>
+        <span class="card-topic">오늘의 주제: 나무 입양</span>
+      </div>
+      <div class="card-tabs">
+        <button class="tab-btn active-en">English</button>
+        <button class="tab-btn">日本語</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="level-tag">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <rect x="0" y="6" width="2" height="4" rx="0.5" fill="#1a56db"/>
+          <rect x="3" y="4" width="2" height="6" rx="0.5" fill="#1a56db"/>
+          <rect x="6" y="1" width="2" height="9" rx="0.5" fill="#1a56db" opacity="0.3"/>
+        </svg>
+        B1~B2
+      </div>
+      <div class="sentences">
+        <div class="sentence-row">
+          <span class="sentence-num">1</span>
+          <div class="sentence-content">
+            <p class="sentence-text">On hot summer days, a woman in Berlin carries a <span class="kw">bucket</span> of water to a tree near her home, and she has even given it a name: Linda.</p>
+          </div>
+          <div class="play-btn">
+            <svg width="10" height="11" viewBox="0 0 10 11" fill="none">
+              <path d="M2 2l6 3.5-6 3.5V2z" fill="#1a56db"/>
+            </svg>
+          </div>
+        </div>
+        <div class="sentence-row">
+          <span class="sentence-num">2</span>
+          <div class="sentence-content">
+            <p class="sentence-text">She found the tree through a free app that shows a map of about nine hundred thousand street trees in the city.</p>
+          </div>
+          <div class="play-btn">
+            <svg width="10" height="11" viewBox="0 0 10 11" fill="none">
+              <path d="M2 2l6 3.5-6 3.5V2z" fill="#1a56db"/>
+            </svg>
+          </div>
+        </div>
+        <div class="sentence-row">
+          <span class="sentence-num">3</span>
+          <div class="sentence-content">
+            <p class="sentence-text">When a tree needs water, it <span class="kw">appears</span> as an orange or red dot, and people can <span class="kw">adopt</span> it and get <span class="kw">advice</span> on how much water to give.</p>
+          </div>
+          <div class="play-btn">
+            <svg width="10" height="11" viewBox="0 0 10 11" fill="none">
+              <path d="M2 2l6 3.5-6 3.5V2z" fill="#1a56db"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="keywords-section">
+        <div class="keywords-label">Key Words</div>
+        <div class="keywords-grid">
+          <span class="keyword-item"><span class="keyword-en">bucket</span> <span class="keyword-ko">양동이</span></span>
+          <span class="keyword-item"><span class="keyword-en">appear</span> <span class="keyword-ko">나타나다</span></span>
+          <span class="keyword-item"><span class="keyword-en">adopt</span> <span class="keyword-ko">입양하다</span></span>
+          <span class="keyword-item"><span class="keyword-en">advice</span> <span class="keyword-ko">조언</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="sentence-count">6문장 중 3문장 미리보기</span>
+      <a href="#" class="more-link">
+        전체 읽고 해석해 보기
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="#1a56db" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STEPS -->
+<section class="steps-section">
+  <h2 class="section-title">이렇게 활용하세요</h2>
+  <div class="steps-grid">
+    <div class="step-item">
+      <span class="step-num">STEP 01</span>
+      <h3 class="step-heading">매일 아침 7시, 메일 도착</h3>
+      <p class="step-desc">영어 또는 일본어 지문이 이메일로 옵니다. 출근길이나 아침 식사 중에 읽을 수 있는 분량입니다.</p>
+    </div>
+    <div class="step-item">
+      <span class="step-num">STEP 02</span>
+      <h3 class="step-heading">읽고, 듣고, 해석해 보기</h3>
+      <p class="step-desc">지문을 읽으면서 모르는 단어는 확인하고, 문장별 음성을 들어보세요. 전체 지문을 직접 해석해 봅니다.</p>
+    </div>
+    <div class="step-item">
+      <span class="step-num">STEP 03</span>
+      <h3 class="step-heading">AI에게 피드백 요청하기</h3>
+      <p class="step-desc">버튼 하나로 AI 피드백 요청문을 복사해서 ChatGPT나 Claude에 붙여 넣으면 내 해석에 대한 피드백을 바로 받을 수 있습니다.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RECENT PASSAGES -->
+<section class="recent-section">
+  <h2 class="section-title">최근 지문</h2>
+  <div class="recent-grid">
+    <div class="recent-card">
+      <span class="recent-lang en">English</span>
+      <span class="recent-topic">나무 입양</span>
+      <span class="recent-date">2026.10.14</span>
+    </div>
+    <div class="recent-card">
+      <span class="recent-lang ja">日本語</span>
+      <span class="recent-topic">쓰레기 분리배출</span>
+      <span class="recent-date">2026.10.14</span>
+    </div>
+    <div class="recent-card">
+      <span class="recent-lang en">English</span>
+      <span class="recent-topic">수직 농장</span>
+      <span class="recent-date">2026.10.13</span>
+    </div>
+    <div class="recent-card">
+      <span class="recent-lang en">English</span>
+      <span class="recent-topic">아트 페어</span>
+      <span class="recent-date">2026.10.12</span>
+    </div>
+    <div class="recent-card">
+      <span class="recent-lang en">English</span>
+      <span class="recent-topic">핵시계</span>
+      <span class="recent-date">2026.10.11</span>
+    </div>
+    <div class="recent-card">
+      <span class="recent-lang ja">日本語</span>
+      <span class="recent-topic">온천 안내</span>
+      <span class="recent-date">2026.10.10</span>
+    </div>
+    <div class="recent-card">
+      <span class="recent-lang en">English</span>
+      <span class="recent-topic">로보택시</span>
+      <span class="recent-date">2026.10.09</span>
+    </div>
+    <div class="recent-card" style="border-style: dashed; display: flex; align-items: center; justify-content: center;">
+      <span style="font-size: 13px; color: var(--gray-light);">지문 더 보기 →</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="faq-section" style="padding-top: 64px;">
+  <h2 class="section-title" style="text-align: center;">자주 묻는 질문</h2>
+  <div style="margin-top: 32px;">
+    <div class="faq-item">
+      <div class="faq-q">영어와 일본어 둘 다 받을 수 있나요?</div>
+      <div class="faq-a">현재 하나의 이메일로 하나의 언어를 구독할 수 있습니다. 두 언어를 모두 받으시려면 다른 이메일 주소로 추가 구독해 주세요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">지문 수준은 어느 정도인가요?</div>
+      <div class="faq-a">영어는 CEFR B1~B2 수준(중급), 일본어는 JLPT N4~N5 수준(초중급)으로 제공됩니다. 매일 읽기에 부담스럽지 않은 길이입니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">언제든 해지할 수 있나요?</div>
+      <div class="faq-a">네, 메일 하단의 구독 취소 링크를 통해 언제든 해지하실 수 있습니다. 별도의 절차가 없습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">AI 피드백 요청문은 어떻게 사용하나요?</div>
+      <div class="faq-a">지문 하단의 버튼을 누르면 내 해석과 AI에게 보낼 요청문이 클립보드에 복사됩니다. ChatGPT, Claude 등 원하는 AI 서비스에 붙여 넣으면 됩니다.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">매일 외국어 읽기</div>
+  <ul class="footer-links">
+    <li><a href="#">이용 안내</a></li>
+    <li><a href="#">구독 취소</a></li>
+    <li><a href="#">문의하기</a></li>
+  </ul>
+  <span class="footer-copy">read.wspace.ai.kr</span>
+</footer>
+
+</body>
+</html>

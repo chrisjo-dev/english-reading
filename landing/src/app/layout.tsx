@@ -1,25 +1,12 @@
 import type { Metadata } from "next";
-import { Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { loadLatest } from "@/lib/reading";
 import "./globals.css";
-
-const interTight = Inter_Tight({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
 
 const SITE = "https://read.wspace.ai.kr";
 const TITLE = "매일 외국어 읽기 | 매일 영어, 일본어 독해 연습 (무료 뉴스레터)";
 const DESCRIPTION = "매일 아침 새로 올라오는 외국어 읽기. 문장별 음성, 주요 단어, 모범 해석.";
 const latest = loadLatest();
-const OG_IMAGE = `${SITE}/en/${latest.langs.en?.latest}/thumb.png`;
+const OG_IMAGE = latest.langs.en?.latest ? `${SITE}/en/${latest.langs.en.latest}/thumb.png` : `${SITE}/en/thumb.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -55,7 +42,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${interTight.variable} ${jetbrainsMono.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

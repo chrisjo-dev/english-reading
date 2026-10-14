@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--
+SIGNATURE MOTION / C2 포스터 그리드 (Swiss poster)
+1. Load: the 12 hairline columns draw top to bottom (scaleY 0 -> 1, 40ms stagger, 600ms).
+2. The blue panel slides in from the right edge (translateX 100% -> 0, 700ms, cubic-bezier(.7,0,.2,1)).
+   Where the headline crosses the panel's left edge, the white copy of the headline is revealed by the panel's own clip,
+   so the type appears to change color as the panel passes under it.
+3. The second line "매일 아침." fills with blue from left to right (clip-path inset 100% -> 0, 900ms) over its outline;
+   the thin blue caret marks the fill edge. In the static frame it stops at about 72%.
+4. Panel content then steps in line by line (date, topic, sentence, words, button), 60ms stagger.
+Reduced motion: final frame, fully filled second line.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>하루 5분, 매일 아침 | 매일 외국어 읽기</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+:root{
+  --ink:#0c0c0c;--ink2:#2e2e2e;--mute:#6f6f6f;--faint:#a6a6a6;--line:#e6e6e6;--line2:#d2d2d2;
+  --blue:#2b4bff;--paper:#fff;
+  --m:64px;--g:24px;--cols:12;
+  --col:calc((min(100vw,1440px) - 2*var(--m) - (var(--cols) - 1)*var(--g)) / var(--cols));
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:"Pretendard",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--paper);color:var(--ink);
+  line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"ss06","tnum" 0}
+a{color:inherit;text-decoration:none}
+ol,ul{list-style:none}
+button,input{font:inherit}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.02em;font-weight:500}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--m)}
+.g12{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));column-gap:var(--g)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* nav */
+.nav{height:64px;border-bottom:1px solid var(--line);background:var(--paper);position:relative;z-index:20}
+.nav-in{height:100%;display:flex;align-items:center;gap:40px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;letter-spacing:-.03em}
+.brand-mark{width:12px;height:12px;background:var(--blue);display:block}
+.nav-links{display:flex;gap:28px;margin-left:auto;font-size:14px;font-weight:500;color:var(--mute)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{height:38px;padding:0 16px;display:inline-flex;align-items:center;background:var(--blue);color:#fff;
+  font-size:14px;font-weight:700;border-radius:6px;letter-spacing:-.01em}
+
+/* phone (sized in em: width 20em) */
+.phone{width:20em;aspect-ratio:9/19;background:var(--ink);border-radius:2.7em;padding:.5em;position:relative}
+.ph-screen{background:#fff;border-radius:2.25em;height:100%;overflow:hidden;padding:0 1.15em;position:relative}
+.ph-status{display:flex;align-items:center;justify-content:space-between;height:2.6em;font-size:.68em;font-weight:700;padding:0 .6em;color:var(--ink)}
+.ph-status svg{width:3em;height:auto}
+.ph-island{width:6.2em;height:1.9em;background:var(--ink);border-radius:2em}
+.ph-pill{font-family:var(--mono);font-size:.55em;font-weight:700;border:1px solid var(--ink);border-radius:2em;padding:.15em .7em}
+.wave{display:block;width:100%;height:1.6em}
+
+/* below fold */
+.sec{border-top:1px solid var(--line);padding:68px 0 72px}
+.sec-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);align-items:baseline;margin-bottom:40px}
+.sec-head .mono{grid-column:1/4;color:var(--mute)}
+.sec-head h2{grid-column:4/10;font-size:44px;font-weight:800;letter-spacing:-.045em;line-height:1.1}
+.sec-head .sec-meta{grid-column:10/13;justify-self:end}
+.steps{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+.steps li{grid-column:span 4;border-top:1px solid var(--ink);padding-top:20px}
+.steps li:first-child{grid-column:4/7}
+.steps li:nth-child(2){grid-column:7/10}
+.steps li:nth-child(3){grid-column:10/13}
+.st-t{color:var(--blue);display:block;margin-bottom:28px}
+.steps h3{font-size:22px;font-weight:800;letter-spacing:-.03em;margin-bottom:10px}
+.steps p{font-size:15px;color:var(--mute);line-height:1.7}
+.note{margin:48px 0 0 calc(3*(var(--col) + var(--g)));color:var(--ink2);padding-left:16px;border-left:2px solid var(--blue)}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--line)}
+.day{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 16px 22px;min-height:188px;display:flex;flex-direction:column;gap:18px}
+.day-h{display:flex;align-items:baseline;gap:8px}
+.day-h b{font-size:18px;font-weight:800}
+.day-h .mono{color:var(--mute)}
+.day .tag{margin-left:auto;font-size:11px;font-weight:700;color:#fff;background:var(--blue);padding:2px 8px;border-radius:2em}
+.day ul{display:flex;flex-direction:column;gap:10px;font-size:15px;font-weight:700;letter-spacing:-.02em}
+.day li{display:flex;gap:8px;align-items:baseline}
+.day .lang{color:var(--mute);min-width:18px}
+.day.today{background:var(--blue);color:#fff}
+.day.today .mono,.day.today .lang{color:rgba(255,255,255,.75)}
+.day.today .tag{background:#fff;color:var(--blue)}
+.day .empty{color:var(--faint);font-weight:500}
+.day .review{font-size:13px;font-weight:700;color:var(--blue);border-top:1px solid var(--line);padding-top:10px;margin-top:auto}
+.faq{border-top:1px solid var(--ink);margin-left:calc(3*(var(--col) + var(--g)))}
+.faq>div{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));column-gap:var(--g);padding:26px 0;border-bottom:1px solid var(--line)}
+.faq dt{grid-column:1/4;font-size:18px;font-weight:800;letter-spacing:-.025em}
+.faq dd{grid-column:4/10;font-size:15px;color:var(--mute);line-height:1.75}
+.foot{border-top:1px solid var(--ink);padding:40px 0 48px}
+.foot-in{display:flex;align-items:flex-start;gap:48px}
+.foot-brand{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.foot-brand b{font-size:16px;letter-spacing:-.03em}
+.foot-brand span{color:var(--mute)}
+.foot-links{display:flex;gap:24px;font-size:13px;color:var(--mute);margin-left:auto}
+.foot-links a:hover{color:var(--ink)}
+.foot-url{color:var(--mute)}
+
+@media (max-width:760px){
+  :root{--m:16px;--g:12px;--cols:4}
+  .nav{height:56px}
+  .nav-links{display:none}
+  .nav-cta{margin-left:auto;height:34px;font-size:13px;padding:0 12px}
+  .brand{font-size:15px}
+  .sec{padding:56px 0 64px}
+  .sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+  .sec-head h2{font-size:28px}
+  .steps{display:flex;flex-direction:column;gap:28px}
+  .st-t{margin-bottom:12px}
+  .note{margin:32px 0 0}
+  .week{grid-template-columns:1fr}
+  .day{min-height:0;flex-direction:row;align-items:baseline;gap:16px;padding:14px 12px}
+  .day-h{min-width:92px}
+  .day .tag{margin-left:6px}
+  .day .review{border:0;padding:0;margin:0}
+  .faq{margin-left:0}
+  .faq>div{display:block}
+  .faq dt{margin-bottom:8px}
+  .foot-in{flex-direction:column;gap:20px}
+  .foot-links{margin-left:0;flex-wrap:wrap;gap:12px 20px}
+}
+
+.c2{position:relative;height:836px;overflow:hidden;
+  --P:calc(var(--m) + 7*(var(--col) + var(--g)));}
+.c2-grid{position:absolute;inset:0;z-index:0;pointer-events:none}
+.c2-grid .wrap{height:100%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+.c2-grid span{border-left:1px solid #ededed;border-right:1px solid #ededed}
+.c2-rule{position:absolute;left:0;right:0;height:1px;background:var(--line)}
+.c2-label{position:absolute;top:24px;left:var(--m);z-index:2;color:var(--mute);display:flex;gap:24px}
+.c2-label b{color:var(--ink);font-weight:600}
+.c2-h{position:absolute;z-index:1;left:var(--m);top:64px;font-size:244px;font-weight:900;letter-spacing:-.065em;line-height:1.0;white-space:nowrap;margin-left:-10px}
+.c2-h .l1{display:block;color:var(--ink)}
+.c2-h .l2{display:block;position:relative;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.c2-h .l2 .fill{position:absolute;left:0;top:0;color:var(--blue);-webkit-text-stroke:0;clip-path:inset(0 28% 0 0)}
+.c2-h .l2 .caret{position:absolute;top:8%;bottom:4%;left:72%;width:2px;background:var(--blue)}
+.c2-panel{position:absolute;z-index:3;top:0;bottom:0;left:var(--P);right:0;background:var(--blue);color:#fff;overflow:hidden}
+.c2-panel .c2-h{left:calc(var(--m) - var(--P));color:#fff}
+.c2-panel .c2-h .l1{color:#fff}
+.c2-panel .c2-h .l2{-webkit-text-stroke:1.5px #fff}
+.c2-panel .c2-h .l2 .fill,.c2-panel .c2-h .l2 .caret{display:none}
+.c2-panel-in{position:absolute;top:0;bottom:0;left:calc(var(--col) + var(--g));right:var(--m);display:flex;flex-direction:column;padding:24px 0 40px}
+.c2-panel-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:var(--g);padding-right:var(--m);pointer-events:none}
+.c2-panel-grid span{border-left:1px solid rgba(255,255,255,.16);border-right:1px solid rgba(255,255,255,.16)}
+.c2-panel-grid span:first-child{border-left:0}
+.pn-top{display:flex;justify-content:space-between;color:rgba(255,255,255,.8);padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.4)}
+.pn-top b{color:#fff;font-weight:600}
+.pn-topic{font-size:52px;font-weight:900;letter-spacing:-.05em;line-height:1;margin:96px 0 14px}
+.pn-chips{display:flex;gap:16px;color:rgba(255,255,255,.85)}
+.pn-s{font-size:28px;line-height:1.3;font-weight:600;letter-spacing:-.02em;margin:34px 0 16px}
+.pn-s u{text-decoration-thickness:3px;text-underline-offset:5px}
+.pn-wave{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,.85)}
+.pn-wave .wave{height:20px;flex:1}
+.pn-words{margin-top:auto;border-top:1px solid rgba(255,255,255,.4)}
+.pn-words li{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.22);font-family:var(--mono);font-size:13px}
+.pn-words li span{color:rgba(255,255,255,.8)}
+.pn-btn{margin-top:22px;height:52px;border:1.5px solid #fff;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-weight:700;font-size:16px;color:#fff}
+.c2-edge{position:absolute;z-index:0;top:0;bottom:0;left:calc(var(--P) - 14px);width:1px;background:var(--blue)}
+.c2-edge2{position:absolute;z-index:0;top:0;bottom:0;left:calc(var(--P) - 26px);width:1px;background:var(--blue);opacity:.35}
+.c2-slide{position:absolute;z-index:2;top:24px;left:calc(var(--P) - 98px);color:var(--blue)}
+.c2-low{position:absolute;z-index:2;left:var(--m);width:calc(7*var(--col) + 6*var(--g));bottom:0}
+.c2-sub{width:calc(5*var(--col) + 4*var(--g));font-size:19px;line-height:1.5;font-weight:600;letter-spacing:-.03em;margin-bottom:20px}
+.c2-form{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:var(--g);align-items:end}
+.c2-form label{grid-column:1/6;display:flex;flex-direction:column;gap:6px}
+.c2-form label .mono{color:var(--mute)}
+.c2-form input{border:0;border-bottom:1.5px solid var(--ink);height:48px;font-size:22px;font-weight:600;letter-spacing:-.02em;outline:none;background:transparent;padding:0;border-radius:0}
+.c2-form input::placeholder{color:#c4c4c4}
+.c2-form button{grid-column:6/8;border:0;background:none;color:var(--blue);font-weight:800;font-size:18px;height:48px;text-align:left;border-bottom:1.5px solid var(--blue);cursor:pointer;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center}
+.c2-fnote{color:var(--mute);margin-top:10px}
+.c2-data{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:var(--g);margin-top:26px;border-top:1px solid var(--ink)}
+.c2-data div{grid-column:span 2;padding:10px 0 18px;display:flex;flex-direction:column;gap:2px}
+.c2-data div:last-child{grid-column:span 1}
+.c2-data .mono{color:var(--mute)}
+.c2-data b{font-family:var(--mono);font-size:22px;font-weight:600;letter-spacing:-.02em}
+.c2-data b em{font-style:normal;color:var(--blue)}
+@media (max-width:760px){
+  .c2{height:auto;overflow:hidden;padding:20px 0 0}
+  .c2-grid .wrap{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .c2-grid span:nth-child(n+5){display:none}
+  .c2-label{position:relative;top:0;left:0;padding:0 var(--m);gap:12px}
+  .c2-h{position:relative;left:0;top:0;font-size:84px;margin:20px var(--m) 0;margin-left:calc(var(--m) - 4px)}
+  .c2-edge,.c2-edge2,.c2-slide{display:none}
+  .c2-panel{position:relative;left:0;margin-top:28px;min-height:0}
+  .c2-panel .c2-h,.c2-panel-grid{display:none}
+  .c2-panel-in{position:relative;left:0;right:0;padding:20px var(--m) 28px}
+  .pn-topic{font-size:38px;margin:28px 0 10px}
+  .pn-chips{flex-wrap:wrap;gap:4px 12px}
+  .pn-s{font-size:21px;margin:24px 0 14px}
+  .pn-words{margin-top:24px}
+  .c2-low{position:relative;left:0;width:auto;padding:32px var(--m) 0}
+  .c2-sub{width:auto;font-size:18px}
+  .c2-form{display:flex;flex-direction:column;align-items:stretch;gap:16px}
+  .c2-form input{font-size:18px}
+  .c2-data{grid-template-columns:1fr 1fr;row-gap:0}
+  .c2-data div,.c2-data div:last-child{grid-column:span 1;border-bottom:1px solid var(--line)}
+}
+
+.sec{position:relative}
+.sec-head h2{font-size:48px;letter-spacing:-.055em}
+.steps li{border-top-width:2px}
+.st-t{font-size:12px}
+.day.today{background:var(--blue)}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#"><i class="brand-mark" aria-hidden="true"></i>매일 외국어 읽기</a>
+    <nav class="nav-links" aria-label="주요 메뉴"><a href="#">오늘의 지문</a><a href="#">지난 지문</a><a href="#how">이용 안내</a></nav>
+    <a class="nav-cta" href="#subscribe">무료로 시작하기</a>
+  </div>
+</header>
+<main>
+<section class="c2" aria-labelledby="c2-h">
+  <div class="c2-grid" aria-hidden="true"><div class="wrap"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+  <div class="c2-label mono"><span><b>2026.10.14 수</b> 오늘의 지문</span><span>EN B1~B2 / JA N4~N5</span></div>
+  <h1 class="c2-h" id="c2-h"><span class="l1">하루 5분,</span><span class="l2">매일 아침.<span class="fill" aria-hidden="true">매일 아침.</span><span class="caret" aria-hidden="true"></span></span></h1>
+  <span class="c2-edge2" aria-hidden="true"></span><span class="c2-edge" aria-hidden="true"></span>
+  <span class="c2-slide mono" aria-hidden="true">← 07:00 도착</span>
+  <aside class="c2-panel" aria-label="오늘의 지문">
+    <div class="c2-panel-grid" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="c2-h" aria-hidden="true"><span class="l1">하루 5분,</span><span class="l2">매일 아침.<span class="fill" aria-hidden="true">매일 아침.</span><span class="caret" aria-hidden="true"></span></span></div>
+    <div class="c2-panel-in">
+      <div class="pn-top mono"><span><b>오늘의 지문</b> / EN</span><span>2026.10.14 WED</span></div>
+      <h2 class="pn-topic">나무 입양</h2>
+      <div class="pn-chips mono"><span>6문장</span><span>B1 위주</span><span>B2 1문장</span><span>약 3분</span></div>
+      <p class="pn-s" lang="en">On hot summer days, a woman in Berlin carries a <u>bucket</u> of water to a tree near her home, and she has even given it a name: Linda.</p>
+      <div class="pn-wave mono"><span>01 / 06</span><svg class="wave" viewBox="0 0 256 20" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="6.0" width="2" height="8" rx="1" fill="#ffffff"/><rect x="4" y="4.0" width="2" height="12" rx="1" fill="#ffffff"/><rect x="8" y="5.5" width="2" height="9" rx="1" fill="#ffffff"/><rect x="12" y="3.0" width="2" height="14" rx="1" fill="#ffffff"/><rect x="16" y="0.5" width="2" height="19" rx="1" fill="#ffffff"/><rect x="20" y="5.0" width="2" height="10" rx="1" fill="#ffffff"/><rect x="24" y="6.5" width="2" height="7" rx="1" fill="#ffffff"/><rect x="28" y="7.0" width="2" height="6" rx="1" fill="#ffffff"/><rect x="32" y="7.5" width="2" height="5" rx="1" fill="#ffffff"/><rect x="36" y="4.0" width="2" height="12" rx="1" fill="#ffffff"/><rect x="40" y="4.5" width="2" height="11" rx="1" fill="#ffffff"/><rect x="44" y="5.5" width="2" height="9" rx="1" fill="#ffffff"/><rect x="48" y="3.0" width="2" height="14" rx="1" fill="#ffffff"/><rect x="52" y="4.5" width="2" height="11" rx="1" fill="#ffffff"/><rect x="56" y="2.0" width="2" height="16" rx="1" fill="#ffffff"/><rect x="60" y="0.0" width="2" height="20" rx="1" fill="#ffffff"/><rect x="64" y="3.5" width="2" height="13" rx="1" fill="#ffffff"/><rect x="68" y="7.5" width="2" height="5" rx="1" fill="#ffffff"/><rect x="72" y="7.5" width="2" height="5" rx="1" fill="#ffffff"/><rect x="76" y="7.5" width="2" height="5" rx="1" fill="#ffffff"/><rect x="80" y="3.0" width="2" height="14" rx="1" fill="#ffffff"/><rect x="84" y="2.5" width="2" height="15" rx="1" fill="#ffffff"/><rect x="88" y="8.0" width="2" height="4" rx="1" fill="#ffffff"/><rect x="92" y="5.5" width="2" height="9" rx="1" fill="#ffffff"/><rect x="96" y="7.0" width="2" height="6" rx="1" fill="#ffffff"/><rect x="100" y="5.0" width="2" height="10" rx="1" fill="rgba(255,255,255,.35)"/><rect x="104" y="1.5" width="2" height="17" rx="1" fill="rgba(255,255,255,.35)"/><rect x="108" y="4.5" width="2" height="11" rx="1" fill="rgba(255,255,255,.35)"/><rect x="112" y="6.0" width="2" height="8" rx="1" fill="rgba(255,255,255,.35)"/><rect x="116" y="6.0" width="2" height="8" rx="1" fill="rgba(255,255,255,.35)"/><rect x="120" y="5.5" width="2" height="9" rx="1" fill="rgba(255,255,255,.35)"/><rect x="124" y="1.0" width="2" height="18" rx="1" fill="rgba(255,255,255,.35)"/><rect x="128" y="0.0" width="2" height="20" rx="1" fill="rgba(255,255,255,.35)"/><rect x="132" y="4.5" width="2" height="11" rx="1" fill="rgba(255,255,255,.35)"/><rect x="136" y="7.0" width="2" height="6" rx="1" fill="rgba(255,255,255,.35)"/><rect x="140" y="6.0" width="2" height="8" rx="1" fill="rgba(255,255,255,.35)"/><rect x="144" y="7.5" width="2" height="5" rx="1" fill="rgba(255,255,255,.35)"/><rect x="148" y="3.0" width="2" height="14" rx="1" fill="rgba(255,255,255,.35)"/><rect x="152" y="5.0" width="2" height="10" rx="1" fill="rgba(255,255,255,.35)"/><rect x="156" y="6.5" width="2" height="7" rx="1" fill="rgba(255,255,255,.35)"/><rect x="160" y="6.0" width="2" height="8" rx="1" fill="rgba(255,255,255,.35)"/><rect x="164" y="6.0" width="2" height="8" rx="1" fill="rgba(255,255,255,.35)"/><rect x="168" y="2.0" width="2" height="16" rx="1" fill="rgba(255,255,255,.35)"/><rect x="172" y="0.0" width="2" height="20" rx="1" fill="rgba(255,255,255,.35)"/><rect x="176" y="4.0" width="2" height="12" rx="1" fill="rgba(255,255,255,.35)"/><rect x="180" y="7.5" width="2" height="5" rx="1" fill="rgba(255,255,255,.35)"/><rect x="184" y="6.5" width="2" height="7" rx="1" fill="rgba(255,255,255,.35)"/><rect x="188" y="7.0" width="2" height="6" rx="1" fill="rgba(255,255,255,.35)"/><rect x="192" y="1.5" width="2" height="17" rx="1" fill="rgba(255,255,255,.35)"/><rect x="196" y="2.0" width="2" height="16" rx="1" fill="rgba(255,255,255,.35)"/><rect x="200" y="6.5" width="2" height="7" rx="1" fill="rgba(255,255,255,.35)"/><rect x="204" y="7.0" width="2" height="6" rx="1" fill="rgba(255,255,255,.35)"/><rect x="208" y="6.0" width="2" height="8" rx="1" fill="rgba(255,255,255,.35)"/><rect x="212" y="5.5" width="2" height="9" rx="1" fill="rgba(255,255,255,.35)"/><rect x="216" y="2.0" width="2" height="16" rx="1" fill="rgba(255,255,255,.35)"/><rect x="220" y="5.5" width="2" height="9" rx="1" fill="rgba(255,255,255,.35)"/><rect x="224" y="7.0" width="2" height="6" rx="1" fill="rgba(255,255,255,.35)"/><rect x="228" y="7.5" width="2" height="5" rx="1" fill="rgba(255,255,255,.35)"/><rect x="232" y="6.0" width="2" height="8" rx="1" fill="rgba(255,255,255,.35)"/><rect x="236" y="0.0" width="2" height="20" rx="1" fill="rgba(255,255,255,.35)"/><rect x="240" y="0.0" width="2" height="20" rx="1" fill="rgba(255,255,255,.35)"/><rect x="244" y="4.0" width="2" height="12" rx="1" fill="rgba(255,255,255,.35)"/><rect x="248" y="5.0" width="2" height="10" rx="1" fill="rgba(255,255,255,.35)"/><rect x="252" y="4.5" width="2" height="11" rx="1" fill="rgba(255,255,255,.35)"/></svg><span>음성</span></div>
+      <ul class="pn-words"><li><b>bucket</b><span>양동이</span></li><li><b>appear</b><span>나타나다</span></li><li><b>adopt</b><span>입양하다</span></li><li><b>advice</b><span>조언</span></li></ul>
+      <a class="pn-btn" href="#">전체 읽기<span aria-hidden="true">↗</span></a>
+    </div>
+  </aside>
+  <div class="c2-low" id="subscribe">
+    <p class="c2-sub">출근길에 외국어 지문 하나.<br>읽고, 듣고, AI에게 해석 피드백을 받아요.</p>
+    <form class="c2-form" onsubmit="return false"><label for="c2-mail"><span class="mono">이메일 주소 / 매일 07:00 전후 발송</span><input id="c2-mail" type="email" placeholder="name@example.com"></label><button type="submit">무료로 시작하기<span aria-hidden="true">→</span></button></form>
+    <div class="c2-data">
+      <div><span class="mono">ENGLISH</span><b>EN <em>12</em>편</b></div>
+      <div><span class="mono">日本語</span><b>JA <em>11</em>편</b></div>
+      <div><span class="mono">WORDS</span><b>단어 <em>143</em>개</b></div>
+      <div><span class="mono">DAILY</span><b><em>07:00</em></b></div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head"><span class="mono">02 / 이용 방법</span><h2>세 단계면 오늘 몫은 끝나요.</h2></div>
+    <ol class="steps">
+      <li><span class="mono st-t">07:00</span><h3>메일이 와요</h3><p>매일 아침 7시 전후, 오늘의 지문이 메일로 와요. 영어(B1~B2)나 일본어(N4~N5) 중 하나를 골라 받아요.</p></li>
+      <li><span class="mono st-t">07:01</span><h3>듣고, 써 봐요</h3><p>문장마다 합성 음성이 붙어 있어요. 내 해석을 먼저 써 보고 모범 해석과 핵심 단어로 맞춰 봐요.</p></li>
+      <li><span class="mono st-t">07:05</span><h3>AI에게 물어요</h3><p>'AI 피드백 요청문 복사'를 누르면 지문과 내 해석이 함께 복사돼요. ChatGPT나 Claude에 붙여 넣으면 돼요.</p></li>
+    </ol>
+    <p class="note mono">일요일에는 그 주의 핵심 단어를 모은 주간 단어 복습 메일이 따로 와요.</p>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="mono">03 / 이번 주 지문</span><h2>이번 주에 나온 지문이에요.</h2><span class="mono sec-meta">2026.10.12 ~ 10.18 / 지금까지 6편</span></div>
+    <div class="week"><div class="day "><div class="day-h"><b>월</b><span class="mono">10.12</span></div><ul><li><span class="mono lang">EN</span>핵시계</li><li><span class="mono lang">JA</span>가을 요리</li></ul></div><div class="day "><div class="day-h"><b>화</b><span class="mono">10.13</span></div><ul><li><span class="mono lang">EN</span>레이저 안테나</li><li><span class="mono lang">JA</span>동네 빵집</li></ul></div><div class="day today"><div class="day-h"><b>수</b><span class="mono">10.14</span><span class="tag">오늘</span></div><ul><li><span class="mono lang">EN</span>나무 입양</li><li><span class="mono lang">JA</span>쓰레기 분리배출</li></ul></div><div class="day  blank"><div class="day-h"><b>목</b><span class="mono">10.15</span></div><ul><li class="empty mono">07:00 공개 예정</li></ul></div><div class="day  blank"><div class="day-h"><b>금</b><span class="mono">10.16</span></div><ul><li class="empty mono">07:00 공개 예정</li></ul></div><div class="day  blank"><div class="day-h"><b>토</b><span class="mono">10.17</span></div><ul><li class="empty mono">07:00 공개 예정</li></ul></div><div class="day sun blank"><div class="day-h"><b>일</b><span class="mono">10.18</span></div><ul><li class="empty mono">07:00 공개 예정</li><li class="review">주간 단어 복습 메일</li></ul></div></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="mono">04 / 자주 묻는 질문</span><h2>궁금한 점이 있나요?</h2></div>
+    <dl class="faq">
+      <div><dt>정말 무료인가요?</dt><dd>완전 무료예요. 회원가입도, 카드 등록도 필요 없어요. 음성, 핵심 단어, 모범 해석, AI 피드백 요청문까지 모두 무료로 쓸 수 있어요.</dd></div>
+      <div><dt>메일은 언제 오나요?</dt><dd>새 지문이 올라오면 매일 아침 7시 전후에 보내 드려요. 일요일에는 그 주의 핵심 단어를 복습하는 메일도 따로 보내요.</dd></div>
+      <div><dt>AI 피드백은 어떻게 받나요?</dt><dd>지문 페이지에서 내 해석을 쓴 뒤 'AI 피드백 요청문 복사'를 누르세요. 지문과 해석이 함께 복사되니 ChatGPT나 Claude에 붙여 넣기만 하면 돼요.</dd></div>
+    </dl>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand"><b>매일 외국어 읽기</b><span>매일 아침 한 편, 외국어로 읽는 세상.</span></div>
+    <nav class="foot-links" aria-label="wspace">
+      <a href="https://www.wspace.ai.kr/">wspace 홈</a><a href="https://www.wspace.ai.kr/about/">소개</a>
+      <a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a><a href="https://www.wspace.ai.kr/contact/">연락처</a>
+    </nav>
+    <span class="mono foot-url">read.wspace.ai.kr</span>
+  </div>
+</footer>
+</main>
+</body>
+</html>

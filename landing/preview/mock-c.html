@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>매일 외국어 읽기 — 하루 5분 습관</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+  :root {
+    --black: #0c0c0c;
+    --gray-dark: #1a1a1a;
+    --gray-mid: #555555;
+    --gray-light: #999999;
+    --gray-faint: #f4f4f4;
+    --border: #e2e2e2;
+    --accent: #2b4bff;
+    --accent-mid: #6b83ff;
+    --accent-light: #eef1ff;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    z-index: 100;
+  }
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--black);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .nav-link {
+    font-size: 13px;
+    color: var(--gray-mid);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .nav-cta {
+    height: 36px;
+    padding: 0 16px;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Pretendard', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* HERO */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 64px;
+    align-items: center;
+    min-height: calc(100vh - 60px);
+  }
+  .hero-left {}
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero-headline {
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+  .hero-headline .accent { color: var(--accent); }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--gray-mid);
+    line-height: 1.75;
+    margin-bottom: 40px;
+    max-width: 440px;
+    font-weight: 400;
+  }
+
+  /* STREAK ROW */
+  .streak-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .streak-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+  .streak-days {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .day-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .day-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gray-light);
+    letter-spacing: 0.03em;
+  }
+  .day-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gray-faint);
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .day-dot.filled {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .day-dot.today {
+    background: var(--white);
+    border: 2px solid var(--accent);
+  }
+  .day-dot svg { display: block; }
+  .streak-stat {
+    font-size: 13px;
+    color: var(--gray-mid);
+    font-weight: 500;
+  }
+  .streak-stat strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* EMAIL FORM */
+  .email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .email-row {
+    display: flex;
+    gap: 8px;
+  }
+  .email-input {
+    flex: 1;
+    height: 52px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 0 18px;
+    font-size: 15px;
+    font-family: 'Pretendard', sans-serif;
+    color: var(--black);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.15s;
+    font-weight: 500;
+  }
+  .email-input:focus { border-color: var(--accent); }
+  .email-input::placeholder { color: var(--gray-light); font-weight: 400; }
+  .btn-cta {
+    height: 52px;
+    padding: 0 24px;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Pretendard', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn-cta:hover { background: #1a39e8; }
+  .form-note {
+    font-size: 12px;
+    color: var(--gray-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* PHONE + SIDE INFO */
+  .hero-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone-frame {
+    width: 220px;
+    flex-shrink: 0;
+    border: 2px solid var(--black);
+    border-radius: 28px;
+    overflow: hidden;
+    background: var(--white);
+    position: relative;
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .phone-notch {
+    height: 28px;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone-notch-pill {
+    width: 60px;
+    height: 12px;
+    background: #222;
+    border-radius: 8px;
+  }
+  .phone-screen {
+    padding: 14px 14px 16px;
+    background: var(--white);
+  }
+  .phone-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .phone-date {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--gray-light);
+    letter-spacing: 0.04em;
+  }
+  .phone-level {
+    font-size: 9px;
+    font-weight: 700;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+  }
+  .phone-topic {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .phone-sentence {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 8px 10px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 8px;
+  }
+  .phone-sentence-text {
+    font-size: 10px;
+    line-height: 1.6;
+    color: var(--black);
+    font-weight: 500;
+  }
+  .waveform {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 8px;
+    height: 20px;
+  }
+  .waveform-bar {
+    width: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+  .phone-sentence-dim {
+    background: var(--gray-faint);
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .phone-sentence-dim .phone-sentence-text {
+    color: var(--gray-mid);
+    font-weight: 400;
+  }
+  .phone-ai-btn {
+    width: 100%;
+    padding: 8px;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Pretendard', sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .phone-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+  .phone-stat {
+    text-align: center;
+  }
+  .phone-stat-val {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--black);
+    letter-spacing: -0.02em;
+  }
+  .phone-stat-lbl {
+    font-size: 8px;
+    color: var(--gray-light);
+    font-weight: 500;
+    margin-top: 1px;
+  }
+  .phone-home {
+    height: 20px;
+    background: var(--gray-faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .home-indicator {
+    width: 60px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  /* SIDE INFO */
+  .side-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .info-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    min-width: 140px;
+  }
+  .info-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 10px;
+  }
+  .info-stat-big {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--black);
+    line-height: 1;
+  }
+  .info-stat-sub {
+    font-size: 12px;
+    color: var(--gray-mid);
+    margin-top: 3px;
+  }
+  .mini-streak {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .mini-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.2;
+  }
+  .mini-dot.on { opacity: 1; }
+  .mini-dot.half { opacity: 0.5; }
+
+  /* BELOW FOLD */
+  .below {
+    border-top: 1px solid var(--border);
+  }
+
+  /* FEATURES */
+  .features-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 40px;
+  }
+  .features-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .features-title {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+    line-height: 1.2;
+    max-width: 480px;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .feature-item {
+    padding: 32px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .feature-title {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--black);
+  }
+  .feature-desc {
+    font-size: 14px;
+    color: var(--gray-mid);
+    line-height: 1.7;
+  }
+
+  /* RECENT */
+  .recent-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 72px;
+    border-top: 1px solid var(--border);
+  }
+  .recent-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 40px 0 28px;
+  }
+  .recent-title {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  .recent-count {
+    font-size: 13px;
+    color: var(--gray-light);
+  }
+  .topics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .topic-row {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .topic-row:last-child { border-bottom: none; }
+  .topic-lang {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    min-width: 60px;
+  }
+  .topic-lang.en { color: var(--accent); }
+  .topic-lang.ja { color: #e05000; }
+  .topic-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    flex: 1;
+    letter-spacing: -0.01em;
+  }
+  .topic-date {
+    font-size: 12px;
+    color: var(--gray-light);
+  }
+  .topic-arrow {
+    font-size: 14px;
+    color: var(--border);
+  }
+
+  /* FAQ */
+  .faq-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+  .faq-title {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+  .faq-item {
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--gray-mid);
+    line-height: 1.7;
+  }
+
+  /* CTA BANNER */
+  .cta-banner {
+    background: var(--accent);
+    padding: 64px 40px;
+    text-align: center;
+  }
+  .cta-banner h2 {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .cta-banner p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 32px;
+  }
+  .cta-form {
+    display: inline-flex;
+    gap: 8px;
+    max-width: 440px;
+    width: 100%;
+  }
+  .cta-input {
+    flex: 1;
+    height: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 8px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-family: 'Pretendard', sans-serif;
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .cta-input::placeholder { color: rgba(255,255,255,0.5); }
+  .cta-input:focus { border-color: rgba(255,255,255,0.8); }
+  .cta-btn {
+    height: 50px;
+    padding: 0 24px;
+    background: var(--white);
+    color: var(--accent);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    font-family: 'Pretendard', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+  .cta-btn:hover { opacity: 0.9; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--black);
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 12px;
+    color: var(--gray-light);
+    text-decoration: none;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: var(--gray-light);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-right .nav-link { display: none; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 40px 20px;
+      min-height: auto;
+      gap: 40px;
+    }
+    .hero-right { flex-direction: column; }
+    .phone-frame { width: 200px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .features-section, .recent-section, .faq-section { padding-left: 20px; padding-right: 20px; }
+    .email-row { flex-direction: column; }
+    .btn-cta { width: 100%; text-align: center; }
+    .cta-form { flex-direction: column; padding: 0 20px; }
+    .cta-btn { width: 100%; }
+    footer { flex-direction: column; gap: 16px; align-items: flex-start; padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">매일 외국어 읽기<span>.</span></a>
+  <div class="nav-right">
+    <a href="#" class="nav-link">오늘의 지문</a>
+    <a href="#" class="nav-link">지난 지문</a>
+    <a href="#" class="nav-cta">무료로 시작하기</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <!-- LEFT -->
+  <div class="hero-left">
+    <div class="hero-tag">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M5 1l1.2 2.4L9 3.8 7 5.7l.5 2.8L5 7l-2.5 1.5L3 5.7 1 3.8l2.8-.4L5 1z" fill="#2b4bff"/>
+      </svg>
+      무료 외국어 학습
+    </div>
+
+    <h1 class="hero-headline">
+      하루 5분,<br>
+      <span class="accent">매일 아침.</span>
+    </h1>
+    <p class="hero-sub">출근길에 외국어 지문 하나.<br>읽고, 듣고, AI에게 해석 피드백을 받아요.</p>
+
+    <div class="streak-box">
+      <span class="streak-label">이번 주 읽기 현황</span>
+      <div class="streak-days">
+        <div class="day-item"><span class="day-name">월</span><div class="day-dot filled"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 6l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="day-item"><span class="day-name">화</span><div class="day-dot filled"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 6l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="day-item"><span class="day-name">수</span><div class="day-dot filled"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 6l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="day-item"><span class="day-name">목</span><div class="day-dot filled"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 6l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="day-item"><span class="day-name">금</span><div class="day-dot filled"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 6l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="day-item"><span class="day-name">토</span><div class="day-dot"></div></div>
+        <div class="day-item"><span class="day-name">일</span><div class="day-dot"></div></div>
+        <span class="streak-stat">지문 <strong>23편</strong>, 단어 <strong>161개</strong></span>
+      </div>
+    </div>
+
+    <form class="email-form" onsubmit="return false;">
+      <div class="email-row">
+        <input class="email-input" type="email" placeholder="이메일 주소를 입력하세요">
+        <button class="btn-cta" type="submit">무료로 시작하기</button>
+      </div>
+      <span class="form-note">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1a5 5 0 100 10A5 5 0 006 1zm0 3v2.5l2 1.5" stroke="#bbb" stroke-width="1.2" stroke-linecap="round"/></svg>
+        매일 오전 7시 발송. 무료, 언제든 해지 가능합니다.
+      </span>
+    </form>
+  </div>
+
+  <!-- RIGHT: PHONE + SIDE -->
+  <div class="hero-right">
+    <!-- Phone frame -->
+    <div class="phone-frame">
+      <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+      <div class="phone-screen">
+        <div class="phone-header">
+          <span class="phone-date">2026.10.14 (수)</span>
+          <span class="phone-level">B1~B2</span>
+        </div>
+        <div class="phone-topic">나무 입양</div>
+
+        <!-- Active sentence with waveform -->
+        <div class="phone-sentence">
+          <div class="phone-sentence-text">On hot summer days, a woman in Berlin carries a <strong>bucket</strong> of water to a tree near her home...</div>
+          <div class="waveform" style="margin-top: 8px;">
+            <div class="waveform-bar" style="height: 6px;"></div>
+            <div class="waveform-bar" style="height: 12px;"></div>
+            <div class="waveform-bar" style="height: 16px;"></div>
+            <div class="waveform-bar" style="height: 10px;"></div>
+            <div class="waveform-bar" style="height: 18px;"></div>
+            <div class="waveform-bar" style="height: 14px;"></div>
+            <div class="waveform-bar" style="height: 8px;"></div>
+            <div class="waveform-bar" style="height: 16px;"></div>
+            <div class="waveform-bar" style="height: 12px;"></div>
+            <div class="waveform-bar" style="height: 20px;"></div>
+            <div class="waveform-bar" style="height: 14px;"></div>
+            <div class="waveform-bar" style="height: 9px;"></div>
+            <div class="waveform-bar" style="height: 16px;"></div>
+            <div class="waveform-bar" style="height: 11px;"></div>
+            <div class="waveform-bar" style="height: 6px;"></div>
+            <div class="waveform-bar" style="height: 14px; opacity: 0.3;"></div>
+            <div class="waveform-bar" style="height: 10px; opacity: 0.3;"></div>
+            <div class="waveform-bar" style="height: 16px; opacity: 0.3;"></div>
+            <div class="waveform-bar" style="height: 8px; opacity: 0.3;"></div>
+            <div class="waveform-bar" style="height: 12px; opacity: 0.3;"></div>
+          </div>
+        </div>
+
+        <div class="phone-sentence-dim">
+          <div class="phone-sentence-text">She found the tree through a free app that shows a map of about 900,000 street trees...</div>
+        </div>
+
+        <div class="phone-ai-btn">AI 피드백 요청문 복사</div>
+
+        <div class="phone-stats">
+          <div class="phone-stat"><div class="phone-stat-val">6</div><div class="phone-stat-lbl">문장</div></div>
+          <div class="phone-stat"><div class="phone-stat-val">4</div><div class="phone-stat-lbl">핵심 단어</div></div>
+          <div class="phone-stat"><div class="phone-stat-val">5분</div><div class="phone-stat-lbl">예상 시간</div></div>
+        </div>
+      </div>
+      <div class="phone-home"><div class="home-indicator"></div></div>
+    </div>
+
+    <!-- Side info cards -->
+    <div class="side-info">
+      <div class="info-card">
+        <div class="info-card-label">지금까지</div>
+        <div class="info-stat-big">23</div>
+        <div class="info-stat-sub">편의 지문</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">학습 단어</div>
+        <div class="info-stat-big">161</div>
+        <div class="info-stat-sub">개의 핵심 단어</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">연속 읽기</div>
+        <div class="mini-streak" style="margin-bottom: 8px;">
+          <div class="mini-dot on"></div>
+          <div class="mini-dot on"></div>
+          <div class="mini-dot on"></div>
+          <div class="mini-dot on"></div>
+          <div class="mini-dot on"></div>
+          <div class="mini-dot"></div>
+          <div class="mini-dot"></div>
+        </div>
+        <div class="info-stat-sub">5일 연속</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BELOW FOLD -->
+<div class="below">
+  <section class="features-section">
+    <div class="features-eyebrow">서비스 특징</div>
+    <h2 class="features-title">외국어 읽기를<br>매일의 습관으로</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 3l1.5 3 3.5.5-2.5 2.5.5 3.5L10 11l-3 1.5.5-3.5L5 6.5l3.5-.5L10 3z" fill="white"/>
+          </svg>
+        </div>
+        <div class="feature-title">문장별 원어민 음성</div>
+        <div class="feature-desc">각 문장마다 합성 음성이 제공됩니다. 읽으면서 귀로도 자연스럽게 익힐 수 있습니다.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="3" y="4" width="14" height="12" rx="2" stroke="white" stroke-width="1.5"/>
+            <path d="M3 8h14" stroke="white" stroke-width="1.5"/>
+            <path d="M7 4v4M13 4v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feature-title">모범 해석과 핵심 단어</div>
+        <div class="feature-desc">지문마다 모범 번역과 주요 어휘를 제공합니다. 수준에 맞춘 설명으로 학습 효율을 높입니다.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="7" stroke="white" stroke-width="1.5"/>
+            <path d="M10 6v4l3 2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feature-title">AI 피드백 한 번에</div>
+        <div class="feature-desc">내 해석을 쓴 뒤 버튼 하나로 AI 요청문을 복사합니다. ChatGPT, Claude 어디든 바로 붙여 넣을 수 있습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recent-section">
+    <div class="recent-header">
+      <h2 class="recent-title">최근 지문</h2>
+      <span class="recent-count">영어 12편, 일본어 11편</span>
+    </div>
+    <div class="topics-list">
+      <div class="topic-row">
+        <span class="topic-lang en">English</span>
+        <span class="topic-name">나무 입양</span>
+        <span class="topic-date">2026.10.14</span>
+        <span class="topic-arrow">›</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-lang ja">日本語</span>
+        <span class="topic-name">쓰레기 분리배출</span>
+        <span class="topic-date">2026.10.14</span>
+        <span class="topic-arrow">›</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-lang en">English</span>
+        <span class="topic-name">수직 농장</span>
+        <span class="topic-date">2026.10.13</span>
+        <span class="topic-arrow">›</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-lang en">English</span>
+        <span class="topic-name">아트 페어</span>
+        <span class="topic-date">2026.10.12</span>
+        <span class="topic-arrow">›</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-lang en">English</span>
+        <span class="topic-name">핵시계</span>
+        <span class="topic-date">2026.10.11</span>
+        <span class="topic-arrow">›</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-lang ja">日本語</span>
+        <span class="topic-name">온천 안내</span>
+        <span class="topic-date">2026.10.10</span>
+        <span class="topic-arrow">›</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2 class="faq-title">자주 묻는 질문</h2>
+    <div class="faq-item">
+      <div class="faq-q">영어와 일본어 둘 다 받을 수 있나요?</div>
+      <div class="faq-a">하나의 이메일로 하나의 언어를 구독합니다. 두 언어를 모두 받으시려면 다른 이메일 주소로 추가 구독해 주세요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">지문 수준은 어느 정도인가요?</div>
+      <div class="faq-a">영어는 CEFR B1~B2 수준, 일본어는 JLPT N4~N5 수준입니다. 매일 5분 내외로 읽을 수 있는 분량입니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">언제든 해지할 수 있나요?</div>
+      <div class="faq-a">네, 메일 하단의 구독 취소 링크를 통해 언제든 즉시 해지하실 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">일요일 단어 복습은 어떻게 오나요?</div>
+      <div class="faq-a">매주 일요일에 그 주에 배운 핵심 단어를 정리한 복습 메일이 발송됩니다.</div>
+    </div>
+  </section>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>오늘부터 시작해보세요</h2>
+  <p>하루 5분, 매일 아침. 외국어 읽기 습관을 만들어 드립니다.</p>
+  <form class="cta-form" onsubmit="return false;">
+    <input class="cta-input" type="email" placeholder="이메일 주소를 입력하세요">
+    <button class="cta-btn" type="submit">무료로 시작하기</button>
+  </form>
+</div>
+
+<footer>
+  <div class="footer-logo">매일 외국어 읽기<span>.</span></div>
+  <ul class="footer-links">
+    <li><a href="#">이용 안내</a></li>
+    <li><a href="#">구독 취소</a></li>
+    <li><a href="#">문의하기</a></li>
+  </ul>
+  <span class="footer-copy">read.wspace.ai.kr</span>
+</footer>
+
+</body>
+</html>

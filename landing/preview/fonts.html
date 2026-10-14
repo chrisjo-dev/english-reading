@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Pretendard 자간 확인</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root {
+  --paper: #f2f4f1;
+  --ink: #202623;
+  --muted: #5a625e;
+  --rule: rgba(32,38,35,0.16);
+  --accent: #234ae8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  width: 1440px;
+  min-height: 820px;
+  position: relative;
+  overflow: hidden;
+  padding-top: 48px;
+}
+.label-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 36px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64.8px;
+}
+.result {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  opacity: 0.7;
+}
+.op-metas {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 64.8px;
+  margin-bottom: 0;
+}
+.op-meta {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.op-meta-r { color: var(--ink); text-align: right; }
+.op-title {
+  position: absolute;
+  top: 116px;
+  left: 56px;
+  font-weight: 400;
+  z-index: 1;
+}
+.op-l1 {
+  display: flex;
+  align-items: flex-start;
+  font-size: 168px;
+}
+.op-l1-main {
+  font-size: 1em;
+  line-height: 0.84;
+  letter-spacing: -0.055em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.op-l1-sup {
+  font-size: 0.46821em;
+  line-height: 0.83905;
+  letter-spacing: -0.05505em;
+  padding-top: 0.16018em;
+  margin-left: 0.1195em;
+  color: var(--ink);
+}
+.op-l2 {
+  font-size: 246px;
+  line-height: 0.8605;
+  font-weight: 400;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  width: 1264px;
+  max-width: calc(1440px - 56px);
+}
+.op-statement {
+  position: absolute;
+  top: 530px;
+  left: 64.8px;
+  font-size: 43.2px;
+  line-height: 50.1px;
+  letter-spacing: -1.51px;
+  color: var(--ink);
+  font-weight: 400;
+}
+.op-body {
+  position: absolute;
+  top: 628px;
+  left: 64.8px;
+  display: flex;
+  gap: 64px;
+}
+.op-body p {
+  font-size: 19px;
+  line-height: 30.4px;
+  color: var(--ink);
+  max-width: 520px;
+}
+.op-body .ko { color: var(--muted); }
+.ruler {
+  position: absolute;
+  top: 300px;
+  left: 56px;
+  width: 1182px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.25;
+}
+.ruler-label {
+  position: absolute;
+  top: 305px;
+  left: 56px;
+  font-size: 10px;
+  color: var(--accent);
+  font-family: "Courier New", monospace;
+}
+</style>
+</head>
+<body>
+<div class="page" id="page">
+  <div class="label-bar">
+    <span>Pretendard — "World Slowly" 자간 확인 (target 82% = 1182px at 1440px)</span>
+    <span class="result" id="result">계산 중...</span>
+  </div>
+  <div class="op-metas" style="margin-top:52px;">
+    <div class="op-meta">매일 외국어 읽기<br>한국인 학습자를 위한 영어, 일본어 지문</div>
+    <div class="op-meta op-meta-r">No. 312 — 오늘<br>2026년 10월 14일</div>
+  </div>
+
+  <div class="op-title">
+    <div class="op-l1">
+      <span class="op-l1-main">Read the</span>
+      <span class="op-l1-sup">daily</span>
+    </div>
+    <div class="op-l2" id="l2">World Slowly</div>
+  </div>
+
+  <!-- 82% width ruler (accent line) -->
+  <div class="ruler"></div>
+  <div class="ruler-label">82% (1182 px)</div>
+
+  <div class="op-statement">오늘은 나무 입양 이야기예요.</div>
+  <div class="op-body">
+    <p>A city in Japan is offering residents something unusual: the chance to adopt a tree. In exchange for regular watering and care, adopters can harvest the fruit each autumn.</p>
+    <p class="ko">일본의 한 도시가 주민들에게 나무를 입양할 기회를 주고 있어요. 정기적으로 물을 주고 돌보는 대가로 입양자는 매년 가을 열매를 수확할 수 있어요.</p>
+  </div>
+</div>
+
+<script>
+const TARGET = 1182; // 82 % of 1440
+const FS = 246;
+const TEXT = 'World Slowly';
+
+function tune() {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  // Use full Pretendard family name
+  ctx.font = `400 ${FS}px "Pretendard Variable", Pretendard, sans-serif`;
+  const natural = ctx.measureText(TEXT).width;
+
+  // letter-spacing is applied after every character (including last)
+  // measured_width = natural_width + n * ls_px
+  const n = TEXT.length; // 11
+  const lsPx = (TARGET - natural) / n;
+  const lsEm = lsPx / FS;
+
+  const l2 = document.getElementById('l2');
+  l2.style.letterSpacing = lsEm.toFixed(4) + 'em';
+
+  document.getElementById('result').textContent =
+    `natural: ${natural.toFixed(1)}px  →  letter-spacing: ${lsEm.toFixed(4)}em (${lsPx.toFixed(2)}px)  font-size: ${FS}px`;
+}
+
+document.fonts.ready.then(tune);
+</script>
+</body>
+</html>

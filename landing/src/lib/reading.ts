@@ -11,7 +11,7 @@ function readJson(file: string) {
 }
 
 export function loadLatest(): LatestData {
-  const data: LatestData = { date: "", langs: {}, recent: [] };
+  const data: LatestData = { date: "", words_total: 0, langs: {}, recent: [] };
   const recent: LatestData["recent"] = [];
   for (const lang of LANGS) {
     const dir = path.join(ROOT, "content", lang);
@@ -24,20 +24,23 @@ export function loadLatest(): LatestData {
       .sort()
       .reverse();
     if (!days.length) continue;
-    const today = readJson(path.join(dir, `${days[0]}.json`));
+    const all = days.map((d) => readJson(path.join(dir, `${d}.json`)));
+    const today = all[0];
     data.langs[lang] = {
       count: days.length,
       latest: days[0],
       topic: today.topic,
-      sentences: (today.sentences ?? []).slice(0, 3).map((s: { en: string }) => s.en),
+      sentences: (today.sentences ?? []).slice(0, 4).map((s: { en: string }) => s.en),
+      chips: today.chips ?? [],
+      answer: today.answers?.[0] ?? "",
+      words: today.words ?? [],
     };
+    data.words_total! += all.reduce((n, c) => n + (c.words?.length ?? 0), 0);
     if (days[0] > data.date) data.date = days[0];
-    for (const day of days.slice(0, 6)) {
-      recent.push({ lang, day, topic: readJson(path.join(dir, `${day}.json`)).topic });
-    }
+    days.slice(0, 7).forEach((day, i) => recent.push({ lang, day, topic: all[i].topic }));
   }
   data.recent = recent
     .sort((a, b) => (a.day === b.day ? LANGS.indexOf(a.lang) - LANGS.indexOf(b.lang) : a.day < b.day ? 1 : -1))
-    .slice(0, 6);
+    .slice(0, 14);
   return data;
 }

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>매일 외국어 읽기 — 조간</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --gray-dark: #222222;
+    --gray-mid: #555555;
+    --gray-light: #888888;
+    --gray-faint: #f8f8f8;
+    --border: #c8c8c8;
+    --border-light: #e8e8e8;
+    --accent: #1144cc;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* TOP STRIP */
+  .top-strip {
+    background: var(--black);
+    color: var(--white);
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .strip-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .strip-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .strip-input {
+    height: 34px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    padding: 0 12px;
+    font-size: 13px;
+    color: var(--white);
+    font-family: 'Pretendard', sans-serif;
+    outline: none;
+    width: 220px;
+    transition: border-color 0.15s;
+  }
+  .strip-input::placeholder { color: rgba(255,255,255,0.45); }
+  .strip-input:focus { border-color: rgba(255,255,255,0.7); }
+  .strip-btn {
+    height: 34px;
+    padding: 0 14px;
+    background: var(--white);
+    color: var(--black);
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Pretendard', sans-serif;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+  }
+  .strip-btn:hover { opacity: 0.85; }
+  .strip-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+  }
+
+  /* MASTHEAD */
+  .masthead-wrap {
+    border-bottom: 3px solid var(--black);
+    padding: 24px 40px 20px;
+  }
+  .masthead-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .masthead-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--black);
+  }
+  .masthead-sub {
+    font-size: 12px;
+    color: var(--gray-mid);
+    text-align: right;
+    line-height: 1.5;
+  }
+  .masthead-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    margin-top: 10px;
+  }
+  .masthead-edition {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--gray-mid);
+  }
+  .masthead-lang-tags {
+    display: flex;
+    gap: 12px;
+  }
+  .lang-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+
+  /* BROADSHEET */
+  .broadsheet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .column {
+    padding: 32px 40px;
+    position: relative;
+  }
+  .column:first-child {
+    border-right: 1px solid var(--border);
+  }
+  .col-lang {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .col-lang.en { color: var(--accent); }
+  .col-lang.ja { color: #b91c1c; }
+  .col-lang::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-light);
+  }
+  .col-headline {
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    color: var(--black);
+  }
+  .col-subhead {
+    font-size: 13px;
+    color: var(--gray-mid);
+    margin-bottom: 20px;
+    font-style: italic;
+    border-left: 2px solid var(--border);
+    padding-left: 10px;
+    line-height: 1.5;
+  }
+  .col-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+  .article-text {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .article-para {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .para-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-light);
+    padding-top: 3px;
+    min-width: 14px;
+    flex-shrink: 0;
+  }
+  .para-content {
+    flex: 1;
+  }
+  .para-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--black);
+  }
+  .para-text .kw {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 2px;
+    font-weight: 500;
+  }
+  /* furigana ruby */
+  ruby { ruby-position: over; }
+  rt { font-size: 9px; color: var(--gray-light); line-height: 1.2; }
+  .para-text-ja {
+    font-size: 15px;
+    line-height: 2.2;
+    color: var(--black);
+  }
+  .col-listen {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-mid);
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+  .col-listen:hover { color: var(--black); }
+  .col-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .col-more:hover { text-decoration: underline; }
+  .col-keywords {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-light);
+  }
+  .kw-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 8px;
+  }
+  .kw-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .kw-row {
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .kw-word {
+    font-weight: 700;
+    color: var(--black);
+    min-width: 72px;
+  }
+  .kw-meaning {
+    color: var(--gray-mid);
+  }
+
+  /* BELOW FOLD */
+  .below-fold {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 40px;
+  }
+  .below-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--black);
+  }
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+  .archive-item {
+    padding: 16px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .archive-item:last-child { border-right: none; }
+  .archive-lang {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .archive-lang.en { color: var(--accent); }
+  .archive-lang.ja { color: #b91c1c; }
+  .archive-topic {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .archive-date {
+    font-size: 11px;
+    color: var(--gray-light);
+    margin-top: auto;
+  }
+
+  /* STEPS + FAQ ROW */
+  .two-col-below {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 48px;
+  }
+  .below-section-title {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--black);
+  }
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .step-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .step-n {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    min-width: 24px;
+  }
+  .step-body {}
+  .step-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 3px;
+  }
+  .step-text {
+    font-size: 13px;
+    color: var(--gray-mid);
+    line-height: 1.6;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .faq-row {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .faq-q {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 5px;
+  }
+  .faq-a {
+    font-size: 13px;
+    color: var(--gray-mid);
+    line-height: 1.65;
+  }
+
+  /* FOOTER */
+  .footer-wrap {
+    border-top: 3px solid var(--black);
+  }
+  footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--black);
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 12px;
+    color: var(--gray-mid);
+    text-decoration: none;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: var(--gray-light);
+  }
+
+  @media (max-width: 768px) {
+    .top-strip { flex-direction: column; padding: 12px 20px; gap: 10px; }
+    .strip-input { width: 100%; }
+    .strip-form { width: 100%; }
+    .masthead-wrap { padding: 16px 20px 12px; }
+    .masthead-title { font-size: 32px; }
+    .masthead-top { flex-direction: column; gap: 8px; }
+    .masthead-sub { text-align: left; }
+    .broadsheet { grid-template-columns: 1fr; }
+    .column:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    .column { padding: 24px 20px; }
+    .archive-grid { grid-template-columns: repeat(2, 1fr); }
+    .archive-item { border-bottom: 1px solid var(--border); }
+    .below-fold, .two-col-below { padding-left: 20px; padding-right: 20px; }
+    .two-col-below { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; align-items: flex-start; padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP SUBSCRIBE STRIP -->
+<div class="top-strip">
+  <span class="strip-label">내일 조간을 메일로 받기</span>
+  <div class="strip-form">
+    <input class="strip-input" type="email" placeholder="이메일 주소">
+    <button class="strip-btn">구독하기</button>
+  </div>
+  <span class="strip-note">무료, 언제든 해지</span>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead-wrap">
+  <div class="masthead-top">
+    <h1 class="masthead-title">매일 외국어 읽기</h1>
+    <div class="masthead-sub">
+      read.wspace.ai.kr<br>
+      무료 외국어 읽기 메일링
+    </div>
+  </div>
+  <div class="masthead-meta">
+    <span class="masthead-edition">제23호 &nbsp;|&nbsp; 2026년 10월 14일 수요일 &nbsp;|&nbsp; 무료</span>
+    <div class="masthead-lang-tags">
+      <span class="lang-tag">English B1~B2</span>
+      <span class="lang-tag">日本語 N4~N5</span>
+    </div>
+  </div>
+</div>
+
+<!-- BROADSHEET COLUMNS -->
+<div class="broadsheet">
+  <!-- EN COLUMN -->
+  <div class="column">
+    <div class="col-lang en">English</div>
+    <h2 class="col-headline">나무 입양</h2>
+    <p class="col-subhead">베를린 시민들이 앱으로 가로수를 입양해 돌보고 있습니다</p>
+    <div class="col-divider"></div>
+    <div class="article-text">
+      <div class="article-para">
+        <span class="para-num">1</span>
+        <div class="para-content">
+          <p class="para-text">On hot summer days, a woman in Berlin carries a <span class="kw">bucket</span> of water to a tree near her home, and she has even given it a name: Linda.</p>
+        </div>
+      </div>
+      <div class="article-para">
+        <span class="para-num">2</span>
+        <div class="para-content">
+          <p class="para-text">She found the tree through a free app that shows a map of about nine hundred thousand street trees in the city.</p>
+        </div>
+      </div>
+      <div class="article-para">
+        <span class="para-num">3</span>
+        <div class="para-content">
+          <p class="para-text">When a tree needs water, it <span class="kw">appears</span> as an orange or red dot, and people can <span class="kw">adopt</span> it and get <span class="kw">advice</span> on how much water to give.</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="col-listen">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="7" cy="7" r="6.5" stroke="#888" stroke-width="1"/>
+        <path d="M5.5 4.5l5 2.5-5 2.5V4.5z" fill="#888"/>
+      </svg>
+      ▶ 듣기
+    </a>
+
+    <div class="col-keywords">
+      <div class="kw-label">Key Words</div>
+      <div class="kw-list">
+        <div class="kw-row"><span class="kw-word">bucket</span><span class="kw-meaning">양동이</span></div>
+        <div class="kw-row"><span class="kw-word">appear</span><span class="kw-meaning">나타나다</span></div>
+        <div class="kw-row"><span class="kw-word">adopt</span><span class="kw-meaning">입양하다 (맡아서 돌보기로 하다)</span></div>
+        <div class="kw-row"><span class="kw-word">advice</span><span class="kw-meaning">조언</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <a href="#" class="col-more">이어서 읽기 →</a>
+    </div>
+  </div>
+
+  <!-- JA COLUMN -->
+  <div class="column">
+    <div class="col-lang ja">日本語</div>
+    <h2 class="col-headline">쓰레기 분리배출</h2>
+    <p class="col-subhead">일본의 엄격한 쓰레기 분리배출 규칙을 소개합니다</p>
+    <div class="col-divider"></div>
+    <div class="article-text">
+      <div class="article-para">
+        <span class="para-num">1</span>
+        <div class="para-content">
+          <p class="para-text-ja"><ruby>日本<rt>にほん</rt></ruby>では、ごみを<ruby>出<rt>だ</rt></ruby>す<ruby>日<rt>ひ</rt></ruby>が<ruby>決<rt>き</rt></ruby>まっています。</p>
+        </div>
+      </div>
+      <div class="article-para">
+        <span class="para-num">2</span>
+        <div class="para-content">
+          <p class="para-text-ja"><ruby>燃<rt>も</rt></ruby>えるごみ、<ruby>燃<rt>も</rt></ruby>えないごみ、プラスチックなどに<ruby>分<rt>わ</rt></ruby>けて<ruby>出<rt>だ</rt></ruby>します。</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="col-listen">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="7" cy="7" r="6.5" stroke="#888" stroke-width="1"/>
+        <path d="M5.5 4.5l5 2.5-5 2.5V4.5z" fill="#888"/>
+      </svg>
+      ▶ 듣기
+    </a>
+
+    <div class="col-keywords">
+      <div class="kw-label">핵심 단어</div>
+      <div class="kw-list">
+        <div class="kw-row"><span class="kw-word">ごみ</span><span class="kw-meaning">쓰레기</span></div>
+        <div class="kw-row"><span class="kw-word">燃える</span><span class="kw-meaning">타다, 연소하다</span></div>
+        <div class="kw-row"><span class="kw-word">分ける</span><span class="kw-meaning">나누다, 분류하다</span></div>
+        <div class="kw-row"><span class="kw-word">決まる</span><span class="kw-meaning">정해져 있다</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <a href="#" class="col-more" style="color: #b91c1c;">이어서 읽기 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- BELOW FOLD: ARCHIVE -->
+<div class="below-fold">
+  <div class="below-title">지난 호 보기</div>
+  <div class="archive-grid">
+    <div class="archive-item">
+      <span class="archive-lang en">English</span>
+      <span class="archive-topic">수직 농장</span>
+      <span class="archive-date">10.13</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-lang en">English</span>
+      <span class="archive-topic">아트 페어</span>
+      <span class="archive-date">10.12</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-lang en">English</span>
+      <span class="archive-topic">핵시계</span>
+      <span class="archive-date">10.11</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-lang ja">日本語</span>
+      <span class="archive-topic">온천 안내</span>
+      <span class="archive-date">10.10</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-lang en">English</span>
+      <span class="archive-topic">로보택시</span>
+      <span class="archive-date">10.09</span>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS + FAQ -->
+<div class="two-col-below">
+  <div>
+    <div class="below-section-title">이용 방법</div>
+    <div class="step-list">
+      <div class="step-row">
+        <span class="step-n">01</span>
+        <div class="step-body">
+          <div class="step-title">매일 아침 7시, 메일 도착</div>
+          <div class="step-text">영어 또는 일본어 지문이 이메일로 옵니다. 출근길에 읽기 좋은 분량입니다.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-n">02</span>
+        <div class="step-body">
+          <div class="step-title">읽고, 듣고, 해석하기</div>
+          <div class="step-text">지문을 읽고 문장별 음성을 들어보세요. 핵심 단어와 모범 해석도 제공됩니다.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-n">03</span>
+        <div class="step-body">
+          <div class="step-title">AI 피드백 받기</div>
+          <div class="step-text">버튼 하나로 요청문을 복사해 ChatGPT나 Claude에 붙여 넣으면 내 해석에 대한 피드백을 바로 받을 수 있습니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="below-section-title">자주 묻는 질문</div>
+    <div class="faq-list">
+      <div class="faq-row">
+        <div class="faq-q">영어와 일본어 둘 다 받을 수 있나요?</div>
+        <div class="faq-a">하나의 이메일로 하나의 언어를 구독합니다. 두 언어를 받으시려면 다른 주소로 추가 구독해 주세요.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">지문 수준은 어떻게 되나요?</div>
+        <div class="faq-a">영어는 CEFR B1~B2, 일본어는 JLPT N4~N5 수준입니다.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">언제든 해지할 수 있나요?</div>
+        <div class="faq-a">네, 메일 하단 링크로 즉시 해지하실 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer>
+    <div class="footer-logo">매일 외국어 읽기</div>
+    <ul class="footer-links">
+      <li><a href="#">이용 안내</a></li>
+      <li><a href="#">구독 취소</a></li>
+      <li><a href="#">문의하기</a></li>
+    </ul>
+    <span class="footer-copy">read.wspace.ai.kr</span>
+  </footer>
+</div>
+
+</body>
+</html>

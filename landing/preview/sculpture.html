@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Hero Sculpture — Glyph Drift</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root {
+  --paper: #f2f4f1;
+  --ink: #202623;
+  --muted: #5a625e;
+  --rule: rgba(32,38,35,0.16);
+  --accent: #234ae8;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  width: 1440px;
+  min-height: 900px;
+  overflow-x: hidden;
+}
+
+/* ── page chrome ── */
+.hd {
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64.8px;
+  border-bottom: 1px solid var(--rule);
+}
+.hd-brand { font-size: 13px; letter-spacing: -0.01em; }
+.hd-note  { font-size: 12px; color: var(--muted); }
+
+/* ── hero section ── */
+.hero {
+  position: relative;
+  height: 816px; /* 900 - 84 */
+  overflow: hidden;
+}
+
+/* title block, left column */
+.hero-title {
+  position: absolute;
+  top: 80px;
+  left: 56px;
+  z-index: 2;
+  pointer-events: none;
+}
+.op-l1 {
+  display: flex;
+  align-items: flex-start;
+  font-size: 168px;
+  font-weight: 400;
+}
+.op-l1-main {
+  line-height: 0.84;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+.op-l1-sup {
+  font-size: 0.46821em;
+  line-height: 0.83905;
+  letter-spacing: -0.05505em;
+  padding-top: 0.16018em;
+  margin-left: 0.1195em;
+}
+.op-l2 {
+  font-size: 246px;
+  line-height: 0.8605;
+  letter-spacing: -0.055em;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 1264px;
+  max-width: calc(1440px - 56px);
+}
+
+/* ── sculpture canvas, right-center ── */
+.sculpture-wrap {
+  position: absolute;
+  top: 50%;
+  right: 72px;
+  transform: translateY(-50%);
+  width: 480px;
+  height: 480px;
+}
+#c {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  cursor: crosshair;
+}
+
+/* ── EN / JA controls ── */
+.ctl {
+  position: absolute;
+  bottom: 72px;
+  left: 56px;
+  z-index: 2;
+}
+.ctl-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  width: 389px;
+}
+.ctl-track {
+  position: relative;
+  height: 1px;
+  background: var(--rule);
+  width: 389px;
+  margin-bottom: 6px;
+}
+.ctl-dot {
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: left 0.6s var(--ease);
+  pointer-events: none;
+}
+.ctl-slider {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  opacity: 0;
+  cursor: pointer;
+}
+.ctl-ticks {
+  display: flex;
+  gap: 40px;
+  font-size: 9px;
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.ctl-ticks button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  letter-spacing: inherit;
+}
+.ctl-ticks button[aria-pressed="true"] { color: var(--accent); }
+
+.ctl-state {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+  width: 389px;
+  min-height: 21px;
+  transition: opacity 0.4s;
+}
+.ctl-desc {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ── right caption ── */
+.hero-go {
+  position: absolute;
+  bottom: 72px;
+  right: 64.8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  z-index: 2;
+}
+.hero-go > span { font-size: 15px; }
+.hero-btn {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 27px;
+  cursor: default;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.35s var(--ease), color 0.35s var(--ease);
+}
+.hero-btn:hover { background: var(--ink); color: var(--paper); }
+
+/* ── error state ── */
+#error {
+  display: none;
+  position: absolute;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <span class="hd-brand">매일 외국어 읽기</span>
+  <span class="hd-note">Hero sculpture preview — Glyph Drift</span>
+</header>
+
+<section class="hero" id="hero">
+
+  <div class="hero-title">
+    <div class="op-l1">
+      <span class="op-l1-main">Read the</span>
+      <span class="op-l1-sup">daily</span>
+    </div>
+    <div class="op-l2">World Slowly</div>
+  </div>
+
+  <div class="sculpture-wrap">
+    <canvas id="c" width="960" height="960"></canvas>
+    <div id="error">WebGL unavailable</div>
+  </div>
+
+  <div class="ctl">
+    <div class="ctl-label">
+      <span>언어를 바꿔 보세요</span>
+      <span style="font-size:14px;">&#8596;</span>
+    </div>
+    <div class="ctl-track" id="track">
+      <div class="ctl-dot" id="dot"></div>
+      <input class="ctl-slider" id="slider" type="range" min="0" max="1" step="0.001" value="0">
+    </div>
+    <div class="ctl-ticks" role="group" aria-label="지문 언어">
+      <button id="btn-en" aria-pressed="true" onclick="setTarget(0)">EN</button>
+      <button id="btn-ja" aria-pressed="false" onclick="setTarget(1)">JA</button>
+    </div>
+    <p class="ctl-state" id="ctl-text">오늘의 영어 지문을 읽어 보세요.</p>
+    <p class="ctl-desc" id="ctl-desc">EN: 나무 입양 이야기&nbsp;&nbsp;JA: 편의점 문화</p>
+  </div>
+
+  <div class="hero-go">
+    <span>읽기 시작</span>
+    <a class="hero-btn" href="#" aria-label="오늘의 지문으로 이동"><span>&#8600;</span></a>
+  </div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"
+  onerror="loadFallbackThree()">
+</script>
+<script>
+// ─── fallback loader ─────────────────────────────────────────────────────────
+function loadFallbackThree() {
+  var s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js';
+  s.onload = initScene;
+  s.onerror = function() {
+    document.getElementById('error').style.display = 'flex';
+  };
+  document.head.appendChild(s);
+}
+
+// ─── state ───────────────────────────────────────────────────────────────────
+var targetMorph = 0;
+var morphFactor  = 0;
+var isJA = false;
+
+// Hash → initial state
+if (window.location.hash === '#ja') {
+  targetMorph = morphFactor = 1;
+  isJA = true;
+}
+
+// ─── geometry helpers ────────────────────────────────────────────────────────
+var N = 24;
+
+function mkSeg(p0, p1, n) {
+  var a = new Float32Array(n * 3);
+  for (var i = 0; i < n; i++) {
+    var t = i / (n - 1);
+    a[i*3]   = p0[0] + (p1[0]-p0[0]) * t;
+    a[i*3+1] = p0[1] + (p1[1]-p0[1]) * t;
+    a[i*3+2] = p0[2] + (p1[2]-p0[2]) * t;
+  }
+  return a;
+}
+
+function mkCurve(pts, n) {
+  var a = new Float32Array(n * 3);
+  var m = pts.length - 1;
+  for (var i = 0; i < n; i++) {
+    var t  = (i / (n - 1)) * m;
+    var s  = Math.min(Math.floor(t), m - 1);
+    var u  = t - s;
+    var p0 = pts[Math.max(0, s-1)];
+    var p1 = pts[s];
+    var p2 = pts[Math.min(pts.length-1, s+1)];
+    var p3 = pts[Math.min(pts.length-1, s+2)];
+    var u2 = u*u, u3 = u2*u;
+    for (var d = 0; d < 3; d++) {
+      a[i*3+d] = 0.5 * (
+        (-p0[d]+3*p1[d]-3*p2[d]+p3[d])*u3 +
+        (2*p0[d]-5*p1[d]+4*p2[d]-p3[d])*u2 +
+        (-p0[d]+p2[d])*u + 2*p1[d]
+      );
+    }
+  }
+  return a;
+}
+
+// ─── letter definitions ──────────────────────────────────────────────────────
+var S = 1.55;
+
+// EN "A": left diagonal, right diagonal, crossbar
+var EN_DATA = [
+  mkSeg([-0.36*S, -0.50*S,  0.02], [ 0.00*S,  0.50*S, -0.02], N),
+  mkSeg([ 0.00*S,  0.50*S, -0.02], [ 0.36*S, -0.50*S,  0.02], N),
+  mkSeg([-0.17*S, -0.05*S,  0.01], [ 0.17*S, -0.05*S, -0.01], N),
+];
+
+// JA "あ": top stroke, main loop, descending tail
+var JA_DATA = [
+  mkSeg([-0.44*S, 0.41*S, 0.04], [0.44*S, 0.41*S, -0.04], N),
+
+  mkCurve([
+    [ 0.28*S,  0.28*S,  0.08],
+    [ 0.40*S,  0.10*S,  0.12],
+    [ 0.42*S, -0.10*S,  0.06],
+    [ 0.30*S, -0.30*S, -0.04],
+    [ 0.08*S, -0.42*S, -0.10],
+    [-0.10*S, -0.40*S, -0.06],
+    [-0.28*S, -0.24*S,  0.00],
+    [-0.36*S, -0.02*S,  0.06],
+    [-0.28*S,  0.18*S,  0.10],
+    [-0.08*S,  0.30*S,  0.08],
+    [ 0.12*S,  0.34*S,  0.06],
+    [ 0.28*S,  0.28*S,  0.08],
+  ], N),
+
+  mkCurve([
+    [-0.06*S,  0.10*S,  0.04],
+    [-0.14*S, -0.08*S,  0.00],
+    [-0.22*S, -0.28*S, -0.04],
+    [-0.17*S, -0.46*S,  0.02],
+    [-0.03*S, -0.48*S,  0.06],
+  ], N),
+];
+
+// ─── scene bootstrap ─────────────────────────────────────────────────────────
+function initScene() {
+  if (typeof THREE === 'undefined') {
+    document.getElementById('error').style.display = 'flex';
+    return;
+  }
+
+  var canvas = document.getElementById('c');
+  var W = 480, H = 480;
+
+  var renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    antialias: true,
+    alpha: true,
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.setClearColor(0x000000, 0); // transparent bg, paper is CSS
+
+  var scene  = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+  camera.position.set(0, 0, 4.0);
+
+  // ─── materials ────────────────────────────────────────────────────────
+  var INK_COL  = 0x202623;
+  var MUTE_COL = 0x5a625e;
+  var ACCENT   = 0x234ae8;
+
+  var matMain = new THREE.LineBasicMaterial({
+    color: INK_COL,
+    transparent: true,
+    opacity: 0.90,
+  });
+  var matEcho = new THREE.LineBasicMaterial({
+    color: INK_COL,
+    transparent: true,
+    opacity: 0.10,
+  });
+  var matAccent = new THREE.LineBasicMaterial({
+    color: ACCENT,
+    transparent: true,
+    opacity: 0.55,
+  });
+
+  // ─── geometry + lines ────────────────────────────────────────────────
+  var group = new THREE.Group();
+  scene.add(group);
+
+  // Main strokes
+  var lines = EN_DATA.map(function(data, si) {
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(data.slice(), 3));
+    return new THREE.Line(geo, matMain);
+  });
+  lines.forEach(function(l) { group.add(l); });
+
+  // Echo strokes (scale 1.06, low opacity)
+  var echoGroup = new THREE.Group();
+  echoGroup.scale.set(1.06, 1.06, 1.06);
+  var echoLines = EN_DATA.map(function(data) {
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(data.slice(), 3));
+    return new THREE.Line(geo, matEcho);
+  });
+  echoLines.forEach(function(l) { echoGroup.add(l); });
+  group.add(echoGroup);
+
+  // Accent ghost (same geometry, even lower opacity, slightly larger)
+  var accentGroup = new THREE.Group();
+  accentGroup.scale.set(0.98, 0.98, 0.98);
+  var accentLines = EN_DATA.map(function(data) {
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(data.slice(), 3));
+    return new THREE.Line(geo, matAccent);
+  });
+  accentLines.forEach(function(l) { accentGroup.add(l); });
+  group.add(accentGroup);
+
+  // ─── geometry update ─────────────────────────────────────────────────
+  function updateGeo(factor) {
+    [lines, echoLines, accentLines].forEach(function(arr) {
+      arr.forEach(function(line, si) {
+        var pos  = line.geometry.attributes.position;
+        var en   = EN_DATA[si];
+        var ja   = JA_DATA[si];
+        for (var i = 0; i < N; i++) {
+          pos.array[i*3]   = en[i*3]   + (ja[i*3]   - en[i*3])   * factor;
+          pos.array[i*3+1] = en[i*3+1] + (ja[i*3+1] - en[i*3+1]) * factor;
+          pos.array[i*3+2] = en[i*3+2] + (ja[i*3+2] - en[i*3+2]) * factor;
+        }
+        pos.needsUpdate = true;
+      });
+    });
+  }
+
+  // ─── mouse parallax ──────────────────────────────────────────────────
+  var mx = 0, my = 0, tmx = 0, tmy = 0;
+  var TILT = 0.14;
+  var heroEl = document.getElementById('hero');
+
+  heroEl.addEventListener('mousemove', function(e) {
+    var r = heroEl.getBoundingClientRect();
+    tmx = ((e.clientX - r.left) / r.width  - 0.5) * TILT * 2;
+    tmy = ((e.clientY - r.top)  / r.height - 0.5) * TILT * -2;
+  });
+  heroEl.addEventListener('mouseleave', function() {
+    tmx = tmy = 0;
+  });
+
+  // ─── rotation state ──────────────────────────────────────────────────
+  var rotY = 0;
+
+  // ─── animation ───────────────────────────────────────────────────────
+  var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function tick() {
+    // Smooth morph
+    morphFactor += (targetMorph - morphFactor) * 0.04;
+    updateGeo(morphFactor);
+
+    if (!noMotion) {
+      // Slow rotation
+      rotY += 0.00045;
+
+      // Smooth mouse follow
+      mx += (tmx - mx) * 0.055;
+      my += (tmy - my) * 0.055;
+    }
+
+    group.rotation.y = rotY + mx;
+    group.rotation.x = my;
+
+    renderer.render(scene, camera);
+
+    if (!noMotion) {
+      requestAnimationFrame(tick);
+    }
+  }
+
+  // Initial geometry for hash state
+  updateGeo(morphFactor);
+  updateButtons(isJA ? 1 : 0);
+
+  if (noMotion) {
+    renderer.render(scene, camera);
+  } else {
+    requestAnimationFrame(tick);
+  }
+}
+
+// ─── controls ────────────────────────────────────────────────────────────────
+var TEXTS = {
+  en: '오늘의 영어 지문을 읽어 보세요.',
+  ja: '오늘의 일본어 지문을 읽어 보세요.',
+};
+
+function updateButtons(val) {
+  var ja = val > 0.5;
+  document.getElementById('btn-en').setAttribute('aria-pressed', !ja ? 'true' : 'false');
+  document.getElementById('btn-ja').setAttribute('aria-pressed',  ja ? 'true' : 'false');
+  document.getElementById('ctl-text').textContent = ja ? TEXTS.ja : TEXTS.en;
+  var trackW = document.getElementById('track').offsetWidth - 6;
+  document.getElementById('dot').style.left = (val * trackW * 0.132) + 'px';
+}
+
+function setTarget(v) {
+  targetMorph = v;
+  isJA = v > 0.5;
+  updateButtons(v);
+  document.getElementById('slider').value = v;
+}
+
+document.getElementById('slider').addEventListener('input', function() {
+  var v = parseFloat(this.value);
+  targetMorph = v;
+  isJA = v > 0.5;
+  updateButtons(v);
+});
+
+// ─── boot ─────────────────────────────────────────────────────────────────────
+// THREE is loaded via the <script> tag above; initScene runs on window.load
+window.addEventListener('load', function() {
+  if (typeof THREE !== 'undefined') {
+    initScene();
+  }
+  // If THREE failed to load, loadFallbackThree() will have been called by onerror
+});
+</script>
+</body>
+</html>

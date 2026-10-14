@@ -19,7 +19,10 @@ bash scripts/deploy-landing.sh
 
 ## 구성
 
-- `src/app/page.tsx`: 섹션 순서와 문구(이용 방법, 서비스 한눈에 보기, 자주 묻는 질문)
-- `src/components/ref/`: 헤더, 첫 화면, 서막, 장(Chapter), 푸터, 실시간 갱신(latest)
-- `src/lib/reading.ts`: 빌드 때 content JSON 읽기
-- 글꼴: Inter Tight, JetBrains Mono(next/font), 한글은 Pretendard(cdnjs)
+- `src/app/page.tsx`: 섹션 순서와 문구(이용 방법, 이번 주 지문, 서비스 한눈에 보기, 자주 묻는 질문, 구독)
+- `src/components/`: Nav, Hero(폰, 조각, 구독 폼, 주제 띠), Week(이번 주 달력), Footer, Motion(스크롤 회전과 나타나기)
+- `src/components/ref/latest.tsx`: latest.json 실시간 갱신과 `**단어**`, 후리가나 표기
+- `src/lib/reading.ts`: 빌드 때 content JSON 읽기(publish.py `rebuild_root()`와 같은 규칙)
+- 글꼴: 모두 Pretendard(cdnjs). 작은 라벨은 시스템 고정폭 글꼴
+- 디자인 기준: `preview/c3-b2.html`
+- 기본 강조색(확정): 파랑 `#2a52d4`, 누를 때 `#2143ad`. `src/app/globals.css`의 `--blue`, `--blue-h`. 바탕 `#ffffff`, 먹색 `#0a0a0a`, 보조 `#6b6b6b`, 구분선 `#e6e6e6`

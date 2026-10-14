@@ -1,27 +1,27 @@
-import Header from "@/components/ref/Header";
-import Opening from "@/components/ref/Opening";
-import Prologue from "@/components/ref/Prologue";
-import Chapter, { ArchiveHead } from "@/components/ref/Chapter";
-import Footer from "@/components/ref/Footer";
+import Footer from "@/components/Footer";
+import { SUBSCRIBE } from "@/components/forms";
+import Hero from "@/components/Hero";
+import Motion from "@/components/Motion";
+import Nav from "@/components/Nav";
+import Week, { WeekMeta } from "@/components/Week";
 import { LatestProvider } from "@/components/ref/latest";
-import { TodayDate, TodayLeft, TodayRight, TodayStatement } from "@/components/ref/Live";
 import { loadLatest } from "@/lib/reading";
 
-const SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/english-reading";
-
-// 문구 출처: english-reading tools/template.html 의 지문 도구 안내와 STEP 4 안내.
 const STEPS = [
   {
-    title: "읽고 듣기",
-    desc: "지문을 읽고 전체 듣기로 들어 보세요. 문장 번호를 누르면 그 문장만 들을 수 있어요.",
+    time: "07:00",
+    title: "메일이 와요",
+    desc: "매일 아침 7시 전후, 오늘의 지문이 메일로 와요. 영어(B1~B2)나 일본어(N4~N5) 중 하나를 골라 받아요.",
   },
   {
-    title: "번역 써 보기",
-    desc: "모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 보세요.",
+    time: "07:01",
+    title: "듣고, 써 봐요",
+    desc: "문장마다 합성 음성이 붙어 있어요. 내 해석을 먼저 써 보고 모범 해석과 핵심 단어로 맞춰 봐요.",
   },
   {
-    title: "AI 피드백 받기",
-    desc: "다 쓰면 'AI 피드백 요청문 복사'를 눌러 평소 쓰는 AI 채팅(ChatGPT, Claude 등)에 붙여넣으세요. 어디를 잘 읽었고 어디를 놓쳤는지 문장별로 알려 줘요.",
+    time: "07:05",
+    title: "AI에게 물어요",
+    desc: "'AI 피드백 요청문 복사'를 누르면 지문과 내 해석이 함께 복사돼요. ChatGPT나 Claude에 붙여 넣으면 돼요.",
   },
 ];
 
@@ -57,106 +57,120 @@ const FAQ = [
 ];
 
 const FORMS = [
-  { lang: "en", label: "영어 지문 받기", level: "EN B1~B2" },
-  { lang: "ja", label: "일본어 지문 받기", level: "JA N4~N5" },
+  { lang: "en", label: "영어 지문 받기", level: "EN B1~B2", desc: "최근 소식을 바탕으로 쓴 영어 지문" },
+  { lang: "ja", label: "일본어 지문 받기", level: "JA N4~N5", desc: "일본의 생활과 문화를 다룬 일본어 지문" },
 ];
+
+const delay = (i: number) => ({ transitionDelay: `${i * 60}ms` });
 
 export default function Home() {
   const data = loadLatest();
   return (
     <LatestProvider initial={data}>
-      <Header />
+      <Nav />
       <main>
-        <Opening />
-        <Prologue />
+        <Hero />
 
-        <section className="glance" aria-labelledby="glance-title">
-          <div className="ch-meta">
-            <span id="glance-title">서비스 한눈에 보기</span>
-            <span>EN, JA</span>
+        <section className="sec" id="how" data-reveal aria-labelledby="how-h">
+          <div className="wrap">
+            <div className="sec-head">
+              <span className="mono">02 / 이용 방법</span>
+              <h2 id="how-h">세 단계면 오늘 몫은 끝나요.</h2>
+            </div>
+            <ol className="steps">
+              {STEPS.map((s, i) => (
+                <li key={s.title} className="rv" style={delay(i)}>
+                  <span className="mono st-t">{s.time}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.desc}</p>
+                </li>
+              ))}
+            </ol>
+            <p className="note mono rv" style={delay(3)}>
+              일요일에는 그 주의 핵심 단어를 모은 주간 단어 복습 메일이 따로 와요.
+            </p>
           </div>
-          <p className="glance-text">{GLANCE}</p>
         </section>
 
-        <Chapter
-          id="languages"
-          meta={["01 / 04  오늘의 지문", <TodayDate key="d" />]}
-          index="01 — 오늘의 지문"
-          statement={<TodayStatement />}
-          left={<TodayLeft />}
-        >
-          <TodayRight />
-        </Chapter>
-
-        <Chapter id="how" meta={["02 / 04  이용 방법", "세 단계"]} index="02 — 이용 방법" statement="세 단계면 충분해요.">
-          <ArchiveHead left="읽고, 쓰고, 묻기" right="STEP 01 — 03" />
-          {STEPS.map((s, i) => (
-            <div key={s.title} className="ch-step">
-              <span className="ch-row-k">0{i + 1}</span>
-              <div>
-                <div className="ch-step-t">{s.title}</div>
-                <p className="ch-step-d">{s.desc}</p>
-              </div>
+        <section className="sec" id="week" data-reveal aria-labelledby="week-h">
+          <div className="wrap">
+            <div className="sec-head">
+              <span className="mono">03 / 이번 주 지문</span>
+              <h2 id="week-h">이번 주에 나온 지문이에요.</h2>
+              <span className="mono sec-meta">
+                <WeekMeta />
+              </span>
             </div>
-          ))}
-        </Chapter>
+            <Week />
+          </div>
+        </section>
 
-        <Chapter
-          id="subscribe"
-          dark
-          meta={["03 / 04  무료 구독", "매일 아침"]}
-          index="03 — 무료 구독"
-          statement="매일 아침 메일로 받아 보세요."
-        >
-          <ArchiveHead left="구독" right="언어 하나를 고르세요" />
-          {FORMS.map((f) => (
-            <form key={f.lang} className="sub-form" action={SUBSCRIBE} method="post" target="_blank">
-              <label className="sub-label" htmlFor={`email-${f.lang}`}>
-                {f.label} <span>{f.level}</span>
-              </label>
-              <input type="hidden" name="metadata__lang" value={f.lang} />
-              <input
-                id={`email-${f.lang}`}
-                className="sub-input"
-                type="email"
-                name="email"
-                required
-                placeholder="이메일 주소"
-                autoComplete="email"
-              />
-              <button className="sub-btn" type="submit">
-                구독하기
-              </button>
-            </form>
-          ))}
-          <p className="sub-note">
-            하나의 이메일로는 한 언어만 구독할 수 있어요. 영어와 일본어를 모두 받으시려면 서로 다른 이메일로 각각 구독해
-            주세요.
-          </p>
-        </Chapter>
+        <section className="sec" id="glance" data-reveal aria-labelledby="glance-h">
+          <div className="wrap">
+            <div className="sec-head">
+              <h2 id="glance-h" className="mono">
+                04 / 서비스 한눈에 보기
+              </h2>
+            </div>
+            <p className="glance rv">{GLANCE}</p>
+          </div>
+        </section>
 
-        <Chapter
-          id="faq"
-          meta={["04 / 04  자주 묻는 질문", `${FAQ.length}개 질문`]}
-          index="04 — 자주 묻는 질문"
-          statement="궁금한 점을 모았어요."
-        >
-          <ArchiveHead left="질문" right="눌러서 펼치기" />
-          {FAQ.map((f, i) => (
-            <details key={f.q} className="faq">
-              <summary>
-                <span className="ch-row-k">Q{i + 1}</span>
-                <span className="ch-row-t">{f.q}</span>
-                <span className="faq-plus" aria-hidden="true">
-                  +
-                </span>
-              </summary>
-              <p>{f.a}</p>
-            </details>
-          ))}
-        </Chapter>
+        <section className="sec" id="faq" data-reveal aria-labelledby="faq-h">
+          <div className="wrap">
+            <div className="sec-head">
+              <span className="mono">05 / 자주 묻는 질문</span>
+              <h2 id="faq-h">궁금한 점이 있나요?</h2>
+              <span className="mono sec-meta">{FAQ.length}개 질문</span>
+            </div>
+            <div className="faq">
+              {FAQ.map((f, i) => (
+                <details key={f.q} className="rv" style={delay(i)}>
+                  <summary>
+                    <span className="mono q">Q{i + 1}</span>
+                    <span className="qt">{f.q}</span>
+                    <span className="plus" aria-hidden="true" />
+                  </summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="sec sub" id="subscribe" data-reveal aria-labelledby="sub-h">
+          <div className="wrap">
+            <div className="sec-head">
+              <span className="mono">06 / 무료 구독</span>
+              <h2 id="sub-h">매일 아침 메일로 받아 보세요.</h2>
+            </div>
+            <div className="sub-forms">
+              {FORMS.map((f, i) => (
+                <form key={f.lang} className="sub-form rv" style={delay(i)} action={SUBSCRIBE} method="post" target="_blank" rel="noopener noreferrer">
+                  <div className="mono k">
+                    <span>{f.level}</span>
+                    <span>{f.desc}</span>
+                  </div>
+                  <label className="sub-label" htmlFor={`email-${f.lang}`}>
+                    {f.label}
+                  </label>
+                  <input type="hidden" name="metadata__lang" value={f.lang} />
+                  <div className="row">
+                    <input id={`email-${f.lang}`} type="email" name="email" required placeholder="이메일 주소" autoComplete="email" />
+                    <button type="submit">구독하기</button>
+                  </div>
+                </form>
+              ))}
+            </div>
+            <p className="note mono rv" style={delay(2)}>
+              하나의 이메일로는 한 언어만 구독할 수 있어요. 영어와 일본어를 모두 받으시려면 서로 다른 이메일로 각각 구독해
+              주세요.
+            </p>
+          </div>
+        </section>
       </main>
       <Footer />
+      <Motion />
     </LatestProvider>
   );
 }
