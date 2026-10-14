@@ -3,7 +3,7 @@
 사용: python3 tools/publish.py en 2026-10-12 [분야]  (분야를 생략하면 content JSON 의 category)
 1. 썸네일(<언어>/<날짜>/thumb.png) 생성
 2. 날짜 페이지에 OG 태그, 상단 썸네일, 소개 문구, 구독 칸 삽입
-3. 그 언어의 지난 지문(<언어>/archive/), 언어 첫 화면(<언어>/), 사이트 첫 화면(언어 선택)을 다시 생성
+3. 그 언어의 지난 지문(<언어>/archive/), 언어 첫 화면(<언어>/), 사이트 첫 화면용 latest.json 을 다시 생성
 """
 import datetime as dt
 import html
@@ -191,20 +191,27 @@ def entry(lang, day):
 
 
 def rebuild_root():
-    """사이트 첫 화면(언어 선택)을 만든다."""
-    cards = []
-    for code, L in langs.LANGS.items():
+    """사이트 첫 화면이 읽는 latest.json 을 만든다. 첫 화면(index.html)은 ref-clone 정적 빌드로 따로 배포한다.
+
+    모양: {"date", "langs": {code: {"count", "latest", "topic", "sentences"(앞 3문장, 원문 표기 그대로)}}, "recent"(두 언어 최근 6편)}
+    """
+    data, recent = {"date": "", "langs": {}, "recent": []}, []
+    for code in langs.LANGS:
         days = days_of(code)
         if not days:
             continue
-        cards.append(
-            f'  <a class="lang" href="./{code}/"><img src="./{code}/{days[0]}/thumb.png" alt="" width="1200" height="630">'
-            f'<span class="name">{L["name"]} <span class="lv">{L["level"]}</span></span>'
-            f'<span class="today">지문 {len(days)}개, 오늘: {html.escape(topic_of(code, days[0]))} →</span></a>'
-        )
-    page = (ROOT_PAGE.replace("__CARDS__", "\n".join(cards)).replace("__SITE__", SITE)
-            .replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
-    (ROOT / "index.html").write_text(page, encoding="utf-8")
+        content = ROOT / "content" / code / f"{days[0]}.json"
+        c = json.loads(content.read_text(encoding="utf-8")) if content.exists() else {}
+        data["langs"][code] = {
+            "count": len(days), "latest": days[0],
+            "topic": c.get("topic") or topic_of(code, days[0]),
+            "sentences": [s["en"] for s in c.get("sentences", [])[:3]],
+        }
+        data["date"] = max(data["date"], days[0])
+        recent += [{"lang": code, "day": d, "topic": entry(code, d)["topic"]} for d in days[:6]]
+    order = list(langs.LANGS)
+    data["recent"] = sorted(recent, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)[:6]
+    (ROOT / "latest.json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     write_sitemap()
 
 
@@ -224,36 +231,6 @@ def write_sitemap():
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
                                       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
-
-
-ROOT_PAGE = """<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light only"><title>매일 외국어 읽기</title>
-<meta name="description" content="매일 아침 새로 올라오는 외국어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
-<meta property="og:title" content="매일 외국어 읽기"><meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="__SITE__/">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
-<style>
-  body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
-  main { max-width: 560px; margin: 0 auto; padding: 36px 12px 40px; }
-  h1 { font-size: 26px; font-weight: 800; margin: 0 8px 6px; letter-spacing: -0.03em; }
-  .lead { margin: 0 8px 20px; font-size: 15px; line-height: 1.6; color: #4e5968; }
-  .lang { display: block; background: #fff; border-radius: 20px; overflow: hidden; color: inherit; text-decoration: none; margin-bottom: 12px; }
-  .lang img { display: block; width: 100%; height: auto; }
-  .name { display: block; padding: 16px 20px 2px; font-size: 20px; font-weight: 800; }
-  .lv { margin-left: 6px; font-size: 13px; font-weight: 700; color: #3182f6; }
-  .today { display: block; padding: 0 20px 18px; font-size: 15px; color: #4e5968; }
-__FOOTER_CSS__</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
-     crossorigin="anonymous"></script>
-</head>
-<body><main>
-  <h1>매일 외국어 읽기</h1>
-  <p class="lead">매일 아침 짧은 지문 하나. 듣고, 해석하고, AI에게 피드백을 받아 보세요. 배우는 언어를 고르세요.</p>
-__CARDS__
-</main>
-__FOOTER__</body></html>
-"""
 
 
 # 지난 지문 페이지. 검색과 분야 필터, 30개씩 더 보기를 브라우저에서 처리한다(스크립트가 없어도 전체 목록은 보인다).
