@@ -1,0 +1,126 @@
+{
+  "date": "",
+  "category": "future",
+  "topic": "우주 엘리베이터",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Sending anything into space usually requires a powerful rocket that burns a huge amount of fuel.",
+      "b2": false
+    },
+    {
+      "en": "Some scientists and engineers dream of a different way: a space elevator.",
+      "b2": false
+    },
+    {
+      "en": "The idea is to **stretch** a very long cable from a base near the **equator** up into space, with a heavy weight at the far end to keep it **tight** as the Earth turns.",
+      "b2": true
+    },
+    {
+      "en": "Machines called climbers would then move up the cable slowly, carrying people or **cargo** without any rockets.",
+      "b2": false
+    },
+    {
+      "en": "The biggest problem is the cable itself, because no **material** made so far is both strong and light enough for such a long distance.",
+      "b2": false
+    },
+    {
+      "en": "Some researchers hope that tiny tubes made of carbon might one day be strong enough, but for now, the space elevator remains a **bold** idea for the future.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "stretch",
+      "길게 늘이다, 뻗치다"
+    ],
+    [
+      "equator",
+      "적도"
+    ],
+    [
+      "tight",
+      "팽팽한"
+    ],
+    [
+      "cargo",
+      "화물"
+    ],
+    [
+      "material",
+      "재료, 소재"
+    ],
+    [
+      "bold",
+      "대담한"
+    ]
+  ],
+  "points": [
+    {
+      "title": "with + 명사 + to 부정사",
+      "body": "`with a heavy weight at the far end to keep it tight`은 '케이블을 팽팽하게 유지하려고 먼 쪽 끝에 무거운 추를 단 채로'예요. with 뒤가 덧붙은 장치, to 뒤가 그 목적이에요."
+    },
+    {
+      "title": "both A and B enough",
+      "body": "`both strong and light enough`는 '튼튼하면서도 충분히 가벼운'이에요. enough가 형용사 뒤에 온다는 점도 함께 보세요."
+    }
+  ],
+  "answers": [
+    "무엇이든 우주로 보내려면 보통 엄청난 양의 연료를 태우는 강력한 로켓이 필요하다.",
+    "일부 과학자와 엔지니어는 다른 방법, 바로 우주 엘리베이터를 꿈꾼다.",
+    "그 아이디어는 적도 근처의 기지에서 우주까지 아주 긴 케이블을 뻗고, 지구가 도는 동안 케이블이 팽팽하게 유지되도록 먼 쪽 끝에 무거운 추를 다는 것이다.",
+    "그러면 '클라이머'라고 불리는 기계가 사람이나 화물을 싣고 로켓 없이 케이블을 따라 천천히 올라갈 것이다.",
+    "가장 큰 문제는 케이블 자체인데, 지금까지 만들어진 어떤 소재도 그렇게 긴 거리에 쓸 만큼 튼튼하면서 가볍지는 않기 때문이다.",
+    "일부 연구자들은 탄소로 만든 아주 작은 관이 언젠가 충분히 튼튼해질 수 있기를 바라지만, 지금으로서 우주 엘리베이터는 미래를 위한 대담한 아이디어로 남아 있다."
+  ],
+  "advanced": [
+    {
+      "word": "launch",
+      "meaning": "발사, 발사하다",
+      "confuse": null,
+      "example": "Every rocket **launch** burns a huge amount of fuel."
+    },
+    {
+      "word": "tether",
+      "meaning": "밧줄, 연결 줄",
+      "confuse": null,
+      "example": "A space elevator would use a very long **tether**."
+    },
+    {
+      "word": "counterweight",
+      "meaning": "평형추",
+      "confuse": null,
+      "example": "A **counterweight** at the far end keeps the cable tight."
+    },
+    {
+      "word": "ascend",
+      "meaning": "올라가다",
+      "confuse": "assent(동의하다)와 혼동 주의",
+      "example": "Climbers would **ascend** the cable without rockets."
+    },
+    {
+      "word": "durable",
+      "meaning": "튼튼한, 오래가는",
+      "confuse": null,
+      "example": "The cable must be both **durable** and light."
+    },
+    {
+      "word": "feasible",
+      "meaning": "실현 가능한",
+      "confuse": null,
+      "example": "The idea is not yet **feasible** with today's materials."
+    },
+    {
+      "word": "ambitious",
+      "meaning": "야심 찬",
+      "confuse": null,
+      "example": "The space elevator is one of the most **ambitious** ideas in engineering."
+    }
+  ],
+  "source": null
+}

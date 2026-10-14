@@ -1,0 +1,133 @@
+{
+  "date": "",
+  "category": "culture",
+  "topic": "블루투스 이름",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Many of us connect our earphones with Bluetooth every day, but few people know that the name comes from a king.",
+      "b2": false
+    },
+    {
+      "en": "In the tenth century, a king named Harald 'Bluetooth' Gormsson **united** Denmark and Norway.",
+      "b2": false
+    },
+    {
+      "en": "In 1996, engineers from several companies met to plan a short-range **wireless** technology, and one of them suggested the king's name as a **temporary** code name.",
+      "b2": false
+    },
+    {
+      "en": "Just as the king had brought people together, the new technology **was meant to** connect phones and computers made by different companies.",
+      "b2": true
+    },
+    {
+      "en": "The name was only supposed to be a **placeholder**, but it spread so quickly that it stayed.",
+      "b2": false
+    },
+    {
+      "en": "Even the logo hides his name: it combines two old Nordic **runes** for the letters H and B, his **initials**.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "unite",
+      "통합하다, 하나로 묶다"
+    ],
+    [
+      "wireless",
+      "무선의"
+    ],
+    [
+      "temporary",
+      "임시의"
+    ],
+    [
+      "be meant to",
+      "~하기 위한 것이다, ~하도록 되어 있다"
+    ],
+    [
+      "placeholder",
+      "(정식 이름 전) 임시 이름, 자리 표시"
+    ],
+    [
+      "rune",
+      "룬 문자 (옛 북유럽 문자)"
+    ],
+    [
+      "initials",
+      "이름의 머리글자"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Just as ~, ...",
+      "body": "`Just as the king had brought people together, the new technology was meant to connect ...`는 '왕이 사람들을 하나로 모았던 것처럼, 새 기술도 ~을 연결하려는 것이었다'예요. `Just as` 뒤는 비교 기준, 쉼표 뒤가 핵심이에요."
+    },
+    {
+      "title": "so ~ that ...",
+      "body": "`it spread so quickly that it stayed`는 '너무 빨리 퍼져서 그대로 남았다'예요. so 뒤가 원인의 정도, that 뒤가 결과예요."
+    }
+  ],
+  "answers": [
+    "우리 중 많은 사람이 매일 블루투스로 이어폰을 연결하지만, 그 이름이 한 왕에게서 왔다는 사실을 아는 사람은 거의 없다.",
+    "10세기에 하랄 '블루투스' 고름손이라는 왕이 덴마크와 노르웨이를 통합했다.",
+    "1996년에 여러 회사의 엔지니어들이 근거리 무선 기술을 계획하려고 모였고, 그중 한 사람이 그 왕의 이름을 임시 코드명으로 제안했다.",
+    "왕이 사람들을 하나로 모았던 것처럼, 이 새 기술은 서로 다른 회사들이 만든 휴대폰과 컴퓨터를 연결하기 위한 것이었다.",
+    "그 이름은 임시로 붙인 이름일 뿐이었지만, 너무 빨리 퍼져서 그대로 남게 되었다.",
+    "로고에도 그의 이름이 숨어 있는데, 로고는 그의 머리글자인 H와 B를 나타내는 옛 북유럽 룬 문자 두 개를 합친 것이다."
+  ],
+  "advanced": [
+    {
+      "word": "originate",
+      "meaning": "비롯되다, 유래하다",
+      "confuse": null,
+      "example": "The name **originates** from a tenth-century king."
+    },
+    {
+      "word": "provisional",
+      "meaning": "임시의, 잠정적인",
+      "confuse": null,
+      "example": "Bluetooth was only a **provisional** code name."
+    },
+    {
+      "word": "unify",
+      "meaning": "통일하다, 통합하다",
+      "confuse": null,
+      "example": "The king **unified** Denmark and Norway."
+    },
+    {
+      "word": "interoperable",
+      "meaning": "서로 호환되는, 함께 작동하는",
+      "confuse": null,
+      "example": "The goal was to make devices from different companies **interoperable**."
+    },
+    {
+      "word": "monarch",
+      "meaning": "군주",
+      "confuse": null,
+      "example": "The technology is named after a Danish **monarch**."
+    },
+    {
+      "word": "catch on",
+      "meaning": "유행하다, 널리 받아들여지다",
+      "confuse": null,
+      "example": "The name **caught on** before anyone could change it."
+    },
+    {
+      "word": "emblem",
+      "meaning": "상징, 문장",
+      "confuse": "ember(타다 남은 불씨)와 혼동 주의",
+      "example": "The logo is an **emblem** made from two runes."
+    }
+  ],
+  "source": {
+    "title": "Origin of the name (Bluetooth Technology Website)",
+    "url": "https://www.bluetooth.com/about-us/bluetooth-origin/"
+  }
+}

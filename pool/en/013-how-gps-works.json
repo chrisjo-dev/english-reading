@@ -1,0 +1,133 @@
+{
+  "date": "",
+  "category": "space",
+  "topic": "GPS의 원리",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "When your phone shows your location on a map, it is listening to **satellites** far above the Earth.",
+      "b2": false
+    },
+    {
+      "en": "Each GPS satellite carries extremely **accurate** atomic clocks and keeps sending out signals that say what time it is.",
+      "b2": false
+    },
+    {
+      "en": "These signals travel at the speed of light, so your phone can **calculate** how far away each satellite is from how long the signal took to arrive.",
+      "b2": true
+    },
+    {
+      "en": "With the distances to several satellites, the phone can **work out** the one point where it must be.",
+      "b2": false
+    },
+    {
+      "en": "It needs **at least** four satellites, because the clock in your phone is much less accurate than the clocks in space, and the extra signal helps **correct** the error.",
+      "b2": false
+    },
+    {
+      "en": "Interestingly, your phone only **receives** these signals and never sends anything back to the satellites.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "satellite",
+      "인공위성"
+    ],
+    [
+      "accurate",
+      "정확한"
+    ],
+    [
+      "calculate",
+      "계산하다"
+    ],
+    [
+      "work out",
+      "알아내다, 계산해 내다"
+    ],
+    [
+      "at least",
+      "적어도, 최소한"
+    ],
+    [
+      "correct",
+      "바로잡다, 고치다"
+    ],
+    [
+      "receive",
+      "받다, 수신하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "how로 시작하는 덩어리",
+      "body": "`how far away each satellite is`(각 위성이 얼마나 멀리 있는지)와 `how long the signal took to arrive`(신호가 도착하는 데 얼마나 걸렸는지)는 문장 안에서 명사처럼 쓰여요. 의문문이 아니라서 주어와 동사 순서가 그대로예요."
+    },
+    {
+      "title": "at least + 숫자",
+      "body": "`It needs at least four satellites`는 '최소 네 개의 위성이 필요하다'예요. 넷보다 많아도 되지만 적으면 안 된다는 뜻이에요."
+    }
+  ],
+  "answers": [
+    "휴대폰이 지도에 내 위치를 보여 줄 때, 휴대폰은 지구 저 위에 있는 인공위성들의 신호를 듣고 있는 것이다.",
+    "각 GPS 위성은 매우 정확한 원자시계를 싣고 있고, 지금이 몇 시인지 알려 주는 신호를 계속 보낸다.",
+    "이 신호는 빛의 속도로 이동하기 때문에, 휴대폰은 신호가 도착하는 데 걸린 시간으로 각 위성이 얼마나 멀리 있는지 계산할 수 있다.",
+    "여러 위성까지의 거리를 알면, 휴대폰은 자신이 있어야 하는 단 하나의 지점을 알아낼 수 있다.",
+    "휴대폰 속 시계는 우주에 있는 시계보다 훨씬 덜 정확하기 때문에 최소 네 개의 위성이 필요하고, 추가로 받는 신호가 그 오차를 바로잡는 데 도움을 준다.",
+    "흥미롭게도 휴대폰은 이 신호를 받기만 할 뿐, 위성에 아무것도 보내지 않는다."
+  ],
+  "advanced": [
+    {
+      "word": "precise",
+      "meaning": "정밀한",
+      "confuse": "precious(소중한)와 혼동 주의",
+      "example": "Atomic clocks keep extremely **precise** time."
+    },
+    {
+      "word": "transmit",
+      "meaning": "송신하다, 전송하다",
+      "confuse": null,
+      "example": "Each satellite **transmits** a timing signal."
+    },
+    {
+      "word": "determine",
+      "meaning": "알아내다, 결정하다",
+      "confuse": null,
+      "example": "The phone **determines** its position from several distances."
+    },
+    {
+      "word": "pinpoint",
+      "meaning": "정확히 찾아내다",
+      "confuse": null,
+      "example": "GPS can **pinpoint** your location on a map."
+    },
+    {
+      "word": "synchronize",
+      "meaning": "(시간을) 맞추다, 동기화하다",
+      "confuse": null,
+      "example": "The phone cannot perfectly **synchronize** its clock with the satellites."
+    },
+    {
+      "word": "discrepancy",
+      "meaning": "차이, 불일치",
+      "confuse": null,
+      "example": "A fourth signal helps fix the **discrepancy** in time."
+    },
+    {
+      "word": "navigation",
+      "meaning": "길 찾기, 항법",
+      "confuse": null,
+      "example": "Satellite **navigation** works without the phone sending any signal to space."
+    }
+  ],
+  "source": {
+    "title": "How do GPS devices work? (Scientific American)",
+    "url": "https://www.scientificamerican.com/article/how-do-gps-devices-work/"
+  }
+}

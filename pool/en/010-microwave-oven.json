@@ -1,0 +1,133 @@
+{
+  "date": "",
+  "category": "tech",
+  "topic": "전자레인지",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "The microwave oven was discovered almost **by accident**.",
+      "b2": false
+    },
+    {
+      "en": "An engineer named Percy Spencer was working near a magnetron, a part that produces microwaves for **radar**, when he noticed that the candy bar in his pocket had **melted**.",
+      "b2": true
+    },
+    {
+      "en": "**Curious**, he held popcorn **kernels** near the magnetron, and they began to pop around his lab.",
+      "b2": false
+    },
+    {
+      "en": "His company later turned the idea into a cooking machine called the Radarange, but the first one was almost two meters tall.",
+      "b2": false
+    },
+    {
+      "en": "Microwaves heat food by making the water **molecules** inside it **rotate** very fast, and this movement creates heat.",
+      "b2": false
+    },
+    {
+      "en": "Today, the same idea that once melted a candy bar warms up food in kitchens around the world.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "by accident",
+      "우연히"
+    ],
+    [
+      "radar",
+      "레이더"
+    ],
+    [
+      "melt",
+      "녹다"
+    ],
+    [
+      "curious",
+      "궁금한, 호기심이 생긴"
+    ],
+    [
+      "kernel",
+      "(옥수수 등의) 낟알"
+    ],
+    [
+      "molecule",
+      "분자"
+    ],
+    [
+      "rotate",
+      "회전하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "was ~ing, when ...",
+      "body": "`Percy Spencer was working near a magnetron ..., when he noticed that ...`은 '마그네트론 근처에서 일하던 중에 ~을 알아챘다'예요. 진행 중이던 일(was working)과 갑자기 일어난 일(noticed)을 나눠 읽으세요."
+    },
+    {
+      "title": "문장 앞의 형용사",
+      "body": "`Curious, he held popcorn kernels near the magnetron`의 `Curious,`는 '호기심이 생겨서'라는 뜻으로, 주어 he의 상태를 앞에서 짧게 설명해요."
+    }
+  ],
+  "answers": [
+    "전자레인지는 거의 우연히 발견되었다.",
+    "퍼시 스펜서라는 엔지니어는 레이더용 마이크로파를 만드는 부품인 마그네트론 근처에서 일하던 중, 주머니 속 사탕 바가 녹아 있는 것을 알아챘다.",
+    "호기심이 생긴 그는 팝콘 낟알을 마그네트론 가까이에 대 보았고, 낟알들이 실험실 여기저기로 튀기 시작했다.",
+    "그의 회사는 나중에 이 아이디어를 '레이더레인지'라는 조리 기계로 만들었지만, 첫 기계는 높이가 거의 2미터나 되었다.",
+    "마이크로파는 음식 속 물 분자를 아주 빠르게 회전하게 만들어 음식을 데우고, 이 움직임이 열을 만들어 낸다.",
+    "오늘날에는 한때 사탕 바를 녹였던 바로 그 아이디어가 전 세계 부엌에서 음식을 데우고 있다."
+  ],
+  "advanced": [
+    {
+      "word": "accidentally",
+      "meaning": "우연히, 뜻하지 않게",
+      "confuse": null,
+      "example": "Spencer **accidentally** discovered microwave cooking."
+    },
+    {
+      "word": "generate",
+      "meaning": "만들어 내다, 발생시키다",
+      "confuse": null,
+      "example": "A magnetron **generates** microwaves."
+    },
+    {
+      "word": "prototype",
+      "meaning": "시제품, 원형",
+      "confuse": null,
+      "example": "The first **prototype** was almost two meters tall."
+    },
+    {
+      "word": "bulky",
+      "meaning": "부피가 큰",
+      "confuse": null,
+      "example": "Early microwave ovens were heavy and **bulky**."
+    },
+    {
+      "word": "agitate",
+      "meaning": "휘젓다, 흔들어 움직이다",
+      "confuse": null,
+      "example": "Microwaves **agitate** water molecules in food."
+    },
+    {
+      "word": "household",
+      "meaning": "가정의, 가정용의",
+      "confuse": "housework(집안일)와 혼동 주의",
+      "example": "The microwave oven became a common **household** appliance."
+    },
+    {
+      "word": "revolutionize",
+      "meaning": "혁신하다, 완전히 바꾸다",
+      "confuse": null,
+      "example": "A melted candy bar helped **revolutionize** home cooking."
+    }
+  ],
+  "source": {
+    "title": "From Melted Candy to Kitchen Staple: The Microwave Oven's Origins (IEEE Spectrum)",
+    "url": "https://spectrum.ieee.org/a-history-of-the-microwave-oven"
+  }
+}

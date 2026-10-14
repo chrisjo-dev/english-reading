@@ -1,0 +1,126 @@
+{
+  "date": "",
+  "category": "space",
+  "topic": "달의 한쪽 면",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "If you look at the Moon on different nights, you will notice something strange: it always shows us the same face.",
+      "b2": false
+    },
+    {
+      "en": "This does not mean that the Moon does not **spin**.",
+      "b2": false
+    },
+    {
+      "en": "It turns around once in exactly the same time that it takes to go around the Earth, so the same side always **faces** us.",
+      "b2": true
+    },
+    {
+      "en": "Long ago, the Moon spun faster, but the pull of Earth's **gravity** slowly **slowed** it **down** until the two movements **matched**.",
+      "b2": false
+    },
+    {
+      "en": "People sometimes call the other side the dark side, but it gets just as much sunlight as the side we see.",
+      "b2": false
+    },
+    {
+      "en": "No human saw that **hidden** side until a spacecraft flew behind the Moon and sent back photos.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "spin",
+      "돌다, 자전하다 (과거형 spun)"
+    ],
+    [
+      "face",
+      "~을 향하다"
+    ],
+    [
+      "gravity",
+      "중력"
+    ],
+    [
+      "slow down",
+      "느려지게 하다"
+    ],
+    [
+      "match",
+      "일치하다, 맞아떨어지다"
+    ],
+    [
+      "hidden",
+      "숨겨진"
+    ]
+  ],
+  "points": [
+    {
+      "title": "부정이 두 번 나오는 문장",
+      "body": "`This does not mean that the Moon does not spin`은 '달이 돌지 않는다는 뜻이 아니다', 즉 달도 돈다는 말이에요. not이 두 번 나오면 천천히 끊어서 읽으세요."
+    },
+    {
+      "title": "just as much ~ as",
+      "body": "`it gets just as much sunlight as the side we see`는 '우리가 보는 쪽과 똑같은 양의 햇빛을 받는다'예요. `just`가 '정확히 똑같이'를 강조해요."
+    }
+  ],
+  "answers": [
+    "여러 날 밤에 달을 보면 이상한 점을 알게 되는데, 달은 늘 우리에게 같은 얼굴을 보여 준다.",
+    "이것은 달이 자전하지 않는다는 뜻이 아니다.",
+    "달은 지구를 한 바퀴 도는 데 걸리는 시간과 정확히 같은 시간 동안 스스로 한 바퀴 돌기 때문에, 늘 같은 면이 우리를 향한다.",
+    "오래전에는 달이 더 빨리 돌았지만, 지구 중력의 당김이 두 움직임이 맞아떨어질 때까지 달의 회전을 천천히 늦추었다.",
+    "사람들은 가끔 반대쪽을 '어두운 면'이라고 부르지만, 그쪽도 우리가 보는 면과 똑같은 양의 햇빛을 받는다.",
+    "우주선이 달 뒤편으로 날아가 사진을 보내오기 전까지, 그 숨겨진 면을 본 사람은 아무도 없었다."
+  ],
+  "advanced": [
+    {
+      "word": "rotate",
+      "meaning": "자전하다, 회전하다",
+      "confuse": null,
+      "example": "The Moon **rotates** once for each trip around the Earth."
+    },
+    {
+      "word": "orbit",
+      "meaning": "궤도를 돌다, 궤도",
+      "confuse": null,
+      "example": "The Moon **orbits** the Earth in the same time it takes to spin once."
+    },
+    {
+      "word": "synchronized",
+      "meaning": "동기화된, 시간이 맞춰진",
+      "confuse": null,
+      "example": "The Moon's spin and its orbit are **synchronized**."
+    },
+    {
+      "word": "gradually",
+      "meaning": "점차, 서서히",
+      "confuse": null,
+      "example": "Earth's gravity **gradually** slowed the Moon's spin."
+    },
+    {
+      "word": "misconception",
+      "meaning": "오해, 잘못된 생각",
+      "confuse": null,
+      "example": "The dark side is a common **misconception**."
+    },
+    {
+      "word": "illuminated",
+      "meaning": "빛을 받는, 밝혀진",
+      "confuse": "eliminated(제거된)와 혼동 주의",
+      "example": "The far side is **illuminated** by the sun as often as the near side."
+    },
+    {
+      "word": "far side",
+      "meaning": "(달의) 뒷면",
+      "confuse": null,
+      "example": "A spacecraft took the first photos of the **far side**."
+    }
+  ],
+  "source": null
+}

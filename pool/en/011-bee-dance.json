@@ -1,0 +1,126 @@
+{
+  "date": "",
+  "category": "science",
+  "topic": "꿀벌의 춤",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "When a honeybee finds a field full of flowers, it cannot simply tell the others where to go, so it dances instead.",
+      "b2": false
+    },
+    {
+      "en": "Back inside the dark **hive**, it runs in a straight line while **shaking** its body, then **circles back** and does it again.",
+      "b2": false
+    },
+    {
+      "en": "The direction of this straight run shows the direction of the flowers **compared to** the sun.",
+      "b2": false
+    },
+    {
+      "en": "If the bee runs straight up, the food is toward the sun; if it runs at an **angle**, the flowers are at that same angle away from the sun.",
+      "b2": true
+    },
+    {
+      "en": "The longer the shaking part **lasts**, the farther away the flowers are.",
+      "b2": false
+    },
+    {
+      "en": "Other bees follow the dancer closely, learn the message, and then fly out to find the food themselves.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "hive",
+      "벌집"
+    ],
+    [
+      "shake",
+      "흔들다"
+    ],
+    [
+      "circle back",
+      "빙 돌아 원래 자리로 오다"
+    ],
+    [
+      "compared to",
+      "~와 비교해서, ~을 기준으로"
+    ],
+    [
+      "angle",
+      "각도"
+    ],
+    [
+      "last",
+      "(시간이) 계속되다, 지속되다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "the 비교급, the 비교급",
+      "body": "`The longer the shaking part lasts, the farther away the flowers are`는 '흔드는 부분이 길게 이어질수록 꽃은 더 멀리 있다'예요. 앞이 신호, 뒤가 그 뜻이에요."
+    },
+    {
+      "title": "if 절 두 개와 세미콜론",
+      "body": "`If the bee runs straight up, ...; if it runs at an angle, ...`처럼 세미콜론(;)이 두 경우를 나눠요. 각 if 절 뒤의 결과를 짝지어 읽으세요."
+    }
+  ],
+  "answers": [
+    "꿀벌은 꽃이 가득한 들판을 찾으면 다른 벌들에게 어디로 가라고 그냥 말할 수 없어서, 대신 춤을 춘다.",
+    "어두운 벌집 안으로 돌아오면, 벌은 몸을 흔들면서 일직선으로 달리고, 빙 돌아 처음 자리로 와서 다시 그렇게 한다.",
+    "이 직선 달리기의 방향은 태양을 기준으로 한 꽃의 방향을 보여 준다.",
+    "벌이 똑바로 위쪽으로 달리면 먹이는 태양 쪽에 있고, 비스듬히 달리면 꽃은 태양에서 그와 같은 각도만큼 떨어진 방향에 있다.",
+    "몸을 흔드는 부분이 오래 이어질수록 꽃은 더 멀리 있다.",
+    "다른 벌들은 춤추는 벌을 가까이 따라다니며 그 메시지를 익힌 다음, 스스로 먹이를 찾으러 날아간다."
+  ],
+  "advanced": [
+    {
+      "word": "forager",
+      "meaning": "먹이를 찾아다니는 동물",
+      "confuse": null,
+      "example": "A **forager** returns to the hive to share what it found."
+    },
+    {
+      "word": "communicate",
+      "meaning": "의사소통하다, 전달하다",
+      "confuse": null,
+      "example": "Bees **communicate** the location of food through dance."
+    },
+    {
+      "word": "orientation",
+      "meaning": "방향, 방위",
+      "confuse": null,
+      "example": "The **orientation** of the run points toward the flowers."
+    },
+    {
+      "word": "indicate",
+      "meaning": "나타내다, 가리키다",
+      "confuse": null,
+      "example": "The length of the shaking **indicates** the distance."
+    },
+    {
+      "word": "duration",
+      "meaning": "지속 시간",
+      "confuse": null,
+      "example": "The **duration** of the shaking tells how far away the food is."
+    },
+    {
+      "word": "decode",
+      "meaning": "해독하다",
+      "confuse": null,
+      "example": "Other bees **decode** the dance and fly out to find the food."
+    },
+    {
+      "word": "sophisticated",
+      "meaning": "정교한, 복잡한",
+      "confuse": null,
+      "example": "The bee dance is a surprisingly **sophisticated** language."
+    }
+  ],
+  "source": null
+}

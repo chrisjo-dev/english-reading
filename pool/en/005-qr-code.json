@@ -1,0 +1,133 @@
+{
+  "date": "",
+  "category": "tech",
+  "topic": "QR 코드",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Today we scan QR codes to see menus or pay for things, but they were first made for car parts.",
+      "b2": false
+    },
+    {
+      "en": "In Japan, a company called Denso, which makes parts for cars, wanted a faster way to **track** its parts in factories.",
+      "b2": false
+    },
+    {
+      "en": "An engineer named Masahiro Hara found an idea in the board game Go, where black and white stones are placed on a **grid**.",
+      "b2": false
+    },
+    {
+      "en": "**Unlike** a normal barcode, which holds information in only one direction, his square code could **store** data both across and down, so it could hold much more.",
+      "b2": true
+    },
+    {
+      "en": "Big squares in the corners tell a scanner where the code is, so it can be read quickly from almost any **angle**.",
+      "b2": false
+    },
+    {
+      "en": "The code was introduced in 1994, and its name, QR, **stands for** quick response.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "scan",
+      "스캔하다, 훑어 읽다"
+    ],
+    [
+      "track",
+      "추적하다, 관리하다"
+    ],
+    [
+      "grid",
+      "격자, 바둑판 모양"
+    ],
+    [
+      "unlike",
+      "~와 달리"
+    ],
+    [
+      "store",
+      "저장하다"
+    ],
+    [
+      "angle",
+      "각도"
+    ],
+    [
+      "stand for",
+      "~을 나타내다, ~의 약자이다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Unlike ~, which ...",
+      "body": "`Unlike a normal barcode, which holds information in only one direction, his square code could store data ...`에서 주어는 `his square code`예요. 앞의 `Unlike ...`와 `which ...`는 비교 대상에 대한 설명이니, 주어와 동사 `could store`를 먼저 찾아 읽으세요."
+    },
+    {
+      "title": "stand for",
+      "body": "`its name, QR, stands for quick response`는 'QR은 quick response의 약자다'라는 뜻이에요. 약자를 설명할 때 자주 쓰는 표현이에요."
+    }
+  ],
+  "answers": [
+    "오늘날 우리는 메뉴를 보거나 물건값을 내려고 QR 코드를 스캔하지만, QR 코드는 처음에 자동차 부품을 위해 만들어졌다.",
+    "일본에서 자동차 부품을 만드는 덴소라는 회사는 공장에서 부품을 추적하는 더 빠른 방법을 원했다.",
+    "하라 마사히로라는 엔지니어는 검은 돌과 흰 돌을 격자 위에 놓는 바둑에서 아이디어를 얻었다.",
+    "정보를 한 방향으로만 담는 일반 바코드와 달리, 그의 네모난 코드는 가로와 세로 양쪽으로 데이터를 저장할 수 있어서 훨씬 더 많은 정보를 담을 수 있었다.",
+    "모서리에 있는 큰 사각형들이 스캐너에게 코드의 위치를 알려 주어서, 거의 어느 각도에서든 코드를 빠르게 읽을 수 있다.",
+    "이 코드는 1994년에 처음 공개되었고, 이름인 QR은 quick response(빠른 응답)의 약자다."
+  ],
+  "advanced": [
+    {
+      "word": "originally",
+      "meaning": "원래, 처음에는",
+      "confuse": null,
+      "example": "QR codes were **originally** designed for car parts."
+    },
+    {
+      "word": "inventory",
+      "meaning": "재고, 재고 목록",
+      "confuse": "invention(발명)과 혼동 주의",
+      "example": "The code helped factories manage their **inventory**."
+    },
+    {
+      "word": "inspiration",
+      "meaning": "영감",
+      "confuse": null,
+      "example": "Hara drew **inspiration** from the board game Go."
+    },
+    {
+      "word": "capacity",
+      "meaning": "용량, 수용력",
+      "confuse": "capability(능력)와 혼동 주의",
+      "example": "A square code has a much larger **capacity** than a barcode."
+    },
+    {
+      "word": "orientation",
+      "meaning": "방향, 방위",
+      "confuse": null,
+      "example": "The code can be read in almost any **orientation**."
+    },
+    {
+      "word": "abbreviation",
+      "meaning": "약어, 줄임말",
+      "confuse": null,
+      "example": "QR is an **abbreviation** for quick response."
+    },
+    {
+      "word": "ubiquitous",
+      "meaning": "어디에나 있는",
+      "confuse": null,
+      "example": "QR codes are now **ubiquitous** in restaurants and shops."
+    }
+  ],
+  "source": {
+    "title": "How a Board Game and Skyscrapers Inspired the Development of the QR Code (IEEE Spectrum)",
+    "url": "https://spectrum.ieee.org/how-a-board-game-and-skyscrapers-inspired-the-development-of-the-qr-code"
+  }
+}

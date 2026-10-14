@@ -1,0 +1,126 @@
+{
+  "date": "",
+  "category": "science",
+  "topic": "하늘이 파란 이유",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Sunlight looks white, but it is really a **mix** of all the colors of the rainbow.",
+      "b2": false
+    },
+    {
+      "en": "Each color travels as a wave, and blue light has shorter waves than red light.",
+      "b2": false
+    },
+    {
+      "en": "When sunlight enters the air, it hits tiny gas **molecules**, and these molecules **scatter** short blue waves in every direction much more than long red ones.",
+      "b2": true
+    },
+    {
+      "en": "So when you look at any part of the sky, blue light reaches your eyes from all around.",
+      "b2": false
+    },
+    {
+      "en": "Violet waves are even shorter, but sunlight contains less violet, and our eyes are less **sensitive** to it, so the sky looks blue **rather than** purple.",
+      "b2": false
+    },
+    {
+      "en": "At **sunset**, light must pass through much more air to reach us, so most of the blue is scattered away and the sky turns orange and red.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "mix",
+      "혼합, 섞인 것"
+    ],
+    [
+      "molecule",
+      "분자"
+    ],
+    [
+      "scatter",
+      "흩어지게 하다, 흩뿌리다"
+    ],
+    [
+      "sensitive",
+      "민감한, 잘 느끼는"
+    ],
+    [
+      "rather than",
+      "~라기보다는, ~대신에"
+    ],
+    [
+      "sunset",
+      "해 질 녘, 일몰"
+    ]
+  ],
+  "points": [
+    {
+      "title": "비교급 읽기",
+      "body": "`shorter waves than red light`, `much more than long red ones`처럼 비교 대상이 than 뒤에 와요. `long red ones`의 `ones`는 앞에 나온 `waves`를 다시 가리키는 말이에요."
+    },
+    {
+      "title": "rather than",
+      "body": "`the sky looks blue rather than purple`은 '하늘이 보라색이라기보다 파란색으로 보인다'는 뜻이에요. rather than 앞이 실제 모습, 뒤가 아닌 쪽이에요."
+    }
+  ],
+  "answers": [
+    "햇빛은 하얗게 보이지만, 사실은 무지개의 모든 색이 섞인 것이다.",
+    "각각의 색은 파동으로 이동하고, 파란빛은 빨간빛보다 파장이 짧다.",
+    "햇빛이 대기로 들어오면 아주 작은 기체 분자에 부딪히는데, 이 분자들은 짧은 파란 파동을 긴 빨간 파동보다 훨씬 더 많이 모든 방향으로 흩뜨린다.",
+    "그래서 하늘의 어느 쪽을 보든, 파란빛이 사방에서 우리 눈에 들어온다.",
+    "보라색 파동은 그보다 더 짧지만, 햇빛에는 보라색이 더 적게 들어 있고 우리 눈도 보라색에 덜 민감해서, 하늘은 보라색이라기보다 파란색으로 보인다.",
+    "해 질 녘에는 빛이 우리에게 닿기까지 훨씬 더 많은 공기를 지나야 해서, 파란빛 대부분이 흩어져 사라지고 하늘이 주황색과 빨간색으로 변한다."
+  ],
+  "advanced": [
+    {
+      "word": "composed of",
+      "meaning": "~로 구성된",
+      "confuse": null,
+      "example": "Sunlight is **composed of** all the colors of the rainbow."
+    },
+    {
+      "word": "wavelength",
+      "meaning": "파장",
+      "confuse": null,
+      "example": "Blue light has a shorter **wavelength** than red light."
+    },
+    {
+      "word": "disperse",
+      "meaning": "흩어지게 하다, 분산시키다",
+      "confuse": "disburse(지출하다)와 혼동 주의",
+      "example": "Gas molecules **disperse** blue light in every direction."
+    },
+    {
+      "word": "perceive",
+      "meaning": "인지하다, 지각하다",
+      "confuse": null,
+      "example": "Our eyes **perceive** the sky as blue, not purple."
+    },
+    {
+      "word": "predominantly",
+      "meaning": "주로, 대개",
+      "confuse": null,
+      "example": "The light we see from the sky is **predominantly** blue."
+    },
+    {
+      "word": "horizon",
+      "meaning": "지평선, 수평선",
+      "confuse": null,
+      "example": "At sunset, the sun is low on the **horizon**."
+    },
+    {
+      "word": "hue",
+      "meaning": "색조, 빛깔",
+      "confuse": "hew(자르다)와 발음이 같아 혼동 주의",
+      "example": "The sky changes to orange and red **hues** at sunset."
+    }
+  ],
+  "source": null
+}
