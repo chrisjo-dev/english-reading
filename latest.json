@@ -1,16 +1,16 @@
 {
- "date": "2026-10-14",
- "words_total": 143,
+ "date": "2026-10-15",
+ "words_total": 157,
  "langs": {
   "en": {
-   "count": 12,
-   "latest": "2026-10-14",
-   "topic": "나무 입양",
+   "count": 13,
+   "latest": "2026-10-15",
+   "topic": "로보택시",
    "sentences": [
-    "On hot summer days, a woman in Berlin carries a **bucket** of water to a tree near her home, and she has even given it a name: Linda.",
-    "She found the tree through a free app that shows a map of about nine hundred thousand street trees in the city.",
-    "When a tree needs water, it **appears** as an orange or red dot, and people can **adopt** it and get **advice** on how much water to give.",
-    "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find **public** water pumps on the street."
+    "Would you get into a taxi that drives itself?",
+    "This week, Uber started testing **self-driving** cars on the streets of Manchester, with a safety driver behind the wheel and no **passengers** on board.",
+    "For now, the cars are only **mapping** the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.",
+    "The company says it wants to make this technology **accessible** to people across the country."
    ],
    "chips": [
     "6문장",
@@ -18,47 +18,47 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "더운 여름날이면 베를린의 한 여성은 집 근처의 나무 한 그루에 물 한 양동이를 들고 가는데, 그 나무에 '린다'라는 이름까지 지어 주었다.",
+   "answer": "스스로 운전하는 택시에 타 보시겠습니까?",
    "words": [
     [
-     "bucket",
-     "양동이"
+     "self-driving",
+     "자율주행의, 스스로 운전하는"
     ],
     [
-     "appear",
-     "나타나다, ~로 보이다"
+     "passengers",
+     "승객들 (복수 -s)"
     ],
     [
-     "adopt",
-     "입양하다, (맡아서) 돌보기로 하다"
+     "mapping",
+     "지도를 만드는 것, 지도화"
     ],
     [
-     "advice",
-     "조언 (셀 수 없는 명사라 -s를 붙이지 않음)"
+     "accessible",
+     "이용하기 쉬운, 접근 가능한"
     ],
     [
-     "public",
-     "공공의, 누구나 쓸 수 있는"
+     "unions",
+     "노동조합들"
     ],
     [
-     "look after",
-     "~을 돌보다"
+     "affected",
+     "영향을 받은"
     ],
     [
-     "several",
-     "몇몇의, 여러"
+     "assurances",
+     "보장, 확약 (복수)"
     ]
    ]
   },
   "ja": {
-   "count": 11,
-   "latest": "2026-10-14",
-   "topic": "쓰레기 분리배출",
+   "count": 12,
+   "latest": "2026-10-15",
+   "topic": "첫 아르바이트",
    "sentences": [
-    "{日本|にほん}の{町|まち}では、ごみを**{分|わ}けて**{出|だ}します。",
-    "たとえば、**{燃|も}える**ごみは{月曜日|げつようび}と{木曜日|もくようび}に{出|だ}します。",
-    "ペットボトルやびんは、**{一週間|いっしゅうかん}**に1{回|かい}だけです。",
-    "ごみは{朝|あさ}8{時|じ}までに、{決|き}められた**{場所|ばしょ}**に{出|だ}さなければなりません。"
+    "{先週|せんしゅう}の{金曜日|きんようび}から、{駅|えき}の{前|まえ}のカフェで**アルバイト**を{始|はじ}めました。",
+    "{初|はじ}めての{日|ひ}、**{店長|てんちょう}**は「{午後|ごご}4{時|じ}に{来|き}てください」と{言|い}いました。",
+    "そして「わからないことは、いつでも**{聞|き}いて**ください」と{言|い}いました。",
+    "コーヒーの**{作|つく}り{方|かた}**を{教|おし}えてもらって、{何回|なんかい}も**{練習|れんしゅう}**しました。"
    ],
    "chips": [
     "5문장",
@@ -66,40 +66,50 @@
     "N4 1문장",
     "약 3분"
    ],
-   "answer": "일본의 동네에서는 쓰레기를 나눠서 내놓습니다.",
+   "answer": "지난주 금요일부터 역 앞 카페에서 아르바이트를 시작했습니다.",
    "words": [
     [
-     "{分|わ}ける",
-     "나누다"
+     "アルバイト",
+     "아르바이트"
     ],
     [
-     "ごみ",
-     "쓰레기"
+     "{店長|てんちょう}",
+     "점장"
     ],
     [
-     "{燃|も}える",
-     "타다"
+     "{聞|き}く",
+     "묻다, 듣다"
     ],
     [
-     "{一週間|いっしゅうかん}",
-     "일주일"
+     "{作|つく}り{方|かた}",
+     "만드는 법"
     ],
     [
-     "{場所|ばしょ}",
-     "장소, 곳"
+     "{練習|れんしゅう}する",
+     "연습하다"
     ],
     [
-     "まちがえる",
-     "틀리다, 잘못 알다"
+     "{大変|たいへん}",
+     "힘듦, 큰일"
     ],
     [
-     "カレンダー",
-     "달력"
+     "{楽|たの}しい",
+     "즐겁다"
     ]
    ]
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-15",
+   "topic": "로보택시"
+  },
+  {
+   "lang": "ja",
+   "day": "2026-10-15",
+   "topic": "첫 아르바이트"
+  },
   {
    "lang": "en",
    "day": "2026-10-14",
@@ -159,16 +169,6 @@
    "lang": "ja",
    "day": "2026-10-09",
    "topic": "단풍 원리"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-08",
-   "topic": "로보택시"
-  },
-  {
-   "lang": "ja",
-   "day": "2026-10-08",
-   "topic": "도서관 대화"
   }
  ]
 }
