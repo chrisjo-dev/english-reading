@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-15",
+  "category": "future",
+  "topic": "로보택시",
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "Would you get into a taxi that drives itself?", "b2": false},
+    {"en": "This week, Uber started testing **self-driving** cars on the streets of Manchester, with a safety driver behind the wheel and no **passengers** on board.", "b2": false},
+    {"en": "For now, the cars are only **mapping** the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.", "b2": false},
+    {"en": "The company says it wants to make this technology **accessible** to people across the country.", "b2": false},
+    {"en": "However, driver **unions** warn that thousands of jobs could be lost, and they are asking for help for the workers who would be **affected**.", "b2": false},
+    {"en": "Local transport officials, who have not yet received a single request to run driverless taxis in the area, say they will expect strong **assurances** about safety before these cars carry anyone on their roads.", "b2": true}
+  ],
+  "words": [
+    ["self-driving", "자율주행의, 스스로 운전하는"],
+    ["passengers", "승객들 (복수 -s)"],
+    ["mapping", "지도를 만드는 것, 지도화"],
+    ["accessible", "이용하기 쉬운, 접근 가능한"],
+    ["unions", "노동조합들"],
+    ["affected", "영향을 받은"],
+    ["assurances", "보장, 확약 (복수)"]
+  ],
+  "points": [
+    {"title": "문장 끝에 몰린 정보", "body": "3번 문장은 뒤로 갈수록 정보가 쌓여요. `in up to fifteen cities`(최대 15개 도시에서), `around the world`(전 세계), `by the end of this year`(올해 말까지) — 셋 다 놓치지 말고 해석에 넣어 보세요. 2번의 `with a safety driver ... and no passengers on board`도 문장 끝 정보예요."},
+    {"title": "중간에 끼어든 부연절", "body": "6번은 주어 `Local transport officials` 뒤에 `who have not yet received ...`가 끼어 있어요. 쉼표 사이를 잠시 괄호로 묶고 `officials ... say they will expect`로 뼈대를 먼저 잡으면 문장이 길어도 포기하지 않고 읽을 수 있어요."}
+  ],
+  "answers": [
+    "스스로 운전하는 택시에 타 보시겠습니까?",
+    "이번 주 우버는 맨체스터 거리에서 자율주행차 시험을 시작했는데, 운전석에는 안전 요원이 앉아 있고 승객은 태우지 않았다.",
+    "지금은 차들이 도시의 도로 지도만 만들고 있지만, 회사는 올해 말까지 전 세계 최대 15개 도시에서 로보택시 승차 서비스를 제공하기를 바라고 있다.",
+    "회사는 이 기술을 전국의 사람들이 이용할 수 있게 만들고 싶다고 말한다.",
+    "하지만 운전기사 노동조합들은 수천 개의 일자리가 사라질 수 있다고 경고하며, 영향을 받게 될 노동자들을 위한 지원을 요구하고 있다.",
+    "그 지역에서 무인 택시를 운행하겠다는 신청을 아직 한 건도 받지 않은 지역 교통 당국은, 이 차들이 자기네 도로에서 누군가를 태우기 전에 안전에 대한 확실한 보장을 요구하겠다고 말한다."
+  ],
+  "advanced": [
+    {"word": "autonomous", "meaning": "자율적인, 자율주행의", "confuse": "anonymous(익명의)와 혼동 주의", "example": "Uber is testing **autonomous** vehicles in Manchester, but a human still sits behind the wheel."},
+    {"word": "deploy", "meaning": "(실제로) 배치하다, 투입하다", "confuse": "employ(고용하다)와 혼동 주의", "example": "The company hopes to **deploy** robotaxis in up to fifteen cities by the end of the year."},
+    {"word": "regulator", "meaning": "규제 기관, 감독 기관", "confuse": null, "example": "Local **regulators** want strong safety guarantees before any driverless taxi carries passengers."},
+    {"word": "displace", "meaning": "(일자리·사람을) 대체하다, 밀어내다", "confuse": "replace(교체하다)와 뉘앙스 구분", "example": "Unions fear that robotaxis could **displace** thousands of drivers."},
+    {"word": "skeptical", "meaning": "회의적인", "confuse": null, "example": "Some officials remain **skeptical** about the benefits that self-driving taxis promise."},
+    {"word": "liability", "meaning": "법적 책임", "confuse": "reliability(신뢰성)와 혼동 주의", "example": "If a driverless car causes an accident, it is not yet clear who carries the **liability**."},
+    {"word": "oversight", "meaning": "감독, 관리", "confuse": "overlook(간과하다)와 혼동 주의", "example": "Transport officials say robotaxis will need close **oversight** before they operate on public roads."}
+  ],
+  "source": {"title": "Uber begins self-driving robotaxi trial in Manchester (Brit Brief, 2026-10-14)", "url": "https://britbrief.co.uk/tech/autonomous/uber-starts-self-driving-robotaxi-trial-in-manchester.html"}
+}
