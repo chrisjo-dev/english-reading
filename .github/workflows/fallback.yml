@@ -5,6 +5,8 @@ name: fallback
 on:
   schedule:
     - cron: "15 22 * * *"
+    # GitHub 예약 실행이 지연되거나 빠지는 날을 대비한 예비 슬롯(07:45 KST). 오늘 지문이 있으면 아무것도 하지 않는다.
+    - cron: "45 22 * * *"
   workflow_dispatch:
     inputs:
       lang:

@@ -6,6 +6,8 @@ name: catchup
 on:
   schedule:
     - cron: "0 23 * * *"
+    # 예비 슬롯(08:30 KST). 이미 보충했으면 대상이 없어 아무것도 보내지 않는다.
+    - cron: "30 23 * * *"
   workflow_dispatch:
     inputs:
       lang:
