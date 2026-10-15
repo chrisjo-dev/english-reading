@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SUBSCRIBE } from "./forms";
+import { CONFIRM_NOTE, SUBSCRIBE } from "./forms";
 
 const HELP = {
   en: "영어 지문 / CEFR B1~B2, 최근 소식을 바탕으로 써요",
@@ -37,6 +37,7 @@ export default function HeroForm({ stats }: { stats: string }) {
         {HELP[lang]}
       </p>
       <p className="mono c3-stats">{stats}</p>
+      <p className="confirm-note">{CONFIRM_NOTE}</p>
     </form>
   );
 }

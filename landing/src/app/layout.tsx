@@ -1,12 +1,40 @@
 import type { Metadata } from "next";
+import { FAQ } from "@/lib/faq";
 import { loadLatest } from "@/lib/reading";
 import "./globals.css";
 
 const SITE = "https://read.wspace.ai.kr";
 const TITLE = "매일 외국어 읽기 | 매일 영어, 일본어 독해 연습 (무료 뉴스레터)";
-const DESCRIPTION = "매일 아침 새로 올라오는 외국어 읽기. 문장별 음성, 주요 단어, 모범 해석.";
+const DESCRIPTION =
+  "매일 아침 무료로 받는 외국어 읽기 뉴스레터. 영어 B1~B2, 일본어 N4~N5 지문을 문장별 음성, 주요 단어, 모범 해석과 함께.";
 const latest = loadLatest();
 const OG_IMAGE = latest.langs.en?.latest ? `${SITE}/en/${latest.langs.en.latest}/thumb.png` : `${SITE}/en/thumb.png`;
+
+// 사이트(WebSite)와 자주 묻는 질문(FAQPage) 구조화 데이터. 상위 사이트 www.wspace.ai.kr 의 일부로 묶는다.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      name: "매일 외국어 읽기",
+      url: `${SITE}/`,
+      inLanguage: ["ko-KR", "en", "ja"],
+      description: DESCRIPTION,
+      isPartOf: { "@id": "https://www.wspace.ai.kr/#website" },
+      publisher: { "@id": "https://www.wspace.ai.kr/#person" },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE}/#faq`,
+      mainEntity: FAQ.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -35,7 +63,12 @@ export default function RootLayout({
       <head>
         {/* 숨김 상태는 .js 일 때만 적용한다(스크립트 없이도 모든 내용이 보이게). */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD).replace(/<\//g, "<\\/") }}
+        />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
