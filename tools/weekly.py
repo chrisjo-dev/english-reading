@@ -143,6 +143,9 @@ __HEAD_EXTRA__
 __FOOTER_CSS__</style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
 </head>
 <body><main>
   <a class="back" href="../../archive/">← 지난 지문</a>

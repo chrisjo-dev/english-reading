@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { fireGtag } from "@/lib/gtag";
 import { CONFIRM_NOTE, SUBSCRIBE } from "./forms";
 
 const HELP = {
@@ -15,14 +16,29 @@ type Lang = keyof typeof HELP;
 export default function HeroForm({ stats }: { stats: string }) {
   const [lang, setLang] = useState<Lang>("en");
   return (
-    <form className="c3-form" action={SUBSCRIBE} method="post" target="_blank" rel="noopener noreferrer">
+    <form
+      className="c3-form"
+      action={SUBSCRIBE}
+      method="post"
+      target="_blank"
+      rel="noopener noreferrer"
+      onSubmit={() => fireGtag("subscribe_submit", { lang, placement: "hero" })}
+    >
       <div className="c3-form-top">
         <label className="mono" htmlFor="hero-email">
           무료 구독 / 매일 07:00 전후
         </label>
         <div className="sw" role="group" aria-label="받을 언어">
           {(["en", "ja"] as const).map((l) => (
-            <button key={l} type="button" aria-pressed={lang === l} onClick={() => setLang(l)}>
+            <button
+              key={l}
+              type="button"
+              aria-pressed={lang === l}
+              onClick={() => {
+                setLang(l);
+                fireGtag("lang_switch", { lang: l });
+              }}
+            >
               {l.toUpperCase()}
             </button>
           ))}

@@ -139,6 +139,9 @@
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
 </head>
 <body>
 <main>
@@ -272,6 +275,13 @@
   });
   answer.addEventListener('toggle', sync);
 
+  var _gaPlayed = false;
+  var _gaLang = location.pathname.split('/')[1] || '';
+  var _gaDay = location.pathname.split('/')[2] || '';
+  function gaEvent(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params);
+  }
+
   var AUDIO = ["audio/s1.mp3", "audio/s2.mp3", "audio/s3.mp3", "audio/s4.mp3", "audio/s5.mp3"];
   var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
   var player = new Audio(), queue = [], rate = 1, token = 0;
@@ -292,6 +302,7 @@
   function next() {
     if (!queue.length) { stop(); return; }
     var i = queue.shift(), t = token; mark(i);
+    if (!_gaPlayed) { _gaPlayed = true; gaEvent('audio_play', {lang: _gaLang, day: _gaDay}); }
     function after() { if (t === token) setTimeout(function () { if (t === token) next(); }, queue.length ? 450 : 0); }
     if (AUDIO[i]) {
       player.onended = after; player.src = AUDIO[i];
@@ -340,6 +351,7 @@
   });
   copyMine.addEventListener('click', function () {
     if (!mine.value.trim()) { mine.focus(); return; }
+    gaEvent('feedback_copy', {lang: _gaLang, day: _gaDay});
     copyText([HEAD, passageBlock(), '[내 해석]\n' + mine.value.trim(),
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
@@ -349,6 +361,7 @@
     var off = document.body.classList.toggle('nofuri');
     furi.setAttribute('aria-pressed', String(!off));
     furi.textContent = off ? '후리가나 켜기' : '후리가나 끄기';
+    gaEvent('furigana_toggle', {on: !off});
   });
 </script>
 </body>

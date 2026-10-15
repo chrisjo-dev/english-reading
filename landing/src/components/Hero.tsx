@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
+import { fireGtag } from "@/lib/gtag";
 import HeroForm from "./HeroForm";
 import Phone from "./Phone";
 import { useLatest } from "./ref/latest";
@@ -77,7 +78,13 @@ export default function Hero() {
         )}
 
         {en && (
-          <a className="c3-phone" href={`/en/${en.latest}/`} aria-label={`오늘의 영어 지문 읽기: ${en.topic}`} data-phone>
+          <a
+            className="c3-phone"
+            href={`/en/${en.latest}/`}
+            aria-label={`오늘의 영어 지문 읽기: ${en.topic}`}
+            data-phone
+            onClick={() => fireGtag("read_today_click", { lang: "en" })}
+          >
             <Phone date={en.latest} topic={en.topic} chips={en.chips ?? []} sentences={en.sentences} draft={draft} />
           </a>
         )}

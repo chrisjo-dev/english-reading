@@ -1,8 +1,9 @@
 import Footer from "@/components/Footer";
-import { CONFIRM_NOTE, SUBSCRIBE } from "@/components/forms";
+import { CONFIRM_NOTE } from "@/components/forms";
 import Hero from "@/components/Hero";
 import Motion from "@/components/Motion";
 import Nav from "@/components/Nav";
+import SubFormsList from "@/components/SubFormsList";
 import Week, { WeekMeta } from "@/components/Week";
 import { LatestProvider } from "@/components/ref/latest";
 import { FAQ } from "@/lib/faq";
@@ -29,11 +30,6 @@ const STEPS = [
 // 검색과 AI 답변에 인용되도록, 무엇을 누구에게 얼마나 자주 어떤 수준으로 주는지 한 문단에 담는다.
 const GLANCE =
   "매일 외국어 읽기(read.wspace.ai.kr)는 매일 아침 CEFR B1~B2 영어 지문 또는 JLPT N4~N5 일본어 지문을 이메일로 보내 주는 무료 뉴스레터예요. 지문은 5문장 안팎으로 약 3분이면 읽을 수 있어요. 문장별 음성, 주요 단어 풀이, 모범 해석, AI 피드백을 모두 무료로 이용할 수 있어요.";
-
-const FORMS = [
-  { lang: "en", label: "영어 지문 받기", level: "EN B1~B2", desc: "최근 소식을 바탕으로 쓴 영어 지문" },
-  { lang: "ja", label: "일본어 지문 받기", level: "JA N4~N5", desc: "일본의 생활과 문화를 다룬 일본어 지문" },
-];
 
 const delay = (i: number) => ({ transitionDelay: `${i * 60}ms` });
 
@@ -119,22 +115,7 @@ export default function Home() {
               <h2 id="sub-h">매일 아침 메일로 받아 보세요.</h2>
             </div>
             <div className="sub-forms">
-              {FORMS.map((f, i) => (
-                <form key={f.lang} className="sub-form rv" style={delay(i)} action={SUBSCRIBE} method="post" target="_blank" rel="noopener noreferrer">
-                  <div className="mono k">
-                    <span>{f.level}</span>
-                    <span>{f.desc}</span>
-                  </div>
-                  <label className="sub-label" htmlFor={`email-${f.lang}`}>
-                    {f.label}
-                  </label>
-                  <input type="hidden" name="metadata__lang" value={f.lang} />
-                  <div className="row">
-                    <input id={`email-${f.lang}`} type="email" name="email" required placeholder="이메일 주소" autoComplete="email" />
-                    <button type="submit">구독하기</button>
-                  </div>
-                </form>
-              ))}
+              <SubFormsList />
             </div>
             <p className="note mono rv" style={delay(2)}>
               하나의 이메일로는 한 언어만 구독할 수 있어요. 영어와 일본어를 모두 받으시려면 서로 다른 이메일로 각각 구독해
