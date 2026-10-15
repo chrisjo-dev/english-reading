@@ -129,8 +129,13 @@
   .sub .note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-  .nav a { font-size: 14px; font-weight: 600; color: var(--blue); text-decoration: none; }
+  .gnb { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 54px; padding: 0 12px 0 20px; background: rgba(255,255,255,.94); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid var(--line); }
+  .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
+  .gnb nav { display: flex; gap: 4px; }
+  .gnb nav a { font-size: 14px; font-weight: 600; color: var(--sub); text-decoration: none; padding: 8px 12px; border-radius: 10px; }
+  .gnb nav a:hover { background: var(--bg); }
+  .gnb nav a.cta { color: var(--blue); background: var(--blue-soft); }
+  .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   @media (min-width: 600px) { .top { border-radius: 24px; margin: 12px 12px 0; } }
@@ -143,8 +148,11 @@
 </head>
 <body>
 <main>
+  <header class="gnb">
+    <a class="brand" href="/">매일 외국어 읽기</a>
+    <nav aria-label="사이트 메뉴"><a href="../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
+  </header>
   <div class="top">
-    <div class="nav"><a href="../archive/">← 지난 지문</a></div>
     <img class="thumb" src="thumb.png" width="76" height="76" alt="">
     <div class="date">10월 12일 월요일</div>
     <h1>오늘은 <em>핵시계</em> 이야기예요</h1>
