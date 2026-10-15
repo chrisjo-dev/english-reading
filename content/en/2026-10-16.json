@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-16",
+  "category": "science",
+  "topic": "문어의 뇌",
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "Inside every cell, a very long string of DNA is **folded** into a tiny space, a bit like a ball of thread.", "b2": false},
+    {"en": "Because of this folding, two parts of the string that are far apart can end up touching each other and forming small **loops**.", "b2": false},
+    {"en": "These loops can help decide which **genes** turn on, and when.", "b2": false},
+    {"en": "Scientists at the University of Vienna compared the DNA of a squid, a cuttlefish and an octopus, and they found many loops close to genes **linked** to the brain.", "b2": false},
+    {"en": "When the team removed a short piece of this DNA from young squid **embryos**, all twenty-five embryos grew more slowly, and five of them had clearly smaller brains.", "b2": false},
+    {"en": "The study, which looked at animals alive today rather than their ancient ancestors, **suggests** that these sea animals may have built their **complex** brains partly by changing how their DNA folds, not only by gaining new genes.", "b2": true}
+  ],
+  "words": [
+    ["folded", "접힌, 접혀 있는"],
+    ["loops", "고리들 (복수 -s)"],
+    ["genes", "유전자들 (gene의 복수)"],
+    ["linked (to)", "~와 관련된, 연결된"],
+    ["embryos", "배아들 (embryo의 복수)"],
+    ["suggests", "시사하다, (~라는 것을) 보여 주다"],
+    ["complex", "복잡한"]
+  ],
+  "points": [
+    {"title": "숫자와 복수형", "body": "5번 문장 끝에 숫자가 두 번 나와요. `all twenty-five embryos`(배아 25개 모두)와 `five of them`(그중 5개)을 구분해서 읽고, `embryos`, `brains`의 복수 -s도 해석에 살려 보세요."},
+    {"title": "suggests that = 시사하다", "body": "6번의 `suggests that`은 \"제안하다\"가 아니라 \"(연구 결과가) ~라는 것을 시사하다\"예요. 주어 `The study` 뒤에 끼어든 `which looked at ...` 부분을 잠시 괄호로 묶고 `The study ... suggests that`으로 뼈대를 먼저 잡아 보세요."}
+  ],
+  "answers": [
+    "모든 세포 안에서는 아주 긴 DNA 가닥이 실뭉치처럼 아주 작은 공간에 접혀 들어가 있다.",
+    "이렇게 접혀 있기 때문에, 가닥에서 멀리 떨어진 두 부분이 서로 맞닿아 작은 고리를 만들 수 있다.",
+    "이 고리들은 어떤 유전자가 언제 켜질지를 결정하는 데 도움을 줄 수 있다.",
+    "빈 대학교의 과학자들은 오징어, 갑오징어, 문어의 DNA를 비교했고, 뇌와 관련된 유전자 가까이에서 많은 고리를 발견했다.",
+    "연구팀이 어린 오징어 배아에서 이 DNA의 짧은 조각을 없애자, 배아 25개 모두가 더 느리게 자랐고, 그중 5개는 뇌가 뚜렷하게 더 작았다.",
+    "고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다."
+  ],
+  "advanced": [
+    {"word": "chromosome", "meaning": "염색체", "confuse": null, "example": "Long ago, pieces of these animals' **chromosomes** were reshuffled and brought distant genes together."},
+    {"word": "regulate", "meaning": "조절하다", "confuse": "regular(규칙적인)와 혼동 주의", "example": "DNA loops help **regulate** which genes turn on, and when."},
+    {"word": "evolve", "meaning": "진화하다, 서서히 발달하다", "confuse": "involve(포함하다)와 혼동 주의", "example": "Octopuses may have **evolved** complex brains partly by changing how their DNA folds."},
+    {"word": "conserved", "meaning": "(진화 과정에서) 보존된, 변하지 않고 유지된", "confuse": "conservative(보수적인)와 혼동 주의", "example": "The large folded regions were **conserved** across the three species, but the small loops were not."},
+    {"word": "embryonic", "meaning": "배아의, 초기 단계의", "confuse": null, "example": "Removing a short piece of DNA slowed **embryonic** development in all twenty-five squid."},
+    {"word": "cognition", "meaning": "인지, 사고 능력", "confuse": "recognition(인식, 알아봄)과 혼동 주의", "example": "Octopuses are famous for their advanced **cognition**, such as solving puzzles."},
+    {"word": "plausible", "meaning": "그럴듯한, 타당해 보이는", "confuse": "possible(가능한)과 뉘앙스 구분", "example": "The study offers a **plausible** explanation, but it does not prove that DNA folding alone made octopuses smart."}
+  ],
+  "source": {"title": "New DNA findings may explain how octopuses evolved complex brains (The Brighter Side of News, 2026-10-13)", "url": "https://www.thebrighterside.news/post/new-dna-findings-may-explain-how-octopuses-evolved-complex-brains/"}
+}
