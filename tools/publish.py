@@ -109,8 +109,8 @@ def patch_page(lang, day):
         page = page.replace("<link rel=\"stylesheet\"", meta + "<link rel=\"stylesheet\"", 1)
     if 'class="thumb"' not in page:
         page = page.replace(
-            "  .nav {",
-            "  .top { position: relative; }\n  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }\n  .nav {",
+            "  .gnb {",
+            "  .top { position: relative; }\n  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }\n  .gnb {",
             1,
         )
         page = page.replace(
@@ -119,12 +119,12 @@ def patch_page(lang, day):
             1,
         )
     if 'class="site-footer"' not in page:
-        page = page.replace("  .nav {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 110px; }\n  .nav {", 1)
+        page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 110px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
         page = page.replace("<link rel=\"stylesheet\"", f'<link rel="canonical" href="{url}">\n<link rel="stylesheet"', 1)
     if 'class="card sub"' not in page:
-        page = page.replace("  .nav {", SUB_CSS + "  .intro {", 1)
-        page = page.replace("  .intro {", INTRO_CSS + "  .nav {", 1)
+        page = page.replace("  .gnb {", SUB_CSS + "  .intro {", 1)
+        page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
         page = page.replace("</main>", sub_html(lang) + "</main>", 1)
         page = page.replace("\n  </div>\n\n  <section class=\"card\" id=\"passage\">", "\n" + intro_html(lang) + "  </div>\n\n  <section class=\"card\" id=\"passage\">", 1)
     path.write_text(page, encoding="utf-8")
@@ -165,7 +165,7 @@ def rebuild_lists(lang):
         groups.append("    </div>\n  </section>")
         review = (f'  <a class="review" href="{p}review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
         page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
-                .replace("__TITLE__", title).replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
+                .replace("__TITLE__", title).replace("__ARCHIVE__", f"{p}archive/" if p == "./" else "./").replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
                 .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
                 .replace("__CHIPS__", chips).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
@@ -254,6 +254,13 @@ ARCHIVE = r"""<!doctype html>
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
   main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
   h1 { font-size: 26px; font-weight: 800; margin: 0 8px 16px; letter-spacing: -0.03em; }
+  .gnb { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 54px; margin: -28px -12px 20px; padding: 0 12px 0 20px; background: rgba(255,255,255,.94); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid #f2f4f6; }
+  .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: #191f28; text-decoration: none; }
+  .gnb nav { display: flex; gap: 4px; }
+  .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
+  .gnb nav a:hover { background: #f2f4f6; }
+  .gnb nav a.cta { color: #3182f6; background: #e8f3ff; }
+  .gnb nav a.cta:hover { background: #d6e8ff; }
   .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #3182f6; text-decoration: none; }
   .search { display: block; width: 100%; box-sizing: border-box; height: 48px; border: 1.5px solid transparent; border-radius: 14px; background: #fff;
             padding: 0 16px; font: 400 16px Pretendard, -apple-system, sans-serif; color: #191f28; outline: 0; }
@@ -287,6 +294,10 @@ __SUB_CSS____INTRO_CSS____FOOTER_CSS__</style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
 </head>
 <body><main>
+  <header class="gnb">
+    <a class="brand" href="/">매일 외국어 읽기</a>
+    <nav aria-label="사이트 메뉴"><a href="__ARCHIVE__">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
+  </header>
   <a class="back" href="__TODAY__">오늘의 지문 바로 가기 →</a>
   <h1>__TITLE__</h1>
   <p class="intro" style="margin: -8px 8px 14px">__INTRO__ <a href="#subscribe">메일로 받기</a> <a href="__HOME__">다른 언어</a></p>
