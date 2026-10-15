@@ -517,6 +517,8 @@ html:not(.js) .sw {
 
 .row input {
   flex: 1;
+  /* iOS Safari 는 입력창 기본 폭(약 20자)을 최소 폭으로 잡아 좁은 화면에서 상자를 밀어낸다 */
+  width: 0;
   min-width: 0;
   border: 0;
   padding: 0 16px;
@@ -1462,7 +1464,7 @@ html:not(.js) .sw {
   }
 
   .sub-forms {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px;
   }
 
