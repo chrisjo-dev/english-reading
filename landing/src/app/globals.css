@@ -1335,6 +1335,7 @@ html:not(.js) .sw {
     top: auto;
     margin: 32px auto -150px;
     font-size: 14px;
+    transform: none;
     order: 3;
     z-index: 1;
   }

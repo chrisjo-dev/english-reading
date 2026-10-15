@@ -15,7 +15,9 @@ export default function Motion() {
       let queued = false;
       const draw = () => {
         queued = false;
-        const p = Math.min(1, Math.max(0, scrollY / (innerHeight * 0.6)));
+        // 한 열 화면에서는 폰 아래쪽이 카드에 가려 위쪽만 보이므로, 기울이면 왼쪽으로 쏠려 보인다. 세워서 둔다.
+        const flat = matchMedia("(max-width: 960px)").matches;
+        const p = flat ? 1 : Math.min(1, Math.max(0, scrollY / (innerHeight * 0.6)));
         const r = -6 * (1 - p);
         phone.style.transform = `rotate(${r.toFixed(2)}deg)`;
         if (deg) deg.textContent = `${r > -0.05 ? "0" : r.toFixed(1)}°`;
