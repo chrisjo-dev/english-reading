@@ -248,6 +248,7 @@ ARCHIVE = r"""<!doctype html>
 <meta property="og:title" content="지난 지문 | __SITE__"><meta property="og:image" content="__OG_IMAGE__">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__CANONICAL__">
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1; --blue: #3182f6; }
