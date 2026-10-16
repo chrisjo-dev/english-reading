@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-17",
+  "category": "culture",
+  "topic": "수리 카페",
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "example": true,
+  "sentences": [
+    {"en": "On the first Saturday of every month, a small community hall turns into a **repair** café for about four hours.", "b2": false},
+    {"en": "People arrive with broken lamps, torn jackets and old radios, and they sit down next to **volunteers** who know how to fix them.", "b2": false},
+    {"en": "The repairs are free, but visitors are asked to **watch** and help, so they can learn to do it themselves next time.", "b2": false},
+    {"en": "Last month, a teenager's **headphones** were fixed by a retired electrician in less than twenty minutes.", "b2": false},
+    {"en": "The organizers say that around seventy items are repaired each month, and that most of them would **otherwise** end up in the trash.", "b2": false},
+    {"en": "For many regular visitors, the café, which started as a simple way to **reduce** waste, has become a place where neighbors who once passed each other in silence now stop to talk.", "b2": true}
+  ],
+  "words": [
+    ["repair", "수리; 수리하다"],
+    ["volunteers", "자원봉사자들 (복수 -s)"],
+    ["watch", "지켜보다"],
+    ["headphones", "헤드폰 (보통 복수형으로 씀)"],
+    ["otherwise", "그렇지 않으면, (안 고쳤다면) 원래대로라면"],
+    ["reduce", "줄이다"],
+    ["regular", "단골의, 정기적으로 오는"]
+  ],
+  "points": [
+    {"title": "문장 끝의 행위자와 시간", "body": "4번 문장은 수동태예요. `were fixed`(고쳐졌다) 뒤의 `by a retired electrician`이 고친 사람이고, 그 뒤 `in less than twenty minutes`(20분도 안 걸려서)까지 문장 끝 정보를 끝까지 챙겨 읽어 보세요."},
+    {"title": "끼어든 부연절 건너뛰기", "body": "6번은 주어 `the café` 뒤에 `which started as ...` 부분이 끼어 있어요. 이 부분을 잠시 괄호로 묶고 `the café ... has become a place`로 뼈대를 먼저 잡은 다음, 마지막 `where neighbors ...`가 그 장소를 설명한다고 보면 됩니다."}
+  ],
+  "answers": [
+    "매달 첫째 토요일이면, 작은 주민 회관이 약 네 시간 동안 수리 카페로 바뀐다.",
+    "사람들은 고장 난 전등, 찢어진 재킷, 오래된 라디오를 들고 와서, 그것들을 고칠 줄 아는 자원봉사자들 옆에 앉는다.",
+    "수리는 무료지만, 방문객들은 다음번에는 직접 할 수 있도록 지켜보고 거들어 달라는 요청을 받는다.",
+    "지난달에는 한 십대의 헤드폰이 은퇴한 전기 기술자에 의해 20분도 안 되어 고쳐졌다.",
+    "주최 측은 매달 약 70개의 물건이 수리되며, 그중 대부분은 (수리하지 않았다면) 쓰레기통으로 갔을 것이라고 말한다.",
+    "많은 단골 방문객들에게, 처음에는 쓰레기를 줄이는 간단한 방법으로 시작했던 이 카페는, 한때 말없이 서로 지나치던 이웃들이 이제는 멈춰 서서 이야기를 나누는 곳이 되었다."
+  ],
+  "advanced": [
+    {"word": "mend", "meaning": "(옷 등을) 수선하다, 고치다", "confuse": "mind(신경 쓰다)와 혼동 주의", "example": "Volunteers **mend** torn jackets while visitors watch."},
+    {"word": "salvage", "meaning": "(버려질 것을) 건지다, 살려 내다", "confuse": null, "example": "The café **salvages** around seventy items every month."},
+    {"word": "landfill", "meaning": "쓰레기 매립지", "confuse": null, "example": "Most of these items would otherwise end up in a **landfill**."},
+    {"word": "durable", "meaning": "오래가는, 내구성 있는", "confuse": "during(~동안)과 혼동 주의", "example": "Older radios are often more **durable** than people expect."},
+    {"word": "self-reliant", "meaning": "스스로 해내는, 자립적인", "confuse": "reliable(믿을 만한)과 혼동 주의", "example": "By watching the repairs, visitors become more **self-reliant**."},
+    {"word": "foster", "meaning": "(관계·감정을) 키우다, 촉진하다", "confuse": "faster(더 빠른)와 혼동 주의", "example": "The monthly event **fosters** friendships between neighbors."},
+    {"word": "initiative", "meaning": "(새로운) 계획, 활동", "confuse": "initial(처음의)과 혼동 주의", "example": "What began as a small waste-reduction **initiative** became a meeting place."}
+  ],
+  "source": null
+}
