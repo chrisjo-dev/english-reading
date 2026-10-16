@@ -1,16 +1,16 @@
 {
  "date": "2026-10-17",
- "words_total": 176,
+ "words_total": 183,
  "langs": {
   "en": {
-   "count": 14,
-   "latest": "2026-10-16",
-   "topic": "문어의 뇌",
+   "count": 15,
+   "latest": "2026-10-17",
+   "topic": "수리 카페",
    "sentences": [
-    "Inside every cell, a very long string of DNA is **folded** into a tiny space, a bit like a ball of thread.",
-    "Because of this folding, two parts of the string that are far apart can end up touching each other and forming small **loops**.",
-    "These loops can help decide which **genes** turn on, and when.",
-    "Scientists at the University of Vienna compared the DNA of a squid, a cuttlefish and an octopus, and they found many loops close to genes **linked** to the brain."
+    "On the first Saturday of every month, a small community hall turns into a **repair** café for about four hours.",
+    "People arrive with broken lamps, torn jackets and old radios, and they sit down next to **volunteers** who know how to fix them.",
+    "The repairs are free, but visitors are asked to **watch** and help, so they can learn to do it themselves next time.",
+    "Last month, a teenager's **headphones** were fixed by a retired electrician in less than twenty minutes."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "모든 세포 안에서는 아주 긴 DNA 가닥이 실뭉치처럼 아주 작은 공간에 접혀 들어가 있다.",
+   "answer": "매달 첫째 토요일이면, 작은 주민 회관이 약 네 시간 동안 수리 카페로 바뀐다.",
    "words": [
     [
-     "folded",
-     "접힌, 접혀 있는"
+     "repair",
+     "수리; 수리하다"
     ],
     [
-     "loops",
-     "고리들 (복수 -s)"
+     "volunteers",
+     "자원봉사자들 (복수 -s)"
     ],
     [
-     "genes",
-     "유전자들 (gene의 복수)"
+     "watch",
+     "지켜보다"
     ],
     [
-     "linked (to)",
-     "~와 관련된, 연결된"
+     "headphones",
+     "헤드폰 (보통 복수형으로 씀)"
     ],
     [
-     "embryos",
-     "배아들 (embryo의 복수)"
+     "otherwise",
+     "그렇지 않으면, (안 고쳤다면) 원래대로라면"
     ],
     [
-     "suggests",
-     "시사하다, (~라는 것을) 보여 주다"
+     "reduce",
+     "줄이다"
     ],
     [
-     "complex",
-     "복잡한"
+     "regular",
+     "단골의, 정기적으로 오는"
     ]
    ]
   },
@@ -96,6 +96,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-17",
+   "topic": "수리 카페"
+  },
   {
    "lang": "ja",
    "day": "2026-10-17",
@@ -160,11 +165,6 @@
    "lang": "ja",
    "day": "2026-10-11",
    "topic": "가을 밤 소리"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-10",
-   "topic": "아트 페어"
   }
  ]
 }
