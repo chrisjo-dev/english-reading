@@ -1,0 +1,129 @@
+{
+  "date": "",
+  "category": "science",
+  "topic": "밀물과 썰물",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "If you spend a whole day at the beach, you will notice that the sea slowly moves up the sand and then pulls back again.",
+      "b2": false
+    },
+    {
+      "en": "This rise and fall of the ocean is called the **tide**, and it is mostly caused by the **gravity** of the Moon.",
+      "b2": false
+    },
+    {
+      "en": "The Moon pulls on the water closest to it, creating a **bulge** of high water, while another bulge forms on the opposite side of the Earth.",
+      "b2": true
+    },
+    {
+      "en": "As the Earth turns, most coasts pass through both bulges, so they usually get two high tides and two low tides in a little more than a day.",
+      "b2": false
+    },
+    {
+      "en": "Because the Moon also moves along its **orbit**, it takes about 24 hours and 50 minutes for a place on Earth to face the Moon again.",
+      "b2": false
+    },
+    {
+      "en": "That is why the tides arrive about 50 minutes later each day, and why people who fish or sail always **check** a tide table before they **head out**.",
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "tide",
+      "조수, 밀물과 썰물"
+    ],
+    [
+      "gravity",
+      "중력"
+    ],
+    [
+      "bulge",
+      "불룩한 부분, 부풀어 오른 곳"
+    ],
+    [
+      "orbit",
+      "궤도"
+    ],
+    [
+      "check",
+      "확인하다"
+    ],
+    [
+      "head out",
+      "나가다, 출발하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "it takes + 시간 + for A to B",
+      "body": "`it takes about 24 hours and 50 minutes for a place on Earth to face the Moon again`은 '지구의 한 지점이 다시 달을 마주하는 데 약 24시간 50분이 걸린다'예요. for 뒤가 그 일을 하는 주체, to 뒤가 걸리는 일이에요."
+    },
+    {
+      "title": "That is why A, and why B",
+      "body": "`That is why the tides arrive ... and why people ... check a tide table`은 앞 문장이 원인이고, 결과 두 가지가 why로 나란히 이어져요. '그래서 ~하고, 그래서 ~한다'로 풀어 보세요."
+    }
+  ],
+  "answers": [
+    "해변에서 하루 종일 있으면, 바닷물이 모래 위로 천천히 올라왔다가 다시 물러나는 것을 알아차리게 될 것이다.",
+    "이렇게 바다가 높아졌다 낮아지는 것을 조수라고 하며, 이는 주로 달의 중력 때문에 생긴다.",
+    "달은 자신과 가장 가까운 쪽의 물을 끌어당겨 물이 높이 솟은 부분을 만들고, 그동안 지구의 반대편에도 또 하나의 불룩한 부분이 생긴다.",
+    "지구가 자전하면서 대부분의 해안은 두 불룩한 부분을 모두 지나가므로, 보통 하루가 조금 넘는 시간 동안 만조 두 번과 간조 두 번을 겪는다.",
+    "달도 자기 궤도를 따라 움직이기 때문에, 지구의 한 지점이 다시 달을 마주하기까지 약 24시간 50분이 걸린다.",
+    "그래서 조수는 매일 약 50분씩 늦게 찾아오고, 낚시를 하거나 배를 타는 사람들은 나가기 전에 늘 물때표를 확인한다."
+  ],
+  "advanced": [
+    {
+      "word": "recede",
+      "meaning": "물러나다, 빠지다",
+      "confuse": "receive(받다)와 혼동 주의",
+      "example": "The sea slowly **recedes** from the sand at low tide."
+    },
+    {
+      "word": "gravitational",
+      "meaning": "중력의",
+      "confuse": null,
+      "example": "The Moon's **gravitational** pull lifts the ocean."
+    },
+    {
+      "word": "exert",
+      "meaning": "(힘을) 가하다",
+      "confuse": "expert(전문가)와 혼동 주의",
+      "example": "The Moon **exerts** a pull on the water closest to it."
+    },
+    {
+      "word": "opposite",
+      "meaning": "반대편의",
+      "confuse": null,
+      "example": "A second bulge forms on the **opposite** side of the Earth."
+    },
+    {
+      "word": "rotation",
+      "meaning": "자전, 회전",
+      "confuse": null,
+      "example": "The Earth's **rotation** carries each coast through both bulges."
+    },
+    {
+      "word": "predictable",
+      "meaning": "예측할 수 있는",
+      "confuse": null,
+      "example": "Tides are so **predictable** that tables can be printed years ahead."
+    },
+    {
+      "word": "consult",
+      "meaning": "참고하다, 찾아보다",
+      "confuse": null,
+      "example": "Sailors always **consult** a tide table before they leave."
+    }
+  ],
+  "source": {
+    "title": "Frequency of Tides - The Lunar Day (NOAA National Ocean Service)",
+    "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides05_lunarday.html"
+  }
+}
