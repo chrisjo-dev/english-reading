@@ -1,16 +1,16 @@
 {
  "date": "2026-10-18",
- "words_total": 189,
+ "words_total": 196,
  "langs": {
   "en": {
-   "count": 15,
-   "latest": "2026-10-17",
-   "topic": "수리 카페",
+   "count": 16,
+   "latest": "2026-10-18",
+   "topic": "부푼 행성",
    "sentences": [
-    "On the first Saturday of every month, a small community hall turns into a **repair** café for about four hours.",
-    "People arrive with broken lamps, torn jackets and old radios, and they sit down next to **volunteers** who know how to fix them.",
-    "The repairs are free, but visitors are asked to **watch** and help, so they can learn to do it themselves next time.",
-    "Last month, a teenager's **headphones** were fixed by a retired electrician in less than twenty minutes."
+    "**Astronomers** have found that a giant planet outside our solar system is not perfectly round.",
+    "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always **faces** its star.",
+    "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the **edges** of its atmosphere.",
+    "They found that the atmosphere **stretches** farther out on the evening side than on the cooler morning side."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "매달 첫째 토요일이면, 작은 주민 회관이 약 네 시간 동안 수리 카페로 바뀐다.",
+   "answer": "천문학자들이 우리 태양계 밖의 한 거대 행성이 완벽하게 둥글지 않다는 것을 알아냈다.",
    "words": [
     [
-     "repair",
-     "수리; 수리하다"
+     "astronomers",
+     "천문학자들 (복수 -s)"
     ],
     [
-     "volunteers",
-     "자원봉사자들 (복수 -s)"
+     "faces",
+     "~을 향하다 (face의 3인칭 단수)"
     ],
     [
-     "watch",
-     "지켜보다"
+     "edges",
+     "가장자리들 (edge의 복수)"
     ],
     [
-     "headphones",
-     "헤드폰 (보통 복수형으로 씀)"
+     "stretches",
+     "뻗어 나가다, 늘어나다"
     ],
     [
-     "otherwise",
-     "그렇지 않으면, (안 고쳤다면) 원래대로라면"
+     "probably",
+     "아마도"
     ],
     [
-     "reduce",
-     "줄이다"
+     "bulge",
+     "불룩한 부분, 부풂"
     ],
     [
-     "regular",
-     "단골의, 정기적으로 오는"
+     "method",
+     "방법"
     ]
    ]
   },
@@ -96,6 +96,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-18",
+   "topic": "부푼 행성"
+  },
   {
    "lang": "ja",
    "day": "2026-10-18",
@@ -160,11 +165,6 @@
    "lang": "ja",
    "day": "2026-10-12",
    "topic": "가을 요리"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-11",
-   "topic": "수직 농장"
   }
  ]
 }
