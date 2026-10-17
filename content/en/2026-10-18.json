@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-18",
+  "category": "space",
+  "topic": "부푼 행성",
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "**Astronomers** have found that a giant planet outside our solar system is not perfectly round.", "b2": false},
+    {"en": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always **faces** its star.", "b2": false},
+    {"en": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the **edges** of its atmosphere.", "b2": false},
+    {"en": "They found that the atmosphere **stretches** farther out on the evening side than on the cooler morning side.", "b2": false},
+    {"en": "Strong winds, which carry heat from the bright day side to the dark night side, are **probably** what causes this **bulge**.", "b2": true},
+    {"en": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this **method** will help them study the weather on many of them.", "b2": false}
+  ],
+  "words": [
+    ["astronomers", "천문학자들 (복수 -s)"],
+    ["faces", "~을 향하다 (face의 3인칭 단수)"],
+    ["edges", "가장자리들 (edge의 복수)"],
+    ["stretches", "뻗어 나가다, 늘어나다"],
+    ["probably", "아마도"],
+    ["bulge", "불룩한 부분, 부풂"],
+    ["method", "방법"]
+  ],
+  "points": [
+    {"title": "큰 숫자 바로 그리기", "body": "`thirteen hundred light-years`는 13 × 100 = 1,300광년이에요. `six thousand planets`는 6,000개의 행성입니다. 영어 숫자를 들으면 머릿속에서 바로 아라비아 숫자로 바꿔 적어 보세요."},
+    {"title": "끼어든 부연절 건너뛰기", "body": "5번은 주어 `Strong winds` 뒤에 `which carry heat ...` 부분이 끼어 있어요. 이 부분을 괄호로 묶고 `Strong winds ... are probably what causes this bulge`로 뼈대를 먼저 잡은 다음, 끼어든 부분이 바람을 설명한다고 보면 됩니다."}
+  ],
+  "answers": [
+    "천문학자들이 우리 태양계 밖의 한 거대 행성이 완벽하게 둥글지 않다는 것을 알아냈다.",
+    "그 행성은 지구에서 약 1,300광년 떨어진 뜨거운 가스 행성으로, 한쪽 면이 항상 자기 별을 향하고 있다.",
+    "한 과학자 팀이 제임스 웹 우주 망원경을 이용해, 그 행성 대기의 가장자리들을 통과하는 별빛을 연구했다.",
+    "그들은 대기가 더 서늘한 아침 쪽보다 저녁 쪽에서 더 멀리 바깥으로 뻗어 있다는 것을 발견했다.",
+    "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 이 부풂의 원인일 것이다.",
+    "지금까지 우리 태양계 밖에서 6,000개가 넘는 행성이 발견되었기 때문에, 연구팀은 이 방법이 그중 많은 행성의 날씨를 연구하는 데 도움이 되기를 바란다."
+  ],
+  "advanced": [
+    {"word": "exoplanet", "meaning": "외계 행성 (태양계 밖의 행성)", "confuse": null, "example": "**Astronomers** have found that a giant **exoplanet** is not perfectly round."},
+    {"word": "asymmetrical", "meaning": "비대칭의", "confuse": "symmetrical(대칭의)과 혼동 주의", "example": "The planet's atmosphere is slightly **asymmetrical**."},
+    {"word": "distort", "meaning": "(모양을) 일그러뜨리다, 비틀다", "confuse": "distract(주의를 흩뜨리다)와 혼동 주의", "example": "Strong winds **distort** the shape of the atmosphere."},
+    {"word": "redistribute", "meaning": "다시 분배하다, 퍼뜨리다", "confuse": null, "example": "The winds **redistribute** heat from the day side to the night side."},
+    {"word": "expand", "meaning": "팽창하다, 넓어지다", "confuse": "expend(소비하다)와 혼동 주의", "example": "The warmer evening side of the atmosphere **expands** farther out."},
+    {"word": "infer", "meaning": "추론하다", "confuse": "refer(언급하다)와 혼동 주의", "example": "Scientists **infer** the planet's weather from the starlight that passes through it."},
+    {"word": "observation", "meaning": "관측, 관찰", "confuse": "observance(준수, 기념)와 혼동 주의", "example": "Webb's **observations** revealed a bulge on the evening side."}
+  ],
+  "source": {"title": "James Webb reveals a strange bulge in an alien planet's atmosphere (ScienceDaily, 2026-10-16)", "url": "https://www.sciencedaily.com/releases/2026/10/261015073205.htm"}
+}
