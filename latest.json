@@ -1,52 +1,52 @@
 {
  "date": "2026-10-19",
- "words_total": 203,
+ "words_total": 210,
  "langs": {
   "en": {
-   "count": 16,
-   "latest": "2026-10-18",
-   "topic": "부푼 행성",
+   "count": 17,
+   "latest": "2026-10-19",
+   "topic": "쏙독새 날개",
    "sentences": [
-    "**Astronomers** have found that a giant planet outside our solar system is not perfectly round.",
-    "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always **faces** its star.",
-    "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the **edges** of its atmosphere.",
-    "They found that the atmosphere **stretches** farther out on the evening side than on the cooler morning side."
+    "A small brown bird called the **nightjar** flies thousands of kilometers every year between Europe and southern Africa.",
+    "However, a new study suggests that its wings are not perfectly **designed** for such long trips.",
+    "Researchers at Lund University in Sweden **recorded** the birds as they flew through a wind tunnel at different speeds.",
+    "They found that the nightjar's wide wing **tips** help it turn quickly when it hunts insects at night, but they make fast flight less **efficient**."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 3분"
    ],
-   "answer": "천문학자들이 우리 태양계 밖의 한 거대 행성이 완벽하게 둥글지 않다는 것을 알아냈다.",
+   "answer": "쏙독새라고 불리는 작은 갈색 새는 매년 유럽과 아프리카 남부 사이를 수천 킬로미터 날아간다.",
    "words": [
     [
-     "astronomers",
-     "천문학자들 (복수 -s)"
+     "nightjar",
+     "쏙독새 (밤에 사냥하는 새)"
     ],
     [
-     "faces",
-     "~을 향하다 (face의 3인칭 단수)"
+     "designed",
+     "만들어진, 설계된"
     ],
     [
-     "edges",
-     "가장자리들 (edge의 복수)"
+     "recorded",
+     "기록했다, 촬영했다"
     ],
     [
-     "stretches",
-     "뻗어 나가다, 늘어나다"
+     "tips",
+     "끝부분들 (tip의 복수)"
     ],
     [
-     "probably",
-     "아마도"
+     "efficient",
+     "효율적인"
     ],
     [
-     "bulge",
-     "불룩한 부분, 부풂"
+     "thrust",
+     "추진력, 앞으로 미는 힘"
     ],
     [
-     "method",
-     "방법"
+     "findings",
+     "연구 결과 (보통 복수로 씀)"
     ]
    ]
   },
@@ -100,6 +100,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-19",
+   "topic": "쏙독새 날개"
+  },
   {
    "lang": "ja",
    "day": "2026-10-19",
@@ -164,11 +169,6 @@
    "lang": "ja",
    "day": "2026-10-13",
    "topic": "동네 빵집"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-12",
-   "topic": "핵시계"
   }
  ]
 }
