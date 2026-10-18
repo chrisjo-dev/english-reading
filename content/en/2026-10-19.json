@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-19",
+  "category": "science",
+  "topic": "쏙독새 날개",
+  "chips": ["6문장", "B1 위주", "B2 2문장", "약 3분"],
+  "sentences": [
+    {"en": "A small brown bird called the **nightjar** flies thousands of kilometers every year between Europe and southern Africa.", "b2": false},
+    {"en": "However, a new study suggests that its wings are not perfectly **designed** for such long trips.", "b2": false},
+    {"en": "Researchers at Lund University in Sweden **recorded** the birds as they flew through a wind tunnel at different speeds.", "b2": false},
+    {"en": "They found that the nightjar's wide wing **tips** help it turn quickly when it hunts insects at night, but they make fast flight less **efficient**.", "b2": false},
+    {"en": "The birds also produce **thrust**, a force that pushes them forward, when they lift their wings up, something scientists had mainly linked to bats and insects.", "b2": true},
+    {"en": "The team believes that these **findings**, which were published in a science journal last week, could help engineers build better flying robots.", "b2": true}
+  ],
+  "words": [
+    ["nightjar", "쏙독새 (밤에 사냥하는 새)"],
+    ["designed", "만들어진, 설계된"],
+    ["recorded", "기록했다, 촬영했다"],
+    ["tips", "끝부분들 (tip의 복수)"],
+    ["efficient", "효율적인"],
+    ["thrust", "추진력, 앞으로 미는 힘"],
+    ["findings", "연구 결과 (보통 복수로 씀)"]
+  ],
+  "points": [
+    {"title": "suggests that = ~을 시사하다", "body": "2번의 `a new study suggests that ...`에서 suggest는 '제안하다'가 아니라 '(연구 결과가) ~을 보여 주다, 시사하다'예요. 주어가 사람이 아니라 연구, 자료, 결과일 때는 거의 이 뜻입니다."},
+    {"title": "끼어든 부분 묶고 뼈대 잡기", "body": "5번은 `thrust` 뒤에 `a force that pushes them forward`가 끼어 thrust를 설명하고, 6번은 `these findings` 뒤에 `which were published ... last week`가 끼어 있어요. 이 부분을 괄호로 묶으면 `The birds also produce thrust when they lift their wings up`, `these findings could help engineers ...`라는 뼈대가 보입니다. 복수 `wings`, `tips`, `findings`의 -s도 함께 챙기세요."}
+  ],
+  "answers": [
+    "쏙독새라고 불리는 작은 갈색 새는 매년 유럽과 아프리카 남부 사이를 수천 킬로미터 날아간다.",
+    "하지만 한 새로운 연구는 그 새의 날개가 그렇게 긴 여행에 딱 맞게 만들어진 것은 아니라는 점을 시사한다.",
+    "스웨덴 룬드 대학교의 연구자들은 그 새들이 풍동(바람 터널) 안에서 여러 속도로 나는 모습을 기록했다.",
+    "그들은 쏙독새의 넓은 날개 끝이 밤에 곤충을 사냥할 때 빠르게 방향을 바꾸도록 돕지만, 빠른 비행은 덜 효율적으로 만든다는 것을 알아냈다.",
+    "그 새들은 날개를 위로 들어 올릴 때도 몸을 앞으로 미는 힘인 추진력을 만들어 내는데, 이는 과학자들이 주로 박쥐와 곤충과 연관 지어 온 것이다.",
+    "연구팀은 지난주 한 과학 학술지에 실린 이 연구 결과가 엔지니어들이 더 나은 비행 로봇을 만드는 데 도움이 될 수 있다고 생각한다."
+  ],
+  "advanced": [
+    {"word": "migrate", "meaning": "(철새가) 이동하다, 이주하다", "confuse": "immigrate(이민 오다)와 혼동 주의", "example": "The nightjar **migrates** thousands of kilometers between Europe and southern Africa."},
+    {"word": "trade-off", "meaning": "(하나를 얻으면 하나를 잃는) 맞바꿈, 절충", "confuse": null, "example": "The wing shape is a **trade-off** between long-distance flight and hunting."},
+    {"word": "maneuver", "meaning": "방향을 바꾸며 움직이다, 기동하다", "confuse": null, "example": "Broad wing tips help the bird **maneuver** when it hunts insects."},
+    {"word": "agility", "meaning": "민첩함", "confuse": "ability(능력)와 혼동 주의", "example": "The nightjar gains **agility** but loses some speed."},
+    {"word": "efficiency", "meaning": "효율", "confuse": "effectiveness(효과)와 혼동 주의", "example": "Wide wing tips reduce the bird's **efficiency** at high speeds."},
+    {"word": "propel", "meaning": "앞으로 나아가게 하다", "confuse": "repel(물리치다)과 혼동 주의", "example": "The upstroke also **propels** the bird forward."},
+    {"word": "aerodynamic", "meaning": "공기 역학적인", "confuse": null, "example": "The team measured the **aerodynamic** forces in a wind tunnel."}
+  ],
+  "source": {"title": "This bird flies thousands of miles, but its wings have a catch (ScienceDaily, 2026-10-17)", "url": "https://www.sciencedaily.com/releases/2026/10/261016070624.htm"}
+}
