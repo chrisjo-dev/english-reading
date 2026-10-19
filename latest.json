@@ -1,52 +1,52 @@
 {
  "date": "2026-10-20",
- "words_total": 217,
+ "words_total": 224,
  "langs": {
   "en": {
-   "count": 17,
-   "latest": "2026-10-19",
-   "topic": "쏙독새 날개",
+   "count": 18,
+   "latest": "2026-10-20",
+   "topic": "눈 깜빡임 안경",
    "sentences": [
-    "A small brown bird called the **nightjar** flies thousands of kilometers every year between Europe and southern Africa.",
-    "However, a new study suggests that its wings are not perfectly **designed** for such long trips.",
-    "Researchers at Lund University in Sweden **recorded** the birds as they flew through a wind tunnel at different speeds.",
-    "They found that the nightjar's wide wing **tips** help it turn quickly when it hunts insects at night, but they make fast flight less **efficient**."
+    "Most smart glasses need a battery, but a new pair from Northwestern University uses the wearer's own face as a source of energy.",
+    "The idea is simple: when two different **materials** touch and then pull apart, they create a small electric **charge**.",
+    "Three thin, **flexible** **sensors** on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.",
+    "Because people blink about fourteen to twenty times a minute, the sensors get a **steady** supply of tiny movements."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 3분"
    ],
-   "answer": "쏙독새라고 불리는 작은 갈색 새는 매년 유럽과 아프리카 남부 사이를 수천 킬로미터 날아간다.",
+   "answer": "대부분의 스마트 안경은 배터리가 필요하지만, 노스웨스턴 대학교에서 나온 새 안경은 착용자 자신의 얼굴을 에너지원으로 사용한다.",
    "words": [
     [
-     "nightjar",
-     "쏙독새 (밤에 사냥하는 새)"
+     "materials",
+     "재료, 물질들 (material의 복수)"
     ],
     [
-     "designed",
-     "만들어진, 설계된"
+     "charge",
+     "전하, (전기의) 충전량"
     ],
     [
-     "recorded",
-     "기록했다, 촬영했다"
+     "flexible",
+     "잘 휘는, 유연한"
     ],
     [
-     "tips",
-     "끝부분들 (tip의 복수)"
+     "sensors",
+     "센서들, 감지기들 (sensor의 복수)"
     ],
     [
-     "efficient",
-     "효율적인"
+     "steady",
+     "꾸준한, 끊이지 않는"
     ],
     [
-     "thrust",
-     "추진력, 앞으로 미는 힘"
+     "pattern",
+     "패턴, 일정한 모양"
     ],
     [
-     "findings",
-     "연구 결과 (보통 복수로 씀)"
+     "identified",
+     "알아냈다, 식별했다 (identify의 과거형)"
     ]
    ]
   },
@@ -100,6 +100,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-20",
+   "topic": "눈 깜빡임 안경"
+  },
   {
    "lang": "ja",
    "day": "2026-10-20",
@@ -164,11 +169,6 @@
    "lang": "ja",
    "day": "2026-10-14",
    "topic": "쓰레기 분리배출"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-13",
-   "topic": "레이저 안테나"
   }
  ]
 }
