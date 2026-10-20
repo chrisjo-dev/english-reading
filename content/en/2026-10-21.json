@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-21",
+  "category": "society",
+  "topic": "수리 카페",
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "On Saturday morning, people in Charleston carried **broken** lamps, stopped clocks, and noisy fans into one busy room.", "b2": false},
+    {"en": "They had come to the city's first Repair Cafe, where **volunteers** fix everyday things for free.", "b2": false},
+    {"en": "The event was started by a **retired** architect, who got the idea from a **similar** cafe in another city.", "b2": false},
+    {"en": "One woman's fan, which she needs to sleep at night, was fixed in about ten minutes.", "b2": false},
+    {"en": "A robot vacuum that someone had bought at a yard sale for twenty dollars was brought back to life, and the organizer said it is now **worth** about nine hundred dollars.", "b2": true},
+    {"en": "By the end of the day, more than sixty items had been **repaired**, and the group plans to hold the event every other month to **reduce** waste and help people save money.", "b2": false}
+  ],
+  "words": [
+    ["broken", "고장 난, 깨진"],
+    ["volunteers", "자원봉사자들 (volunteer의 복수)"],
+    ["retired", "은퇴한"],
+    ["similar", "비슷한"],
+    ["worth", "~의 가치가 있는"],
+    ["repaired", "수리된 (repair의 과거분사)"],
+    ["reduce", "줄이다"]
+  ],
+  "points": [
+    {"title": "수동태 뒤의 행위자와 시간", "body": "3번 `was started by a retired architect`는 '은퇴한 건축가가 시작했다'예요. by 뒤가 실제로 한 사람입니다. 4번 `was fixed in about ten minutes`는 끝의 `in about ten minutes`(약 10분 만에)까지 읽어야 문장이 완성돼요. 6번 `By the end of the day`(그날이 끝날 무렵까지)와 `every other month`(두 달에 한 번)도 놓치지 마세요."},
+    {"title": "숫자 크기 그려 보기", "body": "5번은 `twenty dollars`(20달러)에 산 물건이 `nine hundred dollars`(900달러) 가치가 됐다는 대비예요. 두 숫자를 머릿속에 나란히 놓아 보세요. 6번 `more than sixty items`는 '60개가 넘는 물건'이에요. 여기서 more than은 '~보다 많은'이고, `items`의 복수 -s도 함께 챙기세요."}
+  ],
+  "answers": [
+    "토요일 아침, 찰스턴 사람들이 고장 난 램프, 멈춘 시계, 시끄러운 선풍기를 들고 북적이는 한 방으로 들어왔다.",
+    "그들은 그 도시의 첫 번째 수리 카페에 온 것이었는데, 그곳에서는 자원봉사자들이 일상 물건을 무료로 고쳐 준다.",
+    "이 행사는 한 은퇴한 건축가가 시작했는데, 그는 다른 도시의 비슷한 카페에서 이 아이디어를 얻었다.",
+    "밤에 잠을 자려면 필요한 한 여성의 선풍기는 약 10분 만에 고쳐졌다.",
+    "누군가 중고 물품 판매(야드 세일)에서 20달러에 산 로봇 청소기가 다시 살아났고, 주최자는 그것이 이제 약 900달러의 가치가 있다고 말했다.",
+    "그날이 끝날 무렵까지 60개가 넘는 물건이 수리되었고, 그 모임은 쓰레기를 줄이고 사람들이 돈을 아끼도록 돕기 위해 두 달에 한 번 이 행사를 열 계획이다."
+  ],
+  "advanced": [
+    {"word": "inaugural", "meaning": "첫 번째의, 개최 기념의", "confuse": null, "example": "The group held its **inaugural** repair event on Saturday."},
+    {"word": "restore", "meaning": "(원래 상태로) 되살리다, 복원하다", "confuse": null, "example": "A volunteer **restored** the cheap robot vacuum to working order."},
+    {"word": "salvage", "meaning": "(버려질 것을) 건져 내다, 살리다", "confuse": null, "example": "The volunteers **salvaged** more than sixty items in one day."},
+    {"word": "discard", "meaning": "버리다, 폐기하다", "confuse": "disregard(무시하다)와 혼동 주의", "example": "Many people **discard** broken lamps instead of fixing them."},
+    {"word": "appliance", "meaning": "가전제품", "confuse": "application(신청, 앱)과 혼동 주의", "example": "Residents brought fans and other small **appliances** to the cafe."},
+    {"word": "landfill", "meaning": "쓰레기 매립지", "confuse": null, "example": "Repairing old things keeps them out of the **landfill**."},
+    {"word": "bimonthly", "meaning": "두 달에 한 번의, 격월의", "confuse": "biweekly(2주에 한 번의)와 혼동 주의", "example": "The group plans to hold **bimonthly** events at the library."}
+  ],
+  "source": {"title": "Repair Cafe holds first Charleston event on mission to give broken household items a second life (Live 5 News, 2026-10-17)", "url": "https://www.live5news.com/2026/10/17/repair-cafe-holds-first-charleston-event-mission-given-broken-household-items-second-life/"}
+}
