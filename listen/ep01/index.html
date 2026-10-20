@@ -329,7 +329,8 @@ $("play").addEventListener("click", () => {
   audio.play().catch(() => { setState("error"); $("ptext").textContent = "재생할 수 없어요. 다시 눌러 보세요"; });
 });
 const setIcon = (playing) => {
-  $("ic-play").hidden = playing; $("ic-pause").hidden = !playing;
+  // SVG 요소에는 .hidden 속성이 없어서 속성을 직접 넣고 뺀다
+  $("ic-play").toggleAttribute("hidden", playing); $("ic-pause").toggleAttribute("hidden", !playing);
   $("play").setAttribute("aria-label", playing ? "일시정지" : "대화 재생");
 };
 const playerBox = document.querySelector(".player");
