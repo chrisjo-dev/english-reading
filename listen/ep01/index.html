@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex, nofollow">
+<title>출퇴근 1분 듣기 EP01 Rabbit Hole</title>
+<meta name="description" content="출퇴근길 1분 영어 대화. 대화 듣기, 오늘의 표현 두 개, Story check 퀴즈.">
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+/* 매일 외국어 읽기 학습 페이지(en/날짜) 뼈대를 그대로 쓴다: 회색 바탕 위 흰 카드, STEP 순서, 아래 고정 막대. 원칙은 podcast/DESIGN.md
+   라이트만 쓰는 것은 매일 읽기와 맞추기 위한 의도된 선택이다. */
+:root {
+  --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
+  --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da; --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
+  color-scheme: light;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 16px; line-height: 1.6; letter-spacing: -0.01em; word-break: keep-all; overflow-wrap: anywhere;
+}
+main {
+  max-width: 560px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 calc(32px + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; gap: 12px;
+}
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* 위 메뉴 */
+.gnb {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  display: flex; justify-content: space-between; align-items: center; height: 54px;
+  padding: 0 max(12px, env(safe-area-inset-right, 0px)) 0 max(20px, env(safe-area-inset-left, 0px));
+  background: rgba(255, 255, 255, 0.94); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
+.gnb nav { display: flex; gap: 4px; }
+.gnb nav a { font-size: 14px; font-weight: 600; color: var(--sub); text-decoration: none; padding: 8px 12px; border-radius: 10px; }
+.gnb nav a.cta { color: var(--blue); background: var(--blue-soft); }
+
+/* 머리 카드 */
+.top { background: var(--card); border-radius: 20px; padding: 26px 20px 22px; margin-top: 12px; }
+.date { font-size: 14px; font-weight: 600; color: var(--muted); }
+h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 14px; letter-spacing: -0.03em; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--blue); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 13px; font-weight: 600; padding: 5px 10px; border-radius: 8px; background: var(--bg); color: var(--sub); }
+.chip.blue { background: var(--blue-soft); color: var(--blue); }
+.intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
+.intro a { color: var(--blue); font-weight: 600; text-decoration: none; }
+
+/* STEP 카드 */
+.card { background: var(--card); border-radius: 20px; padding: 22px 20px; }
+.step { font-size: 13px; font-weight: 700; color: var(--blue); }
+h2 { font-size: 20px; font-weight: 700; margin: 2px 0 16px; letter-spacing: -0.02em; }
+.tools { display: flex; gap: 8px; margin: -4px 0 16px; }
+.tool {
+  flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
+  font-size: 14px; font-weight: 600; letter-spacing: -0.01em; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap;
+}
+.tool[aria-pressed="true"] { background: var(--blue); color: #fff; }
+.tool:active { transform: scale(0.97); }
+.hint { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+.src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+.src a { color: var(--sub); }
+
+/* 대화 */
+/* 대본은 높이가 정해진 상자 안에서만 스크롤한다. 재생 중인 대사가 상자 가운데로 따라온다 */
+#lines { max-height: 300px; overflow-y: auto; overscroll-behavior: contain; position: relative;
+  border-top: 1px solid var(--bg); border-bottom: 1px solid var(--bg); padding: 4px 2px; }
+.sent { display: flex; gap: 10px; padding: 7px 0; }
+.sent:first-of-type { border-top: 0; padding-top: 0; }
+.who {
+  flex: none; width: 22px; height: 22px; margin-top: 2px; border-radius: 7px; border: 0; padding: 0; cursor: pointer;
+  background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700; display: grid; place-items: center;
+}
+.say { min-width: 0; }
+.en { font-size: 16px; line-height: 1.6; letter-spacing: 0; font-weight: 500; }
+.en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+.en i { font-style: normal; color: var(--muted); font-weight: 500; }
+.ko { font-size: 14px; line-height: 1.55; color: var(--sub); margin-top: 1px; }
+.sent.playing .who { background: var(--blue); color: #fff; }
+.sent.playing .en { color: var(--blue-press); }
+.gap { display: flex; align-items: center; gap: 6px; padding: 0 0 6px 32px; font-size: 12px; font-weight: 600; color: var(--blue); }
+.gap svg { width: 14px; height: 14px; flex: none; }
+
+/* 표현 */
+.ex-item { padding: 16px 0; border-top: 1px solid var(--line); }
+.ex-item:first-of-type { border-top: 0; padding-top: 0; }
+.ex-item:last-of-type { padding-bottom: 0; }
+.q { background: var(--bg); border-radius: 14px; padding: 14px 16px; }
+.q strong { display: block; font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+.q p { margin: 0; font-size: 16px; }
+.reveal { width: 100%; margin-top: 8px; }
+.ans { margin-top: 14px; }
+.w { font-size: 20px; font-weight: 700; letter-spacing: 0; }
+.m { font-size: 15px; color: var(--sub); margin-top: 2px; }
+.eg { font-size: 15px; color: var(--sub); background: var(--bg); border-radius: 10px; padding: 10px 12px; margin-top: 10px; letter-spacing: 0; }
+.eg b { color: var(--blue); font-weight: 700; }
+.eg span { display: block; font-size: 14px; color: var(--muted); letter-spacing: -0.01em; }
+.note { font-size: 14px; color: var(--sub); margin: 10px 0 0; }
+.listen { margin-top: 10px; background: none; border: 0; padding: 0; color: var(--blue); font-size: 14px; font-weight: 600; cursor: pointer; }
+
+/* Story check 퀴즈: 한 장에 한 문제, 옆으로 넘긴다 */
+
+.qz { overflow: hidden; touch-action: pan-y; }
+.qz-track { display: flex; transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.qz-card { flex: 0 0 100%; min-width: 0; display: flex; flex-direction: column; gap: 10px; padding: 2px; }
+.qz-n { font-size: 13px; font-weight: 700; color: var(--muted); }
+.qz-q { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.45; letter-spacing: 0; }
+.qz-opt {
+  width: 100%; text-align: left; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg);
+  color: var(--ink); font-size: 15px; font-weight: 500; line-height: 1.45; padding: 12px 14px; cursor: pointer; letter-spacing: 0;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.qz-opt .k { flex: none; font-weight: 700; color: var(--muted); }
+.qz-opt:disabled { cursor: default; }
+.qz-opt.right { background: var(--blue-soft); border-color: var(--blue); color: var(--blue-press); }
+.qz-opt.right .k { color: var(--blue); }
+.qz-opt.wrong { background: var(--coral-soft); border-color: var(--coral); color: var(--coral); }
+.qz-opt.wrong .k { color: var(--coral); }
+.qz-fb { border-radius: 12px; padding: 12px 14px; font-size: 14px; color: var(--sub); background: var(--bg); }
+.qz-fb strong { display: block; font-size: 15px; margin-bottom: 2px; }
+.qz-fb.ok strong { color: var(--blue); }
+.qz-fb.no strong { color: var(--coral); }
+.qz-why { margin: 6px 0 0; line-height: 1.5; letter-spacing: 0; }
+.qz-why b { color: var(--ink); font-weight: 700; }
+.qz-from { margin: 8px 0 0; padding-left: 10px; border-left: 2px solid #d1d6db; color: var(--muted); font-size: 13px; letter-spacing: 0; }
+.qz-nav { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+.qz-nav .tool { flex: none; width: 88px; }
+.qz-nav .tool.next { background: var(--blue); color: #fff; }
+.qz-nav .tool:disabled { opacity: 0.4; cursor: default; }
+.qz-dots { flex: 1; display: flex; justify-content: center; gap: 6px; }
+.qz-dots span { width: 6px; height: 6px; border-radius: 3px; background: #d1d6db; transition: width 0.2s; }
+.qz-dots span.on { width: 18px; background: var(--blue); }
+.qz-score { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+.qz-score em { font-style: normal; color: var(--blue); }
+.qz-sum { margin: 0; font-size: 15px; color: var(--sub); }
+@media (prefers-reduced-motion: reduce) { .qz-track, .qz-dots span { transition: none; } }
+
+/* 재생기: STEP 1 카드 맨 위. 아티팩트 화면은 틀이 페이지 높이만큼 늘어나 화면 아래 고정이 보이지 않아서 카드 안에 둔다 */
+.player { background: var(--bg); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.prow { display: flex; align-items: center; gap: 12px; }
+.play { flex: none; width: 48px; height: 48px; border: 0; border-radius: 14px; background: var(--blue); color: #fff; cursor: pointer; display: grid; place-items: center; }
+.play { transition: transform 0.12s, background-color 0.2s; position: relative; }
+.play:active { background: var(--blue-press); transform: scale(0.92); }
+.play svg { width: 22px; height: 22px; }
+/* 재생 상태가 눈에 보이게: 불러오는 중이면 링이 돌고, 재생 중이면 카드가 옅은 파랑이 되고 소리 막대가 움직인다 */
+.player { transition: background-color 0.25s; }
+.player.is-playing { background: var(--blue-soft); }
+.player.is-playing .ptext { color: var(--blue-press); }
+.player.is-loading .play svg { opacity: 0; }
+.player.is-loading .play::after { content: ""; position: absolute; inset: 13px; border-radius: 50%;
+  border: 2.5px solid rgba(255, 255, 255, 0.35); border-top-color: #fff; animation: spin 0.8s linear infinite; }
+.player.is-error .ptext { color: var(--coral); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.ptop { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.eq { flex: none; display: none; align-items: flex-end; gap: 2px; height: 12px; }
+.eq i { width: 3px; height: 4px; border-radius: 1px; background: var(--blue); }
+.is-playing .eq { display: flex; }
+.is-playing .eq i { animation: eq 0.9s ease-in-out infinite; }
+.is-playing .eq i:nth-child(2) { animation-delay: -0.3s; }
+.is-playing .eq i:nth-child(3) { animation-delay: -0.6s; }
+@keyframes eq { 0%, 100% { height: 4px; } 50% { height: 12px; } }
+.scrub { transition: transform 0.15s; }
+.scrub:active { transform: scaleY(1.35); }
+@media (prefers-reduced-motion: reduce) {
+  .is-playing .eq i { animation: none; height: 10px; }
+  .player.is-loading .play::after { animation-duration: 2s; }
+}
+.pinfo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.ptext { font-size: 14px; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scrub { width: 100%; margin: 0; accent-color: var(--blue); height: 18px; cursor: pointer; }
+.ptime { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+.tools { margin: 0 0 10px; }
+.tool { height: 38px; font-size: 13px; }
+.site-footer { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 8px 4px 0; font-size: 13px; color: var(--muted); }
+.site-footer a { color: var(--sub); text-decoration: none; }
+@media (prefers-reduced-motion: reduce) { .recap summary svg { transition: none; } .tool:active { transform: none; } }
+</style>
+</head>
+<body>
+<header class="gnb">
+  <a class="brand" href="https://read.wspace.ai.kr/">매일 외국어 읽기</a>
+  <nav aria-label="사이트 메뉴"><a href="https://read.wspace.ai.kr/">오늘의 읽기</a><a class="cta" href="https://read.wspace.ai.kr/#subscribe">메일로 받기</a></nav>
+</header>
+<main>
+
+  <div class="top">
+    <div class="date">10월 20일 화요일 출퇴근 1분 듣기</div>
+    <h1>오늘은 <em>새벽 1시 인스타</em> 이야기예요</h1>
+    <div class="chips">
+      <span class="chip blue">대화 1분</span>
+      <span class="chip">표현 2개</span>
+      <span class="chip">B1</span>
+      <span class="chip">Dan, Mia</span>
+    </div>
+    <p class="intro">출퇴근길에 듣는 1분 영어 대화예요. 먼저 귀로 듣고, 오늘의 표현 두 개를 떠올려 보세요.</p>
+  </div>
+
+  <section class="card" id="talk">
+    <div class="step">STEP 1</div>
+    <h2>대화 듣기</h2>
+    <div class="player">
+      <div class="prow">
+        <button class="play" id="play" type="button" aria-label="대화 재생">
+          <svg id="ic-play" viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg>
+          <svg id="ic-pause" viewBox="0 0 20 20" fill="currentColor" hidden><rect x="5" y="4" width="3.5" height="12" rx="1"/><rect x="11.5" y="4" width="3.5" height="12" rx="1"/></svg>
+        </button>
+        <div class="pinfo">
+          <span class="ptop"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="ptext" id="ptext">대화 듣기</span></span>
+          <input class="scrub" id="scrub" type="range" min="0" max="64" step="0.1" value="0" aria-label="재생 위치">
+        </div>
+      </div>
+      <div class="ptime"><span id="pcur">0:00</span><span id="pdur">1:04</span></div>
+      <audio id="audio" src="ep01.mp3" preload="metadata"></audio>
+    </div>
+    <div class="tools">
+      <button class="tool" id="slow" type="button" aria-pressed="false">느리게 0.8x</button>
+      <button class="tool" id="repeat" type="button" aria-pressed="false">한 줄 반복</button>
+      <button class="tool" id="ko" type="button" aria-pressed="false">해석 보기</button>
+    </div>
+    <div id="lines"></div>
+    <p class="hint">D(Dan), M(Mia)을 누르면 그 대사만 들려요. 해석은 먼저 들어 본 다음에 켜 보세요.</p>
+    <p class="src">참고 연구: <a href="https://doi.org/10.1521/jscp.2018.37.10.751" target="_blank" rel="noopener">Hunt 외, No More FOMO: Limiting Social Media Decreases Loneliness and Depression (2018)</a></p>
+  </section>
+
+  <section class="card">
+    <div class="step">STEP 2</div>
+    <h2>오늘의 표현</h2>
+    <div class="ex-item">
+      <div class="q"><strong>먼저 말해 보세요</strong><p>영상 하나, 또 하나, 그러다 갑자기 새벽 1시. 이걸 영어로 뭐라고 할까요?</p></div>
+      <button class="tool reveal" type="button" aria-expanded="false" aria-controls="ans1" id="rev1">정답 보기</button>
+      <div class="ans" id="ans1" hidden>
+        <div class="w">go down a rabbit hole</div>
+        <div class="m">하나 보다가 계속 빠져들다</div>
+        <div class="eg">I went down a YouTube <b>rabbit hole</b> last night.<span>어젯밤 유튜브에 완전 빠졌어.</span></div>
+        <p class="note">이상한 나라의 앨리스가 토끼굴에 빠져 끝없이 떨어지는 장면에서 온 말이에요.</p>
+        <button class="listen" type="button" data-line="2">대화에서 다시 듣기</button>
+      </div>
+    </div>
+    <div class="ex-item">
+      <div class="q"><strong>먼저 말해 보세요</strong><p>한 번에 끊는 게 아니라, 조금씩 덜 하는 것은?</p></div>
+      <button class="tool reveal" type="button" aria-expanded="false" aria-controls="ans2" id="rev2">정답 보기</button>
+      <div class="ans" id="ans2" hidden>
+        <div class="w">cut back (on)</div>
+        <div class="m">조금씩 줄이다</div>
+        <div class="eg">I'm <b>cutting back on</b> coffee.<span>커피 좀 줄이는 중이야.</span></div>
+        <p class="note">한 번에 딱 끊는 건 quit cold turkey예요. Dan은 그걸 두 번 실패했죠.</p>
+        <button class="listen" type="button" data-line="7">대화에서 다시 듣기</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="quiz">
+    <div class="step">STEP 3</div>
+    <h2>Story check</h2>
+    <div class="qz" id="qz" aria-live="polite"><div class="qz-track" id="qz-track"></div></div>
+    <div class="qz-nav">
+      <button class="tool" id="qz-prev" type="button">Back</button>
+      <div class="qz-dots" id="qz-dots" aria-hidden="true"></div>
+      <button class="tool next" id="qz-next" type="button">Next</button>
+    </div>
+  </section>
+
+  <footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a><a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a><a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>
+</main>
+
+<script>
+// 대사별 시작, 끝(초): 조립 코드가 남긴 시각표 + 음악 앞부분 3.65초. [[...]]는 오늘의 표현
+const LINES = [
+  { i: 0, who: "D", s: 3.65, e: 9.62, en: "Okay, embarrassing confession. My screen time yesterday? Three hours. Just Instagram.", ko: "자, 창피한 고백. 어제 내 스크린 타임? 3시간. 인스타만." },
+  { i: 1, who: "M", s: 9.80, e: 12.09, en: "Is that why you sent me a carpet video at one a.m.?", ko: "그래서 새벽 1시에 나한테 카펫 영상 보낸 거야?" },
+  { i: 2, who: "D", s: 12.27, e: 17.78, en: "I picked up my phone to check the time. Then one video turned into ten. I went down a [[rabbit hole]].", ko: "시간 보려고 폰을 들었거든. 그러다 영상 하나가 열 개가 되고. 완전 빠져들었지." },
+  { i: 3, who: "M", s: 17.48, e: 20.68, en: "(laughs) A carpet [[rabbit hole]].", ko: "(웃음) 카펫의 늪에." },
+  { i: 4, who: "D", s: 20.86, e: 22.25, en: "But is it really that bad?", ko: "근데 이게 진짜 그렇게 나빠?" },
+  { i: 5, who: "M", s: 22.43, e: 32.28, en: "I looked it up. In a 2018 study at Penn, students cut social media to thirty minutes a day. After three weeks, they felt less lonely and less depressed.", ko: "찾아봤는데. 2018년 Penn 연구에서 학생들이 SNS를 하루 30분으로 줄였대. 3주 뒤에 덜 외롭고 덜 우울해졌대." },
+  { i: 6, who: "D", s: 32.46, e: 35.76, en: "Thirty minutes? I've deleted the app twice. Didn't work.", ko: "30분? 나 앱 두 번 지웠어. 안 되던데." },
+  { i: 7, who: "M", s: 35.94, e: 39.99, en: "So don't delete it. Just [[cut back]]. Start with no phone in bed.", ko: "그러니까 지우지 말고. 그냥 줄여. 침대에서 폰 안 보기부터." },
+  { i: 8, who: "D", s: 40.17, e: 42.24, en: "No phone in bed. Okay.", ko: "침대에서 폰 안 보기. 알았어." },
+  { i: 9, who: "M", s: 42.42, e: 48.06, en: "Quick. One video, then another, and suddenly it's one a.m. What's that called?", ko: "퀴즈. 영상 하나, 또 하나, 그러다 갑자기 새벽 1시. 이걸 뭐라고 하지?", gap: true },
+  { i: 11, who: "D", s: 50.24, e: 51.48, en: "Going down a [[rabbit hole]].", ko: "빠져들기." },
+  { i: 12, who: "M", s: 51.66, e: 54.09, en: "And doing less, little by little?", ko: "그럼 조금씩 덜 하는 건?", gap: true },
+  { i: 14, who: "D", s: 56.27, e: 58.38, en: "[[Cutting back]]. I'll text you tonight.", ko: "줄이기. 오늘 밤에 문자할게." },
+  { i: 15, who: "M", s: 58.08, e: 60.24, en: "(laughs) Before one a.m.", ko: "(웃음) 새벽 1시 전에." },
+];
+const NAMES = { D: "Dan", M: "Mia" };
+const $ = (id) => document.getElementById(id);
+const audio = $("audio"), linesBox = $("lines");
+const fmt = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const mark = (s) => esc(s).replace(/\[\[(.+?)\]\]/g, "<b>$1</b>").replace(/^\(laughs\)/, "<i>(laughs)</i>");
+
+const rows = LINES.map((l, k) => {
+  const row = document.createElement("div");
+  row.className = "sent";
+  row.innerHTML = `<button class="who" type="button" aria-label="${NAMES[l.who]} 대사 듣기">${l.who}</button>
+    <div class="say"><div class="en">${mark(l.en)}</div><div class="ko" hidden>${esc(l.ko)}</div></div>`;
+  row.querySelector(".who").addEventListener("click", () => playLine(k));
+  linesBox.appendChild(row);
+  if (l.gap) {
+    const g = document.createElement("div");
+    g.className = "gap";
+    g.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7.5"/><path d="M10 6v4l2.5 2"/></svg>2초 동안 먼저 말해 보세요';
+    linesBox.appendChild(g);
+  }
+  return row;
+});
+
+let loopIdx = null, active = -1;
+const repeatOn = () => $("repeat").getAttribute("aria-pressed") === "true";
+function playLine(k) {
+  audio.currentTime = LINES[k].s;
+  loopIdx = repeatOn() ? k : null;
+  audio.play().catch(() => {});
+}
+$("play").addEventListener("click", () => {
+  if (!audio.paused) return audio.pause();
+  if (audio.error) audio.load();  // 실패한 뒤 다시 누르면 처음부터 다시 불러온다
+  audio.play().catch(() => { setState("error"); $("ptext").textContent = "재생할 수 없어요. 다시 눌러 보세요"; });
+});
+const setIcon = (playing) => {
+  $("ic-play").hidden = playing; $("ic-pause").hidden = !playing;
+  $("play").setAttribute("aria-label", playing ? "일시정지" : "대화 재생");
+};
+const playerBox = document.querySelector(".player");
+const setState = (st) => ["is-playing", "is-loading", "is-error"].forEach((c) => playerBox.classList.toggle(c, c === "is-" + st));
+audio.addEventListener("play", () => { setIcon(true); setState("loading"); });
+audio.addEventListener("playing", () => setState("playing"));
+audio.addEventListener("waiting", () => setState("loading"));
+audio.addEventListener("pause", () => { setIcon(false); setState("paused"); });
+audio.addEventListener("error", () => { setIcon(false); setState("error"); $("ptext").textContent = "재생할 수 없어요. 다시 눌러 보세요"; });
+audio.addEventListener("loadedmetadata", () => { $("scrub").max = audio.duration; $("pdur").textContent = fmt(audio.duration); });
+$("scrub").addEventListener("input", (e) => { audio.currentTime = Number(e.target.value); loopIdx = null; });
+
+audio.addEventListener("timeupdate", () => {
+  const t = audio.currentTime, d = audio.duration || 64;
+  $("scrub").value = t;
+  $("pcur").textContent = fmt(t);
+  if (loopIdx !== null && t > LINES[loopIdx].e + 0.2) { audio.currentTime = LINES[loopIdx].s; return; }
+  let k = -1;
+  LINES.forEach((l, j) => { if (t >= l.s - 0.05 && t <= l.e + 0.3) k = j; });
+  if (k === active) return;
+  if (active >= 0) rows[active].classList.remove("playing");
+  active = k;
+  if (k < 0) { $("ptext").textContent = t > 1 ? "잠깐 떠올려 보세요" : "대화 듣기"; return; }
+  rows[k].classList.add("playing");
+  $("ptext").textContent = `${NAMES[LINES[k].who]}: ${LINES[k].en.replace(/\[\[|\]\]/g, "")}`;
+  // 페이지는 그대로 두고 대본 상자만 움직인다
+  linesBox.scrollTo({ top: rows[k].offsetTop - linesBox.clientHeight / 2 + rows[k].offsetHeight / 2,
+    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+});
+audio.addEventListener("ended", () => { $("ptext").textContent = "다시 듣기"; });
+
+const toggle = (btn, on) => btn.setAttribute("aria-pressed", String(on));
+$("slow").addEventListener("click", () => {
+  const on = $("slow").getAttribute("aria-pressed") !== "true";
+  toggle($("slow"), on); audio.playbackRate = on ? 0.8 : 1;
+});
+$("repeat").addEventListener("click", () => {
+  const on = !repeatOn();
+  toggle($("repeat"), on); loopIdx = on && active >= 0 ? active : null;
+});
+$("ko").addEventListener("click", () => {
+  const on = $("ko").getAttribute("aria-pressed") !== "true";
+  toggle($("ko"), on);
+  document.querySelectorAll(".ko:not(#ko)").forEach((e) => (e.hidden = !on));
+});
+document.querySelectorAll(".reveal").forEach((b) => b.addEventListener("click", () => {
+  const box = $(b.getAttribute("aria-controls"));
+  box.hidden = !box.hidden;
+  b.setAttribute("aria-expanded", String(!box.hidden));
+  b.textContent = box.hidden ? "정답 보기" : "정답 가리기";
+}));
+// Story check 퀴즈
+const QUIZ = [
+  { q: "Why was Dan on Instagram until 1 a.m.?", a: 1,
+    from: "I picked up my phone to check the time. Then one video turned into ten.",
+    o: [
+      ["He couldn't sleep after a long day at work.", "Dan never talks about work or sleep. This idea is not in the talk."],
+      ["He picked up his phone to check the time, and one video turned into ten.", "He only wanted to check the time, but he kept watching. That is what going down a rabbit hole means."],
+      ["He was looking for a new carpet.", "The carpet was just a video he watched. He was not shopping for one."],
+    ] },
+  { q: "In the study, how much time did students spend on social media?", a: 2,
+    from: "In a 2018 study at Penn, students cut social media to thirty minutes a day.",
+    o: [
+      ["Ten minutes a day", "Ten minutes was for each app, not the total. Three apps, ten minutes each, makes thirty."],
+      ["Three hours a day", "Three hours was Dan's screen time, not the students'."],
+      ["Thirty minutes a day", "Mia says the students cut social media down to thirty minutes a day."],
+    ] },
+  { q: "How did the students feel after three weeks?", a: 0,
+    from: "After three weeks, they felt less lonely and less depressed.",
+    o: [
+      ["Less lonely and less depressed", "Using social media less made them feel better, not worse. Mia calls it the opposite of what you'd think."],
+      ["More anxious than before", "The talk never says they felt more anxious. They felt better, not worse."],
+      ["No different from before", "There was a change. After three weeks, they felt less lonely and less depressed."],
+    ] },
+  { q: "What does Mia tell Dan to do first?", a: 1,
+    from: "So don't delete it. Just cut back. Start with no phone in bed.",
+    o: [
+      ["Delete the app again", "Mia says the opposite: \"Don't delete it.\" Dan already tried that twice, and it didn't work."],
+      ["No phone in bed", "Mia wants Dan to cut back little by little, starting with one small step: no phone in bed."],
+      ["Quit social media cold turkey", "Quitting all at once is called quitting cold turkey. Mia says to cut back instead."],
+    ] },
+];
+const qzTrack = $("qz-track"), qzDots = $("qz-dots");
+let qzAt = 0; const qzPicked = Array(QUIZ.length).fill(null);
+function qzRender() {
+  qzTrack.innerHTML = QUIZ.map((x, n) => `<div class="qz-card" data-n="${n}">
+      <span class="qz-n">Question ${n + 1} of ${QUIZ.length}</span>
+      <p class="qz-q">${esc(x.q)}</p>
+      ${x.o.map(([t], j) => `<button class="qz-opt" type="button" data-j="${j}"><span class="k">${"ABC"[j]}</span><span>${esc(t)}</span></button>`).join("")}
+      <div class="qz-fb" hidden></div>
+    </div>`).join("") + `<div class="qz-card" data-n="end">
+      <span class="qz-n">Your score</span>
+      <p class="qz-score" id="qz-score"></p>
+      <p class="qz-sum" id="qz-sum"></p>
+      <button class="tool" id="qz-retry" type="button">Try again</button>
+    </div>`;
+  qzDots.innerHTML = QUIZ.map(() => "<span></span>").join("") + "<span></span>";
+  qzTrack.querySelectorAll(".qz-card[data-n]:not([data-n='end'])").forEach((card) => {
+    const n = Number(card.dataset.n);
+    card.querySelectorAll(".qz-opt").forEach((b) => b.addEventListener("click", () => qzPick(n, Number(b.dataset.j))));
+  });
+  $("qz-retry").addEventListener("click", () => { qzPicked.fill(null); qzRender(); qzGo(0); });
+}
+function qzPick(n, j) {
+  if (qzPicked[n] !== null) return;
+  qzPicked[n] = j;
+  const card = qzTrack.children[n], x = QUIZ[n], ok = j === x.a;
+  card.querySelectorAll(".qz-opt").forEach((b) => {
+    const k = Number(b.dataset.j);
+    b.disabled = true;
+    if (k === x.a) b.classList.add("right");
+    else if (k === j) b.classList.add("wrong");
+  });
+  const fb = card.querySelector(".qz-fb");
+  fb.className = `qz-fb ${ok ? "ok" : "no"}`;
+  // 해설: 정답 이유, 틀렸으면 고른 보기가 왜 아닌지, 대화 속 근거 문장
+  fb.innerHTML = `<strong>${ok ? "Correct!" : "Not quite. The answer is " + "ABC"[x.a] + "."}</strong>
+    ${ok ? "" : `<p class="qz-why"><b>Why not ${"ABC"[j]}?</b> ${esc(x.o[j][1])}</p>`}
+    <p class="qz-why"><b>Why ${"ABC"[x.a]}?</b> ${esc(x.o[x.a][1])}</p>
+    <p class="qz-from">"${esc(x.from)}"</p>`;
+  fb.hidden = false;
+  qzNav();
+}
+function qzGo(n) {
+  qzAt = Math.max(0, Math.min(QUIZ.length, n));
+  qzTrack.style.transform = `translateX(${-100 * qzAt}%)`;
+  if (qzAt === QUIZ.length) {
+    const right = qzPicked.filter((j, n) => j === QUIZ[n].a).length;
+    $("qz-score").innerHTML = `<em>${right}</em> out of ${QUIZ.length}`;
+    $("qz-sum").textContent = right === QUIZ.length ? "You followed the whole story. Listen once more and say the two phrases out loud."
+      : "Go back to the talk and listen to the lines you missed. Tap D or M to hear one line.";
+  }
+  qzNav();
+}
+function qzNav() {
+  [...qzDots.children].forEach((d, n) => d.classList.toggle("on", n === qzAt));
+  $("qz-prev").disabled = qzAt === 0;
+  $("qz-next").disabled = qzAt === QUIZ.length;
+  $("qz-next").textContent = qzAt === QUIZ.length - 1 ? "Score" : "Next";
+  [...qzTrack.children].forEach((c, n) => c.toggleAttribute("inert", n !== qzAt));
+}
+$("qz-prev").addEventListener("click", () => qzGo(qzAt - 1));
+$("qz-next").addEventListener("click", () => qzGo(qzAt + 1));
+// 손가락으로 밀어서 넘기기
+let qzX = null;
+$("qz").addEventListener("pointerdown", (e) => { qzX = e.clientX; });
+$("qz").addEventListener("pointerup", (e) => {
+  if (qzX === null) return;
+  const dx = e.clientX - qzX; qzX = null;
+  if (Math.abs(dx) > 50) qzGo(qzAt + (dx < 0 ? 1 : -1));
+});
+qzRender(); qzGo(0);
+
+document.querySelectorAll(".listen").forEach((b) => b.addEventListener("click", () => {
+  const k = LINES.findIndex((l) => l.i === Number(b.dataset.line));
+  $("talk").scrollIntoView({ block: "start" });
+  playLine(k);
+}));
+</script>
+
+</body>
+</html>
