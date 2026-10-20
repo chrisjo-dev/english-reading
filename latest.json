@@ -1,16 +1,16 @@
 {
  "date": "2026-10-21",
- "words_total": 231,
+ "words_total": 238,
  "langs": {
   "en": {
-   "count": 18,
-   "latest": "2026-10-20",
-   "topic": "눈 깜빡임 안경",
+   "count": 19,
+   "latest": "2026-10-21",
+   "topic": "수리 카페",
    "sentences": [
-    "Most smart glasses need a battery, but a new pair from Northwestern University uses the wearer's own face as a source of energy.",
-    "The idea is simple: when two different **materials** touch and then pull apart, they create a small electric **charge**.",
-    "Three thin, **flexible** **sensors** on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.",
-    "Because people blink about fourteen to twenty times a minute, the sensors get a **steady** supply of tiny movements."
+    "On Saturday morning, people in Charleston carried **broken** lamps, stopped clocks, and noisy fans into one busy room.",
+    "They had come to the city's first Repair Cafe, where **volunteers** fix everyday things for free.",
+    "The event was started by a **retired** architect, who got the idea from a **similar** cafe in another city.",
+    "One woman's fan, which she needs to sleep at night, was fixed in about ten minutes."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "대부분의 스마트 안경은 배터리가 필요하지만, 노스웨스턴 대학교에서 나온 새 안경은 착용자 자신의 얼굴을 에너지원으로 사용한다.",
+   "answer": "토요일 아침, 찰스턴 사람들이 고장 난 램프, 멈춘 시계, 시끄러운 선풍기를 들고 북적이는 한 방으로 들어왔다.",
    "words": [
     [
-     "materials",
-     "재료, 물질들 (material의 복수)"
+     "broken",
+     "고장 난, 깨진"
     ],
     [
-     "charge",
-     "전하, (전기의) 충전량"
+     "volunteers",
+     "자원봉사자들 (volunteer의 복수)"
     ],
     [
-     "flexible",
-     "잘 휘는, 유연한"
+     "retired",
+     "은퇴한"
     ],
     [
-     "sensors",
-     "센서들, 감지기들 (sensor의 복수)"
+     "similar",
+     "비슷한"
     ],
     [
-     "steady",
-     "꾸준한, 끊이지 않는"
+     "worth",
+     "~의 가치가 있는"
     ],
     [
-     "pattern",
-     "패턴, 일정한 모양"
+     "repaired",
+     "수리된 (repair의 과거분사)"
     ],
     [
-     "identified",
-     "알아냈다, 식별했다 (identify의 과거형)"
+     "reduce",
+     "줄이다"
     ]
    ]
   },
@@ -100,6 +100,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-21",
+   "topic": "수리 카페"
+  },
   {
    "lang": "ja",
    "day": "2026-10-21",
@@ -164,11 +169,6 @@
    "lang": "ja",
    "day": "2026-10-15",
    "topic": "첫 아르바이트"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-14",
-   "topic": "나무 입양"
   }
  ]
 }
