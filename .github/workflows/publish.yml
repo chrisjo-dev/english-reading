@@ -19,6 +19,10 @@ on:
         description: "오늘 날짜가 아니어도 메일 발송"
         type: boolean
         default: false
+      no_email:
+        description: "오늘 날짜여도 메일 보내지 않기 (이미 보낸 오늘 지문을 고쳐 다시 만들 때)"
+        type: boolean
+        default: false
 
 concurrency:
   group: publish
@@ -121,11 +125,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Send email
-        # 지난 날짜를 다시 만들 때는 보내지 않는다(수동 실행에서 send 를 켠 경우만 예외).
+        # 지난 날짜를 다시 만들 때는 보내지 않는다(수동 실행에서 send 를 켠 경우만 예외). no_email 이면 오늘 날짜여도 보내지 않는다.
         run: |
           for pair in ${{ steps.pick.outputs.pairs }}; do
             lang=${pair%%:*}; day=${pair#*:}
-            if [ "$day" = "${{ steps.pick.outputs.today }}" ] || [ "${{ inputs.send }}" = "true" ]; then
+            if [ "${{ inputs.no_email }}" = "true" ]; then
+              echo "skip email for $pair (no_email)"
+            elif [ "$day" = "${{ steps.pick.outputs.today }}" ] || [ "${{ inputs.send }}" = "true" ]; then
               python tools/send_email.py $lang $day
             else
               echo "skip email for $pair (not today)"
