@@ -39,6 +39,8 @@ def check(path):
         rest = SUPPORTED.sub("", t)
         if LEFTOVER.search(rest):
             errors.append(f"{where}: 처리되지 않는 마크다운 기호가 남음: {t[:80]}")
+        if "·" in t:  # 사이트 표기 규칙: 가운뎃점 대신 쉼표나 슬래시
+            errors.append(f"{where}: 가운뎃점(·)은 쓰지 않아요. 쉼표나 슬래시로 바꾸세요: {t[:80]}")
     if not c.get("source") and not c.get("example"):  # 지어낸 예문은 페이지에 그렇다고 표시된다
         body = " ".join(SUPPORTED.sub(lambda m: m.group(0).strip("*`"), s.get("en", "")) for s in c.get("sentences", []))
         hits = sorted(set(m.group(0) for m in NUMBER.finditer(body)))

@@ -35,7 +35,7 @@
   "advanced": [
     {"word": "conventional", "meaning": "기존의, 일반적인", "confuse": "convenient(편리한)와 혼동 주의", "example": "A **conventional** antenna is a piece of metal."},
     {"word": "transmit", "meaning": "송신하다, 전송하다", "confuse": null, "example": "The plasma line **transmits** radio signals into the air."},
-    {"word": "emit", "meaning": "(빛·전파 등을) 내뿜다, 방출하다", "confuse": "omit(빠뜨리다)와 혼동 주의", "example": "The plasma **emits** radio waves when a signal is sent into the ring."},
+    {"word": "emit", "meaning": "(빛, 전파 등을) 내뿜다, 방출하다", "confuse": "omit(빠뜨리다)와 혼동 주의", "example": "The plasma **emits** radio waves when a signal is sent into the ring."},
     {"word": "frequency", "meaning": "주파수, 빈도", "confuse": null, "example": "The antenna works at a **frequency** of thirty million waves a second."},
     {"word": "tunable", "meaning": "조절 가능한", "confuse": null, "example": "The length of the antenna is **tunable** with the laser's settings."},
     {"word": "mechanical", "meaning": "기계적인, 기계로 된", "confuse": null, "example": "It has no **mechanical** parts that need to move."},

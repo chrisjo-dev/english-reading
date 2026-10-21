@@ -34,7 +34,7 @@
   ],
   "advanced": [
     {"word": "harvest", "meaning": "(에너지를) 모아 얻다, 수확하다", "confuse": null, "example": "The glasses **harvest** energy from the wearer's blinks and smiles."},
-    {"word": "generate", "meaning": "(전기·에너지를) 만들어 내다", "confuse": "generous(너그러운)와 혼동 주의", "example": "Each blink **generates** a small electric charge."},
+    {"word": "generate", "meaning": "(전기, 에너지를) 만들어 내다", "confuse": "generous(너그러운)와 혼동 주의", "example": "Each blink **generates** a small electric charge."},
     {"word": "self-powered", "meaning": "자체 전원으로 움직이는", "confuse": null, "example": "The **self-powered** sensors do not need a battery."},
     {"word": "detect", "meaning": "감지하다, 알아채다", "confuse": null, "example": "The sensor on the nose bridge **detects** blinks and eyebrow movements."},
     {"word": "distinct", "meaning": "뚜렷이 다른, 구별되는", "confuse": "distinguished(저명한)와 혼동 주의", "example": "Chewing and talking create **distinct** electrical patterns."},

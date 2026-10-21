@@ -36,7 +36,7 @@
     {"word": "autonomous", "meaning": "자율적인, 자율주행의", "confuse": "anonymous(익명의)와 혼동 주의", "example": "Uber is testing **autonomous** vehicles in Manchester, but a human still sits behind the wheel."},
     {"word": "deploy", "meaning": "(실제로) 배치하다, 투입하다", "confuse": "employ(고용하다)와 혼동 주의", "example": "The company hopes to **deploy** robotaxis in up to fifteen cities by the end of the year."},
     {"word": "regulator", "meaning": "규제 기관, 감독 기관", "confuse": null, "example": "Local **regulators** want strong safety guarantees before any driverless taxi carries passengers."},
-    {"word": "displace", "meaning": "(일자리·사람을) 대체하다, 밀어내다", "confuse": "replace(교체하다)와 뉘앙스 구분", "example": "Unions fear that robotaxis could **displace** thousands of drivers."},
+    {"word": "displace", "meaning": "(일자리, 사람을) 대체하다, 밀어내다", "confuse": "replace(교체하다)와 뉘앙스 구분", "example": "Unions fear that robotaxis could **displace** thousands of drivers."},
     {"word": "skeptical", "meaning": "회의적인", "confuse": null, "example": "Some officials remain **skeptical** about the benefits that self-driving taxis promise."},
     {"word": "liability", "meaning": "법적 책임", "confuse": "reliability(신뢰성)와 혼동 주의", "example": "If a driverless car causes an accident, it is not yet clear who carries the **liability**."},
     {"word": "oversight", "meaning": "감독, 관리", "confuse": "overlook(간과하다)와 혼동 주의", "example": "Transport officials say robotaxis will need close **oversight** before they operate on public roads."}

@@ -39,7 +39,7 @@
     {"word": "landfill", "meaning": "쓰레기 매립지", "confuse": null, "example": "Most of these items would otherwise end up in a **landfill**."},
     {"word": "durable", "meaning": "오래가는, 내구성 있는", "confuse": "during(~동안)과 혼동 주의", "example": "Older radios are often more **durable** than people expect."},
     {"word": "self-reliant", "meaning": "스스로 해내는, 자립적인", "confuse": "reliable(믿을 만한)과 혼동 주의", "example": "By watching the repairs, visitors become more **self-reliant**."},
-    {"word": "foster", "meaning": "(관계·감정을) 키우다, 촉진하다", "confuse": "faster(더 빠른)와 혼동 주의", "example": "The monthly event **fosters** friendships between neighbors."},
+    {"word": "foster", "meaning": "(관계, 감정을) 키우다, 촉진하다", "confuse": "faster(더 빠른)와 혼동 주의", "example": "The monthly event **fosters** friendships between neighbors."},
     {"word": "initiative", "meaning": "(새로운) 계획, 활동", "confuse": "initial(처음의)과 혼동 주의", "example": "What began as a small waste-reduction **initiative** became a meeting place."}
   ],
   "source": null
