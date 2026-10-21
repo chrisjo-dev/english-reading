@@ -32,6 +32,7 @@ def parse(lang, day):
     return {
         "date": grab(r'<div class="date">(.*?)</div>', page),
         "topic": html.unescape(grab(r'<h1>.*?<em>(.*?)</em>', page)),
+        "headline": (re.search(r'<p class="headline"[^>]*>(.*?)</p>', page, re.S) or [None, ""])[1],
         "chips": [html.unescape(c) for c in re.findall(r'<span class="chip[^"]*">(.*?)</span>', page)],
         "sentences": re.findall(r'<div class="en">(.*?)</div>', passage, re.S),
         "words": re.findall(r'<span class="w">(.*?)</span><span class="m">(.*?)</span>', words_sec),
@@ -86,6 +87,7 @@ def build(lang, day):
 <tr><td style="{card}">
   <p style="margin:0;font-size:14px;font-weight:600;color:{MUTED};">{d["date"]}</p>
   <h1 style="margin:6px 0 12px;font-size:24px;line-height:1.35;font-weight:800;color:{INK};">오늘은 <span style="color:{BLUE};">{html.escape(d["topic"])}</span> 이야기예요</h1>
+  {f'<p style="margin:-6px 0 12px;font-size:16px;font-weight:600;color:{SUB};">{d["headline"]}</p>' if d.get("headline") else ""}
   {chips}
 </td></tr>
 <tr><td style="height:12px;"></td></tr>

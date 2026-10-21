@@ -9,7 +9,9 @@ content JSON 형식 (지문 안 강조는 **단어**, 체크 포인트 안 코�
 {
   "date": "2026-10-12",
   "category": "science",            # science, tech, society, future, culture, space
-  "topic": "핵시계",                 # h1 의 <em> 과 썸네일, 메일 제목에 쓰인다
+  "topic": "핵시계",                 # 짧은 주제어. 썸네일, 지난 지문 목록, 첫 화면에 쓰인다
+  "title_ko": "세상에서 가장 정확한 시계",  # 페이지 h1 과 메일 제목("오늘은 ... 이야기예요")
+  "headline": "The Most Exact Clock in the World",  # h1 아래 작은 제목. 지문 언어로, 지문보다 쉽게
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [{"en": "... **exact** ...", "b2": false}],   # b2: 조금 어려운 문장(영어 B2, 일본어 N4 배지)
   "words": [["exact", "정확한"]],
@@ -125,7 +127,8 @@ def render(lang, day):
     values = {
         "date_short": f"{d.month}월 {d.day}일",
         "date_label": f"{d.month}월 {d.day}일 {DAYS[d.weekday()]}요일",
-        "topic": esc(c["topic"]),
+        "topic": esc(c.get("title_ko") or c["topic"]),
+        "headline": f'    <p class="headline" lang="{lang}">{marks(c["headline"], "")}</p>\n' if c.get("headline") else "",
         "chips": "\n".join(f'      <span class="chip{" blue" if i == 0 else ""}">{esc(t)}</span>' for i, t in enumerate(c["chips"])),
         "sentences": sentences,
         "source": source,

@@ -116,3 +116,5 @@ git push origin main
 ```
 
 커밋 메시지에 Claude, AI, Generated 같은 AI 표기를 넣지 않는다.
+
+새 비축분에도 `title_ko`와 `headline`을 넣는다. 형식은 `tools/ROUTINE.md`(영어), `tools/ROUTINE.ja.md`(일본어)의 필드 설명과 같다. 없으면 짧은 주제어가 제목으로 대신 쓰인다.

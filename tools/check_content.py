@@ -51,6 +51,14 @@ def check(path):
         hits = sorted(set(m.group(0) for m in NUMBER.finditer(body)))
         if hits:
             warnings.append(f"출처 없이 구체적 수치가 있음({', '.join(hits)}). 출처를 달거나 수치를 빼세요.")
+    try:
+        new_format = dt.date.fromisoformat(path.stem) >= dt.date(2026, 10, 22)
+    except ValueError:
+        new_format = False  # 비축분은 제목이 없으면 짧은 주제어로 대신 보여 준다
+    if new_format:
+        for k in ("title_ko", "headline"):
+            if not str(c.get(k) or "").strip():
+                errors.append(f"{k} 가 비어 있어요. 페이지 제목에 쓰입니다(ROUTINE 의 필드 설명 참고).")
     errors += overlap(path, c)
     return errors, warnings
 

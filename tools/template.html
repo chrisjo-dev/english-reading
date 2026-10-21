@@ -26,6 +26,8 @@
   .date { font-size: 14px; font-weight: 600; color: var(--muted); }
   h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 14px; letter-spacing: -0.03em; }
   h1 em { font-style: normal; color: var(--blue); }
+  .top h1 { padding-right: 84px; }  /* 오른쪽 위 썸네일(76px)과 긴 제목이 겹치지 않게 */
+  .headline { margin: -8px 0 14px; font-size: 16px; font-weight: 600; color: var(--sub); letter-spacing: 0; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
   .chip { font-size: 13px; font-weight: 600; padding: 5px 10px; border-radius: 8px; background: var(--bg); color: var(--sub); }
   .chip.blue { background: var(--blue-soft); color: var(--blue); }
@@ -151,7 +153,7 @@
   <div class="top">
     <div class="date">{{date_label}}</div>
     <h1>오늘은 <em>{{topic}}</em> 이야기예요</h1>
-    <div class="chips">
+{{headline}}    <div class="chips">
 {{chips}}
     </div>
   </div>
