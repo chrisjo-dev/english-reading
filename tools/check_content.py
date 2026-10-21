@@ -6,7 +6,8 @@
 - 경고: 출처(source)가 없는데 인원, 금액, 수량 같은 구체적 수치가 있는 경우. 실제 사실처럼 읽히므로 출처를 달거나 수치를 빼야 한다.
   널리 알려진 일반 상식(계절, 대략적인 통계)이면 그대로 둬도 되고, 지어낸 사례면 "example": true 를 넣는다.
 - 오류: 같은 언어의 최근 14일 지문과 내용이 겹치는 경우. 주제가 같은 것은 괜찮고, 같은 기사(출처 주소)이거나
-  형광펜 단어가 2개 이상 같거나, (영어) 본문 핵심 단어가 12% 이상 겹치면 같은 이야기를 반복하는 것으로 본다.
+  형광펜 단어가 2개 이상 같거나, 본문이 많이 겹치면(영어: 핵심 단어 12% 이상, 일본어: 세 글자 묶음 15% 이상)
+  같은 이야기를 반복하는 것으로 본다.
       python3 tools/check_content.py --overlap en 2026-10-14   (내용 겹침만 검사, 발행 워크플로가 쓴다)
 """
 import datetime as dt
@@ -60,6 +61,11 @@ OVERLAP_DAYS = 14
 OVERLAP_JACCARD = 0.12
 OVERLAP_KEYWORDS = 2
 OVERLAP_MIN_SHARED = 6  # 아주 짧은 글끼리 우연히 겹친 비율에 속지 않도록, 겹친 단어가 이만큼은 있어야 한다
+# 일본어는 띄어쓰기가 없어 세 글자 묶음으로 비교한다. 문법 어미처럼 어느 글에나 나오는 묶음은 뺀다.
+# 2026-10 지문끼리는 가장 높아도 0.06(12개)였고, 같은 이야기를 바꿔 쓴 글은 0.24(30개)였다.
+OVERLAP_JA_JACCARD = 0.15
+OVERLAP_JA_MIN_SHARED = 15
+JA_COMMON = set("ありま いです いまし います かった があり しまし たです ったで とても なりま ました ません りまし ります わたし 一緒に 友だち 土曜日".split())
 STOPWORDS = set("""that this with from they their have been will would about which when there were also more than into
 some only other them your what because could after first still most such those these over even just where every each like
 says said made make many much very well while week year years people help team small called uses used""".split())
@@ -78,6 +84,22 @@ def _keywords(c):
     return {re.sub(r"\s*\(.*?\)", "", _plain(w[0])).strip().lower() for w in c.get("words", []) if w}
 
 
+def _ja_grams(c):
+    text = re.sub(r"[\s。、「」『』？！・…\.\?!,0-9０-９]", "", " ".join(_plain(s.get("en", "")) for s in c.get("sentences", [])))
+    return {text[i:i + 3] for i in range(len(text) - 2)}
+
+
+def _ja_common(folder):
+    """지문이 10편 넘게 쌓이면, 20%가 넘는 지문에 나오는 묶음을 흔한 표현으로 보고 뺀다."""
+    docs = [_ja_grams(json.loads(q.read_text(encoding="utf-8"))) for q in folder.glob("*.json")]
+    common = set(JA_COMMON)
+    if len(docs) >= 10:
+        from collections import Counter
+        df = Counter(g for d in docs for g in d)
+        common |= {g for g, k in df.items() if k / len(docs) > 0.2}
+    return common
+
+
 def overlap(path, c, days=OVERLAP_DAYS):
     """content/<언어>/YYYY-MM-DD.json 을 앞선 days일 지문과 비교해 같은 이야기를 반복하면 오류 문구를 돌려준다."""
     try:
@@ -89,6 +111,9 @@ def overlap(path, c, days=OVERLAP_DAYS):
     lang = path.parent.name
     url = (c.get("source") or {}).get("url")
     mine_w, mine_k = _content_words(c), _keywords(c)
+    if lang == "ja":
+        ja_common = _ja_common(path.parent)
+        mine_g = _ja_grams(c) - ja_common
     out = []
     for q in sorted(path.parent.glob("*.json")):
         try:
@@ -106,6 +131,12 @@ def overlap(path, c, days=OVERLAP_DAYS):
         if len(shared) >= OVERLAP_KEYWORDS:
             out.append(f"최근 지문({tag})과 형광펜 단어가 겹쳐요({', '.join(shared)}). 같은 내용을 반복하지 말고 새로 생긴 일에 초점을 맞추거나 다른 소식으로 바꾸세요.")
             continue
+        if lang == "ja":
+            og = _ja_grams(o) - ja_common
+            shared_g = mine_g & og
+            j = len(shared_g) / max(1, len(mine_g | og))
+            if j >= OVERLAP_JA_JACCARD and len(shared_g) >= OVERLAP_JA_MIN_SHARED:
+                out.append(f"최근 지문({tag})과 본문 내용이 {j:.0%} 겹쳐요({', '.join(sorted(shared_g)[:10])}). 같은 내용을 반복하지 말고 새로 생긴 일에 초점을 맞추거나 다른 소재로 바꾸세요.")
         if lang == "en":
             other = _content_words(o)
             j = len(mine_w & other) / max(1, len(mine_w | other))

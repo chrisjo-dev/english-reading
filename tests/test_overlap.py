@@ -72,5 +72,35 @@ class OverlapTest(unittest.TestCase):
         self.assertEqual(cc.overlap(p, c), [])
 
 
+ONIGIRI = ["「おにぎり」を知っていますか。", "ごはんの中に、梅干しや魚を入れます。", "外は、のりで巻きます。",
+           "コンビニで、朝ごはんにおにぎりを2つ買う人もいます。", "家で作るのも、とても簡単です。"]
+ONIGIRI_RETOLD = ["日本のコンビニでは、いろいろなおにぎりを売っています。", "中には梅干しや魚が入っていて、外はのりで巻いてあります。",
+                  "朝ごはんにおにぎりを買う人がたくさんいます。", "家で作るのも簡単です。"]
+ONIGIRI_NEW = ["今年、おにぎりの店が海外で人気になっています。", "パリには、毎朝長い列ができる店があります。", "店の人は、日本の味を守りたいと話しています。"]
+LIBRARY = ["わたしは本が好きですが、高いのであまり買いません。", "それで、きのう初めて町の図書館へ行きました。", "カードを作って、本を3冊借りました。"]
+
+
+class JapaneseOverlapTest(unittest.TestCase):
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp()) / "content" / "ja"
+        self.dir.mkdir(parents=True)
+        (self.dir / "2026-10-20.json").write_text(json.dumps(doc("주먹밥", ONIGIRI, ["おにぎり"]), ensure_ascii=False))
+
+    def check(self, day, c):
+        p = self.dir / f"{day}.json"
+        p.write_text(json.dumps(c, ensure_ascii=False))
+        return cc.overlap(p, c)
+
+    def test_retold_story_is_error(self):
+        errs = self.check("2026-10-22", doc("편의점 주먹밥", ONIGIRI_RETOLD, ["売っています"]))
+        self.assertTrue(errs and "겹쳐요" in errs[0], errs)
+
+    def test_same_topic_new_story_is_ok(self):
+        self.assertEqual(self.check("2026-10-22", doc("주먹밥", ONIGIRI_NEW, ["海外"])), [])
+
+    def test_different_story_is_ok(self):
+        self.assertEqual(self.check("2026-10-22", doc("도서관 카드", LIBRARY, ["図書館"])), [])
+
+
 if __name__ == "__main__":
     unittest.main()
