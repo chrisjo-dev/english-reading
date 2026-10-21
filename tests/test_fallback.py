@@ -18,8 +18,9 @@ sys.path.insert(0, str(REPO / "tools"))
 
 
 def make_content(topic="테스트주제", date="") -> dict:
-    """check_content.check 를 통과하는 최소 content JSON."""
-    return {
+    """check_content.check 를 통과하는 최소 content JSON. 주제마다 본문과 단어가 달라 내용 겹침 검사에 걸리지 않는다."""
+    tag = "".join(chr(97 + ord(ch) % 26) for ch in topic) * 2
+    c = {
         "date": date,
         "category": "science",
         "topic": topic,
@@ -50,6 +51,9 @@ def make_content(topic="테스트주제", date="") -> dict:
         "source": None,
         "example": True,  # 출처 없는 수치 경고를 피하기 위해
     }
+    c["sentences"] = [{"en": f"This {tag}{i} sentence is about {tag}.", "b2": i == 4} for i in range(5)]
+    c["words"] = [[f"{tag}{i}", "뜻"] for i in range(5)]
+    return c
 
 
 class FallbackTestBase(unittest.TestCase):

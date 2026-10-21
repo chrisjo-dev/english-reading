@@ -14,7 +14,7 @@
    - 토: 일상·문화 · 인물/현장 이야기
    - 일: 우주·미래 · 뉴스 요약
 2. **검색**: WebSearch(ToolSearch로 불러오기, mode "standard")로 오늘 분야의 최근 1~2일 소식을 찾습니다. B1 수준으로 풀어 쓸 수 있고 흥미로운 소식 하나를 고릅니다. 재난·사망·전쟁·정치 갈등처럼 무거운 소식은 피합니다.
-   **최근 주제 피하기**: 고르기 전에 `python3 -c "import json,glob; [print(p[-15:-5], json.load(open(p)).get('topic'), '|', (json.load(open(p)).get('source') or {}).get('title','')) for p in sorted(glob.glob('content/en/*.json'))[-30:]]"`로 최근 30편의 주제와 출처를 확인합니다. 같은 대상이나 같은 사건(예: 로보택시, 수리 카페)은 표현만 바꿔도 같은 이야기라 고르지 않습니다. 다른 소식을 찾습니다.
+   **최근 내용 겹치지 않기**: 고르기 전에 `python3 -c "import json,glob; [print(p[-15:-5], json.load(open(p)).get('topic'), '|', ' '.join(s['en'] for s in json.load(open(p))['sentences'])[:300]) for p in sorted(glob.glob('content/en/*.json'))[-14:]]"`로 최근 14편의 주제와 본문을 읽습니다. 주제는 다시 나와도 됩니다. 다만 최근에 쓴 지문과 같은 기사, 같은 사건, 같은 설명(예: '고장 난 물건을 가져오면 봉사자가 고쳐 준다'를 또 설명하기)을 반복하면 안 됩니다. 같은 주제를 고른다면 새로 생긴 일에만 초점을 맞추고, 이미 설명한 배경은 다시 쓰지 않습니다.
 3. **사실 확인**: 고른 소식의 원문 기사를 WebFetch로 열어(검색 결과에 나온 주소만 엽니다. 주소를 추측해 열면 승인 요청에 걸려 실행이 멈춥니다), 지문에 쓸 사실 2~4개(숫자, 시간, 누가 했는지)와 키워드 3~5개를 뽑습니다. 원문에서 확인한 숫자와 고유명사만 씁니다.
 4. **새로 쓰기**: 기사 문장을 옮기지 말고, 뽑은 키워드와 사실로 지문을 처음부터 새로 씁니다. 고유명사(사람·기관·제품 이름)는 지문당 2개 이내. 난이도 규칙은 그대로 지킵니다.
 5. **구조 다양화**: 아래 원샷 예시의 문장 구조(새 시설 소개 → 숫자 → take + 시간 → N more)를 따라 하지 마세요. 오늘의 글 형태에 맞게 시작 방식과 문장 흐름을 매번 다르게 씁니다. 약점 표현(take + 시간, N more, suggests that 등)도 매일 억지로 넣지 말고, 그날 소식에 자연스럽게 맞는 것만 씁니다. 체크 포인트도 그날 지문에 실제로 나온 약점으로 고릅니다.
@@ -66,7 +66,7 @@
    - `source`: 검색한 기사면 `{"title": "기사 제목 (매체, YYYY-MM-DD)", "url": "..."}`, 검색 없이 쓴 날은 `null`. 출처 없는 글은 페이지에 "특정 기사를 바탕으로 하지 않은 학습용 글"로 표시됩니다.
    - 모든 문자열은 일반 텍스트로 씁니다(HTML 태그 금지).
 3. **검증**: `python3 tools/render.py en YYYY-MM-DD`를 실행해 오류 없이 끝나는지 확인합니다. 오류가 나면 JSON을 고쳐 다시 실행합니다. 이 명령이 만든 HTML 파일은 커밋하지 않습니다(Actions가 다시 만듭니다). `git checkout -- . && git clean -fd -- en/YYYY-MM-DD` 로 되돌린 뒤 content 파일만 남깁니다.
-   그다음 `python3 tools/check_content.py en YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::warning`(최근 30일 같은 주제)이 나오면 다른 소식으로 다시 고르고, `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
+   그다음 `python3 tools/check_content.py en YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::error`(최근 지문과 내용 겹침)가 나오면 새로 생긴 일에 초점을 맞춰 고쳐 쓰거나 다른 소식으로 다시 고릅니다. 겹친 채로 올리면 발행 단계에서 비축분으로 바뀝니다. `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
 4. **push**: `git add content/en/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add YYYY-MM-DD: 주제어" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 같은 작성자 줄을 붙이지 마세요. 다른 브랜치로 push하지 마세요. push가 거절되면 `git pull --rebase origin main` 후 한 번만 다시 push합니다.
 5. **알림**: PushNotification으로 짧게 알립니다. 예: "오늘의 영어 읽기(10/13, 주제: 핵시계)가 올라갔어요. 몇 분 뒤 열려요: https://read.wspace.ai.kr/en/YYYY-MM-DD/". 알림에는 지문 전문과 모범 해석을 넣지 않습니다.
 6. **마지막 답변**: 한두 문장과 페이지 주소, 끝에 `출처: [기사 제목](URL)` 한 줄. 모범 해석은 답변에 노출하지 않습니다. push까지 실패했다면 원인과 함께 그 사실을 분명히 적고, 알림에도 "오늘 지문 올리기 실패"라고 적습니다.

@@ -31,6 +31,7 @@ concurrency:
 permissions:
   contents: write
   pages: write
+  issues: write
 
 jobs:
   publish:
@@ -87,6 +88,30 @@ jobs:
           for pair in ${{ steps.pick.outputs.pairs }}; do
             python tools/check_content.py "${pair%%:*}" "${pair#*:}"
           done
+
+      - name: Guard recent overlap
+        # 최근 14일 지문과 같은 이야기를 반복하면(같은 기사, 형광펜 단어 2개 이상, 본문 12% 이상 겹침) 그대로 내보내지 않는다.
+        # 오늘 지문이면 비축분으로 바꿔 발행을 이어 가고 이슈로 알린다. 지난 날짜면 여기서 멈춘다.
+        run: |
+          swapped=""
+          for pair in ${{ steps.pick.outputs.pairs }}; do
+            lang=${pair%%:*}; day=${pair#*:}
+            if python tools/check_content.py --overlap "$lang" "$day" > /tmp/overlap.txt; then cat /tmp/overlap.txt; continue; fi
+            cat /tmp/overlap.txt
+            if [ "$day" != "${{ steps.pick.outputs.today }}" ]; then
+              echo "::error::$pair 이 최근 지문과 겹쳐 발행을 멈춥니다. 지문을 고쳐 다시 올려 주세요."; exit 1
+            fi
+            git rm -q "content/$lang/$day.json"
+            out=$(python tools/fallback.py --lang "$lang" --day "$day") || true
+            echo "$out"
+            case "$out" in USED*) swapped="$swapped $pair" ;; *) echo "::error::$pair 겹침을 바꿀 비축분이 없습니다."; exit 1 ;; esac
+            title="[겹침 교체] $lang $day"
+            { echo "@chrisjo-dev 오늘 $lang 지문이 최근 지문과 겹쳐 비축분으로 바꿔 발행했습니다."; echo; echo '```'; cat /tmp/overlap.txt; echo '```'; echo; echo "교체: $out"; echo "원래 지문은 이 실행 직전 커밋(git log -- content/$lang/$day.json)에 남아 있습니다."; } > /tmp/overlap_issue.txt
+            gh issue create --title "$title" --body-file /tmp/overlap_issue.txt || true
+          done
+          echo "swapped=$swapped"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Audio
         # 음성은 필수다. 3번까지 다시 시도하고, 그래도 실패하면 여기서 멈춰 메일을 보내지 않는다.
