@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
-<title>오늘의 영어 읽기 · 10월 7일</title>
+<title>오늘의 영어 읽기, 10월 7일</title>
 <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <meta name="description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:type" content="article">
@@ -86,7 +86,7 @@
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
-  .warn { color: var(--coral); font-weight: 600; }
+  .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
           font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
@@ -222,21 +222,21 @@
 
   <details class="card">
     <summary>
-      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항 · 눈에 익혀두는 용도예요</span></span>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항, 눈에 익혀두는 용도예요</span></span>
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
       <div class="adv"><div class="w">submit</div><div class="m">제출하다, 출품하다</div>
         <div class="ex">Over ten thousand photographers <b>submitted</b> their best animal shots to the competition.</div></div>
-      <div class="adv"><div class="w">capture</div><div class="m">(장면을) 담다, 포착하다 <span class="warn">· catch(잡다)와 뉘앙스 차이: capture는 순간·본질을 담는 것</span></div>
+      <div class="adv"><div class="w">capture</div><div class="m">(장면을) 담다, 포착하다<span class="warn">catch(잡다)와 뉘앙스 차이: capture는 순간, 본질을 담는 것</span></div>
         <div class="ex">She <b>captured</b> the exact moment the bear stood on its hind legs.</div></div>
-      <div class="adv"><div class="w">conservation</div><div class="m">보전, 자연 보호 <span class="warn">· preservation(보존, 옛것을 그대로 유지)과 혼동 주의</span></div>
+      <div class="adv"><div class="w">conservation</div><div class="m">보전, 자연 보호<span class="warn">preservation(보존, 옛것을 그대로 유지)과 혼동 주의</span></div>
         <div class="ex">Wildlife <b>conservation</b> depends on people caring about the animals they see.</div></div>
-      <div class="adv"><div class="w">empathy</div><div class="m">공감, 감정이입 <span class="warn">· sympathy(동정, 안타까움)와 혼동 주의: empathy는 직접 느끼는 것</span></div>
+      <div class="adv"><div class="w">empathy</div><div class="m">공감, 감정이입<span class="warn">sympathy(동정, 안타까움)와 혼동 주의: empathy는 직접 느끼는 것</span></div>
         <div class="ex">Funny photographs can build <b>empathy</b> by showing animals as curious and playful.</div></div>
       <div class="adv"><div class="w">shortlist</div><div class="m">최종 후보 명단에 올리다, 결선에 올리다</div>
         <div class="ex">Twelve images were <b>shortlisted</b> from more than ten thousand entries.</div></div>
-      <div class="adv"><div class="w">candid</div><div class="m">꾸미지 않은, 솔직한 (사진에서: 연출 없이 자연스럽게 찍은) <span class="warn">· candidate(후보)와 철자 혼동 주의</span></div>
+      <div class="adv"><div class="w">candid</div><div class="m">꾸미지 않은, 솔직한 (사진에서: 연출 없이 자연스럽게 찍은)<span class="warn">candidate(후보)와 철자 혼동 주의</span></div>
         <div class="ex">The best comedy wildlife shots are <b>candid</b> — the animals do not know they are being photographed.</div></div>
       <div class="adv"><div class="w">finalist</div><div class="m">최종 후보자[작]</div>
         <div class="ex">Each <b>finalist</b> is displayed on the competition website before the winners are announced.</div></div>
@@ -344,7 +344,7 @@
     else fallback();
   }
   var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
-  var WEAK = '자주 틀리는 부분(문장 끝의 시간·수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  var WEAK = '자주 틀리는 부분(문장 끝의 시간, 수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }

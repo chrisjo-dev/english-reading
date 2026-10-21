@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
-<title>오늘의 영어 읽기 · 10월 16일</title>
+<title>오늘의 영어 읽기, 10월 16일</title>
 <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <meta name="description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:type" content="article">
@@ -86,7 +86,7 @@
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
-  .warn { color: var(--coral); font-weight: 600; }
+  .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
           font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
@@ -224,23 +224,23 @@
 
   <details class="card">
     <summary>
-      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항 · 눈에 익혀두는 용도예요</span></span>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항, 눈에 익혀두는 용도예요</span></span>
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
       <div class="adv"><div class="w">chromosome</div><div class="m">염색체</div>
         <div class="ex">Long ago, pieces of these animals' <b>chromosomes</b> were reshuffled and brought distant genes together.</div></div>
-      <div class="adv"><div class="w">regulate</div><div class="m">조절하다 <span class="warn">· regular(규칙적인)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">regulate</div><div class="m">조절하다<span class="warn">regular(규칙적인)와 혼동 주의</span></div>
         <div class="ex">DNA loops help <b>regulate</b> which genes turn on, and when.</div></div>
-      <div class="adv"><div class="w">evolve</div><div class="m">진화하다, 서서히 발달하다 <span class="warn">· involve(포함하다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">evolve</div><div class="m">진화하다, 서서히 발달하다<span class="warn">involve(포함하다)와 혼동 주의</span></div>
         <div class="ex">Octopuses may have <b>evolved</b> complex brains partly by changing how their DNA folds.</div></div>
-      <div class="adv"><div class="w">conserved</div><div class="m">(진화 과정에서) 보존된, 변하지 않고 유지된 <span class="warn">· conservative(보수적인)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">conserved</div><div class="m">(진화 과정에서) 보존된, 변하지 않고 유지된<span class="warn">conservative(보수적인)와 혼동 주의</span></div>
         <div class="ex">The large folded regions were <b>conserved</b> across the three species, but the small loops were not.</div></div>
       <div class="adv"><div class="w">embryonic</div><div class="m">배아의, 초기 단계의</div>
         <div class="ex">Removing a short piece of DNA slowed <b>embryonic</b> development in all twenty-five squid.</div></div>
-      <div class="adv"><div class="w">cognition</div><div class="m">인지, 사고 능력 <span class="warn">· recognition(인식, 알아봄)과 혼동 주의</span></div>
+      <div class="adv"><div class="w">cognition</div><div class="m">인지, 사고 능력<span class="warn">recognition(인식, 알아봄)과 혼동 주의</span></div>
         <div class="ex">Octopuses are famous for their advanced <b>cognition</b>, such as solving puzzles.</div></div>
-      <div class="adv"><div class="w">plausible</div><div class="m">그럴듯한, 타당해 보이는 <span class="warn">· possible(가능한)과 뉘앙스 구분</span></div>
+      <div class="adv"><div class="w">plausible</div><div class="m">그럴듯한, 타당해 보이는<span class="warn">possible(가능한)과 뉘앙스 구분</span></div>
         <div class="ex">The study offers a <b>plausible</b> explanation, but it does not prove that DNA folding alone made octopuses smart.</div></div>
     </div>
   </details>
@@ -346,7 +346,7 @@
     else fallback();
   }
   var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
-  var WEAK = '자주 틀리는 부분(문장 끝의 시간·수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  var WEAK = '자주 틀리는 부분(문장 끝의 시간, 수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }

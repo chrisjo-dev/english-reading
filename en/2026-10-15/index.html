@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
-<title>오늘의 영어 읽기 · 10월 15일</title>
+<title>오늘의 영어 읽기, 10월 15일</title>
 <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <meta name="description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:type" content="article">
@@ -86,7 +86,7 @@
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
-  .warn { color: var(--coral); font-weight: 600; }
+  .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
           font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
@@ -224,23 +224,23 @@
 
   <details class="card">
     <summary>
-      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항 · 눈에 익혀두는 용도예요</span></span>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항, 눈에 익혀두는 용도예요</span></span>
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w">autonomous</div><div class="m">자율적인, 자율주행의 <span class="warn">· anonymous(익명의)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">autonomous</div><div class="m">자율적인, 자율주행의<span class="warn">anonymous(익명의)와 혼동 주의</span></div>
         <div class="ex">Uber is testing <b>autonomous</b> vehicles in Manchester, but a human still sits behind the wheel.</div></div>
-      <div class="adv"><div class="w">deploy</div><div class="m">(실제로) 배치하다, 투입하다 <span class="warn">· employ(고용하다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">deploy</div><div class="m">(실제로) 배치하다, 투입하다<span class="warn">employ(고용하다)와 혼동 주의</span></div>
         <div class="ex">The company hopes to <b>deploy</b> robotaxis in up to fifteen cities by the end of the year.</div></div>
       <div class="adv"><div class="w">regulator</div><div class="m">규제 기관, 감독 기관</div>
         <div class="ex">Local <b>regulators</b> want strong safety guarantees before any driverless taxi carries passengers.</div></div>
-      <div class="adv"><div class="w">displace</div><div class="m">(일자리·사람을) 대체하다, 밀어내다 <span class="warn">· replace(교체하다)와 뉘앙스 구분</span></div>
+      <div class="adv"><div class="w">displace</div><div class="m">(일자리, 사람을) 대체하다, 밀어내다<span class="warn">replace(교체하다)와 뉘앙스 구분</span></div>
         <div class="ex">Unions fear that robotaxis could <b>displace</b> thousands of drivers.</div></div>
       <div class="adv"><div class="w">skeptical</div><div class="m">회의적인</div>
         <div class="ex">Some officials remain <b>skeptical</b> about the benefits that self-driving taxis promise.</div></div>
-      <div class="adv"><div class="w">liability</div><div class="m">법적 책임 <span class="warn">· reliability(신뢰성)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">liability</div><div class="m">법적 책임<span class="warn">reliability(신뢰성)와 혼동 주의</span></div>
         <div class="ex">If a driverless car causes an accident, it is not yet clear who carries the <b>liability</b>.</div></div>
-      <div class="adv"><div class="w">oversight</div><div class="m">감독, 관리 <span class="warn">· overlook(간과하다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">oversight</div><div class="m">감독, 관리<span class="warn">overlook(간과하다)와 혼동 주의</span></div>
         <div class="ex">Transport officials say robotaxis will need close <b>oversight</b> before they operate on public roads.</div></div>
     </div>
   </details>
@@ -346,7 +346,7 @@
     else fallback();
   }
   var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
-  var WEAK = '자주 틀리는 부분(문장 끝의 시간·수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  var WEAK = '자주 틀리는 부분(문장 끝의 시간, 수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }

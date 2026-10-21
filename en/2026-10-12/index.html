@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
-<title>오늘의 영어 읽기 · 10월 12일</title>
+<title>오늘의 영어 읽기, 10월 12일</title>
 <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <meta name="description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:type" content="article">
@@ -86,7 +86,7 @@
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
-  .warn { color: var(--coral); font-weight: 600; }
+  .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
           font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
@@ -223,11 +223,11 @@
 
   <details class="card">
     <summary>
-      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항 · 눈에 익혀두는 용도예요</span></span>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항, 눈에 익혀두는 용도예요</span></span>
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w">precise</div><div class="m">정밀한, 정확한 <span class="warn">· precious(소중한)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">precise</div><div class="m">정밀한, 정확한<span class="warn">precious(소중한)와 혼동 주의</span></div>
         <div class="ex">The most <b>precise</b> clocks in the world work in a very different way.</div></div>
       <div class="adv"><div class="w">unveil</div><div class="m">(처음으로) 공개하다</div>
         <div class="ex">Scientists in Vienna <b>unveiled</b> a new kind of clock earlier this month.</div></div>
@@ -235,13 +235,13 @@
         <div class="ex">The clock <b>harnesses</b> the nucleus of an atom to keep time.</div></div>
       <div class="adv"><div class="w">self-correcting</div><div class="m">스스로 바로잡는</div>
         <div class="ex">It is a <b>self-correcting</b> clock that fixes its own laser.</div></div>
-      <div class="adv"><div class="w">adjust</div><div class="m">조정하다, 맞추다 <span class="warn">· adapt(적응하다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">adjust</div><div class="m">조정하다, 맞추다<span class="warn">adapt(적응하다)와 혼동 주의</span></div>
         <div class="ex">The clock <b>adjusts</b> the laser when it goes off track.</div></div>
       <div class="adv"><div class="w">continuously</div><div class="m">끊임없이, 계속해서</div>
         <div class="ex">The clock ran <b>continuously</b> for more than 24 hours.</div></div>
       <div class="adv"><div class="w">deviate</div><div class="m">(기준에서) 벗어나다</div>
         <div class="ex">It would <b>deviate</b> by only about one second in thirty million years.</div></div>
-      <div class="adv"><div class="w">refine</div><div class="m">개선하다, 다듬다 <span class="warn">· define(정의하다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">refine</div><div class="m">개선하다, 다듬다<span class="warn">define(정의하다)와 혼동 주의</span></div>
         <div class="ex">The researchers plan to <b>refine</b> the clock with stronger lasers and better crystals.</div></div>
     </div>
   </details>
@@ -347,7 +347,7 @@
     else fallback();
   }
   var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
-  var WEAK = '자주 틀리는 부분(문장 끝의 시간·수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  var WEAK = '자주 틀리는 부분(문장 끝의 시간, 수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }

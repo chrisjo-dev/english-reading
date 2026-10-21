@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
-<title>오늘의 영어 읽기 · 10월 6일</title>
+<title>오늘의 영어 읽기, 10월 6일</title>
 <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <meta name="description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:type" content="article">
@@ -86,7 +86,7 @@
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
-  .warn { color: var(--coral); font-weight: 600; }
+  .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
           font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
@@ -222,17 +222,17 @@
 
   <details class="card">
     <summary>
-      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항 · 눈에 익혀두는 용도예요</span></span>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항, 눈에 익혀두는 용도예요</span></span>
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w">particle</div><div class="m">입자 <span class="warn">· particular(특정한, 형용사)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">particle</div><div class="m">입자<span class="warn">particular(특정한, 형용사)와 혼동 주의</span></div>
         <div class="ex">A neutrino is a <b>particle</b> so tiny it can pass through a light-year of lead.</div></div>
       <div class="adv"><div class="w">penetrate</div><div class="m">통과하다, 침투하다</div>
         <div class="ex">Neutrinos can <b>penetrate</b> the entire Earth without hitting anything.</div></div>
-      <div class="adv"><div class="w">emit</div><div class="m">방출하다, 내뿜다 <span class="warn">· omit(빠뜨리다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">emit</div><div class="m">방출하다, 내뿜다<span class="warn">omit(빠뜨리다)와 혼동 주의</span></div>
         <div class="ex">The charged particle <b>emits</b> a faint blue glow as it moves through the ice.</div></div>
-      <div class="adv"><div class="w">astrophysical</div><div class="m">천체물리학적 <span class="warn">· astronomical(천문학적)과 혼동 주의</span></div>
+      <div class="adv"><div class="w">astrophysical</div><div class="m">천체물리학적<span class="warn">astronomical(천문학적)과 혼동 주의</span></div>
         <div class="ex">IceCube proved that some neutrinos have an <b>astrophysical</b> origin far outside our galaxy.</div></div>
       <div class="adv"><div class="w">pioneer</div><div class="m">개척하다, 선구자가 되다</div>
         <div class="ex">Halzen <b>pioneered</b> the idea of turning natural Antarctic ice into a neutrino detector.</div></div>
@@ -344,7 +344,7 @@
     else fallback();
   }
   var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
-  var WEAK = '자주 틀리는 부분(문장 끝의 시간·수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  var WEAK = '자주 틀리는 부분(문장 끝의 시간, 수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }

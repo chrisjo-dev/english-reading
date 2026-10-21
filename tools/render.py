@@ -34,7 +34,7 @@ TEMPLATE = Path(__file__).resolve().parent / "template.html"
 DAYS = "월화수목금토일"
 CATEGORIES = {"science", "tech", "society", "future", "culture", "space"}
 BADGE = '<span class="badge">{}</span>'
-WARN = ' <span class="warn">· {}</span>'
+WARN = '<span class="warn">{}</span>'
 
 
 # 출처가 없는 글도 성격을 밝힌다. 기사 없이 쓴 생활 주제 글과, 사례를 지어낸 예문을 구분한다.

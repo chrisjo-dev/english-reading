@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
-<title>오늘의 영어 읽기 · 10월 10일</title>
+<title>오늘의 영어 읽기, 10월 10일</title>
 <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <meta name="description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:type" content="article">
@@ -86,7 +86,7 @@
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
-  .warn { color: var(--coral); font-weight: 600; }
+  .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
           font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
@@ -222,23 +222,23 @@
 
   <details class="card">
     <summary>
-      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항 · 눈에 익혀두는 용도예요</span></span>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항, 눈에 익혀두는 용도예요</span></span>
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w">contemporary</div><div class="m">동시대의, 현대의 <span class="warn">· temporary(임시의)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">contemporary</div><div class="m">동시대의, 현대의<span class="warn">temporary(임시의)와 혼동 주의</span></div>
         <div class="ex">The fair showcases both classic prints and <b>contemporary</b> works by living artists.</div></div>
       <div class="adv"><div class="w">emerging</div><div class="m">신진의, 떠오르는</div>
         <div class="ex">An <b>emerging</b> artist may be less well known, but their work is often more affordable.</div></div>
-      <div class="adv"><div class="w">commission</div><div class="m">위탁 제작하다, 주문 제작 <span class="warn">· committee(위원회)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">commission</div><div class="m">위탁 제작하다, 주문 제작<span class="warn">committee(위원회)와 혼동 주의</span></div>
         <div class="ex">Some collectors <b>commission</b> an artist to create a piece for a specific wall or space.</div></div>
       <div class="adv"><div class="w">gallery</div><div class="m">갤러리, 화랑</div>
         <div class="ex">Over sixty <b>galleries</b> from around the world take part in the Affordable Art Fair.</div></div>
-      <div class="adv"><div class="w">medium</div><div class="m">재료, 매체 (복수: media 또는 mediums) <span class="warn">· media(매체들, 복수)와 구분</span></div>
+      <div class="adv"><div class="w">medium</div><div class="m">재료, 매체 (복수: media 또는 mediums)<span class="warn">media(매체들, 복수)와 구분</span></div>
         <div class="ex">Oil paint is just one <b>medium</b>; artists also use charcoal, ink, and digital tools.</div></div>
       <div class="adv"><div class="w">patron</div><div class="m">후원자, 애호가</div>
         <div class="ex">Young buyers who start small often become long-term <b>patrons</b> of the arts.</div></div>
-      <div class="adv"><div class="w">appraise</div><div class="m">감정하다, 평가하다 <span class="warn">· appreciate(감상하다, 감사하다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w">appraise</div><div class="m">감정하다, 평가하다<span class="warn">appreciate(감상하다, 감사하다)와 혼동 주의</span></div>
         <div class="ex">An expert can <b>appraise</b> a work to estimate its current market value.</div></div>
     </div>
   </details>
@@ -344,7 +344,7 @@
     else fallback();
   }
   var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
-  var WEAK = '자주 틀리는 부분(문장 끝의 시간·수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  var WEAK = '자주 틀리는 부분(문장 끝의 시간, 수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }
