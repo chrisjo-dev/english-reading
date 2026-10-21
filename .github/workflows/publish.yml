@@ -91,7 +91,8 @@ jobs:
 
       - name: Guard recent overlap
         # 최근 14일 지문과 같은 이야기를 반복하면(같은 기사, 형광펜 단어 2개 이상, 본문 12% 이상 겹침) 그대로 내보내지 않는다.
-        # 오늘 지문이면 비축분으로 바꿔 발행을 이어 가고 이슈로 알린다. 지난 날짜면 여기서 멈춘다.
+        # 오늘 지문이면 비축분으로 바꿔 발행을 이어 가고 이슈로 알린다. 비축분이 없으면 원래 지문을 내보내고 알린다(메일이 끊기지 않게).
+        # 지난 날짜면 여기서 멈춘다.
         run: |
           swapped=""
           for pair in ${{ steps.pick.outputs.pairs }}; do
@@ -104,9 +105,18 @@ jobs:
             git rm -q "content/$lang/$day.json"
             out=$(python tools/fallback.py --lang "$lang" --day "$day") || true
             echo "$out"
-            case "$out" in USED*) swapped="$swapped $pair" ;; *) echo "::error::$pair 겹침을 바꿀 비축분이 없습니다."; exit 1 ;; esac
-            title="[겹침 교체] $lang $day"
-            { echo "@chrisjo-dev 오늘 $lang 지문이 최근 지문과 겹쳐 비축분으로 바꿔 발행했습니다."; echo; echo '```'; cat /tmp/overlap.txt; echo '```'; echo; echo "교체: $out"; echo "원래 지문은 이 실행 직전 커밋(git log -- content/$lang/$day.json)에 남아 있습니다."; } > /tmp/overlap_issue.txt
+            case "$out" in
+              USED*)
+                swapped="$swapped $pair"
+                title="[겹침 교체] $lang $day"
+                head="오늘 $lang 지문이 최근 지문과 겹쳐 비축분으로 바꿔 발행했습니다. 교체: $out. 원래 지문은 git log -- content/$lang/$day.json 에 남아 있습니다." ;;
+              *)
+                # 바꿀 비축분이 없으면 메일이 끊기지 않게 원래 지문을 그대로 발행하고 알리기만 한다
+                git checkout -q HEAD -- "content/$lang/$day.json"
+                title="[겹침 경고] $lang $day"
+                head="오늘 $lang 지문이 최근 지문과 겹치지만 바꿀 비축분이 없어 원래 지문을 그대로 발행했습니다. 비축분을 보충해 주세요." ;;
+            esac
+            { echo "@chrisjo-dev $head"; echo; echo '```'; cat /tmp/overlap.txt; echo '```'; } > /tmp/overlap_issue.txt
             gh issue create --title "$title" --body-file /tmp/overlap_issue.txt || true
           done
           echo "swapped=$swapped"
