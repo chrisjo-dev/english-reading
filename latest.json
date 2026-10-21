@@ -1,16 +1,16 @@
 {
  "date": "2026-10-21",
- "words_total": 240,
+ "words_total": 239,
  "langs": {
   "en": {
    "count": 19,
    "latest": "2026-10-21",
-   "topic": "수리 카페",
+   "topic": "백세 잔치",
    "sentences": [
-    "On Saturday morning, people in Charleston carried **broken** lamps, stopped clocks, and noisy fans into one busy room.",
-    "They had come to the city's first Repair Cafe, where **volunteers** fix everyday things for free.",
-    "The event was started by a **retired** architect, who got the idea from a **similar** cafe in another city.",
-    "One woman's fan, which she needs to sleep at night, was fixed in about ten minutes."
+    "On Monday afternoon, the senior center in the town of Brookline held a **special** party called the \"Party of a Century.\"",
+    "The event program named twenty-seven **residents** who are one hundred or older, although many of them were not able to come.",
+    "The five who did come each received a **certificate**, and the whole room sang \"Happy Birthday\" to them.",
+    "The party brought back an old **tradition** from 1909, when a newspaper owner sent canes with gold tops to about seven hundred towns in New England so that each town could give one to its oldest man."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,31 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "토요일 아침, 찰스턴 사람들이 고장 난 램프, 멈춘 시계, 시끄러운 선풍기를 들고 북적이는 한 방으로 들어왔다.",
+   "answer": "월요일 오후, 브루클라인이라는 마을의 노인 센터가 '한 세기 파티'라는 특별한 파티를 열었다.",
    "words": [
     [
-     "broken",
-     "고장 난, 깨진"
+     "special",
+     "특별한"
     ],
     [
-     "volunteers",
-     "자원봉사자들 (volunteer의 복수)"
+     "residents",
+     "주민들 (resident의 복수)"
     ],
     [
-     "retired",
-     "은퇴한"
+     "certificate",
+     "증서, 증명서"
     ],
     [
-     "similar",
-     "비슷한"
+     "tradition",
+     "전통"
     ],
     [
-     "worth",
-     "~의 가치가 있는"
+     "copy",
+     "복제품, 사본"
     ],
     [
-     "repaired",
-     "수리된 (repair의 과거분사)"
-    ],
-    [
-     "reduce",
-     "줄이다"
+     "advice",
+     "조언 (셀 수 없는 명사라 -s를 붙이지 않음)"
     ]
    ]
   },
@@ -103,7 +99,7 @@
   {
    "lang": "en",
    "day": "2026-10-21",
-   "topic": "수리 카페"
+   "topic": "백세 잔치"
   },
   {
    "lang": "ja",
