@@ -2,6 +2,8 @@
   "date": "",
   "category": "culture",
   "topic": "설날",
+  "title_ko": "일본의 설날",
+  "headline": "お{正月|しょうがつ}",
   "chips": ["5문장", "N5 위주", "N4 1문장", "약 3분"],
   "sentences": [
     {"en": "1{月|がつ}の{始|はじ}めは、**お{正月|しょうがつ}**です。", "b2": false},

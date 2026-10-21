@@ -2,6 +2,8 @@
   "date": "",
   "category": "culture",
   "topic": "벚꽃 구경",
+  "title_ko": "벚꽃 아래 꽃구경",
+  "headline": "お{花見|はなみ}",
   "chips": ["5문장", "N5 위주", "N4 1문장", "약 3분"],
   "sentences": [
     {"en": "{春|はる}は、さくらの**{季節|きせつ}**です。", "b2": false},

@@ -51,10 +51,13 @@ def check(path):
         hits = sorted(set(m.group(0) for m in NUMBER.finditer(body)))
         if hits:
             warnings.append(f"출처 없이 구체적 수치가 있음({', '.join(hits)}). 출처를 달거나 수치를 빼세요.")
-    try:
-        new_format = dt.date.fromisoformat(path.stem) >= dt.date(2026, 10, 22)
-    except ValueError:
-        new_format = False  # 비축분은 제목이 없으면 짧은 주제어로 대신 보여 준다
+    if path.parent.parent.name == "pool":
+        new_format = True  # 비축분은 모두 제목을 채웠다(2026-10-21). 새 비축분도 두 제목이 있어야 한다
+    else:
+        try:
+            new_format = dt.date.fromisoformat(path.stem) >= dt.date(2026, 10, 22)
+        except ValueError:
+            new_format = False
     if new_format:
         for k in ("title_ko", "headline"):
             if not str(c.get(k) or "").strip():
