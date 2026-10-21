@@ -84,6 +84,23 @@
   .tool.on { background: var(--blue); color: #fff; }
   .tool:active { transform: scale(.97); }
   .tool svg { width: 16px; height: 16px; flex: none; }
+  .h2row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 2px 0 16px; }
+  .h2row h2 { margin: 0; }
+  .howto { flex: none; height: 32px; padding: 0 12px; border: 0; border-radius: 10px; background: var(--blue-soft); color: var(--blue);
+           font: 700 13px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .tour-spot { position: fixed; z-index: 50; border-radius: 14px; box-shadow: 0 0 0 9999px rgba(25,31,40,.62);
+               transition: top .25s, left .25s, width .25s, height .25s; pointer-events: none; }
+  .tour-tip { position: fixed; z-index: 51; left: 12px; right: 12px; max-width: 420px; margin: 0 auto; background: #fff; border-radius: 18px;
+              padding: 18px 18px 14px; box-shadow: 0 12px 32px rgba(0,0,0,.18); }
+  .tour-tip .n { font-size: 12px; font-weight: 700; color: var(--blue); }
+  .tour-tip h3 { font-size: 17px; font-weight: 800; margin: 4px 0 6px; letter-spacing: -0.02em; }
+  .tour-tip p { font-size: 15px; line-height: 1.6; color: var(--sub); margin: 0; }
+  .tour-tip .act { display: flex; gap: 8px; margin-top: 14px; }
+  .tour-tip button { height: 42px; border: 0; border-radius: 12px; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .tour-tip .skip { background: none; color: var(--muted); padding: 0 6px; margin-right: auto; }
+  .tour-tip .prev { background: var(--bg); color: var(--sub); padding: 0 16px; }
+  .tour-tip .next { background: var(--blue); color: #fff; padding: 0 20px; }
+  .tour-block { position: fixed; inset: 0; z-index: 49; }
   .tool[aria-pressed="true"] { background: var(--blue); color: #fff; }
   #passage .say { flex: 1; min-width: 0; }
   #passage .ko { font-size: 14px; line-height: 1.55; color: var(--sub); margin-top: 3px; }
@@ -137,7 +154,7 @@
 
   <section class="card" id="passage">
     <div class="step">STEP 1</div>
-    <h2>오늘의 지문</h2>
+    <div class="h2row"><h2>오늘의 지문</h2><button class="howto" id="howto" type="button">학습 방법</button></div>
     <div class="tools">
       <button class="tool main" id="play" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span></button>
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
@@ -154,12 +171,12 @@
   </section>
 
   <section class="card">
-    <div class="step">STEP 2</div>
+    <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
 {{words}}  </section>
 
   <section class="card">
-    <div class="step">STEP 3</div>
+    <div class="step" id="step-points">STEP 3</div>
     <h2>오늘의 체크 포인트</h2>
 {{points}}  </section>
 
@@ -207,6 +224,74 @@
   function gaEvent(name, params) {
     if (typeof gtag === 'function') gtag('event', name, params);
   }
+
+  // 학습 방법: 화면의 각 기능을 차례로 비추며 설명한다
+  (function () {
+    var touch = matchMedia('(hover: none)').matches;
+    var steps = [
+      ['#play', '전체 듣기', '먼저 지문 전체를 원어민 음성으로 들어 보세요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
+      ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
+      touch ? ['#passage .sent .en', '문장 누르기', '문장을 누르면 그 문장 해석만 바로 아래에 보여요. 스스로 읽어 본 다음에 눌러 보세요.']
+            : ['#kobtn', '해석 보기', '모든 문장 아래에 해석이 붙어요. 스스로 읽어 본 다음에 켜서 맞춰 보세요.'],
+      touch ? ['#kobtn', '해석 보기', '모든 문장의 해석을 한 번에 열고 닫아요.'] : null,
+      ['#mine', '내 해석', '읽은 내용을 우리말로 적어 보세요. 아는 부분만 적어도 괜찮아요.'],
+      ['#copymine', 'AI 피드백', '지문과 내 해석, 피드백 요청이 함께 복사돼요. ChatGPT나 Claude에 붙여넣으면 문장별로 고쳐 줘요.'],
+      ['#step-words', '주요 단어', '지문에서 형광펜으로 표시한 단어의 뜻이에요. 지문으로 돌아가 단어가 쓰인 문장을 다시 읽어 보세요.'],
+      ['#step-points', '체크 포인트', '헷갈리기 쉬운 문장 구조와 해석 요령이에요. 틀린 부분이 있었다면 여기서 이유를 확인하세요.'],
+      ['#subscribe', '메일로 받기', '매일 아침 새 지문을 메일로 받아 보세요. 출근길 5분이면 충분해요.']
+    ].filter(function (x) { return x && document.querySelector(x[0]); });
+    var i = 0, spot, tip, block;
+    function rectOf(sel) {
+      var el = document.querySelector(sel);
+      if (sel.indexOf('#step-') === 0) el = el.parentNode;  // STEP 카드 전체를 비춘다
+      return el;
+    }
+    function place() {
+      var el = rectOf(steps[i][0]), r = el.getBoundingClientRect(), pad = 6;
+      spot.style.top = (r.top - pad) + 'px'; spot.style.left = (r.left - pad) + 'px';
+      spot.style.width = (r.width + pad * 2) + 'px'; spot.style.height = (r.height + pad * 2) + 'px';
+      var below = r.bottom + 14, th = tip.offsetHeight, vh = innerHeight;
+      tip.style.top = (below + th < vh - 8 ? below : Math.max(8, r.top - th - 14)) + 'px';
+    }
+    function show() {
+      var s = steps[i], el = rectOf(s[0]);
+      tip.querySelector('.n').textContent = (i + 1) + ' / ' + steps.length;
+      tip.querySelector('h3').textContent = s[1];
+      tip.querySelector('p').textContent = s[2];
+      tip.querySelector('.prev').hidden = i === 0;
+      tip.querySelector('.next').textContent = i === steps.length - 1 ? '시작하기' : '다음';
+      var r = el.getBoundingClientRect(), tall = r.height > innerHeight * 0.5;
+      el.scrollIntoView({ block: tall ? 'start' : 'center', behavior: 'smooth' });
+      setTimeout(place, 350); place();
+    }
+    function end() {
+      [spot, tip, block].forEach(function (x) { x && x.remove(); });
+      spot = tip = block = null;
+      removeEventListener('resize', place); removeEventListener('scroll', place);
+      document.removeEventListener('keydown', key);
+    }
+    function key(e) { if (e.key === 'Escape') end(); if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); }
+    function go(d) { i += d; if (i >= steps.length) return end(); if (i < 0) i = 0; show(); }
+    document.getElementById('howto').addEventListener('click', function () {
+      if (spot) return;
+      i = 0;
+      block = document.createElement('div'); block.className = 'tour-block';
+      spot = document.createElement('div'); spot.className = 'tour-spot';
+      tip = document.createElement('div'); tip.className = 'tour-tip'; tip.setAttribute('role', 'dialog');
+      tip.innerHTML = '<div class="n"></div><h3></h3><p></p><div class="act"><button class="skip" type="button">그만 보기</button>'
+        + '<button class="prev" type="button">이전</button><button class="next" type="button">다음</button></div>';
+      document.body.append(block, spot, tip);
+      tip.querySelector('.skip').onclick = end;
+      tip.querySelector('.prev').onclick = function () { go(-1); };
+      tip.querySelector('.next').onclick = function () { go(1); };
+      block.onclick = function () { go(1); };
+      addEventListener('resize', place); addEventListener('scroll', place, { passive: true });
+      document.addEventListener('keydown', key);
+      show();
+      gaEvent('howto_open', { lang: _gaLang, day: _gaDay });
+    });
+  })();
 
   var AUDIO = {{audio}};
   var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
