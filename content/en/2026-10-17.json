@@ -1,46 +1,45 @@
 {
   "date": "2026-10-17",
   "category": "culture",
-  "topic": "수리 카페",
+  "topic": "호박 무게 대회",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
-  "example": true,
   "sentences": [
-    {"en": "On the first Saturday of every month, a small community hall turns into a **repair** café for about four hours.", "b2": false},
-    {"en": "People arrive with broken lamps, torn jackets and old radios, and they sit down next to **volunteers** who know how to fix them.", "b2": false},
-    {"en": "The repairs are free, but visitors are asked to **watch** and help, so they can learn to do it themselves next time.", "b2": false},
-    {"en": "Last month, a teenager's **headphones** were fixed by a retired electrician in less than twenty minutes.", "b2": false},
-    {"en": "The organizers say that around seventy items are repaired each month, and that most of them would **otherwise** end up in the trash.", "b2": false},
-    {"en": "For many regular visitors, the café, which started as a simple way to **reduce** waste, has become a place where neighbors who once passed each other in silence now stop to talk.", "b2": true}
+    {"en": "Last Monday, hundreds of people **gathered** in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.", "b2": false},
+    {"en": "This was no ordinary **contest**, as it is now in its 53rd year and growers proudly call it the \"Super Bowl\" of pumpkin weigh-offs.", "b2": false},
+    {"en": "Growers brought their **giant** pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash **prizes**.", "b2": false},
+    {"en": "In the end, first place went to Travis Gienger, a grower from Minnesota.", "b2": false},
+    {"en": "His pumpkin **weighed** 2,389 pounds, which is a little more than a thousand **kilograms**, or about as heavy as a small car.", "b2": false},
+    {"en": "For the crowd, it was a rare chance to see how much time and care can turn a fruit that usually fits in your arms into something you could never **lift** alone.", "b2": true}
   ],
   "words": [
-    ["repair", "수리; 수리하다"],
-    ["volunteers", "자원봉사자들 (복수 -s)"],
-    ["watch", "지켜보다"],
-    ["headphones", "헤드폰 (보통 복수형으로 씀)"],
-    ["otherwise", "그렇지 않으면, (안 고쳤다면) 원래대로라면"],
-    ["reduce", "줄이다"],
-    ["regular", "단골의, 정기적으로 오는"]
+    ["gathered", "모였다 (gather의 과거)"],
+    ["contest", "대회, 경연"],
+    ["giant", "거대한"],
+    ["prizes", "상, 상금 (복수)"],
+    ["weighed", "무게가 ~였다 (weigh의 과거)"],
+    ["kilograms", "킬로그램 (복수)"],
+    ["lift", "들어 올리다"]
   ],
   "points": [
-    {"title": "문장 끝의 행위자와 시간", "body": "4번 문장은 수동태예요. `were fixed`(고쳐졌다) 뒤의 `by a retired electrician`이 고친 사람이고, 그 뒤 `in less than twenty minutes`(20분도 안 걸려서)까지 문장 끝 정보를 끝까지 챙겨 읽어 보세요."},
-    {"title": "끼어든 부연절 건너뛰기", "body": "6번은 주어 `the café` 뒤에 `which started as ...` 부분이 끼어 있어요. 이 부분을 잠시 괄호로 묶고 `the café ... has become a place`로 뼈대를 먼저 잡은 다음, 마지막 `where neighbors ...`가 그 장소를 설명한다고 보면 됩니다."}
+    {"title": "콜론 뒤에 오는 정체 밝히기", "body": "1번의 `something unusual: pumpkins being weighed`에서 콜론(:)은 '무엇인가 하면'이라는 신호예요. 앞에서 궁금하게 만든 `something unusual`의 내용을 뒤에서 알려 줘요. `pumpkins being weighed`는 '무게가 재어지는 호박들'이라는 수동의 의미예요."},
+    {"title": "명사를 뒤에서 꾸미는 긴 절", "body": "6번은 `a fruit that usually fits in your arms`(보통 품에 쏙 들어오는 과일)와 `something you could never lift alone`(혼자서는 절대 들 수 없는 것)이 짝을 이뤄요. `turn A into B`(A를 B로 바꾸다)의 A와 B를 먼저 찾고, 각각 뒤의 꾸밈말을 붙여 해석해 보세요."}
   ],
   "answers": [
-    "매달 첫째 토요일이면, 작은 주민 회관이 약 네 시간 동안 수리 카페로 바뀐다.",
-    "사람들은 고장 난 전등, 찢어진 재킷, 오래된 라디오를 들고 와서, 그것들을 고칠 줄 아는 자원봉사자들 옆에 앉는다.",
-    "수리는 무료지만, 방문객들은 다음번에는 직접 할 수 있도록 지켜보고 거들어 달라는 요청을 받는다.",
-    "지난달에는 한 십대의 헤드폰이 은퇴한 전기 기술자에 의해 20분도 안 되어 고쳐졌다.",
-    "주최 측은 매달 약 70개의 물건이 수리되며, 그중 대부분은 (수리하지 않았다면) 쓰레기통으로 갔을 것이라고 말한다.",
-    "많은 단골 방문객들에게, 처음에는 쓰레기를 줄이는 간단한 방법으로 시작했던 이 카페는, 한때 말없이 서로 지나치던 이웃들이 이제는 멈춰 서서 이야기를 나누는 곳이 되었다."
+    "지난 월요일, 수백 명이 캘리포니아의 작은 도시 하프문베이에 모여 색다른 광경을 지켜봤습니다. 바로 호박의 무게를 재는 모습이었습니다.",
+    "이것은 평범한 대회가 아니었는데, 올해로 53회째를 맞았고 재배자들이 자랑스럽게 호박 무게 대회의 '슈퍼볼'이라고 부르기 때문입니다.",
+    "재배자들은 근처 농장, 미국의 다른 지역, 심지어 유럽에서까지 거대한 호박을 가져왔고, 모두 상금을 받기를 바랐습니다.",
+    "결국 1등은 미네소타에서 온 재배자 트래비스 기엔저에게 돌아갔습니다.",
+    "그의 호박은 2,389파운드로, 천 킬로그램이 조금 넘는 무게, 곧 작은 자동차 한 대 정도였습니다.",
+    "관중에게는 시간과 정성이 보통 품에 안기는 과일을 혼자서는 절대 들 수 없는 것으로 얼마나 바꿔 놓을 수 있는지 볼 수 있는 드문 기회였습니다."
   ],
   "advanced": [
-    {"word": "mend", "meaning": "(옷 등을) 수선하다, 고치다", "confuse": "mind(신경 쓰다)와 혼동 주의", "example": "Volunteers **mend** torn jackets while visitors watch."},
-    {"word": "salvage", "meaning": "(버려질 것을) 건지다, 살려 내다", "confuse": null, "example": "The café **salvages** around seventy items every month."},
-    {"word": "landfill", "meaning": "쓰레기 매립지", "confuse": null, "example": "Most of these items would otherwise end up in a **landfill**."},
-    {"word": "durable", "meaning": "오래가는, 내구성 있는", "confuse": "during(~동안)과 혼동 주의", "example": "Older radios are often more **durable** than people expect."},
-    {"word": "self-reliant", "meaning": "스스로 해내는, 자립적인", "confuse": "reliable(믿을 만한)과 혼동 주의", "example": "By watching the repairs, visitors become more **self-reliant**."},
-    {"word": "foster", "meaning": "(관계, 감정을) 키우다, 촉진하다", "confuse": "faster(더 빠른)와 혼동 주의", "example": "The monthly event **fosters** friendships between neighbors."},
-    {"word": "initiative", "meaning": "(새로운) 계획, 활동", "confuse": "initial(처음의)과 혼동 주의", "example": "What began as a small waste-reduction **initiative** became a meeting place."}
+    {"word": "spectator", "meaning": "관중, 구경꾼", "confuse": "speculator(투기꾼)와 혼동 주의", "example": "Hundreds of **spectators** watched each pumpkin go on the scale."},
+    {"word": "cultivate", "meaning": "(작물을) 기르다, 재배하다", "confuse": null, "example": "It takes months to **cultivate** a pumpkin of that size."},
+    {"word": "enormous", "meaning": "엄청나게 큰", "confuse": "enormity(심각성)와 혼동 주의", "example": "The winning pumpkin was so **enormous** that no one could lift it alone."},
+    {"word": "compete", "meaning": "겨루다, 경쟁하다", "confuse": "complete(완성하다)와 혼동 주의", "example": "Growers from Europe also came to **compete** for cash prizes."},
+    {"word": "annual", "meaning": "해마다 열리는, 연례의", "confuse": "annul(무효로 하다)과 혼동 주의", "example": "The **annual** weigh-off is now in its 53rd year."},
+    {"word": "devoted", "meaning": "헌신적인, 열성적인", "confuse": null, "example": "Only **devoted** growers can raise a pumpkin as heavy as a small car."},
+    {"word": "triumph", "meaning": "승리, 큰 성공", "confuse": null, "example": "The weigh-off ended in **triumph** for a grower from Minnesota."}
   ],
-  "source": null
+  "source": {"title": "Giants take the stage at Half Moon Bay's 'Super Bowl' of pumpkin weigh-offs (Local News Matters, 2026-10-13)", "url": "https://localnewsmatters.org/2026/10/13/half-moon-bay-pumpkin-weigh-off/"}
 }
