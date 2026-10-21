@@ -335,6 +335,7 @@
       return el;
     }
     function place() {
+      if (!spot || !steps[i]) return;  // 닫힌 뒤 늦게 도는 위치 계산은 무시
       var el = rectOf(steps[i][0]), pad = 6;
       if (!el) {  // 안내만 하는 단계: 화면 전체를 어둡게 하고 카드를 가운데에
         spot.style.top = '50%'; spot.style.left = '50%'; spot.style.width = '0'; spot.style.height = '0';
