@@ -5,7 +5,9 @@
 - 오류(종료 코드 1): 지원하지 않는 마크다운 기호가 남아 화면에 그대로 보이는 경우. 예: *The List*, _word_, [링크](url)
 - 경고: 출처(source)가 없는데 인원, 금액, 수량 같은 구체적 수치가 있는 경우. 실제 사실처럼 읽히므로 출처를 달거나 수치를 빼야 한다.
   널리 알려진 일반 상식(계절, 대략적인 통계)이면 그대로 둬도 되고, 지어낸 사례면 "example": true 를 넣는다.
+- 경고: 같은 언어의 최근 30일 지문과 주제(topic)가 같은 경우. 독자에게 같은 이야기를 두 번 보여 주게 된다.
 """
+import datetime as dt
 import json
 import re
 import sys
@@ -46,7 +48,32 @@ def check(path):
         hits = sorted(set(m.group(0) for m in NUMBER.finditer(body)))
         if hits:
             warnings.append(f"출처 없이 구체적 수치가 있음({', '.join(hits)}). 출처를 달거나 수치를 빼세요.")
+    dup = recent_same_topic(path, c.get("topic", ""))
+    if dup:
+        warnings.append(f"최근 30일 안에 같은 주제가 있음({', '.join(dup)}: {c.get('topic')}). 다른 소식으로 바꾸세요.")
     return errors, warnings
+
+
+def recent_same_topic(path, topic, days=30):
+    """content/<언어>/YYYY-MM-DD.json 이면 같은 언어의 앞선 30일 지문 중 주제가 같은 날짜를 돌려준다."""
+    key = re.sub(r"\s+", "", topic)
+    try:
+        day = dt.date.fromisoformat(path.stem)
+    except ValueError:
+        return []
+    if not key or path.parent.parent.name != "content":
+        return []
+    out = []
+    for q in sorted(path.parent.glob("*.json")):
+        try:
+            d = dt.date.fromisoformat(q.stem)
+        except ValueError:
+            continue
+        if 0 < (day - d).days <= days:
+            t = json.loads(q.read_text(encoding="utf-8")).get("topic", "")
+            if re.sub(r"\s+", "", t) == key:
+                out.append(q.stem)
+    return out
 
 
 def main(paths):

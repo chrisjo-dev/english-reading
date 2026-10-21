@@ -17,6 +17,8 @@
 - 히라가나, 가타카나, 숫자에는 달지 않는다. 숫자는 한자 대신 아라비아 숫자를 써도 된다(`7{時|じ}`).
 
 ## 오늘의 소재 정하기 (지문을 쓰기 전에 수행)
+
+**최근 주제 피하기**: 고르기 전에 `python3 -c "import json,glob; [print(p[-15:-5], json.load(open(p)).get('topic'), '|', (json.load(open(p)).get('source') or {}).get('title','')) for p in sorted(glob.glob('content/ja/*.json'))[-30:]]"`로 최근 30편의 주제와 출처를 확인합니다. 같은 대상이나 같은 사건(예: 로보택시, 수리 카페)은 표현만 바꿔도 같은 이야기라 고르지 않습니다. 다른 소식을 찾습니다.
 1. **오늘의 분야와 글의 형태** (Asia/Seoul 기준 요일):
    - 월: 생활 · 일기 (내가 한 일)
    - 화: 일본 문화 · 소개 (음식, 계절 행사, 장소)
@@ -51,6 +53,6 @@
 1. **이미 올라간 날인지 확인**: `content/ja/YYYY-MM-DD.json`이 이미 있으면 새로 만들지 말고 끝냅니다.
 2. **content JSON 쓰기**: `tools/render.py` 맨 위 설명의 형식 그대로 `content/ja/YYYY-MM-DD.json`을 씁니다. 모든 문자열은 일반 텍스트(HTML 태그 금지).
 3. **검증**: `python3 tools/render.py ja YYYY-MM-DD`를 실행해 오류 없이 끝나는지 확인합니다. 만들어진 `ja/YYYY-MM-DD/index.html`에서 `{`나 `|`가 남아 있지 않은지(후리가나 표기 실수) `grep -c '[{|]' ja/YYYY-MM-DD/index.html`로 확인하고, 0이 아니면 JSON을 고칩니다(페이지의 다른 곳에도 `{`가 있으니 지문 부분을 직접 열어 확인). 확인이 끝나면 `git checkout -- . && git clean -fd -- ja/YYYY-MM-DD`로 되돌린 뒤 content 파일만 남깁니다.
-   그다음 `python3 tools/check_content.py ja YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
+   그다음 `python3 tools/check_content.py ja YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::warning`(최근 30일 같은 주제)이 나오면 다른 소재로 다시 고르고, `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
 4. **push**: `git add content/ja/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add ja YYYY-MM-DD: 주제어" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 같은 작성자 줄을 붙이지 마세요. 다른 브랜치로 push하지 마세요. 거절되면 `git pull --rebase origin main` 후 한 번만 다시 push합니다.
 5. **마지막 답변**: 한두 문장과 페이지 주소 `https://read.wspace.ai.kr/ja/YYYY-MM-DD/`, 출처가 있으면 `출처: [기사 제목](URL)` 한 줄. 실패했다면 원인을 분명히 적습니다.
