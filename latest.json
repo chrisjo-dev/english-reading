@@ -1,48 +1,52 @@
 {
  "date": "2026-10-22",
- "words_total": 246,
+ "words_total": 253,
  "langs": {
   "en": {
-   "count": 19,
-   "latest": "2026-10-21",
-   "topic": "백세 잔치",
+   "count": 20,
+   "latest": "2026-10-22",
+   "topic": "드론 배송",
    "sentences": [
-    "On Monday afternoon, the senior center in the town of Brookline held a **special** party called the \"Party of a Century.\"",
-    "The event program named twenty-seven **residents** who are one hundred or older, although many of them were not able to come.",
-    "The five who did come each received a **certificate**, and the whole room sang \"Happy Birthday\" to them.",
-    "The party brought back an old **tradition** from 1909, when a newspaper owner sent canes with gold tops to about seven hundred towns in New England so that each town could give one to its oldest man."
+    "Imagine ordering a phone charger and seeing it land in your backyard from the sky less than an hour later.",
+    "Amazon hopes to make this normal in Tallahassee, where it plans to start drone **deliveries** in mid-November if a building permit is approved in time.",
+    "Up to twenty-one drones will fly from a **warehouse** in the city, and each one can carry a package that **weighs** up to five pounds to homes within seven and a half miles.",
+    "**Supporters** say the service could save people a trip to the store, since some orders may arrive in as little as thirty minutes."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 3분"
    ],
-   "answer": "월요일 오후, 브루클라인이라는 마을의 노인 센터가 '한 세기 파티'라는 특별한 파티를 열었다.",
+   "answer": "휴대폰 충전기를 주문했는데 한 시간도 안 돼서 그것이 하늘에서 뒷마당으로 내려오는 모습을 본다고 상상해 보라.",
    "words": [
     [
-     "special",
-     "특별한"
+     "deliveries",
+     "배송들 (delivery의 복수)"
     ],
     [
-     "residents",
-     "주민들 (resident의 복수)"
+     "warehouse",
+     "창고, 물류 센터"
     ],
     [
-     "certificate",
-     "증서, 증명서"
+     "weighs",
+     "무게가 ~이다 (weigh + -s)"
     ],
     [
-     "tradition",
-     "전통"
+     "supporters",
+     "지지자들, 찬성하는 사람들"
     ],
     [
-     "copy",
-     "복제품, 사본"
+     "compared",
+     "비교했다 (compare A to B: A를 B에 비유하다)"
     ],
     [
-     "advice",
-     "조언 (셀 수 없는 명사라 -s를 붙이지 않음)"
+     "concerns",
+     "우려, 걱정 (concern의 복수)"
+    ],
+    [
+     "neighborhoods",
+     "동네들, 지역들"
     ]
    ]
   },
@@ -96,6 +100,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-22",
+   "topic": "드론 배송"
+  },
   {
    "lang": "ja",
    "day": "2026-10-22",
@@ -160,11 +169,6 @@
    "lang": "ja",
    "day": "2026-10-16",
    "topic": "달의 모양"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-15",
-   "topic": "로보택시"
   }
  ]
 }
