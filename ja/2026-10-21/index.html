@@ -105,9 +105,13 @@
                transition: top .25s, left .25s, width .25s, height .25s; pointer-events: none; }
   .tour-tip { position: fixed; z-index: 51; left: 12px; right: 12px; max-width: 420px; margin: 0 auto; background: #fff; border-radius: 18px;
               padding: 18px 18px 14px; box-shadow: 0 12px 32px rgba(0,0,0,.18); }
-  .tour-tip .n { font-size: 12px; font-weight: 700; color: var(--blue); }
+  .tour-tip .n { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--blue); }
+  .tour-tip .n span { color: var(--muted); font-weight: 600; }
   .tour-tip h3 { font-size: 17px; font-weight: 800; margin: 4px 0 6px; letter-spacing: -0.02em; }
   .tour-tip p { font-size: 15px; line-height: 1.6; color: var(--sub); margin: 0; }
+  .tour-tip p b { color: var(--ink); }
+  .tour-flow { margin: 2px 0 12px; padding: 0 0 0 20px; display: grid; gap: 4px; }
+  .tour-flow li::marker { color: var(--blue); font-weight: 700; }
   .tour-tip .act { display: flex; gap: 8px; margin-top: 14px; }
   .tour-tip button { height: 42px; border: 0; border-radius: 12px; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   .tour-tip .skip { background: none; color: var(--muted); padding: 0 6px; margin-right: auto; }
@@ -313,27 +317,37 @@
   // 학습 방법: 화면의 각 기능을 차례로 비추며 설명한다
   (function () {
     var touch = matchMedia('(hover: none)').matches;
+    var FLOW = '<ol class="tour-flow"><li><b>듣기</b> 전체 듣기로 한 번 들어요</li><li><b>내 해석</b> 해석을 보기 전에 내 말로 적어요</li>'
+      + '<li><b>AI 피드백</b> 내 해석을 AI에게 첨삭받아요</li><li><b>맞춰 보기</b> 그다음에 해석을 켜서 비교해요</li><li><b>다시 듣기</b> 한 번 더 들으며 마무리해요</li></ol>'
+      + '해석을 바로 보면 읽는 힘이 잘 늘지 않아요. 막혀도 끝까지 내 말로 적어 본 뒤 맞춰 보는 게 핵심이에요.';
     var steps = [
-      ['#play', '전체 듣기', '먼저 지문 전체를 원어민 음성으로 들어 보세요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
+      [null, '이렇게 공부해요', FLOW],
+      ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
-      touch ? ['#passage .sent .en', '문장 누르기', '문장을 누르면 그 문장 해석만 바로 아래에 보여요. 스스로 읽어 본 다음에 눌러 보세요.']
-            : ['#kobtn', '해석 보기', '모든 문장 아래에 해석이 붙어요. 스스로 읽어 본 다음에 켜서 맞춰 보세요.'],
-      touch ? ['#kobtn', '해석 보기', '모든 문장의 해석을 한 번에 열고 닫아요.'] : null,
-      ['#mine', '내 해석', '읽은 내용을 우리말로 적어 보세요. 아는 부분만 적어도 괜찮아요.'],
-      ['#copymine', 'AI 피드백', '지문과 내 해석, 피드백 요청이 함께 복사돼요. ChatGPT나 Claude에 붙여넣으면 문장별로 고쳐 줘요.'],
+      ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
+      ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],
+      touch ? ['#passage .sent .en', '그다음에 해석과 맞춰 보세요', '피드백을 받은 뒤에 문장을 눌러 그 문장 해석과 비교해요. 위의 해석 보기를 누르면 모든 문장 해석이 한 번에 열려요.']
+            : ['#kobtn', '그다음에 해석과 맞춰 보세요', '피드백을 받은 뒤에 해석 보기를 켜서 내 해석과 비교해요. 문장마다 바로 아래에 해석이 붙어요.'],
       ['#step-words', '주요 단어', '지문에서 형광펜으로 표시한 단어의 뜻이에요. 지문으로 돌아가 단어가 쓰인 문장을 다시 읽어 보세요.'],
-      ['#step-points', '체크 포인트', '헷갈리기 쉬운 문장 구조와 해석 요령이에요. 틀린 부분이 있었다면 여기서 이유를 확인하세요.'],
+      ['#step-points', '체크 포인트', '헷갈리기 쉬운 문장 구조와 해석 요령이에요. AI 피드백에서 틀린 부분이 있었다면 여기서 이유를 한 번 더 확인하세요.'],
+      ['#play', '다시 들으며 마무리', '마지막으로 전체 듣기를 한 번 더 들어 보세요. 처음엔 안 들리던 문장이 들리면 오늘 공부는 성공이에요.'],
       ['#subscribe', '메일로 받기', '매일 아침 새 지문을 메일로 받아 보세요. 출근길 5분이면 충분해요.']
-    ].filter(function (x) { return x && document.querySelector(x[0]); });
+    ].filter(function (x) { return x && (x[0] === null || document.querySelector(x[0])); });
     var i = 0, spot, tip, block;
     function rectOf(sel) {
+      if (sel === null) return null;
       var el = document.querySelector(sel);
       if (sel.indexOf('#step-') === 0) el = el.parentNode;  // STEP 카드 전체를 비춘다
       return el;
     }
     function place() {
-      var el = rectOf(steps[i][0]), r = el.getBoundingClientRect(), pad = 6;
+      var el = rectOf(steps[i][0]), pad = 6;
+      if (!el) {  // 안내만 하는 단계: 화면 전체를 어둡게 하고 카드를 가운데에
+        spot.style.top = '50%'; spot.style.left = '50%'; spot.style.width = '0'; spot.style.height = '0';
+        tip.style.top = Math.max(8, (innerHeight - tip.offsetHeight) / 2) + 'px'; return;
+      }
+      var r = el.getBoundingClientRect();
       spot.style.top = (r.top - pad) + 'px'; spot.style.left = (r.left - pad) + 'px';
       spot.style.width = (r.width + pad * 2) + 'px'; spot.style.height = (r.height + pad * 2) + 'px';
       var below = r.bottom + 14, th = tip.offsetHeight, vh = innerHeight;
@@ -341,13 +355,17 @@
     }
     function show() {
       var s = steps[i], el = rectOf(s[0]);
-      tip.querySelector('.n').textContent = (i + 1) + ' / ' + steps.length;
+      var STAGE = { '먼저 들어 보세요': 1, '해석을 보기 전에 적어 보세요': 2, 'AI 피드백이란?': 3, '그다음에 해석과 맞춰 보세요': 4, '다시 들으며 마무리': 5 };
+      tip.querySelector('.n').innerHTML = (i === 0 ? '학습 방법' : STAGE[s[1]] ? '학습 순서 ' + STAGE[s[1]] + '단계' : '함께 쓰는 기능')
+        + (i === 0 ? '' : '<span>' + i + ' / ' + (steps.length - 1) + '</span>');
       tip.querySelector('h3').textContent = s[1];
-      tip.querySelector('p').textContent = s[2];
+      tip.querySelector('p').innerHTML = s[2];
       tip.querySelector('.prev').hidden = i === 0;
       tip.querySelector('.next').textContent = i === steps.length - 1 ? '시작하기' : '다음';
-      var r = el.getBoundingClientRect(), tall = r.height > innerHeight * 0.5;
-      el.scrollIntoView({ block: tall ? 'start' : 'center', behavior: 'smooth' });
+      if (el) {
+        var r = el.getBoundingClientRect(), tall = r.height > innerHeight * 0.5;
+        el.scrollIntoView({ block: tall ? 'start' : 'center', behavior: 'smooth' });
+      }
       setTimeout(place, 350); place();
     }
     function end() {
