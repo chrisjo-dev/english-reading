@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
 <title>오늘의 영어 읽기 · 10월 6일</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <meta name="description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="매일 영어 읽기">
@@ -16,7 +17,6 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://read.wspace.ai.kr/en/2026-10-06/">
-<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root {
@@ -32,7 +32,7 @@
     font-size: 16px; line-height: 1.6; letter-spacing: -0.01em;
     word-break: keep-all; overflow-wrap: anywhere;
   }
-  main { max-width: 560px; margin: 0 auto; padding: 0 0 calc(96px + env(safe-area-inset-bottom)); }
+  main { max-width: 560px; margin: 0 auto; padding: 0 0 calc(24px + env(safe-area-inset-bottom)); }
   .top { background: var(--card); padding: 28px 20px 24px; border-radius: 0 0 24px 24px; }
   .date { font-size: 14px; font-weight: 600; color: var(--muted); }
   h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 14px; letter-spacing: -0.03em; }
@@ -87,12 +87,6 @@
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
   .warn { color: var(--coral); font-weight: 600; }
-  .bar { position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-         background: linear-gradient(rgba(242,244,246,0), var(--bg) 28%); }
-  .bar button { display: block; width: 100%; max-width: 528px; margin: 0 auto; height: 56px; border: 0; border-radius: 16px;
-                background: var(--blue); color: #fff; font: 700 17px Pretendard, -apple-system, sans-serif;
-                letter-spacing: -0.01em; cursor: pointer; }
-  .bar button:active { background: var(--blue-press); transform: scale(.985); }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
           font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
@@ -101,6 +95,11 @@
   .tool.on { background: var(--blue); color: #fff; }
   .tool:active { transform: scale(.97); }
   .tool svg { width: 16px; height: 16px; flex: none; }
+  .tool[aria-pressed="true"] { background: var(--blue); color: #fff; }
+  #passage .say { flex: 1; min-width: 0; }
+  #passage .ko { font-size: 14px; line-height: 1.55; color: var(--sub); margin-top: 3px; }
+  [hidden] { display: none !important; }
+  @media (max-width: 420px) { #passage .tools { flex-wrap: wrap; } #passage .tools .tool { flex: 1 1 calc(50% - 4px); } }
   .tool.furi { width: 100%; flex: none; margin: -8px 0 16px; }
   body.nofuri rt { visibility: hidden; }
   .hint { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
@@ -119,7 +118,7 @@
   .top { position: relative; }
   .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
   .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
-  .site-footer { padding-bottom: 110px; }
+  .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 16px; }
   .sub h2 { margin-bottom: 4px; }
   .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }
@@ -173,13 +172,14 @@
       <button class="tool main" id="play" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span></button>
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
+      <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="en">Every second, <b>billions</b> of tiny particles called <b>neutrinos</b> pass through your entire body without you feeling anything at all.</div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="en">Most neutrinos come from the sun, but some travel from the far edges of the <b>universe</b> and carry enormous amounts of energy.</div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="en">The IceCube <b>Observatory</b> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <b>detect</b> these particles.</div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="en">When a neutrino <b>collides</b> with an ice molecule, it produces a brief <b>flash</b> of blue light that the sensors record.</div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="en">Francis Halzen, the Belgian-American physicist who spent decades designing and building IceCube, was awarded the 2026 Nobel Prize in Physics on October 6 for this pioneering work.<span class="badge">B2</span></div></div>
-    <p class="hint">문장 번호를 누르면 그 문장만 들을 수 있어요.</p>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Every second, <b>billions</b> of tiny particles called <b>neutrinos</b> pass through your entire body without you feeling anything at all.</div><div class="ko" hidden>매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Most neutrinos come from the sun, but some travel from the far edges of the <b>universe</b> and carry enormous amounts of energy.</div><div class="ko" hidden>대부분의 중성미자는 태양에서 오지만, 일부는 우주의 먼 끝에서 날아와 엄청난 에너지를 지닌 채 도착한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The IceCube <b>Observatory</b> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <b>detect</b> these particles.</div><div class="ko" hidden>남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">When a neutrino <b>collides</b> with an ice molecule, it produces a brief <b>flash</b> of blue light that the sensors record.</div><div class="ko" hidden>중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Francis Halzen, the Belgian-American physicist who spent decades designing and building IceCube, was awarded the 2026 Nobel Prize in Physics on October 6 for this pioneering work.<span class="badge">B2</span></div><div class="ko" hidden>수십 년에 걸쳐 아이스큐브를 설계하고 건설한 벨기에계 미국인 물리학자 프랜시스 할젠은 이 선구적인 연구로 2026년 10월 6일 노벨 물리학상을 수상했다.</div></div></div>
+    <p class="hint"><span id="hinttext">문장 번호를 누르면 그 문장만 들려요. 해석은 먼저 읽어 본 다음에 켜 보세요.</span></p>
     <p class="src">출처: <a href="https://www.dailymaverick.co.za/article/2026-10-06-francis-halzen-wins-2026-nobel-prize-in-physics.md" target="_blank" rel="noopener">Francis Halzen wins 2026 Nobel Prize in Physics (Daily Maverick, 2026-10-06)</a></p>
     <div class="mine">
       <label for="mine">내 해석</label>
@@ -219,19 +219,6 @@
     <p>모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 보세요. 다 쓰면 'AI 피드백 요청문 복사'를 눌러 평소 쓰는 AI 채팅(ChatGPT, Claude 등)에 붙여넣으세요. 어디를 잘 읽었고 어디를 놓쳤는지 문장별로 알려 줘요.</p>
   </section>
 
-  <details class="card" id="answer">
-    <summary>
-      <span><span class="t">모범 해석</span><span class="s">해석을 마친 뒤에 펼쳐 보세요</span></span>
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
-    </summary>
-    <div class="body">
-      <div class="sent"><span class="no">1</span><div class="ko">매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.</div></div>
-      <div class="sent"><span class="no">2</span><div class="ko">대부분의 중성미자는 태양에서 오지만, 일부는 우주의 먼 끝에서 날아와 엄청난 에너지를 지닌 채 도착한다.</div></div>
-      <div class="sent"><span class="no">3</span><div class="ko">남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.</div></div>
-      <div class="sent"><span class="no">4</span><div class="ko">중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.</div></div>
-      <div class="sent"><span class="no">5</span><div class="ko">수십 년에 걸쳐 아이스큐브를 설계하고 건설한 벨기에계 미국인 물리학자 프랜시스 할젠은 이 선구적인 연구로 2026년 10월 6일 노벨 물리학상을 수상했다.</div></div>
-    </div>
-  </details>
 
   <details class="card">
     <summary>
@@ -271,17 +258,26 @@
 <footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a><a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a><a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>
 
 
-<div class="bar"><button id="cta" type="button">해석 다 했어요, 정답 볼게요</button></div>
 
 <script>
-  var answer = document.getElementById('answer');
-  var cta = document.getElementById('cta');
-  function sync() { cta.textContent = answer.open ? '모범 해석 접기' : '해석 다 했어요, 정답 볼게요'; }
-  cta.addEventListener('click', function () {
-    answer.open = !answer.open;
-    if (answer.open) answer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // 해석: 버튼은 전체를 열고 닫고, 터치 화면에서는 문장을 누르면 그 문장 해석만 열고 닫는다.
+  var koBtn = document.getElementById('kobtn');
+  var kos = [].slice.call(document.querySelectorAll('#passage .ko'));
+  koBtn.addEventListener('click', function () {
+    var on = koBtn.getAttribute('aria-pressed') !== 'true';
+    koBtn.setAttribute('aria-pressed', String(on));
+    kos.forEach(function (k) { k.hidden = !on; });
   });
-  answer.addEventListener('toggle', sync);
+  if (matchMedia('(hover: none)').matches) {
+    [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+      en.style.cursor = 'pointer';
+      en.addEventListener('click', function () {
+        if (String(getSelection())) return;  // 길게 눌러 글자를 고르는 중이면 열지 않는다
+        var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
+      });
+    });
+    document.getElementById('hinttext').textContent = '번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.';
+  }
 
   var _gaPlayed = false;
   var _gaLang = location.pathname.split('/')[1] || '';

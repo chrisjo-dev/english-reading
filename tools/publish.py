@@ -119,7 +119,7 @@ def patch_page(lang, day):
             1,
         )
     if 'class="site-footer"' not in page:
-        page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 110px; }\n  .gnb {", 1)
+        page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
         page = page.replace("<link rel=\"stylesheet\"", f'<link rel="canonical" href="{url}">\n<link rel="stylesheet"', 1)
     if 'class="card sub"' not in page:

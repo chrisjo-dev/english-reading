@@ -93,8 +93,9 @@ def render(lang, day):
     n = len(c["sentences"])
     sentences = "".join(
         f'    <div class="sent"><button class="no" type="button" data-i="{i}" aria-label="{i + 1}번 문장 듣기">{i + 1}</button>'
-        f'<div class="en">{marks(s["en"], "b")}{BADGE.format(L["hard_badge"]) if s.get("b2") else ""}</div></div>\n'
-        for i, s in enumerate(c["sentences"])
+        f'<div class="say"><div class="en">{marks(s["en"], "b")}{BADGE.format(L["hard_badge"]) if s.get("b2") else ""}</div>'
+        f'<div class="ko" hidden>{marks(a, "")}</div></div></div>\n'
+        for i, (s, a) in enumerate(zip(c["sentences"], c["answers"]))
     )
     src = c.get("source")
     if src:
