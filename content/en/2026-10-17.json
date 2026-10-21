@@ -2,6 +2,8 @@
   "date": "2026-10-17",
   "category": "culture",
   "topic": "호박 무게 대회",
+  "title_ko": "1톤짜리 거대 호박 대회",
+  "headline": "A Contest for Giant Pumpkins",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "Last Monday, hundreds of people **gathered** in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.", "b2": false},

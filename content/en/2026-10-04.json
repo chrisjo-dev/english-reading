@@ -2,6 +2,8 @@
   "date": "2026-10-04",
   "category": "space",
   "topic": "로만 망원경",
+  "title_ko": "NASA의 새 우주 망원경 로먼",
+  "headline": "NASA's New Space Telescope, Roman",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "NASA's newest space telescope, called Roman, launched into **orbit** aboard a SpaceX Falcon Heavy rocket on August 30, 2026.", "b2": false},

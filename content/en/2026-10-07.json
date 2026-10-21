@@ -2,6 +2,8 @@
   "date": "2026-10-07",
   "category": "society",
   "topic": "야생동물 사진",
+  "title_ko": "웃긴 야생동물 사진 대회",
+  "headline": "A Contest for Funny Animal Photos",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "The Nikon Comedy Wildlife Photography Awards received more than ten thousand **entries** in 2026, the highest total in the competition's ten-year history.", "b2": false},

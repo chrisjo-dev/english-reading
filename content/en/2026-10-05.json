@@ -2,6 +2,8 @@
   "date": "2026-10-05",
   "category": "science",
   "topic": "광유전학",
+  "title_ko": "빛으로 뇌세포를 켜는 기술의 노벨상",
+  "headline": "A Nobel Prize for Turning Brain Cells On with Light",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "Three scientists won the 2026 **Nobel** Prize in Physiology or Medicine for a technique that uses light to control individual brain cells.", "b2": false},

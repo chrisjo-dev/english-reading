@@ -2,6 +2,8 @@
   "date": "2026-10-19",
   "category": "science",
   "topic": "쏙독새 날개",
+  "title_ko": "먼 길을 나는 작은 새의 날개",
+  "headline": "The Long Flight of a Small Bird",
   "chips": ["6문장", "B1 위주", "B2 2문장", "약 3분"],
   "sentences": [
     {"en": "A small brown bird called the **nightjar** flies thousands of kilometers every year between Europe and southern Africa.", "b2": false},

@@ -2,6 +2,8 @@
   "date": "2026-10-10",
   "category": "culture",
   "topic": "아트 페어",
+  "title_ko": "누구나 그림을 살 수 있는 미술 장터",
+  "headline": "An Art Fair for Everyone",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "The Affordable Art Fair is coming to Battersea Park in London from October 14 to 18, **bringing** together thousands of original works by both rising and **established** artists.", "b2": false},

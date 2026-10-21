@@ -2,6 +2,8 @@
   "date": "2026-10-15",
   "category": "future",
   "topic": "로보택시",
+  "title_ko": "맨체스터의 무인 택시 시험",
+  "headline": "Self-Driving Taxis in Manchester",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "Would you get into a taxi that drives itself?", "b2": false},

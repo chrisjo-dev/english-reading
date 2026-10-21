@@ -2,6 +2,8 @@
   "date": "2026-10-20",
   "category": "culture",
   "topic": "주먹밥",
+  "title_ko": "일본의 주먹밥 오니기리",
+  "headline": "おにぎり",
   "chips": ["6문장", "N5 위주", "N4 1문장", "약 3분"],
   "sentences": [
     {"en": "「**おにぎり**」を{知|し}っていますか。", "b2": false},

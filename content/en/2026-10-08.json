@@ -2,6 +2,8 @@
   "date": "2026-10-08",
   "category": "future",
   "topic": "배달 로봇",
+  "title_ko": "인도를 달리는 배달 로봇",
+  "headline": "Delivery Robots on the Sidewalk",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "Next time you order dinner in some parts of the UK, it might arrive on four small wheels instead of a bike.", "b2": false},

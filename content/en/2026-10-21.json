@@ -2,6 +2,8 @@
   "date": "2026-10-21",
   "category": "society",
   "topic": "백세 잔치",
+  "title_ko": "100세 어르신들의 생일 파티",
+  "headline": "A Party for People Over 100",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "On Monday afternoon, the senior center in the town of Brookline held a **special** party called the \"Party of a Century.\"", "b2": false},

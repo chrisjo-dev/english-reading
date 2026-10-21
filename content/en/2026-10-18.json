@@ -2,6 +2,8 @@
   "date": "2026-10-18",
   "category": "space",
   "topic": "부푼 행성",
+  "title_ko": "한쪽이 부풀어 오른 외계 행성",
+  "headline": "A Planet That Isn't Perfectly Round",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "**Astronomers** have found that a giant planet outside our solar system is not perfectly round.", "b2": false},

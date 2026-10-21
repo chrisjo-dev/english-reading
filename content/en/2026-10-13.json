@@ -2,6 +2,8 @@
   "date": "2026-10-13",
   "category": "tech",
   "topic": "레이저 안테나",
+  "title_ko": "빛과 공기로 만든 안테나",
+  "headline": "An Antenna Made of Light and Air",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "A normal **antenna** is a piece of metal, but what if you could make one out of light and air?", "b2": false},

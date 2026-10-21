@@ -2,6 +2,8 @@
   "date": "2026-10-16",
   "category": "science",
   "topic": "문어의 뇌",
+  "title_ko": "문어가 똑똑한 뇌를 갖게 된 비밀",
+  "headline": "How Octopuses Got Their Smart Brains",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "Inside every cell, a very long string of DNA is **folded** into a tiny space, a bit like a ball of thread.", "b2": false},

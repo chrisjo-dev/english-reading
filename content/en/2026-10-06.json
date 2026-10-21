@@ -2,6 +2,8 @@
   "date": "2026-10-06",
   "category": "tech",
   "topic": "중성미자",
+  "title_ko": "매초 우리 몸을 지나가는 작은 입자",
+  "headline": "Tiny Particles That Pass Through Your Body",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "Every second, **billions** of tiny particles called **neutrinos** pass through your entire body without you feeling anything at all.", "b2": false},

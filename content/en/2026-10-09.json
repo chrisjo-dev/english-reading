@@ -2,6 +2,8 @@
   "date": "2026-10-09",
   "category": "science",
   "topic": "드라코니드",
+  "title_ko": "10월 밤하늘의 별똥별",
+  "headline": "An October Meteor Shower",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "Every October, Earth **passes through** a cloud of dust left behind by a **comet**, and the tiny particles burn up as they enter our atmosphere.", "b2": false},

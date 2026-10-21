@@ -2,6 +2,8 @@
   "date": "2026-10-20",
   "category": "tech",
   "topic": "눈 깜빡임 안경",
+  "title_ko": "눈 깜빡임으로 움직이는 안경",
+  "headline": "Smart Glasses Powered by Blinking",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
     {"en": "Most smart glasses need a battery, but a new pair from Northwestern University uses the wearer's own face as a source of energy.", "b2": false},
