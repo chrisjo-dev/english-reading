@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,12 +216,13 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">NASA's newest space telescope, called Roman, launched into <b>orbit</b> aboard a SpaceX Falcon Heavy rocket on August 30, 2026.</div><div class="ko" hidden>NASA의 최신 우주 망원경 로만이 2026년 8월 30일 스페이스X 팰컨 헤비 로켓을 타고 궤도에 올랐다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Three weeks after launch, the team powered on its main camera — a 300-megapixel <b>infrared</b> <b>detector</b> that senses light invisible to the human eye.</div><div class="ko" hidden>발사 3주 후, 연구팀은 육안에 보이지 않는 빛을 감지하는 3억 화소짜리 적외선 감지기인 주 카메라를 가동했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Engineers ran a <b>calibration</b> test, rotated the <b>filter</b> wheel for the first time in space, and confirmed that all eighteen detectors were working as expected.</div><div class="ko" hidden>공학자들은 보정 테스트를 실시하고 우주에서 처음으로 필터 휠을 회전시킨 뒤, 18개의 감지기 모두 정상 작동함을 확인했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">A single image from this camera covers a patch of sky larger than the full <b>moon</b>, which is about one hundred times more area than the Hubble Space Telescope.</div><div class="ko" hidden>이 카메라로 찍은 이미지 한 장은 보름달보다 큰 하늘 영역을 담을 수 있는데, 이는 허블 우주 망원경보다 약 100배 넓은 범위다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Roman has been travelling toward a stable point roughly one and a half million kilometres from Earth, where science <b>observations</b> are set to begin in early 2027.<span class="badge">B2</span></div><div class="ko" hidden>로만은 현재 지구에서 약 150만 킬로미터 떨어진 안정 지점을 향해 이동 중이며, 과학 관측은 2027년 초에 시작될 예정이다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">NASA's newest space telescope, called Roman, launched into <b>orbit</b> aboard a SpaceX Falcon Heavy rocket on August 30, 2026.</div><div class="chunks"><span class="ck"><span class="e">NASA's newest space telescope,<span class="s">/</span></span><span class="k">NASA의 최신 우주 망원경이</span></span><span class="ck"><span class="e">called Roman,<span class="s">/</span></span><span class="k">로먼이라는</span></span><span class="ck"><span class="e">launched into <b>orbit</b><span class="s">/</span></span><span class="k">궤도로 발사되었다</span></span><span class="ck"><span class="e">aboard a SpaceX Falcon Heavy rocket<span class="s">/</span></span><span class="k">스페이스X 팰컨 헤비 로켓에 실려</span></span><span class="ck"><span class="e">on August 30, 2026.</span><span class="k">2026년 8월 30일에</span></span></div><div class="ko" hidden>NASA의 최신 우주 망원경 로만이 2026년 8월 30일 스페이스X 팰컨 헤비 로켓을 타고 궤도에 올랐다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Three weeks after launch, the team powered on its main camera — a 300-megapixel <b>infrared</b> <b>detector</b> that senses light invisible to the human eye.</div><div class="chunks"><span class="ck"><span class="e">Three weeks after launch,<span class="s">/</span></span><span class="k">발사 3주 뒤</span></span><span class="ck"><span class="e">the team powered on its main camera<span class="s">/</span></span><span class="k">팀은 주 카메라를 켰다</span></span><span class="ck"><span class="e">— a 300-megapixel <b>infrared</b> <b>detector</b><span class="s">/</span></span><span class="k">바로 3억 화소 적외선 검출기다</span></span><span class="ck"><span class="e">that senses light<span class="s">/</span></span><span class="k">빛을 감지하는</span></span><span class="ck"><span class="e">invisible to the human eye.</span><span class="k">사람 눈에 보이지 않는</span></span></div><div class="ko" hidden>발사 3주 후, 연구팀은 육안에 보이지 않는 빛을 감지하는 3억 화소짜리 적외선 감지기인 주 카메라를 가동했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Engineers ran a <b>calibration</b> test, rotated the <b>filter</b> wheel for the first time in space, and confirmed that all eighteen detectors were working as expected.</div><div class="chunks"><span class="ck"><span class="e">Engineers ran a <b>calibration</b> test,<span class="s">/</span></span><span class="k">엔지니어들은 보정 시험을 했고</span></span><span class="ck"><span class="e">rotated the <b>filter</b> wheel<span class="s">/</span></span><span class="k">필터 바퀴를 돌렸고</span></span><span class="ck"><span class="e">for the first time in space,<span class="s">/</span></span><span class="k">우주에서 처음으로</span></span><span class="ck"><span class="e">and confirmed<span class="s">/</span></span><span class="k">그리고 확인했다</span></span><span class="ck"><span class="e">that all eighteen detectors<span class="s">/</span></span><span class="k">18개 검출기 모두가</span></span><span class="ck"><span class="e">were working as expected.</span><span class="k">예상대로 작동하고 있음을</span></span></div><div class="ko" hidden>공학자들은 보정 테스트를 실시하고 우주에서 처음으로 필터 휠을 회전시킨 뒤, 18개의 감지기 모두 정상 작동함을 확인했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">A single image from this camera covers a patch of sky larger than the full <b>moon</b>, which is about one hundred times more area than the Hubble Space Telescope.</div><div class="chunks"><span class="ck"><span class="e">A single image from this camera<span class="s">/</span></span><span class="k">이 카메라의 사진 한 장은</span></span><span class="ck"><span class="e">covers a patch of sky<span class="s">/</span></span><span class="k">하늘의 한 구역을 담는다</span></span><span class="ck"><span class="e">larger than the full <b>moon</b>,<span class="s">/</span></span><span class="k">보름달보다 큰</span></span><span class="ck"><span class="e">which is about one hundred times more area<span class="s">/</span></span><span class="k">그것은 약 100배 더 넓은 면적이다</span></span><span class="ck"><span class="e">than the Hubble Space Telescope.</span><span class="k">허블 우주 망원경보다</span></span></div><div class="ko" hidden>이 카메라로 찍은 이미지 한 장은 보름달보다 큰 하늘 영역을 담을 수 있는데, 이는 허블 우주 망원경보다 약 100배 넓은 범위다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Roman has been travelling toward a stable point roughly one and a half million kilometres from Earth, where science <b>observations</b> are set to begin in early 2027.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Roman has been travelling<span class="s">/</span></span><span class="k">로먼은 이동해 왔다</span></span><span class="ck"><span class="e">toward a stable point<span class="s">/</span></span><span class="k">안정된 지점을 향해</span></span><span class="ck"><span class="e">roughly one and a half million kilometres<span class="s">/</span></span><span class="k">약 150만 킬로미터 떨어진</span></span><span class="ck"><span class="e">from Earth,<span class="s">/</span></span><span class="k">지구에서</span></span><span class="ck"><span class="e">where science <b>observations</b><span class="s">/</span></span><span class="k">그곳에서 과학 관측이</span></span><span class="ck"><span class="e">are set to begin<span class="s">/</span></span><span class="k">시작될 예정이다</span></span><span class="ck"><span class="e">in early 2027.</span><span class="k">2027년 초에</span></span></div><div class="ko" hidden>로만은 현재 지구에서 약 150만 킬로미터 떨어진 안정 지점을 향해 이동 중이며, 과학 관측은 2027년 초에 시작될 예정이다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://sciencedaily.com/releases/2026/09/260921081058.htm" target="_blank" rel="noopener">NASA's Roman Space Telescope Wide Field Instrument Has Been Activated (ScienceDaily, 2026-09-21)</a></p>
     <div class="mine">
@@ -297,12 +312,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -321,6 +344,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

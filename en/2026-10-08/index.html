@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,13 +216,14 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Next time you order dinner in some parts of the UK, it might arrive on four small wheels instead of a bike.</div><div class="ko" hidden>다음에 영국 일부 지역에서 저녁을 주문하면, 음식이 자전거 대신 작은 바퀴 네 개를 달고 도착할지도 모릅니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Deliveroo is <b>teaming up</b> with a US company called Coco to send <b>electric</b> robots along the <b>pavements</b> of five towns, starting in London's Canary Wharf this month.</div><div class="ko" hidden>딜리버루는 코코라는 미국 회사와 손잡고 다섯 개 도시의 인도에 전기 로봇을 보내려 하는데, 이번 달 런던 카나리 워프에서 먼저 시작합니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The robots travel at walking <b>pace</b> and use cameras and <b>sensors</b> to find their way, so a quiet machine could take the place of some noisy motorbikes.</div><div class="ko" hidden>로봇은 걷는 속도로 움직이고 카메라와 센서로 길을 찾기 때문에, 조용한 기계가 시끄러운 오토바이 일부를 대신할 수도 있습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">The idea is not completely new, because one English town has had robot deliveries since 2018.</div><div class="ko" hidden>이 아이디어가 완전히 새로운 것은 아닌데, 잉글랜드의 한 도시에는 2018년부터 로봇 배달이 있었기 때문입니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Deliveroo <b>insists</b> that most orders will still go to human riders.</div><div class="ko" hidden>딜리버루는 대부분의 주문이 여전히 사람 배달원에게 갈 것이라고 강조합니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">However, since the company has not said what <b>share</b> of orders the robots will eventually handle, it is fair to ask how long those riders' jobs will really be safe.<span class="badge">B2</span></div><div class="ko" hidden>하지만 회사가 로봇이 결국 주문의 몇 퍼센트를 맡게 될지 밝히지 않았기 때문에, 그 배달원들의 일자리가 정말 얼마나 오래 안전할지 묻는 것은 당연합니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Next time you order dinner in some parts of the UK, it might arrive on four small wheels instead of a bike.</div><div class="chunks"><span class="ck"><span class="e">Next time you order dinner<span class="s">/</span></span><span class="k">다음에 저녁을 주문하면</span></span><span class="ck"><span class="e">in some parts of the UK,<span class="s">/</span></span><span class="k">영국 일부 지역에서</span></span><span class="ck"><span class="e">it might arrive<span class="s">/</span></span><span class="k">그것은 도착할지도 모른다</span></span><span class="ck"><span class="e">on four small wheels<span class="s">/</span></span><span class="k">작은 바퀴 네 개를 달고</span></span><span class="ck"><span class="e">instead of a bike.</span><span class="k">자전거 대신</span></span></div><div class="ko" hidden>다음에 영국 일부 지역에서 저녁을 주문하면, 음식이 자전거 대신 작은 바퀴 네 개를 달고 도착할지도 모릅니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Deliveroo is <b>teaming up</b> with a US company called Coco to send <b>electric</b> robots along the <b>pavements</b> of five towns, starting in London's Canary Wharf this month.</div><div class="chunks"><span class="ck"><span class="e">Deliveroo is <b>teaming up</b><span class="s">/</span></span><span class="k">딜리버루는 손을 잡는다</span></span><span class="ck"><span class="e">with a US company called Coco<span class="s">/</span></span><span class="k">코코라는 미국 회사와</span></span><span class="ck"><span class="e">to send <b>electric</b> robots<span class="s">/</span></span><span class="k">전기 로봇을 보내기 위해</span></span><span class="ck"><span class="e">along the <b>pavements</b> of five towns,<span class="s">/</span></span><span class="k">다섯 도시의 인도를 따라</span></span><span class="ck"><span class="e">starting in London's Canary Wharf<span class="s">/</span></span><span class="k">런던의 카나리 워프에서 시작해</span></span><span class="ck"><span class="e">this month.</span><span class="k">이번 달에</span></span></div><div class="ko" hidden>딜리버루는 코코라는 미국 회사와 손잡고 다섯 개 도시의 인도에 전기 로봇을 보내려 하는데, 이번 달 런던 카나리 워프에서 먼저 시작합니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The robots travel at walking <b>pace</b> and use cameras and <b>sensors</b> to find their way, so a quiet machine could take the place of some noisy motorbikes.</div><div class="chunks"><span class="ck"><span class="e">The robots travel<span class="s">/</span></span><span class="k">로봇은 이동한다</span></span><span class="ck"><span class="e">at walking <b>pace</b><span class="s">/</span></span><span class="k">걷는 속도로</span></span><span class="ck"><span class="e">and use cameras and <b>sensors</b><span class="s">/</span></span><span class="k">그리고 카메라와 센서를 쓴다</span></span><span class="ck"><span class="e">to find their way,<span class="s">/</span></span><span class="k">길을 찾기 위해</span></span><span class="ck"><span class="e">so a quiet machine<span class="s">/</span></span><span class="k">그래서 조용한 기계가</span></span><span class="ck"><span class="e">could take the place<span class="s">/</span></span><span class="k">자리를 대신할 수도 있다</span></span><span class="ck"><span class="e">of some noisy motorbikes.</span><span class="k">일부 시끄러운 오토바이의</span></span></div><div class="ko" hidden>로봇은 걷는 속도로 움직이고 카메라와 센서로 길을 찾기 때문에, 조용한 기계가 시끄러운 오토바이 일부를 대신할 수도 있습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">The idea is not completely new, because one English town has had robot deliveries since 2018.</div><div class="chunks"><span class="ck"><span class="e">The idea is not completely new,<span class="s">/</span></span><span class="k">이 아이디어는 완전히 새롭지는 않다</span></span><span class="ck"><span class="e">because one English town<span class="s">/</span></span><span class="k">왜냐하면 영국의 한 도시는</span></span><span class="ck"><span class="e">has had robot deliveries<span class="s">/</span></span><span class="k">로봇 배달을 해 왔기 때문이다</span></span><span class="ck"><span class="e">since 2018.</span><span class="k">2018년부터</span></span></div><div class="ko" hidden>이 아이디어가 완전히 새로운 것은 아닌데, 잉글랜드의 한 도시에는 2018년부터 로봇 배달이 있었기 때문입니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Deliveroo <b>insists</b> that most orders will still go to human riders.</div><div class="chunks"><span class="ck"><span class="e">Deliveroo <b>insists</b><span class="s">/</span></span><span class="k">딜리버루는 강조한다</span></span><span class="ck"><span class="e">that most orders<span class="s">/</span></span><span class="k">대부분의 주문은</span></span><span class="ck"><span class="e">will still go<span class="s">/</span></span><span class="k">여전히 갈 것이라고</span></span><span class="ck"><span class="e">to human riders.</span><span class="k">사람 배달원에게</span></span></div><div class="ko" hidden>딜리버루는 대부분의 주문이 여전히 사람 배달원에게 갈 것이라고 강조합니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">However, since the company has not said what <b>share</b> of orders the robots will eventually handle, it is fair to ask how long those riders' jobs will really be safe.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">However,<span class="s">/</span></span><span class="k">하지만</span></span><span class="ck"><span class="e">since the company has not said<span class="s">/</span></span><span class="k">회사가 말하지 않았으니</span></span><span class="ck"><span class="e">what <b>share</b> of orders<span class="s">/</span></span><span class="k">주문 중 얼마만큼을</span></span><span class="ck"><span class="e">the robots will eventually handle,<span class="s">/</span></span><span class="k">로봇이 결국 맡게 될지</span></span><span class="ck"><span class="e">it is fair to ask<span class="s">/</span></span><span class="k">물어볼 만하다</span></span><span class="ck"><span class="e">how long those riders' jobs<span class="s">/</span></span><span class="k">그 배달원들의 일자리가 얼마나 오래</span></span><span class="ck"><span class="e">will really be safe.</span><span class="k">정말 안전할지</span></span></div><div class="ko" hidden>하지만 회사가 로봇이 결국 주문의 몇 퍼센트를 맡게 될지 밝히지 않았기 때문에, 그 배달원들의 일자리가 정말 얼마나 오래 안전할지 묻는 것은 당연합니다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://thenextweb.com/news/deliveroo-coco-robots-uk-cities" target="_blank" rel="noopener">Deliveroo is putting delivery robots on the pavements of five UK towns (The Next Web, 2026-10-05)</a></p>
     <div class="mine">
@@ -301,12 +316,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -325,6 +348,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

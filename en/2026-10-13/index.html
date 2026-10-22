@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,13 +216,14 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">A normal <b>antenna</b> is a piece of metal, but what if you could make one out of light and air?</div><div class="ko" hidden>보통의 안테나는 금속 조각이지만, 빛과 공기로 안테나를 만들 수 있다면 어떨까?</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Engineers at North Carolina State University have tested this idea by shining a strong laser through the air.</div><div class="ko" hidden>노스캐롤라이나 주립대학교의 공학자들은 강한 레이저를 공기 중에 쏘아 이 아이디어를 시험했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The laser turns a thin line of air into <b>plasma</b>, a special kind of gas that can carry electricity.</div><div class="ko" hidden>레이저는 가느다란 줄 모양의 공기를 플라스마, 즉 전기를 전달할 수 있는 특별한 종류의 기체로 바꾼다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <b>sends out</b> radio waves that <b>vibrate</b> thirty million times a second.</div><div class="ko" hidden>이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">The length of this light-made antenna, which is controlled only by the laser's settings, can be <b>adjusted</b> for different signals without any moving parts.<span class="badge">B2</span></div><div class="ko" hidden>레이저의 설정만으로 조절되는 이 '빛으로 만든 안테나'의 길이는 움직이는 부품 없이도 다른 신호에 맞게 조정할 수 있다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en"><b>So far</b>, the device can only send signals, but the team hopes it could one day help <b>satellites</b> that need to stay light.</div><div class="ko" hidden>지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">A normal <b>antenna</b> is a piece of metal, but what if you could make one out of light and air?</div><div class="chunks"><span class="ck"><span class="e">A normal <b>antenna</b><span class="s">/</span></span><span class="k">보통 안테나는</span></span><span class="ck"><span class="e">is a piece of metal,<span class="s">/</span></span><span class="k">금속 조각이다</span></span><span class="ck"><span class="e">but what if you could make one<span class="s">/</span></span><span class="k">하지만 만들 수 있다면 어떨까</span></span><span class="ck"><span class="e">out of light and air?</span><span class="k">빛과 공기로</span></span></div><div class="ko" hidden>보통의 안테나는 금속 조각이지만, 빛과 공기로 안테나를 만들 수 있다면 어떨까?</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Engineers at North Carolina State University have tested this idea by shining a strong laser through the air.</div><div class="chunks"><span class="ck"><span class="e">Engineers at North Carolina State University<span class="s">/</span></span><span class="k">노스캐롤라이나 주립대의 엔지니어들이</span></span><span class="ck"><span class="e">have tested this idea<span class="s">/</span></span><span class="k">이 아이디어를 시험했다</span></span><span class="ck"><span class="e">by shining a strong laser<span class="s">/</span></span><span class="k">강한 레이저를 쏘아서</span></span><span class="ck"><span class="e">through the air.</span><span class="k">공기 속으로</span></span></div><div class="ko" hidden>노스캐롤라이나 주립대학교의 공학자들은 강한 레이저를 공기 중에 쏘아 이 아이디어를 시험했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The laser turns a thin line of air into <b>plasma</b>, a special kind of gas that can carry electricity.</div><div class="chunks"><span class="ck"><span class="e">The laser turns<span class="s">/</span></span><span class="k">레이저는 바꾼다</span></span><span class="ck"><span class="e">a thin line of air<span class="s">/</span></span><span class="k">가느다란 공기 줄기를</span></span><span class="ck"><span class="e">into <b>plasma</b>,<span class="s">/</span></span><span class="k">플라스마로</span></span><span class="ck"><span class="e">a special kind of gas<span class="s">/</span></span><span class="k">특별한 종류의 기체인</span></span><span class="ck"><span class="e">that can carry electricity.</span><span class="k">전기를 나를 수 있는</span></span></div><div class="ko" hidden>레이저는 가느다란 줄 모양의 공기를 플라스마, 즉 전기를 전달할 수 있는 특별한 종류의 기체로 바꾼다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <b>sends out</b> radio waves that <b>vibrate</b> thirty million times a second.</div><div class="chunks"><span class="ck"><span class="e">This line passes<span class="s">/</span></span><span class="k">이 줄기는 지나간다</span></span><span class="ck"><span class="e">through a metal ring,<span class="s">/</span></span><span class="k">금속 고리를</span></span><span class="ck"><span class="e">and when a radio signal is sent<span class="s">/</span></span><span class="k">그리고 전파 신호가 보내지면</span></span><span class="ck"><span class="e">into the ring,<span class="s">/</span></span><span class="k">고리 안으로</span></span><span class="ck"><span class="e">the plasma <b>sends out</b> radio waves<span class="s">/</span></span><span class="k">플라스마가 전파를 내보낸다</span></span><span class="ck"><span class="e">that <b>vibrate</b> thirty million times a second.</span><span class="k">1초에 3천만 번 진동하는</span></span></div><div class="ko" hidden>이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">The length of this light-made antenna, which is controlled only by the laser's settings, can be <b>adjusted</b> for different signals without any moving parts.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The length of this light-made antenna,<span class="s">/</span></span><span class="k">빛으로 만든 이 안테나의 길이는</span></span><span class="ck"><span class="e">which is controlled<span class="s">/</span></span><span class="k">조절되는데</span></span><span class="ck"><span class="e">only by the laser's settings,<span class="s">/</span></span><span class="k">레이저 설정만으로</span></span><span class="ck"><span class="e">can be <b>adjusted</b><span class="s">/</span></span><span class="k">맞출 수 있다</span></span><span class="ck"><span class="e">for different signals<span class="s">/</span></span><span class="k">여러 신호에 따라</span></span><span class="ck"><span class="e">without any moving parts.</span><span class="k">움직이는 부품 없이</span></span></div><div class="ko" hidden>레이저의 설정만으로 조절되는 이 '빛으로 만든 안테나'의 길이는 움직이는 부품 없이도 다른 신호에 맞게 조정할 수 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en"><b>So far</b>, the device can only send signals, but the team hopes it could one day help <b>satellites</b> that need to stay light.</div><div class="chunks"><span class="ck"><span class="e"><b>So far</b>,<span class="s">/</span></span><span class="k">지금까지는</span></span><span class="ck"><span class="e">the device can only send signals,<span class="s">/</span></span><span class="k">이 장치는 신호를 보내기만 할 수 있지만</span></span><span class="ck"><span class="e">but the team hopes<span class="s">/</span></span><span class="k">연구팀은 바란다</span></span><span class="ck"><span class="e">it could one day help <b>satellites</b><span class="s">/</span></span><span class="k">언젠가 위성을 도울 수 있기를</span></span><span class="ck"><span class="e">that need to stay light.</span><span class="k">가벼워야 하는</span></span></div><div class="ko" hidden>지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://www.sciencedaily.com/releases/2026/10/261008005239.htm" target="_blank" rel="noopener">Scientists create a lightsaber-like laser antenna that transmits radio waves (ScienceDaily, 2026-10-09)</a></p>
     <div class="mine">
@@ -301,12 +316,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -325,6 +348,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

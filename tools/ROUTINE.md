@@ -61,6 +61,11 @@
    - `headline`: 제목 아래 작게 보이는 영어 제목. 기사 제목을 옮기지 말고, 지문보다 쉬운 B1 수준의 짧은 제목을 새로 씁니다(예: "The Most Exact Clock in the World"). 관용구와 말장난은 쓰지 않습니다.
    - `chips`: `["N문장", "B1 위주", "B2 N문장", "약 N분"]`.
    - `sentences[].en`: 주요 단어는 `**단어**`로 감쌉니다. B2 문장은 `"b2": true`.
+   - `sentences[].chunks`: 끊어 읽기 덩어리. 모든 문장에 넣습니다(2026-10-23부터 없으면 `check_content`가 오류를 냅니다). 형식은 `[["영어 덩어리", "짧은 한국어 뜻"], ...]`입니다.
+     - 보통 2~6단어씩, 구와 절의 경계(주어, 동사, 목적어, 전치사구, 접속사, 관계사 앞)에서 끊습니다. 쉼표와 마침표는 앞 덩어리 끝에 붙입니다.
+     - 덩어리를 공백 하나로 이으면 `en`과 글자 하나까지 같아야 합니다. `**단어**` 표시도 그대로 두고, 한 덩어리 안에서 열고 닫습니다.
+     - 뜻은 영어 순서 그대로 앞에서부터 이해하는 직독직해로, 덩어리마다 짧은 한국어로 씁니다. 한국어 어순으로 뒤집어 문장 전체 해석을 나눠 넣지 않습니다.
+     - 예: `"en": "**Supporters** say the service could save people a trip to the store."`이면 `"chunks": [["**Supporters** say", "지지하는 사람들은 말한다"], ["the service could save people", "그 서비스가 사람들에게 덜어 줄 수 있다고"], ["a trip to the store.", "가게에 가는 수고를"]]`
    - `words`: `[["영어", "한국어 뜻"], ...]` 5~7개.
    - `points`: 1~2개. `body` 안에서 지문 표현은 `` `표현` ``으로 감쌉니다.
    - `answers`: 문장 순서대로의 모범 해석.
@@ -68,7 +73,7 @@
    - `source`: 검색한 기사면 `{"title": "기사 제목 (매체, YYYY-MM-DD)", "url": "..."}`, 검색 없이 쓴 날은 `null`. 출처 없는 글은 페이지에 "특정 기사를 바탕으로 하지 않은 학습용 글"로 표시됩니다.
    - 모든 문자열은 일반 텍스트로 씁니다(HTML 태그 금지).
 3. **검증**: `python3 tools/render.py en YYYY-MM-DD`를 실행해 오류 없이 끝나는지 확인합니다. 오류가 나면 JSON을 고쳐 다시 실행합니다. 이 명령이 만든 HTML 파일은 커밋하지 않습니다(Actions가 다시 만듭니다). `git checkout -- . && git clean -fd -- en/YYYY-MM-DD` 로 되돌린 뒤 content 파일만 남깁니다.
-   그다음 `python3 tools/check_content.py en YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::error`(최근 지문과 내용 겹침)가 나오면 새로 생긴 일에 초점을 맞춰 고쳐 쓰거나 다른 소식으로 다시 고릅니다. 겹친 채로 올리면 발행 단계에서 비축분으로 바뀝니다. `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
+   그다음 `python3 tools/check_content.py en YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호, 이은 글이 문장과 다른 chunks 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::error`(최근 지문과 내용 겹침)가 나오면 새로 생긴 일에 초점을 맞춰 고쳐 쓰거나 다른 소식으로 다시 고릅니다. 겹친 채로 올리면 발행 단계에서 비축분으로 바뀝니다. `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
 4. **push**: `git add content/en/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add YYYY-MM-DD: 주제어" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 같은 작성자 줄을 붙이지 마세요. 다른 브랜치로 push하지 마세요. push가 거절되면 `git pull --rebase origin main` 후 한 번만 다시 push합니다.
 5. **알림**: PushNotification으로 짧게 알립니다. 예: "오늘의 영어 읽기(10/13, 주제: 핵시계)가 올라갔어요. 몇 분 뒤 열려요: https://read.wspace.ai.kr/en/YYYY-MM-DD/". 알림에는 지문 전문과 모범 해석을 넣지 않습니다.
 6. **마지막 답변**: 한두 문장과 페이지 주소, 끝에 `출처: [기사 제목](URL)` 한 줄. 모범 해석은 답변에 노출하지 않습니다. push까지 실패했다면 원인과 함께 그 사실을 분명히 적고, 알림에도 "오늘 지문 올리기 실패"라고 적습니다.

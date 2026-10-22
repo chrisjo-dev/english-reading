@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,13 +216,14 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Would you get into a taxi that drives itself?</div><div class="ko" hidden>스스로 운전하는 택시에 타 보시겠습니까?</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">This week, Uber started testing <b>self-driving</b> cars on the streets of Manchester, with a safety driver behind the wheel and no <b>passengers</b> on board.</div><div class="ko" hidden>이번 주 우버는 맨체스터 거리에서 자율주행차 시험을 시작했는데, 운전석에는 안전 요원이 앉아 있고 승객은 태우지 않았다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">For now, the cars are only <b>mapping</b> the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.</div><div class="ko" hidden>지금은 차들이 도시의 도로 지도만 만들고 있지만, 회사는 올해 말까지 전 세계 최대 15개 도시에서 로보택시 승차 서비스를 제공하기를 바라고 있다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">The company says it wants to make this technology <b>accessible</b> to people across the country.</div><div class="ko" hidden>회사는 이 기술을 전국의 사람들이 이용할 수 있게 만들고 싶다고 말한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">However, driver <b>unions</b> warn that thousands of jobs could be lost, and they are asking for help for the workers who would be <b>affected</b>.</div><div class="ko" hidden>하지만 운전기사 노동조합들은 수천 개의 일자리가 사라질 수 있다고 경고하며, 영향을 받게 될 노동자들을 위한 지원을 요구하고 있다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">Local transport officials, who have not yet received a single request to run driverless taxis in the area, say they will expect strong <b>assurances</b> about safety before these cars carry anyone on their roads.<span class="badge">B2</span></div><div class="ko" hidden>그 지역에서 무인 택시를 운행하겠다는 신청을 아직 한 건도 받지 않은 지역 교통 당국은, 이 차들이 자기네 도로에서 누군가를 태우기 전에 안전에 대한 확실한 보장을 요구하겠다고 말한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Would you get into a taxi that drives itself?</div><div class="chunks"><span class="ck"><span class="e">Would you get into a taxi<span class="s">/</span></span><span class="k">택시에 타시겠어요</span></span><span class="ck"><span class="e">that drives itself?</span><span class="k">스스로 운전하는</span></span></div><div class="ko" hidden>스스로 운전하는 택시에 타 보시겠습니까?</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">This week, Uber started testing <b>self-driving</b> cars on the streets of Manchester, with a safety driver behind the wheel and no <b>passengers</b> on board.</div><div class="chunks"><span class="ck"><span class="e">This week,<span class="s">/</span></span><span class="k">이번 주</span></span><span class="ck"><span class="e">Uber started testing <b>self-driving</b> cars<span class="s">/</span></span><span class="k">우버가 자율 주행차 시험을 시작했다</span></span><span class="ck"><span class="e">on the streets of Manchester,<span class="s">/</span></span><span class="k">맨체스터 거리에서</span></span><span class="ck"><span class="e">with a safety driver behind the wheel<span class="s">/</span></span><span class="k">안전 요원이 운전석에 앉고</span></span><span class="ck"><span class="e">and no <b>passengers</b> on board.</span><span class="k">승객은 태우지 않은 채</span></span></div><div class="ko" hidden>이번 주 우버는 맨체스터 거리에서 자율주행차 시험을 시작했는데, 운전석에는 안전 요원이 앉아 있고 승객은 태우지 않았다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">For now, the cars are only <b>mapping</b> the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.</div><div class="chunks"><span class="ck"><span class="e">For now,<span class="s">/</span></span><span class="k">지금은</span></span><span class="ck"><span class="e">the cars are only <b>mapping</b><span class="s">/</span></span><span class="k">그 차들이 지도만 만들고 있다</span></span><span class="ck"><span class="e">the city's roads,<span class="s">/</span></span><span class="k">도시의 도로를</span></span><span class="ck"><span class="e">but the company hopes<span class="s">/</span></span><span class="k">하지만 회사는 바란다</span></span><span class="ck"><span class="e">to offer robotaxi rides<span class="s">/</span></span><span class="k">로보택시 탑승을 제공하기를</span></span><span class="ck"><span class="e">in up to fifteen cities<span class="s">/</span></span><span class="k">최대 15개 도시에서</span></span><span class="ck"><span class="e">around the world<span class="s">/</span></span><span class="k">전 세계</span></span><span class="ck"><span class="e">by the end of this year.</span><span class="k">올해 말까지</span></span></div><div class="ko" hidden>지금은 차들이 도시의 도로 지도만 만들고 있지만, 회사는 올해 말까지 전 세계 최대 15개 도시에서 로보택시 승차 서비스를 제공하기를 바라고 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">The company says it wants to make this technology <b>accessible</b> to people across the country.</div><div class="chunks"><span class="ck"><span class="e">The company says<span class="s">/</span></span><span class="k">회사는 말한다</span></span><span class="ck"><span class="e">it wants to make this technology<span class="s">/</span></span><span class="k">이 기술을 만들고 싶다고</span></span><span class="ck"><span class="e"><b>accessible</b><span class="s">/</span></span><span class="k">이용할 수 있게</span></span><span class="ck"><span class="e">to people across the country.</span><span class="k">전국 사람들이</span></span></div><div class="ko" hidden>회사는 이 기술을 전국의 사람들이 이용할 수 있게 만들고 싶다고 말한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">However, driver <b>unions</b> warn that thousands of jobs could be lost, and they are asking for help for the workers who would be <b>affected</b>.</div><div class="chunks"><span class="ck"><span class="e">However,<span class="s">/</span></span><span class="k">하지만</span></span><span class="ck"><span class="e">driver <b>unions</b> warn<span class="s">/</span></span><span class="k">운전기사 노조는 경고한다</span></span><span class="ck"><span class="e">that thousands of jobs could be lost,<span class="s">/</span></span><span class="k">수천 개의 일자리가 사라질 수 있다고</span></span><span class="ck"><span class="e">and they are asking for help<span class="s">/</span></span><span class="k">그리고 도움을 요구하고 있다</span></span><span class="ck"><span class="e">for the workers<span class="s">/</span></span><span class="k">노동자들을 위한</span></span><span class="ck"><span class="e">who would be <b>affected</b>.</span><span class="k">영향을 받게 될</span></span></div><div class="ko" hidden>하지만 운전기사 노동조합들은 수천 개의 일자리가 사라질 수 있다고 경고하며, 영향을 받게 될 노동자들을 위한 지원을 요구하고 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">Local transport officials, who have not yet received a single request to run driverless taxis in the area, say they will expect strong <b>assurances</b> about safety before these cars carry anyone on their roads.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Local transport officials,<span class="s">/</span></span><span class="k">지역 교통 당국자들은</span></span><span class="ck"><span class="e">who have not yet received<span class="s">/</span></span><span class="k">아직 받은 적이 없는데</span></span><span class="ck"><span class="e">a single request<span class="s">/</span></span><span class="k">단 한 건의 신청도</span></span><span class="ck"><span class="e">to run driverless taxis in the area,<span class="s">/</span></span><span class="k">이 지역에서 무인 택시를 운행하겠다는</span></span><span class="ck"><span class="e">say they will expect<span class="s">/</span></span><span class="k">기대할 것이라고 말한다</span></span><span class="ck"><span class="e">strong <b>assurances</b> about safety<span class="s">/</span></span><span class="k">안전에 대한 확실한 보장을</span></span><span class="ck"><span class="e">before these cars carry anyone<span class="s">/</span></span><span class="k">이 차들이 누군가를 태우기 전에</span></span><span class="ck"><span class="e">on their roads.</span><span class="k">자기들 도로에서</span></span></div><div class="ko" hidden>그 지역에서 무인 택시를 운행하겠다는 신청을 아직 한 건도 받지 않은 지역 교통 당국은, 이 차들이 자기네 도로에서 누군가를 태우기 전에 안전에 대한 확실한 보장을 요구하겠다고 말한다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://britbrief.co.uk/tech/autonomous/uber-starts-self-driving-robotaxi-trial-in-manchester.html" target="_blank" rel="noopener">Uber begins self-driving robotaxi trial in Manchester (Brit Brief, 2026-10-14)</a></p>
     <div class="mine">
@@ -299,12 +314,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -323,6 +346,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,13 +216,14 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">A small brown bird called the <b>nightjar</b> flies thousands of kilometers every year between Europe and southern Africa.</div><div class="ko" hidden>쏙독새라고 불리는 작은 갈색 새는 매년 유럽과 아프리카 남부 사이를 수천 킬로미터 날아간다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">However, a new study suggests that its wings are not perfectly <b>designed</b> for such long trips.</div><div class="ko" hidden>하지만 한 새로운 연구는 그 새의 날개가 그렇게 긴 여행에 딱 맞게 만들어진 것은 아니라는 점을 시사한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Researchers at Lund University in Sweden <b>recorded</b> the birds as they flew through a wind tunnel at different speeds.</div><div class="ko" hidden>스웨덴 룬드 대학교의 연구자들은 그 새들이 풍동(바람 터널) 안에서 여러 속도로 나는 모습을 기록했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">They found that the nightjar's wide wing <b>tips</b> help it turn quickly when it hunts insects at night, but they make fast flight less <b>efficient</b>.</div><div class="ko" hidden>그들은 쏙독새의 넓은 날개 끝이 밤에 곤충을 사냥할 때 빠르게 방향을 바꾸도록 돕지만, 빠른 비행은 덜 효율적으로 만든다는 것을 알아냈다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">The birds also produce <b>thrust</b>, a force that pushes them forward, when they lift their wings up, something scientists had mainly linked to bats and insects.<span class="badge">B2</span></div><div class="ko" hidden>그 새들은 날개를 위로 들어 올릴 때도 몸을 앞으로 미는 힘인 추진력을 만들어 내는데, 이는 과학자들이 주로 박쥐와 곤충과 연관 지어 온 것이다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">The team believes that these <b>findings</b>, which were published in a science journal last week, could help engineers build better flying robots.<span class="badge">B2</span></div><div class="ko" hidden>연구팀은 지난주 한 과학 학술지에 실린 이 연구 결과가 엔지니어들이 더 나은 비행 로봇을 만드는 데 도움이 될 수 있다고 생각한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">A small brown bird called the <b>nightjar</b> flies thousands of kilometers every year between Europe and southern Africa.</div><div class="chunks"><span class="ck"><span class="e">A small brown bird<span class="s">/</span></span><span class="k">작은 갈색 새가</span></span><span class="ck"><span class="e">called the <b>nightjar</b><span class="s">/</span></span><span class="k">쏙독새라고 불리는</span></span><span class="ck"><span class="e">flies thousands of kilometers<span class="s">/</span></span><span class="k">수천 킬로미터를 난다</span></span><span class="ck"><span class="e">every year<span class="s">/</span></span><span class="k">해마다</span></span><span class="ck"><span class="e">between Europe and southern Africa.</span><span class="k">유럽과 아프리카 남부 사이를</span></span></div><div class="ko" hidden>쏙독새라고 불리는 작은 갈색 새는 매년 유럽과 아프리카 남부 사이를 수천 킬로미터 날아간다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">However, a new study suggests that its wings are not perfectly <b>designed</b> for such long trips.</div><div class="chunks"><span class="ck"><span class="e">However,<span class="s">/</span></span><span class="k">하지만</span></span><span class="ck"><span class="e">a new study suggests<span class="s">/</span></span><span class="k">새 연구는 말한다</span></span><span class="ck"><span class="e">that its wings<span class="s">/</span></span><span class="k">그 날개가</span></span><span class="ck"><span class="e">are not perfectly <b>designed</b><span class="s">/</span></span><span class="k">완벽하게 만들어지진 않았다고</span></span><span class="ck"><span class="e">for such long trips.</span><span class="k">그렇게 긴 여행에 맞게</span></span></div><div class="ko" hidden>하지만 한 새로운 연구는 그 새의 날개가 그렇게 긴 여행에 딱 맞게 만들어진 것은 아니라는 점을 시사한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Researchers at Lund University in Sweden <b>recorded</b> the birds as they flew through a wind tunnel at different speeds.</div><div class="chunks"><span class="ck"><span class="e">Researchers at Lund University in Sweden<span class="s">/</span></span><span class="k">스웨덴 룬드 대학교 연구자들은</span></span><span class="ck"><span class="e"><b>recorded</b> the birds<span class="s">/</span></span><span class="k">그 새들을 기록했다</span></span><span class="ck"><span class="e">as they flew through a wind tunnel<span class="s">/</span></span><span class="k">새들이 풍동 속을 날 때</span></span><span class="ck"><span class="e">at different speeds.</span><span class="k">여러 속도로</span></span></div><div class="ko" hidden>스웨덴 룬드 대학교의 연구자들은 그 새들이 풍동(바람 터널) 안에서 여러 속도로 나는 모습을 기록했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">They found that the nightjar's wide wing <b>tips</b> help it turn quickly when it hunts insects at night, but they make fast flight less <b>efficient</b>.</div><div class="chunks"><span class="ck"><span class="e">They found<span class="s">/</span></span><span class="k">그들은 알아냈다</span></span><span class="ck"><span class="e">that the nightjar's wide wing <b>tips</b><span class="s">/</span></span><span class="k">쏙독새의 넓은 날개 끝이</span></span><span class="ck"><span class="e">help it turn quickly<span class="s">/</span></span><span class="k">빨리 방향을 틀도록 돕는다는 것을</span></span><span class="ck"><span class="e">when it hunts insects at night,<span class="s">/</span></span><span class="k">밤에 곤충을 사냥할 때</span></span><span class="ck"><span class="e">but they make fast flight<span class="s">/</span></span><span class="k">하지만 그것은 빠른 비행을 만든다</span></span><span class="ck"><span class="e">less <b>efficient</b>.</span><span class="k">덜 효율적으로</span></span></div><div class="ko" hidden>그들은 쏙독새의 넓은 날개 끝이 밤에 곤충을 사냥할 때 빠르게 방향을 바꾸도록 돕지만, 빠른 비행은 덜 효율적으로 만든다는 것을 알아냈다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">The birds also produce <b>thrust</b>, a force that pushes them forward, when they lift their wings up, something scientists had mainly linked to bats and insects.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The birds also produce <b>thrust</b>,<span class="s">/</span></span><span class="k">이 새들은 추진력도 만든다</span></span><span class="ck"><span class="e">a force that pushes them forward,<span class="s">/</span></span><span class="k">앞으로 미는 힘인</span></span><span class="ck"><span class="e">when they lift their wings up,<span class="s">/</span></span><span class="k">날개를 들어 올릴 때</span></span><span class="ck"><span class="e">something scientists had mainly linked<span class="s">/</span></span><span class="k">과학자들이 주로 연결 지었던 일이다</span></span><span class="ck"><span class="e">to bats and insects.</span><span class="k">박쥐와 곤충에</span></span></div><div class="ko" hidden>그 새들은 날개를 위로 들어 올릴 때도 몸을 앞으로 미는 힘인 추진력을 만들어 내는데, 이는 과학자들이 주로 박쥐와 곤충과 연관 지어 온 것이다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">The team believes that these <b>findings</b>, which were published in a science journal last week, could help engineers build better flying robots.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The team believes<span class="s">/</span></span><span class="k">연구팀은 믿는다</span></span><span class="ck"><span class="e">that these <b>findings</b>,<span class="s">/</span></span><span class="k">이 연구 결과가</span></span><span class="ck"><span class="e">which were published<span class="s">/</span></span><span class="k">발표되었는데</span></span><span class="ck"><span class="e">in a science journal last week,<span class="s">/</span></span><span class="k">지난주 과학 학술지에</span></span><span class="ck"><span class="e">could help engineers<span class="s">/</span></span><span class="k">엔지니어들을 도울 수 있다고</span></span><span class="ck"><span class="e">build better flying robots.</span><span class="k">더 나은 비행 로봇을 만들도록</span></span></div><div class="ko" hidden>연구팀은 지난주 한 과학 학술지에 실린 이 연구 결과가 엔지니어들이 더 나은 비행 로봇을 만드는 데 도움이 될 수 있다고 생각한다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://www.sciencedaily.com/releases/2026/10/261016070624.htm" target="_blank" rel="noopener">This bird flies thousands of miles, but its wings have a catch (ScienceDaily, 2026-10-17)</a></p>
     <div class="mine">
@@ -299,12 +314,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -323,6 +346,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

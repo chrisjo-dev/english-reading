@@ -9,6 +9,8 @@
   형광펜 단어가 2개 이상 같거나, 본문이 많이 겹치면(영어: 핵심 단어 12% 이상, 일본어: 세 글자 묶음 15% 이상)
   같은 이야기를 반복하는 것으로 본다.
       python3 tools/check_content.py --overlap en 2026-10-14   (내용 겹침만 검사, 발행 워크플로가 쓴다)
+- 오류: 영어 문장의 끊어 읽기(chunks)를 공백 하나로 이은 글이 문장과 다르거나, 영어나 뜻이 빈 덩어리가 있는 경우.
+  2026-10-23 이후 영어 지문과 영어 비축분은 모든 문장에 chunks 가 있어야 한다.
 """
 import datetime as dt
 import json
@@ -62,8 +64,44 @@ def check(path):
         for k in ("title_ko", "headline"):
             if not str(c.get(k) or "").strip():
                 errors.append(f"{k} 가 비어 있어요. 페이지 제목에 쓰입니다(ROUTINE 의 필드 설명 참고).")
+    if path.parent.name == "en":
+        errors += check_chunks(c, required=path.parent.parent.name == "pool" or new_chunks(path))
     errors += overlap(path, c)
     return errors, warnings
+
+
+CHUNKS_FROM = dt.date(2026, 10, 23)  # 이날 지문부터 영어 문장마다 끊어 읽기(chunks)가 있어야 한다
+
+
+def new_chunks(path):
+    try:
+        return dt.date.fromisoformat(path.stem) >= CHUNKS_FROM
+    except ValueError:
+        return False
+
+
+def check_chunks(c, required=False):
+    """끊어 읽기 덩어리를 검사한다. 덩어리를 공백 하나로 이으면 문장(en)과 정확히 같아야 한다(** 표시 포함)."""
+    out = []
+    for i, s in enumerate(c.get("sentences", []), 1):
+        ch = s.get("chunks")
+        if ch is None:
+            if required:
+                out.append(f"sentences {i}번에 chunks 가 없어요. 끊어 읽기 덩어리를 넣으세요(ROUTINE 의 chunks 설명 참고).")
+            continue
+        if not isinstance(ch, list) or not ch:
+            out.append(f"sentences {i}번 chunks 는 [영어 덩어리, 한국어 뜻] 목록이어야 해요.")
+            continue
+        bad = [x for x in ch if not (isinstance(x, list) and len(x) == 2 and all(isinstance(t, str) and t.strip() for t in x))]
+        if bad:
+            out.append(f"sentences {i}번 chunks 에 영어나 뜻이 빈 항목이 있어요: {str(bad[0])[:80]}")
+            continue
+        if any(x[0].count("**") % 2 for x in ch):
+            out.append(f"sentences {i}번 chunks: ** 표시는 한 덩어리 안에서 열고 닫아야 해요.")
+        joined = " ".join(x[0] for x in ch)
+        if joined != s.get("en"):
+            out.append(f"sentences {i}번 chunks 를 이은 글이 문장과 달라요: {joined[:80]}")
+    return out
 
 
 # 내용 겹침 기준. 2026-10 지문으로 맞췄다: 실제로 겹친 두 쌍(수리 카페 0.16, 로보택시 0.13)은 걸리고,

@@ -67,6 +67,12 @@ ROUTINE.md(영어) 와 ROUTINE.ja.md(일본어)의 **난이도, 형식, 후리�
   - 예: 수면, 식물, 도서관, 우편, 자전거, 화산, 산호초, 조수, 우주탐사 일반론
   - 피해야 할 것: "이번 주 발표된 연구", 특정 올림픽, 선거, 재난
 
+**끊어 읽기(영어만):**
+- 영어 비축분은 모든 문장에 `chunks`를 넣는다. 없으면 `check_content.py --pool`이 오류를 낸다. 일본어 비축분에는 넣지 않는다.
+- 규칙은 ROUTINE.md 의 `sentences[].chunks` 설명과 같다: 보통 2~6단어씩 구와 절의 경계에서 끊고, `**단어**` 표시는 한 덩어리 안에 두며,
+  덩어리를 공백 하나로 이으면 문장(`en`)과 정확히 같아야 한다. 뜻은 영어 순서대로 읽는 짧은 한국어(직독직해)로 쓴다.
+- 예: `{"en": "Fireflies use their flashes mainly to find a **partner**.", "b2": false, "chunks": [["Fireflies use their flashes", "반딧불이는 깜박임을 쓴다"], ["mainly to find a **partner**.", "주로 짝을 찾으려고"]]}`
+
 **사실 확인:**
 - 구체적 수치(숫자, 비율)를 넣으려면 검색으로 출처를 확인하고 `source` 에 넣는다
 - 출처를 달기 어려운 지어낸 이야기라면 `"example": true` 를 넣는다
@@ -89,7 +95,7 @@ pool/<언어>/<YYYY-MM-DD>.json
 파일을 만든 뒤 반드시 아래 두 검증을 통과해야 한다.
 
 ```bash
-# 1. 마크다운 오류, 출처 누락 수치 검사
+# 1. 마크다운 오류, 출처 누락 수치, 영어 끊어 읽기(chunks) 검사
 python3 tools/check_content.py --pool
 
 # 2. render.py 로 HTML 생성 검사 (날짜는 임시값 사용, 생성 파일 정리)

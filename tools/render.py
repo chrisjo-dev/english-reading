@@ -13,7 +13,8 @@ content JSON 형식 (지문 안 강조는 **단어**, 체크 포인트 안 코�
   "title_ko": "세상에서 가장 정확한 시계",  # 페이지 h1 과 메일 제목("오늘은 ... 이야기예요")
   "headline": "The Most Exact Clock in the World",  # h1 아래 작은 제목. 지문 언어로, 지문보다 쉽게
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
-  "sentences": [{"en": "... **exact** ...", "b2": false}],   # b2: 조금 어려운 문장(영어 B2, 일본어 N4 배지)
+  "sentences": [{"en": "... **exact** ...", "b2": false,    # b2: 조금 어려운 문장(영어 B2, 일본어 N4 배지)
+                 "chunks": [["...", "짧은 뜻"], ["**exact** ...", "..."]]}],  # 영어만, 선택. 끊어 읽기 덩어리(공백으로 이으면 en 과 같아야 한다)
   "words": [["exact", "정확한"]],
   "points": [{"title": "...", "body": "... `one second` ..."}],
   "answers": ["문장 1의 모범 해석", "..."],
@@ -88,15 +89,42 @@ def load(lang, day):
     return c
 
 
+def chunk_rows(lang, day, sentences):
+    """모든 문장의 chunks 가 맞으면 문장별 끊어 읽기 줄(HTML)을, 아니면 None 을 돌려준다.
+
+    덩어리를 공백 하나로 이은 글이 문장과 정확히 같아야 하고(** 표시 포함), 각 덩어리는 영어와 뜻이 모두 있어야 한다.
+    한 문장이라도 어긋나면 페이지 전체에서 끊어 읽기를 뺀다(버튼도 없음).
+    """
+    if lang != "en" or not all(s.get("chunks") for s in sentences):
+        return None
+    for i, s in enumerate(sentences, 1):
+        ch = s["chunks"]
+        ok = all(isinstance(c, list) and len(c) == 2 and all(isinstance(x, str) and x.strip() for x in c)
+                 and c[0].count("**") % 2 == 0 for c in ch)
+        if not ok or " ".join(c[0] for c in ch) != s["en"]:
+            print(f"경고: content/{lang}/{day}.json {i}번 문장의 chunks 가 문장과 맞지 않아 끊어 읽기를 뺐어요", file=sys.stderr)
+            return None
+    sep = '<span class="s">/</span>'
+    return [
+        '<div class="chunks">' + "".join(
+            f'<span class="ck"><span class="e">{marks(e, "b")}{sep if j < len(s["chunks"]) - 1 else ""}</span>'
+            f'<span class="k">{esc(k)}</span></span>'
+            for j, (e, k) in enumerate(s["chunks"])
+        ) + "</div>"
+        for s in sentences
+    ]
+
+
 def render(lang, day):
     L = langs.get(lang)
     c = load(lang, day)
     d = dt.date.fromisoformat(day)
     n = len(c["sentences"])
+    chunks = chunk_rows(lang, day, c["sentences"])
     sentences = "".join(
         f'    <div class="sent"><button class="no" type="button" data-i="{i}" aria-label="{i + 1}번 문장 듣기">{i + 1}</button>'
         f'<div class="say"><div class="en">{marks(s["en"], "b")}{BADGE.format(L["hard_badge"]) if s.get("b2") else ""}</div>'
-        f'<div class="ko" hidden>{marks(a, "")}</div></div></div>\n'
+        f'{chunks[i] if chunks else ""}<div class="ko" hidden>{marks(a, "")}</div></div></div>\n'
         for i, (s, a) in enumerate(zip(c["sentences"], c["answers"]))
     )
     src = c.get("source")
@@ -141,6 +169,7 @@ def render(lang, day):
         "name": L["name"],
         "head_extra": L["head_extra"] + ("\n" if L["head_extra"] else ""),
         "tools_extra": L["tools_extra"],
+        "chunk_btn": '\n      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>' if chunks else "",
         "tts_lang": L["tts_lang"],
         "copy_head": L["copy_head"],
         "copy_weak": L["copy_weak"],

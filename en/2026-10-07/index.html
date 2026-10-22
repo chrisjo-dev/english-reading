@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,12 +216,13 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">The Nikon Comedy Wildlife Photography Awards received more than ten thousand <b>entries</b> in 2026, the highest total in the competition's ten-year history.</div><div class="ko" hidden>2026년 니콘 코미디 야생동물 사진상에 출품작이 만 건 이상 접수되었으며, 이는 대회 10년 역사상 최다 기록이다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Photographers <b>submitted</b> images of animals caught in funny or surprising moments — one finalist showed seven lions playing beside a riverbed in Zimbabwe, another captured king penguins <b>scattering</b> from an elephant seal in South Georgia.</div><div class="ko" hidden>사진작가들은 동물의 우습거나 뜻밖의 순간을 담은 사진을 출품했는데, 한 최종 후보작은 짐바브웨 강가에서 노는 사자 일곱 마리를 담았고, 또 다른 작품은 코끼리물범을 피해 달아나는 임금펭귄들을 포착했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The competition links humour with <b>conservation</b>: co-founder Tom Sullam says images that make people laugh also help them feel <b>empathy</b> towards wildlife.</div><div class="ko" hidden>이 대회는 유머와 자연 보전을 연결하기 위해 만들어졌으며, 공동 창설자 톰 설럼은 사람들을 웃게 만드는 이미지가 야생동물에 대한 공감도 높인다고 말했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">Three judges, including television presenter Kate Humble, selected the finalists from thousands of <b>submissions</b>.</div><div class="ko" hidden>방송 진행자 케이트 험블을 포함한 세 명의 심사위원이 수천 건의 출품작 중에서 최종 후보작을 선정했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">The winners will be announced on the eighth of December, and until then only the finalists are known, among them a caiman in Brazil's Pantanal wetlands wearing floating water plants on its head.<span class="badge">B2</span></div><div class="ko" hidden>수상작은 12월 8일에 발표될 예정이며, 그 전까지는 최종 후보작만 알 수 있는데, 그 중에는 브라질 판타날 습지에서 떠다니는 수초를 머리에 얹은 카이만 악어도 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">The Nikon Comedy Wildlife Photography Awards received more than ten thousand <b>entries</b> in 2026, the highest total in the competition's ten-year history.</div><div class="chunks"><span class="ck"><span class="e">The Nikon Comedy Wildlife Photography Awards<span class="s">/</span></span><span class="k">니콘 코미디 야생동물 사진상은</span></span><span class="ck"><span class="e">received more than ten thousand <b>entries</b><span class="s">/</span></span><span class="k">1만 점이 넘는 출품작을 받았다</span></span><span class="ck"><span class="e">in 2026,<span class="s">/</span></span><span class="k">2026년에</span></span><span class="ck"><span class="e">the highest total<span class="s">/</span></span><span class="k">가장 많은 수였다</span></span><span class="ck"><span class="e">in the competition's ten-year history.</span><span class="k">대회 10년 역사상</span></span></div><div class="ko" hidden>2026년 니콘 코미디 야생동물 사진상에 출품작이 만 건 이상 접수되었으며, 이는 대회 10년 역사상 최다 기록이다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Photographers <b>submitted</b> images of animals caught in funny or surprising moments — one finalist showed seven lions playing beside a riverbed in Zimbabwe, another captured king penguins <b>scattering</b> from an elephant seal in South Georgia.</div><div class="chunks"><span class="ck"><span class="e">Photographers <b>submitted</b> images of animals<span class="s">/</span></span><span class="k">사진가들은 동물 사진을 냈다</span></span><span class="ck"><span class="e">caught in funny or surprising moments<span class="s">/</span></span><span class="k">웃기거나 놀라운 순간에 찍힌</span></span><span class="ck"><span class="e">— one finalist showed<span class="s">/</span></span><span class="k">한 결선작은 보여 주었다</span></span><span class="ck"><span class="e">seven lions playing<span class="s">/</span></span><span class="k">사자 일곱 마리가 노는 모습을</span></span><span class="ck"><span class="e">beside a riverbed in Zimbabwe,<span class="s">/</span></span><span class="k">짐바브웨의 강바닥 옆에서</span></span><span class="ck"><span class="e">another captured king penguins<span class="s">/</span></span><span class="k">다른 작품은 킹펭귄을 담았다</span></span><span class="ck"><span class="e"><b>scattering</b> from an elephant seal<span class="s">/</span></span><span class="k">코끼리물범을 피해 흩어지는</span></span><span class="ck"><span class="e">in South Georgia.</span><span class="k">사우스조지아에서</span></span></div><div class="ko" hidden>사진작가들은 동물의 우습거나 뜻밖의 순간을 담은 사진을 출품했는데, 한 최종 후보작은 짐바브웨 강가에서 노는 사자 일곱 마리를 담았고, 또 다른 작품은 코끼리물범을 피해 달아나는 임금펭귄들을 포착했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The competition links humour with <b>conservation</b>: co-founder Tom Sullam says images that make people laugh also help them feel <b>empathy</b> towards wildlife.</div><div class="chunks"><span class="ck"><span class="e">The competition links humour<span class="s">/</span></span><span class="k">이 대회는 유머를 잇는다</span></span><span class="ck"><span class="e">with <b>conservation</b>:<span class="s">/</span></span><span class="k">보전과</span></span><span class="ck"><span class="e">co-founder Tom Sullam says<span class="s">/</span></span><span class="k">공동 창립자 톰 설럼은 말한다</span></span><span class="ck"><span class="e">images that make people laugh<span class="s">/</span></span><span class="k">사람들을 웃게 하는 사진이</span></span><span class="ck"><span class="e">also help them feel <b>empathy</b><span class="s">/</span></span><span class="k">공감을 느끼게도 돕는다고</span></span><span class="ck"><span class="e">towards wildlife.</span><span class="k">야생동물에게</span></span></div><div class="ko" hidden>이 대회는 유머와 자연 보전을 연결하기 위해 만들어졌으며, 공동 창설자 톰 설럼은 사람들을 웃게 만드는 이미지가 야생동물에 대한 공감도 높인다고 말했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">Three judges, including television presenter Kate Humble, selected the finalists from thousands of <b>submissions</b>.</div><div class="chunks"><span class="ck"><span class="e">Three judges,<span class="s">/</span></span><span class="k">심사위원 세 명이</span></span><span class="ck"><span class="e">including television presenter Kate Humble,<span class="s">/</span></span><span class="k">방송 진행자 케이트 험블을 포함한</span></span><span class="ck"><span class="e">selected the finalists<span class="s">/</span></span><span class="k">결선작을 골랐다</span></span><span class="ck"><span class="e">from thousands of <b>submissions</b>.</span><span class="k">수천 점의 출품작 중에서</span></span></div><div class="ko" hidden>방송 진행자 케이트 험블을 포함한 세 명의 심사위원이 수천 건의 출품작 중에서 최종 후보작을 선정했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">The winners will be announced on the eighth of December, and until then only the finalists are known, among them a caiman in Brazil's Pantanal wetlands wearing floating water plants on its head.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The winners will be announced<span class="s">/</span></span><span class="k">수상작은 발표될 것이다</span></span><span class="ck"><span class="e">on the eighth of December,<span class="s">/</span></span><span class="k">12월 8일에</span></span><span class="ck"><span class="e">and until then<span class="s">/</span></span><span class="k">그리고 그때까지는</span></span><span class="ck"><span class="e">only the finalists are known,<span class="s">/</span></span><span class="k">결선작만 알려져 있다</span></span><span class="ck"><span class="e">among them a caiman<span class="s">/</span></span><span class="k">그중에는 카이만이 있다</span></span><span class="ck"><span class="e">in Brazil's Pantanal wetlands<span class="s">/</span></span><span class="k">브라질 판타나우 습지의</span></span><span class="ck"><span class="e">wearing floating water plants<span class="s">/</span></span><span class="k">물에 뜬 수초를 쓰고 있는</span></span><span class="ck"><span class="e">on its head.</span><span class="k">머리에</span></span></div><div class="ko" hidden>수상작은 12월 8일에 발표될 예정이며, 그 전까지는 최종 후보작만 알 수 있는데, 그 중에는 브라질 판타날 습지에서 떠다니는 수초를 머리에 얹은 카이만 악어도 있다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://www.discoverwildlife.com/photography/nikon-comedy-wildlife-photography-awards-finalists-2026" target="_blank" rel="noopener">Nikon Comedy Wildlife Photography Awards 2026 – the funniest finalists (Discover Wildlife, 2026-10-06)</a></p>
     <div class="mine">
@@ -297,12 +312,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -321,6 +344,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

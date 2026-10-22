@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,13 +216,14 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Inside every cell, a very long string of DNA is <b>folded</b> into a tiny space, a bit like a ball of thread.</div><div class="ko" hidden>모든 세포 안에서는 아주 긴 DNA 가닥이 실뭉치처럼 아주 작은 공간에 접혀 들어가 있다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Because of this folding, two parts of the string that are far apart can end up touching each other and forming small <b>loops</b>.</div><div class="ko" hidden>이렇게 접혀 있기 때문에, 가닥에서 멀리 떨어진 두 부분이 서로 맞닿아 작은 고리를 만들 수 있다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">These loops can help decide which <b>genes</b> turn on, and when.</div><div class="ko" hidden>이 고리들은 어떤 유전자가 언제 켜질지를 결정하는 데 도움을 줄 수 있다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">Scientists at the University of Vienna compared the DNA of a squid, a cuttlefish and an octopus, and they found many loops close to genes <b>linked</b> to the brain.</div><div class="ko" hidden>빈 대학교의 과학자들은 오징어, 갑오징어, 문어의 DNA를 비교했고, 뇌와 관련된 유전자 가까이에서 많은 고리를 발견했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">When the team removed a short piece of this DNA from young squid <b>embryos</b>, all twenty-five embryos grew more slowly, and five of them had clearly smaller brains.</div><div class="ko" hidden>연구팀이 어린 오징어 배아에서 이 DNA의 짧은 조각을 없애자, 배아 25개 모두가 더 느리게 자랐고, 그중 5개는 뇌가 뚜렷하게 더 작았다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">The study, which looked at animals alive today rather than their ancient ancestors, <b>suggests</b> that these sea animals may have built their <b>complex</b> brains partly by changing how their DNA folds, not only by gaining new genes.<span class="badge">B2</span></div><div class="ko" hidden>고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Inside every cell, a very long string of DNA is <b>folded</b> into a tiny space, a bit like a ball of thread.</div><div class="chunks"><span class="ck"><span class="e">Inside every cell,<span class="s">/</span></span><span class="k">모든 세포 안에서</span></span><span class="ck"><span class="e">a very long string of DNA<span class="s">/</span></span><span class="k">아주 긴 DNA 가닥이</span></span><span class="ck"><span class="e">is <b>folded</b> into a tiny space,<span class="s">/</span></span><span class="k">아주 작은 공간에 접혀 있다</span></span><span class="ck"><span class="e">a bit like a ball of thread.</span><span class="k">실 뭉치와 조금 비슷하게</span></span></div><div class="ko" hidden>모든 세포 안에서는 아주 긴 DNA 가닥이 실뭉치처럼 아주 작은 공간에 접혀 들어가 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Because of this folding, two parts of the string that are far apart can end up touching each other and forming small <b>loops</b>.</div><div class="chunks"><span class="ck"><span class="e">Because of this folding,<span class="s">/</span></span><span class="k">이렇게 접히기 때문에</span></span><span class="ck"><span class="e">two parts of the string<span class="s">/</span></span><span class="k">가닥의 두 부분이</span></span><span class="ck"><span class="e">that are far apart<span class="s">/</span></span><span class="k">멀리 떨어져 있는</span></span><span class="ck"><span class="e">can end up touching each other<span class="s">/</span></span><span class="k">결국 서로 닿을 수 있다</span></span><span class="ck"><span class="e">and forming small <b>loops</b>.</span><span class="k">그리고 작은 고리를 만든다</span></span></div><div class="ko" hidden>이렇게 접혀 있기 때문에, 가닥에서 멀리 떨어진 두 부분이 서로 맞닿아 작은 고리를 만들 수 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">These loops can help decide which <b>genes</b> turn on, and when.</div><div class="chunks"><span class="ck"><span class="e">These loops can help decide<span class="s">/</span></span><span class="k">이 고리는 정하는 데 도움을 줄 수 있다</span></span><span class="ck"><span class="e">which <b>genes</b> turn on,<span class="s">/</span></span><span class="k">어떤 유전자가 켜질지</span></span><span class="ck"><span class="e">and when.</span><span class="k">그리고 언제 켜질지</span></span></div><div class="ko" hidden>이 고리들은 어떤 유전자가 언제 켜질지를 결정하는 데 도움을 줄 수 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">Scientists at the University of Vienna compared the DNA of a squid, a cuttlefish and an octopus, and they found many loops close to genes <b>linked</b> to the brain.</div><div class="chunks"><span class="ck"><span class="e">Scientists at the University of Vienna<span class="s">/</span></span><span class="k">빈 대학교 과학자들은</span></span><span class="ck"><span class="e">compared the DNA<span class="s">/</span></span><span class="k">DNA를 비교했다</span></span><span class="ck"><span class="e">of a squid, a cuttlefish and an octopus,<span class="s">/</span></span><span class="k">오징어, 갑오징어, 문어의</span></span><span class="ck"><span class="e">and they found many loops<span class="s">/</span></span><span class="k">그리고 많은 고리를 찾았다</span></span><span class="ck"><span class="e">close to genes<span class="s">/</span></span><span class="k">유전자 가까이에서</span></span><span class="ck"><span class="e"><b>linked</b> to the brain.</span><span class="k">뇌와 관련된</span></span></div><div class="ko" hidden>빈 대학교의 과학자들은 오징어, 갑오징어, 문어의 DNA를 비교했고, 뇌와 관련된 유전자 가까이에서 많은 고리를 발견했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">When the team removed a short piece of this DNA from young squid <b>embryos</b>, all twenty-five embryos grew more slowly, and five of them had clearly smaller brains.</div><div class="chunks"><span class="ck"><span class="e">When the team removed<span class="s">/</span></span><span class="k">연구팀이 없앴을 때</span></span><span class="ck"><span class="e">a short piece of this DNA<span class="s">/</span></span><span class="k">이 DNA의 짧은 조각을</span></span><span class="ck"><span class="e">from young squid <b>embryos</b>,<span class="s">/</span></span><span class="k">어린 오징어 배아에서</span></span><span class="ck"><span class="e">all twenty-five embryos<span class="s">/</span></span><span class="k">배아 25개 모두가</span></span><span class="ck"><span class="e">grew more slowly,<span class="s">/</span></span><span class="k">더 느리게 자랐고</span></span><span class="ck"><span class="e">and five of them<span class="s">/</span></span><span class="k">그중 다섯은</span></span><span class="ck"><span class="e">had clearly smaller brains.</span><span class="k">뇌가 눈에 띄게 작았다</span></span></div><div class="ko" hidden>연구팀이 어린 오징어 배아에서 이 DNA의 짧은 조각을 없애자, 배아 25개 모두가 더 느리게 자랐고, 그중 5개는 뇌가 뚜렷하게 더 작았다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">The study, which looked at animals alive today rather than their ancient ancestors, <b>suggests</b> that these sea animals may have built their <b>complex</b> brains partly by changing how their DNA folds, not only by gaining new genes.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The study,<span class="s">/</span></span><span class="k">이 연구는</span></span><span class="ck"><span class="e">which looked at animals alive today<span class="s">/</span></span><span class="k">오늘날 살아 있는 동물을 살펴봤는데</span></span><span class="ck"><span class="e">rather than their ancient ancestors,<span class="s">/</span></span><span class="k">먼 조상이 아니라</span></span><span class="ck"><span class="e"><b>suggests</b><span class="s">/</span></span><span class="k">보여 준다</span></span><span class="ck"><span class="e">that these sea animals<span class="s">/</span></span><span class="k">이 바다 동물들이</span></span><span class="ck"><span class="e">may have built their <b>complex</b> brains<span class="s">/</span></span><span class="k">복잡한 뇌를 만들었을지도 모른다는 것을</span></span><span class="ck"><span class="e">partly<span class="s">/</span></span><span class="k">부분적으로</span></span><span class="ck"><span class="e">by changing how their DNA folds,<span class="s">/</span></span><span class="k">DNA가 접히는 방식을 바꿔서</span></span><span class="ck"><span class="e">not only by gaining new genes.</span><span class="k">새 유전자를 얻는 것만이 아니라</span></span></div><div class="ko" hidden>고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://www.thebrighterside.news/post/new-dna-findings-may-explain-how-octopuses-evolved-complex-brains/" target="_blank" rel="noopener">New DNA findings may explain how octopuses evolved complex brains (The Brighter Side of News, 2026-10-13)</a></p>
     <div class="mine">
@@ -299,12 +314,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -323,6 +346,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

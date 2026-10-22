@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,13 +216,14 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Most smart glasses need a battery, but a new pair from Northwestern University uses the wearer's own face as a source of energy.</div><div class="ko" hidden>대부분의 스마트 안경은 배터리가 필요하지만, 노스웨스턴 대학교에서 나온 새 안경은 착용자 자신의 얼굴을 에너지원으로 사용한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">The idea is simple: when two different <b>materials</b> touch and then pull apart, they create a small electric <b>charge</b>.</div><div class="ko" hidden>원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Three thin, <b>flexible</b> <b>sensors</b> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.</div><div class="ko" hidden>안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">Because people blink about fourteen to twenty times a minute, the sensors get a <b>steady</b> supply of tiny movements.</div><div class="ko" hidden>사람은 1분에 약 14~20번 눈을 깜빡이기 때문에, 센서들은 작은 움직임을 꾸준히 공급받는다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <b>pattern</b>, which a computer program learns to recognize.<span class="badge">B2</span></div><div class="ko" hidden>씹기든, 말하기든, 눈썹 올리기든 각각의 동작은 서로 다른 전기 패턴을 만들고, 컴퓨터 프로그램이 이를 알아보도록 학습한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">In tests with twenty volunteers, the glasses correctly <b>identified</b> what people were doing almost 94 percent of the time.</div><div class="ko" hidden>자원자 20명을 대상으로 한 실험에서, 그 안경은 사람들이 무엇을 하고 있는지 거의 94%의 경우에 정확히 알아냈다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Most smart glasses need a battery, but a new pair from Northwestern University uses the wearer's own face as a source of energy.</div><div class="chunks"><span class="ck"><span class="e">Most smart glasses<span class="s">/</span></span><span class="k">대부분의 스마트 안경은</span></span><span class="ck"><span class="e">need a battery,<span class="s">/</span></span><span class="k">배터리가 필요하지만</span></span><span class="ck"><span class="e">but a new pair<span class="s">/</span></span><span class="k">새 안경 하나는</span></span><span class="ck"><span class="e">from Northwestern University<span class="s">/</span></span><span class="k">노스웨스턴 대학교가 만든</span></span><span class="ck"><span class="e">uses the wearer's own face<span class="s">/</span></span><span class="k">쓰는 사람의 얼굴을 쓴다</span></span><span class="ck"><span class="e">as a source of energy.</span><span class="k">에너지원으로</span></span></div><div class="ko" hidden>대부분의 스마트 안경은 배터리가 필요하지만, 노스웨스턴 대학교에서 나온 새 안경은 착용자 자신의 얼굴을 에너지원으로 사용한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">The idea is simple: when two different <b>materials</b> touch and then pull apart, they create a small electric <b>charge</b>.</div><div class="chunks"><span class="ck"><span class="e">The idea is simple:<span class="s">/</span></span><span class="k">아이디어는 간단하다</span></span><span class="ck"><span class="e">when two different <b>materials</b><span class="s">/</span></span><span class="k">서로 다른 두 물질이</span></span><span class="ck"><span class="e">touch and then pull apart,<span class="s">/</span></span><span class="k">닿았다가 떨어지면</span></span><span class="ck"><span class="e">they create a small electric <b>charge</b>.</span><span class="k">작은 전하를 만든다</span></span></div><div class="ko" hidden>원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Three thin, <b>flexible</b> <b>sensors</b> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.</div><div class="chunks"><span class="ck"><span class="e">Three thin, <b>flexible</b> <b>sensors</b><span class="s">/</span></span><span class="k">얇고 잘 휘는 센서 세 개가</span></span><span class="ck"><span class="e">on the frame<span class="s">/</span></span><span class="k">안경테에 달린</span></span><span class="ck"><span class="e">press together and separate<span class="s">/</span></span><span class="k">맞닿았다가 떨어진다</span></span><span class="ck"><span class="e">every time the wearer blinks,<span class="s">/</span></span><span class="k">쓰는 사람이 눈을 깜박이거나</span></span><span class="ck"><span class="e">smiles, or moves the jaw.</span><span class="k">웃거나 턱을 움직일 때마다</span></span></div><div class="ko" hidden>안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">Because people blink about fourteen to twenty times a minute, the sensors get a <b>steady</b> supply of tiny movements.</div><div class="chunks"><span class="ck"><span class="e">Because people blink<span class="s">/</span></span><span class="k">사람은 눈을 깜박이기 때문에</span></span><span class="ck"><span class="e">about fourteen to twenty times a minute,<span class="s">/</span></span><span class="k">1분에 14번에서 20번쯤</span></span><span class="ck"><span class="e">the sensors get a <b>steady</b> supply<span class="s">/</span></span><span class="k">센서는 꾸준히 공급받는다</span></span><span class="ck"><span class="e">of tiny movements.</span><span class="k">작은 움직임을</span></span></div><div class="ko" hidden>사람은 1분에 약 14~20번 눈을 깜빡이기 때문에, 센서들은 작은 움직임을 꾸준히 공급받는다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <b>pattern</b>, which a computer program learns to recognize.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Each action,<span class="s">/</span></span><span class="k">각 동작은</span></span><span class="ck"><span class="e">whether it is chewing,<span class="s">/</span></span><span class="k">씹는 것이든</span></span><span class="ck"><span class="e">talking, or raising an eyebrow,<span class="s">/</span></span><span class="k">말하는 것이든 눈썹을 올리는 것이든</span></span><span class="ck"><span class="e">makes a different electrical <b>pattern</b>,<span class="s">/</span></span><span class="k">서로 다른 전기 패턴을 만드는데</span></span><span class="ck"><span class="e">which a computer program<span class="s">/</span></span><span class="k">그것을 컴퓨터 프로그램이</span></span><span class="ck"><span class="e">learns to recognize.</span><span class="k">알아보도록 배운다</span></span></div><div class="ko" hidden>씹기든, 말하기든, 눈썹 올리기든 각각의 동작은 서로 다른 전기 패턴을 만들고, 컴퓨터 프로그램이 이를 알아보도록 학습한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">In tests with twenty volunteers, the glasses correctly <b>identified</b> what people were doing almost 94 percent of the time.</div><div class="chunks"><span class="ck"><span class="e">In tests with twenty volunteers,<span class="s">/</span></span><span class="k">지원자 20명과 한 시험에서</span></span><span class="ck"><span class="e">the glasses correctly <b>identified</b><span class="s">/</span></span><span class="k">안경은 정확히 알아냈다</span></span><span class="ck"><span class="e">what people were doing<span class="s">/</span></span><span class="k">사람들이 무엇을 하고 있는지</span></span><span class="ck"><span class="e">almost 94 percent of the time.</span><span class="k">거의 94퍼센트의 경우에</span></span></div><div class="ko" hidden>자원자 20명을 대상으로 한 실험에서, 그 안경은 사람들이 무엇을 하고 있는지 거의 94%의 경우에 정확히 알아냈다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://newatlas.com/wearables/smart-glasses-energy-blinks-health-monitor/" target="_blank" rel="noopener">Battery-free smart glasses monitor your health using blink energy (New Atlas, 2026-10-15)</a></p>
     <div class="mine">
@@ -299,12 +314,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -323,6 +346,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

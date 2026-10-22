@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,13 +216,14 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Last Monday, hundreds of people <b>gathered</b> in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.</div><div class="ko" hidden>지난 월요일, 수백 명이 캘리포니아의 작은 도시 하프문베이에 모여 색다른 광경을 지켜봤습니다. 바로 호박의 무게를 재는 모습이었습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">This was no ordinary <b>contest</b>, as it is now in its 53rd year and growers proudly call it the "Super Bowl" of pumpkin weigh-offs.</div><div class="ko" hidden>이것은 평범한 대회가 아니었는데, 올해로 53회째를 맞았고 재배자들이 자랑스럽게 호박 무게 대회의 '슈퍼볼'이라고 부르기 때문입니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Growers brought their <b>giant</b> pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash <b>prizes</b>.</div><div class="ko" hidden>재배자들은 근처 농장, 미국의 다른 지역, 심지어 유럽에서까지 거대한 호박을 가져왔고, 모두 상금을 받기를 바랐습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">In the end, first place went to Travis Gienger, a grower from Minnesota.</div><div class="ko" hidden>결국 1등은 미네소타에서 온 재배자 트래비스 기엔저에게 돌아갔습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">His pumpkin <b>weighed</b> 2,389 pounds, which is a little more than a thousand <b>kilograms</b>, or about as heavy as a small car.</div><div class="ko" hidden>그의 호박은 2,389파운드로, 천 킬로그램이 조금 넘는 무게, 곧 작은 자동차 한 대 정도였습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">For the crowd, it was a rare chance to see how much time and care can turn a fruit that usually fits in your arms into something you could never <b>lift</b> alone.<span class="badge">B2</span></div><div class="ko" hidden>관중에게는 시간과 정성이 보통 품에 안기는 과일을 혼자서는 절대 들 수 없는 것으로 얼마나 바꿔 놓을 수 있는지 볼 수 있는 드문 기회였습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Last Monday, hundreds of people <b>gathered</b> in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.</div><div class="chunks"><span class="ck"><span class="e">Last Monday,<span class="s">/</span></span><span class="k">지난 월요일</span></span><span class="ck"><span class="e">hundreds of people <b>gathered</b><span class="s">/</span></span><span class="k">수백 명이 모였다</span></span><span class="ck"><span class="e">in the small California town<span class="s">/</span></span><span class="k">캘리포니아의 작은 마을에</span></span><span class="ck"><span class="e">of Half Moon Bay<span class="s">/</span></span><span class="k">하프문베이라는</span></span><span class="ck"><span class="e">to watch something unusual:<span class="s">/</span></span><span class="k">특이한 것을 보러</span></span><span class="ck"><span class="e">pumpkins being weighed.</span><span class="k">호박 무게를 다는 모습을</span></span></div><div class="ko" hidden>지난 월요일, 수백 명이 캘리포니아의 작은 도시 하프문베이에 모여 색다른 광경을 지켜봤습니다. 바로 호박의 무게를 재는 모습이었습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">This was no ordinary <b>contest</b>, as it is now in its 53rd year and growers proudly call it the "Super Bowl" of pumpkin weigh-offs.</div><div class="chunks"><span class="ck"><span class="e">This was no ordinary <b>contest</b>,<span class="s">/</span></span><span class="k">이건 평범한 대회가 아니었다</span></span><span class="ck"><span class="e">as it is now in its 53rd year<span class="s">/</span></span><span class="k">올해로 53년째이고</span></span><span class="ck"><span class="e">and growers proudly call it<span class="s">/</span></span><span class="k">재배자들이 자랑스럽게 부르기 때문이다</span></span><span class="ck"><span class="e">the "Super Bowl"<span class="s">/</span></span><span class="k">슈퍼볼이라고</span></span><span class="ck"><span class="e">of pumpkin weigh-offs.</span><span class="k">호박 무게 대회의</span></span></div><div class="ko" hidden>이것은 평범한 대회가 아니었는데, 올해로 53회째를 맞았고 재배자들이 자랑스럽게 호박 무게 대회의 '슈퍼볼'이라고 부르기 때문입니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Growers brought their <b>giant</b> pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash <b>prizes</b>.</div><div class="chunks"><span class="ck"><span class="e">Growers brought<span class="s">/</span></span><span class="k">재배자들은 가져왔다</span></span><span class="ck"><span class="e">their <b>giant</b> pumpkins<span class="s">/</span></span><span class="k">자기들의 거대한 호박을</span></span><span class="ck"><span class="e">from nearby farms,<span class="s">/</span></span><span class="k">근처 농장에서</span></span><span class="ck"><span class="e">from other parts of the country<span class="s">/</span></span><span class="k">다른 지역에서</span></span><span class="ck"><span class="e">and even from Europe,<span class="s">/</span></span><span class="k">그리고 유럽에서까지</span></span><span class="ck"><span class="e">all hoping to win cash <b>prizes</b>.</span><span class="k">모두 상금을 타기를 바라며</span></span></div><div class="ko" hidden>재배자들은 근처 농장, 미국의 다른 지역, 심지어 유럽에서까지 거대한 호박을 가져왔고, 모두 상금을 받기를 바랐습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">In the end, first place went to Travis Gienger, a grower from Minnesota.</div><div class="chunks"><span class="ck"><span class="e">In the end,<span class="s">/</span></span><span class="k">결국</span></span><span class="ck"><span class="e">first place went<span class="s">/</span></span><span class="k">1등은 돌아갔다</span></span><span class="ck"><span class="e">to Travis Gienger,<span class="s">/</span></span><span class="k">트래비스 긴저에게</span></span><span class="ck"><span class="e">a grower from Minnesota.</span><span class="k">미네소타의 재배자인</span></span></div><div class="ko" hidden>결국 1등은 미네소타에서 온 재배자 트래비스 기엔저에게 돌아갔습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">His pumpkin <b>weighed</b> 2,389 pounds, which is a little more than a thousand <b>kilograms</b>, or about as heavy as a small car.</div><div class="chunks"><span class="ck"><span class="e">His pumpkin <b>weighed</b> 2,389 pounds,<span class="s">/</span></span><span class="k">그의 호박은 2,389파운드였는데</span></span><span class="ck"><span class="e">which is a little more<span class="s">/</span></span><span class="k">그것은 조금 넘는다</span></span><span class="ck"><span class="e">than a thousand <b>kilograms</b>,<span class="s">/</span></span><span class="k">1,000킬로그램을</span></span><span class="ck"><span class="e">or about as heavy<span class="s">/</span></span><span class="k">또는 대략 무게가 같다</span></span><span class="ck"><span class="e">as a small car.</span><span class="k">작은 자동차와</span></span></div><div class="ko" hidden>그의 호박은 2,389파운드로, 천 킬로그램이 조금 넘는 무게, 곧 작은 자동차 한 대 정도였습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">For the crowd, it was a rare chance to see how much time and care can turn a fruit that usually fits in your arms into something you could never <b>lift</b> alone.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">For the crowd,<span class="s">/</span></span><span class="k">관중에게</span></span><span class="ck"><span class="e">it was a rare chance to see<span class="s">/</span></span><span class="k">보기 드문 기회였다</span></span><span class="ck"><span class="e">how much time and care<span class="s">/</span></span><span class="k">얼마나 많은 시간과 정성이</span></span><span class="ck"><span class="e">can turn a fruit<span class="s">/</span></span><span class="k">열매를 바꿀 수 있는지</span></span><span class="ck"><span class="e">that usually fits in your arms<span class="s">/</span></span><span class="k">보통 두 팔에 들어오는</span></span><span class="ck"><span class="e">into something<span class="s">/</span></span><span class="k">무언가로</span></span><span class="ck"><span class="e">you could never <b>lift</b> alone.</span><span class="k">혼자서는 절대 들 수 없는</span></span></div><div class="ko" hidden>관중에게는 시간과 정성이 보통 품에 안기는 과일을 혼자서는 절대 들 수 없는 것으로 얼마나 바꿔 놓을 수 있는지 볼 수 있는 드문 기회였습니다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://localnewsmatters.org/2026/10/13/half-moon-bay-pumpkin-weigh-off/" target="_blank" rel="noopener">Giants take the stage at Half Moon Bay's 'Super Bowl' of pumpkin weigh-offs (Local News Matters, 2026-10-13)</a></p>
     <div class="mine">
@@ -299,12 +314,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -323,6 +346,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],

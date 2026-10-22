@@ -167,6 +167,20 @@
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -202,12 +216,13 @@
       <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Three scientists won the 2026 <b>Nobel</b> Prize in Physiology or Medicine for a technique that uses light to control individual brain cells.</div><div class="ko" hidden>세 과학자가 빛으로 개별 뇌 세포를 제어하는 기술로 2026년 노벨 생리의학상을 수상했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Their method, called <b>optogenetics</b>, works by inserting light-sensitive <b>proteins</b> found in algae directly into nerve cells.</div><div class="ko" hidden>광유전학이라고 불리는 이 방법은 조류(藻類)에서 발견된 빛에 반응하는 단백질을 신경 세포 안에 직접 삽입하는 방식으로 작동한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">When a beam of light <b>shines</b> on these modified cells, the proteins open tiny channels and allow electrical signals to pass in or out.</div><div class="ko" hidden>이렇게 변형된 세포에 광선을 비추면 단백질이 작은 채널을 열어 전기 신호가 안팎으로 통하게 한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">This lets researchers <b>switch</b> a single nerve cell on or off with great <b>precision</b>, something that was simply not possible with earlier tools.</div><div class="ko" hidden>덕분에 연구자들은 단일 신경 세포를 매우 정밀하게 켜고 끌 수 있게 됐으며, 이는 기존 도구로는 불가능했던 일이다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Optogenetics is now used in laboratories around the world to study how networks of brain cells <b>drive</b> behaviour, memory, and the feeling of pain.<span class="badge">B2</span></div><div class="ko" hidden>광유전학은 현재 전 세계 연구실에서 뇌 세포 네트워크가 행동, 기억, 통증 감각을 어떻게 유발하는지 연구하는 데 활용되고 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Three scientists won the 2026 <b>Nobel</b> Prize in Physiology or Medicine for a technique that uses light to control individual brain cells.</div><div class="chunks"><span class="ck"><span class="e">Three scientists won<span class="s">/</span></span><span class="k">과학자 세 명이 받았다</span></span><span class="ck"><span class="e">the 2026 <b>Nobel</b> Prize<span class="s">/</span></span><span class="k">2026년 노벨상을</span></span><span class="ck"><span class="e">in Physiology or Medicine<span class="s">/</span></span><span class="k">생리의학 분야에서</span></span><span class="ck"><span class="e">for a technique<span class="s">/</span></span><span class="k">한 기술로</span></span><span class="ck"><span class="e">that uses light<span class="s">/</span></span><span class="k">빛을 사용하는</span></span><span class="ck"><span class="e">to control individual brain cells.</span><span class="k">뇌세포 하나하나를 조절하기 위해</span></span></div><div class="ko" hidden>세 과학자가 빛으로 개별 뇌 세포를 제어하는 기술로 2026년 노벨 생리의학상을 수상했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Their method, called <b>optogenetics</b>, works by inserting light-sensitive <b>proteins</b> found in algae directly into nerve cells.</div><div class="chunks"><span class="ck"><span class="e">Their method,<span class="s">/</span></span><span class="k">그들의 방법은</span></span><span class="ck"><span class="e">called <b>optogenetics</b>,<span class="s">/</span></span><span class="k">광유전학이라고 불리는데</span></span><span class="ck"><span class="e">works by inserting<span class="s">/</span></span><span class="k">넣는 방식으로 작동한다</span></span><span class="ck"><span class="e">light-sensitive <b>proteins</b><span class="s">/</span></span><span class="k">빛에 반응하는 단백질을</span></span><span class="ck"><span class="e">found in algae<span class="s">/</span></span><span class="k">조류에서 발견되는</span></span><span class="ck"><span class="e">directly into nerve cells.</span><span class="k">신경세포 안에 직접</span></span></div><div class="ko" hidden>광유전학이라고 불리는 이 방법은 조류(藻類)에서 발견된 빛에 반응하는 단백질을 신경 세포 안에 직접 삽입하는 방식으로 작동한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">When a beam of light <b>shines</b> on these modified cells, the proteins open tiny channels and allow electrical signals to pass in or out.</div><div class="chunks"><span class="ck"><span class="e">When a beam of light <b>shines</b><span class="s">/</span></span><span class="k">빛줄기가 비치면</span></span><span class="ck"><span class="e">on these modified cells,<span class="s">/</span></span><span class="k">이 변형된 세포에</span></span><span class="ck"><span class="e">the proteins open tiny channels<span class="s">/</span></span><span class="k">단백질이 작은 통로를 열고</span></span><span class="ck"><span class="e">and allow electrical signals<span class="s">/</span></span><span class="k">전기 신호가</span></span><span class="ck"><span class="e">to pass in or out.</span><span class="k">드나들게 한다</span></span></div><div class="ko" hidden>이렇게 변형된 세포에 광선을 비추면 단백질이 작은 채널을 열어 전기 신호가 안팎으로 통하게 한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">This lets researchers <b>switch</b> a single nerve cell on or off with great <b>precision</b>, something that was simply not possible with earlier tools.</div><div class="chunks"><span class="ck"><span class="e">This lets researchers<span class="s">/</span></span><span class="k">이것은 연구자들이 할 수 있게 해 준다</span></span><span class="ck"><span class="e"><b>switch</b> a single nerve cell<span class="s">/</span></span><span class="k">신경세포 하나를 켜거나</span></span><span class="ck"><span class="e">on or off<span class="s">/</span></span><span class="k">끄는 것을</span></span><span class="ck"><span class="e">with great <b>precision</b>,<span class="s">/</span></span><span class="k">아주 정밀하게</span></span><span class="ck"><span class="e">something that was simply not possible<span class="s">/</span></span><span class="k">그것은 전혀 불가능했던 일이다</span></span><span class="ck"><span class="e">with earlier tools.</span><span class="k">예전 도구로는</span></span></div><div class="ko" hidden>덕분에 연구자들은 단일 신경 세포를 매우 정밀하게 켜고 끌 수 있게 됐으며, 이는 기존 도구로는 불가능했던 일이다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Optogenetics is now used in laboratories around the world to study how networks of brain cells <b>drive</b> behaviour, memory, and the feeling of pain.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Optogenetics is now used<span class="s">/</span></span><span class="k">광유전학은 이제 쓰인다</span></span><span class="ck"><span class="e">in laboratories around the world<span class="s">/</span></span><span class="k">전 세계 실험실에서</span></span><span class="ck"><span class="e">to study<span class="s">/</span></span><span class="k">연구하기 위해</span></span><span class="ck"><span class="e">how networks of brain cells <b>drive</b><span class="s">/</span></span><span class="k">뇌세포 네트워크가 어떻게 움직이는지</span></span><span class="ck"><span class="e">behaviour, memory,<span class="s">/</span></span><span class="k">행동과 기억</span></span><span class="ck"><span class="e">and the feeling of pain.</span><span class="k">그리고 통증 감각을</span></span></div><div class="ko" hidden>광유전학은 현재 전 세계 연구실에서 뇌 세포 네트워크가 행동, 기억, 통증 감각을 어떻게 유발하는지 연구하는 데 활용되고 있다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://www.wunc.org/2026-10-05/nobel-medicine-prize-goes-to-3-scientists-for-research-into-brain-activity" target="_blank" rel="noopener">Nobel medicine prize goes to 3 scientists for research into brain activity (WUNC/NPR, 2026-10-05)</a></p>
     <div class="mine">
@@ -297,12 +312,20 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
       var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
 
   var _gaPlayed = false;
@@ -321,6 +344,7 @@
       [null, '이렇게 공부해요', FLOW],
       ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],
