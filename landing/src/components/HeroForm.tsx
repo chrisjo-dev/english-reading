@@ -10,11 +10,19 @@ const HELP = {
 } as const;
 
 type Lang = keyof typeof HELP;
+type Level = "a" | "b";
+
+const LEVELS: { value: Level; title: string; range: string; desc: string }[] = [
+  { value: "a", title: "기초", range: "A2~B1", desc: "짧고 쉬운 문장. 영어 읽기를 다시 시작한다면" },
+  { value: "b", title: "중급", range: "B1~B2", desc: "뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면" },
+];
 
 // 첫 화면 구독 폼. 언어 전환은 숨은 metadata__lang 값과 안내 문구만 바꾼다.
+// 영어 선택 시 수준 선택 카드(기초/중급)가 표시된다. 일본어는 수준 선택 없음.
 // 스크립트가 없으면 전환 버튼은 숨겨지고 영어로 구독된다(일본어는 아래 구독 섹션에서 고를 수 있다).
 export default function HeroForm({ stats }: { stats: string }) {
   const [lang, setLang] = useState<Lang>("en");
+  const [level, setLevel] = useState<Level>("b");
   return (
     <form
       className="c3-form"
@@ -22,7 +30,7 @@ export default function HeroForm({ stats }: { stats: string }) {
       method="post"
       target="_blank"
       rel="noopener noreferrer"
-      onSubmit={() => fireGtag("subscribe_submit", { lang, placement: "hero" })}
+      onSubmit={() => fireGtag("subscribe_submit", { lang, level: lang === "en" ? level : undefined, placement: "hero" })}
     >
       <div className="c3-form-top">
         <label className="mono" htmlFor="hero-email">
@@ -45,6 +53,35 @@ export default function HeroForm({ stats }: { stats: string }) {
         </div>
       </div>
       <input type="hidden" name="metadata__lang" value={lang} />
+      {lang === "en" && (
+        <>
+          <fieldset className="lv-opts">
+            <legend>수준을 골라 주세요</legend>
+            {LEVELS.map((lv) => (
+              <label key={lv.value} className="lv-opt">
+                <input
+                  type="radio"
+                  name="metadata__level"
+                  value={lv.value}
+                  checked={level === lv.value}
+                  onChange={() => setLevel(lv.value)}
+                />
+                <span className="lv-t">
+                  {lv.title}
+                  <span className="lv-chk">✓</span>
+                </span>
+                <span className="lv-r">{lv.range}</span>
+                <span className="lv-d">{lv.desc}</span>
+              </label>
+            ))}
+          </fieldset>
+          {level === "a" && (
+            <p className="lv-level-note" style={{ display: "block" }}>
+              기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.
+            </p>
+          )}
+        </>
+      )}
       <div className="row">
         <input id="hero-email" type="email" name="email" required placeholder="이메일 주소" autoComplete="email" />
         <button type="submit">무료로 시작하기</button>

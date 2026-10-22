@@ -28,13 +28,30 @@ INTRO_CSS = ("  .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; co
 SUB_CSS = (
     "  .sub { scroll-margin-top: 84px; }\n"
     "  .sub h2 { margin-bottom: 4px; }\n  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }\n"
-    "  .sub form { display: flex; gap: 8px; }\n"
-    "  .sub input { flex: 1; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg);"
+    # form은 flex-wrap:wrap — levels/note/email+button 이 각각 한 줄씩 차지한다
+    "  .sub form { display: flex; flex-wrap: wrap; gap: 8px; }\n"
+    "  .sub input[type='email'] { flex: 1 1 auto; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg);"
     " padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }\n"
-    "  .sub input:focus { border-color: var(--blue); background: #fff; }\n"
-    "  .sub button { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff;"
+    "  .sub input[type='email']:focus { border-color: var(--blue); background: #fff; }\n"
+    "  .sub button[type='submit'] { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff;"
     " font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }\n"
     "  .sub .note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }\n"
+    "  .sub .levels { flex-basis: 100%; display: flex; flex-direction: column; gap: 8px; margin: 0; border: 0; padding: 0; }\n"
+    "  .sub .levels legend { font-size: 14px; font-weight: 600; margin: 0 0 8px; padding: 0; }\n"
+    "  .sub .lvopt { display: flex; flex-direction: column; gap: 3px; border: 1.5px solid #e2e6ea; border-radius: 10px;"
+    " padding: 12px 14px; cursor: pointer; text-align: left; background: #f4f6f8; position: relative; width: 100%; box-sizing: border-box; }\n"
+    "  .sub .lvopt input[type='radio'] { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }\n"
+    # :has() 기반 선택 상태 (모던 브라우저)
+    "  .sub .lvopt:has(input:checked),.sub .lvopt[data-checked] { background: #eff3fd; border-color: #2a52d4; }\n"
+    "  .sub .lvopt .lv-t { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }\n"
+    "  .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }\n"
+    "  .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }\n"
+    "  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none;"
+    " display: flex; align-items: center; justify-content: center; }\n"
+    "  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }\n"
+    # level-note 기본 숨김 — :has() 또는 JS data-show 로 표시
+    "  .sub .level-note { flex-basis: 100%; display: none; }\n"
+    "  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }\n"
 )
 
 
@@ -52,21 +69,87 @@ def intro_html(lang):
             '<a href="#subscribe">메일로 받기</a><a href="../../">다른 언어</a></p>\n')
 
 
-def sub_html(lang):
-    """구독 칸. 숨은 입력값 metadata__lang 으로 구독자의 언어를 Buttondown 에 저장해 언어별로 보낸다."""
-    L = langs.get(lang)
+def _sub_script(lang):
+    """구독 칸 인라인 스크립트.
+    - GA subscribe 이벤트: 영어만 level 파라미터 포함, 일본어는 생략.
+    - :has() 미지원 브라우저 fallback: 라디오 change 시 data-checked/data-show 속성으로 CSS 선택 상태와 기초 노트를 제어한다.
+    """
+    if lang == "en":
+        ga_event = (
+            f'gtag("event","subscribe",{{lang:"{lang}",level:cl?cl.value:"b"}})'
+        )
+    else:
+        ga_event = f'gtag("event","subscribe",{{lang:"{lang}"}})'
     return (
-        '  <section class="card sub" id="subscribe">\n'
+        f'    <script>(function(){{\n'
+        f'      var sec=document.getElementById("subscribe");\n'
+        f'      if(!sec)return;\n'
+        f'      var f=sec.querySelector("form");\n'
+        f'      // GA subscribe event (영어는 level 포함, 다른 언어는 생략)\n'
+        f'      if(f)f.addEventListener("submit",function(){{\n'
+        f'        var cl=f.querySelector(\'input[name="metadata__level"]:checked\');\n'
+        f'        try{{if(typeof gtag==="function"){ga_event};}}catch(e){{}}\n'
+        f'      }});\n'
+        f'      // :has() 미지원 브라우저 fallback — data-checked / data-show 속성으로 CSS 를 보조한다\n'
+        f'      var opts=sec.querySelectorAll(".lvopt");\n'
+        f'      var note=sec.querySelector(".level-note");\n'
+        f'      if(opts.length){{var update=function(){{\n'
+        f'        opts.forEach(function(o){{\n'
+        f'          var r=o.querySelector("input[type=\\"radio\\"]");\n'
+        f'          if(r&&r.checked){{o.setAttribute("data-checked","");}}else{{o.removeAttribute("data-checked");}}\n'
+        f'        }});\n'
+        f'        if(note){{\n'
+        f'          var a=sec.querySelector("input[name=\\"metadata__level\\"][value=\\"a\\"]:checked");\n'
+        f'          if(a){{note.setAttribute("data-show","");}}else{{note.removeAttribute("data-show");}}\n'
+        f'        }}\n'
+        f'      }};update();\n'
+        f'      opts.forEach(function(o){{var r=o.querySelector("input[type=\\"radio\\"]");if(r)r.addEventListener("change",update);}});\n'
+        f'      }}\n'
+        f'    }})();</script>\n'
+    )
+
+
+def sub_html(lang):
+    """구독 칸. 숨은 입력값 metadata__lang 으로 구독자의 언어를 Buttondown 에 저장해 언어별로 보낸다.
+    영어(en)에는 수준 선택 라디오 카드(metadata__level: a=기초, b=중급)를 표시한다.
+    일본어 등 다른 언어는 수준 선택 없이 기존 형태를 유지한다.
+    버전 마커: data-v="2" — patch_page 가 이 값으로 이전 카드를 교체한다.
+    """
+    L = langs.get(lang)
+    level_html = ""
+    if lang == "en":
+        level_html = (
+            '      <fieldset class="levels">\n'
+            '        <legend>수준을 골라 주세요</legend>\n'
+            '        <label class="lvopt">\n'
+            '          <input type="radio" name="metadata__level" value="a">\n'
+            '          <span class="lv-t">기초 <span class="lv-chk">&#10003;</span></span>\n'
+            '          <span class="lv-r">A2~B1</span>\n'
+            '          <span class="lv-d">짧고 쉬운 문장. 영어 읽기를 다시 시작한다면</span>\n'
+            '        </label>\n'
+            '        <label class="lvopt">\n'
+            '          <input type="radio" name="metadata__level" value="b" checked>\n'
+            '          <span class="lv-t">중급 <span class="lv-chk">&#10003;</span></span>\n'
+            '          <span class="lv-r">B1~B2</span>\n'
+            '          <span class="lv-d">뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면</span>\n'
+            '        </label>\n'
+            '      </fieldset>\n'
+            '      <p class="note level-note">기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.</p>\n'
+        )
+    return (
+        '  <section class="card sub" id="subscribe" data-v="2">\n'
         f"    <h2>매일 아침 {L['name']} 지문 받기</h2>\n"
         f"    <p>새 {L['name']} 지문이 올라오면 아침에 메일로 보내 드려요.</p>\n"
         f'    <form action="{SUBSCRIBE}" method="post" target="_blank">\n'
         f'      <input type="hidden" name="metadata__lang" value="{lang}">\n'
+        + level_html +
         '      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">\n'
         '      <button type="submit">구독하기</button>\n'
         "    </form>\n"
         "    <p class=\"note\">지금은 이메일 주소 하나로 한 언어만 구독할 수 있어요. 두 언어를 받으려면 서로 다른 이메일로 구독해 주세요.</p>\n"
         "    <p class=\"note\">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>\n"
         '    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>\n'
+        + _sub_script(lang) +
         "  </section>\n"
     )
 
@@ -123,10 +206,50 @@ def patch_page(lang, day):
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
         page = page.replace("<link rel=\"stylesheet\"", f'<link rel="canonical" href="{url}">\n<link rel="stylesheet"', 1)
     if 'class="card sub"' not in page:
+        # 카드가 없는 경우: 새로 삽입
         page = page.replace("  .gnb {", SUB_CSS + "  .intro {", 1)
         page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
         page = page.replace("</main>", sub_html(lang) + "</main>", 1)
         page = page.replace("\n  </div>\n\n  <section class=\"card\" id=\"passage\">", "\n" + intro_html(lang) + "  </div>\n\n  <section class=\"card\" id=\"passage\">", 1)
+    elif 'data-v="2"' not in page:
+        # 이전 버전 카드가 있는 경우: 카드 HTML만 교체하고 수준 선택 CSS를 추가한다
+        page = re.sub(
+            r'<section class="card sub"[^>]*id="subscribe"[^>]*>.*?</section>',
+            sub_html(lang).strip(),
+            page,
+            count=1,
+            flags=re.S,
+        )
+        # 수준 선택 CSS가 없으면 기존 .sub .note 앞에 추가하고, .sub form 에 flex-wrap 도 반영한다
+        if ".sub .levels {" not in page:
+            # flex-wrap 이 없는 이전 form CSS 도 교체 (→ 좁은 화면에서 이메일 입력란이 보이도록)
+            page = page.replace(
+                "  .sub form { display: flex; gap: 8px; }\n",
+                "  .sub form { display: flex; flex-wrap: wrap; gap: 8px; }\n",
+                1,
+            )
+            page = page.replace(
+                "  .sub input { flex: 1;",
+                "  .sub input[type='email'] { flex: 1 1 auto;",
+                1,
+            )
+            SUB_EXTRA = (
+                "  .sub .levels { flex-basis: 100%; display: flex; flex-direction: column; gap: 8px; margin: 0; border: 0; padding: 0; }\n"
+                "  .sub .levels legend { font-size: 14px; font-weight: 600; margin: 0 0 8px; padding: 0; }\n"
+                "  .sub .lvopt { display: flex; flex-direction: column; gap: 3px; border: 1.5px solid #e2e6ea; border-radius: 10px;"
+                " padding: 12px 14px; cursor: pointer; text-align: left; background: #f4f6f8; position: relative; width: 100%; box-sizing: border-box; }\n"
+                "  .sub .lvopt input[type='radio'] { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }\n"
+                "  .sub .lvopt:has(input:checked),.sub .lvopt[data-checked] { background: #eff3fd; border-color: #2a52d4; }\n"
+                "  .sub .lvopt .lv-t { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }\n"
+                "  .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }\n"
+                "  .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }\n"
+                "  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none;"
+                " display: flex; align-items: center; justify-content: center; }\n"
+                "  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }\n"
+                "  .sub .level-note { flex-basis: 100%; display: none; }\n"
+                "  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }\n"
+            )
+            page = page.replace("  .sub .note {", SUB_EXTRA + "  .sub .note {", 1)
     path.write_text(page, encoding="utf-8")
 
 

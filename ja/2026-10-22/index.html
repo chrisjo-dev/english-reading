@@ -153,11 +153,23 @@
   .sub { scroll-margin-top: 84px; }
   .sub h2 { margin-bottom: 4px; }
   .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }
-  .sub form { display: flex; gap: 8px; }
-  .sub input { flex: 1; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg); padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }
-  .sub input:focus { border-color: var(--blue); background: #fff; }
-  .sub button { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .sub form { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sub input[type='email'] { flex: 1 1 auto; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg); padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }
+  .sub input[type='email']:focus { border-color: var(--blue); background: #fff; }
+  .sub button[type='submit'] { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   .sub .note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+  .sub .levels { flex-basis: 100%; display: flex; flex-direction: column; gap: 8px; margin: 0; border: 0; padding: 0; }
+  .sub .levels legend { font-size: 14px; font-weight: 600; margin: 0 0 8px; padding: 0; }
+  .sub .lvopt { display: flex; flex-direction: column; gap: 3px; border: 1.5px solid #e2e6ea; border-radius: 10px; padding: 12px 14px; cursor: pointer; text-align: left; background: #f4f6f8; position: relative; width: 100%; box-sizing: border-box; }
+  .sub .lvopt input[type='radio'] { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .sub .lvopt:has(input:checked),.sub .lvopt[data-checked] { background: #eff3fd; border-color: #2a52d4; }
+  .sub .lvopt .lv-t { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+  .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }
+  .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }
+  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none; display: flex; align-items: center; justify-content: center; }
+  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }
+  .sub .level-note { flex-basis: 100%; display: none; }
+  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
@@ -290,7 +302,7 @@
         <div class="ex"><ruby>文化祭<rp>(</rp><rt>ぶんかさい</rt><rp>)</rp></ruby>の<b><ruby>当日<rp>(</rp><rt>とうじつ</rt><rp>)</rp></ruby></b>は、<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>から<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しいです。</div></div>
     </div>
   </details>
-  <section class="card sub" id="subscribe">
+  <section class="card sub" id="subscribe" data-v="2">
     <h2>매일 아침 일본어 지문 받기</h2>
     <p>새 일본어 지문이 올라오면 아침에 메일로 보내 드려요.</p>
     <form action="https://buttondown.com/api/emails/embed-subscribe/english-reading" method="post" target="_blank">
@@ -301,6 +313,31 @@
     <p class="note">지금은 이메일 주소 하나로 한 언어만 구독할 수 있어요. 두 언어를 받으려면 서로 다른 이메일로 구독해 주세요.</p>
     <p class="note">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>
     <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>
+    <script>(function(){
+      var sec=document.getElementById("subscribe");
+      if(!sec)return;
+      var f=sec.querySelector("form");
+      // GA subscribe event (영어는 level 포함, 다른 언어는 생략)
+      if(f)f.addEventListener("submit",function(){
+        var cl=f.querySelector('input[name="metadata__level"]:checked');
+        try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"ja"});}catch(e){}
+      });
+      // :has() 미지원 브라우저 fallback — data-checked / data-show 속성으로 CSS 를 보조한다
+      var opts=sec.querySelectorAll(".lvopt");
+      var note=sec.querySelector(".level-note");
+      if(opts.length){var update=function(){
+        opts.forEach(function(o){
+          var r=o.querySelector("input[type=\"radio\"]");
+          if(r&&r.checked){o.setAttribute("data-checked","");}else{o.removeAttribute("data-checked");}
+        });
+        if(note){
+          var a=sec.querySelector("input[name=\"metadata__level\"][value=\"a\"]:checked");
+          if(a){note.setAttribute("data-show","");}else{note.removeAttribute("data-show");}
+        }
+      };update();
+      opts.forEach(function(o){var r=o.querySelector("input[type=\"radio\"]");if(r)r.addEventListener("change",update);});
+      }
+    })();</script>
   </section>
 </main>
 <footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a><a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a><a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>
@@ -315,6 +352,7 @@
     var on = koBtn.getAttribute('aria-pressed') !== 'true';
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
+    gaEvent('ko_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
   // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
   [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
@@ -484,6 +522,7 @@
     return '[일본어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }
   copyBtn.addEventListener('click', function () {
+    gaEvent('copy_passage', { lang: _gaLang, day: _gaDay });
     copyText([HEAD, passageBlock(),
       '[요청]\n이 지문을 바탕으로 내 질문에 답해 주세요. 설명은 한국어 존댓말로, 내 수준에 맞춰 짧고 구체적으로 해 주세요. 지문 자체의 난이도는 바꾸지 마세요.\n' + WEAK
     ].join('\n\n'), copyBtn, '지문 복사');

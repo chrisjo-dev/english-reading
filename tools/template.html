@@ -231,6 +231,7 @@
     var on = koBtn.getAttribute('aria-pressed') !== 'true';
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
+    gaEvent('ko_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
   // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
   [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
@@ -400,6 +401,7 @@
     return '[{{name}} 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
   }
   copyBtn.addEventListener('click', function () {
+    gaEvent('copy_passage', { lang: _gaLang, day: _gaDay });
     copyText([HEAD, passageBlock(),
       '[요청]\n이 지문을 바탕으로 내 질문에 답해 주세요. 설명은 한국어 존댓말로, 내 수준에 맞춰 짧고 구체적으로 해 주세요. 지문 자체의 난이도는 바꾸지 마세요.\n' + WEAK
     ].join('\n\n'), copyBtn, '지문 복사');
