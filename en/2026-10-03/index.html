@@ -61,11 +61,12 @@
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
            background: var(--coral-soft); color: var(--coral); margin-left: 6px; vertical-align: 2px; }
-  .word { display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  .word { display: flex; justify-content: space-between; align-items: center; gap: 16px;
           padding: 13px 0; border-top: 1px solid var(--line); }
   .word:first-of-type { border-top: 0; padding-top: 0; }
   .word:last-of-type { padding-bottom: 0; }
-  .word .w { font-size: 17px; font-weight: 700; letter-spacing: 0; }
+  .word .wl { display: flex; align-items: center; gap: 4px; }
+  .word .w { font-size: 17px; font-weight: 700; letter-spacing: 0; white-space: nowrap; flex: none; }
   .word .m { font-size: 15px; color: var(--sub); text-align: right; }
   .point { background: var(--bg); border-radius: 14px; padding: 14px 16px; }
   .point + .point { margin-top: 8px; }
@@ -89,11 +90,19 @@
   .adv { padding: 14px 0; border-top: 1px solid var(--line); }
   .adv:first-of-type { border-top: 0; padding-top: 0; }
   .adv:last-of-type { padding-bottom: 0; }
-  .adv .w { font-size: 17px; font-weight: 700; letter-spacing: 0; }
+  .adv .w { font-size: 17px; font-weight: 700; letter-spacing: 0; display: flex; align-items: center; gap: 4px; }
+  .adv .w .wt { white-space: nowrap; }
   .adv .m { font-size: 15px; color: var(--sub); margin-top: 2px; }
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
+  .adv .ex-ko { font-size: 13px; color: var(--muted); margin-top: 4px; padding: 0 2px; }
+  /* 단어 발음 버튼 */
+  .wbtn { flex: none; width: 28px; height: 28px; border: 0; border-radius: 8px; background: transparent;
+          color: var(--muted); cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .wbtn:hover { color: var(--blue); }
+  .wbtn.playing { color: var(--blue); }
+  .wbtn svg { width: 16px; height: 16px; }
   .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
@@ -193,7 +202,20 @@
   .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
   body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
   #passage .sent.playing .ck .e { color: var(--blue-press); }
+  /* 수준별 콘텐츠: 기초(.en-a/.ko-a/.chunks-a)는 기본 숨김, 중급(.en/.ko/.chunks)은 기본 표시 */
+  .en-a, .ko-a, .chunks-a { display: none; }
+  html.level-a .en-a { display: block; }
+  html.level-a #passage .say > .en { display: none; }
+  html.level-a .ko-a:not([hidden]) { display: block; }
+  html.level-a #passage .ko { display: none !important; }
+  html.level-a .badge { display: none; }
+  html.level-a .chunks { display: none !important; }
+  html.level-a body.chunked .chunks-a { display: flex; }
+  html.level-a body.chunked #passage .say:has(> .ko-a:not([hidden])) .chunks-a .ck .k { display: block; }
+  .level-link { margin: 8px 0 0; font-size: 13px; text-align: right; }
+  .level-link a { color: var(--sub); }
 </style>
+<script>try{var _ql=new URLSearchParams(location.search).get('level');if(!_ql)_ql=localStorage.getItem('read_level');if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
@@ -249,12 +271,12 @@
   <section class="card">
     <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
-    <div class="word"><span class="w">travel</span><span class="m">이동하다, (소리 등이) 전달되다</span></div>
-    <div class="word"><span class="w">microphone</span><span class="m">마이크</span></div>
-    <div class="word"><span class="w">opposite</span><span class="m">정반대(의 것)</span></div>
-    <div class="word"><span class="w">cancel out</span><span class="m">상쇄하다, 서로 없애다</span></div>
-    <div class="word"><span class="w">completely</span><span class="m">완전히</span></div>
-    <div class="word"><span class="w">cushion</span><span class="m">쿠션, 푹신한 덧대</span></div>
+    <div class="word"><span class="wl"><span class="w">travel</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="travel" aria-label="travel 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">이동하다, (소리 등이) 전달되다</span></div>
+    <div class="word"><span class="wl"><span class="w">microphone</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="microphone" aria-label="microphone 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">마이크</span></div>
+    <div class="word"><span class="wl"><span class="w">opposite</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="opposite" aria-label="opposite 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">정반대(의 것)</span></div>
+    <div class="word"><span class="wl"><span class="w">cancel out</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="cancel out" aria-label="cancel out 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">상쇄하다, 서로 없애다</span></div>
+    <div class="word"><span class="wl"><span class="w">completely</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="completely" aria-label="completely 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">완전히</span></div>
+    <div class="word"><span class="wl"><span class="w">cushion</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="cushion" aria-label="cushion 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">쿠션, 푹신한 덧대</span></div>
   </section>
 
   <section class="card">
@@ -283,19 +305,19 @@
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w">ambient</div><div class="m">주변의, 주위의</div>
+      <div class="adv"><div class="w"><span class="wt">ambient</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="ambient" aria-label="ambient 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">주변의, 주위의</div>
         <div class="ex">The microphones pick up <b>ambient</b> noise around you.</div></div>
-      <div class="adv"><div class="w">eliminate</div><div class="m">없애다, 제거하다<span class="warn">illuminate(비추다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt">eliminate</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="eliminate" aria-label="eliminate 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">없애다, 제거하다<span class="warn">illuminate(비추다)와 혼동 주의</span></div>
         <div class="ex">The headphones cannot <b>eliminate</b> every sudden sound.</div></div>
-      <div class="adv"><div class="w">inverted</div><div class="m">뒤집힌, 반전된</div>
+      <div class="adv"><div class="w"><span class="wt">inverted</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="inverted" aria-label="inverted 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">뒤집힌, 반전된</div>
         <div class="ex">The chip creates an <b>inverted</b> copy of the sound wave.</div></div>
-      <div class="adv"><div class="w">frequency</div><div class="m">주파수, 빈도</div>
+      <div class="adv"><div class="w"><span class="wt">frequency</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="frequency" aria-label="frequency 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">주파수, 빈도</div>
         <div class="ex">Low-<b>frequency</b> sounds, like an engine's hum, are easier to cancel.</div></div>
-      <div class="adv"><div class="w">consistent</div><div class="m">일정한, 꾸준한<span class="warn">constant(끊임없는)와 비슷하지만 뜻의 초점이 다름에 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt">consistent</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="consistent" aria-label="consistent 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">일정한, 꾸준한<span class="warn">constant(끊임없는)와 비슷하지만 뜻의 초점이 다름에 주의</span></div>
         <div class="ex">The trick works best on <b>consistent</b> noise.</div></div>
-      <div class="adv"><div class="w">passive</div><div class="m">수동적인, (전원 없이) 자체로 작동하는</div>
+      <div class="adv"><div class="w"><span class="wt">passive</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="passive" aria-label="passive 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">수동적인, (전원 없이) 자체로 작동하는</div>
         <div class="ex">Soft ear cushions provide <b>passive</b> noise blocking.</div></div>
-      <div class="adv"><div class="w">unpredictable</div><div class="m">예측할 수 없는</div>
+      <div class="adv"><div class="w"><span class="wt">unpredictable</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="unpredictable" aria-label="unpredictable 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">예측할 수 없는</div>
         <div class="ex"><b>Unpredictable</b> sounds, like a baby crying, are harder to remove.</div></div>
     </div>
   </details>
@@ -361,18 +383,26 @@
   // 해석: 버튼은 전체를 열고 닫고, 문장을 누르면(클릭하면) 그 문장 해석만 열고 닫는다.
   var koBtn = document.getElementById('kobtn');
   var kos = [].slice.call(document.querySelectorAll('#passage .ko'));
+  var kosA = [].slice.call(document.querySelectorAll('#passage .ko-a'));
   koBtn.addEventListener('click', function () {
     var on = koBtn.getAttribute('aria-pressed') !== 'true';
     koBtn.setAttribute('aria-pressed', String(on));
-    kos.forEach(function (k) { k.hidden = !on; });
+    // 현재 수준에 맞는 해석 요소만 토글
+    if (isLevelA() && kosA.length) {
+      kosA.forEach(function (k) { k.hidden = !on; });
+    } else {
+      kos.forEach(function (k) { k.hidden = !on; });
+    }
     gaEvent('ko_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
   // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
-  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks, #passage .say .en-a, #passage .say .chunks-a'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
-      var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
+      // 기초 수준이면 .ko-a, 중급이면 .ko 를 토글
+      var kSel = (isLevelA() && en.parentNode.querySelector('.ko-a')) ? '.ko-a' : '.ko';
+      var k = en.parentNode.querySelector(kSel); if (k) k.hidden = !k.hidden;
     });
   });
   var chunkBtn = document.getElementById('chunkbtn');
@@ -473,20 +503,39 @@
   })();
 
   var AUDIO = ["audio/s1.mp3", "audio/s2.mp3", "audio/s3.mp3", "audio/s4.mp3", "audio/s5.mp3", "audio/s6.mp3"];
+  var AUDIO_A = [];
+  var WORD_AUDIO = [];
+  var ADV_AUDIO = [];
+  // 수준 결정: URL ?level= → localStorage → 기본 중급(b)
+  // head 스크립트가 먼저 적용하므로 URL 파라미터가 있을 때만 갱신한다.
+  (function () {
+    try {
+      var lp = new URLSearchParams(location.search).get('level');
+      if (lp === 'a' || lp === 'b') {
+        document.documentElement.classList.toggle('level-a', lp === 'a');
+        localStorage.setItem('read_level', lp);
+      }
+    } catch (e) {}
+  })();
   var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
   var player = new Audio(), queue = [], rate = 1, token = 0;
+  var wordPlayer = new Audio(), curWbtn = null;
   var canSpeak = 'speechSynthesis' in window;
   var playBtn = document.getElementById('play'), slowBtn = document.getElementById('slow'), copyBtn = document.getElementById('copy');
   var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
+  function isLevelA() { return document.documentElement.classList.contains('level-a'); }
   function sentenceText(r) {
-    // 배지와 후리가나(rt, rp)를 뺀 본문만 쓴다.
-    var c = r.querySelector('.en').cloneNode(true);
+    // 기초 수준이면 .en-a, 중급이면 .en 에서 텍스트를 추출한다. 배지와 후리가나(rt, rp)를 제거.
+    var sel = (isLevelA() && r.querySelector('.en-a')) ? '.en-a' : '.en';
+    var c = r.querySelector(sel).cloneNode(true);
     [].forEach.call(c.querySelectorAll('.badge, rt, rp'), function (x) { x.parentNode.removeChild(x); });
     return c.textContent.trim();
   }
   function mark(i) { rows.forEach(function (r, k) { r.classList.toggle('playing', k === i); }); }
   function stop() {
     token++; player.pause(); if (canSpeak) speechSynthesis.cancel();
+    wordPlayer.pause(); wordPlayer.src = '';
+    if (curWbtn) { curWbtn.classList.remove('playing'); curWbtn = null; }
     queue = []; mark(-1); playBtn.classList.remove('on'); playBtn.lastChild.textContent = '전체 듣기';
   }
   function next() {
@@ -494,8 +543,9 @@
     var i = queue.shift(), t = token; mark(i);
     if (!_gaPlayed) { _gaPlayed = true; gaEvent('audio_play', {lang: _gaLang, day: _gaDay}); }
     function after() { if (t === token) setTimeout(function () { if (t === token) next(); }, queue.length ? 450 : 0); }
-    if (AUDIO[i]) {
-      player.onended = after; player.src = AUDIO[i];
+    var audioSrc = isLevelA() ? (AUDIO_A[i] || null) : (AUDIO[i] || null);
+    if (audioSrc) {
+      player.onended = after; player.src = audioSrc;
       player.playbackRate = rate; player.play().catch(function () { if (t === token) stop(); });
     } else if (canSpeak) {
       var u = new SpeechSynthesisUtterance(sentenceText(rows[i]));
@@ -515,6 +565,29 @@
   slowBtn.addEventListener('click', function () {
     rate = rate === 1 ? 0.8 : 1; slowBtn.classList.toggle('on', rate !== 1); player.playbackRate = rate;
   });
+  // 단어 발음 버튼: w{i}.mp3 / v{i}.mp3 → 없으면 SpeechSynthesis 폴백
+  (function () {
+    var wbtns = [].slice.call(document.querySelectorAll('.wbtn'));
+    wbtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var same = btn === curWbtn && btn.classList.contains('playing');
+        stop();
+        if (same) return;
+        var kind = btn.dataset.kind, i = parseInt(btn.dataset.i, 10), word = btn.dataset.word;
+        var src = (kind === 'v' ? ADV_AUDIO : WORD_AUDIO)[i] || null;
+        gaEvent('word_audio', { lang: _gaLang, day: _gaDay });
+        curWbtn = btn; btn.classList.add('playing');
+        function done() { if (curWbtn === btn) { btn.classList.remove('playing'); curWbtn = null; } }
+        if (src) {
+          wordPlayer.onended = done; wordPlayer.onerror = done;
+          wordPlayer.src = src; wordPlayer.play().catch(done);
+        } else if (canSpeak) {
+          var u = new SpeechSynthesisUtterance(word);
+          u.lang = 'en-US'; u.onend = done; u.onerror = done; speechSynthesis.speak(u);
+        } else { done(); }
+      });
+    });
+  })();
   function copyText(text, btn, label, okText) {
     function done(ok) {
       btn.lastChild.textContent = ok ? (okText || '복사됐어요') : '복사 실패';
@@ -547,6 +620,34 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
+  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  (function () {
+    var toLevelA = document.getElementById('to-level-a');
+    var toLevelB = document.getElementById('to-level-b');
+    if (!toLevelA || !toLevelB) return;
+    function updateLinks() {
+      var isA = isLevelA();
+      toLevelA.hidden = isA;
+      toLevelB.hidden = !isA;
+    }
+    updateLinks();
+    function switchLevel(e, to) {
+      e.preventDefault();
+      var from = isLevelA() ? 'a' : 'b';
+      document.documentElement.classList.toggle('level-a', to === 'a');
+      try { localStorage.setItem('read_level', to); } catch (ex) {}
+      gaEvent('level_switch', { from: from, to: to, lang: _gaLang, day: _gaDay });
+      updateLinks();
+      // URL 에 ?level= 파라미터 반영 (히스토리 교체)
+      try {
+        var u = new URL(location.href);
+        u.searchParams.set('level', to);
+        history.replaceState(null, '', u.toString());
+      } catch (ex) {}
+    }
+    toLevelA.addEventListener('click', function (e) { switchLevel(e, 'a'); });
+    toLevelB.addEventListener('click', function (e) { switchLevel(e, 'b'); });
+  })();
   var furi = document.getElementById('furi');
   if (furi) furi.addEventListener('click', function () {
     var off = document.body.classList.toggle('nofuri');
