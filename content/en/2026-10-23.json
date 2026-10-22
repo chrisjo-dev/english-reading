@@ -1,0 +1,422 @@
+{
+  "date": "2026-10-23",
+  "category": "science",
+  "topic": "태양 폭풍",
+  "title_ko": "태양 폭풍 때문에 늦어진 기차",
+  "headline": "How a Storm on the Sun Can Stop a Train",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "When the sun has a big storm, it throws huge clouds of tiny charged **particles** into space, and some of them can reach Earth.",
+      "b2": false,
+      "chunks": [
+        [
+          "When the sun has a big storm,",
+          "태양에 큰 폭풍이 일면"
+        ],
+        [
+          "it throws huge clouds",
+          "태양은 거대한 구름을 내던진다"
+        ],
+        [
+          "of tiny charged **particles**",
+          "작은 전기를 띤 입자들의"
+        ],
+        [
+          "into space,",
+          "우주로"
+        ],
+        [
+          "and some of them",
+          "그리고 그중 일부는"
+        ],
+        [
+          "can reach Earth.",
+          "지구에 닿을 수 있다"
+        ]
+      ]
+    },
+    {
+      "en": "These particles shake Earth's **magnetic field**, and this can create electric **currents** in long metal wires on the ground.",
+      "b2": false,
+      "chunks": [
+        [
+          "These particles shake",
+          "이 입자들은 흔든다"
+        ],
+        [
+          "Earth's **magnetic field**,",
+          "지구의 자기장을"
+        ],
+        [
+          "and this can create",
+          "그리고 이것은 만들어 낼 수 있다"
+        ],
+        [
+          "electric **currents**",
+          "전류를"
+        ],
+        [
+          "in long metal wires",
+          "긴 금속 전선 속에"
+        ],
+        [
+          "on the ground.",
+          "땅 위의"
+        ]
+      ]
+    },
+    {
+      "en": "In the 1800s, railway **signals** were sent through such long wires, so a strong solar storm could mix up the messages and hold trains back.",
+      "b2": false,
+      "chunks": [
+        [
+          "In the 1800s,",
+          "1800년대에는"
+        ],
+        [
+          "railway **signals** were sent",
+          "철도 신호가 보내졌다"
+        ],
+        [
+          "through such long wires,",
+          "그런 긴 전선을 통해"
+        ],
+        [
+          "so a strong solar storm",
+          "그래서 강한 태양 폭풍은"
+        ],
+        [
+          "could mix up the messages",
+          "메시지를 뒤섞을 수 있었다"
+        ],
+        [
+          "and hold trains back.",
+          "그리고 기차를 붙잡아 둘 수 있었다"
+        ]
+      ]
+    },
+    {
+      "en": "An old report, published in a science journal in 1871, said that a train in Exeter, England, was **delayed** this way by sixteen minutes in October 1841.",
+      "b2": true,
+      "chunks": [
+        [
+          "An old report,",
+          "한 오래된 보고서는"
+        ],
+        [
+          "published in a science journal",
+          "과학 학술지에 실린"
+        ],
+        [
+          "in 1871,",
+          "1871년에"
+        ],
+        [
+          "said that a train",
+          "한 기차가 ~라고 말했다"
+        ],
+        [
+          "in Exeter, England,",
+          "잉글랜드 엑서터의"
+        ],
+        [
+          "was **delayed** this way",
+          "이런 식으로 늦어졌다고"
+        ],
+        [
+          "by sixteen minutes",
+          "16분만큼"
+        ],
+        [
+          "in October 1841.",
+          "1841년 10월에"
+        ]
+      ]
+    },
+    {
+      "en": "However, a team led by researchers at Lancaster University found a problem: the railway line, which was supposed to have this trouble, did not open until 1846.",
+      "b2": true,
+      "chunks": [
+        [
+          "However,",
+          "하지만"
+        ],
+        [
+          "a team led by researchers",
+          "연구자들이 이끄는 한 팀이"
+        ],
+        [
+          "at Lancaster University",
+          "랭커스터 대학교의"
+        ],
+        [
+          "found a problem:",
+          "문제를 하나 발견했다"
+        ],
+        [
+          "the railway line,",
+          "그 철도 노선은"
+        ],
+        [
+          "which was supposed to have this trouble,",
+          "이 문제를 겪었다고 하는"
+        ],
+        [
+          "did not open",
+          "개통하지 않았다"
+        ],
+        [
+          "until 1846.",
+          "1846년이 되어서야 (개통했다)"
+        ]
+      ]
+    },
+    {
+      "en": "After checking other records, they decided that the date was a **typo** and the delay **actually** happened seven years later, in 1848.",
+      "b2": false,
+      "chunks": [
+        [
+          "After checking other records,",
+          "다른 기록들을 확인한 뒤"
+        ],
+        [
+          "they decided",
+          "그들은 결론을 내렸다"
+        ],
+        [
+          "that the date was a **typo**",
+          "그 날짜가 오타였다고"
+        ],
+        [
+          "and the delay **actually** happened",
+          "그리고 그 지연은 실제로 일어났다고"
+        ],
+        [
+          "seven years later,",
+          "7년 뒤에"
+        ],
+        [
+          "in 1848.",
+          "1848년에"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "particles",
+      "입자들 (particle의 복수)"
+    ],
+    [
+      "magnetic field",
+      "자기장"
+    ],
+    [
+      "currents",
+      "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)"
+    ],
+    [
+      "signals",
+      "신호들"
+    ],
+    [
+      "delayed",
+      "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)"
+    ],
+    [
+      "typo",
+      "오타, 잘못 친 글자"
+    ],
+    [
+      "actually",
+      "실제로, 사실은"
+    ]
+  ],
+  "points": [
+    {
+      "title": "문장 끝의 시간과 숫자",
+      "body": "4번은 `by sixteen minutes`(16분만큼)와 `in October 1841`(1841년 10월에)이 문장 맨 끝에 붙어 있어요. 여기서 `by`는 행위자가 아니라 '차이의 크기'를 나타냅니다. 6번도 `seven years later, in 1848`까지 읽어야 '실제로 언제'인지가 나옵니다."
+    },
+    {
+      "title": "끼어든 말과 not until (B2)",
+      "body": "5번은 `a team led by researchers at Lancaster University`에서 `led by`가 '~가 이끄는'이라는 뜻의 수동 표현이에요. 뒤의 `which was supposed to have this trouble,`는 쉼표 사이를 잠깐 넘기고 `the railway line ... did not open until 1846`으로 주어와 동사를 먼저 잇으세요. `not A until B`는 'B가 되어서야 A했다', 즉 1846년에야 개통했다는 뜻입니다."
+    }
+  ],
+  "answers": [
+    "태양에 큰 폭풍이 일면, 태양은 전기를 띤 작은 입자들로 이루어진 거대한 구름을 우주로 내던지고, 그중 일부는 지구에 닿을 수 있다.",
+    "이 입자들은 지구의 자기장을 흔들고, 이것은 땅 위의 긴 금속 전선 속에 전류를 만들어 낼 수 있다.",
+    "1800년대에는 철도 신호가 그런 긴 전선을 통해 보내졌기 때문에, 강한 태양 폭풍은 메시지를 뒤섞어 기차를 멈춰 세울 수 있었다.",
+    "1871년에 한 과학 학술지에 실린 오래된 보고서에는 1841년 10월 잉글랜드 엑서터의 한 기차가 이런 식으로 16분 늦어졌다고 적혀 있었다.",
+    "하지만 랭커스터 대학교 연구자들이 이끄는 한 팀이 문제를 발견했다. 이 문제를 겪었다는 그 철도 노선은 1846년이 되어서야 개통했던 것이다.",
+    "다른 기록들을 확인한 뒤, 그들은 그 날짜가 오타였고 지연은 실제로 7년 뒤인 1848년에 일어났다고 결론 내렸다."
+  ],
+  "advanced": [
+    {
+      "word": "geomagnetic",
+      "meaning": "지자기의, 지구 자기의",
+      "confuse": null,
+      "example": "A strong **geomagnetic** storm can disturb long electric wires.",
+      "example_ko": "강한 지자기 폭풍은 긴 전선에 지장을 줄 수 있습니다."
+    },
+    {
+      "word": "induce",
+      "meaning": "(전류 등을) 유도하다, 일으키다",
+      "confuse": "introduce(소개하다, 도입하다)와 혼동 주의",
+      "example": "Changes in Earth's magnetic field can **induce** currents in metal wires.",
+      "example_ko": "지구 자기장의 변화는 금속 전선에 전류를 유도할 수 있습니다."
+    },
+    {
+      "word": "disrupt",
+      "meaning": "방해하다, 지장을 주다",
+      "confuse": "destroy(파괴하다)와 혼동 주의",
+      "example": "The solar storm **disrupted** the railway signals for a short time.",
+      "example_ko": "태양 폭풍이 잠시 동안 철도 신호를 방해했습니다."
+    },
+    {
+      "word": "interference",
+      "meaning": "(신호의) 간섭, 방해",
+      "confuse": "interface(접속 장치, 접점)와 혼동 주의",
+      "example": "The telegraph **interference** held the train back by sixteen minutes.",
+      "example_ko": "전신 간섭 때문에 기차가 16분 늦어졌습니다."
+    },
+    {
+      "word": "discrepancy",
+      "meaning": "(두 정보 사이의) 불일치, 차이",
+      "confuse": null,
+      "example": "The researchers noticed a **discrepancy** between the report and the opening date of the line.",
+      "example_ko": "연구자들은 보고서와 노선 개통일 사이의 불일치를 발견했습니다."
+    },
+    {
+      "word": "erroneous",
+      "meaning": "잘못된, 틀린",
+      "confuse": null,
+      "example": "The year 1841 in the old report turned out to be **erroneous**.",
+      "example_ko": "오래된 보고서의 1841년이라는 연도는 잘못된 것으로 밝혀졌습니다."
+    },
+    {
+      "word": "archive",
+      "meaning": "기록 보관소, 옛 기록",
+      "confuse": null,
+      "example": "The team checked old railway **archives** to find the real date.",
+      "example_ko": "그 팀은 실제 날짜를 찾기 위해 옛 철도 기록을 확인했습니다."
+    }
+  ],
+  "source": {
+    "title": "A Train Was Delayed by a Solar Storm. But Something Didn't Add Up. (ScienceDaily, 2026-10-21)",
+    "url": "https://www.sciencedaily.com/releases/2026/10/261020085021.htm"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "The sun sometimes has big storms.",
+          "chunks": [
+            [
+              "The sun sometimes has big storms.",
+              "태양에는 가끔 큰 폭풍이 인다"
+            ]
+          ]
+        },
+        {
+          "en": "The storms send tiny **particles** to Earth, and they shake its **magnetic field**.",
+          "chunks": [
+            [
+              "The storms send tiny **particles** to Earth,",
+              "폭풍은 작은 입자들을 지구로 보낸다"
+            ],
+            [
+              "and they shake its **magnetic field**.",
+              "그리고 그것들은 지구의 자기장을 흔든다"
+            ]
+          ]
+        },
+        {
+          "en": "This can make electric **currents** in long wires and mix up train **signals**.",
+          "chunks": [
+            [
+              "This can make electric **currents**",
+              "이것은 전류를 만들 수 있다"
+            ],
+            [
+              "in long wires",
+              "긴 전선 속에"
+            ],
+            [
+              "and mix up train **signals**.",
+              "그리고 기차 신호를 뒤섞을 수 있다"
+            ]
+          ]
+        },
+        {
+          "en": "An old report said a train in Exeter, England, was sixteen minutes late in 1841.",
+          "chunks": [
+            [
+              "An old report said",
+              "한 오래된 보고서는 말했다"
+            ],
+            [
+              "a train in Exeter, England,",
+              "잉글랜드 엑서터의 한 기차가"
+            ],
+            [
+              "was sixteen minutes late",
+              "16분 늦었다고"
+            ],
+            [
+              "in 1841.",
+              "1841년에"
+            ]
+          ]
+        },
+        {
+          "en": "But a team at Lancaster University saw a problem: the line opened only in 1846.",
+          "chunks": [
+            [
+              "But a team at Lancaster University",
+              "하지만 랭커스터 대학교의 한 팀이"
+            ],
+            [
+              "saw a problem:",
+              "문제를 하나 보았다"
+            ],
+            [
+              "the line opened only in 1846.",
+              "그 노선은 1846년에야 개통했다"
+            ]
+          ]
+        },
+        {
+          "en": "The date was a **typo**. The delay really happened in 1848.",
+          "chunks": [
+            [
+              "The date was a **typo**.",
+              "그 날짜는 오타였다"
+            ],
+            [
+              "The delay really happened",
+              "그 지연은 실제로 일어났다"
+            ],
+            [
+              "in 1848.",
+              "1848년에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "태양에는 가끔 큰 폭풍이 인다.",
+        "폭풍은 작은 입자들을 지구로 보내고, 그 입자들은 지구의 자기장을 흔든다.",
+        "이것은 긴 전선 속에 전류를 만들어 기차 신호를 뒤섞을 수 있다.",
+        "한 오래된 보고서는 1841년에 잉글랜드 엑서터의 한 기차가 16분 늦었다고 말했다.",
+        "하지만 랭커스터 대학교의 한 팀이 문제를 하나 발견했다. 그 노선은 1846년에야 개통했던 것이다.",
+        "그 날짜는 오타였다. 그 지연은 실제로는 1848년에 일어났다."
+      ]
+    }
+  }
+}
