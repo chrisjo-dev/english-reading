@@ -212,7 +212,7 @@
     <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en"><ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>の7<ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>から9<ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>ごろまでは、<ruby>電車<rp>(</rp><rt>でんしゃ</rt><rp>)</rp></ruby>がとても<b><ruby>混<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>みます</b>。</div><div class="ko" hidden>아침 7시부터 9시쯤까지는 전철이 매우 붐빕니다.</div></div></div>
     <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en"><ruby>電車<rp>(</rp><rt>でんしゃ</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>では、<b><ruby>電話<rp>(</rp><rt>でんわ</rt><rp>)</rp></ruby></b>で<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>さないでください。</div><div class="ko" hidden>전철 안에서는 전화로 말하지 마세요.</div></div></div>
     <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en"><b><ruby>降<rp>(</rp><rt>お</rt><rp>)</rp></ruby>りる</b><ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>の<ruby>名前<rp>(</rp><rt>なまえ</rt><rp>)</rp></ruby>を、<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>る<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>に<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ましょう。</div><div class="ko" hidden>내릴 역의 이름을 타기 전에 봅시다.</div></div></div>
-    <p class="hint"><span id="hinttext">문장 번호를 누르면 그 문장만 들려요. 해석은 먼저 읽어 본 다음에 켜 보세요.</span> 음성: VOICEVOX:冥鳴ひまり</p>
+    <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span> 음성: VOICEVOX:冥鳴ひまり</p>
     <p class="src">특정 기사를 바탕으로 하지 않은 학습용 글입니다.</p>
     <div class="mine">
       <label for="mine">내 해석</label>
@@ -293,7 +293,7 @@
 
 
 <script>
-  // 해석: 버튼은 전체를 열고 닫고, 터치 화면에서는 문장을 누르면 그 문장 해석만 열고 닫는다.
+  // 해석: 버튼은 전체를 열고 닫고, 문장을 누르면(클릭하면) 그 문장 해석만 열고 닫는다.
   var koBtn = document.getElementById('kobtn');
   var kos = [].slice.call(document.querySelectorAll('#passage .ko'));
   koBtn.addEventListener('click', function () {
@@ -301,16 +301,13 @@
     koBtn.setAttribute('aria-pressed', String(on));
     kos.forEach(function (k) { k.hidden = !on; });
   });
-  if (matchMedia('(hover: none)').matches) {
-    [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
-      en.style.cursor = 'pointer';
-      en.addEventListener('click', function () {
-        if (String(getSelection())) return;  // 길게 눌러 글자를 고르는 중이면 열지 않는다
-        var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
-      });
+  [].forEach.call(document.querySelectorAll('#passage .say .en'), function (en) {
+    en.style.cursor = 'pointer';
+    en.addEventListener('click', function () {
+      if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
+      var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
     });
-    document.getElementById('hinttext').textContent = '번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.';
-  }
+  });
 
   var _gaPlayed = false;
   var _gaLang = location.pathname.split('/')[1] || '';
@@ -321,7 +318,6 @@
 
   // 학습 방법: 화면의 각 기능을 차례로 비추며 설명한다
   (function () {
-    var touch = matchMedia('(hover: none)').matches;
     var FLOW = '<ol class="tour-flow"><li><b>듣기</b> 전체 듣기로 한 번 들어요</li><li><b>내 해석</b> 해석을 보기 전에 내 말로 적어요</li>'
       + '<li><b>AI 피드백</b> 내 해석을 AI에게 첨삭받아요</li><li><b>맞춰 보기</b> 그다음에 해석을 켜서 비교해요</li><li><b>다시 듣기</b> 한 번 더 들으며 마무리해요</li></ol>'
       + '해석을 바로 보면 읽는 힘이 잘 늘지 않아요. 막혀도 끝까지 내 말로 적어 본 뒤 맞춰 보는 게 핵심이에요.';
@@ -332,8 +328,7 @@
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
       ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
       ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],
-      touch ? ['#passage .sent .en', '그다음에 해석과 맞춰 보세요', '피드백을 받은 뒤에 문장을 눌러 그 문장 해석과 비교해요. 위의 해석 보기를 누르면 모든 문장 해석이 한 번에 열려요.']
-            : ['#kobtn', '그다음에 해석과 맞춰 보세요', '피드백을 받은 뒤에 해석 보기를 켜서 내 해석과 비교해요. 문장마다 바로 아래에 해석이 붙어요.'],
+      ['#passage .sent .en', '그다음에 해석과 맞춰 보세요', '피드백을 받은 뒤에 문장을 눌러 그 문장 해석과 비교해요. 위의 해석 보기를 누르면 모든 문장 해석이 한 번에 열려요.'],
       ['#step-words', '주요 단어', '지문에서 형광펜으로 표시한 단어의 뜻이에요. 지문으로 돌아가 단어가 쓰인 문장을 다시 읽어 보세요.'],
       ['#step-points', '체크 포인트', '헷갈리기 쉬운 문장 구조와 해석 요령이에요. AI 피드백에서 틀린 부분이 있었다면 여기서 이유를 한 번 더 확인하세요.'],
       ['#play', '다시 들으며 마무리', '마지막으로 전체 듣기를 한 번 더 들어 보세요. 처음엔 안 들리던 문장이 들리면 오늘 공부는 성공이에요.'],
