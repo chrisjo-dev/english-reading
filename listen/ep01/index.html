@@ -15,6 +15,8 @@
 :root {
   --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
   --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da; --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
+  /* 소프트 UI 공통 값(매일 읽기 페이지와 같음) */
+  --card-r: 20px; --card-sh: 0 4px 18px rgba(16, 24, 40, 0.07); --bar-sh: 0 2px 10px rgba(16, 24, 40, 0.06);
   color-scheme: light;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -34,12 +36,14 @@ button { font-family: inherit; }
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
 /* 위 메뉴 */
+/* 화면 위 12px 틈을 두고 떠 있는 흰 바. 폭은 아래 카드 열(main 560px, 좌우 16px)과 맞춘다 */
 .gnb {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
-  display: flex; justify-content: space-between; align-items: center; height: 54px;
-  padding: 0 max(12px, env(safe-area-inset-right, 0px)) 0 max(20px, env(safe-area-inset-left, 0px));
-  background: rgba(255, 255, 255, 0.94); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px);
-  border-bottom: 1px solid var(--line);
+  position: sticky; top: calc(12px + env(safe-area-inset-top, 0px)); z-index: 20;
+  display: flex; justify-content: space-between; align-items: center; height: 56px;
+  width: min(528px, calc(100% - 2 * max(16px, env(safe-area-inset-left, 0px)))); margin: 12px auto 0;
+  padding: 0 10px 0 18px; border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px);
+  box-shadow: var(--bar-sh);
 }
 .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
 .gnb nav { display: flex; gap: 4px; }
@@ -47,18 +51,20 @@ button { font-family: inherit; }
 .gnb nav a.cta { color: var(--blue); background: var(--blue-soft); }
 
 /* 머리 카드 */
-.top { background: var(--card); border-radius: 20px; padding: 26px 20px 22px; margin-top: 12px; }
+.top { background: var(--card); border-radius: var(--card-r); padding: 26px 20px 22px; margin-top: 12px; box-shadow: var(--card-sh); }
 .date { font-size: 14px; font-weight: 600; color: var(--muted); }
 h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 14px; letter-spacing: -0.03em; text-wrap: balance; }
 h1 em { font-style: normal; color: var(--blue); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { font-size: 13px; font-weight: 600; padding: 5px 10px; border-radius: 8px; background: var(--bg); color: var(--sub); }
+.chip { font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--sub); }
 .chip.blue { background: var(--blue-soft); color: var(--blue); }
 .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
 .intro a { color: var(--blue); font-weight: 600; text-decoration: none; }
 
 /* STEP 카드 */
-.card { background: var(--card); border-radius: 20px; padding: 22px 20px; }
+.card { background: var(--card); border-radius: var(--card-r); padding: 22px 20px; box-shadow: var(--card-sh); }
+/* 위 메뉴 바가 따라오므로 앵커와 학습 방법 안내가 비추는 카드가 바 아래에 가리지 않게 띄운다 */
+[id], .card { scroll-margin-top: 84px; }
 .step { font-size: 13px; font-weight: 700; color: var(--blue); }
 h2 { font-size: 20px; font-weight: 700; margin: 2px 0 16px; letter-spacing: -0.02em; }
 .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
@@ -96,6 +102,8 @@ h2 { font-size: 20px; font-weight: 700; margin: 2px 0 16px; letter-spacing: -0.0
 /* 표현 */
 .ex-item { padding: 16px 0; border-top: 1px solid var(--line); }
 .ex-item:first-of-type { border-top: 0; padding-top: 0; }
+/* 앞에 STEP 제목이 와서 :first-of-type 이 안 맞으므로, 첫 표현 위 구분선은 따로 지운다 */
+.ex-item:not(.ex-item + .ex-item) { border-top: 0; padding-top: 0; }
 .ex-item:last-of-type { padding-bottom: 0; }
 .q { background: var(--bg); border-radius: 14px; padding: 14px 16px; }
 .q strong { display: block; font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
@@ -134,7 +142,7 @@ h2 { font-size: 20px; font-weight: 700; margin: 2px 0 16px; letter-spacing: -0.0
 .qz-fb.no strong { color: var(--coral); }
 .qz-why { margin: 6px 0 0; line-height: 1.5; letter-spacing: 0; }
 .qz-why b { color: var(--ink); font-weight: 700; }
-.qz-from { margin: 8px 0 0; padding-left: 10px; border-left: 2px solid #d1d6db; color: var(--muted); font-size: 13px; letter-spacing: 0; }
+.qz-from { margin: 8px 0 0; color: var(--muted); font-size: 13px; letter-spacing: 0; }
 .qz-nav { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
 .qz-nav .tool { flex: none; width: 88px; }
 .qz-nav .tool.next { background: var(--blue); color: #fff; }

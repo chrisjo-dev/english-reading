@@ -26,7 +26,7 @@ DAYS = "월화수목금토일"
 INTRO_CSS = ("  .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }\n"
              "  .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }\n")
 SUB_CSS = (
-    "  .sub { scroll-margin-top: 16px; }\n"
+    "  .sub { scroll-margin-top: 84px; }\n"
     "  .sub h2 { margin-bottom: 4px; }\n  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }\n"
     "  .sub form { display: flex; gap: 8px; }\n"
     "  .sub input { flex: 1; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg);"
@@ -255,7 +255,8 @@ ARCHIVE = r"""<!doctype html>
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
   main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
   h1 { font-size: 26px; font-weight: 800; margin: 0 8px 16px; letter-spacing: -0.03em; }
-  .gnb { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 54px; margin: -28px -12px 20px; padding: 0 12px 0 20px; background: rgba(255,255,255,.94); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid #f2f4f6; }
+  /* 소프트 UI: 날짜 페이지와 같은 떠 있는 흰 바, 흰 카드의 아주 옅은 그림자 */
+  .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: -16px 0 20px; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: 0 2px 10px rgba(16,24,40,.06); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: #191f28; text-decoration: none; }
   .gnb nav { display: flex; gap: 4px; }
   .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
@@ -263,16 +264,17 @@ ARCHIVE = r"""<!doctype html>
   .gnb nav a.cta { color: #3182f6; background: #e8f3ff; }
   .gnb nav a.cta:hover { background: #d6e8ff; }
   .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #3182f6; text-decoration: none; }
-  .search { display: block; width: 100%; box-sizing: border-box; height: 48px; border: 1.5px solid transparent; border-radius: 14px; background: #fff;
+  .search { display: block; width: 100%; box-sizing: border-box; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: #fff; box-shadow: 0 2px 10px rgba(16,24,40,.06);
             padding: 0 16px; font: 400 16px Pretendard, -apple-system, sans-serif; color: #191f28; outline: 0; }
   .search:focus { border-color: #3182f6; }
-  .chips { display: flex; gap: 6px; overflow-x: auto; padding: 10px 0 4px; scrollbar-width: none; }
+  .chips { display: flex; gap: 6px; overflow-x: auto; margin: 0 -12px; padding: 12px 12px 8px; scrollbar-width: none; }
   .chips::-webkit-scrollbar { display: none; }
-  .chip { flex: none; height: 34px; padding: 0 14px; border: 0; border-radius: 10px; background: #fff; color: #4e5968;
+  .chip { flex: none; height: 34px; padding: 0 14px; border: 0; border-radius: 999px; background: #fff; color: #4e5968;
           font: 600 14px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   .chip[aria-pressed="true"] { background: #3182f6; color: #fff; }
   .month h2 { font-size: 15px; font-weight: 700; color: #4e5968; margin: 20px 8px 8px; }
-  .card { background: #fff; border-radius: 20px; padding: 4px 20px; }
+  .card { background: #fff; border-radius: 20px; padding: 4px 20px; box-shadow: 0 4px 18px rgba(16,24,40,.07); }
+  [id] { scroll-margin-top: 84px; }
   .item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid #f2f4f6; color: inherit; text-decoration: none; }
   .item.first { border-top: 0; }
   .item img { flex: none; width: 56px; height: 56px; object-fit: cover; object-position: 100% 50%; }
@@ -280,7 +282,7 @@ ARCHIVE = r"""<!doctype html>
   .c { margin-left: 8px; font-size: 12px; color: #3182f6; }
   .t { display: block; font-size: 17px; font-weight: 700; color: #191f28; margin-top: 2px; }
   .empty { text-align: center; color: #8b95a1; font-size: 15px; padding: 40px 0; }
-  .more { display: block; width: 100%; height: 52px; margin-top: 16px; border: 0; border-radius: 14px; background: #e8f3ff; color: #3182f6;
+  .more { display: block; width: 100%; height: 52px; margin-top: 16px; border: 0; border-radius: 12px; background: #e8f3ff; color: #3182f6;
           font: 700 16px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   [hidden] { display: none !important; }
   .review { display: flex; justify-content: space-between; align-items: center; margin: 0 0 12px; padding: 14px 18px; border-radius: 16px; background: #e8f3ff; color: #3182f6; font-size: 15px; font-weight: 700; text-decoration: none; }

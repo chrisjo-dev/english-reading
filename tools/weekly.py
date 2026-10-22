@@ -124,19 +124,27 @@ __HEAD_EXTRA__
 <style>
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
   main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
+  /* 소프트 UI: 날짜 페이지, 지난 지문 페이지와 같은 떠 있는 흰 바와 옅은 그림자의 흰 카드 */
+  .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: -16px 0 20px; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: 0 2px 10px rgba(16,24,40,.06); }
+  .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: #191f28; text-decoration: none; }
+  .gnb nav { display: flex; gap: 4px; }
+  .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
+  .gnb nav a:hover { background: #f2f4f6; }
+  .gnb nav a.cta { color: #3182f6; background: #e8f3ff; }
+  .gnb nav a.cta:hover { background: #d6e8ff; }
   .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #3182f6; text-decoration: none; }
-  .head { background: #fff; border-radius: 20px; padding: 22px 20px; }
+  .head { background: #fff; border-radius: 20px; padding: 22px 20px; box-shadow: 0 4px 18px rgba(16,24,40,.07); }
   .span { font-size: 14px; font-weight: 600; color: #8b95a1; }
   h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 8px; letter-spacing: -0.03em; }
   h1 em { font-style: normal; color: #3182f6; }
   .lead { margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: #4e5968; }
-  .toggle { width: 100%; height: 48px; border: 0; border-radius: 14px; background: #e8f3ff; color: #3182f6; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .toggle { width: 100%; height: 48px; border: 0; border-radius: 12px; background: #e8f3ff; color: #3182f6; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   .day { margin-top: 20px; }
   .day h2 { font-size: 15px; font-weight: 700; color: #4e5968; margin: 0 8px 8px; }
   .day h2 a { color: #191f28; text-decoration: none; margin-left: 4px; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .w { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-height: 76px; padding: 12px 14px; border: 0; border-radius: 16px;
-       background: #fff; text-align: left; cursor: pointer; font-family: inherit; color: inherit; }
+       background: #fff; box-shadow: 0 2px 10px rgba(16,24,40,.06); text-align: left; cursor: pointer; font-family: inherit; color: inherit; }
   .w .en { font-size: 17px; font-weight: 700; letter-spacing: 0; overflow-wrap: anywhere; }
   .w .ko { font-size: 14px; line-height: 1.5; color: #4e5968; visibility: hidden; }
   .w[aria-expanded="true"] { background: #e8f3ff; }
@@ -149,6 +157,10 @@ __FOOTER_CSS__</style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
 </head>
 <body><main>
+  <header class="gnb">
+    <a class="brand" href="/">매일 외국어 읽기</a>
+    <nav aria-label="사이트 메뉴"><a href="../../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
+  </header>
   <a class="back" href="../../archive/">← 지난 지문</a>
   <div class="head">
     <div class="span">__SPAN__</div>

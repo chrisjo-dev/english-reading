@@ -12,6 +12,11 @@
   --blue: #2a52d4;
   --blue-h: #2143ad;
   --paper: #fff;
+  /* 소프트 UI: 연회색 바탕 위 흰 카드. 지문 페이지(#f2f4f6 바탕, 흰 둥근 카드)와 같은 결로 맞춘다 */
+  --bg: #f4f5f7;
+  --card-r: 18px;
+  --card-sh: 0 4px 18px rgba(16, 24, 40, 0.07);
+  --bar-sh: 0 2px 10px rgba(16, 24, 40, 0.06);
   --m: 64px;
   --g: 24px;
   --cols: 12;
@@ -36,7 +41,7 @@ html {
 
 body {
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
   word-break: keep-all;
@@ -45,8 +50,9 @@ body {
   overflow-x: clip;
 }
 
+/* 위 메뉴 바가 스크롤해도 따라오므로, 앵커로 이동할 때 제목이 바 아래에 가리지 않게 바 높이(64px)와 위아래 틈만큼 띄운다 */
 [id] {
-  scroll-margin-top: 24px;
+  scroll-margin-top: 96px;
 }
 
 a {
@@ -95,10 +101,19 @@ input {
 /* ───── nav ───── */
 .nav {
   height: 64px;
-  border-bottom: 1px solid var(--line);
+  margin: 12px 12px 0;
+  border-radius: 16px;
   background: var(--paper);
-  position: relative;
-  z-index: 20;
+  box-shadow: var(--bar-sh);
+  /* 스크롤해도 화면 위 12px 틈을 두고 떠 있는 바 */
+  position: sticky;
+  top: 12px;
+  z-index: 30;
+}
+
+/* 바가 화면 끝에서 12px 들어온 만큼 안쪽 여백을 줄여 로고와 버튼이 본문 열에 맞게 한다 */
+.nav .nav-in {
+  padding: 0 max(16px, calc(var(--m) - 12px));
 }
 
 .nav-in {
@@ -151,7 +166,7 @@ input {
   color: #fff;
   font-size: 14px;
   font-weight: 700;
-  border-radius: 6px;
+  border-radius: 10px;
   letter-spacing: -0.01em;
   transition: background-color 0.2s;
 }
@@ -174,13 +189,9 @@ input {
   margin: 0 auto;
 }
 
+/* 소프트 UI 에서는 장식용 세로 실선을 쓰지 않는다 */
 .c3-axis {
-  position: absolute;
-  left: 50%;
-  top: 40px;
-  bottom: 72px;
-  width: 1px;
-  background: var(--line);
+  display: none;
 }
 
 .c3-deg {
@@ -289,8 +300,8 @@ input {
 .frag {
   position: absolute;
   background: #fff;
-  border: 1px solid var(--line2);
-  border-radius: 10px;
+  border-radius: var(--card-r);
+  box-shadow: var(--card-sh);
   padding: 16px 18px;
   z-index: 3;
 }
@@ -305,7 +316,7 @@ input {
 .ghost {
   position: absolute;
   border: 1px dashed var(--line2);
-  border-radius: 10px;
+  border-radius: var(--card-r);
   z-index: 1;
 }
 
@@ -397,7 +408,7 @@ input {
 }
 
 .chips li {
-  border: 1px solid var(--line2);
+  background: #f2f4f6;
   border-radius: 2em;
   padding: 6px 12px;
   font-size: 14px;
@@ -417,7 +428,6 @@ input {
 }
 
 .chips li.on {
-  border-color: var(--blue);
   background: var(--blue);
   color: #fff;
 }
@@ -476,9 +486,9 @@ input {
 
 .sw {
   display: inline-flex;
-  border: 1px solid var(--ink);
+  background: #e8eaee;
   border-radius: 2em;
-  padding: 2px;
+  padding: 3px;
 }
 
 .sw button {
@@ -496,25 +506,34 @@ input {
 }
 
 .sw button[aria-pressed="true"] {
-  background: var(--ink);
-  color: #fff;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.12);
 }
 
 html:not(.js) .sw {
   display: none;
 }
 
+/* 입력 칸: 회색 바탕 위에서는 흰 칸에 옅은 그림자, 흰 카드 안에서는 회색 칸(지문 페이지 입력 칸과 같은 결). 선은 포커스 때만 */
 .row {
   display: flex;
   height: 56px;
-  border: 1px solid var(--ink);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   background: #fff;
+  box-shadow: var(--bar-sh);
 }
 
-.row:focus-within {
-  border-color: var(--blue);
+.sub-form .row {
+  background: #f2f4f6;
+  box-shadow: none;
+}
+
+.row:focus-within,
+.sub-form .row:focus-within {
+  background: #fff;
+  box-shadow: 0 0 0 1.5px var(--blue);
 }
 
 .row input {
@@ -726,7 +745,7 @@ html:not(.js) .sw {
 
 .ph-chips span {
   font-size: 0.5em;
-  border: 1px solid var(--line2);
+  background: #f2f4f6;
   border-radius: 2em;
   padding: 0.25em 0.7em;
   color: var(--ink2);
@@ -828,7 +847,7 @@ html:not(.js) .sw {
 }
 
 .ph-input {
-  border: 1px solid var(--line2);
+  background: #f2f4f6;
   border-radius: 0.5em;
   padding: 0.5em 0.7em;
   margin: 0.4em 0 0.5em;
@@ -873,7 +892,6 @@ html:not(.js) .sw {
 
 /* ───── below the fold ───── */
 .sec {
-  border-top: 1px solid var(--line);
   padding: 68px 0 72px;
 }
 
@@ -910,14 +928,14 @@ html:not(.js) .sw {
 }
 
 .steps li {
-  border: 1px solid var(--line2);
-  border-radius: 10px;
+  background: #fff;
+  border-radius: var(--card-r);
+  box-shadow: var(--card-sh);
   padding: 20px 22px 26px;
 }
 
 .steps li:first-child {
   grid-column: 4 / 7;
-  border-color: var(--ink);
 }
 
 .steps li:nth-child(2) {
@@ -950,21 +968,19 @@ html:not(.js) .sw {
 .note {
   margin: 48px 0 0 calc(3 * (var(--col) + var(--g)));
   color: var(--ink2);
-  padding-left: 16px;
-  border-left: 2px solid var(--blue);
 }
 
 /* week */
 .week {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  border-top: 1px solid var(--ink);
-  border-left: 1px solid var(--line);
+  gap: 12px;
 }
 
 .day {
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background: #fff;
+  border-radius: var(--card-r);
+  box-shadow: var(--card-sh);
   padding: 16px 16px 22px;
   min-height: 188px;
   display: flex;
@@ -1048,14 +1064,12 @@ html:not(.js) .sw {
   font-size: 13px;
   font-weight: 700;
   color: var(--blue);
-  border-top: 1px solid var(--line);
   padding-top: 10px;
   margin-top: auto;
 }
 
 .day.today .review {
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.35);
 }
 
 /* glance */
@@ -1071,12 +1085,17 @@ html:not(.js) .sw {
 
 /* faq */
 .faq {
-  border-top: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-left: calc(3 * (var(--col) + var(--g)));
 }
 
 .faq details {
-  border-bottom: 1px solid var(--line);
+  background: #fff;
+  border-radius: var(--card-r);
+  box-shadow: var(--card-sh);
+  padding: 0 24px;
 }
 
 .faq summary {
@@ -1152,14 +1171,10 @@ html:not(.js) .sw {
 }
 
 .sub-form {
-  border: 1px solid var(--line2);
-  border-radius: 10px;
+  border-radius: var(--card-r);
+  box-shadow: var(--card-sh);
   padding: 20px 22px 24px;
   background: #fff;
-}
-
-.sub-form + .sub-form {
-  border-color: var(--line2);
 }
 
 .sub-form .k {
@@ -1189,7 +1204,6 @@ html:not(.js) .sw {
 
 /* footer */
 .foot {
-  border-top: 1px solid var(--ink);
   padding: 40px 0 48px;
 }
 
@@ -1274,6 +1288,10 @@ html:not(.js) .sw {
 
   .nav {
     height: 56px;
+  }
+
+  .nav .nav-in {
+    padding: 0 12px 0 16px;
   }
 
   .nav-links {
@@ -1417,6 +1435,7 @@ html:not(.js) .sw {
 
   .week {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .day {
@@ -1449,6 +1468,10 @@ html:not(.js) .sw {
   .faq,
   .sub-forms {
     margin-left: 0;
+  }
+
+  .faq details {
+    padding: 0 16px;
   }
 
   .faq summary {
