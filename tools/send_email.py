@@ -56,12 +56,19 @@ def wait_live(url, text, extra=None):
     raise SystemExit(f"페이지가 열리지 않아 메일을 보내지 않음: {url}")
 
 
-def audience(lang):
-    """구독자 언어 필터. 기본 언어(영어)는 다른 언어로 표시된 구독자만 빼고 모두에게 보낸다."""
+def audience(lang, level="b"):
+    """구독자 언어+수준 필터.
+    기본 언어(영어)는 다른 언어로 표시된 구독자만 빼고, 수준 필터를 추가한다.
+    level="a": level=="a" 구독자만. level="b"(기본): level!="a" 구독자 (없는 경우 포함).
+    """
     if lang == langs.DEFAULT:
         rules = [{"field": "subscriber.metadata.lang", "operator": "not_equals", "value": other} for other in langs.LANGS if other != lang]
     else:
         rules = [{"field": "subscriber.metadata.lang", "operator": "equals", "value": lang}]
+    if level == "a":
+        rules.append({"field": "subscriber.metadata.level", "operator": "equals", "value": "a"})
+    else:
+        rules.append({"field": "subscriber.metadata.level", "operator": "not_equals", "value": "a"})
     return {"predicate": "and", "groups": [], "filters": rules}
 
 
@@ -94,20 +101,22 @@ def recent_emails(pages=5):
         path = nxt.split("/v1", 1)[1]
 
 
-def same_issue(meta, lang, key, value):
-    """예전(언어 구분 전) 메일은 metadata.lang 이 없고 모두 영어였다."""
-    return meta.get(key) == value and meta.get("lang", langs.DEFAULT) == lang
+def same_issue(meta, lang, key, value, level="b"):
+    """예전(언어 구분 전) 메일은 metadata.lang 이 없고 모두 영어였다. level 키 없는 기존 메일은 중급(b)으로 취급."""
+    return (meta.get(key) == value
+            and meta.get("lang", langs.DEFAULT) == lang
+            and meta.get("level", "b") == level)
 
 
-def send(mail, lang, key, value):
-    """같은 언어, 같은 key 값의 메일이 이미 있으면 보내지 않는다. 다시 실행해도 중복 발송되지 않는다."""
+def send(mail, lang, key, value, level="b", extra_meta=None):
+    """같은 언어+수준, 같은 key 값의 메일이 이미 있으면 보내지 않는다. 다시 실행해도 중복 발송되지 않는다."""
     draft = None
     for e in recent_emails():
-        if not same_issue(e.get("metadata") or {}, lang, key, value):
+        if not same_issue(e.get("metadata") or {}, lang, key, value, level):
             continue
         if e["status"] == "draft":
             # 지난 실행이 초안만 만들고 실패한 경우: 그 초안을 최신 내용으로 고쳐 다시 보낸다.
-            draft = call("PATCH", f"/emails/{e['id']}", {**mail, "template": "naked", "filters": audience(lang)})
+            draft = call("PATCH", f"/emails/{e['id']}", {**mail, "template": "naked", "filters": audience(lang, level)})
             break
         if e["status"] in ("errored", "throttled"):
             # 일부 구독자에게 나갔을 수 있으므로 자동으로 다시 보내지 않고 실패로 드러낸다.
@@ -115,9 +124,12 @@ def send(mail, lang, key, value):
         print(f"이미 처리한 메일이 있어 건너뜀: {e['id']} ({e['status']})")
         return
     fill_missing_lang()
+    metadata = {"lang": lang, key: value, "level": level}
+    if extra_meta:
+        metadata.update(extra_meta)
     if draft is None:
         draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked",
-                                          "filters": audience(lang), "metadata": {"lang": lang, key: value}})
+                                          "filters": audience(lang, level), "metadata": metadata})
     call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
     for _ in range(30):
         status = call("GET", f"/emails/{draft['id']}")["status"]
@@ -128,14 +140,23 @@ def send(mail, lang, key, value):
     raise SystemExit(f"발송 상태 확인 실패: {draft['id']} ({status})")
 
 
-def wants(sub, lang):
-    """audience() 와 같은 기준으로, 이 구독자가 lang 메일을 받아야 하는지."""
+def wants(sub, lang, level="b"):
+    """audience() 와 같은 기준으로, 이 구독자가 lang+level 메일을 받아야 하는지."""
     if sub.get("type") != "regular":
         return False
     sub_lang = (sub.get("metadata") or {}).get("lang") or langs.DEFAULT
+    sub_level = (sub.get("metadata") or {}).get("level") or "b"
+    # 언어 필터
     if lang == langs.DEFAULT:
-        return sub_lang not in set(langs.LANGS) - {lang}
-    return sub_lang == lang
+        if sub_lang in set(langs.LANGS) - {lang}:
+            return False
+    elif sub_lang != lang:
+        return False
+    # 수준 필터
+    if level == "a":
+        return sub_level == "a"
+    else:
+        return sub_level != "a"
 
 
 def reached(email_id):
@@ -165,19 +186,20 @@ def recently_sent(sent_at: str, now: datetime.datetime) -> bool:
         return False
 
 
-def catchup(lang, day):
+def catchup(lang, day, level="b"):
     """그날 본 메일과 이전 보충 메일을 받지 못한 구독자에게만 같은 지문을 보낸다.
 
     본 메일 발송 직후에는 전달 이벤트가 늦게 쌓일 수 있으므로, 발송 뒤 충분히 지나서 수동으로 실행한다.
     """
+    catchup_tag_prefix = f"{lang}:{day}:{level}"
     issues = [e for e in recent_emails(pages=10)
-              if e["status"] == "sent" and (same_issue(e.get("metadata") or {}, lang, "day", day)
-                                           or (e.get("metadata") or {}).get("catchup_of") == f"{lang}:{day}")]
-    if not any((e.get("metadata") or {}).get("day") == day for e in issues):
-        raise SystemExit(f"{lang} {day} 본 메일이 없어 보충 발송하지 않음. 본 발송부터 하세요.")
+              if e["status"] == "sent" and (same_issue(e.get("metadata") or {}, lang, "day", day, level)
+                                           or (e.get("metadata") or {}).get("catchup_of") == catchup_tag_prefix)]
+    if not any(same_issue(e.get("metadata") or {}, lang, "day", day, level) for e in issues):
+        raise SystemExit(f"{lang} {day} level={level} 본 메일이 없어 보충 발송하지 않음. 본 발송부터 하세요.")
 
     # 본 메일이 30분 이내에 발송됐으면 전달 이벤트가 아직 쌓이는 중일 수 있다. 건너뜀.
-    main_emails = [e for e in issues if (e.get("metadata") or {}).get("day") == day]
+    main_emails = [e for e in issues if same_issue(e.get("metadata") or {}, lang, "day", day, level)]
     now_utc = datetime.datetime.now(datetime.timezone.utc)
     for mi in main_emails:
         sent_at = mi.get("publish_date") or mi.get("creation_date") or ""
@@ -186,22 +208,25 @@ def catchup(lang, day):
             return
     fill_missing_lang()
     got = set().union(*(reached(e["id"]) for e in issues))
-    targets = [sub for sub in subscribers() if wants(sub, lang) and sub["id"] not in got]
+    targets = [sub for sub in subscribers() if wants(sub, lang, level) and sub["id"] not in got]
     if not targets:
-        print(f"보충 대상 없음 ({lang} {day})")
+        print(f"보충 대상 없음 ({lang} {day} level={level})")
         return
-    tag = f"{lang}:{day}:{len(issues)}"
+    tag = f"{lang}:{day}:{level}:{len(issues)}"
     for sub in targets:
         call("PATCH", f"/subscribers/{sub['id']}", {"metadata": {**(sub.get("metadata") or {}), "catchup": tag}})
     try:
-        mail = build_email.build(lang, day)
+        mail = build_email.build(lang, day, level)
+        if mail is None:
+            print(f"기초 콘텐츠 없음, 보충 건너뜀 ({lang} {day} level={level})")
+            return
         note = ('<p style="max-width:560px;margin:0 auto 8px;font-size:13px;color:#6b7684;text-align:center;">'
                 '아침에 받지 못하신 분께 다시 보내 드려요.</p>\n')
         mail["body"] = mail["body"].replace('<table role="presentation"', note + '<table role="presentation"', 1)
         draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked",
                                           "filters": {"predicate": "and", "groups": [], "filters": [
                                               {"field": "subscriber.metadata.catchup", "operator": "equals", "value": tag}]},
-                                          "metadata": {"lang": lang, "catchup_of": f"{lang}:{day}"}})
+                                          "metadata": {"lang": lang, "level": level, "catchup_of": catchup_tag_prefix}})
         call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
         for _ in range(30):
             if call("GET", f"/emails/{draft['id']}")["status"] == "sent":
@@ -220,11 +245,17 @@ def catchup(lang, day):
                 print(f"표시 정리 실패, 다음 구독자로 계속: {sub['id']} {exc}")
 
 
-def main(lang, day):
-    mail = build_email.build(lang, day)
-    url = f"{build_email.SITE}/{lang}/{day}/"
-    wait_live(url, build_email.parse(lang, day)["topic"], url + "thumb.png")
-    send(mail, lang, "day", day)
+def main(lang, day, level="b"):
+    url_base = f"{build_email.SITE}/{lang}/{day}/"
+    wait_live(url_base, build_email.parse(lang, day)["topic"], url_base + "thumb.png")
+    mail = build_email.build(lang, day, level)
+    if mail is None:
+        # 기초 콘텐츠 없음: 기초 구독자에게 중급 지문으로 만든 이메일을 폴백 발송한다 (5.11절)
+        print(f"기초 콘텐츠 없음 — level a 구독자에게 중급 지문으로 폴백 발송 ({lang} {day})")
+        mail = build_email.build(lang, day, "b")
+        send(mail, lang, "day", day, level="a", extra_meta={"fallback": True})
+        return
+    send(mail, lang, "day", day, level=level)
 
 
 def main_weekly(lang, end):
@@ -237,9 +268,15 @@ def main_weekly(lang, end):
 
 if __name__ == "__main__":
     langs.get(sys.argv[1])
+    # --level b 또는 --level a 파라미터 파싱
+    level = "b"
+    if "--level" in sys.argv:
+        li = sys.argv.index("--level")
+        if li + 1 < len(sys.argv):
+            level = sys.argv[li + 1]
     if "--weekly" in sys.argv:
         main_weekly(sys.argv[1], sys.argv[2])
     elif "--catchup" in sys.argv:
-        catchup(sys.argv[1], sys.argv[2])
+        catchup(sys.argv[1], sys.argv[2], level)
     else:
-        main(sys.argv[1], sys.argv[2])
+        main(sys.argv[1], sys.argv[2], level)

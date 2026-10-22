@@ -123,8 +123,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Audio
-        # 음성은 필수다. 3번까지 다시 시도하고, 그래도 실패하면 여기서 멈춰 메일을 보내지 않는다.
+      - name: Audio (level b)
+        # 중급 음성은 필수다. 3번까지 다시 시도하고, 그래도 실패하면 여기서 멈춰 메일을 보내지 않는다.
         run: |
           mkdir -p models
           base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
@@ -133,10 +133,18 @@ jobs:
             for i in 1 2 3; do
               [ -f models/kokoro-v1.0.int8.onnx ] || curl -sSfL --retry 3 -o models/kokoro-v1.0.int8.onnx $base/kokoro-v1.0.int8.onnx || rm -f models/kokoro-v1.0.int8.onnx
               [ -f models/voices-v1.0.bin ] || curl -sSfL --retry 3 -o models/voices-v1.0.bin $base/voices-v1.0.bin || rm -f models/voices-v1.0.bin
-              if python tools/audio.py $lang $day models; then ok=1; break; fi
-              echo "audio attempt $i failed for $pair"; sleep 20
+              if python tools/audio.py $lang $day models --level b; then ok=1; break; fi
+              echo "audio b attempt $i failed for $pair"; sleep 20
             done
             [ -n "$ok" ] || exit 1
+          done
+
+      - name: Audio (level a)
+        # 기초 음성 실패는 경고만 남기고 계속 진행한다. 중급 오디오와 이메일에는 영향 없음.
+        run: |
+          for pair in ${{ steps.pick.outputs.pairs }}; do
+            lang=${pair%%:*}; day=${pair#*:}
+            python tools/audio.py $lang $day models --level a || echo "::warning::level a audio failed for $pair"
           done
 
       - name: Build pages
@@ -161,13 +169,15 @@ jobs:
 
       - name: Send email
         # 지난 날짜를 다시 만들 때는 보내지 않는다(수동 실행에서 send 를 켠 경우만 예외). no_email 이면 오늘 날짜여도 보내지 않는다.
+        # 중급(b)을 먼저 발송한다. 실패하면 워크플로 중단. 기초(a) 발송 실패는 경고만 남기고 계속 진행.
         run: |
           for pair in ${{ steps.pick.outputs.pairs }}; do
             lang=${pair%%:*}; day=${pair#*:}
             if [ "${{ inputs.no_email }}" = "true" ]; then
               echo "skip email for $pair (no_email)"
             elif [ "$day" = "${{ steps.pick.outputs.today }}" ] || [ "${{ inputs.send }}" = "true" ]; then
-              python tools/send_email.py $lang $day
+              python tools/send_email.py $lang $day --level b
+              python tools/send_email.py $lang $day --level a || echo "::warning::level a email skipped for $pair"
             else
               echo "skip email for $pair (not today)"
             fi

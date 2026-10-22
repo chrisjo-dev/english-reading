@@ -58,14 +58,22 @@ def voicevox(L, sentences, targets, tmp):
         to_mp3(wav, target, "96k")
 
 
-def main(lang, day, models):
+def main(lang, day, models, level="b"):
     L = langs.get(lang)
     c = json.loads((ROOT / "content" / lang / f"{day}.json").read_text(encoding="utf-8"))
-    sentences = [plain(s["en"]) for s in c["sentences"]]
     out = ROOT / lang / day / "audio"
-    targets = [out / f"s{i}.mp3" for i in range(1, len(sentences) + 1)]
+    if level == "a":
+        levels_a = (c.get("levels") or {}).get("a")
+        if not levels_a:
+            print(f"levels.a 없음, level a 오디오 건너뜀 ({lang} {day})")
+            return
+        sentences = [plain(s["en"]) for s in levels_a["sentences"]]
+        targets = [out / f"a{i}.mp3" for i in range(1, len(sentences) + 1)]
+    else:
+        sentences = [plain(s["en"]) for s in c["sentences"]]
+        targets = [out / f"s{i}.mp3" for i in range(1, len(sentences) + 1)]
     if all(t.exists() for t in targets):
-        print("audio already exists")
+        print(f"audio level {level} already exists")
         return
     out.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
@@ -73,8 +81,16 @@ def main(lang, day, models):
             voicevox(L, sentences, targets, tmp)
         else:
             kokoro(L, sentences, targets, models, tmp)
-    print(f"audio: {len(targets)} files ({L['tts']})")
+    print(f"audio level {level}: {len(targets)} files ({L['tts']})")
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else ".")
+    # 사용: python3 tools/audio.py en 2026-10-12 [models] [--level a|b]
+    import argparse as _ap
+    _p = _ap.ArgumentParser()
+    _p.add_argument("lang")
+    _p.add_argument("day")
+    _p.add_argument("models", nargs="?", default=".")
+    _p.add_argument("--level", default="b", choices=["a", "b"])
+    _a = _p.parse_args()
+    main(_a.lang, _a.day, _a.models, _a.level)

@@ -51,10 +51,27 @@ def sentence_html(raw):
     )
 
 
-def build(lang, day):
+def _marks_email(s):
+    """**bold** -> <b>, 이스케이프 없이 적용 (이미 html.escape 된 문자열에 사용하지 않음)."""
+    import html as _html
+    s = _html.escape(s, quote=False)
+    return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
+
+
+def build(lang, day, level="b"):
     L = langs.get(lang)
     d = parse(lang, day)
     url = f"{SITE}/{lang}/{day}/"
+    if level == "a":
+        content_path = Path(__file__).resolve().parent.parent / "content" / lang / f"{day}.json"
+        content = json.loads(content_path.read_text(encoding="utf-8"))
+        levels_a = (content.get("levels") or {}).get("a")
+        if not levels_a:
+            return None  # 기초 콘텐츠 없음
+        d["sentences"] = [_marks_email(s["en"]) for s in levels_a["sentences"]]
+        url += "?level=a"
+    else:
+        url += "?level=b"
     chips = "".join(
         f'<span style="display:inline-block;font-size:13px;font-weight:600;padding:4px 9px;border-radius:8px;'
         f'margin:0 4px 4px 0;background:{"#e8f3ff" if i == 0 else BG};color:{BLUE if i == 0 else SUB};">{html.escape(c)}</span>'
@@ -119,4 +136,8 @@ def build(lang, day):
 
 
 if __name__ == "__main__":
-    json.dump(build(sys.argv[1], sys.argv[2]), sys.stdout, ensure_ascii=False)
+    result = build(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "b")
+    if result is None:
+        print("기초 콘텐츠 없음, 건너뜀", file=sys.stderr)
+        sys.exit(0)
+    json.dump(result, sys.stdout, ensure_ascii=False)

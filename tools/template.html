@@ -156,7 +156,19 @@
   .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
   body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
   #passage .sent.playing .ck .e { color: var(--blue-press); }
+  /* 수준별 콘텐츠: 기초(.en-a/.ko-a/.chunks-a)는 기본 숨김, 중급(.en/.ko/.chunks)은 기본 표시 */
+  .en-a, .ko-a, .chunks-a { display: none; }
+  body.level-a .en-a { display: block; }
+  body.level-a #passage .say > .en { display: none; }
+  body.level-a .ko-a:not([hidden]) { display: block; }
+  body.level-a #passage .ko { display: none !important; }
+  body.level-a .badge { display: none; }
+  body.level-a .chunks { display: none !important; }
+  body.chunked.level-a .chunks-a { display: flex; }
+  .level-link { margin: 8px 0 0; font-size: 13px; text-align: right; }
+  .level-link a { color: var(--sub); }
 </style>
+<script>try{var _ql=new URLSearchParams(location.search).get('level');if(!_ql)_ql=localStorage.getItem('read_level');if(_ql==='a')document.body.classList.add('level-a')}catch(e){}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
@@ -175,7 +187,7 @@
 {{headline}}    <div class="chips">
 {{chips}}
     </div>
-  </div>
+{{level_link}}  </div>
 
   <section class="card" id="passage">
     <div class="step">STEP 1</div>
@@ -227,18 +239,26 @@
   // 해석: 버튼은 전체를 열고 닫고, 문장을 누르면(클릭하면) 그 문장 해석만 열고 닫는다.
   var koBtn = document.getElementById('kobtn');
   var kos = [].slice.call(document.querySelectorAll('#passage .ko'));
+  var kosA = [].slice.call(document.querySelectorAll('#passage .ko-a'));
   koBtn.addEventListener('click', function () {
     var on = koBtn.getAttribute('aria-pressed') !== 'true';
     koBtn.setAttribute('aria-pressed', String(on));
-    kos.forEach(function (k) { k.hidden = !on; });
+    // 현재 수준에 맞는 해석 요소만 토글
+    if (isLevelA() && kosA.length) {
+      kosA.forEach(function (k) { k.hidden = !on; });
+    } else {
+      kos.forEach(function (k) { k.hidden = !on; });
+    }
     gaEvent('ko_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
   // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
-  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks, #passage .say .en-a, #passage .say .chunks-a'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
-      var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
+      // 기초 수준이면 .ko-a, 중급이면 .ko 를 토글
+      var kSel = (isLevelA() && en.parentNode.querySelector('.ko-a')) ? '.ko-a' : '.ko';
+      var k = en.parentNode.querySelector(kSel); if (k) k.hidden = !k.hidden;
     });
   });
   var chunkBtn = document.getElementById('chunkbtn');
@@ -339,14 +359,27 @@
   })();
 
   var AUDIO = {{audio}};
+  var AUDIO_A = {{audio_a}};
+  // 수준 결정: URL ?level= → localStorage → 기본 중급(b)
+  (function () {
+    try {
+      var lp = new URLSearchParams(location.search).get('level');
+      if (lp === 'a' || lp === 'b') {
+        document.body.classList.toggle('level-a', lp === 'a');
+        localStorage.setItem('read_level', lp);
+      }
+    } catch (e) {}
+  })();
   var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
   var player = new Audio(), queue = [], rate = 1, token = 0;
   var canSpeak = 'speechSynthesis' in window;
   var playBtn = document.getElementById('play'), slowBtn = document.getElementById('slow'), copyBtn = document.getElementById('copy');
   var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
+  function isLevelA() { return document.body.classList.contains('level-a'); }
   function sentenceText(r) {
-    // 배지와 후리가나(rt, rp)를 뺀 본문만 쓴다.
-    var c = r.querySelector('.en').cloneNode(true);
+    // 기초 수준이면 .en-a, 중급이면 .en 에서 텍스트를 추출한다. 배지와 후리가나(rt, rp)를 제거.
+    var sel = (isLevelA() && r.querySelector('.en-a')) ? '.en-a' : '.en';
+    var c = r.querySelector(sel).cloneNode(true);
     [].forEach.call(c.querySelectorAll('.badge, rt, rp'), function (x) { x.parentNode.removeChild(x); });
     return c.textContent.trim();
   }
@@ -360,8 +393,9 @@
     var i = queue.shift(), t = token; mark(i);
     if (!_gaPlayed) { _gaPlayed = true; gaEvent('audio_play', {lang: _gaLang, day: _gaDay}); }
     function after() { if (t === token) setTimeout(function () { if (t === token) next(); }, queue.length ? 450 : 0); }
-    if (AUDIO[i]) {
-      player.onended = after; player.src = AUDIO[i];
+    var audioSrc = isLevelA() ? (AUDIO_A[i] || null) : (AUDIO[i] || null);
+    if (audioSrc) {
+      player.onended = after; player.src = audioSrc;
       player.playbackRate = rate; player.play().catch(function () { if (t === token) stop(); });
     } else if (canSpeak) {
       var u = new SpeechSynthesisUtterance(sentenceText(rows[i]));
@@ -413,6 +447,34 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
+  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  (function () {
+    var toLevelA = document.getElementById('to-level-a');
+    var toLevelB = document.getElementById('to-level-b');
+    if (!toLevelA || !toLevelB) return;
+    function updateLinks() {
+      var isA = isLevelA();
+      toLevelA.hidden = isA;
+      toLevelB.hidden = !isA;
+    }
+    updateLinks();
+    function switchLevel(e, to) {
+      e.preventDefault();
+      var from = isLevelA() ? 'a' : 'b';
+      document.body.classList.toggle('level-a', to === 'a');
+      try { localStorage.setItem('read_level', to); } catch (ex) {}
+      gaEvent('level_switch', { from: from, to: to, lang: _gaLang, day: _gaDay });
+      updateLinks();
+      // URL 에 ?level= 파라미터 반영 (히스토리 교체)
+      try {
+        var u = new URL(location.href);
+        u.searchParams.set('level', to);
+        history.replaceState(null, '', u.toString());
+      } catch (ex) {}
+    }
+    toLevelA.addEventListener('click', function (e) { switchLevel(e, 'a'); });
+    toLevelB.addEventListener('click', function (e) { switchLevel(e, 'b'); });
+  })();
   var furi = document.getElementById('furi');
   if (furi) furi.addEventListener('click', function () {
     var off = document.body.classList.toggle('nofuri');

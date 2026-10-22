@@ -86,6 +86,8 @@ def load(lang, day):
         problems.append("advanced 는 6~8개")
     if problems:
         raise SystemExit(f"content/{lang}/{day}.json 확인 필요: " + ", ".join(problems))
+    # levels 필드 파싱 (없으면 None)
+    c["_levels_a"] = (c.get("levels") or {}).get("a")
     return c
 
 
@@ -115,16 +117,46 @@ def chunk_rows(lang, day, sentences):
     ]
 
 
+def chunk_rows_a(lang, day, a_sentences):
+    """levels.a 의 끊어 읽기 줄(HTML)을 만든다. chunk_rows 와 같은 규칙, 클래스만 다르다."""
+    if lang != "en" or not all(s.get("chunks") for s in a_sentences):
+        return None
+    for i, s in enumerate(a_sentences, 1):
+        ch = s["chunks"]
+        ok = all(isinstance(c, list) and len(c) == 2 and all(isinstance(x, str) and x.strip() for x in c)
+                 and c[0].count("**") % 2 == 0 for c in ch)
+        if not ok or " ".join(c[0] for c in ch) != s["en"]:
+            return None
+    sep = '<span class="s">/</span>'
+    return [
+        '<div class="chunks-a">' + "".join(
+            f'<span class="ck"><span class="e">{marks(e, "b")}{sep if j < len(s["chunks"]) - 1 else ""}</span>'
+            f'<span class="k">{esc(k)}</span></span>'
+            for j, (e, k) in enumerate(s["chunks"])
+        ) + "</div>"
+        for s in a_sentences
+    ]
+
+
 def render(lang, day):
     L = langs.get(lang)
     c = load(lang, day)
     d = dt.date.fromisoformat(day)
     n = len(c["sentences"])
     chunks = chunk_rows(lang, day, c["sentences"])
+    levels_a = c.get("_levels_a")
+    chunks_a = chunk_rows_a(lang, day, levels_a["sentences"]) if levels_a else None
     sentences = "".join(
         f'    <div class="sent"><button class="no" type="button" data-i="{i}" aria-label="{i + 1}번 문장 듣기">{i + 1}</button>'
         f'<div class="say"><div class="en">{marks(s["en"], "b")}{BADGE.format(L["hard_badge"]) if s.get("b2") else ""}</div>'
-        f'{chunks[i] if chunks else ""}<div class="ko" hidden>{marks(a, "")}</div></div></div>\n'
+        f'{chunks[i] if chunks else ""}<div class="ko" hidden>{marks(a, "")}</div>'
+        + (
+            f'<div class="en-a">{marks(levels_a["sentences"][i]["en"], "b")}</div>'
+            f'{chunks_a[i] if chunks_a else ""}'
+            f'<div class="ko-a" hidden>{marks(levels_a["answers"][i], "")}</div>'
+            if levels_a else ""
+        )
+        + '</div></div>\n'
         for i, (s, a) in enumerate(zip(c["sentences"], c["answers"]))
     )
     src = c.get("source")
@@ -152,6 +184,19 @@ def render(lang, day):
     out_dir = ROOT / lang / day
     files = [f"audio/s{i}.mp3" for i in range(1, n + 1)]
     audio = json.dumps(files) if all((out_dir / f).exists() for f in files) else "[]"
+    # level a 오디오: audio/a{i}.mp3 (없으면 빈 배열, SpeechSynthesis 폴백)
+    files_a = [f"audio/a{i}.mp3" for i in range(1, n + 1)]
+    audio_a = json.dumps(files_a) if (levels_a and all((out_dir / f).exists() for f in files_a)) else "[]"
+    # 수준 전환 링크: levels.a 가 있을 때만 표시
+    if levels_a:
+        level_link = (
+            '<p class="level-link" id="level-link">'
+            '<a href="?level=a" id="to-level-a">기초로 보기</a>'
+            '<a href="?level=b" id="to-level-b" hidden>중급으로 보기</a>'
+            '</p>\n'
+        )
+    else:
+        level_link = ""
     values = {
         "date_short": f"{d.month}월 {d.day}일",
         "date_label": f"{d.month}월 {d.day}일 {DAYS[d.weekday()]}요일",
@@ -166,6 +211,8 @@ def render(lang, day):
         "answers": answers,
         "advanced": advanced,
         "audio": audio,
+        "audio_a": audio_a,
+        "level_link": level_link,
         "name": L["name"],
         "head_extra": L["head_extra"] + ("\n" if L["head_extra"] else ""),
         "tools_extra": L["tools_extra"],

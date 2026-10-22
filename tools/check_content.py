@@ -66,11 +66,13 @@ def check(path):
                 errors.append(f"{k} 가 비어 있어요. 페이지 제목에 쓰입니다(ROUTINE 의 필드 설명 참고).")
     if path.parent.name == "en":
         errors += check_chunks(c, required=path.parent.parent.name == "pool" or new_chunks(path))
+        errors += check_levels_a(c, path)
     errors += overlap(path, c)
     return errors, warnings
 
 
 CHUNKS_FROM = dt.date(2026, 10, 23)  # 이날 지문부터 영어 문장마다 끊어 읽기(chunks)가 있어야 한다
+LEVELS_FROM = dt.date(2099, 1, 1)   # 이날 이후 영어 지문에 levels.a 필드가 필수 (실제 배포 날짜로 낮춰 설정한다)
 
 
 def new_chunks(path):
@@ -78,6 +80,51 @@ def new_chunks(path):
         return dt.date.fromisoformat(path.stem) >= CHUNKS_FROM
     except ValueError:
         return False
+
+
+def levels_required(path):
+    """이 파일에 levels.a 필드가 필수인지 판단한다."""
+    if path.parent.parent.name == "pool":
+        return False  # pool 비축분은 LEVELS_FROM 이후 신규분부터 별도 처리
+    try:
+        return dt.date.fromisoformat(path.stem) >= LEVELS_FROM
+    except ValueError:
+        return False
+
+
+def check_levels_a(c, path):
+    """levels.a 필드가 있으면 검증하고, LEVELS_FROM 이후 영어 지문인데 없으면 오류를 낸다."""
+    out = []
+    if path.parent.name != "en":
+        return out  # 영어만 검사
+    levels = c.get("levels")
+    if levels is None:
+        if levels_required(path):
+            out.append("levels.a 필드가 없어요. LEVELS_FROM 이후 영어 지문에는 필수입니다.")
+        return out
+    levels_a = levels.get("a")
+    if levels_a is None:
+        if levels_required(path):
+            out.append("levels.a 필드가 없어요. LEVELS_FROM 이후 영어 지문에는 필수입니다.")
+        return out
+    main_n = len(c.get("sentences", []))
+    a_sents = levels_a.get("sentences", [])
+    a_answers = levels_a.get("answers", [])
+    if len(a_sents) != main_n:
+        out.append(f"levels.a.sentences 개수({len(a_sents)})가 sentences 개수({main_n})와 달라요. 1:1 대응이어야 해요.")
+    if len(a_answers) != len(a_sents):
+        out.append(f"levels.a.answers 개수({len(a_answers)})가 levels.a.sentences 개수({len(a_sents)})와 달라요.")
+    # levels.a.sentences[].en 에 마크다운/가운뎃점 검사 적용
+    for i, s in enumerate(a_sents, 1):
+        en = s.get("en", "")
+        rest = SUPPORTED.sub("", en)
+        if LEFTOVER.search(rest):
+            out.append(f"levels.a.sentences {i}번 en: 처리되지 않는 마크다운 기호가 남음: {en[:80]}")
+        if "·" in en:
+            out.append(f"levels.a.sentences {i}번 en: 가운뎃점(·)은 쓰지 않아요: {en[:80]}")
+    # levels.a.sentences[].chunks 검사 (필수 — 항상 required)
+    out += check_chunks({"sentences": [{"en": s.get("en", ""), "chunks": s.get("chunks")} for s in a_sents]}, required=True)
+    return out
 
 
 def check_chunks(c, required=False):
