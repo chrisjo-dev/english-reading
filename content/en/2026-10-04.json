@@ -32,13 +32,13 @@
     "로만은 현재 지구에서 약 150만 킬로미터 떨어진 안정 지점을 향해 이동 중이며, 과학 관측은 2027년 초에 시작될 예정이다."
   ],
   "advanced": [
-    {"word": "infrared", "meaning": "적외선의", "confuse": "ultraviolet(자외선의)와 혼동 주의", "example": "Roman's **infrared** camera can detect heat and light from the most distant galaxies."},
-    {"word": "calibrate", "meaning": "보정하다, 교정하다", "confuse": null, "example": "Engineers must **calibrate** each detector before any scientific measurements can begin."},
-    {"word": "deploy", "meaning": "전개하다, 펼치다 (장비를)", "confuse": null, "example": "The solar panels were **deployed** within ninety minutes of the rocket's liftoff."},
-    {"word": "commission", "meaning": "가동을 시작하다, 취역시키다", "confuse": "committee(위원회)와 혼동 주의", "example": "Once the telescope is fully **commissioned**, it will survey the sky for five years."},
-    {"word": "pixel", "meaning": "화소, 픽셀", "confuse": null, "example": "With three hundred million **pixels**, the camera produces images of extraordinary detail."},
-    {"word": "aperture", "meaning": "조리개, 개구부 (빛이 들어오는 구멍)", "confuse": null, "example": "The **aperture** cover was deployed shortly after launch to protect the optics."},
-    {"word": "observation", "meaning": "관측, 관찰", "confuse": null, "example": "Science **observations** are expected to begin in early 2027 after commissioning is complete."}
+    {"word": "infrared", "meaning": "적외선의", "confuse": "ultraviolet(자외선의)와 혼동 주의", "example": "Roman's **infrared** camera can detect heat and light from the most distant galaxies.", "example_ko": "로만 망원경의 적외선 카메라는 가장 멀리 있는 은하의 열과 빛을 감지할 수 있습니다."},
+    {"word": "calibrate", "meaning": "보정하다, 교정하다", "confuse": null, "example": "Engineers must **calibrate** each detector before any scientific measurements can begin.", "example_ko": "과학적 측정을 시작하기 전에 엔지니어들이 각 감지기를 보정해야 합니다."},
+    {"word": "deploy", "meaning": "전개하다, 펼치다 (장비를)", "confuse": null, "example": "The solar panels were **deployed** within ninety minutes of the rocket's liftoff.", "example_ko": "태양 전지판은 로켓 발사 후 90분 이내에 전개되었습니다."},
+    {"word": "commission", "meaning": "가동을 시작하다, 취역시키다", "confuse": "committee(위원회)와 혼동 주의", "example": "Once the telescope is fully **commissioned**, it will survey the sky for five years.", "example_ko": "망원경이 완전히 가동되면 5년 동안 하늘을 탐사할 것입니다."},
+    {"word": "pixel", "meaning": "화소, 픽셀", "confuse": null, "example": "With three hundred million **pixels**, the camera produces images of extraordinary detail.", "example_ko": "3억 픽셀로 카메라는 놀랍도록 세밀한 이미지를 만들어 냅니다."},
+    {"word": "aperture", "meaning": "조리개, 개구부 (빛이 들어오는 구멍)", "confuse": null, "example": "The **aperture** cover was deployed shortly after launch to protect the optics.", "example_ko": "광학 장치를 보호하기 위해 발사 직후 조리개 덮개가 전개되었습니다."},
+    {"word": "observation", "meaning": "관측, 관찰", "confuse": null, "example": "Science **observations** are expected to begin in early 2027 after commissioning is complete.", "example_ko": "시운전이 완료된 후 2027년 초에 과학 관측을 시작할 것으로 예상됩니다."}
   ],
   "source": {"title": "NASA's Roman Space Telescope Wide Field Instrument Has Been Activated (ScienceDaily, 2026-09-21)", "url": "https://sciencedaily.com/releases/2026/09/260921081058.htm"}
 }

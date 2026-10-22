@@ -213,43 +213,50 @@
       "word": "circulate",
       "meaning": "순환시키다",
       "confuse": null,
-      "example": "The third heart **circulates** blood around the body."
+      "example": "The third heart **circulates** blood around the body.",
+      "example_ko": "세 번째 심장이 몸 전체에 혈액을 순환시킵니다."
     },
     {
       "word": "oxygenated",
       "meaning": "산소가 공급된",
       "confuse": null,
-      "example": "The main heart pumps **oxygenated** blood to the arms."
+      "example": "The main heart pumps **oxygenated** blood to the arms.",
+      "example_ko": "주된 심장이 산소가 풍부한 혈액을 팔들로 보냅니다."
     },
     {
       "word": "distributed",
       "meaning": "분산된, 퍼져 있는",
       "confuse": "contributed(기여한)와 혼동 주의",
-      "example": "The octopus has a **distributed** nervous system."
+      "example": "The octopus has a **distributed** nervous system.",
+      "example_ko": "문어는 분산된 신경계를 가지고 있습니다."
     },
     {
       "word": "camouflage",
       "meaning": "위장",
       "confuse": null,
-      "example": "Its skin gives it excellent **camouflage** among rocks and plants."
+      "example": "Its skin gives it excellent **camouflage** among rocks and plants.",
+      "example_ko": "피부 덕분에 바위와 식물 사이에서 뛰어난 위장이 가능합니다."
     },
     {
       "word": "dexterity",
       "meaning": "손재주, 능숙함",
       "confuse": null,
-      "example": "Its arms move with remarkable **dexterity**."
+      "example": "Its arms move with remarkable **dexterity**.",
+      "example_ko": "팔들이 놀라운 손재주로 움직입니다."
     },
     {
       "word": "pigment",
       "meaning": "색소",
       "confuse": null,
-      "example": "Cells full of **pigment** let the octopus change color."
+      "example": "Cells full of **pigment** let the octopus change color.",
+      "example_ko": "색소가 가득 찬 세포들이 문어로 하여금 색을 바꿀 수 있게 해 줍니다."
     },
     {
       "word": "intelligence",
       "meaning": "지능",
       "confuse": "intelligible(이해할 수 있는)과 혼동 주의",
-      "example": "Octopus **intelligence** developed in a very different body."
+      "example": "Octopus **intelligence** developed in a very different body.",
+      "example_ko": "문어의 지능은 매우 다른 신체 구조에서 발달했습니다."
     }
   ],
   "source": {

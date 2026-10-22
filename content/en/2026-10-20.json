@@ -35,13 +35,13 @@
     "자원자 20명을 대상으로 한 실험에서, 그 안경은 사람들이 무엇을 하고 있는지 거의 94%의 경우에 정확히 알아냈다."
   ],
   "advanced": [
-    {"word": "harvest", "meaning": "(에너지를) 모아 얻다, 수확하다", "confuse": null, "example": "The glasses **harvest** energy from the wearer's blinks and smiles."},
-    {"word": "generate", "meaning": "(전기, 에너지를) 만들어 내다", "confuse": "generous(너그러운)와 혼동 주의", "example": "Each blink **generates** a small electric charge."},
-    {"word": "self-powered", "meaning": "자체 전원으로 움직이는", "confuse": null, "example": "The **self-powered** sensors do not need a battery."},
-    {"word": "detect", "meaning": "감지하다, 알아채다", "confuse": null, "example": "The sensor on the nose bridge **detects** blinks and eyebrow movements."},
-    {"word": "distinct", "meaning": "뚜렷이 다른, 구별되는", "confuse": "distinguished(저명한)와 혼동 주의", "example": "Chewing and talking create **distinct** electrical patterns."},
-    {"word": "accuracy", "meaning": "정확도", "confuse": "adequacy(적절함)와 혼동 주의", "example": "The glasses showed about 94 percent **accuracy** in tests."},
-    {"word": "mechanical", "meaning": "기계적인, 물리적 움직임의", "confuse": "mechanic(정비사)과 혼동 주의", "example": "Facial movements supply the **mechanical** energy for the sensors."}
+    {"word": "harvest", "meaning": "(에너지를) 모아 얻다, 수확하다", "confuse": null, "example": "The glasses **harvest** energy from the wearer's blinks and smiles.", "example_ko": "이 안경은 착용자의 눈 깜박임과 미소에서 에너지를 수확합니다."},
+    {"word": "generate", "meaning": "(전기, 에너지를) 만들어 내다", "confuse": "generous(너그러운)와 혼동 주의", "example": "Each blink **generates** a small electric charge.", "example_ko": "눈을 깜박일 때마다 작은 전하가 발생합니다."},
+    {"word": "self-powered", "meaning": "자체 전원으로 움직이는", "confuse": null, "example": "The **self-powered** sensors do not need a battery.", "example_ko": "자가 구동 센서는 배터리가 필요하지 않습니다."},
+    {"word": "detect", "meaning": "감지하다, 알아채다", "confuse": null, "example": "The sensor on the nose bridge **detects** blinks and eyebrow movements.", "example_ko": "콧대 위 센서가 눈 깜박임과 눈썹 움직임을 감지합니다."},
+    {"word": "distinct", "meaning": "뚜렷이 다른, 구별되는", "confuse": "distinguished(저명한)와 혼동 주의", "example": "Chewing and talking create **distinct** electrical patterns.", "example_ko": "씹는 동작과 말하기는 서로 다른 전기 패턴을 만들어 냅니다."},
+    {"word": "accuracy", "meaning": "정확도", "confuse": "adequacy(적절함)와 혼동 주의", "example": "The glasses showed about 94 percent **accuracy** in tests.", "example_ko": "이 안경은 테스트에서 약 94퍼센트의 정확도를 보였습니다."},
+    {"word": "mechanical", "meaning": "기계적인, 물리적 움직임의", "confuse": "mechanic(정비사)과 혼동 주의", "example": "Facial movements supply the **mechanical** energy for the sensors.", "example_ko": "얼굴 움직임이 센서를 위한 기계 에너지를 공급합니다."}
   ],
   "source": {"title": "Battery-free smart glasses monitor your health using blink energy (New Atlas, 2026-10-15)", "url": "https://newatlas.com/wearables/smart-glasses-energy-blinks-health-monitor/"}
 }

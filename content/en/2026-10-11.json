@@ -115,49 +115,57 @@
       "word": "facility",
       "meaning": "시설",
       "confuse": "faculty(교수진, 능력)와 혼동 주의",
-      "example": "The new **facility** opened in an old warehouse last spring."
+      "example": "The new **facility** opened in an old warehouse last spring.",
+      "example_ko": "새 시설이 지난봄에 오래된 창고 건물에 문을 열었습니다."
     },
     {
       "word": "cultivate",
       "meaning": "재배하다, 기르다",
       "confuse": null,
-      "example": "The plants are **cultivated** on tall shelves under LED lights."
+      "example": "The plants are **cultivated** on tall shelves under LED lights.",
+      "example_ko": "식물들이 LED 조명 아래 높이 쌓인 선반에서 재배됩니다."
     },
     {
       "word": "regulate",
       "meaning": "조절하다, 규제하다",
       "confuse": "regular(규칙적인)와 혼동 주의",
-      "example": "Computers **regulate** the water and temperature."
+      "example": "Computers **regulate** the water and temperature.",
+      "example_ko": "컴퓨터가 수분과 온도를 조절합니다."
     },
     {
       "word": "yield",
       "meaning": "(수확물을) 내다; 수확량",
       "confuse": null,
-      "example": "The farm **yields** about fifty thousand heads of lettuce every month."
+      "example": "The farm **yields** about fifty thousand heads of lettuce every month.",
+      "example_ko": "이 농장은 매달 약 5만 포기의 상추를 생산합니다."
     },
     {
       "word": "consume",
       "meaning": "소비하다, 쓰다",
       "confuse": "assume(가정하다)와 혼동 주의",
-      "example": "It **consumes** significantly less water than a normal farm."
+      "example": "It **consumes** significantly less water than a normal farm.",
+      "example_ko": "일반 농장보다 물을 훨씬 더 적게 소비합니다."
     },
     {
       "word": "substantially",
       "meaning": "상당히, 크게",
       "confuse": "subsequently(그 후에)와 혼동 주의",
-      "example": "It uses **substantially** less water than a normal farm."
+      "example": "It uses **substantially** less water than a normal farm.",
+      "example_ko": "일반 농장보다 물 사용량이 상당히 적습니다."
     },
     {
       "word": "anticipate",
       "meaning": "예상하다",
       "confuse": "participate(참여하다)와 혼동 주의",
-      "example": "The owners **anticipate** that it will take five more years to make a profit."
+      "example": "The owners **anticipate** that it will take five more years to make a profit.",
+      "example_ko": "소유주들은 수익을 내기까지 5년이 더 걸릴 것으로 예상합니다."
     },
     {
       "word": "profitable",
       "meaning": "수익성 있는",
       "confuse": "productive(생산적인)와 혼동 주의",
-      "example": "The owners expect the farm to become **profitable** in five more years."
+      "example": "The owners expect the farm to become **profitable** in five more years.",
+      "example_ko": "소유주들은 농장이 5년 후에 수익을 낼 것으로 기대합니다."
     }
   ],
   "source": null,

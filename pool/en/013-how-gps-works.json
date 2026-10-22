@@ -217,43 +217,50 @@
       "word": "precise",
       "meaning": "정밀한",
       "confuse": "precious(소중한)와 혼동 주의",
-      "example": "Atomic clocks keep extremely **precise** time."
+      "example": "Atomic clocks keep extremely **precise** time.",
+      "example_ko": "원자시계는 매우 정밀하게 시간을 유지합니다."
     },
     {
       "word": "transmit",
       "meaning": "송신하다, 전송하다",
       "confuse": null,
-      "example": "Each satellite **transmits** a timing signal."
+      "example": "Each satellite **transmits** a timing signal.",
+      "example_ko": "각 위성이 시간 신호를 전송합니다."
     },
     {
       "word": "determine",
       "meaning": "알아내다, 결정하다",
       "confuse": null,
-      "example": "The phone **determines** its position from several distances."
+      "example": "The phone **determines** its position from several distances.",
+      "example_ko": "휴대폰은 여러 거리로부터 자신의 위치를 결정합니다."
     },
     {
       "word": "pinpoint",
       "meaning": "정확히 찾아내다",
       "confuse": null,
-      "example": "GPS can **pinpoint** your location on a map."
+      "example": "GPS can **pinpoint** your location on a map.",
+      "example_ko": "GPS는 지도에서 당신의 위치를 정확히 짚어 낼 수 있습니다."
     },
     {
       "word": "synchronize",
       "meaning": "(시간을) 맞추다, 동기화하다",
       "confuse": null,
-      "example": "The phone cannot perfectly **synchronize** its clock with the satellites."
+      "example": "The phone cannot perfectly **synchronize** its clock with the satellites.",
+      "example_ko": "휴대폰은 시계를 위성과 완벽하게 동기화할 수 없습니다."
     },
     {
       "word": "discrepancy",
       "meaning": "차이, 불일치",
       "confuse": null,
-      "example": "A fourth signal helps fix the **discrepancy** in time."
+      "example": "A fourth signal helps fix the **discrepancy** in time.",
+      "example_ko": "네 번째 신호가 시간의 오차를 수정하는 데 도움을 줍니다."
     },
     {
       "word": "navigation",
       "meaning": "길 찾기, 항법",
       "confuse": null,
-      "example": "Satellite **navigation** works without the phone sending any signal to space."
+      "example": "Satellite **navigation** works without the phone sending any signal to space.",
+      "example_ko": "위성 항법은 휴대폰이 우주로 신호를 전혀 보내지 않아도 작동합니다."
     }
   ],
   "source": {

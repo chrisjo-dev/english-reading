@@ -221,43 +221,50 @@
       "word": "recede",
       "meaning": "물러나다, 빠지다",
       "confuse": "receive(받다)와 혼동 주의",
-      "example": "The sea slowly **recedes** from the sand at low tide."
+      "example": "The sea slowly **recedes** from the sand at low tide.",
+      "example_ko": "썰물 때 바다가 모래사장에서 천천히 물러납니다."
     },
     {
       "word": "gravitational",
       "meaning": "중력의",
       "confuse": null,
-      "example": "The Moon's **gravitational** pull lifts the ocean."
+      "example": "The Moon's **gravitational** pull lifts the ocean.",
+      "example_ko": "달의 중력이 바다를 끌어올립니다."
     },
     {
       "word": "exert",
       "meaning": "(힘을) 가하다",
       "confuse": "expert(전문가)와 혼동 주의",
-      "example": "The Moon **exerts** a pull on the water closest to it."
+      "example": "The Moon **exerts** a pull on the water closest to it.",
+      "example_ko": "달은 자신에게 가장 가까운 물에 인력을 작용합니다."
     },
     {
       "word": "opposite",
       "meaning": "반대편의",
       "confuse": null,
-      "example": "A second bulge forms on the **opposite** side of the Earth."
+      "example": "A second bulge forms on the **opposite** side of the Earth.",
+      "example_ko": "지구의 반대편에 두 번째 부풀음이 형성됩니다."
     },
     {
       "word": "rotation",
       "meaning": "자전, 회전",
       "confuse": null,
-      "example": "The Earth's **rotation** carries each coast through both bulges."
+      "example": "The Earth's **rotation** carries each coast through both bulges.",
+      "example_ko": "지구의 자전이 각 해안을 두 개의 부풀음을 통해 이동시킵니다."
     },
     {
       "word": "predictable",
       "meaning": "예측할 수 있는",
       "confuse": null,
-      "example": "Tides are so **predictable** that tables can be printed years ahead."
+      "example": "Tides are so **predictable** that tables can be printed years ahead.",
+      "example_ko": "조수는 너무 예측 가능해서 몇 년 앞의 조석표를 미리 인쇄할 수 있습니다."
     },
     {
       "word": "consult",
       "meaning": "참고하다, 찾아보다",
       "confuse": null,
-      "example": "Sailors always **consult** a tide table before they leave."
+      "example": "Sailors always **consult** a tide table before they leave.",
+      "example_ko": "선원들은 출항 전에 항상 조석표를 확인합니다."
     }
   ],
   "source": {

@@ -217,43 +217,50 @@
       "word": "bioluminescence",
       "meaning": "생물 발광",
       "confuse": null,
-      "example": "Fireflies produce light through **bioluminescence**."
+      "example": "Fireflies produce light through **bioluminescence**.",
+      "example_ko": "반딧불이는 생물 발광을 통해 빛을 만들어 냅니다."
     },
     {
       "word": "emit",
       "meaning": "(빛, 열 등을) 내뿜다",
       "confuse": "omit(빠뜨리다)와 혼동 주의",
-      "example": "Fireflies **emit** light with almost no heat."
+      "example": "Fireflies **emit** light with almost no heat.",
+      "example_ko": "반딧불이는 열을 거의 내지 않고 빛을 방출합니다."
     },
     {
       "word": "efficient",
       "meaning": "효율적인",
       "confuse": "effective(효과적인)와 혼동 주의",
-      "example": "Firefly light is far more **efficient** than a light bulb."
+      "example": "Firefly light is far more **efficient** than a light bulb.",
+      "example_ko": "반딧불이의 빛은 전구보다 훨씬 효율적입니다."
     },
     {
       "word": "distinctive",
       "meaning": "독특한, 특유의",
       "confuse": null,
-      "example": "Each species has a **distinctive** flash pattern."
+      "example": "Each species has a **distinctive** flash pattern.",
+      "example_ko": "종마다 고유한 깜박임 패턴을 가지고 있습니다."
     },
     {
       "word": "mate",
       "meaning": "짝, 짝짓기하다",
       "confuse": null,
-      "example": "Fireflies flash to attract a **mate**."
+      "example": "Fireflies flash to attract a **mate**.",
+      "example_ko": "반딧불이는 짝을 유인하기 위해 빛을 깜박입니다."
     },
     {
       "word": "respond",
       "meaning": "응답하다",
       "confuse": null,
-      "example": "Females **respond** to males with flashes of their own."
+      "example": "Females **respond** to males with flashes of their own.",
+      "example_ko": "암컷은 수컷에게 자신만의 빛 깜박임으로 반응합니다."
     },
     {
       "word": "disrupt",
       "meaning": "방해하다, 혼란시키다",
       "confuse": null,
-      "example": "Bright city lights can **disrupt** their signals."
+      "example": "Bright city lights can **disrupt** their signals.",
+      "example_ko": "밝은 도시 불빛이 반딧불이의 신호를 방해할 수 있습니다."
     }
   ],
   "source": null,

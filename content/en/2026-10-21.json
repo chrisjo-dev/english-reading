@@ -34,13 +34,13 @@
     "99세이며 지금도 변호사로 사건을 맡고 있는 프랜시스 디멘토는 간단한 조언을 건넸다. 일방통행 길에서도 양쪽을 살피고, 우유를 많이 마시라는 것이었다."
   ],
   "advanced": [
-    {"word": "centenarian", "meaning": "100세 이상인 사람", "confuse": "centennial(100주년)과 혼동 주의", "example": "The town honored five **centenarians** at the party."},
-    {"word": "commemorate", "meaning": "기념하다", "confuse": null, "example": "The senior center held a party to **commemorate** a century of life."},
-    {"word": "revive", "meaning": "되살리다, 부활시키다", "confuse": "review(검토하다)와 혼동 주의", "example": "The event **revived** a tradition that began in 1909."},
-    {"word": "replica", "meaning": "복제품, 모형", "confuse": "reply(대답)와 혼동 주의", "example": "A **replica** of the gold-topped cane was passed around the room."},
-    {"word": "honoree", "meaning": "(행사에서) 영예를 받는 사람", "confuse": null, "example": "Each **honoree** who came received a certificate."},
-    {"word": "longevity", "meaning": "장수, 오래 삶", "confuse": null, "example": "The party celebrated the **longevity** of the town's oldest residents."},
-    {"word": "identify", "meaning": "(누구인지) 확인하다, 알아내다", "confuse": null, "example": "The town has not yet **identified** its oldest resident."}
+    {"word": "centenarian", "meaning": "100세 이상인 사람", "confuse": "centennial(100주년)과 혼동 주의", "example": "The town honored five **centenarians** at the party.", "example_ko": "마을은 파티에서 백세 노인 다섯 명을 기렸습니다."},
+    {"word": "commemorate", "meaning": "기념하다", "confuse": null, "example": "The senior center held a party to **commemorate** a century of life.", "example_ko": "노인 센터가 100년의 삶을 기념하기 위한 파티를 열었습니다."},
+    {"word": "revive", "meaning": "되살리다, 부활시키다", "confuse": "review(검토하다)와 혼동 주의", "example": "The event **revived** a tradition that began in 1909.", "example_ko": "이 행사는 1909년에 시작된 전통을 되살렸습니다."},
+    {"word": "replica", "meaning": "복제품, 모형", "confuse": "reply(대답)와 혼동 주의", "example": "A **replica** of the gold-topped cane was passed around the room.", "example_ko": "금으로 장식된 지팡이 복제품이 방 안에서 돌려졌습니다."},
+    {"word": "honoree", "meaning": "(행사에서) 영예를 받는 사람", "confuse": null, "example": "Each **honoree** who came received a certificate.", "example_ko": "참석한 수상자 한 명 한 명에게 증서가 수여되었습니다."},
+    {"word": "longevity", "meaning": "장수, 오래 삶", "confuse": null, "example": "The party celebrated the **longevity** of the town's oldest residents.", "example_ko": "파티는 마을에서 가장 오래 산 주민들의 장수를 축하했습니다."},
+    {"word": "identify", "meaning": "(누구인지) 확인하다, 알아내다", "confuse": null, "example": "The town has not yet **identified** its oldest resident.", "example_ko": "마을은 아직 가장 나이 든 주민을 공식적으로 확인하지 못했습니다."}
   ],
   "source": {"title": "Brookline celebrates its centenarians at 'Party of a Century' (Boston.com, 2026-10-20)", "url": "https://www.boston.com/community/events/2026/10/20/brookline-celebrates-its-centenarians-at-party-of-a-century/"}
 }

@@ -209,43 +209,50 @@
       "word": "accumulate",
       "meaning": "축적되다, 쌓이다",
       "confuse": null,
-      "example": "Adenosine **accumulates** in the brain while we are awake."
+      "example": "Adenosine **accumulates** in the brain while we are awake.",
+      "example_ko": "아데노신은 우리가 깨어 있는 동안 뇌에 축적됩니다."
     },
     {
       "word": "alertness",
       "meaning": "각성 상태, 기민함",
       "confuse": null,
-      "example": "Caffeine increases **alertness** for a few hours."
+      "example": "Caffeine increases **alertness** for a few hours.",
+      "example_ko": "카페인은 몇 시간 동안 각성 상태를 높입니다."
     },
     {
       "word": "mimic",
       "meaning": "흉내 내다, 모방하다",
       "confuse": null,
-      "example": "Caffeine **mimics** the shape of adenosine."
+      "example": "Caffeine **mimics** the shape of adenosine.",
+      "example_ko": "카페인은 아데노신의 형태를 모방합니다."
     },
     {
       "word": "receptor",
       "meaning": "수용체",
       "confuse": "reception(접수, 환영)과 혼동 주의",
-      "example": "Caffeine sits in the brain's adenosine **receptors**."
+      "example": "Caffeine sits in the brain's adenosine **receptors**.",
+      "example_ko": "카페인이 뇌의 아데노신 수용체 자리를 차지합니다."
     },
     {
       "word": "temporarily",
       "meaning": "일시적으로",
       "confuse": null,
-      "example": "Caffeine only **temporarily** hides tiredness."
+      "example": "Caffeine only **temporarily** hides tiredness.",
+      "example_ko": "카페인은 피로감을 일시적으로 가릴 뿐입니다."
     },
     {
       "word": "linger",
       "meaning": "오래 남아 있다",
       "confuse": null,
-      "example": "Caffeine can **linger** in the body until bedtime."
+      "example": "Caffeine can **linger** in the body until bedtime.",
+      "example_ko": "카페인은 취침 시간까지 몸 안에 남아 있을 수 있습니다."
     },
     {
       "word": "insomnia",
       "meaning": "불면증",
       "confuse": null,
-      "example": "A late coffee can lead to a night of **insomnia**."
+      "example": "A late coffee can lead to a night of **insomnia**.",
+      "example_ko": "늦은 커피는 밤새 불면증으로 이어질 수 있습니다."
     }
   ],
   "source": null,

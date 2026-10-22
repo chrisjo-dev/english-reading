@@ -213,43 +213,50 @@
       "word": "launch",
       "meaning": "발사, 발사하다",
       "confuse": null,
-      "example": "Every rocket **launch** burns a huge amount of fuel."
+      "example": "Every rocket **launch** burns a huge amount of fuel.",
+      "example_ko": "모든 로켓 발사에는 엄청난 양의 연료가 소모됩니다."
     },
     {
       "word": "tether",
       "meaning": "밧줄, 연결 줄",
       "confuse": null,
-      "example": "A space elevator would use a very long **tether**."
+      "example": "A space elevator would use a very long **tether**.",
+      "example_ko": "우주 엘리베이터는 매우 긴 밧줄을 사용할 것입니다."
     },
     {
       "word": "counterweight",
       "meaning": "평형추",
       "confuse": null,
-      "example": "A **counterweight** at the far end keeps the cable tight."
+      "example": "A **counterweight** at the far end keeps the cable tight.",
+      "example_ko": "반대편 끝의 균형추가 케이블을 팽팽하게 유지합니다."
     },
     {
       "word": "ascend",
       "meaning": "올라가다",
       "confuse": "assent(동의하다)와 혼동 주의",
-      "example": "Climbers would **ascend** the cable without rockets."
+      "example": "Climbers would **ascend** the cable without rockets.",
+      "example_ko": "탑승자들은 로켓 없이 케이블을 타고 올라갈 것입니다."
     },
     {
       "word": "durable",
       "meaning": "튼튼한, 오래가는",
       "confuse": null,
-      "example": "The cable must be both **durable** and light."
+      "example": "The cable must be both **durable** and light.",
+      "example_ko": "케이블은 내구성이 강하면서도 가벼워야 합니다."
     },
     {
       "word": "feasible",
       "meaning": "실현 가능한",
       "confuse": null,
-      "example": "The idea is not yet **feasible** with today's materials."
+      "example": "The idea is not yet **feasible** with today's materials.",
+      "example_ko": "이 아이디어는 오늘날의 재료로는 아직 실현 가능하지 않습니다."
     },
     {
       "word": "ambitious",
       "meaning": "야심 찬",
       "confuse": null,
-      "example": "The space elevator is one of the most **ambitious** ideas in engineering."
+      "example": "The space elevator is one of the most **ambitious** ideas in engineering.",
+      "example_ko": "우주 엘리베이터는 공학 분야에서 가장 야심 찬 아이디어 중 하나입니다."
     }
   ],
   "source": null,

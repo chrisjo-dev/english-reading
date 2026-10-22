@@ -32,13 +32,13 @@
     "이 유성우의 모혜성인 21P/자코비니-치너는 2018년에 태양계 안쪽을 마지막으로 지나갔으며, 지구는 그 혜성이 남긴 먼지 궤적을 매년 가로지른다."
   ],
   "advanced": [
-    {"word": "debris", "meaning": "부스러기, 잔해", "confuse": null, "example": "Meteors are produced when Earth passes through a stream of **debris** left by a comet."},
-    {"word": "radiant", "meaning": "복사점 (유성이 날아오는 것처럼 보이는 하늘의 지점)", "confuse": "radiant(빛나는, 형용사)와 혼동 주의", "example": "The shower's **radiant** lies in the constellation Draco, giving it its name."},
-    {"word": "orbit", "meaning": "궤도, 궤도를 돌다", "confuse": null, "example": "The comet follows an **orbit** that brings it close to the sun every six and a half years."},
-    {"word": "periodic", "meaning": "주기적인, 정기적인", "confuse": "periodical(정기 간행물)과 혼동 주의", "example": "The Draconids are a **periodic** shower that returns every October."},
-    {"word": "celestial", "meaning": "천체의, 하늘의", "confuse": "terrestrial(지구의, 육지의)와 혼동 주의", "example": "Comets and meteor showers are among the most visible **celestial** events."},
-    {"word": "vaporise", "meaning": "기화하다, 증발하다", "confuse": null, "example": "Most particles **vaporise** completely in the upper atmosphere before reaching the ground."},
-    {"word": "phenomenon", "meaning": "현상 (복수: phenomena)", "confuse": "phenomena는 복수형이므로 a phenomena는 틀림", "example": "A meteor shower is a natural **phenomenon** that occurs when Earth crosses a dust trail."}
+    {"word": "debris", "meaning": "부스러기, 잔해", "confuse": null, "example": "Meteors are produced when Earth passes through a stream of **debris** left by a comet.", "example_ko": "지구가 혜성이 남긴 잔해 흐름을 통과할 때 유성이 만들어집니다."},
+    {"word": "radiant", "meaning": "복사점 (유성이 날아오는 것처럼 보이는 하늘의 지점)", "confuse": "radiant(빛나는, 형용사)와 혼동 주의", "example": "The shower's **radiant** lies in the constellation Draco, giving it its name.", "example_ko": "유성우의 복사점이 용자리에 있어 그 이름이 붙었습니다."},
+    {"word": "orbit", "meaning": "궤도, 궤도를 돌다", "confuse": null, "example": "The comet follows an **orbit** that brings it close to the sun every six and a half years.", "example_ko": "그 혜성은 6년 반마다 태양 가까이 다가오는 궤도를 돕니다."},
+    {"word": "periodic", "meaning": "주기적인, 정기적인", "confuse": "periodical(정기 간행물)과 혼동 주의", "example": "The Draconids are a **periodic** shower that returns every October.", "example_ko": "드라코니즈는 매년 10월에 돌아오는 주기적인 유성우입니다."},
+    {"word": "celestial", "meaning": "천체의, 하늘의", "confuse": "terrestrial(지구의, 육지의)와 혼동 주의", "example": "Comets and meteor showers are among the most visible **celestial** events.", "example_ko": "혜성과 유성우는 가장 눈에 잘 띄는 천문 현상 중 하나입니다."},
+    {"word": "vaporise", "meaning": "기화하다, 증발하다", "confuse": null, "example": "Most particles **vaporise** completely in the upper atmosphere before reaching the ground.", "example_ko": "대부분의 입자는 땅에 닿기 전에 상층 대기에서 완전히 증발합니다."},
+    {"word": "phenomenon", "meaning": "현상 (복수: phenomena)", "confuse": "phenomena는 복수형이므로 a phenomena는 틀림", "example": "A meteor shower is a natural **phenomenon** that occurs when Earth crosses a dust trail.", "example_ko": "유성우는 지구가 먼지 흔적을 가로질러 지날 때 일어나는 자연 현상입니다."}
   ],
   "source": {"title": "Draconid Meteor Shower 2026 (Farmers' Almanac, 2026-10-06)", "url": "https://www.farmersalmanac.com/?p=441378"}
 }

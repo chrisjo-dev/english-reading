@@ -197,43 +197,50 @@
       "word": "rotate",
       "meaning": "자전하다, 회전하다",
       "confuse": null,
-      "example": "The Moon **rotates** once for each trip around the Earth."
+      "example": "The Moon **rotates** once for each trip around the Earth.",
+      "example_ko": "달은 지구를 한 바퀴 돌 때마다 한 번 자전합니다."
     },
     {
       "word": "orbit",
       "meaning": "궤도를 돌다, 궤도",
       "confuse": null,
-      "example": "The Moon **orbits** the Earth in the same time it takes to spin once."
+      "example": "The Moon **orbits** the Earth in the same time it takes to spin once.",
+      "example_ko": "달은 한 번 자전하는 시간과 같은 시간 동안 지구를 공전합니다."
     },
     {
       "word": "synchronized",
       "meaning": "동기화된, 시간이 맞춰진",
       "confuse": null,
-      "example": "The Moon's spin and its orbit are **synchronized**."
+      "example": "The Moon's spin and its orbit are **synchronized**.",
+      "example_ko": "달의 자전과 공전은 동기화되어 있습니다."
     },
     {
       "word": "gradually",
       "meaning": "점차, 서서히",
       "confuse": null,
-      "example": "Earth's gravity **gradually** slowed the Moon's spin."
+      "example": "Earth's gravity **gradually** slowed the Moon's spin.",
+      "example_ko": "지구의 중력이 달의 자전을 서서히 느리게 했습니다."
     },
     {
       "word": "misconception",
       "meaning": "오해, 잘못된 생각",
       "confuse": null,
-      "example": "The dark side is a common **misconception**."
+      "example": "The dark side is a common **misconception**.",
+      "example_ko": "어두운 면이라는 표현은 흔한 오해에서 비롯된 것입니다."
     },
     {
       "word": "illuminated",
       "meaning": "빛을 받는, 밝혀진",
       "confuse": "eliminated(제거된)와 혼동 주의",
-      "example": "The far side is **illuminated** by the sun as often as the near side."
+      "example": "The far side is **illuminated** by the sun as often as the near side.",
+      "example_ko": "달의 뒤편은 앞면만큼 자주 태양 빛을 받습니다."
     },
     {
       "word": "far side",
       "meaning": "(달의) 뒷면",
       "confuse": null,
-      "example": "A spacecraft took the first photos of the **far side**."
+      "example": "A spacecraft took the first photos of the **far side**.",
+      "example_ko": "우주선이 달의 뒤편을 처음으로 촬영했습니다."
     }
   ],
   "source": null,

@@ -35,14 +35,14 @@
     "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다."
   ],
   "advanced": [
-    {"word": "conventional", "meaning": "기존의, 일반적인", "confuse": "convenient(편리한)와 혼동 주의", "example": "A **conventional** antenna is a piece of metal."},
-    {"word": "transmit", "meaning": "송신하다, 전송하다", "confuse": null, "example": "The plasma line **transmits** radio signals into the air."},
-    {"word": "emit", "meaning": "(빛, 전파 등을) 내뿜다, 방출하다", "confuse": "omit(빠뜨리다)와 혼동 주의", "example": "The plasma **emits** radio waves when a signal is sent into the ring."},
-    {"word": "frequency", "meaning": "주파수, 빈도", "confuse": null, "example": "The antenna works at a **frequency** of thirty million waves a second."},
-    {"word": "tunable", "meaning": "조절 가능한", "confuse": null, "example": "The length of the antenna is **tunable** with the laser's settings."},
-    {"word": "mechanical", "meaning": "기계적인, 기계로 된", "confuse": null, "example": "It has no **mechanical** parts that need to move."},
-    {"word": "deploy", "meaning": "(장비를) 펼치다, 배치하다", "confuse": null, "example": "Satellites would not need to **deploy** large metal antennas in space."},
-    {"word": "capability", "meaning": "능력, 기능", "confuse": "capacity(용량, 수용력)와 혼동 주의", "example": "The device does not yet have the **capability** to receive signals."}
+    {"word": "conventional", "meaning": "기존의, 일반적인", "confuse": "convenient(편리한)와 혼동 주의", "example": "A **conventional** antenna is a piece of metal.", "example_ko": "기존 안테나는 금속 조각입니다."},
+    {"word": "transmit", "meaning": "송신하다, 전송하다", "confuse": null, "example": "The plasma line **transmits** radio signals into the air.", "example_ko": "플라즈마 라인이 무선 신호를 공중으로 전송합니다."},
+    {"word": "emit", "meaning": "(빛, 전파 등을) 내뿜다, 방출하다", "confuse": "omit(빠뜨리다)와 혼동 주의", "example": "The plasma **emits** radio waves when a signal is sent into the ring.", "example_ko": "신호가 고리 안으로 들어오면 플라즈마가 전파를 방출합니다."},
+    {"word": "frequency", "meaning": "주파수, 빈도", "confuse": null, "example": "The antenna works at a **frequency** of thirty million waves a second.", "example_ko": "이 안테나는 초당 3000만 개의 파동 주파수에서 작동합니다."},
+    {"word": "tunable", "meaning": "조절 가능한", "confuse": null, "example": "The length of the antenna is **tunable** with the laser's settings.", "example_ko": "안테나의 길이는 레이저 설정으로 조절할 수 있습니다."},
+    {"word": "mechanical", "meaning": "기계적인, 기계로 된", "confuse": null, "example": "It has no **mechanical** parts that need to move.", "example_ko": "움직여야 할 기계적인 부품이 없습니다."},
+    {"word": "deploy", "meaning": "(장비를) 펼치다, 배치하다", "confuse": null, "example": "Satellites would not need to **deploy** large metal antennas in space.", "example_ko": "위성들이 우주에서 큰 금속 안테나를 펼칠 필요가 없어질 것입니다."},
+    {"word": "capability", "meaning": "능력, 기능", "confuse": "capacity(용량, 수용력)와 혼동 주의", "example": "The device does not yet have the **capability** to receive signals.", "example_ko": "이 장치는 아직 신호를 수신하는 능력을 갖추지 못했습니다."}
   ],
   "source": {"title": "Scientists create a lightsaber-like laser antenna that transmits radio waves (ScienceDaily, 2026-10-09)", "url": "https://www.sciencedaily.com/releases/2026/10/261008005239.htm"}
 }

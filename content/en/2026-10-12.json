@@ -120,49 +120,57 @@
       "word": "precise",
       "meaning": "정밀한, 정확한",
       "confuse": "precious(소중한)와 혼동 주의",
-      "example": "The most **precise** clocks in the world work in a very different way."
+      "example": "The most **precise** clocks in the world work in a very different way.",
+      "example_ko": "세계에서 가장 정밀한 시계들은 전혀 다른 방식으로 작동합니다."
     },
     {
       "word": "unveil",
       "meaning": "(처음으로) 공개하다",
       "confuse": null,
-      "example": "Scientists in Vienna **unveiled** a new kind of clock earlier this month."
+      "example": "Scientists in Vienna **unveiled** a new kind of clock earlier this month.",
+      "example_ko": "빈의 과학자들이 이달 초 새로운 종류의 시계를 공개했습니다."
     },
     {
       "word": "harness",
       "meaning": "(자연의 힘 등을) 활용하다",
       "confuse": null,
-      "example": "The clock **harnesses** the nucleus of an atom to keep time."
+      "example": "The clock **harnesses** the nucleus of an atom to keep time.",
+      "example_ko": "이 시계는 원자의 핵을 이용해 시간을 맞춥니다."
     },
     {
       "word": "self-correcting",
       "meaning": "스스로 바로잡는",
       "confuse": null,
-      "example": "It is a **self-correcting** clock that fixes its own laser."
+      "example": "It is a **self-correcting** clock that fixes its own laser.",
+      "example_ko": "이것은 레이저를 스스로 교정하는 자동 수정 시계입니다."
     },
     {
       "word": "adjust",
       "meaning": "조정하다, 맞추다",
       "confuse": "adapt(적응하다)와 혼동 주의",
-      "example": "The clock **adjusts** the laser when it goes off track."
+      "example": "The clock **adjusts** the laser when it goes off track.",
+      "example_ko": "시계는 레이저가 틀어질 때 스스로 조정합니다."
     },
     {
       "word": "continuously",
       "meaning": "끊임없이, 계속해서",
       "confuse": null,
-      "example": "The clock ran **continuously** for more than 24 hours."
+      "example": "The clock ran **continuously** for more than 24 hours.",
+      "example_ko": "시계는 24시간 이상 중단 없이 작동했습니다."
     },
     {
       "word": "deviate",
       "meaning": "(기준에서) 벗어나다",
       "confuse": null,
-      "example": "It would **deviate** by only about one second in thirty million years."
+      "example": "It would **deviate** by only about one second in thirty million years.",
+      "example_ko": "이 시계는 3000만 년에 약 1초만 오차가 생길 것입니다."
     },
     {
       "word": "refine",
       "meaning": "개선하다, 다듬다",
       "confuse": "define(정의하다)와 혼동 주의",
-      "example": "The researchers plan to **refine** the clock with stronger lasers and better crystals."
+      "example": "The researchers plan to **refine** the clock with stronger lasers and better crystals.",
+      "example_ko": "연구자들은 더 강한 레이저와 더 좋은 결정체로 시계를 개선할 계획입니다."
     }
   ],
   "source": {

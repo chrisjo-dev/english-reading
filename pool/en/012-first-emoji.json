@@ -209,43 +209,50 @@
       "word": "originate",
       "meaning": "비롯되다, 시작되다",
       "confuse": null,
-      "example": "Emoji **originated** on Japanese mobile phones."
+      "example": "Emoji **originated** on Japanese mobile phones.",
+      "example_ko": "이모지는 일본 휴대전화에서 시작되었습니다."
     },
     {
       "word": "depict",
       "meaning": "묘사하다, 그리다",
       "confuse": null,
-      "example": "Each emoji **depicts** weather, food, or a feeling."
+      "example": "Each emoji **depicts** weather, food, or a feeling.",
+      "example_ko": "각 이모지는 날씨, 음식, 또는 감정을 나타냅니다."
     },
     {
       "word": "minimal",
       "meaning": "최소한의, 아주 적은",
       "confuse": "minimum(최소, 명사)과 품사를 구분",
-      "example": "The designer worked with a **minimal** number of pixels."
+      "example": "The designer worked with a **minimal** number of pixels.",
+      "example_ko": "디자이너는 최소한의 픽셀로 작업했습니다."
     },
     {
       "word": "convey",
       "meaning": "전달하다",
       "confuse": "convoy(호송대)와 혼동 주의",
-      "example": "A tiny picture can **convey** a feeling at a glance."
+      "example": "A tiny picture can **convey** a feeling at a glance.",
+      "example_ko": "작은 그림 하나가 한눈에 감정을 전달할 수 있습니다."
     },
     {
       "word": "acquire",
       "meaning": "얻다, 취득하다",
       "confuse": "inquire(묻다)와 혼동 주의",
-      "example": "The museum **acquired** the original set."
+      "example": "The museum **acquired** the original set.",
+      "example_ko": "박물관이 원본 세트를 수집했습니다."
     },
     {
       "word": "iconic",
       "meaning": "상징적인",
       "confuse": null,
-      "example": "The first emoji are now **iconic** pieces of design."
+      "example": "The first emoji are now **iconic** pieces of design.",
+      "example_ko": "최초의 이모지들은 이제 상징적인 디자인 작품이 되었습니다."
     },
     {
       "word": "pioneering",
       "meaning": "선구적인",
       "confuse": null,
-      "example": "Kurita's **pioneering** work changed how we text."
+      "example": "Kurita's **pioneering** work changed how we text.",
+      "example_ko": "구리타의 선구적인 작업이 우리가 문자를 보내는 방식을 바꾸었습니다."
     }
   ],
   "source": {

@@ -35,13 +35,13 @@
     "고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다."
   ],
   "advanced": [
-    {"word": "chromosome", "meaning": "염색체", "confuse": null, "example": "Long ago, pieces of these animals' **chromosomes** were reshuffled and brought distant genes together."},
-    {"word": "regulate", "meaning": "조절하다", "confuse": "regular(규칙적인)와 혼동 주의", "example": "DNA loops help **regulate** which genes turn on, and when."},
-    {"word": "evolve", "meaning": "진화하다, 서서히 발달하다", "confuse": "involve(포함하다)와 혼동 주의", "example": "Octopuses may have **evolved** complex brains partly by changing how their DNA folds."},
-    {"word": "conserved", "meaning": "(진화 과정에서) 보존된, 변하지 않고 유지된", "confuse": "conservative(보수적인)와 혼동 주의", "example": "The large folded regions were **conserved** across the three species, but the small loops were not."},
-    {"word": "embryonic", "meaning": "배아의, 초기 단계의", "confuse": null, "example": "Removing a short piece of DNA slowed **embryonic** development in all twenty-five squid."},
-    {"word": "cognition", "meaning": "인지, 사고 능력", "confuse": "recognition(인식, 알아봄)과 혼동 주의", "example": "Octopuses are famous for their advanced **cognition**, such as solving puzzles."},
-    {"word": "plausible", "meaning": "그럴듯한, 타당해 보이는", "confuse": "possible(가능한)과 뉘앙스 구분", "example": "The study offers a **plausible** explanation, but it does not prove that DNA folding alone made octopuses smart."}
+    {"word": "chromosome", "meaning": "염색체", "confuse": null, "example": "Long ago, pieces of these animals' **chromosomes** were reshuffled and brought distant genes together.", "example_ko": "오래전에 이 동물들의 염색체 일부가 재배열되어 멀리 떨어진 유전자들이 한데 모이게 되었습니다."},
+    {"word": "regulate", "meaning": "조절하다", "confuse": "regular(규칙적인)와 혼동 주의", "example": "DNA loops help **regulate** which genes turn on, and when.", "example_ko": "DNA 고리는 어떤 유전자가 언제 활성화되는지를 조절하는 데 도움을 줍니다."},
+    {"word": "evolve", "meaning": "진화하다, 서서히 발달하다", "confuse": "involve(포함하다)와 혼동 주의", "example": "Octopuses may have **evolved** complex brains partly by changing how their DNA folds.", "example_ko": "문어는 DNA가 접히는 방식을 바꿈으로써 부분적으로 복잡한 뇌를 진화시켰을지도 모릅니다."},
+    {"word": "conserved", "meaning": "(진화 과정에서) 보존된, 변하지 않고 유지된", "confuse": "conservative(보수적인)와 혼동 주의", "example": "The large folded regions were **conserved** across the three species, but the small loops were not.", "example_ko": "세 종에서 크게 접힌 부분은 보존되었지만 작은 고리들은 그렇지 않았습니다."},
+    {"word": "embryonic", "meaning": "배아의, 초기 단계의", "confuse": null, "example": "Removing a short piece of DNA slowed **embryonic** development in all twenty-five squid.", "example_ko": "짧은 DNA 조각을 제거하자 오징어 25마리 모두에서 배아 발달이 느려졌습니다."},
+    {"word": "cognition", "meaning": "인지, 사고 능력", "confuse": "recognition(인식, 알아봄)과 혼동 주의", "example": "Octopuses are famous for their advanced **cognition**, such as solving puzzles.", "example_ko": "문어는 퍼즐 풀기 같은 고도의 인지 능력으로 유명합니다."},
+    {"word": "plausible", "meaning": "그럴듯한, 타당해 보이는", "confuse": "possible(가능한)과 뉘앙스 구분", "example": "The study offers a **plausible** explanation, but it does not prove that DNA folding alone made octopuses smart.", "example_ko": "이 연구는 그럴듯한 설명을 제시하지만, DNA 접힘만이 문어를 영리하게 만들었다는 것을 증명하지는 않습니다."}
   ],
   "source": {"title": "New DNA findings may explain how octopuses evolved complex brains (The Brighter Side of News, 2026-10-13)", "url": "https://www.thebrighterside.news/post/new-dna-findings-may-explain-how-octopuses-evolved-complex-brains/"}
 }

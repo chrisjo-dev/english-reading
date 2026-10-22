@@ -35,13 +35,13 @@
     "관중에게는 시간과 정성이 보통 품에 안기는 과일을 혼자서는 절대 들 수 없는 것으로 얼마나 바꿔 놓을 수 있는지 볼 수 있는 드문 기회였습니다."
   ],
   "advanced": [
-    {"word": "spectator", "meaning": "관중, 구경꾼", "confuse": "speculator(투기꾼)와 혼동 주의", "example": "Hundreds of **spectators** watched each pumpkin go on the scale."},
-    {"word": "cultivate", "meaning": "(작물을) 기르다, 재배하다", "confuse": null, "example": "It takes months to **cultivate** a pumpkin of that size."},
-    {"word": "enormous", "meaning": "엄청나게 큰", "confuse": "enormity(심각성)와 혼동 주의", "example": "The winning pumpkin was so **enormous** that no one could lift it alone."},
-    {"word": "compete", "meaning": "겨루다, 경쟁하다", "confuse": "complete(완성하다)와 혼동 주의", "example": "Growers from Europe also came to **compete** for cash prizes."},
-    {"word": "annual", "meaning": "해마다 열리는, 연례의", "confuse": "annul(무효로 하다)과 혼동 주의", "example": "The **annual** weigh-off is now in its 53rd year."},
-    {"word": "devoted", "meaning": "헌신적인, 열성적인", "confuse": null, "example": "Only **devoted** growers can raise a pumpkin as heavy as a small car."},
-    {"word": "triumph", "meaning": "승리, 큰 성공", "confuse": null, "example": "The weigh-off ended in **triumph** for a grower from Minnesota."}
+    {"word": "spectator", "meaning": "관중, 구경꾼", "confuse": "speculator(투기꾼)와 혼동 주의", "example": "Hundreds of **spectators** watched each pumpkin go on the scale.", "example_ko": "수백 명의 구경꾼들이 호박이 하나씩 저울에 올라가는 것을 지켜봤습니다."},
+    {"word": "cultivate", "meaning": "(작물을) 기르다, 재배하다", "confuse": null, "example": "It takes months to **cultivate** a pumpkin of that size.", "example_ko": "그 크기의 호박을 키우는 데는 몇 달이 걸립니다."},
+    {"word": "enormous", "meaning": "엄청나게 큰", "confuse": "enormity(심각성)와 혼동 주의", "example": "The winning pumpkin was so **enormous** that no one could lift it alone.", "example_ko": "우승 호박은 너무 커서 혼자서는 아무도 들 수 없었습니다."},
+    {"word": "compete", "meaning": "겨루다, 경쟁하다", "confuse": "complete(완성하다)와 혼동 주의", "example": "Growers from Europe also came to **compete** for cash prizes.", "example_ko": "유럽에서 온 재배자들도 현금 상금을 놓고 경쟁하러 왔습니다."},
+    {"word": "annual", "meaning": "해마다 열리는, 연례의", "confuse": "annul(무효로 하다)과 혼동 주의", "example": "The **annual** weigh-off is now in its 53rd year.", "example_ko": "이 연례 무게 측정 대회는 올해로 53주년을 맞이했습니다."},
+    {"word": "devoted", "meaning": "헌신적인, 열성적인", "confuse": null, "example": "Only **devoted** growers can raise a pumpkin as heavy as a small car.", "example_ko": "헌신적인 재배자만이 소형차만큼 무거운 호박을 키울 수 있습니다."},
+    {"word": "triumph", "meaning": "승리, 큰 성공", "confuse": null, "example": "The weigh-off ended in **triumph** for a grower from Minnesota.", "example_ko": "무게 측정 대회는 미네소타 출신 재배자의 승리로 막을 내렸습니다."}
   ],
   "source": {"title": "Giants take the stage at Half Moon Bay's 'Super Bowl' of pumpkin weigh-offs (Local News Matters, 2026-10-13)", "url": "https://localnewsmatters.org/2026/10/13/half-moon-bay-pumpkin-weigh-off/"}
 }

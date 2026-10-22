@@ -32,13 +32,13 @@
     "수상작은 12월 8일에 발표될 예정이며, 그 전까지는 최종 후보작만 알 수 있는데, 그 중에는 브라질 판타날 습지에서 떠다니는 수초를 머리에 얹은 카이만 악어도 있다."
   ],
   "advanced": [
-    {"word": "submit", "meaning": "제출하다, 출품하다", "confuse": null, "example": "Over ten thousand photographers **submitted** their best animal shots to the competition."},
-    {"word": "capture", "meaning": "(장면을) 담다, 포착하다", "confuse": "catch(잡다)와 뉘앙스 차이: capture는 순간, 본질을 담는 것", "example": "She **captured** the exact moment the bear stood on its hind legs."},
-    {"word": "conservation", "meaning": "보전, 자연 보호", "confuse": "preservation(보존, 옛것을 그대로 유지)과 혼동 주의", "example": "Wildlife **conservation** depends on people caring about the animals they see."},
-    {"word": "empathy", "meaning": "공감, 감정이입", "confuse": "sympathy(동정, 안타까움)와 혼동 주의: empathy는 직접 느끼는 것", "example": "Funny photographs can build **empathy** by showing animals as curious and playful."},
-    {"word": "shortlist", "meaning": "최종 후보 명단에 올리다, 결선에 올리다", "confuse": null, "example": "Twelve images were **shortlisted** from more than ten thousand entries."},
-    {"word": "candid", "meaning": "꾸미지 않은, 솔직한 (사진에서: 연출 없이 자연스럽게 찍은)", "confuse": "candidate(후보)와 철자 혼동 주의", "example": "The best comedy wildlife shots are **candid** — the animals do not know they are being photographed."},
-    {"word": "finalist", "meaning": "최종 후보자[작]", "confuse": null, "example": "Each **finalist** is displayed on the competition website before the winners are announced."}
+    {"word": "submit", "meaning": "제출하다, 출품하다", "confuse": null, "example": "Over ten thousand photographers **submitted** their best animal shots to the competition.", "example_ko": "1만 명 이상의 사진가들이 최고의 동물 사진을 대회에 출품했습니다."},
+    {"word": "capture", "meaning": "(장면을) 담다, 포착하다", "confuse": "catch(잡다)와 뉘앙스 차이: capture는 순간, 본질을 담는 것", "example": "She **captured** the exact moment the bear stood on its hind legs.", "example_ko": "그녀는 곰이 뒷다리로 선 바로 그 순간을 포착했습니다."},
+    {"word": "conservation", "meaning": "보전, 자연 보호", "confuse": "preservation(보존, 옛것을 그대로 유지)과 혼동 주의", "example": "Wildlife **conservation** depends on people caring about the animals they see.", "example_ko": "야생 동물 보호는 사람들이 눈앞의 동물을 소중히 여기는 마음에 달려 있습니다."},
+    {"word": "empathy", "meaning": "공감, 감정이입", "confuse": "sympathy(동정, 안타까움)와 혼동 주의: empathy는 직접 느끼는 것", "example": "Funny photographs can build **empathy** by showing animals as curious and playful.", "example_ko": "재미있는 사진은 동물을 호기심 많고 장난기 넘치는 존재로 보여 줌으로써 공감을 이끌어 낼 수 있습니다."},
+    {"word": "shortlist", "meaning": "최종 후보 명단에 올리다, 결선에 올리다", "confuse": null, "example": "Twelve images were **shortlisted** from more than ten thousand entries.", "example_ko": "1만 건 이상의 응모작 중 12점이 최종 후보에 올랐습니다."},
+    {"word": "candid", "meaning": "꾸미지 않은, 솔직한 (사진에서: 연출 없이 자연스럽게 찍은)", "confuse": "candidate(후보)와 철자 혼동 주의", "example": "The best comedy wildlife shots are **candid** — the animals do not know they are being photographed.", "example_ko": "최고의 코미디 야생 사진은 솔직한 순간을 담은 것으로, 동물들은 자신이 찍히는 줄 모릅니다."},
+    {"word": "finalist", "meaning": "최종 후보자[작]", "confuse": null, "example": "Each **finalist** is displayed on the competition website before the winners are announced.", "example_ko": "수상자 발표 전에 최종 후보작이 대회 웹사이트에 전시됩니다."}
   ],
   "source": {"title": "Nikon Comedy Wildlife Photography Awards 2026 – the funniest finalists (Discover Wildlife, 2026-10-06)", "url": "https://www.discoverwildlife.com/photography/nikon-comedy-wildlife-photography-awards-finalists-2026"}
 }

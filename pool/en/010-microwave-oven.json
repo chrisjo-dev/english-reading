@@ -217,43 +217,50 @@
       "word": "accidentally",
       "meaning": "우연히, 뜻하지 않게",
       "confuse": null,
-      "example": "Spencer **accidentally** discovered microwave cooking."
+      "example": "Spencer **accidentally** discovered microwave cooking.",
+      "example_ko": "스펜서는 우연히 전자레인지 조리법을 발견했습니다."
     },
     {
       "word": "generate",
       "meaning": "만들어 내다, 발생시키다",
       "confuse": null,
-      "example": "A magnetron **generates** microwaves."
+      "example": "A magnetron **generates** microwaves.",
+      "example_ko": "마그네트론이 마이크로파를 생성합니다."
     },
     {
       "word": "prototype",
       "meaning": "시제품, 원형",
       "confuse": null,
-      "example": "The first **prototype** was almost two meters tall."
+      "example": "The first **prototype** was almost two meters tall.",
+      "example_ko": "첫 번째 시제품은 거의 2미터 높이였습니다."
     },
     {
       "word": "bulky",
       "meaning": "부피가 큰",
       "confuse": null,
-      "example": "Early microwave ovens were heavy and **bulky**."
+      "example": "Early microwave ovens were heavy and **bulky**.",
+      "example_ko": "초기 전자레인지는 무겁고 부피가 컸습니다."
     },
     {
       "word": "agitate",
       "meaning": "휘젓다, 흔들어 움직이다",
       "confuse": null,
-      "example": "Microwaves **agitate** water molecules in food."
+      "example": "Microwaves **agitate** water molecules in food.",
+      "example_ko": "마이크로파가 음식 속 물 분자를 진동시킵니다."
     },
     {
       "word": "household",
       "meaning": "가정의, 가정용의",
       "confuse": "housework(집안일)와 혼동 주의",
-      "example": "The microwave oven became a common **household** appliance."
+      "example": "The microwave oven became a common **household** appliance.",
+      "example_ko": "전자레인지는 일반적인 가전제품이 되었습니다."
     },
     {
       "word": "revolutionize",
       "meaning": "혁신하다, 완전히 바꾸다",
       "confuse": null,
-      "example": "A melted candy bar helped **revolutionize** home cooking."
+      "example": "A melted candy bar helped **revolutionize** home cooking.",
+      "example_ko": "녹아 버린 초콜릿 바 하나가 가정 요리의 혁신을 이끄는 데 도움을 주었습니다."
     }
   ],
   "source": {

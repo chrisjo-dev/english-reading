@@ -35,13 +35,13 @@
     "연구팀은 지난주 한 과학 학술지에 실린 이 연구 결과가 엔지니어들이 더 나은 비행 로봇을 만드는 데 도움이 될 수 있다고 생각한다."
   ],
   "advanced": [
-    {"word": "migrate", "meaning": "(철새가) 이동하다, 이주하다", "confuse": "immigrate(이민 오다)와 혼동 주의", "example": "The nightjar **migrates** thousands of kilometers between Europe and southern Africa."},
-    {"word": "trade-off", "meaning": "(하나를 얻으면 하나를 잃는) 맞바꿈, 절충", "confuse": null, "example": "The wing shape is a **trade-off** between long-distance flight and hunting."},
-    {"word": "maneuver", "meaning": "방향을 바꾸며 움직이다, 기동하다", "confuse": null, "example": "Broad wing tips help the bird **maneuver** when it hunts insects."},
-    {"word": "agility", "meaning": "민첩함", "confuse": "ability(능력)와 혼동 주의", "example": "The nightjar gains **agility** but loses some speed."},
-    {"word": "efficiency", "meaning": "효율", "confuse": "effectiveness(효과)와 혼동 주의", "example": "Wide wing tips reduce the bird's **efficiency** at high speeds."},
-    {"word": "propel", "meaning": "앞으로 나아가게 하다", "confuse": "repel(물리치다)과 혼동 주의", "example": "The upstroke also **propels** the bird forward."},
-    {"word": "aerodynamic", "meaning": "공기 역학적인", "confuse": null, "example": "The team measured the **aerodynamic** forces in a wind tunnel."}
+    {"word": "migrate", "meaning": "(철새가) 이동하다, 이주하다", "confuse": "immigrate(이민 오다)와 혼동 주의", "example": "The nightjar **migrates** thousands of kilometers between Europe and southern Africa.", "example_ko": "나이트자 새는 유럽과 남부 아프리카 사이를 수천 킬로미터 이동합니다."},
+    {"word": "trade-off", "meaning": "(하나를 얻으면 하나를 잃는) 맞바꿈, 절충", "confuse": null, "example": "The wing shape is a **trade-off** between long-distance flight and hunting.", "example_ko": "날개 모양은 장거리 비행과 사냥 사이의 타협점입니다."},
+    {"word": "maneuver", "meaning": "방향을 바꾸며 움직이다, 기동하다", "confuse": null, "example": "Broad wing tips help the bird **maneuver** when it hunts insects.", "example_ko": "넓은 날개 끝부분이 새가 곤충을 사냥할 때 기동하는 데 도움을 줍니다."},
+    {"word": "agility", "meaning": "민첩함", "confuse": "ability(능력)와 혼동 주의", "example": "The nightjar gains **agility** but loses some speed.", "example_ko": "나이트자 새는 민첩성을 얻는 대신 속도를 일부 잃습니다."},
+    {"word": "efficiency", "meaning": "효율", "confuse": "effectiveness(효과)와 혼동 주의", "example": "Wide wing tips reduce the bird's **efficiency** at high speeds.", "example_ko": "넓은 날개 끝부분은 고속에서 새의 효율성을 떨어뜨립니다."},
+    {"word": "propel", "meaning": "앞으로 나아가게 하다", "confuse": "repel(물리치다)과 혼동 주의", "example": "The upstroke also **propels** the bird forward.", "example_ko": "날개를 위로 치는 동작도 새를 앞으로 나아가게 합니다."},
+    {"word": "aerodynamic", "meaning": "공기 역학적인", "confuse": null, "example": "The team measured the **aerodynamic** forces in a wind tunnel.", "example_ko": "연구팀은 풍동에서 공기 역학적 힘을 측정했습니다."}
   ],
   "source": {"title": "This bird flies thousands of miles, but its wings have a catch (ScienceDaily, 2026-10-17)", "url": "https://www.sciencedaily.com/releases/2026/10/261016070624.htm"}
 }

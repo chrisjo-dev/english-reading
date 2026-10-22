@@ -221,43 +221,50 @@
       "word": "originally",
       "meaning": "원래, 처음에는",
       "confuse": null,
-      "example": "QR codes were **originally** designed for car parts."
+      "example": "QR codes were **originally** designed for car parts.",
+      "example_ko": "QR코드는 원래 자동차 부품용으로 고안되었습니다."
     },
     {
       "word": "inventory",
       "meaning": "재고, 재고 목록",
       "confuse": "invention(발명)과 혼동 주의",
-      "example": "The code helped factories manage their **inventory**."
+      "example": "The code helped factories manage their **inventory**.",
+      "example_ko": "이 코드는 공장들이 재고를 관리하는 데 도움을 주었습니다."
     },
     {
       "word": "inspiration",
       "meaning": "영감",
       "confuse": null,
-      "example": "Hara drew **inspiration** from the board game Go."
+      "example": "Hara drew **inspiration** from the board game Go.",
+      "example_ko": "하라는 바둑 보드 게임에서 영감을 얻었습니다."
     },
     {
       "word": "capacity",
       "meaning": "용량, 수용력",
       "confuse": "capability(능력)와 혼동 주의",
-      "example": "A square code has a much larger **capacity** than a barcode."
+      "example": "A square code has a much larger **capacity** than a barcode.",
+      "example_ko": "정사각형 코드는 바코드보다 훨씬 더 많은 정보를 담을 수 있습니다."
     },
     {
       "word": "orientation",
       "meaning": "방향, 방위",
       "confuse": null,
-      "example": "The code can be read in almost any **orientation**."
+      "example": "The code can be read in almost any **orientation**.",
+      "example_ko": "이 코드는 거의 어떤 방향에서도 읽을 수 있습니다."
     },
     {
       "word": "abbreviation",
       "meaning": "약어, 줄임말",
       "confuse": null,
-      "example": "QR is an **abbreviation** for quick response."
+      "example": "QR is an **abbreviation** for quick response.",
+      "example_ko": "QR은 빠른 응답(quick response)의 약자입니다."
     },
     {
       "word": "ubiquitous",
       "meaning": "어디에나 있는",
       "confuse": null,
-      "example": "QR codes are now **ubiquitous** in restaurants and shops."
+      "example": "QR codes are now **ubiquitous** in restaurants and shops.",
+      "example_ko": "QR코드는 이제 식당과 상점 어디에서나 볼 수 있습니다."
     }
   ],
   "source": {

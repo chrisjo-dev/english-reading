@@ -35,13 +35,13 @@
     "지금까지 우리 태양계 밖에서 6,000개가 넘는 행성이 발견되었기 때문에, 연구팀은 이 방법이 그중 많은 행성의 날씨를 연구하는 데 도움이 되기를 바란다."
   ],
   "advanced": [
-    {"word": "exoplanet", "meaning": "외계 행성 (태양계 밖의 행성)", "confuse": null, "example": "**Astronomers** have found that a giant **exoplanet** is not perfectly round."},
-    {"word": "asymmetrical", "meaning": "비대칭의", "confuse": "symmetrical(대칭의)과 혼동 주의", "example": "The planet's atmosphere is slightly **asymmetrical**."},
-    {"word": "distort", "meaning": "(모양을) 일그러뜨리다, 비틀다", "confuse": "distract(주의를 흩뜨리다)와 혼동 주의", "example": "Strong winds **distort** the shape of the atmosphere."},
-    {"word": "redistribute", "meaning": "다시 분배하다, 퍼뜨리다", "confuse": null, "example": "The winds **redistribute** heat from the day side to the night side."},
-    {"word": "expand", "meaning": "팽창하다, 넓어지다", "confuse": "expend(소비하다)와 혼동 주의", "example": "The warmer evening side of the atmosphere **expands** farther out."},
-    {"word": "infer", "meaning": "추론하다", "confuse": "refer(언급하다)와 혼동 주의", "example": "Scientists **infer** the planet's weather from the starlight that passes through it."},
-    {"word": "observation", "meaning": "관측, 관찰", "confuse": "observance(준수, 기념)와 혼동 주의", "example": "Webb's **observations** revealed a bulge on the evening side."}
+    {"word": "exoplanet", "meaning": "외계 행성 (태양계 밖의 행성)", "confuse": null, "example": "**Astronomers** have found that a giant **exoplanet** is not perfectly round.", "example_ko": "천문학자들은 거대한 외계행성이 완전히 둥글지 않다는 것을 발견했습니다."},
+    {"word": "asymmetrical", "meaning": "비대칭의", "confuse": "symmetrical(대칭의)과 혼동 주의", "example": "The planet's atmosphere is slightly **asymmetrical**.", "example_ko": "그 행성의 대기는 약간 비대칭입니다."},
+    {"word": "distort", "meaning": "(모양을) 일그러뜨리다, 비틀다", "confuse": "distract(주의를 흩뜨리다)와 혼동 주의", "example": "Strong winds **distort** the shape of the atmosphere.", "example_ko": "강한 바람이 대기의 형태를 변형시킵니다."},
+    {"word": "redistribute", "meaning": "다시 분배하다, 퍼뜨리다", "confuse": null, "example": "The winds **redistribute** heat from the day side to the night side.", "example_ko": "바람이 낮쪽에서 밤쪽으로 열을 재분배합니다."},
+    {"word": "expand", "meaning": "팽창하다, 넓어지다", "confuse": "expend(소비하다)와 혼동 주의", "example": "The warmer evening side of the atmosphere **expands** farther out.", "example_ko": "대기의 더 따뜻한 저녁쪽이 더 멀리 팽창합니다."},
+    {"word": "infer", "meaning": "추론하다", "confuse": "refer(언급하다)와 혼동 주의", "example": "Scientists **infer** the planet's weather from the starlight that passes through it.", "example_ko": "과학자들은 행성을 통과하는 별빛으로 행성의 날씨를 추론합니다."},
+    {"word": "observation", "meaning": "관측, 관찰", "confuse": "observance(준수, 기념)와 혼동 주의", "example": "Webb's **observations** revealed a bulge on the evening side.", "example_ko": "웹 망원경의 관측으로 저녁쪽에 부풀어 오른 부분이 드러났습니다."}
   ],
   "source": {"title": "James Webb reveals a strange bulge in an alien planet's atmosphere (ScienceDaily, 2026-10-16)", "url": "https://www.sciencedaily.com/releases/2026/10/261015073205.htm"}
 }

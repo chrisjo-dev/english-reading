@@ -35,14 +35,14 @@
     "하지만 회사가 로봇이 결국 주문의 몇 퍼센트를 맡게 될지 밝히지 않았기 때문에, 그 배달원들의 일자리가 정말 얼마나 오래 안전할지 묻는 것은 당연합니다."
   ],
   "advanced": [
-    {"word": "autonomous", "meaning": "자율적인, 스스로 움직이는", "confuse": "anonymous(익명의)와 혼동 주의", "example": "These **autonomous** robots find their own way along the pavement."},
-    {"word": "navigate", "meaning": "길을 찾아가다, 이동하다", "confuse": null, "example": "The robots **navigate** busy streets with cameras and sensors."},
-    {"word": "pedestrian", "meaning": "보행자", "confuse": null, "example": "A robot moving at walking pace has to share the pavement with every **pedestrian**."},
-    {"word": "roll out", "meaning": "(서비스를) 차례로 도입하다", "confuse": null, "example": "Deliveroo plans to **roll out** the robots in five towns over the coming months."},
-    {"word": "reassure", "meaning": "안심시키다", "confuse": "ensure(보장하다)와 혼동 주의", "example": "The company tried to **reassure** riders that most orders will still go to them."},
-    {"word": "livelihood", "meaning": "생계, 먹고살 수단", "confuse": "likelihood(가능성)와 혼동 주의", "example": "Delivery work is the main **livelihood** for many riders."},
-    {"word": "proportion", "meaning": "비율, 부분", "confuse": null, "example": "The company has not said what **proportion** of orders the robots will handle."},
-    {"word": "emission", "meaning": "배출(물), 배기가스", "confuse": "mission(임무)과 혼동 주의", "example": "An electric robot produces no exhaust **emissions** on the street."}
+    {"word": "autonomous", "meaning": "자율적인, 스스로 움직이는", "confuse": "anonymous(익명의)와 혼동 주의", "example": "These **autonomous** robots find their own way along the pavement.", "example_ko": "이 자율 로봇들은 인도 위를 스스로 길을 찾아 이동합니다."},
+    {"word": "navigate", "meaning": "길을 찾아가다, 이동하다", "confuse": null, "example": "The robots **navigate** busy streets with cameras and sensors.", "example_ko": "로봇들은 카메라와 센서로 분주한 거리를 헤쳐 나갑니다."},
+    {"word": "pedestrian", "meaning": "보행자", "confuse": null, "example": "A robot moving at walking pace has to share the pavement with every **pedestrian**.", "example_ko": "보행 속도로 움직이는 로봇은 모든 보행자와 인도를 함께 써야 합니다."},
+    {"word": "roll out", "meaning": "(서비스를) 차례로 도입하다", "confuse": null, "example": "Deliveroo plans to **roll out** the robots in five towns over the coming months.", "example_ko": "딜리버루는 앞으로 몇 달 안에 다섯 개 마을에 로봇을 배치할 계획입니다."},
+    {"word": "reassure", "meaning": "안심시키다", "confuse": "ensure(보장하다)와 혼동 주의", "example": "The company tried to **reassure** riders that most orders will still go to them.", "example_ko": "회사는 대부분의 주문이 여전히 라이더에게 배정될 것이라고 안심시키려 했습니다."},
+    {"word": "livelihood", "meaning": "생계, 먹고살 수단", "confuse": "likelihood(가능성)와 혼동 주의", "example": "Delivery work is the main **livelihood** for many riders.", "example_ko": "배달 일은 많은 라이더에게 주된 생계 수단입니다."},
+    {"word": "proportion", "meaning": "비율, 부분", "confuse": null, "example": "The company has not said what **proportion** of orders the robots will handle.", "example_ko": "회사는 로봇이 어느 비율의 주문을 처리하게 될지 밝히지 않았습니다."},
+    {"word": "emission", "meaning": "배출(물), 배기가스", "confuse": "mission(임무)과 혼동 주의", "example": "An electric robot produces no exhaust **emissions** on the street.", "example_ko": "전기 로봇은 거리에서 배기가스를 전혀 배출하지 않습니다."}
   ],
   "source": {"title": "Deliveroo is putting delivery robots on the pavements of five UK towns (The Next Web, 2026-10-05)", "url": "https://thenextweb.com/news/deliveroo-coco-robots-uk-cities"}
 }

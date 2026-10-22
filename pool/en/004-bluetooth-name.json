@@ -205,43 +205,50 @@
       "word": "originate",
       "meaning": "비롯되다, 유래하다",
       "confuse": null,
-      "example": "The name **originates** from a tenth-century king."
+      "example": "The name **originates** from a tenth-century king.",
+      "example_ko": "그 이름은 10세기 왕에서 유래했습니다."
     },
     {
       "word": "provisional",
       "meaning": "임시의, 잠정적인",
       "confuse": null,
-      "example": "Bluetooth was only a **provisional** code name."
+      "example": "Bluetooth was only a **provisional** code name.",
+      "example_ko": "블루투스는 임시 코드명에 불과했습니다."
     },
     {
       "word": "unify",
       "meaning": "통일하다, 통합하다",
       "confuse": null,
-      "example": "The king **unified** Denmark and Norway."
+      "example": "The king **unified** Denmark and Norway.",
+      "example_ko": "그 왕은 덴마크와 노르웨이를 통일했습니다."
     },
     {
       "word": "interoperable",
       "meaning": "서로 호환되는, 함께 작동하는",
       "confuse": null,
-      "example": "The goal was to make devices from different companies **interoperable**."
+      "example": "The goal was to make devices from different companies **interoperable**.",
+      "example_ko": "목표는 서로 다른 회사의 기기들이 함께 작동하게 만드는 것이었습니다."
     },
     {
       "word": "monarch",
       "meaning": "군주",
       "confuse": null,
-      "example": "The technology is named after a Danish **monarch**."
+      "example": "The technology is named after a Danish **monarch**.",
+      "example_ko": "이 기술은 덴마크 군주의 이름을 따서 명명되었습니다."
     },
     {
       "word": "catch on",
       "meaning": "유행하다, 널리 받아들여지다",
       "confuse": null,
-      "example": "The name **caught on** before anyone could change it."
+      "example": "The name **caught on** before anyone could change it.",
+      "example_ko": "누군가 바꾸기도 전에 그 이름이 퍼져 버렸습니다."
     },
     {
       "word": "emblem",
       "meaning": "상징, 문장",
       "confuse": "ember(타다 남은 불씨)와 혼동 주의",
-      "example": "The logo is an **emblem** made from two runes."
+      "example": "The logo is an **emblem** made from two runes.",
+      "example_ko": "로고는 두 개의 룬 문자로 만들어진 문양입니다."
     }
   ],
   "source": {
