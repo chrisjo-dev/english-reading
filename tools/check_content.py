@@ -67,6 +67,13 @@ def check(path):
     if path.parent.name == "en":
         errors += check_chunks(c, required=path.parent.parent.name == "pool" or new_chunks(path))
         errors += check_levels_a(c, path)
+        # levels.a 에도 출처 없는 수치 경고 적용
+        levels_a = (c.get("levels") or {}).get("a")
+        if levels_a and not c.get("source") and not c.get("example"):
+            body_a = " ".join(s.get("en", "") for s in levels_a.get("sentences", []))
+            hits_a = sorted(set(m.group(0) for m in NUMBER.finditer(body_a)))
+            if hits_a:
+                warnings.append(f"levels.a 에 출처 없는 구체적 수치({', '.join(hits_a)}). 출처를 달거나 수치를 빼세요.")
     errors += overlap(path, c)
     return errors, warnings
 

@@ -59,7 +59,9 @@ def wait_live(url, text, extra=None):
 def audience(lang, level="b"):
     """구독자 언어+수준 필터.
     기본 언어(영어)는 다른 언어로 표시된 구독자만 빼고, 수준 필터를 추가한다.
-    level="a": level=="a" 구독자만. level="b"(기본): level!="a" 구독자 (없는 경우 포함).
+    level="a": level=="a" 구독자만.
+    level="b"(기본): level!="a" 구독자. fill_missing_level() 호출 후에 사용해야 한다.
+    level=None: 수준 필터 없음 (단계적 배포 초기 등 level 기능 이전 호환).
     """
     if lang == langs.DEFAULT:
         rules = [{"field": "subscriber.metadata.lang", "operator": "not_equals", "value": other} for other in langs.LANGS if other != lang]
@@ -67,8 +69,9 @@ def audience(lang, level="b"):
         rules = [{"field": "subscriber.metadata.lang", "operator": "equals", "value": lang}]
     if level == "a":
         rules.append({"field": "subscriber.metadata.level", "operator": "equals", "value": "a"})
-    else:
+    elif level == "b":
         rules.append({"field": "subscriber.metadata.level", "operator": "not_equals", "value": "a"})
+    # level=None: 수준 필터 추가 안 함
     return {"predicate": "and", "groups": [], "filters": rules}
 
 
@@ -88,6 +91,17 @@ def fill_missing_lang():
         if sub.get("type") in ("regular", "unactivated") and not meta.get("lang"):
             call("PATCH", f"/subscribers/{sub['id']}", {"metadata": {**meta, "lang": langs.DEFAULT}})
             print(f"lang 채움: {sub['id']} -> {langs.DEFAULT}")
+
+
+def fill_missing_level():
+    """level 키가 없는 구독자는 not_equals 필터에서 빠진다. 기본 수준(b)으로 채운다.
+    주의: 최초 실행 시 기존 구독자 전원에게 level='b' 를 씁니다. 배포 시 사용자 승인 필요.
+    """
+    for sub in subscribers():
+        meta = sub.get("metadata") or {}
+        if sub.get("type") in ("regular", "unactivated") and not meta.get("level"):
+            call("PATCH", f"/subscribers/{sub['id']}", {"metadata": {**meta, "level": "b"}})
+            print(f"level 채움: {sub['id']} -> b")
 
 
 def recent_emails(pages=5):
@@ -124,6 +138,8 @@ def send(mail, lang, key, value, level="b", extra_meta=None):
         print(f"이미 처리한 메일이 있어 건너뜀: {e['id']} ({e['status']})")
         return
     fill_missing_lang()
+    if level is not None:
+        fill_missing_level()
     metadata = {"lang": lang, key: value, "level": level}
     if extra_meta:
         metadata.update(extra_meta)
@@ -268,12 +284,14 @@ def main_weekly(lang, end):
 
 if __name__ == "__main__":
     langs.get(sys.argv[1])
-    # --level b 또는 --level a 파라미터 파싱
+    # --level b 또는 --level a 파라미터 파싱 (그 외 값은 오류)
     level = "b"
     if "--level" in sys.argv:
         li = sys.argv.index("--level")
         if li + 1 < len(sys.argv):
             level = sys.argv[li + 1]
+        if level not in ("a", "b"):
+            raise SystemExit(f"--level 값이 올바르지 않습니다: {level!r}. 'a' 또는 'b' 만 허용합니다.")
     if "--weekly" in sys.argv:
         main_weekly(sys.argv[1], sys.argv[2])
     elif "--catchup" in sys.argv:

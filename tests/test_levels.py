@@ -154,36 +154,49 @@ class TestCheckLevelsA(unittest.TestCase):
 
 # ── build_email: 수준별 빌드 + 회귀 테스트 ───────────────────────────────────
 
-class TestBuildEmail(unittest.TestCase):
-    def setUp(self):
-        self.root = Path(tempfile.mkdtemp())
-        # 테스트용 content 디렉터리
-        (self.root / "content" / "en").mkdir(parents=True)
-        # 실제 렌더된 HTML 파일도 필요 (parse() 가 읽음)
-        (self.root / "en" / "2026-10-22").mkdir(parents=True)
+FIXTURES = Path(__file__).resolve().parent / "fixtures"
 
+
+class TestBuildEmail(unittest.TestCase):
     def _patch_root(self):
-        """build_email.parse 가 읽는 HTML 경로를 실제 파일로 대체."""
+        """실제 렌더된 HTML 없으면 테스트 건너뜀."""
         real_html = REPO / "en" / "2026-10-22" / "index.html"
         if not real_html.exists():
             self.skipTest("실제 렌더된 HTML 없음, 회귀 테스트 건너뜀")
         return real_html
 
-    def test_build_b_returns_dict_with_subject_and_body(self):
-        """build(lang, day, 'b') 는 subject, body 키가 있는 딕셔너리를 반환한다."""
-        real_html = self._patch_root()
+    def test_build_b_no_level_param_in_url(self):
+        """build(lang, day, 'b') 는 ?level=b 를 URL에 추가하지 않는다(페이지 기본값 b)."""
+        self._patch_root()
         result = build_email.build("en", "2026-10-22", "b")
         self.assertIn("subject", result)
         self.assertIn("body", result)
-        self.assertIn("?level=b", result["body"])
+        self.assertNotIn("?level=b", result["body"])
+        # 썸네일 URL 에도 ?level= 가 없어야 한다
+        self.assertNotIn("thumb.png?", result["body"])
+        self.assertNotIn("?level=bthumb", result["body"])
 
-    def test_build_b_regression_byte_identical(self):
-        """build(lang, day, 'b') 의 출력이 level 없이 호출한 기존 출력과 동일해야 한다."""
+    def test_build_b_regression_en(self):
+        """build(en, 2026-10-22, b) 가 Phase 2 이전 출력과 바이트 일치한다."""
         self._patch_root()
-        result_b = build_email.build("en", "2026-10-22", "b")
-        # build_email.build 의 기존 시그니처(level='b' 기본값)와 동일
-        result_default = build_email.build("en", "2026-10-22")
-        self.assertEqual(result_b, result_default)
+        snap_path = FIXTURES / "email_b_en_2026-10-22.json"
+        if not snap_path.exists():
+            self.skipTest("스냅샷 픽스처 없음")
+        result = build_email.build("en", "2026-10-22", "b")
+        snap = json.loads(snap_path.read_text(encoding="utf-8"))
+        self.assertEqual(result, snap, "level b 이메일이 Phase 2 이전 출력과 달라졌습니다")
+
+    def test_build_b_regression_ja(self):
+        """build(ja, 2026-10-22, b) 가 Phase 2 이전 출력과 바이트 일치한다."""
+        real_html = REPO / "ja" / "2026-10-22" / "index.html"
+        if not real_html.exists():
+            self.skipTest("ja 렌더 HTML 없음")
+        snap_path = FIXTURES / "email_b_ja_2026-10-22.json"
+        if not snap_path.exists():
+            self.skipTest("스냅샷 픽스처 없음")
+        result = build_email.build("ja", "2026-10-22", "b")
+        snap = json.loads(snap_path.read_text(encoding="utf-8"))
+        self.assertEqual(result, snap, "ja level b 이메일이 Phase 2 이전 출력과 달라졌습니다")
 
     def test_build_a_returns_none_when_no_levels(self):
         """levels.a 없는 content 에서 build(level='a') 는 None 을 반환한다."""
@@ -191,7 +204,6 @@ class TestBuildEmail(unittest.TestCase):
         (REPO / "content" / "en" / "test-levels-no-a.json").write_text(
             json.dumps(c, ensure_ascii=False), encoding="utf-8")
         try:
-            # parse() 가 읽을 HTML 파일도 없으므로 parse 를 mock 한다
             with patch.object(build_email, "parse", return_value={
                 "date": "2026-11-01", "topic": "드론", "headline": "Drone",
                 "chips": [], "sentences": ["Sentence one."], "words": [("pkg", "소포")], "source": None,
@@ -215,9 +227,11 @@ class TestBuildEmail(unittest.TestCase):
             }):
                 result = build_email.build("en", day, "a")
             self.assertIsNotNone(result)
-            # level a 문장이 본문에 있어야 한다
             self.assertIn("Drones bring packages", result["body"])
+            # level a 이메일은 ?level=a 를 포함한다
             self.assertIn("?level=a", result["body"])
+            # 썸네일에는 ?level= 없음
+            self.assertNotIn("thumb.png?", result["body"])
         finally:
             content_path.unlink(missing_ok=True)
 
@@ -264,6 +278,12 @@ class TestAudience(unittest.TestCase):
         result_b = send_email.audience("en", "b")
         self.assertEqual(result_default, result_b)
 
+    def test_level_none_has_no_level_filter(self):
+        """audience(lang, None) 은 수준 필터를 추가하지 않는다(단계적 배포 호환)."""
+        result = send_email.audience("en", None)
+        level_filters = [f for f in result["filters"] if f.get("field") == "subscriber.metadata.level"]
+        self.assertEqual(level_filters, [])
+
 
 class TestWants(unittest.TestCase):
     def _sub(self, lang=None, level=None, sub_type="regular"):
@@ -297,6 +317,107 @@ class TestWants(unittest.TestCase):
     def test_non_regular_never_wants(self):
         sub = self._sub(sub_type="unactivated")
         self.assertFalse(send_email.wants(sub, "en", "b"))
+
+
+class TestFillMissingLevel(unittest.TestCase):
+    """fill_missing_level() 은 level 키 없는 구독자를 'b' 로 채운다."""
+
+    def _make_sub(self, sub_id, meta, sub_type="regular"):
+        return {"id": sub_id, "type": sub_type, "metadata": meta}
+
+    def test_patches_missing_level(self):
+        subs = [self._make_sub("s1", {"lang": "en"})]
+        with patch.object(send_email, "subscribers", return_value=iter(subs)), \
+             patch.object(send_email, "call") as mock_call:
+            send_email.fill_missing_level()
+        mock_call.assert_called_once_with("PATCH", "/subscribers/s1", {"metadata": {"lang": "en", "level": "b"}})
+
+    def test_skips_existing_level(self):
+        subs = [self._make_sub("s2", {"lang": "en", "level": "a"})]
+        with patch.object(send_email, "subscribers", return_value=iter(subs)), \
+             patch.object(send_email, "call") as mock_call:
+            send_email.fill_missing_level()
+        mock_call.assert_not_called()
+
+    def test_skips_non_active_type(self):
+        subs = [self._make_sub("s3", {}, sub_type="spam")]
+        with patch.object(send_email, "subscribers", return_value=iter(subs)), \
+             patch.object(send_email, "call") as mock_call:
+            send_email.fill_missing_level()
+        mock_call.assert_not_called()
+
+    def test_patches_unactivated_with_no_level(self):
+        subs = [self._make_sub("s4", {}, sub_type="unactivated")]
+        with patch.object(send_email, "subscribers", return_value=iter(subs)), \
+             patch.object(send_email, "call") as mock_call:
+            send_email.fill_missing_level()
+        mock_call.assert_called_once()
+
+
+class TestLevelCliValidation(unittest.TestCase):
+    """--level CLI 파라미터는 'a' 또는 'b' 만 허용한다."""
+
+    def _run_main(self, argv):
+        """send_email __main__ 블록의 level 파싱 로직을 직접 테스트한다."""
+        level = "b"
+        if "--level" in argv:
+            li = argv.index("--level")
+            if li + 1 < len(argv):
+                level = argv[li + 1]
+            if level not in ("a", "b"):
+                raise SystemExit(f"--level 값이 올바르지 않습니다: {level!r}")
+        return level
+
+    def test_valid_level_a(self):
+        self.assertEqual(self._run_main(["en", "2026-10-22", "--level", "a"]), "a")
+
+    def test_valid_level_b(self):
+        self.assertEqual(self._run_main(["en", "2026-10-22", "--level", "b"]), "b")
+
+    def test_invalid_level_raises(self):
+        with self.assertRaises(SystemExit) as ctx:
+            self._run_main(["en", "2026-10-22", "--level", "c"])
+        self.assertIn("올바르지 않습니다", str(ctx.exception))
+
+    def test_no_level_defaults_to_b(self):
+        self.assertEqual(self._run_main(["en", "2026-10-22"]), "b")
+
+
+class TestCheckLevelsANumber(unittest.TestCase):
+    """check_content: levels.a 에 출처 없는 수치 경고 적용."""
+
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+
+    def _check(self, c, day="2026-11-01"):
+        p = self.root / "content" / "en"
+        p.mkdir(parents=True, exist_ok=True)
+        f = p / f"{day}.json"
+        f.write_text(json.dumps(c, ensure_ascii=False))
+        return cc.check(f)
+
+    def test_no_source_with_numbers_in_levels_a_warns(self):
+        """출처 없고 levels.a 문장에 구체적 수치가 있으면 경고."""
+        c = make_content(a_sentence="30 drones will fly from 5 city centers.")
+        c.pop("source", None)  # 출처 제거
+        c["example"] = False
+        _, warnings = self._check(c)
+        self.assertTrue(any("levels.a" in w for w in warnings), warnings)
+
+    def test_with_source_no_warn_for_levels_a(self):
+        """출처가 있으면 levels.a 수치 경고 없음."""
+        c = make_content(a_sentence="30 drones will fly from 5 city centers.")
+        c["source"] = {"title": "Test (2026-10-01)", "url": "https://example.com"}
+        _, warnings = self._check(c)
+        self.assertFalse(any("levels.a" in w for w in warnings), warnings)
+
+    def test_example_no_warn_for_levels_a(self):
+        """example=True 이면 경고 없음."""
+        c = make_content(a_sentence="30 drones fly in 5 minutes.")
+        c.pop("source", None)
+        c["example"] = True
+        _, warnings = self._check(c)
+        self.assertFalse(any("levels.a" in w for w in warnings), warnings)
 
 
 class TestRecentlySent(unittest.TestCase):

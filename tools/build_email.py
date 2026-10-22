@@ -61,7 +61,7 @@ def _marks_email(s):
 def build(lang, day, level="b"):
     L = langs.get(lang)
     d = parse(lang, day)
-    url = f"{SITE}/{lang}/{day}/"
+    url_base = f"{SITE}/{lang}/{day}/"  # 썸네일 등 에셋용 기본 URL (쿼리 없음)
     if level == "a":
         content_path = Path(__file__).resolve().parent.parent / "content" / lang / f"{day}.json"
         content = json.loads(content_path.read_text(encoding="utf-8"))
@@ -69,9 +69,9 @@ def build(lang, day, level="b"):
         if not levels_a:
             return None  # 기초 콘텐츠 없음
         d["sentences"] = [_marks_email(s["en"]) for s in levels_a["sentences"]]
-        url += "?level=a"
+        url = url_base + "?level=a"  # 기초 이메일: ?level=a 파라미터
     else:
-        url += "?level=b"
+        url = url_base  # 중급 이메일: 쿼리 없음(페이지 기본값 b), Phase 2 이전과 바이트 동일
     chips = "".join(
         f'<span style="display:inline-block;font-size:13px;font-weight:600;padding:4px 9px;border-radius:8px;'
         f'margin:0 4px 4px 0;background:{"#e8f3ff" if i == 0 else BG};color:{BLUE if i == 0 else SUB};">{html.escape(c)}</span>'
@@ -99,7 +99,7 @@ def build(lang, day, level="b"):
     body = f"""<!-- buttondown-editor-mode: plaintext -->
 <div style="background:{BG};padding:16px 0;font-family:{FONT};word-break:keep-all;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
-<tr><td style="padding:0 0 12px;"><a href="{url}"><img src="{url}thumb.png" width="560" alt="오늘은 {html.escape(d["topic"])} 이야기예요"
+<tr><td style="padding:0 0 12px;"><a href="{url}"><img src="{url_base}thumb.png" width="560" alt="오늘은 {html.escape(d["topic"])} 이야기예요"
   style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:20px;"></a></td></tr>
 <tr><td style="{card}">
   <p style="margin:0;font-size:14px;font-weight:600;color:{MUTED};">{d["date"]}</p>
