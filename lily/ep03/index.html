@@ -131,8 +131,8 @@ button { font-family: inherit; color: inherit; }
 .ring .h { position: absolute; top: 0; width: 20px; height: 40px; overflow: hidden; }
 .ring .r { right: 0; } .ring .l { left: 0; }
 .ring i { position: absolute; top: 0; width: 40px; height: 40px; border-radius: 50%; border: 3px solid transparent; transform: rotate(45deg); }
-.ring .r i { left: -20px; border-top-color: var(--t-accent); border-right-color: var(--t-accent); animation: drain 2.5s linear forwards; }
-.ring .l i { left: 0; border-bottom-color: var(--t-accent); border-left-color: var(--t-accent); animation: drain 2.5s linear 2.5s forwards; }
+.ring .r i { left: -20px; border-top-color: var(--t-accent); border-right-color: var(--t-accent); animation: drain 4s linear forwards; }
+.ring .l i { left: 0; border-bottom-color: var(--t-accent); border-left-color: var(--t-accent); animation: drain 4s linear 4s forwards; }
 @keyframes drain { to { transform: rotate(225deg); } }
 .big-play {
   position: absolute; left: 50%; bottom: 22px; width: 104px; height: 104px; margin-left: -52px; border-radius: 50%;
@@ -534,6 +534,8 @@ const sceneAt = (t) => { let s = 0; SCENE_AT.forEach((a, i) => { if (t >= a) s =
 let done = WAITS.map(() => false);       // 기다림이 채워졌는지(눌렀거나 지나감)
 let waiting = -1, waitTimer = 0, resumeTimer = 0, resumeTok = 0;
 let scene = -1, line = -1, lastSec = -1, stopAt = null, suppressUntil = -1;
+// 4~7세가 찾고 누를 시간. 고리 애니메이션(.ring, 4s + 4s)과 같이 바꾼다
+const AUTO_MS = 8000;
 let playsLeft = 0, justListen = false, started = false, raf = 0, endShown = false;
 let brushFound = false, popped = BUBS.map(() => false), earned = [false, false, false], lampOff = false;
 
@@ -694,7 +696,7 @@ function enterWait(i) {
 }
 function armTimer() {
   clearTimeout(waitTimer);
-  waitTimer = setTimeout(autoResolve, 5000);
+  waitTimer = setTimeout(autoResolve, AUTO_MS);
   const ring = $("ring");
   ring.hidden = true;                       // 다시 보이게 하면 CSS 애니메이션이 처음부터 돈다
   requestAnimationFrame(() => { if (waiting >= 0) ring.hidden = false; });
@@ -838,9 +840,12 @@ $("play").addEventListener("click", () => {
 $("again").addEventListener("click", restart);
 $("toParent").addEventListener("click", () => $("parent").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
 $("seek").addEventListener("input", (e) => { const p = !audio.paused; seekTo(Number(e.target.value)); if (p) play(); });
+// 그냥 듣기는 기기에 기억해 둔다(양치 시간마다 틀어 두는 부모용). 저장소를 못 쓰면 꺼진 채로 시작
+try { if (localStorage.getItem("lily.justListen") === "1") { justListen = true; $("justListen").setAttribute("aria-checked", "true"); } } catch (_) {}
 $("justListen").addEventListener("click", (e) => {
   justListen = e.currentTarget.getAttribute("aria-checked") !== "true";
   e.currentTarget.setAttribute("aria-checked", String(justListen));
+  try { localStorage.setItem("lily.justListen", justListen ? "1" : "0"); } catch (_) {}
   if (justListen && waiting >= 0) finishWait(false);
 });
 $("times3").addEventListener("click", (e) => {
