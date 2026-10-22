@@ -1,16 +1,16 @@
 {
  "date": "2026-10-23",
- "words_total": 259,
+ "words_total": 266,
  "langs": {
   "en": {
-   "count": 20,
-   "latest": "2026-10-22",
-   "topic": "드론 배송",
+   "count": 21,
+   "latest": "2026-10-23",
+   "topic": "태양 폭풍",
    "sentences": [
-    "Imagine ordering a phone charger and seeing it land in your backyard from the sky less than an hour later.",
-    "Amazon hopes to make this normal in Tallahassee, where it plans to start drone **deliveries** in mid-November if a building permit is approved in time.",
-    "Up to twenty-one drones will fly from a **warehouse** in the city, and each one can carry a package that **weighs** up to five pounds to homes within seven and a half miles.",
-    "**Supporters** say the service could save people a trip to the store, since some orders may arrive in as little as thirty minutes."
+    "When the sun has a big storm, it throws huge clouds of tiny charged **particles** into space, and some of them can reach Earth.",
+    "These particles shake Earth's **magnetic field**, and this can create electric **currents** in long metal wires on the ground.",
+    "In the 1800s, railway **signals** were sent through such long wires, so a strong solar storm could mix up the messages and hold trains back.",
+    "An old report, published in a science journal in 1871, said that a train in Exeter, England, was **delayed** this way by sixteen minutes in October 1841."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 2문장",
     "약 3분"
    ],
-   "answer": "휴대폰 충전기를 주문했는데 한 시간도 안 돼서 그것이 하늘에서 뒷마당으로 내려오는 모습을 본다고 상상해 보라.",
+   "answer": "태양에 큰 폭풍이 일면, 태양은 전기를 띤 작은 입자들로 이루어진 거대한 구름을 우주로 내던지고, 그중 일부는 지구에 닿을 수 있다.",
    "words": [
     [
-     "deliveries",
-     "배송들 (delivery의 복수)"
+     "particles",
+     "입자들 (particle의 복수)"
     ],
     [
-     "warehouse",
-     "창고, 물류 센터"
+     "magnetic field",
+     "자기장"
     ],
     [
-     "weighs",
-     "무게가 ~이다 (weigh + -s)"
+     "currents",
+     "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)"
     ],
     [
-     "supporters",
-     "지지자들, 찬성하는 사람들"
+     "signals",
+     "신호들"
     ],
     [
-     "compared",
-     "비교했다 (compare A to B: A를 B에 비유하다)"
+     "delayed",
+     "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)"
     ],
     [
-     "concerns",
-     "우려, 걱정 (concern의 복수)"
+     "typo",
+     "오타, 잘못 친 글자"
     ],
     [
-     "neighborhoods",
-     "동네들, 지역들"
+     "actually",
+     "실제로, 사실은"
     ]
    ]
   },
@@ -96,6 +96,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-23",
+   "topic": "태양 폭풍"
+  },
   {
    "lang": "ja",
    "day": "2026-10-23",
@@ -160,11 +165,6 @@
    "lang": "ja",
    "day": "2026-10-17",
    "topic": "전철 타는 법"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-16",
-   "topic": "문어의 뇌"
   }
  ]
 }
