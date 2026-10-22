@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Unit tests
-        run: pip install -q pytest && python -m pytest -q tests
+        run: pip install -q pytest pillow && python -m pytest -q tests
       - name: Content checks (all published passages, then the reserve pool)
         run: |
           python tools/check_content.py --all
