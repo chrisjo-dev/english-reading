@@ -27,6 +27,18 @@ def plain(text):
     return re.sub(r"\{([^{}|]+)\|([^{}|]+)\}", r"\1", text)
 
 
+def plain_word_tts(text, lang):
+    """단어를 TTS에 넘길 수 있게 가공한다.
+    ** 와 괄호 주석을 제거하고, 일본어는 {漢字|かな}를 가나 읽기로, 영어는 한자로 바꾼다."""
+    text = re.sub(r"\*\*(.+?)\*\*", r"\1", text)
+    text = re.sub(r"\s*\([^)]*\)", "", text)
+    if lang == "ja":
+        text = re.sub(r"\{([^{}|]+)\|([^{}|]+)\}", r"\2", text)
+    else:
+        text = re.sub(r"\{([^{}|]+)\|([^{}|]+)\}", r"\1", text)
+    return text.strip()
+
+
 def to_mp3(wav, target, bitrate):
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-ac", "1", "-b:a", bitrate, str(target)], check=True)
 
@@ -69,6 +81,22 @@ def main(lang, day, models, level="b"):
             return
         sentences = [plain(s["en"]) for s in levels_a["sentences"]]
         targets = [out / f"a{i}.mp3" for i in range(1, len(sentences) + 1)]
+    elif level == "w":
+        # 주요 단어 발음: audio/w{i}.mp3
+        words_list = c.get("words", [])
+        if not words_list:
+            print(f"words 없음, word 오디오 건너뜀 ({lang} {day})")
+            return
+        sentences = [plain_word_tts(w[0], lang) for w in words_list]
+        targets = [out / f"w{i}.mp3" for i in range(1, len(sentences) + 1)]
+    elif level == "v":
+        # 한 단계 위 어휘 발음: audio/v{i}.mp3
+        adv_list = c.get("advanced", [])
+        if not adv_list:
+            print(f"advanced 없음, adv 오디오 건너뜀 ({lang} {day})")
+            return
+        sentences = [plain_word_tts(a["word"], lang) for a in adv_list]
+        targets = [out / f"v{i}.mp3" for i in range(1, len(sentences) + 1)]
     else:
         sentences = [plain(s["en"]) for s in c["sentences"]]
         targets = [out / f"s{i}.mp3" for i in range(1, len(sentences) + 1)]
@@ -91,6 +119,6 @@ if __name__ == "__main__":
     _p.add_argument("lang")
     _p.add_argument("day")
     _p.add_argument("models", nargs="?", default=".")
-    _p.add_argument("--level", default="b", choices=["a", "b"])
+    _p.add_argument("--level", default="b", choices=["a", "b", "w", "v"])
     _a = _p.parse_args()
     main(_a.lang, _a.day, _a.models, _a.level)

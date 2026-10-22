@@ -74,12 +74,14 @@ def check(path):
             hits_a = sorted(set(m.group(0) for m in NUMBER.finditer(body_a)))
             if hits_a:
                 warnings.append(f"levels.a 에 출처 없는 구체적 수치({', '.join(hits_a)}). 출처를 달거나 수치를 빼세요.")
+    errors += check_example_ko(c, path)
     errors += overlap(path, c)
     return errors, warnings
 
 
 CHUNKS_FROM = dt.date(2026, 10, 23)  # 이날 지문부터 영어 문장마다 끊어 읽기(chunks)가 있어야 한다
 LEVELS_FROM = dt.date(2026, 10, 23)  # 이날 이후 영어 지문에 levels.a 필드가 필수
+EXAMPLE_KO_FROM = dt.date(2099, 1, 1)  # 이날 이후 advanced 항목에 example_ko 필드가 필수 (실제 배포 날짜로 낮춰 설정한다)
 
 
 def new_chunks(path):
@@ -155,6 +157,39 @@ def check_chunks(c, required=False):
         joined = " ".join(x[0] for x in ch)
         if joined != s.get("en"):
             out.append(f"sentences {i}번 chunks 를 이은 글이 문장과 달라요: {joined[:80]}")
+    return out
+
+
+def example_ko_required(path):
+    """이 파일에 advanced[].example_ko 필드가 필수인지 판단한다."""
+    if path.parent.parent.name == "pool":
+        return False
+    try:
+        return dt.date.fromisoformat(path.stem) >= EXAMPLE_KO_FROM
+    except ValueError:
+        return False
+
+
+def check_example_ko(c, path):
+    """advanced 항목의 example_ko 필드를 검증한다.
+    있으면: 비어 있지 않고, 마크다운 잔재가 없고, 가운뎃점이 없어야 한다.
+    EXAMPLE_KO_FROM 이후 지문이면: 모든 항목에 있어야 한다."""
+    out = []
+    required = example_ko_required(path)
+    for i, a in enumerate(c.get("advanced", []), 1):
+        eko = a.get("example_ko")
+        if eko is None:
+            if required:
+                out.append(f"advanced {i}번에 example_ko 가 없어요. EXAMPLE_KO_FROM 이후 지문에는 필수입니다.")
+            continue
+        if not str(eko).strip():
+            out.append(f"advanced {i}번 example_ko 가 비어 있어요.")
+            continue
+        rest = SUPPORTED.sub("", str(eko))
+        if LEFTOVER.search(rest):
+            out.append(f"advanced {i}번 example_ko: 처리되지 않는 마크다운 기호가 남음: {str(eko)[:80]}")
+        if "·" in str(eko):
+            out.append(f"advanced {i}번 example_ko: 가운뎃점(·)은 쓰지 않아요. 쉼표나 슬래시로 바꾸세요.")
     return out
 
 

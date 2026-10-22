@@ -64,6 +64,28 @@ def marks(s, tag):
     return s
 
 
+def plain_word_tts(text, lang):
+    """단어를 TTS에 넘길 수 있게 가공한다.
+    ** 와 괄호 주석을 제거하고, 일본어는 {漢字|かな}를 가나 읽기로, 영어는 한자로 바꾼다."""
+    text = re.sub(r"\*\*(.+?)\*\*", r"\1", text)
+    text = re.sub(r"\s*\([^)]*\)", "", text)
+    if lang == "ja":
+        text = re.sub(r"\{([^{}|]+)\|([^{}|]+)\}", r"\2", text)
+    else:
+        text = re.sub(r"\{([^{}|]+)\|([^{}|]+)\}", r"\1", text)
+    return text.strip()
+
+
+_SPKR_BTN = (
+    '<button class="wbtn" type="button" data-kind="{kind}" data-i="{i}"'
+    ' data-word="{word}" aria-label="{word} 발음 듣기">'
+    '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">'
+    '<path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/>'
+    '<path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>'
+    '</svg></button>'
+)
+
+
 def load(lang, day):
     c = json.loads((ROOT / "content" / lang / f"{day}.json").read_text(encoding="utf-8"))
     n = len(c["sentences"])
@@ -166,7 +188,12 @@ def render(lang, day):
         source = f'    <p class="src">{EXAMPLE_NOTE}</p>\n'
     else:
         source = f'    <p class="src">{NO_SOURCE_NOTE}</p>\n'
-    words = "".join(f'    <div class="word"><span class="w">{marks(w, "")}</span><span class="m">{esc(m)}</span></div>\n' for w, m in c["words"])
+    words = "".join(
+        '    <div class="word">'
+        + _SPKR_BTN.format(kind="w", i=i, word=html.escape(plain_word_tts(w, lang), quote=True))
+        + f'<span class="w">{marks(w, "")}</span><span class="m">{esc(m)}</span></div>\n'
+        for i, (w, m) in enumerate(c["words"])
+    )
     points = "".join(
         f'    <div class="point">\n      <strong>{esc(p["title"])}</strong>\n      <p>{marks(p["body"], "code")}</p>\n    </div>\n'
         for p in c["points"]
@@ -176,10 +203,16 @@ def render(lang, day):
         for i, a in enumerate(c["answers"], 1)
     )
     advanced = "".join(
-        f'      <div class="adv"><div class="w">{marks(a["word"], "")}</div><div class="m">{esc(a["meaning"])}'
-        f'{WARN.format(ruby(esc(a["confuse"]))) if a.get("confuse") else ""}</div>\n'
-        f'        <div class="ex">{marks(a["example"], "b")}</div></div>\n'
-        for a in c["advanced"]
+        '      <div class="adv"><div class="w">'
+        + _SPKR_BTN.format(kind="v", i=i, word=html.escape(plain_word_tts(a["word"], lang), quote=True))
+        + f'{marks(a["word"], "")}</div>'
+        + f'<div class="m">{esc(a["meaning"])}'
+        + (WARN.format(ruby(esc(a["confuse"]))) if a.get("confuse") else "")
+        + '</div>\n'
+        + f'        <div class="ex">{marks(a["example"], "b")}</div>'
+        + (f'\n        <div class="ex-ko">{esc(a["example_ko"])}</div>' if a.get("example_ko") else "")
+        + '</div>\n'
+        for i, a in enumerate(c["advanced"])
     )
     out_dir = ROOT / lang / day
     files = [f"audio/s{i}.mp3" for i in range(1, n + 1)]
@@ -187,6 +220,12 @@ def render(lang, day):
     # level a 오디오: audio/a{i}.mp3 (없으면 빈 배열, SpeechSynthesis 폴백)
     files_a = [f"audio/a{i}.mp3" for i in range(1, n + 1)]
     audio_a = json.dumps(files_a) if (levels_a and all((out_dir / f).exists() for f in files_a)) else "[]"
+    # 단어 발음 오디오: audio/w{i}.mp3 (words), audio/v{i}.mp3 (advanced). 일부만 있으면 빈 배열.
+    nw, nv = len(c["words"]), len(c["advanced"])
+    files_w = [f"audio/w{i}.mp3" for i in range(1, nw + 1)]
+    files_v = [f"audio/v{i}.mp3" for i in range(1, nv + 1)]
+    word_audio = json.dumps(files_w) if nw and all((out_dir / f).exists() for f in files_w) else "[]"
+    adv_audio = json.dumps(files_v) if nv and all((out_dir / f).exists() for f in files_v) else "[]"
     # 수준 전환 링크: levels.a 가 있을 때만 표시
     if levels_a:
         level_link = (
@@ -212,6 +251,8 @@ def render(lang, day):
         "advanced": advanced,
         "audio": audio,
         "audio_a": audio_a,
+        "word_audio": word_audio,
+        "adv_audio": adv_audio,
         "level_link": level_link,
         "name": L["name"],
         "head_extra": L["head_extra"] + ("\n" if L["head_extra"] else ""),

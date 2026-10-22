@@ -147,6 +147,15 @@ jobs:
             python tools/audio.py $lang $day models --level a || echo "::warning::level a audio failed for $pair"
           done
 
+      - name: Audio (word pronunciation)
+        # 단어 발음 음성 실패는 경고만 남기고 계속 진행한다. 문장 음성, 렌더링, 이메일에는 영향 없음.
+        run: |
+          for pair in ${{ steps.pick.outputs.pairs }}; do
+            lang=${pair%%:*}; day=${pair#*:}
+            python tools/audio.py $lang $day models --level w || echo "::warning::word audio (w) failed for $pair"
+            python tools/audio.py $lang $day models --level v || echo "::warning::word audio (v) failed for $pair"
+          done
+
       - name: Build pages
         run: |
           for pair in ${{ steps.pick.outputs.pairs }}; do

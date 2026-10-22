@@ -6,17 +6,6 @@
 <meta name="color-scheme" content="light only">
 <title>오늘의 일본어 읽기, 10월 22일</title>
 <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
-<meta name="description" content="JLPT N4~N5 학습자를 위한 하루 한 단락 일본어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="매일 일본어 읽기">
-<meta property="og:title" content="오늘은 문화제를 준비하는 우리 반 이야기예요 | 매일 일본어 읽기">
-<meta property="og:description" content="JLPT N4~N5 학습자를 위한 하루 한 단락 일본어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
-<meta property="og:url" content="https://read.wspace.ai.kr/ja/2026-10-22/">
-<meta property="og:image" content="https://read.wspace.ai.kr/ja/2026-10-22/thumb.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://read.wspace.ai.kr/ja/2026-10-22/">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap">
 <style>.en, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .adv .ex { word-break: normal; line-break: strict; } .en { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
@@ -63,7 +52,7 @@
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
            background: var(--coral-soft); color: var(--coral); margin-left: 6px; vertical-align: 2px; }
-  .word { display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  .word { display: flex; justify-content: space-between; align-items: center; gap: 16px;
           padding: 13px 0; border-top: 1px solid var(--line); }
   .word:first-of-type { border-top: 0; padding-top: 0; }
   .word:last-of-type { padding-bottom: 0; }
@@ -96,6 +85,13 @@
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
+  .adv .ex-ko { font-size: 13px; color: var(--muted); margin-top: 4px; padding: 0 2px; }
+  /* 단어 발음 버튼 */
+  .wbtn { flex: none; width: 28px; height: 28px; border: 0; border-radius: 8px; background: transparent;
+          color: var(--muted); cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .wbtn:hover { color: var(--blue); }
+  .wbtn.playing { color: var(--blue); }
+  .wbtn svg { width: 16px; height: 16px; }
   .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
@@ -146,32 +142,6 @@
   .mine textarea::placeholder { color: var(--muted); }
   .mine .tool { width: 100%; margin-top: 8px; flex: none; }
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
-  .top { position: relative; }
-  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
-  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
-  .site-footer { padding-bottom: 32px; }
-  .sub { scroll-margin-top: 84px; }
-  .sub h2 { margin-bottom: 4px; }
-  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }
-  .sub form { display: flex; flex-wrap: wrap; gap: 8px; }
-  .sub input[type='email'] { flex: 1 1 auto; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg); padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }
-  .sub input[type='email']:focus { border-color: var(--blue); background: #fff; }
-  .sub button[type='submit'] { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
-  .sub .note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
-  .sub .levels { flex-basis: 100%; display: flex; flex-direction: column; gap: 8px; margin: 0; border: 0; padding: 0; }
-  .sub .levels legend { font-size: 14px; font-weight: 600; margin: 0 0 8px; padding: 0; }
-  .sub .lvopt { display: flex; flex-direction: column; gap: 3px; border: 1.5px solid #e2e6ea; border-radius: 10px; padding: 12px 14px; cursor: pointer; text-align: left; background: #f4f6f8; position: relative; width: 100%; box-sizing: border-box; }
-  .sub .lvopt input[type='radio'] { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
-  .sub .lvopt:has(input:checked),.sub .lvopt[data-checked] { background: #eff3fd; border-color: #2a52d4; }
-  .sub .lvopt .lv-t { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-  .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }
-  .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }
-  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none; display: flex; align-items: center; justify-content: center; }
-  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }
-  .sub .level-note { flex-basis: 100%; display: none; }
-  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
-  .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
-  .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb nav { display: flex; gap: 4px; }
@@ -195,7 +165,20 @@
   .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
   body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
   #passage .sent.playing .ck .e { color: var(--blue-press); }
+  /* 수준별 콘텐츠: 기초(.en-a/.ko-a/.chunks-a)는 기본 숨김, 중급(.en/.ko/.chunks)은 기본 표시 */
+  .en-a, .ko-a, .chunks-a { display: none; }
+  html.level-a .en-a { display: block; }
+  html.level-a #passage .say > .en { display: none; }
+  html.level-a .ko-a:not([hidden]) { display: block; }
+  html.level-a #passage .ko { display: none !important; }
+  html.level-a .badge { display: none; }
+  html.level-a .chunks { display: none !important; }
+  html.level-a body.chunked .chunks-a { display: flex; }
+  html.level-a body.chunked #passage .say:has(> .ko-a:not([hidden])) .chunks-a .ck .k { display: block; }
+  .level-link { margin: 8px 0 0; font-size: 13px; text-align: right; }
+  .level-link a { color: var(--sub); }
 </style>
+<script>try{var _ql=new URLSearchParams(location.search).get('level');if(!_ql)_ql=localStorage.getItem('read_level');if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
@@ -209,7 +192,6 @@
     <nav aria-label="사이트 메뉴"><a href="../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
   </header>
   <div class="top">
-    <img class="thumb" src="thumb.png" width="76" height="76" alt="">
     <div class="date">10월 22일 목요일</div>
     <h1>오늘은 <em>문화제를 준비하는 우리 반</em> 이야기예요</h1>
     <p class="headline" lang="ja">クラスの<ruby>文化祭<rp>(</rp><rt>ぶんかさい</rt><rp>)</rp></ruby></p>
@@ -219,7 +201,6 @@
       <span class="chip">N4 1문장</span>
       <span class="chip">약 3분</span>
     </div>
-    <p class="intro">매일 아침 새로 올라오는 JLPT N4~N5 일본어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요. <a href="#subscribe">메일로 받기</a><a href="../../">다른 언어</a></p>
   </div>
 
   <section class="card" id="passage">
@@ -251,13 +232,13 @@
   <section class="card">
     <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
-    <div class="word"><span class="w"><ruby>文化祭<rp>(</rp><rt>ぶんかさい</rt><rp>)</rp></ruby></span><span class="m">학교 축제, 문화제</span></div>
-    <div class="word"><span class="w"><ruby>話<rp>(</rp><rt>はなし</rt><rp>)</rp></ruby></span><span class="m">이야기</span></div>
-    <div class="word"><span class="w"><ruby>賛成<rp>(</rp><rt>さんせい</rt><rp>)</rp></ruby></span><span class="m">찬성</span></div>
-    <div class="word"><span class="w">11<ruby>月<rp>(</rp><rt>がつ</rt><rp>)</rp></ruby>3<ruby>日<rp>(</rp><rt>か</rt><rp>)</rp></ruby></span><span class="m">11월 3일</span></div>
-    <div class="word"><span class="w"><ruby>授業<rp>(</rp><rt>じゅぎょう</rt><rp>)</rp></ruby></span><span class="m">수업</span></div>
-    <div class="word"><span class="w"><ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby></span><span class="m">준비</span></div>
-    <div class="word"><span class="w">メニュー</span><span class="m">메뉴</span></div>
+    <div class="word"><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="ぶんかさい" aria-label="ぶんかさい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><span class="w"><ruby>文化祭<rp>(</rp><rt>ぶんかさい</rt><rp>)</rp></ruby></span><span class="m">학교 축제, 문화제</span></div>
+    <div class="word"><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="はなし" aria-label="はなし 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><span class="w"><ruby>話<rp>(</rp><rt>はなし</rt><rp>)</rp></ruby></span><span class="m">이야기</span></div>
+    <div class="word"><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="さんせい" aria-label="さんせい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><span class="w"><ruby>賛成<rp>(</rp><rt>さんせい</rt><rp>)</rp></ruby></span><span class="m">찬성</span></div>
+    <div class="word"><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="11がつ3か" aria-label="11がつ3か 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><span class="w">11<ruby>月<rp>(</rp><rt>がつ</rt><rp>)</rp></ruby>3<ruby>日<rp>(</rp><rt>か</rt><rp>)</rp></ruby></span><span class="m">11월 3일</span></div>
+    <div class="word"><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="じゅぎょう" aria-label="じゅぎょう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><span class="w"><ruby>授業<rp>(</rp><rt>じゅぎょう</rt><rp>)</rp></ruby></span><span class="m">수업</span></div>
+    <div class="word"><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="じゅんび" aria-label="じゅんび 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><span class="w"><ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby></span><span class="m">준비</span></div>
+    <div class="word"><button class="wbtn" type="button" data-kind="w" data-i="6" data-word="メニュー" aria-label="メニュー 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><span class="w">メニュー</span><span class="m">메뉴</span></div>
   </section>
 
   <section class="card">
@@ -286,80 +267,49 @@
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w"><ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>し<ruby>合<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>う</div><div class="m">의논하다, 서로 이야기하다<span class="warn"><ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>す(말하다)는 혼자서도 쓰지만, <ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>し<ruby>合<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>う는 여럿이 의견을 나눌 때 써요.</span></div>
+      <div class="adv"><div class="w"><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="はなしあう" aria-label="はなしあう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>し<ruby>合<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>う</div><div class="m">의논하다, 서로 이야기하다<span class="warn"><ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>す(말하다)는 혼자서도 쓰지만, <ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>し<ruby>合<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>う는 여럿이 의견을 나눌 때 써요.</span></div>
         <div class="ex">クラスで<ruby>文化祭<rp>(</rp><rt>ぶんかさい</rt><rp>)</rp></ruby>について<b><ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>し<ruby>合<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>いました</b>。</div></div>
-      <div class="adv"><div class="w"><ruby>提案<rp>(</rp><rt>ていあん</rt><rp>)</rp></ruby></div><div class="m">제안</div>
+      <div class="adv"><div class="w"><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="ていあん" aria-label="ていあん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><ruby>提案<rp>(</rp><rt>ていあん</rt><rp>)</rp></ruby></div><div class="m">제안</div>
         <div class="ex"><ruby>田中<rp>(</rp><rt>たなか</rt><rp>)</rp></ruby>さんはカフェを<b><ruby>提案<rp>(</rp><rt>ていあん</rt><rp>)</rp></ruby></b>しました。</div></div>
-      <div class="adv"><div class="w"><ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>まる</div><div class="m">정해지다<span class="warn"><ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>める(정하다)는 を를 쓰는 타동사, <ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>まる는 が를 쓰는 자동사예요.</span></div>
+      <div class="adv"><div class="w"><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="きまる" aria-label="きまる 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>まる</div><div class="m">정해지다<span class="warn"><ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>める(정하다)는 を를 쓰는 타동사, <ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>まる는 が를 쓰는 자동사예요.</span></div>
         <div class="ex">クラスの<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>はカフェに<b><ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>まりました</b>。</div></div>
-      <div class="adv"><div class="w"><ruby>放課後<rp>(</rp><rt>ほうかご</rt><rp>)</rp></ruby></div><div class="m">방과 후</div>
+      <div class="adv"><div class="w"><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="ほうかご" aria-label="ほうかご 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><ruby>放課後<rp>(</rp><rt>ほうかご</rt><rp>)</rp></ruby></div><div class="m">방과 후</div>
         <div class="ex"><ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby>、<b><ruby>放課後<rp>(</rp><rt>ほうかご</rt><rp>)</rp></ruby></b>に<ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby>をします。</div></div>
-      <div class="adv"><div class="w"><ruby>協力<rp>(</rp><rt>きょうりょく</rt><rp>)</rp></ruby></div><div class="m">협력</div>
+      <div class="adv"><div class="w"><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="きょうりょく" aria-label="きょうりょく 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><ruby>協力<rp>(</rp><rt>きょうりょく</rt><rp>)</rp></ruby></div><div class="m">협력</div>
         <div class="ex">みんなで<b><ruby>協力<rp>(</rp><rt>きょうりょく</rt><rp>)</rp></ruby></b>して、カフェの<ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby>をします。</div></div>
-      <div class="adv"><div class="w"><ruby>担当<rp>(</rp><rt>たんとう</rt><rp>)</rp></ruby></div><div class="m">담당</div>
+      <div class="adv"><div class="w"><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="たんとう" aria-label="たんとう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><ruby>担当<rp>(</rp><rt>たんとう</rt><rp>)</rp></ruby></div><div class="m">담당</div>
         <div class="ex">わたしはメニューの<b><ruby>担当<rp>(</rp><rt>たんとう</rt><rp>)</rp></ruby></b>です。</div></div>
-      <div class="adv"><div class="w"><ruby>当日<rp>(</rp><rt>とうじつ</rt><rp>)</rp></ruby></div><div class="m">당일<span class="warn"><ruby>当時<rp>(</rp><rt>とうじ</rt><rp>)</rp></ruby>(당시)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="とうじつ" aria-label="とうじつ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><ruby>当日<rp>(</rp><rt>とうじつ</rt><rp>)</rp></ruby></div><div class="m">당일<span class="warn"><ruby>当時<rp>(</rp><rt>とうじ</rt><rp>)</rp></ruby>(당시)와 혼동 주의</span></div>
         <div class="ex"><ruby>文化祭<rp>(</rp><rt>ぶんかさい</rt><rp>)</rp></ruby>の<b><ruby>当日<rp>(</rp><rt>とうじつ</rt><rp>)</rp></ruby></b>は、<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>から<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しいです。</div></div>
     </div>
   </details>
-  <section class="card sub" id="subscribe" data-v="2">
-    <h2>매일 아침 일본어 지문 받기</h2>
-    <p>새 일본어 지문이 올라오면 아침에 메일로 보내 드려요.</p>
-    <form action="https://buttondown.com/api/emails/embed-subscribe/english-reading" method="post" target="_blank">
-      <input type="hidden" name="metadata__lang" value="ja">
-      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">
-      <button type="submit">구독하기</button>
-    </form>
-    <p class="note">지금은 이메일 주소 하나로 한 언어만 구독할 수 있어요. 두 언어를 받으려면 서로 다른 이메일로 구독해 주세요.</p>
-    <p class="note">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>
-    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>
-    <script>(function(){
-      var sec=document.getElementById("subscribe");
-      if(!sec)return;
-      var f=sec.querySelector("form");
-      // GA subscribe event (영어는 level 포함, 다른 언어는 생략)
-      if(f)f.addEventListener("submit",function(){
-        var cl=f.querySelector('input[name="metadata__level"]:checked');
-        try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"ja"});}catch(e){}
-      });
-      // :has() 미지원 브라우저 fallback — data-checked / data-show 속성으로 CSS 를 보조한다
-      var opts=sec.querySelectorAll(".lvopt");
-      var note=sec.querySelector(".level-note");
-      if(opts.length){var update=function(){
-        opts.forEach(function(o){
-          var r=o.querySelector("input[type=\"radio\"]");
-          if(r&&r.checked){o.setAttribute("data-checked","");}else{o.removeAttribute("data-checked");}
-        });
-        if(note){
-          var a=sec.querySelector("input[name=\"metadata__level\"][value=\"a\"]:checked");
-          if(a){note.setAttribute("data-show","");}else{note.removeAttribute("data-show");}
-        }
-      };update();
-      opts.forEach(function(o){var r=o.querySelector("input[type=\"radio\"]");if(r)r.addEventListener("change",update);});
-      }
-    })();</script>
-  </section>
 </main>
-<footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a><a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a><a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>
-
 
 
 <script>
   // 해석: 버튼은 전체를 열고 닫고, 문장을 누르면(클릭하면) 그 문장 해석만 열고 닫는다.
   var koBtn = document.getElementById('kobtn');
   var kos = [].slice.call(document.querySelectorAll('#passage .ko'));
+  var kosA = [].slice.call(document.querySelectorAll('#passage .ko-a'));
   koBtn.addEventListener('click', function () {
     var on = koBtn.getAttribute('aria-pressed') !== 'true';
     koBtn.setAttribute('aria-pressed', String(on));
-    kos.forEach(function (k) { k.hidden = !on; });
+    // 현재 수준에 맞는 해석 요소만 토글
+    if (isLevelA() && kosA.length) {
+      kosA.forEach(function (k) { k.hidden = !on; });
+    } else {
+      kos.forEach(function (k) { k.hidden = !on; });
+    }
     gaEvent('ko_toggle', { on: on, lang: _gaLang, day: _gaDay });
   });
   // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
-  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks'), function (en) {
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks, #passage .say .en-a, #passage .say .chunks-a'), function (en) {
     en.style.cursor = 'pointer';
     en.addEventListener('click', function () {
       if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
-      var k = en.parentNode.querySelector('.ko'); k.hidden = !k.hidden;
+      // 기초 수준이면 .ko-a, 중급이면 .ko 를 토글
+      var kSel = (isLevelA() && en.parentNode.querySelector('.ko-a')) ? '.ko-a' : '.ko';
+      var k = en.parentNode.querySelector(kSel); if (k) k.hidden = !k.hidden;
     });
   });
   var chunkBtn = document.getElementById('chunkbtn');
@@ -460,20 +410,39 @@
   })();
 
   var AUDIO = ["audio/s1.mp3", "audio/s2.mp3", "audio/s3.mp3", "audio/s4.mp3", "audio/s5.mp3", "audio/s6.mp3"];
+  var AUDIO_A = [];
+  var WORD_AUDIO = [];
+  var ADV_AUDIO = [];
+  // 수준 결정: URL ?level= → localStorage → 기본 중급(b)
+  // head 스크립트가 먼저 적용하므로 URL 파라미터가 있을 때만 갱신한다.
+  (function () {
+    try {
+      var lp = new URLSearchParams(location.search).get('level');
+      if (lp === 'a' || lp === 'b') {
+        document.documentElement.classList.toggle('level-a', lp === 'a');
+        localStorage.setItem('read_level', lp);
+      }
+    } catch (e) {}
+  })();
   var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
   var player = new Audio(), queue = [], rate = 1, token = 0;
+  var wordPlayer = new Audio(), curWbtn = null;
   var canSpeak = 'speechSynthesis' in window;
   var playBtn = document.getElementById('play'), slowBtn = document.getElementById('slow'), copyBtn = document.getElementById('copy');
   var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
+  function isLevelA() { return document.documentElement.classList.contains('level-a'); }
   function sentenceText(r) {
-    // 배지와 후리가나(rt, rp)를 뺀 본문만 쓴다.
-    var c = r.querySelector('.en').cloneNode(true);
+    // 기초 수준이면 .en-a, 중급이면 .en 에서 텍스트를 추출한다. 배지와 후리가나(rt, rp)를 제거.
+    var sel = (isLevelA() && r.querySelector('.en-a')) ? '.en-a' : '.en';
+    var c = r.querySelector(sel).cloneNode(true);
     [].forEach.call(c.querySelectorAll('.badge, rt, rp'), function (x) { x.parentNode.removeChild(x); });
     return c.textContent.trim();
   }
   function mark(i) { rows.forEach(function (r, k) { r.classList.toggle('playing', k === i); }); }
   function stop() {
     token++; player.pause(); if (canSpeak) speechSynthesis.cancel();
+    wordPlayer.pause(); wordPlayer.src = '';
+    if (curWbtn) { curWbtn.classList.remove('playing'); curWbtn = null; }
     queue = []; mark(-1); playBtn.classList.remove('on'); playBtn.lastChild.textContent = '전체 듣기';
   }
   function next() {
@@ -481,8 +450,9 @@
     var i = queue.shift(), t = token; mark(i);
     if (!_gaPlayed) { _gaPlayed = true; gaEvent('audio_play', {lang: _gaLang, day: _gaDay}); }
     function after() { if (t === token) setTimeout(function () { if (t === token) next(); }, queue.length ? 450 : 0); }
-    if (AUDIO[i]) {
-      player.onended = after; player.src = AUDIO[i];
+    var audioSrc = isLevelA() ? (AUDIO_A[i] || null) : (AUDIO[i] || null);
+    if (audioSrc) {
+      player.onended = after; player.src = audioSrc;
       player.playbackRate = rate; player.play().catch(function () { if (t === token) stop(); });
     } else if (canSpeak) {
       var u = new SpeechSynthesisUtterance(sentenceText(rows[i]));
@@ -502,6 +472,29 @@
   slowBtn.addEventListener('click', function () {
     rate = rate === 1 ? 0.8 : 1; slowBtn.classList.toggle('on', rate !== 1); player.playbackRate = rate;
   });
+  // 단어 발음 버튼: w{i}.mp3 / v{i}.mp3 → 없으면 SpeechSynthesis 폴백
+  (function () {
+    var wbtns = [].slice.call(document.querySelectorAll('.wbtn'));
+    wbtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var same = btn === curWbtn && btn.classList.contains('playing');
+        stop();
+        if (same) return;
+        var kind = btn.dataset.kind, i = parseInt(btn.dataset.i, 10), word = btn.dataset.word;
+        var src = (kind === 'v' ? ADV_AUDIO : WORD_AUDIO)[i] || null;
+        gaEvent('word_audio', { lang: _gaLang, day: _gaDay });
+        curWbtn = btn; btn.classList.add('playing');
+        function done() { if (curWbtn === btn) { btn.classList.remove('playing'); curWbtn = null; } }
+        if (src) {
+          wordPlayer.onended = done; wordPlayer.onerror = done;
+          wordPlayer.src = src; wordPlayer.play().catch(done);
+        } else if (canSpeak) {
+          var u = new SpeechSynthesisUtterance(word);
+          u.lang = 'ja-JP'; u.onend = done; u.onerror = done; speechSynthesis.speak(u);
+        } else { done(); }
+      });
+    });
+  })();
   function copyText(text, btn, label, okText) {
     function done(ok) {
       btn.lastChild.textContent = ok ? (okText || '복사됐어요') : '복사 실패';
@@ -534,6 +527,34 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
+  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  (function () {
+    var toLevelA = document.getElementById('to-level-a');
+    var toLevelB = document.getElementById('to-level-b');
+    if (!toLevelA || !toLevelB) return;
+    function updateLinks() {
+      var isA = isLevelA();
+      toLevelA.hidden = isA;
+      toLevelB.hidden = !isA;
+    }
+    updateLinks();
+    function switchLevel(e, to) {
+      e.preventDefault();
+      var from = isLevelA() ? 'a' : 'b';
+      document.documentElement.classList.toggle('level-a', to === 'a');
+      try { localStorage.setItem('read_level', to); } catch (ex) {}
+      gaEvent('level_switch', { from: from, to: to, lang: _gaLang, day: _gaDay });
+      updateLinks();
+      // URL 에 ?level= 파라미터 반영 (히스토리 교체)
+      try {
+        var u = new URL(location.href);
+        u.searchParams.set('level', to);
+        history.replaceState(null, '', u.toString());
+      } catch (ex) {}
+    }
+    toLevelA.addEventListener('click', function (e) { switchLevel(e, 'a'); });
+    toLevelB.addEventListener('click', function (e) { switchLevel(e, 'b'); });
+  })();
   var furi = document.getElementById('furi');
   if (furi) furi.addEventListener('click', function () {
     var off = document.body.classList.toggle('nofuri');

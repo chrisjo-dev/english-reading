@@ -50,7 +50,7 @@
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
            background: var(--coral-soft); color: var(--coral); margin-left: 6px; vertical-align: 2px; }
-  .word { display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  .word { display: flex; justify-content: space-between; align-items: center; gap: 16px;
           padding: 13px 0; border-top: 1px solid var(--line); }
   .word:first-of-type { border-top: 0; padding-top: 0; }
   .word:last-of-type { padding-bottom: 0; }
@@ -83,6 +83,13 @@
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
   .adv .ex b { color: var(--blue); font-weight: 700; }
+  .adv .ex-ko { font-size: 13px; color: var(--muted); margin-top: 4px; padding: 0 2px; }
+  /* 단어 발음 버튼 */
+  .wbtn { flex: none; width: 28px; height: 28px; border: 0; border-radius: 8px; background: transparent;
+          color: var(--muted); cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .wbtn:hover { color: var(--blue); }
+  .wbtn.playing { color: var(--blue); }
+  .wbtn svg { width: 16px; height: 16px; }
   .warn { display: block; color: var(--coral); font-weight: 600; }
   .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
   .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
@@ -361,6 +368,8 @@
 
   var AUDIO = {{audio}};
   var AUDIO_A = {{audio_a}};
+  var WORD_AUDIO = {{word_audio}};
+  var ADV_AUDIO = {{adv_audio}};
   // 수준 결정: URL ?level= → localStorage → 기본 중급(b)
   // head 스크립트가 먼저 적용하므로 URL 파라미터가 있을 때만 갱신한다.
   (function () {
@@ -374,6 +383,7 @@
   })();
   var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
   var player = new Audio(), queue = [], rate = 1, token = 0;
+  var wordPlayer = new Audio(), curWbtn = null;
   var canSpeak = 'speechSynthesis' in window;
   var playBtn = document.getElementById('play'), slowBtn = document.getElementById('slow'), copyBtn = document.getElementById('copy');
   var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
@@ -388,6 +398,8 @@
   function mark(i) { rows.forEach(function (r, k) { r.classList.toggle('playing', k === i); }); }
   function stop() {
     token++; player.pause(); if (canSpeak) speechSynthesis.cancel();
+    wordPlayer.pause(); wordPlayer.src = '';
+    if (curWbtn) { curWbtn.classList.remove('playing'); curWbtn = null; }
     queue = []; mark(-1); playBtn.classList.remove('on'); playBtn.lastChild.textContent = '전체 듣기';
   }
   function next() {
@@ -417,6 +429,29 @@
   slowBtn.addEventListener('click', function () {
     rate = rate === 1 ? 0.8 : 1; slowBtn.classList.toggle('on', rate !== 1); player.playbackRate = rate;
   });
+  // 단어 발음 버튼: w{i}.mp3 / v{i}.mp3 → 없으면 SpeechSynthesis 폴백
+  (function () {
+    var wbtns = [].slice.call(document.querySelectorAll('.wbtn'));
+    wbtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var same = btn === curWbtn && btn.classList.contains('playing');
+        stop();
+        if (same) return;
+        var kind = btn.dataset.kind, i = parseInt(btn.dataset.i, 10), word = btn.dataset.word;
+        var src = (kind === 'v' ? ADV_AUDIO : WORD_AUDIO)[i] || null;
+        gaEvent('word_audio', { lang: _gaLang, day: _gaDay });
+        curWbtn = btn; btn.classList.add('playing');
+        function done() { if (curWbtn === btn) { btn.classList.remove('playing'); curWbtn = null; } }
+        if (src) {
+          wordPlayer.onended = done; wordPlayer.onerror = done;
+          wordPlayer.src = src; wordPlayer.play().catch(done);
+        } else if (canSpeak) {
+          var u = new SpeechSynthesisUtterance(word);
+          u.lang = '{{tts_lang}}'; u.onend = done; u.onerror = done; speechSynthesis.speak(u);
+        } else { done(); }
+      });
+    });
+  })();
   function copyText(text, btn, label, okText) {
     function done(ok) {
       btn.lastChild.textContent = ok ? (okText || '복사됐어요') : '복사 실패';
