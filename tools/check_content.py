@@ -81,7 +81,7 @@ def check(path):
 
 CHUNKS_FROM = dt.date(2026, 10, 23)  # 이날 지문부터 영어 문장마다 끊어 읽기(chunks)가 있어야 한다
 LEVELS_FROM = dt.date(2026, 10, 23)  # 이날 이후 영어 지문에 levels.a 필드가 필수
-EXAMPLE_KO_FROM = dt.date(2099, 1, 1)  # 이날 이후 advanced 항목에 example_ko 필드가 필수 (실제 배포 날짜로 낮춰 설정한다)
+EXAMPLE_KO_FROM = dt.date(2026, 10, 23)  # 이날 이후 advanced 항목에 example_ko 필드가 필수
 
 
 def new_chunks(path):
@@ -163,7 +163,7 @@ def check_chunks(c, required=False):
 def example_ko_required(path):
     """이 파일에 advanced[].example_ko 필드가 필수인지 판단한다."""
     if path.parent.parent.name == "pool":
-        return False
+        return True  # pool 비축분은 언어 무관하게 advanced 항목에 example_ko 필수
     try:
         return dt.date.fromisoformat(path.stem) >= EXAMPLE_KO_FROM
     except ValueError:
