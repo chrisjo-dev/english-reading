@@ -15,64 +15,148 @@
       "en": "Minji drinks a large coffee late in the afternoon to finish her work, and that night she lies awake until very late.",
       "b2": false,
       "chunks": [
-        ["Minji drinks a large coffee", "민지는 큰 커피를 마신다"],
-        ["late in the afternoon", "오후 늦게"],
-        ["to finish her work,", "일을 끝내려고"],
-        ["and that night", "그리고 그날 밤"],
-        ["she lies awake", "깨어 누워 있다"],
-        ["until very late.", "아주 늦게까지"]
+        [
+          "Minji drinks a large coffee",
+          "민지는 큰 커피를 마신다"
+        ],
+        [
+          "late in the afternoon",
+          "오후 늦게"
+        ],
+        [
+          "to finish her work,",
+          "일을 끝내려고"
+        ],
+        [
+          "and that night",
+          "그리고 그날 밤"
+        ],
+        [
+          "she lies awake",
+          "깨어 누워 있다"
+        ],
+        [
+          "until very late.",
+          "아주 늦게까지"
+        ]
       ]
     },
     {
       "en": "Her problem is easy to explain with a chemical in the brain called **adenosine**.",
       "b2": false,
       "chunks": [
-        ["Her problem is easy to explain", "그녀의 문제는 설명하기 쉽다"],
-        ["with a chemical in the brain", "뇌 속 화학 물질로"],
-        ["called **adenosine**.", "아데노신이라는"]
+        [
+          "Her problem is easy to explain",
+          "그녀의 문제는 설명하기 쉽다"
+        ],
+        [
+          "with a chemical in the brain",
+          "뇌 속 화학 물질로"
+        ],
+        [
+          "called **adenosine**.",
+          "아데노신이라는"
+        ]
       ]
     },
     {
       "en": "While we are awake, adenosine slowly **builds up** in the brain, and the more there is, the sleepier we feel.",
       "b2": false,
       "chunks": [
-        ["While we are awake,", "우리가 깨어 있는 동안"],
-        ["adenosine slowly **builds up**", "아데노신이 천천히 쌓인다"],
-        ["in the brain,", "뇌에"],
-        ["and the more there is,", "그리고 많을수록"],
-        ["the sleepier we feel.", "더 졸리다"]
+        [
+          "While we are awake,",
+          "우리가 깨어 있는 동안"
+        ],
+        [
+          "adenosine slowly **builds up**",
+          "아데노신이 천천히 쌓인다"
+        ],
+        [
+          "in the brain,",
+          "뇌에"
+        ],
+        [
+          "and the more there is,",
+          "그리고 많을수록"
+        ],
+        [
+          "the sleepier we feel.",
+          "더 졸리다"
+        ]
       ]
     },
     {
       "en": "Caffeine has a shape similar to adenosine, so it can sit in the places where adenosine would **normally** fit and **block** its message.",
       "b2": true,
       "chunks": [
-        ["Caffeine has a shape", "카페인은 모양을 가졌다"],
-        ["similar to adenosine,", "아데노신과 비슷한"],
-        ["so it can sit in the places", "그래서 그 자리에 앉을 수 있다"],
-        ["where adenosine would **normally** fit", "원래 아데노신이 들어갈"],
-        ["and **block** its message.", "그리고 그 신호를 막는다"]
+        [
+          "Caffeine has a shape",
+          "카페인은 모양을 가졌다"
+        ],
+        [
+          "similar to adenosine,",
+          "아데노신과 비슷한"
+        ],
+        [
+          "so it can sit in the places",
+          "그래서 그 자리에 앉을 수 있다"
+        ],
+        [
+          "where adenosine would **normally** fit",
+          "원래 아데노신이 들어갈"
+        ],
+        [
+          "and **block** its message.",
+          "그리고 그 신호를 막는다"
+        ]
       ]
     },
     {
       "en": "The **tiredness** has not gone away; the brain just cannot feel it for a while, and caffeine can stay in the body for many hours.",
       "b2": false,
       "chunks": [
-        ["The **tiredness** has not gone away;", "피로가 사라진 건 아니다"],
-        ["the brain just cannot feel it", "뇌가 그저 느끼지 못할 뿐이다"],
-        ["for a while,", "한동안"],
-        ["and caffeine can stay in the body", "그리고 카페인은 몸에 머물 수 있다"],
-        ["for many hours.", "여러 시간 동안"]
+        [
+          "The **tiredness** has not gone away;",
+          "피로가 사라진 건 아니다"
+        ],
+        [
+          "the brain just cannot feel it",
+          "뇌가 그저 느끼지 못할 뿐이다"
+        ],
+        [
+          "for a while,",
+          "한동안"
+        ],
+        [
+          "and caffeine can stay in the body",
+          "그리고 카페인은 몸에 머물 수 있다"
+        ],
+        [
+          "for many hours.",
+          "여러 시간 동안"
+        ]
       ]
     },
     {
       "en": "So the next day, Minji **switches** to drinking her last coffee before lunch.",
       "b2": false,
       "chunks": [
-        ["So the next day,", "그래서 다음 날"],
-        ["Minji **switches**", "민지는 바꾼다"],
-        ["to drinking her last coffee", "마지막 커피를 마시는 것으로"],
-        ["before lunch.", "점심 전에"]
+        [
+          "So the next day,",
+          "그래서 다음 날"
+        ],
+        [
+          "Minji **switches**",
+          "민지는 바꾼다"
+        ],
+        [
+          "to drinking her last coffee",
+          "마지막 커피를 마시는 것으로"
+        ],
+        [
+          "before lunch.",
+          "점심 전에"
+        ]
       ]
     }
   ],
@@ -165,5 +249,113 @@
     }
   ],
   "source": null,
-  "example": true
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Minji drinks coffee late in the afternoon, and that night she cannot sleep.",
+          "chunks": [
+            [
+              "Minji drinks coffee late in the afternoon,",
+              "민지는 오후 늦게 커피를 마시는데"
+            ],
+            [
+              "and that night she cannot sleep.",
+              "그날 밤 잠을 잘 수 없다"
+            ]
+          ]
+        },
+        {
+          "en": "Her problem is easy to explain with a brain chemical called **adenosine**.",
+          "chunks": [
+            [
+              "Her problem is easy to explain",
+              "그녀의 문제는 쉽게 설명할 수 있다"
+            ],
+            [
+              "with a brain chemical called **adenosine**.",
+              "아데노신이라는 뇌 화학 물질로"
+            ]
+          ]
+        },
+        {
+          "en": "While we are awake, adenosine slowly **builds up** in the brain, making us feel tired.",
+          "chunks": [
+            [
+              "While we are awake,",
+              "우리가 깨어 있는 동안"
+            ],
+            [
+              "adenosine slowly **builds up** in the brain,",
+              "아데노신이 뇌에 천천히 쌓이면서"
+            ],
+            [
+              "making us feel tired.",
+              "우리를 피곤하게 만든다"
+            ]
+          ]
+        },
+        {
+          "en": "Caffeine has a shape like adenosine, so it takes the places where adenosine would go.",
+          "chunks": [
+            [
+              "Caffeine has a shape like adenosine,",
+              "카페인은 아데노신과 모양이 비슷해서"
+            ],
+            [
+              "so it takes the places",
+              "그 자리를 차지한다"
+            ],
+            [
+              "where adenosine would go.",
+              "아데노신이 갈 곳을"
+            ]
+          ]
+        },
+        {
+          "en": "The **tiredness** does not go away; the brain just cannot feel it for a while.",
+          "chunks": [
+            [
+              "The **tiredness** does not go away;",
+              "피로가 사라지는 것은 아니다"
+            ],
+            [
+              "the brain just cannot feel it",
+              "뇌가 그것을 느끼지 못할 뿐이다"
+            ],
+            [
+              "for a while.",
+              "잠시 동안"
+            ]
+          ]
+        },
+        {
+          "en": "So the next day, Minji **switches** to drinking her last coffee before lunch.",
+          "chunks": [
+            [
+              "So the next day,",
+              "그래서 다음 날"
+            ],
+            [
+              "Minji **switches** to drinking",
+              "민지는 마지막 커피를 마시는 시간을 바꾼다"
+            ],
+            [
+              "her last coffee before lunch.",
+              "점심 전으로"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "민지는 오후 늦게 커피를 마시는데, 그날 밤 잠을 잘 수 없다.",
+        "그녀의 문제는 아데노신이라는 뇌 화학 물질로 쉽게 설명할 수 있다.",
+        "우리가 깨어 있는 동안, 아데노신이 뇌에 천천히 쌓이면서 피곤함을 느끼게 한다.",
+        "카페인은 아데노신과 모양이 비슷해서, 아데노신이 갈 자리를 차지한다.",
+        "피로가 사라지는 것은 아니다. 뇌가 잠시 동안 그것을 느끼지 못할 뿐이다.",
+        "그래서 다음 날, 민지는 점심 전으로 마지막 커피 시간을 바꾼다."
+      ]
+    }
+  }
 }

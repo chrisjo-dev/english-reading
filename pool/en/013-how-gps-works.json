@@ -15,65 +15,152 @@
       "en": "When your phone shows your location on a map, it is listening to **satellites** far above the Earth.",
       "b2": false,
       "chunks": [
-        ["When your phone shows your location", "휴대폰이 당신 위치를 보여 줄 때"],
-        ["on a map,", "지도 위에"],
-        ["it is listening to **satellites**", "휴대폰은 위성의 신호를 듣고 있다"],
-        ["far above the Earth.", "지구 저 위의"]
+        [
+          "When your phone shows your location",
+          "휴대폰이 당신 위치를 보여 줄 때"
+        ],
+        [
+          "on a map,",
+          "지도 위에"
+        ],
+        [
+          "it is listening to **satellites**",
+          "휴대폰은 위성의 신호를 듣고 있다"
+        ],
+        [
+          "far above the Earth.",
+          "지구 저 위의"
+        ]
       ]
     },
     {
       "en": "Each GPS satellite carries extremely **accurate** atomic clocks and keeps sending out signals that say what time it is.",
       "b2": false,
       "chunks": [
-        ["Each GPS satellite carries", "각 GPS 위성은 싣고 있다"],
-        ["extremely **accurate** atomic clocks", "매우 정확한 원자시계를"],
-        ["and keeps sending out signals", "그리고 계속 신호를 보낸다"],
-        ["that say what time it is.", "지금 몇 시인지 알리는"]
+        [
+          "Each GPS satellite carries",
+          "각 GPS 위성은 싣고 있다"
+        ],
+        [
+          "extremely **accurate** atomic clocks",
+          "매우 정확한 원자시계를"
+        ],
+        [
+          "and keeps sending out signals",
+          "그리고 계속 신호를 보낸다"
+        ],
+        [
+          "that say what time it is.",
+          "지금 몇 시인지 알리는"
+        ]
       ]
     },
     {
       "en": "These signals travel at the speed of light, so your phone can **calculate** how far away each satellite is from how long the signal took to arrive.",
       "b2": true,
       "chunks": [
-        ["These signals travel", "이 신호는 이동한다"],
-        ["at the speed of light,", "빛의 속도로"],
-        ["so your phone can **calculate**", "그래서 휴대폰은 계산할 수 있다"],
-        ["how far away each satellite is", "각 위성이 얼마나 멀리 있는지"],
-        ["from how long the signal took", "신호가 얼마나 걸렸는지로"],
-        ["to arrive.", "도착하는 데"]
+        [
+          "These signals travel",
+          "이 신호는 이동한다"
+        ],
+        [
+          "at the speed of light,",
+          "빛의 속도로"
+        ],
+        [
+          "so your phone can **calculate**",
+          "그래서 휴대폰은 계산할 수 있다"
+        ],
+        [
+          "how far away each satellite is",
+          "각 위성이 얼마나 멀리 있는지"
+        ],
+        [
+          "from how long the signal took",
+          "신호가 얼마나 걸렸는지로"
+        ],
+        [
+          "to arrive.",
+          "도착하는 데"
+        ]
       ]
     },
     {
       "en": "With the distances to several satellites, the phone can **work out** the one point where it must be.",
       "b2": false,
       "chunks": [
-        ["With the distances", "거리를 알면"],
-        ["to several satellites,", "여러 위성까지의"],
-        ["the phone can **work out**", "휴대폰은 알아낼 수 있다"],
-        ["the one point", "한 지점을"],
-        ["where it must be.", "자신이 있어야 하는"]
+        [
+          "With the distances",
+          "거리를 알면"
+        ],
+        [
+          "to several satellites,",
+          "여러 위성까지의"
+        ],
+        [
+          "the phone can **work out**",
+          "휴대폰은 알아낼 수 있다"
+        ],
+        [
+          "the one point",
+          "한 지점을"
+        ],
+        [
+          "where it must be.",
+          "자신이 있어야 하는"
+        ]
       ]
     },
     {
       "en": "It needs **at least** four satellites, because the clock in your phone is much less accurate than the clocks in space, and the extra signal helps **correct** the error.",
       "b2": false,
       "chunks": [
-        ["It needs **at least** four satellites,", "휴대폰은 적어도 위성 네 개가 필요하다"],
-        ["because the clock in your phone", "휴대폰 속 시계는"],
-        ["is much less accurate", "훨씬 덜 정확하기 때문이다"],
-        ["than the clocks in space,", "우주의 시계보다"],
-        ["and the extra signal", "그리고 추가 신호가"],
-        ["helps **correct** the error.", "오차를 바로잡도록 돕는다"]
+        [
+          "It needs **at least** four satellites,",
+          "휴대폰은 적어도 위성 네 개가 필요하다"
+        ],
+        [
+          "because the clock in your phone",
+          "휴대폰 속 시계는"
+        ],
+        [
+          "is much less accurate",
+          "훨씬 덜 정확하기 때문이다"
+        ],
+        [
+          "than the clocks in space,",
+          "우주의 시계보다"
+        ],
+        [
+          "and the extra signal",
+          "그리고 추가 신호가"
+        ],
+        [
+          "helps **correct** the error.",
+          "오차를 바로잡도록 돕는다"
+        ]
       ]
     },
     {
       "en": "Interestingly, your phone only **receives** these signals and never sends anything back to the satellites.",
       "b2": false,
       "chunks": [
-        ["Interestingly,", "흥미롭게도"],
-        ["your phone only **receives** these signals", "휴대폰은 이 신호를 받기만 하고"],
-        ["and never sends anything back", "아무것도 되돌려 보내지 않는다"],
-        ["to the satellites.", "위성으로"]
+        [
+          "Interestingly,",
+          "흥미롭게도"
+        ],
+        [
+          "your phone only **receives** these signals",
+          "휴대폰은 이 신호를 받기만 하고"
+        ],
+        [
+          "and never sends anything back",
+          "아무것도 되돌려 보내지 않는다"
+        ],
+        [
+          "to the satellites.",
+          "위성으로"
+        ]
       ]
     }
   ],
@@ -172,5 +259,113 @@
   "source": {
     "title": "How do GPS devices work? (Scientific American)",
     "url": "https://www.scientificamerican.com/article/how-do-gps-devices-work/"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "When your phone shows your location, it is listening to **satellites** high above.",
+          "chunks": [
+            [
+              "When your phone shows your location,",
+              "휴대폰이 위치를 보여 줄 때"
+            ],
+            [
+              "it is listening to **satellites**",
+              "위성의 신호를 듣고 있는 것이다"
+            ],
+            [
+              "high above.",
+              "높은 하늘의"
+            ]
+          ]
+        },
+        {
+          "en": "Each GPS satellite has **accurate** atomic clocks and sends radio signals to Earth.",
+          "chunks": [
+            [
+              "Each GPS satellite has **accurate** atomic clocks",
+              "각 GPS 위성은 정확한 원자 시계를 가지고"
+            ],
+            [
+              "and sends radio signals to Earth.",
+              "지구로 전파 신호를 보낸다"
+            ]
+          ]
+        },
+        {
+          "en": "Your phone **calculates** how far away each satellite is using the speed of light.",
+          "chunks": [
+            [
+              "Your phone **calculates**",
+              "휴대폰은 계산한다"
+            ],
+            [
+              "how far away each satellite is",
+              "각 위성까지의 거리를"
+            ],
+            [
+              "using the speed of light.",
+              "빛의 속도를 이용해서"
+            ]
+          ]
+        },
+        {
+          "en": "With distances to several satellites, the phone can **work out** your exact location.",
+          "chunks": [
+            [
+              "With distances to several satellites,",
+              "여러 위성까지의 거리로"
+            ],
+            [
+              "the phone can **work out**",
+              "휴대폰은 알아낼 수 있다"
+            ],
+            [
+              "your exact location.",
+              "정확한 위치를"
+            ]
+          ]
+        },
+        {
+          "en": "Your phone needs **at least** four satellites because its clock is less **accurate** than theirs.",
+          "chunks": [
+            [
+              "Your phone needs **at least** four satellites",
+              "휴대폰은 최소 네 개의 위성이 필요하다"
+            ],
+            [
+              "because its clock is less **accurate**",
+              "시계가 덜 정확하기 때문에"
+            ],
+            [
+              "than theirs.",
+              "위성의 시계보다"
+            ]
+          ]
+        },
+        {
+          "en": "Your phone only **receives** these signals and never sends anything back.",
+          "chunks": [
+            [
+              "Your phone only **receives** these signals",
+              "휴대폰은 이 신호를 받기만 하고"
+            ],
+            [
+              "and never sends anything back.",
+              "아무것도 되돌려 보내지 않는다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "휴대폰이 위치를 보여 줄 때, 하늘 높이 있는 위성의 신호를 듣고 있는 것이다.",
+        "각 GPS 위성은 정확한 원자 시계를 가지고 지구로 전파 신호를 보낸다.",
+        "휴대폰은 빛의 속도를 이용해 각 위성까지의 거리를 계산한다.",
+        "여러 위성까지의 거리를 이용해 휴대폰은 정확한 위치를 알아낼 수 있다.",
+        "휴대폰의 시계는 위성보다 덜 정확해서 최소 네 개의 위성이 필요하다.",
+        "휴대폰은 이 신호를 받기만 하고 아무것도 되돌려 보내지 않는다."
+      ]
+    }
   }
 }

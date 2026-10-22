@@ -79,7 +79,7 @@ def check(path):
 
 
 CHUNKS_FROM = dt.date(2026, 10, 23)  # 이날 지문부터 영어 문장마다 끊어 읽기(chunks)가 있어야 한다
-LEVELS_FROM = dt.date(2099, 1, 1)   # 이날 이후 영어 지문에 levels.a 필드가 필수 (실제 배포 날짜로 낮춰 설정한다)
+LEVELS_FROM = dt.date(2026, 10, 23)  # 이날 이후 영어 지문에 levels.a 필드가 필수
 
 
 def new_chunks(path):
@@ -92,7 +92,7 @@ def new_chunks(path):
 def levels_required(path):
     """이 파일에 levels.a 필드가 필수인지 판단한다."""
     if path.parent.parent.name == "pool":
-        return False  # pool 비축분은 LEVELS_FROM 이후 신규분부터 별도 처리
+        return path.parent.name == "en"  # 영어 pool 비축분은 levels.a 필수
     try:
         return dt.date.fromisoformat(path.stem) >= LEVELS_FROM
     except ValueError:

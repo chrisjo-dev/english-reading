@@ -15,61 +15,136 @@
       "en": "If you look at the Moon on different nights, you will notice something strange: it always shows us the same face.",
       "b2": false,
       "chunks": [
-        ["If you look at the Moon", "달을 보면"],
-        ["on different nights,", "여러 날 밤에"],
-        ["you will notice something strange:", "이상한 점을 알게 될 것이다"],
-        ["it always shows us", "달은 늘 우리에게 보여 준다"],
-        ["the same face.", "같은 얼굴을"]
+        [
+          "If you look at the Moon",
+          "달을 보면"
+        ],
+        [
+          "on different nights,",
+          "여러 날 밤에"
+        ],
+        [
+          "you will notice something strange:",
+          "이상한 점을 알게 될 것이다"
+        ],
+        [
+          "it always shows us",
+          "달은 늘 우리에게 보여 준다"
+        ],
+        [
+          "the same face.",
+          "같은 얼굴을"
+        ]
       ]
     },
     {
       "en": "This does not mean that the Moon does not **spin**.",
       "b2": false,
       "chunks": [
-        ["This does not mean", "이것은 뜻하지 않는다"],
-        ["that the Moon does not **spin**.", "달이 돌지 않는다는 것을"]
+        [
+          "This does not mean",
+          "이것은 뜻하지 않는다"
+        ],
+        [
+          "that the Moon does not **spin**.",
+          "달이 돌지 않는다는 것을"
+        ]
       ]
     },
     {
       "en": "It turns around once in exactly the same time that it takes to go around the Earth, so the same side always **faces** us.",
       "b2": true,
       "chunks": [
-        ["It turns around once", "달은 한 바퀴 돈다"],
-        ["in exactly the same time", "정확히 같은 시간에"],
-        ["that it takes to go around the Earth,", "지구를 한 바퀴 도는 데 걸리는"],
-        ["so the same side", "그래서 같은 면이"],
-        ["always **faces** us.", "늘 우리를 향한다"]
+        [
+          "It turns around once",
+          "달은 한 바퀴 돈다"
+        ],
+        [
+          "in exactly the same time",
+          "정확히 같은 시간에"
+        ],
+        [
+          "that it takes to go around the Earth,",
+          "지구를 한 바퀴 도는 데 걸리는"
+        ],
+        [
+          "so the same side",
+          "그래서 같은 면이"
+        ],
+        [
+          "always **faces** us.",
+          "늘 우리를 향한다"
+        ]
       ]
     },
     {
       "en": "Long ago, the Moon spun faster, but the pull of Earth's **gravity** slowly **slowed** it **down** until the two movements **matched**.",
       "b2": false,
       "chunks": [
-        ["Long ago,", "오래전"],
-        ["the Moon spun faster,", "달은 더 빨리 돌았지만"],
-        ["but the pull of Earth's **gravity**", "지구 중력의 끌어당김이"],
-        ["slowly **slowed** it **down**", "달을 천천히 느리게 만들었다"],
-        ["until the two movements **matched**.", "두 움직임이 맞아떨어질 때까지"]
+        [
+          "Long ago,",
+          "오래전"
+        ],
+        [
+          "the Moon spun faster,",
+          "달은 더 빨리 돌았지만"
+        ],
+        [
+          "but the pull of Earth's **gravity**",
+          "지구 중력의 끌어당김이"
+        ],
+        [
+          "slowly **slowed** it **down**",
+          "달을 천천히 느리게 만들었다"
+        ],
+        [
+          "until the two movements **matched**.",
+          "두 움직임이 맞아떨어질 때까지"
+        ]
       ]
     },
     {
       "en": "People sometimes call the other side the dark side, but it gets just as much sunlight as the side we see.",
       "b2": false,
       "chunks": [
-        ["People sometimes call", "사람들은 가끔 부른다"],
-        ["the other side the dark side,", "반대쪽 면을 어두운 면이라고"],
-        ["but it gets just as much sunlight", "하지만 그곳도 똑같이 햇빛을 받는다"],
-        ["as the side we see.", "우리가 보는 면만큼"]
+        [
+          "People sometimes call",
+          "사람들은 가끔 부른다"
+        ],
+        [
+          "the other side the dark side,",
+          "반대쪽 면을 어두운 면이라고"
+        ],
+        [
+          "but it gets just as much sunlight",
+          "하지만 그곳도 똑같이 햇빛을 받는다"
+        ],
+        [
+          "as the side we see.",
+          "우리가 보는 면만큼"
+        ]
       ]
     },
     {
       "en": "No human saw that **hidden** side until a spacecraft flew behind the Moon and sent back photos.",
       "b2": false,
       "chunks": [
-        ["No human saw", "아무도 보지 못했다"],
-        ["that **hidden** side", "그 숨은 면을"],
-        ["until a spacecraft flew behind the Moon", "우주선이 달 뒤로 날아가"],
-        ["and sent back photos.", "사진을 보내오기 전까지"]
+        [
+          "No human saw",
+          "아무도 보지 못했다"
+        ],
+        [
+          "that **hidden** side",
+          "그 숨은 면을"
+        ],
+        [
+          "until a spacecraft flew behind the Moon",
+          "우주선이 달 뒤로 날아가"
+        ],
+        [
+          "and sent back photos.",
+          "사진을 보내오기 전까지"
+        ]
       ]
     }
   ],
@@ -161,5 +236,113 @@
       "example": "A spacecraft took the first photos of the **far side**."
     }
   ],
-  "source": null
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "When you look at the Moon on different nights, it always shows the same side.",
+          "chunks": [
+            [
+              "When you look at the Moon",
+              "달을 바라볼 때"
+            ],
+            [
+              "on different nights,",
+              "밤마다"
+            ],
+            [
+              "it always shows the same side.",
+              "항상 같은 면을 보여 준다"
+            ]
+          ]
+        },
+        {
+          "en": "This does not mean the Moon does not **spin**.",
+          "chunks": [
+            [
+              "This does not mean",
+              "이것은 의미하지 않는다"
+            ],
+            [
+              "the Moon does not **spin**.",
+              "달이 자전하지 않는다고"
+            ]
+          ]
+        },
+        {
+          "en": "It turns once in the same time it takes to go around the Earth.",
+          "chunks": [
+            [
+              "It turns once",
+              "달은 한 번 자전하는데"
+            ],
+            [
+              "in the same time",
+              "같은 시간이 걸린다"
+            ],
+            [
+              "it takes to go around the Earth.",
+              "지구를 한 바퀴 도는 데"
+            ]
+          ]
+        },
+        {
+          "en": "Long ago, the Moon spun faster, but Earth's **gravity** slowly **slowed** it down.",
+          "chunks": [
+            [
+              "Long ago, the Moon spun faster,",
+              "오래전에 달은 더 빠르게 자전했지만"
+            ],
+            [
+              "but Earth's **gravity**",
+              "지구의 중력이"
+            ],
+            [
+              "slowly **slowed** it down.",
+              "천천히 속도를 줄였다"
+            ]
+          ]
+        },
+        {
+          "en": "People call the other side the dark side, but it gets just as much sunlight.",
+          "chunks": [
+            [
+              "People call the other side",
+              "사람들은 반대편을"
+            ],
+            [
+              "the dark side,",
+              "어두운 면이라고 부르지만"
+            ],
+            [
+              "but it gets just as much sunlight.",
+              "그곳도 햇빛을 똑같이 받는다"
+            ]
+          ]
+        },
+        {
+          "en": "No human saw the **hidden** side until a spacecraft flew behind the Moon.",
+          "chunks": [
+            [
+              "No human saw the **hidden** side",
+              "인간은 숨겨진 면을 보지 못했다"
+            ],
+            [
+              "until a spacecraft flew behind the Moon.",
+              "우주선이 달 뒤를 날기 전까지는"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "달을 밤마다 바라보면, 항상 같은 면을 보여 준다.",
+        "이것은 달이 자전하지 않는다는 뜻이 아니다.",
+        "달은 지구를 한 바퀴 도는 시간과 같은 시간에 한 번 자전한다.",
+        "오래전에 달은 더 빠르게 자전했지만, 지구의 중력이 천천히 속도를 줄였다.",
+        "사람들은 반대편을 어두운 면이라고 부르지만, 그곳도 햇빛을 똑같이 받는다.",
+        "우주선이 달 뒤를 날기 전까지, 인간은 그 숨겨진 면을 본 적이 없었다."
+      ]
+    }
+  }
 }

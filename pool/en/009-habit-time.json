@@ -15,66 +15,156 @@
       "en": "Many people believe that a new habit takes about three weeks to form, but research tells a more interesting story.",
       "b2": false,
       "chunks": [
-        ["Many people believe", "많은 사람이 믿는다"],
-        ["that a new habit", "새 습관이"],
-        ["takes about three weeks to form,", "생기는 데 3주쯤 걸린다고"],
-        ["but research tells", "하지만 연구는 들려준다"],
-        ["a more interesting story.", "더 흥미로운 이야기를"]
+        [
+          "Many people believe",
+          "많은 사람이 믿는다"
+        ],
+        [
+          "that a new habit",
+          "새 습관이"
+        ],
+        [
+          "takes about three weeks to form,",
+          "생기는 데 3주쯤 걸린다고"
+        ],
+        [
+          "but research tells",
+          "하지만 연구는 들려준다"
+        ],
+        [
+          "a more interesting story.",
+          "더 흥미로운 이야기를"
+        ]
       ]
     },
     {
       "en": "In a study by the researcher Pippa Lally, volunteers tried to turn one new daily action into a **habit**.",
       "b2": false,
       "chunks": [
-        ["In a study", "한 연구에서"],
-        ["by the researcher Pippa Lally,", "연구자 피파 랠리의"],
-        ["volunteers tried to turn", "지원자들은 바꿔 보려 했다"],
-        ["one new daily action", "새로운 하루 행동 하나를"],
-        ["into a **habit**.", "습관으로"]
+        [
+          "In a study",
+          "한 연구에서"
+        ],
+        [
+          "by the researcher Pippa Lally,",
+          "연구자 피파 랠리의"
+        ],
+        [
+          "volunteers tried to turn",
+          "지원자들은 바꿔 보려 했다"
+        ],
+        [
+          "one new daily action",
+          "새로운 하루 행동 하나를"
+        ],
+        [
+          "into a **habit**.",
+          "습관으로"
+        ]
       ]
     },
     {
       "en": "On **average**, it took sixty-six days before the action felt **automatic**, which is more than two months.",
       "b2": false,
       "chunks": [
-        ["On **average**,", "평균적으로"],
-        ["it took sixty-six days", "66일이 걸렸다"],
-        ["before the action felt **automatic**,", "그 행동이 저절로 느껴지기까지"],
-        ["which is more than two months.", "그것은 두 달이 넘는다"]
+        [
+          "On **average**,",
+          "평균적으로"
+        ],
+        [
+          "it took sixty-six days",
+          "66일이 걸렸다"
+        ],
+        [
+          "before the action felt **automatic**,",
+          "그 행동이 저절로 느껴지기까지"
+        ],
+        [
+          "which is more than two months.",
+          "그것은 두 달이 넘는다"
+        ]
       ]
     },
     {
       "en": "However, the **range** was huge: for some people it took only eighteen days, while for others it took two hundred and fifty-four days.",
       "b2": true,
       "chunks": [
-        ["However,", "하지만"],
-        ["the **range** was huge:", "범위는 아주 넓었다"],
-        ["for some people", "어떤 사람에게는"],
-        ["it took only eighteen days,", "겨우 18일이 걸렸고"],
-        ["while for others", "반면 다른 사람에게는"],
-        ["it took two hundred and fifty-four days.", "254일이 걸렸다"]
+        [
+          "However,",
+          "하지만"
+        ],
+        [
+          "the **range** was huge:",
+          "범위는 아주 넓었다"
+        ],
+        [
+          "for some people",
+          "어떤 사람에게는"
+        ],
+        [
+          "it took only eighteen days,",
+          "겨우 18일이 걸렸고"
+        ],
+        [
+          "while for others",
+          "반면 다른 사람에게는"
+        ],
+        [
+          "it took two hundred and fifty-four days.",
+          "254일이 걸렸다"
+        ]
       ]
     },
     {
       "en": "**In other words**, the time it takes **depends on** the person and the habit.",
       "b2": false,
       "chunks": [
-        ["**In other words**,", "다시 말해"],
-        ["the time it takes", "걸리는 시간은"],
-        ["**depends on**", "달려 있다"],
-        ["the person and the habit.", "사람과 습관에"]
+        [
+          "**In other words**,",
+          "다시 말해"
+        ],
+        [
+          "the time it takes",
+          "걸리는 시간은"
+        ],
+        [
+          "**depends on**",
+          "달려 있다"
+        ],
+        [
+          "the person and the habit.",
+          "사람과 습관에"
+        ]
       ]
     },
     {
       "en": "So if your new habit still feels hard after a few weeks, it does not mean you have **failed**; you may simply need more time.",
       "b2": false,
       "chunks": [
-        ["So if your new habit", "그러니 당신의 새 습관이"],
-        ["still feels hard", "여전히 어렵게 느껴지더라도"],
-        ["after a few weeks,", "몇 주가 지나도"],
-        ["it does not mean", "그것은 뜻하지 않는다"],
-        ["you have **failed**;", "당신이 실패했다는 것을"],
-        ["you may simply need more time.", "그저 시간이 더 필요할 수 있다"]
+        [
+          "So if your new habit",
+          "그러니 당신의 새 습관이"
+        ],
+        [
+          "still feels hard",
+          "여전히 어렵게 느껴지더라도"
+        ],
+        [
+          "after a few weeks,",
+          "몇 주가 지나도"
+        ],
+        [
+          "it does not mean",
+          "그것은 뜻하지 않는다"
+        ],
+        [
+          "you have **failed**;",
+          "당신이 실패했다는 것을"
+        ],
+        [
+          "you may simply need more time.",
+          "그저 시간이 더 필요할 수 있다"
+        ]
       ]
     }
   ],
@@ -173,5 +263,113 @@
   "source": {
     "title": "Does it really take 66 days to form a habit? We asked the expert, Dr Pippa Lally (University of Surrey)",
     "url": "https://www.surrey.ac.uk/news/does-it-really-take-66-days-form-habit-we-asked-expert-dr-pippa-lally"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Many people think a new habit takes three weeks, but research says it takes much longer.",
+          "chunks": [
+            [
+              "Many people think a new habit takes three weeks,",
+              "많은 사람이 새 습관이 3주 걸린다고 생각하지만"
+            ],
+            [
+              "but research says it takes much longer.",
+              "연구에 따르면 훨씬 더 오래 걸린다"
+            ]
+          ]
+        },
+        {
+          "en": "Researcher Pippa Lally had volunteers try to turn one daily action into a habit.",
+          "chunks": [
+            [
+              "Researcher Pippa Lally",
+              "연구자 피파 랠리는"
+            ],
+            [
+              "had volunteers try to turn",
+              "자원자들에게 시도하게 했다"
+            ],
+            [
+              "one daily action into a habit.",
+              "한 가지 일상적인 행동을 습관으로 만드는 것을"
+            ]
+          ]
+        },
+        {
+          "en": "On **average**, it took sixty-six days before the action felt **automatic**.",
+          "chunks": [
+            [
+              "On **average**,",
+              "평균적으로"
+            ],
+            [
+              "it took sixty-six days",
+              "66일이 걸렸다"
+            ],
+            [
+              "before the action felt **automatic**.",
+              "그 행동이 자동으로 느껴지기까지"
+            ]
+          ]
+        },
+        {
+          "en": "The **range** was huge: some people needed only 18 days, while others needed over 200.",
+          "chunks": [
+            [
+              "The **range** was huge:",
+              "범위는 매우 컸는데"
+            ],
+            [
+              "some people needed only 18 days,",
+              "어떤 사람은 18일밖에 걸리지 않았고"
+            ],
+            [
+              "while others needed over 200.",
+              "어떤 사람은 200일 넘게 걸렸다"
+            ]
+          ]
+        },
+        {
+          "en": "**In other words**, the time it takes **depends on** the person and the habit.",
+          "chunks": [
+            [
+              "**In other words**,",
+              "다시 말해"
+            ],
+            [
+              "the time it takes",
+              "걸리는 시간은"
+            ],
+            [
+              "**depends on** the person and the habit.",
+              "사람과 습관에 따라 다르다"
+            ]
+          ]
+        },
+        {
+          "en": "So if your new habit still feels hard after a few weeks, you have not failed.",
+          "chunks": [
+            [
+              "So if your new habit still feels hard after a few weeks,",
+              "새 습관이 몇 주 뒤에도 힘들게 느껴져도"
+            ],
+            [
+              "you have not failed.",
+              "실패한 것이 아니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "많은 사람이 새 습관이 3주 걸린다고 생각하지만, 연구에 따르면 훨씬 더 오래 걸린다.",
+        "연구자 피파 랠리는 자원자들에게 한 가지 일상적인 행동을 습관으로 만들어 보게 했다.",
+        "평균적으로, 그 행동이 자동으로 느껴지기까지 66일이 걸렸다.",
+        "범위는 매우 커서, 어떤 사람은 18일밖에 걸리지 않았고 어떤 사람은 200일 넘게 걸렸다.",
+        "다시 말해, 걸리는 시간은 사람과 습관에 따라 다르다.",
+        "그러니 새 습관이 몇 주 뒤에도 힘들게 느껴져도, 실패한 것이 아니다."
+      ]
+    }
   }
 }

@@ -71,9 +71,25 @@
    - `answers`: 문장 순서대로의 모범 해석.
    - `advanced`: 6~8개. `confuse`는 혼동 주의가 없으면 `null`, 있으면 "precious(소중한)와 혼동 주의" 형태. `example`의 해당 단어는 `**단어**`.
    - `source`: 검색한 기사면 `{"title": "기사 제목 (매체, YYYY-MM-DD)", "url": "..."}`, 검색 없이 쓴 날은 `null`. 출처 없는 글은 페이지에 "특정 기사를 바탕으로 하지 않은 학습용 글"로 표시됩니다.
+   - `levels`: **기초(A 수준) 병행 지문**. 반드시 main 지문과 같은 수의 문장(1:1 대응)으로 씁니다. 없어도 발행은 가능하지만 기초 구독자에게 지문이 전달되지 않습니다. 가능하면 항상 작성합니다.
+     형식: `{"a": {"sentences": [{"en": "...", "chunks": [...]}, ...], "answers": ["한국어 해석", ...]}}`
+     작성 원칙:
+     - **난이도**: A2~B1. 문장마다 약 15단어 이하. 자주 쓰는 단어, 능동태 위주, 짧은 절.
+     - **사실/이름/숫자** 유지: main 지문의 사실, 고유명사, 수치는 그대로 씁니다.
+     - **형광펜 단어**: main 지문에서 `**단어**`로 표시된 단어가 A 문장에 자연스럽게 들어가면 그대로 `**단어**` 표시를 유지합니다. 너무 어려운 단어는 생략하거나 문맥으로 설명할 수 있습니다.
+     - **chunks**: main의 chunks 규칙과 동일. 덩어리를 공백으로 이으면 `en`과 정확히 같아야 하고, 한 덩어리 안에서 `**` 를 열고 닫습니다. 뜻은 직독직해로 씁니다. levels.a 의 chunks 는 **항상 필수**입니다.
+     - **answers**: 각 A 문장의 자연스러운 한국어 해석. 문장 수와 일치.
+
+     **원샷 예시** (main 1문장 → A 1문장):
+     ```
+     main:   "When sunlight enters the air, it hits tiny gas **molecules**, and these molecules **scatter** short blue waves in every direction much more than long red ones."
+     level a: {"en": "Gas **molecules** in the air **scatter** blue waves in all directions.",
+               "chunks": [["Gas **molecules** in the air", "공기 속 기체 분자들이"], ["**scatter** blue waves", "파란 파동을 흩뜨린다"], ["in all directions.", "모든 방향으로"]]}
+     answer: "공기 속 기체 분자들이 파란 파동을 모든 방향으로 흩뜨린다."
+     ```
    - 모든 문자열은 일반 텍스트로 씁니다(HTML 태그 금지).
 3. **검증**: `python3 tools/render.py en YYYY-MM-DD`를 실행해 오류 없이 끝나는지 확인합니다. 오류가 나면 JSON을 고쳐 다시 실행합니다. 이 명령이 만든 HTML 파일은 커밋하지 않습니다(Actions가 다시 만듭니다). `git checkout -- . && git clean -fd -- en/YYYY-MM-DD` 로 되돌린 뒤 content 파일만 남깁니다.
-   그다음 `python3 tools/check_content.py en YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호, 이은 글이 문장과 다른 chunks 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::error`(최근 지문과 내용 겹침)가 나오면 새로 생긴 일에 초점을 맞춰 고쳐 쓰거나 다른 소식으로 다시 고릅니다. 겹친 채로 올리면 발행 단계에서 비축분으로 바뀝니다. `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
+   그다음 `python3 tools/check_content.py en YYYY-MM-DD`를 실행합니다. `::error`(화면에 그대로 보이는 마크다운 기호, 이은 글이 문장과 다른 chunks 등)가 나오면 JSON을 고쳐 다시 실행합니다. `::error`(최근 지문과 내용 겹침)가 나오면 새로 생긴 일에 초점을 맞춰 고쳐 쓰거나 다른 소식으로 다시 고릅니다. 겹친 채로 올리면 발행 단계에서 비축분으로 바뀝니다. `::warning`(출처 없이 구체적 수치)이 나오면 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다). `::error`(levels.a 오류)가 나오면 JSON의 `levels.a` 를 수정해 다시 실행합니다. levels.a 오류만 남고 해결이 어려우면 `levels` 키 전체를 제거하고 main 지문만 커밋합니다(levels.a 는 발행을 막지 않습니다).
 4. **push**: `git add content/en/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add YYYY-MM-DD: 주제어" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 같은 작성자 줄을 붙이지 마세요. 다른 브랜치로 push하지 마세요. push가 거절되면 `git pull --rebase origin main` 후 한 번만 다시 push합니다.
 5. **알림**: PushNotification으로 짧게 알립니다. 예: "오늘의 영어 읽기(10/13, 주제: 핵시계)가 올라갔어요. 몇 분 뒤 열려요: https://read.wspace.ai.kr/en/YYYY-MM-DD/". 알림에는 지문 전문과 모범 해석을 넣지 않습니다.
 6. **마지막 답변**: 한두 문장과 페이지 주소, 끝에 `출처: [기사 제목](URL)` 한 줄. 모범 해석은 답변에 노출하지 않습니다. push까지 실패했다면 원인과 함께 그 사실을 분명히 적고, 알림에도 "오늘 지문 올리기 실패"라고 적습니다.

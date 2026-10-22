@@ -73,6 +73,10 @@ ROUTINE.md(영어) 와 ROUTINE.ja.md(일본어)의 **난이도, 형식, 후리�
   덩어리를 공백 하나로 이으면 문장(`en`)과 정확히 같아야 한다. 뜻은 영어 순서대로 읽는 짧은 한국어(직독직해)로 쓴다.
 - 예: `{"en": "Fireflies use their flashes mainly to find a **partner**.", "b2": false, "chunks": [["Fireflies use their flashes", "반딧불이는 깜박임을 쓴다"], ["mainly to find a **partner**.", "주로 짝을 찾으려고"]]}`
 
+**기초 수준 병행 지문(영어만):**
+- 영어 비축분은 `levels.a` 필드도 넣는다. 없으면 `check_content.py --pool`이 오류를 낸다. 일본어 비축분에는 넣지 않는다.
+- 규칙은 ROUTINE.md 의 `levels` 필드 설명과 같다: main 과 동일한 수의 문장(1:1 대응), 각 문장 약 15단어 이하, A2~B1 수준, 능동태 위주, 사실/이름/수치 유지, main 의 `**형광펜**` 단어는 자연스러우면 유지. chunks 는 항상 필수.
+
 **사실 확인:**
 - 구체적 수치(숫자, 비율)를 넣으려면 검색으로 출처를 확인하고 `source` 에 넣는다
 - 출처를 달기 어려운 지어낸 이야기라면 `"example": true` 를 넣는다

@@ -15,61 +15,136 @@
       "en": "When a honeybee finds a field full of flowers, it cannot simply tell the others where to go, so it dances instead.",
       "b2": false,
       "chunks": [
-        ["When a honeybee finds", "꿀벌이 찾으면"],
-        ["a field full of flowers,", "꽃이 가득한 들판을"],
-        ["it cannot simply tell the others", "다른 벌에게 그냥 말할 수 없다"],
-        ["where to go,", "어디로 가야 하는지"],
-        ["so it dances instead.", "그래서 대신 춤을 춘다"]
+        [
+          "When a honeybee finds",
+          "꿀벌이 찾으면"
+        ],
+        [
+          "a field full of flowers,",
+          "꽃이 가득한 들판을"
+        ],
+        [
+          "it cannot simply tell the others",
+          "다른 벌에게 그냥 말할 수 없다"
+        ],
+        [
+          "where to go,",
+          "어디로 가야 하는지"
+        ],
+        [
+          "so it dances instead.",
+          "그래서 대신 춤을 춘다"
+        ]
       ]
     },
     {
       "en": "Back inside the dark **hive**, it runs in a straight line while **shaking** its body, then **circles back** and does it again.",
       "b2": false,
       "chunks": [
-        ["Back inside the dark **hive**,", "어두운 벌집 안으로 돌아와"],
-        ["it runs in a straight line", "꿀벌은 직선으로 달린다"],
-        ["while **shaking** its body,", "몸을 흔들면서"],
-        ["then **circles back**", "그다음 빙 돌아와서"],
-        ["and does it again.", "다시 그렇게 한다"]
+        [
+          "Back inside the dark **hive**,",
+          "어두운 벌집 안으로 돌아와"
+        ],
+        [
+          "it runs in a straight line",
+          "꿀벌은 직선으로 달린다"
+        ],
+        [
+          "while **shaking** its body,",
+          "몸을 흔들면서"
+        ],
+        [
+          "then **circles back**",
+          "그다음 빙 돌아와서"
+        ],
+        [
+          "and does it again.",
+          "다시 그렇게 한다"
+        ]
       ]
     },
     {
       "en": "The direction of this straight run shows the direction of the flowers **compared to** the sun.",
       "b2": false,
       "chunks": [
-        ["The direction of this straight run", "이 직선 달리기의 방향은"],
-        ["shows the direction of the flowers", "꽃이 있는 방향을 보여 준다"],
-        ["**compared to** the sun.", "태양을 기준으로"]
+        [
+          "The direction of this straight run",
+          "이 직선 달리기의 방향은"
+        ],
+        [
+          "shows the direction of the flowers",
+          "꽃이 있는 방향을 보여 준다"
+        ],
+        [
+          "**compared to** the sun.",
+          "태양을 기준으로"
+        ]
       ]
     },
     {
       "en": "If the bee runs straight up, the food is toward the sun; if it runs at an **angle**, the flowers are at that same angle away from the sun.",
       "b2": true,
       "chunks": [
-        ["If the bee runs straight up,", "벌이 똑바로 위로 달리면"],
-        ["the food is toward the sun;", "먹이는 태양 쪽에 있다"],
-        ["if it runs at an **angle**,", "비스듬히 달리면"],
-        ["the flowers are at that same angle", "꽃은 그 각도만큼 떨어져 있다"],
-        ["away from the sun.", "태양에서"]
+        [
+          "If the bee runs straight up,",
+          "벌이 똑바로 위로 달리면"
+        ],
+        [
+          "the food is toward the sun;",
+          "먹이는 태양 쪽에 있다"
+        ],
+        [
+          "if it runs at an **angle**,",
+          "비스듬히 달리면"
+        ],
+        [
+          "the flowers are at that same angle",
+          "꽃은 그 각도만큼 떨어져 있다"
+        ],
+        [
+          "away from the sun.",
+          "태양에서"
+        ]
       ]
     },
     {
       "en": "The longer the shaking part **lasts**, the farther away the flowers are.",
       "b2": false,
       "chunks": [
-        ["The longer the shaking part **lasts**,", "흔드는 부분이 오래갈수록"],
-        ["the farther away", "더 멀리 있다"],
-        ["the flowers are.", "꽃이"]
+        [
+          "The longer the shaking part **lasts**,",
+          "흔드는 부분이 오래갈수록"
+        ],
+        [
+          "the farther away",
+          "더 멀리 있다"
+        ],
+        [
+          "the flowers are.",
+          "꽃이"
+        ]
       ]
     },
     {
       "en": "Other bees follow the dancer closely, learn the message, and then fly out to find the food themselves.",
       "b2": false,
       "chunks": [
-        ["Other bees follow the dancer closely,", "다른 벌들은 춤추는 벌을 바짝 따라가며"],
-        ["learn the message,", "메시지를 배우고"],
-        ["and then fly out", "그다음 날아가서"],
-        ["to find the food themselves.", "직접 먹이를 찾는다"]
+        [
+          "Other bees follow the dancer closely,",
+          "다른 벌들은 춤추는 벌을 바짝 따라가며"
+        ],
+        [
+          "learn the message,",
+          "메시지를 배우고"
+        ],
+        [
+          "and then fly out",
+          "그다음 날아가서"
+        ],
+        [
+          "to find the food themselves.",
+          "직접 먹이를 찾는다"
+        ]
       ]
     }
   ],
@@ -161,5 +236,121 @@
       "example": "The bee dance is a surprisingly **sophisticated** language."
     }
   ],
-  "source": null
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "When a honeybee finds flowers, it cannot simply tell the other bees where they are.",
+          "chunks": [
+            [
+              "When a honeybee finds flowers,",
+              "꿀벌이 꽃을 발견하면"
+            ],
+            [
+              "it cannot simply tell the other bees",
+              "다른 벌들에게 그냥 말할 수 없다"
+            ],
+            [
+              "where they are.",
+              "꽃이 어디 있는지"
+            ]
+          ]
+        },
+        {
+          "en": "Back in the dark **hive**, the bee runs in a straight line while **shaking** its body.",
+          "chunks": [
+            [
+              "Back in the dark **hive**,",
+              "어두운 벌집으로 돌아와서"
+            ],
+            [
+              "the bee runs in a straight line",
+              "벌은 일직선으로 달린다"
+            ],
+            [
+              "while **shaking** its body.",
+              "몸을 흔들면서"
+            ]
+          ]
+        },
+        {
+          "en": "The direction of the straight run shows the direction of the flowers **compared to** the sun.",
+          "chunks": [
+            [
+              "The direction of the straight run",
+              "일직선의 방향이 보여 준다"
+            ],
+            [
+              "shows the direction of the flowers",
+              "꽃의 방향을"
+            ],
+            [
+              "**compared to** the sun.",
+              "태양과 비교해서"
+            ]
+          ]
+        },
+        {
+          "en": "Running straight up means food is toward the sun; at an **angle**, it shows that direction.",
+          "chunks": [
+            [
+              "Running straight up",
+              "곧장 위로 달리면"
+            ],
+            [
+              "means food is toward the sun;",
+              "먹이가 태양 쪽이라는 뜻이고"
+            ],
+            [
+              "at an **angle**,",
+              "각도를 기울이면"
+            ],
+            [
+              "it shows that direction.",
+              "그 방향이 먹이의 위치다"
+            ]
+          ]
+        },
+        {
+          "en": "The longer the shaking part **lasts**, the farther away the flowers are.",
+          "chunks": [
+            [
+              "The longer the shaking part **lasts**,",
+              "흔드는 부분이 길수록"
+            ],
+            [
+              "the farther away the flowers are.",
+              "꽃이 더 멀리 있다"
+            ]
+          ]
+        },
+        {
+          "en": "Other bees follow the dancer, learn the message, and fly out to find the flowers.",
+          "chunks": [
+            [
+              "Other bees follow the dancer,",
+              "다른 벌들은 춤추는 벌을 따라"
+            ],
+            [
+              "learn the message,",
+              "정보를 배우고"
+            ],
+            [
+              "and fly out to find the flowers.",
+              "꽃을 찾으러 날아간다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "꿀벌이 꽃을 발견하면, 다른 벌들에게 꽃이 어디 있는지 그냥 말할 수 없다.",
+        "어두운 벌집으로 돌아온 벌은 몸을 흔들면서 일직선으로 달린다.",
+        "일직선의 방향이 태양과 비교해 꽃이 있는 방향을 알려 준다.",
+        "곧장 위로 달리면 먹이가 태양 쪽이라는 뜻이고, 각도를 기울이면 그 방향이 먹이의 위치다.",
+        "흔드는 부분이 길수록 꽃이 더 멀리 있다.",
+        "다른 벌들은 춤추는 벌을 따라 정보를 배우고 꽃을 찾으러 날아간다."
+      ]
+    }
+  }
 }

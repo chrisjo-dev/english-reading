@@ -15,65 +15,152 @@
       "en": "The microwave oven was discovered almost **by accident**.",
       "b2": false,
       "chunks": [
-        ["The microwave oven", "전자레인지는"],
-        ["was discovered", "발견되었다"],
-        ["almost **by accident**.", "거의 우연히"]
+        [
+          "The microwave oven",
+          "전자레인지는"
+        ],
+        [
+          "was discovered",
+          "발견되었다"
+        ],
+        [
+          "almost **by accident**.",
+          "거의 우연히"
+        ]
       ]
     },
     {
       "en": "An engineer named Percy Spencer was working near a magnetron, a part that produces microwaves for **radar**, when he noticed that the candy bar in his pocket had **melted**.",
       "b2": true,
       "chunks": [
-        ["An engineer named Percy Spencer", "퍼시 스펜서라는 엔지니어가"],
-        ["was working near a magnetron,", "마그네트론 근처에서 일하고 있었다"],
-        ["a part that produces microwaves", "마이크로파를 만드는 부품인"],
-        ["for **radar**,", "레이더용"],
-        ["when he noticed", "그때 그는 알아차렸다"],
-        ["that the candy bar in his pocket", "주머니 속 초코바가"],
-        ["had **melted**.", "녹아 있다는 것을"]
+        [
+          "An engineer named Percy Spencer",
+          "퍼시 스펜서라는 엔지니어가"
+        ],
+        [
+          "was working near a magnetron,",
+          "마그네트론 근처에서 일하고 있었다"
+        ],
+        [
+          "a part that produces microwaves",
+          "마이크로파를 만드는 부품인"
+        ],
+        [
+          "for **radar**,",
+          "레이더용"
+        ],
+        [
+          "when he noticed",
+          "그때 그는 알아차렸다"
+        ],
+        [
+          "that the candy bar in his pocket",
+          "주머니 속 초코바가"
+        ],
+        [
+          "had **melted**.",
+          "녹아 있다는 것을"
+        ]
       ]
     },
     {
       "en": "**Curious**, he held popcorn **kernels** near the magnetron, and they began to pop around his lab.",
       "b2": false,
       "chunks": [
-        ["**Curious**,", "궁금해진"],
-        ["he held popcorn **kernels**", "그는 팝콘 알갱이를 대 보았다"],
-        ["near the magnetron,", "마그네트론 가까이에"],
-        ["and they began to pop", "그러자 그것이 튀기 시작했다"],
-        ["around his lab.", "실험실 여기저기서"]
+        [
+          "**Curious**,",
+          "궁금해진"
+        ],
+        [
+          "he held popcorn **kernels**",
+          "그는 팝콘 알갱이를 대 보았다"
+        ],
+        [
+          "near the magnetron,",
+          "마그네트론 가까이에"
+        ],
+        [
+          "and they began to pop",
+          "그러자 그것이 튀기 시작했다"
+        ],
+        [
+          "around his lab.",
+          "실험실 여기저기서"
+        ]
       ]
     },
     {
       "en": "His company later turned the idea into a cooking machine called the Radarange, but the first one was almost two meters tall.",
       "b2": false,
       "chunks": [
-        ["His company later turned the idea", "그의 회사는 나중에 그 아이디어를 바꿨다"],
-        ["into a cooking machine", "요리 기계로"],
-        ["called the Radarange,", "레이더레인지라는"],
-        ["but the first one", "하지만 첫 제품은"],
-        ["was almost two meters tall.", "높이가 거의 2미터였다"]
+        [
+          "His company later turned the idea",
+          "그의 회사는 나중에 그 아이디어를 바꿨다"
+        ],
+        [
+          "into a cooking machine",
+          "요리 기계로"
+        ],
+        [
+          "called the Radarange,",
+          "레이더레인지라는"
+        ],
+        [
+          "but the first one",
+          "하지만 첫 제품은"
+        ],
+        [
+          "was almost two meters tall.",
+          "높이가 거의 2미터였다"
+        ]
       ]
     },
     {
       "en": "Microwaves heat food by making the water **molecules** inside it **rotate** very fast, and this movement creates heat.",
       "b2": false,
       "chunks": [
-        ["Microwaves heat food", "마이크로파는 음식을 데운다"],
-        ["by making the water **molecules** inside it", "그 안의 물 분자를 만들어서"],
-        ["**rotate** very fast,", "아주 빨리 돌게"],
-        ["and this movement creates heat.", "그리고 이 움직임이 열을 만든다"]
+        [
+          "Microwaves heat food",
+          "마이크로파는 음식을 데운다"
+        ],
+        [
+          "by making the water **molecules** inside it",
+          "그 안의 물 분자를 만들어서"
+        ],
+        [
+          "**rotate** very fast,",
+          "아주 빨리 돌게"
+        ],
+        [
+          "and this movement creates heat.",
+          "그리고 이 움직임이 열을 만든다"
+        ]
       ]
     },
     {
       "en": "Today, the same idea that once melted a candy bar warms up food in kitchens around the world.",
       "b2": false,
       "chunks": [
-        ["Today,", "오늘날"],
-        ["the same idea", "같은 아이디어가"],
-        ["that once melted a candy bar", "한때 초코바를 녹였던"],
-        ["warms up food", "음식을 데운다"],
-        ["in kitchens around the world.", "전 세계 부엌에서"]
+        [
+          "Today,",
+          "오늘날"
+        ],
+        [
+          "the same idea",
+          "같은 아이디어가"
+        ],
+        [
+          "that once melted a candy bar",
+          "한때 초코바를 녹였던"
+        ],
+        [
+          "warms up food",
+          "음식을 데운다"
+        ],
+        [
+          "in kitchens around the world.",
+          "전 세계 부엌에서"
+        ]
       ]
     }
   ],
@@ -172,5 +259,113 @@
   "source": {
     "title": "From Melted Candy to Kitchen Staple: The Microwave Oven's Origins (IEEE Spectrum)",
     "url": "https://spectrum.ieee.org/a-history-of-the-microwave-oven"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "The microwave oven was discovered almost **by accident**.",
+          "chunks": [
+            [
+              "The microwave oven",
+              "전자레인지는"
+            ],
+            [
+              "was discovered almost **by accident**.",
+              "거의 우연히 발견되었다"
+            ]
+          ]
+        },
+        {
+          "en": "An engineer named Percy Spencer was working near a machine that makes microwaves.",
+          "chunks": [
+            [
+              "An engineer named Percy Spencer",
+              "퍼시 스펜서라는 엔지니어가"
+            ],
+            [
+              "was working near a machine",
+              "기계 근처에서 일하고 있었는데"
+            ],
+            [
+              "that makes microwaves.",
+              "마이크로파를 만드는"
+            ]
+          ]
+        },
+        {
+          "en": "**Curious**, he held popcorn **kernels** near the machine, and they began to pop.",
+          "chunks": [
+            [
+              "**Curious**,",
+              "호기심이 생긴 그는"
+            ],
+            [
+              "he held popcorn **kernels** near the machine,",
+              "팝콘 낟알을 기계 근처에 갖다 댔는데"
+            ],
+            [
+              "and they began to pop.",
+              "팝콘이 터지기 시작했다"
+            ]
+          ]
+        },
+        {
+          "en": "His company made a cooking machine, but people just called it the microwave.",
+          "chunks": [
+            [
+              "His company made a cooking machine,",
+              "그의 회사는 요리 기계를 만들었지만"
+            ],
+            [
+              "but people just called it the microwave.",
+              "사람들은 그냥 전자레인지라고 불렀다"
+            ]
+          ]
+        },
+        {
+          "en": "Microwaves heat food by making water **molecules** inside it **rotate** very fast.",
+          "chunks": [
+            [
+              "Microwaves heat food",
+              "마이크로파는 음식을 가열한다"
+            ],
+            [
+              "by making water **molecules** inside it",
+              "안의 물 분자를"
+            ],
+            [
+              "**rotate** very fast.",
+              "아주 빠르게 회전시켜서"
+            ]
+          ]
+        },
+        {
+          "en": "Today, this idea warms up food in kitchens around the world.",
+          "chunks": [
+            [
+              "Today,",
+              "오늘날"
+            ],
+            [
+              "this idea warms up food",
+              "이 원리가 음식을 데운다"
+            ],
+            [
+              "in kitchens around the world.",
+              "전 세계 주방에서"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "전자레인지는 거의 우연히 발견되었다.",
+        "퍼시 스펜서라는 엔지니어가 마이크로파를 만드는 기계 근처에서 일하고 있었다.",
+        "호기심이 생긴 그는 팝콘 낟알을 기계 근처에 갖다 댔고, 팝콘이 터지기 시작했다.",
+        "그의 회사는 요리 기계를 만들었지만, 사람들은 그냥 전자레인지라고 불렀다.",
+        "마이크로파는 음식 속 물 분자를 아주 빠르게 회전시켜서 음식을 가열한다.",
+        "오늘날, 이 원리가 전 세계 주방에서 음식을 데우는 데 쓰인다."
+      ]
+    }
   }
 }

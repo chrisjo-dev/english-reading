@@ -80,8 +80,8 @@ class TestCheckLevelsA(unittest.TestCase):
         self.assertEqual(self.level_errors(errs), [], errs)
 
     def test_no_levels_before_cutoff_is_ok(self):
-        """LEVELS_FROM(2099-01-01) 이전이면 levels 없어도 오류 없음."""
-        errs = self.check("2026-11-01", make_content(with_levels=False))
+        """LEVELS_FROM(2026-10-23) 이전이면 levels 없어도 오류 없음."""
+        errs = self.check("2026-10-22", make_content(with_levels=False))
         self.assertEqual(self.level_errors(errs), [])
 
     def test_sentence_count_mismatch_is_error(self):

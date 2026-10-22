@@ -15,62 +15,140 @@
       "en": "Many of us connect our earphones with Bluetooth every day, but few people know that the name comes from a king.",
       "b2": false,
       "chunks": [
-        ["Many of us connect our earphones", "우리 중 많은 사람이 이어폰을 연결한다"],
-        ["with Bluetooth every day,", "매일 블루투스로"],
-        ["but few people know", "하지만 아는 사람은 드물다"],
-        ["that the name comes from a king.", "그 이름이 한 왕에게서 왔다는 것을"]
+        [
+          "Many of us connect our earphones",
+          "우리 중 많은 사람이 이어폰을 연결한다"
+        ],
+        [
+          "with Bluetooth every day,",
+          "매일 블루투스로"
+        ],
+        [
+          "but few people know",
+          "하지만 아는 사람은 드물다"
+        ],
+        [
+          "that the name comes from a king.",
+          "그 이름이 한 왕에게서 왔다는 것을"
+        ]
       ]
     },
     {
       "en": "In the tenth century, a king named Harald 'Bluetooth' Gormsson **united** Denmark and Norway.",
       "b2": false,
       "chunks": [
-        ["In the tenth century,", "10세기에"],
-        ["a king named Harald 'Bluetooth' Gormsson", "하랄 '블루투스' 고름손이라는 왕이"],
-        ["**united** Denmark and Norway.", "덴마크와 노르웨이를 통일했다"]
+        [
+          "In the tenth century,",
+          "10세기에"
+        ],
+        [
+          "a king named Harald 'Bluetooth' Gormsson",
+          "하랄 '블루투스' 고름손이라는 왕이"
+        ],
+        [
+          "**united** Denmark and Norway.",
+          "덴마크와 노르웨이를 통일했다"
+        ]
       ]
     },
     {
       "en": "In 1996, engineers from several companies met to plan a short-range **wireless** technology, and one of them suggested the king's name as a **temporary** code name.",
       "b2": false,
       "chunks": [
-        ["In 1996,", "1996년에"],
-        ["engineers from several companies met", "여러 회사의 엔지니어들이 모였다"],
-        ["to plan a short-range **wireless** technology,", "근거리 무선 기술을 계획하기 위해"],
-        ["and one of them suggested", "그리고 그중 한 명이 제안했다"],
-        ["the king's name", "그 왕의 이름을"],
-        ["as a **temporary** code name.", "임시 코드명으로"]
+        [
+          "In 1996,",
+          "1996년에"
+        ],
+        [
+          "engineers from several companies met",
+          "여러 회사의 엔지니어들이 모였다"
+        ],
+        [
+          "to plan a short-range **wireless** technology,",
+          "근거리 무선 기술을 계획하기 위해"
+        ],
+        [
+          "and one of them suggested",
+          "그리고 그중 한 명이 제안했다"
+        ],
+        [
+          "the king's name",
+          "그 왕의 이름을"
+        ],
+        [
+          "as a **temporary** code name.",
+          "임시 코드명으로"
+        ]
       ]
     },
     {
       "en": "Just as the king had brought people together, the new technology **was meant to** connect phones and computers made by different companies.",
       "b2": true,
       "chunks": [
-        ["Just as the king", "그 왕이"],
-        ["had brought people together,", "사람들을 하나로 모았듯이"],
-        ["the new technology **was meant to** connect", "새 기술은 연결하기 위한 것이었다"],
-        ["phones and computers", "휴대폰과 컴퓨터를"],
-        ["made by different companies.", "서로 다른 회사가 만든"]
+        [
+          "Just as the king",
+          "그 왕이"
+        ],
+        [
+          "had brought people together,",
+          "사람들을 하나로 모았듯이"
+        ],
+        [
+          "the new technology **was meant to** connect",
+          "새 기술은 연결하기 위한 것이었다"
+        ],
+        [
+          "phones and computers",
+          "휴대폰과 컴퓨터를"
+        ],
+        [
+          "made by different companies.",
+          "서로 다른 회사가 만든"
+        ]
       ]
     },
     {
       "en": "The name was only supposed to be a **placeholder**, but it spread so quickly that it stayed.",
       "b2": false,
       "chunks": [
-        ["The name was only supposed to be", "그 이름은 그저 될 예정이었다"],
-        ["a **placeholder**,", "임시로 쓰는 이름이"],
-        ["but it spread so quickly", "하지만 아주 빨리 퍼져서"],
-        ["that it stayed.", "그대로 남았다"]
+        [
+          "The name was only supposed to be",
+          "그 이름은 그저 될 예정이었다"
+        ],
+        [
+          "a **placeholder**,",
+          "임시로 쓰는 이름이"
+        ],
+        [
+          "but it spread so quickly",
+          "하지만 아주 빨리 퍼져서"
+        ],
+        [
+          "that it stayed.",
+          "그대로 남았다"
+        ]
       ]
     },
     {
       "en": "Even the logo hides his name: it combines two old Nordic **runes** for the letters H and B, his **initials**.",
       "b2": false,
       "chunks": [
-        ["Even the logo hides his name:", "로고조차 그의 이름을 숨기고 있다"],
-        ["it combines two old Nordic **runes**", "로고는 옛 북유럽 룬 문자 두 개를 합친다"],
-        ["for the letters H and B,", "H와 B를 나타내는"],
-        ["his **initials**.", "그의 이름 머리글자인"]
+        [
+          "Even the logo hides his name:",
+          "로고조차 그의 이름을 숨기고 있다"
+        ],
+        [
+          "it combines two old Nordic **runes**",
+          "로고는 옛 북유럽 룬 문자 두 개를 합친다"
+        ],
+        [
+          "for the letters H and B,",
+          "H와 B를 나타내는"
+        ],
+        [
+          "his **initials**.",
+          "그의 이름 머리글자인"
+        ]
       ]
     }
   ],
@@ -169,5 +247,117 @@
   "source": {
     "title": "Origin of the name (Bluetooth Technology Website)",
     "url": "https://www.bluetooth.com/about-us/bluetooth-origin/"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Many people use Bluetooth every day, but few know the story of its name.",
+          "chunks": [
+            [
+              "Many people use Bluetooth every day,",
+              "많은 사람이 매일 블루투스를 쓰지만"
+            ],
+            [
+              "but few know the story of its name.",
+              "그 이름의 이야기를 아는 사람은 적다"
+            ]
+          ]
+        },
+        {
+          "en": "A king named Harald Bluetooth **united** Denmark and Norway in the tenth century.",
+          "chunks": [
+            [
+              "A king named Harald Bluetooth",
+              "하랄드 블루투스라는 왕이"
+            ],
+            [
+              "**united** Denmark and Norway",
+              "덴마크와 노르웨이를 하나로 묶었다"
+            ],
+            [
+              "in the tenth century.",
+              "10세기에"
+            ]
+          ]
+        },
+        {
+          "en": "In 1996, engineers met to plan a short-range **wireless** technology.",
+          "chunks": [
+            [
+              "In 1996,",
+              "1996년에"
+            ],
+            [
+              "engineers met to plan",
+              "엔지니어들이 모여 계획했다"
+            ],
+            [
+              "a short-range **wireless** technology.",
+              "단거리 무선 기술을"
+            ]
+          ]
+        },
+        {
+          "en": "Just as the king joined people together, the technology **was meant to** link different devices.",
+          "chunks": [
+            [
+              "Just as the king joined people together,",
+              "그 왕이 사람들을 하나로 모은 것처럼"
+            ],
+            [
+              "the technology **was meant to** link",
+              "이 기술도 연결하기 위한 것이었다"
+            ],
+            [
+              "different devices.",
+              "서로 다른 기기들을"
+            ]
+          ]
+        },
+        {
+          "en": "The name was just a **placeholder**, but it stayed because it spread so fast.",
+          "chunks": [
+            [
+              "The name was just a **placeholder**,",
+              "그 이름은 임시 이름이었지만"
+            ],
+            [
+              "but it stayed",
+              "그대로 남았다"
+            ],
+            [
+              "because it spread so fast.",
+              "너무 빠르게 퍼졌기 때문에"
+            ]
+          ]
+        },
+        {
+          "en": "The logo also hides his name by combining two old Nordic **runes** for H and B.",
+          "chunks": [
+            [
+              "The logo also hides his name",
+              "로고에도 그의 이름이 숨겨져 있는데"
+            ],
+            [
+              "by combining two old Nordic **runes**",
+              "두 개의 오래된 북유럽 룬 문자를 합쳐서"
+            ],
+            [
+              "for H and B.",
+              "H와 B를 나타내는"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "많은 사람이 매일 블루투스를 쓰지만, 그 이름의 이야기를 아는 사람은 적다.",
+        "하랄드 블루투스라는 왕이 10세기에 덴마크와 노르웨이를 하나로 묶었다.",
+        "1996년에 엔지니어들이 모여 단거리 무선 기술을 계획했다.",
+        "그 왕이 사람들을 하나로 모은 것처럼, 이 기술도 서로 다른 기기들을 연결하기 위한 것이었다.",
+        "그 이름은 임시 이름이었지만, 너무 빠르게 퍼져서 그대로 남았다.",
+        "로고에도 그의 이름이 숨겨져 있는데, H와 B를 나타내는 두 개의 오래된 북유럽 룬 문자를 합쳐 만들었다."
+      ]
+    }
   }
 }
