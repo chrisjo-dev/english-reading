@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex, nofollow">
+<title>키즈 EP03 Brush, Brush, Brush | 매일 외국어 읽기</title>
+<meta name="description" content="아이와 함께 2분 영어 듣기. 이 닦기 시간, 오늘의 단어 3개, 인쇄용 학습지.">
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
+<link rel="preload" as="image" href="art/bg-0-intro.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Gowun+Dodum&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Gowun+Dodum&display=swap"></noscript>
+<style>
+/* 그림책(t-book) 색과 그림체. 무대 위 노란색(--touch)은 아이가 누를 수 있는 것에만 쓴다 */
+:root {
+  --t-bg: #eaf2f7; --t-surface: #ffffff; --t-ink: #24323d; --t-sub: #5b6b78; --t-accent: #2f7d6d; --t-soft: #d7ebe4;
+  --t-wash-1: #bfe0f2; --t-wash-2: #ffd6c2; --t-wash-3: #fff0a8;
+  --skin: #ffe1c9; --cheek: #ffb3a7; --hair: #6b4226; --dog: #f3d1a2; --ink: #191f28; --card: #ffffff;
+  --touch: #ffc83d; --touch-edge: var(--ink);
+  --kr: "Gowun Dodum", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --en: "Andika", "Gowun Dodum", sans-serif;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--t-bg); color: var(--t-ink); font-family: var(--kr);
+  font-size: 16px; line-height: 1.6; word-break: keep-all; overflow-wrap: anywhere;
+}
+button { font-family: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--t-accent); outline-offset: 2px; }
+.en { font-family: var(--en); font-weight: 700; color: var(--t-accent); }
+
+/* ===== 아이 화면 (첫 화면) ===== */
+.kid { max-width: 480px; margin: 0 auto; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; background: var(--t-bg); }
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 48px; flex: none;
+  padding: 0 max(12px, env(safe-area-inset-right, 0px)) 0 max(14px, env(safe-area-inset-left, 0px));
+  background: var(--t-surface); border-bottom: 1.5px solid var(--t-soft);
+}
+.top h1 { margin: 0; font-family: var(--en); font-weight: 700; font-size: 13px; color: var(--t-sub); white-space: nowrap; }
+.dots { display: flex; align-items: center; gap: 5px; }
+.dots i { width: 8px; height: 8px; border-radius: 4px; background: var(--t-soft); transition: width .25s, background-color .25s; }
+.dots i.past { background: var(--t-accent); opacity: .38; }
+.dots i.now { width: 22px; background: var(--t-accent); }
+.sw { display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 2px; border: 0; background: none; cursor: pointer; font-size: 12px; color: var(--t-sub); }
+.sw .trk { position: relative; width: 34px; height: 20px; border-radius: 10px; background: var(--t-soft); transition: background-color .2s; }
+.sw .thm { position: absolute; left: 2px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--t-surface); transition: transform .2s; }
+.sw[aria-checked="true"] .trk { background: var(--t-accent); }
+.sw[aria-checked="true"] .thm { transform: translateX(14px); }
+
+.stage {
+  position: relative; overflow: hidden; flex: none; background: var(--t-wash-1);
+  height: max(240px, min(58vh, calc(100vh - 292px)));
+  height: max(240px, min(58dvh, calc(100dvh - 292px)));
+}
+.stage > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stage svg { stroke-linecap: round; stroke-linejoin: round; }
+.stage text { font-family: var(--en); font-weight: 700; }
+.stage text.kr { font-family: var(--kr); font-weight: 400; }
+/* 그림 색: 토큰만 */
+.fS { fill: var(--t-surface); } .fI { fill: var(--ink); } .fK { fill: var(--skin); } .fC { fill: var(--cheek); }
+.fH { fill: var(--hair); } .fD { fill: var(--dog); } .fA { fill: var(--t-accent); } .f1 { fill: var(--t-wash-1); }
+.f2 { fill: var(--t-wash-2); } .fO { fill: var(--t-soft); } .fU { fill: var(--t-sub); } .fT { fill: var(--touch); } .fN { fill: none; }
+.sI { stroke: var(--ink); } .sO { stroke: var(--t-soft); } .sA { stroke: var(--t-accent); } .sS { stroke: var(--t-surface); }
+.sU { stroke: var(--t-sub); } .sT { stroke: var(--touch); } .sE { stroke: var(--touch-edge); }
+.hit { fill: transparent; }
+
+/* 누를 수 있는 것: 노랑 + 천천히 숨쉬기 */
+.tgt { cursor: pointer; outline: none; }
+.tgt .halo { fill: var(--touch); opacity: .3; transform-box: fill-box; transform-origin: center; animation: halo 1.8s ease-in-out infinite; }
+.tgt .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 1.8s ease-in-out infinite; }
+.waiting .tgt .halo, .waiting .tgt .pulse { animation-duration: 1s; }
+.tgt:focus-visible .halo { opacity: .75; animation: none; stroke: var(--t-accent); stroke-width: 4; }
+.tgt.done .halo { display: none; }
+.tgt.done .pulse { animation: none; }
+@keyframes halo { 50% { opacity: .08; transform: scale(1.18); } }
+@keyframes pulse { 50% { transform: scale(1.06); } }
+.hand { opacity: 0; transition: opacity .3s; pointer-events: none; }
+.waiting .hand { opacity: 1; }
+.hand > g { transform-box: fill-box; animation: tapHint 1s ease-in-out infinite; }
+@keyframes tapHint { 50% { transform: translateY(-8px); } }
+
+/* 장면 1: 칫솔 */
+#t-brush.done .art { filter: grayscale(1) brightness(1.08); }
+.bounce { transform-box: fill-box; transform-origin: center; animation: bounce .7s ease-out; }
+@keyframes bounce { 30% { transform: translateY(-28px) rotate(-10deg) scale(1.12); } 60% { transform: translateY(0) rotate(0) scale(1); } 80% { transform: translateY(-7px); } }
+/* 장면 2: 이 닦기 */
+.scrub { touch-action: none; }
+.germ > g { transform-box: fill-box; transform-origin: center; transition: opacity .35s, transform .35s; }
+.germ.gone > g { opacity: 0; transform: scale(.3); }
+.floaty { animation: floatUp .9s ease-out forwards; }
+@keyframes floatUp { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-46px); } }
+/* 장면 3: 거품 */
+.bob { transform-box: fill-box; transform-origin: center; animation: bob 3.2s ease-in-out infinite; transition: opacity .25s; }
+@keyframes bob { 50% { transform: translateY(-8px) scale(1.04); } }
+.bub.popped .bob { animation: none; opacity: 0; }
+.bub.popped { pointer-events: none; }
+.burst { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.bub.popped .burst { animation: burst .7s ease-out forwards; }
+@keyframes burst { 0% { opacity: 1; transform: scale(.6); } 60% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0; transform: scale(1.2); } }
+/* 장면 4: 반짝 */
+.spark { transform-box: fill-box; transform-origin: center; animation: spark .8s ease-out forwards; }
+@keyframes spark { 0% { opacity: 0; transform: scale(.2) rotate(0); } 40% { opacity: 1; transform: scale(1.15) rotate(20deg); } 100% { opacity: 0; transform: scale(.6) rotate(45deg); } }
+/* 장면 5: 스티커 */
+.fly { animation: fly .6s cubic-bezier(.3,1.3,.5,1) both; }
+@keyframes fly { from { transform: translate(var(--dx), var(--dy)) scale(.4); opacity: .4; } to { transform: none; opacity: 1; } }
+.nope { transform-box: fill-box; transform-origin: center; animation: nope .4s; }
+@keyframes nope { 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
+/* 장면 6: 불 끄기 */
+.dim { opacity: 0; transition: opacity .8s; pointer-events: none; }
+.lamp-off .dim { opacity: .55; }
+.lamp-on-img { filter: drop-shadow(0 0 10px var(--touch)); transition: opacity .4s; }
+.lamp-off-img { opacity: 0; transition: opacity .4s; }
+#t-lamp.done .lamp-on-img { opacity: 0; }
+#t-lamp.done .lamp-off-img { opacity: 1; }
+
+/* 무대 위 HTML 조각 */
+.chip {
+  position: absolute; left: 12px; top: 12px; padding: 3px 12px; border-radius: 99px;
+  background: var(--t-surface); color: var(--t-accent); font-size: 13px; border: 1.5px solid var(--t-soft); pointer-events: none;
+}
+.ring { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border-radius: 50%; box-shadow: inset 0 0 0 3px var(--t-soft); pointer-events: none; }
+.ring .h { position: absolute; top: 0; width: 20px; height: 40px; overflow: hidden; }
+.ring .r { right: 0; } .ring .l { left: 0; }
+.ring i { position: absolute; top: 0; width: 40px; height: 40px; border-radius: 50%; border: 3px solid transparent; transform: rotate(45deg); }
+.ring .r i { left: -20px; border-top-color: var(--t-accent); border-right-color: var(--t-accent); animation: drain 2.5s linear forwards; }
+.ring .l i { left: 0; border-bottom-color: var(--t-accent); border-left-color: var(--t-accent); animation: drain 2.5s linear 2.5s forwards; }
+@keyframes drain { to { transform: rotate(225deg); } }
+.big-play {
+  position: absolute; left: 50%; bottom: 22px; width: 104px; height: 104px; margin-left: -52px; border-radius: 50%;
+  border: 4px solid var(--touch-edge); background: var(--touch); color: var(--ink); cursor: pointer; display: grid; place-items: center; padding: 0;
+}
+.big-play::before { content: ""; position: absolute; inset: -16px; border-radius: 50%; background: var(--touch); opacity: .3; animation: halo 1.8s ease-in-out infinite; z-index: -1; }
+.big-play svg { width: 44px; height: 44px; margin-left: 6px; }
+.big-play:active { transform: scale(.95); }
+.endcard {
+  position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 14px 14px 16px; border-radius: 20px;
+  background: var(--t-surface) center / cover no-repeat; text-align: center; animation: rise .4s ease-out;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+.endcard .gn { margin: 0; font-family: var(--en); font-weight: 700; font-size: 26px; color: var(--t-accent); line-height: 1.2; }
+.endcard .sm { margin: 2px 0 8px; font-size: 13px; color: var(--t-sub); }
+.estk { display: flex; justify-content: center; gap: 10px; margin-bottom: 12px; }
+.estk span { width: 84px; padding: 6px 4px 4px; border-radius: 14px; background: var(--t-soft); font-family: var(--en); font-weight: 700; font-size: 11px; color: var(--t-accent); line-height: 1.2; }
+.estk img { display: block; width: 52px; height: 52px; margin: 0 auto 2px; }
+.ebtn { display: flex; gap: 10px; }
+.eb { flex: 1; min-height: 64px; border-radius: 16px; font-size: 17px; cursor: pointer; }
+.eb.y { background: var(--touch); border: 2px solid var(--touch-edge); color: var(--ink); }
+.eb.o { background: var(--t-surface); border: 4px solid var(--touch); color: var(--ink); }
+
+/* 자막 띠 */
+.cap {
+  position: relative; flex: none; height: 92px; padding: 14px 20px 10px; display: flex; align-items: center; justify-content: center;
+  background: var(--t-surface); border-top: 1.5px solid var(--t-soft); border-bottom: 1.5px solid var(--t-soft);
+}
+.cap p { margin: 0; font-size: 17px; line-height: 1.5; text-align: center; color: var(--t-ink); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.cap .en { font-size: 18px; }
+.wtag {
+  position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 12px; border-radius: 99px; background: var(--t-soft); color: var(--t-accent); font-size: 12px; white-space: nowrap;
+}
+.wtag i { width: 6px; height: 6px; border-radius: 50%; background: var(--t-accent); animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+
+/* 부모님 조작 줄 */
+.ctl { flex: none; padding: 10px 16px 6px; }
+.ctl .row { display: flex; align-items: center; gap: 10px; }
+.pp { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--t-accent); color: var(--t-surface); display: grid; place-items: center; cursor: pointer; }
+.pp svg { width: 18px; height: 18px; }
+.time { font-family: var(--en); font-size: 12px; color: var(--t-sub); font-variant-numeric: tabular-nums; min-width: 30px; text-align: center; }
+#seek { flex: 1; min-width: 0; margin: 0; height: 44px; accent-color: var(--t-accent); }
+.row2 { display: flex; gap: 8px; margin-top: 6px; }
+.tool { flex: 1; height: 44px; border: 1.5px solid var(--t-soft); border-radius: 12px; background: var(--t-surface); color: var(--t-sub); font-size: 14px; cursor: pointer; }
+.tool[aria-pressed="true"] { background: var(--t-accent); border-color: var(--t-accent); color: var(--t-surface); }
+.hintrow { flex: none; display: flex; justify-content: space-between; align-items: center; padding: 4px 16px 10px; font-size: 12px; color: var(--t-sub); }
+.hintrow a { color: var(--t-sub); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; min-height: 32px; }
+.hintrow .mark { font-weight: 700; color: var(--t-ink); }
+.hintrow svg { width: 12px; height: 12px; }
+
+/* ===== 부모님 화면 ===== */
+.parent {
+  max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;
+  padding: 16px max(16px, env(safe-area-inset-right, 0px)) calc(40px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+.card { background: var(--t-surface); border-radius: 20px; padding: 22px 20px; }
+h2 { font-size: 20px; font-weight: 400; margin: 0 0 14px; color: var(--t-ink); }
+.hint { font-size: 13px; color: var(--t-sub); margin: 12px 0 0; }
+.words { display: grid; gap: 10px; }
+.word {
+  display: grid; grid-template-columns: 64px 1fr auto; align-items: center; gap: 12px; width: 100%;
+  padding: 12px; border-radius: 16px; background: var(--t-bg); border: 0; text-align: left; cursor: pointer;
+}
+.word > svg { width: 64px; height: 54px; }
+.word b { display: block; font-family: var(--en); font-weight: 700; font-size: 21px; line-height: 1.2; white-space: nowrap; color: var(--t-ink); }
+.word span span { font-size: 14px; color: var(--t-sub); }
+.word .say { width: 40px; height: 40px; border-radius: 50%; background: var(--t-surface); color: var(--t-accent); display: grid; place-items: center; }
+.word .say svg { width: 18px; height: 18px; }
+.word.on { background: var(--t-soft); }
+.word.on b { color: var(--t-accent); }
+.sheet { display: grid; grid-template-columns: 112px 1fr; gap: 16px; align-items: center; }
+.sheet img { width: 112px; height: auto; border-radius: 8px; border: 1.5px solid var(--t-soft); display: block; }
+.sheet ul { margin: 0 0 12px; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 14px; color: var(--t-sub); }
+.sheet li b { color: var(--t-accent); font-family: var(--en); }
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 16px; border-radius: 12px; background: var(--t-accent); color: var(--t-surface); font-size: 15px; text-decoration: none; }
+.tips p { margin: 0 0 10px; font-size: 15px; color: var(--t-sub); }
+.tips p:last-child { margin: 0; }
+.tips b { color: var(--t-ink); font-weight: 400; }
+details.card { padding: 0; overflow: hidden; }
+summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px; min-height: 64px; }
+summary::-webkit-details-marker { display: none; }
+summary .t { font-size: 17px; }
+summary .s { display: block; font-size: 13px; color: var(--t-sub); }
+summary > svg { flex: none; width: 20px; height: 20px; color: var(--t-sub); transition: transform .2s; }
+details[open] summary > svg { transform: rotate(180deg); }
+.script { padding: 0 20px 20px; display: grid; gap: 2px; }
+.line { display: flex; gap: 10px; padding: 7px 8px; border-radius: 10px; border: 0; background: none; text-align: left; cursor: pointer; font-size: 15px; line-height: 1.55; width: 100%; }
+.line .n { flex: none; width: 22px; font-size: 12px; color: var(--t-sub); padding-top: 2px; font-family: var(--en); }
+.line mark { background: none; color: var(--t-accent); font-family: var(--en); font-weight: 700; }
+.line.now { background: var(--t-soft); }
+.site-footer { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 8px 4px 0; font-size: 13px; }
+.site-footer a { color: var(--t-sub); text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tgt .halo, .tgt .pulse, .bob, .hand > g, .big-play::before, .wtag i { animation: none !important; }
+  .bounce, .nope { animation: none; }
+  .floaty, .spark, .bub.popped .burst { animation-name: fadeOut; }
+  .fly, .endcard { animation-name: fadeIn; }
+  .germ > g { transition: opacity .3s; }
+  .germ.gone > g { transform: none; }
+  .sw .thm, .sw .trk, .dots i, summary > svg { transition: none; }
+}
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+<!-- 단어 그림: 무대 스티커, 끝 카드, 부모님 단어 버튼에서 같이 쓴다 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <g id="hand-shape">
+    <ellipse class="fK sI" stroke-width="1.5" cx="0" cy="12" rx="10" ry="14"/>
+    <rect class="fK sI" stroke-width="1" x="-6" y="0" width="7" height="12" rx="3"/>
+    <rect class="fK sI" stroke-width="1" x="1" y="-2" width="7" height="14" rx="3"/>
+  </g>
+  <symbol id="i-brush" viewBox="0 0 120 100">
+    <path class="fS sI" stroke-width="3" d="M30 18 q-18 0 -18 24 q0 16 7 34 q4 12 9 0 l4 -16 q2 -6 4 0 l4 16 q5 12 9 0 q7 -18 7 -34 q0 -24 -18 -24 q-4 2 -9 2 q-5 0 -9 -2 z"/>
+    <rect class="fA" x="66" y="54" width="50" height="9" rx="4.5" transform="rotate(-28 91 58)"/>
+    <path class="sA fN" stroke-width="3" stroke-linecap="round" d="M70 46 l-5 -9 M76 43 l-5 -9 M82 40 l-5 -9"/>
+  </symbol>
+  <symbol id="i-bubbles" viewBox="0 0 120 100">
+    <g class="fS sA" stroke-width="3"><circle cx="48" cy="56" r="26"/><circle cx="88" cy="38" r="16"/><circle cx="94" cy="76" r="10"/><circle cx="22" cy="24" r="8"/><circle cx="112" cy="14" r="5"/></g>
+    <path class="fN sO" stroke-width="3" stroke-linecap="round" d="M36 46 q5 -7 12 -7 M81 32 q4 -4 7 -4"/>
+  </symbol>
+  <symbol id="i-clean" viewBox="0 0 120 100">
+    <path class="fS sI" stroke-width="3" d="M44 14 q-20 0 -20 26 q0 18 7 36 q4 12 9 0 l4 -16 q2 -6 4 0 l4 16 q5 12 9 0 q7 -18 7 -36 q0 -26 -20 -26 q-4 2 -9 2 q-5 0 -9 -2 z"/>
+    <path class="fN sI" stroke-width="3" stroke-linecap="round" d="M37 40 q8 9 18 0"/>
+    <path class="sA" stroke-width="4" stroke-linecap="round" d="M92 16 v18 M83 25 h18 M106 50 v12 M100 56 h12 M90 70 v10 M85 75 h10"/>
+  </symbol>
+</svg>
+
+<div class="kid" id="kid">
+  <header class="top">
+    <h1>Brush, Brush, Brush!</h1>
+    <div class="dots" id="dots" role="img" aria-label="장면 시작 전"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <button class="sw" id="justListen" type="button" role="switch" aria-checked="false"><span>그냥 듣기</span><span class="trk"><span class="thm"></span></span></button>
+  </header>
+
+  <div class="stage" id="stage">
+    <!-- 그림은 art/의 배경 한 장 + 누르는 레이어. 장면마다 viewBox = 그림 픽셀 크기라 레이어가 그림과 함께 늘고 줄어든다 -->
+    <!-- 처음: 하품하는 릴리 (누를 것은 아래 수납장 위의 큰 재생 버튼 하나) -->
+    <svg class="scene" id="sc0" viewBox="0 0 482 732" preserveAspectRatio="xMidYMin slice">
+      <image href="art/bg-0-intro.webp" width="482" height="732"/>
+    </svg>
+
+    <!-- 장면 1: 칫솔 찾기 (비스킷이 문 칫솔) -->
+    <svg class="scene" id="sc1" viewBox="0 0 482 731" preserveAspectRatio="xMidYMax slice" hidden>
+      <image href="art/bg-1-find.webp" width="482" height="731"/>
+      <g class="tgt" id="t-brush" role="button" tabindex="0" aria-label="비스킷이 문 칫솔 누르기">
+        <circle class="halo" cx="322" cy="306" r="58"/>
+        <g class="pulse"><g id="brush1"><g transform="translate(196 424) rotate(12) scale(.62)">
+          <image class="art" data-src="art/L-brush.png" x="-15" y="-280" width="246" height="292"/>
+        </g></g></g>
+        <circle class="hit" cx="282" cy="342" r="88"/>
+      </g>
+      <g class="hand" transform="translate(352 362) scale(1.3)"><g><use href="#hand-shape"/></g></g>
+    </svg>
+
+    <!-- 장면 2: 이 닦기 (문지르면 세균이 사라짐). 입 둘레만 보이게 잘라 크게 -->
+    <svg class="scene" id="sc2" viewBox="120 330 610 760" preserveAspectRatio="xMidYMid slice" hidden>
+      <image data-src="art/bg-2-brush.webp" width="848" height="1264"/>
+      <g id="germs"></g>
+      <g class="fA" font-size="62" text-anchor="middle">
+        <text x="425" y="812">Brush,</text><text x="425" y="884">brush,</text><text x="425" y="956">brush.</text>
+      </g>
+      <g id="floats"></g>
+      <g class="tgt" id="t-scrub" role="button" tabindex="0" aria-label="이 닦기, 이를 문질러 보세요">
+        <g id="brush2" transform="translate(640 760)">
+          <circle class="halo" cx="0" cy="0" r="56"/>
+          <g class="pulse"><image data-src="art/L-brush.png" x="-148" y="-36" width="197" height="234"/></g>
+        </g>
+        <rect class="hit scrub" x="0" y="300" width="848" height="820"/>
+      </g>
+    </svg>
+
+    <!-- 장면 3: 거품 터뜨리기 (위쪽 빈 공간) -->
+    <svg class="scene" id="sc3" viewBox="0 60 482 688" preserveAspectRatio="xMidYMin slice" hidden>
+      <image data-src="art/bg-3-bubbles.webp" width="482" height="748"/>
+      <text class="fS" opacity=".7" x="243" y="153" font-size="64" text-anchor="middle">Bubbles</text>
+      <text class="fA" x="241" y="150" font-size="62" text-anchor="middle">Bubbles</text>
+      <g id="bubs"></g>
+      <g class="hand" transform="translate(240 410) scale(1.3)"><g><use href="#hand-shape"/></g></g>
+    </svg>
+
+    <!-- 장면 4: 깨끗해 (이를 누르면 반짝) -->
+    <svg class="scene" id="sc4" viewBox="0 0 415 623" preserveAspectRatio="xMidYMid slice" hidden>
+      <image data-src="art/bg-4-clean.webp" width="415" height="623"/>
+      <text class="fA" x="207" y="522" font-size="52" text-anchor="middle">All clean!</text>
+      <g class="tgt" id="t-teeth" role="button" tabindex="0" aria-label="반짝이는 이 누르기">
+        <ellipse class="halo" cx="218" cy="290" rx="70" ry="38"/>
+        <g class="pulse">
+          <ellipse class="fN sE" stroke-width="8" cx="218" cy="290" rx="58" ry="26"/>
+          <ellipse class="fN sT" stroke-width="5" cx="218" cy="290" rx="58" ry="26"/>
+        </g>
+        <ellipse class="hit" cx="218" cy="290" rx="78" ry="46"/>
+      </g>
+      <g id="sparks"></g>
+    </svg>
+
+    <!-- 장면 5: 친구 차례 (위: 릴리와 말풍선, 아래 민트 판: 버튼과 스티커판) -->
+    <svg class="scene" id="sc5" viewBox="0 0 415 623" preserveAspectRatio="xMidYMid slice" hidden>
+      <image data-src="art/bg-5-turn.webp" width="415" height="623"/>
+      <rect class="fS sO" stroke-width="2" x="262" y="136" width="148" height="66" rx="18"/>
+      <path class="fS" d="M276 196 l-34 22 l50 -12 z"/>
+      <text class="fA" id="say-word" x="336" y="176" font-size="19" text-anchor="middle">Your turn!</text>
+      <g class="tgt" id="t-say" role="button" tabindex="0" aria-label="말했어요">
+        <circle class="halo" cx="100" cy="472" r="66"/>
+        <g class="pulse">
+          <circle class="fT sE" stroke-width="3" cx="100" cy="472" r="54"/>
+          <text class="kr fI" x="100" y="470" font-size="19" text-anchor="middle">말했어요</text>
+          <text class="fI" x="100" y="492" font-size="13" text-anchor="middle">I said it!</text>
+        </g>
+      </g>
+      <g class="hand" transform="translate(140 520) scale(1.2)"><g><use href="#hand-shape"/></g></g>
+      <text class="kr fU" x="297" y="430" font-size="12" text-anchor="middle">오늘의 스티커</text>
+      <g class="fN sU" stroke-width="2" stroke-dasharray="6 4">
+        <rect x="190" y="440" width="62" height="62" rx="31"/><rect x="266" y="440" width="62" height="62" rx="31"/><rect x="342" y="440" width="62" height="62" rx="31"/>
+      </g>
+      <g id="stickers"></g>
+      <g class="fU" font-size="10" text-anchor="middle"><text x="221" y="518">brush my teeth</text><text x="297" y="518">bubbles</text><text x="373" y="518">all clean</text></g>
+    </svg>
+
+    <!-- 장면 6: 잘 자 (오른쪽 끝 스탠드 갓을 노란 레이어로 덮음) -->
+    <svg class="scene" id="sc6" viewBox="0 0 416 623" preserveAspectRatio="xMidYMin slice" hidden>
+      <image data-src="art/bg-6-night.webp" width="416" height="623"/>
+      <text class="fS" x="318" y="84" font-size="30" text-anchor="middle">Good night!</text>
+      <g class="tgt" id="t-lamp" role="button" tabindex="0" aria-label="램프 끄기">
+        <circle class="halo" cx="384" cy="262" r="58"/>
+        <image class="lamp-off-img" data-src="art/L-lamp-off.png" x="339" y="219" width="90" height="87"/>
+        <g class="pulse"><image class="lamp-on-img" data-src="art/L-lamp-on.png" x="339" y="222" width="90" height="79"/></g>
+        <rect class="hit" x="316" y="196" width="100" height="136"/>
+      </g>
+      <g class="hand" transform="translate(356 330) scale(1.2)"><g><use href="#hand-shape"/></g></g>
+      <rect class="dim fI" x="0" y="0" width="416" height="623"/>
+    </svg>
+
+    <span class="chip" id="chip" hidden></span>
+    <div class="ring" id="ring" hidden aria-hidden="true"><span class="h r"><i></i></span><span class="h l"><i></i></span></div>
+    <button class="big-play" id="bigPlay" type="button" aria-label="이야기 듣기 시작">
+      <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.5 4.3v11.4a.8.8 0 0 0 1.2.7l9.2-5.7a.8.8 0 0 0 0-1.4L7.7 3.6a.8.8 0 0 0-1.2.7z"/></svg>
+    </button>
+    <div class="endcard" id="endcard" hidden>
+      <p class="gn">Good night!</p>
+      <p class="sm">오늘 모은 스티커</p>
+      <div class="estk">
+        <span><img data-src="art/L-sticker-brush.webp" alt="" width="52" height="52">brush my teeth</span>
+        <span><img data-src="art/L-sticker-bubbles.webp" alt="" width="52" height="52">bubbles</span>
+        <span><img data-src="art/L-sticker-clean.webp" alt="" width="52" height="52">all clean</span>
+      </div>
+      <div class="ebtn">
+        <button class="eb y" id="again" type="button">한 번 더 듣기</button>
+        <button class="eb o" id="toParent" type="button">부모님 화면</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap" id="cap">
+    <span class="wtag" id="wtag" hidden><i></i>릴리가 기다려요</span>
+    <p id="capText" aria-live="polite">노란 동그라미를 누르면 릴리 이야기가 시작돼요.</p>
+  </div>
+
+  <div class="ctl">
+    <div class="row">
+      <button class="pp" id="play" type="button" aria-label="재생">
+        <svg id="ic-play" viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.3v11.4a.8.8 0 0 0 1.2.7l9.2-5.7a.8.8 0 0 0 0-1.4L7.7 3.6a.8.8 0 0 0-1.2.7z"/></svg>
+        <svg id="ic-pause" viewBox="0 0 20 20" fill="currentColor" hidden><rect x="5" y="4" width="3.6" height="12" rx="1.2"/><rect x="11.4" y="4" width="3.6" height="12" rx="1.2"/></svg>
+      </button>
+      <span class="time" id="cur">0:00</span>
+      <input id="seek" type="range" min="0" max="139" step="0.1" value="0" aria-label="재생 위치">
+      <span class="time" id="dur">2:19</span>
+    </div>
+    <div class="row2">
+      <button class="tool" id="times3" type="button" aria-pressed="false">3번 이어 듣기</button>
+      <button class="tool" id="slow" type="button" aria-pressed="false">조금 천천히</button>
+    </div>
+  </div>
+  <div class="hintrow">
+    <a class="mark" href="/">매일 외국어 읽기</a>
+    <a href="#parent">아래로 내리면 부모님 화면 <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 l4 4 l4 -4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+  </div>
+  <audio id="audio" src="ep03.mp3" preload="metadata"></audio>
+</div>
+
+<main class="parent" id="parent">
+  <section class="card" aria-labelledby="h-words">
+    <h2 id="h-words">오늘의 단어</h2>
+    <div class="words">
+      <button class="word" type="button" data-line="3" aria-label="brush my teeth 듣기">
+        <svg aria-hidden="true"><use href="#i-brush"/></svg>
+        <span><b>brush my teeth</b><span>이를 닦아요</span></span>
+        <i class="say" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.3v11.4a.8.8 0 0 0 1.2.7l9.2-5.7a.8.8 0 0 0 0-1.4L7.7 3.6a.8.8 0 0 0-1.2.7z"/></svg></i>
+      </button>
+      <button class="word" type="button" data-line="9" aria-label="bubbles 듣기">
+        <svg aria-hidden="true"><use href="#i-bubbles"/></svg>
+        <span><b>bubbles</b><span>거품</span></span>
+        <i class="say" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.3v11.4a.8.8 0 0 0 1.2.7l9.2-5.7a.8.8 0 0 0 0-1.4L7.7 3.6a.8.8 0 0 0-1.2.7z"/></svg></i>
+      </button>
+      <button class="word" type="button" data-line="13" aria-label="all clean 듣기">
+        <svg aria-hidden="true"><use href="#i-clean"/></svg>
+        <span><b>all clean</b><span>깨끗해</span></span>
+        <i class="say" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.5 4.3v11.4a.8.8 0 0 0 1.2.7l9.2-5.7a.8.8 0 0 0 0-1.4L7.7 3.6a.8.8 0 0 0-1.2.7z"/></svg></i>
+      </button>
+    </div>
+    <p class="hint">단어를 누르면 그 단어가 나오는 부분만 들려요.</p>
+  </section>
+
+  <section class="card" aria-labelledby="h-sheet">
+    <h2 id="h-sheet">같이 하는 학습지</h2>
+    <div class="sheet">
+      <img src="worksheet.png" width="112" height="158" alt="EP03 학습지 미리보기: 칫솔 찾기, 단어 카드, 스티커 칸, 색칠하기">
+      <div>
+        <ul>
+          <li><b>1</b> 그림에서 칫솔 찾기</li>
+          <li><b>2</b> 오려서 노는 단어 카드</li>
+          <li><b>3</b> 말할 때마다 스티커</li>
+          <li><b>4</b> 릴리 색칠하기</li>
+        </ul>
+        <a class="btn" href="ep03-worksheet.pdf" download>학습지 받기 (A4)</a>
+      </div>
+    </div>
+    <p class="hint">음성에서 "학습지 1번", "3번"이라고 하면 그 칸을 같이 해요.</p>
+  </section>
+
+  <section class="card tips" aria-labelledby="h-tips">
+    <h2 id="h-tips">부모님께</h2>
+    <p><b>여러 번 들려주세요.</b> 해석해 주기보다 같은 이야기를 반복해서 듣는 게 오늘의 목표예요. '3번 이어 듣기'를 켜면 끝나고 처음부터 다시 나와요.</p>
+    <p><b>실제 양치 시간에 한 번만.</b> "Brush my teeth!" 하고 말해 주면 소리와 상황이 이어져 더 오래 기억해요.</p>
+    <p><b>따라 하지 않아도 괜찮아요.</b> 듣는 것만으로도 충분한 노출이에요.</p>
+    <p><b>멈춰서 기다리는 곳이 있어요.</b> 아이가 화면을 누르면 이어져요. 그냥 들으려면 그냥 듣기를 켜 주세요.</p>
+  </section>
+
+  <details class="card">
+    <summary><span><span class="t">대본 보기</span><span class="s">부모님용, 줄을 누르면 그 부분부터 들려요</span></span>
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+    <div class="script" id="script"></div>
+  </details>
+
+  <footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a><a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a><a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>
+</main>
+
+<script>
+// 줄별 시작, 끝(초): 조립 시각표 + 음악 도입 2.5초. [[...]]는 오늘의 단어
+const LINES = [
+  [2.5, 5.02, "Hello, hello! It's Lily time!"],
+  [5.42, 9.53, "Hi, friend! 나는 릴리야. 오늘도 같이 할까?"],
+  [11.93, 17.88, "하아암. 벌써 밤이네. 자기 전에 해야 할 게 있지? 뭘까?"],
+  [20.28, 26.7, "맞아! 이 닦기! [[Brush my teeth]]. 이를 닦아요. [[Brush my teeth]]!"],
+  [27.1, 31.42, "사실 나도 가끔은 이 닦기 싫어. 친구도 그래?"],
+  [33.82, 40.6, "그래도 같이 하면 재밌어. 칫솔이 어디 있지? 학습지 1번 그림에서 칫솔을 찾아볼까?"],
+  [44.0, 50.82, "찾았다! 그런데 어? 우리 강아지 비스킷이 칫솔을 물고 있어! 멍! 멍!"],
+  [51.22, 59.32, "비스킷, 그건 내 칫솔이야! 이리 줘! 자, 이제 시작! [[Brush my teeth]]!"],
+  [61.62, 67.22, "Brush, brush, brush. 친구도 같이! Brush, brush, brush."],
+  [67.62, 71.82, "와! [[Bubbles]]! 거품이야! [[Bubbles]]!"],
+  [73.82, 79.8, "[[Bubbles]], [[bubbles]]! Pop, pop, pop! 친구 입에도 [[bubbles]] 생겼어?"],
+  [82.2, 88.43, "나는 거품 괴물이다! Rawr! 비스킷이 깜짝 놀랐어. 멍?"],
+  [88.83, 92.63, "이제 퉤 하고, 물로 헹구고!"],
+  [93.03, 99.12, "[[All clean]]! 깨끗해! [[All clean]]! 친구도 [[all clean]]? 활짝 웃어 봐!"],
+  [101.52, 108.09, "이제 친구 차례야! 내가 말하면 따라 해 봐. 말할 때마다 학습지 3번에 스티커 하나!"],
+  [108.49, 109.39, "[[Brush my teeth]]."],
+  [111.79, 112.53, "[[Bubbles]]."],
+  [114.93, 115.99, "[[All clean]]!"],
+  [118.39, 127.86, "잘했어! 한 번 더, 노래처럼! Brush, brush, [[brush my teeth]]. [[Bubbles]], [[bubbles]], [[all clean]]!"],
+  [128.26, 135.4, "Good night, friend! 오늘 밤 이 닦을 때 말해 봐. [[Brush my teeth]]! Bye-bye!"],
+];
+// 장면 시작 시각: 처음(0), 칫솔, 이 닦기, 거품, 깨끗해, 친구 차례, 잘 자
+const SCENE_AT = [0, 33, 51, 67.4, 88.6, 100.5, 128];
+const SCENE_NAME = ["", "칫솔 찾기", "이 닦기", "거품", "깨끗해", "친구 차례", "잘 자"];
+// 멈춰 기다리는 곳: 그 줄이 끝나는 시각
+const WAITS = [40.6, 79.8, 109.39, 112.53, 115.99, 135.4];
+const SAY_WORDS = { 14: "Your turn!", 15: "Brush my teeth.", 16: "Bubbles.", 17: "All clean!", 18: "Great job!" };
+// 그림 픽셀 좌표(장면 2: bg-2-brush, 장면 3: bg-3-bubbles, 장면 5: bg-5-turn)
+const GERMS = [[255, 530, 28], [345, 524, 28], [445, 520, 30], [545, 524, 28], [628, 534, 26], [310, 616, 26], [432, 624, 28], [560, 620, 26]];
+const BUBS = [[110, 245, 50], [330, 228, 48], [225, 345, 56], [398, 368, 40], [78, 382, 38]];
+const SLOTS = [[190, 440], [266, 440], [342, 440]];
+const SAY_AT = [100, 472];                // 말했어요 버튼 가운데(스티커가 여기서 날아감)
+const STICKERS = ["art/L-sticker-brush.webp", "art/L-sticker-bubbles.webp", "art/L-sticker-clean.webp"];
+
+const $ = (id) => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+const audio = $("audio"), stage = $("stage");
+const fmt = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const plain = (s) => s.replace(/\[\[|\]\]/g, "");
+const capHTML = (s) => esc(plain(s)).replace(/[A-Za-z][A-Za-z'\-]*(?:[ ,.!?]*[A-Za-z][A-Za-z'\-]*)*[.!?,]*/g, (m) => `<span class="en">${m}</span>`);
+function el(tag, attrs, parent) {
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+const sceneAt = (t) => { let s = 0; SCENE_AT.forEach((a, i) => { if (t >= a) s = i; }); return s; };
+
+// ---- 상태 ----
+let done = WAITS.map(() => false);       // 기다림이 채워졌는지(눌렀거나 지나감)
+let waiting = -1, waitTimer = 0, resumeTimer = 0, resumeTok = 0;
+let scene = -1, line = -1, lastSec = -1, stopAt = null, suppressUntil = -1;
+let playsLeft = 0, justListen = false, started = false, raf = 0, endShown = false;
+let brushFound = false, popped = BUBS.map(() => false), earned = [false, false, false], lampOff = false;
+
+// ---- 대본 ----
+const rows = LINES.map(([s, e, text], k) => {
+  const b = document.createElement("button");
+  b.className = "line"; b.type = "button";
+  b.innerHTML = `<span class="n">${k + 1}</span><span>${esc(text).replace(/\[\[(.+?)\]\]/g, "<mark>$1</mark>")}</span>`;
+  b.addEventListener("click", () => { seekTo(s); suppressUntil = e + 0.3; play(); });
+  $("script").appendChild(b);
+  return b;
+});
+
+// ---- 장면 2, 3, 5 그림 만들기 ----
+const germEls = GERMS.map(([x, y, r]) => {
+  const g = el("g", { class: "germ", transform: `translate(${x} ${y})` }, $("germs"));
+  const i = el("g", {}, g);
+  el("image", { "data-src": "art/L-germ.png", x: -r, y: -r, width: 2 * r, height: 2 * r }, i);
+  return { g, x, y, r, gone: false };
+});
+const bubEls = BUBS.map(([x, y, r], k) => {
+  const g = el("g", { class: "tgt bub", transform: `translate(${x} ${y})`, role: "button", tabindex: 0, "aria-label": "거품 터뜨리기" }, $("bubs"));
+  const bob = el("g", { class: "bob", style: `animation-delay:${-k * 0.7}s` }, g);
+  el("circle", { class: "halo", r: r + 10 }, bob);
+  el("image", { "data-src": "art/L-bubble.png", x: -r * 1.095, y: -r * 1.095, width: r * 2.19, height: r * 2.19 }, bob);
+  const burst = el("g", { class: "burst" }, g);
+  for (let a = 0; a < 8; a++) {
+    const c = Math.cos(a * Math.PI / 4), s = Math.sin(a * Math.PI / 4);
+    el("path", { class: "sA", "stroke-width": 3, d: `M${c * r * 0.8} ${s * r * 0.8} L${c * (r + 14)} ${s * (r + 14)}` }, burst);
+  }
+  el("text", { class: "fA", y: 7, "font-size": 20, "text-anchor": "middle" }, burst).textContent = "Pop!";
+  el("circle", { r: Math.max(8, r), class: "hit" }, g);
+  return g;
+});
+const stickerEls = SLOTS.map(([x, y], k) => {
+  const o = el("g", { transform: `translate(${x} ${y})` }, $("stickers"));
+  const i = el("g", { class: "stk", style: `--dx:${SAY_AT[0] - x - 31}px;--dy:${SAY_AT[1] - y - 31}px` }, o);
+  el("image", { "data-src": STICKERS[k], x: -2, y: -2, width: 66, height: 66 }, i);
+  o.toggleAttribute("hidden", true);
+  return o;
+});
+
+// ---- 장면 상태 그리기 ----
+function renderBrush() { $("t-brush").classList.toggle("done", brushFound); }
+function renderBubbles() {
+  bubEls.forEach((g, k) => g.classList.toggle("popped", popped[k]));
+  if (scene === 3) chip(`${popped.filter(Boolean).length}/5`);
+}
+function renderStickers() { stickerEls.forEach((g, k) => g.toggleAttribute("hidden", !earned[k])); }
+function renderLamp() { $("t-lamp").classList.toggle("done", lampOff); $("sc6").classList.toggle("lamp-off", lampOff); }
+function resetGerms() { germEls.forEach((g) => { g.gone = false; g.g.classList.remove("gone"); }); $("brush2").setAttribute("transform", "translate(640 760)"); }
+function chip(text) { $("chip").textContent = text || ""; $("chip").hidden = !text; }
+
+// 그림 미리 받기: 처음 두 장면만 바로 받고, 나머지는 앞 장면이 시작될 때 받아 decode까지 해 둔다
+function warm(k) {
+  if (k > 6) return;
+  const nodes = [...document.querySelectorAll(`#sc${k} [data-src]`)];
+  if (k === 6) {
+    nodes.push(...document.querySelectorAll("#endcard [data-src]"));
+    $("endcard").style.backgroundImage = "url(art/paper.webp)";
+  }
+  for (const n of nodes) {
+    const u = n.dataset.src;
+    n.removeAttribute("data-src");
+    const set = () => (n.tagName === "IMG" ? (n.src = u) : n.setAttribute("href", u));
+    const im = new Image(); im.src = u;
+    im.decode().then(set, set);
+  }
+}
+function setScene(s) {
+  if (s === scene) return;
+  scene = s;
+  warm(s); warm(s + 1);
+  for (let i = 0; i < 7; i++) $("sc" + i).toggleAttribute("hidden", i !== s);
+  document.querySelectorAll("#dots i").forEach((d, i) => { d.className = i + 1 < s ? "past" : i + 1 === s ? "now" : ""; });
+  $("dots").setAttribute("aria-label", s ? `장면 ${s}/6 ${SCENE_NAME[s]}` : "장면 시작 전");
+  if (s === 2) resetGerms();
+  if (s === 3 && !done[1]) { popped = popped.map(() => false); renderBubbles(); }
+  chip(s === 1 ? "학습지 1번" : s === 3 ? `${popped.filter(Boolean).length}/5` : s === 5 ? "학습지 3번에도 붙여요" : "");
+}
+function setLine(t) {
+  let k = -1;
+  for (let j = 0; j < LINES.length; j++) if (t >= LINES[j][0] - 0.05 && t <= LINES[j][1] + 0.3) k = j;
+  if (k === line) return;
+  if (line >= 0) rows[line].classList.remove("now");
+  const jumped = line === -2;
+  line = k;
+  if (k < 0) {
+    // 옮긴 곳이 줄 사이면 바로 앞 줄을 보여 준다
+    if (!jumped) return;
+    let j = -1;
+    for (let i = 0; i < LINES.length; i++) if (LINES[i][0] <= t) j = i;
+    if (j >= 0) $("capText").innerHTML = capHTML(LINES[j][2]);
+    $("say-word").textContent = SAY_WORDS[Math.max(14, Math.min(j, 18))];
+    return;
+  }
+  rows[k].classList.add("now");
+  $("capText").innerHTML = capHTML(LINES[k][2]);
+  if (SAY_WORDS[k]) $("say-word").textContent = SAY_WORDS[k];
+}
+function setTime(t) {
+  $("seek").value = t;
+  const sec = Math.floor(t);
+  if (sec !== lastSec) { lastSec = sec; $("cur").textContent = fmt(t); }
+}
+function showEnd(on) {
+  endShown = on; $("endcard").hidden = !on;
+  updateBigPlay();
+}
+function updateBigPlay() { $("bigPlay").hidden = started || endShown; }
+
+// ---- 재생 ----
+function play() {
+  started = true; updateBigPlay();
+  if (audio.error) audio.load();
+  audio.play().catch(() => { $("capText").textContent = "재생할 수 없어요. 다시 눌러 보세요."; });
+}
+function seekTo(t) {
+  clearWait();
+  stopAt = null; suppressUntil = -1;
+  t = Math.max(0, Math.min(t, audio.duration || 139));
+  innerSeekTo = t; audio.currentTime = t;
+  done = WAITS.map((w) => w < t - 0.05);
+  brushFound = done[0]; popped = popped.map(() => done[1]); earned = [done[2], done[3], done[4]]; lampOff = done[5];
+  setScene(sceneAt(t));
+  renderBrush(); renderBubbles(); renderStickers(); renderLamp();
+  if (sceneAt(t) === 2) resetGerms();
+  line = -2; setLine(t); setTime(t);
+  showEnd(lampOff && t >= 135.3);
+}
+function restart() { showEnd(false); seekTo(0); play(); }
+
+// requestAnimationFrame로 시각을 매 프레임 확인한다(timeupdate는 0.25초 간격이라 기다림 지점을 지나친다)
+function tick() {
+  raf = 0;
+  const t = audio.currentTime;
+  if (stopAt !== null && t >= stopAt) { stopAt = null; audio.pause(); }
+  setTime(t); setLine(t); setScene(sceneAt(t));
+  if (!audio.paused) {
+    for (let i = 0; i < WAITS.length; i++) {
+      if (done[i]) continue;
+      if (t < WAITS[i]) break;
+      if (justListen || WAITS[i] <= suppressUntil) { done[i] = true; continue; }
+      enterWait(i); break;
+    }
+  }
+  if (lampOff && !endShown && t >= 135.3) showEnd(true);
+  if (!audio.paused) raf = requestAnimationFrame(tick);
+}
+
+// ---- 기다리기 ----
+function enterWait(i) {
+  waiting = i;
+  audio.pause();
+  stage.classList.add("waiting");
+  $("wtag").hidden = false;
+  armTimer();
+}
+function armTimer() {
+  clearTimeout(waitTimer);
+  waitTimer = setTimeout(autoResolve, 5000);
+  const ring = $("ring");
+  ring.hidden = true;                       // 다시 보이게 하면 CSS 애니메이션이 처음부터 돈다
+  requestAnimationFrame(() => { if (waiting >= 0) ring.hidden = false; });
+}
+function clearWait() {
+  waiting = -1;
+  clearTimeout(waitTimer); clearTimeout(resumeTimer); resumeTok++;
+  stage.classList.remove("waiting");
+  $("wtag").hidden = true; $("ring").hidden = true;
+}
+function finishWait(auto) {
+  clearWait();
+  if (!auto) return play();
+  const tok = resumeTok;
+  resumeTimer = setTimeout(() => { if (tok === resumeTok) play(); }, 450);
+}
+function doAction(i) {
+  if (i === 0) findBrush();
+  else if (i === 1) popAll();
+  else if (i <= 4) giveSticker(i - 2);
+  else turnLampOff();
+}
+function autoResolve() { const i = waiting; if (i < 0) return; doAction(i); finishWait(true); }
+
+// ---- 장면별 행동 ----
+function findBrush() {
+  done[0] = true;
+  const b = $("brush1");
+  b.classList.remove("bounce"); requestAnimationFrame(() => b.classList.add("bounce"));
+  if (brushFound) return;
+  brushFound = true; renderBrush();
+}
+function popBubble(k) {
+  if (popped[k]) return;
+  popped[k] = true; renderBubbles();
+  const all = popped.every(Boolean);
+  if (all) done[1] = true;
+  if (waiting === 1) all ? finishWait(false) : armTimer();
+}
+function popAll() {
+  popped.forEach((p, k) => { if (!p) setTimeout(() => { popped[k] = true; renderBubbles(); }, k * 80); });
+  done[1] = true;
+}
+function giveSticker(k) {
+  done[2 + k] = true;
+  if (earned[k]) return;
+  earned[k] = true; renderStickers();
+  const s = stickerEls[k].firstChild;
+  s.classList.remove("fly"); requestAnimationFrame(() => s.classList.add("fly"));
+}
+function tapSay() {
+  const i = [2, 3, 4].find((j) => !done[j]);
+  const ok = i !== undefined && (waiting === i || audio.currentTime >= LINES[13 + i][0] - 0.3);
+  if (!ok) {
+    const p = $("t-say").querySelector(".pulse");
+    p.classList.remove("nope"); requestAnimationFrame(() => p.classList.add("nope"));
+    return;
+  }
+  giveSticker(i - 2);
+  if (waiting === i) finishWait(false);
+}
+function turnLampOff() { lampOff = true; done[5] = true; renderLamp(); }
+function tapLamp() {
+  turnLampOff();
+  if (waiting === 5) finishWait(false);
+  else if (audio.paused && audio.currentTime >= 135.3) showEnd(true);
+}
+function sparkle(x, y) {
+  const o = el("g", { transform: `translate(${x} ${y})` }, $("sparks"));
+  const p = el("path", { class: "spark fT sE", "stroke-width": 1.2, d: "M0 -16 L4 -4 L16 0 L4 4 L0 16 L-4 4 L-16 0 L-4 -4 Z" }, o);
+  p.addEventListener("animationend", () => o.remove());
+}
+function floatWord(x, y) {
+  const o = el("g", { transform: `translate(${x} ${y - 30})` }, $("floats"));
+  const t = el("text", { class: "floaty fA", "font-size": 34, "text-anchor": "middle" }, o);
+  t.textContent = "Brush!";
+  t.addEventListener("animationend", () => o.remove());
+}
+function clearGerm(g) { g.gone = true; g.g.classList.add("gone"); floatWord(g.x, g.y); }
+
+// 화면 좌표를 그림 좌표로: 누르는 순간 한 번만 계산해 두고 움직일 때는 곱셈만 한다
+let inv = null, scrubbing = false, movePt = null, moveRaf = 0;
+function toSvg(e, ref) {
+  const m = inv || ref.getScreenCTM().inverse();
+  return { x: m.a * e.clientX + m.c * e.clientY + m.e, y: m.b * e.clientX + m.d * e.clientY + m.f };
+}
+function scrubAt(p) {
+  $("brush2").setAttribute("transform", `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`);
+  for (const g of germEls) {
+    if (g.gone) continue;
+    const dx = g.x - p.x, dy = g.y - p.y, R = g.r + 40;
+    if (dx * dx + dy * dy < R * R) clearGerm(g);
+  }
+}
+const scrub = $("t-scrub");
+scrub.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
+  scrubbing = true; inv = $("sc2").getScreenCTM().inverse();
+  scrub.setPointerCapture(e.pointerId);
+  scrubAt(toSvg(e));
+});
+scrub.addEventListener("pointermove", (e) => {
+  if (!scrubbing) return;
+  movePt = toSvg(e);
+  if (!moveRaf) moveRaf = requestAnimationFrame(() => { moveRaf = 0; if (movePt) scrubAt(movePt); });
+});
+const endScrub = () => { scrubbing = false; inv = null; };
+scrub.addEventListener("pointerup", endScrub);
+scrub.addEventListener("pointercancel", endScrub);
+
+// 누를 것: 손가락, 마우스는 pointerdown으로 바로, 키보드는 Enter와 Space
+function onTap(node, fn) {
+  node.addEventListener("pointerdown", (e) => { e.preventDefault(); fn(e); });
+  node.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(null); } });
+}
+onTap($("t-brush"), () => { findBrush(); if (waiting === 0) finishWait(false); });
+bubEls.forEach((g, k) => onTap(g, () => popBubble(k)));
+onTap($("t-say"), tapSay);
+onTap($("t-lamp"), tapLamp);
+onTap($("t-teeth"), (e) => {
+  const p = e ? toSvg(e, $("sc4")) : { x: 180 + Math.random() * 76, y: 290 };
+  sparkle(p.x, p.y);
+  sparkle(p.x + 26, p.y - 22);
+  sparkle(p.x - 24, p.y - 14);
+});
+scrub.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  e.preventDefault();
+  const g = germEls.find((x) => !x.gone);
+  if (g) scrubAt({ x: g.x, y: g.y });
+});
+
+// ---- 부모님 조작 ----
+$("bigPlay").addEventListener("click", () => { stopAt = null; play(); });
+$("play").addEventListener("click", () => {
+  if (waiting >= 0) { doAction(waiting); finishWait(false); return; }
+  if (!audio.paused) return audio.pause();
+  if (endShown || audio.ended) return restart();
+  stopAt = null; play();
+});
+$("again").addEventListener("click", restart);
+$("toParent").addEventListener("click", () => $("parent").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
+$("seek").addEventListener("input", (e) => { const p = !audio.paused; seekTo(Number(e.target.value)); if (p) play(); });
+$("justListen").addEventListener("click", (e) => {
+  justListen = e.currentTarget.getAttribute("aria-checked") !== "true";
+  e.currentTarget.setAttribute("aria-checked", String(justListen));
+  if (justListen && waiting >= 0) finishWait(false);
+});
+$("times3").addEventListener("click", (e) => {
+  const on = e.currentTarget.getAttribute("aria-pressed") !== "true";
+  e.currentTarget.setAttribute("aria-pressed", String(on)); playsLeft = on ? 2 : 0;
+});
+$("slow").addEventListener("click", (e) => {
+  const on = e.currentTarget.getAttribute("aria-pressed") !== "true";
+  e.currentTarget.setAttribute("aria-pressed", String(on)); audio.playbackRate = on ? 0.85 : 1;
+});
+let wordBtn = null;
+document.querySelectorAll(".word").forEach((b) => b.addEventListener("click", () => {
+  if (wordBtn) wordBtn.classList.remove("on");
+  wordBtn = b; b.classList.add("on");
+  const [s, e] = LINES[Number(b.dataset.line)];
+  seekTo(s);
+  stopAt = e + 0.15; suppressUntil = e + 0.3;   // 그 줄만 듣고 멈춤, 기다림 없음
+  play();
+}));
+
+const setPlaying = (on) => {
+  // SVG에는 .hidden 속성이 없어서 속성을 직접 넣고 뺀다
+  $("ic-play").toggleAttribute("hidden", on); $("ic-pause").toggleAttribute("hidden", !on);
+  $("play").setAttribute("aria-label", on ? "일시정지" : "재생");
+};
+audio.addEventListener("play", () => { setPlaying(true); if (!raf) raf = requestAnimationFrame(tick); });
+audio.addEventListener("pause", () => { setPlaying(false); if (wordBtn) { wordBtn.classList.remove("on"); wordBtn = null; } });
+// 잠금화면, 이어폰 같은 바깥 조작으로 위치가 바뀌면 기다림과 장면을 그 시각에 맞춘다
+let innerSeekTo = -1;
+audio.addEventListener("seeking", () => { if (Math.abs(audio.currentTime - innerSeekTo) < 0.05) return; seekTo(audio.currentTime); });
+audio.addEventListener("loadedmetadata", () => { $("seek").max = audio.duration; $("dur").textContent = fmt(audio.duration); });
+// 노출이 목적이라 같은 회를 이어서 세 번까지 들려준다
+audio.addEventListener("ended", () => {
+  if (playsLeft > 0) { playsLeft--; restart(); return; }
+  if ($("times3").getAttribute("aria-pressed") === "true") playsLeft = 2;
+  turnLampOff(); showEnd(true);
+});
+
+// 확인용: ?t=초 로 그 장면에서 멈춘 채 열기, &w=1 이면 다음 기다림 화면까지
+setScene(0);
+const q = new URLSearchParams(location.search);
+if (q.has("t")) {
+  const t = Number(q.get("t")) || 0;
+  started = true; updateBigPlay();
+  const go = () => {
+    seekTo(t);
+    if (q.get("w") === "1") { const i = done.findIndex((d) => !d); if (i >= 0) enterWait(i); }
+  };
+  if (audio.readyState >= 1) go(); else { go(); audio.addEventListener("loadedmetadata", go, { once: true }); }
+}
+</script>
+</body>
+</html>
