@@ -21,6 +21,7 @@ LANGS = {
         "copy_weak": "자주 틀리는 부분(문장 끝의 시간, 수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.",
         "head_extra": "",
         "tools_extra": "",
+        "furi_btn": "",
     },
     "ja": {
         "name": "일본어",
@@ -41,7 +42,8 @@ LANGS = {
         "head_extra": '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap">\n'
                       "<style>.en, .adv .ex, .word .w, .adv .w { font-family: \"Noto Sans JP\", Pretendard, sans-serif; } "
                       ".en, .adv .ex { word-break: normal; line-break: strict; } .en { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>",
-        "tools_extra": '    <button class="tool furi" id="furi" type="button" aria-pressed="true">후리가나 끄기</button>\n',
+        "tools_extra": "",
+        "furi_btn": '\n      <button class="tool" id="furi" type="button" aria-pressed="true">후리가나 끄기</button>',
     },
 }
 

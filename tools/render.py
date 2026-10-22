@@ -262,6 +262,7 @@ def render(lang, day):
         "head_extra": L["head_extra"] + ("\n" if L["head_extra"] else ""),
         "tools_extra": L["tools_extra"],
         "chunk_btn": '\n      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>' if chunks else "",
+        "furi_btn": L.get("furi_btn", ""),
         "tts_lang": L["tts_lang"],
         "copy_head": L["copy_head"],
         "copy_weak": L["copy_weak"],

@@ -137,8 +137,7 @@
   #passage .say { flex: 1; min-width: 0; }
   #passage .ko { font-size: 14px; line-height: 1.55; color: var(--sub); margin-top: 3px; }
   [hidden] { display: none !important; }
-  @media (max-width: 420px) { #passage .tools { flex-wrap: wrap; } #passage .tools .tool { flex: 1 1 calc(50% - 4px); } }
-  .tool.furi { width: 100%; flex: none; margin: -8px 0 16px; }
+  @media (max-width: 420px) { #passage .tools { flex-wrap: wrap; } #passage .tools .tool { flex: 1 1 calc(50% - 4px); max-width: calc(50% - 4px); } }
   body.nofuri rt { visibility: hidden; }
   .hint { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
   #passage .no { border: 0; padding: 0; cursor: pointer; font-family: inherit; }
@@ -190,7 +189,6 @@
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
      해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
-  @media (max-width: 420px) { #passage .tools .tool:last-child:nth-child(odd) { flex-basis: 100%; } }
   #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
   body.chunked #passage .chunks { display: flex; }
   body.chunked #passage .say > .en { display: none; }
@@ -214,6 +212,18 @@
   html.level-a body.chunked #passage .say:has(> .ko-a:not([hidden])) .chunks-a .ck .k { display: block; }
   .level-link { margin: 8px 0 0; font-size: 13px; text-align: right; }
   .level-link a { color: var(--sub); }
+  /* ── 플레이어 바 ─────────────────────── */
+  .pbar { position: fixed; left: 0; right: 0; margin: 0 auto; width: calc(100% - 24px); max-width: 536px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 30; display: none; align-items: center; gap: 10px; background: rgba(255,255,255,.97); border-radius: 18px; padding: 10px 10px 10px 12px; box-shadow: 0 6px 24px rgba(16,24,40,.14); }
+  .pbar.vis { display: flex; }
+  .pbar .pp { flex: none; width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--blue); color: #fff; cursor: pointer; display: grid; place-items: center; }
+  .pbar .pp svg { width: 18px; height: 18px; }
+  .pbar .mid { flex: 1; min-width: 0; }
+  .pbar .t { font-size: 13px; font-weight: 700; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pbar .prog { height: 4px; border-radius: 2px; background: var(--bg); margin-top: 6px; overflow: hidden; }
+  .pbar .prog i { display: block; height: 100%; width: 0; background: var(--blue); border-radius: 2px; transition: width .25s linear; }
+  .pbar .sp { flex: none; height: 36px; padding: 0 12px; border-radius: 10px; border: 0; background: var(--blue-soft); color: var(--blue); font: 800 14px Pretendard, sans-serif; cursor: pointer; }
+  .pbar-close { flex: none; width: 28px; height: 28px; border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 18px; display: grid; place-items: center; padding: 0; line-height: 1; }
+  body.pbar-vis main { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
 </style>
 <script>try{var _ql=new URLSearchParams(location.search).get('level');if(!_ql)_ql=localStorage.getItem('read_level');if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
@@ -247,7 +257,6 @@
     <div class="h2row"><h2>오늘의 지문</h2><button class="howto" id="howto" type="button">학습 방법</button></div>
     <div class="tools">
       <button class="tool main" id="play" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span></button>
-      <button class="tool" id="slow" type="button">느리게 0.8x</button>
       <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
       <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
@@ -328,6 +337,12 @@
         <div class="ex-ko">마을은 아직 가장 나이 든 주민을 공식적으로 확인하지 못했습니다.</div></div>
     </div>
   </details>
+  <div class="pbar" id="pbar">
+    <button class="pp" id="pbar-pp" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg></button>
+    <div class="mid"><div class="t" id="pbar-label">전체 듣기</div><div class="prog"><i id="pbar-prog"></i></div></div>
+    <button class="sp" id="pbar-sp" type="button">1.0x</button>
+    <button class="pbar-close" id="pbar-close" type="button" aria-label="닫기">&#x2715;</button>
+  </div>
   <section class="card sub" id="subscribe" data-v="2">
     <h2>매일 아침 영어 지문 받기</h2>
     <p>새 영어 지문이 올라오면 아침에 메일로 보내 드려요.</p>
@@ -434,7 +449,7 @@
       + '해석을 바로 보면 읽는 힘이 잘 늘지 않아요. 막혀도 끝까지 내 말로 적어 본 뒤 맞춰 보는 게 핵심이에요.';
     var steps = [
       [null, '이렇게 공부해요', FLOW],
-      ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 옆의 느리게 0.8x를 켜면 천천히 들을 수 있어요.'],
+      ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 재생이 시작되면 화면 아래 바의 속도 버튼을 눌러 0.6x~1.0x로 천천히 들을 수 있어요.'],
       ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
       ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
       ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
@@ -528,7 +543,7 @@
   var player = new Audio(), queue = [], rate = 1, token = 0;
   var wordPlayer = new Audio(), curWbtn = null;
   var canSpeak = 'speechSynthesis' in window;
-  var playBtn = document.getElementById('play'), slowBtn = document.getElementById('slow'), copyBtn = document.getElementById('copy');
+  var playBtn = document.getElementById('play'), copyBtn = document.getElementById('copy');
   var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
   function isLevelA() { return document.documentElement.classList.contains('level-a'); }
   function sentenceText(r) {
@@ -539,15 +554,25 @@
     return c.textContent.trim();
   }
   function mark(i) { rows.forEach(function (r, k) { r.classList.toggle('playing', k === i); }); }
+  var _PBTN_PLAY = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span>';
+  var _PBTN_PAUSE = '<svg viewBox="0 0 20 20" fill="currentColor"><rect x="5" y="4" width="3.5" height="12" rx="1.5"/><rect x="11.5" y="4" width="3.5" height="12" rx="1.5"/></svg><span>멈추기</span>';
+  function playBtnSetPlaying(playing) {
+    playBtn.innerHTML = playing ? _PBTN_PAUSE : _PBTN_PLAY;
+    playBtn.classList.toggle('on', playing);
+  }
   function stop() {
     token++; player.pause(); if (canSpeak) speechSynthesis.cancel();
     wordPlayer.pause(); wordPlayer.src = '';
     if (curWbtn) { curWbtn.classList.remove('playing'); curWbtn = null; }
-    queue = []; mark(-1); playBtn.classList.remove('on'); playBtn.lastChild.textContent = '전체 듣기';
+    queue = []; mark(-1); playBtnSetPlaying(false);
+    if (typeof pbarSetPlaying === 'function') pbarSetPlaying(false);
   }
+  var _playMode = ''; // 'full' | 'single' | 'word'
+  var _fullI = 0;    // current sentence index during full passage play
   function next() {
     if (!queue.length) { stop(); return; }
     var i = queue.shift(), t = token; mark(i);
+    if (_playMode === 'full') { _fullI = i; pbarLabel.textContent = '전체 듣기 ' + (i + 1) + '/' + rows.length; }
     if (!_gaPlayed) { _gaPlayed = true; gaEvent('audio_play', {lang: _gaLang, day: _gaDay}); }
     function after() { if (t === token) setTimeout(function () { if (t === token) next(); }, queue.length ? 450 : 0); }
     var audioSrc = isLevelA() ? (AUDIO_A[i] || null) : (AUDIO[i] || null);
@@ -561,16 +586,70 @@
   }
   playBtn.addEventListener('click', function () {
     if (playBtn.classList.contains('on')) { stop(); return; }
-    stop(); queue = rows.map(function (_, i) { return i; });
-    playBtn.classList.add('on'); playBtn.lastChild.textContent = '멈추기'; next();
+    stop(); _playMode = 'full'; _fullI = 0;
+    queue = rows.map(function (_, i) { return i; });
+    playBtnSetPlaying(true);
+    pbarShow('전체 듣기 1/' + rows.length); pbarSetPlaying(true); next();
   });
   rows.forEach(function (r, i) {
     r.querySelector('.no').addEventListener('click', function () {
-      var same = r.classList.contains('playing'); stop(); if (!same) { queue = [i]; next(); }
+      var same = r.classList.contains('playing'); stop();
+      if (!same) { _playMode = 'single'; queue = [i]; pbarShow((i + 1) + '번 문장 듣는 중'); pbarSetPlaying(true); next(); }
     });
   });
-  slowBtn.addEventListener('click', function () {
-    rate = rate === 1 ? 0.8 : 1; slowBtn.classList.toggle('on', rate !== 1); player.playbackRate = rate;
+  // ── 플레이어 바 ────────────────────────────────────────────────────────────
+  var SPEEDS = [1.0, 0.9, 0.8, 0.7, 0.6];
+  var rateIdx = (function () {
+    try { var s = parseFloat(localStorage.getItem('read_speed')); var i = SPEEDS.indexOf(s); return i >= 0 ? i : 0; } catch (e) { return 0; }
+  })();
+  rate = SPEEDS[rateIdx];
+  var pbar = document.getElementById('pbar');
+  var pbarPP = document.getElementById('pbar-pp');
+  var pbarLabel = document.getElementById('pbar-label');
+  var pbarProg = document.getElementById('pbar-prog');
+  var pbarSp = document.getElementById('pbar-sp');
+  var pbarClose = document.getElementById('pbar-close');
+  var ICON_PLAY = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 20 20" fill="currentColor"><rect x="5" y="4" width="3.5" height="12" rx="1.5"/><rect x="11.5" y="4" width="3.5" height="12" rx="1.5"/></svg>';
+  function pbarShow(label) {
+    pbarLabel.textContent = label;
+    pbar.classList.add('vis'); document.body.classList.add('pbar-vis');
+  }
+  function pbarSetPlaying(playing) {
+    pbarPP.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+  }
+  function pbarUpdateSpeed() { pbarSp.textContent = SPEEDS[rateIdx].toFixed(1) + 'x'; }
+  pbarUpdateSpeed();
+  player.addEventListener('timeupdate', function () {
+    var dur = player.duration;
+    if (!dur || isNaN(dur) || dur === 0) return;
+    var pct;
+    if (_playMode === 'full' && rows.length > 0) {
+      var perSent = 1 / rows.length;
+      pct = (_fullI / rows.length + (player.currentTime / dur) * perSent) * 100;
+    } else {
+      pct = player.currentTime / dur * 100;
+    }
+    pbarProg.style.width = Math.max(3, pct).toFixed(1) + '%';
+  });
+  player.addEventListener('ended', function () { pbarProg.style.width = '0%'; });
+  pbarPP.addEventListener('click', function () {
+    if (!player.paused) {
+      player.pause(); pbarSetPlaying(false); playBtnSetPlaying(false);
+    } else if (player.src) {
+      player.play().catch(function () {}); pbarSetPlaying(true); playBtnSetPlaying(true);
+    }
+  });
+  pbarSp.addEventListener('click', function () {
+    rateIdx = (rateIdx + 1) % SPEEDS.length;
+    rate = SPEEDS[rateIdx];
+    player.playbackRate = rate; wordPlayer.playbackRate = rate;
+    try { localStorage.setItem('read_speed', String(rate)); } catch (e) {}
+    pbarUpdateSpeed();
+    gaEvent('speed_change', { speed: rate, lang: _gaLang, day: _gaDay });
+  });
+  pbarClose.addEventListener('click', function () {
+    stop(); pbar.classList.remove('vis'); document.body.classList.remove('pbar-vis');
   });
   // 단어 발음 버튼: w{i}.mp3 / v{i}.mp3 → 없으면 SpeechSynthesis 폴백
   (function () {
@@ -584,13 +663,17 @@
         var src = (kind === 'v' ? ADV_AUDIO : WORD_AUDIO)[i] || null;
         gaEvent('word_audio', { lang: _gaLang, day: _gaDay });
         curWbtn = btn; btn.classList.add('playing');
-        function done() { if (curWbtn === btn) { btn.classList.remove('playing'); curWbtn = null; } }
+        _playMode = 'word'; pbarShow('단어 발음'); pbarSetPlaying(true);
+        function done() {
+          if (curWbtn === btn) { btn.classList.remove('playing'); curWbtn = null; }
+          pbarSetPlaying(false);
+        }
         if (src) {
           wordPlayer.onended = done; wordPlayer.onerror = done;
-          wordPlayer.src = src; wordPlayer.play().catch(done);
+          wordPlayer.src = src; wordPlayer.playbackRate = rate; wordPlayer.play().catch(done);
         } else if (canSpeak) {
           var u = new SpeechSynthesisUtterance(word);
-          u.lang = 'en-US'; u.onend = done; u.onerror = done; speechSynthesis.speak(u);
+          u.lang = 'en-US'; u.rate = rate; u.onend = done; u.onerror = done; speechSynthesis.speak(u);
         } else { done(); }
       });
     });
