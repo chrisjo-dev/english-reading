@@ -190,8 +190,11 @@ def render(lang, day):
         source = f'    <p class="src">{NO_SOURCE_NOTE}</p>\n'
     words = "".join(
         '    <div class="word">'
+        '<span class="wl">'
+        + f'<span class="w">{marks(w, "")}</span>'
         + _SPKR_BTN.format(kind="w", i=i, word=html.escape(plain_word_tts(w, lang), quote=True))
-        + f'<span class="w">{marks(w, "")}</span><span class="m">{esc(m)}</span></div>\n'
+        + '</span>'
+        + f'<span class="m">{esc(m)}</span></div>\n'
         for i, (w, m) in enumerate(c["words"])
     )
     points = "".join(
@@ -204,8 +207,9 @@ def render(lang, day):
     )
     advanced = "".join(
         '      <div class="adv"><div class="w">'
+        + f'<span class="wt">{marks(a["word"], "")}</span>'
         + _SPKR_BTN.format(kind="v", i=i, word=html.escape(plain_word_tts(a["word"], lang), quote=True))
-        + f'{marks(a["word"], "")}</div>'
+        + '</div>'
         + f'<div class="m">{esc(a["meaning"])}'
         + (WARN.format(ruby(esc(a["confuse"]))) if a.get("confuse") else "")
         + '</div>\n'

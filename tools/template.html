@@ -54,7 +54,8 @@
           padding: 13px 0; border-top: 1px solid var(--line); }
   .word:first-of-type { border-top: 0; padding-top: 0; }
   .word:last-of-type { padding-bottom: 0; }
-  .word .w { font-size: 17px; font-weight: 700; letter-spacing: 0; }
+  .word .wl { display: flex; align-items: center; gap: 4px; }
+  .word .w { font-size: 17px; font-weight: 700; letter-spacing: 0; white-space: nowrap; flex: none; }
   .word .m { font-size: 15px; color: var(--sub); text-align: right; }
   .point { background: var(--bg); border-radius: 14px; padding: 14px 16px; }
   .point + .point { margin-top: 8px; }
@@ -78,7 +79,8 @@
   .adv { padding: 14px 0; border-top: 1px solid var(--line); }
   .adv:first-of-type { border-top: 0; padding-top: 0; }
   .adv:last-of-type { padding-bottom: 0; }
-  .adv .w { font-size: 17px; font-weight: 700; letter-spacing: 0; }
+  .adv .w { font-size: 17px; font-weight: 700; letter-spacing: 0; display: flex; align-items: center; gap: 4px; }
+  .adv .w .wt { white-space: nowrap; }
   .adv .m { font-size: 15px; color: var(--sub); margin-top: 2px; }
   .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
              padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }

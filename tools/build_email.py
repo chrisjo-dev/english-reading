@@ -35,7 +35,7 @@ def parse(lang, day):
         "headline": (re.search(r'<p class="headline"[^>]*>(.*?)</p>', page, re.S) or [None, ""])[1],
         "chips": [html.unescape(c) for c in re.findall(r'<span class="chip[^"]*">(.*?)</span>', page)],
         "sentences": re.findall(r'<div class="en">(.*?)</div>', passage, re.S),
-        "words": re.findall(r'<span class="w">(.*?)</span><span class="m">(.*?)</span>', words_sec),
+        "words": re.findall(r'<span class="w">(.*?)</span>.*?<span class="m">(.*?)</span>', words_sec, re.DOTALL),
         "source": (src.group(1), src.group(2)) if src else None,
     }
 
