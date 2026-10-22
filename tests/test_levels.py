@@ -420,6 +420,77 @@ class TestCheckLevelsANumber(unittest.TestCase):
         self.assertFalse(any("levels.a" in w for w in warnings), warnings)
 
 
+class TestWantsLevelNone(unittest.TestCase):
+    """wants(sub, lang, None): 수준 필터 없음 — 해당 언어 구독자 전체."""
+
+    def _sub(self, lang=None, level=None, sub_type="regular"):
+        meta = {}
+        if lang:
+            meta["lang"] = lang
+        if level:
+            meta["level"] = level
+        return {"type": sub_type, "metadata": meta}
+
+    def test_level_none_includes_a_subscriber(self):
+        self.assertTrue(send_email.wants(self._sub(level="a"), "en", None))
+
+    def test_level_none_includes_b_subscriber(self):
+        self.assertTrue(send_email.wants(self._sub(level="b"), "en", None))
+
+    def test_level_none_includes_no_level_subscriber(self):
+        self.assertTrue(send_email.wants(self._sub(), "en", None))
+
+    def test_level_none_excludes_wrong_lang(self):
+        self.assertFalse(send_email.wants(self._sub(lang="ja"), "en", None))
+
+    def test_level_none_excludes_non_regular(self):
+        self.assertFalse(send_email.wants(self._sub(sub_type="unactivated"), "en", None))
+
+
+class TestMainNoAContent(unittest.TestCase):
+    """main(): 기초 지문 없을 때 새 동작 — level a 는 조용히 종료, level b 는 전체 대상."""
+
+    def _mock_parse(self, topic="드론"):
+        return {"topic": topic, "date": "2026-11-01", "headline": "Drone", "chips": [],
+                "sentences": [], "words": [], "source": None}
+
+    def test_level_a_no_content_exits_0_no_send(self):
+        """--level a 호출 시 기초 지문 없으면 send 하지 않고 종료한다."""
+        with patch.object(send_email, "wait_live"), \
+             patch.object(build_email, "parse", return_value=self._mock_parse()), \
+             patch.object(build_email, "build", return_value=None), \
+             patch.object(send_email, "send") as mock_send:
+            send_email.main("en", "2026-11-01", level="a")
+        mock_send.assert_not_called()
+
+    def test_level_b_no_a_content_uses_none_audience(self):
+        """--level b 호출 시 기초 지문 없으면 level=None(전체 대상)으로 send 한다."""
+        dummy_mail = {"subject": "s", "body": "b"}
+        with patch.object(send_email, "wait_live"), \
+             patch.object(build_email, "parse", return_value=self._mock_parse()), \
+             patch.object(build_email, "build", side_effect=lambda l, d, lv: dummy_mail if lv == "b" else None), \
+             patch.object(send_email, "send") as mock_send:
+            send_email.main("en", "2026-11-01", level="b")
+        mock_send.assert_called_once()
+        _, kwargs = mock_send.call_args
+        assert kwargs.get("level") is None or mock_send.call_args[0][4] is None, \
+            f"Expected level=None, got: {mock_send.call_args}"
+
+    def test_level_b_with_a_content_uses_b_audience(self):
+        """--level b 호출 시 기초 지문 있으면 level='b'(b-구독자만)로 send 한다."""
+        dummy_mail = {"subject": "s", "body": "b"}
+        with patch.object(send_email, "wait_live"), \
+             patch.object(build_email, "parse", return_value=self._mock_parse()), \
+             patch.object(build_email, "build", return_value=dummy_mail), \
+             patch.object(send_email, "send") as mock_send:
+            send_email.main("en", "2026-11-01", level="b")
+        mock_send.assert_called_once()
+        # level 인자 확인: positional 또는 keyword
+        call_args = mock_send.call_args
+        level_arg = call_args[1].get("level") if call_args[1] else call_args[0][4]
+        self.assertEqual(level_arg, "b")
+
+
 class TestRecentlySent(unittest.TestCase):
     def test_within_30_min(self):
         now = datetime.datetime(2026, 11, 1, 10, 0, tzinfo=datetime.timezone.utc)
@@ -434,3 +505,17 @@ class TestRecentlySent(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestLevelAllSentinel(unittest.TestCase):
+    """수준 필터 없이 보낸 메일은 metadata.level 을 null 이 아닌 'all' 로 남겨, 같은 날 다시 돌려도 중복 발송하지 않는다."""
+
+    def test_same_issue_all(self):
+        meta = {"lang": "ja", "day": "2026-10-24", "level": "all"}
+        self.assertTrue(send_email.same_issue(meta, "ja", "day", "2026-10-24", None))
+        self.assertFalse(send_email.same_issue(meta, "ja", "day", "2026-10-24", "b"))
+
+    def test_old_email_without_level_is_b(self):
+        meta = {"lang": "en", "day": "2026-10-20"}
+        self.assertTrue(send_email.same_issue(meta, "en", "day", "2026-10-20", "b"))
+        self.assertFalse(send_email.same_issue(meta, "en", "day", "2026-10-20", None))

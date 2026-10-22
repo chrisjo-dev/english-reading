@@ -115,11 +115,19 @@ def recent_emails(pages=5):
         path = nxt.split("/v1", 1)[1]
 
 
+# 수준 필터 없이(기초 구독자 포함) 보낸 메일은 metadata.level 에 이 값을 적는다. Buttondown 이 null 값을 지울 수 있어 문자열로 남긴다.
+LEVEL_ALL = "all"
+
+
+def meta_level(level):
+    return LEVEL_ALL if level is None else level
+
+
 def same_issue(meta, lang, key, value, level="b"):
     """예전(언어 구분 전) 메일은 metadata.lang 이 없고 모두 영어였다. level 키 없는 기존 메일은 중급(b)으로 취급."""
     return (meta.get(key) == value
             and meta.get("lang", langs.DEFAULT) == lang
-            and meta.get("level", "b") == level)
+            and (meta.get("level") or "b") == meta_level(level))
 
 
 def send(mail, lang, key, value, level="b", extra_meta=None):
@@ -140,7 +148,7 @@ def send(mail, lang, key, value, level="b", extra_meta=None):
     fill_missing_lang()
     if level is not None:
         fill_missing_level()
-    metadata = {"lang": lang, key: value, "level": level}
+    metadata = {"lang": lang, key: value, "level": meta_level(level)}
     if extra_meta:
         metadata.update(extra_meta)
     if draft is None:
@@ -171,6 +179,8 @@ def wants(sub, lang, level="b"):
     # 수준 필터
     if level == "a":
         return sub_level == "a"
+    elif level is None:
+        return True  # 수준 필터 없음: 해당 언어 구독자 전체
     else:
         return sub_level != "a"
 
@@ -206,16 +216,27 @@ def catchup(lang, day, level="b"):
     """그날 본 메일과 이전 보충 메일을 받지 못한 구독자에게만 같은 지문을 보낸다.
 
     본 메일 발송 직후에는 전달 이벤트가 늦게 쌓일 수 있으므로, 발송 뒤 충분히 지나서 수동으로 실행한다.
+    기초 지문이 없어 본 메일을 level=None(전체 대상)으로 보낸 경우도 같이 인식한다.
     """
     catchup_tag_prefix = f"{lang}:{day}:{level}"
+
+    def _is_main(meta):
+        return (same_issue(meta, lang, "day", day, level) or
+                same_issue(meta, lang, "day", day, None))
+
     issues = [e for e in recent_emails(pages=10)
-              if e["status"] == "sent" and (same_issue(e.get("metadata") or {}, lang, "day", day, level)
-                                           or (e.get("metadata") or {}).get("catchup_of") == catchup_tag_prefix)]
-    if not any(same_issue(e.get("metadata") or {}, lang, "day", day, level) for e in issues):
+              if e["status"] == "sent" and (
+                  _is_main(e.get("metadata") or {})
+                  or (e.get("metadata") or {}).get("catchup_of") == catchup_tag_prefix)]
+    if not any(_is_main(e.get("metadata") or {}) for e in issues):
         raise SystemExit(f"{lang} {day} level={level} 본 메일이 없어 보충 발송하지 않음. 본 발송부터 하세요.")
 
     # 본 메일이 30분 이내에 발송됐으면 전달 이벤트가 아직 쌓이는 중일 수 있다. 건너뜀.
-    main_emails = [e for e in issues if same_issue(e.get("metadata") or {}, lang, "day", day, level)]
+    main_emails = [e for e in issues if _is_main(e.get("metadata") or {})]
+    # 실제 발송된 level 확인: level=None 이면 기초 지문 없어 전체 대상으로 보낸 경우
+    effective_level = (main_emails[0].get("metadata") or {}).get("level", level) if main_emails else level
+    if effective_level == LEVEL_ALL:
+        effective_level = None
     now_utc = datetime.datetime.now(datetime.timezone.utc)
     for mi in main_emails:
         sent_at = mi.get("publish_date") or mi.get("creation_date") or ""
@@ -224,7 +245,7 @@ def catchup(lang, day, level="b"):
             return
     fill_missing_lang()
     got = set().union(*(reached(e["id"]) for e in issues))
-    targets = [sub for sub in subscribers() if wants(sub, lang, level) and sub["id"] not in got]
+    targets = [sub for sub in subscribers() if wants(sub, lang, effective_level) and sub["id"] not in got]
     if not targets:
         print(f"보충 대상 없음 ({lang} {day} level={level})")
         return
@@ -242,7 +263,7 @@ def catchup(lang, day, level="b"):
         draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked",
                                           "filters": {"predicate": "and", "groups": [], "filters": [
                                               {"field": "subscriber.metadata.catchup", "operator": "equals", "value": tag}]},
-                                          "metadata": {"lang": lang, "level": level, "catchup_of": catchup_tag_prefix}})
+                                          "metadata": {"lang": lang, "level": meta_level(effective_level), "catchup_of": catchup_tag_prefix}})
         call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
         for _ in range(30):
             if call("GET", f"/emails/{draft['id']}")["status"] == "sent":
@@ -264,14 +285,18 @@ def catchup(lang, day, level="b"):
 def main(lang, day, level="b"):
     url_base = f"{build_email.SITE}/{lang}/{day}/"
     wait_live(url_base, build_email.parse(lang, day)["topic"], url_base + "thumb.png")
-    mail = build_email.build(lang, day, level)
-    if mail is None:
-        # 기초 콘텐츠 없음: 기초 구독자에게 중급 지문으로 만든 이메일을 폴백 발송한다 (5.11절)
-        print(f"기초 콘텐츠 없음 — level a 구독자에게 중급 지문으로 폴백 발송 ({lang} {day})")
-        mail = build_email.build(lang, day, "b")
-        send(mail, lang, "day", day, level="a", extra_meta={"fallback": True})
+    if level == "a":
+        mail = build_email.build(lang, day, "a")
+        if mail is None:
+            print(f"기초 지문 없음, 중급 메일에 포함됨 ({lang} {day})")
+            return  # exit 0: 중급(b) 발송 시 이미 a-구독자 포함
+        send(mail, lang, "day", day, level="a")
         return
-    send(mail, lang, "day", day, level=level)
+    # level == "b": 기초 지문이 없으면 a-구독자도 중급 메일에 포함한다(수준 필터 없음)
+    mail = build_email.build(lang, day, "b")
+    has_level_a = build_email.build(lang, day, "a") is not None
+    effective_level = "b" if has_level_a else None
+    send(mail, lang, "day", day, level=effective_level)
 
 
 def main_weekly(lang, end):
