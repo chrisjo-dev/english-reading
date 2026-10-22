@@ -13,23 +13,54 @@
   "sentences": [
     {
       "en": "A vertical farm opened in an old **warehouse** near the city center last spring.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["A vertical farm opened", "수직 농장이 문을 열었다"],
+        ["in an old **warehouse**", "오래된 창고에"],
+        ["near the city center", "도심 근처의"],
+        ["last spring.", "지난봄에"]
+      ]
     },
     {
       "en": "Instead of **soil** and sunlight, the plants grow on tall **shelves** under LED lights, and computers control the water and temperature.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Instead of **soil** and sunlight,", "흙과 햇빛 대신"],
+        ["the plants grow", "식물은 자란다"],
+        ["on tall **shelves**", "높은 선반 위에서"],
+        ["under LED lights,", "LED 조명 아래"],
+        ["and computers control", "그리고 컴퓨터가 조절한다"],
+        ["the water and temperature.", "물과 온도를"]
+      ]
     },
     {
       "en": "The farm, which is run by only twelve workers, produces about fifty thousand **heads of lettuce** every month.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["The farm,", "그 농장은"],
+        ["which is run by only twelve workers,", "직원 12명만으로 운영되는데"],
+        ["produces about fifty thousand **heads of lettuce**", "상추 약 5만 포기를 생산한다"],
+        ["every month.", "매달"]
+      ]
     },
     {
       "en": "It uses **significantly** less water than a normal farm, but the **electricity bill** is still very high.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["It uses **significantly** less water", "그곳은 물을 훨씬 적게 쓴다"],
+        ["than a normal farm,", "보통 농장보다"],
+        ["but the **electricity bill**", "하지만 전기 요금은"],
+        ["is still very high.", "여전히 매우 높다"]
+      ]
     },
     {
       "en": "The owners expect that it will take five more years to make a **profit**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["The owners expect", "주인들은 예상한다"],
+        ["that it will take five more years", "5년이 더 걸릴 거라고"],
+        ["to make a **profit**.", "이익을 내기까지"]
+      ]
     }
   ],
   "words": [

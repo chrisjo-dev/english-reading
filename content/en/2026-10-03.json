@@ -13,27 +13,67 @@
   "sentences": [
     {
       "en": "On a noisy bus or plane, some headphones can make the world go almost silent, but they do not simply block sound.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["On a noisy bus or plane,", "시끄러운 버스나 비행기에서"],
+        ["some headphones can make", "어떤 헤드폰은 만들 수 있다"],
+        ["the world go almost silent,", "세상을 거의 조용하게"],
+        ["but they do not simply block sound.", "하지만 그냥 소리를 막는 건 아니다"]
+      ]
     },
     {
       "en": "Sound **travels** through the air as a wave, a pattern of high and low pressure.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Sound **travels**", "소리는 이동한다"],
+        ["through the air", "공기를 통해"],
+        ["as a wave,", "파동으로"],
+        ["a pattern of high and low pressure.", "즉 높고 낮은 압력의 패턴으로"]
+      ]
     },
     {
       "en": "Tiny **microphones** on the headphones listen to the noise around you, and a small chip quickly creates a new sound wave that is its exact **opposite**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Tiny **microphones** on the headphones", "헤드폰에 달린 작은 마이크들이"],
+        ["listen to the noise around you,", "당신 주변의 소음을 듣는다"],
+        ["and a small chip quickly creates", "그리고 작은 칩이 재빨리 만든다"],
+        ["a new sound wave", "새로운 음파를"],
+        ["that is its exact **opposite**.", "그 소음과 정반대인"]
+      ]
     },
     {
       "en": "When the two waves meet, the high parts of one fill the low parts of the other, so they **cancel** each other **out**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["When the two waves meet,", "두 파동이 만나면"],
+        ["the high parts of one", "한쪽의 높은 부분이"],
+        ["fill the low parts of the other,", "다른 쪽의 낮은 부분을 채운다"],
+        ["so they **cancel** each other **out**.", "그래서 서로를 지워 없앤다"]
+      ]
     },
     {
       "en": "This trick works best on steady, low sounds such as the hum of an engine, while sudden or high sounds, like a baby crying, are harder to remove **completely**.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["This trick works best", "이 방법은 가장 잘 통한다"],
+        ["on steady, low sounds", "일정하고 낮은 소리에"],
+        ["such as the hum of an engine,", "엔진의 웅웅거림 같은"],
+        ["while sudden or high sounds,", "반면 갑작스럽거나 높은 소리는"],
+        ["like a baby crying,", "아기 울음소리처럼"],
+        ["are harder to remove **completely**.", "완전히 없애기가 더 어렵다"]
+      ]
     },
     {
       "en": "That is why many headphones also use soft ear **cushions**, which block some of the noise before it even reaches your ears.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["That is why", "그래서"],
+        ["many headphones also use", "많은 헤드폰은 또한 쓴다"],
+        ["soft ear **cushions**,", "부드러운 귀 쿠션을"],
+        ["which block some of the noise", "그것은 소음의 일부를 막는다"],
+        ["before it even reaches your ears.", "소음이 귀에 닿기도 전에"]
+      ]
     }
   ],
   "words": [

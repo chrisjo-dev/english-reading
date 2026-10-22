@@ -13,27 +13,65 @@
   "sentences": [
     {
       "en": "Many of us connect our earphones with Bluetooth every day, but few people know that the name comes from a king.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Many of us connect our earphones", "우리 중 많은 사람이 이어폰을 연결한다"],
+        ["with Bluetooth every day,", "매일 블루투스로"],
+        ["but few people know", "하지만 아는 사람은 드물다"],
+        ["that the name comes from a king.", "그 이름이 한 왕에게서 왔다는 것을"]
+      ]
     },
     {
       "en": "In the tenth century, a king named Harald 'Bluetooth' Gormsson **united** Denmark and Norway.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["In the tenth century,", "10세기에"],
+        ["a king named Harald 'Bluetooth' Gormsson", "하랄 '블루투스' 고름손이라는 왕이"],
+        ["**united** Denmark and Norway.", "덴마크와 노르웨이를 통일했다"]
+      ]
     },
     {
       "en": "In 1996, engineers from several companies met to plan a short-range **wireless** technology, and one of them suggested the king's name as a **temporary** code name.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["In 1996,", "1996년에"],
+        ["engineers from several companies met", "여러 회사의 엔지니어들이 모였다"],
+        ["to plan a short-range **wireless** technology,", "근거리 무선 기술을 계획하기 위해"],
+        ["and one of them suggested", "그리고 그중 한 명이 제안했다"],
+        ["the king's name", "그 왕의 이름을"],
+        ["as a **temporary** code name.", "임시 코드명으로"]
+      ]
     },
     {
       "en": "Just as the king had brought people together, the new technology **was meant to** connect phones and computers made by different companies.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["Just as the king", "그 왕이"],
+        ["had brought people together,", "사람들을 하나로 모았듯이"],
+        ["the new technology **was meant to** connect", "새 기술은 연결하기 위한 것이었다"],
+        ["phones and computers", "휴대폰과 컴퓨터를"],
+        ["made by different companies.", "서로 다른 회사가 만든"]
+      ]
     },
     {
       "en": "The name was only supposed to be a **placeholder**, but it spread so quickly that it stayed.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["The name was only supposed to be", "그 이름은 그저 될 예정이었다"],
+        ["a **placeholder**,", "임시로 쓰는 이름이"],
+        ["but it spread so quickly", "하지만 아주 빨리 퍼져서"],
+        ["that it stayed.", "그대로 남았다"]
+      ]
     },
     {
       "en": "Even the logo hides his name: it combines two old Nordic **runes** for the letters H and B, his **initials**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Even the logo hides his name:", "로고조차 그의 이름을 숨기고 있다"],
+        ["it combines two old Nordic **runes**", "로고는 옛 북유럽 룬 문자 두 개를 합친다"],
+        ["for the letters H and B,", "H와 B를 나타내는"],
+        ["his **initials**.", "그의 이름 머리글자인"]
+      ]
     }
   ],
   "words": [

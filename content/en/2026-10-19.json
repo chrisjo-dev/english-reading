@@ -6,12 +6,12 @@
   "headline": "The Long Flight of a Small Bird",
   "chips": ["6문장", "B1 위주", "B2 2문장", "약 3분"],
   "sentences": [
-    {"en": "A small brown bird called the **nightjar** flies thousands of kilometers every year between Europe and southern Africa.", "b2": false},
-    {"en": "However, a new study suggests that its wings are not perfectly **designed** for such long trips.", "b2": false},
-    {"en": "Researchers at Lund University in Sweden **recorded** the birds as they flew through a wind tunnel at different speeds.", "b2": false},
-    {"en": "They found that the nightjar's wide wing **tips** help it turn quickly when it hunts insects at night, but they make fast flight less **efficient**.", "b2": false},
-    {"en": "The birds also produce **thrust**, a force that pushes them forward, when they lift their wings up, something scientists had mainly linked to bats and insects.", "b2": true},
-    {"en": "The team believes that these **findings**, which were published in a science journal last week, could help engineers build better flying robots.", "b2": true}
+    {"en": "A small brown bird called the **nightjar** flies thousands of kilometers every year between Europe and southern Africa.", "b2": false, "chunks": [["A small brown bird", "작은 갈색 새가"], ["called the **nightjar**", "쏙독새라고 불리는"], ["flies thousands of kilometers", "수천 킬로미터를 난다"], ["every year", "해마다"], ["between Europe and southern Africa.", "유럽과 아프리카 남부 사이를"]]},
+    {"en": "However, a new study suggests that its wings are not perfectly **designed** for such long trips.", "b2": false, "chunks": [["However,", "하지만"], ["a new study suggests", "새 연구는 말한다"], ["that its wings", "그 날개가"], ["are not perfectly **designed**", "완벽하게 만들어지진 않았다고"], ["for such long trips.", "그렇게 긴 여행에 맞게"]]},
+    {"en": "Researchers at Lund University in Sweden **recorded** the birds as they flew through a wind tunnel at different speeds.", "b2": false, "chunks": [["Researchers at Lund University in Sweden", "스웨덴 룬드 대학교 연구자들은"], ["**recorded** the birds", "그 새들을 기록했다"], ["as they flew through a wind tunnel", "새들이 풍동 속을 날 때"], ["at different speeds.", "여러 속도로"]]},
+    {"en": "They found that the nightjar's wide wing **tips** help it turn quickly when it hunts insects at night, but they make fast flight less **efficient**.", "b2": false, "chunks": [["They found", "그들은 알아냈다"], ["that the nightjar's wide wing **tips**", "쏙독새의 넓은 날개 끝이"], ["help it turn quickly", "빨리 방향을 틀도록 돕는다는 것을"], ["when it hunts insects at night,", "밤에 곤충을 사냥할 때"], ["but they make fast flight", "하지만 그것은 빠른 비행을 만든다"], ["less **efficient**.", "덜 효율적으로"]]},
+    {"en": "The birds also produce **thrust**, a force that pushes them forward, when they lift their wings up, something scientists had mainly linked to bats and insects.", "b2": true, "chunks": [["The birds also produce **thrust**,", "이 새들은 추진력도 만든다"], ["a force that pushes them forward,", "앞으로 미는 힘인"], ["when they lift their wings up,", "날개를 들어 올릴 때"], ["something scientists had mainly linked", "과학자들이 주로 연결 지었던 일이다"], ["to bats and insects.", "박쥐와 곤충에"]]},
+    {"en": "The team believes that these **findings**, which were published in a science journal last week, could help engineers build better flying robots.", "b2": true, "chunks": [["The team believes", "연구팀은 믿는다"], ["that these **findings**,", "이 연구 결과가"], ["which were published", "발표되었는데"], ["in a science journal last week,", "지난주 과학 학술지에"], ["could help engineers", "엔지니어들을 도울 수 있다고"], ["build better flying robots.", "더 나은 비행 로봇을 만들도록"]]}
   ],
   "words": [
     ["nightjar", "쏙독새 (밤에 사냥하는 새)"],

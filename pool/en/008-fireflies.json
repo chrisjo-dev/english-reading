@@ -13,27 +13,68 @@
   "sentences": [
     {
       "en": "On a summer night, small lights blinking over a field are often fireflies, which are actually a kind of **beetle**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["On a summer night,", "여름밤에"],
+        ["small lights blinking over a field", "들판 위에서 깜박이는 작은 불빛은"],
+        ["are often fireflies,", "흔히 반딧불이인데"],
+        ["which are actually", "그것은 사실"],
+        ["a kind of **beetle**.", "딱정벌레의 한 종류다"]
+      ]
     },
     {
       "en": "Their light comes from a chemical **reaction** inside their bodies, in which a substance called luciferin mixes with oxygen.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["Their light comes", "그 빛은 나온다"],
+        ["from a chemical **reaction**", "화학 반응에서"],
+        ["inside their bodies,", "몸 안의"],
+        ["in which a substance called luciferin", "그 반응에서 루시페린이라는 물질이"],
+        ["mixes with oxygen.", "산소와 섞인다"]
+      ]
     },
     {
       "en": "Unlike a light bulb, this light **gives off** almost no heat, so it is often called cold light.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Unlike a light bulb,", "전구와 달리"],
+        ["this light **gives off**", "이 빛은 내뿜는다"],
+        ["almost no heat,", "열을 거의 안"],
+        ["so it is often called", "그래서 흔히 불린다"],
+        ["cold light.", "차가운 빛이라고"]
+      ]
     },
     {
       "en": "Fireflies use their flashes mainly to find a **partner**, and each **species** has its own pattern of flashes, like a secret code.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Fireflies use their flashes", "반딧불이는 깜박임을 쓴다"],
+        ["mainly to find a **partner**,", "주로 짝을 찾으려고"],
+        ["and each **species**", "그리고 각 종은"],
+        ["has its own pattern of flashes,", "저마다의 깜박임 패턴이 있다"],
+        ["like a secret code.", "비밀 암호처럼"]
+      ]
     },
     {
       "en": "In many species, males flash while flying, and **females** waiting in the grass answer with flashes of their own.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["In many species,", "많은 종에서"],
+        ["males flash", "수컷은 깜박인다"],
+        ["while flying,", "날면서"],
+        ["and **females** waiting in the grass", "그리고 풀밭에서 기다리는 암컷은"],
+        ["answer with flashes of their own.", "자기 깜박임으로 답한다"]
+      ]
     },
     {
       "en": "Because fireflies need dark nights, too much **artificial** light can make it harder for them to find each other.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Because fireflies need dark nights,", "반딧불이에겐 어두운 밤이 필요해서"],
+        ["too much **artificial** light", "지나친 인공조명은"],
+        ["can make it harder for them", "더 어렵게 만들 수 있다"],
+        ["to find each other.", "서로를 찾는 것을"]
+      ]
     }
   ],
   "words": [

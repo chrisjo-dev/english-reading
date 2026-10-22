@@ -6,12 +6,12 @@
   "headline": "Delivery Robots on the Sidewalk",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "Next time you order dinner in some parts of the UK, it might arrive on four small wheels instead of a bike.", "b2": false},
-    {"en": "Deliveroo is **teaming up** with a US company called Coco to send **electric** robots along the **pavements** of five towns, starting in London's Canary Wharf this month.", "b2": false},
-    {"en": "The robots travel at walking **pace** and use cameras and **sensors** to find their way, so a quiet machine could take the place of some noisy motorbikes.", "b2": false},
-    {"en": "The idea is not completely new, because one English town has had robot deliveries since 2018.", "b2": false},
-    {"en": "Deliveroo **insists** that most orders will still go to human riders.", "b2": false},
-    {"en": "However, since the company has not said what **share** of orders the robots will eventually handle, it is fair to ask how long those riders' jobs will really be safe.", "b2": true}
+    {"en": "Next time you order dinner in some parts of the UK, it might arrive on four small wheels instead of a bike.", "b2": false, "chunks": [["Next time you order dinner", "다음에 저녁을 주문하면"], ["in some parts of the UK,", "영국 일부 지역에서"], ["it might arrive", "그것은 도착할지도 모른다"], ["on four small wheels", "작은 바퀴 네 개를 달고"], ["instead of a bike.", "자전거 대신"]]},
+    {"en": "Deliveroo is **teaming up** with a US company called Coco to send **electric** robots along the **pavements** of five towns, starting in London's Canary Wharf this month.", "b2": false, "chunks": [["Deliveroo is **teaming up**", "딜리버루는 손을 잡는다"], ["with a US company called Coco", "코코라는 미국 회사와"], ["to send **electric** robots", "전기 로봇을 보내기 위해"], ["along the **pavements** of five towns,", "다섯 도시의 인도를 따라"], ["starting in London's Canary Wharf", "런던의 카나리 워프에서 시작해"], ["this month.", "이번 달에"]]},
+    {"en": "The robots travel at walking **pace** and use cameras and **sensors** to find their way, so a quiet machine could take the place of some noisy motorbikes.", "b2": false, "chunks": [["The robots travel", "로봇은 이동한다"], ["at walking **pace**", "걷는 속도로"], ["and use cameras and **sensors**", "그리고 카메라와 센서를 쓴다"], ["to find their way,", "길을 찾기 위해"], ["so a quiet machine", "그래서 조용한 기계가"], ["could take the place", "자리를 대신할 수도 있다"], ["of some noisy motorbikes.", "일부 시끄러운 오토바이의"]]},
+    {"en": "The idea is not completely new, because one English town has had robot deliveries since 2018.", "b2": false, "chunks": [["The idea is not completely new,", "이 아이디어는 완전히 새롭지는 않다"], ["because one English town", "왜냐하면 영국의 한 도시는"], ["has had robot deliveries", "로봇 배달을 해 왔기 때문이다"], ["since 2018.", "2018년부터"]]},
+    {"en": "Deliveroo **insists** that most orders will still go to human riders.", "b2": false, "chunks": [["Deliveroo **insists**", "딜리버루는 강조한다"], ["that most orders", "대부분의 주문은"], ["will still go", "여전히 갈 것이라고"], ["to human riders.", "사람 배달원에게"]]},
+    {"en": "However, since the company has not said what **share** of orders the robots will eventually handle, it is fair to ask how long those riders' jobs will really be safe.", "b2": true, "chunks": [["However,", "하지만"], ["since the company has not said", "회사가 말하지 않았으니"], ["what **share** of orders", "주문 중 얼마만큼을"], ["the robots will eventually handle,", "로봇이 결국 맡게 될지"], ["it is fair to ask", "물어볼 만하다"], ["how long those riders' jobs", "그 배달원들의 일자리가 얼마나 오래"], ["will really be safe.", "정말 안전할지"]]}
   ],
   "words": [
     ["team up", "협력하다, 손잡다 (teaming up: 손잡는 중)"],

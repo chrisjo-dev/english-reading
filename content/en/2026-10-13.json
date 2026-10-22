@@ -6,12 +6,12 @@
   "headline": "An Antenna Made of Light and Air",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "A normal **antenna** is a piece of metal, but what if you could make one out of light and air?", "b2": false},
-    {"en": "Engineers at North Carolina State University have tested this idea by shining a strong laser through the air.", "b2": false},
-    {"en": "The laser turns a thin line of air into **plasma**, a special kind of gas that can carry electricity.", "b2": false},
-    {"en": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma **sends out** radio waves that **vibrate** thirty million times a second.", "b2": false},
-    {"en": "The length of this light-made antenna, which is controlled only by the laser's settings, can be **adjusted** for different signals without any moving parts.", "b2": true},
-    {"en": "**So far**, the device can only send signals, but the team hopes it could one day help **satellites** that need to stay light.", "b2": false}
+    {"en": "A normal **antenna** is a piece of metal, but what if you could make one out of light and air?", "b2": false, "chunks": [["A normal **antenna**", "보통 안테나는"], ["is a piece of metal,", "금속 조각이다"], ["but what if you could make one", "하지만 만들 수 있다면 어떨까"], ["out of light and air?", "빛과 공기로"]]},
+    {"en": "Engineers at North Carolina State University have tested this idea by shining a strong laser through the air.", "b2": false, "chunks": [["Engineers at North Carolina State University", "노스캐롤라이나 주립대의 엔지니어들이"], ["have tested this idea", "이 아이디어를 시험했다"], ["by shining a strong laser", "강한 레이저를 쏘아서"], ["through the air.", "공기 속으로"]]},
+    {"en": "The laser turns a thin line of air into **plasma**, a special kind of gas that can carry electricity.", "b2": false, "chunks": [["The laser turns", "레이저는 바꾼다"], ["a thin line of air", "가느다란 공기 줄기를"], ["into **plasma**,", "플라스마로"], ["a special kind of gas", "특별한 종류의 기체인"], ["that can carry electricity.", "전기를 나를 수 있는"]]},
+    {"en": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma **sends out** radio waves that **vibrate** thirty million times a second.", "b2": false, "chunks": [["This line passes", "이 줄기는 지나간다"], ["through a metal ring,", "금속 고리를"], ["and when a radio signal is sent", "그리고 전파 신호가 보내지면"], ["into the ring,", "고리 안으로"], ["the plasma **sends out** radio waves", "플라스마가 전파를 내보낸다"], ["that **vibrate** thirty million times a second.", "1초에 3천만 번 진동하는"]]},
+    {"en": "The length of this light-made antenna, which is controlled only by the laser's settings, can be **adjusted** for different signals without any moving parts.", "b2": true, "chunks": [["The length of this light-made antenna,", "빛으로 만든 이 안테나의 길이는"], ["which is controlled", "조절되는데"], ["only by the laser's settings,", "레이저 설정만으로"], ["can be **adjusted**", "맞출 수 있다"], ["for different signals", "여러 신호에 따라"], ["without any moving parts.", "움직이는 부품 없이"]]},
+    {"en": "**So far**, the device can only send signals, but the team hopes it could one day help **satellites** that need to stay light.", "b2": false, "chunks": [["**So far**,", "지금까지는"], ["the device can only send signals,", "이 장치는 신호를 보내기만 할 수 있지만"], ["but the team hopes", "연구팀은 바란다"], ["it could one day help **satellites**", "언젠가 위성을 도울 수 있기를"], ["that need to stay light.", "가벼워야 하는"]]}
   ],
   "words": [
     ["antenna", "안테나"],

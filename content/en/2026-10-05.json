@@ -6,11 +6,11 @@
   "headline": "A Nobel Prize for Turning Brain Cells On with Light",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "Three scientists won the 2026 **Nobel** Prize in Physiology or Medicine for a technique that uses light to control individual brain cells.", "b2": false},
-    {"en": "Their method, called **optogenetics**, works by inserting light-sensitive **proteins** found in algae directly into nerve cells.", "b2": false},
-    {"en": "When a beam of light **shines** on these modified cells, the proteins open tiny channels and allow electrical signals to pass in or out.", "b2": false},
-    {"en": "This lets researchers **switch** a single nerve cell on or off with great **precision**, something that was simply not possible with earlier tools.", "b2": false},
-    {"en": "Optogenetics is now used in laboratories around the world to study how networks of brain cells **drive** behaviour, memory, and the feeling of pain.", "b2": true}
+    {"en": "Three scientists won the 2026 **Nobel** Prize in Physiology or Medicine for a technique that uses light to control individual brain cells.", "b2": false, "chunks": [["Three scientists won", "과학자 세 명이 받았다"], ["the 2026 **Nobel** Prize", "2026년 노벨상을"], ["in Physiology or Medicine", "생리의학 분야에서"], ["for a technique", "한 기술로"], ["that uses light", "빛을 사용하는"], ["to control individual brain cells.", "뇌세포 하나하나를 조절하기 위해"]]},
+    {"en": "Their method, called **optogenetics**, works by inserting light-sensitive **proteins** found in algae directly into nerve cells.", "b2": false, "chunks": [["Their method,", "그들의 방법은"], ["called **optogenetics**,", "광유전학이라고 불리는데"], ["works by inserting", "넣는 방식으로 작동한다"], ["light-sensitive **proteins**", "빛에 반응하는 단백질을"], ["found in algae", "조류에서 발견되는"], ["directly into nerve cells.", "신경세포 안에 직접"]]},
+    {"en": "When a beam of light **shines** on these modified cells, the proteins open tiny channels and allow electrical signals to pass in or out.", "b2": false, "chunks": [["When a beam of light **shines**", "빛줄기가 비치면"], ["on these modified cells,", "이 변형된 세포에"], ["the proteins open tiny channels", "단백질이 작은 통로를 열고"], ["and allow electrical signals", "전기 신호가"], ["to pass in or out.", "드나들게 한다"]]},
+    {"en": "This lets researchers **switch** a single nerve cell on or off with great **precision**, something that was simply not possible with earlier tools.", "b2": false, "chunks": [["This lets researchers", "이것은 연구자들이 할 수 있게 해 준다"], ["**switch** a single nerve cell", "신경세포 하나를 켜거나"], ["on or off", "끄는 것을"], ["with great **precision**,", "아주 정밀하게"], ["something that was simply not possible", "그것은 전혀 불가능했던 일이다"], ["with earlier tools.", "예전 도구로는"]]},
+    {"en": "Optogenetics is now used in laboratories around the world to study how networks of brain cells **drive** behaviour, memory, and the feeling of pain.", "b2": true, "chunks": [["Optogenetics is now used", "광유전학은 이제 쓰인다"], ["in laboratories around the world", "전 세계 실험실에서"], ["to study", "연구하기 위해"], ["how networks of brain cells **drive**", "뇌세포 네트워크가 어떻게 움직이는지"], ["behaviour, memory,", "행동과 기억"], ["and the feeling of pain.", "그리고 통증 감각을"]]}
   ],
   "words": [
     ["Nobel", "노벨 (상)"],

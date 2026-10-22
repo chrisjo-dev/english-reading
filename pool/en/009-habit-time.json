@@ -13,27 +13,69 @@
   "sentences": [
     {
       "en": "Many people believe that a new habit takes about three weeks to form, but research tells a more interesting story.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Many people believe", "많은 사람이 믿는다"],
+        ["that a new habit", "새 습관이"],
+        ["takes about three weeks to form,", "생기는 데 3주쯤 걸린다고"],
+        ["but research tells", "하지만 연구는 들려준다"],
+        ["a more interesting story.", "더 흥미로운 이야기를"]
+      ]
     },
     {
       "en": "In a study by the researcher Pippa Lally, volunteers tried to turn one new daily action into a **habit**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["In a study", "한 연구에서"],
+        ["by the researcher Pippa Lally,", "연구자 피파 랠리의"],
+        ["volunteers tried to turn", "지원자들은 바꿔 보려 했다"],
+        ["one new daily action", "새로운 하루 행동 하나를"],
+        ["into a **habit**.", "습관으로"]
+      ]
     },
     {
       "en": "On **average**, it took sixty-six days before the action felt **automatic**, which is more than two months.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["On **average**,", "평균적으로"],
+        ["it took sixty-six days", "66일이 걸렸다"],
+        ["before the action felt **automatic**,", "그 행동이 저절로 느껴지기까지"],
+        ["which is more than two months.", "그것은 두 달이 넘는다"]
+      ]
     },
     {
       "en": "However, the **range** was huge: for some people it took only eighteen days, while for others it took two hundred and fifty-four days.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["However,", "하지만"],
+        ["the **range** was huge:", "범위는 아주 넓었다"],
+        ["for some people", "어떤 사람에게는"],
+        ["it took only eighteen days,", "겨우 18일이 걸렸고"],
+        ["while for others", "반면 다른 사람에게는"],
+        ["it took two hundred and fifty-four days.", "254일이 걸렸다"]
+      ]
     },
     {
       "en": "**In other words**, the time it takes **depends on** the person and the habit.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["**In other words**,", "다시 말해"],
+        ["the time it takes", "걸리는 시간은"],
+        ["**depends on**", "달려 있다"],
+        ["the person and the habit.", "사람과 습관에"]
+      ]
     },
     {
       "en": "So if your new habit still feels hard after a few weeks, it does not mean you have **failed**; you may simply need more time.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["So if your new habit", "그러니 당신의 새 습관이"],
+        ["still feels hard", "여전히 어렵게 느껴지더라도"],
+        ["after a few weeks,", "몇 주가 지나도"],
+        ["it does not mean", "그것은 뜻하지 않는다"],
+        ["you have **failed**;", "당신이 실패했다는 것을"],
+        ["you may simply need more time.", "그저 시간이 더 필요할 수 있다"]
+      ]
     }
   ],
   "words": [

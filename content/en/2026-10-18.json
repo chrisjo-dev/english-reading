@@ -6,12 +6,12 @@
   "headline": "A Planet That Isn't Perfectly Round",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "**Astronomers** have found that a giant planet outside our solar system is not perfectly round.", "b2": false},
-    {"en": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always **faces** its star.", "b2": false},
-    {"en": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the **edges** of its atmosphere.", "b2": false},
-    {"en": "They found that the atmosphere **stretches** farther out on the evening side than on the cooler morning side.", "b2": false},
-    {"en": "Strong winds, which carry heat from the bright day side to the dark night side, are **probably** what causes this **bulge**.", "b2": true},
-    {"en": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this **method** will help them study the weather on many of them.", "b2": false}
+    {"en": "**Astronomers** have found that a giant planet outside our solar system is not perfectly round.", "b2": false, "chunks": [["**Astronomers** have found", "천문학자들이 알아냈다"], ["that a giant planet", "거대한 행성 하나가"], ["outside our solar system", "태양계 밖에 있는"], ["is not perfectly round.", "완전히 둥글지 않다는 것을"]]},
+    {"en": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always **faces** its star.", "b2": false, "chunks": [["The planet is a hot gas giant", "그 행성은 뜨거운 가스 행성이다"], ["about thirteen hundred light-years", "약 1,300광년 떨어진"], ["from Earth,", "지구에서"], ["and one side of it", "그리고 그 한쪽 면은"], ["always **faces** its star.", "늘 자기 별을 향한다"]]},
+    {"en": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the **edges** of its atmosphere.", "b2": false, "chunks": [["Using the James Webb Space Telescope,", "제임스 웹 우주 망원경으로"], ["a team of scientists studied", "과학자 팀이 연구했다"], ["the starlight", "별빛을"], ["that passes through", "통과하는"], ["the **edges** of its atmosphere.", "그 대기의 가장자리를"]]},
+    {"en": "They found that the atmosphere **stretches** farther out on the evening side than on the cooler morning side.", "b2": false, "chunks": [["They found", "그들은 알아냈다"], ["that the atmosphere **stretches** farther out", "대기가 더 멀리 퍼져 있다는 것을"], ["on the evening side", "저녁 쪽에서"], ["than on the cooler morning side.", "더 서늘한 아침 쪽보다"]]},
+    {"en": "Strong winds, which carry heat from the bright day side to the dark night side, are **probably** what causes this **bulge**.", "b2": true, "chunks": [["Strong winds,", "강한 바람이"], ["which carry heat", "열을 나르는데"], ["from the bright day side", "밝은 낮 쪽에서"], ["to the dark night side,", "어두운 밤 쪽으로"], ["are **probably**", "아마도"], ["what causes this **bulge**.", "이 부풂을 일으키는 원인이다"]]},
+    {"en": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this **method** will help them study the weather on many of them.", "b2": false, "chunks": [["Since more than six thousand planets", "6천 개가 넘는 행성이"], ["have been found", "발견되었으므로"], ["outside our solar system", "태양계 밖에서"], ["so far,", "지금까지"], ["the team hopes", "연구팀은 바란다"], ["this **method** will help them", "이 방법이 도와주기를"], ["study the weather", "날씨를 연구하도록"], ["on many of them.", "그중 많은 행성의"]]}
   ],
   "words": [
     ["astronomers", "천문학자들 (복수 -s)"],

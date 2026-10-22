@@ -6,12 +6,12 @@
   "headline": "Self-Driving Taxis in Manchester",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "Would you get into a taxi that drives itself?", "b2": false},
-    {"en": "This week, Uber started testing **self-driving** cars on the streets of Manchester, with a safety driver behind the wheel and no **passengers** on board.", "b2": false},
-    {"en": "For now, the cars are only **mapping** the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.", "b2": false},
-    {"en": "The company says it wants to make this technology **accessible** to people across the country.", "b2": false},
-    {"en": "However, driver **unions** warn that thousands of jobs could be lost, and they are asking for help for the workers who would be **affected**.", "b2": false},
-    {"en": "Local transport officials, who have not yet received a single request to run driverless taxis in the area, say they will expect strong **assurances** about safety before these cars carry anyone on their roads.", "b2": true}
+    {"en": "Would you get into a taxi that drives itself?", "b2": false, "chunks": [["Would you get into a taxi", "택시에 타시겠어요"], ["that drives itself?", "스스로 운전하는"]]},
+    {"en": "This week, Uber started testing **self-driving** cars on the streets of Manchester, with a safety driver behind the wheel and no **passengers** on board.", "b2": false, "chunks": [["This week,", "이번 주"], ["Uber started testing **self-driving** cars", "우버가 자율 주행차 시험을 시작했다"], ["on the streets of Manchester,", "맨체스터 거리에서"], ["with a safety driver behind the wheel", "안전 요원이 운전석에 앉고"], ["and no **passengers** on board.", "승객은 태우지 않은 채"]]},
+    {"en": "For now, the cars are only **mapping** the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.", "b2": false, "chunks": [["For now,", "지금은"], ["the cars are only **mapping**", "그 차들이 지도만 만들고 있다"], ["the city's roads,", "도시의 도로를"], ["but the company hopes", "하지만 회사는 바란다"], ["to offer robotaxi rides", "로보택시 탑승을 제공하기를"], ["in up to fifteen cities", "최대 15개 도시에서"], ["around the world", "전 세계"], ["by the end of this year.", "올해 말까지"]]},
+    {"en": "The company says it wants to make this technology **accessible** to people across the country.", "b2": false, "chunks": [["The company says", "회사는 말한다"], ["it wants to make this technology", "이 기술을 만들고 싶다고"], ["**accessible**", "이용할 수 있게"], ["to people across the country.", "전국 사람들이"]]},
+    {"en": "However, driver **unions** warn that thousands of jobs could be lost, and they are asking for help for the workers who would be **affected**.", "b2": false, "chunks": [["However,", "하지만"], ["driver **unions** warn", "운전기사 노조는 경고한다"], ["that thousands of jobs could be lost,", "수천 개의 일자리가 사라질 수 있다고"], ["and they are asking for help", "그리고 도움을 요구하고 있다"], ["for the workers", "노동자들을 위한"], ["who would be **affected**.", "영향을 받게 될"]]},
+    {"en": "Local transport officials, who have not yet received a single request to run driverless taxis in the area, say they will expect strong **assurances** about safety before these cars carry anyone on their roads.", "b2": true, "chunks": [["Local transport officials,", "지역 교통 당국자들은"], ["who have not yet received", "아직 받은 적이 없는데"], ["a single request", "단 한 건의 신청도"], ["to run driverless taxis in the area,", "이 지역에서 무인 택시를 운행하겠다는"], ["say they will expect", "기대할 것이라고 말한다"], ["strong **assurances** about safety", "안전에 대한 확실한 보장을"], ["before these cars carry anyone", "이 차들이 누군가를 태우기 전에"], ["on their roads.", "자기들 도로에서"]]}
   ],
   "words": [
     ["self-driving", "자율주행의, 스스로 운전하는"],

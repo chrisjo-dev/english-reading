@@ -13,27 +13,68 @@
   "sentences": [
     {
       "en": "Sending anything into space usually requires a powerful rocket that burns a huge amount of fuel.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Sending anything into space", "무언가를 우주로 보내려면"],
+        ["usually requires a powerful rocket", "보통 강력한 로켓이 필요하다"],
+        ["that burns a huge amount of fuel.", "엄청난 양의 연료를 태우는"]
+      ]
     },
     {
       "en": "Some scientists and engineers dream of a different way: a space elevator.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Some scientists and engineers", "일부 과학자와 엔지니어는"],
+        ["dream of a different way:", "다른 방법을 꿈꾼다"],
+        ["a space elevator.", "우주 엘리베이터다"]
+      ]
     },
     {
       "en": "The idea is to **stretch** a very long cable from a base near the **equator** up into space, with a heavy weight at the far end to keep it **tight** as the Earth turns.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["The idea is", "아이디어는"],
+        ["to **stretch** a very long cable", "아주 긴 케이블을 뻗는 것이다"],
+        ["from a base near the **equator**", "적도 근처의 기지에서"],
+        ["up into space,", "우주 위로"],
+        ["with a heavy weight at the far end", "먼 끝에 무거운 추를 달고"],
+        ["to keep it **tight**", "케이블을 팽팽하게 유지하도록"],
+        ["as the Earth turns.", "지구가 도는 동안"]
+      ]
     },
     {
       "en": "Machines called climbers would then move up the cable slowly, carrying people or **cargo** without any rockets.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Machines called climbers", "클라이머라는 기계가"],
+        ["would then move up the cable", "그다음 케이블을 타고 올라갈 것이다"],
+        ["slowly,", "천천히"],
+        ["carrying people or **cargo**", "사람이나 화물을 싣고"],
+        ["without any rockets.", "로켓 없이"]
+      ]
     },
     {
       "en": "The biggest problem is the cable itself, because no **material** made so far is both strong and light enough for such a long distance.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["The biggest problem", "가장 큰 문제는"],
+        ["is the cable itself,", "케이블 그 자체다"],
+        ["because no **material** made so far", "지금까지 만든 어떤 재료도"],
+        ["is both strong and light enough", "충분히 튼튼하면서 가볍지 않기 때문이다"],
+        ["for such a long distance.", "그렇게 긴 거리에 맞을 만큼"]
+      ]
     },
     {
       "en": "Some researchers hope that tiny tubes made of carbon might one day be strong enough, but for now, the space elevator remains a **bold** idea for the future.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Some researchers hope", "일부 연구자들은 바란다"],
+        ["that tiny tubes made of carbon", "탄소로 만든 아주 작은 관이"],
+        ["might one day be strong enough,", "언젠가 충분히 튼튼해지기를"],
+        ["but for now,", "하지만 지금으로서는"],
+        ["the space elevator remains", "우주 엘리베이터는 남아 있다"],
+        ["a **bold** idea for the future.", "미래를 위한 대담한 아이디어로"]
+      ]
     }
   ],
   "words": [

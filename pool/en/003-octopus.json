@@ -13,27 +13,67 @@
   "sentences": [
     {
       "en": "An octopus may look strange from the outside, but its body is even stranger on the inside.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["An octopus may look strange", "문어는 이상해 보일지 모른다"],
+        ["from the outside,", "겉으로는"],
+        ["but its body is even stranger", "하지만 그 몸은 더 이상하다"],
+        ["on the inside.", "속으로는"]
+      ]
     },
     {
       "en": "It has three hearts: two pump blood through the **gills**, where the blood picks up oxygen, and the third sends that blood around the rest of the body.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["It has three hearts:", "문어는 심장이 세 개다"],
+        ["two pump blood", "두 개는 피를 보낸다"],
+        ["through the **gills**,", "아가미로"],
+        ["where the blood picks up oxygen,", "그곳에서 피가 산소를 얻는다"],
+        ["and the third sends that blood", "그리고 세 번째는 그 피를 보낸다"],
+        ["around the rest of the body.", "몸의 나머지 곳곳으로"]
+      ]
     },
     {
       "en": "Its blood is blue, not red, because it uses a protein with **copper** to carry oxygen **instead of** the iron in our blood.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Its blood is blue,", "문어의 피는 파랗다"],
+        ["not red,", "빨갛지 않고"],
+        ["because it uses a protein with **copper**", "구리가 든 단백질을 쓰기 때문이다"],
+        ["to carry oxygen", "산소를 나르는 데"],
+        ["**instead of** the iron in our blood.", "우리 피 속의 철 대신"]
+      ]
     },
     {
       "en": "About **two-thirds** of its nerve cells are not in its head but in its eight arms, which helps it move them with great skill.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["About **two-thirds** of its nerve cells", "문어 신경세포의 약 3분의 2는"],
+        ["are not in its head", "머리에 있지 않고"],
+        ["but in its eight arms,", "여덟 개의 팔에 있는데"],
+        ["which helps it move them", "이것은 팔을 움직이도록 돕는다"],
+        ["with great skill.", "아주 능숙하게"]
+      ]
     },
     {
       "en": "Special cells in its skin also let it change color quickly, so it can **blend in** with the rocks and plants around it.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Special cells in its skin", "피부 속 특별한 세포들은"],
+        ["also let it change color quickly,", "또한 색을 빨리 바꾸게 해 준다"],
+        ["so it can **blend in**", "그래서 섞여 들 수 있다"],
+        ["with the rocks and plants around it.", "주변의 바위와 식물 속에"]
+      ]
     },
     {
       "en": "For scientists, the octopus is a good **reminder** that a clever mind can grow in a body very different from ours.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["For scientists,", "과학자들에게"],
+        ["the octopus is a good **reminder**", "문어는 잘 일깨워 준다"],
+        ["that a clever mind can grow", "똑똑한 마음이 자랄 수 있다는 것을"],
+        ["in a body very different from ours.", "우리와 아주 다른 몸에서도"]
+      ]
     }
   ],
   "words": [

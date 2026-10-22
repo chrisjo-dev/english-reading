@@ -13,27 +13,69 @@
   "sentences": [
     {
       "en": "Today we scan QR codes to see menus or pay for things, but they were first made for car parts.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Today we scan QR codes", "오늘날 우리는 QR 코드를 찍는다"],
+        ["to see menus", "메뉴를 보거나"],
+        ["or pay for things,", "돈을 내려고"],
+        ["but they were first made", "하지만 그것은 처음에 만들어졌다"],
+        ["for car parts.", "자동차 부품을 위해"]
+      ]
     },
     {
       "en": "In Japan, a company called Denso, which makes parts for cars, wanted a faster way to **track** its parts in factories.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["In Japan,", "일본에서"],
+        ["a company called Denso,", "덴소라는 회사가"],
+        ["which makes parts for cars,", "자동차 부품을 만드는데"],
+        ["wanted a faster way", "더 빠른 방법을 원했다"],
+        ["to **track** its parts", "부품을 추적할"],
+        ["in factories.", "공장에서"]
+      ]
     },
     {
       "en": "An engineer named Masahiro Hara found an idea in the board game Go, where black and white stones are placed on a **grid**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["An engineer named Masahiro Hara", "하라 마사히로라는 엔지니어가"],
+        ["found an idea", "아이디어를 찾았다"],
+        ["in the board game Go,", "보드게임 바둑에서"],
+        ["where black and white stones", "그곳에서 검은 돌과 흰 돌이"],
+        ["are placed on a **grid**.", "격자 위에 놓인다"]
+      ]
     },
     {
       "en": "**Unlike** a normal barcode, which holds information in only one direction, his square code could **store** data both across and down, so it could hold much more.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["**Unlike** a normal barcode,", "보통 바코드와 달리"],
+        ["which holds information", "그것은 정보를 담는데"],
+        ["in only one direction,", "한 방향으로만"],
+        ["his square code could **store** data", "그의 사각형 코드는 데이터를 저장할 수 있었다"],
+        ["both across and down,", "가로와 세로 모두로"],
+        ["so it could hold much more.", "그래서 훨씬 더 많이 담을 수 있었다"]
+      ]
     },
     {
       "en": "Big squares in the corners tell a scanner where the code is, so it can be read quickly from almost any **angle**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Big squares in the corners", "모서리의 큰 사각형들이"],
+        ["tell a scanner", "스캐너에게 알려 준다"],
+        ["where the code is,", "코드가 어디 있는지"],
+        ["so it can be read quickly", "그래서 빨리 읽힐 수 있다"],
+        ["from almost any **angle**.", "거의 어떤 각도에서도"]
+      ]
     },
     {
       "en": "The code was introduced in 1994, and its name, QR, **stands for** quick response.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["The code was introduced in 1994,", "이 코드는 1994년에 나왔고"],
+        ["and its name, QR,", "그 이름 QR은"],
+        ["**stands for** quick response.", "빠른 응답을 뜻한다"]
+      ]
     }
   ],
   "words": [

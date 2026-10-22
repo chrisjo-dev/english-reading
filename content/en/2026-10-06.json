@@ -6,11 +6,11 @@
   "headline": "Tiny Particles That Pass Through Your Body",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "Every second, **billions** of tiny particles called **neutrinos** pass through your entire body without you feeling anything at all.", "b2": false},
-    {"en": "Most neutrinos come from the sun, but some travel from the far edges of the **universe** and carry enormous amounts of energy.", "b2": false},
-    {"en": "The IceCube **Observatory** in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to **detect** these particles.", "b2": false},
-    {"en": "When a neutrino **collides** with an ice molecule, it produces a brief **flash** of blue light that the sensors record.", "b2": false},
-    {"en": "Francis Halzen, the Belgian-American physicist who spent decades designing and building IceCube, was awarded the 2026 Nobel Prize in Physics on October 6 for this pioneering work.", "b2": true}
+    {"en": "Every second, **billions** of tiny particles called **neutrinos** pass through your entire body without you feeling anything at all.", "b2": false, "chunks": [["Every second,", "매초"], ["**billions** of tiny particles", "수십억 개의 작은 입자가"], ["called **neutrinos**", "중성미자라고 불리는"], ["pass through your entire body", "당신의 온몸을 통과한다"], ["without you feeling anything at all.", "당신이 아무것도 느끼지 못한 채"]]},
+    {"en": "Most neutrinos come from the sun, but some travel from the far edges of the **universe** and carry enormous amounts of energy.", "b2": false, "chunks": [["Most neutrinos come from the sun,", "대부분의 중성미자는 태양에서 오지만"], ["but some travel", "일부는 날아온다"], ["from the far edges of the **universe**", "우주의 먼 끝에서"], ["and carry enormous amounts of energy.", "그리고 엄청난 양의 에너지를 지닌다"]]},
+    {"en": "The IceCube **Observatory** in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to **detect** these particles.", "b2": false, "chunks": [["The IceCube **Observatory** in Antarctica", "남극의 아이스큐브 관측소는"], ["uses more than five thousand sensors", "5천 개가 넘는 센서를 쓴다"], ["buried up to two and a half kilometres deep", "최대 2.5킬로미터 깊이로 묻힌"], ["in the ice", "얼음 속에"], ["to **detect** these particles.", "이 입자들을 감지하기 위해"]]},
+    {"en": "When a neutrino **collides** with an ice molecule, it produces a brief **flash** of blue light that the sensors record.", "b2": false, "chunks": [["When a neutrino **collides**", "중성미자가 부딪히면"], ["with an ice molecule,", "얼음 분자와"], ["it produces a brief **flash** of blue light", "짧은 푸른 빛을 만들어 낸다"], ["that the sensors record.", "센서가 기록하는"]]},
+    {"en": "Francis Halzen, the Belgian-American physicist who spent decades designing and building IceCube, was awarded the 2026 Nobel Prize in Physics on October 6 for this pioneering work.", "b2": true, "chunks": [["Francis Halzen,", "프랜시스 할젠은"], ["the Belgian-American physicist", "벨기에계 미국인 물리학자로"], ["who spent decades", "수십 년을 들였다"], ["designing and building IceCube,", "아이스큐브를 설계하고 짓는 데"], ["was awarded the 2026 Nobel Prize in Physics", "2026년 노벨 물리학상을 받았다"], ["on October 6", "10월 6일에"], ["for this pioneering work.", "이 선구적인 업적으로"]]}
   ],
   "words": [
     ["billions", "수십억 (의)"],

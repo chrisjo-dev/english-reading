@@ -6,12 +6,12 @@
   "headline": "Smart Glasses Powered by Blinking",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "Most smart glasses need a battery, but a new pair from Northwestern University uses the wearer's own face as a source of energy.", "b2": false},
-    {"en": "The idea is simple: when two different **materials** touch and then pull apart, they create a small electric **charge**.", "b2": false},
-    {"en": "Three thin, **flexible** **sensors** on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "b2": false},
-    {"en": "Because people blink about fourteen to twenty times a minute, the sensors get a **steady** supply of tiny movements.", "b2": false},
-    {"en": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical **pattern**, which a computer program learns to recognize.", "b2": true},
-    {"en": "In tests with twenty volunteers, the glasses correctly **identified** what people were doing almost 94 percent of the time.", "b2": false}
+    {"en": "Most smart glasses need a battery, but a new pair from Northwestern University uses the wearer's own face as a source of energy.", "b2": false, "chunks": [["Most smart glasses", "대부분의 스마트 안경은"], ["need a battery,", "배터리가 필요하지만"], ["but a new pair", "새 안경 하나는"], ["from Northwestern University", "노스웨스턴 대학교가 만든"], ["uses the wearer's own face", "쓰는 사람의 얼굴을 쓴다"], ["as a source of energy.", "에너지원으로"]]},
+    {"en": "The idea is simple: when two different **materials** touch and then pull apart, they create a small electric **charge**.", "b2": false, "chunks": [["The idea is simple:", "아이디어는 간단하다"], ["when two different **materials**", "서로 다른 두 물질이"], ["touch and then pull apart,", "닿았다가 떨어지면"], ["they create a small electric **charge**.", "작은 전하를 만든다"]]},
+    {"en": "Three thin, **flexible** **sensors** on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "b2": false, "chunks": [["Three thin, **flexible** **sensors**", "얇고 잘 휘는 센서 세 개가"], ["on the frame", "안경테에 달린"], ["press together and separate", "맞닿았다가 떨어진다"], ["every time the wearer blinks,", "쓰는 사람이 눈을 깜박이거나"], ["smiles, or moves the jaw.", "웃거나 턱을 움직일 때마다"]]},
+    {"en": "Because people blink about fourteen to twenty times a minute, the sensors get a **steady** supply of tiny movements.", "b2": false, "chunks": [["Because people blink", "사람은 눈을 깜박이기 때문에"], ["about fourteen to twenty times a minute,", "1분에 14번에서 20번쯤"], ["the sensors get a **steady** supply", "센서는 꾸준히 공급받는다"], ["of tiny movements.", "작은 움직임을"]]},
+    {"en": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical **pattern**, which a computer program learns to recognize.", "b2": true, "chunks": [["Each action,", "각 동작은"], ["whether it is chewing,", "씹는 것이든"], ["talking, or raising an eyebrow,", "말하는 것이든 눈썹을 올리는 것이든"], ["makes a different electrical **pattern**,", "서로 다른 전기 패턴을 만드는데"], ["which a computer program", "그것을 컴퓨터 프로그램이"], ["learns to recognize.", "알아보도록 배운다"]]},
+    {"en": "In tests with twenty volunteers, the glasses correctly **identified** what people were doing almost 94 percent of the time.", "b2": false, "chunks": [["In tests with twenty volunteers,", "지원자 20명과 한 시험에서"], ["the glasses correctly **identified**", "안경은 정확히 알아냈다"], ["what people were doing", "사람들이 무엇을 하고 있는지"], ["almost 94 percent of the time.", "거의 94퍼센트의 경우에"]]}
   ],
   "words": [
     ["materials", "재료, 물질들 (material의 복수)"],

@@ -13,27 +13,73 @@
   "sentences": [
     {
       "en": "On hot summer days, a woman in Berlin carries a **bucket** of water to a tree near her home, and she has even given it a name: Linda.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["On hot summer days,", "더운 여름날"],
+        ["a woman in Berlin carries", "베를린의 한 여성이 나른다"],
+        ["a **bucket** of water", "물 한 양동이를"],
+        ["to a tree near her home,", "집 근처 나무로"],
+        ["and she has even given it a name:", "그리고 그 나무에 이름까지 붙였다"],
+        ["Linda.", "린다라고"]
+      ]
     },
     {
       "en": "She found the tree through a free app that shows a map of about nine hundred thousand street trees in the city.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["She found the tree", "그녀는 그 나무를 찾았다"],
+        ["through a free app", "무료 앱을 통해"],
+        ["that shows a map", "지도를 보여 주는"],
+        ["of about nine hundred thousand street trees", "약 90만 그루 가로수의"],
+        ["in the city.", "도시에 있는"]
+      ]
     },
     {
       "en": "When a tree needs water, it **appears** as an orange or red dot, and people can **adopt** it and get **advice** on how much water to give.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["When a tree needs water,", "나무에 물이 필요하면"],
+        ["it **appears**", "그것은 나타난다"],
+        ["as an orange or red dot,", "주황색이나 빨간색 점으로"],
+        ["and people can **adopt** it", "그리고 사람들은 그것을 입양할 수 있다"],
+        ["and get **advice**", "그리고 조언을 얻을 수 있다"],
+        ["on how much water to give.", "물을 얼마나 줘야 하는지"]
+      ]
     },
     {
       "en": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find **public** water pumps on the street.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["The app,", "그 앱은"],
+        ["which was created in 2020", "2020년에 만들어졌는데"],
+        ["by a small team", "작은 팀이 만들었다"],
+        ["that works on new ideas for the city,", "도시를 위한 새 아이디어를 연구하는"],
+        ["also shows", "또한 보여 준다"],
+        ["where people can find", "사람들이 어디서 찾을 수 있는지"],
+        ["**public** water pumps on the street.", "길가의 공공 물 펌프를"]
+      ]
     },
     {
       "en": "The woman says that **looking after** her tree is fun, almost like a video game.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["The woman says", "그 여성은 말한다"],
+        ["that **looking after** her tree", "자기 나무를 돌보는 일이"],
+        ["is fun,", "재미있다고"],
+        ["almost like a video game.", "거의 비디오 게임 같다고"]
+      ]
     },
     {
       "en": "Thousands of people now water trees this way, and **several** other cities in Germany and France have started their own versions of the app.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Thousands of people", "수천 명이"],
+        ["now water trees this way,", "이제 이렇게 나무에 물을 주고"],
+        ["and **several** other cities", "다른 여러 도시들도"],
+        ["in Germany and France", "독일과 프랑스의"],
+        ["have started their own versions", "자기만의 버전을 시작했다"],
+        ["of the app.", "그 앱의"]
+      ]
     }
   ],
   "words": [

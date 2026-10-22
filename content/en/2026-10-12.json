@@ -13,23 +13,59 @@
   "sentences": [
     {
       "en": "Most of us check the time on our phones, but the most **exact** clocks in the world work in a very different way.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Most of us check the time", "우리 대부분은 시간을 확인한다"],
+        ["on our phones,", "휴대폰으로"],
+        ["but the most **exact** clocks in the world", "하지만 세상에서 가장 정확한 시계들은"],
+        ["work in a very different way.", "아주 다른 방식으로 작동한다"]
+      ]
     },
     {
       "en": "Earlier this month, scientists in Vienna reported that they had built a new kind of clock that uses the center of an atom, called the **nucleus**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Earlier this month,", "이번 달 초"],
+        ["scientists in Vienna reported", "빈의 과학자들이 발표했다"],
+        ["that they had built", "그들이 만들었다고"],
+        ["a new kind of clock", "새로운 종류의 시계를"],
+        ["that uses the center of an atom,", "원자의 중심을 쓰는"],
+        ["called the **nucleus**.", "원자핵이라고 불리는"]
+      ]
     },
     {
       "en": "A laser shines on a special **crystal** that was made by the team, and the clock **corrects** the laser by itself when it goes **off track**.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["A laser shines", "레이저가 비춘다"],
+        ["on a special **crystal**", "특별한 결정에"],
+        ["that was made by the team,", "연구팀이 만든"],
+        ["and the clock **corrects** the laser", "그리고 시계는 레이저를 바로잡는다"],
+        ["by itself", "스스로"],
+        ["when it goes **off track**.", "레이저가 어긋나면"]
+      ]
     },
     {
       "en": "The clock, which ran for more than 24 hours without any help, would lose only about one second in thirty million years.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["The clock,", "그 시계는"],
+        ["which ran for more than 24 hours", "24시간 넘게 작동했는데"],
+        ["without any help,", "아무 도움 없이"],
+        ["would lose only about one second", "겨우 1초쯤만 틀릴 것이다"],
+        ["in thirty million years.", "3천만 년에"]
+      ]
     },
     {
       "en": "It is not yet as **accurate** as the best atomic clocks, but the researchers plan to **improve** it with stronger lasers and better crystals.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["It is not yet as **accurate**", "그것은 아직 정확하지 않다"],
+        ["as the best atomic clocks,", "최고의 원자시계만큼"],
+        ["but the researchers plan", "하지만 연구자들은 계획한다"],
+        ["to **improve** it", "그것을 개선하기를"],
+        ["with stronger lasers and better crystals.", "더 강한 레이저와 더 좋은 결정으로"]
+      ]
     }
   ],
   "words": [

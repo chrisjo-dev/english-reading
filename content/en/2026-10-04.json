@@ -6,11 +6,11 @@
   "headline": "NASA's New Space Telescope, Roman",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "NASA's newest space telescope, called Roman, launched into **orbit** aboard a SpaceX Falcon Heavy rocket on August 30, 2026.", "b2": false},
-    {"en": "Three weeks after launch, the team powered on its main camera — a 300-megapixel **infrared** **detector** that senses light invisible to the human eye.", "b2": false},
-    {"en": "Engineers ran a **calibration** test, rotated the **filter** wheel for the first time in space, and confirmed that all eighteen detectors were working as expected.", "b2": false},
-    {"en": "A single image from this camera covers a patch of sky larger than the full **moon**, which is about one hundred times more area than the Hubble Space Telescope.", "b2": false},
-    {"en": "Roman has been travelling toward a stable point roughly one and a half million kilometres from Earth, where science **observations** are set to begin in early 2027.", "b2": true}
+    {"en": "NASA's newest space telescope, called Roman, launched into **orbit** aboard a SpaceX Falcon Heavy rocket on August 30, 2026.", "b2": false, "chunks": [["NASA's newest space telescope,", "NASA의 최신 우주 망원경이"], ["called Roman,", "로먼이라는"], ["launched into **orbit**", "궤도로 발사되었다"], ["aboard a SpaceX Falcon Heavy rocket", "스페이스X 팰컨 헤비 로켓에 실려"], ["on August 30, 2026.", "2026년 8월 30일에"]]},
+    {"en": "Three weeks after launch, the team powered on its main camera — a 300-megapixel **infrared** **detector** that senses light invisible to the human eye.", "b2": false, "chunks": [["Three weeks after launch,", "발사 3주 뒤"], ["the team powered on its main camera", "팀은 주 카메라를 켰다"], ["— a 300-megapixel **infrared** **detector**", "바로 3억 화소 적외선 검출기다"], ["that senses light", "빛을 감지하는"], ["invisible to the human eye.", "사람 눈에 보이지 않는"]]},
+    {"en": "Engineers ran a **calibration** test, rotated the **filter** wheel for the first time in space, and confirmed that all eighteen detectors were working as expected.", "b2": false, "chunks": [["Engineers ran a **calibration** test,", "엔지니어들은 보정 시험을 했고"], ["rotated the **filter** wheel", "필터 바퀴를 돌렸고"], ["for the first time in space,", "우주에서 처음으로"], ["and confirmed", "그리고 확인했다"], ["that all eighteen detectors", "18개 검출기 모두가"], ["were working as expected.", "예상대로 작동하고 있음을"]]},
+    {"en": "A single image from this camera covers a patch of sky larger than the full **moon**, which is about one hundred times more area than the Hubble Space Telescope.", "b2": false, "chunks": [["A single image from this camera", "이 카메라의 사진 한 장은"], ["covers a patch of sky", "하늘의 한 구역을 담는다"], ["larger than the full **moon**,", "보름달보다 큰"], ["which is about one hundred times more area", "그것은 약 100배 더 넓은 면적이다"], ["than the Hubble Space Telescope.", "허블 우주 망원경보다"]]},
+    {"en": "Roman has been travelling toward a stable point roughly one and a half million kilometres from Earth, where science **observations** are set to begin in early 2027.", "b2": true, "chunks": [["Roman has been travelling", "로먼은 이동해 왔다"], ["toward a stable point", "안정된 지점을 향해"], ["roughly one and a half million kilometres", "약 150만 킬로미터 떨어진"], ["from Earth,", "지구에서"], ["where science **observations**", "그곳에서 과학 관측이"], ["are set to begin", "시작될 예정이다"], ["in early 2027.", "2027년 초에"]]}
   ],
   "words": [
     ["orbit", "궤도"],

@@ -13,27 +13,66 @@
   "sentences": [
     {
       "en": "Sunlight looks white, but it is really a **mix** of all the colors of the rainbow.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Sunlight looks white,", "햇빛은 하얗게 보이지만"],
+        ["but it is really a **mix**", "사실은 섞인 것이다"],
+        ["of all the colors of the rainbow.", "무지개의 모든 색이"]
+      ]
     },
     {
       "en": "Each color travels as a wave, and blue light has shorter waves than red light.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Each color travels as a wave,", "각 색은 파동으로 이동하고"],
+        ["and blue light has shorter waves", "파란빛은 파장이 더 짧다"],
+        ["than red light.", "빨간빛보다"]
+      ]
     },
     {
       "en": "When sunlight enters the air, it hits tiny gas **molecules**, and these molecules **scatter** short blue waves in every direction much more than long red ones.",
-      "b2": true
+      "b2": true,
+      "chunks": [
+        ["When sunlight enters the air,", "햇빛이 공기로 들어오면"],
+        ["it hits tiny gas **molecules**,", "작은 기체 분자에 부딪히고"],
+        ["and these molecules **scatter**", "이 분자들은 흩뜨린다"],
+        ["short blue waves", "짧은 파란 파동을"],
+        ["in every direction", "모든 방향으로"],
+        ["much more than long red ones.", "긴 빨간 파동보다 훨씬 많이"]
+      ]
     },
     {
       "en": "So when you look at any part of the sky, blue light reaches your eyes from all around.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["So when you look", "그래서 당신이 바라보면"],
+        ["at any part of the sky,", "하늘의 어느 곳이든"],
+        ["blue light reaches your eyes", "파란빛이 눈에 닿는다"],
+        ["from all around.", "사방에서"]
+      ]
     },
     {
       "en": "Violet waves are even shorter, but sunlight contains less violet, and our eyes are less **sensitive** to it, so the sky looks blue **rather than** purple.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["Violet waves are even shorter,", "보라색 파동은 더 짧지만"],
+        ["but sunlight contains less violet,", "햇빛에는 보라색이 적고"],
+        ["and our eyes are less **sensitive** to it,", "우리 눈은 그 색에 덜 민감하다"],
+        ["so the sky looks blue", "그래서 하늘은 파랗게 보인다"],
+        ["**rather than** purple.", "보라색이 아니라"]
+      ]
     },
     {
       "en": "At **sunset**, light must pass through much more air to reach us, so most of the blue is scattered away and the sky turns orange and red.",
-      "b2": false
+      "b2": false,
+      "chunks": [
+        ["At **sunset**,", "해 질 무렵에는"],
+        ["light must pass through much more air", "빛이 훨씬 더 많은 공기를 지나야 한다"],
+        ["to reach us,", "우리에게 닿으려면"],
+        ["so most of the blue", "그래서 파란빛 대부분이"],
+        ["is scattered away", "흩어져 사라지고"],
+        ["and the sky turns orange and red.", "하늘은 주황색과 빨간색으로 변한다"]
+      ]
     }
   ],
   "words": [

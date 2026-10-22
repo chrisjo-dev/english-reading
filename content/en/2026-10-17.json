@@ -6,12 +6,12 @@
   "headline": "A Contest for Giant Pumpkins",
   "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "Last Monday, hundreds of people **gathered** in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.", "b2": false},
-    {"en": "This was no ordinary **contest**, as it is now in its 53rd year and growers proudly call it the \"Super Bowl\" of pumpkin weigh-offs.", "b2": false},
-    {"en": "Growers brought their **giant** pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash **prizes**.", "b2": false},
-    {"en": "In the end, first place went to Travis Gienger, a grower from Minnesota.", "b2": false},
-    {"en": "His pumpkin **weighed** 2,389 pounds, which is a little more than a thousand **kilograms**, or about as heavy as a small car.", "b2": false},
-    {"en": "For the crowd, it was a rare chance to see how much time and care can turn a fruit that usually fits in your arms into something you could never **lift** alone.", "b2": true}
+    {"en": "Last Monday, hundreds of people **gathered** in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.", "b2": false, "chunks": [["Last Monday,", "지난 월요일"], ["hundreds of people **gathered**", "수백 명이 모였다"], ["in the small California town", "캘리포니아의 작은 마을에"], ["of Half Moon Bay", "하프문베이라는"], ["to watch something unusual:", "특이한 것을 보러"], ["pumpkins being weighed.", "호박 무게를 다는 모습을"]]},
+    {"en": "This was no ordinary **contest**, as it is now in its 53rd year and growers proudly call it the \"Super Bowl\" of pumpkin weigh-offs.", "b2": false, "chunks": [["This was no ordinary **contest**,", "이건 평범한 대회가 아니었다"], ["as it is now in its 53rd year", "올해로 53년째이고"], ["and growers proudly call it", "재배자들이 자랑스럽게 부르기 때문이다"], ["the \"Super Bowl\"", "슈퍼볼이라고"], ["of pumpkin weigh-offs.", "호박 무게 대회의"]]},
+    {"en": "Growers brought their **giant** pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash **prizes**.", "b2": false, "chunks": [["Growers brought", "재배자들은 가져왔다"], ["their **giant** pumpkins", "자기들의 거대한 호박을"], ["from nearby farms,", "근처 농장에서"], ["from other parts of the country", "다른 지역에서"], ["and even from Europe,", "그리고 유럽에서까지"], ["all hoping to win cash **prizes**.", "모두 상금을 타기를 바라며"]]},
+    {"en": "In the end, first place went to Travis Gienger, a grower from Minnesota.", "b2": false, "chunks": [["In the end,", "결국"], ["first place went", "1등은 돌아갔다"], ["to Travis Gienger,", "트래비스 긴저에게"], ["a grower from Minnesota.", "미네소타의 재배자인"]]},
+    {"en": "His pumpkin **weighed** 2,389 pounds, which is a little more than a thousand **kilograms**, or about as heavy as a small car.", "b2": false, "chunks": [["His pumpkin **weighed** 2,389 pounds,", "그의 호박은 2,389파운드였는데"], ["which is a little more", "그것은 조금 넘는다"], ["than a thousand **kilograms**,", "1,000킬로그램을"], ["or about as heavy", "또는 대략 무게가 같다"], ["as a small car.", "작은 자동차와"]]},
+    {"en": "For the crowd, it was a rare chance to see how much time and care can turn a fruit that usually fits in your arms into something you could never **lift** alone.", "b2": true, "chunks": [["For the crowd,", "관중에게"], ["it was a rare chance to see", "보기 드문 기회였다"], ["how much time and care", "얼마나 많은 시간과 정성이"], ["can turn a fruit", "열매를 바꿀 수 있는지"], ["that usually fits in your arms", "보통 두 팔에 들어오는"], ["into something", "무언가로"], ["you could never **lift** alone.", "혼자서는 절대 들 수 없는"]]}
   ],
   "words": [
     ["gathered", "모였다 (gather의 과거)"],

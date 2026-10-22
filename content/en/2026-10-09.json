@@ -6,11 +6,11 @@
   "headline": "An October Meteor Shower",
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
   "sentences": [
-    {"en": "Every October, Earth **passes through** a cloud of dust left behind by a **comet**, and the tiny particles burn up as they enter our atmosphere.", "b2": false},
-    {"en": "This creates the Draconid **meteor** shower, which takes its name from the **constellation** Draco, the dragon, where the shooting stars appear to come from.", "b2": false},
-    {"en": "In 2026, the shower **peaks** on the night of October eighth to ninth, when the Moon is barely one percent full and the sky is very dark.", "b2": false},
-    {"en": "Unlike most meteor showers, the Draconids are best watched right after **sunset** — you do not need to stay awake until the middle of the night.", "b2": false},
-    {"en": "The shower's parent body, comet 21P/Giacobini-Zinner, last visited the inner part of our solar system in 2018, leaving the trail of dust that Earth crosses each year.", "b2": true}
+    {"en": "Every October, Earth **passes through** a cloud of dust left behind by a **comet**, and the tiny particles burn up as they enter our atmosphere.", "b2": false, "chunks": [["Every October,", "매년 10월"], ["Earth **passes through** a cloud of dust", "지구는 먼지 구름을 지나간다"], ["left behind by a **comet**,", "혜성이 남기고 간"], ["and the tiny particles burn up", "그리고 작은 입자들은 타 버린다"], ["as they enter our atmosphere.", "대기로 들어오면서"]]},
+    {"en": "This creates the Draconid **meteor** shower, which takes its name from the **constellation** Draco, the dragon, where the shooting stars appear to come from.", "b2": false, "chunks": [["This creates", "이것이 만든다"], ["the Draconid **meteor** shower,", "용자리 유성우를"], ["which takes its name", "그 이름은 따왔다"], ["from the **constellation** Draco,", "드라코 별자리에서"], ["the dragon,", "즉 용인데"], ["where the shooting stars", "그곳에서 별똥별이"], ["appear to come from.", "나오는 것처럼 보인다"]]},
+    {"en": "In 2026, the shower **peaks** on the night of October eighth to ninth, when the Moon is barely one percent full and the sky is very dark.", "b2": false, "chunks": [["In 2026,", "2026년에"], ["the shower **peaks**", "유성우는 절정에 이른다"], ["on the night of October eighth to ninth,", "10월 8일에서 9일로 넘어가는 밤에"], ["when the Moon is barely one percent full", "그때 달은 겨우 1퍼센트만 차 있고"], ["and the sky is very dark.", "하늘은 매우 어둡다"]]},
+    {"en": "Unlike most meteor showers, the Draconids are best watched right after **sunset** — you do not need to stay awake until the middle of the night.", "b2": false, "chunks": [["Unlike most meteor showers,", "대부분의 유성우와 달리"], ["the Draconids are best watched", "용자리 유성우는 보기 가장 좋다"], ["right after **sunset**", "해 진 직후에"], ["— you do not need to stay awake", "깨어 있을 필요가 없다"], ["until the middle of the night.", "한밤중까지"]]},
+    {"en": "The shower's parent body, comet 21P/Giacobini-Zinner, last visited the inner part of our solar system in 2018, leaving the trail of dust that Earth crosses each year.", "b2": true, "chunks": [["The shower's parent body,", "이 유성우의 모체인"], ["comet 21P/Giacobini-Zinner,", "21P/자코비니-지너 혜성은"], ["last visited", "마지막으로 찾아왔다"], ["the inner part of our solar system", "태양계 안쪽에"], ["in 2018,", "2018년에"], ["leaving the trail of dust", "먼지 자취를 남기고"], ["that Earth crosses each year.", "지구가 해마다 지나가는"]]}
   ],
   "words": [
     ["comet", "혜성"],
