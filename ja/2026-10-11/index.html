@@ -46,6 +46,7 @@
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
   .chip { font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--sub); }
   .chip.blue { background: var(--blue-soft); color: var(--blue); }
+  .chip.easy { background: var(--blue); color: #fff; }
   .card { background: var(--card); border-radius: var(--card-r); margin: 12px 12px 0; padding: 22px 20px; box-shadow: var(--card-sh); }
   /* 위 메뉴 바가 따라오므로 앵커와 학습 방법 안내가 비추는 카드가 바 아래에 가리지 않게 띄운다 */
   [id], .card { scroll-margin-top: 84px; }
@@ -61,6 +62,7 @@
         display: grid; place-items: center; }
   .en { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
            background: var(--coral-soft); color: var(--coral); margin-left: 6px; vertical-align: 2px; }
   .word { display: flex; justify-content: space-between; align-items: center; gap: 16px;
@@ -174,7 +176,7 @@
   .sub .lvopt .lv-t { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
   .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }
   .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }
-  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none; display: flex; align-items: center; justify-content: center; }
+  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none; display: flex; align-items: center; justify-content: center; color: transparent; }
   .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }
   .sub .level-note { flex-basis: 100%; display: none; }
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
@@ -204,6 +206,9 @@
   #passage .sent.playing .ck .e { color: var(--blue-press); }
   /* 수준별 콘텐츠: 기초(.en-a/.ko-a/.chunks-a)는 기본 숨김, 중급(.en/.ko/.chunks)은 기본 표시 */
   .en-a, .ko-a, .chunks-a { display: none; }
+  .chips-a { display: none; flex-wrap: wrap; gap: 6px; }
+  html.level-a .chips { display: none; }
+  html.level-a .chips-a { display: flex; }
   html.level-a .en-a { display: block; }
   html.level-a #passage .say > .en { display: none; }
   html.level-a .ko-a:not([hidden]) { display: block; }
@@ -458,10 +463,18 @@
         tip.style.top = Math.max(8, (innerHeight - tip.offsetHeight) / 2) + 'px'; return;
       }
       var r = el.getBoundingClientRect();
-      spot.style.top = (r.top - pad) + 'px'; spot.style.left = (r.left - pad) + 'px';
-      spot.style.width = (r.width + pad * 2) + 'px'; spot.style.height = (r.height + pad * 2) + 'px';
-      var below = r.bottom + 14, th = tip.offsetHeight, vh = innerHeight;
-      tip.style.top = (below + th < vh - 8 ? below : Math.max(8, r.top - th - 14)) + 'px';
+      var gnbBot = (document.querySelector('.gnb') || {getBoundingClientRect: function(){return{bottom:80};}}).getBoundingClientRect().bottom;
+      var pbarElP = document.getElementById('pbar');
+      var pbarTopP = (pbarElP && pbarElP.classList.contains('vis')) ? pbarElP.getBoundingClientRect().top : innerHeight;
+      // Clip spot to visible area (between header and pbar)
+      var spotTop = Math.max(r.top - pad, gnbBot);
+      var spotBot = Math.min(r.bottom + pad, pbarTopP);
+      if (spotBot <= spotTop) { spotTop = r.top - pad; spotBot = r.bottom + pad; }
+      spot.style.top = spotTop + 'px'; spot.style.left = (r.left - pad) + 'px';
+      spot.style.width = (r.width + pad * 2) + 'px'; spot.style.height = (spotBot - spotTop) + 'px';
+      var below = r.bottom + 14, th = tip.offsetHeight;
+      var tipMax = pbarTopP - th - 8;
+      tip.style.top = (below + th < pbarTopP - 8 ? below : Math.max(8, Math.min(tipMax, r.top - th - 14))) + 'px';
     }
     function show() {
       var s = steps[i], el = rectOf(s[0]);
@@ -473,10 +486,18 @@
       tip.querySelector('.prev').hidden = i === 0;
       tip.querySelector('.next').textContent = i === steps.length - 1 ? '시작하기' : '다음';
       if (el) {
-        var r = el.getBoundingClientRect(), tall = r.height > innerHeight * 0.5;
-        el.scrollIntoView({ block: tall ? 'start' : 'center', behavior: 'smooth' });
+        var gnbH = (document.querySelector('.gnb') || {getBoundingClientRect: function(){return{bottom:80};}}).getBoundingClientRect().bottom;
+        var pbarEl = document.getElementById('pbar');
+        var pbarH = (pbarEl && pbarEl.classList.contains('vis')) ? (innerHeight - pbarEl.getBoundingClientRect().top) : 0;
+        var r = el.getBoundingClientRect();
+        var usableH = innerHeight - gnbH - pbarH, pad2 = 8;
+        var tall = r.height > usableH * 0.5;
+        var targetY = tall
+          ? pageYOffset + r.top - gnbH - pad2
+          : pageYOffset + (r.top + r.height / 2) - (gnbH + usableH / 2);
+        window.scrollTo({ top: Math.max(0, targetY) });
       }
-      setTimeout(place, 350); place();
+      setTimeout(place, 80); place();
     }
     function end() {
       [spot, tip, block].forEach(function (x) { x && x.remove(); });

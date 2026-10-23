@@ -47,7 +47,7 @@ SUB_CSS = (
     "  .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }\n"
     "  .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }\n"
     "  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none;"
-    " display: flex; align-items: center; justify-content: center; }\n"
+    " display: flex; align-items: center; justify-content: center; color: transparent; }\n"
     "  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }\n"
     # level-note 기본 숨김 — :has() 또는 JS data-show 로 표시
     "  .sub .level-note { flex-basis: 100%; display: none; }\n"
@@ -244,7 +244,7 @@ def patch_page(lang, day):
                 "  .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }\n"
                 "  .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }\n"
                 "  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none;"
-                " display: flex; align-items: center; justify-content: center; }\n"
+                " display: flex; align-items: center; justify-content: center; color: transparent; }\n"
                 "  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }\n"
                 "  .sub .level-note { flex-basis: 100%; display: none; }\n"
                 "  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }\n"

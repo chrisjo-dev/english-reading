@@ -1278,6 +1278,7 @@ html:not(.js) .sw {
   align-items: center;
   justify-content: center;
   font-size: 11px;
+  color: transparent;
 }
 
 .lv-opt:has(input:checked) .lv-chk {

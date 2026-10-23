@@ -25,6 +25,7 @@ content JSON 형식 (지문 안 강조는 **단어**, 체크 포인트 안 코�
 import datetime as dt
 import html
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -240,12 +241,28 @@ def render(lang, day):
         )
     else:
         level_link = ""
+    # 기초 수준 칩: levels.a 가 있을 때만 생성. 문장 수 칩 + 기초 A2~B1 칩 + 예상 읽기 시간 칩.
+    # 읽기 시간은 level-a 문장의 단어 수 ÷ 40 wpm(학습 속도)로 올림 계산, 최소 1분.
+    if levels_a:
+        a_words = sum(len(re.sub(r"\*\*", "", s["en"]).split()) for s in levels_a["sentences"])
+        a_min = max(1, math.ceil(a_words / 40))
+        a_time_chip = f"약 {a_min}분"
+        chips_a_html = (
+            '    <div class="chips chips-a">\n'
+            f'      <span class="chip blue">{esc(c["chips"][0])}</span>\n'
+            '      <span class="chip easy">기초 A2~B1</span>\n'
+            f'      <span class="chip">{esc(a_time_chip)}</span>\n'
+            '    </div>\n'
+        )
+    else:
+        chips_a_html = ""
     values = {
         "date_short": f"{d.month}월 {d.day}일",
         "date_label": f"{d.month}월 {d.day}일 {DAYS[d.weekday()]}요일",
         "topic": esc(c.get("title_ko") or c["topic"]),
         "headline": f'    <p class="headline" lang="{lang}">{marks(c["headline"], "")}</p>\n' if c.get("headline") else "",
         "chips": "\n".join(f'      <span class="chip{" blue" if i == 0 else ""}">{esc(t)}</span>' for i, t in enumerate(c["chips"])),
+        "chips_a": chips_a_html,
         "sentences": sentences,
         "source": source,
         "placeholder": "".join(f"{i}. &#10;" for i in range(1, n)) + f"{n}. ",
