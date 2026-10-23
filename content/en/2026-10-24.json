@@ -1,0 +1,425 @@
+{
+  "date": "2026-10-24",
+  "category": "culture",
+  "topic": "마당의 배",
+  "title_ko": "40년 동안 마당에서 배를 만든 할아버지",
+  "headline": "A Boat in the Front Yard",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "In 1987, a man named Dale started building a huge steel boat in the front **yard** of his home in a small American town.",
+      "b2": false,
+      "chunks": [
+        [
+          "In 1987,",
+          "1987년에"
+        ],
+        [
+          "a man named Dale",
+          "데일이라는 한 남자가"
+        ],
+        [
+          "started building",
+          "만들기 시작했다"
+        ],
+        [
+          "a huge steel boat",
+          "거대한 강철 배를"
+        ],
+        [
+          "in the front **yard**",
+          "앞마당에서"
+        ],
+        [
+          "of his home",
+          "자기 집의"
+        ],
+        [
+          "in a small American town.",
+          "미국의 한 작은 마을에 있는"
+        ]
+      ]
+    },
+    {
+      "en": "His plan was to finish it one day and **sail** it all the way to Alaska.",
+      "b2": false,
+      "chunks": [
+        [
+          "His plan was",
+          "그의 계획은 ~였다"
+        ],
+        [
+          "to finish it one day",
+          "언젠가 그것을 완성해서"
+        ],
+        [
+          "and **sail** it",
+          "그 배를 타고 항해하는 것"
+        ],
+        [
+          "all the way to Alaska.",
+          "알래스카까지 쭉"
+        ]
+      ]
+    },
+    {
+      "en": "**Nearly** forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters **finished**.",
+      "b2": true,
+      "chunks": [
+        [
+          "**Nearly** forty years later,",
+          "거의 40년이 지난 지금"
+        ],
+        [
+          "Dale is eighty-six,",
+          "데일은 86세이고"
+        ],
+        [
+          "and the boat,",
+          "그리고 그 배는"
+        ],
+        [
+          "which is sixty-two feet long",
+          "길이가 62피트이고"
+        ],
+        [
+          "and has four bedrooms,",
+          "침실이 네 개 있는데"
+        ],
+        [
+          "is about three-quarters **finished**.",
+          "약 4분의 3이 완성되었다"
+        ]
+      ]
+    },
+    {
+      "en": "However, he can no longer work on it alone, and a **steep** hill between the yard and the road makes the boat hard to move.",
+      "b2": false,
+      "chunks": [
+        [
+          "However,",
+          "하지만"
+        ],
+        [
+          "he can no longer",
+          "그는 더 이상 ~할 수 없다"
+        ],
+        [
+          "work on it alone,",
+          "혼자 그 일을 하는 것을"
+        ],
+        [
+          "and a **steep** hill",
+          "그리고 가파른 언덕이"
+        ],
+        [
+          "between the yard and the road",
+          "마당과 도로 사이의"
+        ],
+        [
+          "makes the boat hard to move.",
+          "그 배를 옮기기 어렵게 만든다"
+        ]
+      ]
+    },
+    {
+      "en": "When three young travelers from overseas heard about the boat, they came to see him and decided to help.",
+      "b2": false,
+      "chunks": [
+        [
+          "When three young travelers",
+          "세 명의 젊은 여행자들이"
+        ],
+        [
+          "from overseas",
+          "해외에서 온"
+        ],
+        [
+          "heard about the boat,",
+          "그 배에 대해 들었을 때"
+        ],
+        [
+          "they came to see him",
+          "그들은 그를 보러 왔고"
+        ],
+        [
+          "and decided to help.",
+          "돕기로 했다"
+        ]
+      ]
+    },
+    {
+      "en": "Within a few days, more than fifteen hundred people had **donated** over forty-one thousand dollars through an online **fundraiser**, which aims to get the boat onto the water.",
+      "b2": true,
+      "chunks": [
+        [
+          "Within a few days,",
+          "며칠 만에"
+        ],
+        [
+          "more than fifteen hundred people",
+          "1,500명이 넘는 사람들이"
+        ],
+        [
+          "had **donated**",
+          "기부했다"
+        ],
+        [
+          "over forty-one thousand dollars",
+          "4만 1천 달러 넘게"
+        ],
+        [
+          "through an online **fundraiser**,",
+          "온라인 모금 운동을 통해"
+        ],
+        [
+          "which aims to get the boat",
+          "그 모금은 배를 ~하는 것을 목표로 한다"
+        ],
+        [
+          "onto the water.",
+          "물 위에 띄우는 것을"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "yard",
+      "마당"
+    ],
+    [
+      "sail",
+      "항해하다, 배를 타고 가다"
+    ],
+    [
+      "nearly",
+      "거의"
+    ],
+    [
+      "finished",
+      "완성된, 끝난"
+    ],
+    [
+      "steep",
+      "가파른"
+    ],
+    [
+      "donated",
+      "기부했다 (donate의 과거형)"
+    ],
+    [
+      "fundraiser",
+      "모금 행사, 모금 운동"
+    ]
+  ],
+  "points": [
+    {
+      "title": "큰 숫자를 바로 그려 보기",
+      "body": "`fifteen hundred people`은 15×100 = 1,500명, `forty-one thousand dollars`는 41×1,000 = 41,000달러예요. `sixty-two feet`(약 19미터)도 숫자로 바꿔 머릿속에 그려 보세요."
+    },
+    {
+      "title": "no longer와 make + 목적어 + 형용사",
+      "body": "`can no longer work`는 \"더 이상 일할 수 없다\"예요. `makes the boat hard to move`는 \"배를 옮기기 어렵게 만든다\"로, make 뒤의 목적어(the boat)와 형용사(hard)를 묶어 읽어야 해요."
+    }
+  ],
+  "answers": [
+    "1987년, 데일이라는 남자가 미국의 한 작은 마을에 있는 자기 집 앞마당에서 거대한 강철 배를 만들기 시작했다.",
+    "그의 계획은 언젠가 배를 완성해서 그 배를 타고 알래스카까지 가는 것이었다.",
+    "거의 40년이 지난 지금 데일은 86세이고, 길이 62피트에 침실이 네 개인 그 배는 약 4분의 3이 완성되었다.",
+    "하지만 그는 더 이상 혼자서 배를 만들 수 없고, 마당과 도로 사이의 가파른 언덕 때문에 배를 옮기기도 어렵다.",
+    "해외에서 온 젊은 여행자 세 명이 그 배 이야기를 듣고 그를 찾아왔고, 돕기로 했다.",
+    "며칠 만에 1,500명이 넘는 사람들이 온라인 모금 운동을 통해 4만 1천 달러 넘게 기부했으며, 이 모금은 배를 물에 띄우는 것을 목표로 한다."
+  ],
+  "advanced": [
+    {
+      "word": "decades",
+      "meaning": "수십 년",
+      "confuse": null,
+      "example": "Dale has worked on the boat for nearly four **decades**.",
+      "example_ko": "데일은 거의 40년 동안 그 배를 만들어 왔습니다."
+    },
+    {
+      "word": "devote",
+      "meaning": "(시간이나 노력을) 바치다",
+      "confuse": null,
+      "example": "He has **devoted** most of his life to building one boat.",
+      "example_ko": "그는 배 한 척을 만드는 데 인생의 대부분을 바쳤습니다."
+    },
+    {
+      "word": "ambitious",
+      "meaning": "야심 찬",
+      "confuse": null,
+      "example": "Sailing a home-made boat to Alaska is an **ambitious** dream.",
+      "example_ko": "손수 만든 배로 알래스카까지 항해하는 것은 야심 찬 꿈입니다."
+    },
+    {
+      "word": "persistence",
+      "meaning": "끈기, 꾸준함",
+      "confuse": "persistent(끈질긴, 형용사)와 품사 혼동 주의",
+      "example": "His **persistence** kept the project alive for forty years.",
+      "example_ko": "그의 끈기가 40년 동안 그 일을 이어 가게 했습니다."
+    },
+    {
+      "word": "slope",
+      "meaning": "경사, 비탈",
+      "confuse": null,
+      "example": "A steep **slope** stands between the boat and the road.",
+      "example_ko": "배와 도로 사이에 가파른 비탈이 있습니다."
+    },
+    {
+      "word": "transport",
+      "meaning": "운반하다, 수송하다",
+      "confuse": "transfer(옮기다, 이전하다)와 혼동 주의",
+      "example": "Heavy machines are needed to **transport** the boat to the water.",
+      "example_ko": "배를 물가까지 운반하려면 무거운 기계가 필요합니다."
+    },
+    {
+      "word": "contribute",
+      "meaning": "기부하다, 기여하다",
+      "confuse": "distribute(나누어 주다)와 혼동 주의",
+      "example": "Thousands of strangers **contributed** money to the fundraiser.",
+      "example_ko": "수천 명의 낯선 사람들이 모금 운동에 돈을 기부했습니다."
+    },
+    {
+      "word": "launch",
+      "meaning": "(배를) 물에 띄우다, 진수하다",
+      "confuse": null,
+      "example": "The money will help **launch** the boat at last.",
+      "example_ko": "그 돈은 마침내 배를 물에 띄우는 데 도움이 될 것입니다."
+    }
+  ],
+  "source": {
+    "title": "Strangers Help 86-Year-Old Who's Been Building a 62-foot Boat in his Yard Since 1987 (Good News Network, 2026-10-21)",
+    "url": "https://www.goodnewsnetwork.org/total-strangers-help-86-year-old-man-make-40-year-dream-reality/"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "In 1987, a man named Dale started to build a big boat in his **yard**.",
+          "chunks": [
+            [
+              "In 1987,",
+              "1987년에"
+            ],
+            [
+              "a man named Dale",
+              "데일이라는 남자가"
+            ],
+            [
+              "started to build a big boat",
+              "큰 배를 만들기 시작했다"
+            ],
+            [
+              "in his **yard**.",
+              "자기 마당에서"
+            ]
+          ]
+        },
+        {
+          "en": "He wanted to **sail** the boat to Alaska one day.",
+          "chunks": [
+            [
+              "He wanted to **sail**",
+              "그는 항해하고 싶었다"
+            ],
+            [
+              "the boat to Alaska",
+              "그 배로 알래스카까지"
+            ],
+            [
+              "one day.",
+              "언젠가"
+            ]
+          ]
+        },
+        {
+          "en": "Now Dale is eighty-six, and about three-quarters of the boat is **finished**.",
+          "chunks": [
+            [
+              "Now Dale is eighty-six,",
+              "지금 데일은 86세이고"
+            ],
+            [
+              "and about three-quarters",
+              "약 4분의 3이"
+            ],
+            [
+              "of the boat is **finished**.",
+              "배 가운데 완성되었다"
+            ]
+          ]
+        },
+        {
+          "en": "But he cannot work alone now, and a **steep** hill makes moving the boat hard.",
+          "chunks": [
+            [
+              "But he cannot work alone now,",
+              "하지만 그는 이제 혼자 일할 수 없고"
+            ],
+            [
+              "and a **steep** hill",
+              "가파른 언덕이"
+            ],
+            [
+              "makes moving the boat hard.",
+              "배를 옮기는 것을 어렵게 만든다"
+            ]
+          ]
+        },
+        {
+          "en": "Three young travelers from overseas heard about the boat and came to help.",
+          "chunks": [
+            [
+              "Three young travelers from overseas",
+              "해외에서 온 젊은 여행자 세 명이"
+            ],
+            [
+              "heard about the boat",
+              "그 배에 대해 들었고"
+            ],
+            [
+              "and came to help.",
+              "도우러 왔다"
+            ]
+          ]
+        },
+        {
+          "en": "In a few days, more than fifteen hundred people **donated** over forty-one thousand dollars.",
+          "chunks": [
+            [
+              "In a few days,",
+              "며칠 만에"
+            ],
+            [
+              "more than fifteen hundred people",
+              "1,500명이 넘는 사람들이"
+            ],
+            [
+              "**donated**",
+              "기부했다"
+            ],
+            [
+              "over forty-one thousand dollars.",
+              "4만 1천 달러 넘게"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "1987년에 데일이라는 남자가 자기 마당에서 큰 배를 만들기 시작했다.",
+        "그는 언젠가 그 배를 타고 알래스카까지 가고 싶었다.",
+        "지금 데일은 86세이고, 배는 약 4분의 3이 완성되었다.",
+        "하지만 그는 이제 혼자 일할 수 없고, 가파른 언덕 때문에 배를 옮기기 어렵다.",
+        "해외에서 온 젊은 여행자 세 명이 그 배 이야기를 듣고 도우러 왔다.",
+        "며칠 만에 1,500명이 넘는 사람들이 4만 1천 달러 넘게 기부했다."
+      ]
+    }
+  }
+}
