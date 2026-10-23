@@ -1,16 +1,16 @@
 {
  "date": "2026-10-24",
- "words_total": 272,
+ "words_total": 279,
  "langs": {
   "en": {
-   "count": 21,
-   "latest": "2026-10-23",
-   "topic": "태양 폭풍",
+   "count": 22,
+   "latest": "2026-10-24",
+   "topic": "마당의 배",
    "sentences": [
-    "When the sun has a big storm, it throws huge clouds of tiny charged **particles** into space, and some of them can reach Earth.",
-    "These particles shake Earth's **magnetic field**, and this can create electric **currents** in long metal wires on the ground.",
-    "In the 1800s, railway **signals** were sent through such long wires, so a strong solar storm could mix up the messages and hold trains back.",
-    "An old report, published in a science journal in 1871, said that a train in Exeter, England, was **delayed** this way by sixteen minutes in October 1841."
+    "In 1987, a man named Dale started building a huge steel boat in the front **yard** of his home in a small American town.",
+    "His plan was to finish it one day and **sail** it all the way to Alaska.",
+    "**Nearly** forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters **finished**.",
+    "However, he can no longer work on it alone, and a **steep** hill between the yard and the road makes the boat hard to move."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 2문장",
     "약 3분"
    ],
-   "answer": "태양에 큰 폭풍이 일면, 태양은 전기를 띤 작은 입자들로 이루어진 거대한 구름을 우주로 내던지고, 그중 일부는 지구에 닿을 수 있다.",
+   "answer": "1987년, 데일이라는 남자가 미국의 한 작은 마을에 있는 자기 집 앞마당에서 거대한 강철 배를 만들기 시작했다.",
    "words": [
     [
-     "particles",
-     "입자들 (particle의 복수)"
+     "yard",
+     "마당"
     ],
     [
-     "magnetic field",
-     "자기장"
+     "sail",
+     "항해하다, 배를 타고 가다"
     ],
     [
-     "currents",
-     "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)"
+     "nearly",
+     "거의"
     ],
     [
-     "signals",
-     "신호들"
+     "finished",
+     "완성된, 끝난"
     ],
     [
-     "delayed",
-     "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)"
+     "steep",
+     "가파른"
     ],
     [
-     "typo",
-     "오타, 잘못 친 글자"
+     "donated",
+     "기부했다 (donate의 과거형)"
     ],
     [
-     "actually",
-     "실제로, 사실은"
+     "fundraiser",
+     "모금 행사, 모금 운동"
     ]
    ]
   },
@@ -96,6 +96,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-24",
+   "topic": "마당의 배"
+  },
   {
    "lang": "ja",
    "day": "2026-10-24",
@@ -160,11 +165,6 @@
    "lang": "ja",
    "day": "2026-10-18",
    "topic": "갑자기 내린 가을비"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-17",
-   "topic": "호박 무게 대회"
   }
  ]
 }
