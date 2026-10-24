@@ -1,52 +1,52 @@
 {
  "date": "2026-10-25",
- "words_total": 285,
+ "words_total": 292,
  "langs": {
   "en": {
-   "count": 22,
-   "latest": "2026-10-24",
-   "topic": "마당의 배",
+   "count": 23,
+   "latest": "2026-10-25",
+   "topic": "포보스 탐사",
    "sentences": [
-    "In 1987, a man named Dale started building a huge steel boat in the front **yard** of his home in a small American town.",
-    "His plan was to finish it one day and **sail** it all the way to Alaska.",
-    "**Nearly** forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters **finished**.",
-    "However, he can no longer work on it alone, and a **steep** hill between the yard and the road makes the boat hard to move."
+    "Earlier this week, Japan **launched** a spacecraft on a long trip to Phobos, one of the two small moons of Mars.",
+    "The spacecraft is expected to reach Mars in August 2027 and will stay near the planet for about three years.",
+    "During that time, it will land on Phobos twice and collect a small **sample** of about ten grams of rock and dust.",
+    "Scientists, who have argued about this moon for many years, hope the sample will show **whether** Phobos was **formed** after a giant crash on Mars or was an **asteroid** captured by the planet's **gravity**."
    ],
    "chips": [
-    "6문장",
+    "5문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 3분"
    ],
-   "answer": "1987년, 데일이라는 남자가 미국의 한 작은 마을에 있는 자기 집 앞마당에서 거대한 강철 배를 만들기 시작했다.",
+   "answer": "이번 주 초, 일본이 화성의 두 작은 위성 중 하나인 포보스로 가는 긴 여행길에 우주선을 발사했다.",
    "words": [
     [
-     "yard",
-     "마당"
+     "launched",
+     "발사했다 (launch의 과거형)"
     ],
     [
-     "sail",
-     "항해하다, 배를 타고 가다"
+     "sample",
+     "시료, 표본"
     ],
     [
-     "nearly",
-     "거의"
+     "whether",
+     "~인지 (아닌지)"
     ],
     [
-     "finished",
-     "완성된, 끝난"
+     "formed",
+     "만들어진, 형성된"
     ],
     [
-     "steep",
-     "가파른"
+     "asteroid",
+     "소행성"
     ],
     [
-     "donated",
-     "기부했다 (donate의 과거형)"
+     "gravity",
+     "중력"
     ],
     [
-     "fundraiser",
-     "모금 행사, 모금 운동"
+     "capsule",
+     "캡슐 (작은 운반 용기)"
     ]
    ]
   },
@@ -96,6 +96,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-25",
+   "topic": "포보스 탐사"
+  },
   {
    "lang": "ja",
    "day": "2026-10-25",
@@ -160,11 +165,6 @@
    "lang": "ja",
    "day": "2026-10-19",
    "topic": "도서관 카드"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-18",
-   "topic": "부푼 행성"
   }
  ]
 }
