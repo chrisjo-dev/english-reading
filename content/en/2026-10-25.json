@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-25",
+  "category": "space",
+  "topic": "포보스 탐사",
+  "title_ko": "화성의 작은 달로 떠난 우주선",
+  "headline": "A Trip to a Small Moon of Mars",
+  "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "Earlier this week, Japan **launched** a spacecraft on a long trip to Phobos, one of the two small moons of Mars.", "b2": false,
+     "chunks": [["Earlier this week,", "이번 주 초에"], ["Japan **launched** a spacecraft", "일본이 우주선을 발사했다"], ["on a long trip", "긴 여행길에"], ["to Phobos,", "포보스로 가는"], ["one of the two small moons", "두 개의 작은 위성 중 하나인"], ["of Mars.", "화성의"]]},
+    {"en": "The spacecraft is expected to reach Mars in August 2027 and will stay near the planet for about three years.", "b2": false,
+     "chunks": [["The spacecraft is expected", "그 우주선은 예정이다"], ["to reach Mars", "화성에 도착할"], ["in August 2027", "2027년 8월에"], ["and will stay near the planet", "그리고 그 행성 근처에 머물 것이다"], ["for about three years.", "약 3년 동안"]]},
+    {"en": "During that time, it will land on Phobos twice and collect a small **sample** of about ten grams of rock and dust.", "b2": false,
+     "chunks": [["During that time,", "그동안"], ["it will land on Phobos twice", "그것은 포보스에 두 번 착륙할 것이다"], ["and collect a small **sample**", "그리고 작은 시료를 모을 것이다"], ["of about ten grams", "약 10그램의"], ["of rock and dust.", "암석과 먼지로 된"]]},
+    {"en": "Scientists, who have argued about this moon for many years, hope the sample will show **whether** Phobos was **formed** after a giant crash on Mars or was an **asteroid** captured by the planet's **gravity**.", "b2": true,
+     "chunks": [["Scientists,", "과학자들은"], ["who have argued about this moon", "이 위성을 두고 논쟁해 온"], ["for many years,", "여러 해 동안"], ["hope the sample will show", "그 시료가 보여 주기를 바란다"], ["**whether** Phobos was **formed**", "포보스가 만들어졌는지"], ["after a giant crash on Mars", "화성에서 일어난 거대한 충돌 뒤에"], ["or was an **asteroid**", "아니면 소행성이었는지"], ["captured by the planet's **gravity**.", "그 행성의 중력에 붙잡힌"]]},
+    {"en": "If everything goes well, a small **capsule** carrying the sample will come back to Earth in 2031.", "b2": false,
+     "chunks": [["If everything goes well,", "모든 게 잘되면"], ["a small **capsule**", "작은 캡슐이"], ["carrying the sample", "그 시료를 실은"], ["will come back to Earth", "지구로 돌아올 것이다"], ["in 2031.", "2031년에"]]}
+  ],
+  "words": [
+    ["launched", "발사했다 (launch의 과거형)"],
+    ["sample", "시료, 표본"],
+    ["whether", "~인지 (아닌지)"],
+    ["formed", "만들어진, 형성된"],
+    ["asteroid", "소행성"],
+    ["gravity", "중력"],
+    ["capsule", "캡슐 (작은 운반 용기)"]
+  ],
+  "points": [
+    {"title": "수동태 뒤 by: 무엇이 했는지", "body": "`captured by the planet's gravity`는 '그 행성의 중력에 붙잡힌'이에요. by 뒤가 '무엇이 붙잡았는지'를 알려 줘요. 4번 문장 전체는 `whether A or B`(A인지 B인지) 구조이니 두 가능성을 나눠서 읽어 보세요."},
+    {"title": "문장 끝의 시간과 수량", "body": "`in August 2027`, `for about three years`, `twice`, `of about ten grams`, `in 2031`처럼 언제, 얼마나 오래, 몇 번, 얼마만큼이 모두 문장 끝에 있어요. 끝까지 읽고 숫자를 머릿속에 그려 보세요."}
+  ],
+  "answers": [
+    "이번 주 초, 일본이 화성의 두 작은 위성 중 하나인 포보스로 가는 긴 여행길에 우주선을 발사했다.",
+    "그 우주선은 2027년 8월에 화성에 도착할 예정이며, 약 3년 동안 그 행성 근처에 머물 것이다.",
+    "그동안 우주선은 포보스에 두 번 착륙해 암석과 먼지로 된 약 10그램의 작은 시료를 모을 것이다.",
+    "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.",
+    "모든 일이 잘 풀리면, 시료를 실은 작은 캡슐이 2031년에 지구로 돌아올 것이다."
+  ],
+  "advanced": [
+    {"word": "lift off", "meaning": "이륙하다, 발사되어 떠오르다", "confuse": null, "example": "The rocket **lifted off** from southern Japan early in the morning.", "example_ko": "로켓은 이른 아침 일본 남부에서 이륙했습니다."},
+    {"word": "trajectory", "meaning": "비행 경로, 궤적", "confuse": null, "example": "The spacecraft is now on a **trajectory** toward Mars.", "example_ko": "그 우주선은 이제 화성을 향하는 경로에 올라 있습니다."},
+    {"word": "retrieve", "meaning": "회수하다, 되찾아 오다", "confuse": null, "example": "The spacecraft will **retrieve** about ten grams of material from Phobos.", "example_ko": "그 우주선은 포보스에서 약 10그램의 물질을 회수할 것입니다."},
+    {"word": "specimen", "meaning": "표본, 견본", "confuse": "species(종)와 혼동 주의", "example": "Each **specimen** will be studied carefully in laboratories on Earth.", "example_ko": "각 표본은 지구의 실험실에서 꼼꼼히 연구될 것입니다."},
+    {"word": "originate", "meaning": "비롯되다, 기원하다", "confuse": null, "example": "Scientists still do not know where Phobos **originated**.", "example_ko": "과학자들은 포보스가 어디에서 비롯되었는지 아직 모릅니다."},
+    {"word": "collision", "meaning": "충돌", "confuse": "collusion(공모, 결탁)과 혼동 주의", "example": "Phobos may have formed after a huge **collision** on Mars.", "example_ko": "포보스는 화성에서 일어난 거대한 충돌 뒤에 만들어졌을 수도 있습니다."},
+    {"word": "gravitational", "meaning": "중력의", "confuse": null, "example": "The moon may have been caught by the **gravitational** pull of Mars.", "example_ko": "그 위성은 화성의 중력에 끌려 붙잡혔을지도 모릅니다."},
+    {"word": "unprecedented", "meaning": "전례 없는", "confuse": null, "example": "Bringing back rock from a moon of Mars would be an **unprecedented** achievement.", "example_ko": "화성의 위성에서 암석을 가져오는 것은 전례 없는 성과가 될 것입니다."}
+  ],
+  "source": {"title": "Japan launches historic MMX sample-return mission to Mars' moon Phobos (Space.com, 2026-10-19)", "url": "https://www.space.com/space-exploration/launches-spacecraft/japan-launches-historic-mmx-sample-return-mission-to-mars-moon-phobos"},
+  "levels": {"a": {
+    "sentences": [
+      {"en": "This week, Japan **launched** a spacecraft to Phobos, a small moon of Mars.",
+       "chunks": [["This week,", "이번 주에"], ["Japan **launched** a spacecraft", "일본이 우주선을 발사했다"], ["to Phobos,", "포보스로"], ["a small moon of Mars.", "화성의 작은 위성인"]]},
+      {"en": "It will reach Mars in August 2027 and stay there for about three years.",
+       "chunks": [["It will reach Mars", "그것은 화성에 도착할 것이다"], ["in August 2027", "2027년 8월에"], ["and stay there", "그리고 그곳에 머물 것이다"], ["for about three years.", "약 3년 동안"]]},
+      {"en": "It will land on Phobos twice and take a **sample** of about ten grams.",
+       "chunks": [["It will land on Phobos twice", "그것은 포보스에 두 번 착륙할 것이다"], ["and take a **sample**", "그리고 시료를 가져갈 것이다"], ["of about ten grams.", "약 10그램의"]]},
+      {"en": "Scientists want to know **whether** Phobos came from Mars or was an **asteroid**.",
+       "chunks": [["Scientists want to know", "과학자들은 알고 싶어 한다"], ["**whether** Phobos came from Mars", "포보스가 화성에서 왔는지"], ["or was an **asteroid**.", "아니면 소행성이었는지"]]},
+      {"en": "A small **capsule** will bring the sample back to Earth in 2031.",
+       "chunks": [["A small **capsule**", "작은 캡슐이"], ["will bring the sample back", "그 시료를 다시 가져올 것이다"], ["to Earth", "지구로"], ["in 2031.", "2031년에"]]}
+    ],
+    "answers": [
+      "이번 주에 일본이 화성의 작은 위성인 포보스로 우주선을 발사했다.",
+      "그 우주선은 2027년 8월에 화성에 도착해 약 3년 동안 그곳에 머물 것이다.",
+      "우주선은 포보스에 두 번 착륙해 약 10그램의 시료를 가져갈 것이다.",
+      "과학자들은 포보스가 화성에서 왔는지, 아니면 소행성이었는지 알고 싶어 한다.",
+      "작은 캡슐이 2031년에 그 시료를 지구로 가져올 것이다."
+    ]
+  }}
+}
