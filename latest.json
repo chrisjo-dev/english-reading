@@ -1,52 +1,52 @@
 {
  "date": "2026-10-26",
- "words_total": 298,
+ "words_total": 305,
  "langs": {
   "en": {
-   "count": 23,
-   "latest": "2026-10-25",
-   "topic": "포보스 탐사",
+   "count": 24,
+   "latest": "2026-10-26",
+   "topic": "새 공룡 화석",
    "sentences": [
-    "Earlier this week, Japan **launched** a spacecraft on a long trip to Phobos, one of the two small moons of Mars.",
-    "The spacecraft is expected to reach Mars in August 2027 and will stay near the planet for about three years.",
-    "During that time, it will land on Phobos twice and collect a small **sample** of about ten grams of rock and dust.",
-    "Scientists, who have argued about this moon for many years, hope the sample will show **whether** Phobos was **formed** after a giant crash on Mars or was an **asteroid** captured by the planet's **gravity**."
+    "A **fossil** that sat in a museum **drawer** for more than a hundred years has turned out to be a new kind of dinosaur.",
+    "The bones were first found on a beach on the Isle of Wight in southern England, and were later kept at a museum in London.",
+    "About six years ago, part of the **skull** was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.",
+    "The team found that the animal lived about one hundred twenty million years ago and **belonged to** a group of hunters with very large **claws** on their hands."
    ],
    "chips": [
-    "5문장",
+    "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 3분"
    ],
-   "answer": "이번 주 초, 일본이 화성의 두 작은 위성 중 하나인 포보스로 가는 긴 여행길에 우주선을 발사했다.",
+   "answer": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.",
    "words": [
     [
-     "launched",
-     "발사했다 (launch의 과거형)"
+     "fossil",
+     "화석"
     ],
     [
-     "sample",
-     "시료, 표본"
+     "drawer",
+     "서랍"
     ],
     [
-     "whether",
-     "~인지 (아닌지)"
+     "skull",
+     "두개골"
     ],
     [
-     "formed",
-     "만들어진, 형성된"
+     "belong to",
+     "~에 속하다"
     ],
     [
-     "asteroid",
-     "소행성"
+     "claws",
+     "(동물의) 발톱들 (claw의 복수)"
     ],
     [
-     "gravity",
-     "중력"
+     "mainly",
+     "주로"
     ],
     [
-     "capsule",
-     "캡슐 (작은 운반 용기)"
+     "identified",
+     "확인된, 밝혀진 (identify의 과거분사)"
     ]
    ]
   },
@@ -96,6 +96,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-26",
+   "topic": "새 공룡 화석"
+  },
   {
    "lang": "ja",
    "day": "2026-10-26",
@@ -160,11 +165,6 @@
    "lang": "ja",
    "day": "2026-10-20",
    "topic": "주먹밥"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-19",
-   "topic": "쏙독새 날개"
   }
  ]
 }

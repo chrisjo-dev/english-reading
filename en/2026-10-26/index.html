@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>오늘의 영어 읽기, 10월 26일</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
+<meta name="description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="매일 영어 읽기">
+<meta property="og:title" content="오늘은 박물관 서랍에서 백 년을 기다린 새 공룡 이야기예요 | 매일 영어 읽기">
+<meta property="og:description" content="B1~B2 학습자를 위한 하루 한 단락 영어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
+<meta property="og:url" content="https://read.wspace.ai.kr/en/2026-10-26/">
+<meta property="og:image" content="https://read.wspace.ai.kr/en/2026-10-26/thumb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://read.wspace.ai.kr/en/2026-10-26/">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
+    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
+    /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
+    --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 16px; line-height: 1.6; letter-spacing: -0.01em;
+    word-break: keep-all; overflow-wrap: anywhere;
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 0 0 calc(24px + env(safe-area-inset-bottom)); }
+  .top { background: var(--card); padding: 28px 20px 24px; border-radius: var(--card-r); margin: 12px 12px 0; box-shadow: var(--card-sh); }
+  .date { font-size: 14px; font-weight: 600; color: var(--muted); }
+  h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 14px; letter-spacing: -0.03em; }
+  h1 em { font-style: normal; color: var(--blue); }
+  .top h1 { padding-right: 84px; }  /* 오른쪽 위 썸네일(76px)과 긴 제목이 겹치지 않게 */
+  .headline { margin: -8px 0 14px; font-size: 16px; font-weight: 600; color: var(--sub); letter-spacing: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+  .chip.blue { background: var(--blue-soft); color: var(--blue); }
+  .chip.easy { background: var(--blue); color: #fff; }
+  .card { background: var(--card); border-radius: var(--card-r); margin: 12px 12px 0; padding: 22px 20px; box-shadow: var(--card-sh); }
+  /* 위 메뉴 바가 따라오므로 앵커와 학습 방법 안내가 비추는 카드가 바 아래에 가리지 않게 띄운다 */
+  [id], .card { scroll-margin-top: 84px; }
+  .step { font-size: 13px; font-weight: 700; color: var(--blue); }
+  h2 { font-size: 20px; font-weight: 700; margin: 2px 0 16px; letter-spacing: -0.02em; }
+  .sent { display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .sent:first-of-type { border-top: 0; padding-top: 0; }
+  /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
+  .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
+  .sent:last-of-type { padding-bottom: 0; }
+  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+        background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
+        display: grid; place-items: center; }
+  .en { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
+  .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
+           background: var(--coral-soft); color: var(--coral); margin-left: 6px; vertical-align: 2px; }
+  .word { display: flex; justify-content: space-between; align-items: center; gap: 16px;
+          padding: 13px 0; border-top: 1px solid var(--line); }
+  .word:first-of-type { border-top: 0; padding-top: 0; }
+  .word:last-of-type { padding-bottom: 0; }
+  .word .wl { display: flex; align-items: center; gap: 4px; }
+  .word .w { font-size: 17px; font-weight: 700; letter-spacing: 0; white-space: nowrap; flex: none; }
+  .word .m { font-size: 15px; color: var(--sub); text-align: right; }
+  .point { background: var(--bg); border-radius: 14px; padding: 14px 16px; }
+  .point + .point { margin-top: 8px; }
+  .point strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .point p { margin: 0; font-size: 15px; color: var(--sub); }
+  code { font-family: inherit; font-weight: 600; color: var(--blue); letter-spacing: 0; }
+  .guide { background: var(--blue-soft); }
+  .guide h2 { margin-bottom: 6px; }
+  .guide p { margin: 0; font-size: 15px; color: var(--sub); }
+  details.card { padding: 0; overflow: hidden; }
+  summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+            gap: 12px; padding: 20px; min-height: 64px; }
+  summary::-webkit-details-marker { display: none; }
+  summary .t { font-size: 17px; font-weight: 700; }
+  summary .s { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 1px; }
+  summary svg { flex: none; width: 20px; height: 20px; color: var(--muted); transition: transform .2s; }
+  details[open] summary svg { transform: rotate(180deg); }
+  summary:active { background: #f9fafb; }
+  .body { padding: 0 20px 22px; }
+  .ko { font-size: 16px; line-height: 1.7; color: var(--ink); }
+  .adv { padding: 14px 0; border-top: 1px solid var(--line); }
+  .adv:first-of-type { border-top: 0; padding-top: 0; }
+  .adv:last-of-type { padding-bottom: 0; }
+  .adv .w { font-size: 17px; font-weight: 700; letter-spacing: 0; display: flex; align-items: center; gap: 4px; }
+  .adv .w .wt { white-space: nowrap; }
+  .adv .m { font-size: 15px; color: var(--sub); margin-top: 2px; }
+  .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
+             padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
+  .adv .ex b { color: var(--blue); font-weight: 700; }
+  .adv .ex-ko { font-size: 13px; color: var(--muted); margin-top: 4px; padding: 0 2px; }
+  /* 단어 발음 버튼 */
+  .wbtn { flex: none; width: 28px; height: 28px; border: 0; border-radius: 8px; background: transparent;
+          color: var(--muted); cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .wbtn:hover { color: var(--blue); }
+  .wbtn.playing { color: var(--blue); }
+  .wbtn svg { width: 16px; height: 16px; }
+  .warn { display: block; color: var(--coral); font-weight: 600; }
+  .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
+  .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
+          font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
+          display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+  .tool.main { background: var(--blue-soft); color: var(--blue); }
+  .tool.on { background: var(--blue); color: #fff; }
+  .tool:active { transform: scale(.97); }
+  .tool svg { width: 16px; height: 16px; flex: none; }
+  .h2row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 2px 0 16px; }
+  .h2row h2 { margin: 0; }
+  .howto { flex: none; height: 32px; padding: 0 12px; border: 0; border-radius: 10px; background: var(--blue-soft); color: var(--blue);
+           font: 700 13px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .tour-spot { position: fixed; z-index: 50; border-radius: 14px; box-shadow: 0 0 0 9999px rgba(25,31,40,.62);
+               transition: top .25s, left .25s, width .25s, height .25s; pointer-events: none; }
+  .tour-tip { position: fixed; z-index: 51; left: 12px; right: 12px; max-width: 420px; margin: 0 auto; background: #fff; border-radius: 18px;
+              padding: 18px 18px 14px; box-shadow: 0 12px 32px rgba(0,0,0,.18); }
+  .tour-tip .n { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--blue); }
+  .tour-tip .n span { color: var(--muted); font-weight: 600; }
+  .tour-tip h3 { font-size: 17px; font-weight: 800; margin: 4px 0 6px; letter-spacing: -0.02em; }
+  .tour-tip p { font-size: 15px; line-height: 1.6; color: var(--sub); margin: 0; }
+  .tour-tip p b { color: var(--ink); }
+  .tour-flow { margin: 2px 0 12px; padding: 0 0 0 20px; display: grid; gap: 4px; }
+  .tour-flow li::marker { color: var(--blue); font-weight: 700; }
+  .tour-tip .act { display: flex; gap: 8px; margin-top: 14px; }
+  .tour-tip button { height: 42px; border: 0; border-radius: 12px; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .tour-tip .skip { background: none; color: var(--muted); padding: 0 6px; margin-right: auto; }
+  .tour-tip .prev { background: var(--bg); color: var(--sub); padding: 0 16px; }
+  .tour-tip .next { background: var(--blue); color: #fff; padding: 0 20px; }
+  .tour-block { position: fixed; inset: 0; z-index: 49; }
+  .tool[aria-pressed="true"] { background: var(--blue); color: #fff; }
+  #passage .say { flex: 1; min-width: 0; }
+  #passage .ko { font-size: 14px; line-height: 1.55; color: var(--sub); margin-top: 3px; }
+  [hidden] { display: none !important; }
+  @media (max-width: 420px) { #passage .tools { flex-wrap: wrap; } #passage .tools .tool { flex: 1 1 calc(50% - 4px); max-width: calc(50% - 4px); } }
+  body.nofuri rt { visibility: hidden; }
+  .hint { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+  #passage .no { border: 0; padding: 0; cursor: pointer; font-family: inherit; }
+  #passage .sent.playing .no { background: var(--blue); color: #fff; }
+  #passage .sent.playing .en { color: var(--blue-press); }
+  .mine { margin-top: 24px; }
+  .mine label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .mine textarea { display: block; width: 100%; min-height: 168px; resize: vertical; border: 1.5px solid transparent;
+                   border-radius: 14px; background: var(--bg); color: var(--ink); padding: 14px 16px;
+                   font: 400 16px/1.7 Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; outline: 0; }
+  .mine textarea:focus { border-color: var(--blue); background: #fff; }
+  .mine textarea::placeholder { color: var(--muted); }
+  .mine .tool { width: 100%; margin-top: 8px; flex: none; }
+  .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
+  .top { position: relative; }
+  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { padding-bottom: 32px; }
+  .sub { scroll-margin-top: 84px; }
+  .sub h2 { margin-bottom: 4px; }
+  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }
+  .sub form { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sub input[type='email'] { flex: 1 1 auto; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg); padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }
+  .sub input[type='email']:focus { border-color: var(--blue); background: #fff; }
+  .sub button[type='submit'] { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .sub .note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+  .sub .levels { flex-basis: 100%; display: flex; flex-direction: column; gap: 8px; margin: 0; border: 0; padding: 0; }
+  .sub .levels legend { font-size: 14px; font-weight: 600; margin: 0 0 8px; padding: 0; }
+  .sub .lvopt { display: flex; flex-direction: column; gap: 3px; border: 1.5px solid #e2e6ea; border-radius: 10px; padding: 12px 14px; cursor: pointer; text-align: left; background: #f4f6f8; position: relative; width: 100%; box-sizing: border-box; }
+  .sub .lvopt input[type='radio'] { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .sub .lvopt:has(input:checked),.sub .lvopt[data-checked] { background: #eff3fd; border-color: #2a52d4; }
+  .sub .lvopt .lv-t { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+  .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }
+  .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }
+  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none; display: flex; align-items: center; justify-content: center; color: transparent; }
+  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }
+  .sub .level-note { flex-basis: 100%; display: none; }
+  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
+  .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
+  .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
+  .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
+  .gnb nav { display: flex; gap: 4px; }
+  .gnb nav a { font-size: 14px; font-weight: 600; color: var(--sub); text-decoration: none; padding: 8px 12px; border-radius: 10px; }
+  .gnb nav a:hover { background: var(--bg); }
+  .gnb nav a.cta { color: var(--blue); background: var(--blue-soft); }
+  .gnb nav a.cta:hover { background: #d6e8ff; }
+  .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+  .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en { display: none; }
+  body.chunked #passage .say > .ko { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
+  /* 수준별 콘텐츠: 기초(.en-a/.ko-a/.chunks-a)는 기본 숨김, 중급(.en/.ko/.chunks)은 기본 표시 */
+  .en-a, .ko-a, .chunks-a { display: none; }
+  .chips-a { display: none; flex-wrap: wrap; gap: 6px; }
+  html.level-a .chips { display: none; }
+  html.level-a .chips-a { display: flex; }
+  html.level-a .en-a { display: block; }
+  html.level-a #passage .say > .en { display: none; }
+  html.level-a .ko-a:not([hidden]) { display: block; }
+  html.level-a #passage .ko { display: none !important; }
+  html.level-a .badge { display: none; }
+  html.level-a .chunks { display: none !important; }
+  html.level-a body.chunked .chunks-a { display: flex; }
+  html.level-a body.chunked #passage .say:has(> .ko-a:not([hidden])) .chunks-a .ck .k { display: block; }
+  .level-link { margin: 8px 0 0; font-size: 13px; text-align: right; }
+  .level-link a { color: var(--sub); }
+  /* ── 플레이어 바 ─────────────────────── */
+  .pbar { position: fixed; left: 0; right: 0; margin: 0 auto; width: calc(100% - 24px); max-width: 536px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 30; display: none; align-items: center; gap: 10px; background: rgba(255,255,255,.97); border-radius: 18px; padding: 10px 10px 10px 12px; box-shadow: 0 6px 24px rgba(16,24,40,.14); }
+  .pbar.vis { display: flex; }
+  .pbar .pp { flex: none; width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--blue); color: #fff; cursor: pointer; display: grid; place-items: center; }
+  .pbar .pp svg { width: 18px; height: 18px; }
+  .pbar .mid { flex: 1; min-width: 0; }
+  .pbar .t { font-size: 13px; font-weight: 700; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pbar .prog { height: 4px; border-radius: 2px; background: var(--bg); margin-top: 6px; overflow: hidden; }
+  .pbar .prog i { display: block; height: 100%; width: 0; background: var(--blue); border-radius: 2px; transition: width .25s linear; }
+  .pbar .sp { flex: none; height: 36px; padding: 0 12px; border-radius: 10px; border: 0; background: var(--blue-soft); color: var(--blue); font: 800 14px Pretendard, sans-serif; cursor: pointer; }
+  .pbar-close { flex: none; width: 28px; height: 28px; border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 18px; display: grid; place-items: center; padding: 0; line-height: 1; }
+  body.pbar-vis main { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+</style>
+<script>try{var _ql=new URLSearchParams(location.search).get('level');if(!_ql)_ql=localStorage.getItem('read_level');if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
+     crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
+</head>
+<body>
+<main>
+  <header class="gnb">
+    <a class="brand" href="/">매일 외국어 읽기</a>
+    <nav aria-label="사이트 메뉴"><a href="../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
+  </header>
+  <div class="top">
+    <img class="thumb" src="thumb.png" width="76" height="76" alt="">
+    <div class="date">10월 26일 월요일</div>
+    <h1>오늘은 <em>박물관 서랍에서 백 년을 기다린 새 공룡</em> 이야기예요</h1>
+    <p class="headline" lang="en">A New Dinosaur from an Old Museum Drawer</p>
+    <div class="chips">
+      <span class="chip blue">6문장</span>
+      <span class="chip">B1 위주</span>
+      <span class="chip">B2 2문장</span>
+      <span class="chip">약 3분</span>
+    </div>
+    <div class="chips chips-a">
+      <span class="chip blue">6문장</span>
+      <span class="chip easy">기초 A2~B1</span>
+      <span class="chip">약 2분</span>
+    </div>
+<p class="level-link" id="level-link"><a href="?level=a" id="to-level-a">기초로 보기</a><a href="?level=b" id="to-level-b" hidden>중급으로 보기</a></p>
+    <p class="intro">매일 아침 새로 올라오는 B1~B2 영어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요. <a href="#subscribe">메일로 받기</a><a href="../../">다른 언어</a></p>
+  </div>
+
+  <section class="card" id="passage">
+    <div class="step">STEP 1</div>
+    <div class="h2row"><h2>오늘의 지문</h2><button class="howto" id="howto" type="button">학습 방법</button></div>
+    <div class="tools">
+      <button class="tool main" id="play" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span></button>
+      <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
+      <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
+    </div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">A <b>fossil</b> that sat in a museum <b>drawer</b> for more than a hundred years has turned out to be a new kind of dinosaur.</div><div class="chunks"><span class="ck"><span class="e">A <b>fossil</b><span class="s">/</span></span><span class="k">화석 하나가</span></span><span class="ck"><span class="e">that sat in a museum <b>drawer</b><span class="s">/</span></span><span class="k">박물관 서랍 속에 있던</span></span><span class="ck"><span class="e">for more than a hundred years<span class="s">/</span></span><span class="k">백 년 넘게</span></span><span class="ck"><span class="e">has turned out to be<span class="s">/</span></span><span class="k">~인 것으로 밝혀졌다</span></span><span class="ck"><span class="e">a new kind of dinosaur.</span><span class="k">새로운 종류의 공룡</span></span></div><div class="ko" hidden>박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.</div><div class="en-a">A <b>fossil</b> sat in a museum <b>drawer</b> for over a hundred years.</div><div class="chunks-a"><span class="ck"><span class="e">A <b>fossil</b><span class="s">/</span></span><span class="k">화석 하나가</span></span><span class="ck"><span class="e">sat in a museum <b>drawer</b><span class="s">/</span></span><span class="k">박물관 서랍 속에 있었다</span></span><span class="ck"><span class="e">for over a hundred years.</span><span class="k">백 년 넘게</span></span></div><div class="ko-a" hidden>화석 하나가 백 년 넘게 박물관 서랍 속에 있었다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">The bones were first found on a beach on the Isle of Wight in southern England, and were later kept at a museum in London.</div><div class="chunks"><span class="ck"><span class="e">The bones were first found<span class="s">/</span></span><span class="k">그 뼈는 처음 발견되었다</span></span><span class="ck"><span class="e">on a beach<span class="s">/</span></span><span class="k">한 해변에서</span></span><span class="ck"><span class="e">on the Isle of Wight<span class="s">/</span></span><span class="k">와이트섬의</span></span><span class="ck"><span class="e">in southern England,<span class="s">/</span></span><span class="k">잉글랜드 남부에 있는</span></span><span class="ck"><span class="e">and were later kept<span class="s">/</span></span><span class="k">그리고 나중에 보관되었다</span></span><span class="ck"><span class="e">at a museum in London.</span><span class="k">런던의 한 박물관에</span></span></div><div class="ko" hidden>그 뼈는 처음에 잉글랜드 남부 와이트섬의 한 해변에서 발견되었고, 나중에 런던의 한 박물관에 보관되었다.</div><div class="en-a">People found the bones on a beach on the Isle of Wight in England.</div><div class="chunks-a"><span class="ck"><span class="e">People found the bones<span class="s">/</span></span><span class="k">사람들이 그 뼈를 발견했다</span></span><span class="ck"><span class="e">on a beach<span class="s">/</span></span><span class="k">한 해변에서</span></span><span class="ck"><span class="e">on the Isle of Wight<span class="s">/</span></span><span class="k">와이트섬의</span></span><span class="ck"><span class="e">in England.</span><span class="k">잉글랜드에 있는</span></span></div><div class="ko-a" hidden>사람들은 잉글랜드에 있는 와이트섬의 한 해변에서 그 뼈를 발견했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">About six years ago, part of the <b>skull</b> was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">About six years ago,<span class="s">/</span></span><span class="k">약 6년 전,</span></span><span class="ck"><span class="e">part of the <b>skull</b><span class="s">/</span></span><span class="k">두개골의 일부가</span></span><span class="ck"><span class="e">was noticed again<span class="s">/</span></span><span class="k">다시 눈에 띄었다</span></span><span class="ck"><span class="e">by a scientist at the museum,<span class="s">/</span></span><span class="k">그 박물관의 한 과학자에게</span></span><span class="ck"><span class="e">who thought it looked unusual<span class="s">/</span></span><span class="k">그는 그것이 특이해 보인다고 생각했고</span></span><span class="ck"><span class="e">and asked other researchers<span class="s">/</span></span><span class="k">다른 연구자들에게 부탁했다</span></span><span class="ck"><span class="e">to study it more closely.</span><span class="k">그것을 더 자세히 연구해 달라고</span></span></div><div class="ko" hidden>약 6년 전, 그 박물관의 한 과학자가 두개골 일부를 다시 눈여겨보았는데, 그는 그것이 특이해 보인다고 생각해 다른 연구자들에게 더 자세히 연구해 달라고 부탁했다.</div><div class="en-a">About six years ago, a scientist in London looked at the <b>skull</b> again.</div><div class="chunks-a"><span class="ck"><span class="e">About six years ago,<span class="s">/</span></span><span class="k">약 6년 전,</span></span><span class="ck"><span class="e">a scientist in London<span class="s">/</span></span><span class="k">런던의 한 과학자가</span></span><span class="ck"><span class="e">looked at the <b>skull</b> again.</span><span class="k">그 두개골을 다시 보았다</span></span></div><div class="ko-a" hidden>약 6년 전, 런던의 한 과학자가 그 두개골을 다시 살펴보았다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">The team found that the animal lived about one hundred twenty million years ago and <b>belonged to</b> a group of hunters with very large <b>claws</b> on their hands.</div><div class="chunks"><span class="ck"><span class="e">The team found<span class="s">/</span></span><span class="k">연구팀은 알아냈다</span></span><span class="ck"><span class="e">that the animal lived<span class="s">/</span></span><span class="k">그 동물이 살았다는 것을</span></span><span class="ck"><span class="e">about one hundred twenty million years ago<span class="s">/</span></span><span class="k">약 1억 2천만 년 전에</span></span><span class="ck"><span class="e">and <b>belonged to</b> a group of hunters<span class="s">/</span></span><span class="k">그리고 사냥꾼 무리에 속했다는 것을</span></span><span class="ck"><span class="e">with very large <b>claws</b><span class="s">/</span></span><span class="k">아주 큰 발톱을 가진</span></span><span class="ck"><span class="e">on their hands.</span><span class="k">손에</span></span></div><div class="ko" hidden>연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.</div><div class="en-a">The animal lived about one hundred twenty million years ago and had big <b>claws</b>.</div><div class="chunks-a"><span class="ck"><span class="e">The animal lived<span class="s">/</span></span><span class="k">그 동물은 살았다</span></span><span class="ck"><span class="e">about one hundred twenty million years ago<span class="s">/</span></span><span class="k">약 1억 2천만 년 전에</span></span><span class="ck"><span class="e">and had big <b>claws</b>.</span><span class="k">그리고 큰 발톱이 있었다</span></span></div><div class="ko-a" hidden>그 동물은 약 1억 2천만 년 전에 살았고, 큰 발톱을 가지고 있었다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Until now, dinosaurs from this group had been found <b>mainly</b> in South America, Asia and Australia, so this is the first one ever <b>identified</b> in Europe.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Until now,<span class="s">/</span></span><span class="k">지금까지</span></span><span class="ck"><span class="e">dinosaurs from this group<span class="s">/</span></span><span class="k">이 무리의 공룡들은</span></span><span class="ck"><span class="e">had been found <b>mainly</b><span class="s">/</span></span><span class="k">주로 발견되어 왔다</span></span><span class="ck"><span class="e">in South America, Asia and Australia,<span class="s">/</span></span><span class="k">남아메리카, 아시아, 호주에서</span></span><span class="ck"><span class="e">so this is the first one<span class="s">/</span></span><span class="k">그래서 이것이 첫 번째 공룡이다</span></span><span class="ck"><span class="e">ever <b>identified</b> in Europe.</span><span class="k">유럽에서 확인된 것으로는</span></span></div><div class="ko" hidden>지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.</div><div class="en-a">It is the first dinosaur of its kind in Europe.</div><div class="chunks-a"><span class="ck"><span class="e">It is the first dinosaur<span class="s">/</span></span><span class="k">그것은 첫 번째 공룡이다</span></span><span class="ck"><span class="e">of its kind<span class="s">/</span></span><span class="k">그런 종류로는</span></span><span class="ck"><span class="e">in Europe.</span><span class="k">유럽에서</span></span></div><div class="ko-a" hidden>그것은 유럽에서 처음 발견된 그런 종류의 공룡이다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">At about five meters long, it is also the smallest member of the group that scientists know of.</div><div class="chunks"><span class="ck"><span class="e">At about five meters long,<span class="s">/</span></span><span class="k">약 5미터 길이로</span></span><span class="ck"><span class="e">it is also the smallest member<span class="s">/</span></span><span class="k">그것은 또한 가장 작은 구성원이다</span></span><span class="ck"><span class="e">of the group<span class="s">/</span></span><span class="k">그 무리에서</span></span><span class="ck"><span class="e">that scientists know of.</span><span class="k">과학자들이 아는</span></span></div><div class="ko" hidden>몸길이가 약 5미터인 이 공룡은 과학자들이 아는 그 무리의 구성원 중 가장 작기도 하다.</div><div class="en-a">It was about five meters long.</div><div class="chunks-a"><span class="ck"><span class="e">It was about five meters long.</span><span class="k">그것은 길이가 약 5미터였다</span></span></div><div class="ko-a" hidden>그것은 길이가 약 5미터였다.</div></div></div>
+    <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
+    <p class="src">출처: <a href="https://www.ucl.ac.uk/news/2026/oct/analysis-new-long-clawed-british-dinosaur-first-its-kind-europe" target="_blank" rel="noopener">Analysis: New long-clawed British dinosaur is the first of its kind in Europe (UCL News, 2026-10-20)</a></p>
+    <div class="mine">
+      <label for="mine">내 해석</label>
+      <textarea id="mine" placeholder="1. &#10;2. &#10;3. &#10;4. &#10;5. &#10;6. " spellcheck="false"></textarea>
+      <button class="tool main" id="copymine" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>AI 피드백 요청문 복사</span></button>
+      <p class="mine-hint">지문, 내 해석, 피드백 요청이 함께 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장별로 고쳐 줘요.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="step" id="step-words">STEP 2</div>
+    <h2>주요 단어</h2>
+    <div class="word"><span class="wl"><span class="w">fossil</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="fossil" aria-label="fossil 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">화석</span></div>
+    <div class="word"><span class="wl"><span class="w">drawer</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="drawer" aria-label="drawer 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">서랍</span></div>
+    <div class="word"><span class="wl"><span class="w">skull</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="skull" aria-label="skull 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">두개골</span></div>
+    <div class="word"><span class="wl"><span class="w">belong to</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="belong to" aria-label="belong to 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">~에 속하다</span></div>
+    <div class="word"><span class="wl"><span class="w">claws</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="claws" aria-label="claws 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">(동물의) 발톱들 (claw의 복수)</span></div>
+    <div class="word"><span class="wl"><span class="w">mainly</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="mainly" aria-label="mainly 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">주로</span></div>
+    <div class="word"><span class="wl"><span class="w">identified</span><button class="wbtn" type="button" data-kind="w" data-i="6" data-word="identified" aria-label="identified 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">확인된, 밝혀진 (identify의 과거분사)</span></div>
+  </section>
+
+  <section class="card">
+    <div class="step" id="step-points">STEP 3</div>
+    <h2>오늘의 체크 포인트</h2>
+    <div class="point">
+      <strong>큰 숫자: million을 그림으로</strong>
+      <p><code>about one hundred twenty million years ago</code>는 '약 1억 2천만 년 전'이에요. one hundred twenty(120) × million(백만) = 1억 2천만. million 앞의 숫자를 먼저 묶어서 읽고, 그다음에 단위를 붙여 보세요. <code>more than a hundred years</code>(백 년 넘게)와 <code>five meters</code>도 같은 문장 끝에 나오는 수량이에요.</p>
+    </div>
+    <div class="point">
+      <strong>수동태 뒤 by: 누가 했는지</strong>
+      <p>3번 문장의 <code>was noticed again by a scientist at the museum</code>은 '그 박물관의 한 과학자에게 다시 눈에 띄었다'예요. by 뒤가 실제로 알아본 사람이고, 이어지는 <code>who ...</code>는 그 과학자가 한 일을 설명해요.</p>
+    </div>
+  </section>
+
+  <section class="card guide">
+    <div class="step">STEP 4</div>
+    <h2>먼저 해석해보세요</h2>
+    <p>모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 보세요. 다 쓰면 'AI 피드백 요청문 복사'를 눌러 평소 쓰는 AI 채팅(ChatGPT, Claude 등)에 붙여넣으세요. 어디를 잘 읽었고 어디를 놓쳤는지 문장별로 알려 줘요.</p>
+  </section>
+
+
+  <details class="card">
+    <summary>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항, 눈에 익혀두는 용도예요</span></span>
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+    </summary>
+    <div class="body">
+      <div class="adv"><div class="w"><span class="wt">specimen</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="specimen" aria-label="specimen 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">표본, 견본<span class="warn">species(종)와 혼동 주의</span></div>
+        <div class="ex">The <b>specimen</b> sat in a museum drawer for more than a hundred years.</div>
+        <div class="ex-ko">그 표본은 백 년 넘게 박물관 서랍 속에 있었습니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt">overlook</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="overlook" aria-label="overlook 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">간과하다, 못 보고 지나치다<span class="warn">oversee(감독하다)와 혼동 주의</span></div>
+        <div class="ex">The fossil was <b>overlooked</b> for decades before anyone studied it closely.</div>
+        <div class="ex-ko">그 화석은 누군가 자세히 연구하기 전까지 수십 년 동안 간과되었습니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt">predator</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="predator" aria-label="predator 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">포식자<span class="warn">predecessor(전임자, 이전 것)와 혼동 주의</span></div>
+        <div class="ex">This <b>predator</b> had very large claws on its hands.</div>
+        <div class="ex-ko">이 포식자는 손에 아주 큰 발톱을 가지고 있었습니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt">distinctive</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="distinctive" aria-label="distinctive 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">독특한, 특징적인<span class="warn">distinct(뚜렷한, 별개의)와 혼동 주의</span></div>
+        <div class="ex">The skull had a <b>distinctive</b> shape that caught a scientist's eye.</div>
+        <div class="ex-ko">그 두개골에는 한 과학자의 눈길을 끈 독특한 모양이 있었습니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt">classify</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="classify" aria-label="classify 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">분류하다</div>
+        <div class="ex">Researchers <b>classified</b> the animal as a member of a group of long-clawed hunters.</div>
+        <div class="ex-ko">연구자들은 그 동물을 긴 발톱을 가진 사냥꾼 무리의 일원으로 분류했습니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt">predominantly</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="predominantly" aria-label="predominantly 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">대부분, 주로</div>
+        <div class="ex">Dinosaurs from this group have been found <b>predominantly</b> in South America.</div>
+        <div class="ex-ko">이 무리의 공룡들은 대부분 남아메리카에서 발견되어 왔습니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt">unprecedented</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="unprecedented" aria-label="unprecedented 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">전례 없는</div>
+        <div class="ex">Finding one of these dinosaurs in Europe is <b>unprecedented</b>.</div>
+        <div class="ex-ko">유럽에서 이런 공룡을 발견한 것은 전례 없는 일입니다.</div></div>
+    </div>
+  </details>
+  <div class="pbar" id="pbar">
+    <button class="pp" id="pbar-pp" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg></button>
+    <div class="mid"><div class="t" id="pbar-label">전체 듣기</div><div class="prog"><i id="pbar-prog"></i></div></div>
+    <button class="sp" id="pbar-sp" type="button">1.0x</button>
+    <button class="pbar-close" id="pbar-close" type="button" aria-label="닫기">&#x2715;</button>
+  </div>
+  <section class="card sub" id="subscribe" data-v="2">
+    <h2>매일 아침 영어 지문 받기</h2>
+    <p>새 영어 지문이 올라오면 아침에 메일로 보내 드려요.</p>
+    <form action="https://buttondown.com/api/emails/embed-subscribe/english-reading" method="post" target="_blank">
+      <input type="hidden" name="metadata__lang" value="en">
+      <fieldset class="levels">
+        <legend>수준을 골라 주세요</legend>
+        <label class="lvopt">
+          <input type="radio" name="metadata__level" value="a">
+          <span class="lv-t">기초 <span class="lv-chk">&#10003;</span></span>
+          <span class="lv-r">A2~B1</span>
+          <span class="lv-d">짧고 쉬운 문장. 영어 읽기를 다시 시작한다면</span>
+        </label>
+        <label class="lvopt">
+          <input type="radio" name="metadata__level" value="b" checked>
+          <span class="lv-t">중급 <span class="lv-chk">&#10003;</span></span>
+          <span class="lv-r">B1~B2</span>
+          <span class="lv-d">뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면</span>
+        </label>
+      </fieldset>
+      <p class="note level-note">기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.</p>
+      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">
+      <button type="submit">구독하기</button>
+    </form>
+    <p class="note">지금은 이메일 주소 하나로 한 언어만 구독할 수 있어요. 두 언어를 받으려면 서로 다른 이메일로 구독해 주세요.</p>
+    <p class="note">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>
+    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>
+    <script>(function(){
+      var sec=document.getElementById("subscribe");
+      if(!sec)return;
+      var f=sec.querySelector("form");
+      // GA subscribe event (영어는 level 포함, 다른 언어는 생략)
+      if(f)f.addEventListener("submit",function(){
+        var cl=f.querySelector('input[name="metadata__level"]:checked');
+        try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"en",level:cl?cl.value:"b"});}catch(e){}
+      });
+      // :has() 미지원 브라우저 fallback — data-checked / data-show 속성으로 CSS 를 보조한다
+      var opts=sec.querySelectorAll(".lvopt");
+      var note=sec.querySelector(".level-note");
+      if(opts.length){var update=function(){
+        opts.forEach(function(o){
+          var r=o.querySelector("input[type=\"radio\"]");
+          if(r&&r.checked){o.setAttribute("data-checked","");}else{o.removeAttribute("data-checked");}
+        });
+        if(note){
+          var a=sec.querySelector("input[name=\"metadata__level\"][value=\"a\"]:checked");
+          if(a){note.setAttribute("data-show","");}else{note.removeAttribute("data-show");}
+        }
+      };update();
+      opts.forEach(function(o){var r=o.querySelector("input[type=\"radio\"]");if(r)r.addEventListener("change",update);});
+      }
+    })();</script>
+  </section>
+</main>
+<footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a><a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a><a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>
+
+
+
+<script>
+  // 해석: 버튼은 전체를 열고 닫고, 문장을 누르면(클릭하면) 그 문장 해석만 열고 닫는다.
+  var koBtn = document.getElementById('kobtn');
+  var kos = [].slice.call(document.querySelectorAll('#passage .ko'));
+  var kosA = [].slice.call(document.querySelectorAll('#passage .ko-a'));
+  koBtn.addEventListener('click', function () {
+    var on = koBtn.getAttribute('aria-pressed') !== 'true';
+    koBtn.setAttribute('aria-pressed', String(on));
+    // 현재 수준에 맞는 해석 요소만 토글
+    if (isLevelA() && kosA.length) {
+      kosA.forEach(function (k) { k.hidden = !on; });
+    } else {
+      kos.forEach(function (k) { k.hidden = !on; });
+    }
+    gaEvent('ko_toggle', { on: on, lang: _gaLang, day: _gaDay });
+  });
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks, #passage .say .en-a, #passage .say .chunks-a'), function (en) {
+    en.style.cursor = 'pointer';
+    en.addEventListener('click', function () {
+      if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
+      // 기초 수준이면 .ko-a, 중급이면 .ko 를 토글
+      var kSel = (isLevelA() && en.parentNode.querySelector('.ko-a')) ? '.ko-a' : '.ko';
+      var k = en.parentNode.querySelector(kSel); if (k) k.hidden = !k.hidden;
+    });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
+  });
+
+  var _gaPlayed = false;
+  var _gaLang = location.pathname.split('/')[1] || '';
+  var _gaDay = location.pathname.split('/')[2] || '';
+  function gaEvent(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params);
+  }
+
+  // 학습 방법: 화면의 각 기능을 차례로 비추며 설명한다
+  (function () {
+    var FLOW = '<ol class="tour-flow"><li><b>듣기</b> 전체 듣기로 한 번 들어요</li><li><b>내 해석</b> 해석을 보기 전에 내 말로 적어요</li>'
+      + '<li><b>AI 피드백</b> 내 해석을 AI에게 첨삭받아요</li><li><b>맞춰 보기</b> 그다음에 해석을 켜서 비교해요</li><li><b>다시 듣기</b> 한 번 더 들으며 마무리해요</li></ol>'
+      + '해석을 바로 보면 읽는 힘이 잘 늘지 않아요. 막혀도 끝까지 내 말로 적어 본 뒤 맞춰 보는 게 핵심이에요.';
+    var steps = [
+      [null, '이렇게 공부해요', FLOW],
+      ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 재생이 시작되면 화면 아래 바의 속도 버튼을 눌러 0.6x~1.0x로 천천히 들을 수 있어요.'],
+      ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
+      ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
+      ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
+      ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. ChatGPT나 Claude 같은 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],
+      ['#passage .sent .en', '그다음에 해석과 맞춰 보세요', '피드백을 받은 뒤에 문장을 눌러 그 문장 해석과 비교해요. 위의 해석 보기를 누르면 모든 문장 해석이 한 번에 열려요.'],
+      ['#step-words', '주요 단어', '지문에서 형광펜으로 표시한 단어의 뜻이에요. 지문으로 돌아가 단어가 쓰인 문장을 다시 읽어 보세요.'],
+      ['#step-points', '체크 포인트', '헷갈리기 쉬운 문장 구조와 해석 요령이에요. AI 피드백에서 틀린 부분이 있었다면 여기서 이유를 한 번 더 확인하세요.'],
+      ['#play', '다시 들으며 마무리', '마지막으로 전체 듣기를 한 번 더 들어 보세요. 처음엔 안 들리던 문장이 들리면 오늘 공부는 성공이에요.'],
+      ['#subscribe', '메일로 받기', '매일 아침 새 지문을 메일로 받아 보세요. 출근길 5분이면 충분해요.']
+    ].filter(function (x) { return x && (x[0] === null || document.querySelector(x[0])); });
+    var i = 0, spot, tip, block;
+    function rectOf(sel) {
+      if (sel === null) return null;
+      var el = document.querySelector(sel);
+      if (sel.indexOf('#step-') === 0) el = el.parentNode;  // STEP 카드 전체를 비춘다
+      return el;
+    }
+    function place() {
+      if (!spot || !steps[i]) return;  // 닫힌 뒤 늦게 도는 위치 계산은 무시
+      var el = rectOf(steps[i][0]), pad = 6;
+      if (!el) {  // 안내만 하는 단계: 화면 전체를 어둡게 하고 카드를 가운데에
+        spot.style.top = '50%'; spot.style.left = '50%'; spot.style.width = '0'; spot.style.height = '0';
+        tip.style.top = Math.max(8, (innerHeight - tip.offsetHeight) / 2) + 'px'; return;
+      }
+      var r = el.getBoundingClientRect();
+      var gnbBot = (document.querySelector('.gnb') || {getBoundingClientRect: function(){return{bottom:80};}}).getBoundingClientRect().bottom;
+      var pbarElP = document.getElementById('pbar');
+      var pbarTopP = (pbarElP && pbarElP.classList.contains('vis')) ? pbarElP.getBoundingClientRect().top : innerHeight;
+      // Clip spot to visible area (between header and pbar)
+      var spotTop = Math.max(r.top - pad, gnbBot);
+      var spotBot = Math.min(r.bottom + pad, pbarTopP);
+      if (spotBot <= spotTop) { spotTop = r.top - pad; spotBot = r.bottom + pad; }
+      spot.style.top = spotTop + 'px'; spot.style.left = (r.left - pad) + 'px';
+      spot.style.width = (r.width + pad * 2) + 'px'; spot.style.height = (spotBot - spotTop) + 'px';
+      var below = r.bottom + 14, th = tip.offsetHeight;
+      var tipMax = pbarTopP - th - 8;
+      tip.style.top = (below + th < pbarTopP - 8 ? below : Math.max(8, Math.min(tipMax, r.top - th - 14))) + 'px';
+    }
+    function show() {
+      var s = steps[i], el = rectOf(s[0]);
+      var STAGE = { '먼저 들어 보세요': 1, '해석을 보기 전에 적어 보세요': 2, 'AI 피드백이란?': 3, '그다음에 해석과 맞춰 보세요': 4, '다시 들으며 마무리': 5 };
+      tip.querySelector('.n').innerHTML = (i === 0 ? '학습 방법' : STAGE[s[1]] ? '학습 순서 ' + STAGE[s[1]] + '단계' : '함께 쓰는 기능')
+        + (i === 0 ? '' : '<span>' + i + ' / ' + (steps.length - 1) + '</span>');
+      tip.querySelector('h3').textContent = s[1];
+      tip.querySelector('p').innerHTML = s[2];
+      tip.querySelector('.prev').hidden = i === 0;
+      tip.querySelector('.next').textContent = i === steps.length - 1 ? '시작하기' : '다음';
+      if (el) {
+        var gnbH = (document.querySelector('.gnb') || {getBoundingClientRect: function(){return{bottom:80};}}).getBoundingClientRect().bottom;
+        var pbarEl = document.getElementById('pbar');
+        var pbarH = (pbarEl && pbarEl.classList.contains('vis')) ? (innerHeight - pbarEl.getBoundingClientRect().top) : 0;
+        var r = el.getBoundingClientRect();
+        var usableH = innerHeight - gnbH - pbarH, pad2 = 8;
+        var tall = r.height > usableH * 0.5;
+        var targetY = tall
+          ? pageYOffset + r.top - gnbH - pad2
+          : pageYOffset + (r.top + r.height / 2) - (gnbH + usableH / 2);
+        window.scrollTo({ top: Math.max(0, targetY) });
+      }
+      setTimeout(place, 80); place();
+    }
+    function end() {
+      [spot, tip, block].forEach(function (x) { x && x.remove(); });
+      spot = tip = block = null;
+      removeEventListener('resize', place); removeEventListener('scroll', place);
+      document.removeEventListener('keydown', key);
+    }
+    function key(e) { if (e.key === 'Escape') end(); if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); }
+    function go(d) { i += d; if (i >= steps.length) return end(); if (i < 0) i = 0; show(); }
+    document.getElementById('howto').addEventListener('click', function () {
+      if (spot) return;
+      i = 0;
+      block = document.createElement('div'); block.className = 'tour-block';
+      spot = document.createElement('div'); spot.className = 'tour-spot';
+      tip = document.createElement('div'); tip.className = 'tour-tip'; tip.setAttribute('role', 'dialog');
+      tip.innerHTML = '<div class="n"></div><h3></h3><p></p><div class="act"><button class="skip" type="button">그만 보기</button>'
+        + '<button class="prev" type="button">이전</button><button class="next" type="button">다음</button></div>';
+      document.body.append(block, spot, tip);
+      tip.querySelector('.skip').onclick = end;
+      tip.querySelector('.prev').onclick = function () { go(-1); };
+      tip.querySelector('.next').onclick = function () { go(1); };
+      block.onclick = function () { go(1); };
+      addEventListener('resize', place); addEventListener('scroll', place, { passive: true });
+      document.addEventListener('keydown', key);
+      show();
+      gaEvent('howto_open', { lang: _gaLang, day: _gaDay });
+    });
+  })();
+
+  var AUDIO = ["audio/s1.mp3", "audio/s2.mp3", "audio/s3.mp3", "audio/s4.mp3", "audio/s5.mp3", "audio/s6.mp3"];
+  var AUDIO_A = ["audio/a1.mp3", "audio/a2.mp3", "audio/a3.mp3", "audio/a4.mp3", "audio/a5.mp3", "audio/a6.mp3"];
+  var WORD_AUDIO = ["audio/w1.mp3", "audio/w2.mp3", "audio/w3.mp3", "audio/w4.mp3", "audio/w5.mp3", "audio/w6.mp3", "audio/w7.mp3"];
+  var ADV_AUDIO = ["audio/v1.mp3", "audio/v2.mp3", "audio/v3.mp3", "audio/v4.mp3", "audio/v5.mp3", "audio/v6.mp3", "audio/v7.mp3"];
+  // 수준 결정: URL ?level= → localStorage → 기본 중급(b)
+  // head 스크립트가 먼저 적용하므로 URL 파라미터가 있을 때만 갱신한다.
+  (function () {
+    try {
+      var lp = new URLSearchParams(location.search).get('level');
+      if (lp === 'a' || lp === 'b') {
+        document.documentElement.classList.toggle('level-a', lp === 'a');
+        localStorage.setItem('read_level', lp);
+      }
+    } catch (e) {}
+  })();
+  var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
+  var player = new Audio(), queue = [], rate = 1, token = 0;
+  var wordPlayer = new Audio(), curWbtn = null;
+  var canSpeak = 'speechSynthesis' in window;
+  var playBtn = document.getElementById('play'), copyBtn = document.getElementById('copy');
+  var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
+  function isLevelA() { return document.documentElement.classList.contains('level-a'); }
+  function sentenceText(r) {
+    // 기초 수준이면 .en-a, 중급이면 .en 에서 텍스트를 추출한다. 배지와 후리가나(rt, rp)를 제거.
+    var sel = (isLevelA() && r.querySelector('.en-a')) ? '.en-a' : '.en';
+    var c = r.querySelector(sel).cloneNode(true);
+    [].forEach.call(c.querySelectorAll('.badge, rt, rp'), function (x) { x.parentNode.removeChild(x); });
+    return c.textContent.trim();
+  }
+  function mark(i) { rows.forEach(function (r, k) { r.classList.toggle('playing', k === i); }); }
+  var _PBTN_PLAY = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span>';
+  var _PBTN_PAUSE = '<svg viewBox="0 0 20 20" fill="currentColor"><rect x="5" y="4" width="3.5" height="12" rx="1.5"/><rect x="11.5" y="4" width="3.5" height="12" rx="1.5"/></svg><span>멈추기</span>';
+  function playBtnSetPlaying(playing) {
+    playBtn.innerHTML = playing ? _PBTN_PAUSE : _PBTN_PLAY;
+    playBtn.classList.toggle('on', playing);
+  }
+  function stop() {
+    token++; player.pause(); if (canSpeak) speechSynthesis.cancel();
+    wordPlayer.pause(); wordPlayer.src = '';
+    if (curWbtn) { curWbtn.classList.remove('playing'); curWbtn = null; }
+    queue = []; mark(-1); playBtnSetPlaying(false);
+    if (typeof pbarSetPlaying === 'function') pbarSetPlaying(false);
+  }
+  var _playMode = ''; // 'full' | 'single' | 'word'
+  var _fullI = 0;    // current sentence index during full passage play
+  function next() {
+    if (!queue.length) { stop(); return; }
+    var i = queue.shift(), t = token; mark(i);
+    if (_playMode === 'full') { _fullI = i; pbarLabel.textContent = '전체 듣기 ' + (i + 1) + '/' + rows.length; }
+    if (!_gaPlayed) { _gaPlayed = true; gaEvent('audio_play', {lang: _gaLang, day: _gaDay}); }
+    function after() { if (t === token) setTimeout(function () { if (t === token) next(); }, queue.length ? 450 : 0); }
+    var audioSrc = isLevelA() ? (AUDIO_A[i] || null) : (AUDIO[i] || null);
+    if (audioSrc) {
+      player.onended = after; player.src = audioSrc;
+      player.playbackRate = rate; player.play().catch(function () { if (t === token) stop(); });
+    } else if (canSpeak) {
+      var u = new SpeechSynthesisUtterance(sentenceText(rows[i]));
+      u.lang = 'en-US'; u.rate = rate * 0.9; u.onend = after; u.onerror = after; speechSynthesis.speak(u);
+    } else stop();
+  }
+  playBtn.addEventListener('click', function () {
+    if (playBtn.classList.contains('on')) { stop(); return; }
+    stop(); _playMode = 'full'; _fullI = 0;
+    queue = rows.map(function (_, i) { return i; });
+    playBtnSetPlaying(true);
+    pbarShow('전체 듣기 1/' + rows.length); pbarSetPlaying(true); next();
+  });
+  rows.forEach(function (r, i) {
+    r.querySelector('.no').addEventListener('click', function () {
+      var same = r.classList.contains('playing'); stop();
+      if (!same) { _playMode = 'single'; queue = [i]; pbarShow((i + 1) + '번 문장 듣는 중'); pbarSetPlaying(true); next(); }
+    });
+  });
+  // ── 플레이어 바 ────────────────────────────────────────────────────────────
+  var SPEEDS = [1.0, 0.9, 0.8, 0.7, 0.6];
+  var rateIdx = (function () {
+    try { var s = parseFloat(localStorage.getItem('read_speed')); var i = SPEEDS.indexOf(s); return i >= 0 ? i : 0; } catch (e) { return 0; }
+  })();
+  rate = SPEEDS[rateIdx];
+  var pbar = document.getElementById('pbar');
+  var pbarPP = document.getElementById('pbar-pp');
+  var pbarLabel = document.getElementById('pbar-label');
+  var pbarProg = document.getElementById('pbar-prog');
+  var pbarSp = document.getElementById('pbar-sp');
+  var pbarClose = document.getElementById('pbar-close');
+  var ICON_PLAY = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 20 20" fill="currentColor"><rect x="5" y="4" width="3.5" height="12" rx="1.5"/><rect x="11.5" y="4" width="3.5" height="12" rx="1.5"/></svg>';
+  function pbarShow(label) {
+    pbarLabel.textContent = label;
+    pbar.classList.add('vis'); document.body.classList.add('pbar-vis');
+  }
+  function pbarSetPlaying(playing) {
+    pbarPP.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+  }
+  function pbarUpdateSpeed() { pbarSp.textContent = SPEEDS[rateIdx].toFixed(1) + 'x'; }
+  pbarUpdateSpeed();
+  player.addEventListener('timeupdate', function () {
+    var dur = player.duration;
+    if (!dur || isNaN(dur) || dur === 0) return;
+    var pct;
+    if (_playMode === 'full' && rows.length > 0) {
+      var perSent = 1 / rows.length;
+      pct = (_fullI / rows.length + (player.currentTime / dur) * perSent) * 100;
+    } else {
+      pct = player.currentTime / dur * 100;
+    }
+    pbarProg.style.width = Math.max(3, pct).toFixed(1) + '%';
+  });
+  player.addEventListener('ended', function () { pbarProg.style.width = '0%'; });
+  pbarPP.addEventListener('click', function () {
+    if (!player.paused) {
+      player.pause(); pbarSetPlaying(false); playBtnSetPlaying(false);
+    } else if (player.src) {
+      player.play().catch(function () {}); pbarSetPlaying(true); playBtnSetPlaying(true);
+    }
+  });
+  pbarSp.addEventListener('click', function () {
+    rateIdx = (rateIdx + 1) % SPEEDS.length;
+    rate = SPEEDS[rateIdx];
+    player.playbackRate = rate; wordPlayer.playbackRate = rate;
+    try { localStorage.setItem('read_speed', String(rate)); } catch (e) {}
+    pbarUpdateSpeed();
+    gaEvent('speed_change', { speed: rate, lang: _gaLang, day: _gaDay });
+  });
+  pbarClose.addEventListener('click', function () {
+    stop(); pbar.classList.remove('vis'); document.body.classList.remove('pbar-vis');
+  });
+  // 단어 발음 버튼: w{i}.mp3 / v{i}.mp3 → 없으면 SpeechSynthesis 폴백
+  (function () {
+    var wbtns = [].slice.call(document.querySelectorAll('.wbtn'));
+    wbtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var same = btn === curWbtn && btn.classList.contains('playing');
+        stop();
+        if (same) return;
+        var kind = btn.dataset.kind, i = parseInt(btn.dataset.i, 10), word = btn.dataset.word;
+        var src = (kind === 'v' ? ADV_AUDIO : WORD_AUDIO)[i] || null;
+        gaEvent('word_audio', { lang: _gaLang, day: _gaDay });
+        curWbtn = btn; btn.classList.add('playing');
+        _playMode = 'word'; pbarShow('단어 발음'); pbarSetPlaying(true);
+        function done() {
+          if (curWbtn === btn) { btn.classList.remove('playing'); curWbtn = null; }
+          pbarSetPlaying(false);
+        }
+        if (src) {
+          wordPlayer.onended = done; wordPlayer.onerror = done;
+          wordPlayer.src = src; wordPlayer.playbackRate = rate; wordPlayer.play().catch(done);
+        } else if (canSpeak) {
+          var u = new SpeechSynthesisUtterance(word);
+          u.lang = 'en-US'; u.rate = rate; u.onend = done; u.onerror = done; speechSynthesis.speak(u);
+        } else { done(); }
+      });
+    });
+  })();
+  function copyText(text, btn, label, okText) {
+    function done(ok) {
+      btn.lastChild.textContent = ok ? (okText || '복사됐어요') : '복사 실패';
+      setTimeout(function () { btn.lastChild.textContent = label; }, okText ? 2600 : 1600);
+    }
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done(ok);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    else fallback();
+  }
+  var HEAD = '나는 CEFR B1~B2 수준의 한국인 영어 학습자입니다. 아래는 오늘의 영어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
+  var WEAK = '자주 틀리는 부분(문장 끝의 시간, 수량 정보, 큰 숫자, 비슷하게 생긴 단어, 관사와 복수 -s, 숙어 의미)도 함께 짚어 주세요.';
+  function passageBlock() {
+    return '[영어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
+  }
+  copyBtn.addEventListener('click', function () {
+    gaEvent('copy_passage', { lang: _gaLang, day: _gaDay });
+    copyText([HEAD, passageBlock(),
+      '[요청]\n이 지문을 바탕으로 내 질문에 답해 주세요. 설명은 한국어 존댓말로, 내 수준에 맞춰 짧고 구체적으로 해 주세요. 지문 자체의 난이도는 바꾸지 마세요.\n' + WEAK
+    ].join('\n\n'), copyBtn, '지문 복사');
+  });
+  copyMine.addEventListener('click', function () {
+    if (!mine.value.trim()) { mine.focus(); return; }
+    gaEvent('feedback_copy', {lang: _gaLang, day: _gaDay});
+    copyText([HEAD, passageBlock(), '[내 해석]\n' + mine.value.trim(),
+      '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
+    ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
+  });
+  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  (function () {
+    var toLevelA = document.getElementById('to-level-a');
+    var toLevelB = document.getElementById('to-level-b');
+    if (!toLevelA || !toLevelB) return;
+    function updateLinks() {
+      var isA = isLevelA();
+      toLevelA.hidden = isA;
+      toLevelB.hidden = !isA;
+    }
+    updateLinks();
+    function switchLevel(e, to) {
+      e.preventDefault();
+      var from = isLevelA() ? 'a' : 'b';
+      document.documentElement.classList.toggle('level-a', to === 'a');
+      try { localStorage.setItem('read_level', to); } catch (ex) {}
+      gaEvent('level_switch', { from: from, to: to, lang: _gaLang, day: _gaDay });
+      updateLinks();
+      // URL 에 ?level= 파라미터 반영 (히스토리 교체)
+      try {
+        var u = new URL(location.href);
+        u.searchParams.set('level', to);
+        history.replaceState(null, '', u.toString());
+      } catch (ex) {}
+    }
+    toLevelA.addEventListener('click', function (e) { switchLevel(e, 'a'); });
+    toLevelB.addEventListener('click', function (e) { switchLevel(e, 'b'); });
+  })();
+  var furi = document.getElementById('furi');
+  if (furi) furi.addEventListener('click', function () {
+    var off = document.body.classList.toggle('nofuri');
+    furi.setAttribute('aria-pressed', String(!off));
+    furi.textContent = off ? '후리가나 켜기' : '후리가나 끄기';
+    gaEvent('furigana_toggle', {on: !off});
+  });
+</script>
+</body>
+</html>
