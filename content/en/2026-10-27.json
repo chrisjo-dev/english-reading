@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-27",
+  "category": "tech",
+  "topic": "근육 로봇",
+  "title_ko": "살아 있는 근육으로 헤엄치는 작은 로봇",
+  "headline": "A Tiny Robot That Swims with Real Muscle",
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "Most robots are made of metal and plastic, but a tiny new one from MIT moves with the help of living **muscle** cells.", "b2": false, "chunks": [["Most robots", "대부분의 로봇은"], ["are made of metal and plastic,", "금속과 플라스틱으로 만들어지지만"], ["but a tiny new one", "아주 작은 새 로봇 하나는"], ["from MIT", "MIT가 만든"], ["moves with the help", "도움을 받아 움직인다"], ["of living **muscle** cells.", "살아 있는 근육 세포들의"]]},
+    {"en": "Its body is a soft gel about the size of a stick of gum, and it has two **fins**, one on each side.", "b2": false, "chunks": [["Its body is a soft gel", "몸은 부드러운 젤인데"], ["about the size", "크기가 대략"], ["of a stick of gum,", "껌 한 개만 하고"], ["and it has two **fins**,", "지느러미가 두 개 있다"], ["one on each side.", "양쪽에 하나씩"]]},
+    {"en": "Each fin is covered with a layer of muscle cells, thinner than a human hair, that were **changed** in the lab so that they **tighten** whenever light shines on them.", "b2": true, "chunks": [["Each fin is covered", "각 지느러미는 덮여 있다"], ["with a layer of muscle cells,", "근육 세포 한 층으로"], ["thinner than a human hair,", "사람 머리카락보다 얇은"], ["that were **changed** in the lab", "그 세포들은 실험실에서 바뀌었다"], ["so that they **tighten**", "수축하도록"], ["whenever light shines on them.", "빛이 비칠 때마다"]]},
+    {"en": "When light hits one fin, that fin **flaps** and turns the robot to one side, but when light hits both fins, the robot swims forward.", "b2": false, "chunks": [["When light hits one fin,", "빛이 한쪽 지느러미에 닿으면"], ["that fin **flaps**", "그 지느러미가 퍼덕이며"], ["and turns the robot to one side,", "로봇을 한쪽으로 돌리지만"], ["but when light hits both fins,", "빛이 두 지느러미에 다 닿으면"], ["the robot swims forward.", "로봇은 앞으로 헤엄친다"]]},
+    {"en": "Its top **speed** is only about four body lengths per minute, while an Olympic swimmer can cover up to sixty-five.", "b2": false, "chunks": [["Its top **speed** is", "최고 속도는"], ["only about four body lengths", "몸길이의 약 네 배밖에 안 된다"], ["per minute,", "1분에"], ["while an Olympic swimmer", "반면 올림픽 수영 선수는"], ["can cover up to sixty-five.", "최대 65배까지 갈 수 있다"]]},
+    {"en": "Still, by moving a light by hand, the researchers **guided** the robot through a small **maze** in a dish.", "b2": false, "chunks": [["Still,", "그래도"], ["by moving a light by hand,", "손으로 불빛을 움직여서"], ["the researchers **guided** the robot", "연구자들은 로봇을 이끌었다"], ["through a small **maze**", "작은 미로를 통과하도록"], ["in a dish.", "접시 안의"]]}
+  ],
+  "words": [
+    ["muscle", "근육"],
+    ["fins", "지느러미들 (fin의 복수)"],
+    ["tighten", "조여지다, 수축하다"],
+    ["flap", "퍼덕이다, 펄럭이다"],
+    ["speed", "속도"],
+    ["guide", "안내하다, 이끌다"],
+    ["maze", "미로"]
+  ],
+  "points": [
+    {"title": "문장 끝 정보", "body": "`per minute`, `by hand`, `in a dish`처럼 단위와 방법, 장소가 문장 끝에 붙어 있어요. 특히 5번 문장은 `per minute`까지 읽어야 \"1분에\"라는 뜻이 완성됩니다."},
+    {"title": "숫자와 복수형", "body": "`sixty-five`는 65예요. 5번 문장의 `up to sixty-five`는 뒤에 `body lengths`가 생략된 것으로, \"몸길이의 최대 65배\"라는 뜻입니다. `fins`, `cells`, `lengths`의 복수 -s도 함께 보세요."}
+  ],
+  "answers": [
+    "대부분의 로봇은 금속과 플라스틱으로 만들어지지만, MIT가 만든 아주 작은 새 로봇은 살아 있는 근육 세포의 도움을 받아 움직인다.",
+    "로봇의 몸은 껌 한 개 크기쯤 되는 부드러운 젤이고, 양쪽에 하나씩 지느러미 두 개가 달려 있다.",
+    "각 지느러미는 사람 머리카락보다 얇은 근육 세포 층으로 덮여 있는데, 이 세포들은 빛이 비칠 때마다 수축하도록 실험실에서 바뀐 것이다.",
+    "빛이 한쪽 지느러미에 닿으면 그 지느러미가 퍼덕이며 로봇을 한쪽으로 돌리지만, 빛이 두 지느러미에 모두 닿으면 로봇은 앞으로 헤엄친다.",
+    "로봇의 최고 속도는 1분에 몸길이의 약 네 배에 불과한 반면, 올림픽 수영 선수는 최대 65배까지 나아갈 수 있다.",
+    "그래도 연구자들은 손으로 불빛을 움직여 접시 안의 작은 미로를 지나도록 로봇을 이끌었다."
+  ],
+  "advanced": [
+    {"word": "contract", "meaning": "수축하다", "confuse": "contrast(대조하다)와 혼동 주의", "example": "The muscle cells **contract** whenever light shines on them.", "example_ko": "근육 세포는 빛이 비칠 때마다 수축합니다."},
+    {"word": "propel", "meaning": "앞으로 나아가게 하다, 추진하다", "confuse": null, "example": "The flapping fins **propel** the robot forward.", "example_ko": "퍼덕이는 지느러미가 로봇을 앞으로 나아가게 합니다."},
+    {"word": "navigate", "meaning": "길을 찾아 나아가다", "confuse": null, "example": "The robot **navigated** a small maze, guided by a moving light.", "example_ko": "로봇은 움직이는 불빛을 따라 작은 미로를 지나갔습니다."},
+    {"word": "stimulate", "meaning": "자극하다", "confuse": "simulate(모의 실험하다)와 혼동 주의", "example": "Flashes of light **stimulate** the muscle and make it move.", "example_ko": "빛의 깜박임이 근육을 자극해 움직이게 합니다."},
+    {"word": "velocity", "meaning": "속도 (방향이 있는 속도)", "confuse": null, "example": "Its maximum **velocity** is about four body lengths per minute.", "example_ko": "그 로봇의 최고 속도는 1분에 몸길이의 약 네 배입니다."},
+    {"word": "pliable", "meaning": "잘 휘는, 유연한", "confuse": null, "example": "The robot's body is made of a soft, **pliable** gel.", "example_ko": "로봇의 몸은 부드럽고 잘 휘는 젤로 만들어져 있습니다."},
+    {"word": "engineered", "meaning": "(유전적으로) 조작된, 설계된", "confuse": null, "example": "The cells were **engineered** to respond to light.", "example_ko": "그 세포들은 빛에 반응하도록 조작되었습니다."}
+  ],
+  "source": {"title": "MIT Scientists Build a Tiny Robot That Swims Using Living Muscle Cells (ScienceDaily, 2026-10-23)", "url": "https://www.sciencedaily.com/releases/2026/10/261022081308.htm"},
+  "levels": {"a": {
+    "sentences": [
+      {"en": "A tiny new robot from MIT uses living **muscle** cells to move.", "chunks": [["A tiny new robot", "아주 작은 새 로봇이"], ["from MIT", "MIT가 만든"], ["uses living **muscle** cells", "살아 있는 근육 세포를 쓴다"], ["to move.", "움직이기 위해"]]},
+      {"en": "Its soft body is about the size of a stick of gum, and it has two **fins**.", "chunks": [["Its soft body", "그 부드러운 몸은"], ["is about the size", "크기가 대략"], ["of a stick of gum,", "껌 한 개만 하고"], ["and it has two **fins**.", "지느러미가 두 개 있다"]]},
+      {"en": "The muscle cells on the fins **tighten** when light shines on them.", "chunks": [["The muscle cells", "근육 세포들은"], ["on the fins", "지느러미 위의"], ["**tighten**", "수축한다"], ["when light shines on them.", "빛이 비치면"]]},
+      {"en": "Light on one fin turns the robot, and light on both fins moves it forward.", "chunks": [["Light on one fin", "한쪽 지느러미에 닿는 빛은"], ["turns the robot,", "로봇을 돌리고"], ["and light on both fins", "두 지느러미에 닿는 빛은"], ["moves it forward.", "로봇을 앞으로 움직인다"]]},
+      {"en": "It is slow and moves about four body lengths per minute.", "chunks": [["It is slow", "로봇은 느려서"], ["and moves about four body lengths", "몸길이의 약 네 배를 간다"], ["per minute.", "1분에"]]},
+      {"en": "Still, the researchers **guided** it through a small **maze** with a light.", "chunks": [["Still,", "그래도"], ["the researchers **guided** it", "연구자들은 로봇을 이끌었다"], ["through a small **maze**", "작은 미로를 지나도록"], ["with a light.", "불빛으로"]]}
+    ],
+    "answers": [
+      "MIT가 만든 아주 작은 새 로봇은 살아 있는 근육 세포를 써서 움직인다.",
+      "그 부드러운 몸은 껌 한 개 크기쯤 되고, 지느러미가 두 개 있다.",
+      "지느러미 위의 근육 세포들은 빛이 비치면 수축한다.",
+      "한쪽 지느러미에 빛을 비추면 로봇이 돌고, 두 지느러미에 비추면 앞으로 나아간다.",
+      "로봇은 느려서 1분에 몸길이의 약 네 배만큼 움직인다.",
+      "그래도 연구자들은 불빛으로 로봇이 작은 미로를 지나도록 이끌었다."
+    ]
+  }}
+}
