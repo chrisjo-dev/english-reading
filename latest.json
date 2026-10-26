@@ -1,52 +1,52 @@
 {
  "date": "2026-10-27",
- "words_total": 311,
+ "words_total": 318,
  "langs": {
   "en": {
-   "count": 24,
-   "latest": "2026-10-26",
-   "topic": "새 공룡 화석",
+   "count": 25,
+   "latest": "2026-10-27",
+   "topic": "근육 로봇",
    "sentences": [
-    "A **fossil** that sat in a museum **drawer** for more than a hundred years has turned out to be a new kind of dinosaur.",
-    "The bones were first found on a beach on the Isle of Wight in southern England, and were later kept at a museum in London.",
-    "About six years ago, part of the **skull** was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.",
-    "The team found that the animal lived about one hundred twenty million years ago and **belonged to** a group of hunters with very large **claws** on their hands."
+    "Most robots are made of metal and plastic, but a tiny new one from MIT moves with the help of living **muscle** cells.",
+    "Its body is a soft gel about the size of a stick of gum, and it has two **fins**, one on each side.",
+    "Each fin is covered with a layer of muscle cells, thinner than a human hair, that were **changed** in the lab so that they **tighten** whenever light shines on them.",
+    "When light hits one fin, that fin **flaps** and turns the robot to one side, but when light hits both fins, the robot swims forward."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 3분"
    ],
-   "answer": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.",
+   "answer": "대부분의 로봇은 금속과 플라스틱으로 만들어지지만, MIT가 만든 아주 작은 새 로봇은 살아 있는 근육 세포의 도움을 받아 움직인다.",
    "words": [
     [
-     "fossil",
-     "화석"
+     "muscle",
+     "근육"
     ],
     [
-     "drawer",
-     "서랍"
+     "fins",
+     "지느러미들 (fin의 복수)"
     ],
     [
-     "skull",
-     "두개골"
+     "tighten",
+     "조여지다, 수축하다"
     ],
     [
-     "belong to",
-     "~에 속하다"
+     "flap",
+     "퍼덕이다, 펄럭이다"
     ],
     [
-     "claws",
-     "(동물의) 발톱들 (claw의 복수)"
+     "speed",
+     "속도"
     ],
     [
-     "mainly",
-     "주로"
+     "guide",
+     "안내하다, 이끌다"
     ],
     [
-     "identified",
-     "확인된, 밝혀진 (identify의 과거분사)"
+     "maze",
+     "미로"
     ]
    ]
   },
@@ -96,6 +96,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-27",
+   "topic": "근육 로봇"
+  },
   {
    "lang": "ja",
    "day": "2026-10-27",
@@ -160,11 +165,6 @@
    "lang": "ja",
    "day": "2026-10-21",
    "topic": "아시아 패럴림픽"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-20",
-   "topic": "눈 깜빡임 안경"
   }
  ]
 }
