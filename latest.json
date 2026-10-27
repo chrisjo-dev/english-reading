@@ -1,16 +1,16 @@
 {
  "date": "2026-10-28",
- "words_total": 325,
+ "words_total": 332,
  "langs": {
   "en": {
-   "count": 25,
-   "latest": "2026-10-27",
-   "topic": "근육 로봇",
+   "count": 26,
+   "latest": "2026-10-28",
+   "topic": "거대한 팝업북",
    "sentences": [
-    "Most robots are made of metal and plastic, but a tiny new one from MIT moves with the help of living **muscle** cells.",
-    "Its body is a soft gel about the size of a stick of gum, and it has two **fins**, one on each side.",
-    "Each fin is covered with a layer of muscle cells, thinner than a human hair, that were **changed** in the lab so that they **tighten** whenever light shines on them.",
-    "When light hits one fin, that fin **flaps** and turns the robot to one side, but when light hits both fins, the robot swims forward."
+    "When visitors walk into the round main hall of the Central Library in Los Angeles, many of them stop and look up at a huge open book.",
+    "It is the world's largest **pop-up** book, and when it is open, it **measures** thirty-one feet by twenty feet and **weighs** more than eighteen hundred pounds.",
+    "The book was **designed** by a local artist, Daniel González, who worked with a paper engineer, and it was made to **celebrate** the library's one hundredth birthday.",
+    "The finished book was too large for the library's doors, so it was built in smaller **sections** and put together inside the hall."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "대부분의 로봇은 금속과 플라스틱으로 만들어지지만, MIT가 만든 아주 작은 새 로봇은 살아 있는 근육 세포의 도움을 받아 움직인다.",
+   "answer": "방문객들이 로스앤젤레스 중앙도서관의 둥근 중앙 홀에 들어서면, 많은 사람이 멈춰 서서 커다랗게 펼쳐진 책을 올려다본다.",
    "words": [
     [
-     "muscle",
-     "근육"
+     "pop-up",
+     "펼치면 그림이 튀어나오는"
     ],
     [
-     "fins",
-     "지느러미들 (fin의 복수)"
+     "measures",
+     "크기가 ~이다 (measure + -s)"
     ],
     [
-     "tighten",
-     "조여지다, 수축하다"
+     "weighs",
+     "무게가 ~이다 (weigh + -s)"
     ],
     [
-     "flap",
-     "퍼덕이다, 펄럭이다"
+     "celebrate",
+     "기념하다, 축하하다"
     ],
     [
-     "speed",
-     "속도"
+     "sections",
+     "부분들, 구역들 (section의 복수)"
     ],
     [
-     "guide",
-     "안내하다, 이끌다"
+     "excitement",
+     "설렘, 신남"
     ],
     [
-     "maze",
-     "미로"
+     "display",
+     "전시"
     ]
    ]
   },
@@ -100,6 +100,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-28",
+   "topic": "거대한 팝업북"
+  },
   {
    "lang": "ja",
    "day": "2026-10-28",
@@ -164,11 +169,6 @@
    "lang": "ja",
    "day": "2026-10-22",
    "topic": "문화제 준비"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-21",
-   "topic": "백세 잔치"
   }
  ]
 }
