@@ -1,0 +1,425 @@
+{
+  "date": "2026-10-28",
+  "category": "society",
+  "topic": "거대한 팝업북",
+  "title_ko": "도서관에 나타난 세계에서 가장 큰 팝업북",
+  "headline": "The Biggest Pop-Up Book in the World",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "When visitors walk into the round main hall of the Central Library in Los Angeles, many of them stop and look up at a huge open book.",
+      "chunks": [
+        [
+          "When visitors walk into",
+          "방문객들이 들어서면"
+        ],
+        [
+          "the round main hall",
+          "둥근 중앙 홀에"
+        ],
+        [
+          "of the Central Library in Los Angeles,",
+          "로스앤젤레스 중앙도서관의"
+        ],
+        [
+          "many of them stop",
+          "그들 중 많은 사람이 멈춰 서서"
+        ],
+        [
+          "and look up",
+          "올려다본다"
+        ],
+        [
+          "at a huge open book.",
+          "커다랗게 펼쳐진 책을"
+        ]
+      ],
+      "b2": false
+    },
+    {
+      "en": "It is the world's largest **pop-up** book, and when it is open, it **measures** thirty-one feet by twenty feet and **weighs** more than eighteen hundred pounds.",
+      "chunks": [
+        [
+          "It is the world's largest",
+          "그것은 세계에서 가장 큰"
+        ],
+        [
+          "**pop-up** book,",
+          "팝업북이고"
+        ],
+        [
+          "and when it is open,",
+          "펼쳐 놓으면"
+        ],
+        [
+          "it **measures** thirty-one feet",
+          "크기가 31피트"
+        ],
+        [
+          "by twenty feet",
+          "곱하기 20피트이며"
+        ],
+        [
+          "and **weighs** more than",
+          "무게가 ~넘는다"
+        ],
+        [
+          "eighteen hundred pounds.",
+          "1,800파운드를"
+        ]
+      ],
+      "b2": false
+    },
+    {
+      "en": "The book was **designed** by a local artist, Daniel González, who worked with a paper engineer, and it was made to **celebrate** the library's one hundredth birthday.",
+      "chunks": [
+        [
+          "The book was **designed**",
+          "그 책은 디자인되었다"
+        ],
+        [
+          "by a local artist, Daniel González,",
+          "지역 예술가 다니엘 곤살레스에 의해"
+        ],
+        [
+          "who worked with a paper engineer,",
+          "그는 종이 공학자와 함께 작업했다"
+        ],
+        [
+          "and it was made",
+          "그리고 그 책은 만들어졌다"
+        ],
+        [
+          "to **celebrate** the library's",
+          "도서관의 ~를 기념하기 위해"
+        ],
+        [
+          "one hundredth birthday.",
+          "100번째 생일을"
+        ]
+      ],
+      "b2": false
+    },
+    {
+      "en": "The finished book was too large for the library's doors, so it was built in smaller **sections** and put together inside the hall.",
+      "chunks": [
+        [
+          "The finished book",
+          "완성된 책은"
+        ],
+        [
+          "was too large",
+          "너무 컸다"
+        ],
+        [
+          "for the library's doors,",
+          "도서관 문을 지나기에는"
+        ],
+        [
+          "so it was built",
+          "그래서 그것은 만들어졌다"
+        ],
+        [
+          "in smaller **sections**",
+          "더 작은 부분들로 나뉘어"
+        ],
+        [
+          "and put together",
+          "그리고 조립되었다"
+        ],
+        [
+          "inside the hall.",
+          "홀 안에서"
+        ]
+      ],
+      "b2": false
+    },
+    {
+      "en": "Its pictures, which show famous places in the city and the library's long history, are meant to remind people of the **excitement** they felt as children when they opened a pop-up book.",
+      "chunks": [
+        [
+          "Its pictures,",
+          "그 책의 그림들은"
+        ],
+        [
+          "which show famous places in the city",
+          "도시의 유명한 장소들과"
+        ],
+        [
+          "and the library's long history,",
+          "도서관의 긴 역사를 보여 주는데"
+        ],
+        [
+          "are meant to remind people",
+          "사람들에게 떠올리게 하려는 것이다"
+        ],
+        [
+          "of the **excitement** they felt",
+          "그들이 느꼈던 설렘을"
+        ],
+        [
+          "as children",
+          "어린 시절에"
+        ],
+        [
+          "when they opened a pop-up book.",
+          "팝업북을 펼쳤을 때"
+        ]
+      ],
+      "b2": true
+    },
+    {
+      "en": "The book will stay on **display** until the end of November, so there is still time to see it.",
+      "chunks": [
+        [
+          "The book will stay",
+          "그 책은 머물 것이다"
+        ],
+        [
+          "on **display**",
+          "전시된 채로"
+        ],
+        [
+          "until the end of November,",
+          "11월 말까지"
+        ],
+        [
+          "so there is still time",
+          "그러니 아직 시간이 있다"
+        ],
+        [
+          "to see it.",
+          "그것을 볼"
+        ]
+      ],
+      "b2": false
+    }
+  ],
+  "words": [
+    [
+      "pop-up",
+      "펼치면 그림이 튀어나오는"
+    ],
+    [
+      "measures",
+      "크기가 ~이다 (measure + -s)"
+    ],
+    [
+      "weighs",
+      "무게가 ~이다 (weigh + -s)"
+    ],
+    [
+      "celebrate",
+      "기념하다, 축하하다"
+    ],
+    [
+      "sections",
+      "부분들, 구역들 (section의 복수)"
+    ],
+    [
+      "excitement",
+      "설렘, 신남"
+    ],
+    [
+      "display",
+      "전시"
+    ]
+  ],
+  "points": [
+    {
+      "title": "큰 숫자",
+      "body": "`thirty-one feet by twenty feet`는 \"31피트 × 20피트\"(약 9.4m × 6.1m)예요. `eighteen hundred pounds`는 18 × 100 = 1,800파운드(약 816kg)입니다. `eighteen hundred`처럼 백 단위로 세는 방식에 익숙해져 보세요."
+    },
+    {
+      "title": "수동태의 행위자",
+      "body": "3번 문장 `The book was designed by a local artist`는 \"그 책은 지역 예술가에 의해 디자인되었다\", 즉 누가 만들었는지가 `by` 뒤에 나와요. 6번 문장 끝의 `until the end of November`(11월 말까지)도 놓치지 마세요."
+    }
+  ],
+  "answers": [
+    "방문객들이 로스앤젤레스 중앙도서관의 둥근 중앙 홀에 들어서면, 많은 사람이 멈춰 서서 커다랗게 펼쳐진 책을 올려다본다.",
+    "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.",
+    "이 책은 지역 예술가 다니엘 곤살레스가 종이 공학자와 함께 디자인했으며, 도서관의 100번째 생일을 기념하기 위해 만들어졌다.",
+    "완성된 책은 도서관 문을 통과하기에는 너무 커서, 더 작은 부분들로 나누어 만든 뒤 홀 안에서 조립했다.",
+    "도시의 유명한 장소들과 도서관의 긴 역사를 보여 주는 이 책의 그림들은, 사람들이 어린 시절 팝업북을 펼칠 때 느꼈던 설렘을 떠올리게 하려는 것이다.",
+    "이 책은 11월 말까지 전시되니, 아직 볼 시간이 있다."
+  ],
+  "advanced": [
+    {
+      "word": "dimensions",
+      "meaning": "치수, 크기",
+      "confuse": null,
+      "example": "The book's **dimensions** are thirty-one feet by twenty feet.",
+      "example_ko": "그 책의 크기는 31피트 × 20피트입니다."
+    },
+    {
+      "word": "centennial",
+      "meaning": "100주년",
+      "confuse": null,
+      "example": "The book was made for the library's **centennial**.",
+      "example_ko": "그 책은 도서관의 100주년을 위해 만들어졌습니다."
+    },
+    {
+      "word": "commemorate",
+      "meaning": "기념하다",
+      "confuse": null,
+      "example": "The artist created the book to **commemorate** one hundred years of the library.",
+      "example_ko": "그 예술가는 도서관의 100년을 기념하려고 그 책을 만들었습니다."
+    },
+    {
+      "word": "assemble",
+      "meaning": "조립하다",
+      "confuse": "resemble(닮다)과 혼동 주의",
+      "example": "Workers **assembled** the sections inside the main hall.",
+      "example_ko": "작업자들은 중앙 홀 안에서 부분들을 조립했습니다."
+    },
+    {
+      "word": "installation",
+      "meaning": "설치 미술 작품",
+      "confuse": null,
+      "example": "The giant book is now the library's most popular **installation**.",
+      "example_ko": "그 거대한 책은 이제 도서관에서 가장 인기 있는 설치 작품입니다."
+    },
+    {
+      "word": "intricate",
+      "meaning": "정교한, 복잡한",
+      "confuse": null,
+      "example": "Each page has **intricate** paper shapes that rise up when it opens.",
+      "example_ko": "각 페이지에는 펼치면 솟아오르는 정교한 종이 모양이 있습니다."
+    },
+    {
+      "word": "evoke",
+      "meaning": "(감정이나 기억을) 불러일으키다",
+      "confuse": "invoke(호소하다, 들먹이다)와 혼동 주의",
+      "example": "The pictures **evoke** the excitement of opening a pop-up book as a child.",
+      "example_ko": "그 그림들은 어린 시절 팝업북을 펼치던 설렘을 불러일으킵니다."
+    },
+    {
+      "word": "surpass",
+      "meaning": "넘어서다, 능가하다",
+      "confuse": null,
+      "example": "The new book **surpasses** the old record for the largest pop-up book.",
+      "example_ko": "새 책은 가장 큰 팝업북의 이전 기록을 넘어섭니다."
+    }
+  ],
+  "source": {
+    "title": "See the World’s Largest Pop-Up Book at the Los Angeles Central Library (Book Riot)",
+    "url": "https://bookriot.com/worlds-largest-pop-up-book/"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Many visitors stop at the Central Library in Los Angeles.",
+          "chunks": [
+            [
+              "Many visitors stop",
+              "많은 방문객이 멈춰 선다"
+            ],
+            [
+              "at the Central Library",
+              "중앙도서관에서"
+            ],
+            [
+              "in Los Angeles.",
+              "로스앤젤레스의"
+            ]
+          ]
+        },
+        {
+          "en": "They look at the world's biggest **pop-up** book.",
+          "chunks": [
+            [
+              "They look at",
+              "그들은 본다"
+            ],
+            [
+              "the world's biggest **pop-up** book.",
+              "세계에서 가장 큰 팝업북을"
+            ]
+          ]
+        },
+        {
+          "en": "A local artist, Daniel González, made it for the library's 100th birthday.",
+          "chunks": [
+            [
+              "A local artist, Daniel González,",
+              "지역 예술가 다니엘 곤살레스가"
+            ],
+            [
+              "made it",
+              "그것을 만들었다"
+            ],
+            [
+              "for the library's 100th birthday.",
+              "도서관의 100번째 생일을 위해"
+            ]
+          ]
+        },
+        {
+          "en": "The book was too big for the doors, so they built it in small parts.",
+          "chunks": [
+            [
+              "The book was too big",
+              "그 책은 너무 컸다"
+            ],
+            [
+              "for the doors,",
+              "문에 비해"
+            ],
+            [
+              "so they built it",
+              "그래서 사람들은 그것을 만들었다"
+            ],
+            [
+              "in small parts.",
+              "작은 부분들로"
+            ]
+          ]
+        },
+        {
+          "en": "The pictures show famous places in the city.",
+          "chunks": [
+            [
+              "The pictures show",
+              "그림들은 보여 준다"
+            ],
+            [
+              "famous places",
+              "유명한 장소들을"
+            ],
+            [
+              "in the city.",
+              "그 도시의"
+            ]
+          ]
+        },
+        {
+          "en": "You can see the book until the end of November.",
+          "chunks": [
+            [
+              "You can see the book",
+              "그 책을 볼 수 있다"
+            ],
+            [
+              "until the end of November.",
+              "11월 말까지"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "많은 방문객이 로스앤젤레스 중앙도서관에서 멈춰 선다.",
+        "그들은 세계에서 가장 큰 팝업북을 본다.",
+        "지역 예술가 다니엘 곤살레스가 도서관의 100번째 생일을 위해 그것을 만들었다.",
+        "그 책은 문에 비해 너무 커서, 사람들은 그것을 작은 부분들로 나누어 만들었다.",
+        "그림들은 그 도시의 유명한 장소들을 보여 준다.",
+        "11월 말까지 그 책을 볼 수 있다."
+      ]
+    }
+  }
+}
