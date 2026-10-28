@@ -102,7 +102,7 @@ jobs:
             echo "push attempt $attempt 실패; origin/main 으로 rebase..."
             git fetch origin main
             if git rebase origin/main; then continue; fi
-            # rebase 충돌: de/*/audio/ 하위 생성 파일만 허용 (ours = 방금 생성한 것)
+            # rebase 충돌: de/*/audio/ 하위 생성 파일만 허용 (rebase 에서는 다시 얹는 우리 커밋이 theirs, 즉 방금 생성한 것)
             bad=$(git diff --name-only --diff-filter=U \
               | grep -vxE "de/[0-9]{4}-[0-9]{2}-[0-9]{2}/audio/.*\.mp3" || true)
             if [ -n "$bad" ]; then
