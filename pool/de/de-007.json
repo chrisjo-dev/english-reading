@@ -1,134 +1,312 @@
 {
   "date": "2026-10-07",
-  "category": "culture",
-  "topic": "독일의 날씨",
+  "category": "nature",
+  "topic": "날씨와 계절",
   "title_ko": "독일의 사계절 날씨",
-  "headline": "Das Wetter in Deutschland",
-  "chips": ["5문장", "A2 위주", "B1 1문장", "약 3분"],
+  "headline": "Das Wetter und die Jahreszeiten in Deutschland",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
   "sentences": [
     {
-      "en": "In Deutschland gibt es vier **Jahreszeiten**: Frühling, Sommer, Herbst und Winter.",
+      "en": "Deutschland hat ein gemäßigtes **Klima** mit vier deutlich ausgeprägten Jahreszeiten.",
       "b2": false,
       "chunks": [
-        ["In Deutschland", "독일에는"],
-        ["gibt es", "있습니다"],
-        ["vier **Jahreszeiten**:", "네 계절이"],
-        ["Frühling, Sommer, Herbst und Winter.", "봄, 여름, 가을, 겨울"]
+        [
+          "Deutschland hat",
+          "독일은 있습니다"
+        ],
+        [
+          "ein gemäßigtes **Klima**",
+          "온난한 기후가"
+        ],
+        [
+          "mit vier deutlich ausgeprägten Jahreszeiten.",
+          "뚜렷하게 구분된 4개의 계절을 가진"
+        ]
       ]
     },
     {
-      "en": "Im Sommer ist es oft warm und sonnig, aber auch manchmal **regnerisch**.",
+      "en": "Im **Sommer** kann es in Süddeutschland heiß werden, während der Norden eher mild bleibt.",
       "b2": false,
       "chunks": [
-        ["Im Sommer", "여름에는"],
-        ["ist es oft", "보통 합니다"],
-        ["warm und sonnig,", "따뜻하고 맑지만"],
-        ["aber auch manchmal", "하지만 때로는"],
-        ["**regnerisch**.", "비가 오기도"]
+        [
+          "Im **Sommer**",
+          "여름에는"
+        ],
+        [
+          "kann es in Süddeutschland heiß werden,",
+          "남독일은 더워질 수 있습니다"
+        ],
+        [
+          "während der Norden eher mild bleibt.",
+          "북쪽은 대체로 온화하게 머물지만"
+        ]
       ]
     },
     {
-      "en": "Der Winter bringt in vielen Regionen **Schnee** und Kälte.",
+      "en": "Die **Herbstmonate** bringen oft Regen und Wind, und die Tage werden spürbar kürzer.",
       "b2": false,
       "chunks": [
-        ["Der Winter", "겨울은"],
-        ["bringt", "가져옵니다"],
-        ["in vielen Regionen", "많은 지역에"],
-        ["**Schnee** und Kälte.", "눈과 추위를"]
+        [
+          "Die **Herbstmonate**",
+          "가을 달들은"
+        ],
+        [
+          "bringen oft Regen und Wind,",
+          "자주 비와 바람을 가져옵니다"
+        ],
+        [
+          "und die Tage werden spürbar kürzer.",
+          "그리고 낮이 눈에 띄게 짧아집니다"
+        ]
       ]
     },
     {
-      "en": "Im **Herbst** werden die Blätter bunt und fallen von den Bäumen.",
+      "en": "Im **Winter** fällt in einigen Regionen Schnee, besonders in den Alpen und im Mittelgebirge.",
       "b2": false,
       "chunks": [
-        ["Im **Herbst**", "가을에는"],
-        ["werden", "됩니다"],
-        ["die Blätter bunt", "나뭇잎이 알록달록해지고"],
-        ["und fallen", "그리고 떨어집니다"],
-        ["von den Bäumen.", "나무에서"]
+        [
+          "Im **Winter**",
+          "겨울에는"
+        ],
+        [
+          "fällt in einigen Regionen Schnee,",
+          "일부 지역에 눈이 내립니다"
+        ],
+        [
+          "besonders in den Alpen",
+          "특히 알프스와"
+        ],
+        [
+          "und im Mittelgebirge.",
+          "중부 산악 지대에"
+        ]
       ]
     },
     {
-      "en": "Der **Klimawandel** hat in den letzten Jahren auch in Deutschland zu heißeren Sommern geführt.",
+      "en": "Wetter-Apps werden häufig genutzt, weil das **Wetter** in Deutschland schnell und unvorhersehbar wechseln kann.",
       "b2": true,
       "chunks": [
-        ["Der **Klimawandel**", "기후 변화는"],
-        ["hat", "만들었습니다"],
-        ["in den letzten Jahren", "최근 몇 년 동안"],
-        ["auch in Deutschland", "독일에서도"],
-        ["zu heißeren Sommern geführt.", "더 더운 여름을"]
+        [
+          "Wetter-Apps werden häufig genutzt,",
+          "날씨 앱이 자주 사용됩니다"
+        ],
+        [
+          "weil das **Wetter** in Deutschland",
+          "독일의 날씨가"
+        ],
+        [
+          "schnell und unvorhersehbar wechseln kann.",
+          "빠르고 예측하기 어렵게 바뀔 수 있기 때문입니다"
+        ]
+      ]
+    },
+    {
+      "en": "Der **Frühling** gilt als besonders angenehm, wenn nach dem grauen Winter die ersten Blumen blühen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der **Frühling**",
+          "봄은"
+        ],
+        [
+          "gilt als besonders angenehm,",
+          "특히 기분 좋은 계절로 여겨집니다"
+        ],
+        [
+          "wenn nach dem grauen Winter",
+          "회색빛 겨울이 지나고"
+        ],
+        [
+          "die ersten Blumen blühen.",
+          "첫 꽃들이 피어날 때"
+        ]
       ]
     }
   ],
   "words": [
-    ["Jahreszeit", "계절"],
-    ["regnerisch", "비가 오는"],
-    ["Schnee", "눈"],
-    ["Herbst", "가을"],
-    ["Klimawandel", "기후 변화"],
-    ["Kälte", "추위"]
+    [
+      "Klima",
+      "기후"
+    ],
+    [
+      "Jahreszeit",
+      "계절"
+    ],
+    [
+      "Herbst",
+      "가을"
+    ],
+    [
+      "Mittelgebirge",
+      "중부 산악 지대"
+    ],
+    [
+      "unvorhersehbar",
+      "예측하기 어려운"
+    ],
+    [
+      "blühen",
+      "꽃이 피다"
+    ]
   ],
   "points": [
     {
-      "title": "im Winter / im Sommer — 계절 전치사",
-      "body": "계절 앞에는 항상 `im`(= in dem)을 씁니다: `im Frühling(봄에)`, `im Sommer(여름에)`, `im Herbst(가을에)`, `im Winter(겨울에)`."
+      "title": "während — 시간/대조 접속사",
+      "body": "`während`는 '~하는 동안' 또는 '~인 반면에'라는 뜻이에요. 문장 속 대조를 나타낼 때 자주 씁니다. `während der Norden mild bleibt`는 '북쪽은 온화하게 머무는 반면에'입니다."
     },
     {
-      "title": "werden + 형용사 — 변화를 나타내는 표현",
-      "body": "`werden`은 '~하게 되다'는 변화를 나타내요. `Die Blätter werden bunt.(나뭇잎이 알록달록해진다.)`처럼, `sein`(상태)과 구분해서 씁니다."
+      "title": "wenn — 조건/시간 접속사",
+      "body": "`wenn`은 '~할 때' 또는 '~한다면'이라는 뜻으로 시간이나 조건을 나타내요. `wenn die Blumen blühen`은 '꽃들이 피어날 때'입니다."
     }
   ],
   "answers": [
-    "독일에는 봄, 여름, 가을, 겨울의 네 계절이 있습니다.",
-    "여름에는 보통 따뜻하고 맑지만 때로는 비가 오기도 합니다.",
-    "겨울은 많은 지역에 눈과 추위를 가져옵니다.",
-    "가을에는 나뭇잎이 알록달록해지고 나무에서 떨어집니다.",
-    "기후 변화로 인해 최근 몇 년 동안 독일에서도 여름이 더 더워졌습니다."
+    "독일은 뚜렷하게 구분된 4개의 계절을 가진 온난한 기후입니다.",
+    "여름에는 남독일은 더워질 수 있지만, 북쪽은 대체로 온화하게 머뭅니다.",
+    "가을 달들은 자주 비와 바람을 가져오고, 낮이 눈에 띄게 짧아집니다.",
+    "겨울에는 특히 알프스와 중부 산악 지대에 일부 지역에 눈이 내립니다.",
+    "독일의 날씨가 빠르고 예측하기 어렵게 바뀔 수 있기 때문에 날씨 앱이 자주 사용됩니다.",
+    "봄은 회색빛 겨울이 지나고 첫 꽃들이 피어날 때 특히 기분 좋은 계절로 여겨집니다."
   ],
   "advanced": [
     {
-      "word": "führen zu",
-      "meaning": "~을 초래하다, ~로 이어지다",
+      "word": "gemäßigt",
+      "meaning": "온난한, 온화한",
       "confuse": null,
-      "example": "Der Regen **führt zu** Überschwemmungen.",
-      "example_ko": "비가 홍수를 초래합니다."
+      "example": "Europa hat ein **gemäßigtes** Klima.",
+      "example_ko": "유럽은 온난한 기후를 가지고 있습니다."
     },
     {
-      "word": "Temperatur",
-      "meaning": "온도, 기온",
+      "word": "ausgeprägt",
+      "meaning": "뚜렷한, 두드러진",
       "confuse": null,
-      "example": "Die **Temperaturen** steigen im Sommer.",
-      "example_ko": "여름에는 기온이 올라갑니다."
+      "example": "Er hat eine **ausgeprägte** Persönlichkeit.",
+      "example_ko": "그는 뚜렷한 성격을 가지고 있습니다."
     },
     {
-      "word": "Niederschlag",
-      "meaning": "강수량, 강수",
-      "confuse": "Niederschlag(강수, 기상 용어) vs. Regen(비, 일상 용어): Niederschlag은 눈/비 모두 포함해요.",
-      "example": "Im Herbst gibt es viel **Niederschlag**.",
-      "example_ko": "가을에는 강수량이 많습니다."
-    },
-    {
-      "word": "Sturm",
-      "meaning": "폭풍",
-      "confuse": "Sturm(강한 바람을 동반한 폭풍) vs. Gewitter(번개와 천둥을 동반한 뇌우)",
-      "example": "Ein heftiger **Sturm** zog über die Stadt.",
-      "example_ko": "강한 폭풍이 도시를 지나갔습니다."
-    },
-    {
-      "word": "Vorhersage",
-      "meaning": "예보, 예측",
-      "confuse": null,
-      "example": "Die Wettervorhersage sagt Regen für morgen voraus.",
-      "example_ko": "일기 예보는 내일 비가 온다고 합니다."
-    },
-    {
-      "word": "Erneuerbare Energie",
-      "meaning": "재생에너지",
-      "confuse": null,
-      "example": "Deutschland setzt stark auf **erneuerbare Energie**.",
-      "example_ko": "독일은 재생에너지에 크게 의존하고 있습니다."
+      "word": "unvorhersehbar",
+      "meaning": "예측할 수 없는",
+      "confuse": "unvorhersehbar vs. unerwartet: `unvorhersehbar`는 예측 자체가 불가능한 것, `unerwartet`는 예상했지만 기대하지 않은 것.",
+      "example": "Das **unvorhersehbare** Wetter macht Planung schwierig.",
+      "example_ko": "예측할 수 없는 날씨 때문에 계획 세우기가 어렵습니다."
     }
   ],
   "source": null,
-  "example": true
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Deutschland hat vier **Jahreszeiten**: Frühling, Sommer, Herbst und Winter.",
+          "chunks": [
+            [
+              "Deutschland hat",
+              "독일은 있습니다"
+            ],
+            [
+              "vier **Jahreszeiten**:",
+              "4개의 계절이"
+            ],
+            [
+              "Frühling, Sommer, Herbst und Winter.",
+              "봄, 여름, 가을, 겨울"
+            ]
+          ]
+        },
+        {
+          "en": "Im **Sommer** ist es warm und manchmal heiß.",
+          "chunks": [
+            [
+              "Im **Sommer**",
+              "여름에는"
+            ],
+            [
+              "ist es warm",
+              "따뜻합니다"
+            ],
+            [
+              "und manchmal heiß.",
+              "그리고 때로는 덥습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Im **Herbst** regnet es oft und es ist windig.",
+          "chunks": [
+            [
+              "Im **Herbst**",
+              "가을에는"
+            ],
+            [
+              "regnet es oft",
+              "비가 자주 옵니다"
+            ],
+            [
+              "und es ist windig.",
+              "그리고 바람이 붑니다"
+            ]
+          ]
+        },
+        {
+          "en": "Im **Winter** schneit es manchmal, besonders in den Bergen.",
+          "chunks": [
+            [
+              "Im **Winter**",
+              "겨울에는"
+            ],
+            [
+              "schneit es manchmal,",
+              "때때로 눈이 내립니다"
+            ],
+            [
+              "besonders in den Bergen.",
+              "특히 산에서"
+            ]
+          ]
+        },
+        {
+          "en": "Das **Wetter** in Deutschland kann schnell wechseln.",
+          "chunks": [
+            [
+              "Das **Wetter** in Deutschland",
+              "독일의 날씨는"
+            ],
+            [
+              "kann schnell wechseln.",
+              "빠르게 바뀔 수 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Im **Frühling** blühen die Blumen und es wird wärmer.",
+          "chunks": [
+            [
+              "Im **Frühling**",
+              "봄에는"
+            ],
+            [
+              "blühen die Blumen",
+              "꽃이 핍니다"
+            ],
+            [
+              "und es wird wärmer.",
+              "그리고 더 따뜻해집니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "독일은 봄, 여름, 가을, 겨울의 4개 계절이 있습니다.",
+        "여름에는 따뜻하고 때로는 덥습니다.",
+        "가을에는 비가 자주 오고 바람이 붑니다.",
+        "겨울에는 특히 산에서 때때로 눈이 내립니다.",
+        "독일의 날씨는 빠르게 바뀔 수 있습니다.",
+        "봄에는 꽃이 피고 더 따뜻해집니다."
+      ]
+    }
+  }
 }

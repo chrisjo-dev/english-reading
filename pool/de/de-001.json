@@ -4,128 +4,349 @@
   "topic": "동네 빵집",
   "title_ko": "매일 아침 문을 여는 동네 빵집",
   "headline": "Die Bäckerei um die Ecke",
-  "chips": ["5문장", "A2 위주", "B1 1문장", "약 3분"],
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
   "sentences": [
     {
-      "en": "In Deutschland gibt es sehr viele **Bäckereien**.",
+      "en": "In fast jedem deutschen Stadtviertel gibt es eine **Bäckerei**, die täglich frisches Brot backt.",
       "b2": false,
       "chunks": [
-        ["In Deutschland", "독일에는"],
-        ["gibt es", "있습니다"],
-        ["sehr viele", "아주 많은"],
-        ["**Bäckereien**.", "빵집이"]
+        [
+          "In fast jedem deutschen Stadtviertel",
+          "거의 모든 독일 주거 지역에는"
+        ],
+        [
+          "gibt es",
+          "있습니다"
+        ],
+        [
+          "eine **Bäckerei**,",
+          "빵집이"
+        ],
+        [
+          "die täglich",
+          "매일"
+        ],
+        [
+          "frisches Brot backt.",
+          "신선한 빵을 굽는"
+        ]
       ]
     },
     {
-      "en": "Die meisten **Bäckereien** öffnen früh am Morgen.",
+      "en": "Die meisten **Bäckereien** öffnen schon um sechs Uhr, weil viele Kunden vor der Arbeit einkaufen.",
       "b2": false,
       "chunks": [
-        ["Die meisten", "대부분의"],
-        ["**Bäckereien**", "빵집은"],
-        ["öffnen", "문을 엽니다"],
-        ["früh am Morgen.", "이른 아침에"]
+        [
+          "Die meisten **Bäckereien**",
+          "대부분의 빵집은"
+        ],
+        [
+          "öffnen schon um sechs Uhr,",
+          "이미 6시에 문을 엽니다"
+        ],
+        [
+          "weil viele Kunden",
+          "많은 손님들이"
+        ],
+        [
+          "vor der Arbeit einkaufen.",
+          "출근 전에 장을 보기 때문입니다"
+        ]
       ]
     },
     {
-      "en": "Viele Menschen kaufen frisches **Brot** und Brötchen zum Frühstück.",
+      "en": "Neben **Roggenbrot** und Weißbrot bieten viele Bäckereien auch Croissants und Kuchen an.",
       "b2": false,
       "chunks": [
-        ["Viele Menschen", "많은 사람들이"],
-        ["kaufen", "삽니다"],
-        ["frisches **Brot**", "신선한 빵과"],
-        ["und Brötchen", "작은 빵을"],
-        ["zum Frühstück.", "아침 식사로"]
+        [
+          "Neben **Roggenbrot**",
+          "호밀빵 외에도"
+        ],
+        [
+          "und Weißbrot",
+          "흰 빵과"
+        ],
+        [
+          "bieten viele Bäckereien",
+          "많은 빵집은"
+        ],
+        [
+          "auch Croissants",
+          "크루아상도"
+        ],
+        [
+          "und Kuchen an.",
+          "케이크를 제공합니다"
+        ]
       ]
     },
     {
-      "en": "Die **Verkäuferin** empfiehlt heute besonders den Roggenkuchen.",
+      "en": "Der **Bäcker** muss sehr früh aufstehen, damit das Brot rechtzeitig für die Kunden fertig ist.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der **Bäcker**",
+          "제빵사는"
+        ],
+        [
+          "muss sehr früh aufstehen,",
+          "매우 일찍 일어나야 합니다"
+        ],
+        [
+          "damit das Brot",
+          "빵이"
+        ],
+        [
+          "rechtzeitig für die Kunden fertig ist.",
+          "손님들을 위해 제때 준비될 수 있도록"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Stammkunden bevorzugen das **handwerklich** gebackene Brot, da es frischer und aromatischer schmeckt.",
       "b2": true,
       "chunks": [
-        ["Die **Verkäuferin**", "판매원이"],
-        ["empfiehlt", "추천합니다"],
-        ["heute besonders", "오늘 특히"],
-        ["den Roggenkuchen.", "호밀 케이크를"]
+        [
+          "Viele Stammkunden",
+          "많은 단골 고객들은"
+        ],
+        [
+          "bevorzugen das **handwerklich**",
+          "수공예로"
+        ],
+        [
+          "gebackene Brot,",
+          "구운 빵을 더 좋아합니다"
+        ],
+        [
+          "da es frischer",
+          "더 신선하고"
+        ],
+        [
+          "und aromatischer schmeckt.",
+          "향이 풍부한 맛이 나기 때문입니다"
+        ]
       ]
     },
     {
-      "en": "Der Duft von frischem **Brot** ist sehr angenehm.",
+      "en": "Der Duft von frischem **Brot** zieht die Menschen morgens in die Bäckerei.",
       "b2": false,
       "chunks": [
-        ["Der Duft", "향기는"],
-        ["von frischem **Brot**", "신선한 빵의"],
-        ["ist sehr angenehm.", "매우 좋습니다"]
+        [
+          "Der Duft",
+          "향기가"
+        ],
+        [
+          "von frischem **Brot**",
+          "신선한 빵의"
+        ],
+        [
+          "zieht die Menschen",
+          "사람들을 끌어들입니다"
+        ],
+        [
+          "morgens in die Bäckerei.",
+          "아침에 빵집으로"
+        ]
       ]
     }
   ],
   "words": [
-    ["Bäckerei", "빵집"],
-    ["Brot", "빵"],
-    ["Brötchen", "작은 빵, 롤빵"],
-    ["Frühstück", "아침 식사"],
-    ["Verkäuferin", "여자 판매원"],
-    ["Duft", "향기"]
+    [
+      "Bäckerei",
+      "빵집"
+    ],
+    [
+      "Roggenbrot",
+      "호밀빵"
+    ],
+    [
+      "Brötchen",
+      "롤빵"
+    ],
+    [
+      "Bäcker",
+      "제빵사"
+    ],
+    [
+      "Stammkunde",
+      "단골 고객"
+    ],
+    [
+      "Duft",
+      "향기"
+    ]
   ],
   "points": [
     {
-      "title": "zum Frühstück — 전치사 zu + Dativ",
-      "body": "`zum Frühstück`의 zum 은 전치사 zu 와 정관사 dem(Dativ)이 합쳐진 형태예요. '아침 식사를 위해, 아침 식사로'라는 뜻입니다."
+      "title": "damit — 목적 접속사",
+      "body": "`damit`은 '~하도록, ~하기 위해서'라는 목적을 나타내는 종속 접속사예요. `damit das Brot fertig ist` 처럼 종속절에서 동사가 맨 끝으로 갑니다."
     },
     {
-      "title": "empfiehlt — 불규칙 동사 현재형",
-      "body": "`empfehlen`(추천하다)은 e→ie 로 바뀌는 불규칙 동사예요. 3인칭 단수에서 `empfiehlt`가 됩니다."
+      "title": "Separable Verbs — 분리동사 anbieten",
+      "body": "`anbieten`(제공하다)은 분리동사로, 평서문에서 `an`이 문장 끝으로 이동해요. `bieten ... an` 구조를 기억하세요."
     }
   ],
   "answers": [
-    "독일에는 빵집이 아주 많습니다.",
-    "대부분의 빵집은 이른 아침에 문을 엽니다.",
-    "많은 사람들이 아침 식사로 신선한 빵과 작은 빵을 삽니다.",
-    "판매원이 오늘 특히 호밀 케이크를 추천합니다.",
-    "신선한 빵의 향기는 매우 좋습니다."
+    "거의 모든 독일 주거 지역에는 매일 신선한 빵을 굽는 빵집이 있습니다.",
+    "대부분의 빵집은 많은 손님들이 출근 전에 장을 보기 때문에 이미 6시에 문을 엽니다.",
+    "많은 빵집은 호밀빵과 흰 빵 외에도 크루아상과 케이크도 제공합니다.",
+    "제빵사는 빵이 손님들을 위해 제때 준비될 수 있도록 매우 일찍 일어나야 합니다.",
+    "많은 단골 고객들은 더 신선하고 향이 풍부한 맛이 나기 때문에 수공예로 구운 빵을 더 좋아합니다.",
+    "신선한 빵의 향기가 사람들을 아침에 빵집으로 끌어들입니다."
   ],
   "advanced": [
     {
-      "word": "frisch",
-      "meaning": "신선한",
-      "confuse": "frisch vs. neu: frisch는 막 만들어진 신선함, neu는 새것(기존에 없던 것)을 뜻해요.",
-      "example": "Die Brötchen sind jeden Morgen **frisch** gebacken.",
-      "example_ko": "작은 빵들은 매일 아침 갓 구워집니다."
+      "word": "bevorzugen",
+      "meaning": "더 좋아하다, 선호하다",
+      "confuse": "bevorzugen vs. vorziehen: 둘 다 '선호하다'이지만 `vorziehen`은 두 대상을 비교할 때, `bevorzugen`은 일반적 선호를 나타낼 때 많이 써요.",
+      "example": "Viele Kunden **bevorzugen** frisches Brot aus der Bäckerei.",
+      "example_ko": "많은 손님들은 빵집의 신선한 빵을 더 좋아합니다."
     },
     {
-      "word": "empfehlen",
-      "meaning": "추천하다",
+      "word": "aromatisch",
+      "meaning": "향기로운, 풍미 있는",
       "confuse": null,
-      "example": "Ich **empfehle** dir diesen Kuchen.",
-      "example_ko": "나는 이 케이크를 너에게 추천해."
+      "example": "Dieses **aromatische** Brot riecht wunderbar.",
+      "example_ko": "이 향기로운 빵은 냄새가 정말 좋습니다."
     },
     {
-      "word": "angenehm",
-      "meaning": "기분 좋은, 쾌적한",
-      "confuse": "angenehm vs. nett: angenehm은 감각적으로 좋은 느낌, nett는 사람이 친절한 것.",
-      "example": "Der Duft ist sehr **angenehm**.",
-      "example_ko": "그 향기는 매우 좋습니다."
-    },
-    {
-      "word": "öffnen",
-      "meaning": "열다",
-      "confuse": "öffnen(열다) vs. aufmachen: 둘 다 '열다'이지만 öffnen이 좀 더 격식체예요.",
-      "example": "Die Bäckerei **öffnet** um 6 Uhr.",
-      "example_ko": "빵집은 6시에 문을 엽니다."
-    },
-    {
-      "word": "besonders",
-      "meaning": "특히, 특별히",
+      "word": "handwerklich",
+      "meaning": "수공예의, 장인의",
       "confuse": null,
-      "example": "Heute ist der Roggenkuchen **besonders** lecker.",
-      "example_ko": "오늘 호밀 케이크가 특히 맛있습니다."
-    },
-    {
-      "word": "Roggen",
-      "meaning": "호밀",
-      "confuse": null,
-      "example": "**Roggenbrot** ist in Deutschland sehr beliebt.",
-      "example_ko": "호밀빵은 독일에서 매우 인기가 많습니다."
+      "example": "Das **handwerklich** hergestellte Produkt ist qualitativ hochwertig.",
+      "example_ko": "수공예로 만들어진 제품은 품질이 우수합니다."
     }
   ],
   "source": null,
-  "example": true
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "In Deutschland gibt es in vielen Stadtvierteln eine **Bäckerei**.",
+          "chunks": [
+            [
+              "In Deutschland",
+              "독일에는"
+            ],
+            [
+              "gibt es",
+              "있습니다"
+            ],
+            [
+              "in vielen Stadtvierteln",
+              "많은 주거 지역에"
+            ],
+            [
+              "eine **Bäckerei**.",
+              "빵집이"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Bäckereien** öffnen früh morgens um sechs Uhr.",
+          "chunks": [
+            [
+              "Die **Bäckereien**",
+              "빵집들은"
+            ],
+            [
+              "öffnen früh morgens",
+              "이른 아침에 문을 엽니다"
+            ],
+            [
+              "um sechs Uhr.",
+              "6시에"
+            ]
+          ]
+        },
+        {
+          "en": "Sie verkaufen **Brot**, Brötchen und Kuchen.",
+          "chunks": [
+            [
+              "Sie verkaufen",
+              "그들은 팝니다"
+            ],
+            [
+              "**Brot**, Brötchen",
+              "빵, 롤빵"
+            ],
+            [
+              "und Kuchen.",
+              "그리고 케이크를"
+            ]
+          ]
+        },
+        {
+          "en": "Der **Bäcker** steht jeden Morgen sehr früh auf.",
+          "chunks": [
+            [
+              "Der **Bäcker**",
+              "제빵사는"
+            ],
+            [
+              "steht jeden Morgen",
+              "매일 아침"
+            ],
+            [
+              "sehr früh auf.",
+              "매우 일찍 일어납니다"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Menschen kaufen lieber frisches **Brot** in der Bäckerei.",
+          "chunks": [
+            [
+              "Viele Menschen",
+              "많은 사람들이"
+            ],
+            [
+              "kaufen lieber",
+              "더 좋아합니다"
+            ],
+            [
+              "frisches **Brot**",
+              "신선한 빵을"
+            ],
+            [
+              "in der Bäckerei.",
+              "빵집에서"
+            ]
+          ]
+        },
+        {
+          "en": "Der Duft von frischem **Brot** ist sehr angenehm.",
+          "chunks": [
+            [
+              "Der Duft",
+              "향기는"
+            ],
+            [
+              "von frischem **Brot**",
+              "신선한 빵의"
+            ],
+            [
+              "ist sehr angenehm.",
+              "매우 좋습니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "독일 많은 주거 지역에는 빵집이 있습니다.",
+        "빵집들은 이른 아침 6시에 문을 엽니다.",
+        "그들은 빵, 롤빵, 케이크를 팝니다.",
+        "제빵사는 매일 아침 매우 일찍 일어납니다.",
+        "많은 사람들이 빵집에서 신선한 빵을 더 좋아합니다.",
+        "신선한 빵의 향기는 매우 좋습니다."
+      ]
+    }
+  }
 }

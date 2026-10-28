@@ -1,132 +1,328 @@
 {
   "date": "2026-10-05",
-  "category": "science",
-  "topic": "재활용과 환경",
-  "title_ko": "독일의 철저한 분리수거",
-  "headline": "Mülltrennung in Deutschland",
-  "chips": ["5문장", "A2 위주", "B1 1문장", "약 3분"],
+  "category": "environment",
+  "topic": "재활용과 환경 보호",
+  "title_ko": "독일의 철저한 분리수거 문화",
+  "headline": "Mülltrennung und Umweltschutz in Deutschland",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
   "sentences": [
     {
-      "en": "In Deutschland trennt man den **Müll** sehr genau.",
+      "en": "Deutschland gilt weltweit als eines der führenden Länder beim **Recycling** und der Mülltrennung.",
       "b2": false,
       "chunks": [
-        ["In Deutschland", "독일에서는"],
-        ["trennt man", "분리합니다"],
-        ["den **Müll**", "쓰레기를"],
-        ["sehr genau.", "매우 꼼꼼하게"]
+        [
+          "Deutschland gilt weltweit",
+          "독일은 세계적으로"
+        ],
+        [
+          "als eines der führenden Länder",
+          "선도적인 나라 중 하나로 여겨집니다"
+        ],
+        [
+          "beim **Recycling**",
+          "재활용과"
+        ],
+        [
+          "und der Mülltrennung.",
+          "분리수거에서"
+        ]
       ]
     },
     {
-      "en": "Papier, **Glas** und Plastik kommen in verschiedene **Tonnen**.",
+      "en": "Jeder Haushalt muss seinen **Müll** in verschiedene Tonnen sortieren, zum Beispiel Papier, Plastik und Biomüll.",
       "b2": false,
       "chunks": [
-        ["Papier,", "종이와"],
-        ["**Glas**", "유리와"],
-        ["und Plastik", "플라스틱은"],
-        ["kommen", "들어갑니다"],
-        ["in verschiedene **Tonnen**.", "각각 다른 통에"]
+        [
+          "Jeder Haushalt",
+          "모든 가정은"
+        ],
+        [
+          "muss seinen **Müll**",
+          "쓰레기를"
+        ],
+        [
+          "in verschiedene Tonnen sortieren,",
+          "여러 통에 분리해야 합니다"
+        ],
+        [
+          "zum Beispiel Papier, Plastik und Biomüll.",
+          "예를 들어 종이, 플라스틱, 음식물 쓰레기로"
+        ]
       ]
     },
     {
-      "en": "Die **gelbe Tonne** ist für Verpackungen aus Plastik und Metall.",
+      "en": "Das **Pfandsystem** für Flaschen und Dosen motiviert die Menschen, Verpackungen zurückzugeben.",
       "b2": false,
       "chunks": [
-        ["Die **gelbe Tonne**", "노란 통은"],
-        ["ist", "입니다"],
-        ["für Verpackungen", "포장재를 위한 것"],
-        ["aus Plastik und Metall.", "플라스틱과 금속으로 만든"]
+        [
+          "Das **Pfandsystem**",
+          "공병 보증금 제도는"
+        ],
+        [
+          "für Flaschen und Dosen",
+          "병과 캔을 위한"
+        ],
+        [
+          "motiviert die Menschen,",
+          "사람들을 동기부여합니다"
+        ],
+        [
+          "Verpackungen zurückzugeben.",
+          "포장재를 반납하도록"
+        ]
       ]
     },
     {
-      "en": "Bioabfälle wie Essensreste kommen in die **braune Tonne**.",
+      "en": "Durch konsequente **Mülltrennung** kann ein Großteil der Abfälle wiederverwendet oder recycelt werden.",
       "b2": false,
       "chunks": [
-        ["Bioabfälle", "음식물 쓰레기"],
-        ["wie Essensreste", "음식 찌꺼기 같은"],
-        ["kommen", "들어갑니다"],
-        ["in die **braune Tonne**.", "갈색 통에"]
+        [
+          "Durch konsequente **Mülltrennung**",
+          "철저한 분리수거를 통해"
+        ],
+        [
+          "kann ein Großteil der Abfälle",
+          "쓰레기의 대부분을"
+        ],
+        [
+          "wiederverwendet oder recycelt werden.",
+          "재사용하거나 재활용할 수 있습니다"
+        ]
       ]
     },
     {
-      "en": "Wer **Müll** falsch trennt, muss in manchen Städten eine Strafe bezahlen.",
+      "en": "Wer seinen **Restmüll** nicht korrekt trennt, muss in manchen Städten mit Bußgeldern rechnen.",
       "b2": true,
       "chunks": [
-        ["Wer **Müll** falsch trennt,", "쓰레기를 잘못 분리하는 사람은"],
-        ["muss", "내야 합니다"],
-        ["in manchen Städten", "일부 도시에서"],
-        ["eine Strafe bezahlen.", "벌금을"]
+        [
+          "Wer seinen **Restmüll**",
+          "일반 쓰레기를"
+        ],
+        [
+          "nicht korrekt trennt,",
+          "올바르게 분리하지 않는 사람은"
+        ],
+        [
+          "muss in manchen Städten",
+          "일부 도시에서"
+        ],
+        [
+          "mit Bußgeldern rechnen.",
+          "과태료를 각오해야 합니다"
+        ]
+      ]
+    },
+    {
+      "en": "Die Bundesregierung hat sich verpflichtet, den **Plastikmüll** in den nächsten Jahren erheblich zu reduzieren.",
+      "b2": false,
+      "chunks": [
+        [
+          "Die Bundesregierung",
+          "연방 정부는"
+        ],
+        [
+          "hat sich verpflichtet,",
+          "공약했습니다"
+        ],
+        [
+          "den **Plastikmüll**",
+          "플라스틱 쓰레기를"
+        ],
+        [
+          "in den nächsten Jahren",
+          "앞으로 몇 년 안에"
+        ],
+        [
+          "erheblich zu reduzieren.",
+          "크게 줄이겠다고"
+        ]
       ]
     }
   ],
   "words": [
-    ["Müll", "쓰레기"],
-    ["trennen", "분리하다"],
-    ["Tonne", "쓰레기통, 통"],
-    ["Verpackung", "포장재"],
-    ["Bioabfall", "음식물 쓰레기"],
-    ["Strafe", "벌금, 처벌"]
+    [
+      "Mülltrennung",
+      "분리수거"
+    ],
+    [
+      "Recycling",
+      "재활용"
+    ],
+    [
+      "Pfandsystem",
+      "공병 보증금 제도"
+    ],
+    [
+      "Haushalt",
+      "가정"
+    ],
+    [
+      "Bußgeld",
+      "과태료"
+    ],
+    [
+      "Biomüll",
+      "음식물 쓰레기"
+    ]
   ],
   "points": [
     {
-      "title": "gelbe Tonne — 형용사 어미 변화",
-      "body": "`die gelbe Tonne`에서 형용사 `gelb`에 `-e`가 붙은 건 정관사(die) 뒤의 여성 명사이기 때문이에요. 정관사 뒤 약변화: 주격(Nominativ)에서 `-e`만 씁니다."
+      "title": "mit + Dativ rechnen — ~을 각오하다",
+      "body": "`rechnen mit + Dativ`는 '~을 예상하다, 각오하다'는 뜻이에요. `mit Bußgeldern rechnen`은 '과태료를 각오하다'입니다."
     },
     {
-      "title": "kommen in + Akkusativ — 방향 표현",
-      "body": "`kommen in die Tonne`에서 `in`은 방향을 나타내므로 Akkusativ(`die Tonne`)을 씁니다. 위치(어디에 있다)이면 Dativ, 방향(어디로 간다)이면 Akkusativ."
+      "title": "sich verpflichten — 약속/공약하다",
+      "body": "`sich verpflichten + zu + Infinitiv`는 '~하겠다고 약속하다, 공약하다'는 뜻이에요. `hat sich verpflichtet, ... zu reduzieren`처럼 씁니다."
     }
   ],
   "answers": [
-    "독일에서는 쓰레기를 매우 꼼꼼하게 분리합니다.",
-    "종이, 유리, 플라스틱은 각각 다른 통에 들어갑니다.",
-    "노란 통은 플라스틱과 금속 포장재를 위한 것입니다.",
-    "음식 찌꺼기 같은 음식물 쓰레기는 갈색 통에 들어갑니다.",
-    "일부 도시에서는 쓰레기를 잘못 분리하는 사람이 벌금을 내야 합니다."
+    "독일은 재활용과 분리수거에서 세계적으로 선도적인 나라 중 하나로 여겨집니다.",
+    "모든 가정은 쓰레기를 예를 들어 종이, 플라스틱, 음식물 쓰레기로 여러 통에 분리해야 합니다.",
+    "병과 캔을 위한 공병 보증금 제도는 사람들이 포장재를 반납하도록 동기부여합니다.",
+    "철저한 분리수거를 통해 쓰레기의 대부분을 재사용하거나 재활용할 수 있습니다.",
+    "일반 쓰레기를 올바르게 분리하지 않는 사람은 일부 도시에서 과태료를 각오해야 합니다.",
+    "연방 정부는 앞으로 몇 년 안에 플라스틱 쓰레기를 크게 줄이겠다고 공약했습니다."
   ],
   "advanced": [
     {
-      "word": "recyceln",
-      "meaning": "재활용하다",
+      "word": "konsequent",
+      "meaning": "철저한, 일관된",
       "confuse": null,
-      "example": "In Deutschland wird sehr viel **recycelt**.",
-      "example_ko": "독일에서는 재활용이 매우 많이 이루어집니다."
+      "example": "Er ist **konsequent** in seiner Arbeit.",
+      "example_ko": "그는 자신의 일에 있어서 일관됩니다."
     },
     {
-      "word": "Umwelt",
-      "meaning": "환경",
-      "confuse": "Umwelt(환경, 특히 자연환경) vs. Umgebung(주변 환경, 지역): Umwelt는 주로 생태/자연을 뜻해요.",
-      "example": "Mülltrennung schützt die **Umwelt**.",
-      "example_ko": "분리수거는 환경을 보호합니다."
-    },
-    {
-      "word": "nachhaltig",
-      "meaning": "지속 가능한",
+      "word": "motivieren",
+      "meaning": "동기를 부여하다",
       "confuse": null,
-      "example": "**Nachhaltiges** Verhalten ist wichtig für die Zukunft.",
-      "example_ko": "지속 가능한 행동이 미래를 위해 중요합니다."
+      "example": "Das Pfandsystem **motiviert** die Menschen zum Recycling.",
+      "example_ko": "공병 제도는 사람들에게 재활용의 동기를 부여합니다."
     },
     {
-      "word": "entsorgen",
-      "meaning": "처리하다, 폐기하다",
-      "confuse": "entsorgen(올바르게 처리) vs. wegwerfen(그냥 버리다): entsorgen이 환경적으로 올바른 방법을 내포해요.",
-      "example": "Alte Batterien müssen korrekt **entsorgt** werden.",
-      "example_ko": "오래된 배터리는 올바르게 처리해야 합니다."
-    },
-    {
-      "word": "Pfand",
-      "meaning": "보증금(병, 캔 반환금)",
-      "confuse": null,
-      "example": "Auf Plastikflaschen gibt es **Pfand** in Deutschland.",
-      "example_ko": "독일에서는 플라스틱 병에 보증금이 있습니다."
-    },
-    {
-      "word": "Abfall",
-      "meaning": "쓰레기, 폐기물",
-      "confuse": "Abfall(폐기물, 격식체) vs. Müll(쓰레기, 일상어): 둘 다 쓸 수 있지만 Müll이 더 일상적이에요.",
-      "example": "Bitte werfen Sie keinen **Abfall** auf die Straße.",
-      "example_ko": "길에 쓰레기를 버리지 마세요."
+      "word": "erheblich",
+      "meaning": "크게, 상당히",
+      "confuse": "erheblich vs. deutlich: 둘 다 '상당히'이지만 `erheblich`는 양이나 정도의 변화가 클 때, `deutlich`는 명확하고 뚜렷할 때 씁니다.",
+      "example": "Die Kosten sind **erheblich** gestiegen.",
+      "example_ko": "비용이 크게 증가했습니다."
     }
   ],
   "source": null,
-  "example": true
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Deutschland ist sehr gut im **Recycling** und in der Mülltrennung.",
+          "chunks": [
+            [
+              "Deutschland ist sehr gut",
+              "독일은 매우 잘합니다"
+            ],
+            [
+              "im **Recycling**",
+              "재활용과"
+            ],
+            [
+              "und in der Mülltrennung.",
+              "분리수거를"
+            ]
+          ]
+        },
+        {
+          "en": "Man sortiert den **Müll** in verschiedene Tonnen: Papier, Plastik und Biomüll.",
+          "chunks": [
+            [
+              "Man sortiert den **Müll**",
+              "쓰레기를 분리합니다"
+            ],
+            [
+              "in verschiedene Tonnen:",
+              "여러 통으로"
+            ],
+            [
+              "Papier, Plastik und Biomüll.",
+              "종이, 플라스틱, 음식물 쓰레기로"
+            ]
+          ]
+        },
+        {
+          "en": "Beim **Pfandsystem** bringt man Flaschen zurück und bekommt Geld.",
+          "chunks": [
+            [
+              "Beim **Pfandsystem**",
+              "공병 보증금 제도에서는"
+            ],
+            [
+              "bringt man Flaschen zurück",
+              "병을 돌려줍니다"
+            ],
+            [
+              "und bekommt Geld.",
+              "그러면 돈을 받습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Wenn man den **Müll** gut trennt, kann man viel recyceln.",
+          "chunks": [
+            [
+              "Wenn man den **Müll** gut trennt,",
+              "쓰레기를 잘 분리하면"
+            ],
+            [
+              "kann man viel recyceln.",
+              "많이 재활용할 수 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Man soll den **Restmüll** immer richtig trennen.",
+          "chunks": [
+            [
+              "Man soll",
+              "해야 합니다"
+            ],
+            [
+              "den **Restmüll**",
+              "일반 쓰레기를"
+            ],
+            [
+              "immer richtig trennen.",
+              "항상 올바르게 분리"
+            ]
+          ]
+        },
+        {
+          "en": "Deutschland möchte in Zukunft weniger **Plastikmüll** produzieren.",
+          "chunks": [
+            [
+              "Deutschland möchte",
+              "독일은 원합니다"
+            ],
+            [
+              "in Zukunft",
+              "앞으로"
+            ],
+            [
+              "weniger **Plastikmüll** produzieren.",
+              "더 적은 플라스틱 쓰레기를 만들기를"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "독일은 재활용과 분리수거를 매우 잘합니다.",
+        "쓰레기를 종이, 플라스틱, 음식물 쓰레기로 여러 통에 분리합니다.",
+        "공병 보증금 제도에서는 병을 돌려주면 돈을 받습니다.",
+        "쓰레기를 잘 분리하면 많이 재활용할 수 있습니다.",
+        "일반 쓰레기를 항상 올바르게 분리해야 합니다.",
+        "독일은 앞으로 더 적은 플라스틱 쓰레기를 만들기를 원합니다."
+      ]
+    }
+  }
 }
