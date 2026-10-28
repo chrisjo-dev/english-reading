@@ -1,0 +1,51 @@
+{
+ "_note": "독일어 음성 벤치마크 고정 입력. founder/de-voice/text.json 의 6문장과 3단어(C2 비교용).",
+ "lang": "de",
+ "items": [
+  {
+   "key": "s1",
+   "kind": "sentence",
+   "text": "In vielen deutschen Städten bleiben Bibliotheken jetzt auch am Abend geöffnet."
+  },
+  {
+   "key": "s2",
+   "kind": "sentence",
+   "text": "Die Idee ist einfach: Wer tagsüber arbeitet, soll trotzdem Bücher ausleihen können."
+  },
+  {
+   "key": "s3",
+   "kind": "sentence",
+   "text": "Nach acht Uhr gibt es oft kein Personal mehr, aber die Besucher kommen mit ihrem Ausweis hinein."
+  },
+  {
+   "key": "s4",
+   "kind": "sentence",
+   "text": "Kameras und Automaten zum Ausleihen sorgen dafür, dass alles sicher und einfach bleibt."
+  },
+  {
+   "key": "s5",
+   "kind": "sentence",
+   "text": "Viele Studenten nutzen die ruhigen Räume, um am Abend zu lernen."
+  },
+  {
+   "key": "s6",
+   "kind": "sentence",
+   "text": "Einige Städte wollen das Angebot deshalb bald auch auf das Wochenende ausweiten."
+  },
+  {
+   "key": "w1",
+   "kind": "word",
+   "text": "ausleihen"
+  },
+  {
+   "key": "w2",
+   "kind": "word",
+   "text": "der Ausweis"
+  },
+  {
+   "key": "w3",
+   "kind": "word",
+   "text": "das Angebot"
+  }
+ ]
+}
