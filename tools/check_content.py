@@ -43,6 +43,31 @@ def texts(c, where="", skip=("date", "category", "chips", "source")):
                 yield from texts(v, where or k)
 
 
+def check_de_quality(c, path):
+    """독일어 지문 품질 검사 (문장 길이 경고, advanced 개수 오류)."""
+    errors, warnings = [], []
+    sents = c.get("sentences", [])
+    if sents:
+        avg_wc = sum(len(s.get("en", "").split()) for s in sents) / len(sents)
+        if avg_wc < 14:
+            warnings.append(
+                f"de 문장 평균 단어 수({avg_wc:.1f})가 14 미만입니다. "
+                "B1~B2 수준은 15~22단어를 권장합니다."
+            )
+    adv = c.get("advanced", [])
+    is_pool = path.parent.parent.name == "pool"
+    try:
+        is_recent = dt.date.fromisoformat(path.stem) >= dt.date(2026, 10, 29)
+    except ValueError:
+        is_recent = False
+    if (is_pool or is_recent) and len(adv) < 5:
+        errors.append(
+            f"advanced 항목이 {len(adv)}개입니다. "
+            "독일어 지문은 6~8개가 필요합니다(pool 과 2026-10-29 이후 지문에 적용)."
+        )
+    return errors, warnings
+
+
 def check(path):
     c = json.loads(path.read_text(encoding="utf-8"))
     errors, warnings = [], []
@@ -86,6 +111,10 @@ def check(path):
                 warnings.append(f"levels.a 에 출처 없는 구체적 수치({', '.join(hits_a)}). 출처를 달거나 수치를 빼세요.")
     errors += check_example_ko(c, path)
     errors += overlap(path, c)
+    if path.parent.name == "de":
+        de_errors, de_warnings = check_de_quality(c, path)
+        errors += de_errors
+        warnings += de_warnings
     return errors, warnings
 
 

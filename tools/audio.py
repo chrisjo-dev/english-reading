@@ -10,6 +10,7 @@
 - 공통: ffmpeg
 이미 문장 수만큼 mp3 가 있으면 다시 만들지 않는다.
 """
+import hashlib
 import json
 import os
 import re
@@ -24,6 +25,51 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
+
+# ---------- 사이드카(오디오 텍스트 해시) ----------
+_SIDECAR_NAME = ".text.json"
+
+
+def _text_hash(text: str) -> str:
+    """텍스트의 SHA-256 앞 16자리를 반환한다."""
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
+
+
+def _load_sidecar(out_dir: "Path"):
+    """사이드카를 로드한다.
+    반환값: (data: dict, exists: bool)
+    - 사이드카 파일이 없으면 ({}, False) — 기존 파일을 유효하게 취급한다(대량 재생성 방지).
+    - 있으나 파싱 실패 시 ({}, True).
+    """
+    sidecar = Path(out_dir) / _SIDECAR_NAME
+    if not sidecar.exists():
+        return {}, False
+    try:
+        return json.loads(sidecar.read_text(encoding="utf-8")), True
+    except Exception:
+        return {}, True
+
+
+def _save_sidecar(out_dir: "Path", data: dict):
+    """사이드카를 저장한다."""
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / _SIDECAR_NAME).write_text(
+        json.dumps(data, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _needs_regen(target: "Path", text_hash: str, sidecar_data: dict, sidecar_exists: bool) -> bool:
+    """오디오 파일을 재생성해야 하는지 판단한다."""
+    if not Path(target).exists():
+        return True
+    if not sidecar_exists:
+        return False  # 사이드카 없음 → 기존 파일을 유효하게 취급
+    stored = sidecar_data.get(Path(target).name)
+    if stored is None:
+        return False  # 사이드카에 항목 없음 → 유효하게 취급
+    return stored != text_hash  # 해시가 다르면 재생성
 
 # ---------- Qwen3-TTS(독일어) 설정 ----------
 # 재시도 시드 순서: 벤치마크에서 ~30% 항목이 seed=7 에서 실패, 이 시드들은 통과율이 높다.
@@ -96,23 +142,33 @@ def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
     # 생성할 항목 목록 구성 (heavy import 전에 skip 여부를 먼저 확인한다)
     items = []
     for i, s in enumerate(c.get("sentences", []), 1):
+        t = plain(s["en"])
         items.append({"key": f"s{i}", "kind": "sentence",
-                      "text": plain(s["en"]), "target": out_dir / f"s{i}.mp3"})
+                      "text": t, "target": out_dir / f"s{i}.mp3",
+                      "hash": _text_hash(t)})
     for i, w in enumerate(c.get("words", []), 1):
+        t = plain_word_tts(w[0], lang)
         items.append({"key": f"w{i}", "kind": "word",
-                      "text": plain_word_tts(w[0], lang), "target": out_dir / f"w{i}.mp3"})
+                      "text": t, "target": out_dir / f"w{i}.mp3",
+                      "hash": _text_hash(t)})
     for i, a in enumerate(c.get("advanced", []), 1):
+        t = plain_word_tts(a["word"], lang)
         items.append({"key": f"v{i}", "kind": "word",
-                      "text": plain_word_tts(a["word"], lang), "target": out_dir / f"v{i}.mp3"})
+                      "text": t, "target": out_dir / f"v{i}.mp3",
+                      "hash": _text_hash(t)})
 
     # level a 문장 오디오: a{i}.mp3 (levels.a 가 있을 때만)
     levels_a = (c.get("levels") or {}).get("a")
     if levels_a:
         for i, s in enumerate(levels_a.get("sentences", []), 1):
+            t = plain(s["en"])
             items.append({"key": f"a{i}", "kind": "sentence",
-                          "text": plain(s["en"]), "target": out_dir / f"a{i}.mp3"})
+                          "text": t, "target": out_dir / f"a{i}.mp3",
+                          "hash": _text_hash(t)})
 
-    pending = [it for it in items if not it["target"].exists()]
+    sidecar_data, sidecar_exists = _load_sidecar(out_dir)
+    pending = [it for it in items
+               if _needs_regen(it["target"], it["hash"], sidecar_data, sidecar_exists)]
     if not pending:
         print(f"qwen audio: 모든 파일 이미 존재 ({len(items)}개)")
         return
@@ -188,6 +244,13 @@ def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
 
     if warn_list:
         print(f"::warning::de audio 검증 경고 ({len(warn_list)}건): {', '.join(warn_list)}")
+
+    # 사이드카 갱신: 존재하는 모든 파일의 해시를 기록한다
+    for it in items:
+        if it["target"].exists():
+            sidecar_data[it["target"].name] = it["hash"]
+    _save_sidecar(out_dir, sidecar_data)
+
     print(f"qwen audio: 완료 ({len(pending)}개 처리)")
 
 
@@ -227,19 +290,35 @@ def main(lang, day, models, level="b"):
     else:
         sentences = [plain(s["en"]) for s in c["sentences"]]
         targets = [out / f"s{i}.mp3" for i in range(1, len(sentences) + 1)]
-    if all(t.exists() for t in targets):
+    # 사이드카 기반 재생성 여부 판단
+    hashes = [_text_hash(s) for s in sentences]
+    sidecar_data, sidecar_exists = _load_sidecar(out)
+    pairs = [(s, t, h) for s, t, h in zip(sentences, targets, hashes)
+             if _needs_regen(t, h, sidecar_data, sidecar_exists)]
+    if not pairs:
         print(f"audio level {level} already exists")
         return
+    pending_sentences, pending_targets, pending_hashes = zip(*pairs)
+    pending_sentences = list(pending_sentences)
+    pending_targets = list(pending_targets)
+
     engine = L["tts"]
     out.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         if engine == "voicevox":
-            voicevox(L, sentences, targets, tmp)
+            voicevox(L, pending_sentences, pending_targets, tmp)
         elif engine == "kokoro":
-            kokoro(L, sentences, targets, models, tmp)
+            kokoro(L, pending_sentences, pending_targets, models, tmp)
         else:
             raise NotImplementedError(f"알 수 없는 TTS 엔진: {engine!r}")
-    print(f"audio level {level}: {len(targets)} files ({engine})")
+
+    # 사이드카 갱신
+    for t, h in zip(targets, hashes):
+        if t.exists():
+            sidecar_data[t.name] = h
+    _save_sidecar(out, sidecar_data)
+
+    print(f"audio level {level}: {len(pending_targets)} files generated, {len(targets)} total ({engine})")
 
 
 if __name__ == "__main__":

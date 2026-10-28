@@ -3,11 +3,20 @@
 예약 작업이 매일 아침 이 파일을 읽고 따른다. 대상은 CEFR B1~B2 수준의 한국인 독일어 학습자이고, 설명과 뜻은 모두 한국어로 쓴다.
 
 ## 난이도 규칙 (매우 중요)
-- **중급(main) 지문**: B1 위주 + B2 1~2문장. 문장은 6개, 한 문장은 15~22단어 수준.
+- **중급(main) 지문**: B1 위주 + B2 1~2문장. 문장은 정확히 6개, 한 문장은 **15~22단어**(공백 기준).
   - B1 특징: Nebensätze(weil, dass, obwohl, wenn), 분리동사(Verbklammer), 수동태(wird gebacken), 형용사 변화.
-  - B2 표시(`"b2": true`): Konjunktiv II(würde, könnte, sollte), 복합 관계절, 고급 부사구, 추상 명사 등.
-  - Konjunktiv II는 1~2문장에만 가볍게 사용하고 모든 문장에 쓰지 않는다.
-- **기초(levels.a) 지문**: A2~B1. 중급과 같은 주제·사실을 1:1로 다시 씀. 문장을 짧게(10~14단어), 단순 구조(주어+동사+목적어/부사)로. Nebensatz는 최소화.
+  - B2 표시(`"b2": true`): 아래 기능 중 하나가 **반드시** 포함되어야 한다.
+    - **Konjunktiv II**: `würden ... vorziehen`, `könnte sich ... verwischen`, `wäre kaum möglich`처럼 würde/könnte/hätte/wäre를 실제로 사용해야 한다. `obwohl`(B1) 단독은 B2가 아니다.
+    - **Passiv mit Modalverb**: `können ... erworben werden`, `müssen ... beachtet werden`처럼 Modalverb+Partizip II+werden.
+    - **Partizipialattribute**: `das von Millionen täglich genutzte Netz`처럼 분사가 관사와 명사 사이에서 긴 수식어로 사용.
+    - **je...desto**: `Je mehr ... verschiebt, desto stärker ... müssen`.
+    - **sowohl...als auch**: `sowohl ein Bußgeld als auch den Ärger`.
+    - **erweiterte Relativsätze**: 관계절 안에 전치사구/부사구가 추가된 복합 구조.
+    - **Nominalstil**: 동사 대신 파생 명사를 쓰는 문장(`die Einführung ... führte zu`).
+    - **um...zu + 복잡한 목적어**: `um die heimische Landwirtschaft zu unterstützen und frischere Waren zu bekommen`.
+  - Konjunktiv II는 1~2문장에만 사용하고 모든 문장에 쓰지 않는다.
+- **기초(levels.a) 지문**: A2~B1. 중급과 같은 주제·사실을 1:1로 다시 씀. 문장을 짧게(**8~14단어**), 단순 구조(주어+동사+목적어/부사)로. Nebensatz는 최소화.
+  - **굵은 글자(bold) 규칙**: 중급 문장에서 굵게 표시한 단어(`**단어**`)를 기초 문장에서도 A2~B1 수준에 맞으면 그대로 유지한다. 해당 단어가 기초 수준에 어색하거나 없어서 다른 표현을 써야 할 때에 한해 더 쉬운 동의어를 대신 굵게 표시한다. 굵은 단어를 아예 생략하지 않는다.
 - 문체는 표준 독일어(Hochdeutsch). 방언, 구어체 축약 금지.
 - 스스로 난이도를 올리지 않는다.
 
@@ -55,7 +64,7 @@
 3. **주요 단어** `words`: 5~7개. `["Umwelt", "환경"]` 형태.
 4. **체크 포인트** `points`: 1~2개. 그날 지문에 실제로 나온 문법을 한국어로 짧게 설명. 지문 표현은 `` `…` ``로 감싼다.
 5. **모범 해석** `answers`: 6개. 문장 순서대로 자연스러운 한국어 해석.
-6. **한 단계 위 어휘** `advanced`: 6~8개. B2 수준 단어, 한국어 뜻, 혼동 주의(없으면 `null`), 예문(`**…**`), `example_ko`.
+6. **한 단계 위 어휘** `advanced`: **반드시 6~8개**. B2 수준 단어, 한국어 뜻, 혼동 주의(없으면 `null`), 예문(`**…**`), `example_ko`.
 7. 기타: `topic`(한국어 주제어 2~8자), `title_ko`, `headline`(A2 수준 짧은 독일어 제목), `chips`(`["6문장", "B1 위주", "B2 1문장", "약 4분"]`), `date`, `category`.
 
 ### 기초(levels.a) 지문 필드

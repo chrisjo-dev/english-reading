@@ -12,7 +12,7 @@
   ],
   "sentences": [
     {
-      "en": "In fast jedem deutschen Stadtviertel gibt es eine **Bäckerei**, die täglich frisches Brot backt.",
+      "en": "In fast jedem deutschen Stadtviertel gibt es eine **Bäckerei**, die täglich frisches Brot und Brötchen für ihre Kundschaft herstellt.",
       "b2": false,
       "chunks": [
         [
@@ -32,13 +32,17 @@
           "매일"
         ],
         [
-          "frisches Brot backt.",
-          "신선한 빵을 굽는"
+          "frisches Brot und Brötchen",
+          "신선한 빵과 롤빵을"
+        ],
+        [
+          "für ihre Kundschaft herstellt.",
+          "손님들을 위해 만드는"
         ]
       ]
     },
     {
-      "en": "Die meisten **Bäckereien** öffnen schon um sechs Uhr, weil viele Kunden vor der Arbeit einkaufen.",
+      "en": "Die meisten **Bäckereien** öffnen schon um sechs Uhr morgens, weil viele Berufstätige ihr Frühstück vor der Arbeit einkaufen.",
       "b2": false,
       "chunks": [
         [
@@ -46,47 +50,47 @@
           "대부분의 빵집은"
         ],
         [
-          "öffnen schon um sechs Uhr,",
-          "이미 6시에 문을 엽니다"
+          "öffnen schon um sechs Uhr morgens,",
+          "이미 아침 6시에 문을 엽니다"
         ],
         [
-          "weil viele Kunden",
-          "많은 손님들이"
+          "weil viele Berufstätige",
+          "많은 직장인들이"
         ],
         [
-          "vor der Arbeit einkaufen.",
-          "출근 전에 장을 보기 때문입니다"
+          "ihr Frühstück vor der Arbeit einkaufen.",
+          "출근 전에 아침을 사기 때문입니다"
         ]
       ]
     },
     {
-      "en": "Neben **Roggenbrot** und Weißbrot bieten viele Bäckereien auch Croissants und Kuchen an.",
+      "en": "Neben **Roggenbrot** und Weißbrot bieten gut sortierte Bäckereien auch Brötchen, Kuchen und saisonale Spezialitäten für jeden Geschmack an.",
       "b2": false,
       "chunks": [
         [
-          "Neben **Roggenbrot**",
-          "호밀빵 외에도"
+          "Neben **Roggenbrot** und Weißbrot",
+          "호밀빵과 흰 빵 외에도"
         ],
         [
-          "und Weißbrot",
-          "흰 빵과"
+          "bieten gut sortierte Bäckereien",
+          "잘 갖춰진 빵집은"
         ],
         [
-          "bieten viele Bäckereien",
-          "많은 빵집은"
+          "auch Brötchen, Kuchen",
+          "롤빵과 케이크도"
         ],
         [
-          "auch Croissants",
-          "크루아상도"
+          "und saisonale Spezialitäten",
+          "그리고 계절 특선 제품도"
         ],
         [
-          "und Kuchen an.",
-          "케이크를 제공합니다"
+          "für jeden Geschmack an.",
+          "모든 입맛에 맞게 제공합니다"
         ]
       ]
     },
     {
-      "en": "Der **Bäcker** muss sehr früh aufstehen, damit das Brot rechtzeitig für die Kunden fertig ist.",
+      "en": "Der **Bäcker** muss schon in der Nacht aufstehen, damit das frisch gebackene Brot morgens rechtzeitig für die Kunden bereitsteht.",
       "b2": false,
       "chunks": [
         [
@@ -94,64 +98,72 @@
           "제빵사는"
         ],
         [
-          "muss sehr früh aufstehen,",
-          "매우 일찍 일어나야 합니다"
+          "muss schon in der Nacht aufstehen,",
+          "이미 밤중에 일어나야 합니다"
         ],
         [
-          "damit das Brot",
-          "빵이"
+          "damit das frisch gebackene Brot",
+          "신선하게 구운 빵이"
         ],
         [
-          "rechtzeitig für die Kunden fertig ist.",
-          "손님들을 위해 제때 준비될 수 있도록"
+          "morgens rechtzeitig",
+          "아침에 제때"
+        ],
+        [
+          "für die Kunden bereitsteht.",
+          "손님들을 위해 준비될 수 있도록"
         ]
       ]
     },
     {
-      "en": "Viele Stammkunden bevorzugen das **handwerklich** gebackene Brot, da es frischer und aromatischer schmeckt.",
+      "en": "Viele **Stammkunden** würden das handwerklich gebackene Brot dem maschinell hergestellten Supermarktbrot vorziehen, weil der Geschmack deutlich besser ist.",
       "b2": true,
       "chunks": [
         [
-          "Viele Stammkunden",
+          "Viele **Stammkunden**",
           "많은 단골 고객들은"
         ],
         [
-          "bevorzugen das **handwerklich**",
-          "수공예로"
+          "würden das handwerklich gebackene Brot",
+          "수공예로 구운 빵을"
         ],
         [
-          "gebackene Brot,",
-          "구운 빵을 더 좋아합니다"
+          "dem maschinell hergestellten Supermarktbrot vorziehen,",
+          "기계로 만든 슈퍼마켓 빵보다 더 좋아할 것이며"
         ],
         [
-          "da es frischer",
-          "더 신선하고"
+          "weil der Geschmack",
+          "맛이"
         ],
         [
-          "und aromatischer schmeckt.",
-          "향이 풍부한 맛이 나기 때문입니다"
+          "deutlich besser ist.",
+          "확연히 더 좋기 때문입니다"
         ]
       ]
     },
     {
-      "en": "Der Duft von frischem **Brot** zieht die Menschen morgens in die Bäckerei.",
+      "en": "Der **Duft** von frisch gebackenem Brot zieht die Kunden schon von der Straße aus in die Bäckerei hinein.",
       "b2": false,
       "chunks": [
         [
-          "Der Duft",
+          "Der **Duft**",
           "향기가"
         ],
         [
-          "von frischem **Brot**",
-          "신선한 빵의"
+          "von frisch gebackenem Brot",
+          "신선하게 구운 빵의"
         ],
         [
-          "zieht die Menschen",
-          "사람들을 끌어들입니다"
+          "zieht die Kunden",
+          "손님들을 끌어들입니다"
         ],
         [
-          "morgens in die Bäckerei.",
-          "아침에 빵집으로"
+          "schon von der Straße aus",
+          "이미 거리에서부터"
+        ],
+        [
+          "in die Bäckerei hinein.",
+          "빵집 안으로"
         ]
       ]
     }
@@ -185,20 +197,20 @@
   "points": [
     {
       "title": "damit — 목적 접속사",
-      "body": "`damit`은 '~하도록, ~하기 위해서'라는 목적을 나타내는 종속 접속사예요. `damit das Brot fertig ist` 처럼 종속절에서 동사가 맨 끝으로 갑니다."
+      "body": "`damit`은 '~하도록, ~하기 위해서'라는 목적을 나타내는 종속 접속사예요. `damit das Brot bereitsteht`처럼 종속절에서 동사가 맨 끝으로 갑니다."
     },
     {
-      "title": "Separable Verbs — 분리동사 anbieten",
-      "body": "`anbieten`(제공하다)은 분리동사로, 평서문에서 `an`이 문장 끝으로 이동해요. `bieten ... an` 구조를 기억하세요."
+      "title": "Konjunktiv II — würden (조건/가정)",
+      "body": "`würden + Infinitiv`는 '~할 것이다'라는 조건이나 가정을 표현할 때 씁니다. `Stammkunden würden ... vorziehen`처럼 현재 상황에서 상상하거나 희망하는 것을 나타냅니다."
     }
   ],
   "answers": [
-    "거의 모든 독일 주거 지역에는 매일 신선한 빵을 굽는 빵집이 있습니다.",
-    "대부분의 빵집은 많은 손님들이 출근 전에 장을 보기 때문에 이미 6시에 문을 엽니다.",
-    "많은 빵집은 호밀빵과 흰 빵 외에도 크루아상과 케이크도 제공합니다.",
-    "제빵사는 빵이 손님들을 위해 제때 준비될 수 있도록 매우 일찍 일어나야 합니다.",
-    "많은 단골 고객들은 더 신선하고 향이 풍부한 맛이 나기 때문에 수공예로 구운 빵을 더 좋아합니다.",
-    "신선한 빵의 향기가 사람들을 아침에 빵집으로 끌어들입니다."
+    "거의 모든 독일 주거 지역에는 매일 손님들을 위해 신선한 빵과 롤빵을 만드는 빵집이 있습니다.",
+    "많은 직장인들이 출근 전에 아침을 사기 때문에 대부분의 빵집은 이미 아침 6시에 문을 엽니다.",
+    "잘 갖춰진 빵집은 호밀빵과 흰 빵 외에도 모든 입맛에 맞게 롤빵, 케이크, 계절 특선 제품을 제공합니다.",
+    "신선하게 구운 빵이 아침에 손님들을 위해 제때 준비될 수 있도록 제빵사는 이미 밤중에 일어나야 합니다.",
+    "맛이 확연히 더 좋기 때문에 많은 단골 고객들은 기계로 만든 슈퍼마켓 빵보다 수공예로 구운 빵을 더 좋아할 것입니다.",
+    "신선하게 구운 빵의 향기가 이미 거리에서부터 손님들을 빵집 안으로 끌어들입니다."
   ],
   "advanced": [
     {
@@ -209,18 +221,46 @@
       "example_ko": "많은 손님들은 빵집의 신선한 빵을 더 좋아합니다."
     },
     {
-      "word": "aromatisch",
-      "meaning": "향기로운, 풍미 있는",
-      "confuse": null,
-      "example": "Dieses **aromatische** Brot riecht wunderbar.",
-      "example_ko": "이 향기로운 빵은 냄새가 정말 좋습니다."
-    },
-    {
       "word": "handwerklich",
       "meaning": "수공예의, 장인의",
       "confuse": null,
-      "example": "Das **handwerklich** hergestellte Produkt ist qualitativ hochwertig.",
-      "example_ko": "수공예로 만들어진 제품은 품질이 우수합니다."
+      "example": "Das **handwerklich** gefertigte Brot hat einen unverwechselbaren Geschmack.",
+      "example_ko": "수공예로 만든 빵은 독특한 맛을 가지고 있습니다."
+    },
+    {
+      "word": "aromatisch",
+      "meaning": "향기로운, 풍미 있는",
+      "confuse": null,
+      "example": "Dieses **aromatische** Sauerteigbrot riecht wunderbar.",
+      "example_ko": "이 향기로운 사워도우 빵은 냄새가 정말 좋습니다."
+    },
+    {
+      "word": "maschinell",
+      "meaning": "기계로, 기계식의",
+      "confuse": "maschinell vs. handwerklich: `maschinell`은 기계로 대량 생산한 것, `handwerklich`는 손으로 만든 것을 뜻해요.",
+      "example": "**Maschinell** hergestelltes Brot ist günstiger, aber weniger aromatisch.",
+      "example_ko": "기계로 만든 빵은 더 저렴하지만 향이 덜합니다."
+    },
+    {
+      "word": "bereitstehen",
+      "meaning": "준비되어 있다, 대기하다",
+      "confuse": null,
+      "example": "Das Frühstücksgebäck muss um sieben Uhr für die Kunden **bereitstehen**.",
+      "example_ko": "아침 빵은 7시에 손님들을 위해 준비되어 있어야 합니다."
+    },
+    {
+      "word": "die Spezialität",
+      "meaning": "특선 제품, 명물",
+      "confuse": null,
+      "example": "Die Bäckerei ist bekannt für ihre regionalen **Spezialitäten**.",
+      "example_ko": "그 빵집은 지역 특선 제품으로 유명합니다."
+    },
+    {
+      "word": "die Kundschaft",
+      "meaning": "고객층, 손님들",
+      "confuse": "die Kundschaft vs. der Kunde: `die Kundschaft`는 고객 전체를 집합적으로 가리키고, `der Kunde`는 개별 고객을 뜻해요.",
+      "example": "Die **Kundschaft** dieser Traditionsbäckerei ist sehr treu.",
+      "example_ko": "이 전통 빵집의 고객층은 매우 충성스럽습니다."
     }
   ],
   "source": null,
@@ -229,19 +269,15 @@
     "a": {
       "sentences": [
         {
-          "en": "In Deutschland gibt es in vielen Stadtvierteln eine **Bäckerei**.",
+          "en": "In vielen deutschen Stadtvierteln gibt es eine **Bäckerei**.",
           "chunks": [
             [
-              "In Deutschland",
-              "독일에는"
+              "In vielen deutschen Stadtvierteln",
+              "많은 독일 주거 지역에는"
             ],
             [
               "gibt es",
               "있습니다"
-            ],
-            [
-              "in vielen Stadtvierteln",
-              "많은 주거 지역에"
             ],
             [
               "eine **Bäckerei**.",
@@ -250,11 +286,11 @@
           ]
         },
         {
-          "en": "Die **Bäckereien** öffnen früh morgens um sechs Uhr.",
+          "en": "Die meisten **Bäckereien** öffnen früh morgens um sechs Uhr.",
           "chunks": [
             [
-              "Die **Bäckereien**",
-              "빵집들은"
+              "Die meisten **Bäckereien**",
+              "대부분의 빵집은"
             ],
             [
               "öffnen früh morgens",
@@ -267,85 +303,89 @@
           ]
         },
         {
-          "en": "Sie verkaufen **Brot**, Brötchen und Kuchen.",
+          "en": "Neben **Roggenbrot** verkaufen Bäckereien auch Brötchen und Kuchen.",
           "chunks": [
             [
-              "Sie verkaufen",
-              "그들은 팝니다"
+              "Neben **Roggenbrot**",
+              "호밀빵 외에도"
             ],
             [
-              "**Brot**, Brötchen",
-              "빵, 롤빵"
+              "verkaufen Bäckereien",
+              "빵집은 팝니다"
             ],
             [
-              "und Kuchen.",
-              "그리고 케이크를"
+              "auch Brötchen und Kuchen.",
+              "롤빵과 케이크도"
             ]
           ]
         },
         {
-          "en": "Der **Bäcker** steht jeden Morgen sehr früh auf.",
+          "en": "Der **Bäcker** steht schon in der Nacht auf, damit das Brot fertig ist.",
           "chunks": [
             [
               "Der **Bäcker**",
               "제빵사는"
             ],
             [
-              "steht jeden Morgen",
-              "매일 아침"
+              "steht schon in der Nacht auf,",
+              "이미 밤중에 일어납니다"
             ],
             [
-              "sehr früh auf.",
-              "매우 일찍 일어납니다"
+              "damit das Brot fertig ist.",
+              "빵이 준비될 수 있도록"
             ]
           ]
         },
         {
-          "en": "Viele Menschen kaufen lieber frisches **Brot** in der Bäckerei.",
+          "en": "Viele **Stammkunden** kaufen lieber das handgemachte Brot als das Supermarktbrot.",
           "chunks": [
             [
-              "Viele Menschen",
-              "많은 사람들이"
+              "Viele **Stammkunden**",
+              "많은 단골 고객들은"
             ],
             [
               "kaufen lieber",
               "더 좋아합니다"
             ],
             [
-              "frisches **Brot**",
-              "신선한 빵을"
+              "das handgemachte Brot",
+              "수제 빵을"
             ],
             [
-              "in der Bäckerei.",
-              "빵집에서"
+              "als das Supermarktbrot.",
+              "슈퍼마켓 빵보다"
             ]
           ]
         },
         {
-          "en": "Der Duft von frischem **Brot** ist sehr angenehm.",
+          "en": "Der **Duft** von frischem Brot zieht die Menschen in die Bäckerei.",
           "chunks": [
             [
-              "Der Duft",
-              "향기는"
+              "Der **Duft**",
+              "향기가"
             ],
             [
-              "von frischem **Brot**",
+              "von frischem Brot",
               "신선한 빵의"
             ],
             [
-              "ist sehr angenehm.",
-              "매우 좋습니다"
+              "zieht die Menschen",
+              "사람들을 끌어들입니다"
+            ],
+            [
+              "in die Bäckerei.",
+              "빵집으로"
             ]
           ]
         }
       ],
       "answers": [
-        "독일 많은 주거 지역에는 빵집이 있습니다.",
-        "빵집들은 이른 아침 6시에 문을 엽니다.",
-        "그들은 빵, 롤빵, 케이크를 팝니다.",
-        "제빵사는 매일 아침 매우 일찍 일어납니다.",
-        "많은 사람들이 빵집에서 신선한 빵을 더 좋아합니다.",
-        "신선한 빵의 향기는 매우 좋습니다."
+        "많은 독일 주거 지역에는 빵집이 있습니다.",
+        "대부분의 빵집은 이른 아침 6시에 문을 엽니다.",
+        "빵집은 호밀빵 외에도 롤빵과 케이크를 팝니다.",
+        "제빵사는 빵이 준비될 수 있도록 이미 밤중에 일어납니다.",
+        "많은 단골 고객들은 슈퍼마켓 빵보다 수제 빵을 더 좋아합니다.",
+        "신선한 빵의 향기가 사람들을 빵집으로 끌어들입니다."
       ]
     }
   }

@@ -606,7 +606,116 @@ class DeRebuildListsNoindexTest(unittest.TestCase):
         self.assertNotIn('content="noindex"', en_page, "en 목록 페이지에 noindex 가 없어야 합니다 (회귀)")
 
 
-# ── 11. catchup() 이메일 가드 ─────────────────────────────────────────────────
+# ── 11. de 지문 품질 검사 (문장 길이 경고, advanced 개수 오류) ──────────────────
+
+class DeQualityCheckTest(unittest.TestCase):
+    """check_content.check_de_quality() 를 검사한다."""
+
+    def _write_and_check(self, data, stem="2026-11-01", parent="content"):
+        """임시 파일을 써서 check() 를 실행하고 (errors, warnings) 를 반환한다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            lang_dir = Path(tmp) / parent / "de"
+            lang_dir.mkdir(parents=True)
+            p = lang_dir / f"{stem}.json"
+            p.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            return cc.check(p)
+
+    def _base_content(self, avg_wc=17, adv_count=6):
+        """검사에 통과하는 기본 de 지문을 만든다."""
+        # avg_wc 단어 수의 문장을 6개 생성
+        word = "Wort"
+        sents = []
+        for _ in range(6):
+            en = " ".join([word] * avg_wc) + "."
+            sents.append({
+                "en": en,
+                "b2": False,
+                "chunks": [[en, "단어들"]],
+            })
+        advanced = [
+            {"word": f"Wort{i}", "meaning": f"뜻{i}", "confuse": None,
+             "example": f"**Wort{i}** hier.", "example_ko": f"예문{i}"}
+            for i in range(adv_count)
+        ]
+        return {
+            "date": "2026-11-01",
+            "topic": "테스트",
+            "title_ko": "테스트 제목",
+            "headline": "Test",
+            "chips": ["6문장", "B1 위주", "B2 1문장", "약 4분"],
+            "sentences": sents,
+            "words": [["Wort", "단어"]],
+            "points": [{"title": "P", "body": "B"}],
+            "answers": ["답." for _ in range(6)],
+            "advanced": advanced,
+            "source": None,
+            "example": True,
+            "levels": {
+                "a": {
+                    "sentences": [
+                        {"en": "Kurzer Satz hier.", "chunks": [["Kurzer Satz hier.", "짧은 문장"]]}
+                        for _ in range(6)
+                    ],
+                    "answers": ["짧은 문장." for _ in range(6)],
+                }
+            },
+        }
+
+    def test_no_warning_when_avg_gte_14(self):
+        data = self._base_content(avg_wc=16)
+        errors, warnings = self._write_and_check(data)
+        self.assertFalse(any("평균 단어" in w for w in warnings),
+                         "평균 16단어면 경고 없어야 합니다")
+
+    def test_warning_when_avg_lt_14(self):
+        data = self._base_content(avg_wc=10)
+        errors, warnings = self._write_and_check(data)
+        self.assertTrue(any("평균 단어" in w for w in warnings),
+                        "평균 10단어면 경고가 있어야 합니다")
+
+    def test_avg_exactly_14_no_warning(self):
+        data = self._base_content(avg_wc=14)
+        errors, warnings = self._write_and_check(data)
+        self.assertFalse(any("평균 단어" in w for w in warnings),
+                         "평균 14단어(경계값)는 경고 없어야 합니다")
+
+    def test_no_error_when_advanced_gte_5_recent(self):
+        """2026-10-29 이후 지문에서 advanced >= 5이면 오류 없다."""
+        data = self._base_content(adv_count=6)
+        errors, _ = self._write_and_check(data, stem="2026-10-30")
+        self.assertFalse(any("advanced" in e for e in errors),
+                         "advanced 6개면 오류 없어야 합니다")
+
+    def test_error_when_advanced_lt_5_recent(self):
+        """2026-10-29 이후 지문에서 advanced < 5이면 오류."""
+        data = self._base_content(adv_count=3)
+        errors, _ = self._write_and_check(data, stem="2026-10-30")
+        self.assertTrue(any("advanced" in e for e in errors),
+                        "advanced 3개이면 오류가 있어야 합니다")
+
+    def test_no_error_for_old_content_low_advanced(self):
+        """2026-10-28 이전 지문은 advanced 개수 검사 미적용."""
+        data = self._base_content(adv_count=3)
+        errors, _ = self._write_and_check(data, stem="2026-10-27")
+        self.assertFalse(any("advanced" in e for e in errors),
+                         "2026-10-27 이전 지문은 advanced 개수 오류 없어야 합니다")
+
+    def test_error_when_advanced_lt_5_pool(self):
+        """pool 비축분에서 advanced < 5이면 오류."""
+        data = self._base_content(adv_count=2)
+        errors, _ = self._write_and_check(data, stem="de-001", parent="pool")
+        self.assertTrue(any("advanced" in e for e in errors),
+                        "pool 비축분 advanced 2개이면 오류가 있어야 합니다")
+
+    def test_no_error_when_advanced_gte_5_pool(self):
+        """pool 비축분에서 advanced >= 5이면 오류 없다."""
+        data = self._base_content(adv_count=6)
+        errors, _ = self._write_and_check(data, stem="de-001", parent="pool")
+        self.assertFalse(any("advanced" in e for e in errors),
+                         "pool 비축분 advanced 6개면 오류 없어야 합니다")
+
+
+# ── 12. catchup() 이메일 가드 ─────────────────────────────────────────────────
 
 class DeCatchupEmailGuardTest(unittest.TestCase):
     """send_email.catchup() 이 email=False 언어에서 조기 반환하는지 검사한다."""

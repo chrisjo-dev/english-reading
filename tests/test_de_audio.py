@@ -641,5 +641,161 @@ class TestMainQwenDispatch(unittest.TestCase):
         self.assertEqual(called, [], "en 은 qwen() 를 호출하면 안 됩니다")
 
 
+# ── 8. 사이드카(텍스트 해시) 오디오 스킵 가드 ─────────────────────────────────
+
+class TestSidecarHashGuard(unittest.TestCase):
+    """audio.py 사이드카 해시 가드를 검사한다."""
+
+    # ── 헬퍼 ──────────────────────────────────────────────────────────────────
+
+    def _run_qwen(self, out_dir, content=None, wer_seq=None, max_retries=1):
+        c = content or DE_CONTENT
+        patches = _patch_qwen(wer_sequence=wer_seq)
+        active = _apply_patches(patches)
+        try:
+            with patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
+                audio_mod.qwen(c, "de", out_dir, max_retries=max_retries)
+        finally:
+            _stop_patches(active)
+
+    # ── 사이드카 없음 → 기존 파일 유효 ─────────────────────────────────────────
+
+    def test_no_sidecar_treats_existing_as_valid(self):
+        """사이드카가 없을 때 기존 파일은 재생성하지 않는다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "audio"
+            out_dir.mkdir()
+            for key in ALL_KEYS:
+                (out_dir / f"{key}.mp3").write_bytes(b"old")
+            # 사이드카 없음 확인
+            self.assertFalse((out_dir / ".text.json").exists())
+
+            load_mock = MagicMock(return_value=(MagicMock(), {}))
+            patches = _patch_qwen()
+            active = _apply_patches(patches)
+            try:
+                with patch("tts_qwen.load", load_mock), \
+                     patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
+                    audio_mod.qwen(DE_CONTENT, "de", out_dir, max_retries=1)
+            finally:
+                _stop_patches(active)
+
+            load_mock.assert_not_called()
+            # 기존 파일 그대로
+            for key in ALL_KEYS:
+                self.assertEqual((out_dir / f"{key}.mp3").read_bytes(), b"old")
+
+    # ── 사이드카 있음, 해시 일치 → 스킵 ───────────────────────────────────────
+
+    def test_matching_hash_skips_regeneration(self):
+        """사이드카 해시가 텍스트와 일치하면 재생성하지 않는다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "audio"
+            out_dir.mkdir()
+            # 파일을 먼저 한 번 생성해 사이드카를 기록한다
+            self._run_qwen(out_dir, max_retries=1)
+            sidecar_path = out_dir / ".text.json"
+            self.assertTrue(sidecar_path.exists(), "1차 실행 후 사이드카가 있어야 합니다")
+            mtime_before = {k: (out_dir / f"{k}.mp3").stat().st_mtime for k in ALL_KEYS}
+
+            import time; time.sleep(0.05)
+
+            # 2차 실행 — 텍스트 변경 없음 → 모두 스킵
+            load_mock = MagicMock(return_value=(MagicMock(), {}))
+            patches = _patch_qwen()
+            active = _apply_patches(patches)
+            try:
+                with patch("tts_qwen.load", load_mock), \
+                     patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
+                    audio_mod.qwen(DE_CONTENT, "de", out_dir, max_retries=1)
+            finally:
+                _stop_patches(active)
+
+            load_mock.assert_not_called()
+            for k in ALL_KEYS:
+                self.assertEqual((out_dir / f"{k}.mp3").stat().st_mtime, mtime_before[k],
+                                 f"{k}.mp3 가 수정되면 안 됩니다")
+
+    # ── 사이드카 있음, 해시 불일치 → 재생성 ───────────────────────────────────
+
+    def test_changed_hash_triggers_regeneration(self):
+        """사이드카 해시가 현재 텍스트와 다르면 해당 파일을 재생성한다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "audio"
+            out_dir.mkdir()
+            self._run_qwen(out_dir, max_retries=1)
+
+            # s1.mp3 의 해시를 사이드카에서 망가뜨린다
+            sidecar_path = out_dir / ".text.json"
+            data = json.loads(sidecar_path.read_text(encoding="utf-8"))
+            data["s1.mp3"] = "000000000000dead"
+            sidecar_path.write_text(
+                json.dumps(data, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+                encoding="utf-8",
+            )
+
+            import time; time.sleep(0.05)
+            mtime_s1_before = (out_dir / "s1.mp3").stat().st_mtime
+            mtime_s2_before = (out_dir / "s2.mp3").stat().st_mtime
+
+            generated_keys = []
+            orig_gen = None
+
+            patches = _patch_qwen()
+            active = _apply_patches(patches)
+            try:
+                with patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
+                    audio_mod.qwen(DE_CONTENT, "de", out_dir, max_retries=1)
+            finally:
+                _stop_patches(active)
+
+            # s1 은 재생성됐어야 한다 (mtime 갱신)
+            self.assertGreater((out_dir / "s1.mp3").stat().st_mtime, mtime_s1_before,
+                               "s1.mp3 가 재생성돼야 합니다")
+            # s2 는 변경 없음
+            self.assertEqual((out_dir / "s2.mp3").stat().st_mtime, mtime_s2_before,
+                              "s2.mp3 는 재생성되면 안 됩니다")
+
+    # ── 사이드카가 생성 후 존재하는지 ─────────────────────────────────────────
+
+    def test_sidecar_written_after_generation(self):
+        """qwen() 실행 후 .text.json 사이드카가 생성돼야 한다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "audio"
+            self._run_qwen(out_dir, max_retries=1)
+            sidecar_path = out_dir / ".text.json"
+            self.assertTrue(sidecar_path.exists(), ".text.json 이 생성돼야 합니다")
+            data = json.loads(sidecar_path.read_text(encoding="utf-8"))
+            # 생성된 모든 키의 mp3 가 기록돼야 한다
+            for key in ALL_KEYS:
+                self.assertIn(f"{key}.mp3", data, f"{key}.mp3 가 사이드카에 기록돼야 합니다")
+            # 해시는 16자리 16진수여야 한다
+            for val in data.values():
+                self.assertRegex(val, r"^[0-9a-f]{16}$", "해시는 16자리 16진수여야 합니다")
+
+    # ── levels.a 포함 시 사이드카에 a{i}.mp3 도 기록 ──────────────────────────
+
+    def test_sidecar_includes_levels_a_keys(self):
+        """levels.a 가 있을 때 a{i}.mp3 도 사이드카에 기록된다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "audio"
+            self._run_qwen(out_dir, content=DE_CONTENT_WITH_LEVELS, max_retries=1)
+            data = json.loads((out_dir / ".text.json").read_text(encoding="utf-8"))
+            for key in ["a1", "a2"]:
+                self.assertIn(f"{key}.mp3", data, f"{key}.mp3 가 사이드카에 있어야 합니다")
+
+    # ── _text_hash 헬퍼 ──────────────────────────────────────────────────────
+
+    def test_text_hash_is_16_hex_chars(self):
+        h = audio_mod._text_hash("Guten Morgen")
+        self.assertRegex(h, r"^[0-9a-f]{16}$")
+
+    def test_text_hash_deterministic(self):
+        self.assertEqual(audio_mod._text_hash("abc"), audio_mod._text_hash("abc"))
+
+    def test_text_hash_differs_for_different_text(self):
+        self.assertNotEqual(audio_mod._text_hash("abc"), audio_mod._text_hash("xyz"))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -12,7 +12,7 @@
   ],
   "sentences": [
     {
-      "en": "In Deutschland finden jedes Jahr im November und Dezember zahlreiche **Weihnachtsmärkte** statt.",
+      "en": "In Deutschland finden jedes Jahr im November und Dezember in fast allen größeren Städten zahlreiche **Weihnachtsmärkte** statt.",
       "b2": false,
       "chunks": [
         [
@@ -28,35 +28,43 @@
           "11월과 12월에"
         ],
         [
+          "in fast allen größeren Städten",
+          "거의 모든 대도시에서"
+        ],
+        [
           "zahlreiche **Weihnachtsmärkte** statt.",
           "수많은 크리스마스 시장이"
         ]
       ]
     },
     {
-      "en": "Die Besucher können dort **Glühwein** trinken und traditionelles Gebäck wie Lebkuchen kaufen.",
+      "en": "Auf den Märkten können Besucher heißen **Glühwein** trinken, traditionelles Gebäck wie Lebkuchen kaufen und handgefertigte Geschenke erwerben.",
       "b2": false,
       "chunks": [
         [
-          "Die Besucher",
-          "방문객들은"
+          "Auf den Märkten",
+          "시장에서"
         ],
         [
-          "können dort **Glühwein** trinken",
-          "그곳에서 글뤼바인을 마시고"
+          "können Besucher",
+          "방문객들은 할 수 있습니다"
         ],
         [
-          "und traditionelles Gebäck",
-          "전통 과자"
+          "heißen **Glühwein** trinken,",
+          "뜨거운 글뤼바인을 마시고"
         ],
         [
-          "wie Lebkuchen kaufen.",
-          "레브쿠헨 같은 것을 살 수 있습니다"
+          "traditionelles Gebäck wie Lebkuchen kaufen",
+          "레브쿠헨 같은 전통 과자를 사고"
+        ],
+        [
+          "und handgefertigte Geschenke erwerben.",
+          "수제 선물도 살 수 있습니다"
         ]
       ]
     },
     {
-      "en": "Viele **Stände** werden von lokalen Handwerkern betrieben, die selbst hergestellte Produkte verkaufen.",
+      "en": "Viele **Stände** werden von lokalen Handwerkern betrieben, die ihre selbst hergestellten Holzfiguren und Dekorationen direkt an Besucher verkaufen.",
       "b2": false,
       "chunks": [
         [
@@ -68,18 +76,26 @@
           "지역 장인들에 의해 운영됩니다"
         ],
         [
-          "die selbst hergestellte Produkte verkaufen.",
-          "직접 만든 상품을 파는"
+          "die ihre selbst hergestellten Holzfiguren",
+          "직접 만든 나무 조각품과"
+        ],
+        [
+          "und Dekorationen",
+          "장식품을"
+        ],
+        [
+          "direkt an Besucher verkaufen.",
+          "방문객에게 직접 파는"
         ]
       ]
     },
     {
-      "en": "Der **Geruch** von Zimt und gebrannten Mandeln gehört für viele Deutsche zum Weihnachtsfest dazu.",
+      "en": "Der unverwechselbare **Geruch** von Zimt und gebrannten Mandeln gehört für viele Deutsche zur unverzichtbaren Atmosphäre der Weihnachtszeit.",
       "b2": false,
       "chunks": [
         [
-          "Der **Geruch**",
-          "향기는"
+          "Der unverwechselbare **Geruch**",
+          "독특한 향기는"
         ],
         [
           "von Zimt und gebrannten Mandeln",
@@ -90,35 +106,43 @@
           "많은 독일인들에게"
         ],
         [
-          "zum Weihnachtsfest dazu.",
-          "크리스마스 축제의 일부입니다"
+          "zur unverzichtbaren Atmosphäre",
+          "없어서는 안 될 분위기의 일부입니다"
+        ],
+        [
+          "der Weihnachtszeit.",
+          "크리스마스 시즌의"
         ]
       ]
     },
     {
-      "en": "Obwohl die Temperaturen oft unter null Grad fallen, strömen Millionen von Menschen auf die **Märkte**.",
+      "en": "Neben Lebensmitteln können auf den **Märkten** auch traditionell gefertigte Holzspielzeuge, Krippen und weihnachtliche Dekorationen von Besuchern erworben werden.",
       "b2": true,
       "chunks": [
         [
-          "Obwohl die Temperaturen",
-          "기온이"
+          "Neben Lebensmitteln",
+          "음식 외에도"
         ],
         [
-          "oft unter null Grad fallen,",
-          "자주 영하로 떨어지지만"
+          "können auf den **Märkten**",
+          "시장에서는"
         ],
         [
-          "strömen Millionen von Menschen",
-          "수백만 명의 사람들이 몰려듭니다"
+          "auch traditionell gefertigte Holzspielzeuge,",
+          "전통적으로 만들어진 나무 장난감과"
         ],
         [
-          "auf die **Märkte**.",
-          "시장으로"
+          "Krippen und weihnachtliche Dekorationen",
+          "구유 모형, 크리스마스 장식품을"
+        ],
+        [
+          "von Besuchern erworben werden.",
+          "방문객들이 구매할 수 있습니다"
         ]
       ]
     },
     {
-      "en": "Besonders der **Christkindlesmarkt** in Nürnberg gilt als einer der bekanntesten Weihnachtsmärkte weltweit.",
+      "en": "Besonders der **Christkindlesmarkt** in Nürnberg gilt seit Jahrhunderten als einer der bekanntesten und meistbesuchten Weihnachtsmärkte in Europa.",
       "b2": false,
       "chunks": [
         [
@@ -130,12 +154,16 @@
           "뉘른베르크의"
         ],
         [
-          "gilt als einer",
-          "중 하나로 여겨집니다"
+          "gilt seit Jahrhunderten",
+          "수백 년 전부터 여겨집니다"
         ],
         [
-          "der bekanntesten Weihnachtsmärkte weltweit.",
-          "세계에서 가장 유명한 크리스마스 시장"
+          "als einer der bekanntesten",
+          "가장 유명한 곳 중 하나로"
+        ],
+        [
+          "und meistbesuchten Weihnachtsmärkte in Europa.",
+          "그리고 유럽에서 가장 많이 방문하는 크리스마스 시장"
         ]
       ]
     }
@@ -169,35 +197,35 @@
   "points": [
     {
       "title": "stattfinden — 분리동사",
-      "body": "`stattfinden`(열리다, 개최되다)은 분리동사예요. `finden ... statt` 구조로, `Weihnachtsmärkte finden statt`처럼 씁니다."
+      "body": "`stattfinden`(열리다, 개최되다)은 분리동사예요. `Weihnachtsmärkte finden statt`처럼 문장에서 `statt`이 맨 끝으로 이동합니다."
     },
     {
-      "title": "gelten als — ~로 여겨지다",
-      "body": "`gelten als + Nominativ`는 '~로 여겨지다, ~로 알려져 있다'는 뜻이에요. `gilt als einer der bekanntesten`처럼 씁니다."
+      "title": "Passiv mit Modalverb — 가능 수동태",
+      "body": "`können + Partizip II + werden`은 '~될 수 있다'는 가능 수동태예요. `können ... erworben werden`처럼 쓰이며 주어가 행위를 받는 대상이 됩니다."
     }
   ],
   "answers": [
-    "독일에서는 매년 11월과 12월에 수많은 크리스마스 시장이 열립니다.",
-    "방문객들은 그곳에서 글뤼바인을 마시고 레브쿠헨 같은 전통 과자를 살 수 있습니다.",
-    "많은 가판대가 직접 만든 상품을 파는 지역 장인들에 의해 운영됩니다.",
-    "시나몬과 구운 아몬드의 향기는 많은 독일인들에게 크리스마스 축제의 일부입니다.",
-    "기온이 자주 영하로 떨어지지만 수백만 명의 사람들이 시장으로 몰려듭니다.",
-    "특히 뉘른베르크의 크리스트킨트레스마르크트는 세계에서 가장 유명한 크리스마스 시장 중 하나로 여겨집니다."
+    "독일에서는 매년 11월과 12월에 거의 모든 대도시에서 수많은 크리스마스 시장이 열립니다.",
+    "시장에서 방문객들은 뜨거운 글뤼바인을 마시고 레브쿠헨 같은 전통 과자를 사고 수제 선물도 살 수 있습니다.",
+    "많은 가판대가 직접 만든 나무 조각품과 장식품을 방문객에게 직접 파는 지역 장인들에 의해 운영됩니다.",
+    "시나몬과 구운 아몬드의 독특한 향기는 많은 독일인들에게 크리스마스 시즌의 없어서는 안 될 분위기의 일부입니다.",
+    "음식 외에도 시장에서는 전통적으로 만들어진 나무 장난감, 구유 모형, 크리스마스 장식품을 방문객들이 구매할 수 있습니다.",
+    "특히 뉘른베르크의 크리스트킨트레스마르크트는 수백 년 전부터 유럽에서 가장 유명하고 많이 방문하는 크리스마스 시장 중 하나로 여겨집니다."
   ],
   "advanced": [
     {
       "word": "zahlreich",
       "meaning": "수많은",
-      "confuse": "zahlreich vs. viel: `zahlreich`는 양보다 수(개수)가 많음을 강조할 때, `viel`은 양이나 정도가 많을 때 씁니다.",
-      "example": "Es gibt **zahlreiche** Stände auf dem Markt.",
-      "example_ko": "시장에는 수많은 가판대가 있습니다."
+      "confuse": "zahlreich vs. viel: `zahlreich`는 개수가 많음을 강조할 때, `viel`은 양이나 정도가 많을 때 써요.",
+      "example": "Es gibt **zahlreiche** Stände auf dem Weihnachtsmarkt.",
+      "example_ko": "크리스마스 시장에는 수많은 가판대가 있습니다."
     },
     {
       "word": "strömen",
       "meaning": "몰려들다, 밀려오다",
       "confuse": null,
-      "example": "Die Besucher **strömen** in die Innenstadt.",
-      "example_ko": "방문객들이 도심으로 몰려듭니다."
+      "example": "Die Besucher **strömen** abends auf den Weihnachtsmarkt.",
+      "example_ko": "방문객들이 저녁에 크리스마스 시장으로 몰려듭니다."
     },
     {
       "word": "traditionell",
@@ -205,6 +233,34 @@
       "confuse": null,
       "example": "Das ist ein **traditionelles** Rezept aus Bayern.",
       "example_ko": "이것은 바이에른의 전통 레시피입니다."
+    },
+    {
+      "word": "erwerben",
+      "meaning": "구매하다, 획득하다",
+      "confuse": "erwerben vs. kaufen: `erwerben`은 더 격식 있는 표현으로 노력이나 과정을 통해 얻는 뉘앙스, `kaufen`은 단순한 구매를 뜻해요.",
+      "example": "Auf dem Markt können Besucher handgefertigte Waren **erwerben**.",
+      "example_ko": "시장에서 방문객들은 수제 물건을 구매할 수 있습니다."
+    },
+    {
+      "word": "handgefertigt",
+      "meaning": "수제의, 손으로 만든",
+      "confuse": null,
+      "example": "Die **handgefertigten** Holzfiguren sind sehr beliebt.",
+      "example_ko": "수제 나무 조각품들이 매우 인기 있습니다."
+    },
+    {
+      "word": "unverzichtbar",
+      "meaning": "없어서는 안 되는, 필수적인",
+      "confuse": null,
+      "example": "Glühwein ist ein **unverzichtbarer** Teil des Weihnachtsmarkts.",
+      "example_ko": "글뤼바인은 크리스마스 시장의 없어서는 안 되는 부분입니다."
+    },
+    {
+      "word": "unverwechselbar",
+      "meaning": "독특한, 특유의",
+      "confuse": null,
+      "example": "Der **unverwechselbare** Duft von Zimt lockt die Besucher an.",
+      "example_ko": "시나몬의 독특한 향기가 방문객들을 유혹합니다."
     }
   ],
   "source": null,
@@ -213,7 +269,7 @@
     "a": {
       "sentences": [
         {
-          "en": "In Deutschland gibt es im Winter viele **Weihnachtsmärkte**.",
+          "en": "In Deutschland gibt es im Winter viele **Weihnachtsmärkte** in den Städten.",
           "chunks": [
             [
               "In Deutschland",
@@ -224,21 +280,25 @@
               "겨울에 있습니다"
             ],
             [
-              "viele **Weihnachtsmärkte**.",
+              "viele **Weihnachtsmärkte**",
               "크리스마스 시장이 많이"
+            ],
+            [
+              "in den Städten.",
+              "도시들에"
             ]
           ]
         },
         {
-          "en": "Auf dem Markt kann man **Glühwein** und Lebkuchen kaufen.",
+          "en": "Auf dem Markt kann man heißen **Glühwein** und Lebkuchen kaufen.",
           "chunks": [
             [
               "Auf dem Markt",
               "시장에서"
             ],
             [
-              "kann man **Glühwein**",
-              "글뤼바인을"
+              "kann man heißen **Glühwein**",
+              "뜨거운 글뤼바인을"
             ],
             [
               "und Lebkuchen kaufen.",
@@ -247,24 +307,24 @@
           ]
         },
         {
-          "en": "Es gibt viele **Stände** mit Handwerk und Geschenken.",
+          "en": "Viele **Stände** verkaufen selbst gemachtes Handwerk und Weihnachtsgeschenke.",
           "chunks": [
             [
-              "Es gibt",
-              "있습니다"
+              "Viele **Stände**",
+              "많은 가판대에서"
             ],
             [
-              "viele **Stände**",
-              "많은 가판대가"
+              "verkaufen selbst gemachtes Handwerk",
+              "직접 만든 수공예품을 팝니다"
             ],
             [
-              "mit Handwerk und Geschenken.",
-              "수공예품과 선물이 있는"
+              "und Weihnachtsgeschenke.",
+              "그리고 크리스마스 선물도"
             ]
           ]
         },
         {
-          "en": "Der **Geruch** von Zimt und Mandeln ist sehr schön.",
+          "en": "Der **Geruch** von Zimt und Mandeln gehört zur Weihnachtszeit dazu.",
           "chunks": [
             [
               "Der **Geruch**",
@@ -275,30 +335,30 @@
               "시나몬과 아몬드의"
             ],
             [
-              "ist sehr schön.",
-              "매우 좋습니다"
+              "gehört zur Weihnachtszeit dazu.",
+              "크리스마스 시즌의 일부입니다"
             ]
           ]
         },
         {
-          "en": "Viele Menschen kommen auch bei Kälte auf den **Markt**.",
+          "en": "Auf den **Märkten** kann man auch Holzspielzeug und Weihnachtsschmuck kaufen.",
           "chunks": [
             [
-              "Viele Menschen",
-              "많은 사람들이"
+              "Auf den **Märkten**",
+              "시장에서는"
             ],
             [
-              "kommen auch bei Kälte",
-              "추위에도 옵니다"
+              "kann man auch",
+              "또한 살 수 있습니다"
             ],
             [
-              "auf den **Markt**.",
-              "시장으로"
+              "Holzspielzeug und Weihnachtsschmuck kaufen.",
+              "나무 장난감과 크리스마스 장식품을"
             ]
           ]
         },
         {
-          "en": "Der **Christkindlesmarkt** in Nürnberg ist sehr bekannt.",
+          "en": "Der **Christkindlesmarkt** in Nürnberg ist ein sehr bekannter Weihnachtsmarkt.",
           "chunks": [
             [
               "Der **Christkindlesmarkt**",
@@ -309,19 +369,19 @@
               "뉘른베르크의"
             ],
             [
-              "ist sehr bekannt.",
-              "매우 유명합니다"
+              "ist ein sehr bekannter Weihnachtsmarkt.",
+              "매우 유명한 크리스마스 시장입니다"
             ]
           ]
         }
       ],
       "answers": [
-        "독일에는 겨울에 크리스마스 시장이 많이 있습니다.",
-        "시장에서 글뤼바인과 레브쿠헨을 살 수 있습니다.",
-        "수공예품과 선물이 있는 가판대가 많이 있습니다.",
-        "시나몬과 아몬드의 향기는 매우 좋습니다.",
-        "많은 사람들이 추위에도 시장으로 옵니다.",
-        "뉘른베르크의 크리스트킨트레스마르크트는 매우 유명합니다."
+        "독일에는 겨울에 도시들에 크리스마스 시장이 많이 있습니다.",
+        "시장에서 뜨거운 글뤼바인과 레브쿠헨을 살 수 있습니다.",
+        "많은 가판대에서 직접 만든 수공예품과 크리스마스 선물을 팝니다.",
+        "시나몬과 아몬드의 향기는 크리스마스 시즌의 일부입니다.",
+        "시장에서는 나무 장난감과 크리스마스 장식품도 살 수 있습니다.",
+        "뉘른베르크의 크리스트킨트레스마르크트는 매우 유명한 크리스마스 시장입니다."
       ]
     }
   }
