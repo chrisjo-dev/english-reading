@@ -297,6 +297,8 @@ def rebuild_lists(lang):
                 .replace("__CHIPS__", chips).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
                 .replace("__CANONICAL__", f"{SITE}/{lang}/").replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
+        if L.get("noindex", False):
+            page = page.replace('<link rel="stylesheet"', '<meta name="robots" content="noindex">\n<link rel="stylesheet"', 1)
         out.mkdir(parents=True, exist_ok=True)
         (out / "index.html").write_text(page, encoding="utf-8")
 

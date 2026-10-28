@@ -240,12 +240,8 @@ oder ohne
 schon sehr sich sind
 über unter uns
 viel viele von vor
-weil wenn werden wird wir wird
-alle also auch auf dass dem den der des die
-dies durch ein eine einem einer eines
-gegen haben hat kein keine mit nach nicht
-noch oder sich sind sehr über unter viel von
-vor weil werden wird wir zum zur""".split())
+weil wenn werden wird wir
+zum zur""".split())
 
 
 def _plain(t):

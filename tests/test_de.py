@@ -485,5 +485,103 @@ class DeChunkRenderTest(unittest.TestCase):
         self.assertIsNone(rows, "ja 는 chunk_rows 가 None 이어야 합니다 (회귀)")
 
 
+# ── 10. rebuild_lists() noindex 메타 주입 ─────────────────────────────────────
+
+class DeRebuildListsNoindexTest(unittest.TestCase):
+    """rebuild_lists() 가 de 목록/아카이브 페이지에 noindex 메타를 삽입하는지 검사한다."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        # days_of() 가 확인하는 index.html 준비
+        day_dir = self.tmp / "de" / "2026-10-28"
+        day_dir.mkdir(parents=True)
+        (day_dir / "index.html").write_text(
+            '<html><head><title>빵집</title></head><body>'
+            '<h1><em>동네 빵집</em></h1></body></html>', encoding="utf-8"
+        )
+        # entry() 가 읽는 content JSON 준비
+        content_dir = self.tmp / "content" / "de"
+        content_dir.mkdir(parents=True)
+        (content_dir / "2026-10-28.json").write_text(
+            json.dumps(DE_FULL_CONTENT, ensure_ascii=False), encoding="utf-8"
+        )
+        # thumb.png stub (publish.entry 에서 직접 읽지는 않으나 경로 참조용)
+        (day_dir / "thumb.png").write_bytes(b"")
+
+    def _rebuild_lists(self):
+        orig = publish.ROOT
+        try:
+            publish.ROOT = self.tmp
+            publish.rebuild_lists("de")
+        finally:
+            publish.ROOT = orig
+
+    def test_list_page_has_noindex(self):
+        self._rebuild_lists()
+        page = (self.tmp / "de" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<meta name="robots" content="noindex">', page,
+                      "de 목록 페이지에 noindex 메타가 있어야 합니다")
+
+    def test_archive_page_has_noindex(self):
+        self._rebuild_lists()
+        archive = (self.tmp / "de" / "archive" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<meta name="robots" content="noindex">', archive,
+                      "de 아카이브 페이지에 noindex 메타가 있어야 합니다")
+
+    def test_noindex_before_stylesheet(self):
+        self._rebuild_lists()
+        page = (self.tmp / "de" / "index.html").read_text(encoding="utf-8")
+        ni_pos = page.find('<meta name="robots" content="noindex">')
+        css_pos = page.find('<link rel="stylesheet"')
+        self.assertGreater(css_pos, ni_pos, "noindex 가 stylesheet 앞에 있어야 합니다")
+
+    def test_en_list_has_no_noindex(self):
+        """en 회귀: 목록 페이지에 noindex 없음."""
+        en_day = self.tmp / "en" / "2026-10-28"
+        en_day.mkdir(parents=True)
+        (en_day / "index.html").write_text(
+            '<html><head></head><body><h1><em>test</em></h1></body></html>', encoding="utf-8"
+        )
+        (en_day / "thumb.png").write_bytes(b"")
+        en_content = self.tmp / "content" / "en"
+        en_content.mkdir(parents=True)
+        (en_content / "2026-10-28.json").write_text(
+            json.dumps(DE_FULL_CONTENT, ensure_ascii=False), encoding="utf-8"
+        )
+        orig = publish.ROOT
+        try:
+            publish.ROOT = self.tmp
+            publish.rebuild_lists("en")
+        finally:
+            publish.ROOT = orig
+        en_page = (self.tmp / "en" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn('content="noindex"', en_page, "en 목록 페이지에 noindex 가 없어야 합니다 (회귀)")
+
+
+# ── 11. catchup() 이메일 가드 ─────────────────────────────────────────────────
+
+class DeCatchupEmailGuardTest(unittest.TestCase):
+    """send_email.catchup() 이 email=False 언어에서 조기 반환하는지 검사한다."""
+
+    def test_catchup_returns_early_for_de(self):
+        called = []
+        with patch.object(send_email, "recent_emails", lambda **k: called.append("api") or []):
+            send_email.catchup("de", "2026-10-28")
+        self.assertEqual(called, [], "email=False 언어에서 catchup() 이 API 를 호출하면 안 됩니다")
+
+    def test_catchup_does_not_return_early_for_en(self):
+        """en 회귀: catchup() 이 API 호출까지 진행한다."""
+        called = []
+        def mock_recent(**k):
+            called.append("api")
+            raise SystemExit("mock")
+        with patch.object(send_email, "recent_emails", mock_recent):
+            try:
+                send_email.catchup("en", "2026-10-28")
+            except SystemExit:
+                pass
+        self.assertTrue(called, "en 은 catchup() 이 API 호출까지 도달해야 합니다 (회귀)")
+
+
 if __name__ == "__main__":
     unittest.main()

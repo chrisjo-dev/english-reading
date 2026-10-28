@@ -38,13 +38,13 @@
       ]
     },
     {
-      "en": "Das **Deutschlandticket** kostet 49 Euro pro Monat und gilt für alle Züge.",
+      "en": "Mit dem **Deutschlandticket** kann man einen Monat lang Busse und Regionalzüge nutzen.",
       "b2": false,
       "chunks": [
-        ["Das **Deutschlandticket**", "도이칠란트티켓은"],
-        ["kostet", "합니다"],
-        ["49 Euro pro Monat", "한 달에 49유로"],
-        ["und gilt für alle Züge.", "그리고 모든 열차에서 사용할 수 있습니다"]
+        ["Mit dem **Deutschlandticket**", "도이칠란트티켓으로"],
+        ["kann man", "탈 수 있습니다"],
+        ["einen Monat lang", "한 달 동안"],
+        ["Busse und Regionalzüge nutzen.", "버스와 지역 열차를"]
       ]
     },
     {
@@ -79,7 +79,7 @@
     "독일 도시들에는 버스 노선과 지하철이 많이 있습니다.",
     "많은 사람들이 매일 트램을 타고 직장에 갑니다.",
     "자동판매기나 휴대폰으로 티켓을 살 수 있습니다.",
-    "도이칠란트티켓은 한 달에 49유로이고 모든 열차에서 사용할 수 있습니다.",
+    "도이칠란트티켓으로 한 달 동안 버스와 지역 열차를 탈 수 있습니다.",
     "티켓이 없는 사람은 벌금을 내야 합니다."
   ],
   "advanced": [
@@ -87,15 +87,15 @@
       "word": "gelten für",
       "meaning": "~에 적용되다, ~에 유효하다",
       "confuse": null,
-      "example": "Das Ticket **gilt für** alle Züge in Deutschland.",
-      "example_ko": "그 티켓은 독일의 모든 열차에 유효합니다."
+      "example": "Das **Deutschlandticket** gilt für Busse und Regionalzüge.",
+      "example_ko": "도이칠란트티켓은 버스와 지역 열차에 유효합니다."
     },
     {
       "word": "monatlich",
       "meaning": "월별의, 매달",
       "confuse": "monatlich(매달) vs. wöchentlich(매주) vs. täglich(매일)",
-      "example": "Die **monatliche** Gebühr beträgt 49 Euro.",
-      "example_ko": "월 요금은 49유로입니다."
+      "example": "Das Ticket hat eine **monatliche** Gebühr.",
+      "example_ko": "그 티켓은 월 요금이 있습니다."
     },
     {
       "word": "Fahrkarte",

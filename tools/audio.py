@@ -103,21 +103,18 @@ def main(lang, day, models, level="b"):
     if all(t.exists() for t in targets):
         print(f"audio level {level} already exists")
         return
-    out.mkdir(parents=True, exist_ok=True)
     engine = L["tts"]
+    if engine == "qwen":
+        # TTS 경로 미확정(GitHub Actions CPU vs Mac). Phase 1 이후 구현.
+        # 페이지는 브라우저 내장 SpeechSynthesis de-DE 폴백으로 동작한다.
+        print(f"Qwen3-TTS 미구현: 음성 없이 SpeechSynthesis de-DE 폴백 ({lang} {day})")
+        return
+    out.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         if engine == "voicevox":
             voicevox(L, sentences, targets, tmp)
         elif engine == "kokoro":
             kokoro(L, sentences, targets, models, tmp)
-        elif engine == "qwen":
-            # TTS 경로 미확정(GitHub Actions CPU vs Mac). Phase 1 이후 구현.
-            # 페이지는 브라우저 내장 SpeechSynthesis de-DE 폴백으로 동작한다.
-            raise NotImplementedError(
-                f"Qwen3-TTS 엔진은 아직 구현되지 않았습니다 ({lang} {day}). "
-                "음성 파일이 없으면 페이지는 SpeechSynthesis de-DE 폴백으로 동작합니다. "
-                "TTS 경로(GitHub Actions CPU vs Mac)가 확정되면 이 분기를 구현하세요."
-            )
         else:
             raise NotImplementedError(f"알 수 없는 TTS 엔진: {engine!r}")
     print(f"audio level {level}: {len(targets)} files ({engine})")

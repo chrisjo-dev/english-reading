@@ -218,6 +218,10 @@ def catchup(lang, day, level="b"):
     본 메일 발송 직후에는 전달 이벤트가 늦게 쌓일 수 있으므로, 발송 뒤 충분히 지나서 수동으로 실행한다.
     기초 지문이 없어 본 메일을 level=None(전체 대상)으로 보낸 경우도 같이 인식한다.
     """
+    L = langs.LANGS.get(lang, {})
+    if not L.get("email", True):
+        print(f"이 언어는 아직 메일을 보내지 않습니다 (email=False, {lang}). 종료합니다.")
+        return
     catchup_tag_prefix = f"{lang}:{day}:{level}"
 
     def _is_main(meta):
