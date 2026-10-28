@@ -1,0 +1,380 @@
+{
+  "date": "2026-10-29",
+  "category": "future",
+  "topic": "휴머노이드 공장",
+  "title_ko": "자동차 공장에서 일하는 사람 모양 로봇",
+  "headline": "Human-Shaped Robots in Car Factories",
+  "chips": [
+    "5문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "In car factories across Japan, Toyota and Honda are now testing **humanoid** robots, machines that are built to look and move like people.",
+      "b2": false,
+      "chunks": [
+        [
+          "In car factories across Japan,",
+          "일본 곳곳의 자동차 공장에서"
+        ],
+        [
+          "Toyota and Honda are now testing",
+          "도요타와 혼다가 지금 시험하고 있다"
+        ],
+        [
+          "**humanoid** robots,",
+          "사람 모양의 로봇을"
+        ],
+        [
+          "machines that are built",
+          "만들어진 기계들"
+        ],
+        [
+          "to look and move like people.",
+          "사람처럼 보이고 움직이도록"
+        ]
+      ]
+    },
+    {
+      "en": "The robots are trying jobs that **range from** putting in the long bundles of **wires** inside a car to doing the final **inspection** before it leaves the factory.",
+      "b2": false,
+      "chunks": [
+        [
+          "The robots are trying jobs",
+          "그 로봇들은 일을 해 보고 있다"
+        ],
+        [
+          "that **range from** putting in",
+          "설치하는 것부터 ~에 이르는"
+        ],
+        [
+          "the long bundles of **wires**",
+          "긴 전선 묶음들을"
+        ],
+        [
+          "inside a car",
+          "차 안에"
+        ],
+        [
+          "to doing the final **inspection**",
+          "마지막 검사를 하는 것까지"
+        ],
+        [
+          "before it leaves the factory.",
+          "차가 공장을 떠나기 전에"
+        ]
+      ]
+    },
+    {
+      "en": "**Supporters** say the robots could take over dangerous work, because car factories can be risky places for human workers.",
+      "b2": false,
+      "chunks": [
+        [
+          "**Supporters** say",
+          "지지하는 사람들은 말한다"
+        ],
+        [
+          "the robots could take over",
+          "그 로봇들이 넘겨받을 수 있다고"
+        ],
+        [
+          "dangerous work,",
+          "위험한 일을"
+        ],
+        [
+          "because car factories",
+          "왜냐하면 자동차 공장은"
+        ],
+        [
+          "can be risky places",
+          "위험한 곳일 수 있기 때문에"
+        ],
+        [
+          "for human workers.",
+          "사람 노동자들에게"
+        ]
+      ]
+    },
+    {
+      "en": "Honda, which showed its robot technology at a big car show in Japan earlier this month, even hopes to design future cars so that they can be built in factories **staffed** by humanoid robots.",
+      "b2": true,
+      "chunks": [
+        [
+          "Honda,",
+          "혼다는"
+        ],
+        [
+          "which showed its robot technology",
+          "자사 로봇 기술을 선보였는데"
+        ],
+        [
+          "at a big car show in Japan",
+          "일본의 큰 자동차 박람회에서"
+        ],
+        [
+          "earlier this month,",
+          "이달 초에"
+        ],
+        [
+          "even hopes to design future cars",
+          "미래의 자동차를 설계하길 바라기까지 한다"
+        ],
+        [
+          "so that they can be built",
+          "그 차들이 만들어질 수 있도록"
+        ],
+        [
+          "in factories **staffed** by humanoid robots.",
+          "사람 모양 로봇들이 일하는 공장에서"
+        ]
+      ]
+    },
+    {
+      "en": "However, some **critics** doubt that the robots' hands can do **delicate** work like wiring as well as human hands, and others wonder whether the real goal is simply to spend less money on **workers**.",
+      "b2": false,
+      "chunks": [
+        [
+          "However, some **critics** doubt",
+          "하지만 일부 비판하는 사람들은 의심한다"
+        ],
+        [
+          "that the robots' hands",
+          "그 로봇들의 손이"
+        ],
+        [
+          "can do **delicate** work like wiring",
+          "전선 연결 같은 섬세한 일을 할 수 있을지"
+        ],
+        [
+          "as well as human hands,",
+          "사람 손만큼 잘"
+        ],
+        [
+          "and others wonder",
+          "그리고 다른 사람들은 궁금해한다"
+        ],
+        [
+          "whether the real goal",
+          "진짜 목표가 ~인지"
+        ],
+        [
+          "is simply to spend less money",
+          "그저 돈을 덜 쓰는 것"
+        ],
+        [
+          "on **workers**.",
+          "노동자들에게"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "humanoid",
+      "사람 모양의, 인간형의"
+    ],
+    [
+      "range from A to B",
+      "A부터 B까지 이르다"
+    ],
+    [
+      "wires",
+      "전선들 (wire의 복수)"
+    ],
+    [
+      "inspection",
+      "검사, 점검"
+    ],
+    [
+      "supporters",
+      "지지하는 사람들, 찬성하는 쪽"
+    ],
+    [
+      "staffed",
+      "(사람이나 인력이) 배치된, 일하는"
+    ],
+    [
+      "critics",
+      "비판하는 사람들 (critic의 복수)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "주어와 동사 사이에 끼어드는 절",
+      "body": "4번 문장은 `Honda,` 다음에 `which showed its robot technology at a big car show in Japan earlier this month,`가 끼어 있어요. 쉼표 사이를 건너뛰면 `Honda ... even hopes to design future cars`가 문장의 뼈대입니다. 끝의 `in factories staffed by humanoid robots`는 '사람 모양 로봇들이 일하는 공장에서'라는 뜻으로, by 뒤가 일하는 주체예요."
+    },
+    {
+      "title": "range from A to B",
+      "body": "2번 문장의 `range from putting in ... to doing the final inspection`은 'A부터 B까지 이르다'라는 뜻이에요. from 뒤와 to 뒤가 짝을 이루어, 맡는 일의 범위(처음 작업부터 마지막 검사까지)를 보여 줍니다. `wires`, `workers`처럼 복수 -s도 함께 살려 읽어 보세요."
+    }
+  ],
+  "answers": [
+    "일본 곳곳의 자동차 공장에서 도요타와 혼다가 지금 사람처럼 보이고 움직이도록 만들어진 기계인 인간형 로봇을 시험하고 있다.",
+    "그 로봇들은 차 안에 긴 전선 묶음을 설치하는 일부터 차가 공장을 떠나기 전 마지막 검사를 하는 일까지 여러 작업을 해 보고 있다.",
+    "찬성하는 사람들은 자동차 공장이 사람 노동자에게 위험한 곳일 수 있기 때문에, 로봇이 위험한 일을 넘겨받을 수 있다고 말한다.",
+    "이달 초 일본의 큰 자동차 박람회에서 로봇 기술을 선보인 혼다는, 인간형 로봇들이 일하는 공장에서 만들 수 있도록 미래의 자동차를 설계하길 바라기까지 한다.",
+    "하지만 일부 비판하는 사람들은 로봇의 손이 전선 연결 같은 섬세한 일을 사람 손만큼 잘할 수 있을지 의심하고, 다른 사람들은 진짜 목표가 그저 노동자에게 돈을 덜 쓰는 것이 아닌지 궁금해한다."
+  ],
+  "advanced": [
+    {
+      "word": "dexterity",
+      "meaning": "손재주, 능숙함",
+      "confuse": null,
+      "example": "Critics doubt that the robots have enough **dexterity** for wiring.",
+      "example_ko": "비판하는 사람들은 로봇에게 전선 작업을 할 만큼의 손재주가 있는지 의심합니다."
+    },
+    {
+      "word": "hazardous",
+      "meaning": "위험한, 유해한",
+      "confuse": null,
+      "example": "Robots could take over **hazardous** tasks on the factory floor.",
+      "example_ko": "로봇이 공장 작업 현장의 위험한 일을 넘겨받을 수 있습니다."
+    },
+    {
+      "word": "deploy",
+      "meaning": "(인력이나 장비를) 배치하다, 투입하다",
+      "confuse": "employ(고용하다)와 혼동 주의",
+      "example": "The carmakers may **deploy** humanoid robots across their plants.",
+      "example_ko": "그 자동차 회사들은 공장 전반에 인간형 로봇을 투입할 수도 있습니다."
+    },
+    {
+      "word": "automate",
+      "meaning": "자동화하다",
+      "confuse": null,
+      "example": "The companies want to **automate** jobs from wiring to final inspection.",
+      "example_ko": "그 회사들은 전선 작업부터 마지막 검사까지 여러 일을 자동화하고 싶어 합니다."
+    },
+    {
+      "word": "labor costs",
+      "meaning": "인건비",
+      "confuse": null,
+      "example": "Some people think the real goal is to cut **labor costs**.",
+      "example_ko": "어떤 사람들은 진짜 목표가 인건비를 줄이는 것이라고 생각합니다."
+    },
+    {
+      "word": "skeptical",
+      "meaning": "회의적인, 의심하는",
+      "confuse": null,
+      "example": "Many experts remain **skeptical** about robots doing delicate work.",
+      "example_ko": "많은 전문가들은 로봇이 섬세한 일을 하는 것에 여전히 회의적입니다."
+    },
+    {
+      "word": "workforce",
+      "meaning": "(한 회사나 공장의) 전체 인력, 노동력",
+      "confuse": null,
+      "example": "Honda imagines a future **workforce** made up mostly of humanoid robots.",
+      "example_ko": "혼다는 주로 인간형 로봇으로 이루어진 미래의 인력을 상상합니다."
+    },
+    {
+      "word": "assembly line",
+      "meaning": "조립 라인",
+      "confuse": null,
+      "example": "The robots are being tested on car **assembly lines** in Japan.",
+      "example_ko": "그 로봇들은 일본의 자동차 조립 라인에서 시험받고 있습니다."
+    }
+  ],
+  "source": {
+    "title": "Toyota, Honda Bring Humanoid Robots Into Japanese Factory Trials (TokenPost, 2026-10-26)",
+    "url": "https://www.tokenpost.com/news/technology/40977"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Toyota and Honda are testing **humanoid** robots in car factories in Japan.",
+          "chunks": [
+            [
+              "Toyota and Honda are testing",
+              "도요타와 혼다가 시험하고 있다"
+            ],
+            [
+              "**humanoid** robots",
+              "사람 모양의 로봇을"
+            ],
+            [
+              "in car factories in Japan.",
+              "일본의 자동차 공장에서"
+            ]
+          ]
+        },
+        {
+          "en": "The robots try jobs like putting in **wires** and doing the final **inspection**.",
+          "chunks": [
+            [
+              "The robots try jobs",
+              "그 로봇들은 일을 해 본다"
+            ],
+            [
+              "like putting in **wires**",
+              "전선을 설치하는 것 같은"
+            ],
+            [
+              "and doing the final **inspection**.",
+              "그리고 마지막 검사를 하는 것 같은"
+            ]
+          ]
+        },
+        {
+          "en": "**Supporters** say robots can do dangerous work instead of people.",
+          "chunks": [
+            [
+              "**Supporters** say",
+              "지지하는 사람들은 말한다"
+            ],
+            [
+              "robots can do dangerous work",
+              "로봇이 위험한 일을 할 수 있다고"
+            ],
+            [
+              "instead of people.",
+              "사람 대신"
+            ]
+          ]
+        },
+        {
+          "en": "Honda wants to build future cars in factories with humanoid robot workers.",
+          "chunks": [
+            [
+              "Honda wants to build future cars",
+              "혼다는 미래의 차를 만들고 싶어 한다"
+            ],
+            [
+              "in factories",
+              "공장에서"
+            ],
+            [
+              "with humanoid robot workers.",
+              "사람 모양 로봇 노동자들이 있는"
+            ]
+          ]
+        },
+        {
+          "en": "But some **critics** say robot hands are bad at **delicate** work like wiring.",
+          "chunks": [
+            [
+              "But some **critics** say",
+              "하지만 일부 비판하는 사람들은 말한다"
+            ],
+            [
+              "robot hands are bad",
+              "로봇 손이 서툴다고"
+            ],
+            [
+              "at **delicate** work like wiring.",
+              "전선 연결 같은 섬세한 일에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "도요타와 혼다가 일본의 자동차 공장에서 인간형 로봇을 시험하고 있다.",
+        "그 로봇들은 전선을 설치하고 마지막 검사를 하는 것 같은 일을 해 본다.",
+        "찬성하는 사람들은 로봇이 사람 대신 위험한 일을 할 수 있다고 말한다.",
+        "혼다는 인간형 로봇 노동자들이 있는 공장에서 미래의 차를 만들고 싶어 한다.",
+        "하지만 일부 비판하는 사람들은 로봇 손이 전선 연결 같은 섬세한 일에 서툴다고 말한다."
+      ]
+    }
+  }
+}
