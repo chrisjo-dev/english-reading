@@ -1,52 +1,52 @@
 {
  "date": "2026-10-29",
- "words_total": 339,
+ "words_total": 346,
  "langs": {
   "en": {
-   "count": 26,
-   "latest": "2026-10-28",
-   "topic": "거대한 팝업북",
+   "count": 27,
+   "latest": "2026-10-29",
+   "topic": "휴머노이드 공장",
    "sentences": [
-    "When visitors walk into the round main hall of the Central Library in Los Angeles, many of them stop and look up at a huge open book.",
-    "It is the world's largest **pop-up** book, and when it is open, it **measures** thirty-one feet by twenty feet and **weighs** more than eighteen hundred pounds.",
-    "The book was **designed** by a local artist, Daniel González, who worked with a paper engineer, and it was made to **celebrate** the library's one hundredth birthday.",
-    "The finished book was too large for the library's doors, so it was built in smaller **sections** and put together inside the hall."
+    "In car factories across Japan, Toyota and Honda are now testing **humanoid** robots, machines that are built to look and move like people.",
+    "The robots are trying jobs that **range from** putting in the long bundles of **wires** inside a car to doing the final **inspection** before it leaves the factory.",
+    "**Supporters** say the robots could take over dangerous work, because car factories can be risky places for human workers.",
+    "Honda, which showed its robot technology at a big car show in Japan earlier this month, even hopes to design future cars so that they can be built in factories **staffed** by humanoid robots."
    ],
    "chips": [
-    "6문장",
+    "5문장",
     "B1 위주",
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "방문객들이 로스앤젤레스 중앙도서관의 둥근 중앙 홀에 들어서면, 많은 사람이 멈춰 서서 커다랗게 펼쳐진 책을 올려다본다.",
+   "answer": "일본 곳곳의 자동차 공장에서 도요타와 혼다가 지금 사람처럼 보이고 움직이도록 만들어진 기계인 인간형 로봇을 시험하고 있다.",
    "words": [
     [
-     "pop-up",
-     "펼치면 그림이 튀어나오는"
+     "humanoid",
+     "사람 모양의, 인간형의"
     ],
     [
-     "measures",
-     "크기가 ~이다 (measure + -s)"
+     "range from A to B",
+     "A부터 B까지 이르다"
     ],
     [
-     "weighs",
-     "무게가 ~이다 (weigh + -s)"
+     "wires",
+     "전선들 (wire의 복수)"
     ],
     [
-     "celebrate",
-     "기념하다, 축하하다"
+     "inspection",
+     "검사, 점검"
     ],
     [
-     "sections",
-     "부분들, 구역들 (section의 복수)"
+     "supporters",
+     "지지하는 사람들, 찬성하는 쪽"
     ],
     [
-     "excitement",
-     "설렘, 신남"
+     "staffed",
+     "(사람이나 인력이) 배치된, 일하는"
     ],
     [
-     "display",
-     "전시"
+     "critics",
+     "비판하는 사람들 (critic의 복수)"
     ]
    ]
   },
@@ -100,6 +100,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-29",
+   "topic": "휴머노이드 공장"
+  },
   {
    "lang": "ja",
    "day": "2026-10-29",
@@ -164,11 +169,6 @@
    "lang": "ja",
    "day": "2026-10-23",
    "topic": "무지개"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-22",
-   "topic": "드론 배송"
   }
  ]
 }
