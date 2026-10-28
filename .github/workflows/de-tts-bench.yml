@@ -6,6 +6,11 @@ on:
   push:
     branches: [bench/de-tts]
   workflow_dispatch:
+    inputs:
+      threads:
+        description: "torch 스레드 수 (비우면 기본값)"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -46,6 +51,8 @@ jobs:
           nproc; free -g; python -c "import torch; print('torch', torch.__version__, 'threads', torch.get_num_threads())"
 
       - name: Generate (6 sentences + 3 words)
+        env:
+          TTS_THREADS: ${{ inputs.threads }}
         run: |
           t0=$(date +%s)
           python tools/tts_qwen.py gen tests/fixtures/de-bench.json out

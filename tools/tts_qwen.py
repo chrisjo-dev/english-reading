@@ -47,6 +47,8 @@ def load(repo=REPO):
     from huggingface_hub import snapshot_download
     from qwen_tts import Qwen3TTSModel
 
+    if os.environ.get("TTS_THREADS"):
+        torch.set_num_threads(int(os.environ["TTS_THREADS"]))  # 기본은 물리 코어 수(Actions 4 vCPU 에서 2)
     t0 = time.time()
     path = snapshot_download(repo)
     t1 = time.time()
