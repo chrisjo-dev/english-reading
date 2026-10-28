@@ -205,12 +205,16 @@ def patch_page(lang, day):
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
         page = page.replace("<link rel=\"stylesheet\"", f'<link rel="canonical" href="{url}">\n<link rel="stylesheet"', 1)
+    L_pub = langs.LANGS.get(lang, {})
     if 'class="card sub"' not in page:
-        # 카드가 없는 경우: 새로 삽입
-        page = page.replace("  .gnb {", SUB_CSS + "  .intro {", 1)
-        page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
-        page = page.replace("</main>", sub_html(lang) + "</main>", 1)
-        page = page.replace("\n  </div>\n\n  <section class=\"card\" id=\"passage\">", "\n" + intro_html(lang) + "  </div>\n\n  <section class=\"card\" id=\"passage\">", 1)
+        # 카드가 없는 경우: noindex 언어는 구독 카드를 삽입하지 않는다(준비 중).
+        if L_pub.get("noindex", False):
+            pass
+        else:
+            page = page.replace("  .gnb {", SUB_CSS + "  .intro {", 1)
+            page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
+            page = page.replace("</main>", sub_html(lang) + "</main>", 1)
+            page = page.replace("\n  </div>\n\n  <section class=\"card\" id=\"passage\">", "\n" + intro_html(lang) + "  </div>\n\n  <section class=\"card\" id=\"passage\">", 1)
     elif 'data-v="2"' not in page:
         # 이전 버전 카드가 있는 경우: 카드 HTML만 교체하고 수준 선택 CSS를 추가한다
         page = re.sub(
@@ -316,6 +320,8 @@ def entry(lang, day):
 def rebuild_root():
     """사이트 첫 화면이 읽는 latest.json 을 만든다. 첫 화면(index.html)은 landing 정적 빌드로 따로 배포한다.
 
+    noindex 언어는 latest.json 의 langs/recent 에서 제외한다(검색엔진 숨김 운영 중).
+
     모양: {"date", "words_total"(올라간 지문 전체의 주요 단어 수),
            "langs": {code: {"count", "latest", "topic", "sentences"(앞 4문장, 원문 표기 그대로),
                             "chips", "answer"(1번 모범 해석), "words"}},
@@ -323,6 +329,9 @@ def rebuild_root():
     """
     data, recent = {"date": "", "words_total": 0, "langs": {}, "recent": []}, []
     for code in langs.LANGS:
+        L = langs.LANGS[code]
+        if L.get("noindex", False):
+            continue  # 숨김 운영 중인 언어는 latest.json 에서 제외
         days = days_of(code)
         if not days:
             continue
@@ -347,9 +356,15 @@ def rebuild_root():
 
 
 def write_sitemap():
-    """검색엔진용 사이트맵과 robots.txt. 언어 목록, 날짜 페이지, 주간 복습을 모두 싣는다."""
+    """검색엔진용 사이트맵과 robots.txt. 언어 목록, 날짜 페이지, 주간 복습을 모두 싣는다.
+
+    noindex 언어는 사이트맵에서 제외한다.
+    """
     urls = [f"{SITE}/"]
     for code in langs.LANGS:
+        L = langs.LANGS[code]
+        if L.get("noindex", False):
+            continue  # 숨김 운영 중인 언어는 사이트맵에서 제외
         days = days_of(code)
         if not days:
             continue

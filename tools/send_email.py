@@ -283,6 +283,10 @@ def catchup(lang, day, level="b"):
 
 
 def main(lang, day, level="b"):
+    L = langs.LANGS.get(lang, {})
+    if not L.get("email", True):
+        print(f"이 언어는 아직 메일을 보내지 않습니다 (email=False, {lang}). 종료합니다.")
+        return
     url_base = f"{build_email.SITE}/{lang}/{day}/"
     wait_live(url_base, build_email.parse(lang, day)["topic"], url_base + "thumb.png")
     if level == "a":
@@ -300,6 +304,10 @@ def main(lang, day, level="b"):
 
 
 def main_weekly(lang, end):
+    L = langs.LANGS.get(lang, {})
+    if not L.get("email", True):
+        print(f"이 언어는 아직 메일을 보내지 않습니다 (email=False, {lang}). 종료합니다.")
+        return
     import weekly
     mail = weekly.build_email(lang, end)
     url = mail.pop("url")

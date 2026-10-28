@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       lang:
-        description: "언어 코드 (en, ja)"
+        description: "언어 코드 (en, ja, de)"
         required: true
         default: en
       day:
@@ -36,7 +36,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     services:
       # 일본어 음성 엔진(VOICEVOX). 영어만 올라온 날에도 같이 뜨지만 쓰지 않는다.
       voicevox:
@@ -128,11 +128,18 @@ jobs:
 
       - name: Audio (level b)
         # 중급 음성은 필수다. 3번까지 다시 시도하고, 그래도 실패하면 여기서 멈춰 메일을 보내지 않는다.
+        # tts=="qwen" 언어(독일어)는 아직 자동 생성 경로가 확정되지 않아 건너뛴다. 페이지는 SpeechSynthesis de-DE 폴백으로 동작한다.
         run: |
           mkdir -p models
           base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
           for pair in ${{ steps.pick.outputs.pairs }}; do
-            lang=${pair%%:*}; day=${pair#*:}; ok=
+            lang=${pair%%:*}; day=${pair#*:}
+            tts_engine=$(python -c "import sys; sys.path.insert(0,'tools'); import langs; print(langs.LANGS.get('$lang',{}).get('tts','kokoro'))")
+            if [ "$tts_engine" = "qwen" ]; then
+              echo "::warning::${lang} 음성은 별도 경로로 생성합니다 (tts=qwen). 이 실행에서는 건너뜁니다. 페이지는 SpeechSynthesis 폴백으로 동작합니다."
+              continue
+            fi
+            ok=
             for i in 1 2 3; do
               [ -f models/kokoro-v1.0.int8.onnx ] || curl -sSfL --retry 3 -o models/kokoro-v1.0.int8.onnx $base/kokoro-v1.0.int8.onnx || rm -f models/kokoro-v1.0.int8.onnx
               [ -f models/voices-v1.0.bin ] || curl -sSfL --retry 3 -o models/voices-v1.0.bin $base/voices-v1.0.bin || rm -f models/voices-v1.0.bin
@@ -180,16 +187,23 @@ jobs:
             echo "push attempt $attempt failed; rebasing onto origin/main..."
             git fetch origin main
             if git rebase origin/main; then continue; fi
-            # rebase 충돌: 생성 파일만 허용한다
-            bad=$(git diff --name-only --diff-filter=U \
-              | grep -vxE 'latest\.json|sitemap\.xml|robots\.txt|en/index\.html|en/archive/index\.html|ja/index\.html|ja/archive/index\.html' || true)
+            # rebase 충돌: 생성 파일만 허용한다 (langs 기반으로 동적 구성)
+            _all_langs=$(python -c "import sys; sys.path.insert(0,'tools'); import langs; print(' '.join(langs.LANGS))")
+            _pat='latest\.json|sitemap\.xml|robots\.txt'
+            _add_list='latest.json sitemap.xml robots.txt'
+            for _l in $_all_langs; do
+              _pat="$_pat|${_l}/index\.html|${_l}/archive/index\.html"
+              _add_list="$_add_list ${_l}/index.html ${_l}/archive/index.html"
+            done
+            bad=$(git diff --name-only --diff-filter=U | grep -vxE "$_pat" || true)
             if [ -n "$bad" ]; then
               git rebase --abort
               echo "::error::생성 파일 외 rebase 충돌: $bad — 수동 해결 필요"
               exit 1
             fi
-            python -c "import sys; sys.path.insert(0,'tools'); import publish; publish.rebuild_root(); publish.rebuild_lists('en'); publish.rebuild_lists('ja')"
-            git add -- latest.json sitemap.xml robots.txt en/index.html en/archive/index.html ja/index.html ja/archive/index.html 2>/dev/null || true
+            python -c "import sys; sys.path.insert(0,'tools'); import langs, publish; publish.rebuild_root(); [publish.rebuild_lists(c) for c in langs.LANGS]"
+            # shellcheck disable=SC2086
+            git add -- $_add_list 2>/dev/null || true
             # 생성 파일만 변경된 커밋은 rebase 후 공백 패치가 될 수 있다 -> --skip
             if git diff --cached --quiet; then
               git rebase --skip
@@ -213,8 +227,9 @@ jobs:
               echo "skip email for $pair (no_email)"
             elif [ "$day" = "${{ steps.pick.outputs.today }}" ] || [ "${{ inputs.send }}" = "true" ]; then
               python tools/send_email.py $lang $day --level b
-              # level a 는 영어 전용: 일본어는 기초 지문이 없으므로 건너뛴다
-              if [ "$lang" = "en" ]; then
+              # level a 는 levels 플래그가 True 인 언어(현재 영어)만. send_email.py 도 email 플래그를 확인한다.
+              _has_levels=$(python -c "import sys; sys.path.insert(0,'tools'); import langs; print(langs.LANGS.get('$lang',{}).get('levels',False))")
+              if [ "$_has_levels" = "True" ]; then
                 python tools/send_email.py $lang $day --level a || echo "::warning::level a email skipped for $pair"
               fi
             else

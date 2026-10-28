@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-03",
+  "category": "society",
+  "topic": "대중교통",
+  "title_ko": "독일의 대중교통",
+  "headline": "Mit dem Bus und der Bahn durch die Stadt",
+  "chips": ["5문장", "A2 위주", "B1 1문장", "약 3분"],
+  "sentences": [
+    {
+      "en": "In deutschen Städten gibt es viele **Buslinien** und **U-Bahnen**.",
+      "b2": false,
+      "chunks": [
+        ["In deutschen Städten", "독일 도시들에는"],
+        ["gibt es", "있습니다"],
+        ["viele **Buslinien**", "많은 버스 노선과"],
+        ["und **U-Bahnen**.", "지하철이"]
+      ]
+    },
+    {
+      "en": "Viele Menschen fahren jeden Tag mit der **Straßenbahn** zur Arbeit.",
+      "b2": false,
+      "chunks": [
+        ["Viele Menschen", "많은 사람들이"],
+        ["fahren", "탑니다"],
+        ["jeden Tag", "매일"],
+        ["mit der **Straßenbahn**", "트램을"],
+        ["zur Arbeit.", "직장에 가기 위해"]
+      ]
+    },
+    {
+      "en": "Man kann ein **Ticket** am Automaten oder mit dem Handy kaufen.",
+      "b2": false,
+      "chunks": [
+        ["Man kann", "살 수 있습니다"],
+        ["ein **Ticket**", "티켓을"],
+        ["am Automaten", "자동판매기에서"],
+        ["oder mit dem Handy kaufen.", "또는 휴대폰으로"]
+      ]
+    },
+    {
+      "en": "Das **Deutschlandticket** kostet 49 Euro pro Monat und gilt für alle Züge.",
+      "b2": false,
+      "chunks": [
+        ["Das **Deutschlandticket**", "도이칠란트티켓은"],
+        ["kostet", "합니다"],
+        ["49 Euro pro Monat", "한 달에 49유로"],
+        ["und gilt für alle Züge.", "그리고 모든 열차에서 사용할 수 있습니다"]
+      ]
+    },
+    {
+      "en": "Wer kein **Ticket** hat, muss eine Geldbuße bezahlen.",
+      "b2": true,
+      "chunks": [
+        ["Wer kein **Ticket** hat,", "티켓이 없는 사람은"],
+        ["muss", "내야 합니다"],
+        ["eine Geldbuße bezahlen.", "벌금을"]
+      ]
+    }
+  ],
+  "words": [
+    ["Buslinie", "버스 노선"],
+    ["U-Bahn", "지하철"],
+    ["Straßenbahn", "트램, 노면전차"],
+    ["Ticket", "티켓, 표"],
+    ["Automat", "자동판매기"],
+    ["Geldbuße", "벌금"]
+  ],
+  "points": [
+    {
+      "title": "mit der Straßenbahn — 교통수단 표현",
+      "body": "교통수단 앞에는 전치사 `mit`과 Dativ을 씁니다. `mit der Straßenbahn(트램으로)`, `mit dem Bus(버스로)`, `mit dem Zug(기차로)` 처럼요."
+    },
+    {
+      "title": "Wer ... hat — 관계절 주어",
+      "body": "`Wer kein Ticket hat`은 '티켓이 없는 사람은'이라는 뜻이에요. `wer`는 '~하는 사람'을 뜻하는 관계대명사입니다."
+    }
+  ],
+  "answers": [
+    "독일 도시들에는 버스 노선과 지하철이 많이 있습니다.",
+    "많은 사람들이 매일 트램을 타고 직장에 갑니다.",
+    "자동판매기나 휴대폰으로 티켓을 살 수 있습니다.",
+    "도이칠란트티켓은 한 달에 49유로이고 모든 열차에서 사용할 수 있습니다.",
+    "티켓이 없는 사람은 벌금을 내야 합니다."
+  ],
+  "advanced": [
+    {
+      "word": "gelten für",
+      "meaning": "~에 적용되다, ~에 유효하다",
+      "confuse": null,
+      "example": "Das Ticket **gilt für** alle Züge in Deutschland.",
+      "example_ko": "그 티켓은 독일의 모든 열차에 유효합니다."
+    },
+    {
+      "word": "monatlich",
+      "meaning": "월별의, 매달",
+      "confuse": "monatlich(매달) vs. wöchentlich(매주) vs. täglich(매일)",
+      "example": "Die **monatliche** Gebühr beträgt 49 Euro.",
+      "example_ko": "월 요금은 49유로입니다."
+    },
+    {
+      "word": "Fahrkarte",
+      "meaning": "승차권, 기차표",
+      "confuse": "Fahrkarte(승차권, 특히 기차) vs. Ticket(일반적인 티켓): 의미는 같지만 Fahrkarte가 더 격식체예요.",
+      "example": "Ich brauche eine **Fahrkarte** nach Berlin.",
+      "example_ko": "저는 베를린행 승차권이 필요합니다."
+    },
+    {
+      "word": "pünktlich",
+      "meaning": "정시의, 시간을 잘 지키는",
+      "confuse": null,
+      "example": "Der Zug fährt meistens **pünktlich** ab.",
+      "example_ko": "기차는 대부분 정시에 출발합니다."
+    },
+    {
+      "word": "umsteigen",
+      "meaning": "환승하다",
+      "confuse": null,
+      "example": "Hier müssen wir in die U-Bahn **umsteigen**.",
+      "example_ko": "여기서 지하철로 환승해야 합니다."
+    },
+    {
+      "word": "Haltestelle",
+      "meaning": "정류장, 정거장",
+      "confuse": "Haltestelle(버스/트램 정류장) vs. Bahnhof(기차역) vs. Bushof(버스 터미널)",
+      "example": "Die nächste **Haltestelle** ist in 200 Metern.",
+      "example_ko": "다음 정류장은 200미터 앞에 있습니다."
+    }
+  ],
+  "source": null,
+  "example": true
+}

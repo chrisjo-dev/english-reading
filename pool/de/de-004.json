@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-04",
+  "category": "culture",
+  "topic": "직장과 근무시간",
+  "title_ko": "독일의 직장 문화",
+  "headline": "Arbeit und Freizeit in Deutschland",
+  "chips": ["5문장", "A2 위주", "B1 1문장", "약 3분"],
+  "sentences": [
+    {
+      "en": "In Deutschland beginnt die **Arbeit** oft um 8 oder 9 Uhr morgens.",
+      "b2": false,
+      "chunks": [
+        ["In Deutschland", "독일에서는"],
+        ["beginnt", "시작됩니다"],
+        ["die **Arbeit**", "업무가"],
+        ["oft um 8 oder 9 Uhr morgens.", "보통 오전 8시나 9시에"]
+      ]
+    },
+    {
+      "en": "Viele Arbeitnehmer machen eine kurze **Pause** am Mittag.",
+      "b2": false,
+      "chunks": [
+        ["Viele Arbeitnehmer", "많은 직장인들은"],
+        ["machen", "합니다"],
+        ["eine kurze **Pause**", "짧은 점심 휴식을"],
+        ["am Mittag.", "점심 때"]
+      ]
+    },
+    {
+      "en": "Nach der **Arbeit** geht man oft direkt nach Hause.",
+      "b2": false,
+      "chunks": [
+        ["Nach der **Arbeit**", "업무 후에"],
+        ["geht man", "사람들은 갑니다"],
+        ["oft direkt", "보통 곧장"],
+        ["nach Hause.", "집으로"]
+      ]
+    },
+    {
+      "en": "Das **Feierabend**-Gefühl ist in Deutschland sehr wichtig.",
+      "b2": false,
+      "chunks": [
+        ["Das **Feierabend**-Gefühl", "퇴근 후의 느낌은"],
+        ["ist", "입니다"],
+        ["in Deutschland", "독일에서"],
+        ["sehr wichtig.", "매우 중요합니다"]
+      ]
+    },
+    {
+      "en": "Viele Unternehmen bieten ihren Mitarbeitern auch **Homeoffice** an.",
+      "b2": true,
+      "chunks": [
+        ["Viele Unternehmen", "많은 기업들이"],
+        ["bieten", "제공합니다"],
+        ["ihren Mitarbeitern", "직원들에게"],
+        ["auch **Homeoffice** an.", "재택근무도"]
+      ]
+    }
+  ],
+  "words": [
+    ["Arbeit", "일, 업무"],
+    ["Arbeitnehmer", "직장인, 피고용인"],
+    ["Pause", "휴식, 쉬는 시간"],
+    ["Feierabend", "퇴근, 퇴근 후 시간"],
+    ["Unternehmen", "기업, 회사"],
+    ["Homeoffice", "재택근무"]
+  ],
+  "points": [
+    {
+      "title": "nach der Arbeit — 전치사 nach",
+      "body": "전치사 `nach`는 시간이나 순서를 나타낼 때 '~ 후에'라는 뜻으로 씁니다. 항상 Dativ과 함께: `nach der Arbeit(업무 후에)`, `nach dem Essen(식사 후에)`."
+    },
+    {
+      "title": "anbieten — 분리동사",
+      "body": "`anbieten`(제공하다)은 분리동사예요. 문장에서 `an`은 문장 끝으로 갑니다: `Sie bieten Homeoffice **an**.(그들은 재택근무를 제공합니다.)`"
+    }
+  ],
+  "answers": [
+    "독일에서는 업무가 보통 오전 8시나 9시에 시작됩니다.",
+    "많은 직장인들은 점심 때 짧은 휴식을 합니다.",
+    "업무 후에 사람들은 보통 곧장 집으로 갑니다.",
+    "독일에서는 퇴근 후의 시간이 매우 중요합니다.",
+    "많은 기업들이 직원들에게 재택근무도 제공합니다."
+  ],
+  "advanced": [
+    {
+      "word": "anbieten",
+      "meaning": "제공하다, 권하다",
+      "confuse": "anbieten(능동적 제공) vs. angeboten werden(수동으로 제공되다)",
+      "example": "Das Unternehmen **bietet** flexible Arbeitszeiten **an**.",
+      "example_ko": "그 회사는 유연 근무제를 제공합니다."
+    },
+    {
+      "word": "Überstunden",
+      "meaning": "초과근무, 야근",
+      "confuse": null,
+      "example": "Er macht selten **Überstunden**.",
+      "example_ko": "그는 거의 야근을 하지 않습니다."
+    },
+    {
+      "word": "flexibel",
+      "meaning": "유연한",
+      "confuse": null,
+      "example": "Die Arbeitszeiten sind sehr **flexibel**.",
+      "example_ko": "근무 시간이 매우 유연합니다."
+    },
+    {
+      "word": "Kollege",
+      "meaning": "동료(남성), 여성형: Kollegin",
+      "confuse": "Kollege(직장 동료) vs. Freund(친구): 직장에서 만나는 사람은 Kollege예요.",
+      "example": "Mein **Kollege** hilft mir gern.",
+      "example_ko": "내 동료는 기꺼이 나를 도와줍니다."
+    },
+    {
+      "word": "Urlaub",
+      "meaning": "휴가",
+      "confuse": "Urlaub(휴가 기간) vs. Ferien(방학/공휴일 연휴): Urlaub은 직장인 휴가예요.",
+      "example": "Ich nehme nächste Woche **Urlaub**.",
+      "example_ko": "저는 다음 주에 휴가를 냅니다."
+    },
+    {
+      "word": "Gehalt",
+      "meaning": "급여, 월급",
+      "confuse": "Gehalt(월급) vs. Lohn(시급/일당): Gehalt는 월정액 급여예요.",
+      "example": "Das **Gehalt** kommt am Monatsende.",
+      "example_ko": "월급은 월말에 나옵니다."
+    }
+  ],
+  "source": null,
+  "example": true
+}

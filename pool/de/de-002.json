@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-02",
+  "category": "culture",
+  "topic": "크리스마스 시장",
+  "title_ko": "독일의 크리스마스 시장",
+  "headline": "Der Weihnachtsmarkt in Deutschland",
+  "chips": ["5문장", "A2 위주", "B1 1문장", "약 3분"],
+  "sentences": [
+    {
+      "en": "Im Dezember gibt es in vielen deutschen Städten **Weihnachtsmärkte**.",
+      "b2": false,
+      "chunks": [
+        ["Im Dezember", "12월에는"],
+        ["gibt es", "열립니다"],
+        ["in vielen deutschen Städten", "많은 독일 도시들에서"],
+        ["**Weihnachtsmärkte**.", "크리스마스 시장이"]
+      ]
+    },
+    {
+      "en": "Die Menschen trinken dort warmen **Glühwein** und essen Lebkuchen.",
+      "b2": false,
+      "chunks": [
+        ["Die Menschen", "사람들은"],
+        ["trinken dort", "그곳에서 마십니다"],
+        ["warmen **Glühwein**", "따뜻한 뱅쇼를"],
+        ["und essen Lebkuchen.", "그리고 생강 쿠키를 먹습니다"]
+      ]
+    },
+    {
+      "en": "An den **Ständen** kann man Geschenke und Dekoration kaufen.",
+      "b2": false,
+      "chunks": [
+        ["An den **Ständen**", "노점에서는"],
+        ["kann man", "살 수 있습니다"],
+        ["Geschenke und Dekoration kaufen.", "선물과 장식품을"]
+      ]
+    },
+    {
+      "en": "Kinder freuen sich besonders über die bunten **Lichter** und den Nikolaus.",
+      "b2": false,
+      "chunks": [
+        ["Kinder", "아이들은"],
+        ["freuen sich", "기뻐합니다"],
+        ["besonders über", "특히"],
+        ["die bunten **Lichter**", "색색의 불빛과"],
+        ["und den Nikolaus.", "산타클로스를"]
+      ]
+    },
+    {
+      "en": "Der Nürnberger Weihnachtsmarkt gilt als einer der **bekanntesten** in Europa.",
+      "b2": true,
+      "chunks": [
+        ["Der Nürnberger Weihnachtsmarkt", "뉘른베르크 크리스마스 시장은"],
+        ["gilt als", "여겨집니다"],
+        ["einer der **bekanntesten**", "가장 유명한 것 중 하나로"],
+        ["in Europa.", "유럽에서"]
+      ]
+    }
+  ],
+  "words": [
+    ["Weihnachtsmarkt", "크리스마스 시장"],
+    ["Glühwein", "뱅쇼(따뜻한 적포도주)"],
+    ["Stand", "노점, 가판대"],
+    ["Lichter", "불빛, 조명(Licht의 복수)"],
+    ["bekannt", "유명한, 잘 알려진"],
+    ["Geschenk", "선물"]
+  ],
+  "points": [
+    {
+      "title": "kann man — 비인칭 표현",
+      "body": "`kann man`은 '사람들은 ~할 수 있다'는 뜻의 비인칭 표현이에요. `Man kann hier Kaffee kaufen.(여기서 커피를 살 수 있어요.)`처럼 씁니다."
+    },
+    {
+      "title": "gilt als — '~로 여겨지다'",
+      "body": "`gelten als`는 '~로 여겨지다, ~로 인정받다'는 B1 표현이에요. `Der Markt gilt als berühmt.(그 시장은 유명한 것으로 여겨진다.)`처럼 씁니다."
+    }
+  ],
+  "answers": [
+    "12월에는 많은 독일 도시에서 크리스마스 시장이 열립니다.",
+    "사람들은 그곳에서 따뜻한 뱅쇼를 마시고 생강 쿠키를 먹습니다.",
+    "노점에서는 선물과 장식품을 살 수 있습니다.",
+    "아이들은 색색의 불빛과 산타클로스를 특히 좋아합니다.",
+    "뉘른베르크 크리스마스 시장은 유럽에서 가장 유명한 것 중 하나로 여겨집니다."
+  ],
+  "advanced": [
+    {
+      "word": "gelten als",
+      "meaning": "~로 여겨지다",
+      "confuse": null,
+      "example": "Dieser Markt **gilt als** der schönste in Deutschland.",
+      "example_ko": "이 시장은 독일에서 가장 아름다운 시장으로 여겨집니다."
+    },
+    {
+      "word": "bunt",
+      "meaning": "색색의, 형형색색의",
+      "confuse": "bunt vs. farbig: bunt는 여러 색이 섞인 화려함, farbig는 단순히 색이 있음.",
+      "example": "Die **bunten** Lichter schmücken den Marktplatz.",
+      "example_ko": "색색의 불빛이 광장을 장식합니다."
+    },
+    {
+      "word": "Dekoration",
+      "meaning": "장식, 꾸밈",
+      "confuse": null,
+      "example": "Wir kaufen **Dekoration** für das Zimmer.",
+      "example_ko": "우리는 방 장식품을 삽니다."
+    },
+    {
+      "word": "sich freuen über",
+      "meaning": "~을 기뻐하다",
+      "confuse": "sich freuen über(현재의 기쁨) vs. sich freuen auf(미래에 대한 기대).",
+      "example": "Die Kinder **freuen sich** sehr über die Geschenke.",
+      "example_ko": "아이들은 선물을 매우 기뻐합니다."
+    },
+    {
+      "word": "berühmt",
+      "meaning": "유명한",
+      "confuse": "berühmt vs. bekannt: berühmt는 세계적으로 유명한, bekannt는 일반적으로 알려진.",
+      "example": "Der Nürnberger Markt ist weltweit **berühmt**.",
+      "example_ko": "뉘른베르크 시장은 세계적으로 유명합니다."
+    },
+    {
+      "word": "schmücken",
+      "meaning": "장식하다",
+      "confuse": null,
+      "example": "Die Menschen **schmücken** die Häuser mit Lichtern.",
+      "example_ko": "사람들은 불빛으로 집을 장식합니다."
+    }
+  ],
+  "source": null,
+  "example": true
+}

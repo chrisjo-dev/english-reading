@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-07",
+  "category": "culture",
+  "topic": "독일의 날씨",
+  "title_ko": "독일의 사계절 날씨",
+  "headline": "Das Wetter in Deutschland",
+  "chips": ["5문장", "A2 위주", "B1 1문장", "약 3분"],
+  "sentences": [
+    {
+      "en": "In Deutschland gibt es vier **Jahreszeiten**: Frühling, Sommer, Herbst und Winter.",
+      "b2": false,
+      "chunks": [
+        ["In Deutschland", "독일에는"],
+        ["gibt es", "있습니다"],
+        ["vier **Jahreszeiten**:", "네 계절이"],
+        ["Frühling, Sommer, Herbst und Winter.", "봄, 여름, 가을, 겨울"]
+      ]
+    },
+    {
+      "en": "Im Sommer ist es oft warm und sonnig, aber auch manchmal **regnerisch**.",
+      "b2": false,
+      "chunks": [
+        ["Im Sommer", "여름에는"],
+        ["ist es oft", "보통 합니다"],
+        ["warm und sonnig,", "따뜻하고 맑지만"],
+        ["aber auch manchmal", "하지만 때로는"],
+        ["**regnerisch**.", "비가 오기도"]
+      ]
+    },
+    {
+      "en": "Der Winter bringt in vielen Regionen **Schnee** und Kälte.",
+      "b2": false,
+      "chunks": [
+        ["Der Winter", "겨울은"],
+        ["bringt", "가져옵니다"],
+        ["in vielen Regionen", "많은 지역에"],
+        ["**Schnee** und Kälte.", "눈과 추위를"]
+      ]
+    },
+    {
+      "en": "Im **Herbst** werden die Blätter bunt und fallen von den Bäumen.",
+      "b2": false,
+      "chunks": [
+        ["Im **Herbst**", "가을에는"],
+        ["werden", "됩니다"],
+        ["die Blätter bunt", "나뭇잎이 알록달록해지고"],
+        ["und fallen", "그리고 떨어집니다"],
+        ["von den Bäumen.", "나무에서"]
+      ]
+    },
+    {
+      "en": "Der **Klimawandel** hat in den letzten Jahren auch in Deutschland zu heißeren Sommern geführt.",
+      "b2": true,
+      "chunks": [
+        ["Der **Klimawandel**", "기후 변화는"],
+        ["hat", "만들었습니다"],
+        ["in den letzten Jahren", "최근 몇 년 동안"],
+        ["auch in Deutschland", "독일에서도"],
+        ["zu heißeren Sommern geführt.", "더 더운 여름을"]
+      ]
+    }
+  ],
+  "words": [
+    ["Jahreszeit", "계절"],
+    ["regnerisch", "비가 오는"],
+    ["Schnee", "눈"],
+    ["Herbst", "가을"],
+    ["Klimawandel", "기후 변화"],
+    ["Kälte", "추위"]
+  ],
+  "points": [
+    {
+      "title": "im Winter / im Sommer — 계절 전치사",
+      "body": "계절 앞에는 항상 `im`(= in dem)을 씁니다: `im Frühling(봄에)`, `im Sommer(여름에)`, `im Herbst(가을에)`, `im Winter(겨울에)`."
+    },
+    {
+      "title": "werden + 형용사 — 변화를 나타내는 표현",
+      "body": "`werden`은 '~하게 되다'는 변화를 나타내요. `Die Blätter werden bunt.(나뭇잎이 알록달록해진다.)`처럼, `sein`(상태)과 구분해서 씁니다."
+    }
+  ],
+  "answers": [
+    "독일에는 봄, 여름, 가을, 겨울의 네 계절이 있습니다.",
+    "여름에는 보통 따뜻하고 맑지만 때로는 비가 오기도 합니다.",
+    "겨울은 많은 지역에 눈과 추위를 가져옵니다.",
+    "가을에는 나뭇잎이 알록달록해지고 나무에서 떨어집니다.",
+    "기후 변화로 인해 최근 몇 년 동안 독일에서도 여름이 더 더워졌습니다."
+  ],
+  "advanced": [
+    {
+      "word": "führen zu",
+      "meaning": "~을 초래하다, ~로 이어지다",
+      "confuse": null,
+      "example": "Der Regen **führt zu** Überschwemmungen.",
+      "example_ko": "비가 홍수를 초래합니다."
+    },
+    {
+      "word": "Temperatur",
+      "meaning": "온도, 기온",
+      "confuse": null,
+      "example": "Die **Temperaturen** steigen im Sommer.",
+      "example_ko": "여름에는 기온이 올라갑니다."
+    },
+    {
+      "word": "Niederschlag",
+      "meaning": "강수량, 강수",
+      "confuse": "Niederschlag(강수, 기상 용어) vs. Regen(비, 일상 용어): Niederschlag은 눈/비 모두 포함해요.",
+      "example": "Im Herbst gibt es viel **Niederschlag**.",
+      "example_ko": "가을에는 강수량이 많습니다."
+    },
+    {
+      "word": "Sturm",
+      "meaning": "폭풍",
+      "confuse": "Sturm(강한 바람을 동반한 폭풍) vs. Gewitter(번개와 천둥을 동반한 뇌우)",
+      "example": "Ein heftiger **Sturm** zog über die Stadt.",
+      "example_ko": "강한 폭풍이 도시를 지나갔습니다."
+    },
+    {
+      "word": "Vorhersage",
+      "meaning": "예보, 예측",
+      "confuse": null,
+      "example": "Die Wettervorhersage sagt Regen für morgen voraus.",
+      "example_ko": "일기 예보는 내일 비가 온다고 합니다."
+    },
+    {
+      "word": "Erneuerbare Energie",
+      "meaning": "재생에너지",
+      "confuse": null,
+      "example": "Deutschland setzt stark auf **erneuerbare Energie**.",
+      "example_ko": "독일은 재생에너지에 크게 의존하고 있습니다."
+    }
+  ],
+  "source": null,
+  "example": true
+}

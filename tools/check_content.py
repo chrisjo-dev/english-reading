@@ -6,11 +6,13 @@
 - 경고: 출처(source)가 없는데 인원, 금액, 수량 같은 구체적 수치가 있는 경우. 실제 사실처럼 읽히므로 출처를 달거나 수치를 빼야 한다.
   널리 알려진 일반 상식(계절, 대략적인 통계)이면 그대로 둬도 되고, 지어낸 사례면 "example": true 를 넣는다.
 - 오류: 같은 언어의 최근 14일 지문과 내용이 겹치는 경우. 주제가 같은 것은 괜찮고, 같은 기사(출처 주소)이거나
-  형광펜 단어가 2개 이상 같거나, 본문이 많이 겹치면(영어: 핵심 단어 12% 이상, 일본어: 세 글자 묶음 15% 이상)
+  형광펜 단어가 2개 이상 같거나, 본문이 많이 겹치면(영어/독일어: 핵심 단어 12% 이상, 일본어: 세 글자 묶음 15% 이상)
   같은 이야기를 반복하는 것으로 본다.
       python3 tools/check_content.py --overlap en 2026-10-14   (내용 겹침만 검사, 발행 워크플로가 쓴다)
-- 오류: 영어 문장의 끊어 읽기(chunks)를 공백 하나로 이은 글이 문장과 다르거나, 영어나 뜻이 빈 덩어리가 있는 경우.
+- 오류: chunks 활성화 언어(langs 의 chunks 플래그)의 문장 끊어 읽기를 공백 하나로 이은 글이 문장과 다르거나,
+  영어/독일어나 뜻이 빈 덩어리가 있는 경우.
   2026-10-23 이후 영어 지문과 영어 비축분은 모든 문장에 chunks 가 있어야 한다.
+  독일어는 DE_CHUNKS_FROM 이후 지문과 독일어 비축분에 chunks 가 있어야 한다.
 """
 import datetime as dt
 import json
@@ -19,6 +21,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import langs as _langs  # noqa: E402
 
 # 화면에서 처리하는 표기: **굵게**, `코드`, {漢字|かな}. 이것을 지운 뒤 남은 기호를 찾는다.
 SUPPORTED = re.compile(r"\*\*[^*]+\*\*|`[^`]+`|\{[^{}|]+\|[^{}]+\}")
@@ -64,8 +68,14 @@ def check(path):
         for k in ("title_ko", "headline"):
             if not str(c.get(k) or "").strip():
                 errors.append(f"{k} 가 비어 있어요. 페이지 제목에 쓰입니다(ROUTINE 의 필드 설명 참고).")
-    if path.parent.name == "en":
-        errors += check_chunks(c, required=path.parent.parent.name == "pool" or new_chunks(path))
+    lang = path.parent.name
+    try:
+        L = _langs.LANGS.get(lang, {})
+    except Exception:
+        L = {}
+    if L.get("chunks", lang == "en"):
+        errors += check_chunks(c, required=path.parent.parent.name == "pool" or new_chunks(path, lang))
+    if L.get("levels", lang == "en"):
         errors += check_levels_a(c, path)
         # levels.a 에도 출처 없는 수치 경고 적용
         levels_a = (c.get("levels") or {}).get("a")
@@ -80,13 +90,23 @@ def check(path):
 
 
 CHUNKS_FROM = dt.date(2026, 10, 23)  # 이날 지문부터 영어 문장마다 끊어 읽기(chunks)가 있어야 한다
+DE_CHUNKS_FROM = dt.date(2026, 10, 28)  # 독일어 루틴 시작일. 이날 이후 독일어 지문에 chunks 필수.
 LEVELS_FROM = dt.date(2026, 10, 23)  # 이날 이후 영어 지문에 levels.a 필드가 필수
 EXAMPLE_KO_FROM = dt.date(2026, 10, 23)  # 이날 이후 advanced 항목에 example_ko 필드가 필수
 
+_CHUNKS_FROM_MAP = {
+    "en": CHUNKS_FROM,
+    "de": DE_CHUNKS_FROM,
+}
 
-def new_chunks(path):
+
+def new_chunks(path, lang=None):
+    """이 파일에 chunks 가 필수인지 판단한다. lang 을 넘기면 언어별 시작일을 사용한다."""
+    if lang is None:
+        lang = path.parent.name
+    from_date = _CHUNKS_FROM_MAP.get(lang, CHUNKS_FROM)
     try:
-        return dt.date.fromisoformat(path.stem) >= CHUNKS_FROM
+        return dt.date.fromisoformat(path.stem) >= from_date
     except ValueError:
         return False
 
@@ -208,6 +228,25 @@ STOPWORDS = set("""that this with from they their have been will would about whi
 some only other them your what because could after first still most such those these over even just where every each like
 says said made make many much very well while week year years people help team small called uses used""".split())
 
+# 독일어 불용어 (~60개). 자주 나오지만 내용 분별에 도움이 안 되는 단어.
+DE_STOPWORDS = set("""aber alle allen allem alles also auch auf
+dass dem den der des die dies diese diesem diesen dieser dieses
+dort durch ein eine einem einen einer eines
+gegen haben hat hier
+kann kein keine keinem keinen keiner
+macht mehr mich mit
+nach nicht noch
+oder ohne
+schon sehr sich sind
+über unter uns
+viel viele von vor
+weil wenn werden wird wir wird
+alle also auch auf dass dem den der des die
+dies durch ein eine einem einer eines
+gegen haben hat kein keine mit nach nicht
+noch oder sich sind sehr über unter viel von
+vor weil werden wird wir zum zur""".split())
+
 
 def _plain(t):
     return re.sub(r"\{([^|}]+)\|[^}]+\}", r"\1", t.replace("**", "").replace("`", ""))
@@ -216,6 +255,12 @@ def _plain(t):
 def _content_words(c):
     body = " ".join(_plain(s.get("en", "")) for s in c.get("sentences", [])).lower()
     return set(re.findall(r"[a-z']{4,}", body)) - STOPWORDS
+
+
+def _de_content_words(c):
+    """독일어 지문에서 내용어를 추출한다. Umlaut(ä,ö,ü)와 ß 를 포함한 정규식을 쓴다."""
+    body = " ".join(_plain(s.get("en", "")) for s in c.get("sentences", [])).lower()
+    return set(re.findall(r"[a-zäöüß]{4,}", body)) - DE_STOPWORDS
 
 
 def _keywords(c):
@@ -248,7 +293,8 @@ def overlap(path, c, days=OVERLAP_DAYS):
         return []
     lang = path.parent.name
     url = (c.get("source") or {}).get("url")
-    mine_w, mine_k = _content_words(c), _keywords(c)
+    mine_w = _de_content_words(c) if lang == "de" else _content_words(c)
+    mine_k = _keywords(c)
     if lang == "ja":
         ja_common = _ja_common(path.parent)
         mine_g = _ja_grams(c) - ja_common
@@ -275,8 +321,8 @@ def overlap(path, c, days=OVERLAP_DAYS):
             j = len(shared_g) / max(1, len(mine_g | og))
             if j >= OVERLAP_JA_JACCARD and len(shared_g) >= OVERLAP_JA_MIN_SHARED:
                 out.append(f"최근 지문({tag})과 본문 내용이 {j:.0%} 겹쳐요({', '.join(sorted(shared_g)[:10])}). 같은 내용을 반복하지 말고 새로 생긴 일에 초점을 맞추거나 다른 소재로 바꾸세요.")
-        if lang == "en":
-            other = _content_words(o)
+        if lang in ("en", "de"):
+            other = _de_content_words(o) if lang == "de" else _content_words(o)
             j = len(mine_w & other) / max(1, len(mine_w | other))
             if j >= OVERLAP_JACCARD and len(mine_w & other) >= OVERLAP_MIN_SHARED:
                 words = ", ".join(sorted(mine_w & other)[:12])

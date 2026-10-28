@@ -119,8 +119,11 @@ def chunk_rows(lang, day, sentences):
 
     덩어리를 공백 하나로 이은 글이 문장과 정확히 같아야 하고(** 표시 포함), 각 덩어리는 영어와 뜻이 모두 있어야 한다.
     한 문장이라도 어긋나면 페이지 전체에서 끊어 읽기를 뺀다(버튼도 없음).
+    chunks 플래그가 False 인 언어는 None 을 반환한다.
     """
-    if lang != "en" or not all(s.get("chunks") for s in sentences):
+    if not langs.LANGS.get(lang, {}).get("chunks", lang == "en"):
+        return None
+    if not all(s.get("chunks") for s in sentences):
         return None
     for i, s in enumerate(sentences, 1):
         ch = s["chunks"]
@@ -142,7 +145,9 @@ def chunk_rows(lang, day, sentences):
 
 def chunk_rows_a(lang, day, a_sentences):
     """levels.a 의 끊어 읽기 줄(HTML)을 만든다. chunk_rows 와 같은 규칙, 클래스만 다르다."""
-    if lang != "en" or not all(s.get("chunks") for s in a_sentences):
+    if not langs.LANGS.get(lang, {}).get("chunks", lang == "en"):
+        return None
+    if not all(s.get("chunks") for s in a_sentences):
         return None
     for i, s in enumerate(a_sentences, 1):
         ch = s["chunks"]
@@ -288,6 +293,13 @@ def render(lang, day):
     page = TEMPLATE.read_text(encoding="utf-8")
     for k, v in values.items():
         page = page.replace("{{" + k + "}}", v)
+    # noindex 플래그가 True 인 언어는 검색엔진 인덱싱을 막는 메타 태그를 삽입한다.
+    if L.get("noindex", False):
+        page = page.replace(
+            "<link rel=\"stylesheet\"",
+            '<meta name="robots" content="noindex">\n<link rel="stylesheet"',
+            1,
+        )
     out = out_dir / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")

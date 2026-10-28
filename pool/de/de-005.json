@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-05",
+  "category": "science",
+  "topic": "재활용과 환경",
+  "title_ko": "독일의 철저한 분리수거",
+  "headline": "Mülltrennung in Deutschland",
+  "chips": ["5문장", "A2 위주", "B1 1문장", "약 3분"],
+  "sentences": [
+    {
+      "en": "In Deutschland trennt man den **Müll** sehr genau.",
+      "b2": false,
+      "chunks": [
+        ["In Deutschland", "독일에서는"],
+        ["trennt man", "분리합니다"],
+        ["den **Müll**", "쓰레기를"],
+        ["sehr genau.", "매우 꼼꼼하게"]
+      ]
+    },
+    {
+      "en": "Papier, **Glas** und Plastik kommen in verschiedene **Tonnen**.",
+      "b2": false,
+      "chunks": [
+        ["Papier,", "종이와"],
+        ["**Glas**", "유리와"],
+        ["und Plastik", "플라스틱은"],
+        ["kommen", "들어갑니다"],
+        ["in verschiedene **Tonnen**.", "각각 다른 통에"]
+      ]
+    },
+    {
+      "en": "Die **gelbe Tonne** ist für Verpackungen aus Plastik und Metall.",
+      "b2": false,
+      "chunks": [
+        ["Die **gelbe Tonne**", "노란 통은"],
+        ["ist", "입니다"],
+        ["für Verpackungen", "포장재를 위한 것"],
+        ["aus Plastik und Metall.", "플라스틱과 금속으로 만든"]
+      ]
+    },
+    {
+      "en": "Bioabfälle wie Essensreste kommen in die **braune Tonne**.",
+      "b2": false,
+      "chunks": [
+        ["Bioabfälle", "음식물 쓰레기"],
+        ["wie Essensreste", "음식 찌꺼기 같은"],
+        ["kommen", "들어갑니다"],
+        ["in die **braune Tonne**.", "갈색 통에"]
+      ]
+    },
+    {
+      "en": "Wer **Müll** falsch trennt, muss in manchen Städten eine Strafe bezahlen.",
+      "b2": true,
+      "chunks": [
+        ["Wer **Müll** falsch trennt,", "쓰레기를 잘못 분리하는 사람은"],
+        ["muss", "내야 합니다"],
+        ["in manchen Städten", "일부 도시에서"],
+        ["eine Strafe bezahlen.", "벌금을"]
+      ]
+    }
+  ],
+  "words": [
+    ["Müll", "쓰레기"],
+    ["trennen", "분리하다"],
+    ["Tonne", "쓰레기통, 통"],
+    ["Verpackung", "포장재"],
+    ["Bioabfall", "음식물 쓰레기"],
+    ["Strafe", "벌금, 처벌"]
+  ],
+  "points": [
+    {
+      "title": "gelbe Tonne — 형용사 어미 변화",
+      "body": "`die gelbe Tonne`에서 형용사 `gelb`에 `-e`가 붙은 건 정관사(die) 뒤의 여성 명사이기 때문이에요. 정관사 뒤 약변화: 주격(Nominativ)에서 `-e`만 씁니다."
+    },
+    {
+      "title": "kommen in + Akkusativ — 방향 표현",
+      "body": "`kommen in die Tonne`에서 `in`은 방향을 나타내므로 Akkusativ(`die Tonne`)을 씁니다. 위치(어디에 있다)이면 Dativ, 방향(어디로 간다)이면 Akkusativ."
+    }
+  ],
+  "answers": [
+    "독일에서는 쓰레기를 매우 꼼꼼하게 분리합니다.",
+    "종이, 유리, 플라스틱은 각각 다른 통에 들어갑니다.",
+    "노란 통은 플라스틱과 금속 포장재를 위한 것입니다.",
+    "음식 찌꺼기 같은 음식물 쓰레기는 갈색 통에 들어갑니다.",
+    "일부 도시에서는 쓰레기를 잘못 분리하는 사람이 벌금을 내야 합니다."
+  ],
+  "advanced": [
+    {
+      "word": "recyceln",
+      "meaning": "재활용하다",
+      "confuse": null,
+      "example": "In Deutschland wird sehr viel **recycelt**.",
+      "example_ko": "독일에서는 재활용이 매우 많이 이루어집니다."
+    },
+    {
+      "word": "Umwelt",
+      "meaning": "환경",
+      "confuse": "Umwelt(환경, 특히 자연환경) vs. Umgebung(주변 환경, 지역): Umwelt는 주로 생태/자연을 뜻해요.",
+      "example": "Mülltrennung schützt die **Umwelt**.",
+      "example_ko": "분리수거는 환경을 보호합니다."
+    },
+    {
+      "word": "nachhaltig",
+      "meaning": "지속 가능한",
+      "confuse": null,
+      "example": "**Nachhaltiges** Verhalten ist wichtig für die Zukunft.",
+      "example_ko": "지속 가능한 행동이 미래를 위해 중요합니다."
+    },
+    {
+      "word": "entsorgen",
+      "meaning": "처리하다, 폐기하다",
+      "confuse": "entsorgen(올바르게 처리) vs. wegwerfen(그냥 버리다): entsorgen이 환경적으로 올바른 방법을 내포해요.",
+      "example": "Alte Batterien müssen korrekt **entsorgt** werden.",
+      "example_ko": "오래된 배터리는 올바르게 처리해야 합니다."
+    },
+    {
+      "word": "Pfand",
+      "meaning": "보증금(병, 캔 반환금)",
+      "confuse": null,
+      "example": "Auf Plastikflaschen gibt es **Pfand** in Deutschland.",
+      "example_ko": "독일에서는 플라스틱 병에 보증금이 있습니다."
+    },
+    {
+      "word": "Abfall",
+      "meaning": "쓰레기, 폐기물",
+      "confuse": "Abfall(폐기물, 격식체) vs. Müll(쓰레기, 일상어): 둘 다 쓸 수 있지만 Müll이 더 일상적이에요.",
+      "example": "Bitte werfen Sie keinen **Abfall** auf die Straße.",
+      "example_ko": "길에 쓰레기를 버리지 마세요."
+    }
+  ],
+  "source": null,
+  "example": true
+}
