@@ -95,5 +95,6 @@
 
 ## 주의사항
 - 음성(TTS)이 없는 날에는 페이지가 브라우저 내장 SpeechSynthesis(de-DE)로 동작.
+- 이미 발행한 날의 지문 문장을 고치면 그 날짜의 `de/<날짜>/audio/` 음성을 지워 다시 만들게 한다. 음성마다 만든 문장 기록(`.text.json`)이 있으면 바뀐 것만 자동으로 다시 만들지만, 기록이 없는 옛 음성은 그대로 믿기 때문이다.
 - Phase 1 동안 `noindex: true`, `email: false` 상태. 검색엔진 노출 없음, 메일 미발송.
 - 발행 후 페이지 `https://read.wspace.ai.kr/de/YYYY-MM-DD/`를 직접 열어 중급/기초 전환, chunks, 번역 토글을 확인.
