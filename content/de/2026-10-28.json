@@ -1,0 +1,214 @@
+{
+ "date": "2026-10-28",
+ "category": "culture",
+ "topic": "동네 빵집",
+ "title_ko": "매일 아침 문을 여는 동네 빵집",
+ "headline": "Die Bäckerei um die Ecke",
+ "chips": [
+  "5문장",
+  "A2 위주",
+  "B1 1문장",
+  "약 3분"
+ ],
+ "sentences": [
+  {
+   "en": "In Deutschland gibt es sehr viele **Bäckereien**.",
+   "b2": false,
+   "chunks": [
+    [
+     "In Deutschland",
+     "독일에는"
+    ],
+    [
+     "gibt es",
+     "있습니다"
+    ],
+    [
+     "sehr viele",
+     "아주 많은"
+    ],
+    [
+     "**Bäckereien**.",
+     "빵집이"
+    ]
+   ]
+  },
+  {
+   "en": "Die meisten **Bäckereien** öffnen früh am Morgen.",
+   "b2": false,
+   "chunks": [
+    [
+     "Die meisten",
+     "대부분의"
+    ],
+    [
+     "**Bäckereien**",
+     "빵집은"
+    ],
+    [
+     "öffnen",
+     "문을 엽니다"
+    ],
+    [
+     "früh am Morgen.",
+     "이른 아침에"
+    ]
+   ]
+  },
+  {
+   "en": "Viele Menschen kaufen frisches **Brot** und Brötchen zum Frühstück.",
+   "b2": false,
+   "chunks": [
+    [
+     "Viele Menschen",
+     "많은 사람들이"
+    ],
+    [
+     "kaufen",
+     "삽니다"
+    ],
+    [
+     "frisches **Brot**",
+     "신선한 빵과"
+    ],
+    [
+     "und Brötchen",
+     "작은 빵을"
+    ],
+    [
+     "zum Frühstück.",
+     "아침 식사로"
+    ]
+   ]
+  },
+  {
+   "en": "Die **Verkäuferin** empfiehlt heute besonders den Roggenkuchen.",
+   "b2": true,
+   "chunks": [
+    [
+     "Die **Verkäuferin**",
+     "판매원이"
+    ],
+    [
+     "empfiehlt",
+     "추천합니다"
+    ],
+    [
+     "heute besonders",
+     "오늘 특히"
+    ],
+    [
+     "den Roggenkuchen.",
+     "호밀 케이크를"
+    ]
+   ]
+  },
+  {
+   "en": "Der Duft von frischem **Brot** ist sehr angenehm.",
+   "b2": false,
+   "chunks": [
+    [
+     "Der Duft",
+     "향기는"
+    ],
+    [
+     "von frischem **Brot**",
+     "신선한 빵의"
+    ],
+    [
+     "ist sehr angenehm.",
+     "매우 좋습니다"
+    ]
+   ]
+  }
+ ],
+ "words": [
+  [
+   "Bäckerei",
+   "빵집"
+  ],
+  [
+   "Brot",
+   "빵"
+  ],
+  [
+   "Brötchen",
+   "작은 빵, 롤빵"
+  ],
+  [
+   "Frühstück",
+   "아침 식사"
+  ],
+  [
+   "Verkäuferin",
+   "여자 판매원"
+  ],
+  [
+   "Duft",
+   "향기"
+  ]
+ ],
+ "points": [
+  {
+   "title": "zum Frühstück — 전치사 zu + Dativ",
+   "body": "`zum Frühstück`의 zum 은 전치사 zu 와 정관사 dem(Dativ)이 합쳐진 형태예요. '아침 식사를 위해, 아침 식사로'라는 뜻입니다."
+  },
+  {
+   "title": "empfiehlt — 불규칙 동사 현재형",
+   "body": "`empfehlen`(추천하다)은 e→ie 로 바뀌는 불규칙 동사예요. 3인칭 단수에서 `empfiehlt`가 됩니다."
+  }
+ ],
+ "answers": [
+  "독일에는 빵집이 아주 많습니다.",
+  "대부분의 빵집은 이른 아침에 문을 엽니다.",
+  "많은 사람들이 아침 식사로 신선한 빵과 작은 빵을 삽니다.",
+  "판매원이 오늘 특히 호밀 케이크를 추천합니다.",
+  "신선한 빵의 향기는 매우 좋습니다."
+ ],
+ "advanced": [
+  {
+   "word": "frisch",
+   "meaning": "신선한",
+   "confuse": "frisch vs. neu: frisch는 막 만들어진 신선함, neu는 새것(기존에 없던 것)을 뜻해요.",
+   "example": "Die Brötchen sind jeden Morgen **frisch** gebacken.",
+   "example_ko": "작은 빵들은 매일 아침 갓 구워집니다."
+  },
+  {
+   "word": "empfehlen",
+   "meaning": "추천하다",
+   "confuse": null,
+   "example": "Ich **empfehle** dir diesen Kuchen.",
+   "example_ko": "나는 이 케이크를 너에게 추천해."
+  },
+  {
+   "word": "angenehm",
+   "meaning": "기분 좋은, 쾌적한",
+   "confuse": "angenehm vs. nett: angenehm은 감각적으로 좋은 느낌, nett는 사람이 친절한 것.",
+   "example": "Der Duft ist sehr **angenehm**.",
+   "example_ko": "그 향기는 매우 좋습니다."
+  },
+  {
+   "word": "öffnen",
+   "meaning": "열다",
+   "confuse": "öffnen(열다) vs. aufmachen: 둘 다 '열다'이지만 öffnen이 좀 더 격식체예요.",
+   "example": "Die Bäckerei **öffnet** um 6 Uhr.",
+   "example_ko": "빵집은 6시에 문을 엽니다."
+  },
+  {
+   "word": "besonders",
+   "meaning": "특히, 특별히",
+   "confuse": null,
+   "example": "Heute ist der Roggenkuchen **besonders** lecker.",
+   "example_ko": "오늘 호밀 케이크가 특히 맛있습니다."
+  },
+  {
+   "word": "Roggen",
+   "meaning": "호밀",
+   "confuse": null,
+   "example": "**Roggenbrot** ist in Deutschland sehr beliebt.",
+   "example_ko": "호밀빵은 독일에서 매우 인기가 많습니다."
+  }
+ ],
+ "source": null,
+ "example": true
+}
