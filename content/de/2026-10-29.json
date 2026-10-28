@@ -1,0 +1,423 @@
+{
+  "date": "2026-10-29",
+  "category": "society",
+  "topic": "직업 교육",
+  "title_ko": "일하면서 배우는 독일의 직업 교육",
+  "headline": "Lernen und arbeiten",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "sentences": [
+    {
+      "en": "In Deutschland beginnen viele junge Menschen nach der Schule eine **Ausbildung**, statt direkt an einer Universität zu studieren.",
+      "b2": false,
+      "chunks": [
+        [
+          "In Deutschland",
+          "독일에서는"
+        ],
+        [
+          "beginnen viele junge Menschen",
+          "많은 젊은이들이 시작합니다"
+        ],
+        [
+          "nach der Schule",
+          "학교를 마친 뒤"
+        ],
+        [
+          "eine **Ausbildung**,",
+          "직업 교육을"
+        ],
+        [
+          "statt direkt an einer Universität zu studieren.",
+          "곧바로 대학에서 공부하는 대신"
+        ]
+      ]
+    },
+    {
+      "en": "Bei der dualen Ausbildung arbeiten die **Auszubildenden** drei oder vier Tage pro Woche in einem Betrieb und lernen dort praktisch.",
+      "b2": false,
+      "chunks": [
+        [
+          "Bei der dualen Ausbildung",
+          "이원제 직업 교육에서는"
+        ],
+        [
+          "arbeiten die **Auszubildenden**",
+          "교육생들이 일합니다"
+        ],
+        [
+          "drei oder vier Tage pro Woche",
+          "일주일에 사나흘"
+        ],
+        [
+          "in einem Betrieb",
+          "회사에서"
+        ],
+        [
+          "und lernen dort praktisch.",
+          "그리고 거기서 실무로 배웁니다"
+        ]
+      ]
+    },
+    {
+      "en": "An den übrigen Tagen besuchen sie die **Berufsschule**, wo sie die Theorie zu ihrem Beruf und allgemeine Fächer lernen.",
+      "b2": false,
+      "chunks": [
+        [
+          "An den übrigen Tagen",
+          "나머지 날에는"
+        ],
+        [
+          "besuchen sie",
+          "그들은 다닙니다"
+        ],
+        [
+          "die **Berufsschule**,",
+          "직업학교에"
+        ],
+        [
+          "wo sie",
+          "그곳에서 그들은"
+        ],
+        [
+          "die Theorie zu ihrem Beruf",
+          "자기 직업에 관한 이론과"
+        ],
+        [
+          "und allgemeine Fächer lernen.",
+          "일반 과목을 배웁니다"
+        ]
+      ]
+    },
+    {
+      "en": "Die im Betrieb erworbenen Kenntnisse müssen am Ende der Ausbildung in einer **Prüfung** vor der zuständigen Kammer nachgewiesen werden.",
+      "b2": true,
+      "chunks": [
+        [
+          "Die im Betrieb erworbenen Kenntnisse",
+          "회사에서 얻은 지식은"
+        ],
+        [
+          "müssen",
+          "해야 합니다"
+        ],
+        [
+          "am Ende der Ausbildung",
+          "교육 마지막에"
+        ],
+        [
+          "in einer **Prüfung**",
+          "시험에서"
+        ],
+        [
+          "vor der zuständigen Kammer",
+          "담당 상공회의소 앞에서"
+        ],
+        [
+          "nachgewiesen werden.",
+          "증명되어야"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Jugendliche schätzen es, dass sie schon während der Ausbildung eine monatliche **Vergütung** bekommen und finanziell unabhängiger werden.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viele Jugendliche",
+          "많은 청소년들은"
+        ],
+        [
+          "schätzen es,",
+          "좋게 여깁니다"
+        ],
+        [
+          "dass sie",
+          "자신들이"
+        ],
+        [
+          "schon während der Ausbildung",
+          "이미 교육 기간 동안"
+        ],
+        [
+          "eine monatliche **Vergütung** bekommen",
+          "매달 보수를 받는다는 것을"
+        ],
+        [
+          "und finanziell unabhängiger werden.",
+          "그리고 경제적으로 더 독립하게 된다는 것을"
+        ]
+      ]
+    },
+    {
+      "en": "Ohne diese enge Verbindung von Praxis und Theorie wäre der Einstieg in die **Arbeitswelt** für viele junge Leute deutlich schwieriger.",
+      "b2": true,
+      "chunks": [
+        [
+          "Ohne diese enge Verbindung",
+          "이런 긴밀한 결합이 없다면"
+        ],
+        [
+          "von Praxis und Theorie",
+          "실무와 이론의"
+        ],
+        [
+          "wäre der Einstieg",
+          "첫발을 내딛는 것은 ~일 것입니다"
+        ],
+        [
+          "in die **Arbeitswelt**",
+          "직업 세계에"
+        ],
+        [
+          "für viele junge Leute",
+          "많은 젊은이들에게"
+        ],
+        [
+          "deutlich schwieriger.",
+          "훨씬 더 어려울"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Ausbildung",
+      "직업 교육"
+    ],
+    [
+      "Auszubildende",
+      "직업 교육생"
+    ],
+    [
+      "Betrieb",
+      "회사, 사업장"
+    ],
+    [
+      "Berufsschule",
+      "직업학교"
+    ],
+    [
+      "Prüfung",
+      "시험"
+    ],
+    [
+      "Vergütung",
+      "보수, 수당"
+    ],
+    [
+      "Arbeitswelt",
+      "직업 세계"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Partizipialattribut + Modalverb 수동태",
+      "body": "`Die im Betrieb erworbenen Kenntnisse`는 관사와 명사 사이에 분사구가 들어가 '회사에서 얻은 지식'이 됩니다. 이어서 `müssen ... nachgewiesen werden`은 화법조동사 + 과거분사 + werden 형태의 수동태로, '증명되어야 한다'는 뜻이에요. 화법조동사는 2번째 자리, `nachgewiesen werden`은 문장 끝에 옵니다."
+    },
+    {
+      "title": "Konjunktiv II — wäre (가정)",
+      "body": "`Ohne diese enge Verbindung ... wäre der Einstieg ... schwieriger`는 '~이 없다면 ~더 어려울 것이다'라는 가정입니다. `ohne` + 명사가 wenn절 역할을 하고, 본문장에서 `wäre`가 2번째 자리에 와요."
+    }
+  ],
+  "answers": [
+    "독일에서는 많은 젊은이들이 학교를 마친 뒤 곧바로 대학에서 공부하는 대신 직업 교육을 시작합니다.",
+    "이원제 직업 교육에서 교육생들은 일주일에 사나흘 회사에서 일하며 그곳에서 실무로 배웁니다.",
+    "나머지 날에는 직업학교에 다니며, 그곳에서 자기 직업에 관한 이론과 일반 과목을 배웁니다.",
+    "회사에서 얻은 지식은 교육이 끝날 때 담당 상공회의소 앞에서 치르는 시험으로 증명되어야 합니다.",
+    "많은 청소년들은 교육 기간 동안 이미 매달 보수를 받아 경제적으로 더 독립할 수 있다는 점을 좋게 여깁니다.",
+    "실무와 이론의 이런 긴밀한 결합이 없다면 많은 젊은이들에게 직업 세계로 첫발을 내딛기가 훨씬 더 어려울 것입니다."
+  ],
+  "advanced": [
+    {
+      "word": "erwerben",
+      "meaning": "(지식, 자격을) 얻다, 습득하다",
+      "confuse": "erwerben vs. bekommen: `bekommen`은 받는 것 전반, `erwerben`은 노력해서 지식, 자격, 물건을 얻을 때 써요.",
+      "example": "In der Ausbildung **erwirbt** man viele praktische Fähigkeiten.",
+      "example_ko": "직업 교육에서 많은 실무 능력을 습득합니다."
+    },
+    {
+      "word": "nachweisen",
+      "meaning": "증명하다, 입증하다",
+      "confuse": null,
+      "example": "Bewerber müssen ihre Deutschkenntnisse mit einem Zertifikat **nachweisen**.",
+      "example_ko": "지원자는 독일어 실력을 증명서로 입증해야 합니다."
+    },
+    {
+      "word": "zuständig",
+      "meaning": "담당하는, 관할하는",
+      "confuse": "zuständig vs. verantwortlich: `zuständig`는 업무상 담당 권한이 있음을, `verantwortlich`는 결과에 책임이 있음을 강조해요.",
+      "example": "Für die Prüfung ist die **zuständige** Kammer verantwortlich.",
+      "example_ko": "시험은 담당 상공회의소가 맡습니다."
+    },
+    {
+      "word": "der Einstieg",
+      "meaning": "진입, 첫 시작",
+      "confuse": null,
+      "example": "Ein Praktikum erleichtert den **Einstieg** in den Beruf.",
+      "example_ko": "인턴십은 직업 세계로의 진입을 쉽게 해 줍니다."
+    },
+    {
+      "word": "übernehmen",
+      "meaning": "(교육생을) 정식 채용하다, 인수하다",
+      "confuse": "übernehmen은 '떠맡다'라는 뜻도 있어요. 직업 교육 맥락에서는 교육을 마친 사람을 정규직으로 채용한다는 뜻으로 자주 씁니다.",
+      "example": "Nach der Prüfung wurde sie von ihrem Betrieb **übernommen**.",
+      "example_ko": "시험 뒤에 그녀는 교육받던 회사에 정식 채용되었습니다."
+    },
+    {
+      "word": "die Fachkraft",
+      "meaning": "숙련 인력, 전문 인력",
+      "confuse": null,
+      "example": "Viele Betriebe suchen dringend gut ausgebildete **Fachkräfte**.",
+      "example_ko": "많은 회사가 잘 교육받은 숙련 인력을 급히 찾고 있습니다."
+    },
+    {
+      "word": "abschließen",
+      "meaning": "(교육, 과정을) 마치다, 수료하다",
+      "confuse": "abschließen vs. schließen: `schließen`은 문을 닫다, `abschließen`은 잠그다 또는 과정을 끝마치다라는 뜻이에요.",
+      "example": "Er hat seine Ausbildung als Koch erfolgreich **abgeschlossen**.",
+      "example_ko": "그는 요리사 직업 교육을 성공적으로 마쳤습니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Viele junge Menschen in Deutschland machen nach der Schule eine **Ausbildung**.",
+          "chunks": [
+            [
+              "Viele junge Menschen",
+              "많은 젊은이들이"
+            ],
+            [
+              "in Deutschland",
+              "독일에서"
+            ],
+            [
+              "machen",
+              "합니다"
+            ],
+            [
+              "nach der Schule",
+              "학교를 마친 뒤"
+            ],
+            [
+              "eine **Ausbildung**.",
+              "직업 교육을"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Auszubildenden** arbeiten mehrere Tage pro Woche in einem Betrieb.",
+          "chunks": [
+            [
+              "Die **Auszubildenden**",
+              "교육생들은"
+            ],
+            [
+              "arbeiten",
+              "일합니다"
+            ],
+            [
+              "mehrere Tage pro Woche",
+              "일주일에 며칠"
+            ],
+            [
+              "in einem Betrieb.",
+              "회사에서"
+            ]
+          ]
+        },
+        {
+          "en": "An den anderen Tagen gehen sie in die **Berufsschule**.",
+          "chunks": [
+            [
+              "An den anderen Tagen",
+              "다른 날에는"
+            ],
+            [
+              "gehen sie",
+              "그들은 갑니다"
+            ],
+            [
+              "in die **Berufsschule**.",
+              "직업학교에"
+            ]
+          ]
+        },
+        {
+          "en": "Am Ende der Ausbildung machen sie eine **Prüfung**.",
+          "chunks": [
+            [
+              "Am Ende der Ausbildung",
+              "교육 마지막에"
+            ],
+            [
+              "machen sie",
+              "그들은 봅니다"
+            ],
+            [
+              "eine **Prüfung**.",
+              "시험을"
+            ]
+          ]
+        },
+        {
+          "en": "Während der Ausbildung verdienen sie jeden Monat schon eigenes **Geld**.",
+          "chunks": [
+            [
+              "Während der Ausbildung",
+              "교육 기간 동안"
+            ],
+            [
+              "verdienen sie",
+              "그들은 법니다"
+            ],
+            [
+              "jeden Monat",
+              "매달"
+            ],
+            [
+              "schon eigenes **Geld**.",
+              "벌써 자기 돈을"
+            ]
+          ]
+        },
+        {
+          "en": "Theorie und Praxis zusammen helfen jungen Leuten beim Start in die **Arbeitswelt**.",
+          "chunks": [
+            [
+              "Theorie und Praxis zusammen",
+              "이론과 실무가 함께"
+            ],
+            [
+              "helfen jungen Leuten",
+              "젊은이들을 돕습니다"
+            ],
+            [
+              "beim Start",
+              "시작할 때"
+            ],
+            [
+              "in die **Arbeitswelt**.",
+              "직업 세계로"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "독일에서 많은 젊은이들이 학교를 마친 뒤 직업 교육을 받습니다.",
+        "교육생들은 일주일에 며칠 회사에서 일합니다.",
+        "다른 날에는 직업학교에 갑니다.",
+        "교육 마지막에 그들은 시험을 봅니다.",
+        "교육 기간 동안 그들은 벌써 매달 자기 돈을 법니다.",
+        "이론과 실무가 함께 젊은이들이 직업 세계로 나아가는 것을 돕습니다."
+      ]
+    }
+  }
+}
