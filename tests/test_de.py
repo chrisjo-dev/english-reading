@@ -64,7 +64,7 @@ def de_doc(sents, words=None, url=None):
 # ── 1. 언어 플래그 ─────────────────────────────────────────────────────────────
 
 class DeLangFlagsTest(unittest.TestCase):
-    """langs.LANGS["de"] 의 Phase 1 플래그를 검사한다."""
+    """langs.LANGS["de"] 의 플래그를 검사한다."""
 
     def setUp(self):
         self.L = langs.LANGS["de"]
@@ -72,8 +72,8 @@ class DeLangFlagsTest(unittest.TestCase):
     def test_de_exists(self):
         self.assertIn("de", langs.LANGS)
 
-    def test_email_is_false(self):
-        self.assertFalse(self.L.get("email", True), "email 플래그가 False여야 합니다")
+    def test_email_is_true(self):
+        self.assertTrue(self.L.get("email", True), "email 플래그가 True여야 합니다 (Phase 2: 메일 발송 활성화)")
 
     def test_noindex_is_true(self):
         self.assertTrue(self.L.get("noindex", False), "noindex 플래그가 True여야 합니다")
@@ -425,20 +425,34 @@ class DeNoindexPublishTest(unittest.TestCase):
 
 # ── 7. 이메일 거부 ─────────────────────────────────────────────────────────────
 
-class DeEmailRefusalTest(unittest.TestCase):
-    """send_email.main() 과 main_weekly() 가 de 에서 즉시 반환하는지 검사한다."""
+class DeEmailSendTest(unittest.TestCase):
+    """send_email.main() 과 main_weekly() 가 de(email=True)에서 wait_live 까지 진행하는지 검사한다."""
 
-    def test_main_returns_early_for_de(self):
-        called = []
-        with patch.object(send_email, "wait_live", lambda *a, **k: called.append("wait_live")):
-            send_email.main("de", "2026-10-28")
-        self.assertEqual(called, [], "email=False 언어에서 wait_live 를 호출하면 안 됩니다")
+    def test_main_proceeds_for_de(self):
+        """Phase 2: email=True 이므로 de 도 wait_live 까지 진행한다."""
+        reached = []
+        def mock_wait(*a, **k):
+            reached.append(True)
+            raise SystemExit("mock")  # 실제 HTTP 호출 방지
+        with patch.object(send_email, "wait_live", mock_wait):
+            try:
+                send_email.main("de", "2026-10-28")
+            except SystemExit:
+                pass
+        self.assertTrue(reached, "de 는 email=True 이므로 wait_live 까지 도달해야 합니다")
 
-    def test_main_weekly_returns_early_for_de(self):
-        called = []
-        with patch.object(send_email, "wait_live", lambda *a, **k: called.append("wait_live")):
-            send_email.main_weekly("de", "2026-10-28")
-        self.assertEqual(called, [], "email=False 언어에서 weekly 도 조기 반환해야 합니다")
+    def test_main_weekly_proceeds_for_de(self):
+        """Phase 2: weekly 도 de 에서 진행한다."""
+        reached = []
+        def mock_wait(*a, **k):
+            reached.append(True)
+            raise SystemExit("mock")
+        with patch.object(send_email, "wait_live", mock_wait):
+            try:
+                send_email.main_weekly("de", "2026-10-28")
+            except SystemExit:
+                pass
+        self.assertTrue(reached, "de weekly 도 email=True 이므로 wait_live 까지 도달해야 합니다")
 
     def test_main_does_not_return_early_for_en(self):
         """en 회귀: wait_live 로 진행한다(실제 호출 전까지만 확인)."""
@@ -718,13 +732,20 @@ class DeQualityCheckTest(unittest.TestCase):
 # ── 12. catchup() 이메일 가드 ─────────────────────────────────────────────────
 
 class DeCatchupEmailGuardTest(unittest.TestCase):
-    """send_email.catchup() 이 email=False 언어에서 조기 반환하는지 검사한다."""
+    """send_email.catchup() 이 de(email=True)에서 API 호출까지 진행하는지 검사한다."""
 
-    def test_catchup_returns_early_for_de(self):
+    def test_catchup_proceeds_for_de(self):
+        """Phase 2: email=True 이므로 de 도 catchup() 이 API 호출까지 진행한다."""
         called = []
-        with patch.object(send_email, "recent_emails", lambda **k: called.append("api") or []):
-            send_email.catchup("de", "2026-10-28")
-        self.assertEqual(called, [], "email=False 언어에서 catchup() 이 API 를 호출하면 안 됩니다")
+        def mock_recent(**k):
+            called.append("api")
+            raise SystemExit("mock")
+        with patch.object(send_email, "recent_emails", mock_recent):
+            try:
+                send_email.catchup("de", "2026-10-28")
+            except SystemExit:
+                pass
+        self.assertTrue(called, "de 는 email=True 이므로 catchup() 이 API 호출까지 도달해야 합니다")
 
     def test_catchup_does_not_return_early_for_en(self):
         """en 회귀: catchup() 이 API 호출까지 진행한다."""

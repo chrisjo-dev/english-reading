@@ -181,5 +181,99 @@ class PatchPageTest(unittest.TestCase):
         self.assertEqual(len(radios), 2)
 
 
+class SubHtmlDeTest(unittest.TestCase):
+    """독일어 sub_html 에 수준 선택 라디오가 있고, level-note 가 없는지 확인한다."""
+
+    def setUp(self):
+        self.html = publish.sub_html("de")
+
+    def test_has_two_radios(self):
+        radios = re.findall(r'<input[^>]+type=["\']radio["\']', self.html)
+        self.assertEqual(len(radios), 2, "독일어 구독 카드에 라디오 입력이 2개여야 합니다")
+
+    def test_has_value_a(self):
+        self.assertIn('value="a"', self.html, "기초(a) 라디오 값이 있어야 합니다")
+
+    def test_has_value_b(self):
+        self.assertIn('value="b"', self.html, "중급(b) 라디오 값이 있어야 합니다")
+
+    def test_b_is_checked_by_default(self):
+        b_match = re.search(r'<input[^>]+value="b"[^>]*>', self.html)
+        self.assertIsNotNone(b_match, "value=b 라디오가 있어야 합니다")
+        self.assertIn("checked", b_match.group(), "중급(b)이 기본 선택이어야 합니다")
+
+    def test_no_level_note(self):
+        self.assertNotIn("기초 지문은 준비 중이에요", self.html,
+                         "de는 기초 지문이 이미 있으므로 level-note 가 없어야 합니다")
+
+    def test_has_metadata__lang_de(self):
+        self.assertIn('value="de"', self.html, "독일어 lang 값이 있어야 합니다")
+
+    def test_has_version_marker(self):
+        self.assertIn('data-v="2"', self.html, "버전 마커 data-v=2 가 있어야 합니다")
+
+    def test_de_level_desc_a(self):
+        self.assertIn("독일어 읽기를 막 시작했다면", self.html,
+                      "기초 설명에 독일어 전용 문구가 있어야 합니다")
+
+    def test_de_level_desc_b(self):
+        self.assertIn("B2 문법도 읽어 보고 싶다면", self.html,
+                      "중급 설명에 독일어 전용 문구가 있어야 합니다")
+
+    def test_ga_includes_level(self):
+        self.assertIn("level:", self.html,
+                      "de GA 이벤트에 level 파라미터가 있어야 합니다 (levels=True)")
+
+
+# de 날짜 페이지에 구독 카드를 삽입하는 patch_page 테스트 (noindex=True, email=True)
+MINIMAL_PAGE_DE = MINIMAL_PAGE.replace(
+    '<meta property="og:image" content="https://read.wspace.ai.kr/en/2026-10-22/thumb.png">',
+    '<meta property="og:image" content="https://read.wspace.ai.kr/de/2026-10-28/thumb.png">',
+).replace(
+    '<link rel="canonical" href="https://read.wspace.ai.kr/en/2026-10-22/">',
+    '<link rel="canonical" href="https://read.wspace.ai.kr/de/2026-10-28/">',
+)
+
+
+class PatchPageDeTest(unittest.TestCase):
+    """patch_page 가 de 페이지에도 구독 카드를 삽입하는지 확인한다 (noindex=True, email=True)."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        day_dir = self.tmp / "de" / "2026-10-28"
+        day_dir.mkdir(parents=True)
+        self.page_path = day_dir / "index.html"
+
+    def _patch(self, page_content: str) -> str:
+        original_root = publish.ROOT
+        try:
+            publish.ROOT = self.tmp
+            self.page_path.write_text(page_content, encoding="utf-8")
+            publish.patch_page("de", "2026-10-28")
+            return self.page_path.read_text(encoding="utf-8")
+        finally:
+            publish.ROOT = original_root
+
+    def test_de_page_gets_subscribe_card(self):
+        result = self._patch(MINIMAL_PAGE_DE)
+        self.assertIn('class="card sub"', result,
+                      "noindex=True 라도 email=True 이면 de 페이지에 구독 카드가 있어야 합니다")
+
+    def test_de_subscribe_card_has_radios(self):
+        result = self._patch(MINIMAL_PAGE_DE)
+        radios = re.findall(r'<input[^>]+type=["\']radio["\']', result)
+        self.assertEqual(len(radios), 2, "de 구독 카드에 수준 선택 라디오 2개가 있어야 합니다")
+
+    def test_de_subscribe_no_level_note(self):
+        result = self._patch(MINIMAL_PAGE_DE)
+        self.assertNotIn("기초 지문은 준비 중이에요", result,
+                         "de 구독 카드에 level-note 가 없어야 합니다")
+
+    def test_de_subscribe_metadata_lang(self):
+        result = self._patch(MINIMAL_PAGE_DE)
+        self.assertIn('name="metadata__lang"', result)
+        self.assertIn('value="de"', result)
+
+
 if __name__ == "__main__":
     unittest.main()

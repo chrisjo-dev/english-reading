@@ -81,7 +81,7 @@ LANGS = {
         "tools_extra": "",
         "furi_btn": "",
         # 언어별 플래그
-        "email": False,                  # Phase 1: 메일 발송 차단. Phase 2에서 True 로 전환.
+        "email": True,                   # Phase 2: 메일 발송 활성화. noindex 는 유지(공개 전).
         "noindex": True,                 # Phase 1: 검색엔진 숨김. Phase 2에서 False 로 전환.
         "chunks": True,                  # 독일어 어순 끊어 읽기 활성화
         "levels": True,                  # 기초(A2~B1) levels.a 지문 활성화
