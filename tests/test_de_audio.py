@@ -492,7 +492,8 @@ class TestDeAudioYmlStructure(unittest.TestCase):
     def test_uses_hf_cache(self):
         """HuggingFace 모델 캐시를 사용해야 한다."""
         yml = self._load_yml()
-        self.assertIn(".hf", yml, "HuggingFace 캐시 경로(.hf)가 있어야 합니다")
+        self.assertIn("/home/runner/.cache/hf-qwen", yml, "HuggingFace 캐시는 저장소 밖 경로여야 합니다")
+        self.assertNotIn("git add -A", yml, "생성한 음성만 커밋해야 합니다")
         self.assertIn("actions/cache", yml, "actions/cache 가 있어야 합니다")
 
     def test_qwen_tts_version_pinned(self):

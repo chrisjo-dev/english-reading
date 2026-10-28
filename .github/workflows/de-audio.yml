@@ -23,7 +23,8 @@ permissions:
 
 env:
   MODEL_ID: Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
-  HF_HOME: ${{ github.workspace }}/.hf
+  # 모델 캐시는 저장소 밖에 둔다(저장소 안에 두면 커밋에 4GB 모델이 섞여 push 가 실패한다)
+  HF_HOME: /home/runner/.cache/hf-qwen
   HF_HUB_DISABLE_PROGRESS_BARS: "1"
 
 jobs:
@@ -63,8 +64,8 @@ jobs:
         id: hfcache
         uses: actions/cache@v4
         with:
-          path: .hf
-          key: hf-${{ env.MODEL_ID }}-whisper-base-v2
+          path: /home/runner/.cache/hf-qwen
+          key: hf-${{ env.MODEL_ID }}-whisper-base-v3
 
       - name: Install
         run: |
@@ -92,7 +93,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          # 이 워크플로가 만드는 것은 de/<날짜>/audio 뿐이다. 그 밖의 파일은 커밋하지 않는다.
+          git add -- de/*/audio
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "de 오디오 생성 ${{ steps.pick.outputs.days }} Refs #9"
           # 최대 3회 재시도: 거절되면 origin/main 으로 rebase 하고 생성 파일 충돌은 ours 로 해결한다.
@@ -111,7 +113,7 @@ jobs:
               exit 1
             fi
             git checkout --theirs -- $(git diff --name-only --diff-filter=U)
-            git add -A
+            git add -- de/*/audio
             if git diff --cached --quiet; then
               git rebase --skip
             else
