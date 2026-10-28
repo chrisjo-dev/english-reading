@@ -58,6 +58,21 @@ DE_CONTENT = {
 # 기대 파일 목록: s1, s2, w1, w2, v1, v2
 ALL_KEYS = ["s1", "s2", "w1", "w2", "v1", "v2"]
 
+# levels.a 포함 콘텐츠 픽스처 (a1, a2 추가 생성)
+DE_CONTENT_WITH_LEVELS = {
+    **DE_CONTENT,
+    "levels": {
+        "a": {
+            "sentences": [
+                {"en": "Brot gibt es in Deutschland.", "chunks": [["Brot gibt es in Deutschland.", "독일에 빵이 있어요"]]},
+                {"en": "Die Baeckerei oeffnet frueh.", "chunks": [["Die Baeckerei oeffnet frueh.", "빵집은 일찍 열어요"]]},
+            ],
+            "answers": ["독일에 빵이 있어요.", "빵집은 일찍 열어요."],
+        }
+    },
+}
+ALL_KEYS_WITH_LEVELS = ["s1", "s2", "w1", "w2", "v1", "v2", "a1", "a2"]
+
 
 def _make_fake_model():
     """fake torch 출력(4000샘플 22050Hz)을 반환하는 mock 모델."""
@@ -507,6 +522,62 @@ class TestDeAudioYmlStructure(unittest.TestCase):
         m = re.search(r"timeout-minutes:\s*(\d+)", yml)
         self.assertIsNotNone(m, "timeout-minutes 가 없어요")
         self.assertLessEqual(int(m.group(1)), 90, "timeout-minutes 가 90 이하여야 합니다")
+
+
+
+# ── 9. levels.a 오디오 생성 ──────────────────────────────────────────────────
+
+class TestQwenLevelAAudio(unittest.TestCase):
+    """qwen() 이 levels.a 가 있을 때 a{i}.mp3 를 생성하는지 검증한다."""
+
+    def test_generates_level_a_mp3_when_levels_a_present(self):
+        """levels.a 가 있으면 a1.mp3, a2.mp3 를 생성한다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "audio"
+
+            patches = _patch_qwen()
+            active = _apply_patches(patches)
+            with patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
+                audio_mod.qwen(DE_CONTENT_WITH_LEVELS, "de", out_dir, max_retries=1)
+            _stop_patches(active)
+
+            for key in ALL_KEYS_WITH_LEVELS:
+                self.assertTrue((out_dir / f"{key}.mp3").exists(),
+                                f"{key}.mp3 가 없어요 (levels.a 포함 콘텐츠)")
+
+    def test_no_level_a_mp3_when_no_levels_a(self):
+        """levels.a 가 없으면 a*.mp3 를 생성하지 않는다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "audio"
+
+            patches = _patch_qwen()
+            active = _apply_patches(patches)
+            with patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
+                audio_mod.qwen(DE_CONTENT, "de", out_dir, max_retries=1)
+            _stop_patches(active)
+
+            a_files = list(out_dir.glob("a*.mp3"))
+            self.assertEqual(a_files, [],
+                             f"levels.a 없으면 a*.mp3 를 만들지 않아야 합니다: {a_files}")
+
+    def test_existing_level_a_mp3_not_regenerated(self):
+        """이미 있는 a*.mp3 는 재생성하지 않는다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "audio"
+            out_dir.mkdir()
+            (out_dir / "a1.mp3").write_bytes(b"existing_a1")
+            (out_dir / "a2.mp3").write_bytes(b"existing_a2")
+            for key in ALL_KEYS:
+                (out_dir / f"{key}.mp3").write_bytes(b"")
+
+            patches = _patch_qwen()
+            active = _apply_patches(patches)
+            with patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
+                audio_mod.qwen(DE_CONTENT_WITH_LEVELS, "de", out_dir, max_retries=1)
+            _stop_patches(active)
+
+            self.assertEqual((out_dir / "a1.mp3").read_bytes(), b"existing_a1")
+            self.assertEqual((out_dir / "a2.mp3").read_bytes(), b"existing_a2")
 
 
 # ── 8. main() qwen 분기 동작 검증 ────────────────────────────────────────────

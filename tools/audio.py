@@ -105,6 +105,13 @@ def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
         items.append({"key": f"v{i}", "kind": "word",
                       "text": plain_word_tts(a["word"], lang), "target": out_dir / f"v{i}.mp3"})
 
+    # level a 문장 오디오: a{i}.mp3 (levels.a 가 있을 때만)
+    levels_a = (c.get("levels") or {}).get("a")
+    if levels_a:
+        for i, s in enumerate(levels_a.get("sentences", []), 1):
+            items.append({"key": f"a{i}", "kind": "sentence",
+                          "text": plain(s["en"]), "target": out_dir / f"a{i}.mp3"})
+
     pending = [it for it in items if not it["target"].exists()]
     if not pending:
         print(f"qwen audio: 모든 파일 이미 존재 ({len(items)}개)")

@@ -255,7 +255,7 @@ def render(lang, day):
         chips_a_html = (
             '    <div class="chips chips-a">\n'
             f'      <span class="chip blue">{esc(c["chips"][0])}</span>\n'
-            '      <span class="chip easy">기초 A2~B1</span>\n'
+            f'      <span class="chip easy">{esc(L.get("level_a_label", "기초 A2~B1"))}</span>\n'
             f'      <span class="chip">{esc(a_time_chip)}</span>\n'
             '    </div>\n'
         )

@@ -64,9 +64,9 @@ LANGS = {
     "de": {
         "name": "독일어",
         "site": "매일 독일어 읽기",
-        "level": "A2~B1",
-        "hard_badge": "B1",
-        "intro": "매일 아침 새로 올라오는 A2~B1 독일어 읽기예요.",
+        "level": "B1~B2",
+        "hard_badge": "B2",
+        "intro": "매일 아침 새로 올라오는 B1~B2 독일어 읽기예요.",
         "search_example": "Umwelt, 환경",
         "tts_lang": "de-DE",             # 브라우저 내장 음성(대비책)
         # TTS 엔진: "qwen" 플레이스홀더. 실제 경로(GitHub Actions CPU vs Mac)는 Phase 1 후 확정.
@@ -75,7 +75,7 @@ LANGS = {
         "voice": "",                     # Qwen3-TTS 1.7B CustomVoice Serena (경로 확정 후 채움)
         "speed": 0.9,
         "credit": "",                    # 라이선스상 표기 불필요하면 빈 문자열
-        "copy_head": "나는 Goethe A2~B1 수준의 한국인 독일어 학습자입니다. 아래는 오늘의 독일어 읽기 연습 지문입니다.",
+        "copy_head": "나는 CEFR B1~B2 수준의 한국인 독일어 학습자입니다. 아래는 오늘의 독일어 읽기 연습 지문입니다.",
         "copy_weak": "자주 틀리는 부분(명사 성(der/die/das), 격변화(Kasus), 분리동사(trennbare Verben), 문장 끝 동사 위치(Verbstellung), 복합 명사)도 함께 짚어 주세요.",
         "head_extra": "",                # Pretendard 가 Latin Extended 포함, 추가 폰트 불필요
         "tools_extra": "",
@@ -84,7 +84,8 @@ LANGS = {
         "email": False,                  # Phase 1: 메일 발송 차단. Phase 2에서 True 로 전환.
         "noindex": True,                 # Phase 1: 검색엔진 숨김. Phase 2에서 False 로 전환.
         "chunks": True,                  # 독일어 어순 끊어 읽기 활성화
-        "levels": False,                 # Phase 1: levels.a 기초 지문 없음
+        "levels": True,                  # 기초(A2~B1) levels.a 지문 활성화
+        "level_a_label": "기초 A2~B1",  # chips-a 에 표시할 수준 레이블
     },
 }
 

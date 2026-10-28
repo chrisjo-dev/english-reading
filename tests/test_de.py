@@ -81,8 +81,12 @@ class DeLangFlagsTest(unittest.TestCase):
     def test_chunks_is_true(self):
         self.assertTrue(self.L.get("chunks", False), "chunks 플래그가 True여야 합니다")
 
-    def test_levels_is_false(self):
-        self.assertFalse(self.L.get("levels", True), "levels 플래그가 False여야 합니다")
+    def test_levels_is_true(self):
+        self.assertTrue(self.L.get("levels", False), "levels 플래그가 True여야 합니다")
+
+    def test_level_a_label(self):
+        self.assertIn("level_a_label", self.L, "de 는 level_a_label 키가 있어야 합니다")
+        self.assertEqual(self.L["level_a_label"], "기초 A2~B1")
 
     def test_tts_is_qwen(self):
         self.assertEqual(self.L.get("tts"), "qwen", "tts 필드가 'qwen'이어야 합니다")
@@ -218,12 +222,19 @@ class DeCheckFlagsTest(unittest.TestCase):
         chunk_errs = [e for e in errs if "chunks" in e]
         self.assertTrue(chunk_errs, "de 지문에 chunks 없으면 오류가 나야 합니다")
 
-    def test_de_does_not_require_levels(self):
-        """de 지문에 levels 필드가 없어도 오류가 없어야 한다."""
+    def test_de_does_not_require_levels_before_cutoff(self):
+        """DE_LEVELS_FROM(2026-10-29) 이전이면 de 지문에 levels 없어도 오류 없음."""
         c = de_doc(["Die Bäckerei öffnet früh am Morgen."])
         errs, _ = self._check("de", "2026-10-28", c)
         level_errs = [e for e in errs if "levels" in e]
-        self.assertEqual(level_errs, [], f"de 는 levels 불필요: {level_errs}")
+        self.assertEqual(level_errs, [], f"커트오프 이전 de 는 levels 불필요: {level_errs}")
+
+    def test_de_requires_levels_after_cutoff(self):
+        """2026-10-29 이후 de 지문은 levels.a 필수."""
+        c = de_doc(["Die Bäckerei öffnet früh am Morgen."])
+        errs, _ = self._check("de", "2026-10-29", c)
+        level_errs = [e for e in errs if "levels" in e.lower()]
+        self.assertTrue(level_errs, f"커트오프 이후 de 는 levels 필수여야 합니다: {errs}")
 
     def test_ja_still_no_chunks_required(self):
         """ja 회귀: chunks 없어도 오류 없음."""
@@ -270,6 +281,24 @@ DE_FULL_CONTENT = {
     ] * 6,
     "source": None,
     "example": True,
+    "levels": {
+        "a": {
+            "sentences": [
+                {"en": "In Deutschland gibt es Baeckereien.", "chunks": [["In Deutschland gibt es Baeckereien.", "독일에는 빵집이 있습니다"]]},
+                {"en": "Die Baeckerei oeffnet frueh.", "chunks": [["Die Baeckerei oeffnet frueh.", "빵집은 일찍 엽니다"]]},
+                {"en": "Viele Menschen kaufen Brot.", "chunks": [["Viele Menschen kaufen Brot.", "많은 사람들이 빵을 삽니다"]]},
+                {"en": "Das Brot riecht gut.", "chunks": [["Das Brot riecht gut.", "빵 냄새가 좋습니다"]]},
+                {"en": "Sie empfiehlt Roggenkuchen.", "chunks": [["Sie empfiehlt Roggenkuchen.", "그녀가 호밀 케이크를 추천합니다"]]},
+            ],
+            "answers": [
+                "독일에는 빵집이 있습니다.",
+                "빵집은 일찍 엽니다.",
+                "많은 사람들이 빵을 삽니다.",
+                "빵 냄새가 좋습니다.",
+                "그녀가 호밀 케이크를 추천합니다.",
+            ],
+        }
+    },
 }
 
 
@@ -483,6 +512,25 @@ class DeChunkRenderTest(unittest.TestCase):
         """ja 회귀: chunk_rows 는 여전히 None."""
         rows = rnd.chunk_rows("ja", "2026-10-28", [{"en": "今日は雨です。", "chunks": [["今日", "오늘"]]}])
         self.assertIsNone(rows, "ja 는 chunk_rows 가 None 이어야 합니다 (회귀)")
+
+    def test_de_chips_a_label_rendered(self):
+        """de chips_a 레이블이 level_a_label 값을 사용하는지 확인한다."""
+        import copy, pathlib as _pl
+        tmp = _pl.Path(tempfile.mkdtemp())
+        content_dir = tmp / "content" / "de"
+        content_dir.mkdir(parents=True)
+        (content_dir / "2026-10-28.json").write_text(
+            json.dumps(DE_FULL_CONTENT, ensure_ascii=False), encoding="utf-8"
+        )
+        orig_root = rnd.ROOT
+        try:
+            rnd.ROOT = tmp
+            rnd.render("de", "2026-10-28")
+        finally:
+            rnd.ROOT = orig_root
+        html = (tmp / "de" / "2026-10-28" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("기초 A2~B1", html,
+                      "de 렌더링 chips_a 에 level_a_label 값이 있어야 합니다")
 
 
 # ── 10. rebuild_lists() noindex 메타 주입 ─────────────────────────────────────

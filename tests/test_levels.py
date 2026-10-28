@@ -3,6 +3,7 @@
 실행: python3 -m pytest -q tests/test_levels.py
 """
 import datetime
+import pathlib
 import json
 import sys
 import tempfile
@@ -502,6 +503,98 @@ class TestRecentlySent(unittest.TestCase):
         sent = "2026-11-01T09:00:00Z"
         self.assertFalse(send_email.recently_sent(sent, now))
 
+
+
+# ── check_content: de 언어 levels.a 검증 ──────────────────────────────────────
+
+class TestCheckLevelsADe(unittest.TestCase):
+    """check_content: de 언어 levels.a cutoff 및 pool 검증."""
+
+    def setUp(self):
+        self.root = pathlib.Path(tempfile.mkdtemp())
+
+    def _write(self, kind, day, c):
+        d = self.root / kind / "de"
+        d.mkdir(parents=True, exist_ok=True)
+        f = d / f"{day}.json"
+        f.write_text(json.dumps(c, ensure_ascii=False))
+        return f
+
+    def _make_de(self, with_levels=True):
+        c = {
+            "date": "2026-10-29",
+            "category": "culture",
+            "topic": "빵집",
+            "title_ko": "빵집",
+            "headline": "Baeckerei",
+            "chips": ["6문장", "B1 위주", "B2 1문장", "약 4분"],
+            "sentences": [{"en": "Die Baeckerei oeffnet frueh.", "b2": False,
+                           "chunks": [["Die Baeckerei oeffnet frueh.", "빵집은 일찍 엽니다"]]}],
+            "words": [["Baeckerei", "빵집"]] * 6,
+            "points": [{"title": "포인트", "body": "설명"}],
+            "answers": ["빵집은 일찍 엽니다."],
+            "advanced": [{"word": "frueh", "meaning": "이른", "confuse": None,
+                          "example": "Es ist **frueh**.", "example_ko": "이릅니다."}] * 6,
+            "source": None,
+            "example": True,
+        }
+        if with_levels:
+            c["levels"] = {"a": {
+                "sentences": [{"en": "Die Baeckerei oeffnet frueh.",
+                               "chunks": [["Die Baeckerei oeffnet frueh.", "빵집은 일찍 엽니다"]]}],
+                "answers": ["빵집은 일찍 엽니다."],
+            }}
+        return c
+
+    def test_de_requires_levels_on_cutoff_date(self):
+        """DE_LEVELS_FROM(2026-10-29) 이후 de 지문은 levels.a 필수."""
+        c = self._make_de(with_levels=False)
+        errs = cc.check(self._write("content", "2026-10-29", c))[0]
+        self.assertTrue(any("levels" in e.lower() for e in errs),
+                        f"커트오프 이후 levels.a 없으면 오류가 나야 합니다: {errs}")
+
+    def test_de_does_not_require_levels_before_cutoff(self):
+        """DE_LEVELS_FROM 이전이면 de 지문에 levels 없어도 오류 없음."""
+        c = self._make_de(with_levels=False)
+        errs = cc.check(self._write("content", "2026-10-28", c))[0]
+        level_errs = [e for e in errs if "levels" in e.lower()]
+        self.assertEqual(level_errs, [], f"커트오프 이전 levels 불필요: {level_errs}")
+
+    def test_de_pool_requires_levels(self):
+        """de pool 파일은 항상 levels.a 필수."""
+        c = self._make_de(with_levels=False)
+        errs = cc.check(self._write("pool", "de-001", c))[0]
+        self.assertTrue(any("levels" in e.lower() for e in errs),
+                        f"pool de 파일은 levels.a 필수: {errs}")
+
+    def test_de_levels_a_chunks_validated(self):
+        """de levels.a 의 chunks 불일치는 오류다."""
+        c = self._make_de(with_levels=True)
+        c["levels"]["a"]["sentences"][0]["chunks"] = [["Wrong text.", "틀린"]]
+        errs = cc.check(self._write("content", "2026-10-29", c))[0]
+        self.assertTrue(any("chunks" in e for e in errs),
+                        f"de levels.a chunks 불일치 오류가 나야 합니다: {errs}")
+
+    def test_ja_levels_still_not_required(self):
+        """ja 회귀: levels 여전히 불필요."""
+        d = self.root / "content" / "ja"
+        d.mkdir(parents=True, exist_ok=True)
+        ja_c = {
+            "date": "2026-11-01", "category": "s", "topic": "t", "title_ko": "제목",
+            "headline": "H", "chips": ["5文"],
+            "sentences": [{"en": "Test."}],
+            "words": [["t", "테스트"]] * 5,
+            "points": [{"title": "p", "body": "b"}],
+            "answers": ["해석."],
+            "advanced": [{"word": "w", "meaning": "m", "confuse": None,
+                          "example": "**w**.", "example_ko": "예."}] * 6,
+            "source": None, "example": True,
+        }
+        f = d / "2026-11-01.json"
+        f.write_text(json.dumps(ja_c, ensure_ascii=False))
+        errs = cc.check(f)[0]
+        level_errs = [e for e in errs if "levels" in e.lower()]
+        self.assertEqual(level_errs, [], f"ja 는 levels 불필요 (회귀): {level_errs}")
 
 if __name__ == "__main__":
     unittest.main()

@@ -93,6 +93,7 @@ CHUNKS_FROM = dt.date(2026, 10, 23)  # 이날 지문부터 영어 문장마다 �
 DE_CHUNKS_FROM = dt.date(2026, 10, 28)  # 독일어 루틴 시작일. 이날 이후 독일어 지문에 chunks 필수.
 LEVELS_FROM = dt.date(2026, 10, 23)  # 이날 이후 영어 지문에 levels.a 필드가 필수
 EXAMPLE_KO_FROM = dt.date(2026, 10, 23)  # 이날 이후 advanced 항목에 example_ko 필드가 필수
+DE_LEVELS_FROM = dt.date(2026, 10, 29)   # 이날 이후 독일어 지문에 levels.a 필수
 
 _CHUNKS_FROM_MAP = {
     "en": CHUNKS_FROM,
@@ -113,8 +114,14 @@ def new_chunks(path, lang=None):
 
 def levels_required(path):
     """이 파일에 levels.a 필드가 필수인지 판단한다."""
+    lang = path.parent.name
     if path.parent.parent.name == "pool":
-        return path.parent.name == "en"  # 영어 pool 비축분은 levels.a 필수
+        return lang in ("en", "de")  # en/de pool 비축분은 levels.a 필수
+    if lang == "de":
+        try:
+            return dt.date.fromisoformat(path.stem) >= DE_LEVELS_FROM
+        except ValueError:
+            return False
     try:
         return dt.date.fromisoformat(path.stem) >= LEVELS_FROM
     except ValueError:
@@ -122,10 +129,10 @@ def levels_required(path):
 
 
 def check_levels_a(c, path):
-    """levels.a 필드가 있으면 검증하고, LEVELS_FROM 이후 영어 지문인데 없으면 오류를 낸다."""
+    """levels.a 필드가 있으면 검증하고, LEVELS_FROM/DE_LEVELS_FROM 이후 en/de 지문인데 없으면 오류를 낸다."""
     out = []
-    if path.parent.name != "en":
-        return out  # 영어만 검사
+    if path.parent.name not in ("en", "de"):
+        return out  # 영어와 독일어만 검사
     levels = c.get("levels")
     if levels is None:
         if levels_required(path):
