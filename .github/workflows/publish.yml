@@ -5,7 +5,11 @@ name: publish
 on:
   push:
     branches: [main]
-    paths: ["content/**.json"]
+    # de 콘텐츠는 de-audio.yml 이 음성을 먼저 만들고 publish 를 dispatch 한다.
+    # push 에서 de 를 직접 받으면 음성 없이 페이지가 빌드되므로 여기서 제외한다.
+    paths:
+      - "content/en/**.json"
+      - "content/ja/**.json"
   workflow_dispatch:
     inputs:
       lang:
