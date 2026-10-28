@@ -71,10 +71,10 @@ def intro_html(lang):
 
 def _sub_script(lang):
     """구독 칸 인라인 스크립트.
-    - GA subscribe 이벤트: 영어만 level 파라미터 포함, 일본어는 생략.
+    - GA subscribe 이벤트: levels=True 언어(en, de)는 level 파라미터 포함, 그 외는 생략.
     - :has() 미지원 브라우저 fallback: 라디오 change 시 data-checked/data-show 속성으로 CSS 선택 상태와 기초 노트를 제어한다.
     """
-    if lang == "en":
+    if langs.LANGS[lang].get("levels", False):
         ga_event = (
             f'gtag("event","subscribe",{{lang:"{lang}",level:cl?cl.value:"b"}})'
         )
@@ -111,13 +111,23 @@ def _sub_script(lang):
 
 def sub_html(lang):
     """구독 칸. 숨은 입력값 metadata__lang 으로 구독자의 언어를 Buttondown 에 저장해 언어별로 보낸다.
-    영어(en)에는 수준 선택 라디오 카드(metadata__level: a=기초, b=중급)를 표시한다.
-    일본어 등 다른 언어는 수준 선택 없이 기존 형태를 유지한다.
+    levels=True 언어(en, de)에는 수준 선택 라디오 카드(metadata__level: a=기초, b=중급)를 표시한다.
+    일본어 등 levels=False 언어는 수준 선택 없이 기존 형태를 유지한다.
+    de는 기초 지문이 이미 매일 있으므로 level-note("기초 지문은 준비 중이에요")를 표시하지 않는다.
     버전 마커: data-v="2" — patch_page 가 이 값으로 이전 카드를 교체한다.
     """
     L = langs.get(lang)
     level_html = ""
-    if lang == "en":
+    if langs.LANGS[lang].get("levels", False):
+        # 언어별 수준 설명
+        if lang == "de":
+            desc_a = "짧고 쉬운 문장. 독일어 읽기를 막 시작했다면"
+            desc_b = "조금 긴 문장과 B2 문법도 읽어 보고 싶다면"
+            level_note = ""
+        else:  # en 및 향후 levels=True 언어 기본값
+            desc_a = "짧고 쉬운 문장. 영어 읽기를 다시 시작한다면"
+            desc_b = "뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면"
+            level_note = '      <p class="note level-note">기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.</p>\n'
         level_html = (
             '      <fieldset class="levels">\n'
             '        <legend>수준을 골라 주세요</legend>\n'
@@ -125,16 +135,16 @@ def sub_html(lang):
             '          <input type="radio" name="metadata__level" value="a">\n'
             '          <span class="lv-t">기초 <span class="lv-chk">&#10003;</span></span>\n'
             '          <span class="lv-r">A2~B1</span>\n'
-            '          <span class="lv-d">짧고 쉬운 문장. 영어 읽기를 다시 시작한다면</span>\n'
+            f'          <span class="lv-d">{desc_a}</span>\n'
             '        </label>\n'
             '        <label class="lvopt">\n'
             '          <input type="radio" name="metadata__level" value="b" checked>\n'
             '          <span class="lv-t">중급 <span class="lv-chk">&#10003;</span></span>\n'
             '          <span class="lv-r">B1~B2</span>\n'
-            '          <span class="lv-d">뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면</span>\n'
+            f'          <span class="lv-d">{desc_b}</span>\n'
             '        </label>\n'
             '      </fieldset>\n'
-            '      <p class="note level-note">기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.</p>\n'
+            + level_note
         )
     return (
         '  <section class="card sub" id="subscribe" data-v="2">\n'
@@ -207,8 +217,9 @@ def patch_page(lang, day):
         page = page.replace("<link rel=\"stylesheet\"", f'<link rel="canonical" href="{url}">\n<link rel="stylesheet"', 1)
     L_pub = langs.LANGS.get(lang, {})
     if 'class="card sub"' not in page:
-        # 카드가 없는 경우: noindex 언어는 구독 카드를 삽입하지 않는다(준비 중).
-        if L_pub.get("noindex", False):
+        # 카드가 없는 경우: email=False 언어는 구독 카드를 삽입하지 않는다(숨김 운영 중).
+        # noindex 여부와 무관하게 email=True 면 카드를 삽입한다(de: noindex=True, email=True).
+        if not L_pub.get("email", True):
             pass
         else:
             page = page.replace("  .gnb {", SUB_CSS + "  .intro {", 1)

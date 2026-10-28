@@ -100,6 +100,21 @@
     <p>새 독일어 지문이 올라오면 아침에 메일로 보내 드려요.</p>
     <form action="https://buttondown.com/api/emails/embed-subscribe/english-reading" method="post" target="_blank">
       <input type="hidden" name="metadata__lang" value="de">
+      <fieldset class="levels">
+        <legend>수준을 골라 주세요</legend>
+        <label class="lvopt">
+          <input type="radio" name="metadata__level" value="a">
+          <span class="lv-t">기초 <span class="lv-chk">&#10003;</span></span>
+          <span class="lv-r">A2~B1</span>
+          <span class="lv-d">짧고 쉬운 문장. 독일어 읽기를 막 시작했다면</span>
+        </label>
+        <label class="lvopt">
+          <input type="radio" name="metadata__level" value="b" checked>
+          <span class="lv-t">중급 <span class="lv-chk">&#10003;</span></span>
+          <span class="lv-r">B1~B2</span>
+          <span class="lv-d">조금 긴 문장과 B2 문법도 읽어 보고 싶다면</span>
+        </label>
+      </fieldset>
       <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">
       <button type="submit">구독하기</button>
     </form>
@@ -113,7 +128,7 @@
       // GA subscribe event (영어는 level 포함, 다른 언어는 생략)
       if(f)f.addEventListener("submit",function(){
         var cl=f.querySelector('input[name="metadata__level"]:checked');
-        try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"de"});}catch(e){}
+        try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"de",level:cl?cl.value:"b"});}catch(e){}
       });
       // :has() 미지원 브라우저 fallback — data-checked / data-show 속성으로 CSS 를 보조한다
       var opts=sec.querySelectorAll(".lvopt");

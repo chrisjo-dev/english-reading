@@ -19,7 +19,7 @@ const JSON_LD = {
       "@id": `${SITE}/#website`,
       name: "매일 외국어 읽기",
       url: `${SITE}/`,
-      inLanguage: ["ko-KR", "en", "ja"],
+      inLanguage: ["ko-KR", "en", "ja", "de"],
       description: DESCRIPTION,
       isPartOf: { "@id": "https://www.wspace.ai.kr/#website" },
       publisher: { "@id": "https://www.wspace.ai.kr/#person" },

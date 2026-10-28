@@ -21,6 +21,7 @@ export default function Footer() {
         <nav className="foot-links" aria-label="하단 메뉴">
           <a href="/en/">영어 지문</a>
           <a href="/ja/">일본어 지문</a>
+          <a href="/de/">독일어 지문</a>
           {LINKS.map((l) => (
             <a key={l.label} href={l.href}>
               {l.label}
