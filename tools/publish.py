@@ -109,38 +109,42 @@ def _sub_script(lang):
     )
 
 
+# 수준 선택 카드의 언어별 문구: (기초 범위, 기초 설명, 중급 범위, 중급 설명, 기초 선택 시 안내)
+# 기초 지문이 매일 있는 언어(de, ja)는 "기초 지문은 준비 중" 안내를 넣지 않는다.
+LEVEL_CHOICES = {
+    "en": ("A2~B1", "짧고 쉬운 문장. 영어 읽기를 다시 시작한다면",
+           "B1~B2", "뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면",
+           '      <p class="note level-note">기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.</p>\n'),
+    "de": ("A2~B1", "짧고 쉬운 문장. 독일어 읽기를 막 시작했다면",
+           "B1~B2", "조금 긴 문장과 B2 문법도 읽어 보고 싶다면", ""),
+    "ja": ("N4~N5", "짧고 쉬운 문장. 일본어 읽기를 막 시작했다면",
+           "N3", "조금 긴 문장과 N3 문법도 읽어 보고 싶다면", ""),
+}
+
+
 def sub_html(lang):
     """구독 칸. 숨은 입력값 metadata__lang 으로 구독자의 언어를 Buttondown 에 저장해 언어별로 보낸다.
-    levels=True 언어(en, de)에는 수준 선택 라디오 카드(metadata__level: a=기초, b=중급)를 표시한다.
-    일본어 등 levels=False 언어는 수준 선택 없이 기존 형태를 유지한다.
-    de는 기초 지문이 이미 매일 있으므로 level-note("기초 지문은 준비 중이에요")를 표시하지 않는다.
+    levels=True 언어(en, de, ja)에는 수준 선택 라디오 카드(metadata__level: a=기초, b=중급)를 표시한다. 기본 선택은 중급.
+    문구는 LEVEL_CHOICES. levels=False 언어는 수준 선택 없이 기존 형태를 유지한다.
     버전 마커: data-v="2" — patch_page 가 이 값으로 이전 카드를 교체한다.
     """
     L = langs.get(lang)
     level_html = ""
     if langs.LANGS[lang].get("levels", False):
-        # 언어별 수준 설명
-        if lang == "de":
-            desc_a = "짧고 쉬운 문장. 독일어 읽기를 막 시작했다면"
-            desc_b = "조금 긴 문장과 B2 문법도 읽어 보고 싶다면"
-            level_note = ""
-        else:  # en 및 향후 levels=True 언어 기본값
-            desc_a = "짧고 쉬운 문장. 영어 읽기를 다시 시작한다면"
-            desc_b = "뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면"
-            level_note = '      <p class="note level-note">기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.</p>\n'
+        range_a, desc_a, range_b, desc_b, level_note = LEVEL_CHOICES.get(lang, LEVEL_CHOICES["en"])
         level_html = (
             '      <fieldset class="levels">\n'
             '        <legend>수준을 골라 주세요</legend>\n'
             '        <label class="lvopt">\n'
             '          <input type="radio" name="metadata__level" value="a">\n'
             '          <span class="lv-t">기초 <span class="lv-chk">&#10003;</span></span>\n'
-            '          <span class="lv-r">A2~B1</span>\n'
+            f'          <span class="lv-r">{range_a}</span>\n'
             f'          <span class="lv-d">{desc_a}</span>\n'
             '        </label>\n'
             '        <label class="lvopt">\n'
             '          <input type="radio" name="metadata__level" value="b" checked>\n'
             '          <span class="lv-t">중급 <span class="lv-chk">&#10003;</span></span>\n'
-            '          <span class="lv-r">B1~B2</span>\n'
+            f'          <span class="lv-r">{range_b}</span>\n'
             f'          <span class="lv-d">{desc_b}</span>\n'
             '        </label>\n'
             '      </fieldset>\n'
@@ -226,7 +230,8 @@ def patch_page(lang, day):
             page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
             page = page.replace("</main>", sub_html(lang) + "</main>", 1)
             page = page.replace("\n  </div>\n\n  <section class=\"card\" id=\"passage\">", "\n" + intro_html(lang) + "  </div>\n\n  <section class=\"card\" id=\"passage\">", 1)
-    elif 'data-v="2"' not in page:
+    elif 'data-v="2"' not in page or (L_pub.get("levels") and not re.search(r'<input[^>]+name="metadata__level"', page)):
+        # 수준 선택이 새로 생긴 언어(ja, 2026-10-29)의 지난 페이지 카드도 같은 방식으로 바꾼다.
         # 이전 버전 카드가 있는 경우: 카드 HTML만 교체하고 수준 선택 CSS를 추가한다
         page = re.sub(
             r'<section class="card sub"[^>]*id="subscribe"[^>]*>.*?</section>',

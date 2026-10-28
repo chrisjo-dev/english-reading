@@ -5,7 +5,7 @@
 | 언어 | 주소 | 수준 | 음성 |
 |---|---|---|---|
 | 영어 | `/en/YYYY-MM-DD/` | CEFR B1~B2 | Kokoro (af_heart) |
-| 일본어 | `/ja/YYYY-MM-DD/` | JLPT N4~N5 | VOICEVOX:冥鳴ひまり |
+| 일본어 | `/ja/YYYY-MM-DD/` | JLPT N3 (기초 N4~N5, 2026-10-29부터) | VOICEVOX:冥鳴ひまり |
 
 - 첫 화면 `/`은 언어 선택, `/<언어>/archive/`는 지난 지문, `/<언어>/review/YYYY-MM-DD/`는 일요일 주간 단어 복습입니다.
 - 지문은 기사 문장을 옮기지 않고 새로 쓴 글이며, 바탕이 된 기사는 각 페이지에 출처로 표기합니다.

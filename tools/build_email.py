@@ -33,7 +33,11 @@ def parse(lang, day):
         "date": grab(r'<div class="date">(.*?)</div>', page),
         "topic": html.unescape(grab(r'<h1>.*?<em>(.*?)</em>', page)),
         "headline": (re.search(r'<p class="headline"[^>]*>(.*?)</p>', page, re.S) or [None, ""])[1],
-        "chips": [html.unescape(c) for c in re.findall(r'<span class="chip[^"]*">(.*?)</span>', page)],
+        # 본문(중급) 칩만. 기초 칩(chips-a)은 따로 읽는다.
+        "chips": [html.unescape(c) for c in re.findall(r'<span class="chip[^"]*">(.*?)</span>',
+                                                        grab(r'<div class="chips">(.*?)</div>', page))],
+        "chips_a": [html.unescape(c) for c in re.findall(r'<span class="chip[^"]*">(.*?)</span>',
+                                                          (re.search(r'<div class="chips chips-a">(.*?)</div>', page, re.S) or [None, ""])[1])],
         "sentences": re.findall(r'<div class="en">(.*?)</div>', passage, re.S),
         "words": re.findall(r'<span class="w">(.*?)</span>.*?<span class="m">(.*?)</span>', words_sec, re.DOTALL),
         "source": (src.group(1), src.group(2)) if src else None,
@@ -52,9 +56,10 @@ def sentence_html(raw):
 
 
 def _marks_email(s):
-    """**bold** -> <b>, 이스케이프 없이 적용 (이미 html.escape 된 문자열에 사용하지 않음)."""
+    """**bold** -> <b>, 일본어 후리가나 {漢字|かな} -> <ruby>. 원문 문자열에 쓴다(이미 html.escape 된 문자열에 사용하지 않음)."""
     import html as _html
     s = _html.escape(s, quote=False)
+    s = re.sub(r"\{([^{}|]+)\|([^{}|]+)\}", r"<ruby>\1<rp>(</rp><rt>\2</rt><rp>)</rp></ruby>", s)
     return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
 
 
@@ -69,9 +74,12 @@ def build(lang, day, level="b"):
         if not levels_a:
             return None  # 기초 콘텐츠 없음
         d["sentences"] = [_marks_email(s["en"]) for s in levels_a["sentences"]]
+        d["chips"] = d.get("chips_a") or d["chips"]
+        level_label = L.get("level_a_label", "기초 A2~B1")
         url = url_base + "?level=a"  # 기초 이메일: ?level=a 파라미터
     else:
         url = url_base  # 중급 이메일: 쿼리 없음(페이지 기본값 b), Phase 2 이전과 바이트 동일
+        level_label = L["level"]
     chips = "".join(
         f'<span style="display:inline-block;font-size:13px;font-weight:600;padding:4px 9px;border-radius:8px;'
         f'margin:0 4px 4px 0;background:{"#e8f3ff" if i == 0 else BG};color:{BLUE if i == 0 else SUB};">{html.escape(c)}</span>'
@@ -127,7 +135,7 @@ def build(lang, day, level="b"):
 </td></tr>
 <tr><td style="padding:16px 8px 0;font-size:13px;color:{MUTED};text-align:center;">
   <a href="{SITE}/{lang}/archive/" style="color:{SUB};">지난 지문 모아 보기</a>
-  <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:{MUTED};">매일 아침 {L["level"]} {L["name"]} 지문을 보내 드려요.<br>
+  <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:{MUTED};">매일 아침 {level_label} {L["name"]} 지문을 보내 드려요.<br>
   더 받지 않으려면 <a href="{{{{ unsubscribe_url }}}}" style="color:{MUTED};">수신거부</a>를 눌러 주세요.</p>
 </td></tr>
 </table>

@@ -118,14 +118,14 @@ class TestCheckLevelsA(unittest.TestCase):
         errs = self.check("2026-11-01", c)
         self.assertTrue(any("chunks" in e for e in errs), errs)
 
-    def test_japanese_levels_ignored(self):
-        """일본어 파일은 levels.a 검사 대상이 아니다."""
+    def test_japanese_levels_not_required_before_cutoff(self):
+        """일본어는 JA_LEVELS_FROM(2026-10-29) 이전 지문에 levels.a 를 요구하지 않는다."""
         c = make_content()
         p = self.root / "content" / "ja"
         p.mkdir(parents=True, exist_ok=True)
-        f = p / "2026-11-01.json"
+        f = p / "2026-10-28.json"
         # 일본어 형식에 맞춰 간단한 픽스처
-        ja_c = {"date": "2026-11-01", "category": "science", "topic": "ドローン", "title_ko": "드론", "headline": "Drone",
+        ja_c = {"date": "2026-10-28", "category": "science", "topic": "ドローン", "title_ko": "드론", "headline": "Drone",
                 "chips": ["5文"], "sentences": [{"en": "ドローンです。"}],
                 "words": [["ドローン", "드론"]] * 5, "points": [{"title": "p", "body": "b"}],
                 "answers": ["해석"], "advanced": [{"word": "w", "meaning": "m", "confuse": None, "example": "ex"}] * 6,
@@ -575,12 +575,12 @@ class TestCheckLevelsADe(unittest.TestCase):
         self.assertTrue(any("chunks" in e for e in errs),
                         f"de levels.a chunks 불일치 오류가 나야 합니다: {errs}")
 
-    def test_ja_levels_still_not_required(self):
-        """ja 회귀: levels 여전히 불필요."""
+    def test_ja_levels_not_required_before_cutoff(self):
+        """ja: JA_LEVELS_FROM 이전 지문은 levels 불필요(시작일 이후 필수는 test_ja_levels.py)."""
         d = self.root / "content" / "ja"
         d.mkdir(parents=True, exist_ok=True)
         ja_c = {
-            "date": "2026-11-01", "category": "s", "topic": "t", "title_ko": "제목",
+            "date": "2026-10-28", "category": "s", "topic": "t", "title_ko": "제목",
             "headline": "H", "chips": ["5文"],
             "sentences": [{"en": "Test."}],
             "words": [["t", "테스트"]] * 5,
@@ -590,11 +590,11 @@ class TestCheckLevelsADe(unittest.TestCase):
                           "example": "**w**.", "example_ko": "예."}] * 6,
             "source": None, "example": True,
         }
-        f = d / "2026-11-01.json"
+        f = d / "2026-10-28.json"
         f.write_text(json.dumps(ja_c, ensure_ascii=False))
         errs = cc.check(f)[0]
         level_errs = [e for e in errs if "levels" in e.lower()]
-        self.assertEqual(level_errs, [], f"ja 는 levels 불필요 (회귀): {level_errs}")
+        self.assertEqual(level_errs, [], f"ja 시작일 이전은 levels 불필요: {level_errs}")
 
 if __name__ == "__main__":
     unittest.main()

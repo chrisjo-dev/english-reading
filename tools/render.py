@@ -13,7 +13,7 @@ content JSON 형식 (지문 안 강조는 **단어**, 체크 포인트 안 코�
   "title_ko": "세상에서 가장 정확한 시계",  # 페이지 h1 과 메일 제목("오늘은 ... 이야기예요")
   "headline": "The Most Exact Clock in the World",  # h1 아래 작은 제목. 지문 언어로, 지문보다 쉽게
   "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
-  "sentences": [{"en": "... **exact** ...", "b2": false,    # b2: 조금 어려운 문장(영어 B2, 일본어 N4 배지)
+  "sentences": [{"en": "... **exact** ...", "b2": false,    # b2: 조금 어려운 문장(영어 B2, 일본어 N3 배지)
                  "chunks": [["...", "짧은 뜻"], ["**exact** ...", "..."]]}],  # 영어만, 선택. 끊어 읽기 덩어리(공백으로 이으면 en 과 같아야 한다)
   "words": [["exact", "정확한"]],
   "points": [{"title": "...", "body": "... `one second` ..."}],
@@ -246,11 +246,16 @@ def render(lang, day):
         )
     else:
         level_link = ""
-    # 기초 수준 칩: levels.a 가 있을 때만 생성. 문장 수 칩 + 기초 A2~B1 칩 + 예상 읽기 시간 칩.
+    # 기초 수준 칩: levels.a 가 있을 때만 생성. 문장 수 칩 + 기초 수준 칩(level_a_label) + 예상 읽기 시간 칩.
     # 읽기 시간은 level-a 문장의 단어 수 ÷ 40 wpm(학습 속도)로 올림 계산, 최소 1분.
+    # 일본어는 띄어쓰기가 없어 후리가나 읽기를 뺀 글자 수 ÷ 60자로 센다(본문 N4~N5 6문장이 약 3분이던 것과 맞춤).
     if levels_a:
-        a_words = sum(len(re.sub(r"\*\*", "", s["en"]).split()) for s in levels_a["sentences"])
-        a_min = max(1, math.ceil(a_words / 40))
+        if lang == "ja":
+            a_chars = sum(len(re.sub(r"\s|\*\*", "", re.sub(r"\{([^{}|]+)\|[^{}|]+\}", r"\1", s["en"]))) for s in levels_a["sentences"])
+            a_min = max(1, math.ceil(a_chars / 60))
+        else:
+            a_words = sum(len(re.sub(r"\*\*", "", s["en"]).split()) for s in levels_a["sentences"])
+            a_min = max(1, math.ceil(a_words / 40))
         a_time_chip = f"약 {a_min}분"
         chips_a_html = (
             '    <div class="chips chips-a">\n'

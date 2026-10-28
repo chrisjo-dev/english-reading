@@ -93,15 +93,22 @@ def fill_missing_lang():
             print(f"lang 채움: {sub['id']} -> {langs.DEFAULT}")
 
 
+def default_level(lang):
+    """수준을 고르지 않은 구독자의 기본 수준. 언어별 default_level 플래그(일본어는 a), 없으면 중급(b)."""
+    return langs.LANGS.get(lang or langs.DEFAULT, {}).get("default_level", "b")
+
+
 def fill_missing_level():
-    """level 키가 없는 구독자는 not_equals 필터에서 빠진다. 기본 수준(b)으로 채운다.
-    주의: 최초 실행 시 기존 구독자 전원에게 level='b' 를 씁니다. 배포 시 사용자 승인 필요.
+    """level 키가 없는 구독자는 not_equals 필터에서 빠진다. 그 구독자 언어의 기본 수준(default_level)으로 채운다.
+    일본어는 원래 수준 입력이 없던 양식이라 빈 구독자를 기초(a)로 채운다. 이미 값이 있는 구독자는 건드리지 않는다.
+    fill_missing_lang() 다음에 불러야 lang 이 비어 있지 않다.
     """
     for sub in subscribers():
         meta = sub.get("metadata") or {}
         if sub.get("type") in ("regular", "unactivated") and not meta.get("level"):
-            call("PATCH", f"/subscribers/{sub['id']}", {"metadata": {**meta, "level": "b"}})
-            print(f"level 채움: {sub['id']} -> b")
+            lv = default_level(meta.get("lang"))
+            call("PATCH", f"/subscribers/{sub['id']}", {"metadata": {**meta, "level": lv}})
+            print(f"level 채움: {sub['id']} -> {lv}")
 
 
 def recent_emails(pages=5):
@@ -169,7 +176,7 @@ def wants(sub, lang, level="b"):
     if sub.get("type") != "regular":
         return False
     sub_lang = (sub.get("metadata") or {}).get("lang") or langs.DEFAULT
-    sub_level = (sub.get("metadata") or {}).get("level") or "b"
+    sub_level = (sub.get("metadata") or {}).get("level") or default_level(sub_lang)
     # 언어 필터
     if lang == langs.DEFAULT:
         if sub_lang in set(langs.LANGS) - {lang}:

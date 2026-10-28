@@ -231,7 +231,7 @@ jobs:
               echo "skip email for $pair (no_email)"
             elif [ "$day" = "${{ steps.pick.outputs.today }}" ] || [ "${{ inputs.send }}" = "true" ]; then
               python tools/send_email.py $lang $day --level b
-              # level a 는 levels 플래그가 True 인 언어(현재 영어)만. send_email.py 도 email 플래그를 확인한다.
+              # level a 는 levels 플래그가 True 인 언어(영어, 독일어, 일본어)만. send_email.py 도 email 플래그를 확인한다.
               _has_levels=$(python -c "import sys; sys.path.insert(0,'tools'); import langs; print(langs.LANGS.get('$lang',{}).get('levels',False))")
               if [ "$_has_levels" = "True" ]; then
                 python tools/send_email.py $lang $day --level a || echo "::warning::level a email skipped for $pair"

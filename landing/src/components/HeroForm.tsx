@@ -6,7 +6,7 @@ import { CONFIRM_NOTE, SUBSCRIBE } from "./forms";
 
 const HELP = {
   en: "영어 지문 / CEFR B1~B2, 최근 소식을 바탕으로 써요",
-  ja: "일본어 지문 / JLPT N4~N5, 일본의 생활과 문화를 다뤄요",
+  ja: "일본어 지문 / JLPT N3(기초 N4~N5), 일본의 생활과 문화를 다뤄요",
   de: "독일어 지문 / CEFR B1~B2, 독일의 생활과 사회를 다뤄요",
 } as const;
 
@@ -14,7 +14,7 @@ type Lang = keyof typeof HELP;
 type Level = "a" | "b";
 
 // levels=True 언어: 수준 선택 라디오를 표시한다.
-const LEVELS_LANGS: Lang[] = ["en", "de"];
+const LEVELS_LANGS: Lang[] = ["en", "de", "ja"];
 
 const LEVELS_BY_LANG: Record<string, { value: Level; title: string; range: string; desc: string }[]> = {
   en: [
@@ -25,11 +25,15 @@ const LEVELS_BY_LANG: Record<string, { value: Level; title: string; range: strin
     { value: "a", title: "기초", range: "A2~B1", desc: "짧고 쉬운 문장. 독일어 읽기를 막 시작했다면" },
     { value: "b", title: "중급", range: "B1~B2", desc: "조금 긴 문장과 B2 문법도 읽어 보고 싶다면" },
   ],
+  ja: [
+    { value: "a", title: "기초", range: "N4~N5", desc: "짧고 쉬운 문장. 일본어 읽기를 막 시작했다면" },
+    { value: "b", title: "중급", range: "N3", desc: "조금 긴 문장과 N3 문법도 읽어 보고 싶다면" },
+  ],
 };
 
 // 첫 화면 구독 폼. 언어 전환은 숨은 metadata__lang 값과 안내 문구만 바꾼다.
-// en, de 선택 시 수준 선택 카드(기초/중급)가 표시된다. ja는 수준 선택 없음.
-// de는 기초 지문이 이미 매일 있으므로 "기초 지문은 준비 중" 안내를 표시하지 않는다.
+// en, de, ja 선택 시 수준 선택 카드(기초/중급)가 표시된다. 기본 선택은 세 언어 모두 중급.
+// de, ja는 기초 지문이 이미 매일 있으므로 "기초 지문은 준비 중" 안내를 표시하지 않는다.
 // 스크립트가 없으면 전환 버튼은 숨겨지고 영어로 구독된다(다른 언어는 아래 구독 섹션에서 고를 수 있다).
 export default function HeroForm({ stats }: { stats: string }) {
   const [lang, setLang] = useState<Lang>("en");

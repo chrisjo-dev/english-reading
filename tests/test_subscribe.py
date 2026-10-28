@@ -100,19 +100,37 @@ class SubHtmlEnTest(unittest.TestCase):
 
 
 class SubHtmlJaTest(unittest.TestCase):
-    """일본어 sub_html 에 수준 선택이 없는지 확인한다."""
+    """일본어 sub_html 에 수준 선택(기초 N4~N5 / 중급 N3)이 있고, 기본은 중급, 준비 중 안내는 없는지 확인한다."""
 
     def setUp(self):
         self.html = publish.sub_html("ja")
 
-    def test_no_radios(self):
+    def test_has_two_radios(self):
         radios = re.findall(r'<input[^>]+type=["\']radio["\']', self.html)
-        self.assertEqual(len(radios), 0, "일본어 구독 카드에 라디오가 없어야 합니다")
+        self.assertEqual(len(radios), 2, "일본어 구독 카드에 라디오가 2개여야 합니다")
 
-    def test_no_metadata__level_input(self):
-        # GA 스크립트에 셀렉터로 metadata__level 문자열이 있을 수 있으므로, input 요소 여부로 확인한다
-        inputs = re.findall(r'<input[^>]+name=["\']metadata__level["\']', self.html)
-        self.assertEqual(len(inputs), 0, "일본어 구독 카드에 metadata__level input 이 없어야 합니다")
+    def test_metadata__level_inputs(self):
+        values = re.findall(r'<input[^>]+name="metadata__level" value="(\w)"', self.html)
+        self.assertEqual(values, ["a", "b"])
+
+    def test_b_is_checked_by_default(self):
+        b_match = re.search(r'<input[^>]+value="b"[^>]*>', self.html)
+        self.assertIn("checked", b_match.group(), "중급(b)이 기본 선택이어야 합니다")
+        a_match = re.search(r'<input[^>]+name="metadata__level" value="a"[^>]*>', self.html)
+        self.assertNotIn("checked", a_match.group())
+
+    def test_ja_ranges_and_desc(self):
+        self.assertIn('<span class="lv-r">N4~N5</span>', self.html)
+        self.assertIn('<span class="lv-r">N3</span>', self.html)
+        self.assertIn("일본어 읽기를 막 시작했다면", self.html)
+        self.assertIn("N3 문법도 읽어 보고 싶다면", self.html)
+        self.assertNotIn("A2~B1", self.html)
+
+    def test_no_level_note(self):
+        self.assertNotIn("기초 지문은 준비 중이에요", self.html)
+
+    def test_ga_includes_level(self):
+        self.assertIn("level:", self.html)
 
     def test_has_metadata__lang_ja(self):
         self.assertIn('value="ja"', self.html, "일본어 lang 값이 있어야 합니다")

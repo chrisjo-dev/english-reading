@@ -7,6 +7,8 @@
   noindex — True: 검색엔진 noindex, 사이트맵/latest.json 에서 제외. False: 공개.
   chunks  — True: 끊어 읽기(chunks) 필수 및 렌더링. False: chunks 없음.
   levels  — True: levels.a 기초 지문 지원. False: 지원 안 함.
+  level_a_label — 기초 지문 칩에 보일 수준 레이블(기본 "기초 A2~B1").
+  default_level — 구독 양식에서 수준을 고르지 않은 구독자의 기본 수준(기본 "b"). send_email.fill_missing_level 이 쓴다.
 """
 
 LANGS = {
@@ -37,9 +39,9 @@ LANGS = {
     "ja": {
         "name": "일본어",
         "site": "매일 일본어 읽기",
-        "level": "JLPT N4~N5",
-        "hard_badge": "N4",
-        "intro": "매일 아침 새로 올라오는 JLPT N4~N5 일본어 읽기예요.",
+        "level": "JLPT N3",
+        "hard_badge": "N3",              # N3 문법이 들어간 문장(content 의 "b2": true)에 붙는 배지
+        "intro": "매일 아침 새로 올라오는 JLPT N3(기초 N4~N5) 일본어 읽기예요.",
         "search_example": "駅, 전철",
         "tts_lang": "ja-JP",
         # 일본어는 Kokoro 품질이 낮아 VOICEVOX 를 쓴다. 14 = 冥鳴ひまり(ノーマル). 이용 조건으로 크레딧 표기가 필요하다.
@@ -47,19 +49,22 @@ LANGS = {
         "voice": 14,
         "speed": 0.9,
         "credit": "음성: VOICEVOX:冥鳴ひまり",
-        "copy_head": "나는 JLPT N4~N5 수준의 한국인 일본어 학습자입니다. 아래는 오늘의 일본어 읽기 연습 지문입니다.",
+        "copy_head": "나는 JLPT N3 수준의 한국인 일본어 학습자입니다. 아래는 오늘의 일본어 읽기 연습 지문입니다.",
         "copy_weak": "자주 틀리는 부분(조사 は・が・を・に・で, 동사 활용과 시제, 한자 읽기, 숫자와 조수사)도 함께 짚어 주세요.",
         # 지문은 일본어 글꼴로, 후리가나(<rt>)는 작게. 끄기 버튼은 템플릿 스크립트가 처리한다.
         "head_extra": '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap">\n'
-                      "<style>.en, .adv .ex, .word .w, .adv .w { font-family: \"Noto Sans JP\", Pretendard, sans-serif; } "
-                      ".en, .adv .ex { word-break: normal; line-break: strict; } .en { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>",
+                      "<style>.en, .en-a, .adv .ex, .word .w, .adv .w { font-family: \"Noto Sans JP\", Pretendard, sans-serif; } "
+                      ".en, .en-a, .adv .ex { word-break: normal; line-break: strict; } .en, .en-a { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>",
         "tools_extra": "",
         "furi_btn": '\n      <button class="tool" id="furi" type="button" aria-pressed="true">후리가나 끄기</button>',
         # 언어별 플래그
         "email": True,
         "noindex": False,
         "chunks": False,
-        "levels": False,
+        "levels": True,                  # 기초(N4~N5) levels.a 지문 활성화
+        "level_a_label": "기초 N4~N5",
+        # 일본어 구독 양식에는 원래 수준 입력이 없었다. 수준이 빈 기존 구독자는 지금까지 받던 N4~N5 에 가까운 기초(a)로 채운다.
+        "default_level": "a",
     },
     "de": {
         "name": "독일어",

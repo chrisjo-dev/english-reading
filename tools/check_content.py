@@ -13,6 +13,9 @@
   영어/독일어나 뜻이 빈 덩어리가 있는 경우.
   2026-10-23 이후 영어 지문과 영어 비축분은 모든 문장에 chunks 가 있어야 한다.
   독일어는 DE_CHUNKS_FROM 이후 지문과 독일어 비축분에 chunks 가 있어야 한다.
+- 오류: 수준을 나눈 언어(langs 의 levels 플래그)의 기초 지문 levels.a 가 없거나 본문과 문장 수가 다른 경우.
+  영어는 LEVELS_FROM, 독일어는 DE_LEVELS_FROM, 일본어는 JA_LEVELS_FROM 이후 지문과 그 언어의 비축분에 필수.
+- 경고: 독일어와 일본어 본문(중급)이 수준에 비해 지나치게 짧은 경우.
 """
 import datetime as dt
 import json
@@ -68,6 +71,27 @@ def check_de_quality(c, path):
     return errors, warnings
 
 
+JA_MIN_AVG_CHARS = 28  # 일본어 중급(N3) 본문 문장 평균 글자 수(후리가나 읽기 제외)가 이보다 짧으면 경고. N4~N5 지문은 20자 안팎이었다.
+
+
+def check_ja_quality(c, path):
+    """일본어 중급(N3) 본문이 예전 N4~N5 길이에 머물면 경고한다. JA_LEVELS_FROM 이후 지문과 비축분만 본다."""
+    if path.parent.parent.name != "pool":
+        try:
+            if dt.date.fromisoformat(path.stem) < JA_LEVELS_FROM:
+                return []
+        except ValueError:
+            return []
+    sents = c.get("sentences", [])
+    if not sents:
+        return []
+    avg = sum(len(re.sub(r"\s", "", _plain(s.get("en", "")))) for s in sents) / len(sents)
+    if avg < JA_MIN_AVG_CHARS:
+        return [f"ja 본문 문장 평균 글자 수({avg:.1f})가 {JA_MIN_AVG_CHARS} 미만입니다. "
+                "중급(N3) 본문은 한 문장 30~45자를 권장합니다(ROUTINE.ja.md)."]
+    return []
+
+
 def check(path):
     c = json.loads(path.read_text(encoding="utf-8"))
     errors, warnings = [], []
@@ -115,6 +139,8 @@ def check(path):
         de_errors, de_warnings = check_de_quality(c, path)
         errors += de_errors
         warnings += de_warnings
+    if path.parent.name == "ja":
+        warnings += check_ja_quality(c, path)
     return errors, warnings
 
 
@@ -123,6 +149,13 @@ DE_CHUNKS_FROM = dt.date(2026, 10, 28)  # 독일어 루틴 시작일. 이날 이
 LEVELS_FROM = dt.date(2026, 10, 23)  # 이날 이후 영어 지문에 levels.a 필드가 필수
 EXAMPLE_KO_FROM = dt.date(2026, 10, 23)  # 이날 이후 advanced 항목에 example_ko 필드가 필수
 DE_LEVELS_FROM = dt.date(2026, 10, 29)   # 이날 이후 독일어 지문에 levels.a 필수
+JA_LEVELS_FROM = dt.date(2026, 10, 29)   # 이날 이후 일본어 지문에 levels.a 필수(본문은 N3, levels.a 는 N4~N5)
+
+_LEVELS_FROM_MAP = {
+    "en": LEVELS_FROM,
+    "de": DE_LEVELS_FROM,
+    "ja": JA_LEVELS_FROM,
+}
 
 _CHUNKS_FROM_MAP = {
     "en": CHUNKS_FROM,
@@ -144,33 +177,32 @@ def new_chunks(path, lang=None):
 def levels_required(path):
     """이 파일에 levels.a 필드가 필수인지 판단한다."""
     lang = path.parent.name
+    if lang not in _LEVELS_FROM_MAP:
+        return False
     if path.parent.parent.name == "pool":
-        return lang in ("en", "de")  # en/de pool 비축분은 levels.a 필수
-    if lang == "de":
-        try:
-            return dt.date.fromisoformat(path.stem) >= DE_LEVELS_FROM
-        except ValueError:
-            return False
+        return True  # 수준을 나눈 언어의 비축분은 levels.a 필수
     try:
-        return dt.date.fromisoformat(path.stem) >= LEVELS_FROM
+        return dt.date.fromisoformat(path.stem) >= _LEVELS_FROM_MAP[lang]
     except ValueError:
         return False
 
 
 def check_levels_a(c, path):
-    """levels.a 필드가 있으면 검증하고, LEVELS_FROM/DE_LEVELS_FROM 이후 en/de 지문인데 없으면 오류를 낸다."""
+    """levels.a 필드가 있으면 검증하고, 언어별 시작일(_LEVELS_FROM_MAP) 이후 지문이나 비축분인데 없으면 오류를 낸다."""
     out = []
-    if path.parent.name not in ("en", "de"):
-        return out  # 영어와 독일어만 검사
+    lang = path.parent.name
+    if lang not in _LEVELS_FROM_MAP:
+        return out
+    missing = "levels.a 필드가 없어요. 기초 지문은 시작일 이후 지문과 비축분에 필수입니다(ROUTINE 의 levels 설명 참고)."
     levels = c.get("levels")
     if levels is None:
         if levels_required(path):
-            out.append("levels.a 필드가 없어요. LEVELS_FROM 이후 영어 지문에는 필수입니다.")
+            out.append(missing)
         return out
     levels_a = levels.get("a")
     if levels_a is None:
         if levels_required(path):
-            out.append("levels.a 필드가 없어요. LEVELS_FROM 이후 영어 지문에는 필수입니다.")
+            out.append(missing)
         return out
     main_n = len(c.get("sentences", []))
     a_sents = levels_a.get("sentences", [])
@@ -187,8 +219,9 @@ def check_levels_a(c, path):
             out.append(f"levels.a.sentences {i}번 en: 처리되지 않는 마크다운 기호가 남음: {en[:80]}")
         if "·" in en:
             out.append(f"levels.a.sentences {i}번 en: 가운뎃점(·)은 쓰지 않아요: {en[:80]}")
-    # levels.a.sentences[].chunks 검사 (필수 — 항상 required)
-    out += check_chunks({"sentences": [{"en": s.get("en", ""), "chunks": s.get("chunks")} for s in a_sents]}, required=True)
+    # levels.a.sentences[].chunks 검사: chunks 를 쓰는 언어(en, de)는 필수, 일본어처럼 쓰지 않는 언어는 있을 때만 검사
+    needs_chunks = _langs.LANGS.get(lang, {}).get("chunks", lang == "en")
+    out += check_chunks({"sentences": [{"en": s.get("en", ""), "chunks": s.get("chunks")} for s in a_sents]}, required=needs_chunks)
     return out
 
 
