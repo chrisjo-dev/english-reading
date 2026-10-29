@@ -1,52 +1,52 @@
 {
  "date": "2026-10-30",
- "words_total": 353,
+ "words_total": 360,
  "langs": {
   "en": {
-   "count": 27,
-   "latest": "2026-10-29",
-   "topic": "휴머노이드 공장",
+   "count": 28,
+   "latest": "2026-10-30",
+   "topic": "유성의 일생",
    "sentences": [
-    "In car factories across Japan, Toyota and Honda are now testing **humanoid** robots, machines that are built to look and move like people.",
-    "The robots are trying jobs that **range from** putting in the long bundles of **wires** inside a car to doing the final **inspection** before it leaves the factory.",
-    "**Supporters** say the robots could take over dangerous work, because car factories can be risky places for human workers.",
-    "Honda, which showed its robot technology at a big car show in Japan earlier this month, even hopes to design future cars so that they can be built in factories **staffed** by humanoid robots."
+    "When a space rock enters Earth's **atmosphere**, most people think it simply burns up, but a new study shows that the real story is more complicated.",
+    "Scientists at the SETI Institute studied videos and photos of seventy-five meteorite falls and found that each rock goes through seven **stages**.",
+    "High in the sky, the air in front of the rock is pushed together so quickly that it forms a **shock wave**, and the rock and the hot gas around it begin to glow.",
+    "At around sixty kilometers above the ground, the rock **melts** from the outside, and this melting alone can remove up to forty percent of its original **mass**."
    ],
    "chips": [
-    "5문장",
+    "6문장",
     "B1 위주",
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "일본 곳곳의 자동차 공장에서 도요타와 혼다가 지금 사람처럼 보이고 움직이도록 만들어진 기계인 인간형 로봇을 시험하고 있다.",
+   "answer": "우주 암석이 지구 대기에 들어오면 대부분의 사람들은 그것이 그냥 다 타 버린다고 생각하지만, 새 연구는 실제 이야기가 더 복잡하다는 것을 보여 준다.",
    "words": [
     [
-     "humanoid",
-     "사람 모양의, 인간형의"
+     "atmosphere",
+     "대기"
     ],
     [
-     "range from A to B",
-     "A부터 B까지 이르다"
+     "stages",
+     "단계들 (stage의 복수)"
     ],
     [
-     "wires",
-     "전선들 (wire의 복수)"
+     "shock wave",
+     "충격파"
     ],
     [
-     "inspection",
-     "검사, 점검"
+     "melt",
+     "녹다"
     ],
     [
-     "supporters",
-     "지지하는 사람들, 찬성하는 쪽"
+     "mass",
+     "질량"
     ],
     [
-     "staffed",
-     "(사람이나 인력이) 배치된, 일하는"
+     "break apart",
+     "부서지다, 산산이 갈라지다"
     ],
     [
-     "critics",
-     "비판하는 사람들 (critic의 복수)"
+     "burst",
+     "(빛, 소리 등의) 갑작스러운 폭발, 터짐"
     ]
    ]
   },
@@ -100,6 +100,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-10-30",
+   "topic": "유성의 일생"
+  },
   {
    "lang": "ja",
    "day": "2026-10-30",
@@ -164,11 +169,6 @@
    "lang": "ja",
    "day": "2026-10-24",
    "topic": "신사 참배"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-23",
-   "topic": "태양 폭풍"
   }
  ]
 }
