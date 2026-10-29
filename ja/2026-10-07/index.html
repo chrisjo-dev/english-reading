@@ -273,6 +273,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -449,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -957,6 +976,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "ノーベル賞", "m": "노벨상", "r": "ノーベルしょう", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "alts": ["화학", "수상", "발표되다", "명예교수", "연구"]}, {"w": "化学", "m": "화학", "r": "かがく", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "alts": ["노벨상", "수상", "발표되다", "명예교수", "연구"]}, {"w": "受賞", "m": "수상", "r": "じゅしょう", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>硤合<rt>そあい<\/rt><\/ruby><ruby>憲三<rt>けんそう<\/rt><\/ruby>さんとフランスのアンリ・カガンさんが<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>受賞<rt>じゅしょう<\/rt><\/ruby><\/b>しました。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>硤合<rt>そあい<\/rt><\/ruby><ruby>憲三<rt>けんそう<\/rt><\/ruby>さんとフランスのアンリ・カガンさんが<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>受賞<rt>じゅしょう<\/rt><\/ruby><\/b>しました。", "ek": "일본의 소아이 켄소 씨와 프랑스의 앙리 카강 씨가 함께 수상했습니다.", "alts": ["노벨상", "화학", "발표되다", "명예교수", "연구"]}, {"w": "発表される", "m": "발표되다", "r": "はっぴょうされる", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "alts": ["노벨상", "화학", "수상", "명예교수", "연구"]}, {"w": "名誉教授", "m": "명예교수", "r": "めいよきょうじゅ", "ex": "<ruby>硤合<rt>そあい<\/rt><\/ruby>さんは<ruby>東京<rt>とうきょう<\/rt><\/ruby><ruby>理科<rt>りか<\/rt><\/ruby><ruby>大学<rt>だいがく<\/rt><\/ruby>の<b><ruby>名誉<rt>めいよ<\/rt><\/ruby><ruby>教授<rt>きょうじゅ<\/rt><\/ruby><\/b>です。", "sh": "<ruby>硤合<rt>そあい<\/rt><\/ruby>さんは<ruby>東京<rt>とうきょう<\/rt><\/ruby><ruby>理科<rt>りか<\/rt><\/ruby><ruby>大学<rt>だいがく<\/rt><\/ruby>の<b><ruby>名誉<rt>めいよ<\/rt><\/ruby><ruby>教授<rt>きょうじゅ<\/rt><\/ruby><\/b>です。", "ek": "소아이 씨는 도쿄이과대학의 명예교수입니다.", "alts": ["노벨상", "화학", "수상", "발표되다", "연구"]}, {"w": "研究", "m": "연구", "r": "けんきゅう", "ex": "ふたりは<ruby>分子<rt>ぶんし<\/rt><\/ruby>の<b><ruby>形<rt>かたち<\/rt><\/ruby><\/b>に<ruby>関<rt>かん<\/rt><\/ruby>する<ruby>研究<rt>けんきゅう<\/rt><\/ruby>で<ruby>高<rt>たか<\/rt><\/ruby>く<ruby>評価<rt>ひょうか<\/rt><\/ruby>されました。", "sh": "ふたりは<ruby>分子<rt>ぶんし<\/rt><\/ruby>の<b><ruby>形<rt>かたち<\/rt><\/ruby><\/b>に<ruby>関<rt>かん<\/rt><\/ruby>する<ruby>研究<rt>けんきゅう<\/rt><\/ruby>で<ruby>高<rt>たか<\/rt><\/ruby>く<ruby>評価<rt>ひょうか<\/rt><\/ruby>されました。", "ek": "두 사람은 분자의 형태에 관한 연구로 높이 평가받았습니다.", "alts": ["노벨상", "화학", "수상", "발표되다", "명예교수"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

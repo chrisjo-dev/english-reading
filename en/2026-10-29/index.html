@@ -271,6 +271,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -454,7 +473,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -969,6 +988,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "humanoid", "m": "사람 모양의, 인간형의", "ex": "In car factories across Japan, Toyota and Honda are now testing <b>humanoid<\/b> robots, machines that are built to look and move like people.", "sh": "… <b>humanoid<\/b> robots, machines that are built …", "ek": "일본 곳곳의 자동차 공장에서 도요타와 혼다가 지금 사람처럼 보이고 움직이도록 만들어진 기계인 인간형 로봇을 시험하고 있다.", "au": "/en/2026-10-29/audio/w1.mp3", "alts": ["A부터 B까지 이르다", "전선들 (wire의 복수)", "검사, 점검", "지지하는 사람들, 찬성하는 쪽", "(사람이나 인력이) 배치된, 일하는", "비판하는 사람들 (critic의 복수)"]}, {"w": "range from A to B", "m": "A부터 B까지 이르다", "ex": "The robots are trying jobs that <b>range from<\/b> putting in the long bundles of <b>wires<\/b> inside a car to doing the final <b>inspection<\/b> before it leaves the factory.", "sh": "… that <b>range from<\/b> putting in the long bundles of <b>wires<\/b> …", "ek": "그 로봇들은 차 안에 긴 전선 묶음을 설치하는 일부터 차가 공장을 떠나기 전 마지막 검사를 하는 일까지 여러 작업을 해 보고 있다.", "au": "/en/2026-10-29/audio/w2.mp3", "alts": ["사람 모양의, 인간형의", "전선들 (wire의 복수)", "검사, 점검", "지지하는 사람들, 찬성하는 쪽", "(사람이나 인력이) 배치된, 일하는", "비판하는 사람들 (critic의 복수)"]}, {"w": "wires", "m": "전선들 (wire의 복수)", "ex": "The robots are trying jobs that <b>range from<\/b> putting in the long bundles of <b>wires<\/b> inside a car to doing the final <b>inspection<\/b> before it leaves the factory.", "sh": "… the long bundles of <b>wires<\/b> inside a car …", "ek": "그 로봇들은 차 안에 긴 전선 묶음을 설치하는 일부터 차가 공장을 떠나기 전 마지막 검사를 하는 일까지 여러 작업을 해 보고 있다.", "au": "/en/2026-10-29/audio/w3.mp3", "alts": ["사람 모양의, 인간형의", "A부터 B까지 이르다", "검사, 점검", "지지하는 사람들, 찬성하는 쪽", "(사람이나 인력이) 배치된, 일하는", "비판하는 사람들 (critic의 복수)"]}, {"w": "inspection", "m": "검사, 점검", "ex": "The robots are trying jobs that <b>range from<\/b> putting in the long bundles of <b>wires<\/b> inside a car to doing the final <b>inspection<\/b> before it leaves the factory.", "sh": "… to doing the final <b>inspection<\/b> before it leaves the factory.", "ek": "그 로봇들은 차 안에 긴 전선 묶음을 설치하는 일부터 차가 공장을 떠나기 전 마지막 검사를 하는 일까지 여러 작업을 해 보고 있다.", "au": "/en/2026-10-29/audio/w4.mp3", "alts": ["사람 모양의, 인간형의", "A부터 B까지 이르다", "전선들 (wire의 복수)", "지지하는 사람들, 찬성하는 쪽", "(사람이나 인력이) 배치된, 일하는", "비판하는 사람들 (critic의 복수)"]}, {"w": "supporters", "m": "지지하는 사람들, 찬성하는 쪽", "ex": "<b>Supporters<\/b> say the robots could take over dangerous work, because car factories can be risky places for human workers.", "sh": "<b>Supporters<\/b> say the robots could take over …", "ek": "찬성하는 사람들은 자동차 공장이 사람 노동자에게 위험한 곳일 수 있기 때문에, 로봇이 위험한 일을 넘겨받을 수 있다고 말한다.", "au": "/en/2026-10-29/audio/w5.mp3", "alts": ["사람 모양의, 인간형의", "A부터 B까지 이르다", "전선들 (wire의 복수)", "검사, 점검", "(사람이나 인력이) 배치된, 일하는", "비판하는 사람들 (critic의 복수)"]}, {"w": "staffed", "m": "(사람이나 인력이) 배치된, 일하는", "ex": "Honda, which showed its robot technology at a big car show in Japan earlier this month, even hopes to design future cars so that they can be built in factories <b>staffed<\/b> by humanoid robots.", "sh": "… so that they can be built in factories <b>staffed<\/b> by humanoid robots.", "ek": "이달 초 일본의 큰 자동차 박람회에서 로봇 기술을 선보인 혼다는, 인간형 로봇들이 일하는 공장에서 만들 수 있도록 미래의 자동차를 설계하길 바라기까지 한다.", "au": "/en/2026-10-29/audio/w6.mp3", "alts": ["사람 모양의, 인간형의", "A부터 B까지 이르다", "전선들 (wire의 복수)", "검사, 점검", "지지하는 사람들, 찬성하는 쪽", "비판하는 사람들 (critic의 복수)"]}, {"w": "critics", "m": "비판하는 사람들 (critic의 복수)", "ex": "However, some <b>critics<\/b> doubt that the robots' hands can do <b>delicate<\/b> work like wiring as well as human hands, and others wonder whether the real goal is simply to spend less money on <b>workers<\/b>.", "sh": "However, some <b>critics<\/b> doubt that the robots' hands …", "ek": "하지만 일부 비판하는 사람들은 로봇의 손이 전선 연결 같은 섬세한 일을 사람 손만큼 잘할 수 있을지 의심하고, 다른 사람들은 진짜 목표가 그저 노동자에게 돈을 덜 쓰는 것이 아닌지 궁금해한다.", "au": "/en/2026-10-29/audio/w7.mp3", "alts": ["사람 모양의, 인간형의", "A부터 B까지 이르다", "전선들 (wire의 복수)", "검사, 점검", "지지하는 사람들, 찬성하는 쪽", "(사람이나 인력이) 배치된, 일하는"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

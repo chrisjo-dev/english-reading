@@ -271,6 +271,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -455,7 +474,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -967,6 +986,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "atmosphere", "m": "대기", "ex": "When a space rock enters Earth's <b>atmosphere<\/b>, most people think it simply burns up, but a new study shows that the real story is more complicated.", "sh": "… Earth's <b>atmosphere<\/b>, most people think …", "ek": "우주 암석이 지구 대기에 들어오면 대부분의 사람들은 그것이 그냥 다 타 버린다고 생각하지만, 새 연구는 실제 이야기가 더 복잡하다는 것을 보여 준다.", "au": "/en/2026-10-30/audio/w1.mp3", "alts": ["단계들 (stage의 복수)", "충격파", "녹다", "질량", "부서지다, 산산이 갈라지다", "(빛, 소리 등의) 갑작스러운 폭발, 터짐"]}, {"w": "stages", "m": "단계들 (stage의 복수)", "ex": "Scientists at the SETI Institute studied videos and photos of seventy-five meteorite falls and found that each rock goes through seven <b>stages<\/b>.", "sh": "… that each rock goes through seven <b>stages<\/b>.", "ek": "SETI 연구소의 과학자들은 75번의 운석 낙하를 담은 영상과 사진을 연구해, 각 암석이 일곱 단계를 거친다는 것을 알아냈다.", "au": "/en/2026-10-30/audio/w2.mp3", "alts": ["대기", "충격파", "녹다", "질량", "부서지다, 산산이 갈라지다", "(빛, 소리 등의) 갑작스러운 폭발, 터짐"]}, {"w": "shock wave", "m": "충격파", "ex": "High in the sky, the air in front of the rock is pushed together so quickly that it forms a <b>shock wave<\/b>, and the rock and the hot gas around it begin to glow.", "sh": "… that it forms a <b>shock wave<\/b>, and the rock …", "ek": "하늘 높은 곳에서는 암석 앞의 공기가 아주 빠르게 눌려 모여 충격파를 만들고, 암석과 그 주변의 뜨거운 가스가 빛나기 시작한다.", "au": "/en/2026-10-30/audio/w3.mp3", "alts": ["대기", "단계들 (stage의 복수)", "녹다", "질량", "부서지다, 산산이 갈라지다", "(빛, 소리 등의) 갑작스러운 폭발, 터짐"]}, {"w": "melt", "m": "녹다", "ex": "At around sixty kilometers above the ground, the rock <b>melts<\/b> from the outside, and this melting alone can remove up to forty percent of its original <b>mass<\/b>.", "sh": "… the rock <b>melts<\/b> from the outside, …", "ek": "땅에서 약 60킬로미터 높이에서 암석은 바깥부터 녹는데, 이 녹는 과정만으로도 원래 질량의 최대 40퍼센트까지 사라질 수 있다.", "au": "/en/2026-10-30/audio/w4.mp3", "alts": ["대기", "단계들 (stage의 복수)", "충격파", "질량", "부서지다, 산산이 갈라지다", "(빛, 소리 등의) 갑작스러운 폭발, 터짐"]}, {"w": "mass", "m": "질량", "ex": "At around sixty kilometers above the ground, the rock <b>melts<\/b> from the outside, and this melting alone can remove up to forty percent of its original <b>mass<\/b>.", "sh": "… can remove up to forty percent of its original <b>mass<\/b>.", "ek": "땅에서 약 60킬로미터 높이에서 암석은 바깥부터 녹는데, 이 녹는 과정만으로도 원래 질량의 최대 40퍼센트까지 사라질 수 있다.", "au": "/en/2026-10-30/audio/w5.mp3", "alts": ["대기", "단계들 (stage의 복수)", "충격파", "녹다", "부서지다, 산산이 갈라지다", "(빛, 소리 등의) 갑작스러운 폭발, 터짐"]}, {"w": "break apart", "m": "부서지다, 산산이 갈라지다", "ex": "Lower down, the rock, which is now slowing quickly under the growing pressure of the air, <b>breaks apart<\/b> into smaller pieces, and each break creates a sudden <b>burst<\/b> of light.", "sh": "… <b>breaks apart<\/b> into smaller pieces, …", "ek": "더 아래로 내려오면, 커지는 공기 압력 때문에 이제 빠르게 느려지고 있는 암석이 더 작은 조각들로 부서지고, 부서질 때마다 갑자기 빛이 확 터진다.", "au": "/en/2026-10-30/audio/w6.mp3", "alts": ["대기", "단계들 (stage의 복수)", "충격파", "녹다", "질량", "(빛, 소리 등의) 갑작스러운 폭발, 터짐"]}, {"w": "burst", "m": "(빛, 소리 등의) 갑작스러운 폭발, 터짐", "ex": "Lower down, the rock, which is now slowing quickly under the growing pressure of the air, <b>breaks apart<\/b> into smaller pieces, and each break creates a sudden <b>burst<\/b> of light.", "sh": "… and each break creates a sudden <b>burst<\/b> of light.", "ek": "더 아래로 내려오면, 커지는 공기 압력 때문에 이제 빠르게 느려지고 있는 암석이 더 작은 조각들로 부서지고, 부서질 때마다 갑자기 빛이 확 터진다.", "au": "/en/2026-10-30/audio/w7.mp3", "alts": ["대기", "단계들 (stage의 복수)", "충격파", "녹다", "질량", "부서지다, 산산이 갈라지다"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

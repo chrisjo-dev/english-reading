@@ -7,6 +7,7 @@
   var KEY = 'drill:v1', INT = [1, 3, 7, 14], SPEECH = { en: 'en-US', ja: 'ja-JP', de: 'de-DE' };
   var ICON_X = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>';
   var ICON_SPK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  var ICON_TAP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5a2 2 0 0 1 4 0v6"/><path d="M13 10a2 2 0 0 1 4 0v2"/><path d="M17 12a2 2 0 0 1 4 0v3a7 7 0 0 1-7 7h-1a7 7 0 0 1-5.6-2.8L4 15.5a2 2 0 0 1 3-2.6L9 15"/></svg>';
   CARDS.forEach(function (c) { c.l = LANG; c.d = DAY; c.k = LANG + '|' + DAY + '|' + c.w; });
 
   function load() { try { var v = JSON.parse(localStorage.getItem(KEY)); if (v && v.items) return v; } catch (e) {} return { items: {} }; }
@@ -46,15 +47,23 @@
     if (!root) {
       root = document.createElement('div'); root.className = 'dr'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true');
       root.addEventListener('click', onClick);
+      root.addEventListener('pointerdown', onDown);
       document.body.appendChild(root);
     }
     root.hidden = false; document.body.classList.add('dr-open');
   }
   function close() {
+    hush();
     if (root) { root.hidden = true; root.innerHTML = ''; }
     document.body.classList.remove('dr-open'); S = null; showDue();
   }
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && S) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (!S) return;
+    if (e.key === 'Escape') return close();
+    if (S.mode !== 'card' || !S.queue.length) return;
+    if (!S.flip && (e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('tap')) { e.preventDefault(); flip(); }
+    else if (S.flip && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); judge(e.key === 'ArrowRight' ? 'yes' : 'no', e.key === 'ArrowRight' ? 1 : -1); }
+  });
 
   function bar(n) {
     return '<div class="dr-bar"><button class="dr-x" type="button" data-act="close" aria-label="닫기">' + ICON_X + '</button><span class="t">' + S.title + '</span><span class="n">' + n + '</span></div>';
@@ -103,35 +112,109 @@
       h += '</div>';
       if (it.pick != null) h += '<div class="dr-acts"><button class="dr-btn" type="button" data-act="next">' + (S.queue.length > 1 ? '다음 문제' : '결과 보기') + '</button></div>';
     } else if (!S.flip) {
-      h += '<div class="dr-fc">' + tag(it) + '<div class="dr-mid"><div class="dr-word" lang="' + c.l + '">' + esc(c.w) + '</div>' +
+      // 카드 아무 곳이나 누르면 뒤집힌다. 듣기 단추는 data-act="say"가 먼저 잡혀 뒤집히지 않는다.
+      h += '<div class="dr-stage"><div class="dr-fc tap" data-act="flip" role="button" tabindex="0" aria-label="카드를 눌러 뜻 보기">' + tag(it) + '<div class="dr-mid"><div class="dr-word" lang="' + c.l + '">' + esc(c.w) + '</div>' +
         (c.r ? '<div class="dr-pron" lang="' + c.l + '">' + esc(c.r) + '</div>' : '') +
-        '<button class="dr-listen" type="button" data-act="say">' + ICON_SPK + ' 듣기</button></div>' +
-        '<p class="dr-hint">뜻을 먼저 떠올려 보세요</p></div>' +
-        '<div class="dr-acts"><button class="dr-btn" type="button" data-act="flip">뜻 보기</button></div>';
+        '<button class="dr-listen" type="button" data-act="say">' + ICON_SPK + ' <span>듣기</span></button></div>' +
+        '<p class="dr-taphint">' + ICON_TAP + ' 카드를 누르면 뜻이 나와요</p></div></div>';
     } else {
-      var yes = it.wrong === 0 ? '바로 통과' : it.streak > 0 ? '한 번 더 맞혀서 통과' : '2번 연속이면 통과';
-      h += '<div class="dr-fc">' + tag(it) + '<div class="dr-mid"><div class="dr-word sm" lang="' + c.l + '">' + esc(c.w) + '</div>' +
+      var yes = it.wrong === 0 ? '바로 통과' : it.streak > 0 ? '한 번 더 맞혀서 통과' : '2번 연속이면 통과', nx = S.queue[1];
+      h += '<div class="dr-stage">' + (nx ? '<div class="dr-fc under" aria-hidden="true">' + tag(nx) + '<div class="dr-mid"><div class="dr-word" lang="' + nx.c.l + '">' + esc(nx.c.w) + '</div></div></div>' : '') +
+        '<div class="dr-fc swipe" tabindex="0" aria-label="오른쪽으로 밀면 알았어요, 왼쪽으로 밀면 몰랐어요"><span class="dr-stamp yes" aria-hidden="true">알았어요</span><span class="dr-stamp no" aria-hidden="true">몰랐어요</span>' +
+        tag(it) + '<div class="dr-mid"><div class="dr-word sm" lang="' + c.l + '">' + esc(c.w) + '</div>' +
         (c.r ? '<div class="dr-pron" lang="' + c.l + '">' + esc(c.r) + '</div>' : '') + '<div class="dr-mean">' + esc(c.m) + '</div>' +
         (c.ex ? '<div class="dr-ex"><div class="lb">지문 속 문장</div><p class="en" lang="' + c.l + '">' + c.ex + '</p>' + (c.ek ? '<p class="ko">' + esc(c.ek) + '</p>' : '') + '</div>' : '') +
-        '</div></div><div class="dr-acts"><div class="dr-judge"><button class="dr-no" type="button" data-act="no">몰랐어요<small>조금 뒤 다시 나와요</small></button>' +
+        '</div></div></div><div class="dr-swipehint" aria-hidden="true"><span class="l">← 몰랐어요</span><span class="c">옆으로 밀어서 넘겨요</span><span class="r">알았어요 →</span></div>' +
+        '<div class="dr-acts"><div class="dr-judge sm"><button class="dr-no" type="button" data-act="no">몰랐어요<small>조금 뒤 다시 나와요</small></button>' +
         '<button class="dr-yes" type="button" data-act="yes">알았어요<small>' + yes + '</small></button></div></div>';
     }
     root.innerHTML = '<div class="dr-in">' + h + '</div>';
     widths();
     root.scrollTop = 0;
     var f = root.querySelector('[data-act=flip],[data-act=next],.dr-judge .dr-yes,.dr-opt'); if (f) f.focus({ preventScroll: true });
+    // 앞면이 나오자마자 단어를 읽어 준다. 시작, 판정 같은 누름에서 바로 불리므로 브라우저 자동 재생 제한에 걸리지 않는다.
+    if (S.mode === 'card' && !S.flip) say(c);
   }
   function later(it) { S.queue.splice(Math.min(3, S.queue.length), 0, it); }
 
-  var player = null;
+  // iOS는 처음 누름에서 재생한 Audio 요소만 이후 자동 재생을 허락하므로 하나를 계속 쓴다.
+  var player = null, sayN = 0;
   function say(c) {
-    function speak() {
-      if (!('speechSynthesis' in window)) return;
-      speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(c.w); u.lang = SPEECH[c.l] || 'en-US'; u.rate = 0.9; speechSynthesis.speak(u);
+    var n = ++sayN, btn = root && root.querySelector('.dr-listen');
+    function on(v) {
+      if (n !== sayN || !btn) return;
+      btn.classList.toggle('on', v); btn.querySelector('span').textContent = v ? '읽어 주는 중' : '듣기';
     }
-    if (!c.au) return speak();
+    function speak() {
+      if (n !== sayN || !('speechSynthesis' in window)) return on(false);
+      speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(c.w); u.lang = SPEECH[c.l] || 'en-US'; u.rate = 0.9;
+      u.onend = u.onerror = function () { on(false); }; on(true); speechSynthesis.speak(u);
+    }
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
     if (player) player.pause();
-    player = new Audio(c.au); player.play().catch(speak);
+    if (!c.au) return speak();
+    if (!player) player = new Audio();
+    player.onended = function () { on(false); };
+    player.src = c.au; on(true);
+    var pr = player.play(); if (pr && pr.catch) pr.catch(speak);
+  }
+  function hush() { sayN++; if (player) player.pause(); if ('speechSynthesis' in window) speechSynthesis.cancel(); }
+  function flip() { S.flip = true; S.shown++; render(); }
+
+  // 판정: 1은 오른쪽(알았어요), -1은 왼쪽(몰랐어요). 보던 카드를 복제해 날려 보내고 다음 카드는 바로 그린다.
+  function judge(act, dir) {
+    var it = S.queue[0], fc = root.querySelector('.dr-fc.swipe'), ghost = null;
+    if (fc) {
+      ghost = fc.cloneNode(true); ghost.classList.remove('swipe', 'back'); ghost.classList.add('fly'); ghost.removeAttribute('tabindex');
+      ghost.style.transform = fc.style.transform || ''; stamp(ghost, dir * 80);
+    }
+    S.queue.shift(); S.flip = false;
+    if (act === 'no') { if (it.first === null) it.first = false; it.wrong++; it.streak = 0; later(it); }
+    else if (it.first === null) { it.first = true; it.done = true; }
+    else if (it.streak < 1) { it.streak++; later(it); }
+    else it.done = true;
+    render();
+    var host = root.querySelector('.dr-fc.tap');
+    if (!ghost || !host || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    host.parentNode.insertBefore(ghost, host);
+    ghost.getBoundingClientRect();
+    ghost.style.transform = 'translateX(' + (dir * 130) + '%) rotate(' + (dir * 20) + 'deg)'; ghost.style.opacity = '0';
+    setTimeout(function () { if (ghost.parentNode) ghost.parentNode.removeChild(ghost); }, 300);
+  }
+  function stamp(fc, dx) {
+    var a = Math.min(Math.abs(dx) / 80, 1);
+    fc.querySelector('.dr-stamp.yes').style.opacity = dx > 0 ? a : 0;
+    fc.querySelector('.dr-stamp.no').style.opacity = dx < 0 ? a : 0;
+  }
+
+  // 스와이프: 뒷면 카드를 손가락(마우스)으로 끌어 옆으로 넘긴다. 세로 스크롤은 브라우저에 맡긴다(touch-action: pan-y).
+  var drag = null;
+  function onDown(e) {
+    var fc = e.target.closest('.dr-fc.swipe');
+    if (!fc || !S || !S.flip || e.button > 0 || e.target.closest('button')) return;
+    drag = { fc: fc, id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, on: false };
+    fc.classList.remove('back');
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
+  }
+  function onMove(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.on) { if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return; drag.on = true; }
+    drag.dx = dx;
+    drag.fc.style.transform = 'translateX(' + dx + 'px) rotate(' + (dx / 20) + 'deg)';
+    stamp(drag.fc, dx);
+  }
+  function onUp(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var d = drag; drag = null;
+    window.removeEventListener('pointermove', onMove);
+    window.removeEventListener('pointerup', onUp);
+    window.removeEventListener('pointercancel', onUp);
+    var limit = Math.min(100, d.fc.offsetWidth * 0.25);
+    if (e.type === 'pointerup' && Math.abs(d.dx) >= limit) return judge(d.dx > 0 ? 'yes' : 'no', d.dx > 0 ? 1 : -1);
+    d.fc.classList.add('back'); d.fc.style.transform = ''; stamp(d.fc, 0);
   }
 
   function onClick(e) {
@@ -139,15 +222,8 @@
     var act = b.getAttribute('data-act'), it = S.queue[0];
     if (act === 'close') return close();
     if (act === 'say') return say(it.c);
-    if (act === 'flip') { S.flip = true; S.shown++; return render(); }
-    if (act === 'yes' || act === 'no') {
-      S.queue.shift(); S.flip = false;
-      if (act === 'no') { if (it.first === null) it.first = false; it.wrong++; it.streak = 0; later(it); }
-      else if (it.first === null) { it.first = true; it.done = true; }
-      else if (it.streak < 1) { it.streak++; later(it); }
-      else it.done = true;
-      return render();
-    }
+    if (act === 'flip') return flip();
+    if (act === 'yes' || act === 'no') return judge(act, act === 'yes' ? 1 : -1);
     if (act === 'pick') {
       if (it.pick != null) return;
       it.pick = +b.getAttribute('data-i'); var ok = it.opts[it.pick] === it.c.m; if (it.first === null) it.first = ok; if (!ok) it.wrong++;

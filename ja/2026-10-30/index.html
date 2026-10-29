@@ -273,6 +273,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -457,7 +476,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -968,6 +987,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "霜", "m": "서리", "r": "しも", "ex": "これは「<b><ruby>霜<rt>しも<\/rt><\/ruby><\/b>」と<ruby>呼<rt>よ<\/rt><\/ruby>ばれるもので、<ruby>空気<rt>くうき<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>の<ruby>水<rt>みず<\/rt><\/ruby>が<ruby>氷<rt>こおり<\/rt><\/ruby>に<ruby>変<rt>か<\/rt><\/ruby>わったものです。", "sh": "これは「<b><ruby>霜<rt>しも<\/rt><\/ruby><\/b>」と<ruby>呼<rt>よ<\/rt><\/ruby>ばれるもので、<ruby>空気<rt>くうき<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>の<ruby>水<rt>みず<\/rt><\/ruby>が<ruby>氷<rt>こおり<\/rt><\/ruby>に<ruby>変<rt>か<\/rt><\/ruby>わったものです。", "ek": "이것은 '서리'라고 불리는 것으로, 공기 속의 물이 얼음으로 바뀐 것입니다.", "au": "/ja/2026-10-30/audio/w1.mp3", "alts": ["수증기", "포함하다, 머금다", "지면, 땅바닥", "도망가다, 빠져나가다", "온도", "미끄러지다"]}, {"w": "水蒸気", "m": "수증기", "r": "すいじょうき", "ex": "<ruby>空気<rt>くうき<\/rt><\/ruby>にはいつも、<ruby>目<rt>め<\/rt><\/ruby>には<ruby>見<rt>み<\/rt><\/ruby>えない<b><ruby>水蒸気<rt>すいじょうき<\/rt><\/ruby><\/b>が<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>含<rt>ふく<\/rt><\/ruby>まれています。", "sh": "<ruby>空気<rt>くうき<\/rt><\/ruby>にはいつも、<ruby>目<rt>め<\/rt><\/ruby>には<ruby>見<rt>み<\/rt><\/ruby>えない<b><ruby>水蒸気<rt>すいじょうき<\/rt><\/ruby><\/b>が<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>含<rt>ふく<\/rt><\/ruby>まれています。", "ek": "공기에는 늘 눈에 보이지 않는 수증기가 조금씩 포함되어 있습니다.", "au": "/ja/2026-10-30/audio/w2.mp3", "alts": ["서리", "포함하다, 머금다", "지면, 땅바닥", "도망가다, 빠져나가다", "온도", "미끄러지다"]}, {"w": "含む", "m": "포함하다, 머금다", "r": "ふくむ", "ex": "<ruby>空気<rt>くうき<\/rt><\/ruby>にはいつも、<ruby>目<rt>め<\/rt><\/ruby>には<ruby>見<rt>み<\/rt><\/ruby>えない<b><ruby>水蒸気<rt>すいじょうき<\/rt><\/ruby><\/b>が<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>含<rt>ふく<\/rt><\/ruby>まれています。", "sh": "<ruby>空気<rt>くうき<\/rt><\/ruby>にはいつも、<ruby>目<rt>め<\/rt><\/ruby>には<ruby>見<rt>み<\/rt><\/ruby>えない<b><ruby>水蒸気<rt>すいじょうき<\/rt><\/ruby><\/b>が<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>含<rt>ふく<\/rt><\/ruby>まれています。", "ek": "공기에는 늘 눈에 보이지 않는 수증기가 조금씩 포함되어 있습니다.", "au": "/ja/2026-10-30/audio/w3.mp3", "alts": ["서리", "수증기", "지면, 땅바닥", "도망가다, 빠져나가다", "온도", "미끄러지다"]}, {"w": "地面", "m": "지면, 땅바닥", "r": "じめん", "ex": "<ruby>雲<rt>くも<\/rt><\/ruby>がない<ruby>夜<rt>よる<\/rt><\/ruby>は、<ruby>地面<rt>じめん<\/rt><\/ruby>の<b><ruby>熱<rt>ねつ<\/rt><\/ruby><\/b>が<ruby>空<rt>そら<\/rt><\/ruby>へ<ruby>逃<rt>に<\/rt><\/ruby>げてしまうため、<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>地面<rt>じめん<\/rt><\/ruby>はとても<ruby>冷<rt>つめ<\/rt><\/ruby>たくなります。", "sh": "<ruby>雲<rt>くも<\/rt><\/ruby>がない<ruby>夜<rt>よる<\/rt><\/ruby>は、<ruby>地面<rt>じめん<\/rt><\/ruby>の<b><ruby>熱<rt>ねつ<\/rt><\/ruby><\/b>が<ruby>空<rt>そら<\/rt><\/ruby>へ<ruby>逃<rt>に<\/rt><\/ruby>げてしまうため、<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>地面<rt>じめん<\/rt><\/ruby>はとても<ruby>冷<rt>つめ<\/rt><\/ruby>たくなります。", "ek": "구름이 없는 밤에는 땅의 열이 하늘로 빠져나가 버리기 때문에 아침의 땅은 아주 차가워집니다.", "au": "/ja/2026-10-30/audio/w4.mp3", "alts": ["서리", "수증기", "포함하다, 머금다", "도망가다, 빠져나가다", "온도", "미끄러지다"]}, {"w": "逃げる", "m": "도망가다, 빠져나가다", "r": "にげる", "ex": "<ruby>雲<rt>くも<\/rt><\/ruby>がない<ruby>夜<rt>よる<\/rt><\/ruby>は、<ruby>地面<rt>じめん<\/rt><\/ruby>の<b><ruby>熱<rt>ねつ<\/rt><\/ruby><\/b>が<ruby>空<rt>そら<\/rt><\/ruby>へ<ruby>逃<rt>に<\/rt><\/ruby>げてしまうため、<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>地面<rt>じめん<\/rt><\/ruby>はとても<ruby>冷<rt>つめ<\/rt><\/ruby>たくなります。", "sh": "<ruby>雲<rt>くも<\/rt><\/ruby>がない<ruby>夜<rt>よる<\/rt><\/ruby>は、<ruby>地面<rt>じめん<\/rt><\/ruby>の<b><ruby>熱<rt>ねつ<\/rt><\/ruby><\/b>が<ruby>空<rt>そら<\/rt><\/ruby>へ<ruby>逃<rt>に<\/rt><\/ruby>げてしまうため、<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>地面<rt>じめん<\/rt><\/ruby>はとても<ruby>冷<rt>つめ<\/rt><\/ruby>たくなります。", "ek": "구름이 없는 밤에는 땅의 열이 하늘로 빠져나가 버리기 때문에 아침의 땅은 아주 차가워집니다.", "au": "/ja/2026-10-30/audio/w5.mp3", "alts": ["서리", "수증기", "포함하다, 머금다", "지면, 땅바닥", "온도", "미끄러지다"]}, {"w": "温度", "m": "온도", "r": "おんど", "ex": "<ruby>地面<rt>じめん<\/rt><\/ruby>の<b><ruby>温度<rt>おんど<\/rt><\/ruby><\/b>が0<ruby>度<rt>ど<\/rt><\/ruby>より<ruby>低<rt>ひく<\/rt><\/ruby>くなると、<ruby>水蒸気<rt>すいじょうき<\/rt><\/ruby>が<ruby>小<rt>ちい<\/rt><\/ruby>さな<ruby>氷<rt>こおり<\/rt><\/ruby>のつぶに<ruby>変<rt>か<\/rt><\/ruby>わるのです。", "sh": "<ruby>地面<rt>じめん<\/rt><\/ruby>の<b><ruby>温度<rt>おんど<\/rt><\/ruby><\/b>が0<ruby>度<rt>ど<\/rt><\/ruby>より<ruby>低<rt>ひく<\/rt><\/ruby>くなると、<ruby>水蒸気<rt>すいじょうき<\/rt><\/ruby>が<ruby>小<rt>ちい<\/rt><\/ruby>さな<ruby>氷<rt>こおり<\/rt><\/ruby>のつぶに<ruby>変<rt>か<\/rt><\/ruby>わるのです。", "ek": "땅의 온도가 0도보다 낮아지면 수증기가 작은 얼음 알갱이로 바뀌는 것입니다.", "au": "/ja/2026-10-30/audio/w6.mp3", "alts": ["서리", "수증기", "포함하다, 머금다", "지면, 땅바닥", "도망가다, 빠져나가다", "미끄러지다"]}, {"w": "滑る", "m": "미끄러지다", "r": "すべる", "ex": "<ruby>気温<rt>きおん<\/rt><\/ruby>が3<ruby>度<rt>ど<\/rt><\/ruby>ぐらいでも<ruby>霜<rt>しも<\/rt><\/ruby>が<ruby>降<rt>お<\/rt><\/ruby>りることがあるので、<ruby>朝<rt>あさ<\/rt><\/ruby>は<ruby>道<rt>みち<\/rt><\/ruby>で<ruby>滑<rt>すべ<\/rt><\/ruby>らないように<b><ruby>気<rt>き<\/rt><\/ruby>をつけ<\/b>ましょう。", "sh": "<ruby>気温<rt>きおん<\/rt><\/ruby>が3<ruby>度<rt>ど<\/rt><\/ruby>ぐらいでも<ruby>霜<rt>しも<\/rt><\/ruby>が<ruby>降<rt>お<\/rt><\/ruby>りることがあるので、<ruby>朝<rt>あさ<\/rt><\/ruby>は<ruby>道<rt>みち<\/rt><\/ruby>で<ruby>滑<rt>すべ<\/rt><\/ruby>らないように<b><ruby>気<rt>き<\/rt><\/ruby>をつけ<\/b>ましょう。", "ek": "기온이 3도 정도여도 서리가 내릴 때가 있으니, 아침에는 길에서 미끄러지지 않도록 조심합시다.", "au": "/ja/2026-10-30/audio/w7.mp3", "alts": ["서리", "수증기", "포함하다, 머금다", "지면, 땅바닥", "도망가다, 빠져나가다", "온도"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

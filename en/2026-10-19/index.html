@@ -271,6 +271,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -449,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -961,6 +980,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "nightjar", "m": "쏙독새 (밤에 사냥하는 새)", "ex": "A small brown bird called the <b>nightjar<\/b> flies thousands of kilometers every year between Europe and southern Africa.", "sh": "… called the <b>nightjar<\/b> flies thousands of kilometers …", "ek": "쏙독새라고 불리는 작은 갈색 새는 매년 유럽과 아프리카 남부 사이를 수천 킬로미터 날아간다.", "alts": ["만들어진, 설계된", "기록했다, 촬영했다", "끝부분들 (tip의 복수)", "효율적인", "추진력, 앞으로 미는 힘", "연구 결과 (보통 복수로 씀)"]}, {"w": "designed", "m": "만들어진, 설계된", "ex": "However, a new study suggests that its wings are not perfectly <b>designed<\/b> for such long trips.", "sh": "However, a new study suggests that its wings are not perfectly <b>designed<\/b> for such long trips.", "ek": "하지만 한 새로운 연구는 그 새의 날개가 그렇게 긴 여행에 딱 맞게 만들어진 것은 아니라는 점을 시사한다.", "alts": ["쏙독새 (밤에 사냥하는 새)", "기록했다, 촬영했다", "끝부분들 (tip의 복수)", "효율적인", "추진력, 앞으로 미는 힘", "연구 결과 (보통 복수로 씀)"]}, {"w": "recorded", "m": "기록했다, 촬영했다", "ex": "Researchers at Lund University in Sweden <b>recorded<\/b> the birds as they flew through a wind tunnel at different speeds.", "sh": "… <b>recorded<\/b> the birds as they flew through a wind tunnel …", "ek": "스웨덴 룬드 대학교의 연구자들은 그 새들이 풍동(바람 터널) 안에서 여러 속도로 나는 모습을 기록했다.", "alts": ["쏙독새 (밤에 사냥하는 새)", "만들어진, 설계된", "끝부분들 (tip의 복수)", "효율적인", "추진력, 앞으로 미는 힘", "연구 결과 (보통 복수로 씀)"]}, {"w": "tips", "m": "끝부분들 (tip의 복수)", "ex": "They found that the nightjar's wide wing <b>tips<\/b> help it turn quickly when it hunts insects at night, but they make fast flight less <b>efficient<\/b>.", "sh": "… that the nightjar's wide wing <b>tips<\/b> help it turn quickly …", "ek": "그들은 쏙독새의 넓은 날개 끝이 밤에 곤충을 사냥할 때 빠르게 방향을 바꾸도록 돕지만, 빠른 비행은 덜 효율적으로 만든다는 것을 알아냈다.", "alts": ["쏙독새 (밤에 사냥하는 새)", "만들어진, 설계된", "기록했다, 촬영했다", "효율적인", "추진력, 앞으로 미는 힘", "연구 결과 (보통 복수로 씀)"]}, {"w": "efficient", "m": "효율적인", "ex": "They found that the nightjar's wide wing <b>tips<\/b> help it turn quickly when it hunts insects at night, but they make fast flight less <b>efficient<\/b>.", "sh": "… but they make fast flight less <b>efficient<\/b>.", "ek": "그들은 쏙독새의 넓은 날개 끝이 밤에 곤충을 사냥할 때 빠르게 방향을 바꾸도록 돕지만, 빠른 비행은 덜 효율적으로 만든다는 것을 알아냈다.", "alts": ["쏙독새 (밤에 사냥하는 새)", "만들어진, 설계된", "기록했다, 촬영했다", "끝부분들 (tip의 복수)", "추진력, 앞으로 미는 힘", "연구 결과 (보통 복수로 씀)"]}, {"w": "thrust", "m": "추진력, 앞으로 미는 힘", "ex": "The birds also produce <b>thrust<\/b>, a force that pushes them forward, when they lift their wings up, something scientists had mainly linked to bats and insects.", "sh": "The birds also produce <b>thrust<\/b>, a force that pushes them forward, …", "ek": "그 새들은 날개를 위로 들어 올릴 때도 몸을 앞으로 미는 힘인 추진력을 만들어 내는데, 이는 과학자들이 주로 박쥐와 곤충과 연관 지어 온 것이다.", "alts": ["쏙독새 (밤에 사냥하는 새)", "만들어진, 설계된", "기록했다, 촬영했다", "끝부분들 (tip의 복수)", "효율적인", "연구 결과 (보통 복수로 씀)"]}, {"w": "findings", "m": "연구 결과 (보통 복수로 씀)", "ex": "The team believes that these <b>findings<\/b>, which were published in a science journal last week, could help engineers build better flying robots.", "sh": "… that these <b>findings<\/b>, which were published …", "ek": "연구팀은 지난주 한 과학 학술지에 실린 이 연구 결과가 엔지니어들이 더 나은 비행 로봇을 만드는 데 도움이 될 수 있다고 생각한다.", "alts": ["쏙독새 (밤에 사냥하는 새)", "만들어진, 설계된", "기록했다, 촬영했다", "끝부분들 (tip의 복수)", "효율적인", "추진력, 앞으로 미는 힘"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

@@ -271,6 +271,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -454,7 +473,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -969,6 +988,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "launched", "m": "발사했다 (launch의 과거형)", "ex": "Earlier this week, Japan <b>launched<\/b> a spacecraft on a long trip to Phobos, one of the two small moons of Mars.", "sh": "Earlier this week, Japan <b>launched<\/b> a spacecraft on a long trip to Phobos, one of the two small moons of Mars.", "ek": "이번 주 초, 일본이 화성의 두 작은 위성 중 하나인 포보스로 가는 긴 여행길에 우주선을 발사했다.", "au": "/en/2026-10-25/audio/w1.mp3", "alts": ["시료, 표본", "~인지 (아닌지)", "만들어진, 형성된", "소행성", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "sample", "m": "시료, 표본", "ex": "During that time, it will land on Phobos twice and collect a small <b>sample<\/b> of about ten grams of rock and dust.", "sh": "During that time, it will land on Phobos twice and collect a small <b>sample<\/b> of about ten grams of rock and dust.", "ek": "그동안 우주선은 포보스에 두 번 착륙해 암석과 먼지로 된 약 10그램의 작은 시료를 모을 것이다.", "au": "/en/2026-10-25/audio/w2.mp3", "alts": ["발사했다 (launch의 과거형)", "~인지 (아닌지)", "만들어진, 형성된", "소행성", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "whether", "m": "~인지 (아닌지)", "ex": "Scientists, who have argued about this moon for many years, hope the sample will show <b>whether<\/b> Phobos was <b>formed<\/b> after a giant crash on Mars or was an <b>asteroid<\/b> captured by the planet's <b>gravity<\/b>.", "sh": "… <b>whether<\/b> Phobos was <b>formed<\/b> after a giant crash on Mars …", "ek": "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.", "au": "/en/2026-10-25/audio/w3.mp3", "alts": ["발사했다 (launch의 과거형)", "시료, 표본", "만들어진, 형성된", "소행성", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "formed", "m": "만들어진, 형성된", "ex": "Scientists, who have argued about this moon for many years, hope the sample will show <b>whether<\/b> Phobos was <b>formed<\/b> after a giant crash on Mars or was an <b>asteroid<\/b> captured by the planet's <b>gravity<\/b>.", "sh": "… <b>whether<\/b> Phobos was <b>formed<\/b> after a giant crash on Mars …", "ek": "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.", "au": "/en/2026-10-25/audio/w4.mp3", "alts": ["발사했다 (launch의 과거형)", "시료, 표본", "~인지 (아닌지)", "소행성", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "asteroid", "m": "소행성", "ex": "Scientists, who have argued about this moon for many years, hope the sample will show <b>whether<\/b> Phobos was <b>formed<\/b> after a giant crash on Mars or was an <b>asteroid<\/b> captured by the planet's <b>gravity<\/b>.", "sh": "… or was an <b>asteroid<\/b> captured by the planet's <b>gravity<\/b>.", "ek": "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.", "au": "/en/2026-10-25/audio/w5.mp3", "alts": ["발사했다 (launch의 과거형)", "시료, 표본", "~인지 (아닌지)", "만들어진, 형성된", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "gravity", "m": "중력", "ex": "Scientists, who have argued about this moon for many years, hope the sample will show <b>whether<\/b> Phobos was <b>formed<\/b> after a giant crash on Mars or was an <b>asteroid<\/b> captured by the planet's <b>gravity<\/b>.", "sh": "… or was an <b>asteroid<\/b> captured by the planet's <b>gravity<\/b>.", "ek": "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.", "au": "/en/2026-10-25/audio/w6.mp3", "alts": ["발사했다 (launch의 과거형)", "시료, 표본", "~인지 (아닌지)", "만들어진, 형성된", "소행성", "캡슐 (작은 운반 용기)"]}, {"w": "capsule", "m": "캡슐 (작은 운반 용기)", "ex": "If everything goes well, a small <b>capsule<\/b> carrying the sample will come back to Earth in 2031.", "sh": "If everything goes well, a small <b>capsule<\/b> carrying the sample will come back to Earth in 2031.", "ek": "모든 일이 잘 풀리면, 시료를 실은 작은 캡슐이 2031년에 지구로 돌아올 것이다.", "au": "/en/2026-10-25/audio/w7.mp3", "alts": ["발사했다 (launch의 과거형)", "시료, 표본", "~인지 (아닌지)", "만들어진, 형성된", "소행성", "중력"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

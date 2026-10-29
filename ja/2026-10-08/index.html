@@ -273,6 +273,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -451,7 +470,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -962,6 +981,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "宿題", "m": "숙제", "r": "しゅくだい", "ex": "<ruby>月曜日<rt>げつようび<\/rt><\/ruby>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>数学<rt>すうがく<\/rt><\/ruby>の<b><ruby>宿題<rt>しゅくだい<\/rt><\/ruby><\/b>を<ruby>家<rt>いえ<\/rt><\/ruby>に<b><ruby>忘<rt>わす<\/rt><\/ruby>れました<\/b>。", "sh": "<ruby>月曜日<rt>げつようび<\/rt><\/ruby>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>数学<rt>すうがく<\/rt><\/ruby>の<b><ruby>宿題<rt>しゅくだい<\/rt><\/ruby><\/b>を<ruby>家<rt>いえ<\/rt><\/ruby>に<b><ruby>忘<rt>わす<\/rt><\/ruby>れました<\/b>。", "ek": "월요일 아침, 수학 숙제를 집에 두고 왔습니다.", "alts": ["잊다, 깜빡 두고 오다", "내일", "가르치다, 알려 주다", "가방", "내다, 제출하다", "수학"]}, {"w": "忘れる", "m": "잊다, 깜빡 두고 오다", "r": "わすれる", "ex": "<ruby>月曜日<rt>げつようび<\/rt><\/ruby>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>数学<rt>すうがく<\/rt><\/ruby>の<b><ruby>宿題<rt>しゅくだい<\/rt><\/ruby><\/b>を<ruby>家<rt>いえ<\/rt><\/ruby>に<b><ruby>忘<rt>わす<\/rt><\/ruby>れました<\/b>。", "sh": "<ruby>月曜日<rt>げつようび<\/rt><\/ruby>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>数学<rt>すうがく<\/rt><\/ruby>の<b><ruby>宿題<rt>しゅくだい<\/rt><\/ruby><\/b>を<ruby>家<rt>いえ<\/rt><\/ruby>に<b><ruby>忘<rt>わす<\/rt><\/ruby>れました<\/b>。", "ek": "월요일 아침, 수학 숙제를 집에 두고 왔습니다.", "alts": ["숙제", "내일", "가르치다, 알려 주다", "가방", "내다, 제출하다", "수학"]}, {"w": "明日", "m": "내일", "r": "あした", "ex": "<ruby>先生<rt>せんせい<\/rt><\/ruby>は「わかりました。<b><ruby>明日<rt>あした<\/rt><\/ruby><\/b>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>出<rt>だ<\/rt><\/ruby>してください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "sh": "<ruby>先生<rt>せんせい<\/rt><\/ruby>は「わかりました。<b><ruby>明日<rt>あした<\/rt><\/ruby><\/b>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>出<rt>だ<\/rt><\/ruby>してください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "ek": "선생님은 \"알겠어요. 내일 아침에 내 주세요\"라고 말씀하셨습니다.", "alts": ["숙제", "잊다, 깜빡 두고 오다", "가르치다, 알려 주다", "가방", "내다, 제출하다", "수학"]}, {"w": "教える", "m": "가르치다, 알려 주다", "r": "おしえる", "ex": "<ruby>昼休<rt>ひるやす<\/rt><\/ruby>みに<ruby>友<rt>とも<\/rt><\/ruby>だちが「<ruby>寝<rt>ね<\/rt><\/ruby>る<ruby>前<rt>まえ<\/rt><\/ruby>に、かばんに<ruby>入<rt>い<\/rt><\/ruby>れたほうがいいですよ」と<b><ruby>教<rt>おし<\/rt><\/ruby>えて<\/b>くれました。", "sh": "<ruby>昼休<rt>ひるやす<\/rt><\/ruby>みに<ruby>友<rt>とも<\/rt><\/ruby>だちが「<ruby>寝<rt>ね<\/rt><\/ruby>る<ruby>前<rt>まえ<\/rt><\/ruby>に、かばんに<ruby>入<rt>い<\/rt><\/ruby>れたほうがいいですよ」と<b><ruby>教<rt>おし<\/rt><\/ruby>えて<\/b>くれました。", "ek": "점심시간에 친구가 \"자기 전에 가방에 넣어 두는 게 좋아요\"라고 알려 주었습니다.", "alts": ["숙제", "잊다, 깜빡 두고 오다", "내일", "가방", "내다, 제출하다", "수학"]}, {"w": "かばん", "m": "가방", "ex": "その<ruby>日<rt>ひ<\/rt><\/ruby>の<ruby>夜<rt>よる<\/rt><\/ruby>、<ruby>宿題<rt>しゅくだい<\/rt><\/ruby>をすぐ<b>かばん<\/b>に<ruby>入<rt>い<\/rt><\/ruby>れました。", "sh": "その<ruby>日<rt>ひ<\/rt><\/ruby>の<ruby>夜<rt>よる<\/rt><\/ruby>、<ruby>宿題<rt>しゅくだい<\/rt><\/ruby>をすぐ<b>かばん<\/b>に<ruby>入<rt>い<\/rt><\/ruby>れました。", "ek": "그날 밤, 숙제를 바로 가방에 넣었습니다.", "alts": ["숙제", "잊다, 깜빡 두고 오다", "내일", "가르치다, 알려 주다", "내다, 제출하다", "수학"]}, {"w": "出す", "m": "내다, 제출하다", "r": "だす", "ex": "<ruby>先生<rt>せんせい<\/rt><\/ruby>は「わかりました。<b><ruby>明日<rt>あした<\/rt><\/ruby><\/b>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>出<rt>だ<\/rt><\/ruby>してください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "sh": "<ruby>先生<rt>せんせい<\/rt><\/ruby>は「わかりました。<b><ruby>明日<rt>あした<\/rt><\/ruby><\/b>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>出<rt>だ<\/rt><\/ruby>してください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "ek": "선생님은 \"알겠어요. 내일 아침에 내 주세요\"라고 말씀하셨습니다.", "alts": ["숙제", "잊다, 깜빡 두고 오다", "내일", "가르치다, 알려 주다", "가방", "수학"]}, {"w": "数学", "m": "수학", "r": "すうがく", "ex": "<ruby>月曜日<rt>げつようび<\/rt><\/ruby>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>数学<rt>すうがく<\/rt><\/ruby>の<b><ruby>宿題<rt>しゅくだい<\/rt><\/ruby><\/b>を<ruby>家<rt>いえ<\/rt><\/ruby>に<b><ruby>忘<rt>わす<\/rt><\/ruby>れました<\/b>。", "sh": "<ruby>月曜日<rt>げつようび<\/rt><\/ruby>の<ruby>朝<rt>あさ<\/rt><\/ruby>、<ruby>数学<rt>すうがく<\/rt><\/ruby>の<b><ruby>宿題<rt>しゅくだい<\/rt><\/ruby><\/b>を<ruby>家<rt>いえ<\/rt><\/ruby>に<b><ruby>忘<rt>わす<\/rt><\/ruby>れました<\/b>。", "ek": "월요일 아침, 수학 숙제를 집에 두고 왔습니다.", "alts": ["숙제", "잊다, 깜빡 두고 오다", "내일", "가르치다, 알려 주다", "가방", "내다, 제출하다"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

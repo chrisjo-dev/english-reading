@@ -273,6 +273,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -450,7 +469,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -961,6 +980,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "手紙", "m": "편지", "r": "てがみ", "ex": "きのうの<ruby>夜<rt>よる<\/rt><\/ruby>、<ruby>友<rt>とも<\/rt><\/ruby>だちに<b><ruby>手紙<rt>てがみ<\/rt><\/ruby><\/b>を<ruby>書<rt>か<\/rt><\/ruby>きました。", "sh": "きのうの<ruby>夜<rt>よる<\/rt><\/ruby>、<ruby>友<rt>とも<\/rt><\/ruby>だちに<b><ruby>手紙<rt>てがみ<\/rt><\/ruby><\/b>を<ruby>書<rt>か<\/rt><\/ruby>きました。", "ek": "어젯밤에 친구에게 편지를 썼습니다.", "au": "/ja/2026-10-26/audio/w1.mp3", "alts": ["살다(거주하다)", "편지지", "시간이 걸리다", "우표", "답장, 대답"]}, {"w": "住む", "m": "살다(거주하다)", "r": "すむ", "ex": "<ruby>友<rt>とも<\/rt><\/ruby>だちは<ruby>去年<rt>きょねん<\/rt><\/ruby>から<ruby>大阪<rt>おおさか<\/rt><\/ruby>に<b><ruby>住<rt>す<\/rt><\/ruby>んで<\/b>います。", "sh": "<ruby>友<rt>とも<\/rt><\/ruby>だちは<ruby>去年<rt>きょねん<\/rt><\/ruby>から<ruby>大阪<rt>おおさか<\/rt><\/ruby>に<b><ruby>住<rt>す<\/rt><\/ruby>んで<\/b>います。", "ek": "친구는 작년부터 오사카에 살고 있습니다.", "au": "/ja/2026-10-26/audio/w2.mp3", "alts": ["편지", "편지지", "시간이 걸리다", "우표", "답장, 대답"]}, {"w": "便箋", "m": "편지지", "r": "びんせん", "ex": "かわいい<b><ruby>便箋<rt>びんせん<\/rt><\/ruby><\/b>に、<ruby>最近<rt>さいきん<\/rt><\/ruby>のことを<ruby>書<rt>か<\/rt><\/ruby>きました。", "sh": "かわいい<b><ruby>便箋<rt>びんせん<\/rt><\/ruby><\/b>に、<ruby>最近<rt>さいきん<\/rt><\/ruby>のことを<ruby>書<rt>か<\/rt><\/ruby>きました。", "ek": "귀여운 편지지에 요즘 있었던 일을 썼습니다.", "au": "/ja/2026-10-26/audio/w3.mp3", "alts": ["편지", "살다(거주하다)", "시간이 걸리다", "우표", "답장, 대답"]}, {"w": "時間がかかる", "m": "시간이 걸리다", "r": "じかんがかかる", "ex": "メールより<b><ruby>時間<rt>じかん<\/rt><\/ruby>がかかります<\/b>が、<ruby>手<rt>て<\/rt><\/ruby>で<ruby>書<rt>か<\/rt><\/ruby>くのが<ruby>好<rt>す<\/rt><\/ruby>きです。", "sh": "メールより<b><ruby>時間<rt>じかん<\/rt><\/ruby>がかかります<\/b>が、<ruby>手<rt>て<\/rt><\/ruby>で<ruby>書<rt>か<\/rt><\/ruby>くのが<ruby>好<rt>す<\/rt><\/ruby>きです。", "ek": "메일보다 시간이 걸리지만, 손으로 쓰는 것을 좋아합니다.", "au": "/ja/2026-10-26/audio/w4.mp3", "alts": ["편지", "살다(거주하다)", "편지지", "우표", "답장, 대답"]}, {"w": "切手", "m": "우표", "r": "きって", "ex": "<ruby>今朝<rt>けさ<\/rt><\/ruby>、<ruby>郵便局<rt>ゆうびんきょく<\/rt><\/ruby>で110<ruby>円<rt>えん<\/rt><\/ruby>の<b><ruby>切手<rt>きって<\/rt><\/ruby><\/b>を<ruby>買<rt>か<\/rt><\/ruby>いました。", "sh": "<ruby>今朝<rt>けさ<\/rt><\/ruby>、<ruby>郵便局<rt>ゆうびんきょく<\/rt><\/ruby>で110<ruby>円<rt>えん<\/rt><\/ruby>の<b><ruby>切手<rt>きって<\/rt><\/ruby><\/b>を<ruby>買<rt>か<\/rt><\/ruby>いました。", "ek": "오늘 아침 우체국에서 110엔짜리 우표를 샀습니다.", "au": "/ja/2026-10-26/audio/w5.mp3", "alts": ["편지", "살다(거주하다)", "편지지", "시간이 걸리다", "답장, 대답"]}, {"w": "返事", "m": "답장, 대답", "r": "へんじ", "ex": "<ruby>友<rt>とも<\/rt><\/ruby>だちの<b><ruby>返事<rt>へんじ<\/rt><\/ruby><\/b>が、<ruby>今<rt>いま<\/rt><\/ruby>から<ruby>楽<rt>たの<\/rt><\/ruby>しみです。", "sh": "<ruby>友<rt>とも<\/rt><\/ruby>だちの<b><ruby>返事<rt>へんじ<\/rt><\/ruby><\/b>が、<ruby>今<rt>いま<\/rt><\/ruby>から<ruby>楽<rt>たの<\/rt><\/ruby>しみです。", "ek": "친구의 답장이 벌써부터 기대됩니다.", "au": "/ja/2026-10-26/audio/w6.mp3", "alts": ["편지", "살다(거주하다)", "편지지", "시간이 걸리다", "우표"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

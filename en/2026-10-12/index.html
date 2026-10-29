@@ -271,6 +271,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -448,7 +467,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -963,6 +982,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "exact", "m": "정확한", "ex": "Most of us check the time on our phones, but the most <b>exact<\/b> clocks in the world work in a very different way.", "sh": "Most of us check the time on our phones, but the most <b>exact<\/b> clocks in the world work in a very different way.", "ek": "우리 대부분은 휴대폰으로 시간을 확인하지만, 세계에서 가장 정확한 시계들은 아주 다른 방식으로 작동한다.", "alts": ["(원자)핵", "결정, 결정체", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "정확한", "개선하다, 더 좋게 만들다"]}, {"w": "nucleus", "m": "(원자)핵", "ex": "Earlier this month, scientists in Vienna reported that they had built a new kind of clock that uses the center of an atom, called the <b>nucleus<\/b>.", "sh": "… that uses the center of an atom, called the <b>nucleus<\/b>.", "ek": "이달 초, 빈의 과학자들은 원자의 중심, 즉 원자핵을 이용하는 새로운 종류의 시계를 만들었다고 발표했다.", "alts": ["정확한", "결정, 결정체", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "정확한", "개선하다, 더 좋게 만들다"]}, {"w": "crystal", "m": "결정, 결정체", "ex": "A laser shines on a special <b>crystal<\/b> that was made by the team, and the clock <b>corrects<\/b> the laser by itself when it goes <b>off track<\/b>.", "sh": "… on a special <b>crystal<\/b> that was made by the team, …", "ek": "레이저가 연구팀이 만든 특수한 결정에 빛을 비추고, 레이저가 어긋나면 시계가 스스로 레이저를 바로잡는다.", "alts": ["정확한", "(원자)핵", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "정확한", "개선하다, 더 좋게 만들다"]}, {"w": "correct", "m": "바로잡다, 고치다 (동사)", "ex": "A laser shines on a special <b>crystal<\/b> that was made by the team, and the clock <b>corrects<\/b> the laser by itself when it goes <b>off track<\/b>.", "sh": "… and the clock <b>corrects<\/b> the laser by itself …", "ek": "레이저가 연구팀이 만든 특수한 결정에 빛을 비추고, 레이저가 어긋나면 시계가 스스로 레이저를 바로잡는다.", "alts": ["정확한", "(원자)핵", "결정, 결정체", "궤도를 벗어난, 어긋난", "정확한", "개선하다, 더 좋게 만들다"]}, {"w": "off track", "m": "궤도를 벗어난, 어긋난", "ex": "A laser shines on a special <b>crystal<\/b> that was made by the team, and the clock <b>corrects<\/b> the laser by itself when it goes <b>off track<\/b>.", "sh": "… by itself when it goes <b>off track<\/b>.", "ek": "레이저가 연구팀이 만든 특수한 결정에 빛을 비추고, 레이저가 어긋나면 시계가 스스로 레이저를 바로잡는다.", "alts": ["정확한", "(원자)핵", "결정, 결정체", "바로잡다, 고치다 (동사)", "정확한", "개선하다, 더 좋게 만들다"]}, {"w": "accurate", "m": "정확한", "ex": "It is not yet as <b>accurate<\/b> as the best atomic clocks, but the researchers plan to <b>improve<\/b> it with stronger lasers and better crystals.", "sh": "It is not yet as <b>accurate<\/b> as the best atomic clocks, …", "ek": "아직 최고의 원자시계만큼 정확하지는 않지만, 연구자들은 더 강한 레이저와 더 좋은 결정으로 시계를 개선할 계획이다.", "alts": ["정확한", "(원자)핵", "결정, 결정체", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "개선하다, 더 좋게 만들다"]}, {"w": "improve", "m": "개선하다, 더 좋게 만들다", "ex": "It is not yet as <b>accurate<\/b> as the best atomic clocks, but the researchers plan to <b>improve<\/b> it with stronger lasers and better crystals.", "sh": "… to <b>improve<\/b> it with stronger lasers and better crystals.", "ek": "아직 최고의 원자시계만큼 정확하지는 않지만, 연구자들은 더 강한 레이저와 더 좋은 결정으로 시계를 개선할 계획이다.", "alts": ["정확한", "(원자)핵", "결정, 결정체", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "정확한"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

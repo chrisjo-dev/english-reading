@@ -271,6 +271,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -447,7 +466,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -959,6 +978,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "Nobel", "m": "노벨 (상)", "ex": "Three scientists won the 2026 <b>Nobel<\/b> Prize in Physiology or Medicine for a technique that uses light to control individual brain cells.", "sh": "… the 2026 <b>Nobel<\/b> Prize in Physiology or Medicine …", "ek": "세 과학자가 빛으로 개별 뇌 세포를 제어하는 기술로 2026년 노벨 생리의학상을 수상했다.", "alts": ["광유전학", "단백질들 (protein의 복수)", "정밀함, 정확도", "켜고 끄다, 전환하다", "이끌다, 유발하다"]}, {"w": "optogenetics", "m": "광유전학", "ex": "Their method, called <b>optogenetics<\/b>, works by inserting light-sensitive <b>proteins<\/b> found in algae directly into nerve cells.", "sh": "… called <b>optogenetics<\/b>, works by inserting …", "ek": "광유전학이라고 불리는 이 방법은 조류(藻類)에서 발견된 빛에 반응하는 단백질을 신경 세포 안에 직접 삽입하는 방식으로 작동한다.", "alts": ["노벨 (상)", "단백질들 (protein의 복수)", "정밀함, 정확도", "켜고 끄다, 전환하다", "이끌다, 유발하다"]}, {"w": "proteins", "m": "단백질들 (protein의 복수)", "ex": "Their method, called <b>optogenetics<\/b>, works by inserting light-sensitive <b>proteins<\/b> found in algae directly into nerve cells.", "sh": "… light-sensitive <b>proteins<\/b> found in algae …", "ek": "광유전학이라고 불리는 이 방법은 조류(藻類)에서 발견된 빛에 반응하는 단백질을 신경 세포 안에 직접 삽입하는 방식으로 작동한다.", "alts": ["노벨 (상)", "광유전학", "정밀함, 정확도", "켜고 끄다, 전환하다", "이끌다, 유발하다"]}, {"w": "precision", "m": "정밀함, 정확도", "ex": "This lets researchers <b>switch<\/b> a single nerve cell on or off with great <b>precision<\/b>, something that was simply not possible with earlier tools.", "sh": "… with great <b>precision<\/b>, something that was simply not possible …", "ek": "덕분에 연구자들은 단일 신경 세포를 매우 정밀하게 켜고 끌 수 있게 됐으며, 이는 기존 도구로는 불가능했던 일이다.", "alts": ["노벨 (상)", "광유전학", "단백질들 (protein의 복수)", "켜고 끄다, 전환하다", "이끌다, 유발하다"]}, {"w": "switch", "m": "켜고 끄다, 전환하다", "ex": "This lets researchers <b>switch<\/b> a single nerve cell on or off with great <b>precision<\/b>, something that was simply not possible with earlier tools.", "sh": "… <b>switch<\/b> a single nerve cell on or off …", "ek": "덕분에 연구자들은 단일 신경 세포를 매우 정밀하게 켜고 끌 수 있게 됐으며, 이는 기존 도구로는 불가능했던 일이다.", "alts": ["노벨 (상)", "광유전학", "단백질들 (protein의 복수)", "정밀함, 정확도", "이끌다, 유발하다"]}, {"w": "drive", "m": "이끌다, 유발하다", "ex": "Optogenetics is now used in laboratories around the world to study how networks of brain cells <b>drive<\/b> behaviour, memory, and the feeling of pain.", "sh": "… how networks of brain cells <b>drive<\/b> behaviour, memory, …", "ek": "광유전학은 현재 전 세계 연구실에서 뇌 세포 네트워크가 행동, 기억, 통증 감각을 어떻게 유발하는지 연구하는 데 활용되고 있다.", "alts": ["노벨 (상)", "광유전학", "단백질들 (protein의 복수)", "정밀함, 정확도", "켜고 끄다, 전환하다"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

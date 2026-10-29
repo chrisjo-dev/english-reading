@@ -271,6 +271,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -455,7 +474,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -970,6 +989,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "pop-up", "m": "펼치면 그림이 튀어나오는", "ex": "It is the world's largest <b>pop-up<\/b> book, and when it is open, it <b>measures<\/b> thirty-one feet by twenty feet and <b>weighs<\/b> more than eighteen hundred pounds.", "sh": "… <b>pop-up<\/b> book, and when it is open, …", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w1.mp3", "alts": ["크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "measures", "m": "크기가 ~이다 (measure + -s)", "ex": "It is the world's largest <b>pop-up<\/b> book, and when it is open, it <b>measures<\/b> thirty-one feet by twenty feet and <b>weighs<\/b> more than eighteen hundred pounds.", "sh": "… it <b>measures<\/b> thirty-one feet by twenty feet …", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w2.mp3", "alts": ["펼치면 그림이 튀어나오는", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "weighs", "m": "무게가 ~이다 (weigh + -s)", "ex": "It is the world's largest <b>pop-up<\/b> book, and when it is open, it <b>measures<\/b> thirty-one feet by twenty feet and <b>weighs<\/b> more than eighteen hundred pounds.", "sh": "… and <b>weighs<\/b> more than eighteen hundred pounds.", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w3.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "celebrate", "m": "기념하다, 축하하다", "ex": "The book was <b>designed<\/b> by a local artist, Daniel González, who worked with a paper engineer, and it was made to <b>celebrate<\/b> the library's one hundredth birthday.", "sh": "… to <b>celebrate<\/b> the library's one hundredth birthday.", "ek": "이 책은 지역 예술가 다니엘 곤살레스가 종이 공학자와 함께 디자인했으며, 도서관의 100번째 생일을 기념하기 위해 만들어졌다.", "au": "/en/2026-10-28/audio/w4.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "sections", "m": "부분들, 구역들 (section의 복수)", "ex": "The finished book was too large for the library's doors, so it was built in smaller <b>sections<\/b> and put together inside the hall.", "sh": "… in smaller <b>sections<\/b> and put together …", "ek": "완성된 책은 도서관 문을 통과하기에는 너무 커서, 더 작은 부분들로 나누어 만든 뒤 홀 안에서 조립했다.", "au": "/en/2026-10-28/audio/w5.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "설렘, 신남", "전시"]}, {"w": "excitement", "m": "설렘, 신남", "ex": "Its pictures, which show famous places in the city and the library's long history, are meant to remind people of the <b>excitement<\/b> they felt as children when they opened a pop-up book.", "sh": "… of the <b>excitement<\/b> they felt as children …", "ek": "도시의 유명한 장소들과 도서관의 긴 역사를 보여 주는 이 책의 그림들은, 사람들이 어린 시절 팝업북을 펼칠 때 느꼈던 설렘을 떠올리게 하려는 것이다.", "au": "/en/2026-10-28/audio/w6.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "전시"]}, {"w": "display", "m": "전시", "ex": "The book will stay on <b>display<\/b> until the end of November, so there is still time to see it.", "sh": "The book will stay on <b>display<\/b> until the end of November, so there is still time to see it.", "ek": "이 책은 11월 말까지 전시되니, 아직 볼 시간이 있다.", "au": "/en/2026-10-28/audio/w7.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>

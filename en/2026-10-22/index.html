@@ -271,6 +271,25 @@
   .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
   .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
   .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
   .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
   .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
   .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
@@ -449,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="4">
+  <section class="card dr-card" id="drill" data-v="5">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -961,6 +980,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "deliveries", "m": "배송들 (delivery의 복수)", "ex": "Amazon hopes to make this normal in Tallahassee, where it plans to start drone <b>deliveries<\/b> in mid-November if a building permit is approved in time.", "sh": "… to start drone <b>deliveries<\/b> in mid-November …", "ek": "아마존은 탤러해시에서 이것을 일상적인 일로 만들고 싶어 하는데, 건축 허가가 제때 승인되면 11월 중순에 드론 배송을 시작할 계획이다.", "alts": ["창고, 물류 센터", "무게가 ~이다 (weigh + -s)", "지지자들, 찬성하는 사람들", "비교했다 (compare A to B: A를 B에 비유하다)", "우려, 걱정 (concern의 복수)", "동네들, 지역들"]}, {"w": "warehouse", "m": "창고, 물류 센터", "ex": "Up to twenty-one drones will fly from a <b>warehouse<\/b> in the city, and each one can carry a package that <b>weighs<\/b> up to five pounds to homes within seven and a half miles.", "sh": "… from a <b>warehouse<\/b> in the city, and each one can carry …", "ek": "최대 21대의 드론이 시내의 한 물류 창고에서 날아오를 예정이며, 각 드론은 무게가 최대 5파운드인 소포 하나를 7.5마일 이내의 집까지 실어 나를 수 있다.", "alts": ["배송들 (delivery의 복수)", "무게가 ~이다 (weigh + -s)", "지지자들, 찬성하는 사람들", "비교했다 (compare A to B: A를 B에 비유하다)", "우려, 걱정 (concern의 복수)", "동네들, 지역들"]}, {"w": "weighs", "m": "무게가 ~이다 (weigh + -s)", "ex": "Up to twenty-one drones will fly from a <b>warehouse<\/b> in the city, and each one can carry a package that <b>weighs<\/b> up to five pounds to homes within seven and a half miles.", "sh": "… that <b>weighs<\/b> up to five pounds to homes …", "ek": "최대 21대의 드론이 시내의 한 물류 창고에서 날아오를 예정이며, 각 드론은 무게가 최대 5파운드인 소포 하나를 7.5마일 이내의 집까지 실어 나를 수 있다.", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "지지자들, 찬성하는 사람들", "비교했다 (compare A to B: A를 B에 비유하다)", "우려, 걱정 (concern의 복수)", "동네들, 지역들"]}, {"w": "supporters", "m": "지지자들, 찬성하는 사람들", "ex": "<b>Supporters<\/b> say the service could save people a trip to the store, since some orders may arrive in as little as thirty minutes.", "sh": "<b>Supporters<\/b> say the service could save people …", "ek": "찬성하는 사람들은 일부 주문이 빠르면 30분 만에 도착할 수 있기 때문에, 이 서비스가 사람들이 가게에 다녀오는 수고를 덜어 줄 수 있다고 말한다.", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "무게가 ~이다 (weigh + -s)", "비교했다 (compare A to B: A를 B에 비유하다)", "우려, 걱정 (concern의 복수)", "동네들, 지역들"]}, {"w": "compared", "m": "비교했다 (compare A to B: A를 B에 비유하다)", "ex": "However, the drones, which drop each package from about twelve feet above the ground, make a noise that a company manager himself <b>compared<\/b> to a vacuum cleaner or a lawn mower.", "sh": "… that a company manager himself <b>compared<\/b> to a vacuum cleaner or a lawn mower.", "ek": "하지만 각 소포를 지상 약 12피트 높이에서 떨어뜨리는 이 드론들은, 회사 관계자조차 진공청소기나 잔디 깎는 기계에 비유한 소음을 낸다.", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "무게가 ~이다 (weigh + -s)", "지지자들, 찬성하는 사람들", "우려, 걱정 (concern의 복수)", "동네들, 지역들"]}, {"w": "concerns", "m": "우려, 걱정 (concern의 복수)", "ex": "A city official has also raised <b>concerns<\/b> that the city's thick tree cover could make many <b>neighborhoods<\/b> hard to serve, which means the service may not reach everyone.", "sh": "… has also raised <b>concerns<\/b> that the city's thick tree cover …", "ek": "한 시 관계자는 또한 도시의 울창한 나무들 때문에 많은 동네에 배송하기 어려울 수 있다는 우려를 제기했는데, 이는 이 서비스가 모든 사람에게 닿지 않을 수도 있다는 뜻이다.", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "무게가 ~이다 (weigh + -s)", "지지자들, 찬성하는 사람들", "비교했다 (compare A to B: A를 B에 비유하다)", "동네들, 지역들"]}, {"w": "neighborhoods", "m": "동네들, 지역들", "ex": "A city official has also raised <b>concerns<\/b> that the city's thick tree cover could make many <b>neighborhoods<\/b> hard to serve, which means the service may not reach everyone.", "sh": "… could make many <b>neighborhoods<\/b> hard to serve, …", "ek": "한 시 관계자는 또한 도시의 울창한 나무들 때문에 많은 동네에 배송하기 어려울 수 있다는 우려를 제기했는데, 이는 이 서비스가 모든 사람에게 닿지 않을 수도 있다는 뜻이다.", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "무게가 ~이다 (weigh + -s)", "지지자들, 찬성하는 사람들", "비교했다 (compare A to B: A를 B에 비유하다)", "우려, 걱정 (concern의 복수)"]}]</script>
-<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
+<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
 </body>
 </html>
