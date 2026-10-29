@@ -1,0 +1,431 @@
+{
+  "date": "2026-10-30",
+  "category": "science",
+  "topic": "단풍의 과학",
+  "title_ko": "가을 잎은 왜 물들까",
+  "headline": "Warum werden Blätter bunt?",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "sentences": [
+    {
+      "en": "Im Herbst färben sich die **Blätter** vieler Bäume gelb, orange oder rot, bevor sie schließlich auf den Boden fallen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Im Herbst",
+          "가을에는"
+        ],
+        [
+          "färben sich",
+          "물듭니다"
+        ],
+        [
+          "die **Blätter** vieler Bäume",
+          "많은 나무의 잎이"
+        ],
+        [
+          "gelb, orange oder rot,",
+          "노랑, 주황 또는 빨강으로"
+        ],
+        [
+          "bevor sie schließlich",
+          "그것들이 마침내 ~하기 전에"
+        ],
+        [
+          "auf den Boden fallen.",
+          "땅에 떨어지기"
+        ]
+      ]
+    },
+    {
+      "en": "Im Sommer sind die Blätter grün, weil sie viel **Chlorophyll** enthalten, das die Pflanze für die Photosynthese braucht.",
+      "b2": false,
+      "chunks": [
+        [
+          "Im Sommer",
+          "여름에는"
+        ],
+        [
+          "sind die Blätter grün,",
+          "잎이 초록색입니다"
+        ],
+        [
+          "weil sie viel **Chlorophyll** enthalten,",
+          "엽록소를 많이 가지고 있기 때문에"
+        ],
+        [
+          "das die Pflanze",
+          "그것을 식물은"
+        ],
+        [
+          "für die Photosynthese braucht.",
+          "광합성에 필요로 합니다"
+        ]
+      ]
+    },
+    {
+      "en": "Wenn die Tage kürzer und die Nächte kälter werden, baut der Baum das Chlorophyll ab und speichert die wertvollen **Nährstoffe** im Holz.",
+      "b2": false,
+      "chunks": [
+        [
+          "Wenn die Tage kürzer",
+          "낮이 더 짧아지고"
+        ],
+        [
+          "und die Nächte kälter werden,",
+          "밤이 더 추워지면"
+        ],
+        [
+          "baut der Baum",
+          "나무는"
+        ],
+        [
+          "das Chlorophyll ab",
+          "엽록소를 분해합니다"
+        ],
+        [
+          "und speichert",
+          "그리고 저장합니다"
+        ],
+        [
+          "die wertvollen **Nährstoffe**",
+          "소중한 영양분을"
+        ],
+        [
+          "im Holz.",
+          "줄기와 가지 속에"
+        ]
+      ]
+    },
+    {
+      "en": "Dadurch werden die schon im Sommer im Blatt vorhandenen gelben und orangefarbenen **Farbstoffe** für unsere Augen sichtbar.",
+      "b2": true,
+      "chunks": [
+        [
+          "Dadurch werden",
+          "그 결과 ~게 됩니다"
+        ],
+        [
+          "die schon im Sommer im Blatt vorhandenen",
+          "이미 여름에 잎 속에 있던"
+        ],
+        [
+          "gelben und orangefarbenen **Farbstoffe**",
+          "노란색과 주황색 색소가"
+        ],
+        [
+          "für unsere Augen sichtbar.",
+          "우리 눈에 보이게"
+        ]
+      ]
+    },
+    {
+      "en": "Die rote Farbe entsteht dagegen erst im Herbst, wenn sich nach sonnigen Tagen und kühlen Nächten viel **Zucker** im Blatt sammelt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Die rote Farbe",
+          "빨간색은"
+        ],
+        [
+          "entsteht dagegen",
+          "반면에 생겨납니다"
+        ],
+        [
+          "erst im Herbst,",
+          "가을이 되어서야"
+        ],
+        [
+          "wenn sich",
+          "~할 때"
+        ],
+        [
+          "nach sonnigen Tagen und kühlen Nächten",
+          "맑은 낮과 서늘한 밤을 지나며"
+        ],
+        [
+          "viel **Zucker** im Blatt sammelt.",
+          "잎 속에 당분이 많이 모일"
+        ]
+      ]
+    },
+    {
+      "en": "Wenn die Bäume ihre Blätter im Winter behalten würden, könnten sie bei gefrorenem Boden zu viel Wasser verlieren und **austrocknen**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Wenn die Bäume",
+          "만약 나무들이"
+        ],
+        [
+          "ihre Blätter im Winter",
+          "겨울에도 잎을"
+        ],
+        [
+          "behalten würden,",
+          "계속 달고 있다면"
+        ],
+        [
+          "könnten sie",
+          "그들은 ~할 수도 있습니다"
+        ],
+        [
+          "bei gefrorenem Boden",
+          "땅이 얼어 있을 때"
+        ],
+        [
+          "zu viel Wasser verlieren",
+          "물을 너무 많이 잃고"
+        ],
+        [
+          "und **austrocknen**.",
+          "말라 버릴"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Blatt",
+      "잎 (복수 Blätter)"
+    ],
+    [
+      "Chlorophyll",
+      "엽록소"
+    ],
+    [
+      "Photosynthese",
+      "광합성"
+    ],
+    [
+      "Nährstoff",
+      "영양분"
+    ],
+    [
+      "Farbstoff",
+      "색소"
+    ],
+    [
+      "Zucker",
+      "당, 설탕"
+    ],
+    [
+      "austrocknen",
+      "말라 버리다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Partizipialattribut — 관사와 명사 사이의 긴 수식어",
+      "body": "`die schon im Sommer im Blatt vorhandenen ... Farbstoffe`는 관사 `die`와 명사 `Farbstoffe` 사이에 분사구가 들어간 구조예요. 관계절로 풀면 `die Farbstoffe, die schon im Sommer im Blatt vorhanden sind`(이미 여름에 잎 속에 있던 색소)입니다. 관사를 보면 일단 명사까지 건너뛰어 주어를 찾고, 그다음 가운데 수식어를 읽으면 쉬워요."
+    },
+    {
+      "title": "Konjunktiv II — würden / könnten (현재 사실과 반대되는 가정)",
+      "body": "`Wenn die Bäume ihre Blätter im Winter behalten würden, könnten sie ... austrocknen`은 '만약 나무가 겨울에 잎을 달고 있다면 말라 버릴 수도 있을 것이다'라는 가정입니다. 실제로는 잎을 떨어뜨리기 때문에 접속법 2식을 써요. wenn절에서는 `würden`이 맨 끝, 주문장에서는 `könnten`이 첫 자리(wenn절 바로 뒤)에 옵니다."
+    }
+  ],
+  "answers": [
+    "가을이 되면 많은 나무의 잎이 노랑, 주황, 빨강으로 물들었다가 마침내 땅에 떨어집니다.",
+    "여름에 잎이 초록색인 것은 식물이 광합성에 필요로 하는 엽록소를 많이 가지고 있기 때문입니다.",
+    "낮이 짧아지고 밤이 추워지면 나무는 엽록소를 분해하고 소중한 영양분을 줄기와 가지 속에 저장합니다.",
+    "그 결과 이미 여름부터 잎 속에 있던 노란색과 주황색 색소가 우리 눈에 보이게 됩니다.",
+    "반면 빨간색은 맑은 낮과 서늘한 밤이 이어지며 잎 속에 당분이 많이 쌓이는 가을에야 비로소 생겨납니다.",
+    "만약 나무가 겨울에도 잎을 달고 있다면, 땅이 얼어 있을 때 물을 너무 많이 잃어 말라 버릴 수도 있을 것입니다."
+  ],
+  "advanced": [
+    {
+      "word": "abbauen",
+      "meaning": "분해하다, 줄이다",
+      "confuse": "abbauen vs. aufbauen: `aufbauen`은 쌓다, 세우다, `abbauen`은 반대로 허물다, 분해하다예요. 분리동사라 `baut ... ab`처럼 갈라집니다.",
+      "example": "Bakterien im Boden **bauen** alte Blätter langsam **ab**.",
+      "example_ko": "흙 속의 박테리아는 낡은 잎을 천천히 분해합니다."
+    },
+    {
+      "word": "speichern",
+      "meaning": "저장하다, 비축하다",
+      "confuse": "speichern vs. sparen: `sparen`은 돈이나 에너지를 아끼다, `speichern`은 데이터나 물질을 저장해 두다예요.",
+      "example": "Kakteen **speichern** Wasser in ihren dicken Stämmen.",
+      "example_ko": "선인장은 두꺼운 줄기에 물을 저장합니다."
+    },
+    {
+      "word": "vorhanden",
+      "meaning": "존재하는, 있는",
+      "confuse": null,
+      "example": "In diesem Wald sind viele seltene Pflanzen **vorhanden**.",
+      "example_ko": "이 숲에는 희귀한 식물이 많이 있습니다."
+    },
+    {
+      "word": "entstehen",
+      "meaning": "생겨나다, 발생하다",
+      "confuse": "entstehen vs. bestehen: `bestehen`은 존재하다, 합격하다라는 뜻이에요. `entstehen`은 새로 생겨나는 과정을 말합니다.",
+      "example": "Ein Regenbogen **entsteht**, wenn Sonnenlicht auf Regentropfen trifft.",
+      "example_ko": "무지개는 햇빛이 빗방울에 닿을 때 생겨납니다."
+    },
+    {
+      "word": "sichtbar",
+      "meaning": "눈에 보이는",
+      "confuse": null,
+      "example": "Bei klarem Himmel sind die Sterne gut **sichtbar**.",
+      "example_ko": "하늘이 맑으면 별이 잘 보입니다."
+    },
+    {
+      "word": "gefrieren",
+      "meaning": "얼다",
+      "confuse": "gefrieren vs. frieren: `frieren`은 사람이 추위를 느끼다(Ich friere), `gefrieren`은 물이나 땅이 얼다예요.",
+      "example": "Im Januar ist der See vollständig **gefroren**.",
+      "example_ko": "1월에는 호수가 완전히 얼어 있습니다."
+    },
+    {
+      "word": "die Verdunstung",
+      "meaning": "증발",
+      "confuse": null,
+      "example": "An heißen Tagen verlieren Pflanzen durch **Verdunstung** viel Wasser.",
+      "example_ko": "더운 날에는 식물이 증발로 물을 많이 잃습니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Im Herbst werden die **Blätter** gelb, orange oder rot und fallen dann.",
+          "chunks": [
+            [
+              "Im Herbst",
+              "가을에는"
+            ],
+            [
+              "werden die **Blätter**",
+              "잎이 됩니다"
+            ],
+            [
+              "gelb, orange oder rot",
+              "노랑, 주황 또는 빨강이"
+            ],
+            [
+              "und fallen dann.",
+              "그리고 그다음 떨어집니다"
+            ]
+          ]
+        },
+        {
+          "en": "Im Sommer sind die Blätter grün, denn sie haben viel **Chlorophyll**.",
+          "chunks": [
+            [
+              "Im Sommer",
+              "여름에는"
+            ],
+            [
+              "sind die Blätter grün,",
+              "잎이 초록색입니다"
+            ],
+            [
+              "denn sie haben",
+              "왜냐하면 그것들은 가지고 있으니까요"
+            ],
+            [
+              "viel **Chlorophyll**.",
+              "많은 엽록소를"
+            ]
+          ]
+        },
+        {
+          "en": "An kurzen, kalten Tagen baut der Baum das Chlorophyll ab und speichert **Nährstoffe**.",
+          "chunks": [
+            [
+              "An kurzen, kalten Tagen",
+              "짧고 추운 날에는"
+            ],
+            [
+              "baut der Baum",
+              "나무가"
+            ],
+            [
+              "das Chlorophyll ab",
+              "엽록소를 분해합니다"
+            ],
+            [
+              "und speichert **Nährstoffe**.",
+              "그리고 영양분을 저장합니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die gelben **Farbstoffe** waren schon im Sommer da, jetzt sieht man sie.",
+          "chunks": [
+            [
+              "Die gelben **Farbstoffe**",
+              "노란 색소는"
+            ],
+            [
+              "waren schon im Sommer da,",
+              "이미 여름에 있었습니다"
+            ],
+            [
+              "jetzt sieht man sie.",
+              "이제 그것이 보입니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die rote Farbe entsteht erst im Herbst durch viel **Zucker** im Blatt.",
+          "chunks": [
+            [
+              "Die rote Farbe",
+              "빨간색은"
+            ],
+            [
+              "entsteht erst im Herbst",
+              "가을에야 생깁니다"
+            ],
+            [
+              "durch viel **Zucker**",
+              "많은 당분 때문에"
+            ],
+            [
+              "im Blatt.",
+              "잎 속의"
+            ]
+          ]
+        },
+        {
+          "en": "Mit Blättern würden die Bäume im Winter zu viel Wasser verlieren und **austrocknen**.",
+          "chunks": [
+            [
+              "Mit Blättern",
+              "잎이 있으면"
+            ],
+            [
+              "würden die Bäume",
+              "나무들은 ~할 것입니다"
+            ],
+            [
+              "im Winter",
+              "겨울에"
+            ],
+            [
+              "zu viel Wasser verlieren",
+              "물을 너무 많이 잃고"
+            ],
+            [
+              "und **austrocknen**.",
+              "말라 버릴"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "가을에는 잎이 노랑, 주황 또는 빨강이 되었다가 떨어집니다.",
+        "여름에는 잎이 초록색입니다. 엽록소가 많기 때문입니다.",
+        "짧고 추운 날에는 나무가 엽록소를 분해하고 영양분을 저장합니다.",
+        "노란 색소는 여름에도 이미 있었지만, 이제야 보입니다.",
+        "빨간색은 잎 속의 많은 당분 때문에 가을에야 생깁니다.",
+        "잎이 있다면 나무는 겨울에 물을 너무 많이 잃고 말라 버릴 것입니다."
+      ]
+    }
+  }
+}
