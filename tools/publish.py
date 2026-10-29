@@ -15,6 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
 import thumb  # noqa: E402
+import vote  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://read.wspace.ai.kr"
@@ -270,6 +271,7 @@ def patch_page(lang, day):
                 "  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }\n"
             )
             page = page.replace("  .sub .note {", SUB_EXTRA + "  .sub .note {", 1)
+    page = vote.apply(page, lang, day)  # 오늘 분야 배지와 주제 반응 카드(#13)
     path.write_text(page, encoding="utf-8")
 
 

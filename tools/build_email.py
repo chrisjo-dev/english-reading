@@ -11,6 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
+import vote  # noqa: E402
 
 SITE = "https://read.wspace.ai.kr"
 BLUE, INK, SUB, MUTED, BG, HL = "#3182f6", "#191f28", "#4e5968", "#8b95a1", "#f2f4f6", "#fff3c4"
@@ -30,7 +31,8 @@ def parse(lang, day):
     words_sec = grab(r'<h2>주요 단어</h2>(.*?)</section>', page)
     src = re.search(r'<p class="src">출처: <a href="([^"]+)"[^>]*>(.*?)</a></p>', page, re.S)
     return {
-        "date": grab(r'<div class="date">(.*?)</div>', page),
+        # 날짜 칸에 붙은 분야 배지(#13)는 빼고 읽는다
+        "date": re.sub(r'\s*<span class="cat[^"]*">.*?</span>', "", grab(r'<div class="date">(.*?)</div>', page)),
         "topic": html.unescape(grab(r'<h1>.*?<em>(.*?)</em>', page)),
         "headline": (re.search(r'<p class="headline"[^>]*>(.*?)</p>', page, re.S) or [None, ""])[1],
         # 본문(중급) 칩만. 기초 칩(chips-a)은 따로 읽는다.
@@ -80,6 +82,13 @@ def build(lang, day, level="b"):
     else:
         url = url_base  # 중급 이메일: 쿼리 없음(페이지 기본값 b), Phase 2 이전과 바이트 동일
         level_label = L["level"]
+    cat_label = html.escape(vote.thumb.CATS[vote.category(lang, day)][0])
+    vote_sep = "&amp;" if "?" in url else "?"
+
+    def vote_btn(v, text):  # 주제 반응(#13): 페이지가 ?vote= 를 읽어 GA 이벤트를 보낸다
+        return (f'<a href="{url}{vote_sep}vote={v}&amp;from=email#vote" style="display:inline-block;margin:0 6px 6px 0;padding:9px 14px;'
+                f'border:1px solid #e2e6ea;border-radius:999px;font-size:14px;font-weight:600;color:{INK};text-decoration:none;">'
+                f'<img src="{SITE}/assets/vote-{v}.png" width="18" height="18" alt="" style="vertical-align:-4px;margin-right:4px;border:0;">{text}</a>')
     chips = "".join(
         f'<span style="display:inline-block;font-size:13px;font-weight:600;padding:4px 9px;border-radius:8px;'
         f'margin:0 4px 4px 0;background:{"#e8f3ff" if i == 0 else BG};color:{BLUE if i == 0 else SUB};">{html.escape(c)}</span>'
@@ -132,6 +141,12 @@ def build(lang, day, level="b"):
   <p style="{label}">STEP 2</p>
   <h2 style="{h2}">주요 단어</h2>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{words}</table>
+</td></tr>
+<tr><td style="height:12px;"></td></tr>
+<tr><td style="{card}">
+  <h2 style="margin:0 0 6px;font-size:17px;font-weight:700;color:{INK};">오늘 주제 어땠어요?</h2>
+  <p style="margin:0 0 14px;font-size:14px;line-height:1.6;color:{SUB};">오늘은 {cat_label} 분야였어요. 한 번 누르면 사이트가 열리며 기록돼요.</p>
+  {vote_btn("up", "재밌었어요")}{vote_btn("down", "별로였어요")}
 </td></tr>
 <tr><td style="padding:16px 8px 0;font-size:13px;color:{MUTED};text-align:center;">
   <a href="{SITE}/{lang}/archive/" style="color:{SUB};">지난 지문 모아 보기</a>

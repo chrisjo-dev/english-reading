@@ -180,6 +180,33 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  /* vote-css */
+  .cat-science { color: #3182f6; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #e89a14; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #3182f6; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #e89a14; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb nav { display: flex; gap: 4px; }
@@ -245,7 +272,7 @@
   </header>
   <div class="top">
     <img class="thumb" src="thumb.png" width="76" height="76" alt="">
-    <div class="date">10월 18일 일요일</div>
+    <div class="date">10월 18일 일요일 <span class="cat cat-space">우주</span></div>
     <h1>오늘은 <em>한쪽이 부풀어 오른 외계 행성</em> 이야기예요</h1>
     <p class="headline" lang="en">A Planet That Isn't Perfectly Round</p>
     <div class="chips">
@@ -313,6 +340,17 @@
     <p>모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 보세요. 다 쓰면 'AI 피드백 요청문 복사'를 눌러 평소 쓰는 AI 채팅(ChatGPT, Claude 등)에 붙여넣으세요. 어디를 잘 읽었고 어디를 놓쳤는지 문장별로 알려 줘요.</p>
   </section>
 
+
+  <section class="card vote" id="vote" data-v="2" data-cat="space" data-wd="6">
+    <h2>오늘 주제 어땠어요?</h2>
+    <p class="desc">오늘은 <span class="cat cat-space">우주</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
+    <div class="vote-btns">
+      <button class="vote-btn" type="button" data-vote="up" aria-pressed="false"><img src="/assets/vote-up.png" alt="">재밌었어요</button>
+      <button class="vote-btn" type="button" data-vote="down" aria-pressed="false"><img src="/assets/vote-down.png" alt="">별로였어요</button>
+    </div>
+    <p class="thanks" hidden>고마워요. 다음 주제를 고를 때 참고할게요. 다시 누르면 바꿀 수 있어요.</p>
+    <p class="week"><b>요일마다 분야가 바뀌어요</b><br>월 과학, 화 기술, 수 사회, 목 미래, 금 과학, 토 일상과 문화, <span class="today">일 우주</span></p>
+  </section>
 
   <details class="card">
     <summary>
@@ -767,6 +805,38 @@
     furi.textContent = off ? '후리가나 켜기' : '후리가나 끄기';
     gaEvent('furigana_toggle', {on: !off});
   });
+</script>
+<script id="vote-js">
+(function () {
+  var card = document.getElementById('vote'); if (!card) return;
+  var p = location.pathname.split('/'), lang = p[1] || '', day = p[2] || '';
+  var KEY = 'vote:' + lang + '/' + day, btns = card.querySelectorAll('.vote-btn');
+  function show(v) {
+    [].forEach.call(btns, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-vote') === v)); });
+    card.classList.toggle('done', !!v);
+    card.querySelector('.thanks').hidden = !v;
+  }
+  function send(v, from) {
+    var prev = null; try { prev = localStorage.getItem(KEY); } catch (e) {}
+    show(v);
+    if (prev === v) return;
+    try { localStorage.setItem(KEY, v); } catch (e) {}
+    if (typeof gtag === 'function') gtag('event', 'topic_vote', {
+      lang: lang, day: day, cat: card.getAttribute('data-cat'), weekday: card.getAttribute('data-wd'),
+      level: document.documentElement.classList.contains('level-a') ? 'a' : 'b', vote: v, from: from, changed: !!prev
+    });
+  }
+  [].forEach.call(btns, function (b) { b.addEventListener('click', function () { send(b.getAttribute('data-vote'), 'page'); }); });
+  try { var saved = localStorage.getItem(KEY); if (saved) show(saved); } catch (e) {}
+  var q = new URLSearchParams(location.search), v = q.get('vote');
+  if (v === 'up' || v === 'down') {
+    send(v, q.get('from') || 'link');
+    q.delete('vote'); q.delete('from');
+    var s = q.toString();
+    history.replaceState(null, '', location.pathname + (s ? '?' + s : '') + '#vote');
+    card.scrollIntoView({ block: 'center' });
+  }
+})();
 </script>
 </body>
 </html>
