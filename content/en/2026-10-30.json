@@ -1,0 +1,442 @@
+{
+  "date": "2026-10-30",
+  "category": "science",
+  "topic": "유성의 일생",
+  "title_ko": "우주 암석이 땅에 떨어지기까지의 일곱 단계",
+  "headline": "Seven Steps from the Sky to the Ground",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "When a space rock enters Earth's **atmosphere**, most people think it simply burns up, but a new study shows that the real story is more complicated.",
+      "b2": false,
+      "chunks": [
+        [
+          "When a space rock enters",
+          "우주 암석이 들어올 때"
+        ],
+        [
+          "Earth's **atmosphere**,",
+          "지구의 대기에"
+        ],
+        [
+          "most people think",
+          "대부분의 사람들은 생각한다"
+        ],
+        [
+          "it simply burns up,",
+          "그것이 그냥 다 타 버린다고"
+        ],
+        [
+          "but a new study shows",
+          "하지만 새 연구는 보여 준다"
+        ],
+        [
+          "that the real story",
+          "실제 이야기가"
+        ],
+        [
+          "is more complicated.",
+          "더 복잡하다는 것을"
+        ]
+      ]
+    },
+    {
+      "en": "Scientists at the SETI Institute studied videos and photos of seventy-five meteorite falls and found that each rock goes through seven **stages**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Scientists at the SETI Institute",
+          "SETI 연구소의 과학자들은"
+        ],
+        [
+          "studied videos and photos",
+          "영상과 사진을 연구했다"
+        ],
+        [
+          "of seventy-five meteorite falls",
+          "75번의 운석 낙하에 대한"
+        ],
+        [
+          "and found",
+          "그리고 알아냈다"
+        ],
+        [
+          "that each rock goes through",
+          "각 암석이 거친다는 것을"
+        ],
+        [
+          "seven **stages**.",
+          "일곱 단계를"
+        ]
+      ]
+    },
+    {
+      "en": "High in the sky, the air in front of the rock is pushed together so quickly that it forms a **shock wave**, and the rock and the hot gas around it begin to glow.",
+      "b2": false,
+      "chunks": [
+        [
+          "High in the sky,",
+          "하늘 높은 곳에서"
+        ],
+        [
+          "the air in front of the rock",
+          "암석 앞의 공기가"
+        ],
+        [
+          "is pushed together so quickly",
+          "아주 빠르게 눌려 모여서"
+        ],
+        [
+          "that it forms a **shock wave**,",
+          "충격파를 만든다"
+        ],
+        [
+          "and the rock",
+          "그리고 암석과"
+        ],
+        [
+          "and the hot gas around it",
+          "그 주변의 뜨거운 가스가"
+        ],
+        [
+          "begin to glow.",
+          "빛나기 시작한다"
+        ]
+      ]
+    },
+    {
+      "en": "At around sixty kilometers above the ground, the rock **melts** from the outside, and this melting alone can remove up to forty percent of its original **mass**.",
+      "b2": false,
+      "chunks": [
+        [
+          "At around sixty kilometers",
+          "약 60킬로미터 높이에서"
+        ],
+        [
+          "above the ground,",
+          "땅 위로"
+        ],
+        [
+          "the rock **melts**",
+          "암석이 녹는다"
+        ],
+        [
+          "from the outside,",
+          "바깥부터"
+        ],
+        [
+          "and this melting alone",
+          "그리고 이 녹는 것만으로도"
+        ],
+        [
+          "can remove up to forty percent",
+          "최대 40퍼센트까지 없앨 수 있다"
+        ],
+        [
+          "of its original **mass**.",
+          "원래 질량의"
+        ]
+      ]
+    },
+    {
+      "en": "Lower down, the rock, which is now slowing quickly under the growing pressure of the air, **breaks apart** into smaller pieces, and each break creates a sudden **burst** of light.",
+      "b2": true,
+      "chunks": [
+        [
+          "Lower down, the rock,",
+          "더 아래로 내려오면, 그 암석은"
+        ],
+        [
+          "which is now slowing quickly",
+          "이제 빠르게 느려지고 있는데"
+        ],
+        [
+          "under the growing pressure",
+          "커지는 압력 아래에서"
+        ],
+        [
+          "of the air,",
+          "공기의"
+        ],
+        [
+          "**breaks apart**",
+          "부서진다"
+        ],
+        [
+          "into smaller pieces,",
+          "더 작은 조각들로"
+        ],
+        [
+          "and each break creates",
+          "그리고 각각의 부서짐이 만든다"
+        ],
+        [
+          "a sudden **burst** of light.",
+          "갑작스러운 빛의 폭발을"
+        ]
+      ]
+    },
+    {
+      "en": "When the pieces finally stop glowing, a thin dark **crust** forms on their surface, and the wind can push them off course before they land.",
+      "b2": false,
+      "chunks": [
+        [
+          "When the pieces",
+          "그 조각들이"
+        ],
+        [
+          "finally stop glowing,",
+          "마침내 빛나기를 멈추면"
+        ],
+        [
+          "a thin dark **crust**",
+          "얇고 어두운 껍질이"
+        ],
+        [
+          "forms on their surface,",
+          "그 표면에 생긴다"
+        ],
+        [
+          "and the wind can push them",
+          "그리고 바람이 그것들을 밀 수 있다"
+        ],
+        [
+          "off course",
+          "원래 길에서 벗어나게"
+        ],
+        [
+          "before they land.",
+          "땅에 떨어지기 전에"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "atmosphere",
+      "대기"
+    ],
+    [
+      "stages",
+      "단계들 (stage의 복수)"
+    ],
+    [
+      "shock wave",
+      "충격파"
+    ],
+    [
+      "melt",
+      "녹다"
+    ],
+    [
+      "mass",
+      "질량"
+    ],
+    [
+      "break apart",
+      "부서지다, 산산이 갈라지다"
+    ],
+    [
+      "burst",
+      "(빛, 소리 등의) 갑작스러운 폭발, 터짐"
+    ]
+  ],
+  "points": [
+    {
+      "title": "문장 끝의 숫자와 수량",
+      "body": "2번 문장의 `seventy-five meteorite falls`는 75번의 낙하, 4번 문장의 `up to forty percent of its original mass`는 '원래 질량의 최대 40퍼센트'예요. `up to`는 '~까지(최대)'라는 뜻이고, 숫자가 문장 끝에 붙어 있어서 놓치기 쉬워요. `sixty kilometers`도 숫자를 바로 머릿속에 그려 보세요."
+    },
+    {
+      "title": "주어와 동사 사이에 끼어드는 절",
+      "body": "5번 문장은 `the rock,` 다음에 `which is now slowing quickly under the growing pressure of the air,`가 끼어 있어요. 쉼표 사이를 건너뛰면 `the rock ... breaks apart into smaller pieces`가 뼈대입니다. 끝의 `a sudden burst of light`도 놓치지 마세요."
+    }
+  ],
+  "answers": [
+    "우주 암석이 지구 대기에 들어오면 대부분의 사람들은 그것이 그냥 다 타 버린다고 생각하지만, 새 연구는 실제 이야기가 더 복잡하다는 것을 보여 준다.",
+    "SETI 연구소의 과학자들은 75번의 운석 낙하를 담은 영상과 사진을 연구해, 각 암석이 일곱 단계를 거친다는 것을 알아냈다.",
+    "하늘 높은 곳에서는 암석 앞의 공기가 아주 빠르게 눌려 모여 충격파를 만들고, 암석과 그 주변의 뜨거운 가스가 빛나기 시작한다.",
+    "땅에서 약 60킬로미터 높이에서 암석은 바깥부터 녹는데, 이 녹는 과정만으로도 원래 질량의 최대 40퍼센트까지 사라질 수 있다.",
+    "더 아래로 내려오면, 커지는 공기 압력 때문에 이제 빠르게 느려지고 있는 암석이 더 작은 조각들로 부서지고, 부서질 때마다 갑자기 빛이 확 터진다.",
+    "조각들이 마침내 빛을 잃으면 그 표면에 얇고 어두운 껍질이 생기고, 땅에 떨어지기 전에 바람이 조각들을 원래 경로에서 벗어나게 밀 수도 있다."
+  ],
+  "advanced": [
+    {
+      "word": "disintegrate",
+      "meaning": "산산조각 나다, 분해되다",
+      "confuse": null,
+      "example": "Most people think a space rock simply **disintegrates** in the sky.",
+      "example_ko": "대부분의 사람들은 우주 암석이 하늘에서 그냥 산산조각 난다고 생각합니다."
+    },
+    {
+      "word": "fragment",
+      "meaning": "조각; 조각나다",
+      "confuse": null,
+      "example": "Lower down, the rock begins to **fragment** into smaller pieces.",
+      "example_ko": "더 아래에서 암석은 더 작은 조각들로 쪼개지기 시작합니다."
+    },
+    {
+      "word": "descent",
+      "meaning": "하강, 내려옴",
+      "confuse": "decent(괜찮은, 적절한)와 혼동 주의",
+      "example": "During its **descent**, the rock passes through seven stages.",
+      "example_ko": "내려오는 동안 암석은 일곱 단계를 거칩니다."
+    },
+    {
+      "word": "decelerate",
+      "meaning": "속도를 줄이다, 감속하다",
+      "confuse": "accelerate(가속하다)와 혼동 주의",
+      "example": "The rock **decelerates** quickly as the air pressure grows.",
+      "example_ko": "공기 압력이 커지면서 암석은 빠르게 감속합니다."
+    },
+    {
+      "word": "luminous",
+      "meaning": "빛을 내는, 밝게 빛나는",
+      "confuse": null,
+      "example": "The rock and the gas around it become **luminous** high in the sky.",
+      "example_ko": "하늘 높은 곳에서 암석과 그 주변 가스가 빛을 내기 시작합니다."
+    },
+    {
+      "word": "substantial",
+      "meaning": "상당한",
+      "confuse": "substitute(대신하다)와 혼동 주의",
+      "example": "Melting alone can remove a **substantial** part of the rock's mass.",
+      "example_ko": "녹는 것만으로도 암석 질량의 상당 부분이 사라질 수 있습니다."
+    },
+    {
+      "word": "trajectory",
+      "meaning": "궤적, 이동 경로",
+      "confuse": null,
+      "example": "The wind can change the **trajectory** of the pieces before they land.",
+      "example_ko": "바람은 조각들이 땅에 떨어지기 전에 그 이동 경로를 바꿀 수 있습니다."
+    }
+  ],
+  "source": {
+    "title": "Meteors Don't Just Burn Up. What Really Happens Is Far More Violent (ScienceDaily, 2026-10-28)",
+    "url": "https://www.sciencedaily.com/releases/2026/10/261027063710.htm"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Most people think a space rock just burns up in Earth's **atmosphere**.",
+          "chunks": [
+            [
+              "Most people think",
+              "대부분의 사람들은 생각한다"
+            ],
+            [
+              "a space rock just burns up",
+              "우주 암석이 그냥 다 타 버린다고"
+            ],
+            [
+              "in Earth's **atmosphere**.",
+              "지구의 대기 속에서"
+            ]
+          ]
+        },
+        {
+          "en": "Scientists at the SETI Institute watched seventy-five meteorite falls and found seven **stages**.",
+          "chunks": [
+            [
+              "Scientists at the SETI Institute",
+              "SETI 연구소의 과학자들은"
+            ],
+            [
+              "watched seventy-five meteorite falls",
+              "75번의 운석 낙하를 봤다"
+            ],
+            [
+              "and found seven **stages**.",
+              "그리고 일곱 단계를 찾았다"
+            ]
+          ]
+        },
+        {
+          "en": "High up, the air makes a **shock wave**, and the rock starts to glow.",
+          "chunks": [
+            [
+              "High up, the air",
+              "높은 곳에서 공기가"
+            ],
+            [
+              "makes a **shock wave**,",
+              "충격파를 만든다"
+            ],
+            [
+              "and the rock starts to glow.",
+              "그리고 암석이 빛나기 시작한다"
+            ]
+          ]
+        },
+        {
+          "en": "About sixty kilometers up, the rock **melts** and can lose up to forty percent of its **mass**.",
+          "chunks": [
+            [
+              "About sixty kilometers up,",
+              "약 60킬로미터 높이에서"
+            ],
+            [
+              "the rock **melts**",
+              "암석이 녹는다"
+            ],
+            [
+              "and can lose up to forty percent",
+              "그리고 최대 40퍼센트까지 잃을 수 있다"
+            ],
+            [
+              "of its **mass**.",
+              "그 질량의"
+            ]
+          ]
+        },
+        {
+          "en": "Lower down, the rock slows and **breaks apart** into small pieces.",
+          "chunks": [
+            [
+              "Lower down, the rock slows",
+              "더 아래에서 암석은 느려지고"
+            ],
+            [
+              "and **breaks apart**",
+              "부서진다"
+            ],
+            [
+              "into small pieces.",
+              "작은 조각들로"
+            ]
+          ]
+        },
+        {
+          "en": "The pieces stop glowing, get a dark **crust**, and fall to the ground.",
+          "chunks": [
+            [
+              "The pieces stop glowing,",
+              "조각들은 빛나기를 멈추고"
+            ],
+            [
+              "get a dark **crust**,",
+              "어두운 껍질이 생기고"
+            ],
+            [
+              "and fall to the ground.",
+              "땅으로 떨어진다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "대부분의 사람들은 우주 암석이 지구 대기 속에서 그냥 다 타 버린다고 생각한다.",
+        "SETI 연구소의 과학자들은 75번의 운석 낙하를 보고 일곱 단계를 찾아냈다.",
+        "높은 곳에서 공기가 충격파를 만들고, 암석이 빛나기 시작한다.",
+        "약 60킬로미터 높이에서 암석은 녹고, 질량의 최대 40퍼센트까지 잃을 수 있다.",
+        "더 아래에서 암석은 느려지고 작은 조각들로 부서진다.",
+        "조각들은 빛을 잃고, 어두운 껍질이 생긴 뒤, 땅으로 떨어진다."
+      ]
+    }
+  }
+}
