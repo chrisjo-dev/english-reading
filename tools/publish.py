@@ -179,6 +179,23 @@ def topic_of(lang, day):
     return html.unescape(re.search(r"<h1>.*?<em>(.*?)</em>", page, re.S).group(1).strip())
 
 
+# 기초(.en-a/.ko-a/.chunks-a)가 중급과 같은 글꼴, 해석, 끊어 읽기 모양을 갖도록 template.html 과 같은 줄로 바꾼다.
+# 이 줄이 생기기 전에 만든 지난 페이지용(바뀐 줄은 다시 맞지 않으므로 여러 번 돌려도 같다).
+LEVEL_A_CSS = [
+    ("  .en { font-size: 18px;", "  .en, .en-a { font-size: 18px;"),
+    ("  .ko { font-size: 16px;", "  .ko, .ko-a { font-size: 16px;"),
+    ("  #passage .ko { font-size: 14px;", "  #passage .ko, #passage .ko-a { font-size: 14px;"),
+    ("  #passage .sent.playing .en {", "  #passage .sent.playing .en, #passage .sent.playing .en-a {"),
+    ("  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }\n",
+     "  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }\n"
+     "  #passage .chunks-a { flex-wrap: wrap; gap: 6px 0; cursor: pointer; }\n"),
+    ("  body.chunked #passage .say > .en { display: none; }",
+     "  body.chunked #passage .say > .en, body.chunked #passage .say > .en-a { display: none; }"),
+    ("  body.chunked #passage .say > .ko { display: none !important; }",
+     "  body.chunked #passage .say > .ko, body.chunked #passage .say > .ko-a { display: none !important; }"),
+]
+
+
 def label(day):
     d = dt.date.fromisoformat(day)
     return f"{d.month}월 {d.day}일 {DAYS[d.weekday()]}요일"
@@ -271,6 +288,9 @@ def patch_page(lang, day):
                 "  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }\n"
             )
             page = page.replace("  .sub .note {", SUB_EXTRA + "  .sub .note {", 1)
+    if "#passage .chunks-a {" not in page:
+        for old, new in LEVEL_A_CSS:
+            page = page.replace(old, new, 1)
     page = vote.apply(page, lang, day)  # 오늘 분야 배지와 주제 반응 카드(#13)
     path.write_text(page, encoding="utf-8")
 

@@ -60,7 +60,7 @@
   .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
         background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
         display: grid; place-items: center; }
-  .en { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
+  .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
@@ -90,7 +90,7 @@
   details[open] summary svg { transform: rotate(180deg); }
   summary:active { background: #f9fafb; }
   .body { padding: 0 20px 22px; }
-  .ko { font-size: 16px; line-height: 1.7; color: var(--ink); }
+  .ko, .ko-a { font-size: 16px; line-height: 1.7; color: var(--ink); }
   .adv { padding: 14px 0; border-top: 1px solid var(--line); }
   .adv:first-of-type { border-top: 0; padding-top: 0; }
   .adv:last-of-type { padding-bottom: 0; }
@@ -139,14 +139,14 @@
   .tour-block { position: fixed; inset: 0; z-index: 49; }
   .tool[aria-pressed="true"] { background: var(--blue); color: #fff; }
   #passage .say { flex: 1; min-width: 0; }
-  #passage .ko { font-size: 14px; line-height: 1.55; color: var(--sub); margin-top: 3px; }
+  #passage .ko, #passage .ko-a { font-size: 14px; line-height: 1.55; color: var(--sub); margin-top: 3px; }
   [hidden] { display: none !important; }
   @media (max-width: 420px) { #passage .tools { flex-wrap: wrap; } #passage .tools .tool { flex: 1 1 calc(50% - 4px); max-width: calc(50% - 4px); } }
   body.nofuri rt { visibility: hidden; }
   .hint { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
   #passage .no { border: 0; padding: 0; cursor: pointer; font-family: inherit; }
   #passage .sent.playing .no { background: var(--blue); color: #fff; }
-  #passage .sent.playing .en { color: var(--blue-press); }
+  #passage .sent.playing .en, #passage .sent.playing .en-a { color: var(--blue-press); }
   .mine { margin-top: 24px; }
   .mine label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
   .mine textarea { display: block; width: 100%; min-height: 168px; resize: vertical; border: 1.5px solid transparent;
@@ -221,9 +221,10 @@
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
      해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
   #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  #passage .chunks-a { flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
   body.chunked #passage .chunks { display: flex; }
-  body.chunked #passage .say > .en { display: none; }
-  body.chunked #passage .say > .ko { display: none !important; }
+  body.chunked #passage .say > .en, body.chunked #passage .say > .en-a { display: none; }
+  body.chunked #passage .say > .ko, body.chunked #passage .say > .ko-a { display: none !important; }
   .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
   .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
   .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
