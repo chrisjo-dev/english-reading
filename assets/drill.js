@@ -147,10 +147,17 @@
     }
     if (act === 'pick') {
       if (it.pick != null) return;
-      it.pick = +b.getAttribute('data-i'); it.first = it.opts[it.pick] === it.c.m; if (!it.first) it.wrong++;
+      it.pick = +b.getAttribute('data-i'); var ok = it.opts[it.pick] === it.c.m; if (it.first === null) it.first = ok; if (!ok) it.wrong++;
       S.answered++; S.shown++; return render();
     }
-    if (act === 'next') { S.queue.shift(); it.done = true; return render(); }
+    if (act === 'next') {
+      // 카드와 같은 규칙: 틀리면 같은 회차 뒤로, 한 번에 못 맞힌 단어는 연속 2번 맞혀야 빠진다.
+      var right = it.opts[it.pick] === it.c.m; S.queue.shift(); it.pick = null;
+      if (!right) { it.streak = 0; later(it); }
+      else if (it.wrong === 0 || it.streak >= 1) it.done = true;
+      else { it.streak++; later(it); }
+      return render();
+    }
     if (act === 'retry') return start(S.list.filter(function (x) { return x.wrong > 0; }).map(function (x) { return x.c; }), S.mode, 'retry');
   }
 
@@ -185,7 +192,7 @@
       commit();
       ga('word_drill_done', { lang: LANG, day: S.kind === 'review' ? 'review' : DAY, mode: S.mode, first_try: first, total: tot });
     }
-    var t = today(), d1 = add(t, 1), d2 = add(d1, 3), d3 = add(d2, 7), d4 = add(d3, 14);
+    var t = today(), d1 = add(t, 1), d2 = add(d1, 3), d3 = add(d2, 7), d4 = add(d3, 14), gap = function (d) { return Math.round((parse(d) - parse(t)) / 864e5) + '일 뒤'; };
     var h = '<div class="dr-bar"><button class="dr-x" type="button" data-act="close" aria-label="닫기">' + ICON_X + '</button><span class="t">' + S.title + '</span><span class="n">완료</span></div>' +
       '<section class="card"><div class="step">' + (S.kind === 'retry' ? '오답 다시 결과' : S.kind === 'review' ? '복습 결과' : '오늘 결과') + '</div>' +
       '<div class="dr-score"><b>' + first + '</b><span>/ ' + tot + '개 한 번에 맞혔어요</span></div>' +
@@ -198,8 +205,8 @@
         : '<p class="dr-none">틀린 단어 없이 모두 맞혔어요.</p>') + '</section>' +
       '<section class="card"><h2 style="margin-bottom:6px">다음 복습</h2>' +
       '<p class="desc" style="margin:0 0 14px;font-size:14px;color:var(--sub);line-height:1.6">잊을 때쯤 다시 보여 드려요. 틀린 단어는 처음부터 다시 세요.</p>' +
-      '<div class="dr-sched"><div class="dr-dot next"><b>내일</b><span>' + md(d1) + '</span></div><div class="dr-dot"><b>' + md(d2) + '</b><span>3일 뒤</span></div>' +
-      '<div class="dr-dot"><b>' + md(d3) + '</b><span>7일 뒤</span></div><div class="dr-dot"><b>' + md(d4) + '</b><span>14일 뒤</span></div></div>' +
+      '<div class="dr-sched"><div class="dr-dot next"><b>내일</b><span>' + md(d1) + '</span></div><div class="dr-dot"><b>' + md(d2) + '</b><span>' + gap(d2) + '</span></div>' +
+      '<div class="dr-dot"><b>' + md(d3) + '</b><span>' + gap(d3) + '</span></div><div class="dr-dot"><b>' + md(d4) + '</b><span>' + gap(d4) + '</span></div></div>' +
       '<div class="dr-gap"><button class="dr-btn" type="button" data-act="close">완료</button></div></section>';
     root.innerHTML = '<div class="dr-in">' + h + '</div>';
     root.scrollTop = 0;
