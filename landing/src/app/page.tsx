@@ -118,7 +118,7 @@ export default function Home() {
               <SubFormsList />
             </div>
             <p className="note mono rv" style={delay(3)}>
-              하나의 이메일로는 한 언어만 구독할 수 있어요. 여러 언어를 받으시려면 서로 다른 이메일로 각각 구독해 주세요.
+              하나의 이메일로는 한 언어만 구독할 수 있어요. 여러 언어를 받으시려면 서로 다른 이메일로 각각 구독해 주세요. 이미 구독 중이어도 같은 이메일로 다시 구독하면 수준과 언어가 바로 바뀌어요.
               <span className="confirm-note">{CONFIRM_NOTE}</span>
             </p>
           </div>

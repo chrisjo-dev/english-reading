@@ -93,7 +93,7 @@ class SubHtmlEnTest(unittest.TestCase):
                           f"라디오 name 이 metadata__level 이어야 합니다: {m.group()}")
 
     def test_has_version_marker(self):
-        self.assertIn('data-v="2"', self.html, "버전 마커 data-v=2 가 있어야 합니다")
+        self.assertIn('data-v="3"', self.html, "버전 마커 data-v=3 이 있어야 합니다")
 
     def test_has_level_note(self):
         self.assertIn("기초 지문은 준비 중이에요", self.html, "기초 안내 노트가 있어야 합니다")
@@ -168,7 +168,7 @@ class PatchPageTest(unittest.TestCase):
         # 카드가 없는 새 페이지에 카드가 삽입된다
         result = self._patch(MINIMAL_PAGE)
         self.assertIn('class="card sub"', result)
-        self.assertIn('data-v="2"', result)
+        self.assertIn('data-v="3"', result)
 
     def test_fresh_page_has_radios_for_en(self):
         result = self._patch(MINIMAL_PAGE)
@@ -178,7 +178,7 @@ class PatchPageTest(unittest.TestCase):
     def test_old_card_replaced(self):
         # 이전 버전 카드(data-v 없음)가 새 카드로 교체된다
         result = self._patch(PAGE_WITH_OLD_CARD)
-        self.assertIn('data-v="2"', result, "이전 카드가 새 버전으로 교체되어야 합니다")
+        self.assertIn('data-v="3"', result, "이전 카드가 새 버전으로 교체되어야 합니다")
         # 이전 카드가 남아 있으면 안 된다 (section 이 두 개면 안 된다)
         count = result.count('class="card sub"')
         self.assertEqual(count, 1, f"카드가 하나만 있어야 하는데 {count}개입니다")
@@ -228,7 +228,7 @@ class SubHtmlDeTest(unittest.TestCase):
         self.assertIn('value="de"', self.html, "독일어 lang 값이 있어야 합니다")
 
     def test_has_version_marker(self):
-        self.assertIn('data-v="2"', self.html, "버전 마커 data-v=2 가 있어야 합니다")
+        self.assertIn('data-v="3"', self.html, "버전 마커 data-v=3 이 있어야 합니다")
 
     def test_de_level_desc_a(self):
         self.assertIn("독일어 읽기를 막 시작했다면", self.html,

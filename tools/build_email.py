@@ -136,6 +136,7 @@ def build(lang, day, level="b"):
 <tr><td style="padding:16px 8px 0;font-size:13px;color:{MUTED};text-align:center;">
   <a href="{SITE}/{lang}/archive/" style="color:{SUB};">지난 지문 모아 보기</a>
   <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:{MUTED};">매일 아침 {level_label} {L["name"]} 지문을 보내 드려요.<br>
+  수준이나 언어를 바꾸고 싶으면 <a href="{SITE}/{lang}/#subscribe" style="color:{MUTED};">여기</a>에서 같은 이메일로 다시 구독해 주세요. 확인 메일 없이 바로 바뀌어요.<br>
   더 받지 않으려면 <a href="{{{{ unsubscribe_url }}}}" style="color:{MUTED};">수신거부</a>를 눌러 주세요.</p>
 </td></tr>
 </table>

@@ -126,7 +126,7 @@ def sub_html(lang):
     """구독 칸. 숨은 입력값 metadata__lang 으로 구독자의 언어를 Buttondown 에 저장해 언어별로 보낸다.
     levels=True 언어(en, de, ja)에는 수준 선택 라디오 카드(metadata__level: a=기초, b=중급)를 표시한다. 기본 선택은 중급.
     문구는 LEVEL_CHOICES. levels=False 언어는 수준 선택 없이 기존 형태를 유지한다.
-    버전 마커: data-v="2" — patch_page 가 이 값으로 이전 카드를 교체한다.
+    버전 마커: data-v="3" — patch_page 가 이 값으로 이전 카드를 교체한다.
     """
     L = langs.get(lang)
     level_html = ""
@@ -151,7 +151,7 @@ def sub_html(lang):
             + level_note
         )
     return (
-        '  <section class="card sub" id="subscribe" data-v="2">\n'
+        '  <section class="card sub" id="subscribe" data-v="3">\n'
         f"    <h2>매일 아침 {L['name']} 지문 받기</h2>\n"
         f"    <p>새 {L['name']} 지문이 올라오면 아침에 메일로 보내 드려요.</p>\n"
         f'    <form action="{SUBSCRIBE}" method="post" target="_blank">\n'
@@ -160,7 +160,7 @@ def sub_html(lang):
         '      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">\n'
         '      <button type="submit">구독하기</button>\n'
         "    </form>\n"
-        "    <p class=\"note\">지금은 이메일 주소 하나로 한 언어만 구독할 수 있어요. 두 언어를 받으려면 서로 다른 이메일로 구독해 주세요.</p>\n"
+        "    <p class=\"note\">이미 구독 중이어도 같은 이메일로 다시 구독하면 수준과 언어가 바로 바뀌어요. 이메일 주소 하나로는 한 언어만 받을 수 있어요.</p>\n"
         "    <p class=\"note\">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>\n"
         '    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>\n'
         + _sub_script(lang) +
@@ -230,7 +230,7 @@ def patch_page(lang, day):
             page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
             page = page.replace("</main>", sub_html(lang) + "</main>", 1)
             page = page.replace("\n  </div>\n\n  <section class=\"card\" id=\"passage\">", "\n" + intro_html(lang) + "  </div>\n\n  <section class=\"card\" id=\"passage\">", 1)
-    elif 'data-v="2"' not in page or (L_pub.get("levels") and not re.search(r'<input[^>]+name="metadata__level"', page)):
+    elif 'data-v="3"' not in page or (L_pub.get("levels") and not re.search(r'<input[^>]+name="metadata__level"', page)):
         # 수준 선택이 새로 생긴 언어(ja, 2026-10-29)의 지난 페이지 카드도 같은 방식으로 바꾼다.
         # 이전 버전 카드가 있는 경우: 카드 HTML만 교체하고 수준 선택 CSS를 추가한다
         page = re.sub(
