@@ -155,6 +155,7 @@
     if (!c.au) return speak();
     if (!player) player = new Audio();
     player.onended = function () { on(false); };
+    player.onerror = function () { if (n === sayN) speak(); };
     player.src = c.au; on(true);
     var pr = player.play(); if (pr && pr.catch) pr.catch(speak);
   }
