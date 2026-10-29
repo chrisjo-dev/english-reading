@@ -1,0 +1,274 @@
+"""지문 페이지의 단어 암기 반복(이슈 #16). 시안: design/word-drill W01~W06.
+
+publish.patch_page 가 새 페이지와 지난 페이지 모두에 넣는다.
+- 지문 끝(주제 반응 카드 앞) '오늘 단어 외우기' 카드: 카드로 외우기(기본) / 문제 풀기(4지선다)
+- 몰랐던 단어는 같은 회차 뒤로 다시 나오고 연속 2번 맞혀야 빠진다
+- 회차를 마치면 단어를 브라우저(localStorage 'drill:v1')에 담고 1, 3, 7, 14일 간격으로 다시 묻는다. 틀리면 1일부터
+- 복습할 단어가 있으면 같은 언어 지문 페이지 맨 위에 복습 띠를 띄운다
+서버는 없고 사용량은 GA 이벤트(word_drill_start, word_drill_done, word_review_start)로만 본다.
+"""
+import datetime as dt
+import html
+import json
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+VERSION = "2"
+SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
+DAYS = "월화수목금토일"
+
+RUBY = re.compile(r"\{([^|{}]+)\|([^{}]+)\}")
+
+
+def base(s):
+    """{漢字|かな} 를 漢字 로, ** 를 지운 글자."""
+    return RUBY.sub(r"\1", s).replace("**", "")
+
+
+def reading(s):
+    """{漢字|かな} 를 かな 로 바꾼 읽기. 루비가 없으면 빈 글자."""
+    return RUBY.sub(r"\2", s).replace("**", "") if RUBY.search(s) else ""
+
+
+def rich(s):
+    """지문 문장을 카드에 넣을 HTML 로: 강조(**)는 <b>, 루비는 <ruby>."""
+    out = html.escape(s, quote=False)
+    out = RUBY.sub(lambda m: f"<ruby>{m.group(1)}<rt>{m.group(2)}</rt></ruby>", out)
+    return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", out)
+
+
+def _norm(s):
+    return re.sub(r"\s+", " ", base(s)).strip().lower()
+
+
+def _match(bold, word):
+    b, w = _norm(bold), _norm(word)
+    if not b or not w:
+        return False
+    if b == w or b in w or w in b:
+        return True
+    if re.match(r"[a-zäöüß]", w):  # 영어, 독일어: 앞 낱말이 같으면(range from A to B ↔ range from)
+        return b.split()[0] == w.split()[0] and len(w.split()[0]) > 2
+    i = 0  # 일본어: 앞 두 글자 이상이 같으면(集中する ↔ 集中できる)
+    while i < min(len(b), len(w)) and b[i] == w[i]:
+        i += 1
+    return i >= 2
+
+
+def _short(sent, bold=None):
+    """문제 풀기 화면에 쓸 짧은 문장. 길면 그 단어가 든 끊어 읽기 두 덩이만."""
+    en = sent["en"]
+    if len(base(en)) <= 110 or not sent.get("chunks"):
+        return en
+    ch = [c[0] for c in sent["chunks"]]
+    key = _norm(bold) if bold else None
+    j = next((k for k, c in enumerate(ch) if (key and key in _norm(c)) or (not key and "**" in c)), 0)
+    j = min(j, len(ch) - 2) if len(ch) > 1 else 0
+    part = " ".join(ch[j:j + 2])
+    return ("… " if j > 0 else "") + part + (" …" if j + 2 < len(ch) else "")
+
+
+def _find(word, sents):
+    """단어가 나온 문장 번호와 그 문장 속 강조 낱말. 강조로 못 찾으면 본문에서 찾는다."""
+    for k, s in enumerate(sents):
+        for b in re.findall(r"\*\*(.+?)\*\*", s["en"]):
+            if _match(b, word):
+                return k, b
+    w = _norm(word).lstrip("〜~")
+    if re.match(r"[a-zäöüß]", w):
+        stem = w.split()[0] if len(w.split()[0]) > 2 else w
+    else:  # 일본어: 앞의 한자 덩이(住む → 住), 한자가 없으면 앞 두 글자
+        m = re.match(r"[\u4e00-\u9fff]+", w)
+        stem = m.group(0) if m else w[:2]
+    for k, s in enumerate(sents):
+        if stem and stem in _norm(s["en"]):
+            return k, None
+    return None, None
+
+
+def cards(lang, day):
+    """content/<lang>/<day>.json 의 주요 단어(words)를 카드 자료로. 자료가 없으면 []."""
+    p = ROOT / "content" / lang / f"{day}.json"
+    if not p.exists():
+        return []
+    d = json.loads(p.read_text(encoding="utf-8"))
+    words, sents, answers = d.get("words") or [], d.get("sentences") or [], d.get("answers") or []
+    out = []
+    for i, (w, m) in enumerate(words):
+        c = {"w": base(w), "m": m}
+        r = reading(w)
+        if r and r != c["w"]:
+            c["r"] = r
+        k, b = _find(w, sents)
+        if k is not None:
+            c["ex"] = rich(sents[k]["en"])
+            c["sh"] = rich(_short(sents[k], b))
+            if k < len(answers):
+                c["ek"] = answers[k]
+        if (ROOT / lang / day / "audio" / f"w{i + 1}.mp3").exists():
+            c["au"] = f"/{lang}/{day}/audio/w{i + 1}.mp3"
+        out.append(c)
+    for c in out:
+        c["alts"] = [o["m"] for o in out if o is not c]
+    return out
+
+
+CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
+  .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+  .dr-chip { font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+  .dr-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 12px; }
+  .dr-mode { font: inherit; color: var(--ink); border: 1.5px solid #e2e6ea; background: #f4f6f8; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-mode[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; }
+  .dr-mode b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-mode span { display: block; font-size: 12.5px; color: var(--sub); margin-top: 2px; line-height: 1.45; }
+  .dr-mode[aria-pressed=true] b { color: #2a52d4; }
+  .dr-btn { font: inherit; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; height: 52px; width: 100%; border-radius: 12px; background: #2a52d4; color: #fff; font-size: 16px; font-weight: 700; }
+  .dr-btn:active { background: #2143ad; }
+  .dr-btn.ghost { background: #eff3fd; color: #2a52d4; }
+  .dr-foot { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+  .dr-due { display: flex; align-items: center; gap: 14px; margin: 12px 12px 0; padding: 16px 16px 16px 18px; border-radius: 18px; background: #2a52d4; color: #fff; box-shadow: var(--card-sh); }
+  .dr-due[hidden] { display: none; }
+  .dr-due .ic { flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.16); display: grid; place-items: center; font-size: 18px; font-weight: 800; }
+  .dr-due .tx { flex: 1; min-width: 0; }
+  .dr-due b { display: block; font-size: 16px; font-weight: 700; }
+  .dr-due span { display: block; font-size: 13px; opacity: .85; }
+  .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
+  body.dr-open { overflow: hidden; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr[hidden] { display: none; }
+  .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
+  .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
+  .dr-x { font: inherit; border: 0; background: none; cursor: pointer; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--sub); }
+  .dr-x svg { width: 18px; height: 18px; }
+  .dr-bar .t { font-size: 15px; font-weight: 700; flex: 1; }
+  .dr-bar .n { font-size: 14px; font-weight: 700; color: #2a52d4; }
+  .dr-prog { margin: 14px 24px 0; }
+  .dr-track { height: 6px; border-radius: 999px; background: #e3e7ec; overflow: hidden; display: flex; }
+  .dr-track i { display: block; height: 100%; transition: width .25s; }
+  .dr-track .ok { background: #2a52d4; }
+  .dr-track .re { background: #f5a3aa; }
+  .dr-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--sub); }
+  .dr-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .dr-legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dr-fc { flex: 1; margin: 14px 12px 0; background: #fff; border-radius: 24px; box-shadow: var(--card-sh); padding: 22px 22px 24px; display: flex; flex-direction: column; }
+  .dr-fc.fit { flex: none; }
+  .dr-tag { align-self: flex-start; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+  .dr-tag.re { background: #ffeeee; color: #f04452; }
+  .dr-mid { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 24px 0; }
+  .dr-word { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; word-break: break-word; }
+  .dr-word.sm { font-size: 30px; }
+  .dr-pron { font-size: 15px; color: var(--muted); margin-top: -6px; }
+  .dr-listen { font: inherit; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 16px; border-radius: 999px; background: #eff3fd; color: #2a52d4; font-size: 14px; font-weight: 700; }
+  .dr-listen svg { width: 16px; height: 16px; }
+  .dr-hint { font-size: 13px; color: var(--muted); text-align: center; margin: 4px 0 0; }
+  .dr-mean { font-size: 22px; font-weight: 700; color: #2a52d4; letter-spacing: -0.02em; line-height: 1.4; }
+  .dr-ex { width: 100%; text-align: left; background: var(--bg); border-radius: 14px; padding: 14px 16px; }
+  .dr-ex .lb { font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
+  .dr-ex .en { font-size: 15px; line-height: 1.6; margin: 0; }
+  .dr-ex .en b, .dr-qsub b { background: #fff3c4; font-weight: 700; padding: 0 2px; border-radius: 3px; }
+  .dr-ex .ko { font-size: 13.5px; color: var(--sub); margin: 6px 0 0; line-height: 1.55; }
+  .dr-acts { margin: 14px 12px 0; }
+  .dr-judge { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .dr-judge button { font: inherit; border: 0; cursor: pointer; height: 56px; border-radius: 14px; font-size: 16px; font-weight: 700; line-height: 1.3; }
+  .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
+  .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
+  .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
+  .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
+  .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
+  .dr-opts { display: flex; flex-direction: column; gap: 8px; }
+  .dr-opt { font: inherit; color: var(--ink); cursor: pointer; display: flex; align-items: center; gap: 12px; text-align: left; border: 1.5px solid #e2e6ea; background: #f4f6f8; border-radius: 12px; padding: 13px 14px; font-size: 15px; font-weight: 600; }
+  .dr-opt:disabled { cursor: default; }
+  .dr-opt .k { flex: none; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #c5ccd6; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--sub); background: #fff; }
+  .dr-opt.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; }
+  .dr-opt.wrong .k { background: #f04452; border-color: #f04452; color: #fff; }
+  .dr-opt.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; }
+  .dr-opt.right .k { background: #0f9d6b; border-color: #0f9d6b; color: #fff; }
+  .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
+  .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
+  .dr-verdict.ok { color: #0f9d6b; }
+  .dr .card { margin: 12px 12px 0; }
+  .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
+  .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
+  .dr-score span { font-size: 18px; font-weight: 700; color: var(--sub); }
+  .dr-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0 0; }
+  .dr-stat { background: var(--bg); border-radius: 12px; padding: 12px; }
+  .dr-stat b { display: block; font-size: 18px; font-weight: 800; }
+  .dr-stat span { font-size: 12px; color: var(--sub); font-weight: 600; }
+  .dr-wl { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #eef0f3; }
+  .dr-wl:first-child { border-top: 0; padding-top: 0; }
+  .dr-wl b { font-size: 16px; font-weight: 700; }
+  .dr-wl em { font-style: normal; font-size: 12px; font-weight: 700; color: #f04452; background: #ffeeee; padding: 2px 8px; border-radius: 999px; margin-left: 6px; white-space: nowrap; }
+  .dr-wl span { font-size: 14px; color: var(--sub); text-align: right; }
+  .dr-none { font-size: 14px; color: var(--sub); margin: 0; }
+  .dr-sched { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .dr-dot { text-align: center; padding: 10px 4px; border-radius: 12px; background: var(--bg); }
+  .dr-dot b { display: block; font-size: 14px; font-weight: 800; }
+  .dr-dot span { font-size: 11.5px; color: var(--sub); font-weight: 600; }
+  .dr-dot.next { background: #2a52d4; color: #fff; }
+  .dr-dot.next span { color: rgba(255,255,255,.85); }
+  .dr-gap { margin-top: 16px; }
+"""
+
+DUE_HTML = (
+    "<!-- drill-due -->\n"
+    '  <div class="dr-due" id="dr-due" hidden><span class="ic" id="dr-due-n"></span>'
+    '<div class="tx"><b id="dr-due-t"></b><span id="dr-due-s"></span></div>'
+    '<button class="go" type="button" id="dr-due-go">복습하기</button></div>\n'
+    "<!-- /drill-due -->\n"
+)
+
+
+def card_html(lang, day, items, step):
+    n = len(items)
+    chips = "".join(f'<span class="dr-chip" lang="{lang}">{html.escape(c["w"])}</span>' for c in items)
+    mins = max(1, round(n * 25 / 60))
+    return (
+        "<!-- drill-card -->\n"
+        f'  <section class="card dr-card" id="drill" data-v="{VERSION}">\n'
+        f'    <div class="step">STEP {step}</div>\n'
+        "    <h2>오늘 단어 외우기</h2>\n"
+        f'    <p class="desc">지문에 나온 단어 {n}개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>\n'
+        f'    <div class="dr-chips">{chips}</div>\n'
+        '    <div class="dr-modes">\n'
+        '      <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>\n'
+        '      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>\n'
+        "    </div>\n"
+        f'    <button class="dr-btn" type="button" id="dr-start">{n}개 외우기 시작</button>\n'
+        f'    <p class="dr-foot">약 {mins}분 걸려요. 기록은 이 기기에만 남아요.</p>\n'
+        "  </section>\n"
+        "<!-- /drill-card -->\n"
+    )
+
+
+SCRIPT = '<script id="drill-js" data-v="__V__" src="/assets/drill.js?v=__V__" defer></script>\n'
+
+
+def _next_step(page):
+    nums = [int(n) for n in re.findall(r'<div class="step"[^>]*>STEP (\d+)</div>', page)]
+    return max(nums) + 1 if nums else 1
+
+
+def apply(page, lang, day):
+    """페이지에 복습 띠, 진입 카드, CSS, 자료, 스크립트를 넣는다. 같은 버전이 있으면 그대로 둔다(여러 번 돌려도 같다)."""
+    if f'<script id="drill-js" data-v="{VERSION}"' in page:
+        return page
+    for a, b in (("<!-- drill-due -->", "<!-- /drill-due -->"), ("<!-- drill-card -->", "<!-- /drill-card -->")):
+        page = re.sub(re.escape(a) + r".*?" + re.escape(b) + r"\n\n?", "", page, count=1, flags=re.S)
+    page = re.sub(r'<script type="application/json" id="drill-data">.*?</script>\n', "", page, count=1, flags=re.S)
+    page = re.sub(r'<script id="drill-js"[^>]*>.*?</script>\n', "", page, count=1, flags=re.S)
+    page = re.sub(r"  /\* drill-css \*/\n.*?  /\* /drill-css \*/\n", "", page, count=1, flags=re.S)
+
+    items = cards(lang, day)
+    page = page.replace("  .gnb {", "  /* drill-css */\n" + CSS + "  /* /drill-css */\n  .gnb {", 1)
+    page = page.replace("</header>\n", "</header>\n" + DUE_HTML, 1)
+    if items:
+        card = card_html(lang, day, items, _next_step(page))
+        for anchor in ('  <section class="card vote"', '  <details class="card">', '  <section class="card sub"', "</main>"):
+            if anchor in page:
+                page = page.replace(anchor, card + "\n" + anchor, 1)
+                break
+    data = json.dumps(items, ensure_ascii=False).replace("</", "<\\/")
+    tail = f'<script type="application/json" id="drill-data">{data}</script>\n' + SCRIPT.replace("__V__", VERSION)
+    return page.replace("</body>", tail + "</body>", 1)

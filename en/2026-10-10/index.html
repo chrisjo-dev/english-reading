@@ -207,6 +207,103 @@
   .vote[data-cat="culture"] .week .today { color: #e89a14; }
   .vote[data-cat="space"] .week .today { color: #3d4cc4; }
   /* /vote-css */
+  /* drill-css */
+  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
+  .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+  .dr-chip { font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+  .dr-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 12px; }
+  .dr-mode { font: inherit; color: var(--ink); border: 1.5px solid #e2e6ea; background: #f4f6f8; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-mode[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; }
+  .dr-mode b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-mode span { display: block; font-size: 12.5px; color: var(--sub); margin-top: 2px; line-height: 1.45; }
+  .dr-mode[aria-pressed=true] b { color: #2a52d4; }
+  .dr-btn { font: inherit; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; height: 52px; width: 100%; border-radius: 12px; background: #2a52d4; color: #fff; font-size: 16px; font-weight: 700; }
+  .dr-btn:active { background: #2143ad; }
+  .dr-btn.ghost { background: #eff3fd; color: #2a52d4; }
+  .dr-foot { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+  .dr-due { display: flex; align-items: center; gap: 14px; margin: 12px 12px 0; padding: 16px 16px 16px 18px; border-radius: 18px; background: #2a52d4; color: #fff; box-shadow: var(--card-sh); }
+  .dr-due[hidden] { display: none; }
+  .dr-due .ic { flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.16); display: grid; place-items: center; font-size: 18px; font-weight: 800; }
+  .dr-due .tx { flex: 1; min-width: 0; }
+  .dr-due b { display: block; font-size: 16px; font-weight: 700; }
+  .dr-due span { display: block; font-size: 13px; opacity: .85; }
+  .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
+  body.dr-open { overflow: hidden; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr[hidden] { display: none; }
+  .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
+  .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
+  .dr-x { font: inherit; border: 0; background: none; cursor: pointer; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--sub); }
+  .dr-x svg { width: 18px; height: 18px; }
+  .dr-bar .t { font-size: 15px; font-weight: 700; flex: 1; }
+  .dr-bar .n { font-size: 14px; font-weight: 700; color: #2a52d4; }
+  .dr-prog { margin: 14px 24px 0; }
+  .dr-track { height: 6px; border-radius: 999px; background: #e3e7ec; overflow: hidden; display: flex; }
+  .dr-track i { display: block; height: 100%; transition: width .25s; }
+  .dr-track .ok { background: #2a52d4; }
+  .dr-track .re { background: #f5a3aa; }
+  .dr-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--sub); }
+  .dr-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .dr-legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dr-fc { flex: 1; margin: 14px 12px 0; background: #fff; border-radius: 24px; box-shadow: var(--card-sh); padding: 22px 22px 24px; display: flex; flex-direction: column; }
+  .dr-fc.fit { flex: none; }
+  .dr-tag { align-self: flex-start; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+  .dr-tag.re { background: #ffeeee; color: #f04452; }
+  .dr-mid { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 24px 0; }
+  .dr-word { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; word-break: break-word; }
+  .dr-word.sm { font-size: 30px; }
+  .dr-pron { font-size: 15px; color: var(--muted); margin-top: -6px; }
+  .dr-listen { font: inherit; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 16px; border-radius: 999px; background: #eff3fd; color: #2a52d4; font-size: 14px; font-weight: 700; }
+  .dr-listen svg { width: 16px; height: 16px; }
+  .dr-hint { font-size: 13px; color: var(--muted); text-align: center; margin: 4px 0 0; }
+  .dr-mean { font-size: 22px; font-weight: 700; color: #2a52d4; letter-spacing: -0.02em; line-height: 1.4; }
+  .dr-ex { width: 100%; text-align: left; background: var(--bg); border-radius: 14px; padding: 14px 16px; }
+  .dr-ex .lb { font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
+  .dr-ex .en { font-size: 15px; line-height: 1.6; margin: 0; }
+  .dr-ex .en b, .dr-qsub b { background: #fff3c4; font-weight: 700; padding: 0 2px; border-radius: 3px; }
+  .dr-ex .ko { font-size: 13.5px; color: var(--sub); margin: 6px 0 0; line-height: 1.55; }
+  .dr-acts { margin: 14px 12px 0; }
+  .dr-judge { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .dr-judge button { font: inherit; border: 0; cursor: pointer; height: 56px; border-radius: 14px; font-size: 16px; font-weight: 700; line-height: 1.3; }
+  .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
+  .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
+  .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
+  .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
+  .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
+  .dr-opts { display: flex; flex-direction: column; gap: 8px; }
+  .dr-opt { font: inherit; color: var(--ink); cursor: pointer; display: flex; align-items: center; gap: 12px; text-align: left; border: 1.5px solid #e2e6ea; background: #f4f6f8; border-radius: 12px; padding: 13px 14px; font-size: 15px; font-weight: 600; }
+  .dr-opt:disabled { cursor: default; }
+  .dr-opt .k { flex: none; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #c5ccd6; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--sub); background: #fff; }
+  .dr-opt.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; }
+  .dr-opt.wrong .k { background: #f04452; border-color: #f04452; color: #fff; }
+  .dr-opt.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; }
+  .dr-opt.right .k { background: #0f9d6b; border-color: #0f9d6b; color: #fff; }
+  .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
+  .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
+  .dr-verdict.ok { color: #0f9d6b; }
+  .dr .card { margin: 12px 12px 0; }
+  .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
+  .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
+  .dr-score span { font-size: 18px; font-weight: 700; color: var(--sub); }
+  .dr-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0 0; }
+  .dr-stat { background: var(--bg); border-radius: 12px; padding: 12px; }
+  .dr-stat b { display: block; font-size: 18px; font-weight: 800; }
+  .dr-stat span { font-size: 12px; color: var(--sub); font-weight: 600; }
+  .dr-wl { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #eef0f3; }
+  .dr-wl:first-child { border-top: 0; padding-top: 0; }
+  .dr-wl b { font-size: 16px; font-weight: 700; }
+  .dr-wl em { font-style: normal; font-size: 12px; font-weight: 700; color: #f04452; background: #ffeeee; padding: 2px 8px; border-radius: 999px; margin-left: 6px; white-space: nowrap; }
+  .dr-wl span { font-size: 14px; color: var(--sub); text-align: right; }
+  .dr-none { font-size: 14px; color: var(--sub); margin: 0; }
+  .dr-sched { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .dr-dot { text-align: center; padding: 10px 4px; border-radius: 12px; background: var(--bg); }
+  .dr-dot b { display: block; font-size: 14px; font-weight: 800; }
+  .dr-dot span { font-size: 11.5px; color: var(--sub); font-weight: 600; }
+  .dr-dot.next { background: #2a52d4; color: #fff; }
+  .dr-dot.next span { color: rgba(255,255,255,.85); }
+  .dr-gap { margin-top: 16px; }
+  /* /drill-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb nav { display: flex; gap: 4px; }
@@ -271,6 +368,9 @@
     <a class="brand" href="/">매일 외국어 읽기</a>
     <nav aria-label="사이트 메뉴"><a href="../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
   </header>
+<!-- drill-due -->
+  <div class="dr-due" id="dr-due" hidden><span class="ic" id="dr-due-n"></span><div class="tx"><b id="dr-due-t"></b><span id="dr-due-s"></span></div><button class="go" type="button" id="dr-due-go">복습하기</button></div>
+<!-- /drill-due -->
   <div class="top">
     <img class="thumb" src="thumb.png" width="76" height="76" alt="">
     <div class="date">10월 10일 토요일 <span class="cat cat-culture">일상과 문화</span></div>
@@ -339,6 +439,21 @@
     <p>모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 보세요. 다 쓰면 'AI 피드백 요청문 복사'를 눌러 평소 쓰는 AI 채팅(ChatGPT, Claude 등)에 붙여넣으세요. 어디를 잘 읽었고 어디를 놓쳤는지 문장별로 알려 줘요.</p>
   </section>
 
+
+<!-- drill-card -->
+  <section class="card dr-card" id="drill" data-v="2">
+    <div class="step">STEP 5</div>
+    <h2>오늘 단어 외우기</h2>
+    <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
+    <div class="dr-chips"><span class="dr-chip" lang="en">established</span><span class="dr-chip" lang="en">accessible</span><span class="dr-chip" lang="en">curator</span><span class="dr-chip" lang="en">collection</span><span class="dr-chip" lang="en">collecting</span><span class="dr-chip" lang="en">luxury</span></div>
+    <div class="dr-modes">
+      <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+    </div>
+    <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
+    <p class="dr-foot">약 2분 걸려요. 기록은 이 기기에만 남아요.</p>
+  </section>
+<!-- /drill-card -->
 
   <section class="card vote" id="vote" data-v="2" data-cat="culture" data-wd="5">
     <h2>오늘 주제 어땠어요?</h2>
@@ -837,5 +952,7 @@
   }
 })();
 </script>
+<script type="application/json" id="drill-data">[{"w": "established", "m": "기성의, 확고한", "ex": "The Affordable Art Fair is coming to Battersea Park in London from October 14 to 18, <b>bringing<\/b> together thousands of original works by both rising and <b>established<\/b> artists.", "sh": "… thousands of original works by both rising and <b>established<\/b> artists.", "ek": "어포더블 아트 페어가 10월 14일부터 18일까지 런던 배터시 파크에서 열리며, 신진 작가와 기성 작가의 오리지널 작품 수천 점을 한자리에 모은다.", "alts": ["접근 가능한, 이용하기 쉬운", "큐레이터, 전시 기획자", "컬렉션, 소장품", "수집하기, 컬렉팅", "사치, 사치품"]}, {"w": "accessible", "m": "접근 가능한, 이용하기 쉬운", "ex": "As its name <b>suggests<\/b>, the fair aims to make buying original art <b>accessible<\/b> to a wide audience, not only those with large budgets.", "sh": "… <b>accessible<\/b> to a wide audience, not only those with large budgets.", "ek": "이름이 나타내듯이, 이 행사는 큰 예산이 없어도 다양한 관람객이 오리지널 작품을 구매할 수 있도록 예술의 문턱을 낮추는 것을 목표로 한다.", "alts": ["기성의, 확고한", "큐레이터, 전시 기획자", "컬렉션, 소장품", "수집하기, 컬렉팅", "사치, 사치품"]}, {"w": "curator", "m": "큐레이터, 전시 기획자", "ex": "This year's <b>curator<\/b> is Yomi Adegoke, the bestselling author of The List, who chose five works she would pick for her own first art <b>collection<\/b>.", "sh": "This year's <b>curator<\/b> is Yomi Adegoke, …", "ek": "올해의 큐레이터는 베스트셀러 소설 『더 리스트』의 작가 요미 아데고케로, 자신이 처음 컬렉션을 시작한다면 고를 작품 다섯 점을 직접 선정했다.", "alts": ["기성의, 확고한", "접근 가능한, 이용하기 쉬운", "컬렉션, 소장품", "수집하기, 컬렉팅", "사치, 사치품"]}, {"w": "collection", "m": "컬렉션, 소장품", "ex": "This year's <b>curator<\/b> is Yomi Adegoke, the bestselling author of The List, who chose five works she would pick for her own first art <b>collection<\/b>.", "sh": "… she would pick for her own first art <b>collection<\/b>.", "ek": "올해의 큐레이터는 베스트셀러 소설 『더 리스트』의 작가 요미 아데고케로, 자신이 처음 컬렉션을 시작한다면 고를 작품 다섯 점을 직접 선정했다.", "alts": ["기성의, 확고한", "접근 가능한, 이용하기 쉬운", "큐레이터, 전시 기획자", "수집하기, 컬렉팅", "사치, 사치품"]}, {"w": "collecting", "m": "수집하기, 컬렉팅", "ex": "Organisers hope events like this will encourage more young people to see art <b>collecting<\/b> not as a <b>luxury<\/b> for the very wealthy, but as something anyone can take their first steps into.", "sh": "… to see art <b>collecting<\/b> not as a <b>luxury<\/b> …", "ek": "주최 측은 이런 행사들이 더 많은 젊은이들로 하여금 예술 수집을 아주 부유한 사람만의 사치가 아닌, 누구든 첫걸음을 내딛을 수 있는 무언가로 여기게 되길 바란다.", "alts": ["기성의, 확고한", "접근 가능한, 이용하기 쉬운", "큐레이터, 전시 기획자", "컬렉션, 소장품", "사치, 사치품"]}, {"w": "luxury", "m": "사치, 사치품", "ex": "Organisers hope events like this will encourage more young people to see art <b>collecting<\/b> not as a <b>luxury<\/b> for the very wealthy, but as something anyone can take their first steps into.", "sh": "… not as a <b>luxury<\/b> for the very wealthy, …", "ek": "주최 측은 이런 행사들이 더 많은 젊은이들로 하여금 예술 수집을 아주 부유한 사람만의 사치가 아닌, 누구든 첫걸음을 내딛을 수 있는 무언가로 여기게 되길 바란다.", "alts": ["기성의, 확고한", "접근 가능한, 이용하기 쉬운", "큐레이터, 전시 기획자", "컬렉션, 소장품", "수집하기, 컬렉팅"]}]</script>
+<script id="drill-js" data-v="2" src="/assets/drill.js?v=2" defer></script>
 </body>
 </html>

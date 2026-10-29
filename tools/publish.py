@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
 import thumb  # noqa: E402
 import vote  # noqa: E402
+import drill  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://read.wspace.ai.kr"
@@ -292,6 +293,7 @@ def patch_page(lang, day):
         for old, new in LEVEL_A_CSS:
             page = page.replace(old, new, 1)
     page = vote.apply(page, lang, day)  # 오늘 분야 배지와 주제 반응 카드(#13)
+    page = drill.apply(page, lang, day)  # 단어 암기 반복과 복습 띠(#16)
     path.write_text(page, encoding="utf-8")
 
 
