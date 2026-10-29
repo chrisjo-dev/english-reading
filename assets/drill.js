@@ -59,6 +59,8 @@
   function bar(n) {
     return '<div class="dr-bar"><button class="dr-x" type="button" data-act="close" aria-label="닫기">' + ICON_X + '</button><span class="t">' + S.title + '</span><span class="n">' + n + '</span></div>';
   }
+  // 진행 막대 폭은 마크업 style 속성 대신 CSSOM으로 넣는다(CSP style-src에 걸리지 않게).
+  function widths() { [].forEach.call(root.querySelectorAll('[data-w]'), function (e) { e.style.width = e.getAttribute('data-w') + '%'; }); }
   function prog() {
     var tot = S.list.length, a, b, la, lb, lc;
     if (S.mode === 'quiz') {
@@ -68,8 +70,8 @@
       a = S.list.filter(function (x) { return x.done; }).length; b = S.list.filter(function (x) { return !x.done && x.wrong > 0; }).length;
       la = '외운 단어 ' + a; lb = '다시 볼 단어 ' + b; lc = '남은 카드 ' + S.queue.length;
     }
-    return '<div class="dr-prog"><div class="dr-track"><i class="ok" style="width:' + (a / tot * 100) + '%"></i><i class="re" style="width:' + (b / tot * 100) + '%"></i></div>' +
-      '<div class="dr-legend"><span><i style="background:#2a52d4"></i>' + la + '</span><span><i style="background:#f5a3aa"></i>' + lb + '</span><span>' + lc + '</span></div></div>';
+    return '<div class="dr-prog"><div class="dr-track"><i class="ok" data-w="' + (a / tot * 100) + '"></i><i class="re" data-w="' + (b / tot * 100) + '"></i></div>' +
+      '<div class="dr-legend"><span><i class="ok"></i>' + la + '</span><span><i class="re"></i>' + lb + '</span><span>' + lc + '</span></div></div>';
   }
   function tag(it) {
     return it.wrong > 0 ? '<span class="dr-tag re">다시 보는 단어</span>' : '<span class="dr-tag">' + kday(it.c.d) + ' 지문</span>';
@@ -96,7 +98,7 @@
       if (it.pick != null) {
         var ok = it.opts[it.pick] === c.m;
         h += '<div class="dr-verdict' + (ok ? ' ok' : '') + '">' + (ok ? '맞았어요' : '틀렸어요. 오답 노트에 담았어요') + '</div>';
-        if (c.ek) h += '<div class="dr-ex"><div class="lb">해석</div><p class="ko" style="margin:0">' + esc(c.ek) + '</p></div>';
+        if (c.ek) h += '<div class="dr-ex"><div class="lb">해석</div><p class="ko flat">' + esc(c.ek) + '</p></div>';
       }
       h += '</div>';
       if (it.pick != null) h += '<div class="dr-acts"><button class="dr-btn" type="button" data-act="next">' + (S.queue.length > 1 ? '다음 문제' : '결과 보기') + '</button></div>';
@@ -115,6 +117,7 @@
         '<button class="dr-yes" type="button" data-act="yes">알았어요<small>' + yes + '</small></button></div></div>';
     }
     root.innerHTML = '<div class="dr-in">' + h + '</div>';
+    widths();
     root.scrollTop = 0;
     var f = root.querySelector('[data-act=flip],[data-act=next],.dr-judge .dr-yes,.dr-opt'); if (f) f.focus({ preventScroll: true });
   }
@@ -198,17 +201,18 @@
       '<div class="dr-score"><b>' + first + '</b><span>/ ' + tot + '개 한 번에 맞혔어요</span></div>' +
       '<div class="dr-stats"><div class="dr-stat"><b>' + tot + '</b><span>외운 단어</span></div><div class="dr-stat"><b>' + S.shown + '</b><span>' + (S.mode === 'quiz' ? '푼 문제' : '넘긴 카드') + '</span></div>' +
       '<div class="dr-stat"><b>' + wrongs.length + '</b><span>틀린 단어</span></div></div></section>' +
-      '<section class="card"><h2 style="margin-bottom:12px">오답 노트</h2>' +
+      '<section class="card"><h2 class="dr-h12">오답 노트</h2>' +
       (wrongs.length ? '<div>' + wrongs.map(function (x) {
         return '<div class="dr-wl"><b lang="' + x.c.l + '">' + esc(x.c.w) + '<em>' + x.wrong + '번 틀림</em></b><span>' + esc(x.c.m) + '</span></div>';
       }).join('') + '</div><div class="dr-gap"><button class="dr-btn ghost" type="button" data-act="retry">오답 ' + wrongs.length + '개만 다시</button></div>'
         : '<p class="dr-none">틀린 단어 없이 모두 맞혔어요.</p>') + '</section>' +
-      '<section class="card"><h2 style="margin-bottom:6px">다음 복습</h2>' +
-      '<p class="desc" style="margin:0 0 14px;font-size:14px;color:var(--sub);line-height:1.6">잊을 때쯤 다시 보여 드려요. 틀린 단어는 처음부터 다시 세요.</p>' +
+      '<section class="card"><h2 class="dr-h6">다음 복습</h2>' +
+      '<p class="desc dr-next">잊을 때쯤 다시 보여 드려요. 틀린 단어는 처음부터 다시 세요.</p>' +
       '<div class="dr-sched"><div class="dr-dot next"><b>내일</b><span>' + md(d1) + '</span></div><div class="dr-dot"><b>' + md(d2) + '</b><span>' + gap(d2) + '</span></div>' +
       '<div class="dr-dot"><b>' + md(d3) + '</b><span>' + gap(d3) + '</span></div><div class="dr-dot"><b>' + md(d4) + '</b><span>' + gap(d4) + '</span></div></div>' +
       '<div class="dr-gap"><button class="dr-btn" type="button" data-act="close">완료</button></div></section>';
     root.innerHTML = '<div class="dr-in">' + h + '</div>';
+    widths();
     root.scrollTop = 0;
   }
 

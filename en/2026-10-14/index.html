@@ -245,6 +245,8 @@
   .dr-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--sub); }
   .dr-legend span { display: inline-flex; align-items: center; gap: 5px; }
   .dr-legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dr-legend i.ok { background: #2a52d4; }
+  .dr-legend i.re { background: #f5a3aa; }
   .dr-fc { flex: 1; margin: 14px 12px 0; background: #fff; border-radius: 24px; box-shadow: var(--card-sh); padding: 22px 22px 24px; display: flex; flex-direction: column; }
   .dr-fc.fit { flex: none; }
   .dr-tag { align-self: flex-start; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg); color: var(--sub); }
@@ -262,6 +264,7 @@
   .dr-ex .en { font-size: 15px; line-height: 1.6; margin: 0; }
   .dr-ex .en b, .dr-qsub b { background: #fff3c4; font-weight: 700; padding: 0 2px; border-radius: 3px; }
   .dr-ex .ko { font-size: 13.5px; color: var(--sub); margin: 6px 0 0; line-height: 1.55; }
+  .dr-ex .ko.flat { margin: 0; }
   .dr-acts { margin: 14px 12px 0; }
   .dr-judge { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .dr-judge button { font: inherit; border: 0; cursor: pointer; height: 56px; border-radius: 14px; font-size: 16px; font-weight: 700; line-height: 1.3; }
@@ -290,6 +293,9 @@
   .dr-stat { background: var(--bg); border-radius: 12px; padding: 12px; }
   .dr-stat b { display: block; font-size: 18px; font-weight: 800; }
   .dr-stat span { font-size: 12px; color: var(--sub); font-weight: 600; }
+  .dr-in h2.dr-h12 { margin-bottom: 12px; }
+  .dr-in h2.dr-h6 { margin-bottom: 6px; }
+  .dr-in p.dr-next { margin: 0 0 14px; font-size: 14px; color: var(--sub); line-height: 1.6; }
   .dr-wl { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #eef0f3; }
   .dr-wl:first-child { border-top: 0; padding-top: 0; }
   .dr-wl b { font-size: 16px; font-weight: 700; }
@@ -443,7 +449,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="3">
+  <section class="card dr-card" id="drill" data-v="4">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -958,6 +964,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "bucket", "m": "양동이", "ex": "On hot summer days, a woman in Berlin carries a <b>bucket<\/b> of water to a tree near her home, and she has even given it a name: Linda.", "sh": "… a <b>bucket<\/b> of water to a tree near her home, …", "ek": "더운 여름날이면 베를린의 한 여성은 집 근처의 나무 한 그루에 물 한 양동이를 들고 가는데, 그 나무에 '린다'라는 이름까지 지어 주었다.", "alts": ["나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "appear", "m": "나타나다, ~로 보이다", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can <b>adopt<\/b> it and get <b>advice<\/b> on how much water to give.", "sh": "… it <b>appears<\/b> as an orange or red dot, …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "adopt", "m": "입양하다, (맡아서) 돌보기로 하다", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can <b>adopt<\/b> it and get <b>advice<\/b> on how much water to give.", "sh": "… and people can <b>adopt<\/b> it and get <b>advice<\/b> …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "나타나다, ~로 보이다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "advice", "m": "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can <b>adopt<\/b> it and get <b>advice<\/b> on how much water to give.", "sh": "… and get <b>advice<\/b> on how much water to give.", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "public", "m": "공공의, 누구나 쓸 수 있는", "ex": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find <b>public<\/b> water pumps on the street.", "sh": "… where people can find <b>public<\/b> water pumps on the street.", "ek": "도시를 위한 새로운 아이디어를 연구하는 작은 팀이 2020년에 만든 이 앱은, 사람들이 길에서 공용 물 펌프를 어디서 찾을 수 있는지도 보여 준다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "~을 돌보다", "몇몇의, 여러"]}, {"w": "look after", "m": "~을 돌보다", "ex": "The woman says that <b>looking after<\/b> her tree is fun, almost like a video game.", "sh": "The woman says that <b>looking after<\/b> her tree is fun, almost like a video game.", "ek": "그 여성은 자기 나무를 돌보는 일이 재미있고, 거의 비디오 게임 같다고 말한다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "몇몇의, 여러"]}, {"w": "several", "m": "몇몇의, 여러", "ex": "Thousands of people now water trees this way, and <b>several<\/b> other cities in Germany and France have started their own versions of the app.", "sh": "… and <b>several<\/b> other cities in Germany and France …", "ek": "이제 수천 명이 이런 방식으로 나무에 물을 주고 있고, 독일과 프랑스의 다른 여러 도시도 이 앱의 자기들만의 버전을 시작했다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다"]}]</script>
-<script id="drill-js" data-v="3" src="/assets/drill.js?v=3" defer></script>
+<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
 </body>
 </html>

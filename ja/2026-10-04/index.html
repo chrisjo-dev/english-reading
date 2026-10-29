@@ -247,6 +247,8 @@
   .dr-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--sub); }
   .dr-legend span { display: inline-flex; align-items: center; gap: 5px; }
   .dr-legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dr-legend i.ok { background: #2a52d4; }
+  .dr-legend i.re { background: #f5a3aa; }
   .dr-fc { flex: 1; margin: 14px 12px 0; background: #fff; border-radius: 24px; box-shadow: var(--card-sh); padding: 22px 22px 24px; display: flex; flex-direction: column; }
   .dr-fc.fit { flex: none; }
   .dr-tag { align-self: flex-start; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg); color: var(--sub); }
@@ -264,6 +266,7 @@
   .dr-ex .en { font-size: 15px; line-height: 1.6; margin: 0; }
   .dr-ex .en b, .dr-qsub b { background: #fff3c4; font-weight: 700; padding: 0 2px; border-radius: 3px; }
   .dr-ex .ko { font-size: 13.5px; color: var(--sub); margin: 6px 0 0; line-height: 1.55; }
+  .dr-ex .ko.flat { margin: 0; }
   .dr-acts { margin: 14px 12px 0; }
   .dr-judge { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .dr-judge button { font: inherit; border: 0; cursor: pointer; height: 56px; border-radius: 14px; font-size: 16px; font-weight: 700; line-height: 1.3; }
@@ -292,6 +295,9 @@
   .dr-stat { background: var(--bg); border-radius: 12px; padding: 12px; }
   .dr-stat b { display: block; font-size: 18px; font-weight: 800; }
   .dr-stat span { font-size: 12px; color: var(--sub); font-weight: 600; }
+  .dr-in h2.dr-h12 { margin-bottom: 12px; }
+  .dr-in h2.dr-h6 { margin-bottom: 6px; }
+  .dr-in p.dr-next { margin: 0 0 14px; font-size: 14px; color: var(--sub); line-height: 1.6; }
   .dr-wl { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #eef0f3; }
   .dr-wl:first-child { border-top: 0; padding-top: 0; }
   .dr-wl b { font-size: 16px; font-weight: 700; }
@@ -443,7 +449,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="3">
+  <section class="card dr-card" id="drill" data-v="4">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -951,6 +957,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "夕焼け", "m": "노을", "r": "ゆうやけ", "ex": "<ruby>夕方<rt>ゆうがた<\/rt><\/ruby>、<b><ruby>夕焼<rt>ゆうや<\/rt><\/ruby>け<\/b>の<ruby>空<rt>そら<\/rt><\/ruby>がオレンジ<ruby>色<rt>いろ<\/rt><\/ruby>に<ruby>変<rt>か<\/rt><\/ruby>わります。", "sh": "<ruby>夕方<rt>ゆうがた<\/rt><\/ruby>、<b><ruby>夕焼<rt>ゆうや<\/rt><\/ruby>け<\/b>の<ruby>空<rt>そら<\/rt><\/ruby>がオレンジ<ruby>色<rt>いろ<\/rt><\/ruby>に<ruby>変<rt>か<\/rt><\/ruby>わります。", "ek": "저녁, 노을의 하늘이 오렌지색으로 바뀝니다.", "alts": ["계절", "태양", "바뀌다", "느끼다", "조용하다, 고요하다"]}, {"w": "季節", "m": "계절", "r": "きせつ", "ex": "<ruby>十月<rt>じゅうがつ<\/rt><\/ruby>になると、<b><ruby>空<rt>そら<\/rt><\/ruby><\/b>の<ruby>色<rt>いろ<\/rt><\/ruby>がきれいになる<ruby>季節<rt>きせつ<\/rt><\/ruby>です。", "sh": "<ruby>十月<rt>じゅうがつ<\/rt><\/ruby>になると、<b><ruby>空<rt>そら<\/rt><\/ruby><\/b>の<ruby>色<rt>いろ<\/rt><\/ruby>がきれいになる<ruby>季節<rt>きせつ<\/rt><\/ruby>です。", "ek": "10월이 되면 하늘 색이 아름다워지는 계절입니다.", "alts": ["노을", "태양", "바뀌다", "느끼다", "조용하다, 고요하다"]}, {"w": "太陽", "m": "태양", "r": "たいよう", "ex": "<ruby>今日<rt>きょう<\/rt><\/ruby>は<ruby>学校<rt>がっこう<\/rt><\/ruby>の<ruby>帰<rt>かえ<\/rt><\/ruby>り<ruby>道<rt>みち<\/rt><\/ruby>で、<ruby>赤<rt>あか<\/rt><\/ruby>い<b><ruby>太陽<rt>たいよう<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>ました。", "sh": "<ruby>今日<rt>きょう<\/rt><\/ruby>は<ruby>学校<rt>がっこう<\/rt><\/ruby>の<ruby>帰<rt>かえ<\/rt><\/ruby>り<ruby>道<rt>みち<\/rt><\/ruby>で、<ruby>赤<rt>あか<\/rt><\/ruby>い<b><ruby>太陽<rt>たいよう<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>ました。", "ek": "오늘은 학교 귀갓길에서 빨간 태양을 봤습니다.", "alts": ["노을", "계절", "바뀌다", "느끼다", "조용하다, 고요하다"]}, {"w": "変わる", "m": "바뀌다", "r": "かわる", "ex": "<ruby>夕方<rt>ゆうがた<\/rt><\/ruby>、<b><ruby>夕焼<rt>ゆうや<\/rt><\/ruby>け<\/b>の<ruby>空<rt>そら<\/rt><\/ruby>がオレンジ<ruby>色<rt>いろ<\/rt><\/ruby>に<ruby>変<rt>か<\/rt><\/ruby>わります。", "sh": "<ruby>夕方<rt>ゆうがた<\/rt><\/ruby>、<b><ruby>夕焼<rt>ゆうや<\/rt><\/ruby>け<\/b>の<ruby>空<rt>そら<\/rt><\/ruby>がオレンジ<ruby>色<rt>いろ<\/rt><\/ruby>に<ruby>変<rt>か<\/rt><\/ruby>わります。", "ek": "저녁, 노을의 하늘이 오렌지색으로 바뀝니다.", "alts": ["노을", "계절", "태양", "느끼다", "조용하다, 고요하다"]}, {"w": "感じる", "m": "느끼다", "r": "かんじる", "ex": "<ruby>風<rt>かぜ<\/rt><\/ruby>が<ruby>少<rt>すこ<\/rt><\/ruby>し<ruby>冷<rt>つめ<\/rt><\/ruby>たくなって、<b><ruby>秋<rt>あき<\/rt><\/ruby><\/b>がきたと<ruby>感<rt>かん<\/rt><\/ruby>じました。", "sh": "<ruby>風<rt>かぜ<\/rt><\/ruby>が<ruby>少<rt>すこ<\/rt><\/ruby>し<ruby>冷<rt>つめ<\/rt><\/ruby>たくなって、<b><ruby>秋<rt>あき<\/rt><\/ruby><\/b>がきたと<ruby>感<rt>かん<\/rt><\/ruby>じました。", "ek": "바람이 조금 차가워져서 가을이 왔다고 느꼈습니다.", "alts": ["노을", "계절", "태양", "바뀌다", "조용하다, 고요하다"]}, {"w": "静か", "m": "조용하다, 고요하다", "r": "しずか", "ex": "<ruby>夜<rt>よる<\/rt><\/ruby>は<b><ruby>星<rt>ほし<\/rt><\/ruby><\/b>もよく<ruby>見<rt>み<\/rt><\/ruby>えて、とても<ruby>静<rt>しず<\/rt><\/ruby>かでした。", "sh": "<ruby>夜<rt>よる<\/rt><\/ruby>は<b><ruby>星<rt>ほし<\/rt><\/ruby><\/b>もよく<ruby>見<rt>み<\/rt><\/ruby>えて、とても<ruby>静<rt>しず<\/rt><\/ruby>かでした。", "ek": "밤에는 별도 잘 보여서 매우 조용했습니다.", "alts": ["노을", "계절", "태양", "바뀌다", "느끼다"]}]</script>
-<script id="drill-js" data-v="3" src="/assets/drill.js?v=3" defer></script>
+<script id="drill-js" data-v="4" src="/assets/drill.js?v=4" defer></script>
 </body>
 </html>

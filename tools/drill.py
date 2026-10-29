@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "3"
+VERSION = "4"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -151,6 +151,8 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--sub); }
   .dr-legend span { display: inline-flex; align-items: center; gap: 5px; }
   .dr-legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dr-legend i.ok { background: #2a52d4; }
+  .dr-legend i.re { background: #f5a3aa; }
   .dr-fc { flex: 1; margin: 14px 12px 0; background: #fff; border-radius: 24px; box-shadow: var(--card-sh); padding: 22px 22px 24px; display: flex; flex-direction: column; }
   .dr-fc.fit { flex: none; }
   .dr-tag { align-self: flex-start; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg); color: var(--sub); }
@@ -168,6 +170,7 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-ex .en { font-size: 15px; line-height: 1.6; margin: 0; }
   .dr-ex .en b, .dr-qsub b { background: #fff3c4; font-weight: 700; padding: 0 2px; border-radius: 3px; }
   .dr-ex .ko { font-size: 13.5px; color: var(--sub); margin: 6px 0 0; line-height: 1.55; }
+  .dr-ex .ko.flat { margin: 0; }
   .dr-acts { margin: 14px 12px 0; }
   .dr-judge { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .dr-judge button { font: inherit; border: 0; cursor: pointer; height: 56px; border-radius: 14px; font-size: 16px; font-weight: 700; line-height: 1.3; }
@@ -196,6 +199,9 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-stat { background: var(--bg); border-radius: 12px; padding: 12px; }
   .dr-stat b { display: block; font-size: 18px; font-weight: 800; }
   .dr-stat span { font-size: 12px; color: var(--sub); font-weight: 600; }
+  .dr-in h2.dr-h12 { margin-bottom: 12px; }
+  .dr-in h2.dr-h6 { margin-bottom: 6px; }
+  .dr-in p.dr-next { margin: 0 0 14px; font-size: 14px; color: var(--sub); line-height: 1.6; }
   .dr-wl { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #eef0f3; }
   .dr-wl:first-child { border-top: 0; padding-top: 0; }
   .dr-wl b { font-size: 16px; font-weight: 700; }
@@ -253,6 +259,9 @@ def _next_step(page):
 def apply(page, lang, day):
     """페이지에 복습 띠, 진입 카드, CSS, 자료, 스크립트를 넣는다. 같은 버전이 있으면 그대로 둔다(여러 번 돌려도 같다)."""
     if f'<script id="drill-js" data-v="{VERSION}"' in page:
+        return page
+    # 날짜 지문 페이지에만 넣는다(아카이브, 복습 페이지 등은 그대로).
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", day or "") or "</header>\n" not in page or "  .gnb {" not in page:
         return page
     for a, b in (("<!-- drill-due -->", "<!-- /drill-due -->"), ("<!-- drill-card -->", "<!-- /drill-card -->")):
         page = re.sub(re.escape(a) + r".*?" + re.escape(b) + r"\n\n?", "", page, count=1, flags=re.S)

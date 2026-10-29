@@ -89,6 +89,21 @@ class TestApply(unittest.TestCase):
         for name in ("word_drill_start", "word_drill_done", "word_review_start", "drill:v1"):
             self.assertIn(name, js)
         self.assertNotIn("\u00b7", js)
+        self.assertNotIn('style="', js)  # CSP style-src 대비: 마크업 style 속성 없이 클래스와 CSSOM만
+
+
+class TestGuard(unittest.TestCase):
+    def test_non_passage_pages_are_left_alone(self):
+        arch = ROOT / "en" / "archive" / "index.html"
+        if arch.exists():
+            page = arch.read_text(encoding="utf-8")
+            self.assertEqual(drill.apply(page, "en", "archive"), page)
+        bare = "<html><head><style>\n  .gnb { }\n</style></head><body><header></header>\n<main></main></body></html>"
+        self.assertEqual(drill.apply(bare, "en", "review"), bare)
+        self.assertEqual(drill.apply(bare, "en", "2026-10-2"), bare)
+        no_anchor = "<html><body><main></main></body></html>"
+        self.assertEqual(drill.apply(no_anchor, "en", "2026-10-29"), no_anchor)
+        self.assertNotEqual(drill.apply(bare, "en", "2026-10-29"), bare)
 
 
 if __name__ == "__main__":
