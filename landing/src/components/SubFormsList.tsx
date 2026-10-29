@@ -85,6 +85,70 @@ function LeveledForm({ f, style }: { f: (typeof FORMS)[0]; style?: React.CSSProp
   );
 }
 
+// 네 번째 칸: 다음에 추가할 언어 요청. 서버 없이 GA 이벤트 lang_request 로 언어별 요청 수만 센다.
+const REQUEST_LANGS = ["중국어", "스페인어", "프랑스어", "베트남어", "러시아어", "이탈리아어"];
+
+function LangRequest({ style }: { style?: React.CSSProperties }) {
+  const [pick, setPick] = useState<string | null>(null);
+  const [custom, setCustom] = useState("");
+  const [sent, setSent] = useState(false);
+  const other = pick === "기타";
+  const lang = other ? custom.trim() : pick;
+  return (
+    <form
+      className="sub-form lang-req rv"
+      style={style}
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!lang || sent) return;
+        fireGtag("lang_request", { lang: lang.slice(0, 20), custom: other });
+        setSent(true);
+      }}
+    >
+      <div className="mono k">
+        <span>? 다음 언어</span>
+        <span>요청이 많은 언어부터 추가해요</span>
+      </div>
+      <span className="sub-label">언어 추가 요청하기</span>
+      <fieldset className="lr-opts" disabled={sent}>
+        <legend>어떤 언어를 읽고 싶으세요?</legend>
+        <div className="lr-chips">
+          {REQUEST_LANGS.map((l) => (
+            <button key={l} type="button" className="lr-chip" aria-pressed={pick === l} onClick={() => setPick(l)}>
+              {l}
+            </button>
+          ))}
+          <button type="button" className="lr-chip etc" aria-pressed={other} onClick={() => setPick("기타")}>
+            + 직접 쓰기
+          </button>
+        </div>
+        {other && (
+          <input
+            className="lr-input"
+            type="text"
+            maxLength={20}
+            placeholder="예: 포르투갈어"
+            aria-label="요청할 언어"
+            value={custom}
+            onChange={(e) => setCustom(e.target.value)}
+            autoFocus
+          />
+        )}
+      </fieldset>
+      <div className="lr-foot">
+        <button type="submit" className="lr-send" disabled={!lang || sent}>
+          {sent ? "요청을 보냈어요" : "요청 보내기"}
+        </button>
+        {sent ? (
+          <p className="lr-thanks" role="status">고마워요. 요청이 많은 언어부터 추가할게요.</p>
+        ) : (
+          <p className="lr-hint">이메일 없이 보내져요. 어떤 언어가 많이 요청됐는지만 세요.</p>
+        )}
+      </div>
+    </form>
+  );
+}
+
 export default function SubFormsList() {
   return (
     <>
@@ -117,6 +181,7 @@ export default function SubFormsList() {
           </form>
         )
       )}
+      <LangRequest style={delay(FORMS.length)} />
     </>
   );
 }
