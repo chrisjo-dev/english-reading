@@ -106,14 +106,18 @@ if __name__ == "__main__":
 class TestPageHero(unittest.TestCase):
     """사진이 있는 날은 날짜 페이지 상단에 글 없는 사진 배너(시안 P1), 없는 날은 예전 작은 썸네일."""
 
-    OLD = "2026-10-29"  # 사진이 없는 날(작은 썸네일이 들어 있는 페이지). git 이력에 기대지 않는다(CI 는 얕은 클론)
+    OLD = "2026-10-29"  # git 이력에 기대지 않는다(CI 는 얕은 클론)
 
     def setUp(self):
         import publish
         self.publish = publish
         self.tmp = Path(tempfile.mkdtemp())
         (self.tmp / "en" / self.OLD).mkdir(parents=True)
-        shutil.copy(ROOT / "en" / self.OLD / "index.html", self.tmp / "en" / self.OLD / "index.html")
+        # 지금은 모든 날짜에 사진이 있으므로, 배너를 예전 작은 썸네일로 되돌린 페이지를 쓴다
+        page = (ROOT / "en" / self.OLD / "index.html").read_text(encoding="utf-8")
+        page = page.replace('<div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>',
+                            '<img class="thumb" src="thumb.png" width="76" height="76" alt="">')
+        (self.tmp / "en" / self.OLD / "index.html").write_text(page, encoding="utf-8")
         self.patch = mock.patch.object(publish, "ROOT", self.tmp)
         self.patch.start()
         self.page = self.tmp / "en" / self.OLD / "index.html"
@@ -131,6 +135,15 @@ class TestPageHero(unittest.TestCase):
         self.assertNotIn('<img class="thumb"', once)
         self.publish.patch_page("en", self.OLD)
         self.assertEqual(self.page.read_text(encoding="utf-8"), once)
+
+    def test_hero_page_without_photo_file_gets_no_second_thumb(self):
+        (self.tmp / "en" / self.OLD / "photo.jpg").write_bytes(b"x")
+        self.publish.patch_page("en", self.OLD)
+        (self.tmp / "en" / self.OLD / "photo.jpg").unlink()
+        self.publish.patch_page("en", self.OLD)
+        page = self.page.read_text(encoding="utf-8")
+        self.assertIn('class="hero"', page)
+        self.assertNotIn('<img class="thumb"', page)
 
     def test_day_without_photo_keeps_small_thumb(self):
         self.publish.patch_page("en", self.OLD)

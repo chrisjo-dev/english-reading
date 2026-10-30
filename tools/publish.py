@@ -234,7 +234,7 @@ def patch_page(lang, day):
             1,
         )
         page = page.replace('<div class="date">', '<div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>\n    <div class="date">', 1)
-    if not photo and 'class="thumb"' not in page:
+    if not photo and 'class="thumb"' not in page and 'class="hero"' not in page:
         page = page.replace(
             "  .gnb {",
             "  .top { position: relative; }\n  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }\n  .gnb {",

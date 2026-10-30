@@ -151,7 +151,9 @@ def fit(d, text, weight, size, max_w):
 PHOTO_MODEL = "gpt-image-1-mini"
 PHOTO_STYLE = ("Editorial magazine photograph used as a news article thumbnail. Natural light, realistic, shallow depth of field, "
                "calm and clean composition with one clear subject, landscape framing with some empty space on the left. "
-               "Absolutely no text, letters, numbers, logos or watermarks anywhere in the image.")
+               "Absolutely no text, letters, numbers, logos or watermarks anywhere in the image. "
+               "Avoid shop signs, labels, cards, book covers, screens and packaging that would show writing; "
+               "if such an object matters, show it from an angle or distance where no writing is visible.")
 
 
 def _plain(s):

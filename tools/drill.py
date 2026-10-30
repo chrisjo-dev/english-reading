@@ -389,10 +389,14 @@ def apply(page, lang, day):
         page = re.sub(re.escape(a) + r".*?" + re.escape(b) + r"\n\n?", "", page, count=1, flags=re.S)
     page = re.sub(r'<script type="application/json" id="drill-data">.*?</script>\n', "", page, count=1, flags=re.S)
     page = re.sub(r'<script id="drill-js"[^>]*>.*?</script>\n', "", page, count=1, flags=re.S)
-    page = re.sub(r"  /\* drill-css \*/\n.*?  /\* /drill-css \*/\n", "", page, count=1, flags=re.S)
+    # CSS 는 원래 자리에서 바꿔 끼운다(다른 패치가 뒤에 넣은 CSS 와 순서가 바뀌지 않게). 없으면 .gnb 앞에 넣는다
+    css_at = re.search(r"  /\* drill-css \*/\n.*?  /\* /drill-css \*/\n", page, flags=re.S)
+    if css_at:
+        page = page[:css_at.start()] + "  /* drill-css */\n" + CSS + "  /* /drill-css */\n" + page[css_at.end():]
 
     items = cards(lang, day)
-    page = page.replace("  .gnb {", "  /* drill-css */\n" + CSS + "  /* /drill-css */\n  .gnb {", 1)
+    if not css_at:
+        page = page.replace("  .gnb {", "  /* drill-css */\n" + CSS + "  /* /drill-css */\n  .gnb {", 1)
     page = page.replace("</header>\n", "</header>\n" + DUE_HTML, 1)
     if items:
         card = card_html(lang, day, items, _next_step(page))
