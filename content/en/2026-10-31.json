@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-31",
+  "category": "culture",
+  "topic": "거대한 카트리나",
+  "title_ko": "멕시코시티에 세워진 세계에서 가장 큰 해골 조각",
+  "headline": "A Giant Skeleton Lady in Mexico City",
+  "chips": ["6문장", "B1 위주", "B2 2문장", "약 3분"],
+  "sentences": [
+    {"en": "On Thursday night, hundreds of people **gathered** in the main square of Mexico City to look up at a giant skeleton lady.", "b2": false,
+     "chunks": [["On Thursday night,", "목요일 밤에"], ["hundreds of people **gathered**", "수백 명의 사람들이 모였다"], ["in the main square", "중앙 광장에"], ["of Mexico City", "멕시코시티의"], ["to look up at", "올려다보려고"], ["a giant skeleton lady.", "거대한 해골 여인을"]]},
+    {"en": "She is a **Catrina**, a well-known **symbol** of the Day of the Dead, and she stands more than thirty-three meters tall.", "b2": false,
+     "chunks": [["She is a **Catrina**,", "그녀는 카트리나다"], ["a well-known **symbol**", "잘 알려진 상징인"], ["of the Day of the Dead,", "망자의 날의"], ["and she stands", "그리고 그녀는 서 있다"], ["more than thirty-three meters tall.", "33미터가 넘는 높이로"]]},
+    {"en": "The figure, which a team of artists made almost entirely from paper and glue, is now the tallest **sculpture** of its kind in the world.", "b2": true,
+     "chunks": [["The figure,", "그 형상은"], ["which a team of artists made", "예술가 팀이 만들었는데"], ["almost entirely", "거의 전부"], ["from paper and glue,", "종이와 풀로"], ["is now the tallest **sculpture**", "이제 가장 높은 조각이다"], ["of its kind", "그런 종류 중에서"], ["in the world.", "세계에서"]]},
+    {"en": "It **broke** the old record, which was set by a Catrina in another Mexican city in 2023.", "b2": false,
+     "chunks": [["It **broke** the old record,", "그것은 이전 기록을 깼다"], ["which was set", "그 기록은 세워졌다"], ["by a Catrina", "한 카트리나에 의해"], ["in another Mexican city", "멕시코의 다른 도시에 있는"], ["in 2023.", "2023년에"]]},
+    {"en": "Around her feet, the huge **altar** is decorated with seventy thousand bright orange flowers called **marigolds**.", "b2": false,
+     "chunks": [["Around her feet,", "그녀의 발 주변에"], ["the huge **altar**", "거대한 제단은"], ["is decorated with", "~로 장식되어 있다"], ["seventy thousand", "7만 송이의"], ["bright orange flowers", "밝은 주황색 꽃들로"], ["called **marigolds**.", "금잔화라고 불리는"]]},
+    {"en": "According to the city's mayor, the skeleton is a reminder that, when death comes, everyone is **equal**.", "b2": true,
+     "chunks": [["According to the city's mayor,", "그 도시의 시장에 따르면"], ["the skeleton is a reminder", "그 해골은 일깨워 주는 것이다"], ["that, when death comes,", "죽음이 올 때"], ["everyone is **equal**.", "모두가 평등하다는 것을"]]}
+  ],
+  "words": [["gathered", "모였다 (gather의 과거)"], ["symbol", "상징"], ["sculpture", "조각, 조각품"], ["broke (a record)", "(기록을) 깼다"], ["altar", "제단"], ["marigolds", "금잔화 (복수 -s)"], ["equal", "평등한, 같은"]],
+  "points": [
+    {"title": "큰 숫자를 바로 그려 보기", "body": "`seventy thousand`는 70,000(7만)이에요. thousand 앞의 숫자에 0을 세 개 붙인다고 생각하면 빨라요. `hundreds of people`(수백 명), `thirty-three meters`(33미터)도 숫자 그림으로 바꿔 읽어 보세요."},
+    {"title": "문장 중간에 끼어든 설명", "body": "3번 문장은 `The figure`가 주어이고 동사는 한참 뒤의 `is`예요. 쉼표 사이 `which a team of artists made ...`는 덧붙인 설명이니, 모르는 단어가 있어도 문장을 놓지 말고 '주어 → is'로 이어 읽으세요."}
+  ],
+  "answers": [
+    "목요일 밤, 수백 명의 사람들이 멕시코시티 중앙 광장에 모여 거대한 해골 여인을 올려다보았다.",
+    "그녀는 망자의 날의 잘 알려진 상징인 카트리나이며, 높이가 33미터가 넘는다.",
+    "예술가 팀이 거의 전부 종이와 풀로 만든 이 형상은 이제 같은 종류 중 세계에서 가장 높은 조각이다.",
+    "이 조각은 2023년 멕시코의 다른 도시에 있던 카트리나가 세운 이전 기록을 깼다.",
+    "그녀의 발 주변에 있는 거대한 제단은 금잔화라고 불리는 밝은 주황색 꽃 7만 송이로 장식되어 있다.",
+    "시장에 따르면, 그 해골은 죽음이 찾아오면 모두가 평등하다는 것을 일깨워 준다."
+  ],
+  "advanced": [
+    {"word": "unveil", "meaning": "(처음으로) 공개하다", "confuse": null, "example": "The city **unveiled** the giant Catrina on Thursday night.", "example_ko": "시는 목요일 밤에 거대한 카트리나를 공개했습니다."},
+    {"word": "towering", "meaning": "우뚝 솟은, 매우 높은", "confuse": null, "example": "A **towering** skeleton now stands in the main square.", "example_ko": "우뚝 솟은 해골이 이제 중앙 광장에 서 있습니다."},
+    {"word": "surpass", "meaning": "능가하다, 넘어서다", "confuse": null, "example": "The new figure **surpassed** the record set in 2023.", "example_ko": "새 조각은 2023년에 세워진 기록을 넘어섰습니다."},
+    {"word": "adorn", "meaning": "장식하다, 꾸미다", "confuse": "adore(아주 좋아하다)와 혼동 주의", "example": "Seventy thousand marigolds **adorn** the altar.", "example_ko": "금잔화 7만 송이가 제단을 장식하고 있습니다."},
+    {"word": "commemorate", "meaning": "기념하다, 추모하다", "confuse": null, "example": "Families build altars to **commemorate** loved ones who have died.", "example_ko": "가족들은 세상을 떠난 사랑하는 사람들을 추모하려고 제단을 만듭니다."},
+    {"word": "mortality", "meaning": "죽음을 피할 수 없음, 사망률", "confuse": "morality(도덕)와 혼동 주의", "example": "The skeleton reminds visitors of their own **mortality**.", "example_ko": "그 해골은 방문객들에게 자신도 언젠가 죽는다는 사실을 떠올리게 합니다."},
+    {"word": "vanity", "meaning": "허영, 겉치레", "confuse": "variety(다양성)와 혼동 주의", "example": "The mayor said the Catrina is a critique of **vanity**.", "example_ko": "시장은 카트리나가 허영에 대한 비판이라고 말했습니다."}
+  ],
+  "source": {"title": "Mexico City unveils record-setting giant Catrina for Day of the Dead (Mexico News Daily, 2026-10-30)", "url": "https://mexiconewsdaily.com/culture/mexico-city-tallest-catrina-record-day-of-the-dead/"},
+  "levels": {"a": {
+    "sentences": [
+      {"en": "On Thursday night, hundreds of people **gathered** in Mexico City's main square.", "chunks": [["On Thursday night,", "목요일 밤에"], ["hundreds of people **gathered**", "수백 명이 모였다"], ["in Mexico City's main square.", "멕시코시티의 중앙 광장에"]]},
+      {"en": "They came to see a very tall **Catrina**, a **symbol** of the Day of the Dead.", "chunks": [["They came to see", "그들은 보러 왔다"], ["a very tall **Catrina**,", "아주 큰 카트리나를"], ["a **symbol** of the Day of the Dead.", "망자의 날의 상징인"]]},
+      {"en": "This **sculpture** is made of paper, and it is thirty-three meters tall.", "chunks": [["This **sculpture** is made of paper,", "이 조각은 종이로 만들어졌다"], ["and it is thirty-three meters tall.", "그리고 높이가 33미터다"]]},
+      {"en": "It **broke** the old world record from 2023.", "chunks": [["It **broke** the old world record", "그것은 이전 세계 기록을 깼다"], ["from 2023.", "2023년의"]]},
+      {"en": "Seventy thousand orange **marigolds** cover the big **altar**.", "chunks": [["Seventy thousand orange **marigolds**", "7만 송이의 주황색 금잔화가"], ["cover the big **altar**.", "큰 제단을 덮고 있다"]]},
+      {"en": "The mayor says that everyone is **equal** in death.", "chunks": [["The mayor says", "시장은 말한다"], ["that everyone is **equal**", "모두가 평등하다고"], ["in death.", "죽음 앞에서"]]}
+    ],
+    "answers": [
+      "목요일 밤, 수백 명의 사람들이 멕시코시티 중앙 광장에 모였다.",
+      "그들은 망자의 날의 상징인 아주 큰 카트리나를 보러 왔다.",
+      "이 조각은 종이로 만들어졌고, 높이가 33미터다.",
+      "그것은 2023년의 이전 세계 기록을 깼다.",
+      "주황색 금잔화 7만 송이가 큰 제단을 덮고 있다.",
+      "시장은 죽음 앞에서는 모두가 평등하다고 말한다."
+    ]
+  }}
+}
