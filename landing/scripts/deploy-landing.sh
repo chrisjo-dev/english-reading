@@ -9,11 +9,13 @@ DEST="${1:-$HERE/..}"
 OUT="$HERE/out"
 
 [ -f "$OUT/index.html" ] && [ -d "$OUT/_next" ] || { echo "out/ 가 없습니다. 먼저 npm run build 를 실행하세요." >&2; exit 1; }
-[ -d "$DEST/.git" ] || { echo "english-reading 저장소가 아닙니다: $DEST" >&2; exit 1; }
+{ [ -d "$DEST/.git" ] || [ -f "$DEST/.git" ]; } || { echo "english-reading 저장소가 아닙니다: $DEST" >&2; exit 1; }
 
 rm -rf "$DEST/_next"
 cp -R "$OUT/_next" "$DEST/_next"
 cp "$OUT/index.html" "$DEST/index.html"
 # 아이콘은 Next 가 out/ 루트에 내보내므로 함께 복사한다.
-for f in icon.svg apple-icon.png; do [ -f "$OUT/$f" ] && cp "$OUT/$f" "$DEST/$f"; done
+for f in apple-icon.png; do [ -f "$OUT/$f" ] && cp "$OUT/$f" "$DEST/$f"; done
+# icon.svg 대신 icon.png(favicon)를 icon-32.png 로 복사한다.
+[ -f "$OUT/icon.png" ] && cp "$OUT/icon.png" "$DEST/icon-32.png"
 echo "복사 완료: $DEST/index.html, $DEST/_next/, 아이콘"

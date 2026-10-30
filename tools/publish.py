@@ -69,8 +69,11 @@ LANG_GO_CSS = ("  a.lang-go { display: inline-flex; align-items: center; margin:
                " background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }\n"
                "  .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }\n  .lang-row a.lang-go { margin: 0; }\n")
 # 상단 메뉴 이름에 언어를 붙여("일본어 지난 지문") 길어졌다. 좁은 휴대폰에서 한 줄에 들어가게 줄인다.
+# duck-lying-64.png 도 좁은 화면에서 24px로 줄여 브랜드+nav 가 한 줄에 들어가게 한다.
 GNB_NARROW_CSS = ("  /* gnb-narrow */ @media (max-width: 400px) { .gnb { padding: 0 6px 0 14px; } .gnb .brand { font-size: 15px; }"
-                  " .gnb nav { gap: 2px; } .gnb nav a { padding: 8px 8px; font-size: 13px; white-space: nowrap; } }\n")
+                  " .gnb .brand img { height: 24px; } .gnb nav { gap: 2px; } .gnb nav a { padding: 8px 8px; font-size: 13px; white-space: nowrap; } }\n")
+# 브랜드명과 GNB 브랜드 링크 내부 HTML (누운 오리 이미지 + 텍스트)
+GNB_BRAND_INNER = '<img src="/assets/brand/duck-lying-64.png" alt="" height="30" style="vertical-align:middle"> 독해한입'
 
 
 def public_langs(current=None):
@@ -226,7 +229,8 @@ def patch_page(lang, day):
     page = path.read_text(encoding="utf-8")
     url = f"{SITE}/{lang}/{day}/"
     if 'property="og:image"' not in page:
-        title = html.escape(f"오늘은 {topic_of(lang, day)} 이야기예요 | {L['site']}")
+        # og:title: 브랜드명만 붙인다(og:site_name 에 전체 이름이 들어간다)
+        title = html.escape(f"오늘은 {topic_of(lang, day)} 이야기예요 | {langs.BRAND}")
         desc = f"{L['level']} 학습자를 위한 하루 한 단락 {L['name']} 읽기. 문장별 음성, 주요 단어, 모범 해석."
         meta = (
             f'<meta name="description" content="{desc}">\n'
@@ -265,6 +269,39 @@ def patch_page(lang, day):
         )
     # 지난 날짜에도 "오늘의"가 붙어 헷갈렸다(이슈 #19): 제목은 "○○ 읽기, 10월 20일"
     page = re.sub(r"<title>오늘의 ([^<]+ 읽기, [^<]+)</title>", r"<title>\1</title>", page, count=1)
+    # ── 브랜드 패치 (독해한입). 아래 항목은 모두 멱등적으로 동작한다 ──
+    # <title>에 "| 독해한입" 서픽스 추가 (이미 있으면 건드리지 않는다)
+    page = re.sub(
+        r"<title>([^<]+ 읽기, [^<]+)</title>",
+        lambda m: m.group(0) if f"| {langs.BRAND}" in m.group(1) else f"<title>{m.group(1).rstrip()} | {langs.BRAND}</title>",
+        page, count=1,
+    )
+    # og:title 끝의 서비스명을 브랜드명으로 교체 (이미 독해한입이면 재교체해도 동일 결과)
+    page = re.sub(
+        r'(<meta property="og:title" content="[^"]+?) \| [^"]+(")',
+        rf'\1 | {langs.BRAND}\2',
+        page, count=1,
+    )
+    # og:site_name 을 전체 브랜드+서비스명으로 교체
+    page = re.sub(
+        r'(<meta property="og:site_name" content=")[^"]+(")',
+        rf'\1{html.escape(L["site"])}\2',
+        page, count=1,
+    )
+    # favicon: icon.svg → icon-32.png (이미 교체됐으면 건드리지 않는다)
+    if 'href="/icon-32.png"' not in page:
+        page = page.replace(
+            '<link rel="icon" href="/icon.svg" type="image/svg+xml">',
+            '<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png">',
+            1,
+        )
+    # GNB 브랜드 링크: 텍스트 → 오리 이미지 + 독해한입 (이미 이미지가 있으면 건드리지 않는다)
+    if GNB_BRAND_INNER not in page:
+        page = re.sub(
+            r'(<a class="brand" href="/">)[^<]*(</a>)',
+            rf'\g<1>{GNB_BRAND_INNER}\g<2>',
+            page, count=1,
+        )
     # 공개로 바뀐 언어(독일어, 2026-10-30)의 지난 페이지에서 검색엔진 숨김을 걷는다
     if not L.get("noindex", False):
         page = page.replace('<meta name="robots" content="noindex">\n', "", 1)
@@ -391,7 +428,8 @@ def rebuild_lists(lang):
         review = (f'  <a class="review" href="{p}review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
         page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
                 .replace("__TITLE__", title).replace("__ARCHIVE__", f"{p}archive/" if p == "./" else "./").replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
-                .replace("__NAME__", L["name"]).replace("__GNB_NARROW__", GNB_NARROW_CSS).replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
+                .replace("__NAME__", L["name"]).replace("__GNB_NARROW__", GNB_NARROW_CSS).replace("__BRAND__", langs.BRAND).replace("__GNB_BRAND__", GNB_BRAND_INNER)
+                .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
                 .replace("__CHIPS__", chips).replace("__LANGTABS__", tabs).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
                 .replace("__CANONICAL__", f"{SITE}/{lang}/").replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
@@ -484,10 +522,10 @@ def write_sitemap():
 ARCHIVE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light only"><title>__TITLE__ | __SITE__</title>
-<meta property="og:title" content="__TITLE__ | __SITE__"><meta property="og:image" content="__OG_IMAGE__">
+<meta property="og:title" content="__TITLE__ | __BRAND__"><meta property="og:image" content="__OG_IMAGE__">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__CANONICAL__">
-<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
+<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1; --blue: #3182f6; }
@@ -541,7 +579,7 @@ __SUB_CSS____INTRO_CSS____FOOTER_CSS__</style>
 </head>
 <body><main>
   <header class="gnb">
-    <a class="brand" href="/">매일 외국어 읽기</a>
+    <a class="brand" href="/">__GNB_BRAND__</a>
     <nav aria-label="사이트 메뉴"><a href="__ARCHIVE__">__NAME__ 지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
   </header>
   <a class="back" href="__TODAY__">오늘의 지문 바로 가기 →</a>

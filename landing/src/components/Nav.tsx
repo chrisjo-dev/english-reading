@@ -11,7 +11,7 @@ export default function Nav() {
       <div className="wrap nav-in">
         <Link className="brand" href="/" prefetch={false}>
           <i className="brand-mark" aria-hidden="true" />
-          매일 외국어 읽기
+          독해한입
         </Link>
         <nav className="nav-links" aria-label="주요 메뉴">
           <a

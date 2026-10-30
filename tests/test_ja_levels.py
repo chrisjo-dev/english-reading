@@ -260,8 +260,16 @@ class PatchOldJaPageTest(unittest.TestCase):
         self.assertEqual(after, again, "두 번 실행해도 같아야 합니다")
         self.assertEqual(len(re.findall(r'<input[^>]+name="metadata__level"', after)), 2)
         self.assertEqual(after.count('class="card sub"'), 1)
-        strip = lambda p: re.sub(r'<section class="card sub".*?</section>', "", p, flags=re.S)
-        self.assertEqual(strip(before), strip(after), "구독 칸 밖은 바뀌지 않아야 합니다")
+        def strip(p):
+            # 구독 카드와 rebrand patch 가 바꾸는 요소(제목/OG/파비콘/GNB 브랜드)를 제외하고 비교한다.
+            p = re.sub(r'<section class="card sub".*?</section>', "", p, flags=re.S)
+            p = re.sub(r'<title>[^<]*</title>', "<title/>", p)
+            p = re.sub(r'<meta property="og:(?:title|site_name)" content="[^"]*"', '<meta property="og:brand" content=""', p)
+            p = re.sub(r'<link rel="icon"[^>]*/?>', "", p)
+            p = re.sub(r'(<a class="brand" href="/">).*?(</a>)', r'\1\2', p, flags=re.S)
+            p = re.sub(r'/\* gnb-narrow \*/[^\n]*\n?', '', p)
+            return p
+        self.assertEqual(strip(before), strip(after), "구독 칸 밖 콘텐츠는 바뀌지 않아야 합니다")
 
 
 if __name__ == "__main__":

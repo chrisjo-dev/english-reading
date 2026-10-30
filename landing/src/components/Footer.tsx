@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="foot-brand">
           <b>
             <i className="brand-mark" aria-hidden="true" />
-            매일 외국어 읽기
+            독해한입
           </b>
           <span>매일 아침 한 편, 외국어로 읽는 세상.</span>
         </div>

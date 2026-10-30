@@ -108,17 +108,17 @@ def build_email(lang, end):
 </td></tr>
 </table>
 </div>"""
-    return {"subject": f"이번 주 단어 {total}개 복습 ({span(end)}) | {L['site']}", "body": body, "url": url}
+    return {"subject": f"이번 주 단어 {total}개 복습 ({span(end)}) | {L['brand_email']}", "body": body, "url": url}
 
 
 # 복습 페이지. 단어 카드를 누르면 뜻이 보인다. 날짜 페이지와 같은 색과 글꼴을 쓴다.
 PAGE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light only"><title>이번 주 단어 복습 | __SITE__</title>
+<meta name="color-scheme" content="light only"><title>이번 주 단어 복습 | 독해한입</title>
 <meta name="description" content="__SPAN__ 동안 나온 주요 단어 __TOTAL__개를 뜻을 가리고 복습해요.">
-<meta property="og:title" content="이번 주 단어 복습 (__SPAN__) | __SITE__">
+<meta property="og:title" content="이번 주 단어 복습 (__SPAN__) | 독해한입">
 <meta property="og:url" content="__URL__"><meta property="og:image" content="__OG_IMAGE__"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
+<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 __HEAD_EXTRA__
 <style>
@@ -158,7 +158,7 @@ __FOOTER_CSS__</style>
 </head>
 <body><main>
   <header class="gnb">
-    <a class="brand" href="/">매일 외국어 읽기</a>
+    <a class="brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" height="30" style="vertical-align:middle"> 독해한입</a>
     <nav aria-label="사이트 메뉴"><a href="../../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
   </header>
   <a class="back" href="../../archive/">← 지난 지문</a>

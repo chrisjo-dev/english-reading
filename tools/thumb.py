@@ -48,6 +48,42 @@ def font(weight, size):
     return ImageFont.truetype(str(FONTS / f"Pretendard-{weight}.otf"), size * S)
 
 
+_DUCK_BRAND_IMG = None
+
+
+def _duck_img():
+    """누운 오리 이미지를 2x 캔버스 기준 높이 60px 로 리사이즈해서 캐싱한다."""
+    global _DUCK_BRAND_IMG
+    if _DUCK_BRAND_IMG is None:
+        p = ROOT / "assets" / "brand" / "duck-lying-512.png"
+        try:
+            raw = Image.open(p).convert("RGBA")
+            h = 60 * S  # 2x 캔버스에서 60px → 최종 30px
+            w = round(raw.width * h / raw.height)
+            _DUCK_BRAND_IMG = raw.resize((w, h), Image.LANCZOS)
+        except Exception:
+            pass  # 이미지 없으면 조용히 넘어간다
+    return _DUCK_BRAND_IMG
+
+
+def _draw_brand_header(img, d, x, y, site_desc, text_fill):
+    """썸네일 상단 브랜드 헤더: 누운 오리 + 굵은 '독해한입' + 보통 site_desc.
+    (x, y) 는 이미지/텍스트 위끝 기준. compose(사진) 와 build(일러스트) 공용.
+    """
+    duck = _duck_img()
+    cx = x
+    duck_h = duck.height if duck is not None else 60 * S
+    mid_y = y + duck_h // 2  # 수직 중앙
+    if duck is not None:
+        img.alpha_composite(duck, (cx, y))
+        cx += duck.width + 8 * S
+    bf = font("ExtraBold", 28)
+    d.text((cx, mid_y), langs.BRAND, font=bf, fill=text_fill, anchor="lm")
+    cx += round(d.textlength(langs.BRAND, font=bf)) + 8 * S
+    rf = font("SemiBold", 26)
+    d.text((cx, mid_y), site_desc, font=rf, fill=text_fill, anchor="lm")
+
+
 def tint(c, k):
     """색을 흰색 쪽으로 k(0~1)만큼 옅게 한다."""
     return tuple(round(v + (255 - v) * k) for v in c)
@@ -230,7 +266,7 @@ def compose(lang, day, cat, topic, pic):
     img.alpha_composite(dark)
     d = ImageDraw.Draw(img)
     x, white, soft = 80 * S, (255, 255, 255), (255, 255, 255, 219)
-    d.text((x, 92 * S), langs.get(lang)["site"], font=font("SemiBold", 30), fill=soft)
+    _draw_brand_header(img, d, x, 92 * S, langs.get(lang)["site_desc"], soft)
     tf = font("ExtraBold", 44)
     lines = _wrap(d, topic, tf, 640 * S)
     date_y = 630 * S - 76 * S - 38 * S          # 날짜 줄(32px) 위끝
@@ -284,7 +320,7 @@ def build(lang, day, cat=None, pic=None):
     d = ImageDraw.Draw(img)
     # 왼쪽: 브랜드, 분야 칩, 주제어, 날짜
     x = 80 * S
-    d.text((x, 92 * S), langs.get(lang)["site"], font=font("SemiBold", 30), fill=SUB)
+    _draw_brand_header(img, d, x, 92 * S, langs.get(lang)["site_desc"], SUB)
     chip = font("SemiBold", 26)
     cw = d.textlength(label, font=chip)
     d.rounded_rectangle((x, 230 * S, x + cw + 36 * S, 280 * S), 12 * S, fill=soft)

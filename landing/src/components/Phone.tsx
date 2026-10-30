@@ -28,7 +28,7 @@ export default function Phone({ date, topic, chips, sentences, draft }: Props) {
         <div className="ph-app">
           <span className="ph-brand">
             <i />
-            매일 외국어 읽기
+            독해한입
           </span>
           <span className="ph-pill">EN</span>
         </div>

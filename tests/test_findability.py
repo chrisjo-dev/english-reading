@@ -51,7 +51,7 @@ class TestFindability(unittest.TestCase):
         self.assertIn('<a href="/en/archive/">영어</a>', page)
         self.assertIn('<a href="/ja/archive/" class="on" aria-current="page">일본어</a>', page)
         self.assertIn('<a href="/de/archive/">독일어</a>', page)
-        self.assertIn('<meta property="og:title" content="일본어 지난 지문 | 매일 일본어 읽기">', page)
+        self.assertIn('<meta property="og:title" content="일본어 지난 지문 | 독해한입">', page)
         self.assertIn('<a href="/de/archive/" class="on"', (ROOT / "de" / "archive" / "index.html").read_text(encoding="utf-8"))
 
     def test_past_page_title_has_no_today_and_german_is_indexed(self):
@@ -65,7 +65,7 @@ class TestFindability(unittest.TestCase):
             with mock.patch.object(publish, "ROOT", tmp):
                 publish.patch_page("de", day)
             out = (tmp / "de" / day / "index.html").read_text(encoding="utf-8")
-            self.assertIn("<title>독일어 읽기, 10월 28일</title>", out)
+            self.assertIn("<title>독일어 읽기, 10월 28일 | 독해한입</title>", out)
             self.assertNotIn('name="robots" content="noindex"', out)
         finally:
             shutil.rmtree(tmp)

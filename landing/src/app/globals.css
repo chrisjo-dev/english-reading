@@ -133,9 +133,9 @@ input {
 }
 
 .brand-mark {
-  width: 12px;
-  height: 12px;
-  background: var(--blue);
+  width: 30px;
+  height: 20px;
+  background: url('/assets/brand/duck-lying-64.png') center / contain no-repeat;
   display: block;
   flex: none;
 }
@@ -716,9 +716,9 @@ html:not(.js) .sw {
 }
 
 .ph-brand i {
-  width: 0.6em;
-  height: 0.6em;
-  background: var(--blue);
+  width: 1.45em;
+  height: 0.95em;
+  background: url('/assets/brand/duck-lying-64.png') center / contain no-repeat;
   display: block;
 }
 

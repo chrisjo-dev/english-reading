@@ -156,7 +156,7 @@ def build(lang, day, level="b"):
 </td></tr>
 </table>
 </div>"""
-    return {"subject": f"오늘은 {d['topic']} 이야기예요 | {L['site']}", "body": body}
+    return {"subject": f"오늘은 {d['topic']} 이야기예요 | {L['brand_email']}", "body": body}
 
 
 if __name__ == "__main__":

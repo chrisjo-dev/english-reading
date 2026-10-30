@@ -4,7 +4,7 @@ import { loadLatest } from "@/lib/reading";
 import "./globals.css";
 
 const SITE = "https://read.wspace.ai.kr";
-const TITLE = "매일 외국어 읽기 | 매일 영어, 일본어, 독일어 독해 연습 (무료 뉴스레터)";
+const TITLE = "독해한입 | 매일 영어, 일본어, 독일어 독해 연습 (무료 뉴스레터)";
 const DESCRIPTION =
   "매일 아침 무료로 받는 외국어 읽기 뉴스레터. 영어 B1~B2, 일본어 N3(기초 N4~N5), 독일어 B1~B2 지문을 문장별 음성, 주요 단어, 모범 해석과 함께.";
 const latest = loadLatest();
@@ -17,12 +17,21 @@ const JSON_LD = {
     {
       "@type": "WebSite",
       "@id": `${SITE}/#website`,
-      name: "매일 외국어 읽기",
+      name: "독해한입: 매일 외국어 읽기",
+      alternateName: "매일 외국어 읽기",
       url: `${SITE}/`,
       inLanguage: ["ko-KR", "en", "ja", "de"],
       description: DESCRIPTION,
       isPartOf: { "@id": "https://www.wspace.ai.kr/#website" },
       publisher: { "@id": "https://www.wspace.ai.kr/#person" },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE}/#organization`,
+      name: "독해한입",
+      alternateName: "매일 외국어 읽기",
+      url: `${SITE}/`,
+      logo: `${SITE}/assets/brand/icon-512.png`,
     },
     {
       "@type": "FAQPage",
@@ -43,7 +52,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE}/` },
   openGraph: {
     type: "website",
-    siteName: "매일 외국어 읽기",
+    siteName: "독해한입: 매일 외국어 읽기",
     locale: "ko_KR",
     title: TITLE,
     description: DESCRIPTION,

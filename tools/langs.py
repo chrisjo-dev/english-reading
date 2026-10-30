@@ -11,10 +11,17 @@
   default_level — 구독 양식에서 수준을 고르지 않은 구독자의 기본 수준(기본 "b"). send_email.fill_missing_level 이 쓴다.
 """
 
+# 서비스 브랜드명. og:title, 제목, 이메일 수신자 표기 등에 쓴다.
+BRAND = "독해한입"
+# 루트/랜딩용 전체 사이트 이름
+BRAND_ROOT = "독해한입: 매일 외국어 읽기"
+
 LANGS = {
     "en": {
         "name": "영어",
-        "site": "매일 영어 읽기",
+        "site": "독해한입: 매일 영어 읽기",   # og:site_name 에 쓰는 전체 브랜드+서비스명
+        "site_desc": "매일 영어 읽기",         # 썸네일 등에서 브랜드 옆에 붙는 설명
+        "brand_email": "독해한입 영어",        # 이메일 제목 끝의 서비스 표기
         "level": "B1~B2",
         "hard_badge": "B2",              # 조금 어려운 문장(content 의 "b2": true)에 붙는 배지
         "intro": "매일 아침 새로 올라오는 B1~B2 영어 읽기예요.",
@@ -38,7 +45,9 @@ LANGS = {
     },
     "ja": {
         "name": "일본어",
-        "site": "매일 일본어 읽기",
+        "site": "독해한입: 매일 일본어 읽기",
+        "site_desc": "매일 일본어 읽기",
+        "brand_email": "독해한입 일본어",
         "level": "JLPT N3",
         "hard_badge": "N3",              # N3 문법이 들어간 문장(content 의 "b2": true)에 붙는 배지
         "intro": "매일 아침 새로 올라오는 JLPT N3(기초 N4~N5) 일본어 읽기예요.",
@@ -68,7 +77,9 @@ LANGS = {
     },
     "de": {
         "name": "독일어",
-        "site": "매일 독일어 읽기",
+        "site": "독해한입: 매일 독일어 읽기",
+        "site_desc": "매일 독일어 읽기",
+        "brand_email": "독해한입 독일어",
         "level": "B1~B2",
         "hard_badge": "B2",
         "intro": "매일 아침 새로 올라오는 B1~B2 독일어 읽기예요.",
