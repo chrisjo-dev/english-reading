@@ -106,33 +106,34 @@ if __name__ == "__main__":
 class TestPageHero(unittest.TestCase):
     """사진이 있는 날은 날짜 페이지 상단에 글 없는 사진 배너(시안 P1), 없는 날은 예전 작은 썸네일."""
 
+    OLD = "2026-10-29"  # 사진이 없는 날(작은 썸네일이 들어 있는 페이지). git 이력에 기대지 않는다(CI 는 얕은 클론)
+
     def setUp(self):
-        import subprocess
         import publish
         self.publish = publish
         self.tmp = Path(tempfile.mkdtemp())
-        (self.tmp / "en" / DAY).mkdir(parents=True)
-        orig = subprocess.run(["git", "show", f"edd0f36:en/{DAY}/index.html"], cwd=ROOT, capture_output=True, text=True, check=True).stdout
-        (self.tmp / "en" / DAY / "index.html").write_text(orig, encoding="utf-8")
+        (self.tmp / "en" / self.OLD).mkdir(parents=True)
+        shutil.copy(ROOT / "en" / self.OLD / "index.html", self.tmp / "en" / self.OLD / "index.html")
         self.patch = mock.patch.object(publish, "ROOT", self.tmp)
         self.patch.start()
-        self.page = self.tmp / "en" / DAY / "index.html"
+        self.page = self.tmp / "en" / self.OLD / "index.html"
 
     def tearDown(self):
         self.patch.stop()
         shutil.rmtree(self.tmp)
 
     def test_photo_day_gets_hero_instead_of_small_thumb(self):
-        (self.tmp / "en" / DAY / "photo.jpg").write_bytes(b"x")
-        self.publish.patch_page("en", DAY)
+        self.assertIn('<img class="thumb"', self.page.read_text(encoding="utf-8"))
+        (self.tmp / "en" / self.OLD / "photo.jpg").write_bytes(b"x")
+        self.publish.patch_page("en", self.OLD)
         once = self.page.read_text(encoding="utf-8")
         self.assertIn('<div class="hero"><img src="photo.jpg"', once)
         self.assertNotIn('<img class="thumb"', once)
-        self.publish.patch_page("en", DAY)
+        self.publish.patch_page("en", self.OLD)
         self.assertEqual(self.page.read_text(encoding="utf-8"), once)
 
     def test_day_without_photo_keeps_small_thumb(self):
-        self.publish.patch_page("en", DAY)
+        self.publish.patch_page("en", self.OLD)
         page = self.page.read_text(encoding="utf-8")
         self.assertIn('<img class="thumb" src="thumb.png"', page)
         self.assertNotIn('class="hero"', page)
