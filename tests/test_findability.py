@@ -13,8 +13,8 @@ import publish  # noqa: E402
 
 class TestFindability(unittest.TestCase):
     def test_other_language_links_skip_hidden_languages(self):
-        self.assertEqual(publish.other_lang_links("en"), '<a href="/ja/">일본어 지문 보기 →</a>')
-        self.assertEqual(publish.other_lang_links("ja"), '<a href="/en/">영어 지문 보기 →</a>')
+        self.assertEqual(publish.other_lang_links("en"), '<a class="lang-go" href="/ja/">일본어 지문 보기 →</a>')
+        self.assertEqual(publish.other_lang_links("ja"), '<a class="lang-go" href="/en/">영어 지문 보기 →</a>')
         self.assertNotIn("/de/", publish.other_lang_links("en"))  # 독일어는 비공개 시험 중
         self.assertIn("/ja/", publish.other_lang_links("de"))
 
@@ -24,7 +24,7 @@ class TestFindability(unittest.TestCase):
             day = "2026-10-29"
             (tmp / "en" / day).mkdir(parents=True)
             page = (ROOT / "en" / day / "index.html").read_text(encoding="utf-8")
-            page = page.replace('<a href="/ja/">일본어 지문 보기 →</a>', '<a href="../../">다른 언어</a>')
+            page = page.replace('<a class="lang-go" href="/ja/">일본어 지문 보기 →</a>', '<a href="../../">다른 언어</a>')
             (tmp / "en" / day / "index.html").write_text(page, encoding="utf-8")
             with mock.patch.object(publish, "ROOT", tmp):
                 publish.patch_page("en", day)
@@ -32,8 +32,9 @@ class TestFindability(unittest.TestCase):
                 publish.patch_page("en", day)
                 again = (tmp / "en" / day / "index.html").read_text(encoding="utf-8")
             self.assertNotIn('<a href="../../">다른 언어</a>', once)
-            self.assertIn('<a href="/ja/">일본어 지문 보기 →</a>', once)
+            self.assertIn('<a class="lang-go" href="/ja/">일본어 지문 보기 →</a>', once)
             self.assertEqual(once, again)
+            self.assertEqual(once.count(".intro a.lang-go"), 1)  # 알약 모양 CSS 는 한 번만
         finally:
             shutil.rmtree(tmp)
 
