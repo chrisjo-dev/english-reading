@@ -66,6 +66,20 @@ def _duck_img():
     return _DUCK_BRAND_IMG
 
 
+def _palette(small):
+    """256색 팔레트를 사진과 오리로 함께 뽑는다. 사진만으로 뽑으면 작은 오리의 노랑과 남색이 팔레트에 없어 흙색으로 뭉개졌다."""
+    duck = _duck_img()
+    if duck is None:
+        return small.quantize(256, method=Image.Quantize.MEDIANCUT)
+    strip = Image.new("RGB", (small.width, small.height // 4), (255, 255, 255))
+    d = duck.convert("RGB").resize((round(duck.width * strip.height / duck.height), strip.height))
+    for x in range(0, strip.width, d.width):
+        strip.paste(d, (x, 0))
+    src = Image.new("RGB", (small.width, small.height + strip.height))
+    src.paste(small, (0, 0)); src.paste(strip, (0, small.height))
+    return src.quantize(256, method=Image.Quantize.MEDIANCUT)
+
+
 def _draw_brand_header(img, d, x, y, site_desc, text_fill):
     """썸네일 상단 브랜드 헤더: 누운 오리 + 굵은 '독해한입' + 보통 site_desc.
     (x, y) 는 이미지/텍스트 위끝 기준. compose(사진) 와 build(일러스트) 공용.
@@ -304,7 +318,7 @@ def build(lang, day, cat=None, pic=None):
             meta = PngImagePlugin.PngInfo(); meta.add_text("thumb", "photo")
             small = compose(lang, day, cat, topic, pic).convert("RGB").resize((W // S, H // S), Image.LANCZOS)
             # 사진 PNG 는 0.6~1MB 라 메일에 무겁다. 256색으로 줄이면 겉보기는 같고 200~400KB 가 된다(파일 이름 thumb.png 는 그대로)
-            small.quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG).save(out, optimize=True, pnginfo=meta)
+            small.quantize(palette=_palette(small), dither=Image.Dither.FLOYDSTEINBERG).save(out, optimize=True, pnginfo=meta)
             # 날짜 페이지 배너와 지난 지문 목록에는 글 없는 사진을 쓴다(시안 P1, P4)
             cover(pic, 1200, 630).save(out.with_name("photo.jpg"), quality=82, optimize=True, progressive=True)
             return out
