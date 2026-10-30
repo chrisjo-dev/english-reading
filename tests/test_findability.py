@@ -44,6 +44,7 @@ class TestFindability(unittest.TestCase):
         self.assertIn('<a href="/en/archive/">영어</a>', page)
         self.assertIn('<a href="/ja/archive/" class="on" aria-current="page">일본어</a>', page)
         self.assertNotIn('/de/archive/', page)
+        self.assertIn('<meta property="og:title" content="일본어 지난 지문 | 매일 일본어 읽기">', page)
         self.assertIn('<a href="/de/archive/" class="on"', (ROOT / "de" / "archive" / "index.html").read_text(encoding="utf-8"))
 
     def test_search_text_includes_dates(self):

@@ -463,7 +463,7 @@ def write_sitemap():
 ARCHIVE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light only"><title>__TITLE__ | __SITE__</title>
-<meta property="og:title" content="지난 지문 | __SITE__"><meta property="og:image" content="__OG_IMAGE__">
+<meta property="og:title" content="__TITLE__ | __SITE__"><meta property="og:image" content="__OG_IMAGE__">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__CANONICAL__">
 <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-icon.png">
