@@ -76,7 +76,7 @@ def public_langs(current=None):
 
 def other_lang_links(lang):
     """지문 페이지 소개 끝의 다른 언어 링크. 예전에는 '다른 언어'가 첫 화면(구독 안내)으로 가서 목록을 못 찾았다(이슈 #19)."""
-    return "".join(f'<a class="lang-go" href="/{c}/">{langs.LANGS[c]["name"]} 지문 보기 →</a>' for c in public_langs() if c != lang)
+    return "".join(f'<a class="lang-go" href="/{c}/archive/">{langs.LANGS[c]["name"]} 지난 지문 보기 →</a>' for c in public_langs() if c != lang)
 
 
 def intro_html(lang):
