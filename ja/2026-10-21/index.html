@@ -369,6 +369,7 @@
   .gnb nav a:hover { background: var(--bg); }
   .gnb nav a.cta { color: var(--blue); background: var(--blue-soft); }
   .gnb nav a.cta:hover { background: #d6e8ff; }
+  /* gnb-narrow */ @media (max-width: 400px) { .gnb { padding: 0 6px 0 14px; } .gnb .brand { font-size: 15px; } .gnb nav { gap: 2px; } .gnb nav a { padding: 8px 8px; font-size: 13px; white-space: nowrap; } }
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
@@ -424,7 +425,7 @@
 <main>
   <header class="gnb">
     <a class="brand" href="/">매일 외국어 읽기</a>
-    <nav aria-label="사이트 메뉴"><a href="../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
+    <nav aria-label="사이트 메뉴"><a href="../archive/">일본어 지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
   </header>
 <!-- drill-due -->
   <div class="dr-due" id="dr-due" hidden><span class="ic" id="dr-due-n"></span><div class="tx"><b id="dr-due-t"></b><span id="dr-due-s"></span></div><button class="go" type="button" id="dr-due-go">복습하기</button></div>

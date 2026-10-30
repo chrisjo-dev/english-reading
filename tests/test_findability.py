@@ -70,6 +70,32 @@ class TestFindability(unittest.TestCase):
         finally:
             shutil.rmtree(tmp)
 
+    def test_top_menu_names_the_language(self):
+        """상단 메뉴 '지난 지문'에 언어를 붙이고, 좁은 휴대폰 CSS는 기본 .gnb 규칙 뒤에 한 번만 둔다."""
+        tmp = Path(tempfile.mkdtemp())
+        try:
+            day = "2026-10-20"
+            (tmp / "ja" / day).mkdir(parents=True)
+            page = (ROOT / "ja" / day / "index.html").read_text(encoding="utf-8")
+            page = page.replace('<a href="../archive/">일본어 지난 지문</a>', '<a href="../archive/">지난 지문</a>', 1)
+            page = re.sub(r"  /\* gnb-narrow \*/.*?\n", "", page)  # 예전 모양으로
+            (tmp / "ja" / day / "index.html").write_text(page, encoding="utf-8")
+            with mock.patch.object(publish, "ROOT", tmp):
+                publish.patch_page("ja", day)
+                once = (tmp / "ja" / day / "index.html").read_text(encoding="utf-8")
+                publish.patch_page("ja", day)
+                again = (tmp / "ja" / day / "index.html").read_text(encoding="utf-8")
+            self.assertIn('<nav aria-label="사이트 메뉴"><a href="../archive/">일본어 지난 지문</a>', once)
+            self.assertEqual(once.count("/* gnb-narrow */"), 1)
+            self.assertLess(once.index(".gnb nav a.cta:hover"), once.index("/* gnb-narrow */"))
+            self.assertEqual(once, again)
+        finally:
+            shutil.rmtree(tmp)
+        arch = (ROOT / "de" / "archive" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<nav aria-label="사이트 메뉴"><a href="./">독일어 지난 지문</a>', arch)
+        self.assertIn("/* gnb-narrow */", arch)
+        self.assertIn("{{name}} 지난 지문</a>", (ROOT / "tools" / "template.html").read_text(encoding="utf-8"))
+
     def test_search_text_includes_dates(self):
         q = publish.entry("ja", "2026-10-20")["q"]
         for w in ("10월", "20일", "10/20", "2026-10-20"):

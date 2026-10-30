@@ -68,6 +68,9 @@ FOOTER_HTML = ('<footer class="site-footer"><a href="https://www.wspace.ai.kr/">
 LANG_GO_CSS = ("  a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px;"
                " background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }\n"
                "  .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }\n  .lang-row a.lang-go { margin: 0; }\n")
+# 상단 메뉴 이름에 언어를 붙여("일본어 지난 지문") 길어졌다. 좁은 휴대폰에서 한 줄에 들어가게 줄인다.
+GNB_NARROW_CSS = ("  /* gnb-narrow */ @media (max-width: 400px) { .gnb { padding: 0 6px 0 14px; } .gnb .brand { font-size: 15px; }"
+                  " .gnb nav { gap: 2px; } .gnb nav a { padding: 8px 8px; font-size: 13px; white-space: nowrap; } }\n")
 
 
 def public_langs(current=None):
@@ -277,6 +280,11 @@ def patch_page(lang, day):
     if ".lang-row {" not in page and 'class="lang-row"' in page:
         page = re.sub(r"  \.intro a\.lang-go \{[^}]*\}\n", "", page)  # 2차 때 넣은 CSS 를 새 것으로 바꾼다
         page = page.replace("  .gnb {", LANG_GO_CSS + "  .gnb {", 1)
+    # 상단 메뉴 "지난 지문"이 어느 언어 목록인지 몰랐다(이슈 #19 남은 의견): "일본어 지난 지문"
+    page = page.replace('<a href="../archive/">지난 지문</a>', f'<a href="../archive/">{L["name"]} 지난 지문</a>', 1)
+    page = re.sub(r"  /\* gnb-narrow \*/.*?\n", "", page)  # 지우고 다시 넣어 늘 지금 규칙으로 맞춘다
+    cta = "  .gnb nav a.cta:hover { background: #d6e8ff; }\n"  # 기본 .gnb 규칙 뒤에 둬야 덮어쓴다
+    page = page.replace(cta, cta + GNB_NARROW_CSS, 1)
     if 'class="site-footer"' not in page:
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
@@ -383,7 +391,7 @@ def rebuild_lists(lang):
         review = (f'  <a class="review" href="{p}review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
         page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
                 .replace("__TITLE__", title).replace("__ARCHIVE__", f"{p}archive/" if p == "./" else "./").replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
-                .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
+                .replace("__NAME__", L["name"]).replace("__GNB_NARROW__", GNB_NARROW_CSS).replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
                 .replace("__CHIPS__", chips).replace("__LANGTABS__", tabs).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
                 .replace("__CANONICAL__", f"{SITE}/{lang}/").replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
@@ -494,7 +502,7 @@ ARCHIVE = r"""<!doctype html>
   .gnb nav a:hover { background: #f2f4f6; }
   .gnb nav a.cta { color: #3182f6; background: #e8f3ff; }
   .gnb nav a.cta:hover { background: #d6e8ff; }
-  .ltabs { display: flex; gap: 6px; margin: 0 0 16px; padding: 4px; border-radius: 14px; background: #e8ebef; }
+__GNB_NARROW__  .ltabs { display: flex; gap: 6px; margin: 0 0 16px; padding: 4px; border-radius: 14px; background: #e8ebef; }
   .ltabs a { flex: 1; text-align: center; font-size: 15px; font-weight: 700; color: var(--sub); padding: 10px 0; border-radius: 10px; text-decoration: none; }
   .ltabs a.on { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(16,24,40,.08); }
   .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #3182f6; text-decoration: none; }
@@ -534,7 +542,7 @@ __SUB_CSS____INTRO_CSS____FOOTER_CSS__</style>
 <body><main>
   <header class="gnb">
     <a class="brand" href="/">매일 외국어 읽기</a>
-    <nav aria-label="사이트 메뉴"><a href="__ARCHIVE__">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
+    <nav aria-label="사이트 메뉴"><a href="__ARCHIVE__">__NAME__ 지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
   </header>
   <a class="back" href="__TODAY__">오늘의 지문 바로 가기 →</a>
   <h1>__TITLE__</h1>
