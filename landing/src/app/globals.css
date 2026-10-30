@@ -140,6 +140,17 @@ input {
   flex: none;
 }
 
+/* PC 에서는 위 메뉴 로고를 배지로 키워 메뉴 아래로 살짝 걸치게 한다(스티커처럼). 제목(위에서 56px)과는 닿지 않는다 */
+@media (min-width: 961px) {
+  .brand-mark {
+    width: 76px;
+    height: 76px;
+    margin: 22px 0 -22px;
+    background-image: url('/assets/brand/badge-192.png');
+    filter: drop-shadow(0 2px 6px rgba(16, 24, 40, 0.14));
+  }
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
@@ -177,15 +188,10 @@ input {
 
 /* ───── hero (C3) ───── */
 
-/* 배지 메인 로고: 데스크톱에서 헤드라인 왼쪽에 절대 배치, 모바일에서는 플렉스 아이템으로 위 */
+/* 배지 메인 로고는 휴대폰 첫 화면에만 둔다. PC 첫 화면은 제목, 휴대폰 목업, 카드가 꽉 차 있어
+   제목 옆에 두면 목업과 겹쳤다. PC 는 위 메뉴의 배지(.brand-mark)가 메인 로고 역할을 한다. */
 .hero-badge {
-  position: absolute;
-  left: var(--m);
-  top: 56px;
-  width: 220px;
-  height: 220px;
-  object-fit: contain;
-  z-index: 2;
+  display: none;
 }
 
 .c3 {
@@ -247,7 +253,7 @@ input {
 }
 
 .c3-h1 {
-  left: calc(var(--m) + 248px); /* 배지(220px) + 여백(28px) */
+  left: var(--m);
   top: 56px;
   z-index: 2;
   margin-left: -6px;
@@ -299,7 +305,7 @@ input {
 
 .c3-sub {
   position: absolute;
-  left: calc(var(--m) + 248px); /* 배지(220px) + 여백(28px), 배지와 세로 겹침 피함 */
+  left: var(--m);
   top: 192px;
   width: calc(3 * var(--col) + 2 * var(--g));
   font-size: 18px;
@@ -1607,9 +1613,7 @@ html:not(.js) .sw {
 
   /* 배지: 플렉스 아이템으로 전환, 헤드라인(order:1) 위에 표시 */
   .hero-badge {
-    position: relative;
-    left: auto;
-    top: auto;
+    display: block;
     width: 140px;
     height: 140px;
     order: 0;
