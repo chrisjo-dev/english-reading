@@ -229,7 +229,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -278,7 +278,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -466,7 +466,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -978,6 +978,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "billions", "m": "수십억 (의)", "ex": "Every second, <b>billions<\/b> of tiny particles called <b>neutrinos<\/b> pass through your entire body without you feeling anything at all.", "sh": "… <b>billions<\/b> of tiny particles called <b>neutrinos<\/b> …", "ek": "매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.", "alts": ["중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다", "섬광, 순간 빛남"]}, {"w": "neutrino", "m": "중성미자 (전하가 없는 아주 작은 입자)", "ex": "Every second, <b>billions<\/b> of tiny particles called <b>neutrinos<\/b> pass through your entire body without you feeling anything at all.", "sh": "… called <b>neutrinos<\/b> pass through your entire body …", "ek": "매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.", "alts": ["수십억 (의)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다", "섬광, 순간 빛남"]}, {"w": "observatory", "m": "천문대, 관측소", "ex": "The IceCube <b>Observatory<\/b> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <b>detect<\/b> these particles.", "sh": "The IceCube <b>Observatory<\/b> in Antarctica uses more than five thousand sensors …", "ek": "남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "감지하다, 탐지하다", "충돌하다", "섬광, 순간 빛남"]}, {"w": "detect", "m": "감지하다, 탐지하다", "ex": "The IceCube <b>Observatory<\/b> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <b>detect<\/b> these particles.", "sh": "… in the ice to <b>detect<\/b> these particles.", "ek": "남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "충돌하다", "섬광, 순간 빛남"]}, {"w": "collide", "m": "충돌하다", "ex": "When a neutrino <b>collides<\/b> with an ice molecule, it produces a brief <b>flash<\/b> of blue light that the sensors record.", "sh": "When a neutrino <b>collides<\/b> with an ice molecule, …", "ek": "중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "섬광, 순간 빛남"]}, {"w": "flash", "m": "섬광, 순간 빛남", "ex": "When a neutrino <b>collides<\/b> with an ice molecule, it produces a brief <b>flash<\/b> of blue light that the sensors record.", "sh": "… it produces a brief <b>flash<\/b> of blue light that the sensors record.", "ek": "중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

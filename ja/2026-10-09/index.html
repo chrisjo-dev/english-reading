@@ -231,7 +231,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -280,7 +280,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -468,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -976,6 +976,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "紅葉", "m": "단풍", "r": "こうよう", "ex": "この<ruby>現象<rt>げんしょう<\/rt><\/ruby>を「<b><ruby>紅葉<rt>こうよう<\/rt><\/ruby><\/b>」といいます。", "sh": "この<ruby>現象<rt>げんしょう<\/rt><\/ruby>を「<b><ruby>紅葉<rt>こうよう<\/rt><\/ruby><\/b>」といいます。", "ek": "이 현상을 '고요'라고 합니다.", "alts": ["잎", "색소", "포함되다", "기온", "현상"]}, {"w": "葉", "m": "잎", "r": "は", "ex": "この<ruby>現象<rt>げんしょう<\/rt><\/ruby>を「<b><ruby>紅葉<rt>こうよう<\/rt><\/ruby><\/b>」といいます。", "sh": "この<ruby>現象<rt>げんしょう<\/rt><\/ruby>を「<b><ruby>紅葉<rt>こうよう<\/rt><\/ruby><\/b>」といいます。", "ek": "이 현상을 '고요'라고 합니다.", "alts": ["단풍", "색소", "포함되다", "기온", "현상"]}, {"w": "色素", "m": "색소", "r": "しきそ", "ex": "<ruby>葉<rt>は<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>緑色<rt>みどりいろ<\/rt><\/ruby>の<b><ruby>色素<rt>しきそ<\/rt><\/ruby><\/b>が<ruby>含<rt>ふく<\/rt><\/ruby>まれています。", "sh": "<ruby>葉<rt>は<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>緑色<rt>みどりいろ<\/rt><\/ruby>の<b><ruby>色素<rt>しきそ<\/rt><\/ruby><\/b>が<ruby>含<rt>ふく<\/rt><\/ruby>まれています。", "ek": "잎 속에는 초록색 색소가 포함되어 있습니다.", "alts": ["단풍", "잎", "포함되다", "기온", "현상"]}, {"w": "含まれる", "m": "포함되다", "r": "ふくまれる", "ex": "<ruby>葉<rt>は<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>緑色<rt>みどりいろ<\/rt><\/ruby>の<b><ruby>色素<rt>しきそ<\/rt><\/ruby><\/b>が<ruby>含<rt>ふく<\/rt><\/ruby>まれています。", "sh": "<ruby>葉<rt>は<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>緑色<rt>みどりいろ<\/rt><\/ruby>の<b><ruby>色素<rt>しきそ<\/rt><\/ruby><\/b>が<ruby>含<rt>ふく<\/rt><\/ruby>まれています。", "ek": "잎 속에는 초록색 색소가 포함되어 있습니다.", "alts": ["단풍", "잎", "색소", "기온", "현상"]}, {"w": "気温", "m": "기온", "r": "きおん", "ex": "<ruby>気温<rt>きおん<\/rt><\/ruby>が<ruby>低<rt>ひく<\/rt><\/ruby>くなると、<b><ruby>緑色<rt>みどりいろ<\/rt><\/ruby><\/b>の<ruby>色素<rt>しきそ<\/rt><\/ruby>がこわれていきます。", "sh": "<ruby>気温<rt>きおん<\/rt><\/ruby>が<ruby>低<rt>ひく<\/rt><\/ruby>くなると、<b><ruby>緑色<rt>みどりいろ<\/rt><\/ruby><\/b>の<ruby>色素<rt>しきそ<\/rt><\/ruby>がこわれていきます。", "ek": "기온이 낮아지면 초록색 색소가 점점 파괴됩니다.", "alts": ["단풍", "잎", "색소", "포함되다", "현상"]}, {"w": "現象", "m": "현상", "r": "げんしょう", "ex": "この<ruby>現象<rt>げんしょう<\/rt><\/ruby>を「<b><ruby>紅葉<rt>こうよう<\/rt><\/ruby><\/b>」といいます。", "sh": "この<ruby>現象<rt>げんしょう<\/rt><\/ruby>を「<b><ruby>紅葉<rt>こうよう<\/rt><\/ruby><\/b>」といいます。", "ek": "이 현상을 '고요'라고 합니다.", "alts": ["단풍", "잎", "색소", "포함되다", "기온"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

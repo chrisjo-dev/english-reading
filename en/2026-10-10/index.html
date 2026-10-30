@@ -229,7 +229,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -278,7 +278,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -466,7 +466,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -978,6 +978,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "established", "m": "기성의, 확고한", "ex": "The Affordable Art Fair is coming to Battersea Park in London from October 14 to 18, <b>bringing<\/b> together thousands of original works by both rising and <b>established<\/b> artists.", "sh": "… thousands of original works by both rising and <b>established<\/b> artists.", "ek": "어포더블 아트 페어가 10월 14일부터 18일까지 런던 배터시 파크에서 열리며, 신진 작가와 기성 작가의 오리지널 작품 수천 점을 한자리에 모은다.", "alts": ["접근 가능한, 이용하기 쉬운", "큐레이터, 전시 기획자", "컬렉션, 소장품", "수집하기, 컬렉팅", "사치, 사치품"]}, {"w": "accessible", "m": "접근 가능한, 이용하기 쉬운", "ex": "As its name <b>suggests<\/b>, the fair aims to make buying original art <b>accessible<\/b> to a wide audience, not only those with large budgets.", "sh": "… <b>accessible<\/b> to a wide audience, not only those with large budgets.", "ek": "이름이 나타내듯이, 이 행사는 큰 예산이 없어도 다양한 관람객이 오리지널 작품을 구매할 수 있도록 예술의 문턱을 낮추는 것을 목표로 한다.", "alts": ["기성의, 확고한", "큐레이터, 전시 기획자", "컬렉션, 소장품", "수집하기, 컬렉팅", "사치, 사치품"]}, {"w": "curator", "m": "큐레이터, 전시 기획자", "ex": "This year's <b>curator<\/b> is Yomi Adegoke, the bestselling author of The List, who chose five works she would pick for her own first art <b>collection<\/b>.", "sh": "This year's <b>curator<\/b> is Yomi Adegoke, …", "ek": "올해의 큐레이터는 베스트셀러 소설 『더 리스트』의 작가 요미 아데고케로, 자신이 처음 컬렉션을 시작한다면 고를 작품 다섯 점을 직접 선정했다.", "alts": ["기성의, 확고한", "접근 가능한, 이용하기 쉬운", "컬렉션, 소장품", "수집하기, 컬렉팅", "사치, 사치품"]}, {"w": "collection", "m": "컬렉션, 소장품", "ex": "This year's <b>curator<\/b> is Yomi Adegoke, the bestselling author of The List, who chose five works she would pick for her own first art <b>collection<\/b>.", "sh": "… she would pick for her own first art <b>collection<\/b>.", "ek": "올해의 큐레이터는 베스트셀러 소설 『더 리스트』의 작가 요미 아데고케로, 자신이 처음 컬렉션을 시작한다면 고를 작품 다섯 점을 직접 선정했다.", "alts": ["기성의, 확고한", "접근 가능한, 이용하기 쉬운", "큐레이터, 전시 기획자", "수집하기, 컬렉팅", "사치, 사치품"]}, {"w": "collecting", "m": "수집하기, 컬렉팅", "ex": "Organisers hope events like this will encourage more young people to see art <b>collecting<\/b> not as a <b>luxury<\/b> for the very wealthy, but as something anyone can take their first steps into.", "sh": "… to see art <b>collecting<\/b> not as a <b>luxury<\/b> …", "ek": "주최 측은 이런 행사들이 더 많은 젊은이들로 하여금 예술 수집을 아주 부유한 사람만의 사치가 아닌, 누구든 첫걸음을 내딛을 수 있는 무언가로 여기게 되길 바란다.", "alts": ["기성의, 확고한", "접근 가능한, 이용하기 쉬운", "큐레이터, 전시 기획자", "컬렉션, 소장품", "사치, 사치품"]}, {"w": "luxury", "m": "사치, 사치품", "ex": "Organisers hope events like this will encourage more young people to see art <b>collecting<\/b> not as a <b>luxury<\/b> for the very wealthy, but as something anyone can take their first steps into.", "sh": "… not as a <b>luxury<\/b> for the very wealthy, …", "ek": "주최 측은 이런 행사들이 더 많은 젊은이들로 하여금 예술 수집을 아주 부유한 사람만의 사치가 아닌, 누구든 첫걸음을 내딛을 수 있는 무언가로 여기게 되길 바란다.", "alts": ["기성의, 확고한", "접근 가능한, 이용하기 쉬운", "큐레이터, 전시 기획자", "컬렉션, 소장품", "수집하기, 컬렉팅"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

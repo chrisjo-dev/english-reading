@@ -229,7 +229,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -278,7 +278,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -468,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -980,6 +980,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "astronomers", "m": "천문학자들 (복수 -s)", "ex": "<b>Astronomers<\/b> have found that a giant planet outside our solar system is not perfectly round.", "sh": "<b>Astronomers<\/b> have found that a giant planet outside our solar system is not perfectly round.", "ek": "천문학자들이 우리 태양계 밖의 한 거대 행성이 완벽하게 둥글지 않다는 것을 알아냈다.", "alts": ["~을 향하다 (face의 3인칭 단수)", "가장자리들 (edge의 복수)", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "faces", "m": "~을 향하다 (face의 3인칭 단수)", "ex": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always <b>faces<\/b> its star.", "sh": "… and one side of it always <b>faces<\/b> its star.", "ek": "그 행성은 지구에서 약 1,300광년 떨어진 뜨거운 가스 행성으로, 한쪽 면이 항상 자기 별을 향하고 있다.", "alts": ["천문학자들 (복수 -s)", "가장자리들 (edge의 복수)", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "edges", "m": "가장자리들 (edge의 복수)", "ex": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the <b>edges<\/b> of its atmosphere.", "sh": "… that passes through the <b>edges<\/b> of its atmosphere.", "ek": "한 과학자 팀이 제임스 웹 우주 망원경을 이용해, 그 행성 대기의 가장자리들을 통과하는 별빛을 연구했다.", "alts": ["천문학자들 (복수 -s)", "~을 향하다 (face의 3인칭 단수)", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "stretches", "m": "뻗어 나가다, 늘어나다", "ex": "They found that the atmosphere <b>stretches<\/b> farther out on the evening side than on the cooler morning side.", "sh": "They found that the atmosphere <b>stretches<\/b> farther out on the evening side than on the cooler morning side.", "ek": "그들은 대기가 더 서늘한 아침 쪽보다 저녁 쪽에서 더 멀리 바깥으로 뻗어 있다는 것을 발견했다.", "alts": ["천문학자들 (복수 -s)", "~을 향하다 (face의 3인칭 단수)", "가장자리들 (edge의 복수)", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "probably", "m": "아마도", "ex": "Strong winds, which carry heat from the bright day side to the dark night side, are <b>probably<\/b> what causes this <b>bulge<\/b>.", "sh": "… are <b>probably<\/b> what causes this <b>bulge<\/b>.", "ek": "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 이 부풂의 원인일 것이다.", "alts": ["천문학자들 (복수 -s)", "~을 향하다 (face의 3인칭 단수)", "가장자리들 (edge의 복수)", "뻗어 나가다, 늘어나다", "불룩한 부분, 부풂", "방법"]}, {"w": "bulge", "m": "불룩한 부분, 부풂", "ex": "Strong winds, which carry heat from the bright day side to the dark night side, are <b>probably<\/b> what causes this <b>bulge<\/b>.", "sh": "… are <b>probably<\/b> what causes this <b>bulge<\/b>.", "ek": "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 이 부풂의 원인일 것이다.", "alts": ["천문학자들 (복수 -s)", "~을 향하다 (face의 3인칭 단수)", "가장자리들 (edge의 복수)", "뻗어 나가다, 늘어나다", "아마도", "방법"]}, {"w": "method", "m": "방법", "ex": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this <b>method<\/b> will help them study the weather on many of them.", "sh": "… this <b>method<\/b> will help them study the weather …", "ek": "지금까지 우리 태양계 밖에서 6,000개가 넘는 행성이 발견되었기 때문에, 연구팀은 이 방법이 그중 많은 행성의 날씨를 연구하는 데 도움이 되기를 바란다.", "alts": ["천문학자들 (복수 -s)", "~을 향하다 (face의 3인칭 단수)", "가장자리들 (edge의 복수)", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

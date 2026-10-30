@@ -231,7 +231,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -280,7 +280,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -468,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -976,6 +976,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "ノーベル賞", "m": "노벨상", "r": "ノーベルしょう", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "alts": ["화학", "수상", "발표되다", "명예교수", "연구"]}, {"w": "化学", "m": "화학", "r": "かがく", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "alts": ["노벨상", "수상", "발표되다", "명예교수", "연구"]}, {"w": "受賞", "m": "수상", "r": "じゅしょう", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>硤合<rt>そあい<\/rt><\/ruby><ruby>憲三<rt>けんそう<\/rt><\/ruby>さんとフランスのアンリ・カガンさんが<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>受賞<rt>じゅしょう<\/rt><\/ruby><\/b>しました。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>硤合<rt>そあい<\/rt><\/ruby><ruby>憲三<rt>けんそう<\/rt><\/ruby>さんとフランスのアンリ・カガンさんが<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>受賞<rt>じゅしょう<\/rt><\/ruby><\/b>しました。", "ek": "일본의 소아이 켄소 씨와 프랑스의 앙리 카강 씨가 함께 수상했습니다.", "alts": ["노벨상", "화학", "발표되다", "명예교수", "연구"]}, {"w": "発表される", "m": "발표되다", "r": "はっぴょうされる", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "alts": ["노벨상", "화학", "수상", "명예교수", "연구"]}, {"w": "名誉教授", "m": "명예교수", "r": "めいよきょうじゅ", "ex": "<ruby>硤合<rt>そあい<\/rt><\/ruby>さんは<ruby>東京<rt>とうきょう<\/rt><\/ruby><ruby>理科<rt>りか<\/rt><\/ruby><ruby>大学<rt>だいがく<\/rt><\/ruby>の<b><ruby>名誉<rt>めいよ<\/rt><\/ruby><ruby>教授<rt>きょうじゅ<\/rt><\/ruby><\/b>です。", "sh": "<ruby>硤合<rt>そあい<\/rt><\/ruby>さんは<ruby>東京<rt>とうきょう<\/rt><\/ruby><ruby>理科<rt>りか<\/rt><\/ruby><ruby>大学<rt>だいがく<\/rt><\/ruby>の<b><ruby>名誉<rt>めいよ<\/rt><\/ruby><ruby>教授<rt>きょうじゅ<\/rt><\/ruby><\/b>です。", "ek": "소아이 씨는 도쿄이과대학의 명예교수입니다.", "alts": ["노벨상", "화학", "수상", "발표되다", "연구"]}, {"w": "研究", "m": "연구", "r": "けんきゅう", "ex": "ふたりは<ruby>分子<rt>ぶんし<\/rt><\/ruby>の<b><ruby>形<rt>かたち<\/rt><\/ruby><\/b>に<ruby>関<rt>かん<\/rt><\/ruby>する<ruby>研究<rt>けんきゅう<\/rt><\/ruby>で<ruby>高<rt>たか<\/rt><\/ruby>く<ruby>評価<rt>ひょうか<\/rt><\/ruby>されました。", "sh": "ふたりは<ruby>分子<rt>ぶんし<\/rt><\/ruby>の<b><ruby>形<rt>かたち<\/rt><\/ruby><\/b>に<ruby>関<rt>かん<\/rt><\/ruby>する<ruby>研究<rt>けんきゅう<\/rt><\/ruby>で<ruby>高<rt>たか<\/rt><\/ruby>く<ruby>評価<rt>ひょうか<\/rt><\/ruby>されました。", "ek": "두 사람은 분자의 형태에 관한 연구로 높이 평가받았습니다.", "alts": ["노벨상", "화학", "수상", "발표되다", "명예교수"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

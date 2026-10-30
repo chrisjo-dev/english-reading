@@ -229,7 +229,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -278,7 +278,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -468,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -983,6 +983,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "antenna", "m": "안테나", "ex": "A normal <b>antenna<\/b> is a piece of metal, but what if you could make one out of light and air?", "sh": "A normal <b>antenna<\/b> is a piece of metal, but what if you could make one out of light and air?", "ek": "보통의 안테나는 금속 조각이지만, 빛과 공기로 안테나를 만들 수 있다면 어떨까?", "alts": ["플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "plasma", "m": "플라스마 (전기를 띤 기체)", "ex": "The laser turns a thin line of air into <b>plasma<\/b>, a special kind of gas that can carry electricity.", "sh": "The laser turns a thin line of air into <b>plasma<\/b>, a special kind of gas that can carry electricity.", "ek": "레이저는 가느다란 줄 모양의 공기를 플라스마, 즉 전기를 전달할 수 있는 특별한 종류의 기체로 바꾼다.", "alts": ["안테나", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "send out", "m": "내보내다", "ex": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "sh": "… the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "ek": "이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "vibrate", "m": "진동하다, 떨리다", "ex": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "sh": "… the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "ek": "이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "adjust", "m": "조정하다, 맞추다", "ex": "The length of this light-made antenna, which is controlled only by the laser's settings, can be <b>adjusted<\/b> for different signals without any moving parts.", "sh": "… can be <b>adjusted<\/b> for different signals …", "ek": "레이저의 설정만으로 조절되는 이 '빛으로 만든 안테나'의 길이는 움직이는 부품 없이도 다른 신호에 맞게 조정할 수 있다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "지금까지 (는)", "인공위성"]}, {"w": "so far", "m": "지금까지 (는)", "ex": "<b>So far<\/b>, the device can only send signals, but the team hopes it could one day help <b>satellites<\/b> that need to stay light.", "sh": "<b>So far<\/b>, the device can only send signals, …", "ek": "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "인공위성"]}, {"w": "satellite", "m": "인공위성", "ex": "<b>So far<\/b>, the device can only send signals, but the team hopes it could one day help <b>satellites<\/b> that need to stay light.", "sh": "… it could one day help <b>satellites<\/b> that need to stay light.", "ek": "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

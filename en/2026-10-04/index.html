@@ -229,7 +229,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -278,7 +278,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -466,7 +466,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -978,6 +978,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "orbit", "m": "궤도", "ex": "NASA's newest space telescope, called Roman, launched into <b>orbit<\/b> aboard a SpaceX Falcon Heavy rocket on August 30, 2026.", "sh": "… launched into <b>orbit<\/b> aboard a SpaceX Falcon Heavy rocket …", "ek": "NASA의 최신 우주 망원경 로만이 2026년 8월 30일 스페이스X 팰컨 헤비 로켓을 타고 궤도에 올랐다.", "alts": ["적외선의, 적외선", "탐지기, 감지기", "보정, 교정", "필터, 여과 장치", "관측들, 관찰들 (복수 -s 주의)"]}, {"w": "infrared", "m": "적외선의, 적외선", "ex": "Three weeks after launch, the team powered on its main camera — a 300-megapixel <b>infrared<\/b> <b>detector<\/b> that senses light invisible to the human eye.", "sh": "… — a 300-megapixel <b>infrared<\/b> <b>detector<\/b> that senses light …", "ek": "발사 3주 후, 연구팀은 육안에 보이지 않는 빛을 감지하는 3억 화소짜리 적외선 감지기인 주 카메라를 가동했다.", "alts": ["궤도", "탐지기, 감지기", "보정, 교정", "필터, 여과 장치", "관측들, 관찰들 (복수 -s 주의)"]}, {"w": "detector", "m": "탐지기, 감지기", "ex": "Three weeks after launch, the team powered on its main camera — a 300-megapixel <b>infrared<\/b> <b>detector<\/b> that senses light invisible to the human eye.", "sh": "… — a 300-megapixel <b>infrared<\/b> <b>detector<\/b> that senses light …", "ek": "발사 3주 후, 연구팀은 육안에 보이지 않는 빛을 감지하는 3억 화소짜리 적외선 감지기인 주 카메라를 가동했다.", "alts": ["궤도", "적외선의, 적외선", "보정, 교정", "필터, 여과 장치", "관측들, 관찰들 (복수 -s 주의)"]}, {"w": "calibration", "m": "보정, 교정", "ex": "Engineers ran a <b>calibration<\/b> test, rotated the <b>filter<\/b> wheel for the first time in space, and confirmed that all eighteen detectors were working as expected.", "sh": "Engineers ran a <b>calibration<\/b> test, rotated the <b>filter<\/b> wheel …", "ek": "공학자들은 보정 테스트를 실시하고 우주에서 처음으로 필터 휠을 회전시킨 뒤, 18개의 감지기 모두 정상 작동함을 확인했다.", "alts": ["궤도", "적외선의, 적외선", "탐지기, 감지기", "필터, 여과 장치", "관측들, 관찰들 (복수 -s 주의)"]}, {"w": "filter", "m": "필터, 여과 장치", "ex": "Engineers ran a <b>calibration<\/b> test, rotated the <b>filter<\/b> wheel for the first time in space, and confirmed that all eighteen detectors were working as expected.", "sh": "… rotated the <b>filter<\/b> wheel for the first time in space, …", "ek": "공학자들은 보정 테스트를 실시하고 우주에서 처음으로 필터 휠을 회전시킨 뒤, 18개의 감지기 모두 정상 작동함을 확인했다.", "alts": ["궤도", "적외선의, 적외선", "탐지기, 감지기", "보정, 교정", "관측들, 관찰들 (복수 -s 주의)"]}, {"w": "observations", "m": "관측들, 관찰들 (복수 -s 주의)", "ex": "Roman has been travelling toward a stable point roughly one and a half million kilometres from Earth, where science <b>observations<\/b> are set to begin in early 2027.", "sh": "… where science <b>observations<\/b> are set to begin …", "ek": "로만은 현재 지구에서 약 150만 킬로미터 떨어진 안정 지점을 향해 이동 중이며, 과학 관측은 2027년 초에 시작될 예정이다.", "alts": ["궤도", "적외선의, 적외선", "탐지기, 감지기", "보정, 교정", "필터, 여과 장치"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

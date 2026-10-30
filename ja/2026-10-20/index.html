@@ -231,7 +231,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -280,7 +280,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -470,7 +470,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -981,6 +981,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "おにぎり", "m": "주먹밥", "ex": "「<b>おにぎり<\/b>」を<ruby>知<rt>し<\/rt><\/ruby>っていますか。", "sh": "「<b>おにぎり<\/b>」を<ruby>知<rt>し<\/rt><\/ruby>っていますか。", "ek": "'오니기리(주먹밥)'를 알고 있습니까?", "alts": ["우메보시(매실 절임)", "넣습니다", "김", "맙니다, 감쌉니다", "간단함, 쉬움", "가지고 갑니다"]}, {"w": "梅干し", "m": "우메보시(매실 절임)", "r": "うめぼし", "ex": "ごはんの<ruby>中<rt>なか<\/rt><\/ruby>に、<b><ruby>梅干<rt>うめぼ<\/rt><\/ruby>し<\/b>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<ruby>入<rt>い<\/rt><\/ruby>れます。", "sh": "ごはんの<ruby>中<rt>なか<\/rt><\/ruby>に、<b><ruby>梅干<rt>うめぼ<\/rt><\/ruby>し<\/b>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<ruby>入<rt>い<\/rt><\/ruby>れます。", "ek": "밥 속에 우메보시나 생선을 넣습니다.", "alts": ["주먹밥", "넣습니다", "김", "맙니다, 감쌉니다", "간단함, 쉬움", "가지고 갑니다"]}, {"w": "入れます", "m": "넣습니다", "r": "いれます", "ex": "ごはんの<ruby>中<rt>なか<\/rt><\/ruby>に、<b><ruby>梅干<rt>うめぼ<\/rt><\/ruby>し<\/b>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<ruby>入<rt>い<\/rt><\/ruby>れます。", "sh": "ごはんの<ruby>中<rt>なか<\/rt><\/ruby>に、<b><ruby>梅干<rt>うめぼ<\/rt><\/ruby>し<\/b>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<ruby>入<rt>い<\/rt><\/ruby>れます。", "ek": "밥 속에 우메보시나 생선을 넣습니다.", "alts": ["주먹밥", "우메보시(매실 절임)", "김", "맙니다, 감쌉니다", "간단함, 쉬움", "가지고 갑니다"]}, {"w": "のり", "m": "김", "ex": "<ruby>外<rt>そと<\/rt><\/ruby>は、<b>のり<\/b>で<ruby>巻<rt>ま<\/rt><\/ruby>きます。", "sh": "<ruby>外<rt>そと<\/rt><\/ruby>は、<b>のり<\/b>で<ruby>巻<rt>ま<\/rt><\/ruby>きます。", "ek": "겉은 김으로 감쌉니다.", "alts": ["주먹밥", "우메보시(매실 절임)", "넣습니다", "맙니다, 감쌉니다", "간단함, 쉬움", "가지고 갑니다"]}, {"w": "巻きます", "m": "맙니다, 감쌉니다", "r": "まきます", "ex": "<ruby>外<rt>そと<\/rt><\/ruby>は、<b>のり<\/b>で<ruby>巻<rt>ま<\/rt><\/ruby>きます。", "sh": "<ruby>外<rt>そと<\/rt><\/ruby>は、<b>のり<\/b>で<ruby>巻<rt>ま<\/rt><\/ruby>きます。", "ek": "겉은 김으로 감쌉니다.", "alts": ["주먹밥", "우메보시(매실 절임)", "넣습니다", "김", "간단함, 쉬움", "가지고 갑니다"]}, {"w": "簡単", "m": "간단함, 쉬움", "r": "かんたん", "ex": "<ruby>家<rt>いえ<\/rt><\/ruby>で<ruby>作<rt>つく<\/rt><\/ruby>るのも、とても<b><ruby>簡単<rt>かんたん<\/rt><\/ruby><\/b>です。", "sh": "<ruby>家<rt>いえ<\/rt><\/ruby>で<ruby>作<rt>つく<\/rt><\/ruby>るのも、とても<b><ruby>簡単<rt>かんたん<\/rt><\/ruby><\/b>です。", "ek": "집에서 만드는 것도 아주 간단합니다.", "alts": ["주먹밥", "우메보시(매실 절임)", "넣습니다", "김", "맙니다, 감쌉니다", "가지고 갑니다"]}, {"w": "持って行きます", "m": "가지고 갑니다", "r": "もっていきます", "ex": "<ruby>今度<rt>こんど<\/rt><\/ruby>の<ruby>日曜日<rt>にちようび<\/rt><\/ruby>、おにぎりを<ruby>持<rt>も<\/rt><\/ruby>って<ruby>公園<rt>こうえん<\/rt><\/ruby>へ<ruby>行<rt>い<\/rt><\/ruby>きませんか。", "sh": "<ruby>今度<rt>こんど<\/rt><\/ruby>の<ruby>日曜日<rt>にちようび<\/rt><\/ruby>、おにぎりを<ruby>持<rt>も<\/rt><\/ruby>って<ruby>公園<rt>こうえん<\/rt><\/ruby>へ<ruby>行<rt>い<\/rt><\/ruby>きませんか。", "ek": "이번 일요일에 주먹밥을 가지고 공원에 가지 않겠습니까?", "alts": ["주먹밥", "우메보시(매실 절임)", "넣습니다", "김", "맙니다, 감쌉니다", "간단함, 쉬움"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

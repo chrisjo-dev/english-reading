@@ -229,7 +229,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -278,7 +278,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -466,7 +466,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -978,6 +978,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "comet", "m": "혜성", "ex": "Every October, Earth <b>passes through<\/b> a cloud of dust left behind by a <b>comet<\/b>, and the tiny particles burn up as they enter our atmosphere.", "sh": "… left behind by a <b>comet<\/b>, and the tiny particles burn up …", "ek": "매년 10월, 지구는 혜성이 남긴 먼지 구름 속을 통과하고, 그 작은 입자들은 대기권에 진입하면서 불타오른다.", "alts": ["대기, 대기권", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "atmosphere", "m": "대기, 대기권", "ex": "Every October, Earth <b>passes through<\/b> a cloud of dust left behind by a <b>comet<\/b>, and the tiny particles burn up as they enter our atmosphere.", "sh": "… Earth <b>passes through<\/b> a cloud of dust left behind by a <b>comet<\/b>, …", "ek": "매년 10월, 지구는 혜성이 남긴 먼지 구름 속을 통과하고, 그 작은 입자들은 대기권에 진입하면서 불타오른다.", "alts": ["혜성", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "meteor", "m": "유성, 별똥별", "ex": "This creates the Draconid <b>meteor<\/b> shower, which takes its name from the <b>constellation<\/b> Draco, the dragon, where the shooting stars appear to come from.", "sh": "… the Draconid <b>meteor<\/b> shower, which takes its name …", "ek": "이것이 드라코니드 유성우를 만들어 내는데, 이름은 유성이 날아오는 것처럼 보이는 용자리(Draco) 별자리에서 따왔다.", "alts": ["혜성", "대기, 대기권", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "constellation", "m": "별자리", "ex": "This creates the Draconid <b>meteor<\/b> shower, which takes its name from the <b>constellation<\/b> Draco, the dragon, where the shooting stars appear to come from.", "sh": "… from the <b>constellation<\/b> Draco, the dragon, …", "ek": "이것이 드라코니드 유성우를 만들어 내는데, 이름은 유성이 날아오는 것처럼 보이는 용자리(Draco) 별자리에서 따왔다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "peaks", "m": "(절정에, 최고조에) 달하다", "ex": "In 2026, the shower <b>peaks<\/b> on the night of October eighth to ninth, when the Moon is barely one percent full and the sky is very dark.", "sh": "… the shower <b>peaks<\/b> on the night of October eighth to ninth, …", "ek": "2026년에는 달이 거의 보이지 않아 하늘이 매우 어두운 10월 8일 밤부터 9일 새벽에 걸쳐 유성우가 최고조에 달한다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "별자리", "일몰, 해질녘"]}, {"w": "sunset", "m": "일몰, 해질녘", "ex": "Unlike most meteor showers, the Draconids are best watched right after <b>sunset<\/b> — you do not need to stay awake until the middle of the night.", "sh": "… right after <b>sunset<\/b> — you do not need to stay awake …", "ek": "대부분의 유성우와 달리 드라코니드는 일몰 직후가 가장 잘 보이므로 한밤중까지 깨어 있을 필요가 없다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

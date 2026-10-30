@@ -229,7 +229,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -278,7 +278,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -474,7 +474,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -986,6 +986,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "particles", "m": "입자들 (particle의 복수)", "ex": "When the sun has a big storm, it throws huge clouds of tiny charged <b>particles<\/b> into space, and some of them can reach Earth.", "sh": "… of tiny charged <b>particles<\/b> into space, …", "ek": "태양에 큰 폭풍이 일면, 태양은 전기를 띤 작은 입자들로 이루어진 거대한 구름을 우주로 내던지고, 그중 일부는 지구에 닿을 수 있다.", "au": "/en/2026-10-23/audio/w1.mp3", "alts": ["자기장", "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)", "신호들", "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "magnetic field", "m": "자기장", "ex": "These particles shake Earth's <b>magnetic field<\/b>, and this can create electric <b>currents<\/b> in long metal wires on the ground.", "sh": "… Earth's <b>magnetic field<\/b>, and this can create …", "ek": "이 입자들은 지구의 자기장을 흔들고, 이것은 땅 위의 긴 금속 전선 속에 전류를 만들어 낼 수 있다.", "au": "/en/2026-10-23/audio/w2.mp3", "alts": ["입자들 (particle의 복수)", "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)", "신호들", "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "currents", "m": "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)", "ex": "These particles shake Earth's <b>magnetic field<\/b>, and this can create electric <b>currents<\/b> in long metal wires on the ground.", "sh": "… electric <b>currents<\/b> in long metal wires …", "ek": "이 입자들은 지구의 자기장을 흔들고, 이것은 땅 위의 긴 금속 전선 속에 전류를 만들어 낼 수 있다.", "au": "/en/2026-10-23/audio/w3.mp3", "alts": ["입자들 (particle의 복수)", "자기장", "신호들", "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "signals", "m": "신호들", "ex": "In the 1800s, railway <b>signals<\/b> were sent through such long wires, so a strong solar storm could mix up the messages and hold trains back.", "sh": "… railway <b>signals<\/b> were sent through such long wires, …", "ek": "1800년대에는 철도 신호가 그런 긴 전선을 통해 보내졌기 때문에, 강한 태양 폭풍은 메시지를 뒤섞어 기차를 멈춰 세울 수 있었다.", "au": "/en/2026-10-23/audio/w4.mp3", "alts": ["입자들 (particle의 복수)", "자기장", "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)", "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "delayed", "m": "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)", "ex": "An old report, published in a science journal in 1871, said that a train in Exeter, England, was <b>delayed<\/b> this way by sixteen minutes in October 1841.", "sh": "… was <b>delayed<\/b> this way by sixteen minutes …", "ek": "1871년에 한 과학 학술지에 실린 오래된 보고서에는 1841년 10월 잉글랜드 엑서터의 한 기차가 이런 식으로 16분 늦어졌다고 적혀 있었다.", "au": "/en/2026-10-23/audio/w5.mp3", "alts": ["입자들 (particle의 복수)", "자기장", "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)", "신호들", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "typo", "m": "오타, 잘못 친 글자", "ex": "After checking other records, they decided that the date was a <b>typo<\/b> and the delay <b>actually<\/b> happened seven years later, in 1848.", "sh": "… that the date was a <b>typo<\/b> and the delay <b>actually<\/b> happened …", "ek": "다른 기록들을 확인한 뒤, 그들은 그 날짜가 오타였고 지연은 실제로 7년 뒤인 1848년에 일어났다고 결론 내렸다.", "au": "/en/2026-10-23/audio/w6.mp3", "alts": ["입자들 (particle의 복수)", "자기장", "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)", "신호들", "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)", "실제로, 사실은"]}, {"w": "actually", "m": "실제로, 사실은", "ex": "After checking other records, they decided that the date was a <b>typo<\/b> and the delay <b>actually<\/b> happened seven years later, in 1848.", "sh": "… and the delay <b>actually<\/b> happened seven years later, …", "ek": "다른 기록들을 확인한 뒤, 그들은 그 날짜가 오타였고 지연은 실제로 7년 뒤인 1848년에 일어났다고 결론 내렸다.", "au": "/en/2026-10-23/audio/w7.mp3", "alts": ["입자들 (particle의 복수)", "자기장", "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)", "신호들", "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)", "오타, 잘못 친 글자"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

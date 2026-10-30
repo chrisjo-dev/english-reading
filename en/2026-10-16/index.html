@@ -229,7 +229,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -278,7 +278,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -468,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -980,6 +980,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "folded", "m": "접힌, 접혀 있는", "ex": "Inside every cell, a very long string of DNA is <b>folded<\/b> into a tiny space, a bit like a ball of thread.", "sh": "Inside every cell, a very long string of DNA is <b>folded<\/b> into a tiny space, a bit like a ball of thread.", "ek": "모든 세포 안에서는 아주 긴 DNA 가닥이 실뭉치처럼 아주 작은 공간에 접혀 들어가 있다.", "alts": ["고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "loops", "m": "고리들 (복수 -s)", "ex": "Because of this folding, two parts of the string that are far apart can end up touching each other and forming small <b>loops<\/b>.", "sh": "… can end up touching each other and forming small <b>loops<\/b>.", "ek": "이렇게 접혀 있기 때문에, 가닥에서 멀리 떨어진 두 부분이 서로 맞닿아 작은 고리를 만들 수 있다.", "alts": ["접힌, 접혀 있는", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "genes", "m": "유전자들 (gene의 복수)", "ex": "These loops can help decide which <b>genes<\/b> turn on, and when.", "sh": "These loops can help decide which <b>genes<\/b> turn on, and when.", "ek": "이 고리들은 어떤 유전자가 언제 켜질지를 결정하는 데 도움을 줄 수 있다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "linked (to)", "m": "~와 관련된, 연결된", "ex": "Scientists at the University of Vienna compared the DNA of a squid, a cuttlefish and an octopus, and they found many loops close to genes <b>linked<\/b> to the brain.", "sh": "… close to genes <b>linked<\/b> to the brain.", "ek": "빈 대학교의 과학자들은 오징어, 갑오징어, 문어의 DNA를 비교했고, 뇌와 관련된 유전자 가까이에서 많은 고리를 발견했다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "embryos", "m": "배아들 (embryo의 복수)", "ex": "When the team removed a short piece of this DNA from young squid <b>embryos<\/b>, all twenty-five embryos grew more slowly, and five of them had clearly smaller brains.", "sh": "… from young squid <b>embryos<\/b>, all twenty-five embryos …", "ek": "연구팀이 어린 오징어 배아에서 이 DNA의 짧은 조각을 없애자, 배아 25개 모두가 더 느리게 자랐고, 그중 5개는 뇌가 뚜렷하게 더 작았다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "suggests", "m": "시사하다, (~라는 것을) 보여 주다", "ex": "The study, which looked at animals alive today rather than their ancient ancestors, <b>suggests<\/b> that these sea animals may have built their <b>complex<\/b> brains partly by changing how their DNA folds, not only by gaining new genes.", "sh": "… <b>suggests<\/b> that these sea animals …", "ek": "고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "복잡한"]}, {"w": "complex", "m": "복잡한", "ex": "The study, which looked at animals alive today rather than their ancient ancestors, <b>suggests<\/b> that these sea animals may have built their <b>complex<\/b> brains partly by changing how their DNA folds, not only by gaining new genes.", "sh": "… may have built their <b>complex<\/b> brains partly …", "ek": "고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>

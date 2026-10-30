@@ -48,6 +48,10 @@
       root = document.createElement('div'); root.className = 'dr'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true');
       root.addEventListener('click', onClick);
       root.addEventListener('pointerdown', onDown);
+      root.addEventListener('touchstart', onTouchStart, { passive: true });
+      root.addEventListener('touchmove', onTouchMove, { passive: false });
+      root.addEventListener('touchend', onTouchEnd);
+      root.addEventListener('touchcancel', onTouchEnd);
       document.body.appendChild(root);
     }
     root.hidden = false; document.body.classList.add('dr-open');
@@ -62,7 +66,7 @@
     if (e.key === 'Escape') return close();
     if (S.mode !== 'card' || !S.queue.length) return;
     if (!S.flip && (e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('tap')) { e.preventDefault(); flip(); }
-    else if (S.flip && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); judge(e.key === 'ArrowRight' ? 'yes' : 'no', e.key === 'ArrowRight' ? 1 : -1); }
+    else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); judge(e.key === 'ArrowRight' ? 'yes' : 'no', e.key === 'ArrowRight' ? 1 : -1); }
   });
 
   function bar(n) {
@@ -113,15 +117,14 @@
       if (it.pick != null) h += '<div class="dr-acts"><button class="dr-btn" type="button" data-act="next">' + (S.queue.length > 1 ? '다음 문제' : '결과 보기') + '</button></div>';
     } else if (!S.flip) {
       // 카드 아무 곳이나 누르면 뒤집힌다. 듣기 단추는 data-act="say"가 먼저 잡혀 뒤집히지 않는다.
-      h += '<div class="dr-stage"><div class="dr-fc tap" data-act="flip" role="button" tabindex="0" aria-label="카드를 눌러 뜻 보기">' + tag(it) + '<div class="dr-mid"><div class="dr-word" lang="' + c.l + '">' + esc(c.w) + '</div>' +
+      h += '<div class="dr-stage">' + under() + '<div class="dr-fc tap swipe" data-act="flip" role="button" tabindex="0" aria-label="카드를 눌러 뜻 보기, 옆으로 밀어 판정">' + STAMPS + tag(it) + '<div class="dr-mid"><div class="dr-word" lang="' + c.l + '">' + esc(c.w) + '</div>' +
         (c.r ? '<div class="dr-pron" lang="' + c.l + '">' + esc(c.r) + '</div>' : '') +
         '<button class="dr-listen" type="button" data-act="say">' + ICON_SPK + ' <span>듣기</span></button></div>' +
-        '<p class="dr-taphint">' + ICON_TAP + ' 카드를 누르면 뜻이 나와요</p></div></div>';
+        '<p class="dr-taphint">' + ICON_TAP + ' 카드를 누르면 뜻이 나와요</p></div></div>' +
+        '<div class="dr-swipehint" aria-hidden="true"><span class="l">← 몰랐어요</span><span class="c">뜻을 안 봐도 밀 수 있어요</span><span class="r">알았어요 →</span></div>';
     } else {
-      var yes = it.wrong === 0 ? '바로 통과' : it.streak > 0 ? '한 번 더 맞혀서 통과' : '2번 연속이면 통과', nx = S.queue[1];
-      h += '<div class="dr-stage">' + (nx ? '<div class="dr-fc under" aria-hidden="true">' + tag(nx) + '<div class="dr-mid"><div class="dr-word" lang="' + nx.c.l + '">' + esc(nx.c.w) + '</div></div></div>' : '') +
-        '<div class="dr-fc swipe" tabindex="0" aria-label="오른쪽으로 밀면 알았어요, 왼쪽으로 밀면 몰랐어요"><span class="dr-stamp yes" aria-hidden="true">알았어요</span><span class="dr-stamp no" aria-hidden="true">몰랐어요</span>' +
-        tag(it) + '<div class="dr-mid"><div class="dr-word sm" lang="' + c.l + '">' + esc(c.w) + '</div>' +
+      var yes = it.wrong === 0 ? '바로 통과' : it.streak > 0 ? '한 번 더 맞혀서 통과' : '2번 연속이면 통과';
+      h += '<div class="dr-stage">' + under() + '<div class="dr-fc swipe" tabindex="0" aria-label="오른쪽으로 밀면 알았어요, 왼쪽으로 밀면 몰랐어요">' + STAMPS + tag(it) + '<div class="dr-mid"><div class="dr-word sm" lang="' + c.l + '">' + esc(c.w) + '</div>' +
         (c.r ? '<div class="dr-pron" lang="' + c.l + '">' + esc(c.r) + '</div>' : '') + '<div class="dr-mean">' + esc(c.m) + '</div>' +
         (c.ex ? '<div class="dr-ex"><div class="lb">지문 속 문장</div><p class="en" lang="' + c.l + '">' + c.ex + '</p>' + (c.ek ? '<p class="ko">' + esc(c.ek) + '</p>' : '') + '</div>' : '') +
         '</div></div></div><div class="dr-swipehint" aria-hidden="true"><span class="l">← 몰랐어요</span><span class="c">옆으로 밀어서 넘겨요</span><span class="r">알았어요 →</span></div>' +
@@ -134,6 +137,11 @@
     var f = root.querySelector('[data-act=flip],[data-act=next],.dr-judge .dr-yes,.dr-opt'); if (f) f.focus({ preventScroll: true });
     // 앞면이 나오자마자 단어를 읽어 준다. 시작, 판정 같은 누름에서 바로 불리므로 브라우저 자동 재생 제한에 걸리지 않는다.
     if (S.mode === 'card' && !S.flip) say(c);
+  }
+  var STAMPS = '<span class="dr-stamp yes" aria-hidden="true">알았어요</span><span class="dr-stamp no" aria-hidden="true">몰랐어요</span>';
+  function under() {
+    var nx = S.queue[1];
+    return nx ? '<div class="dr-fc under" aria-hidden="true">' + tag(nx) + '<div class="dr-mid"><div class="dr-word" lang="' + nx.c.l + '">' + esc(nx.c.w) + '</div></div></div>' : '';
   }
   function later(it) { S.queue.splice(Math.min(3, S.queue.length), 0, it); }
 
@@ -160,16 +168,16 @@
     var pr = player.play(); if (pr && pr.catch) pr.catch(speak);
   }
   function hush() { sayN++; if (player) player.pause(); if ('speechSynthesis' in window) speechSynthesis.cancel(); }
-  function flip() { S.flip = true; S.shown++; render(); }
+  function flip() { S.flip = true; render(); }
 
   // 판정: 1은 오른쪽(알았어요), -1은 왼쪽(몰랐어요). 보던 카드를 복제해 날려 보내고 다음 카드는 바로 그린다.
   function judge(act, dir) {
     var it = S.queue[0], fc = root.querySelector('.dr-fc.swipe'), ghost = null;
     if (fc) {
-      ghost = fc.cloneNode(true); ghost.classList.remove('swipe', 'back'); ghost.classList.add('fly'); ghost.removeAttribute('tabindex');
+      ghost = fc.cloneNode(true); ghost.classList.remove('swipe', 'back', 'tap'); ghost.removeAttribute('data-act'); ghost.classList.add('fly'); ghost.removeAttribute('tabindex');
       ghost.style.transform = fc.style.transform || ''; stamp(ghost, dir * 80);
     }
-    S.queue.shift(); S.flip = false;
+    S.queue.shift(); S.flip = false; S.shown++;
     if (act === 'no') { if (it.first === null) it.first = false; it.wrong++; it.streak = 0; later(it); }
     else if (it.first === null) { it.first = true; it.done = true; }
     else if (it.streak < 1) { it.streak++; later(it); }
@@ -188,38 +196,71 @@
     fc.querySelector('.dr-stamp.no').style.opacity = dx < 0 ? a : 0;
   }
 
-  // 스와이프: 뒷면 카드를 손가락(마우스)으로 끌어 옆으로 넘긴다. 세로 스크롤은 브라우저에 맡긴다(touch-action: pan-y).
-  var drag = null;
-  function onDown(e) {
+  // 스와이프: 카드(앞면, 뒷면)를 옆으로 밀어 판정한다. 휴대폰은 touch 이벤트로 받아, 가로로 미는 게 확실해지면
+  // touchmove 기본 동작을 막아 페이지 스크롤이 끌기를 빼앗지 않게 한다(pointer 이벤트는 스크롤이 시작되면 pointercancel로 끊긴다).
+  // 세로로 움직이면 끌기를 포기하고 스크롤에 맡긴다. 마우스는 pointer 이벤트로 받는다.
+  var drag = null, noClick = 0;
+  function begin(e, x, y, kind) {
     var fc = e.target.closest('.dr-fc.swipe');
-    if (!fc || !S || !S.flip || e.button > 0 || e.target.closest('button')) return;
-    drag = { fc: fc, id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, on: false };
+    if (!fc || !S || S.mode !== 'card' || e.target.closest('button')) return false;
+    drag = { fc: fc, kind: kind, x: x, y: y, dx: 0, on: false, dead: false, lx: x, lt: Date.now(), v: 0 };
     fc.classList.remove('back');
+    return true;
+  }
+  function move(x, y) {
+    if (!drag || drag.dead) return false;
+    var dx = x - drag.x, dy = y - drag.y;
+    if (!drag.on) {
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 6) return false;
+      if (Math.abs(dx) <= Math.abs(dy)) { drag.dead = true; return false; }
+      drag.on = true;
+    }
+    var t = Date.now();
+    if (t > drag.lt) { drag.v = (x - drag.lx) / (t - drag.lt); drag.lx = x; drag.lt = t; }
+    drag.dx = dx;
+    drag.fc.style.transform = 'translateX(' + dx + 'px) rotate(' + (dx / 20) + 'deg)';
+    stamp(drag.fc, dx);
+    return true;
+  }
+  function end(ok) {
+    var d = drag; drag = null;
+    if (!d || !d.on) return;
+    noClick = Date.now() + 100;  // 마우스로 끌고 놓으면 바로 따라오는 click 이 앞면을 뒤집지 않게
+    var limit = Math.min(90, d.fc.offsetWidth * 0.22), fast = Math.abs(d.v) > 0.5 && Math.abs(d.dx) > 30 && (d.v > 0) === (d.dx > 0);
+    if (ok && (Math.abs(d.dx) >= limit || fast)) return judge(d.dx > 0 ? 'yes' : 'no', d.dx > 0 ? 1 : -1);
+    d.fc.classList.add('back'); d.fc.style.transform = ''; stamp(d.fc, 0);
+  }
+  function onTouchStart(e) {
+    if (drag) return end(false);
+    if (e.touches.length !== 1) return;
+    begin(e, e.touches[0].clientX, e.touches[0].clientY, 'touch');
+  }
+  function onTouchMove(e) {
+    if (!drag || drag.kind !== 'touch') return;
+    if (e.touches.length !== 1) return end(false);
+    if (move(e.touches[0].clientX, e.touches[0].clientY) && e.cancelable) e.preventDefault();
+  }
+  function onTouchEnd(e) {
+    if (drag && drag.kind === 'touch') end(e.type === 'touchend');
+  }
+  function onDown(e) {
+    if (e.pointerType !== 'mouse' || e.button > 0 || drag) return;
+    if (!begin(e, e.clientX, e.clientY, 'mouse')) return;
     window.addEventListener('pointermove', onMove);
     window.addEventListener('pointerup', onUp);
     window.addEventListener('pointercancel', onUp);
   }
-  function onMove(e) {
-    if (!drag || e.pointerId !== drag.id) return;
-    var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
-    if (!drag.on) { if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return; drag.on = true; }
-    drag.dx = dx;
-    drag.fc.style.transform = 'translateX(' + dx + 'px) rotate(' + (dx / 20) + 'deg)';
-    stamp(drag.fc, dx);
-  }
+  function onMove(e) { if (drag && drag.kind === 'mouse') move(e.clientX, e.clientY); }
   function onUp(e) {
-    if (!drag || e.pointerId !== drag.id) return;
-    var d = drag; drag = null;
     window.removeEventListener('pointermove', onMove);
     window.removeEventListener('pointerup', onUp);
     window.removeEventListener('pointercancel', onUp);
-    var limit = Math.min(100, d.fc.offsetWidth * 0.25);
-    if (e.type === 'pointerup' && Math.abs(d.dx) >= limit) return judge(d.dx > 0 ? 'yes' : 'no', d.dx > 0 ? 1 : -1);
-    d.fc.classList.add('back'); d.fc.style.transform = ''; stamp(d.fc, 0);
+    if (drag && drag.kind === 'mouse') end(e.type === 'pointerup');
   }
 
   function onClick(e) {
     var b = e.target.closest('[data-act]'); if (!b || !S) return;
+    if (Date.now() < noClick && b.getAttribute('data-act') === 'flip') return;
     var act = b.getAttribute('data-act'), it = S.queue[0];
     if (act === 'close') return close();
     if (act === 'say') return say(it.c);

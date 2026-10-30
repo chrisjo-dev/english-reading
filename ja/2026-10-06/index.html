@@ -231,7 +231,7 @@
   .dr-due span { display: block; font-size: 13px; opacity: .85; }
   .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
   body.dr-open { overflow: hidden; }
-  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .dr[hidden] { display: none; }
   .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
   .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
@@ -280,7 +280,7 @@
   .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
   .dr-taphint svg { width: 18px; height: 18px; }
   .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
-  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
@@ -468,7 +468,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="5">
+  <section class="card dr-card" id="drill" data-v="6">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -976,6 +976,6 @@
 })();
 </script>
 <script type="application/json" id="drill-data">[{"w": "秋刀魚", "m": "꽁치", "r": "さんま", "ex": "<ruby>秋<rt>あき<\/rt><\/ruby>に<ruby>日本<rt>にほん<\/rt><\/ruby>でよく<ruby>食<rt>た<\/rt><\/ruby>べられる<b><ruby>魚<rt>さかな<\/rt><\/ruby><\/b>のひとつが<ruby>秋刀魚<rt>さんま<\/rt><\/ruby>です。", "sh": "<ruby>秋<rt>あき<\/rt><\/ruby>に<ruby>日本<rt>にほん<\/rt><\/ruby>でよく<ruby>食<rt>た<\/rt><\/ruby>べられる<b><ruby>魚<rt>さかな<\/rt><\/ruby><\/b>のひとつが<ruby>秋刀魚<rt>さんま<\/rt><\/ruby>です。", "ek": "가을에 일본에서 자주 먹는 생선 중 하나가 꽁치입니다.", "alts": ["제철", "가늘고 긴", "무즙", "정석, 단골 메뉴", "영양"]}, {"w": "旬", "m": "제철", "r": "しゅん", "ex": "<ruby>秋刀魚<rt>さんま<\/rt><\/ruby>は<b><ruby>細長<rt>ほそなが<\/rt><\/ruby>い<\/b><ruby>形<rt>かたち<\/rt><\/ruby>をしていて、<ruby>旬<rt>しゅん<\/rt><\/ruby>は9<ruby>月<rt>がつ<\/rt><\/ruby>から10<ruby>月<rt>がつ<\/rt><\/ruby>ごろです。", "sh": "<ruby>秋刀魚<rt>さんま<\/rt><\/ruby>は<b><ruby>細長<rt>ほそなが<\/rt><\/ruby>い<\/b><ruby>形<rt>かたち<\/rt><\/ruby>をしていて、<ruby>旬<rt>しゅん<\/rt><\/ruby>は9<ruby>月<rt>がつ<\/rt><\/ruby>から10<ruby>月<rt>がつ<\/rt><\/ruby>ごろです。", "ek": "꽁치는 가늘고 긴 모양을 하고 있고, 제철은 9월부터 10월경입니다.", "alts": ["꽁치", "가늘고 긴", "무즙", "정석, 단골 메뉴", "영양"]}, {"w": "細長い", "m": "가늘고 긴", "r": "ほそながい", "ex": "<ruby>秋刀魚<rt>さんま<\/rt><\/ruby>は<b><ruby>細長<rt>ほそなが<\/rt><\/ruby>い<\/b><ruby>形<rt>かたち<\/rt><\/ruby>をしていて、<ruby>旬<rt>しゅん<\/rt><\/ruby>は9<ruby>月<rt>がつ<\/rt><\/ruby>から10<ruby>月<rt>がつ<\/rt><\/ruby>ごろです。", "sh": "<ruby>秋刀魚<rt>さんま<\/rt><\/ruby>は<b><ruby>細長<rt>ほそなが<\/rt><\/ruby>い<\/b><ruby>形<rt>かたち<\/rt><\/ruby>をしていて、<ruby>旬<rt>しゅん<\/rt><\/ruby>は9<ruby>月<rt>がつ<\/rt><\/ruby>から10<ruby>月<rt>がつ<\/rt><\/ruby>ごろです。", "ek": "꽁치는 가늘고 긴 모양을 하고 있고, 제철은 9월부터 10월경입니다.", "alts": ["꽁치", "제철", "무즙", "정석, 단골 메뉴", "영양"]}, {"w": "大根おろし", "m": "무즙", "r": "だいこんおろし", "ex": "<ruby>焼<rt>や<\/rt><\/ruby>いた<b><ruby>秋刀魚<rt>さんま<\/rt><\/ruby><\/b>に<ruby>大根<rt>だいこん<\/rt><\/ruby>おろしをつけて<ruby>食<rt>た<\/rt><\/ruby>べるのが<ruby>定番<rt>ていばん<\/rt><\/ruby>です。", "sh": "<ruby>焼<rt>や<\/rt><\/ruby>いた<b><ruby>秋刀魚<rt>さんま<\/rt><\/ruby><\/b>に<ruby>大根<rt>だいこん<\/rt><\/ruby>おろしをつけて<ruby>食<rt>た<\/rt><\/ruby>べるのが<ruby>定番<rt>ていばん<\/rt><\/ruby>です。", "ek": "구운 꽁치에 무즙을 곁들여 먹는 것이 정석입니다.", "alts": ["꽁치", "제철", "가늘고 긴", "정석, 단골 메뉴", "영양"]}, {"w": "定番", "m": "정석, 단골 메뉴", "r": "ていばん", "ex": "<ruby>焼<rt>や<\/rt><\/ruby>いた<b><ruby>秋刀魚<rt>さんま<\/rt><\/ruby><\/b>に<ruby>大根<rt>だいこん<\/rt><\/ruby>おろしをつけて<ruby>食<rt>た<\/rt><\/ruby>べるのが<ruby>定番<rt>ていばん<\/rt><\/ruby>です。", "sh": "<ruby>焼<rt>や<\/rt><\/ruby>いた<b><ruby>秋刀魚<rt>さんま<\/rt><\/ruby><\/b>に<ruby>大根<rt>だいこん<\/rt><\/ruby>おろしをつけて<ruby>食<rt>た<\/rt><\/ruby>べるのが<ruby>定番<rt>ていばん<\/rt><\/ruby>です。", "ek": "구운 꽁치에 무즙을 곁들여 먹는 것이 정석입니다.", "alts": ["꽁치", "제철", "가늘고 긴", "무즙", "영양"]}, {"w": "栄養", "m": "영양", "r": "えいよう", "ex": "<ruby>秋刀魚<rt>さんま<\/rt><\/ruby>は<ruby>体<rt>からだ<\/rt><\/ruby>にいい<b><ruby>栄養<rt>えいよう<\/rt><\/ruby><\/b>がたくさんあります。", "sh": "<ruby>秋刀魚<rt>さんま<\/rt><\/ruby>は<ruby>体<rt>からだ<\/rt><\/ruby>にいい<b><ruby>栄養<rt>えいよう<\/rt><\/ruby><\/b>がたくさんあります。", "ek": "꽁치는 몸에 좋은 영양이 많이 있습니다.", "alts": ["꽁치", "제철", "가늘고 긴", "무즙", "정석, 단골 메뉴"]}]</script>
-<script id="drill-js" data-v="5" src="/assets/drill.js?v=5" defer></script>
+<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
 </body>
 </html>
