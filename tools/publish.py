@@ -532,7 +532,7 @@ __SUB_CSS____INTRO_CSS____FOOTER_CSS__</style>
   <h1>__TITLE__</h1>
   <nav class="ltabs" aria-label="언어">__LANGTABS__</nav>
   <p class="intro" style="margin: -8px 8px 14px">__INTRO__ <a href="#subscribe">메일로 받기</a></p>
-__REVIEW__  <input class="search" id="q" type="search" placeholder="주제, 단어, 날짜로 찾기 (예: __SEARCH_EXAMPLE__, 10월 20일)" aria-label="지난 지문 검색" autocomplete="off">
+__REVIEW__  <input class="search" id="q" type="search" placeholder="날짜, 주제로 찾기 (예: 10월 20일, __SEARCH_EXAMPLE__)" aria-label="지난 지문 검색" autocomplete="off">
   <div class="chips" role="group" aria-label="분야"><button type="button" class="chip" data-cat="" aria-pressed="true">전체</button>__CHIPS__</div>
 __GROUPS__
   <p class="empty" id="empty" hidden>찾는 지문이 없어요.</p>
