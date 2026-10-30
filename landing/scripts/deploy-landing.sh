@@ -17,5 +17,5 @@ cp "$OUT/index.html" "$DEST/index.html"
 # 아이콘은 Next 가 out/ 루트에 내보내므로 함께 복사한다.
 for f in apple-icon.png; do [ -f "$OUT/$f" ] && cp "$OUT/$f" "$DEST/$f"; done
 # icon.svg 대신 icon.png(favicon)를 icon-32.png 로 복사한다.
-[ -f "$OUT/icon.png" ] && cp "$OUT/icon.png" "$DEST/icon-32.png"
+[ -f "$OUT/icon.png" ] && cp "$OUT/icon.png" "$DEST/icon-32.png" && cp "$OUT/icon.png" "$DEST/icon.png"  # 랜딩 index.html 은 /icon.png 를 가리킨다
 echo "복사 완료: $DEST/index.html, $DEST/_next/, 아이콘"
