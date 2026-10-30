@@ -1,6 +1,6 @@
 {
- "date": "2026-10-30",
- "words_total": 380,
+ "date": "2026-10-31",
+ "words_total": 387,
  "langs": {
   "en": {
    "count": 28,
@@ -99,14 +99,14 @@
    ]
   },
   "de": {
-   "count": 3,
-   "latest": "2026-10-30",
-   "topic": "단풍의 과학",
+   "count": 4,
+   "latest": "2026-10-31",
+   "topic": "보덴호 여행",
    "sentences": [
-    "Im Herbst färben sich die **Blätter** vieler Bäume gelb, orange oder rot, bevor sie schließlich auf den Boden fallen.",
-    "Im Sommer sind die Blätter grün, weil sie viel **Chlorophyll** enthalten, das die Pflanze für die Photosynthese braucht.",
-    "Wenn die Tage kürzer und die Nächte kälter werden, baut der Baum das Chlorophyll ab und speichert die wertvollen **Nährstoffe** im Holz.",
-    "Dadurch werden die schon im Sommer im Blatt vorhandenen gelben und orangefarbenen **Farbstoffe** für unsere Augen sichtbar."
+    "Der **Bodensee** liegt im Süden Deutschlands und grenzt an drei Länder: Deutschland, Österreich und die Schweiz.",
+    "Viele Reisende kommen im Sommer, weil sie mit dem **Fahrrad** am Ufer entlang fahren oder im klaren Wasser schwimmen möchten.",
+    "Mit der **Fähre** kann man in weniger als einer Stunde von einem Land ins andere fahren, ohne an der Grenze zu warten.",
+    "Besonders beliebt ist die **Blumeninsel** Mainau, deren von vielen Gärtnern sorgfältig gepflegte Parks jedes Jahr zahlreiche Besucher anziehen."
    ],
    "chips": [
     "6문장",
@@ -114,40 +114,45 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "가을이 되면 많은 나무의 잎이 노랑, 주황, 빨강으로 물들었다가 마침내 땅에 떨어집니다.",
+   "answer": "보덴호는 독일 남부에 있으며 독일, 오스트리아, 스위스 세 나라와 맞닿아 있습니다.",
    "words": [
     [
-     "Blatt",
-     "잎 (복수 Blätter)"
+     "Ufer",
+     "물가, 호숫가 (das Ufer)"
     ],
     [
-     "Chlorophyll",
-     "엽록소"
+     "Fähre",
+     "페리, 연락선 (die Fähre)"
     ],
     [
-     "Photosynthese",
-     "광합성"
+     "Grenze",
+     "국경 (die Grenze)"
     ],
     [
-     "Nährstoff",
-     "영양분"
+     "Blumeninsel",
+     "꽃섬 (die Blumeninsel)"
     ],
     [
-     "Farbstoff",
-     "색소"
+     "Hang",
+     "비탈, 경사면 (der Hang, 복수 Hänge)"
     ],
     [
-     "Zucker",
-     "당, 설탕"
+     "Wanderweg",
+     "산책로, 하이킹 길 (der Wanderweg)"
     ],
     [
-     "austrocknen",
-     "말라 버리다"
+     "Weinberg",
+     "포도밭 (der Weinberg)"
     ]
    ]
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-10-31",
+   "topic": "보덴호 여행"
+  },
   {
    "lang": "en",
    "day": "2026-10-30",
