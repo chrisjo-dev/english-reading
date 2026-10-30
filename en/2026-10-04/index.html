@@ -357,7 +357,9 @@
   .top { position: relative; }
   .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
   .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .intro a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; }
+  a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }
+  .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
+  .lang-row a.lang-go { margin: 0; }
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb nav { display: flex; gap: 4px; }
@@ -427,6 +429,7 @@
 <!-- /drill-due -->
   <div class="top">
     <div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>
+    <p class="lang-row"><a class="lang-go" href="/ja/archive/">일본어 지난 지문 보기 →</a></p>
     <div class="date">10월 4일 일요일 <span class="cat cat-space">우주</span></div>
     <h1>오늘은 <em>NASA의 새 우주 망원경 로먼</em> 이야기예요</h1>
     <p class="headline" lang="en">NASA's New Space Telescope, Roman</p>
@@ -436,7 +439,7 @@
       <span class="chip">B2 1문장</span>
       <span class="chip">약 3분</span>
     </div>
-    <p class="intro">매일 아침 새로 올라오는 B1~B2 영어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요. <a href="#subscribe">메일로 받기</a><a class="lang-go" href="/ja/archive/">일본어 지난 지문 보기 →</a></p>
+    <p class="intro">매일 아침 새로 올라오는 B1~B2 영어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요. <a href="#subscribe">메일로 받기</a></p>
   </div>
 
   <section class="card" id="passage">

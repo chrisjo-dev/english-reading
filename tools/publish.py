@@ -65,8 +65,9 @@ FOOTER_HTML = ('<footer class="site-footer"><a href="https://www.wspace.ai.kr/">
                '<a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>\n')
 
 
-LANG_GO_CSS = ("  .intro a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px;"
-               " background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; }\n")
+LANG_GO_CSS = ("  a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px;"
+               " background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }\n"
+               "  .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }\n  .lang-row a.lang-go { margin: 0; }\n")
 
 
 def public_langs(current=None):
@@ -82,7 +83,7 @@ def other_lang_links(lang):
 def intro_html(lang):
     L = langs.get(lang)
     return (f'    <p class="intro">{L["intro"]} 듣고, 해석하고, AI에게 피드백을 받아 보세요. '
-            f'<a href="#subscribe">메일로 받기</a>{other_lang_links(lang)}</p>\n')
+            '<a href="#subscribe">메일로 받기</a></p>\n')
 
 
 def _sub_script(lang):
@@ -259,10 +260,14 @@ def patch_page(lang, day):
             f'<img class="thumb" src="thumb.png" width="76" height="76" alt="">\n    <div class="date">',
             1,
         )
-    if '<a href="../../">다른 언어</a>' in page:
-        page = page.replace('<a href="../../">다른 언어</a>', other_lang_links(lang), 1)
-    if ".intro a.lang-go" not in page and 'class="lang-go"' in page:
-        # 다른 언어 링크는 문단 끝 글자가 아니라 눈에 띄는 알약 모양으로(2차 재시험: 작은 글씨라 잘 안 보였다)
+    if 'class="lang-row"' not in page and '<div class="date">' in page:
+        # 다른 언어 지난 지문 링크는 카드 맨 위(사진 아래, 날짜 위) 알약 줄로. 소개 문단 끝에 두면
+        # 작은 휴대폰(320x568)에서 첫 화면 밖으로 밀렸다(이슈 #19 4차). 예전 자리의 링크는 지운다.
+        page = page.replace('<a href="../../">다른 언어</a>', "", 1)
+        page = re.sub(r'<a class="lang-go" href="[^"]*">[^<]*</a>', "", page)
+        page = page.replace('<div class="date">', f'<p class="lang-row">{other_lang_links(lang)}</p>\n    <div class="date">', 1)
+    if ".lang-row {" not in page and 'class="lang-row"' in page:
+        page = re.sub(r"  \.intro a\.lang-go \{[^}]*\}\n", "", page)  # 2차 때 넣은 CSS 를 새 것으로 바꾼다
         page = page.replace("  .gnb {", LANG_GO_CSS + "  .gnb {", 1)
     if 'class="site-footer"' not in page:
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
