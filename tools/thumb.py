@@ -171,10 +171,10 @@ def photo(lang, day):
     key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not key or not (ROOT / "content" / lang / f"{day}.json").exists():
         return None
-    body = json.dumps(dict(model=PHOTO_MODEL, prompt=photo_prompt(lang, day), size="1536x1024", quality="low", n=1)).encode()
-    req = urllib.request.Request("https://api.openai.com/v1/images/generations", body,
-                                 {"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
-    try:
+    try:  # 프롬프트 만들기부터 감싼다: 어떤 실패도 발행을 멈추지 않는다
+        body = json.dumps(dict(model=PHOTO_MODEL, prompt=photo_prompt(lang, day), size="1536x1024", quality="low", n=1)).encode()
+        req = urllib.request.Request("https://api.openai.com/v1/images/generations", body,
+                                     {"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
         r = json.loads(urllib.request.urlopen(req, timeout=180).read())
         return Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
     except urllib.error.HTTPError as e:
@@ -195,10 +195,12 @@ def _wrap(d, text, f, max_w):
             lines.append(cur); cur = w
     lines.append(cur)
     if len(lines) > 2:
-        last = " ".join(lines[1:])
-        while d.textlength(last + "…", font=f) > max_w and len(last) > 1:
-            last = last[:-1]
-        lines = [lines[0], last.rstrip() + "…"]
+        lines = [lines[0], " ".join(lines[1:])]
+    for i, line in enumerate(lines):  # 띄어쓰기 없이 긴 줄이나 넘친 둘째 줄은 글자 단위로 줄여 …를 붙인다
+        if d.textlength(line, font=f) > max_w:
+            while d.textlength(line + "…", font=f) > max_w and len(line) > 1:
+                line = line[:-1]
+            lines[i] = line.rstrip() + "…"
     return lines
 
 
@@ -255,11 +257,14 @@ def build(lang, day, cat=None, pic=None):
         return out  # 이미 사진 썸네일이면 다시 만들지 않는다(같은 날 다시 발행해도 비용이 들지 않고 그림도 그대로)
     pic = pic or photo(lang, day)
     if pic is not None:
-        meta = PngImagePlugin.PngInfo(); meta.add_text("thumb", "photo")
-        small = compose(lang, day, cat, topic, pic).convert("RGB").resize((W // S, H // S), Image.LANCZOS)
-        # 사진 PNG 는 0.6~1MB 라 메일에 무겁다. 256색으로 줄이면 겉보기는 같고 200~400KB 가 된다(파일 이름 thumb.png 는 그대로)
-        small.quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG).save(out, optimize=True, pnginfo=meta)
-        return out
+        try:
+            meta = PngImagePlugin.PngInfo(); meta.add_text("thumb", "photo")
+            small = compose(lang, day, cat, topic, pic).convert("RGB").resize((W // S, H // S), Image.LANCZOS)
+            # 사진 PNG 는 0.6~1MB 라 메일에 무겁다. 256색으로 줄이면 겉보기는 같고 200~400KB 가 된다(파일 이름 thumb.png 는 그대로)
+            small.quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG).save(out, optimize=True, pnginfo=meta)
+            return out
+        except Exception as e:
+            print(f"thumb: 사진 합성 실패 {type(e).__name__}, 일러스트로 만든다", file=sys.stderr)
 
     img = Image.new("RGBA", (W, H), (255, 255, 255, 255))
     d = ImageDraw.Draw(img)

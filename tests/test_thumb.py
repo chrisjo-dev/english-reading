@@ -65,6 +65,27 @@ class TestThumb(unittest.TestCase):
             thumb.build("en", DAY, "science")
         self.assertEqual(self.out.read_bytes(), before)
 
+    def test_broken_content_falls_back_without_stopping(self):
+        (self.tmp / "content" / "en" / f"{DAY}.json").write_text('{"sentences": [{"ko": "en 없음"}]}', encoding="utf-8")
+        with mock.patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}), \
+             mock.patch.object(thumb.urllib.request, "urlopen", side_effect=AssertionError("부르면 안 된다")):
+            self.assertIsNone(thumb.photo("en", DAY))
+            thumb.build("en", DAY, "science")
+        self.assertFalse(thumb.is_photo(self.out))
+
+    def test_compose_failure_falls_back_to_illustration(self):
+        with mock.patch.object(thumb, "compose", side_effect=ValueError("bad")):
+            thumb.build("en", DAY, "science", Image.new("RGB", (1536, 1024)))
+        self.assertFalse(thumb.is_photo(self.out))
+
+    def test_title_without_spaces_is_cut_to_width(self):
+        d = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+        f = thumb.font("ExtraBold", 44)
+        lines = thumb._wrap(d, "띄어쓰기없이아주길게이어진제목이썸네일폭을넘어가는경우에도잘려야한다", f, 640 * thumb.S)
+        self.assertEqual(len(lines), 1)
+        self.assertTrue(lines[0].endswith("…"))
+        self.assertLessEqual(d.textlength(lines[0], font=f), 640 * thumb.S)
+
     def test_long_title_wraps_to_two_lines(self):
         d = ImageDraw.Draw(Image.new("RGB", (10, 10)))
         f = thumb.font("ExtraBold", 44)
