@@ -65,10 +65,20 @@ FOOTER_HTML = ('<footer class="site-footer"><a href="https://www.wspace.ai.kr/">
                '<a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>\n')
 
 
+def public_langs(current=None):
+    """언어 전환에 보여 줄 언어: 공개(noindex 아님) 언어와, 지금 보고 있는 언어(비공개여도)."""
+    return [c for c in langs.LANGS if not langs.LANGS[c].get("noindex") or c == current]
+
+
+def other_lang_links(lang):
+    """지문 페이지 소개 끝의 다른 언어 링크. 예전에는 '다른 언어'가 첫 화면(구독 안내)으로 가서 목록을 못 찾았다(이슈 #19)."""
+    return "".join(f'<a href="/{c}/">{langs.LANGS[c]["name"]} 지문 보기 →</a>' for c in public_langs() if c != lang)
+
+
 def intro_html(lang):
     L = langs.get(lang)
     return (f'    <p class="intro">{L["intro"]} 듣고, 해석하고, AI에게 피드백을 받아 보세요. '
-            '<a href="#subscribe">메일로 받기</a><a href="../../">다른 언어</a></p>\n')
+            f'<a href="#subscribe">메일로 받기</a>{other_lang_links(lang)}</p>\n')
 
 
 def _sub_script(lang):
@@ -245,6 +255,8 @@ def patch_page(lang, day):
             f'<img class="thumb" src="thumb.png" width="76" height="76" alt="">\n    <div class="date">',
             1,
         )
+    if '<a href="../../">다른 언어</a>' in page:
+        page = page.replace('<a href="../../">다른 언어</a>', other_lang_links(lang), 1)
     if 'class="site-footer"' not in page:
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
@@ -326,7 +338,10 @@ def rebuild_lists(lang):
         f'<button type="button" class="chip" data-cat="{c}" aria-pressed="false">{thumb.CATS[c][0]}</button>' for c in cats
     )
     for out, p, home, title in ((ROOT / lang, "./", "../", f"{L['name']} 지문"),
-                                (ROOT / lang / "archive", "../", "../../", "지난 지문")):
+                                (ROOT / lang / "archive", "../", "../../", f"{L['name']} 지난 지문")):
+        sub = "archive/" if p == "../" else ""
+        tabs = "".join(f'<a href="/{c}/{sub}"' + (' class="on" aria-current="page"' if c == lang else "") + f'>{langs.LANGS[c]["name"]}</a>'
+                       for c in public_langs(lang))
         groups, month = [], None
         for e in entries:
             if e["month"] != month:
@@ -349,7 +364,7 @@ def rebuild_lists(lang):
         page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
                 .replace("__TITLE__", title).replace("__ARCHIVE__", f"{p}archive/" if p == "./" else "./").replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
                 .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
-                .replace("__CHIPS__", chips).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
+                .replace("__CHIPS__", chips).replace("__LANGTABS__", tabs).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
                 .replace("__CANONICAL__", f"{SITE}/{lang}/").replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
         if L.get("noindex", False):
@@ -370,7 +385,8 @@ def entry(lang, day):
     return {
         "day": day, "topic": topic, "cat": cat, "cat_label": thumb.CATS[cat][0],
         "label": label(day), "month": f"{d.year}년 {d.month}월",
-        "q": f"{topic} {thumb.CATS[cat][0]} {words}".lower(),
+        # 날짜로도 찾게: "10월 20일", "10/20", "2026-10-20"
+        "q": f"{topic} {thumb.CATS[cat][0]} {words} {label(day)} {d.month}/{d.day} {day}".lower(),
     }
 
 
@@ -458,6 +474,9 @@ ARCHIVE = r"""<!doctype html>
   .gnb nav a:hover { background: #f2f4f6; }
   .gnb nav a.cta { color: #3182f6; background: #e8f3ff; }
   .gnb nav a.cta:hover { background: #d6e8ff; }
+  .ltabs { display: flex; gap: 6px; margin: 0 0 16px; padding: 4px; border-radius: 14px; background: #e8ebef; }
+  .ltabs a { flex: 1; text-align: center; font-size: 15px; font-weight: 700; color: var(--sub); padding: 10px 0; border-radius: 10px; text-decoration: none; }
+  .ltabs a.on { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(16,24,40,.08); }
   .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #3182f6; text-decoration: none; }
   .search { display: block; width: 100%; box-sizing: border-box; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: #fff; box-shadow: 0 2px 10px rgba(16,24,40,.06);
             padding: 0 16px; font: 400 16px Pretendard, -apple-system, sans-serif; color: #191f28; outline: 0; }
@@ -499,8 +518,9 @@ __SUB_CSS____INTRO_CSS____FOOTER_CSS__</style>
   </header>
   <a class="back" href="__TODAY__">오늘의 지문 바로 가기 →</a>
   <h1>__TITLE__</h1>
-  <p class="intro" style="margin: -8px 8px 14px">__INTRO__ <a href="#subscribe">메일로 받기</a> <a href="__HOME__">다른 언어</a></p>
-__REVIEW__  <input class="search" id="q" type="search" placeholder="주제나 단어로 찾기 (예: __SEARCH_EXAMPLE__)" aria-label="지난 지문 검색" autocomplete="off">
+  <nav class="ltabs" aria-label="언어">__LANGTABS__</nav>
+  <p class="intro" style="margin: -8px 8px 14px">__INTRO__ <a href="#subscribe">메일로 받기</a></p>
+__REVIEW__  <input class="search" id="q" type="search" placeholder="주제, 단어, 날짜로 찾기 (예: __SEARCH_EXAMPLE__, 10월 20일)" aria-label="지난 지문 검색" autocomplete="off">
   <div class="chips" role="group" aria-label="분야"><button type="button" class="chip" data-cat="" aria-pressed="true">전체</button>__CHIPS__</div>
 __GROUPS__
   <p class="empty" id="empty" hidden>찾는 지문이 없어요.</p>

@@ -18,7 +18,8 @@ export default function Nav() {
             href={en ? `/en/${en.latest}/` : "/en/"}
             onClick={() => fireGtag("read_today_click", { lang: "en" })}
           >오늘의 지문</a>
-          <a href="/en/">지난 지문</a>
+          <a href="/en/archive/">영어 지문</a>
+          <a href="/ja/archive/">일본어 지문</a>
           <a href="#how">이용 안내</a>
         </nav>
         <a className="nav-cta" href="#subscribe">

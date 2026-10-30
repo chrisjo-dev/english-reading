@@ -971,6 +971,33 @@ html:not(.js) .sw {
 }
 
 /* week */
+.week-all {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.week-all a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 20px;
+  border-radius: 12px;
+  border: 1.5px solid var(--blue);
+  background: #fff;
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.week-all a:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
 .week {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -1505,6 +1532,10 @@ html:not(.js) .sw {
 
   .nav-links {
     display: none;
+  }
+
+  .week-all {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .nav-cta {
