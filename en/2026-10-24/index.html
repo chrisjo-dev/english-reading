@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -474,17 +499,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">yard</span><span class="dr-chip" lang="en">sail</span><span class="dr-chip" lang="en">nearly</span><span class="dr-chip" lang="en">finished</span><span class="dr-chip" lang="en">steep</span><span class="dr-chip" lang="en">donated</span><span class="dr-chip" lang="en">fundraiser</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -988,7 +1014,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "yard", "m": "마당", "ex": "In 1987, a man named Dale started building a huge steel boat in the front <b>yard<\/b> of his home in a small American town.", "sh": "… in the front <b>yard<\/b> of his home …", "ek": "1987년, 데일이라는 남자가 미국의 한 작은 마을에 있는 자기 집 앞마당에서 거대한 강철 배를 만들기 시작했다.", "au": "/en/2026-10-24/audio/w1.mp3", "alts": ["항해하다, 배를 타고 가다", "거의", "완성된, 끝난", "가파른", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "sail", "m": "항해하다, 배를 타고 가다", "ex": "His plan was to finish it one day and <b>sail<\/b> it all the way to Alaska.", "sh": "His plan was to finish it one day and <b>sail<\/b> it all the way to Alaska.", "ek": "그의 계획은 언젠가 배를 완성해서 그 배를 타고 알래스카까지 가는 것이었다.", "au": "/en/2026-10-24/audio/w2.mp3", "alts": ["마당", "거의", "완성된, 끝난", "가파른", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "nearly", "m": "거의", "ex": "<b>Nearly<\/b> forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters <b>finished<\/b>.", "sh": "<b>Nearly<\/b> forty years later, Dale is eighty-six, …", "ek": "거의 40년이 지난 지금 데일은 86세이고, 길이 62피트에 침실이 네 개인 그 배는 약 4분의 3이 완성되었다.", "au": "/en/2026-10-24/audio/w3.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "완성된, 끝난", "가파른", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "finished", "m": "완성된, 끝난", "ex": "<b>Nearly<\/b> forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters <b>finished<\/b>.", "sh": "… and has four bedrooms, is about three-quarters <b>finished<\/b>.", "ek": "거의 40년이 지난 지금 데일은 86세이고, 길이 62피트에 침실이 네 개인 그 배는 약 4분의 3이 완성되었다.", "au": "/en/2026-10-24/audio/w4.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "거의", "가파른", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "steep", "m": "가파른", "ex": "However, he can no longer work on it alone, and a <b>steep<\/b> hill between the yard and the road makes the boat hard to move.", "sh": "… and a <b>steep<\/b> hill between the yard and the road …", "ek": "하지만 그는 더 이상 혼자서 배를 만들 수 없고, 마당과 도로 사이의 가파른 언덕 때문에 배를 옮기기도 어렵다.", "au": "/en/2026-10-24/audio/w5.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "거의", "완성된, 끝난", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "donated", "m": "기부했다 (donate의 과거형)", "ex": "Within a few days, more than fifteen hundred people had <b>donated<\/b> over forty-one thousand dollars through an online <b>fundraiser<\/b>, which aims to get the boat onto the water.", "sh": "… had <b>donated<\/b> over forty-one thousand dollars …", "ek": "며칠 만에 1,500명이 넘는 사람들이 온라인 모금 운동을 통해 4만 1천 달러 넘게 기부했으며, 이 모금은 배를 물에 띄우는 것을 목표로 한다.", "au": "/en/2026-10-24/audio/w6.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "거의", "완성된, 끝난", "가파른", "모금 행사, 모금 운동"]}, {"w": "fundraiser", "m": "모금 행사, 모금 운동", "ex": "Within a few days, more than fifteen hundred people had <b>donated<\/b> over forty-one thousand dollars through an online <b>fundraiser<\/b>, which aims to get the boat onto the water.", "sh": "… through an online <b>fundraiser<\/b>, which aims to get the boat …", "ek": "며칠 만에 1,500명이 넘는 사람들이 온라인 모금 운동을 통해 4만 1천 달러 넘게 기부했으며, 이 모금은 배를 물에 띄우는 것을 목표로 한다.", "au": "/en/2026-10-24/audio/w7.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "거의", "완성된, 끝난", "가파른", "기부했다 (donate의 과거형)"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "yard", "m": "마당", "cz": "In 1987, a man named Dale started building a huge steel boat in the front <span class=\"dr-blank\"><\/span> of his home in a small American town.", "ca": "yard", "ex": "In 1987, a man named Dale started building a huge steel boat in the front <b>yard<\/b> of his home in a small American town.", "sh": "… in the front <b>yard<\/b> of his home …", "ek": "1987년, 데일이라는 남자가 미국의 한 작은 마을에 있는 자기 집 앞마당에서 거대한 강철 배를 만들기 시작했다.", "au": "/en/2026-10-24/audio/w1.mp3", "alts": ["항해하다, 배를 타고 가다", "거의", "완성된, 끝난", "가파른", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "sail", "m": "항해하다, 배를 타고 가다", "cz": "His plan was to finish it one day and <span class=\"dr-blank\"><\/span> it all the way to Alaska.", "ca": "sail", "ex": "His plan was to finish it one day and <b>sail<\/b> it all the way to Alaska.", "sh": "His plan was to finish it one day and <b>sail<\/b> it all the way to Alaska.", "ek": "그의 계획은 언젠가 배를 완성해서 그 배를 타고 알래스카까지 가는 것이었다.", "au": "/en/2026-10-24/audio/w2.mp3", "alts": ["마당", "거의", "완성된, 끝난", "가파른", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "nearly", "m": "거의", "cz": "<span class=\"dr-blank\"><\/span> forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters finished.", "ca": "Nearly", "ex": "<b>Nearly<\/b> forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters finished.", "sh": "<b>Nearly<\/b> forty years later, Dale is eighty-six, …", "ek": "거의 40년이 지난 지금 데일은 86세이고, 길이 62피트에 침실이 네 개인 그 배는 약 4분의 3이 완성되었다.", "au": "/en/2026-10-24/audio/w3.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "완성된, 끝난", "가파른", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "finished", "m": "완성된, 끝난", "cz": "Nearly forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters <span class=\"dr-blank\"><\/span>.", "ca": "finished", "ex": "Nearly forty years later, Dale is eighty-six, and the boat, which is sixty-two feet long and has four bedrooms, is about three-quarters <b>finished<\/b>.", "sh": "… and has four bedrooms, is about three-quarters <b>finished<\/b>.", "ek": "거의 40년이 지난 지금 데일은 86세이고, 길이 62피트에 침실이 네 개인 그 배는 약 4분의 3이 완성되었다.", "au": "/en/2026-10-24/audio/w4.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "거의", "가파른", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "steep", "m": "가파른", "cz": "However, he can no longer work on it alone, and a <span class=\"dr-blank\"><\/span> hill between the yard and the road makes the boat hard to move.", "ca": "steep", "ex": "However, he can no longer work on it alone, and a <b>steep<\/b> hill between the yard and the road makes the boat hard to move.", "sh": "… and a <b>steep<\/b> hill between the yard and the road …", "ek": "하지만 그는 더 이상 혼자서 배를 만들 수 없고, 마당과 도로 사이의 가파른 언덕 때문에 배를 옮기기도 어렵다.", "au": "/en/2026-10-24/audio/w5.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "거의", "완성된, 끝난", "기부했다 (donate의 과거형)", "모금 행사, 모금 운동"]}, {"w": "donated", "m": "기부했다 (donate의 과거형)", "cz": "Within a few days, more than fifteen hundred people had <span class=\"dr-blank\"><\/span> over forty-one thousand dollars through an online fundraiser, which aims to get the boat onto the water.", "ca": "donated", "ex": "Within a few days, more than fifteen hundred people had <b>donated<\/b> over forty-one thousand dollars through an online fundraiser, which aims to get the boat onto the water.", "sh": "… had <b>donated<\/b> over forty-one thousand dollars …", "ek": "며칠 만에 1,500명이 넘는 사람들이 온라인 모금 운동을 통해 4만 1천 달러 넘게 기부했으며, 이 모금은 배를 물에 띄우는 것을 목표로 한다.", "au": "/en/2026-10-24/audio/w6.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "거의", "완성된, 끝난", "가파른", "모금 행사, 모금 운동"]}, {"w": "fundraiser", "m": "모금 행사, 모금 운동", "cz": "Within a few days, more than fifteen hundred people had donated over forty-one thousand dollars through an online <span class=\"dr-blank\"><\/span>, which aims to get the boat onto the water.", "ca": "fundraiser", "ex": "Within a few days, more than fifteen hundred people had donated over forty-one thousand dollars through an online <b>fundraiser<\/b>, which aims to get the boat onto the water.", "sh": "… through an online <b>fundraiser<\/b>, which aims to get the boat …", "ek": "며칠 만에 1,500명이 넘는 사람들이 온라인 모금 운동을 통해 4만 1천 달러 넘게 기부했으며, 이 모금은 배를 물에 띄우는 것을 목표로 한다.", "au": "/en/2026-10-24/audio/w7.mp3", "alts": ["마당", "항해하다, 배를 타고 가다", "거의", "완성된, 끝난", "가파른", "기부했다 (donate의 과거형)"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -468,17 +493,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">bucket</span><span class="dr-chip" lang="en">appear</span><span class="dr-chip" lang="en">adopt</span><span class="dr-chip" lang="en">advice</span><span class="dr-chip" lang="en">public</span><span class="dr-chip" lang="en">look after</span><span class="dr-chip" lang="en">several</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -982,7 +1008,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "bucket", "m": "양동이", "ex": "On hot summer days, a woman in Berlin carries a <b>bucket<\/b> of water to a tree near her home, and she has even given it a name: Linda.", "sh": "… a <b>bucket<\/b> of water to a tree near her home, …", "ek": "더운 여름날이면 베를린의 한 여성은 집 근처의 나무 한 그루에 물 한 양동이를 들고 가는데, 그 나무에 '린다'라는 이름까지 지어 주었다.", "alts": ["나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "appear", "m": "나타나다, ~로 보이다", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can <b>adopt<\/b> it and get <b>advice<\/b> on how much water to give.", "sh": "… it <b>appears<\/b> as an orange or red dot, …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "adopt", "m": "입양하다, (맡아서) 돌보기로 하다", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can <b>adopt<\/b> it and get <b>advice<\/b> on how much water to give.", "sh": "… and people can <b>adopt<\/b> it and get <b>advice<\/b> …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "나타나다, ~로 보이다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "advice", "m": "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can <b>adopt<\/b> it and get <b>advice<\/b> on how much water to give.", "sh": "… and get <b>advice<\/b> on how much water to give.", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "public", "m": "공공의, 누구나 쓸 수 있는", "ex": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find <b>public<\/b> water pumps on the street.", "sh": "… where people can find <b>public<\/b> water pumps on the street.", "ek": "도시를 위한 새로운 아이디어를 연구하는 작은 팀이 2020년에 만든 이 앱은, 사람들이 길에서 공용 물 펌프를 어디서 찾을 수 있는지도 보여 준다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "~을 돌보다", "몇몇의, 여러"]}, {"w": "look after", "m": "~을 돌보다", "ex": "The woman says that <b>looking after<\/b> her tree is fun, almost like a video game.", "sh": "The woman says that <b>looking after<\/b> her tree is fun, almost like a video game.", "ek": "그 여성은 자기 나무를 돌보는 일이 재미있고, 거의 비디오 게임 같다고 말한다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "몇몇의, 여러"]}, {"w": "several", "m": "몇몇의, 여러", "ex": "Thousands of people now water trees this way, and <b>several<\/b> other cities in Germany and France have started their own versions of the app.", "sh": "… and <b>several<\/b> other cities in Germany and France …", "ek": "이제 수천 명이 이런 방식으로 나무에 물을 주고 있고, 독일과 프랑스의 다른 여러 도시도 이 앱의 자기들만의 버전을 시작했다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "bucket", "m": "양동이", "cz": "On hot summer days, a woman in Berlin carries a <span class=\"dr-blank\"><\/span> of water to a tree near her home, and she has even given it a name: Linda.", "ca": "bucket", "ex": "On hot summer days, a woman in Berlin carries a <b>bucket<\/b> of water to a tree near her home, and she has even given it a name: Linda.", "sh": "… a <b>bucket<\/b> of water to a tree near her home, …", "ek": "더운 여름날이면 베를린의 한 여성은 집 근처의 나무 한 그루에 물 한 양동이를 들고 가는데, 그 나무에 '린다'라는 이름까지 지어 주었다.", "alts": ["나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "appear", "m": "나타나다, ~로 보이다", "cz": "When a tree needs water, it <span class=\"dr-blank\"><\/span> as an orange or red dot, and people can adopt it and get advice on how much water to give.", "ca": "appears", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can adopt it and get advice on how much water to give.", "sh": "… it <b>appears<\/b> as an orange or red dot, …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "adopt", "m": "입양하다, (맡아서) 돌보기로 하다", "cz": "When a tree needs water, it appears as an orange or red dot, and people can <span class=\"dr-blank\"><\/span> it and get advice on how much water to give.", "ca": "adopt", "ex": "When a tree needs water, it appears as an orange or red dot, and people can <b>adopt<\/b> it and get advice on how much water to give.", "sh": "… and people can <b>adopt<\/b> it and get <b>advice<\/b> …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "나타나다, ~로 보이다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "advice", "m": "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "cz": "When a tree needs water, it appears as an orange or red dot, and people can adopt it and get <span class=\"dr-blank\"><\/span> on how much water to give.", "ca": "advice", "ex": "When a tree needs water, it appears as an orange or red dot, and people can adopt it and get <b>advice<\/b> on how much water to give.", "sh": "… and get <b>advice<\/b> on how much water to give.", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "public", "m": "공공의, 누구나 쓸 수 있는", "cz": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find <span class=\"dr-blank\"><\/span> water pumps on the street.", "ca": "public", "ex": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find <b>public<\/b> water pumps on the street.", "sh": "… where people can find <b>public<\/b> water pumps on the street.", "ek": "도시를 위한 새로운 아이디어를 연구하는 작은 팀이 2020년에 만든 이 앱은, 사람들이 길에서 공용 물 펌프를 어디서 찾을 수 있는지도 보여 준다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "~을 돌보다", "몇몇의, 여러"]}, {"w": "look after", "m": "~을 돌보다", "cz": "The woman says that <span class=\"dr-blank\"><\/span> after her tree is fun, almost like a video game.", "ca": "looking", "ex": "The woman says that <b>looking<\/b> after her tree is fun, almost like a video game.", "sh": "The woman says that <b>looking<\/b> after her tree is fun, almost like a video game.", "ek": "그 여성은 자기 나무를 돌보는 일이 재미있고, 거의 비디오 게임 같다고 말한다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "몇몇의, 여러"]}, {"w": "several", "m": "몇몇의, 여러", "cz": "Thousands of people now water trees this way, and <span class=\"dr-blank\"><\/span> other cities in Germany and France have started their own versions of the app.", "ca": "several", "ex": "Thousands of people now water trees this way, and <b>several<\/b> other cities in Germany and France have started their own versions of the app.", "sh": "… and <b>several<\/b> other cities in Germany and France …", "ek": "이제 수천 명이 이런 방식으로 나무에 물을 주고 있고, 독일과 프랑스의 다른 여러 도시도 이 앱의 자기들만의 버전을 시작했다.", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

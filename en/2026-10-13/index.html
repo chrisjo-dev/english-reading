@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -468,17 +493,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">antenna</span><span class="dr-chip" lang="en">plasma</span><span class="dr-chip" lang="en">send out</span><span class="dr-chip" lang="en">vibrate</span><span class="dr-chip" lang="en">adjust</span><span class="dr-chip" lang="en">so far</span><span class="dr-chip" lang="en">satellite</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -982,7 +1008,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "antenna", "m": "안테나", "ex": "A normal <b>antenna<\/b> is a piece of metal, but what if you could make one out of light and air?", "sh": "A normal <b>antenna<\/b> is a piece of metal, but what if you could make one out of light and air?", "ek": "보통의 안테나는 금속 조각이지만, 빛과 공기로 안테나를 만들 수 있다면 어떨까?", "alts": ["플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "plasma", "m": "플라스마 (전기를 띤 기체)", "ex": "The laser turns a thin line of air into <b>plasma<\/b>, a special kind of gas that can carry electricity.", "sh": "The laser turns a thin line of air into <b>plasma<\/b>, a special kind of gas that can carry electricity.", "ek": "레이저는 가느다란 줄 모양의 공기를 플라스마, 즉 전기를 전달할 수 있는 특별한 종류의 기체로 바꾼다.", "alts": ["안테나", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "send out", "m": "내보내다", "ex": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "sh": "… the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "ek": "이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "vibrate", "m": "진동하다, 떨리다", "ex": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "sh": "… the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "ek": "이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "adjust", "m": "조정하다, 맞추다", "ex": "The length of this light-made antenna, which is controlled only by the laser's settings, can be <b>adjusted<\/b> for different signals without any moving parts.", "sh": "… can be <b>adjusted<\/b> for different signals …", "ek": "레이저의 설정만으로 조절되는 이 '빛으로 만든 안테나'의 길이는 움직이는 부품 없이도 다른 신호에 맞게 조정할 수 있다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "지금까지 (는)", "인공위성"]}, {"w": "so far", "m": "지금까지 (는)", "ex": "<b>So far<\/b>, the device can only send signals, but the team hopes it could one day help <b>satellites<\/b> that need to stay light.", "sh": "<b>So far<\/b>, the device can only send signals, …", "ek": "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "인공위성"]}, {"w": "satellite", "m": "인공위성", "ex": "<b>So far<\/b>, the device can only send signals, but the team hopes it could one day help <b>satellites<\/b> that need to stay light.", "sh": "… it could one day help <b>satellites<\/b> that need to stay light.", "ek": "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "antenna", "m": "안테나", "cz": "A normal <span class=\"dr-blank\"><\/span> is a piece of metal, but what if you could make one out of light and air?", "ca": "antenna", "ex": "A normal <b>antenna<\/b> is a piece of metal, but what if you could make one out of light and air?", "sh": "A normal <b>antenna<\/b> is a piece of metal, but what if you could make one out of light and air?", "ek": "보통의 안테나는 금속 조각이지만, 빛과 공기로 안테나를 만들 수 있다면 어떨까?", "alts": ["플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "plasma", "m": "플라스마 (전기를 띤 기체)", "cz": "The laser turns a thin line of air into <span class=\"dr-blank\"><\/span>, a special kind of gas that can carry electricity.", "ca": "plasma", "ex": "The laser turns a thin line of air into <b>plasma<\/b>, a special kind of gas that can carry electricity.", "sh": "The laser turns a thin line of air into <b>plasma<\/b>, a special kind of gas that can carry electricity.", "ek": "레이저는 가느다란 줄 모양의 공기를 플라스마, 즉 전기를 전달할 수 있는 특별한 종류의 기체로 바꾼다.", "alts": ["안테나", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "send out", "m": "내보내다", "cz": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <span class=\"dr-blank\"><\/span> out radio waves that vibrate thirty million times a second.", "ca": "sends", "ex": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <b>sends<\/b> out radio waves that vibrate thirty million times a second.", "sh": "… the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "ek": "이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "vibrate", "m": "진동하다, 떨리다", "cz": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma sends out radio waves that <span class=\"dr-blank\"><\/span> thirty million times a second.", "ca": "vibrate", "ex": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma sends out radio waves that <b>vibrate<\/b> thirty million times a second.", "sh": "… the plasma <b>sends out<\/b> radio waves that <b>vibrate<\/b> thirty million times a second.", "ek": "이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "adjust", "m": "조정하다, 맞추다", "cz": "The length of this light-made antenna, which is controlled only by the laser's settings, can be <span class=\"dr-blank\"><\/span> for different signals without any moving parts.", "ca": "adjusted", "ex": "The length of this light-made antenna, which is controlled only by the laser's settings, can be <b>adjusted<\/b> for different signals without any moving parts.", "sh": "… can be <b>adjusted<\/b> for different signals …", "ek": "레이저의 설정만으로 조절되는 이 '빛으로 만든 안테나'의 길이는 움직이는 부품 없이도 다른 신호에 맞게 조정할 수 있다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "지금까지 (는)", "인공위성"]}, {"w": "so far", "m": "지금까지 (는)", "cz": "<span class=\"dr-blank\"><\/span>, the device can only send signals, but the team hopes it could one day help satellites that need to stay light.", "ca": "So far", "ex": "<b>So far<\/b>, the device can only send signals, but the team hopes it could one day help satellites that need to stay light.", "sh": "<b>So far<\/b>, the device can only send signals, …", "ek": "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "인공위성"]}, {"w": "satellite", "m": "인공위성", "cz": "So far, the device can only send signals, but the team hopes it could one day help <span class=\"dr-blank\"><\/span> that need to stay light.", "ca": "satellites", "ex": "So far, the device can only send signals, but the team hopes it could one day help <b>satellites<\/b> that need to stay light.", "sh": "… it could one day help <b>satellites<\/b> that need to stay light.", "ek": "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

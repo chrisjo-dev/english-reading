@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -468,17 +493,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">self-driving</span><span class="dr-chip" lang="en">passengers</span><span class="dr-chip" lang="en">mapping</span><span class="dr-chip" lang="en">accessible</span><span class="dr-chip" lang="en">unions</span><span class="dr-chip" lang="en">affected</span><span class="dr-chip" lang="en">assurances</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -979,7 +1005,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "self-driving", "m": "자율주행의, 스스로 운전하는", "ex": "This week, Uber started testing <b>self-driving<\/b> cars on the streets of Manchester, with a safety driver behind the wheel and no <b>passengers<\/b> on board.", "sh": "… Uber started testing <b>self-driving<\/b> cars on the streets of Manchester, …", "ek": "이번 주 우버는 맨체스터 거리에서 자율주행차 시험을 시작했는데, 운전석에는 안전 요원이 앉아 있고 승객은 태우지 않았다.", "alts": ["승객들 (복수 -s)", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "노동조합들", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "passengers", "m": "승객들 (복수 -s)", "ex": "This week, Uber started testing <b>self-driving<\/b> cars on the streets of Manchester, with a safety driver behind the wheel and no <b>passengers<\/b> on board.", "sh": "… with a safety driver behind the wheel and no <b>passengers<\/b> on board.", "ek": "이번 주 우버는 맨체스터 거리에서 자율주행차 시험을 시작했는데, 운전석에는 안전 요원이 앉아 있고 승객은 태우지 않았다.", "alts": ["자율주행의, 스스로 운전하는", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "노동조합들", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "mapping", "m": "지도를 만드는 것, 지도화", "ex": "For now, the cars are only <b>mapping<\/b> the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.", "sh": "… the cars are only <b>mapping<\/b> the city's roads, …", "ek": "지금은 차들이 도시의 도로 지도만 만들고 있지만, 회사는 올해 말까지 전 세계 최대 15개 도시에서 로보택시 승차 서비스를 제공하기를 바라고 있다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "이용하기 쉬운, 접근 가능한", "노동조합들", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "accessible", "m": "이용하기 쉬운, 접근 가능한", "ex": "The company says it wants to make this technology <b>accessible<\/b> to people across the country.", "sh": "The company says it wants to make this technology <b>accessible<\/b> to people across the country.", "ek": "회사는 이 기술을 전국의 사람들이 이용할 수 있게 만들고 싶다고 말한다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "지도를 만드는 것, 지도화", "노동조합들", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "unions", "m": "노동조합들", "ex": "However, driver <b>unions<\/b> warn that thousands of jobs could be lost, and they are asking for help for the workers who would be <b>affected<\/b>.", "sh": "… driver <b>unions<\/b> warn that thousands of jobs could be lost, …", "ek": "하지만 운전기사 노동조합들은 수천 개의 일자리가 사라질 수 있다고 경고하며, 영향을 받게 될 노동자들을 위한 지원을 요구하고 있다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "affected", "m": "영향을 받은", "ex": "However, driver <b>unions<\/b> warn that thousands of jobs could be lost, and they are asking for help for the workers who would be <b>affected<\/b>.", "sh": "… for the workers who would be <b>affected<\/b>.", "ek": "하지만 운전기사 노동조합들은 수천 개의 일자리가 사라질 수 있다고 경고하며, 영향을 받게 될 노동자들을 위한 지원을 요구하고 있다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "노동조합들", "보장, 확약 (복수)"]}, {"w": "assurances", "m": "보장, 확약 (복수)", "ex": "Local transport officials, who have not yet received a single request to run driverless taxis in the area, say they will expect strong <b>assurances<\/b> about safety before these cars carry anyone on their roads.", "sh": "… strong <b>assurances<\/b> about safety before these cars carry anyone …", "ek": "그 지역에서 무인 택시를 운행하겠다는 신청을 아직 한 건도 받지 않은 지역 교통 당국은, 이 차들이 자기네 도로에서 누군가를 태우기 전에 안전에 대한 확실한 보장을 요구하겠다고 말한다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "노동조합들", "영향을 받은"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "self-driving", "m": "자율주행의, 스스로 운전하는", "cz": "This week, Uber started testing <span class=\"dr-blank\"><\/span> cars on the streets of Manchester, with a safety driver behind the wheel and no passengers on board.", "ca": "self-driving", "ex": "This week, Uber started testing <b>self-driving<\/b> cars on the streets of Manchester, with a safety driver behind the wheel and no passengers on board.", "sh": "… Uber started testing <b>self-driving<\/b> cars on the streets of Manchester, …", "ek": "이번 주 우버는 맨체스터 거리에서 자율주행차 시험을 시작했는데, 운전석에는 안전 요원이 앉아 있고 승객은 태우지 않았다.", "alts": ["승객들 (복수 -s)", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "노동조합들", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "passengers", "m": "승객들 (복수 -s)", "cz": "This week, Uber started testing self-driving cars on the streets of Manchester, with a safety driver behind the wheel and no <span class=\"dr-blank\"><\/span> on board.", "ca": "passengers", "ex": "This week, Uber started testing self-driving cars on the streets of Manchester, with a safety driver behind the wheel and no <b>passengers<\/b> on board.", "sh": "… with a safety driver behind the wheel and no <b>passengers<\/b> on board.", "ek": "이번 주 우버는 맨체스터 거리에서 자율주행차 시험을 시작했는데, 운전석에는 안전 요원이 앉아 있고 승객은 태우지 않았다.", "alts": ["자율주행의, 스스로 운전하는", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "노동조합들", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "mapping", "m": "지도를 만드는 것, 지도화", "cz": "For now, the cars are only <span class=\"dr-blank\"><\/span> the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.", "ca": "mapping", "ex": "For now, the cars are only <b>mapping<\/b> the city's roads, but the company hopes to offer robotaxi rides in up to fifteen cities around the world by the end of this year.", "sh": "… the cars are only <b>mapping<\/b> the city's roads, …", "ek": "지금은 차들이 도시의 도로 지도만 만들고 있지만, 회사는 올해 말까지 전 세계 최대 15개 도시에서 로보택시 승차 서비스를 제공하기를 바라고 있다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "이용하기 쉬운, 접근 가능한", "노동조합들", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "accessible", "m": "이용하기 쉬운, 접근 가능한", "cz": "The company says it wants to make this technology <span class=\"dr-blank\"><\/span> to people across the country.", "ca": "accessible", "ex": "The company says it wants to make this technology <b>accessible<\/b> to people across the country.", "sh": "The company says it wants to make this technology <b>accessible<\/b> to people across the country.", "ek": "회사는 이 기술을 전국의 사람들이 이용할 수 있게 만들고 싶다고 말한다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "지도를 만드는 것, 지도화", "노동조합들", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "unions", "m": "노동조합들", "cz": "However, driver <span class=\"dr-blank\"><\/span> warn that thousands of jobs could be lost, and they are asking for help for the workers who would be affected.", "ca": "unions", "ex": "However, driver <b>unions<\/b> warn that thousands of jobs could be lost, and they are asking for help for the workers who would be affected.", "sh": "… driver <b>unions<\/b> warn that thousands of jobs could be lost, …", "ek": "하지만 운전기사 노동조합들은 수천 개의 일자리가 사라질 수 있다고 경고하며, 영향을 받게 될 노동자들을 위한 지원을 요구하고 있다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "영향을 받은", "보장, 확약 (복수)"]}, {"w": "affected", "m": "영향을 받은", "cz": "However, driver unions warn that thousands of jobs could be lost, and they are asking for help for the workers who would be <span class=\"dr-blank\"><\/span>.", "ca": "affected", "ex": "However, driver unions warn that thousands of jobs could be lost, and they are asking for help for the workers who would be <b>affected<\/b>.", "sh": "… for the workers who would be <b>affected<\/b>.", "ek": "하지만 운전기사 노동조합들은 수천 개의 일자리가 사라질 수 있다고 경고하며, 영향을 받게 될 노동자들을 위한 지원을 요구하고 있다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "노동조합들", "보장, 확약 (복수)"]}, {"w": "assurances", "m": "보장, 확약 (복수)", "cz": "Local transport officials, who have not yet received a single request to run driverless taxis in the area, say they will expect strong <span class=\"dr-blank\"><\/span> about safety before these cars carry anyone on their roads.", "ca": "assurances", "ex": "Local transport officials, who have not yet received a single request to run driverless taxis in the area, say they will expect strong <b>assurances<\/b> about safety before these cars carry anyone on their roads.", "sh": "… strong <b>assurances<\/b> about safety before these cars carry anyone …", "ek": "그 지역에서 무인 택시를 운행하겠다는 신청을 아직 한 건도 받지 않은 지역 교통 당국은, 이 차들이 자기네 도로에서 누군가를 태우기 전에 안전에 대한 확실한 보장을 요구하겠다고 말한다.", "alts": ["자율주행의, 스스로 운전하는", "승객들 (복수 -s)", "지도를 만드는 것, 지도화", "이용하기 쉬운, 접근 가능한", "노동조합들", "영향을 받은"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

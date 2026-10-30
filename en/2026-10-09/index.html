@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -466,17 +491,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">comet</span><span class="dr-chip" lang="en">atmosphere</span><span class="dr-chip" lang="en">meteor</span><span class="dr-chip" lang="en">constellation</span><span class="dr-chip" lang="en">peaks</span><span class="dr-chip" lang="en">sunset</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
-    <p class="dr-foot">약 2분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -977,7 +1003,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "comet", "m": "혜성", "ex": "Every October, Earth <b>passes through<\/b> a cloud of dust left behind by a <b>comet<\/b>, and the tiny particles burn up as they enter our atmosphere.", "sh": "… left behind by a <b>comet<\/b>, and the tiny particles burn up …", "ek": "매년 10월, 지구는 혜성이 남긴 먼지 구름 속을 통과하고, 그 작은 입자들은 대기권에 진입하면서 불타오른다.", "alts": ["대기, 대기권", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "atmosphere", "m": "대기, 대기권", "ex": "Every October, Earth <b>passes through<\/b> a cloud of dust left behind by a <b>comet<\/b>, and the tiny particles burn up as they enter our atmosphere.", "sh": "… Earth <b>passes through<\/b> a cloud of dust left behind by a <b>comet<\/b>, …", "ek": "매년 10월, 지구는 혜성이 남긴 먼지 구름 속을 통과하고, 그 작은 입자들은 대기권에 진입하면서 불타오른다.", "alts": ["혜성", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "meteor", "m": "유성, 별똥별", "ex": "This creates the Draconid <b>meteor<\/b> shower, which takes its name from the <b>constellation<\/b> Draco, the dragon, where the shooting stars appear to come from.", "sh": "… the Draconid <b>meteor<\/b> shower, which takes its name …", "ek": "이것이 드라코니드 유성우를 만들어 내는데, 이름은 유성이 날아오는 것처럼 보이는 용자리(Draco) 별자리에서 따왔다.", "alts": ["혜성", "대기, 대기권", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "constellation", "m": "별자리", "ex": "This creates the Draconid <b>meteor<\/b> shower, which takes its name from the <b>constellation<\/b> Draco, the dragon, where the shooting stars appear to come from.", "sh": "… from the <b>constellation<\/b> Draco, the dragon, …", "ek": "이것이 드라코니드 유성우를 만들어 내는데, 이름은 유성이 날아오는 것처럼 보이는 용자리(Draco) 별자리에서 따왔다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "peaks", "m": "(절정에, 최고조에) 달하다", "ex": "In 2026, the shower <b>peaks<\/b> on the night of October eighth to ninth, when the Moon is barely one percent full and the sky is very dark.", "sh": "… the shower <b>peaks<\/b> on the night of October eighth to ninth, …", "ek": "2026년에는 달이 거의 보이지 않아 하늘이 매우 어두운 10월 8일 밤부터 9일 새벽에 걸쳐 유성우가 최고조에 달한다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "별자리", "일몰, 해질녘"]}, {"w": "sunset", "m": "일몰, 해질녘", "ex": "Unlike most meteor showers, the Draconids are best watched right after <b>sunset<\/b> — you do not need to stay awake until the middle of the night.", "sh": "… right after <b>sunset<\/b> — you do not need to stay awake …", "ek": "대부분의 유성우와 달리 드라코니드는 일몰 직후가 가장 잘 보이므로 한밤중까지 깨어 있을 필요가 없다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "comet", "m": "혜성", "cz": "Every October, Earth passes through a cloud of dust left behind by a <span class=\"dr-blank\"><\/span>, and the tiny particles burn up as they enter our atmosphere.", "ca": "comet", "ex": "Every October, Earth passes through a cloud of dust left behind by a <b>comet<\/b>, and the tiny particles burn up as they enter our atmosphere.", "sh": "… left behind by a <b>comet<\/b>, and the tiny particles burn up …", "ek": "매년 10월, 지구는 혜성이 남긴 먼지 구름 속을 통과하고, 그 작은 입자들은 대기권에 진입하면서 불타오른다.", "alts": ["대기, 대기권", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "atmosphere", "m": "대기, 대기권", "cz": "Every October, Earth passes through a cloud of dust left behind by a comet, and the tiny particles burn up as they enter our <span class=\"dr-blank\"><\/span>.", "ca": "atmosphere", "ex": "Every October, Earth passes through a cloud of dust left behind by a comet, and the tiny particles burn up as they enter our <b>atmosphere<\/b>.", "sh": "… and the tiny particles burn up as they enter our atmosphere.", "ek": "매년 10월, 지구는 혜성이 남긴 먼지 구름 속을 통과하고, 그 작은 입자들은 대기권에 진입하면서 불타오른다.", "alts": ["혜성", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "meteor", "m": "유성, 별똥별", "cz": "This creates the Draconid <span class=\"dr-blank\"><\/span> shower, which takes its name from the constellation Draco, the dragon, where the shooting stars appear to come from.", "ca": "meteor", "ex": "This creates the Draconid <b>meteor<\/b> shower, which takes its name from the constellation Draco, the dragon, where the shooting stars appear to come from.", "sh": "… the Draconid <b>meteor<\/b> shower, which takes its name …", "ek": "이것이 드라코니드 유성우를 만들어 내는데, 이름은 유성이 날아오는 것처럼 보이는 용자리(Draco) 별자리에서 따왔다.", "alts": ["혜성", "대기, 대기권", "별자리", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "constellation", "m": "별자리", "cz": "This creates the Draconid meteor shower, which takes its name from the <span class=\"dr-blank\"><\/span> Draco, the dragon, where the shooting stars appear to come from.", "ca": "constellation", "ex": "This creates the Draconid meteor shower, which takes its name from the <b>constellation<\/b> Draco, the dragon, where the shooting stars appear to come from.", "sh": "… from the <b>constellation<\/b> Draco, the dragon, …", "ek": "이것이 드라코니드 유성우를 만들어 내는데, 이름은 유성이 날아오는 것처럼 보이는 용자리(Draco) 별자리에서 따왔다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "(절정에, 최고조에) 달하다", "일몰, 해질녘"]}, {"w": "peaks", "m": "(절정에, 최고조에) 달하다", "cz": "In 2026, the shower <span class=\"dr-blank\"><\/span> on the night of October eighth to ninth, when the Moon is barely one percent full and the sky is very dark.", "ca": "peaks", "ex": "In 2026, the shower <b>peaks<\/b> on the night of October eighth to ninth, when the Moon is barely one percent full and the sky is very dark.", "sh": "… the shower <b>peaks<\/b> on the night of October eighth to ninth, …", "ek": "2026년에는 달이 거의 보이지 않아 하늘이 매우 어두운 10월 8일 밤부터 9일 새벽에 걸쳐 유성우가 최고조에 달한다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "별자리", "일몰, 해질녘"]}, {"w": "sunset", "m": "일몰, 해질녘", "cz": "Unlike most meteor showers, the Draconids are best watched right after <span class=\"dr-blank\"><\/span> — you do not need to stay awake until the middle of the night.", "ca": "sunset", "ex": "Unlike most meteor showers, the Draconids are best watched right after <b>sunset<\/b> — you do not need to stay awake until the middle of the night.", "sh": "… right after <b>sunset<\/b> — you do not need to stay awake …", "ek": "대부분의 유성우와 달리 드라코니드는 일몰 직후가 가장 잘 보이므로 한밤중까지 깨어 있을 필요가 없다.", "alts": ["혜성", "대기, 대기권", "유성, 별똥별", "별자리", "(절정에, 최고조에) 달하다"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -468,17 +493,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">gathered</span><span class="dr-chip" lang="en">contest</span><span class="dr-chip" lang="en">giant</span><span class="dr-chip" lang="en">prizes</span><span class="dr-chip" lang="en">weighed</span><span class="dr-chip" lang="en">kilograms</span><span class="dr-chip" lang="en">lift</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -979,7 +1005,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "gathered", "m": "모였다 (gather의 과거)", "ex": "Last Monday, hundreds of people <b>gathered<\/b> in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.", "sh": "… hundreds of people <b>gathered<\/b> in the small California town …", "ek": "지난 월요일, 수백 명이 캘리포니아의 작은 도시 하프문베이에 모여 색다른 광경을 지켜봤습니다. 바로 호박의 무게를 재는 모습이었습니다.", "alts": ["대회, 경연", "거대한", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "contest", "m": "대회, 경연", "ex": "This was no ordinary <b>contest<\/b>, as it is now in its 53rd year and growers proudly call it the \"Super Bowl\" of pumpkin weigh-offs.", "sh": "This was no ordinary <b>contest<\/b>, as it is now in its 53rd year …", "ek": "이것은 평범한 대회가 아니었는데, 올해로 53회째를 맞았고 재배자들이 자랑스럽게 호박 무게 대회의 '슈퍼볼'이라고 부르기 때문입니다.", "alts": ["모였다 (gather의 과거)", "거대한", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "giant", "m": "거대한", "ex": "Growers brought their <b>giant<\/b> pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash <b>prizes<\/b>.", "sh": "… their <b>giant<\/b> pumpkins from nearby farms, …", "ek": "재배자들은 근처 농장, 미국의 다른 지역, 심지어 유럽에서까지 거대한 호박을 가져왔고, 모두 상금을 받기를 바랐습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "prizes", "m": "상, 상금 (복수)", "ex": "Growers brought their <b>giant<\/b> pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash <b>prizes<\/b>.", "sh": "… and even from Europe, all hoping to win cash <b>prizes<\/b>.", "ek": "재배자들은 근처 농장, 미국의 다른 지역, 심지어 유럽에서까지 거대한 호박을 가져왔고, 모두 상금을 받기를 바랐습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "거대한", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "weighed", "m": "무게가 ~였다 (weigh의 과거)", "ex": "His pumpkin <b>weighed<\/b> 2,389 pounds, which is a little more than a thousand <b>kilograms<\/b>, or about as heavy as a small car.", "sh": "His pumpkin <b>weighed<\/b> 2,389 pounds, which is a little more …", "ek": "그의 호박은 2,389파운드로, 천 킬로그램이 조금 넘는 무게, 곧 작은 자동차 한 대 정도였습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "거대한", "상, 상금 (복수)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "kilograms", "m": "킬로그램 (복수)", "ex": "His pumpkin <b>weighed<\/b> 2,389 pounds, which is a little more than a thousand <b>kilograms<\/b>, or about as heavy as a small car.", "sh": "… than a thousand <b>kilograms<\/b>, or about as heavy …", "ek": "그의 호박은 2,389파운드로, 천 킬로그램이 조금 넘는 무게, 곧 작은 자동차 한 대 정도였습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "거대한", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "들어 올리다"]}, {"w": "lift", "m": "들어 올리다", "ex": "For the crowd, it was a rare chance to see how much time and care can turn a fruit that usually fits in your arms into something you could never <b>lift<\/b> alone.", "sh": "… into something you could never <b>lift<\/b> alone.", "ek": "관중에게는 시간과 정성이 보통 품에 안기는 과일을 혼자서는 절대 들 수 없는 것으로 얼마나 바꿔 놓을 수 있는지 볼 수 있는 드문 기회였습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "거대한", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "gathered", "m": "모였다 (gather의 과거)", "cz": "Last Monday, hundreds of people <span class=\"dr-blank\"><\/span> in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.", "ca": "gathered", "ex": "Last Monday, hundreds of people <b>gathered<\/b> in the small California town of Half Moon Bay to watch something unusual: pumpkins being weighed.", "sh": "… hundreds of people <b>gathered<\/b> in the small California town …", "ek": "지난 월요일, 수백 명이 캘리포니아의 작은 도시 하프문베이에 모여 색다른 광경을 지켜봤습니다. 바로 호박의 무게를 재는 모습이었습니다.", "alts": ["대회, 경연", "거대한", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "contest", "m": "대회, 경연", "cz": "This was no ordinary <span class=\"dr-blank\"><\/span>, as it is now in its 53rd year and growers proudly call it the \"Super Bowl\" of pumpkin weigh-offs.", "ca": "contest", "ex": "This was no ordinary <b>contest<\/b>, as it is now in its 53rd year and growers proudly call it the \"Super Bowl\" of pumpkin weigh-offs.", "sh": "This was no ordinary <b>contest<\/b>, as it is now in its 53rd year …", "ek": "이것은 평범한 대회가 아니었는데, 올해로 53회째를 맞았고 재배자들이 자랑스럽게 호박 무게 대회의 '슈퍼볼'이라고 부르기 때문입니다.", "alts": ["모였다 (gather의 과거)", "거대한", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "giant", "m": "거대한", "cz": "Growers brought their <span class=\"dr-blank\"><\/span> pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash prizes.", "ca": "giant", "ex": "Growers brought their <b>giant<\/b> pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash prizes.", "sh": "… their <b>giant<\/b> pumpkins from nearby farms, …", "ek": "재배자들은 근처 농장, 미국의 다른 지역, 심지어 유럽에서까지 거대한 호박을 가져왔고, 모두 상금을 받기를 바랐습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "prizes", "m": "상, 상금 (복수)", "cz": "Growers brought their giant pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash <span class=\"dr-blank\"><\/span>.", "ca": "prizes", "ex": "Growers brought their giant pumpkins from nearby farms, from other parts of the country and even from Europe, all hoping to win cash <b>prizes<\/b>.", "sh": "… and even from Europe, all hoping to win cash <b>prizes<\/b>.", "ek": "재배자들은 근처 농장, 미국의 다른 지역, 심지어 유럽에서까지 거대한 호박을 가져왔고, 모두 상금을 받기를 바랐습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "거대한", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "weighed", "m": "무게가 ~였다 (weigh의 과거)", "cz": "His pumpkin <span class=\"dr-blank\"><\/span> 2,389 pounds, which is a little more than a thousand kilograms, or about as heavy as a small car.", "ca": "weighed", "ex": "His pumpkin <b>weighed<\/b> 2,389 pounds, which is a little more than a thousand kilograms, or about as heavy as a small car.", "sh": "His pumpkin <b>weighed<\/b> 2,389 pounds, which is a little more …", "ek": "그의 호박은 2,389파운드로, 천 킬로그램이 조금 넘는 무게, 곧 작은 자동차 한 대 정도였습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "거대한", "상, 상금 (복수)", "킬로그램 (복수)", "들어 올리다"]}, {"w": "kilograms", "m": "킬로그램 (복수)", "cz": "His pumpkin weighed 2,389 pounds, which is a little more than a thousand <span class=\"dr-blank\"><\/span>, or about as heavy as a small car.", "ca": "kilograms", "ex": "His pumpkin weighed 2,389 pounds, which is a little more than a thousand <b>kilograms<\/b>, or about as heavy as a small car.", "sh": "… than a thousand <b>kilograms<\/b>, or about as heavy …", "ek": "그의 호박은 2,389파운드로, 천 킬로그램이 조금 넘는 무게, 곧 작은 자동차 한 대 정도였습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "거대한", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "들어 올리다"]}, {"w": "lift", "m": "들어 올리다", "cz": "For the crowd, it was a rare chance to see how much time and care can turn a fruit that usually fits in your arms into something you could never <span class=\"dr-blank\"><\/span> alone.", "ca": "lift", "ex": "For the crowd, it was a rare chance to see how much time and care can turn a fruit that usually fits in your arms into something you could never <b>lift<\/b> alone.", "sh": "… into something you could never <b>lift<\/b> alone.", "ek": "관중에게는 시간과 정성이 보통 품에 안기는 과일을 혼자서는 절대 들 수 없는 것으로 얼마나 바꿔 놓을 수 있는지 볼 수 있는 드문 기회였습니다.", "alts": ["모였다 (gather의 과거)", "대회, 경연", "거대한", "상, 상금 (복수)", "무게가 ~였다 (weigh의 과거)", "킬로그램 (복수)"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

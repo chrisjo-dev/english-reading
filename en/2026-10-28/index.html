@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -474,17 +499,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">pop-up</span><span class="dr-chip" lang="en">measures</span><span class="dr-chip" lang="en">weighs</span><span class="dr-chip" lang="en">celebrate</span><span class="dr-chip" lang="en">sections</span><span class="dr-chip" lang="en">excitement</span><span class="dr-chip" lang="en">display</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -988,7 +1014,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "pop-up", "m": "펼치면 그림이 튀어나오는", "ex": "It is the world's largest <b>pop-up<\/b> book, and when it is open, it <b>measures<\/b> thirty-one feet by twenty feet and <b>weighs<\/b> more than eighteen hundred pounds.", "sh": "… <b>pop-up<\/b> book, and when it is open, …", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w1.mp3", "alts": ["크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "measures", "m": "크기가 ~이다 (measure + -s)", "ex": "It is the world's largest <b>pop-up<\/b> book, and when it is open, it <b>measures<\/b> thirty-one feet by twenty feet and <b>weighs<\/b> more than eighteen hundred pounds.", "sh": "… it <b>measures<\/b> thirty-one feet by twenty feet …", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w2.mp3", "alts": ["펼치면 그림이 튀어나오는", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "weighs", "m": "무게가 ~이다 (weigh + -s)", "ex": "It is the world's largest <b>pop-up<\/b> book, and when it is open, it <b>measures<\/b> thirty-one feet by twenty feet and <b>weighs<\/b> more than eighteen hundred pounds.", "sh": "… and <b>weighs<\/b> more than eighteen hundred pounds.", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w3.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "celebrate", "m": "기념하다, 축하하다", "ex": "The book was <b>designed<\/b> by a local artist, Daniel González, who worked with a paper engineer, and it was made to <b>celebrate<\/b> the library's one hundredth birthday.", "sh": "… to <b>celebrate<\/b> the library's one hundredth birthday.", "ek": "이 책은 지역 예술가 다니엘 곤살레스가 종이 공학자와 함께 디자인했으며, 도서관의 100번째 생일을 기념하기 위해 만들어졌다.", "au": "/en/2026-10-28/audio/w4.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "sections", "m": "부분들, 구역들 (section의 복수)", "ex": "The finished book was too large for the library's doors, so it was built in smaller <b>sections<\/b> and put together inside the hall.", "sh": "… in smaller <b>sections<\/b> and put together …", "ek": "완성된 책은 도서관 문을 통과하기에는 너무 커서, 더 작은 부분들로 나누어 만든 뒤 홀 안에서 조립했다.", "au": "/en/2026-10-28/audio/w5.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "설렘, 신남", "전시"]}, {"w": "excitement", "m": "설렘, 신남", "ex": "Its pictures, which show famous places in the city and the library's long history, are meant to remind people of the <b>excitement<\/b> they felt as children when they opened a pop-up book.", "sh": "… of the <b>excitement<\/b> they felt as children …", "ek": "도시의 유명한 장소들과 도서관의 긴 역사를 보여 주는 이 책의 그림들은, 사람들이 어린 시절 팝업북을 펼칠 때 느꼈던 설렘을 떠올리게 하려는 것이다.", "au": "/en/2026-10-28/audio/w6.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "전시"]}, {"w": "display", "m": "전시", "ex": "The book will stay on <b>display<\/b> until the end of November, so there is still time to see it.", "sh": "The book will stay on <b>display<\/b> until the end of November, so there is still time to see it.", "ek": "이 책은 11월 말까지 전시되니, 아직 볼 시간이 있다.", "au": "/en/2026-10-28/audio/w7.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "pop-up", "m": "펼치면 그림이 튀어나오는", "cz": "It is the world's largest <span class=\"dr-blank\"><\/span> book, and when it is open, it measures thirty-one feet by twenty feet and weighs more than eighteen hundred pounds.", "ca": "pop-up", "ex": "It is the world's largest <b>pop-up<\/b> book, and when it is open, it measures thirty-one feet by twenty feet and weighs more than eighteen hundred pounds.", "sh": "… <b>pop-up<\/b> book, and when it is open, …", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w1.mp3", "alts": ["크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "measures", "m": "크기가 ~이다 (measure + -s)", "cz": "It is the world's largest pop-up book, and when it is open, it <span class=\"dr-blank\"><\/span> thirty-one feet by twenty feet and weighs more than eighteen hundred pounds.", "ca": "measures", "ex": "It is the world's largest pop-up book, and when it is open, it <b>measures<\/b> thirty-one feet by twenty feet and weighs more than eighteen hundred pounds.", "sh": "… it <b>measures<\/b> thirty-one feet by twenty feet …", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w2.mp3", "alts": ["펼치면 그림이 튀어나오는", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "weighs", "m": "무게가 ~이다 (weigh + -s)", "cz": "It is the world's largest pop-up book, and when it is open, it measures thirty-one feet by twenty feet and <span class=\"dr-blank\"><\/span> more than eighteen hundred pounds.", "ca": "weighs", "ex": "It is the world's largest pop-up book, and when it is open, it measures thirty-one feet by twenty feet and <b>weighs<\/b> more than eighteen hundred pounds.", "sh": "… and <b>weighs<\/b> more than eighteen hundred pounds.", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "au": "/en/2026-10-28/audio/w3.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "celebrate", "m": "기념하다, 축하하다", "cz": "The book was designed by a local artist, Daniel González, who worked with a paper engineer, and it was made to <span class=\"dr-blank\"><\/span> the library's one hundredth birthday.", "ca": "celebrate", "ex": "The book was designed by a local artist, Daniel González, who worked with a paper engineer, and it was made to <b>celebrate<\/b> the library's one hundredth birthday.", "sh": "… to <b>celebrate<\/b> the library's one hundredth birthday.", "ek": "이 책은 지역 예술가 다니엘 곤살레스가 종이 공학자와 함께 디자인했으며, 도서관의 100번째 생일을 기념하기 위해 만들어졌다.", "au": "/en/2026-10-28/audio/w4.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "부분들, 구역들 (section의 복수)", "설렘, 신남", "전시"]}, {"w": "sections", "m": "부분들, 구역들 (section의 복수)", "cz": "The finished book was too large for the library's doors, so it was built in smaller <span class=\"dr-blank\"><\/span> and put together inside the hall.", "ca": "sections", "ex": "The finished book was too large for the library's doors, so it was built in smaller <b>sections<\/b> and put together inside the hall.", "sh": "… in smaller <b>sections<\/b> and put together …", "ek": "완성된 책은 도서관 문을 통과하기에는 너무 커서, 더 작은 부분들로 나누어 만든 뒤 홀 안에서 조립했다.", "au": "/en/2026-10-28/audio/w5.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "설렘, 신남", "전시"]}, {"w": "excitement", "m": "설렘, 신남", "cz": "Its pictures, which show famous places in the city and the library's long history, are meant to remind people of the <span class=\"dr-blank\"><\/span> they felt as children when they opened a pop-up book.", "ca": "excitement", "ex": "Its pictures, which show famous places in the city and the library's long history, are meant to remind people of the <b>excitement<\/b> they felt as children when they opened a pop-up book.", "sh": "… of the <b>excitement<\/b> they felt as children …", "ek": "도시의 유명한 장소들과 도서관의 긴 역사를 보여 주는 이 책의 그림들은, 사람들이 어린 시절 팝업북을 펼칠 때 느꼈던 설렘을 떠올리게 하려는 것이다.", "au": "/en/2026-10-28/audio/w6.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "전시"]}, {"w": "display", "m": "전시", "cz": "The book will stay on <span class=\"dr-blank\"><\/span> until the end of November, so there is still time to see it.", "ca": "display", "ex": "The book will stay on <b>display<\/b> until the end of November, so there is still time to see it.", "sh": "The book will stay on <b>display<\/b> until the end of November, so there is still time to see it.", "ek": "이 책은 11월 말까지 전시되니, 아직 볼 시간이 있다.", "au": "/en/2026-10-28/audio/w7.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다 (measure + -s)", "무게가 ~이다 (weigh + -s)", "기념하다, 축하하다", "부분들, 구역들 (section의 복수)", "설렘, 신남"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

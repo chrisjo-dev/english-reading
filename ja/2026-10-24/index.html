@@ -284,9 +284,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -306,6 +307,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -469,17 +494,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="ja">神社</span><span class="dr-chip" lang="ja">鳥居</span><span class="dr-chip" lang="ja">お参り</span><span class="dr-chip" lang="ja">おじぎ</span><span class="dr-chip" lang="ja">少ない</span><span class="dr-chip" lang="ja">案内</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
-    <p class="dr-foot">약 2분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -979,7 +1005,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "神社", "m": "신사", "r": "じんじゃ", "ex": "<b><ruby>神社<rt>じんじゃ<\/rt><\/ruby><\/b>は、<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>のあちこちにあります。", "sh": "<b><ruby>神社<rt>じんじゃ<\/rt><\/ruby><\/b>は、<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>のあちこちにあります。", "ek": "신사는 일본 마을 여기저기에 있습니다.", "au": "/ja/2026-10-24/audio/w1.mp3", "alts": ["도리이(신사 입구의 문)", "참배, 참배하러 감", "(고개 숙여 하는) 절", "적다", "안내, 안내문"]}, {"w": "鳥居", "m": "도리이(신사 입구의 문)", "r": "とりい", "ex": "<ruby>入口<rt>いりぐち<\/rt><\/ruby>には、<ruby>大<rt>おお<\/rt><\/ruby>きい<b><ruby>鳥居<rt>とりい<\/rt><\/ruby><\/b>が<ruby>立<rt>た<\/rt><\/ruby>っています。", "sh": "<ruby>入口<rt>いりぐち<\/rt><\/ruby>には、<ruby>大<rt>おお<\/rt><\/ruby>きい<b><ruby>鳥居<rt>とりい<\/rt><\/ruby><\/b>が<ruby>立<rt>た<\/rt><\/ruby>っています。", "ek": "입구에는 큰 도리이가 서 있습니다.", "au": "/ja/2026-10-24/audio/w2.mp3", "alts": ["신사", "참배, 참배하러 감", "(고개 숙여 하는) 절", "적다", "안내, 안내문"]}, {"w": "お参り", "m": "참배, 참배하러 감", "r": "おまいり", "ex": "<b>お<ruby>参<rt>まい<\/rt><\/ruby>り<\/b>のときは、2<ruby>回<rt>かい<\/rt><\/ruby><b>おじぎ<\/b>をして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "sh": "<b>お<ruby>参<rt>まい<\/rt><\/ruby>り<\/b>のときは、2<ruby>回<rt>かい<\/rt><\/ruby><b>おじぎ<\/b>をして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "ek": "참배할 때는 두 번 절을 하고, 두 번 손뼉을 칩니다.", "au": "/ja/2026-10-24/audio/w3.mp3", "alts": ["신사", "도리이(신사 입구의 문)", "(고개 숙여 하는) 절", "적다", "안내, 안내문"]}, {"w": "おじぎ", "m": "(고개 숙여 하는) 절", "ex": "<b>お<ruby>参<rt>まい<\/rt><\/ruby>り<\/b>のときは、2<ruby>回<rt>かい<\/rt><\/ruby><b>おじぎ<\/b>をして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "sh": "<b>お<ruby>参<rt>まい<\/rt><\/ruby>り<\/b>のときは、2<ruby>回<rt>かい<\/rt><\/ruby><b>おじぎ<\/b>をして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "ek": "참배할 때는 두 번 절을 하고, 두 번 손뼉을 칩니다.", "au": "/ja/2026-10-24/audio/w4.mp3", "alts": ["신사", "도리이(신사 입구의 문)", "참배, 참배하러 감", "적다", "안내, 안내문"]}, {"w": "少ない", "m": "적다", "r": "すくない", "ex": "<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>早<rt>はや<\/rt><\/ruby>い<ruby>時間<rt>じかん<\/rt><\/ruby>は<ruby>人<rt>ひと<\/rt><\/ruby>が<b><ruby>少<rt>すく<\/rt><\/ruby>なくて<\/b>、ゆっくり<ruby>見<rt>み<\/rt><\/ruby>ることができます。", "sh": "<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>早<rt>はや<\/rt><\/ruby>い<ruby>時間<rt>じかん<\/rt><\/ruby>は<ruby>人<rt>ひと<\/rt><\/ruby>が<b><ruby>少<rt>すく<\/rt><\/ruby>なくて<\/b>、ゆっくり<ruby>見<rt>み<\/rt><\/ruby>ることができます。", "ek": "이른 아침 시간에는 사람이 적어서 천천히 둘러볼 수 있습니다.", "au": "/ja/2026-10-24/audio/w5.mp3", "alts": ["신사", "도리이(신사 입구의 문)", "참배, 참배하러 감", "(고개 숙여 하는) 절", "안내, 안내문"]}, {"w": "案内", "m": "안내, 안내문", "r": "あんない", "ex": "<ruby>写真<rt>しゃしん<\/rt><\/ruby>を<ruby>撮<rt>と<\/rt><\/ruby>る<ruby>前<rt>まえ<\/rt><\/ruby>に、まわりの<b><ruby>案内<rt>あんない<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>てください。", "sh": "<ruby>写真<rt>しゃしん<\/rt><\/ruby>を<ruby>撮<rt>と<\/rt><\/ruby>る<ruby>前<rt>まえ<\/rt><\/ruby>に、まわりの<b><ruby>案内<rt>あんない<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>てください。", "ek": "사진을 찍기 전에 주변 안내문을 봐 주세요.", "au": "/ja/2026-10-24/audio/w6.mp3", "alts": ["신사", "도리이(신사 입구의 문)", "참배, 참배하러 감", "(고개 숙여 하는) 절", "적다"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "神社", "m": "신사", "r": "じんじゃ", "cz": "<span class=\"dr-blank\"><\/span>は、<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>のあちこちにあります。", "ca": "神社", "ex": "<b><ruby>神社<rt>じんじゃ<\/rt><\/ruby><\/b>は、<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>のあちこちにあります。", "sh": "<b><ruby>神社<rt>じんじゃ<\/rt><\/ruby><\/b>は、<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>のあちこちにあります。", "ek": "신사는 일본 마을 여기저기에 있습니다.", "au": "/ja/2026-10-24/audio/w1.mp3", "alts": ["도리이(신사 입구의 문)", "참배, 참배하러 감", "(고개 숙여 하는) 절", "적다", "안내, 안내문"]}, {"w": "鳥居", "m": "도리이(신사 입구의 문)", "r": "とりい", "cz": "<ruby>入口<rt>いりぐち<\/rt><\/ruby>には、<ruby>大<rt>おお<\/rt><\/ruby>きい<span class=\"dr-blank\"><\/span>が<ruby>立<rt>た<\/rt><\/ruby>っています。", "ca": "鳥居", "ex": "<ruby>入口<rt>いりぐち<\/rt><\/ruby>には、<ruby>大<rt>おお<\/rt><\/ruby>きい<b><ruby>鳥居<rt>とりい<\/rt><\/ruby><\/b>が<ruby>立<rt>た<\/rt><\/ruby>っています。", "sh": "<ruby>入口<rt>いりぐち<\/rt><\/ruby>には、<ruby>大<rt>おお<\/rt><\/ruby>きい<b><ruby>鳥居<rt>とりい<\/rt><\/ruby><\/b>が<ruby>立<rt>た<\/rt><\/ruby>っています。", "ek": "입구에는 큰 도리이가 서 있습니다.", "au": "/ja/2026-10-24/audio/w2.mp3", "alts": ["신사", "참배, 참배하러 감", "(고개 숙여 하는) 절", "적다", "안내, 안내문"]}, {"w": "お参り", "m": "참배, 참배하러 감", "r": "おまいり", "cz": "<span class=\"dr-blank\"><\/span>のときは、2<ruby>回<rt>かい<\/rt><\/ruby>おじぎをして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "ca": "お参り", "ex": "<b>お<ruby>参<rt>まい<\/rt><\/ruby>り<\/b>のときは、2<ruby>回<rt>かい<\/rt><\/ruby>おじぎをして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "sh": "<b>お<ruby>参<rt>まい<\/rt><\/ruby>り<\/b>のときは、2<ruby>回<rt>かい<\/rt><\/ruby>おじぎをして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "ek": "참배할 때는 두 번 절을 하고, 두 번 손뼉을 칩니다.", "au": "/ja/2026-10-24/audio/w3.mp3", "alts": ["신사", "도리이(신사 입구의 문)", "(고개 숙여 하는) 절", "적다", "안내, 안내문"]}, {"w": "おじぎ", "m": "(고개 숙여 하는) 절", "cz": "お<ruby>参<rt>まい<\/rt><\/ruby>りのときは、2<ruby>回<rt>かい<\/rt><\/ruby><span class=\"dr-blank\"><\/span>をして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "ca": "おじぎ", "ex": "お<ruby>参<rt>まい<\/rt><\/ruby>りのときは、2<ruby>回<rt>かい<\/rt><\/ruby><b>おじぎ<\/b>をして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "sh": "お<ruby>参<rt>まい<\/rt><\/ruby>りのときは、2<ruby>回<rt>かい<\/rt><\/ruby><b>おじぎ<\/b>をして、2<ruby>回<rt>かい<\/rt><\/ruby><ruby>手<rt>て<\/rt><\/ruby>をたたきます。", "ek": "참배할 때는 두 번 절을 하고, 두 번 손뼉을 칩니다.", "au": "/ja/2026-10-24/audio/w4.mp3", "alts": ["신사", "도리이(신사 입구의 문)", "참배, 참배하러 감", "적다", "안내, 안내문"]}, {"w": "少ない", "m": "적다", "r": "すくない", "cz": "<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>早<rt>はや<\/rt><\/ruby>い<ruby>時間<rt>じかん<\/rt><\/ruby>は<ruby>人<rt>ひと<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>、ゆっくり<ruby>見<rt>み<\/rt><\/ruby>ることができます。", "ca": "少なくて", "ex": "<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>早<rt>はや<\/rt><\/ruby>い<ruby>時間<rt>じかん<\/rt><\/ruby>は<ruby>人<rt>ひと<\/rt><\/ruby>が<b><ruby>少<rt>すく<\/rt><\/ruby>なくて<\/b>、ゆっくり<ruby>見<rt>み<\/rt><\/ruby>ることができます。", "sh": "<ruby>朝<rt>あさ<\/rt><\/ruby>の<ruby>早<rt>はや<\/rt><\/ruby>い<ruby>時間<rt>じかん<\/rt><\/ruby>は<ruby>人<rt>ひと<\/rt><\/ruby>が<b><ruby>少<rt>すく<\/rt><\/ruby>なくて<\/b>、ゆっくり<ruby>見<rt>み<\/rt><\/ruby>ることができます。", "ek": "이른 아침 시간에는 사람이 적어서 천천히 둘러볼 수 있습니다.", "au": "/ja/2026-10-24/audio/w5.mp3", "alts": ["신사", "도리이(신사 입구의 문)", "참배, 참배하러 감", "(고개 숙여 하는) 절", "안내, 안내문"]}, {"w": "案内", "m": "안내, 안내문", "r": "あんない", "cz": "<ruby>写真<rt>しゃしん<\/rt><\/ruby>を<ruby>撮<rt>と<\/rt><\/ruby>る<ruby>前<rt>まえ<\/rt><\/ruby>に、まわりの<span class=\"dr-blank\"><\/span>を<ruby>見<rt>み<\/rt><\/ruby>てください。", "ca": "案内", "ex": "<ruby>写真<rt>しゃしん<\/rt><\/ruby>を<ruby>撮<rt>と<\/rt><\/ruby>る<ruby>前<rt>まえ<\/rt><\/ruby>に、まわりの<b><ruby>案内<rt>あんない<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>てください。", "sh": "<ruby>写真<rt>しゃしん<\/rt><\/ruby>を<ruby>撮<rt>と<\/rt><\/ruby>る<ruby>前<rt>まえ<\/rt><\/ruby>に、まわりの<b><ruby>案内<rt>あんない<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>てください。", "ek": "사진을 찍기 전에 주변 안내문을 봐 주세요.", "au": "/ja/2026-10-24/audio/w6.mp3", "alts": ["신사", "도리이(신사 입구의 문)", "참배, 참배하러 감", "(고개 숙여 하는) 절", "적다"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

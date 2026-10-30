@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -468,17 +493,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">folded</span><span class="dr-chip" lang="en">loops</span><span class="dr-chip" lang="en">genes</span><span class="dr-chip" lang="en">linked (to)</span><span class="dr-chip" lang="en">embryos</span><span class="dr-chip" lang="en">suggests</span><span class="dr-chip" lang="en">complex</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -979,7 +1005,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "folded", "m": "접힌, 접혀 있는", "ex": "Inside every cell, a very long string of DNA is <b>folded<\/b> into a tiny space, a bit like a ball of thread.", "sh": "Inside every cell, a very long string of DNA is <b>folded<\/b> into a tiny space, a bit like a ball of thread.", "ek": "모든 세포 안에서는 아주 긴 DNA 가닥이 실뭉치처럼 아주 작은 공간에 접혀 들어가 있다.", "alts": ["고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "loops", "m": "고리들 (복수 -s)", "ex": "Because of this folding, two parts of the string that are far apart can end up touching each other and forming small <b>loops<\/b>.", "sh": "… can end up touching each other and forming small <b>loops<\/b>.", "ek": "이렇게 접혀 있기 때문에, 가닥에서 멀리 떨어진 두 부분이 서로 맞닿아 작은 고리를 만들 수 있다.", "alts": ["접힌, 접혀 있는", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "genes", "m": "유전자들 (gene의 복수)", "ex": "These loops can help decide which <b>genes<\/b> turn on, and when.", "sh": "These loops can help decide which <b>genes<\/b> turn on, and when.", "ek": "이 고리들은 어떤 유전자가 언제 켜질지를 결정하는 데 도움을 줄 수 있다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "linked (to)", "m": "~와 관련된, 연결된", "ex": "Scientists at the University of Vienna compared the DNA of a squid, a cuttlefish and an octopus, and they found many loops close to genes <b>linked<\/b> to the brain.", "sh": "… close to genes <b>linked<\/b> to the brain.", "ek": "빈 대학교의 과학자들은 오징어, 갑오징어, 문어의 DNA를 비교했고, 뇌와 관련된 유전자 가까이에서 많은 고리를 발견했다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "embryos", "m": "배아들 (embryo의 복수)", "ex": "When the team removed a short piece of this DNA from young squid <b>embryos<\/b>, all twenty-five embryos grew more slowly, and five of them had clearly smaller brains.", "sh": "… from young squid <b>embryos<\/b>, all twenty-five embryos …", "ek": "연구팀이 어린 오징어 배아에서 이 DNA의 짧은 조각을 없애자, 배아 25개 모두가 더 느리게 자랐고, 그중 5개는 뇌가 뚜렷하게 더 작았다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "suggests", "m": "시사하다, (~라는 것을) 보여 주다", "ex": "The study, which looked at animals alive today rather than their ancient ancestors, <b>suggests<\/b> that these sea animals may have built their <b>complex<\/b> brains partly by changing how their DNA folds, not only by gaining new genes.", "sh": "… <b>suggests<\/b> that these sea animals …", "ek": "고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "복잡한"]}, {"w": "complex", "m": "복잡한", "ex": "The study, which looked at animals alive today rather than their ancient ancestors, <b>suggests<\/b> that these sea animals may have built their <b>complex<\/b> brains partly by changing how their DNA folds, not only by gaining new genes.", "sh": "… may have built their <b>complex<\/b> brains partly …", "ek": "고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "folded", "m": "접힌, 접혀 있는", "cz": "Inside every cell, a very long string of DNA is <span class=\"dr-blank\"><\/span> into a tiny space, a bit like a ball of thread.", "ca": "folded", "ex": "Inside every cell, a very long string of DNA is <b>folded<\/b> into a tiny space, a bit like a ball of thread.", "sh": "Inside every cell, a very long string of DNA is <b>folded<\/b> into a tiny space, a bit like a ball of thread.", "ek": "모든 세포 안에서는 아주 긴 DNA 가닥이 실뭉치처럼 아주 작은 공간에 접혀 들어가 있다.", "alts": ["고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "loops", "m": "고리들 (복수 -s)", "cz": "Because of this folding, two parts of the string that are far apart can end up touching each other and forming small <span class=\"dr-blank\"><\/span>.", "ca": "loops", "ex": "Because of this folding, two parts of the string that are far apart can end up touching each other and forming small <b>loops<\/b>.", "sh": "… can end up touching each other and forming small <b>loops<\/b>.", "ek": "이렇게 접혀 있기 때문에, 가닥에서 멀리 떨어진 두 부분이 서로 맞닿아 작은 고리를 만들 수 있다.", "alts": ["접힌, 접혀 있는", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "genes", "m": "유전자들 (gene의 복수)", "cz": "These loops can help decide which <span class=\"dr-blank\"><\/span> turn on, and when.", "ca": "genes", "ex": "These loops can help decide which <b>genes<\/b> turn on, and when.", "sh": "These loops can help decide which <b>genes<\/b> turn on, and when.", "ek": "이 고리들은 어떤 유전자가 언제 켜질지를 결정하는 데 도움을 줄 수 있다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "linked (to)", "m": "~와 관련된, 연결된", "cz": "Scientists at the University of Vienna compared the DNA of a squid, a cuttlefish and an octopus, and they found many loops close to genes <span class=\"dr-blank\"><\/span> to the brain.", "ca": "linked", "ex": "Scientists at the University of Vienna compared the DNA of a squid, a cuttlefish and an octopus, and they found many loops close to genes <b>linked<\/b> to the brain.", "sh": "… close to genes <b>linked<\/b> to the brain.", "ek": "빈 대학교의 과학자들은 오징어, 갑오징어, 문어의 DNA를 비교했고, 뇌와 관련된 유전자 가까이에서 많은 고리를 발견했다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "embryos", "m": "배아들 (embryo의 복수)", "cz": "When the team removed a short piece of this DNA from young squid <span class=\"dr-blank\"><\/span>, all twenty-five embryos grew more slowly, and five of them had clearly smaller brains.", "ca": "embryos", "ex": "When the team removed a short piece of this DNA from young squid <b>embryos<\/b>, all twenty-five embryos grew more slowly, and five of them had clearly smaller brains.", "sh": "… from young squid <b>embryos<\/b>, all twenty-five embryos …", "ek": "연구팀이 어린 오징어 배아에서 이 DNA의 짧은 조각을 없애자, 배아 25개 모두가 더 느리게 자랐고, 그중 5개는 뇌가 뚜렷하게 더 작았다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "시사하다, (~라는 것을) 보여 주다", "복잡한"]}, {"w": "suggests", "m": "시사하다, (~라는 것을) 보여 주다", "cz": "The study, which looked at animals alive today rather than their ancient ancestors, <span class=\"dr-blank\"><\/span> that these sea animals may have built their complex brains partly by changing how their DNA folds, not only by gaining new genes.", "ca": "suggests", "ex": "The study, which looked at animals alive today rather than their ancient ancestors, <b>suggests<\/b> that these sea animals may have built their complex brains partly by changing how their DNA folds, not only by gaining new genes.", "sh": "… <b>suggests<\/b> that these sea animals …", "ek": "고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "복잡한"]}, {"w": "complex", "m": "복잡한", "cz": "The study, which looked at animals alive today rather than their ancient ancestors, suggests that these sea animals may have built their <span class=\"dr-blank\"><\/span> brains partly by changing how their DNA folds, not only by gaining new genes.", "ca": "complex", "ex": "The study, which looked at animals alive today rather than their ancient ancestors, suggests that these sea animals may have built their <b>complex<\/b> brains partly by changing how their DNA folds, not only by gaining new genes.", "sh": "… may have built their <b>complex<\/b> brains partly …", "ek": "고대 조상이 아니라 오늘날 살아 있는 동물을 살펴본 이 연구는, 이 바다 동물들이 새로운 유전자를 얻는 것만이 아니라 DNA가 접히는 방식을 바꾸는 것을 통해서도 복잡한 뇌를 만들어 왔을 수 있음을 시사한다.", "alts": ["접힌, 접혀 있는", "고리들 (복수 -s)", "유전자들 (gene의 복수)", "~와 관련된, 연결된", "배아들 (embryo의 복수)", "시사하다, (~라는 것을) 보여 주다"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

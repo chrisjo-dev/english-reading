@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -468,17 +493,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">materials</span><span class="dr-chip" lang="en">charge</span><span class="dr-chip" lang="en">flexible</span><span class="dr-chip" lang="en">sensors</span><span class="dr-chip" lang="en">steady</span><span class="dr-chip" lang="en">pattern</span><span class="dr-chip" lang="en">identified</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -979,7 +1005,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "materials", "m": "재료, 물질들 (material의 복수)", "ex": "The idea is simple: when two different <b>materials<\/b> touch and then pull apart, they create a small electric <b>charge<\/b>.", "sh": "… when two different <b>materials<\/b> touch and then pull apart, …", "ek": "원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.", "alts": ["전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "charge", "m": "전하, (전기의) 충전량", "ex": "The idea is simple: when two different <b>materials<\/b> touch and then pull apart, they create a small electric <b>charge<\/b>.", "sh": "… touch and then pull apart, they create a small electric <b>charge<\/b>.", "ek": "원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.", "alts": ["재료, 물질들 (material의 복수)", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "flexible", "m": "잘 휘는, 유연한", "ex": "Three thin, <b>flexible<\/b> <b>sensors<\/b> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "sh": "Three thin, <b>flexible<\/b> <b>sensors<\/b> on the frame …", "ek": "안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "sensors", "m": "센서들, 감지기들 (sensor의 복수)", "ex": "Three thin, <b>flexible<\/b> <b>sensors<\/b> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "sh": "Three thin, <b>flexible<\/b> <b>sensors<\/b> on the frame …", "ek": "안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "잘 휘는, 유연한", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "steady", "m": "꾸준한, 끊이지 않는", "ex": "Because people blink about fourteen to twenty times a minute, the sensors get a <b>steady<\/b> supply of tiny movements.", "sh": "… the sensors get a <b>steady<\/b> supply of tiny movements.", "ek": "사람은 1분에 약 14~20번 눈을 깜빡이기 때문에, 센서들은 작은 움직임을 꾸준히 공급받는다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "pattern", "m": "패턴, 일정한 모양", "ex": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <b>pattern<\/b>, which a computer program learns to recognize.", "sh": "… makes a different electrical <b>pattern<\/b>, which a computer program …", "ek": "씹기든, 말하기든, 눈썹 올리기든 각각의 동작은 서로 다른 전기 패턴을 만들고, 컴퓨터 프로그램이 이를 알아보도록 학습한다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "identified", "m": "알아냈다, 식별했다 (identify의 과거형)", "ex": "In tests with twenty volunteers, the glasses correctly <b>identified<\/b> what people were doing almost 94 percent of the time.", "sh": "… the glasses correctly <b>identified<\/b> what people were doing …", "ek": "자원자 20명을 대상으로 한 실험에서, 그 안경은 사람들이 무엇을 하고 있는지 거의 94%의 경우에 정확히 알아냈다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "패턴, 일정한 모양"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "materials", "m": "재료, 물질들 (material의 복수)", "cz": "The idea is simple: when two different <span class=\"dr-blank\"><\/span> touch and then pull apart, they create a small electric charge.", "ca": "materials", "ex": "The idea is simple: when two different <b>materials<\/b> touch and then pull apart, they create a small electric charge.", "sh": "… when two different <b>materials<\/b> touch and then pull apart, …", "ek": "원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.", "alts": ["전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "charge", "m": "전하, (전기의) 충전량", "cz": "The idea is simple: when two different materials touch and then pull apart, they create a small electric <span class=\"dr-blank\"><\/span>.", "ca": "charge", "ex": "The idea is simple: when two different materials touch and then pull apart, they create a small electric <b>charge<\/b>.", "sh": "… touch and then pull apart, they create a small electric <b>charge<\/b>.", "ek": "원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.", "alts": ["재료, 물질들 (material의 복수)", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "flexible", "m": "잘 휘는, 유연한", "cz": "Three thin, <span class=\"dr-blank\"><\/span> sensors on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "ca": "flexible", "ex": "Three thin, <b>flexible<\/b> sensors on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "sh": "Three thin, <b>flexible<\/b> <b>sensors<\/b> on the frame …", "ek": "안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "sensors", "m": "센서들, 감지기들 (sensor의 복수)", "cz": "Three thin, flexible <span class=\"dr-blank\"><\/span> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "ca": "sensors", "ex": "Three thin, flexible <b>sensors<\/b> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "sh": "Three thin, <b>flexible<\/b> <b>sensors<\/b> on the frame …", "ek": "안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "잘 휘는, 유연한", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "steady", "m": "꾸준한, 끊이지 않는", "cz": "Because people blink about fourteen to twenty times a minute, the sensors get a <span class=\"dr-blank\"><\/span> supply of tiny movements.", "ca": "steady", "ex": "Because people blink about fourteen to twenty times a minute, the sensors get a <b>steady<\/b> supply of tiny movements.", "sh": "… the sensors get a <b>steady<\/b> supply of tiny movements.", "ek": "사람은 1분에 약 14~20번 눈을 깜빡이기 때문에, 센서들은 작은 움직임을 꾸준히 공급받는다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "pattern", "m": "패턴, 일정한 모양", "cz": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <span class=\"dr-blank\"><\/span>, which a computer program learns to recognize.", "ca": "pattern", "ex": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <b>pattern<\/b>, which a computer program learns to recognize.", "sh": "… makes a different electrical <b>pattern<\/b>, which a computer program …", "ek": "씹기든, 말하기든, 눈썹 올리기든 각각의 동작은 서로 다른 전기 패턴을 만들고, 컴퓨터 프로그램이 이를 알아보도록 학습한다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "identified", "m": "알아냈다, 식별했다 (identify의 과거형)", "cz": "In tests with twenty volunteers, the glasses correctly <span class=\"dr-blank\"><\/span> what people were doing almost 94 percent of the time.", "ca": "identified", "ex": "In tests with twenty volunteers, the glasses correctly <b>identified<\/b> what people were doing almost 94 percent of the time.", "sh": "… the glasses correctly <b>identified<\/b> what people were doing …", "ek": "자원자 20명을 대상으로 한 실험에서, 그 안경은 사람들이 무엇을 하고 있는지 거의 94%의 경우에 정확히 알아냈다.", "alts": ["재료, 물질들 (material의 복수)", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들 (sensor의 복수)", "꾸준한, 끊이지 않는", "패턴, 일정한 모양"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

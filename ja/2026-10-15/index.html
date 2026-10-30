@@ -284,9 +284,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -306,6 +307,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -469,17 +494,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="ja">アルバイト</span><span class="dr-chip" lang="ja">店長</span><span class="dr-chip" lang="ja">聞く</span><span class="dr-chip" lang="ja">作り方</span><span class="dr-chip" lang="ja">練習する</span><span class="dr-chip" lang="ja">大変</span><span class="dr-chip" lang="ja">楽しい</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -982,7 +1008,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "アルバイト", "m": "아르바이트", "ex": "<ruby>先週<rt>せんしゅう<\/rt><\/ruby>の<ruby>金曜日<rt>きんようび<\/rt><\/ruby>から、<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>のカフェで<b>アルバイト<\/b>を<ruby>始<rt>はじ<\/rt><\/ruby>めました。", "sh": "<ruby>先週<rt>せんしゅう<\/rt><\/ruby>の<ruby>金曜日<rt>きんようび<\/rt><\/ruby>から、<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>のカフェで<b>アルバイト<\/b>を<ruby>始<rt>はじ<\/rt><\/ruby>めました。", "ek": "지난주 금요일부터 역 앞 카페에서 아르바이트를 시작했습니다.", "alts": ["점장", "묻다, 듣다", "만드는 법", "연습하다", "힘듦, 큰일", "즐겁다"]}, {"w": "店長", "m": "점장", "r": "てんちょう", "ex": "<ruby>初<rt>はじ<\/rt><\/ruby>めての<ruby>日<rt>ひ<\/rt><\/ruby>、<b><ruby>店長<rt>てんちょう<\/rt><\/ruby><\/b>は「<ruby>午後<rt>ごご<\/rt><\/ruby>4<ruby>時<rt>じ<\/rt><\/ruby>に<ruby>来<rt>き<\/rt><\/ruby>てください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "sh": "<ruby>初<rt>はじ<\/rt><\/ruby>めての<ruby>日<rt>ひ<\/rt><\/ruby>、<b><ruby>店長<rt>てんちょう<\/rt><\/ruby><\/b>は「<ruby>午後<rt>ごご<\/rt><\/ruby>4<ruby>時<rt>じ<\/rt><\/ruby>に<ruby>来<rt>き<\/rt><\/ruby>てください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "ek": "첫날, 점장님은 \"오후 4시에 와 주세요\"라고 말했습니다.", "alts": ["아르바이트", "묻다, 듣다", "만드는 법", "연습하다", "힘듦, 큰일", "즐겁다"]}, {"w": "聞く", "m": "묻다, 듣다", "r": "きく", "ex": "そして「わからないことは、いつでも<b><ruby>聞<rt>き<\/rt><\/ruby>いて<\/b>ください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "sh": "そして「わからないことは、いつでも<b><ruby>聞<rt>き<\/rt><\/ruby>いて<\/b>ください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "ek": "그리고 \"모르는 것은 언제든지 물어봐 주세요\"라고 말했습니다.", "alts": ["아르바이트", "점장", "만드는 법", "연습하다", "힘듦, 큰일", "즐겁다"]}, {"w": "作り方", "m": "만드는 법", "r": "つくりかた", "ex": "コーヒーの<b><ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby><\/b>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<b><ruby>練習<rt>れんしゅう<\/rt><\/ruby><\/b>しました。", "sh": "コーヒーの<b><ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby><\/b>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<b><ruby>練習<rt>れんしゅう<\/rt><\/ruby><\/b>しました。", "ek": "커피 만드는 법을 배워서(가르쳐 주셔서) 몇 번이나 연습했습니다.", "alts": ["아르바이트", "점장", "묻다, 듣다", "연습하다", "힘듦, 큰일", "즐겁다"]}, {"w": "練習する", "m": "연습하다", "r": "れんしゅうする", "ex": "コーヒーの<b><ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby><\/b>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<b><ruby>練習<rt>れんしゅう<\/rt><\/ruby><\/b>しました。", "sh": "コーヒーの<b><ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby><\/b>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<b><ruby>練習<rt>れんしゅう<\/rt><\/ruby><\/b>しました。", "ek": "커피 만드는 법을 배워서(가르쳐 주셔서) 몇 번이나 연습했습니다.", "alts": ["아르바이트", "점장", "묻다, 듣다", "만드는 법", "힘듦, 큰일", "즐겁다"]}, {"w": "大変", "m": "힘듦, 큰일", "r": "たいへん", "ex": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<b><ruby>大変<rt>たいへん<\/rt><\/ruby><\/b>でしたが、とても<b><ruby>楽<rt>たの<\/rt><\/ruby>しかった<\/b>です。", "sh": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<b><ruby>大変<rt>たいへん<\/rt><\/ruby><\/b>でしたが、とても<b><ruby>楽<rt>たの<\/rt><\/ruby>しかった<\/b>です。", "ek": "일은 힘들었지만 아주 즐거웠습니다.", "alts": ["아르바이트", "점장", "묻다, 듣다", "만드는 법", "연습하다", "즐겁다"]}, {"w": "楽しい", "m": "즐겁다", "r": "たのしい", "ex": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<b><ruby>大変<rt>たいへん<\/rt><\/ruby><\/b>でしたが、とても<b><ruby>楽<rt>たの<\/rt><\/ruby>しかった<\/b>です。", "sh": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<b><ruby>大変<rt>たいへん<\/rt><\/ruby><\/b>でしたが、とても<b><ruby>楽<rt>たの<\/rt><\/ruby>しかった<\/b>です。", "ek": "일은 힘들었지만 아주 즐거웠습니다.", "alts": ["아르바이트", "점장", "묻다, 듣다", "만드는 법", "연습하다", "힘듦, 큰일"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "アルバイト", "m": "아르바이트", "cz": "<ruby>先週<rt>せんしゅう<\/rt><\/ruby>の<ruby>金曜日<rt>きんようび<\/rt><\/ruby>から、<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>のカフェで<span class=\"dr-blank\"><\/span>を<ruby>始<rt>はじ<\/rt><\/ruby>めました。", "ca": "アルバイト", "ex": "<ruby>先週<rt>せんしゅう<\/rt><\/ruby>の<ruby>金曜日<rt>きんようび<\/rt><\/ruby>から、<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>のカフェで<b>アルバイト<\/b>を<ruby>始<rt>はじ<\/rt><\/ruby>めました。", "sh": "<ruby>先週<rt>せんしゅう<\/rt><\/ruby>の<ruby>金曜日<rt>きんようび<\/rt><\/ruby>から、<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>のカフェで<b>アルバイト<\/b>を<ruby>始<rt>はじ<\/rt><\/ruby>めました。", "ek": "지난주 금요일부터 역 앞 카페에서 아르바이트를 시작했습니다.", "alts": ["점장", "묻다, 듣다", "만드는 법", "연습하다", "힘듦, 큰일", "즐겁다"]}, {"w": "店長", "m": "점장", "r": "てんちょう", "cz": "<ruby>初<rt>はじ<\/rt><\/ruby>めての<ruby>日<rt>ひ<\/rt><\/ruby>、<span class=\"dr-blank\"><\/span>は「<ruby>午後<rt>ごご<\/rt><\/ruby>4<ruby>時<rt>じ<\/rt><\/ruby>に<ruby>来<rt>き<\/rt><\/ruby>てください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "ca": "店長", "ex": "<ruby>初<rt>はじ<\/rt><\/ruby>めての<ruby>日<rt>ひ<\/rt><\/ruby>、<b><ruby>店長<rt>てんちょう<\/rt><\/ruby><\/b>は「<ruby>午後<rt>ごご<\/rt><\/ruby>4<ruby>時<rt>じ<\/rt><\/ruby>に<ruby>来<rt>き<\/rt><\/ruby>てください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "sh": "<ruby>初<rt>はじ<\/rt><\/ruby>めての<ruby>日<rt>ひ<\/rt><\/ruby>、<b><ruby>店長<rt>てんちょう<\/rt><\/ruby><\/b>は「<ruby>午後<rt>ごご<\/rt><\/ruby>4<ruby>時<rt>じ<\/rt><\/ruby>に<ruby>来<rt>き<\/rt><\/ruby>てください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "ek": "첫날, 점장님은 \"오후 4시에 와 주세요\"라고 말했습니다.", "alts": ["아르바이트", "묻다, 듣다", "만드는 법", "연습하다", "힘듦, 큰일", "즐겁다"]}, {"w": "聞く", "m": "묻다, 듣다", "r": "きく", "cz": "そして「わからないことは、いつでも<span class=\"dr-blank\"><\/span>ください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "ca": "聞いて", "ex": "そして「わからないことは、いつでも<b><ruby>聞<rt>き<\/rt><\/ruby>いて<\/b>ください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "sh": "そして「わからないことは、いつでも<b><ruby>聞<rt>き<\/rt><\/ruby>いて<\/b>ください」と<ruby>言<rt>い<\/rt><\/ruby>いました。", "ek": "그리고 \"모르는 것은 언제든지 물어봐 주세요\"라고 말했습니다.", "alts": ["아르바이트", "점장", "만드는 법", "연습하다", "힘듦, 큰일", "즐겁다"]}, {"w": "作り方", "m": "만드는 법", "r": "つくりかた", "cz": "コーヒーの<span class=\"dr-blank\"><\/span>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<ruby>練習<rt>れんしゅう<\/rt><\/ruby>しました。", "ca": "作り方", "ex": "コーヒーの<b><ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby><\/b>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<ruby>練習<rt>れんしゅう<\/rt><\/ruby>しました。", "sh": "コーヒーの<b><ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby><\/b>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<ruby>練習<rt>れんしゅう<\/rt><\/ruby>しました。", "ek": "커피 만드는 법을 배워서(가르쳐 주셔서) 몇 번이나 연습했습니다.", "alts": ["아르바이트", "점장", "묻다, 듣다", "연습하다", "힘듦, 큰일", "즐겁다"]}, {"w": "練習する", "m": "연습하다", "r": "れんしゅうする", "cz": "コーヒーの<ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<span class=\"dr-blank\"><\/span>しました。", "ca": "練習", "ex": "コーヒーの<ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<b><ruby>練習<rt>れんしゅう<\/rt><\/ruby><\/b>しました。", "sh": "コーヒーの<ruby>作<rt>つく<\/rt><\/ruby>り<ruby>方<rt>かた<\/rt><\/ruby>を<ruby>教<rt>おし<\/rt><\/ruby>えてもらって、<ruby>何回<rt>なんかい<\/rt><\/ruby>も<b><ruby>練習<rt>れんしゅう<\/rt><\/ruby><\/b>しました。", "ek": "커피 만드는 법을 배워서(가르쳐 주셔서) 몇 번이나 연습했습니다.", "alts": ["아르바이트", "점장", "묻다, 듣다", "만드는 법", "힘듦, 큰일", "즐겁다"]}, {"w": "大変", "m": "힘듦, 큰일", "r": "たいへん", "cz": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<span class=\"dr-blank\"><\/span>でしたが、とても<ruby>楽<rt>たの<\/rt><\/ruby>しかったです。", "ca": "大変", "ex": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<b><ruby>大変<rt>たいへん<\/rt><\/ruby><\/b>でしたが、とても<ruby>楽<rt>たの<\/rt><\/ruby>しかったです。", "sh": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<b><ruby>大変<rt>たいへん<\/rt><\/ruby><\/b>でしたが、とても<ruby>楽<rt>たの<\/rt><\/ruby>しかったです。", "ek": "일은 힘들었지만 아주 즐거웠습니다.", "alts": ["아르바이트", "점장", "묻다, 듣다", "만드는 법", "연습하다", "즐겁다"]}, {"w": "楽しい", "m": "즐겁다", "r": "たのしい", "cz": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<ruby>大変<rt>たいへん<\/rt><\/ruby>でしたが、とても<span class=\"dr-blank\"><\/span>です。", "ca": "楽しかった", "ex": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<ruby>大変<rt>たいへん<\/rt><\/ruby>でしたが、とても<b><ruby>楽<rt>たの<\/rt><\/ruby>しかった<\/b>です。", "sh": "<ruby>仕事<rt>しごと<\/rt><\/ruby>は<ruby>大変<rt>たいへん<\/rt><\/ruby>でしたが、とても<b><ruby>楽<rt>たの<\/rt><\/ruby>しかった<\/b>です。", "ek": "일은 힘들었지만 아주 즐거웠습니다.", "alts": ["아르바이트", "점장", "묻다, 듣다", "만드는 법", "연습하다", "힘듦, 큰일"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

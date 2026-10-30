@@ -284,9 +284,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -306,6 +307,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -468,17 +493,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="ja">温泉</span><span class="dr-chip" lang="ja">全国</span><span class="dr-chip" lang="ja">浴衣</span><span class="dr-chip" lang="ja">旅館</span><span class="dr-chip" lang="ja">風呂</span><span class="dr-chip" lang="ja">泊まる</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
-    <p class="dr-foot">약 2분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -975,7 +1001,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "温泉", "m": "온천", "r": "おんせん", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ek": "일본에는 전국에 온천이 약 3000개 있습니다.", "alts": ["전국", "유카타", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "全国", "m": "전국", "r": "ぜんこく", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ek": "일본에는 전국에 온천이 약 3000개 있습니다.", "alts": ["온천", "유카타", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "浴衣", "m": "유카타", "r": "ゆかた", "ex": "<b><ruby>浴衣<rt>ゆかた<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "sh": "<b><ruby>浴衣<rt>ゆかた<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "ek": "유카타를 입고 료칸 안을 걷는 것도 즐겁습니다.", "alts": ["온천", "전국", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "旅館", "m": "료칸", "r": "りょかん", "ex": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "sh": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "ek": "다음에는 친구와 함께 료칸에 묵고 싶습니다.", "alts": ["온천", "전국", "유카타", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "風呂", "m": "욕탕, 목욕", "r": "ふろ", "ex": "お<ruby>風呂<rt>ふろ<\/rt><\/ruby>の<ruby>後<rt>あと<\/rt><\/ruby>は<b><ruby>部屋<rt>へや<\/rt><\/ruby><\/b>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "sh": "お<ruby>風呂<rt>ふろ<\/rt><\/ruby>の<ruby>後<rt>あと<\/rt><\/ruby>は<b><ruby>部屋<rt>へや<\/rt><\/ruby><\/b>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "ek": "목욕 후에는 방에서 느긋하게 쉽니다.", "alts": ["온천", "전국", "유카타", "료칸", "숙박하다, 머물다"]}, {"w": "泊まる", "m": "숙박하다, 머물다", "r": "とまる", "ex": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "sh": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "ek": "다음에는 친구와 함께 료칸에 묵고 싶습니다.", "alts": ["온천", "전국", "유카타", "료칸", "욕탕, 목욕"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "温泉", "m": "온천", "r": "おんせん", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ca": "温泉", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ek": "일본에는 전국에 온천이 약 3000개 있습니다.", "alts": ["전국", "유카타", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "全国", "m": "전국", "r": "ぜんこく", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<span class=\"dr-blank\"><\/span>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ca": "全国", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<b><ruby>全国<rt>ぜんこく<\/rt><\/ruby><\/b>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<b><ruby>全国<rt>ぜんこく<\/rt><\/ruby><\/b>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ek": "일본에는 전국에 온천이 약 3000개 있습니다.", "alts": ["온천", "유카타", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "浴衣", "m": "유카타", "r": "ゆかた", "cz": "<span class=\"dr-blank\"><\/span>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "ca": "浴衣", "ex": "<b><ruby>浴衣<rt>ゆかた<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "sh": "<b><ruby>浴衣<rt>ゆかた<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "ek": "유카타를 입고 료칸 안을 걷는 것도 즐겁습니다.", "alts": ["온천", "전국", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "旅館", "m": "료칸", "r": "りょかん", "cz": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "ca": "旅館", "ex": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "sh": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "ek": "다음에는 친구와 함께 료칸에 묵고 싶습니다.", "alts": ["온천", "전국", "유카타", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "風呂", "m": "욕탕, 목욕", "r": "ふろ", "cz": "お<span class=\"dr-blank\"><\/span>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "ca": "風呂", "ex": "お<b><ruby>風呂<rt>ふろ<\/rt><\/ruby><\/b>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "sh": "お<b><ruby>風呂<rt>ふろ<\/rt><\/ruby><\/b>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "ek": "목욕 후에는 방에서 느긋하게 쉽니다.", "alts": ["온천", "전국", "유카타", "료칸", "숙박하다, 머물다"]}, {"w": "泊まる", "m": "숙박하다, 머물다", "r": "とまる", "cz": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>。", "ca": "泊まりたいです", "ex": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<b><ruby>泊<rt>と<\/rt><\/ruby>まりたいです<\/b>。", "sh": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<b><ruby>泊<rt>と<\/rt><\/ruby>まりたいです<\/b>。", "ek": "다음에는 친구와 함께 료칸에 묵고 싶습니다.", "alts": ["온천", "전국", "유카타", "료칸", "욕탕, 목욕"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

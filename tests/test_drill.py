@@ -46,6 +46,33 @@ class TestCards(unittest.TestCase):
             for c in drill.cards(f.parent.name, f.stem):
                 self.assertIn("ex", c, f"{f.parent.name}/{f.stem} {c['w']}")
 
+    def test_example_highlights_the_word_itself_and_cloze_blanks_it(self):
+        c = next(x for x in drill.cards("de", "2026-10-30") if x["w"] == "Blatt")
+        self.assertEqual(re.findall(r"<b>(.*?)</b>", c["ex"]), ["Blatt"])  # 전에는 Farbstoffe 를 강조했다
+        self.assertEqual(c["ca"], "Blatt")
+        self.assertEqual(c["cz"].count('<span class="dr-blank"></span>'), 1)
+        self.assertNotIn("Blatt", c["cz"].replace("Blätter", ""))
+
+    def test_ja_inflected_verb_cloze_drops_trailing_connective(self):
+        cs = {x["w"]: x for x in drill.cards("ja", "2026-10-30")}
+        self.assertEqual(cs["含む"]["ca"], "含まれています")
+        self.assertEqual(cs["逃げる"]["ca"], "逃げてしまう")
+        self.assertEqual(cs["滑る"]["ca"], "滑らない")
+
+    def test_cloze_answer_must_be_a_form_of_the_word(self):
+        self.assertTrue(drill._fits("teaming", "team up"))
+        self.assertTrue(drill._fits("Farbstoffe", "Farbstoff"))
+        self.assertFalse(drill._fits("Bäckerei", "Bäcker"))
+        self.assertFalse(drill._fits("紅葉", "葉"))
+
+    def test_every_cloze_has_one_blank_and_an_answer(self):
+        for f in sorted((ROOT / "content").glob("*/*.json")):
+            for c in drill.cards(f.parent.name, f.stem):
+                if "cz" in c:
+                    self.assertEqual(c["cz"].count("dr-blank"), 1, f"{f.stem} {c['w']}")
+                    self.assertTrue(c["ca"].strip())
+                    self.assertNotIn("*", c["cz"])
+
     def test_missing_content_gives_no_cards(self):
         self.assertEqual(drill.cards("en", "2020-01-01"), [])
 

@@ -282,9 +282,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -304,6 +305,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -474,17 +499,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="en">fossil</span><span class="dr-chip" lang="en">drawer</span><span class="dr-chip" lang="en">skull</span><span class="dr-chip" lang="en">belong to</span><span class="dr-chip" lang="en">claws</span><span class="dr-chip" lang="en">mainly</span><span class="dr-chip" lang="en">identified</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -985,7 +1011,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "fossil", "m": "화석", "ex": "A <b>fossil<\/b> that sat in a museum <b>drawer<\/b> for more than a hundred years has turned out to be a new kind of dinosaur.", "sh": "A <b>fossil<\/b> that sat in a museum <b>drawer<\/b> …", "ek": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.", "au": "/en/2026-10-26/audio/w1.mp3", "alts": ["서랍", "두개골", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "drawer", "m": "서랍", "ex": "A <b>fossil<\/b> that sat in a museum <b>drawer<\/b> for more than a hundred years has turned out to be a new kind of dinosaur.", "sh": "… that sat in a museum <b>drawer<\/b> for more than a hundred years …", "ek": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.", "au": "/en/2026-10-26/audio/w2.mp3", "alts": ["화석", "두개골", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "skull", "m": "두개골", "ex": "About six years ago, part of the <b>skull<\/b> was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.", "sh": "… part of the <b>skull<\/b> was noticed again …", "ek": "약 6년 전, 그 박물관의 한 과학자가 두개골 일부를 다시 눈여겨보았는데, 그는 그것이 특이해 보인다고 생각해 다른 연구자들에게 더 자세히 연구해 달라고 부탁했다.", "au": "/en/2026-10-26/audio/w3.mp3", "alts": ["화석", "서랍", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "belong to", "m": "~에 속하다", "ex": "The team found that the animal lived about one hundred twenty million years ago and <b>belonged to<\/b> a group of hunters with very large <b>claws<\/b> on their hands.", "sh": "… and <b>belonged to<\/b> a group of hunters with very large <b>claws<\/b> …", "ek": "연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.", "au": "/en/2026-10-26/audio/w4.mp3", "alts": ["화석", "서랍", "두개골", "(동물의) 발톱들 (claw의 복수)", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "claws", "m": "(동물의) 발톱들 (claw의 복수)", "ex": "The team found that the animal lived about one hundred twenty million years ago and <b>belonged to<\/b> a group of hunters with very large <b>claws<\/b> on their hands.", "sh": "… with very large <b>claws<\/b> on their hands.", "ek": "연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.", "au": "/en/2026-10-26/audio/w5.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "mainly", "m": "주로", "ex": "Until now, dinosaurs from this group had been found <b>mainly<\/b> in South America, Asia and Australia, so this is the first one ever <b>identified<\/b> in Europe.", "sh": "… had been found <b>mainly<\/b> in South America, Asia and Australia, …", "ek": "지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.", "au": "/en/2026-10-26/audio/w6.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "identified", "m": "확인된, 밝혀진 (identify의 과거분사)", "ex": "Until now, dinosaurs from this group had been found <b>mainly<\/b> in South America, Asia and Australia, so this is the first one ever <b>identified<\/b> in Europe.", "sh": "… so this is the first one ever <b>identified<\/b> in Europe.", "ek": "지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.", "au": "/en/2026-10-26/audio/w7.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "주로"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "fossil", "m": "화석", "cz": "A <span class=\"dr-blank\"><\/span> that sat in a museum drawer for more than a hundred years has turned out to be a new kind of dinosaur.", "ca": "fossil", "ex": "A <b>fossil<\/b> that sat in a museum drawer for more than a hundred years has turned out to be a new kind of dinosaur.", "sh": "A <b>fossil<\/b> that sat in a museum <b>drawer<\/b> …", "ek": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.", "au": "/en/2026-10-26/audio/w1.mp3", "alts": ["서랍", "두개골", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "drawer", "m": "서랍", "cz": "A fossil that sat in a museum <span class=\"dr-blank\"><\/span> for more than a hundred years has turned out to be a new kind of dinosaur.", "ca": "drawer", "ex": "A fossil that sat in a museum <b>drawer<\/b> for more than a hundred years has turned out to be a new kind of dinosaur.", "sh": "… that sat in a museum <b>drawer<\/b> for more than a hundred years …", "ek": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.", "au": "/en/2026-10-26/audio/w2.mp3", "alts": ["화석", "두개골", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "skull", "m": "두개골", "cz": "About six years ago, part of the <span class=\"dr-blank\"><\/span> was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.", "ca": "skull", "ex": "About six years ago, part of the <b>skull<\/b> was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.", "sh": "… part of the <b>skull<\/b> was noticed again …", "ek": "약 6년 전, 그 박물관의 한 과학자가 두개골 일부를 다시 눈여겨보았는데, 그는 그것이 특이해 보인다고 생각해 다른 연구자들에게 더 자세히 연구해 달라고 부탁했다.", "au": "/en/2026-10-26/audio/w3.mp3", "alts": ["화석", "서랍", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "belong to", "m": "~에 속하다", "cz": "The team found that the animal lived about one hundred twenty million years ago and <span class=\"dr-blank\"><\/span> to a group of hunters with very large claws on their hands.", "ca": "belonged", "ex": "The team found that the animal lived about one hundred twenty million years ago and <b>belonged<\/b> to a group of hunters with very large claws on their hands.", "sh": "… and <b>belonged to<\/b> a group of hunters with very large <b>claws<\/b> …", "ek": "연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.", "au": "/en/2026-10-26/audio/w4.mp3", "alts": ["화석", "서랍", "두개골", "(동물의) 발톱들 (claw의 복수)", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "claws", "m": "(동물의) 발톱들 (claw의 복수)", "cz": "The team found that the animal lived about one hundred twenty million years ago and belonged to a group of hunters with very large <span class=\"dr-blank\"><\/span> on their hands.", "ca": "claws", "ex": "The team found that the animal lived about one hundred twenty million years ago and belonged to a group of hunters with very large <b>claws<\/b> on their hands.", "sh": "… with very large <b>claws<\/b> on their hands.", "ek": "연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.", "au": "/en/2026-10-26/audio/w5.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "mainly", "m": "주로", "cz": "Until now, dinosaurs from this group had been found <span class=\"dr-blank\"><\/span> in South America, Asia and Australia, so this is the first one ever identified in Europe.", "ca": "mainly", "ex": "Until now, dinosaurs from this group had been found <b>mainly<\/b> in South America, Asia and Australia, so this is the first one ever identified in Europe.", "sh": "… had been found <b>mainly<\/b> in South America, Asia and Australia, …", "ek": "지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.", "au": "/en/2026-10-26/audio/w6.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "identified", "m": "확인된, 밝혀진 (identify의 과거분사)", "cz": "Until now, dinosaurs from this group had been found mainly in South America, Asia and Australia, so this is the first one ever <span class=\"dr-blank\"><\/span> in Europe.", "ca": "identified", "ex": "Until now, dinosaurs from this group had been found mainly in South America, Asia and Australia, so this is the first one ever <b>identified<\/b> in Europe.", "sh": "… so this is the first one ever <b>identified<\/b> in Europe.", "ek": "지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.", "au": "/en/2026-10-26/audio/w7.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "(동물의) 발톱들 (claw의 복수)", "주로"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

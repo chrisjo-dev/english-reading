@@ -284,9 +284,10 @@
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -306,6 +307,30 @@
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -469,17 +494,18 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="6">
+  <section class="card dr-card" id="drill" data-v="7">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
     <div class="dr-chips"><span class="dr-chip" lang="ja">寒い</span><span class="dr-chip" lang="ja">最後</span><span class="dr-chip" lang="ja">押し入れ</span><span class="dr-chip" lang="ja">セーター</span><span class="dr-chip" lang="ja">洗う</span><span class="dr-chip" lang="ja">葉</span></div>
     <div class="dr-modes">
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
-      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
-    <p class="dr-foot">약 2분 걸려요. 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -979,7 +1005,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "寒い", "m": "춥다", "r": "さむい", "ex": "<ruby>朝<rt>あさ<\/rt><\/ruby><ruby>起<rt>お<\/rt><\/ruby>きると、<ruby>部屋<rt>へや<\/rt><\/ruby>がとても<b><ruby>寒<rt>さむ<\/rt><\/ruby>く<\/b>なっていました。", "sh": "<ruby>朝<rt>あさ<\/rt><\/ruby><ruby>起<rt>お<\/rt><\/ruby>きると、<ruby>部屋<rt>へや<\/rt><\/ruby>がとても<b><ruby>寒<rt>さむ<\/rt><\/ruby>く<\/b>なっていました。", "ek": "아침에 일어나니 방이 무척 추워져 있었습니다.", "au": "/ja/2026-10-25/audio/w1.mp3", "alts": ["마지막", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "스웨터", "씻다, 빨다", "잎"]}, {"w": "最後", "m": "마지막", "r": "さいご", "ex": "<ruby>今日<rt>きょう<\/rt><\/ruby>は10<ruby>月<rt>がつ<\/rt><\/ruby>の<b><ruby>最後<rt>さいご<\/rt><\/ruby><\/b>の<ruby>日曜日<rt>にちようび<\/rt><\/ruby>です。", "sh": "<ruby>今日<rt>きょう<\/rt><\/ruby>は10<ruby>月<rt>がつ<\/rt><\/ruby>の<b><ruby>最後<rt>さいご<\/rt><\/ruby><\/b>の<ruby>日曜日<rt>にちようび<\/rt><\/ruby>です。", "ek": "오늘은 10월의 마지막 일요일입니다.", "au": "/ja/2026-10-25/audio/w2.mp3", "alts": ["춥다", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "스웨터", "씻다, 빨다", "잎"]}, {"w": "押し入れ", "m": "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "r": "おしいれ", "ex": "わたしは<b><ruby>押<rt>お<\/rt><\/ruby>し<ruby>入<rt>い<\/rt><\/ruby>れ<\/b>から、<ruby>冬<rt>ふゆ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>を<ruby>出<rt>だ<\/rt><\/ruby>しました。", "sh": "わたしは<b><ruby>押<rt>お<\/rt><\/ruby>し<ruby>入<rt>い<\/rt><\/ruby>れ<\/b>から、<ruby>冬<rt>ふゆ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>を<ruby>出<rt>だ<\/rt><\/ruby>しました。", "ek": "저는 벽장에서 겨울옷을 꺼냈습니다.", "au": "/ja/2026-10-25/audio/w3.mp3", "alts": ["춥다", "마지막", "스웨터", "씻다, 빨다", "잎"]}, {"w": "セーター", "m": "스웨터", "ex": "<ruby>去年<rt>きょねん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>った<b>セーター<\/b>が3<ruby>枚<rt>まい<\/rt><\/ruby>ありました。", "sh": "<ruby>去年<rt>きょねん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>った<b>セーター<\/b>が3<ruby>枚<rt>まい<\/rt><\/ruby>ありました。", "ek": "작년에 산 스웨터가 세 벌 있었습니다.", "au": "/ja/2026-10-25/audio/w4.mp3", "alts": ["춥다", "마지막", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "씻다, 빨다", "잎"]}, {"w": "洗う", "m": "씻다, 빨다", "r": "あらう", "ex": "<ruby>夏<rt>なつ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>は、きれいに<b><ruby>洗<rt>あら<\/rt><\/ruby>って<\/b>から<ruby>箱<rt>はこ<\/rt><\/ruby>に<ruby>入<rt>い<\/rt><\/ruby>れておきました。", "sh": "<ruby>夏<rt>なつ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>は、きれいに<b><ruby>洗<rt>あら<\/rt><\/ruby>って<\/b>から<ruby>箱<rt>はこ<\/rt><\/ruby>に<ruby>入<rt>い<\/rt><\/ruby>れておきました。", "ek": "여름옷은 깨끗하게 빨고 나서 상자에 넣어 두었습니다.", "au": "/ja/2026-10-25/audio/w5.mp3", "alts": ["춥다", "마지막", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "스웨터", "잎"]}, {"w": "葉", "m": "잎", "r": "は", "ex": "<ruby>窓<rt>まど<\/rt><\/ruby>の<ruby>外<rt>そと<\/rt><\/ruby>の<ruby>木<rt>き<\/rt><\/ruby>の<b><ruby>葉<rt>は<\/rt><\/ruby><\/b>も、<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>赤<rt>あか<\/rt><\/ruby>くなっています。", "sh": "<ruby>窓<rt>まど<\/rt><\/ruby>の<ruby>外<rt>そと<\/rt><\/ruby>の<ruby>木<rt>き<\/rt><\/ruby>の<b><ruby>葉<rt>は<\/rt><\/ruby><\/b>も、<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>赤<rt>あか<\/rt><\/ruby>くなっています。", "ek": "창밖 나무의 잎도 조금씩 붉어지고 있습니다.", "au": "/ja/2026-10-25/audio/w6.mp3", "alts": ["춥다", "마지막", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "스웨터", "씻다, 빨다"]}]</script>
-<script id="drill-js" data-v="6" src="/assets/drill.js?v=6" defer></script>
+<script type="application/json" id="drill-data">[{"w": "寒い", "m": "춥다", "r": "さむい", "cz": "<ruby>朝<rt>あさ<\/rt><\/ruby><ruby>起<rt>お<\/rt><\/ruby>きると、<ruby>部屋<rt>へや<\/rt><\/ruby>がとても<span class=\"dr-blank\"><\/span>なっていました。", "ca": "寒く", "ex": "<ruby>朝<rt>あさ<\/rt><\/ruby><ruby>起<rt>お<\/rt><\/ruby>きると、<ruby>部屋<rt>へや<\/rt><\/ruby>がとても<b><ruby>寒<rt>さむ<\/rt><\/ruby>く<\/b>なっていました。", "sh": "<ruby>朝<rt>あさ<\/rt><\/ruby><ruby>起<rt>お<\/rt><\/ruby>きると、<ruby>部屋<rt>へや<\/rt><\/ruby>がとても<b><ruby>寒<rt>さむ<\/rt><\/ruby>く<\/b>なっていました。", "ek": "아침에 일어나니 방이 무척 추워져 있었습니다.", "au": "/ja/2026-10-25/audio/w1.mp3", "alts": ["마지막", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "스웨터", "씻다, 빨다", "잎"]}, {"w": "最後", "m": "마지막", "r": "さいご", "cz": "<ruby>今日<rt>きょう<\/rt><\/ruby>は10<ruby>月<rt>がつ<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>の<ruby>日曜日<rt>にちようび<\/rt><\/ruby>です。", "ca": "最後", "ex": "<ruby>今日<rt>きょう<\/rt><\/ruby>は10<ruby>月<rt>がつ<\/rt><\/ruby>の<b><ruby>最後<rt>さいご<\/rt><\/ruby><\/b>の<ruby>日曜日<rt>にちようび<\/rt><\/ruby>です。", "sh": "<ruby>今日<rt>きょう<\/rt><\/ruby>は10<ruby>月<rt>がつ<\/rt><\/ruby>の<b><ruby>最後<rt>さいご<\/rt><\/ruby><\/b>の<ruby>日曜日<rt>にちようび<\/rt><\/ruby>です。", "ek": "오늘은 10월의 마지막 일요일입니다.", "au": "/ja/2026-10-25/audio/w2.mp3", "alts": ["춥다", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "스웨터", "씻다, 빨다", "잎"]}, {"w": "押し入れ", "m": "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "r": "おしいれ", "cz": "わたしは<span class=\"dr-blank\"><\/span>から、<ruby>冬<rt>ふゆ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>を<ruby>出<rt>だ<\/rt><\/ruby>しました。", "ca": "押し入れ", "ex": "わたしは<b><ruby>押<rt>お<\/rt><\/ruby>し<ruby>入<rt>い<\/rt><\/ruby>れ<\/b>から、<ruby>冬<rt>ふゆ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>を<ruby>出<rt>だ<\/rt><\/ruby>しました。", "sh": "わたしは<b><ruby>押<rt>お<\/rt><\/ruby>し<ruby>入<rt>い<\/rt><\/ruby>れ<\/b>から、<ruby>冬<rt>ふゆ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>を<ruby>出<rt>だ<\/rt><\/ruby>しました。", "ek": "저는 벽장에서 겨울옷을 꺼냈습니다.", "au": "/ja/2026-10-25/audio/w3.mp3", "alts": ["춥다", "마지막", "스웨터", "씻다, 빨다", "잎"]}, {"w": "セーター", "m": "스웨터", "cz": "<ruby>去年<rt>きょねん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>った<span class=\"dr-blank\"><\/span>が3<ruby>枚<rt>まい<\/rt><\/ruby>ありました。", "ca": "セーター", "ex": "<ruby>去年<rt>きょねん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>った<b>セーター<\/b>が3<ruby>枚<rt>まい<\/rt><\/ruby>ありました。", "sh": "<ruby>去年<rt>きょねん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>った<b>セーター<\/b>が3<ruby>枚<rt>まい<\/rt><\/ruby>ありました。", "ek": "작년에 산 스웨터가 세 벌 있었습니다.", "au": "/ja/2026-10-25/audio/w4.mp3", "alts": ["춥다", "마지막", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "씻다, 빨다", "잎"]}, {"w": "洗う", "m": "씻다, 빨다", "r": "あらう", "cz": "<ruby>夏<rt>なつ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>は、きれいに<span class=\"dr-blank\"><\/span>から<ruby>箱<rt>はこ<\/rt><\/ruby>に<ruby>入<rt>い<\/rt><\/ruby>れておきました。", "ca": "洗って", "ex": "<ruby>夏<rt>なつ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>は、きれいに<b><ruby>洗<rt>あら<\/rt><\/ruby>って<\/b>から<ruby>箱<rt>はこ<\/rt><\/ruby>に<ruby>入<rt>い<\/rt><\/ruby>れておきました。", "sh": "<ruby>夏<rt>なつ<\/rt><\/ruby>の<ruby>服<rt>ふく<\/rt><\/ruby>は、きれいに<b><ruby>洗<rt>あら<\/rt><\/ruby>って<\/b>から<ruby>箱<rt>はこ<\/rt><\/ruby>に<ruby>入<rt>い<\/rt><\/ruby>れておきました。", "ek": "여름옷은 깨끗하게 빨고 나서 상자에 넣어 두었습니다.", "au": "/ja/2026-10-25/audio/w5.mp3", "alts": ["춥다", "마지막", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "스웨터", "잎"]}, {"w": "葉", "m": "잎", "r": "は", "cz": "<ruby>窓<rt>まど<\/rt><\/ruby>の<ruby>外<rt>そと<\/rt><\/ruby>の<ruby>木<rt>き<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>も、<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>赤<rt>あか<\/rt><\/ruby>くなっています。", "ca": "葉", "ex": "<ruby>窓<rt>まど<\/rt><\/ruby>の<ruby>外<rt>そと<\/rt><\/ruby>の<ruby>木<rt>き<\/rt><\/ruby>の<b><ruby>葉<rt>は<\/rt><\/ruby><\/b>も、<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>赤<rt>あか<\/rt><\/ruby>くなっています。", "sh": "<ruby>窓<rt>まど<\/rt><\/ruby>の<ruby>外<rt>そと<\/rt><\/ruby>の<ruby>木<rt>き<\/rt><\/ruby>の<b><ruby>葉<rt>は<\/rt><\/ruby><\/b>も、<ruby>少<rt>すこ<\/rt><\/ruby>しずつ<ruby>赤<rt>あか<\/rt><\/ruby>くなっています。", "ek": "창밖 나무의 잎도 조금씩 붉어지고 있습니다.", "au": "/ja/2026-10-25/audio/w6.mp3", "alts": ["춥다", "마지막", "벽장(이불, 옷 등을 넣는 붙박이 수납장)", "스웨터", "씻다, 빨다"]}]</script>
+<script id="drill-js" data-v="7" src="/assets/drill.js?v=7" defer></script>
 </body>
 </html>

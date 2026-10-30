@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "6"
+VERSION = "7"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -87,6 +87,66 @@ def _find(word, sents):
     return None, None
 
 
+BLANK = "\x00"
+
+
+def _target(raw, word, bold):
+    """문장(원문 표기)에서 그 단어가 나온 자리 (시작, 끝). 강조 낱말, 영어/독일어는 같은 어간 낱말, 일본어는 같은 표기."""
+    if bold:
+        i = raw.find(f"**{bold}**")
+        if i >= 0:
+            return i, i + len(bold) + 4
+    plain = raw.replace("**", "")
+    w = base(word).lstrip("〜~")
+    if re.match(r"[A-Za-zÄÖÜäöüß]", w):
+        first = w.split()[0]
+        stem = first[:max(3, len(first) - 2)] if len(first) > 4 else first
+        # ** 는 같은 길이의 \x01\x01 로 바꿔 찾아야 위치가 원문과 맞는다
+        m = re.search(r"(?<![\wÄÖÜäöüß])" + re.escape(stem) + r"[\wÄÖÜäöüß]*", raw.replace("**", "\x01\x01"), re.I)
+        return (m.start(), m.end()) if m else None
+    for m in RUBY.finditer(raw):
+        if m.group(1) == w:
+            return m.start(), m.end()
+    i = raw.find(w)
+    if i >= 0 and "{" not in raw[i:i + len(w)]:
+        return i, i + len(w)
+    # 활용한 동사, 형용사(含む → 含まれています): 앞 한자 덩이 뒤에 붙은 히라가나까지
+    k = re.match(r"[\u4e00-\u9fff]+", w)
+    if k and len(w) > len(k.group(0)):
+        m = re.search(r"(?:\{" + re.escape(k.group(0)) + r"\|[^{}]+\}|" + re.escape(k.group(0)) + r")[\u3041-\u3096ー]+", raw)
+        if m:  # 뒤에 붙은 이음말(ため, ように, ので…)과 조사는 뺀다
+            tail = re.search(r"(?:ため|ように|ような|ので|から|けれど|けど|のに|こと|もの|とき|ながら)?[がをにはとへもや]?$", m.group(0))
+            return m.start(), m.end() - len(tail.group(0))
+    return None
+
+
+def _fits(ans, word):
+    """빈칸 정답이 그 단어의 형태인지: 같은 앞부분(한자 덩이, 영어/독일어는 앞 세 글자)으로 시작해야 한다(葉 ↔ 紅葉 은 아님)."""
+    a, w = ans.lower(), base(word).lstrip("〜~").lower()
+    if re.match(r"[a-zäöüß]", w):  # 영어, 독일어: 첫 낱말에 굴절 어미만 붙은 꼴(Bäcker ↔ Bäckerei 는 아님)
+        fa, fw = a.split()[0] if a.split() else "", w.split()[0]
+        ends = ("", "s", "es", "n", "en", "e", "er", "ern", "ed", "d", "ing", "ies", "ied")
+        roots = {fw} | ({fw[:-1]} if fw[-1:] in "ey" and len(fw) > 3 else set())
+        return any(fa.startswith(r) and fa[len(r):] in ends for r in roots)
+    k = re.match(r"[\u4e00-\u9fff]+", w)
+    return bool(a) and a.startswith(k.group(0) if k else w[:2])
+
+
+def _marked(raw, span):
+    """그 단어만 ** 로 강조한 문장 원문. 다른 강조는 지운다."""
+    a, b = span
+    seg = raw[a:b].replace("**", "")
+    return raw[:a].replace("**", "") + f"**{seg}**" + raw[b:].replace("**", "")
+
+
+def _cloze(raw, span):
+    """그 단어 자리를 빈칸으로 바꾼 문장 HTML 과 정답 표기."""
+    a, b = span
+    seg = raw[a:b].replace("**", "")
+    body = rich(raw[:a].replace("**", "") + BLANK + raw[b:].replace("**", ""))
+    return body.replace(BLANK, '<span class="dr-blank"></span>'), base(seg)
+
+
 def cards(lang, day):
     """content/<lang>/<day>.json 의 주요 단어(words)를 카드 자료로. 자료가 없으면 []."""
     p = ROOT / "content" / lang / f"{day}.json"
@@ -102,8 +162,16 @@ def cards(lang, day):
             c["r"] = r
         k, b = _find(w, sents)
         if k is not None:
-            c["ex"] = rich(sents[k]["en"])
-            c["sh"] = rich(_short(sents[k], b))
+            raw = sents[k]["en"]
+            span = _target(raw, w, b)
+            if span:  # 카드와 문제에 그 단어만 강조하고, 빈칸 채우기 자료를 만든다
+                cz, ca = _cloze(raw, span)
+                if _fits(ca, w):
+                    c["cz"], c["ca"] = cz, ca
+                raw = _marked(raw, span)
+                b = base(raw[raw.index("**") + 2:raw.index("**", raw.index("**") + 2)])
+            c["ex"] = rich(raw)
+            c["sh"] = rich(_short(dict(sents[k], en=raw), b))
             if k < len(answers):
                 c["ek"] = answers[k]
         if (ROOT / lang / day / "audio" / f"w{i + 1}.mp3").exists():
@@ -188,9 +256,10 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-fc.swipe.back { transition: transform .2s ease; }
   .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
   .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
-  .dr-stamp { position: absolute; top: 26px; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
-  .dr-stamp.yes { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
-  .dr-stamp.no { right: 22px; color: #f04452; transform: rotate(12deg); }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
   .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
   .dr-swipehint .l { color: #f04452; }
   .dr-swipehint .r { color: #2a52d4; }
@@ -210,6 +279,30 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
   .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
   .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: "\00a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -258,10 +351,14 @@ def card_html(lang, day, items, step):
         f'    <div class="dr-chips">{chips}</div>\n'
         '    <div class="dr-modes">\n'
         '      <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>\n'
-        '      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>뜻 4개 중 하나를 골라요</span></button>\n'
+        '      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>\n'
         "    </div>\n"
+        '    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes">'
+        '<button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button>'
+        '<button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button>'
+        '<button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>\n'
         f'    <button class="dr-btn" type="button" id="dr-start">{n}개 외우기 시작</button>\n'
-        f'    <p class="dr-foot">약 {mins}분 걸려요. 기록은 이 기기에만 남아요.</p>\n'
+        f'    <p class="dr-foot">약 {mins}분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>\n'
         "  </section>\n"
         "<!-- /drill-card -->\n"
     )

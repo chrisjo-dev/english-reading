@@ -47,6 +47,7 @@
     if (!root) {
       root = document.createElement('div'); root.className = 'dr'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true');
       root.addEventListener('click', onClick);
+      root.addEventListener('submit', function (e) { e.preventDefault(); if (S) check(); });
       root.addEventListener('pointerdown', onDown);
       root.addEventListener('touchstart', onTouchStart, { passive: true });
       root.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -76,7 +77,7 @@
   function widths() { [].forEach.call(root.querySelectorAll('[data-w]'), function (e) { e.style.width = e.getAttribute('data-w') + '%'; }); }
   function prog() {
     var tot = S.list.length, a, b, la, lb, lc;
-    if (S.mode === 'quiz') {
+    if (S.mode !== 'card') {
       a = S.list.filter(function (x) { return x.first === true; }).length; b = S.list.filter(function (x) { return x.first === false; }).length;
       la = '맞힘 ' + a; lb = '오답 ' + b; lc = '남은 문제 ' + S.queue.length;
     } else {
@@ -90,31 +91,48 @@
     return it.wrong > 0 ? '<span class="dr-tag re">다시 보는 단어</span>' : '<span class="dr-tag">' + kday(it.c.d) + ' 지문</span>';
   }
   function counter() {
-    var it = S.queue[0], done = S.mode === 'quiz' ? S.answered - (it && it.pick != null ? 1 : 0) : S.list.filter(function (x) { return x.done; }).length;
+    var it = S.queue[0], done = S.mode !== 'card' ? S.answered - (it && it.pick != null ? 1 : 0) : S.list.filter(function (x) { return x.done; }).length;
     return Math.min(done + 1, S.list.length) + ' / ' + S.list.length;
   }
   function render() {
     if (!S.queue.length) return result();
     var it = S.queue[0], c = it.c, h = bar(counter()) + prog();
-    if (S.mode === 'quiz') {
-      if (!it.opts) {
-        var alts = shuffle((c.alts || []).filter(function (m) { return m !== c.m; })).slice(0, 3);
-        it.opts = shuffle(alts.concat([c.m]));
-      }
-      h += '<div class="dr-fc fit"><div class="dr-q">문제 ' + (S.answered + (it.pick != null ? 0 : 1)) + '. 알맞은 뜻을 고르세요</div>' +
-        '<div class="dr-qword" lang="' + c.l + '">' + esc(c.w) + '</div>' + (c.sh ? '<p class="dr-qsub" lang="' + c.l + '">' + c.sh + '</p>' : '') +
-        '<div class="dr-opts">' + it.opts.map(function (m, i) {
+    if (S.mode !== 'card') {
+      var k = kindOf(it), done = it.pick != null, num = '문제 ' + (S.answered + (done ? 0 : 1)) + '. ';
+      var nextBtn = '<button class="dr-btn" type="button" data-act="next">' + (S.queue.length > 1 ? '다음 문제' : '결과 보기') + '</button>';
+      if (k === 'write') {
+        h += '<div class="dr-fc fit"><div class="dr-q">' + num + '뜻을 보고 단어를 쓰세요</div><div class="dr-qmean">' + esc(c.m) + '</div><p class="dr-qhint">' + hint(c) + '</p>' +
+          '<form class="dr-write" autocomplete="off"><input class="dr-field' + (done ? (it.ok ? ' right' : ' wrong') : '') + '" type="text" lang="' + c.l +
+          '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="단어 입력" placeholder="여기에 쓰세요"' +
+          (done ? ' value="' + esc(it.pick) + '" disabled' : '') + '></form>';
+        if (!done) h += '<button class="dr-skip" type="button" data-act="giveup">모르겠어요</button>';
+        else h += verdict(it, k) + '<div class="dr-answer"><div><span class="lb">정답</span><b lang="' + c.l + '">' + esc(c.w) + '</b>' + (c.r ? '<span class="rd" lang="' + c.l + '">' + esc(c.r) + '</span>' : '') +
+          '</div><button class="dr-listen" type="button" data-act="say">' + ICON_SPK + ' <span>듣기</span></button></div>' +
+          (c.ex ? '<div class="dr-ex dr-gap10"><div class="lb">지문 속 문장</div><p class="en" lang="' + c.l + '">' + c.ex + '</p></div>' : '');
+        h += '</div><div class="dr-acts">' + (done ? nextBtn : '<button class="dr-btn" type="button" data-act="check">확인</button>') + '</div>';
+      } else {
+        var cz = k === 'cloze', ans = cz ? c.ca : c.m;
+        if (!it.opts || it.qk !== k) {
+          var pool = cz ? CARDS.concat(S.list.map(function (x) { return x.c; })).map(function (x) { return x.ca || x.w; }) : (c.alts || []);
+          pool = pool.filter(function (m, i, a) { return m !== ans && a.indexOf(m) === i; });
+          it.opts = shuffle(shuffle(pool).slice(0, 3).concat([ans])); it.qk = k;
+        }
+        h += '<div class="dr-fc fit"><div class="dr-q">' + num + (cz ? '빈칸에 알맞은 단어를 고르세요' : '알맞은 뜻을 고르세요') + '</div>';
+        if (cz) h += '<p class="dr-cloze" lang="' + c.l + '">' + c.cz.replace('<span class="dr-blank"></span>', '<span class="dr-blank' + (done ? ' right">' + esc(ans) : '">') + '</span>') + '</p>' +
+          (c.ek ? '<p class="dr-cko">' + esc(c.ek) + '</p>' : '');
+        else h += '<div class="dr-qword" lang="' + c.l + '">' + esc(c.w) + '</div>' + (c.sh ? '<p class="dr-qsub" lang="' + c.l + '">' + c.sh + '</p>' : '');
+        h += '<div class="dr-opts">' + it.opts.map(function (m, i) {
           var cls = '', r = '';
-          if (it.pick != null) { if (m === c.m) { cls = ' right'; r = '<span class="r">정답</span>'; } else if (i === it.pick) { cls = ' wrong'; r = '<span class="r">내 답</span>'; } }
-          return '<button class="dr-opt' + cls + '" type="button" data-act="pick" data-i="' + i + '"' + (it.pick != null ? ' disabled' : '') + '><span class="k">' + (i + 1) + '</span>' + esc(m) + r + '</button>';
+          if (done) { if (m === ans) { cls = ' right'; r = '<span class="r">정답</span>'; } else if (i === it.pick) { cls = ' wrong'; r = '<span class="r">내 답</span>'; } }
+          return '<button class="dr-opt' + cls + '" type="button" data-act="pick" data-i="' + i + '"' + (cz ? ' lang="' + c.l + '"' : '') + (done ? ' disabled' : '') + '><span class="k">' + (i + 1) + '</span>' + esc(m) + r + '</button>';
         }).join('') + '</div>';
-      if (it.pick != null) {
-        var ok = it.opts[it.pick] === c.m;
-        h += '<div class="dr-verdict' + (ok ? ' ok' : '') + '">' + (ok ? '맞았어요' : '틀렸어요. 오답 노트에 담았어요') + '</div>';
-        if (c.ek) h += '<div class="dr-ex"><div class="lb">해석</div><p class="ko flat">' + esc(c.ek) + '</p></div>';
+        if (done) {
+          h += verdict(it, k);
+          if (!cz && c.ek) h += '<div class="dr-ex"><div class="lb">해석</div><p class="ko flat">' + esc(c.ek) + '</p></div>';
+        }
+        h += '</div>';
+        if (done) h += '<div class="dr-acts">' + nextBtn + '</div>';
       }
-      h += '</div>';
-      if (it.pick != null) h += '<div class="dr-acts"><button class="dr-btn" type="button" data-act="next">' + (S.queue.length > 1 ? '다음 문제' : '결과 보기') + '</button></div>';
     } else if (!S.flip) {
       // 카드 아무 곳이나 누르면 뒤집힌다. 듣기 단추는 data-act="say"가 먼저 잡혀 뒤집히지 않는다.
       h += '<div class="dr-stage">' + under() + '<div class="dr-fc tap swipe" data-act="flip" role="button" tabindex="0" aria-label="카드를 눌러 뜻 보기, 옆으로 밀어 판정">' + STAMPS + tag(it) + '<div class="dr-mid"><div class="dr-word" lang="' + c.l + '">' + esc(c.w) + '</div>' +
@@ -134,14 +152,58 @@
     root.innerHTML = '<div class="dr-in">' + h + '</div>';
     widths();
     root.scrollTop = 0;
-    var f = root.querySelector('[data-act=flip],[data-act=next],.dr-judge .dr-yes,.dr-opt'); if (f) f.focus({ preventScroll: true });
+    var f = root.querySelector('.dr-field:not([disabled]),[data-act=flip],[data-act=next],.dr-judge .dr-yes,.dr-opt'); if (f) f.focus({ preventScroll: true });
     // 앞면이 나오자마자 단어를 읽어 준다. 시작, 판정 같은 누름에서 바로 불리므로 브라우저 자동 재생 제한에 걸리지 않는다.
     if (S.mode === 'card' && !S.flip) say(c);
   }
-  var STAMPS = '<span class="dr-stamp yes" aria-hidden="true">알았어요</span><span class="dr-stamp no" aria-hidden="true">몰랐어요</span>';
+  var STAMPS = '<span class="dr-stamp sy" aria-hidden="true">알았어요</span><span class="dr-stamp sn" aria-hidden="true">몰랐어요</span>';
   function under() {
     var nx = S.queue[1];
     return nx ? '<div class="dr-fc under" aria-hidden="true">' + tag(nx) + '<div class="dr-mid"><div class="dr-word" lang="' + nx.c.l + '">' + esc(nx.c.w) + '</div></div></div>' : '';
+  }
+  // 문제 종류: 빈칸 자료가 없는 단어는 뜻 고르기로 묻는다.
+  function kindOf(it) { return S.mode === 'write' ? 'write' : S.mode === 'cloze' && it.c.cz ? 'cloze' : 'mean'; }
+  function verdict(it, k) {
+    var c = it.c, t = !it.ok ? '틀렸어요. 오답 노트에 담았어요' : it.near ? '맞았어요. 철자를 한 번 더 확인해 보세요' : k === 'cloze' ? '맞았어요. ' + c.w + ': ' + c.m : '맞았어요';
+    return '<div class="dr-verdict' + (it.ok ? ' ok' : '') + '">' + esc(t) + '</div>';
+  }
+  function hint(c) {
+    var s = c.l === 'ja' ? (c.r || c.w) : c.w, n = s.replace(/\s/g, '').length;
+    return (c.l === 'ja' ? '읽기 ' : '') + '“' + esc(s.charAt(0)) + '”로 시작하는 ' + n + '글자' + (c.l !== 'ja' && /\s/.test(s.trim()) ? ', 낱말 ' + s.trim().split(/\s+/).length + '개' : '');
+  }
+  // 쓰기 채점: 대소문자, 띄어쓰기, 문장부호, 괄호 속 말은 보지 않는다. 독일어는 ae/oe/ue/ss, 일본어는 가타카나와 읽기도 정답.
+  function norm(s, l) {
+    s = String(s).normalize('NFKC').toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[.,!?'"’`…~〜]/g, '').replace(/\s+/g, ' ').trim();
+    if (l === 'de') s = s.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+    if (l === 'en') s = s.replace(/^to /, '');
+    if (l === 'ja') s = s.replace(/[\u30a1-\u30f6]/g, function (ch) { return String.fromCharCode(ch.charCodeAt(0) - 0x60); }).replace(/\s/g, '');
+    return s;
+  }
+  function dist(a, b) {
+    var d = [], i, j;
+    for (i = 0; i <= a.length; i++) d[i] = [i];
+    for (j = 1; j <= b.length; j++) d[0][j] = j;
+    for (i = 1; i <= a.length; i++) for (j = 1; j <= b.length; j++)
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return d[a.length][b.length];
+  }
+  function grade(c, v) {
+    var t = norm(v, c.l), keys = [c.w].concat(c.r ? [c.r] : []).map(function (x) { return norm(x, c.l); });
+    if (keys.indexOf(t) >= 0) return { ok: true };
+    var near = c.l !== 'ja' && keys[0].length >= 6 && dist(t, keys[0]) <= 1;
+    return { ok: near, near: near };
+  }
+  function answer(it, v, ok, near) {
+    it.pick = v; it.ok = ok; it.near = !!near;
+    if (it.first === null) it.first = ok;
+    if (!ok) it.wrong++;
+    S.answered++; S.shown++; render();
+  }
+  function check() {
+    var it = S.queue[0], f = root.querySelector('.dr-field');
+    if (!f || f.disabled) return;
+    if (!f.value.trim()) return f.focus();
+    var g = grade(it.c, f.value); answer(it, f.value.trim(), g.ok, g.near);
   }
   function later(it) { S.queue.splice(Math.min(3, S.queue.length), 0, it); }
 
@@ -192,8 +254,8 @@
   }
   function stamp(fc, dx) {
     var a = Math.min(Math.abs(dx) / 80, 1);
-    fc.querySelector('.dr-stamp.yes').style.opacity = dx > 0 ? a : 0;
-    fc.querySelector('.dr-stamp.no').style.opacity = dx < 0 ? a : 0;
+    fc.querySelector('.dr-stamp.sy').style.opacity = dx > 0 ? a : 0;
+    fc.querySelector('.dr-stamp.sn').style.opacity = dx < 0 ? a : 0;
   }
 
   // 스와이프: 카드(앞면, 뒷면)를 옆으로 밀어 판정한다. 휴대폰은 touch 이벤트로 받아, 가로로 미는 게 확실해지면
@@ -268,12 +330,14 @@
     if (act === 'yes' || act === 'no') return judge(act, act === 'yes' ? 1 : -1);
     if (act === 'pick') {
       if (it.pick != null) return;
-      it.pick = +b.getAttribute('data-i'); var ok = it.opts[it.pick] === it.c.m; if (it.first === null) it.first = ok; if (!ok) it.wrong++;
-      S.answered++; S.shown++; return render();
+      var i = +b.getAttribute('data-i');
+      return answer(it, i, it.opts[i] === (kindOf(it) === 'cloze' ? it.c.ca : it.c.m));
     }
+    if (act === 'check') return check();
+    if (act === 'giveup') { if (it.pick == null) answer(it, '', false); return; }
     if (act === 'next') {
       // 카드와 같은 규칙: 틀리면 같은 회차 뒤로, 한 번에 못 맞힌 단어는 연속 2번 맞혀야 빠진다.
-      var right = it.opts[it.pick] === it.c.m; S.queue.shift(); it.pick = null;
+      var right = it.ok; S.queue.shift(); it.pick = null; it.ok = null;
       if (!right) { it.streak = 0; later(it); }
       else if (it.wrong === 0 || it.streak >= 1) it.done = true;
       else { it.streak++; later(it); }
@@ -284,7 +348,7 @@
 
   function start(list, mode, kind) {
     S = { mode: mode, kind: kind, flip: false, shown: 0, answered: 0,
-          title: kind === 'review' ? '단어 복습' : mode === 'quiz' ? '문제 풀기' : '오늘 단어 외우기' };
+          title: kind === 'review' ? '단어 복습' : mode !== 'card' ? '문제 풀기' : '오늘 단어 외우기' };
     S.list = list.map(function (c) { return { c: c, wrong: 0, streak: 0, first: null, done: false }; });
     S.queue = S.list.slice();
     if (kind !== 'today') shuffle(S.queue);
@@ -317,7 +381,7 @@
     var h = '<div class="dr-bar"><button class="dr-x" type="button" data-act="close" aria-label="닫기">' + ICON_X + '</button><span class="t">' + S.title + '</span><span class="n">완료</span></div>' +
       '<section class="card"><div class="step">' + (S.kind === 'retry' ? '오답 다시 결과' : S.kind === 'review' ? '복습 결과' : '오늘 결과') + '</div>' +
       '<div class="dr-score"><b>' + first + '</b><span>/ ' + tot + '개 한 번에 맞혔어요</span></div>' +
-      '<div class="dr-stats"><div class="dr-stat"><b>' + tot + '</b><span>외운 단어</span></div><div class="dr-stat"><b>' + S.shown + '</b><span>' + (S.mode === 'quiz' ? '푼 문제' : '넘긴 카드') + '</span></div>' +
+      '<div class="dr-stats"><div class="dr-stat"><b>' + tot + '</b><span>외운 단어</span></div><div class="dr-stat"><b>' + S.shown + '</b><span>' + (S.mode !== 'card' ? '푼 문제' : '넘긴 카드') + '</span></div>' +
       '<div class="dr-stat"><b>' + wrongs.length + '</b><span>틀린 단어</span></div></div></section>' +
       '<section class="card"><h2 class="dr-h12">오답 노트</h2>' +
       (wrongs.length ? '<div>' + wrongs.map(function (x) {
@@ -337,16 +401,25 @@
   // 진입 카드
   var card = document.getElementById('drill');
   if (card && CARDS.length) {
-    var mode = 'card', modes = card.querySelectorAll('.dr-mode');
-    [].forEach.call(modes, function (m) {
-      m.addEventListener('click', function () {
-        mode = m.getAttribute('data-mode');
-        [].forEach.call(modes, function (x) { x.setAttribute('aria-pressed', String(x === m)); });
-      });
-    });
-    document.getElementById('dr-start').addEventListener('click', function () {
-      ga('word_drill_start', { lang: LANG, day: DAY, mode: mode });
-      start(CARDS, mode, 'today');
+    // 고른 방식(카드/문제, 문제 종류)은 이 기기에 기억해 다음에도 그대로 보여 준다.
+    var PREF = 'drill:pref', pref = {};
+    try { pref = JSON.parse(localStorage.getItem(PREF)) || {}; } catch (e) {}
+    var mode = pref.m === 'quiz' ? 'quiz' : 'card', qt = ['quiz', 'write', 'cloze'].indexOf(pref.q) >= 0 ? pref.q : 'quiz';
+    var modes = card.querySelectorAll('.dr-mode'), qts = card.querySelectorAll('.dr-qt'), qbox = document.getElementById('dr-qts'), go1 = document.getElementById('dr-start');
+    function paint() {
+      [].forEach.call(modes, function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-mode') === mode)); });
+      [].forEach.call(qts, function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-qt') === qt)); });
+      if (qbox) qbox.hidden = mode !== 'quiz';
+      go1.textContent = CARDS.length + (mode === 'card' ? '개 외우기 시작' : '문제 풀기 시작');
+    }
+    [].forEach.call(modes, function (m) { m.addEventListener('click', function () { mode = m.getAttribute('data-mode'); paint(); }); });
+    [].forEach.call(qts, function (m) { m.addEventListener('click', function () { qt = m.getAttribute('data-qt'); paint(); }); });
+    paint();
+    go1.addEventListener('click', function () {
+      var m = mode === 'card' ? 'card' : qt;
+      try { localStorage.setItem(PREF, JSON.stringify({ m: mode, q: qt })); } catch (e) {}
+      ga('word_drill_start', { lang: LANG, day: DAY, mode: m });
+      start(CARDS, m, 'today');
     });
   }
   var go = document.getElementById('dr-due-go');
