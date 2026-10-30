@@ -1,52 +1,52 @@
 {
  "date": "2026-10-31",
- "words_total": 394,
+ "words_total": 401,
  "langs": {
   "en": {
-   "count": 28,
-   "latest": "2026-10-30",
-   "topic": "유성의 일생",
+   "count": 29,
+   "latest": "2026-10-31",
+   "topic": "거대한 카트리나",
    "sentences": [
-    "When a space rock enters Earth's **atmosphere**, most people think it simply burns up, but a new study shows that the real story is more complicated.",
-    "Scientists at the SETI Institute studied videos and photos of seventy-five meteorite falls and found that each rock goes through seven **stages**.",
-    "High in the sky, the air in front of the rock is pushed together so quickly that it forms a **shock wave**, and the rock and the hot gas around it begin to glow.",
-    "At around sixty kilometers above the ground, the rock **melts** from the outside, and this melting alone can remove up to forty percent of its original **mass**."
+    "On Thursday night, hundreds of people **gathered** in the main square of Mexico City to look up at a giant skeleton lady.",
+    "She is a **Catrina**, a well-known **symbol** of the Day of the Dead, and she stands more than thirty-three meters tall.",
+    "The figure, which a team of artists made almost entirely from paper and glue, is now the tallest **sculpture** of its kind in the world.",
+    "It **broke** the old record, which was set by a Catrina in another Mexican city in 2023."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 3분"
    ],
-   "answer": "우주 암석이 지구 대기에 들어오면 대부분의 사람들은 그것이 그냥 다 타 버린다고 생각하지만, 새 연구는 실제 이야기가 더 복잡하다는 것을 보여 준다.",
+   "answer": "목요일 밤, 수백 명의 사람들이 멕시코시티 중앙 광장에 모여 거대한 해골 여인을 올려다보았다.",
    "words": [
     [
-     "atmosphere",
-     "대기"
+     "gathered",
+     "모였다 (gather의 과거)"
     ],
     [
-     "stages",
-     "단계들 (stage의 복수)"
+     "symbol",
+     "상징"
     ],
     [
-     "shock wave",
-     "충격파"
+     "sculpture",
+     "조각, 조각품"
     ],
     [
-     "melt",
-     "녹다"
+     "broke (a record)",
+     "(기록을) 깼다"
     ],
     [
-     "mass",
-     "질량"
+     "altar",
+     "제단"
     ],
     [
-     "break apart",
-     "부서지다, 산산이 갈라지다"
+     "marigolds",
+     "금잔화 (복수 -s)"
     ],
     [
-     "burst",
-     "(빛, 소리 등의) 갑작스러운 폭발, 터짐"
+     "equal",
+     "평등한, 같은"
     ]
    ]
   },
@@ -149,6 +149,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-10-31",
+   "topic": "거대한 카트리나"
+  },
+  {
    "lang": "ja",
    "day": "2026-10-31",
    "topic": "온천 이용법"
@@ -232,11 +237,6 @@
    "lang": "ja",
    "day": "2026-10-25",
    "topic": "겨울옷 꺼내기"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-24",
-   "topic": "마당의 배"
   }
  ]
 }
