@@ -65,6 +65,10 @@ FOOTER_HTML = ('<footer class="site-footer"><a href="https://www.wspace.ai.kr/">
                '<a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>\n')
 
 
+LANG_GO_CSS = ("  .intro a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px;"
+               " background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; }\n")
+
+
 def public_langs(current=None):
     """언어 전환에 보여 줄 언어: 공개(noindex 아님) 언어와, 지금 보고 있는 언어(비공개여도)."""
     return [c for c in langs.LANGS if not langs.LANGS[c].get("noindex") or c == current]
@@ -72,7 +76,7 @@ def public_langs(current=None):
 
 def other_lang_links(lang):
     """지문 페이지 소개 끝의 다른 언어 링크. 예전에는 '다른 언어'가 첫 화면(구독 안내)으로 가서 목록을 못 찾았다(이슈 #19)."""
-    return "".join(f'<a href="/{c}/">{langs.LANGS[c]["name"]} 지문 보기 →</a>' for c in public_langs() if c != lang)
+    return "".join(f'<a class="lang-go" href="/{c}/">{langs.LANGS[c]["name"]} 지문 보기 →</a>' for c in public_langs() if c != lang)
 
 
 def intro_html(lang):
@@ -257,6 +261,9 @@ def patch_page(lang, day):
         )
     if '<a href="../../">다른 언어</a>' in page:
         page = page.replace('<a href="../../">다른 언어</a>', other_lang_links(lang), 1)
+    if ".intro a.lang-go" not in page and 'class="lang-go"' in page:
+        # 다른 언어 링크는 문단 끝 글자가 아니라 눈에 띄는 알약 모양으로(2차 재시험: 작은 글씨라 잘 안 보였다)
+        page = page.replace("  .gnb {", LANG_GO_CSS + "  .gnb {", 1)
     if 'class="site-footer"' not in page:
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
@@ -481,7 +488,7 @@ ARCHIVE = r"""<!doctype html>
   .search { display: block; width: 100%; box-sizing: border-box; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: #fff; box-shadow: 0 2px 10px rgba(16,24,40,.06);
             padding: 0 16px; font: 400 16px Pretendard, -apple-system, sans-serif; color: #191f28; outline: 0; }
   .search:focus { border-color: #3182f6; }
-  .chips { display: flex; gap: 6px; overflow-x: auto; margin: 0 -12px; padding: 12px 12px 8px; scrollbar-width: none; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 0 8px; }
   .chips::-webkit-scrollbar { display: none; }
   .chip { flex: none; height: 34px; padding: 0 14px; border: 0; border-radius: 999px; background: #fff; color: #4e5968;
           font: 600 14px Pretendard, -apple-system, sans-serif; cursor: pointer; }

@@ -22,6 +22,8 @@ export default function Nav() {
           <a href="/ja/archive/">일본어 지문</a>
           <a href="#how">이용 안내</a>
         </nav>
+        {/* 휴대폰은 위 메뉴가 숨어 있어 지난 지문 입구를 따로 둔다(이슈 #19) */}
+        <a className="nav-m" href="#past">지난 지문</a>
         <a className="nav-cta" href="#subscribe">
           무료로 시작하기
         </a>

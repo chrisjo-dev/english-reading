@@ -970,8 +970,13 @@ html:not(.js) .sw {
   color: var(--ink2);
 }
 
+.nav-m {
+  display: none;
+}
+
 /* week */
 .week-all {
+  scroll-margin-top: 96px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
@@ -1528,6 +1533,7 @@ html:not(.js) .sw {
 
   .nav .nav-in {
     padding: 0 12px 0 16px;
+    gap: 8px;
   }
 
   .nav-links {
@@ -1536,6 +1542,33 @@ html:not(.js) .sw {
 
   .week-all {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nav-m {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+    padding: 0 8px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink2);
+    text-decoration: none;
+  }
+
+  .nav-m + .nav-cta {
+    margin-left: 4px;
+  }
+
+  /* 휴대폰 머리줄은 한 줄로: 브랜드, 지난 지문, 시작하기 버튼이 줄바꿈되지 않게 */
+  .nav .brand,
+  .nav .nav-cta {
+    white-space: nowrap;
+  }
+
+  .nav .nav-cta {
+    padding: 0 12px;
+    font-size: 13px;
   }
 
   .nav-cta {
@@ -1805,6 +1838,12 @@ html:not(.js) .sw {
 @keyframes blink {
   50% {
     opacity: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav .brand-mark {
+    display: none;
   }
 }
 

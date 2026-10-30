@@ -73,7 +73,7 @@ export default function Home() {
             </div>
             <Week />
             {/* 언어별 지난 지문 입구. 휴대폰은 상단 메뉴가 없어 여기가 목록으로 가는 길이다(이슈 #19) */}
-            <nav className="week-all" aria-label="언어별 지난 지문">
+            <nav className="week-all" id="past" aria-label="언어별 지난 지문">
               <a href="/en/archive/">영어 지난 지문 전체 보기<span aria-hidden="true">→</span></a>
               <a href="/ja/archive/">일본어 지난 지문 전체 보기<span aria-hidden="true">→</span></a>
             </nav>
