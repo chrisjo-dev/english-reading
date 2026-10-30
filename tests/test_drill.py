@@ -73,6 +73,11 @@ class TestCards(unittest.TestCase):
                     self.assertTrue(c["ca"].strip())
                     self.assertNotIn("*", c["cz"])
 
+    def test_no_cloze_when_answer_still_shows_in_sentence(self):
+        c = next(x for x in drill.cards("ja", "2026-10-30") if x["w"] == "地面")  # 문장에 地面 이 두 번 나온다
+        self.assertNotIn("cz", c)
+        self.assertIn("ex", c)
+
     def test_missing_content_gives_no_cards(self):
         self.assertEqual(drill.cards("en", "2020-01-01"), [])
 

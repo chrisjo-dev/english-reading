@@ -168,13 +168,13 @@
     return '<div class="dr-verdict' + (it.ok ? ' ok' : '') + '">' + esc(t) + '</div>';
   }
   function hint(c) {
-    var s = c.l === 'ja' ? (c.r || c.w) : c.w, n = s.replace(/\s/g, '').length;
+    var s = c.l === 'ja' ? (c.r || c.w) : c.w.replace(/\s*\([^)]*\)/g, ''), n = s.replace(/\s/g, '').length;
     return (c.l === 'ja' ? '읽기 ' : '') + '“' + esc(s.charAt(0)) + '”로 시작하는 ' + n + '글자' + (c.l !== 'ja' && /\s/.test(s.trim()) ? ', 낱말 ' + s.trim().split(/\s+/).length + '개' : '');
   }
   // 쓰기 채점: 대소문자, 띄어쓰기, 문장부호, 괄호 속 말은 보지 않는다. 독일어는 ae/oe/ue/ss, 일본어는 가타카나와 읽기도 정답.
-  function norm(s, l) {
+  function norm(s, l, raw) {
     s = String(s).normalize('NFKC').toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[.,!?'"’`…~〜]/g, '').replace(/\s+/g, ' ').trim();
-    if (l === 'de') s = s.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+    if (l === 'de' && !raw) s = s.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
     if (l === 'en') s = s.replace(/^to /, '');
     if (l === 'ja') s = s.replace(/[\u30a1-\u30f6]/g, function (ch) { return String.fromCharCode(ch.charCodeAt(0) - 0x60); }).replace(/\s/g, '');
     return s;
@@ -188,9 +188,14 @@
     return d[a.length][b.length];
   }
   function grade(c, v) {
-    var t = norm(v, c.l), keys = [c.w].concat(c.r ? [c.r] : []).map(function (x) { return norm(x, c.l); });
+    // linked (to) 는 linked, linked to 둘 다 정답
+    var forms = [c.w, c.w.replace(/[()]/g, '')].concat(c.r ? [c.r] : []);
+    var t = norm(v, c.l), keys = forms.map(function (x) { return norm(x, c.l); });
     if (keys.indexOf(t) >= 0) return { ok: true };
-    var near = c.l !== 'ja' && keys[0].length >= 6 && dist(t, keys[0]) <= 1;
+    // 한 글자 오타는 봐주되, 움라우트를 빠뜨린 것(Blatter ↔ Blätter)은 틀린 것으로 본다
+    var rt = norm(v, c.l, true), rk = norm(c.w, c.l, true);
+    var fold = function (x) { return x.replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 's'); };
+    var near = c.l !== 'ja' && rk.length >= 6 && dist(rt, rk) <= 1 && !(c.l === 'de' && fold(rt) === fold(rk));
     return { ok: near, near: near };
   }
   function answer(it, v, ok, near) {

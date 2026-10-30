@@ -132,6 +132,12 @@ def _fits(ans, word):
     return bool(a) and a.startswith(k.group(0) if k else w[:2])
 
 
+def _shown(cz, ans):
+    """빈칸 밖에 정답이 또 보이면 참(같은 단어가 문장에 두 번 나온 경우). 루비 읽기는 빼고 본다."""
+    text = re.sub(r"<[^>]+>", "", re.sub(r"<rt>.*?</rt>", "", cz))
+    return html.unescape(ans).lower() in html.unescape(text).lower()
+
+
 def _marked(raw, span):
     """그 단어만 ** 로 강조한 문장 원문. 다른 강조는 지운다."""
     a, b = span
@@ -166,7 +172,7 @@ def cards(lang, day):
             span = _target(raw, w, b)
             if span:  # 카드와 문제에 그 단어만 강조하고, 빈칸 채우기 자료를 만든다
                 cz, ca = _cloze(raw, span)
-                if _fits(ca, w):
+                if _fits(ca, w) and not _shown(cz, ca):
                     c["cz"], c["ca"] = cz, ca
                 raw = _marked(raw, span)
                 b = base(raw[raw.index("**") + 2:raw.index("**", raw.index("**") + 2)])
