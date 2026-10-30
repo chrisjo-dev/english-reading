@@ -73,7 +73,9 @@ LANG_GO_CSS = ("  a.lang-go { display: inline-flex; align-items: center; margin:
 GNB_NARROW_CSS = ("  /* gnb-narrow */ @media (max-width: 400px) { .gnb { padding: 0 6px 0 14px; } .gnb .brand { font-size: 15px; }"
                   " .gnb .brand img { height: 24px; } .gnb nav { gap: 2px; } .gnb nav a { padding: 8px 8px; font-size: 13px; white-space: nowrap; } }\n")
 # 브랜드명과 GNB 브랜드 링크 내부 HTML (누운 오리 이미지 + 텍스트)
-GNB_BRAND_INNER = '<img src="/assets/brand/duck-lying-64.png" alt="" height="30" style="vertical-align:middle"> 독해한입'
+# style= 속성 대신 CSS 규칙(.gnb .brand img)으로 수직 정렬 — patch_page 가 멱등으로 주입한다
+GNB_BRAND_INNER = '<img src="/assets/brand/duck-lying-64.png" alt="" height="30"> 독해한입'
+GNB_IMG_CSS = "  .gnb .brand img { vertical-align: middle; }\n"
 
 
 def public_langs(current=None):
@@ -270,6 +272,15 @@ def patch_page(lang, day):
     # 지난 날짜에도 "오늘의"가 붙어 헷갈렸다(이슈 #19): 제목은 "○○ 읽기, 10월 20일"
     page = re.sub(r"<title>오늘의 ([^<]+ 읽기, [^<]+)</title>", r"<title>\1</title>", page, count=1)
     # ── 브랜드 패치 (독해한입). 아래 항목은 모두 멱등적으로 동작한다 ──
+    # 1) .gnb .brand img CSS 규칙 주입 (inline style → CSS 규칙. 멱등: 정확히 이 문자열로 확인)
+    if GNB_IMG_CSS not in page:
+        page = page.replace("  .gnb {", GNB_IMG_CSS + "  .gnb {", 1)
+    # 2) 기존 페이지의 inline style 제거 — GNB_BRAND_INNER 체크 전에 실행해야 멱등이 된다
+    page = re.sub(
+        r'(<img src="/assets/brand/duck-lying-64\.png"[^>]*?) style="vertical-align:middle"',
+        r'\1',
+        page,
+    )
     # <title>에 "| 독해한입" 서픽스 추가 (이미 있으면 건드리지 않는다)
     page = re.sub(
         r"<title>([^<]+ 읽기, [^<]+)</title>",
@@ -535,6 +546,7 @@ ARCHIVE = r"""<!doctype html>
   /* 소프트 UI: 날짜 페이지와 같은 떠 있는 흰 바, 흰 카드의 아주 옅은 그림자 */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: -16px 0 20px; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: 0 2px 10px rgba(16,24,40,.06); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: #191f28; text-decoration: none; }
+  .gnb .brand img { vertical-align: middle; }
   .gnb nav { display: flex; gap: 4px; }
   .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
   .gnb nav a:hover { background: #f2f4f6; }

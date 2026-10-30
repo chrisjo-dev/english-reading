@@ -91,6 +91,7 @@ def build_email(lang, end):
     body = f"""<!-- buttondown-editor-mode: plaintext -->
 <div style="background:#f2f4f6;padding:16px 0;font-family:{font};word-break:keep-all;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
+<tr><td style="padding:16px 0 4px;text-align:center;"><img src="{SITE}/assets/brand/badge-192.png" width="88" height="88" alt="독해한입" style="display:block;margin:0 auto;border:0;"></td></tr>
 <tr><td style="background:#ffffff;border-radius:20px;padding:22px 20px;">
   <p style="margin:0;font-size:14px;font-weight:600;color:#8b95a1;">{span(end)}</p>
   <h1 style="margin:6px 0 8px;font-size:24px;line-height:1.35;font-weight:800;color:#191f28;">이번 주 <span style="color:#3182f6;">단어 {total}개</span> 복습해요</h1>
@@ -127,6 +128,7 @@ __HEAD_EXTRA__
   /* 소프트 UI: 날짜 페이지, 지난 지문 페이지와 같은 떠 있는 흰 바와 옅은 그림자의 흰 카드 */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: -16px 0 20px; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: 0 2px 10px rgba(16,24,40,.06); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: #191f28; text-decoration: none; }
+  .gnb .brand img { vertical-align: middle; }
   .gnb nav { display: flex; gap: 4px; }
   .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
   .gnb nav a:hover { background: #f2f4f6; }
@@ -158,7 +160,7 @@ __FOOTER_CSS__</style>
 </head>
 <body><main>
   <header class="gnb">
-    <a class="brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" height="30" style="vertical-align:middle"> 독해한입</a>
+    <a class="brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" height="30"> 독해한입</a>
     <nav aria-label="사이트 메뉴"><a href="../../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
   </header>
   <a class="back" href="../../archive/">← 지난 지문</a>

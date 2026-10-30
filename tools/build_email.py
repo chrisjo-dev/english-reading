@@ -116,6 +116,7 @@ def build(lang, day, level="b"):
     body = f"""<!-- buttondown-editor-mode: plaintext -->
 <div style="background:{BG};padding:16px 0;font-family:{FONT};word-break:keep-all;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
+<tr><td style="padding:16px 0 4px;text-align:center;"><img src="{SITE}/assets/brand/badge-192.png" width="88" height="88" alt="독해한입" style="display:block;margin:0 auto;border:0;"></td></tr>
 <tr><td style="padding:0 0 12px;"><a href="{url}"><img src="{url_base}thumb.png" width="560" alt="오늘은 {html.escape(d["topic"])} 이야기예요"
   style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:20px;"></a></td></tr>
 <tr><td style="{card}">

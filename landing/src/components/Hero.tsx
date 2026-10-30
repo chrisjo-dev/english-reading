@@ -57,6 +57,14 @@ export default function Hero() {
         <h1 id="c3-h" className="sr">
           하루 5분, 매일 아침.
         </h1>
+        {/* 메인 배지 로고: 데스크톱에서 헤드라인 왼쪽, 모바일에서 위 */}
+        <img
+          src="/assets/brand/badge-512.png"
+          alt="독해한입"
+          className="hero-badge"
+          width={512}
+          height={512}
+        />
         <p className="c3-h1 rise" aria-hidden="true">
           <Words text="하루 5분," />
         </p>

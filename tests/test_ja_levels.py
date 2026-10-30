@@ -268,6 +268,8 @@ class PatchOldJaPageTest(unittest.TestCase):
             p = re.sub(r'<link rel="icon"[^>]*/?>', "", p)
             p = re.sub(r'(<a class="brand" href="/">).*?(</a>)', r'\1\2', p, flags=re.S)
             p = re.sub(r'/\* gnb-narrow \*/[^\n]*\n?', '', p)
+            # GNB 브랜드 img CSS 규칙 주입 (inline style → CSS) 도 rebrand patch 범위
+            p = re.sub(r'  \.gnb \.brand img \{ vertical-align: middle; \}\n', '', p)
             return p
         self.assertEqual(strip(before), strip(after), "구독 칸 밖 콘텐츠는 바뀌지 않아야 합니다")
 

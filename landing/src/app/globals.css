@@ -176,6 +176,18 @@ input {
 }
 
 /* ───── hero (C3) ───── */
+
+/* 배지 메인 로고: 데스크톱에서 헤드라인 왼쪽에 절대 배치, 모바일에서는 플렉스 아이템으로 위 */
+.hero-badge {
+  position: absolute;
+  left: var(--m);
+  top: 56px;
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  z-index: 2;
+}
+
 .c3 {
   position: relative;
   height: 836px;
@@ -235,7 +247,7 @@ input {
 }
 
 .c3-h1 {
-  left: var(--m);
+  left: calc(var(--m) + 248px); /* 배지(220px) + 여백(28px) */
   top: 56px;
   z-index: 2;
   margin-left: -6px;
@@ -287,7 +299,7 @@ input {
 
 .c3-sub {
   position: absolute;
-  left: var(--m);
+  left: calc(var(--m) + 248px); /* 배지(220px) + 여백(28px), 배지와 세로 겹침 피함 */
   top: 192px;
   width: calc(3 * var(--col) + 2 * var(--g));
   font-size: 18px;
@@ -1591,6 +1603,16 @@ html:not(.js) .sw {
     display: flex;
     flex-direction: column;
     padding: 0 var(--m);
+  }
+
+  /* 배지: 플렉스 아이템으로 전환, 헤드라인(order:1) 위에 표시 */
+  .hero-badge {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 140px;
+    height: 140px;
+    order: 0;
   }
 
   .c3-axis,

@@ -145,6 +145,7 @@
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
+  .gnb .brand img { vertical-align: middle; }
   .gnb nav { display: flex; gap: 4px; }
   .gnb nav a { font-size: 14px; font-weight: 600; color: var(--sub); text-decoration: none; padding: 8px 12px; border-radius: 10px; }
   .gnb nav a:hover { background: var(--bg); }
@@ -204,7 +205,7 @@
 <body>
 <main>
   <header class="gnb">
-    <a class="brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" height="30" style="vertical-align:middle"> 독해한입</a>
+    <a class="brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" height="30"> 독해한입</a>
     <nav aria-label="사이트 메뉴"><a href="../archive/">{{name}} 지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
   </header>
   <div class="top">
