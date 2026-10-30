@@ -1,0 +1,403 @@
+{
+  "date": "2026-10-31",
+  "category": "culture",
+  "topic": "보덴호 여행",
+  "title_ko": "세 나라가 만나는 호수, 보덴호",
+  "headline": "Ein See, drei Länder",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "sentences": [
+    {
+      "en": "Der **Bodensee** liegt im Süden Deutschlands und grenzt an drei Länder: Deutschland, Österreich und die Schweiz.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der **Bodensee**",
+          "보덴호는"
+        ],
+        [
+          "liegt",
+          "있습니다"
+        ],
+        [
+          "im Süden Deutschlands",
+          "독일 남쪽에"
+        ],
+        [
+          "und grenzt an drei Länder:",
+          "그리고 세 나라와 맞닿아 있습니다"
+        ],
+        [
+          "Deutschland, Österreich und die Schweiz.",
+          "독일, 오스트리아, 스위스와"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Reisende kommen im Sommer, weil sie mit dem **Fahrrad** am Ufer entlang fahren oder im klaren Wasser schwimmen möchten.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viele Reisende",
+          "많은 여행자가"
+        ],
+        [
+          "kommen",
+          "옵니다"
+        ],
+        [
+          "im Sommer,",
+          "여름에"
+        ],
+        [
+          "weil sie",
+          "왜냐하면 그들이"
+        ],
+        [
+          "mit dem **Fahrrad**",
+          "자전거를 타고"
+        ],
+        [
+          "am Ufer entlang fahren",
+          "호숫가를 따라 달리거나"
+        ],
+        [
+          "oder im klaren Wasser",
+          "또는 맑은 물에서"
+        ],
+        [
+          "schwimmen möchten.",
+          "수영하고 싶어 하기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Mit der **Fähre** kann man in weniger als einer Stunde von einem Land ins andere fahren, ohne an der Grenze zu warten.",
+      "b2": false,
+      "chunks": [
+        [
+          "Mit der **Fähre**",
+          "배(페리)로"
+        ],
+        [
+          "kann man",
+          "사람들은 ~할 수 있습니다"
+        ],
+        [
+          "in weniger als einer Stunde",
+          "한 시간도 안 되어"
+        ],
+        [
+          "von einem Land ins andere fahren,",
+          "한 나라에서 다른 나라로 가는 것을"
+        ],
+        [
+          "ohne an der Grenze zu warten.",
+          "국경에서 기다리지 않고"
+        ]
+      ]
+    },
+    {
+      "en": "Besonders beliebt ist die **Blumeninsel** Mainau, deren von vielen Gärtnern sorgfältig gepflegte Parks jedes Jahr zahlreiche Besucher anziehen.",
+      "b2": true,
+      "chunks": [
+        [
+          "Besonders beliebt ist",
+          "특히 인기 있는 곳은"
+        ],
+        [
+          "die **Blumeninsel** Mainau,",
+          "꽃섬 마이나우입니다"
+        ],
+        [
+          "deren von vielen Gärtnern sorgfältig gepflegte Parks",
+          "그곳의, 많은 정원사가 정성껏 가꾼 공원들은"
+        ],
+        [
+          "jedes Jahr",
+          "해마다"
+        ],
+        [
+          "zahlreiche Besucher anziehen.",
+          "수많은 방문객을 끌어들입니다"
+        ]
+      ]
+    },
+    {
+      "en": "In den kleinen Orten am Ufer kann man regionalen **Wein** probieren, der an den sonnigen Hängen rund um den See wächst.",
+      "b2": false,
+      "chunks": [
+        [
+          "In den kleinen Orten am Ufer",
+          "호숫가의 작은 마을들에서는"
+        ],
+        [
+          "kann man",
+          "~할 수 있습니다"
+        ],
+        [
+          "regionalen **Wein** probieren,",
+          "지역 와인을 맛보는 것을"
+        ],
+        [
+          "der an den sonnigen Hängen",
+          "그 와인은 햇볕 잘 드는 비탈에서"
+        ],
+        [
+          "rund um den See wächst.",
+          "호수 주변의 (비탈에서) 자랍니다"
+        ]
+      ]
+    },
+    {
+      "en": "Wer nicht so viele Touristen mag, könnte den See auch im Herbst besuchen, wenn die **Wanderwege** ruhiger und die Weinberge bunt sind.",
+      "b2": true,
+      "chunks": [
+        [
+          "Wer nicht so viele Touristen mag,",
+          "관광객이 너무 많은 것을 좋아하지 않는 사람은"
+        ],
+        [
+          "könnte den See",
+          "호수를 ~해 볼 수도 있습니다"
+        ],
+        [
+          "auch im Herbst besuchen,",
+          "가을에도 찾아가"
+        ],
+        [
+          "wenn die **Wanderwege** ruhiger",
+          "산책길이 더 한적하고"
+        ],
+        [
+          "und die Weinberge bunt sind.",
+          "포도밭이 알록달록할 때"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Ufer",
+      "물가, 호숫가 (das Ufer)"
+    ],
+    [
+      "Fähre",
+      "페리, 연락선 (die Fähre)"
+    ],
+    [
+      "Grenze",
+      "국경 (die Grenze)"
+    ],
+    [
+      "Blumeninsel",
+      "꽃섬 (die Blumeninsel)"
+    ],
+    [
+      "Hang",
+      "비탈, 경사면 (der Hang, 복수 Hänge)"
+    ],
+    [
+      "Wanderweg",
+      "산책로, 하이킹 길 (der Wanderweg)"
+    ],
+    [
+      "Weinberg",
+      "포도밭 (der Weinberg)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Partizipialattribut — deren 뒤의 긴 수식어",
+      "body": "`deren von vielen Gärtnern sorgfältig gepflegte Parks`는 `deren`(그곳의)과 명사 `Parks` 사이에 분사구 `von vielen Gärtnern sorgfältig gepflegte`(많은 정원사가 정성껏 가꾼)가 끼어든 구조예요. 관계절로 풀면 `die Parks, die von vielen Gärtnern sorgfältig gepflegt werden`입니다. 소유 관계대명사 `deren`은 앞의 여성명사 `die Blumeninsel`을 가리키고, 관계절이라 동사 `anziehen`이 맨 끝에 옵니다."
+    },
+    {
+      "title": "Konjunktiv II — könnte로 부드럽게 제안하기",
+      "body": "`Wer nicht so viele Touristen mag, könnte den See auch im Herbst besuchen`의 `könnte`는 가정보다 '~해 볼 수도 있겠다'는 정중한 제안이에요. `kann`보다 한결 부드럽습니다. `Wer ...`절이 첫 자리를 차지하므로 정동사 `könnte`가 바로 뒤 두 번째 자리에 오고, 부정사 `besuchen`은 뒤로 갑니다."
+    }
+  ],
+  "answers": [
+    "보덴호는 독일 남부에 있으며 독일, 오스트리아, 스위스 세 나라와 맞닿아 있습니다.",
+    "많은 여행자가 여름에 찾아오는데, 호숫가를 따라 자전거를 타거나 맑은 물에서 수영하고 싶어 하기 때문입니다.",
+    "배를 타면 국경에서 기다리지 않고 한 시간도 안 되어 한 나라에서 다른 나라로 갈 수 있습니다.",
+    "특히 인기 있는 곳은 꽃섬 마이나우로, 많은 정원사가 정성껏 가꾼 이곳의 공원들은 해마다 수많은 방문객을 끌어들입니다.",
+    "호숫가의 작은 마을에서는 호수 주변의 햇볕 잘 드는 비탈에서 자란 지역 와인을 맛볼 수 있습니다.",
+    "관광객이 너무 많은 것이 싫다면, 산책길이 한적하고 포도밭이 알록달록해지는 가을에 호수를 찾아가 보는 것도 좋겠습니다."
+  ],
+  "advanced": [
+    {
+      "word": "grenzen an",
+      "meaning": "~와 맞닿다, 접하다",
+      "confuse": "grenzen an + Akkusativ: `an drei Länder`, `an die Schweiz`처럼 4격이 와요. 명사 `die Grenze`(국경)와 함께 외우세요.",
+      "example": "Österreich **grenzt an** acht Länder.",
+      "example_ko": "오스트리아는 여덟 나라와 국경을 맞대고 있습니다."
+    },
+    {
+      "word": "anziehen",
+      "meaning": "끌어들이다, 끌다",
+      "confuse": "anziehen은 '옷을 입다'라는 뜻도 있어요(`Ich ziehe eine Jacke an`). 사람이나 손님이 목적어면 '끌어들이다'입니다.",
+      "example": "Der Weihnachtsmarkt **zieht** viele Touristen **an**.",
+      "example_ko": "크리스마스 시장은 많은 관광객을 끌어들입니다."
+    },
+    {
+      "word": "sorgfältig",
+      "meaning": "꼼꼼한, 정성스러운",
+      "confuse": "sorgfältig vs. vorsichtig: `vorsichtig`는 위험을 피하려고 조심하는 것, `sorgfältig`는 일을 꼼꼼하고 정성껏 하는 것이에요.",
+      "example": "Sie packt ihren Koffer immer **sorgfältig**.",
+      "example_ko": "그녀는 여행 가방을 늘 꼼꼼하게 쌉니다."
+    },
+    {
+      "word": "zahlreich",
+      "meaning": "수많은",
+      "confuse": null,
+      "example": "In der Altstadt gibt es **zahlreiche** kleine Cafés.",
+      "example_ko": "구시가지에는 작은 카페가 수없이 많습니다."
+    },
+    {
+      "word": "die Sehenswürdigkeit",
+      "meaning": "명소, 볼거리",
+      "confuse": null,
+      "example": "Der Dom ist die bekannteste **Sehenswürdigkeit** der Stadt.",
+      "example_ko": "대성당은 그 도시에서 가장 유명한 명소입니다."
+    },
+    {
+      "word": "die Unterkunft",
+      "meaning": "숙소",
+      "confuse": "die Unterkunft vs. die Wohnung: `Wohnung`은 사는 집, `Unterkunft`는 여행 중 머무는 숙소예요.",
+      "example": "Wir haben eine günstige **Unterkunft** direkt am See gefunden.",
+      "example_ko": "우리는 호숫가 바로 앞에 저렴한 숙소를 찾았습니다."
+    },
+    {
+      "word": "malerisch",
+      "meaning": "그림 같은",
+      "confuse": null,
+      "example": "Das Dorf liegt **malerisch** zwischen Bergen und Wasser.",
+      "example_ko": "그 마을은 산과 물 사이에 그림처럼 자리 잡고 있습니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Der **Bodensee** liegt zwischen Deutschland, Österreich und der Schweiz.",
+          "chunks": [
+            [
+              "Der **Bodensee**",
+              "보덴호는"
+            ],
+            [
+              "liegt",
+              "있습니다"
+            ],
+            [
+              "zwischen Deutschland, Österreich und der Schweiz.",
+              "독일, 오스트리아, 스위스 사이에"
+            ]
+          ]
+        },
+        {
+          "en": "Im Sommer fahren viele Reisende **Fahrrad** oder schwimmen im See.",
+          "chunks": [
+            [
+              "Im Sommer",
+              "여름에는"
+            ],
+            [
+              "fahren viele Reisende **Fahrrad**",
+              "많은 여행자가 자전거를 탑니다"
+            ],
+            [
+              "oder schwimmen im See.",
+              "또는 호수에서 수영합니다"
+            ]
+          ]
+        },
+        {
+          "en": "Mit der **Fähre** fährt man schnell von einem Land ins andere.",
+          "chunks": [
+            [
+              "Mit der **Fähre**",
+              "배(페리)로"
+            ],
+            [
+              "fährt man schnell",
+              "빠르게 갑니다"
+            ],
+            [
+              "von einem Land ins andere.",
+              "한 나라에서 다른 나라로"
+            ]
+          ]
+        },
+        {
+          "en": "Auf der **Blumeninsel** Mainau pflegen Gärtner schöne Parks für viele Besucher.",
+          "chunks": [
+            [
+              "Auf der **Blumeninsel** Mainau",
+              "꽃섬 마이나우에서는"
+            ],
+            [
+              "pflegen Gärtner",
+              "정원사들이 가꿉니다"
+            ],
+            [
+              "schöne Parks",
+              "아름다운 공원을"
+            ],
+            [
+              "für viele Besucher.",
+              "많은 방문객을 위해"
+            ]
+          ]
+        },
+        {
+          "en": "In den Orten am Ufer kann man regionalen **Wein** probieren.",
+          "chunks": [
+            [
+              "In den Orten am Ufer",
+              "호숫가 마을에서는"
+            ],
+            [
+              "kann man",
+              "~할 수 있습니다"
+            ],
+            [
+              "regionalen **Wein** probieren.",
+              "지역 와인을 맛보는 것을"
+            ]
+          ]
+        },
+        {
+          "en": "Im Herbst sind die **Wanderwege** ruhiger und die Weinberge bunt.",
+          "chunks": [
+            [
+              "Im Herbst",
+              "가을에는"
+            ],
+            [
+              "sind die **Wanderwege** ruhiger",
+              "산책길이 더 한적합니다"
+            ],
+            [
+              "und die Weinberge bunt.",
+              "그리고 포도밭이 알록달록합니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "보덴호는 독일, 오스트리아, 스위스 사이에 있습니다.",
+        "여름에는 많은 여행자가 자전거를 타거나 호수에서 수영합니다.",
+        "배를 타면 한 나라에서 다른 나라로 빠르게 갈 수 있습니다.",
+        "꽃섬 마이나우에서는 정원사들이 많은 방문객을 위해 아름다운 공원을 가꿉니다.",
+        "호숫가 마을에서는 지역 와인을 맛볼 수 있습니다.",
+        "가을에는 산책길이 더 한적하고 포도밭이 알록달록합니다."
+      ]
+    }
+  }
+}
