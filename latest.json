@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "words_total": 360,
+ "words_total": 380,
  "langs": {
   "en": {
    "count": 28,
@@ -97,6 +97,54 @@
      "미끄러지다"
     ]
    ]
+  },
+  "de": {
+   "count": 3,
+   "latest": "2026-10-30",
+   "topic": "단풍의 과학",
+   "sentences": [
+    "Im Herbst färben sich die **Blätter** vieler Bäume gelb, orange oder rot, bevor sie schließlich auf den Boden fallen.",
+    "Im Sommer sind die Blätter grün, weil sie viel **Chlorophyll** enthalten, das die Pflanze für die Photosynthese braucht.",
+    "Wenn die Tage kürzer und die Nächte kälter werden, baut der Baum das Chlorophyll ab und speichert die wertvollen **Nährstoffe** im Holz.",
+    "Dadurch werden die schon im Sommer im Blatt vorhandenen gelben und orangefarbenen **Farbstoffe** für unsere Augen sichtbar."
+   ],
+   "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+   ],
+   "answer": "가을이 되면 많은 나무의 잎이 노랑, 주황, 빨강으로 물들었다가 마침내 땅에 떨어집니다.",
+   "words": [
+    [
+     "Blatt",
+     "잎 (복수 Blätter)"
+    ],
+    [
+     "Chlorophyll",
+     "엽록소"
+    ],
+    [
+     "Photosynthese",
+     "광합성"
+    ],
+    [
+     "Nährstoff",
+     "영양분"
+    ],
+    [
+     "Farbstoff",
+     "색소"
+    ],
+    [
+     "Zucker",
+     "당, 설탕"
+    ],
+    [
+     "austrocknen",
+     "말라 버리다"
+    ]
+   ]
   }
  },
  "recent": [
@@ -111,6 +159,11 @@
    "topic": "서리"
   },
   {
+   "lang": "de",
+   "day": "2026-10-30",
+   "topic": "단풍의 과학"
+  },
+  {
    "lang": "en",
    "day": "2026-10-29",
    "topic": "휴머노이드 공장"
@@ -121,6 +174,11 @@
    "topic": "금요일 재택근무"
   },
   {
+   "lang": "de",
+   "day": "2026-10-29",
+   "topic": "직업 교육"
+  },
+  {
    "lang": "en",
    "day": "2026-10-28",
    "topic": "거대한 팝업북"
@@ -129,6 +187,11 @@
    "lang": "ja",
    "day": "2026-10-28",
    "topic": "감의 날"
+  },
+  {
+   "lang": "de",
+   "day": "2026-10-28",
+   "topic": "동네 빵집"
   },
   {
    "lang": "en",

@@ -86,8 +86,8 @@ LANGS = {
         "tools_extra": "",
         "furi_btn": "",
         # 언어별 플래그
-        "email": True,                   # Phase 2: 메일 발송 활성화. noindex 는 유지(공개 전).
-        "noindex": True,                 # Phase 1: 검색엔진 숨김. Phase 2에서 False 로 전환.
+        "email": True,                   # Phase 2: 메일 발송 활성화.
+        "noindex": False,                # 2026-10-30 공식 공개(이슈 #19). 검색엔진, 사이트맵, 첫 화면, 언어 탭에 나온다.
         "chunks": True,                  # 독일어 어순 끊어 읽기 활성화
         "levels": True,                  # 기초(A2~B1) levels.a 지문 활성화
         "level_a_label": "기초 A2~B1",  # chips-a 에 표시할 수준 레이블

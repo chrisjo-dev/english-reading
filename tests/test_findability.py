@@ -14,10 +14,12 @@ import publish  # noqa: E402
 
 class TestFindability(unittest.TestCase):
     def test_other_language_links_skip_hidden_languages(self):
-        self.assertEqual(publish.other_lang_links("en"), '<a class="lang-go" href="/ja/archive/">일본어 지난 지문 보기 →</a>')
-        self.assertEqual(publish.other_lang_links("ja"), '<a class="lang-go" href="/en/archive/">영어 지난 지문 보기 →</a>')
-        self.assertNotIn("/de/", publish.other_lang_links("en"))  # 독일어는 비공개 시험 중
-        self.assertIn("/ja/archive/", publish.other_lang_links("de"))
+        self.assertEqual(publish.other_lang_links("en"), '<a class="lang-go" href="/ja/archive/">일본어 지난 지문 보기 →</a>'
+                         '<a class="lang-go" href="/de/archive/">독일어 지난 지문 보기 →</a>')  # 독일어 공개(2026-10-30)
+        self.assertIn("/en/archive/", publish.other_lang_links("ja"))
+        self.assertNotIn("/de/", publish.other_lang_links("de"))  # 지금 언어는 빼고
+        with mock.patch.dict(publish.langs.LANGS["de"], {"noindex": True}):  # 숨긴 언어는 링크에 없다
+            self.assertNotIn("/de/", publish.other_lang_links("en"))
 
     def test_old_page_links_move_to_row_above_date(self):
         """예전 '다른 언어'(첫 화면) 링크와 2차 때 소개 문단 끝에 둔 링크를 지우고, 날짜 위 한 줄로 모은다."""
@@ -35,8 +37,9 @@ class TestFindability(unittest.TestCase):
                 publish.patch_page("en", day)
                 again = (tmp / "en" / day / "index.html").read_text(encoding="utf-8")
             self.assertNotIn('<a href="../../">다른 언어</a>', once)
-            self.assertIn('<p class="lang-row"><a class="lang-go" href="/ja/archive/">일본어 지난 지문 보기 →</a></p>\n    <div class="date">', once)
-            self.assertEqual(once.count('class="lang-go"'), 1)
+            self.assertIn('<p class="lang-row"><a class="lang-go" href="/ja/archive/">일본어 지난 지문 보기 →</a>'
+                          '<a class="lang-go" href="/de/archive/">독일어 지난 지문 보기 →</a></p>\n    <div class="date">', once)
+            self.assertEqual(once.count('class="lang-go"'), 2)
             self.assertEqual(once.count(".lang-row {"), 1)
             self.assertEqual(once, again)
         finally:
@@ -47,9 +50,25 @@ class TestFindability(unittest.TestCase):
         self.assertIn("<h1>일본어 지난 지문</h1>", page)
         self.assertIn('<a href="/en/archive/">영어</a>', page)
         self.assertIn('<a href="/ja/archive/" class="on" aria-current="page">일본어</a>', page)
-        self.assertNotIn('/de/archive/', page)
+        self.assertIn('<a href="/de/archive/">독일어</a>', page)
         self.assertIn('<meta property="og:title" content="일본어 지난 지문 | 매일 일본어 읽기">', page)
         self.assertIn('<a href="/de/archive/" class="on"', (ROOT / "de" / "archive" / "index.html").read_text(encoding="utf-8"))
+
+    def test_past_page_title_has_no_today_and_german_is_indexed(self):
+        tmp = Path(tempfile.mkdtemp())
+        try:
+            day = "2026-10-28"
+            (tmp / "de" / day).mkdir(parents=True)
+            page = (ROOT / "de" / day / "index.html").read_text(encoding="utf-8")
+            page = page.replace("<title>독일어 읽기,", "<title>오늘의 독일어 읽기,").replace('<link rel="stylesheet"', '<meta name="robots" content="noindex">\n<link rel="stylesheet"', 1)
+            (tmp / "de" / day / "index.html").write_text(page, encoding="utf-8")
+            with mock.patch.object(publish, "ROOT", tmp):
+                publish.patch_page("de", day)
+            out = (tmp / "de" / day / "index.html").read_text(encoding="utf-8")
+            self.assertIn("<title>독일어 읽기, 10월 28일</title>", out)
+            self.assertNotIn('name="robots" content="noindex"', out)
+        finally:
+            shutil.rmtree(tmp)
 
     def test_search_text_includes_dates(self):
         q = publish.entry("ja", "2026-10-20")["q"]

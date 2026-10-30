@@ -20,6 +20,7 @@ export default function Nav() {
           >오늘의 지문</a>
           <a href="/en/archive/">영어 지문</a>
           <a href="/ja/archive/">일본어 지문</a>
+          <a href="/de/archive/">독일어 지문</a>
           <a href="#how">이용 안내</a>
         </nav>
         {/* 휴대폰은 위 메뉴가 숨어 있어 지난 지문 입구를 따로 둔다(이슈 #19) */}

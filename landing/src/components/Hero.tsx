@@ -40,10 +40,11 @@ export default function Hero() {
   const d = useLatest();
   const en = d.langs.en;
   const ja = d.langs.ja;
+  const de = d.langs.de;
   const words = en?.words ?? [];
   const answer = en?.answer ?? "";
   const draft = answer.split(" ").slice(0, 4).join(" ");
-  const stats = `EN ${en?.count ?? 0}편 / JA ${ja?.count ?? 0}편 / 단어 ${d.words_total ?? 0}개, 언제든 해지할 수 있어요`;
+  const stats = `EN ${en?.count ?? 0}편 / JA ${ja?.count ?? 0}편 / DE ${de?.count ?? 0}편 / 단어 ${d.words_total ?? 0}개, 언제든 해지할 수 있어요`;
   const topics = d.recent;
 
   return (

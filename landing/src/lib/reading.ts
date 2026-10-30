@@ -4,7 +4,7 @@ import type { LatestData } from "./latest-types";
 
 // 빌드 때 english-reading 의 content JSON 을 읽어 첫 화면 데이터를 만든다(publish.py rebuild_root 와 같은 규칙).
 const ROOT = process.env.READING_ROOT ?? path.resolve(process.cwd(), "..");
-const LANGS = ["en", "ja"];
+const LANGS = ["en", "ja", "de"];
 
 function readJson(file: string) {
   return JSON.parse(fs.readFileSync(file, "utf-8"));
@@ -41,6 +41,6 @@ export function loadLatest(): LatestData {
   }
   data.recent = recent
     .sort((a, b) => (a.day === b.day ? LANGS.indexOf(a.lang) - LANGS.indexOf(b.lang) : a.day < b.day ? 1 : -1))
-    .slice(0, 14);
+    .slice(0, LANGS.length * 7);
   return data;
 }

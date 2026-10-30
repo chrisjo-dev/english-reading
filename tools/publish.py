@@ -260,12 +260,20 @@ def patch_page(lang, day):
             f'<img class="thumb" src="thumb.png" width="76" height="76" alt="">\n    <div class="date">',
             1,
         )
+    # 지난 날짜에도 "오늘의"가 붙어 헷갈렸다(이슈 #19): 제목은 "○○ 읽기, 10월 20일"
+    page = re.sub(r"<title>오늘의 ([^<]+ 읽기, [^<]+)</title>", r"<title>\1</title>", page, count=1)
+    # 공개로 바뀐 언어(독일어, 2026-10-30)의 지난 페이지에서 검색엔진 숨김을 걷는다
+    if not L.get("noindex", False):
+        page = page.replace('<meta name="robots" content="noindex">\n', "", 1)
     if 'class="lang-row"' not in page and '<div class="date">' in page:
         # 다른 언어 지난 지문 링크는 카드 맨 위(사진 아래, 날짜 위) 알약 줄로. 소개 문단 끝에 두면
         # 작은 휴대폰(320x568)에서 첫 화면 밖으로 밀렸다(이슈 #19 4차). 예전 자리의 링크는 지운다.
         page = page.replace('<a href="../../">다른 언어</a>', "", 1)
         page = re.sub(r'<a class="lang-go" href="[^"]*">[^<]*</a>', "", page)
         page = page.replace('<div class="date">', f'<p class="lang-row">{other_lang_links(lang)}</p>\n    <div class="date">', 1)
+    else:  # 공개 언어가 바뀌면(독일어 공개 등) 줄을 지금 목록으로 맞춘다
+        row = f'<p class="lang-row">{other_lang_links(lang)}</p>'
+        page = re.sub(r'<p class="lang-row">.*?</p>', lambda m: row, page, count=1)
     if ".lang-row {" not in page and 'class="lang-row"' in page:
         page = re.sub(r"  \.intro a\.lang-go \{[^}]*\}\n", "", page)  # 2차 때 넣은 CSS 를 새 것으로 바꾼다
         page = page.replace("  .gnb {", LANG_GO_CSS + "  .gnb {", 1)
@@ -410,7 +418,7 @@ def rebuild_root():
     모양: {"date", "words_total"(올라간 지문 전체의 주요 단어 수),
            "langs": {code: {"count", "latest", "topic", "sentences"(앞 4문장, 원문 표기 그대로),
                             "chips", "answer"(1번 모범 해석), "words"}},
-           "recent"(두 언어 최근 7일, 최대 14편. 첫 화면의 이번 주 달력과 주제 띠에 씀)}
+           "recent"(공개 언어마다 최근 7일. 첫 화면의 이번 주 달력과 주제 띠에 씀)}
     """
     data, recent = {"date": "", "words_total": 0, "langs": {}, "recent": []}, []
     for code in langs.LANGS:
@@ -435,7 +443,7 @@ def rebuild_root():
                 data["words_total"] += len(json.loads(f.read_text(encoding="utf-8")).get("words", []))
         recent += [{"lang": code, "day": d, "topic": entry(code, d)["topic"]} for d in days[:7]]
     order = list(langs.LANGS)
-    data["recent"] = sorted(recent, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)[:14]
+    data["recent"] = sorted(recent, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)[:7 * len(data["langs"])]
     (ROOT / "latest.json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     write_sitemap()
 

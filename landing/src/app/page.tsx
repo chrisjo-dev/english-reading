@@ -76,6 +76,7 @@ export default function Home() {
             <nav className="week-all" id="past" aria-label="언어별 지난 지문">
               <a href="/en/archive/">영어 지난 지문 전체 보기<span aria-hidden="true">→</span></a>
               <a href="/ja/archive/">일본어 지난 지문 전체 보기<span aria-hidden="true">→</span></a>
+              <a href="/de/archive/">독일어 지난 지문 전체 보기<span aria-hidden="true">→</span></a>
             </nav>
           </div>
         </section>

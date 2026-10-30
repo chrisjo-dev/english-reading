@@ -9,6 +9,7 @@ import json
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 from unittest.mock import patch
 
@@ -75,8 +76,9 @@ class DeLangFlagsTest(unittest.TestCase):
     def test_email_is_true(self):
         self.assertTrue(self.L.get("email", True), "email 플래그가 True여야 합니다 (Phase 2: 메일 발송 활성화)")
 
-    def test_noindex_is_true(self):
-        self.assertTrue(self.L.get("noindex", False), "noindex 플래그가 True여야 합니다")
+    def test_noindex_is_false_after_launch(self):
+        # 2026-10-30 공식 공개(이슈 #19). 숨김 동작 자체는 아래 Noindex 테스트가 플래그를 잠시 켜서 확인한다.
+        self.assertFalse(self.L.get("noindex", False), "공개 후에는 noindex 플래그가 False여야 합니다")
 
     def test_chunks_is_true(self):
         self.assertTrue(self.L.get("chunks", False), "chunks 플래그가 True여야 합니다")
@@ -306,6 +308,9 @@ class DeNoindexRenderTest(unittest.TestCase):
     """render() 가 de 언어에 noindex 메타 태그를 삽입하는지 검사한다."""
 
     def setUp(self):
+        # 숨김(noindex) 동작을 확인하려고 이 테스트 동안만 독일어를 비공개로 둔다(실제로는 2026-10-30 공개)
+        _hide = mock.patch.dict(langs.LANGS["de"], {"noindex": True})
+        _hide.start(); self.addCleanup(_hide.stop)
         self.tmp = Path(tempfile.mkdtemp())
         content_dir = self.tmp / "content" / "de"
         content_dir.mkdir(parents=True)
@@ -357,6 +362,9 @@ class DeNoindexPublishTest(unittest.TestCase):
     """write_sitemap() 과 rebuild_root() 가 de 를 제외하는지 검사한다."""
 
     def setUp(self):
+        # 숨김(noindex) 동작을 확인하려고 이 테스트 동안만 독일어를 비공개로 둔다(실제로는 2026-10-30 공개)
+        _hide = mock.patch.dict(langs.LANGS["de"], {"noindex": True})
+        _hide.start(); self.addCleanup(_hide.stop)
         self.tmp = Path(tempfile.mkdtemp())
         # en 콘텐츠 준비
         en_dir = self.tmp / "content" / "en"
@@ -553,6 +561,9 @@ class DeRebuildListsNoindexTest(unittest.TestCase):
     """rebuild_lists() 가 de 목록/아카이브 페이지에 noindex 메타를 삽입하는지 검사한다."""
 
     def setUp(self):
+        # 숨김(noindex) 동작을 확인하려고 이 테스트 동안만 독일어를 비공개로 둔다(실제로는 2026-10-30 공개)
+        _hide = mock.patch.dict(langs.LANGS["de"], {"noindex": True})
+        _hide.start(); self.addCleanup(_hide.stop)
         self.tmp = Path(tempfile.mkdtemp())
         # days_of() 가 확인하는 index.html 준비
         day_dir = self.tmp / "de" / "2026-10-28"
