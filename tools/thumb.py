@@ -2,7 +2,7 @@
 
 사용: python3 tools/thumb.py en 2026-10-12 [분야] [--photo 사진파일]
 분야: science, tech, society, future, culture, space (생략하면 요일별 기본 분야)
-메일 상단, 날짜 페이지 상단, 링크 미리보기(OG)에 같은 이미지를 쓴다.
+메일 상단과 링크 미리보기(OG)에 쓴다. 사진이 있는 날은 글 없는 사진(photo.jpg)도 남겨 날짜 페이지 배너와 지난 지문 목록에 쓴다.
 
 OPENAI_API_KEY 가 있으면 기사에 맞는 사진을 OpenAI 이미지 API(gpt-image-1-mini, low)로 만들어 전체에 깔고
 왼쪽 아래에 분야, 제목, 날짜를 올린다. 키가 없거나 생성이 실패하면 예전처럼 분야 일러스트로 만든다(발행은 멈추지 않는다).
@@ -204,14 +204,19 @@ def _wrap(d, text, f, max_w):
     return lines
 
 
+def cover(pic, w, h):
+    """가운데를 기준으로 잘라 w x h 를 꽉 채운다."""
+    k = max(w / pic.width, h / pic.height)
+    pic = pic.resize((math.ceil(pic.width * k), math.ceil(pic.height * k)), Image.LANCZOS)
+    x0, y0 = (pic.width - w) // 2, (pic.height - h) // 2
+    return pic.crop((x0, y0, x0 + w, y0 + h))
+
+
 def compose(lang, day, cat, topic, pic):
     """사진을 1200x630 전체에 깔고(가운데 기준으로 잘라) 왼쪽을 어둡게 눌러 흰 글씨를 올린다."""
     date = dt.date.fromisoformat(day)
     label, color, _ = CATS[cat]
-    k = max(W / pic.width, H / pic.height)
-    pic = pic.resize((math.ceil(pic.width * k), math.ceil(pic.height * k)), Image.LANCZOS)
-    x0, y0 = (pic.width - W) // 2, (pic.height - H) // 2
-    img = pic.crop((x0, y0, x0 + W, y0 + H)).convert("RGBA")
+    img = cover(pic, W, H).convert("RGBA")
     # 왼쪽 어둡게: 0~48% 는 .78→.45, 48~78% 는 .45→0 (시안의 linear-gradient 와 같다)
     shade = Image.new("L", (W, 1))
     for x in range(W):
@@ -262,6 +267,8 @@ def build(lang, day, cat=None, pic=None):
             small = compose(lang, day, cat, topic, pic).convert("RGB").resize((W // S, H // S), Image.LANCZOS)
             # 사진 PNG 는 0.6~1MB 라 메일에 무겁다. 256색으로 줄이면 겉보기는 같고 200~400KB 가 된다(파일 이름 thumb.png 는 그대로)
             small.quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG).save(out, optimize=True, pnginfo=meta)
+            # 날짜 페이지 배너와 지난 지문 목록에는 글 없는 사진을 쓴다(시안 P1, P4)
+            cover(pic, 1200, 630).save(out.with_name("photo.jpg"), quality=82, optimize=True, progressive=True)
             return out
         except Exception as e:
             print(f"thumb: 사진 합성 실패 {type(e).__name__}, 일러스트로 만든다", file=sys.stderr)

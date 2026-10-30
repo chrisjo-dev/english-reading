@@ -52,6 +52,8 @@ class TestThumb(unittest.TestCase):
         self.assertEqual(im.size, (1200, 630))
         self.assertTrue(thumb.is_photo(self.out))
         self.assertLess(self.out.stat().st_size, 600_000)
+        ph = Image.open(self.out.with_name("photo.jpg"))  # 페이지 배너용 글 없는 사진
+        self.assertEqual((ph.format, ph.size), ("JPEG", (1200, 630)))
         # 왼쪽은 어둡게 눌리고 오른쪽 끝은 사진 그대로
         rgb = im.convert("RGB")
         self.assertLess(sum(rgb.getpixel((20, 300))), sum((40, 90, 160)))
@@ -77,6 +79,7 @@ class TestThumb(unittest.TestCase):
         with mock.patch.object(thumb, "compose", side_effect=ValueError("bad")):
             thumb.build("en", DAY, "science", Image.new("RGB", (1536, 1024)))
         self.assertFalse(thumb.is_photo(self.out))
+        self.assertFalse(self.out.with_name("photo.jpg").exists())
 
     def test_title_without_spaces_is_cut_to_width(self):
         d = ImageDraw.Draw(Image.new("RGB", (10, 10)))
@@ -98,3 +101,38 @@ class TestThumb(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestPageHero(unittest.TestCase):
+    """사진이 있는 날은 날짜 페이지 상단에 글 없는 사진 배너(시안 P1), 없는 날은 예전 작은 썸네일."""
+
+    def setUp(self):
+        import subprocess
+        import publish
+        self.publish = publish
+        self.tmp = Path(tempfile.mkdtemp())
+        (self.tmp / "en" / DAY).mkdir(parents=True)
+        orig = subprocess.run(["git", "show", f"edd0f36:en/{DAY}/index.html"], cwd=ROOT, capture_output=True, text=True, check=True).stdout
+        (self.tmp / "en" / DAY / "index.html").write_text(orig, encoding="utf-8")
+        self.patch = mock.patch.object(publish, "ROOT", self.tmp)
+        self.patch.start()
+        self.page = self.tmp / "en" / DAY / "index.html"
+
+    def tearDown(self):
+        self.patch.stop()
+        shutil.rmtree(self.tmp)
+
+    def test_photo_day_gets_hero_instead_of_small_thumb(self):
+        (self.tmp / "en" / DAY / "photo.jpg").write_bytes(b"x")
+        self.publish.patch_page("en", DAY)
+        once = self.page.read_text(encoding="utf-8")
+        self.assertIn('<div class="hero"><img src="photo.jpg"', once)
+        self.assertNotIn('<img class="thumb"', once)
+        self.publish.patch_page("en", DAY)
+        self.assertEqual(self.page.read_text(encoding="utf-8"), once)
+
+    def test_day_without_photo_keeps_small_thumb(self):
+        self.publish.patch_page("en", DAY)
+        page = self.page.read_text(encoding="utf-8")
+        self.assertIn('<img class="thumb" src="thumb.png"', page)
+        self.assertNotIn('class="hero"', page)

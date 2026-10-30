@@ -223,7 +223,18 @@ def patch_page(lang, day):
             f'<meta name="twitter:card" content="summary_large_image">\n'
         )
         page = page.replace("<link rel=\"stylesheet\"", meta + "<link rel=\"stylesheet\"", 1)
-    if 'class="thumb"' not in page:
+    photo = (ROOT / lang / day / "photo.jpg").exists()
+    if photo and 'class="hero"' not in page:
+        # 사진이 있는 날은 OG 썸네일(글씨, 그림자가 든 thumb.png) 대신 글 없는 사진을 카드 맨 위 배너로(시안 design/article-thumb P1)
+        page = re.sub(r'<img class="thumb"[^>]*>\n\s*', "", page, count=1)
+        page = page.replace(
+            "  .gnb {",
+            "  .top { position: relative; }\n  .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }\n"
+            "  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }\n  .gnb {",
+            1,
+        )
+        page = page.replace('<div class="date">', '<div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>\n    <div class="date">', 1)
+    if not photo and 'class="thumb"' not in page:
         page = page.replace(
             "  .gnb {",
             "  .top { position: relative; }\n  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }\n  .gnb {",
@@ -323,9 +334,13 @@ def rebuild_lists(lang):
                     groups.append("    </div>\n  </section>")
                 month = e["month"]
                 groups.append(f'  <section class="month">\n    <h2>{month}</h2>\n    <div class="card">')
+            # 사진이 있는 날은 글 없는 사진을 둥근 네모로(시안 P4), 없는 날은 예전 일러스트 썸네일
+            img = (f'<img class="ph" src="{p}{e["day"]}/photo.jpg" width="56" height="56" alt="" loading="lazy">'
+                   if (ROOT / lang / e["day"] / "photo.jpg").exists() else
+                   f'<img src="{p}{e["day"]}/thumb.png" width="56" height="56" alt="" loading="lazy">')
             groups.append(
                 f'      <a class="item" href="{p}{e["day"]}/" data-cat="{e["cat"]}" data-q="{html.escape(e["q"])}">'
-                f'<img src="{p}{e["day"]}/thumb.png" width="56" height="56" alt="" loading="lazy">'
+                f'{img}'
                 f'<span><span class="d">{e["label"]}<span class="c">{e["cat_label"]}</span></span>'
                 f'<span class="t">{html.escape(e["topic"])}</span></span></a>'
             )
@@ -458,6 +473,7 @@ ARCHIVE = r"""<!doctype html>
   .item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid #f2f4f6; color: inherit; text-decoration: none; }
   .item.first { border-top: 0; }
   .item img { flex: none; width: 56px; height: 56px; object-fit: cover; object-position: 100% 50%; }
+  .item img.ph { object-position: 50% 50%; border-radius: 14px; }
   .d { display: block; font-size: 14px; color: #8b95a1; font-weight: 600; }
   .c { margin-left: 8px; font-size: 12px; color: #3182f6; }
   .t { display: block; font-size: 17px; font-weight: 700; color: #191f28; margin-top: 2px; }
