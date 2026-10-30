@@ -1,16 +1,26 @@
-"""날짜 페이지의 주제어와 분야 일러스트로 썸네일(<언어>/YYYY-MM-DD/thumb.png, 1200x630)을 만든다.
+"""날짜 페이지의 썸네일(<언어>/YYYY-MM-DD/thumb.png, 1200x630)을 만든다. 시안: design/article-thumb T11~T13.
 
-사용: python3 tools/thumb.py en 2026-10-12 [분야]
+사용: python3 tools/thumb.py en 2026-10-12 [분야] [--photo 사진파일]
 분야: science, tech, society, future, culture, space (생략하면 요일별 기본 분야)
 메일 상단, 날짜 페이지 상단, 링크 미리보기(OG)에 같은 이미지를 쓴다.
+
+OPENAI_API_KEY 가 있으면 기사에 맞는 사진을 OpenAI 이미지 API(gpt-image-1-mini, low)로 만들어 전체에 깔고
+왼쪽 아래에 분야, 제목, 날짜를 올린다. 키가 없거나 생성이 실패하면 예전처럼 분야 일러스트로 만든다(발행은 멈추지 않는다).
+사진 썸네일은 PNG 메타데이터(thumb=photo)로 표시해 두고, 다시 만들 때는 새로 그리지 않고 그대로 둔다(THUMB_REDRAW=1 이면 다시 그린다).
 """
+import base64
 import datetime as dt
+import io
+import json
 import math
+import os
 import re
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, PngImagePlugin
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
@@ -138,12 +148,118 @@ def fit(d, text, weight, size, max_w):
     return font(weight, size)
 
 
-def build(lang, day, cat=None):
+PHOTO_MODEL = "gpt-image-1-mini"
+PHOTO_STYLE = ("Editorial magazine photograph used as a news article thumbnail. Natural light, realistic, shallow depth of field, "
+               "calm and clean composition with one clear subject, landscape framing with some empty space on the left. "
+               "Absolutely no text, letters, numbers, logos or watermarks anywhere in the image.")
+
+
+def _plain(s):
+    return re.sub(r"\{([^|{}]+)\|[^{}]+\}", r"\1", s).replace("**", "")
+
+
+def photo_prompt(lang, day):
+    d = json.loads((ROOT / "content" / lang / f"{day}.json").read_text(encoding="utf-8"))
+    lead = " ".join(_plain(s["en"]) for s in d.get("sentences", [])[:3])
+    return (f"{PHOTO_STYLE}\nArticle topic (Korean): {d.get('topic', '')}. Article title (Korean): {d.get('title_ko', '')}. "
+            f"Headline: {_plain(d.get('headline', ''))}. Opening sentences: {lead}\n"
+            "Photograph the single most recognizable real-world scene or object from this article.")
+
+
+def photo(lang, day):
+    """기사에 맞는 사진(PIL 이미지). 키가 없거나 실패하면 None. 키와 응답 본문은 출력하지 않는다."""
+    key = os.environ.get("OPENAI_API_KEY", "").strip()
+    if not key or not (ROOT / "content" / lang / f"{day}.json").exists():
+        return None
+    body = json.dumps(dict(model=PHOTO_MODEL, prompt=photo_prompt(lang, day), size="1536x1024", quality="low", n=1)).encode()
+    req = urllib.request.Request("https://api.openai.com/v1/images/generations", body,
+                                 {"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+    try:
+        r = json.loads(urllib.request.urlopen(req, timeout=180).read())
+        return Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
+    except urllib.error.HTTPError as e:
+        print(f"thumb: 사진 생성 실패 HTTP {e.code}, 일러스트로 만든다", file=sys.stderr)
+    except Exception as e:  # 네트워크, 응답 형식 오류
+        print(f"thumb: 사진 생성 실패 {type(e).__name__}, 일러스트로 만든다", file=sys.stderr)
+    return None
+
+
+def _wrap(d, text, f, max_w):
+    """띄어쓰기 단위로 max_w 안에 줄을 나눈다(최대 2줄, 넘치면 마지막 줄을 …로 줄인다)."""
+    lines, cur = [], ""
+    for w in text.split():
+        t = (cur + " " + w).strip()
+        if d.textlength(t, font=f) <= max_w or not cur:
+            cur = t
+        else:
+            lines.append(cur); cur = w
+    lines.append(cur)
+    if len(lines) > 2:
+        last = " ".join(lines[1:])
+        while d.textlength(last + "…", font=f) > max_w and len(last) > 1:
+            last = last[:-1]
+        lines = [lines[0], last.rstrip() + "…"]
+    return lines
+
+
+def compose(lang, day, cat, topic, pic):
+    """사진을 1200x630 전체에 깔고(가운데 기준으로 잘라) 왼쪽을 어둡게 눌러 흰 글씨를 올린다."""
+    date = dt.date.fromisoformat(day)
+    label, color, _ = CATS[cat]
+    k = max(W / pic.width, H / pic.height)
+    pic = pic.resize((math.ceil(pic.width * k), math.ceil(pic.height * k)), Image.LANCZOS)
+    x0, y0 = (pic.width - W) // 2, (pic.height - H) // 2
+    img = pic.crop((x0, y0, x0 + W, y0 + H)).convert("RGBA")
+    # 왼쪽 어둡게: 0~48% 는 .78→.45, 48~78% 는 .45→0 (시안의 linear-gradient 와 같다)
+    shade = Image.new("L", (W, 1))
+    for x in range(W):
+        t = x / W
+        a = .78 - (.78 - .45) * t / .48 if t < .48 else (.45 * (1 - (t - .48) / .30) if t < .78 else 0)
+        shade.putpixel((x, 0), round(255 * a))
+    dark = Image.new("RGBA", (W, H), (10, 14, 22, 255))
+    dark.putalpha(shade.resize((W, H)))
+    img.alpha_composite(dark)
+    d = ImageDraw.Draw(img)
+    x, white, soft = 80 * S, (255, 255, 255), (255, 255, 255, 219)
+    d.text((x, 92 * S), langs.get(lang)["site"], font=font("SemiBold", 30), fill=soft)
+    tf = font("ExtraBold", 44)
+    lines = _wrap(d, topic, tf, 640 * S)
+    date_y = 630 * S - 76 * S - 38 * S          # 날짜 줄(32px) 위끝
+    title_y = date_y - 22 * S - len(lines) * 58 * S
+    chip_y = title_y - 22 * S - 50 * S
+    chip = font("SemiBold", 26)
+    cw = d.textlength(label, font=chip)
+    d.rounded_rectangle((x, chip_y, x + cw + 36 * S, chip_y + 50 * S), 14 * S, fill=color)
+    d.text((x + 18 * S, chip_y + 25 * S), label, font=chip, fill=white, anchor="lm")
+    for i, line in enumerate(lines):
+        d.text((x, title_y + i * 58 * S), line, font=tf, fill=white)
+    d.text((x, date_y), f"{date.month}월 {date.day}일 {DAYS[date.weekday()]}요일", font=font("SemiBold", 32), fill=soft)
+    return img
+
+
+def is_photo(path):
+    try:
+        return Image.open(path).info.get("thumb") == "photo"
+    except Exception:
+        return False
+
+
+def build(lang, day, cat=None, pic=None):
     date = dt.date.fromisoformat(day)
     cat = cat or WEEKDAY[date.weekday()]
     label, color, soft = CATS[cat]
     page = (ROOT / lang / day / "index.html").read_text(encoding="utf-8")
     topic = re.search(r"<h1>.*?<em>(.*?)</em>", page, re.S).group(1).strip()
+    out = ROOT / lang / day / "thumb.png"
+    if pic is None and is_photo(out) and os.environ.get("THUMB_REDRAW") != "1":
+        return out  # 이미 사진 썸네일이면 다시 만들지 않는다(같은 날 다시 발행해도 비용이 들지 않고 그림도 그대로)
+    pic = pic or photo(lang, day)
+    if pic is not None:
+        meta = PngImagePlugin.PngInfo(); meta.add_text("thumb", "photo")
+        small = compose(lang, day, cat, topic, pic).convert("RGB").resize((W // S, H // S), Image.LANCZOS)
+        # 사진 PNG 는 0.6~1MB 라 메일에 무겁다. 256색으로 줄이면 겉보기는 같고 200~400KB 가 된다(파일 이름 thumb.png 는 그대로)
+        small.quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG).save(out, optimize=True, pnginfo=meta)
+        return out
 
     img = Image.new("RGBA", (W, H), (255, 255, 255, 255))
     d = ImageDraw.Draw(img)
@@ -163,10 +279,12 @@ def build(lang, day, cat=None):
     d.text((x, 470 * S), f"{date.month}월 {date.day}일 {DAYS[date.weekday()]}요일", font=font("SemiBold", 32), fill=SUB)
     d.rounded_rectangle((x, 520 * S, x + 64 * S, 528 * S), 4 * S, fill=color)
 
-    out = ROOT / lang / day / "thumb.png"
     img.convert("RGB").resize((W // S, H // S), Image.LANCZOS).save(out, optimize=True)
     return out
 
 
 if __name__ == "__main__":
-    print(build(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None))
+    args, pic = sys.argv[1:], None
+    if "--photo" in args:  # 이미 만든 사진으로 다시 합성(API 를 부르지 않는다)
+        i = args.index("--photo"); pic = Image.open(args[i + 1]).convert("RGB"); del args[i:i + 2]
+    print(build(args[0], args[1], args[2] if len(args) > 2 else None, pic))

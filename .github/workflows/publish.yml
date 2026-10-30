@@ -176,6 +176,9 @@ jobs:
             python tools/render.py ${pair%%:*} ${pair#*:}
             python tools/publish.py ${pair%%:*} ${pair#*:}
           done
+        env:
+          # 썸네일 사진(tools/thumb.py). 비어 있거나 생성이 실패하면 분야 일러스트로 만들고 발행은 계속한다.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Commit
         run: |
