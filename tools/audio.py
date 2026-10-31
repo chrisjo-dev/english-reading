@@ -127,12 +127,12 @@ def voicevox(L, sentences, targets, tmp):
         to_mp3(wav, target, "96k")
 
 
-def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
+def qwen(c, lang, out_dir, max_retries=4, trim_model=None):
     """Qwen3-TTS(독일어)로 하루치 오디오를 모두 생성한다.
 
     - 문장 s{i}.mp3, 단어 w{i}.mp3, 고급 어휘 v{i}.mp3 를 out_dir 에 저장한다.
     - 이미 파일이 있으면 건너뛴다.
-    - 각 항목을 faster-whisper base 로 검증하고 합격할 때까지 QWEN_SEEDS 순서로 재시도한다.
+    - 각 항목을 faster-whisper(qw.WHISPER_GATE_MODEL = small)로 검증하고 합격할 때까지 QWEN_SEEDS 순서로 재시도한다.
       - 문장(s*, a*): 절대 단어 오류 수 ≤ 1 이면 합격
       - 단어(w*, v*): 트림된 클립 WER == 0.0 이고 길이 ≥ 0.25초이면 합격
                       트림 실패 시 다음 시드로; 마지막 시도에서 실패하면 단독 생성 폴백
@@ -188,6 +188,7 @@ def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
     print("qwen model:", json.dumps(model_info))
     qw.generate(m, "Guten Tag.")  # warmup: 첫 호출 비용을 미리 흡수
 
+    trim_model = trim_model or qw.WHISPER_GATE_MODEL
     wm = WhisperModel(trim_model, device="cpu", compute_type="int8")
 
     warn_list = []

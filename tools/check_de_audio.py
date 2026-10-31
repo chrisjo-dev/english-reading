@@ -1,6 +1,6 @@
 """독일어 오디오 품질 검사 스크립트.
 
-faster-whisper base 로 de/<day>/audio/ 의 모든 파일을 전사해
+faster-whisper(tts_qwen.WHISPER_GATE_MODEL) 로 de/<day>/audio/ 의 모든 파일을 전사해
 새 게이트 규칙을 통과하지 못하는 파일과 거의 무음인 파일을 보고한다.
 
 사용:
@@ -144,17 +144,19 @@ def main():
     ap = argparse.ArgumentParser(description="독일어 오디오 품질 검사")
     ap.add_argument("--days", nargs="*", help="검사할 날짜(없으면 전체)")
     ap.add_argument("--out", help="보고서 출력 경로")
-    ap.add_argument("--model", default="base", help="Whisper 크기 (기본 base)")
+    ap.add_argument("--model", default=None, help="Whisper 크기 (기본값: tts_qwen.WHISPER_GATE_MODEL)")
     ap.add_argument("--small-too", action="store_true",
-                    help="경계값 파일을 small 모델로 추가 전사")
+                    help="경계값 파일을 small 모델로 추가 전사 (이미 small 이면 무시)")
     args = ap.parse_args()
 
+    import tts_qwen as qw
     from faster_whisper import WhisperModel
 
-    print(f"Whisper {args.model} 로드 중...", flush=True)
-    wm = WhisperModel(args.model, device="cpu", compute_type="int8")
+    model = args.model or qw.WHISPER_GATE_MODEL
+    print(f"Whisper {model} 로드 중...", flush=True)
+    wm = WhisperModel(model, device="cpu", compute_type="int8")
     small_wm = None
-    if args.small_too and args.model != "small":
+    if args.small_too and model != "small":
         print("Whisper small 로드 중...", flush=True)
         small_wm = WhisperModel("small", device="cpu", compute_type="int8")
 

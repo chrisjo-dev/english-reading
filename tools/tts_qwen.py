@@ -33,6 +33,8 @@ TARGET_LUFS = -18.0
 TEMPO = 1.0  # C2 최종본은 atempo 1.0(rebuild.py C2 1.0)
 SR_MP3 = 44100
 CARRIER = "Das Wort heißt: {}."
+# 게이트 검증에 쓸 Whisper 모델 크기. audio.py 와 check_de_audio.py 가 함께 참조한다.
+WHISPER_GATE_MODEL = "small"
 
 
 def log(*a):
