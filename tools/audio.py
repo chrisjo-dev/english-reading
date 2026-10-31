@@ -74,8 +74,6 @@ def _needs_regen(target: "Path", text_hash: str, sidecar_data: dict, sidecar_exi
 # ---------- Qwen3-TTS(독일어) 설정 ----------
 # 재시도 시드 순서: 벤치마크에서 ~30% 항목이 seed=7 에서 실패, 이 시드들은 통과율이 높다.
 QWEN_SEEDS = [7, 11, 12, 13, 17, 19, 23, 29]
-# WER 이 이 값 이하면 합격으로 간주하고 재시도를 중단한다.
-QWEN_ACCEPT_WER = 0.3
 
 
 def plain(text):

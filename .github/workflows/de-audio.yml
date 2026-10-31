@@ -65,7 +65,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: /home/runner/.cache/hf-qwen
-          key: hf-${{ env.MODEL_ID }}-whisper-base-v3
+          key: hf-${{ env.MODEL_ID }}-whisper-small-v1  # 검사 모델을 small 로 바꿔 캐시 키도 바꾼다(키가 맞으면 새 모델을 저장하지 않는다)
 
       - name: Install
         run: |
