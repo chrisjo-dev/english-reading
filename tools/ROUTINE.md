@@ -71,7 +71,7 @@
    - `answers`: 문장 순서대로의 모범 해석.
    - `advanced`: 6~8개. `confuse`는 혼동 주의가 없으면 `null`, 있으면 "precious(소중한)와 혼동 주의" 형태. `example`의 해당 단어는 `**단어**`. `example_ko`는 `example` 문장의 자연스러운 한국어 번역(필수). 예: `"example_ko": "지지자들은 30분 안에 주문을 받을 수 있는 편리함을 칭찬합니다."`
    - `source`: 검색한 기사면 `{"title": "기사 제목 (매체, YYYY-MM-DD)", "url": "..."}`, 검색 없이 쓴 날은 `null`. 출처 없는 글은 페이지에 "특정 기사를 바탕으로 하지 않은 학습용 글"로 표시됩니다.
-   - `photo_scene`: 맥 미니에서 FLUX.1 schnell 로 썸네일 사진을 생성할 때 쓰는 장면 설명 **(선택 사항)**. 영어 한 문장, 40~300자. 구체적이고 시각적인 실제 장면을 묘사하고, 글자나 간판이 보이는 장면은 피한다. 예: `"A scientist in a white lab coat examining a glowing blue crystal under a microscope."` 이 필드가 있으면 맥 미니 LaunchAgent(tools/local-photo/make_photos.py)가 발행 직전에 FLUX.1 사진을 생성해 `content/en/YYYY-MM-DD.photo.jpg` 로 커밋한다. 없으면 OpenAI API 폴백이나 일러스트를 쓴다.
+   - `photo_scene`: 맥 미니 이미지 API 로 썸네일 사진을 생성할 때 쓰는 장면 설명 **(선택 사항)**. 영어 한 문장, 40~300자. 구체적이고 시각적인 실제 장면을 묘사하고, 글자나 간판이 보이는 장면은 피한다. 예: `"A scientist in a white lab coat examining a glowing blue crystal under a microscope."` 이 필드가 있으면 발행 시 맥 미니 이미지 API(tools/image-api/server.py, Tailscale 경유)가 FLUX.1 사진을 생성해 썸네일에 쓴다. 없거나 API 가 응답하지 않으면 OpenAI API 폴백이나 일러스트를 쓴다.
    - `levels`: **기초(A 수준) 병행 지문**. 반드시 main 지문과 같은 수의 문장(1:1 대응)으로 씁니다. 없어도 발행은 가능하지만 기초 구독자에게 지문이 전달되지 않습니다. 가능하면 항상 작성합니다.
      형식: `{"a": {"sentences": [{"en": "...", "chunks": [...]}, ...], "answers": ["한국어 해석", ...]}}`
      작성 원칙:

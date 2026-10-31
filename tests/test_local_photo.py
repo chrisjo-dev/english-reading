@@ -1,298 +1,413 @@
-"""tools/local-photo/make_photos.py 와 check_content.py 의 photo_scene 검증 단위 테스트.
+"""이미지 API 서버(tools/image-api/server.py) 단위 및 통합 테스트.
+
+테스트 항목:
+  - 서버 인증: 헤더 없음, 잘못된 토큰, 올바른 토큰
+  - 대기열(429): 큐가 꽉 찼을 때
+  - 크기 검증: 16 배수 아님, 최대 초과
+  - OpenAI 호환 응답: 가짜 mflux 로 PNG 생성 확인
+  - thumb.photo() 로컬 API 경로: env + photo_scene 있을 때 로컬 API 사용
+  - thumb.photo() 폴백: 로컬 API 실패 시 OpenAI 경로
 
 실행: python -m pytest -q tests/test_local_photo.py
 """
+
+import base64
 import io
 import json
 import os
+import shutil
+import socket
 import stat
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
+import urllib.error
+import urllib.request
 from pathlib import Path
 from unittest import mock
 
+from PIL import Image
+
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "tools"))
-sys.path.insert(0, str(REPO / "tools" / "local-photo"))
+sys.path.insert(0, str(REPO / "tools" / "image-api"))
+import thumb  # noqa: E402
 
-import check_content as cc  # noqa: E402
-import make_photos  # noqa: E402
-
-
-# ---------------------------------------------------------------------------
-# 헬퍼: 최소 유효 content JSON 생성
-# ---------------------------------------------------------------------------
-def _base_doc(**extra):
-    d = {
-        "date": "2026-10-30",
-        "category": "science",
-        "topic": "테스트",
-        "title_ko": "테스트 제목",
-        "headline": "Test headline",
-        "chips": ["5문장", "B1 위주", "약 3분"],
-        "sentences": [
-            {"en": "The sky is blue.", "b2": False,
-             "chunks": [["The sky", "하늘은"], ["is blue.", "파랗다"]]}
-        ],
-        "words": [["sky", "하늘"]],
-        "points": [{"title": "포인트", "body": "설명"}],
-        "answers": ["하늘은 파랗다."],
-        "advanced": [],
-        "source": None,
-        "levels": {
-            "a": {
-                "sentences": [
-                    {"en": "The sky is blue.",
-                     "chunks": [["The sky", "하늘은"], ["is blue.", "파랗다"]]}
-                ],
-                "answers": ["하늘은 파랗다."]
-            }
-        },
-    }
-    d.update(extra)
-    return d
+DAY   = "2026-10-30"
+SCENE = (
+    "A scientist in a white lab coat examining glowing crystals under "
+    "a microscope in a clean laboratory setting."
+)
 
 
-def _write_content(root: Path, lang: str, day: str, doc: dict) -> Path:
-    d = root / "content" / lang
-    d.mkdir(parents=True, exist_ok=True)
-    p = d / f"{day}.json"
-    p.write_text(json.dumps(doc, ensure_ascii=False))
-    return p
+# ── 헬퍼 ──────────────────────────────────────────────────────────────────────
+def _free_port() -> int:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(("127.0.0.1", 0))
+        return s.getsockname()[1]
 
 
-# ---------------------------------------------------------------------------
-# 1. check_content.py photo_scene 검증
-# ---------------------------------------------------------------------------
-class TestPhotoSceneValidation(unittest.TestCase):
-    def setUp(self):
-        self.tmp = Path(tempfile.mkdtemp())
-        self.day = "2026-10-30"
-
-    def _check(self, scene_val, include=True):
-        doc = _base_doc()
-        if include:
-            doc["photo_scene"] = scene_val
-        p = _write_content(self.tmp, "en", self.day, doc)
-        errors, _ = cc.check(p)
-        return errors
-
-    def test_valid_scene_no_error(self):
-        scene = "A scientist in a white lab coat examining glowing crystals under a microscope in a clean laboratory setting."
-        self.assertEqual([e for e in self._check(scene) if "photo_scene" in e], [])
-
-    def test_missing_field_allowed(self):
-        # photo_scene 없으면 아무 오류도 없어야 한다
-        self.assertEqual([e for e in self._check(None, include=False) if "photo_scene" in e], [])
-
-    def test_too_short_rejected(self):
-        errs = self._check("Short scene.")
-        self.assertTrue(any("photo_scene" in e and "40자" in e for e in errs))
-
-    def test_too_long_rejected(self):
-        long_scene = "A " + "very " * 60 + "long description of a scene."
-        errs = self._check(long_scene)
-        self.assertTrue(any("photo_scene" in e and "300자" in e for e in errs))
-
-    def test_exact_40_chars_ok(self):
-        scene = "A" * 40
-        self.assertEqual([e for e in self._check(scene) if "photo_scene" in e], [])
-
-    def test_exact_300_chars_ok(self):
-        scene = "A" * 300
-        self.assertEqual([e for e in self._check(scene) if "photo_scene" in e], [])
-
-    def test_301_chars_rejected(self):
-        errs = self._check("A" * 301)
-        self.assertTrue(any("photo_scene" in e and "300자" in e for e in errs))
-
-    def test_photo_scene_not_checked_for_markdown(self):
-        # photo_scene 에 ** 이 있어도 마크다운 오류로 잡히지 않아야 한다
-        scene = "A **bold** scientist working at a laboratory bench with microscopes and equipment."
-        # 길이가 40자 이상이면 통과 (마크다운 검사 skip 목록에 있으므로)
-        errors = self._check(scene)
-        self.assertEqual([e for e in errors if "photo_scene" in e], [])
-
-
-# ---------------------------------------------------------------------------
-# 2. make_photos.find_targets 선택 로직
-# ---------------------------------------------------------------------------
-SCENE_40 = "A biologist studying coral reef specimens under bright laboratory lights carefully."
-
-
-class TestFindTargets(unittest.TestCase):
-    def setUp(self):
-        self.tmp = Path(tempfile.mkdtemp())
-        self.day = "2026-10-30"
-
-    def _write(self, lang: str, doc: dict, photo_exists=False):
-        _write_content(self.tmp, lang, self.day, doc)
-        if photo_exists:
-            (self.tmp / "content" / lang / f"{self.day}.photo.jpg").write_bytes(b"fake")
-
-    def test_finds_json_with_scene_no_photo(self):
-        doc = _base_doc(photo_scene=SCENE_40)
-        self._write("en", doc)
-        targets = make_photos.find_targets(self.day, ["en"], repo=self.tmp)
-        self.assertEqual(len(targets), 1)
-        self.assertEqual(targets[0][0], "en")
-        self.assertEqual(targets[0][2], SCENE_40)
-
-    def test_skips_if_photo_already_exists(self):
-        doc = _base_doc(photo_scene=SCENE_40)
-        self._write("en", doc, photo_exists=True)
-        targets = make_photos.find_targets(self.day, ["en"], repo=self.tmp)
-        self.assertEqual(targets, [])
-
-    def test_skips_if_no_photo_scene(self):
-        doc = _base_doc()  # photo_scene 없음
-        self._write("en", doc)
-        targets = make_photos.find_targets(self.day, ["en"], repo=self.tmp)
-        self.assertEqual(targets, [])
-
-    def test_skips_if_photo_scene_empty(self):
-        doc = _base_doc(photo_scene="   ")
-        self._write("en", doc)
-        targets = make_photos.find_targets(self.day, ["en"], repo=self.tmp)
-        self.assertEqual(targets, [])
-
-    def test_skips_if_json_missing(self):
-        targets = make_photos.find_targets(self.day, ["en"], repo=self.tmp)
-        self.assertEqual(targets, [])
-
-    def test_multiple_langs(self):
-        for lang in ("en", "ja", "de"):
-            doc = _base_doc(photo_scene=SCENE_40)
-            self._write(lang, doc)
-        targets = make_photos.find_targets(self.day, ["en", "ja", "de"], repo=self.tmp)
-        self.assertEqual(len(targets), 3)
-        self.assertEqual({t[0] for t in targets}, {"en", "ja", "de"})
-
-    def test_partially_done(self):
-        # en 은 사진 있음, ja 는 없음
-        self._write("en", _base_doc(photo_scene=SCENE_40), photo_exists=True)
-        self._write("ja", _base_doc(photo_scene=SCENE_40))
-        targets = make_photos.find_targets(self.day, ["en", "ja"], repo=self.tmp)
-        self.assertEqual(len(targets), 1)
-        self.assertEqual(targets[0][0], "ja")
-
-
-# ---------------------------------------------------------------------------
-# 3. make_photos.generate_one 및 dry-run 동작
-# ---------------------------------------------------------------------------
 def _make_fake_mflux(tmp: Path) -> Path:
-    """--output 인자에 지정된 경로에 최소 PNG 를 쓰는 가짜 mflux-generate 스크립트."""
-    # Pillow 로 1x1 PNG bytes 생성
-    from PIL import Image
-    buf = io.BytesIO()
-    Image.new("RGB", (1216, 640), (100, 150, 200)).save(buf, "PNG")
-    png_bytes = buf.getvalue()
-
-    fake_bin = tmp / "fake_mflux"
-    fake_bin.write_text(
-        f"#!/usr/bin/env python3\n"
-        f"import sys\n"
-        f"from pathlib import Path\n"
-        f"args = sys.argv[1:]\n"
-        f"for i, a in enumerate(args):\n"
-        f"    if a == '--output' and i + 1 < len(args):\n"
-        f"        Path(args[i + 1]).write_bytes({png_bytes!r})\n"
-        f"        break\n"
+    """--output 경로에 최소 PNG 를 쓰는 가짜 mflux-generate 실행 파일."""
+    # 1×1 픽셀 PNG (stdlib 만 사용; 별도 라이브러리 불필요)
+    pixel_b64 = (
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/"
+        "5+hHgAHggJ/PchI6QAAAABJRU5ErkJggg=="
     )
-    fake_bin.chmod(fake_bin.stat().st_mode | stat.S_IXUSR | stat.S_IXGRP)
-    return fake_bin
+    script = tmp / "fake-mflux"
+    script.write_text(
+        f"#!{sys.executable}\n"
+        "import base64, sys\n"
+        f"PIXEL = base64.b64decode('{pixel_b64}')\n"
+        "args = sys.argv[1:]\n"
+        "for i, a in enumerate(args):\n"
+        "    if a == '--output' and i + 1 < len(args):\n"
+        "        open(args[i + 1], 'wb').write(PIXEL)\n"
+        "        break\n"
+    )
+    script.chmod(script.stat().st_mode | stat.S_IXUSR | stat.S_IXGRP)
+    return script
 
 
-class TestGenerateDryRun(unittest.TestCase):
+def _start_server(
+    tmp: Path, fake_mflux: Path
+) -> "tuple[subprocess.Popen, int, str]":
+    """테스트용 서버를 시작하고 (proc, port, token) 을 돌려준다."""
+    token = "test-token-abc123"
+    token_file = tmp / "token"
+    token_file.write_text(token)
+    token_file.chmod(0o600)
+
+    port = _free_port()
+    env = {
+        **os.environ,
+        "MFLUX_BIN": str(fake_mflux),
+        "FLUX_MODEL_DIR": "/fake/model",
+        "IMAGE_API_TOKEN_FILE": str(token_file),
+        "IMAGE_API_HOST": "127.0.0.1",
+        "IMAGE_API_PORT": str(port),
+    }
+    proc = subprocess.Popen(
+        [sys.executable, str(REPO / "tools" / "image-api" / "server.py")],
+        env=env,
+        stderr=subprocess.PIPE,
+    )
+    # 서버가 준비될 때까지 기다린다 (최대 5 초)
+    health_url = f"http://127.0.0.1:{port}/health"
+    for _ in range(50):
+        try:
+            urllib.request.urlopen(health_url, timeout=0.5)
+            break
+        except Exception:
+            if proc.poll() is not None:
+                raise RuntimeError(f"서버가 일찍 종료됐습니다 (port {port})")
+            time.sleep(0.1)
+    else:
+        proc.terminate()
+        raise RuntimeError(f"서버가 5 초 내에 시작되지 않았습니다 (port {port})")
+
+    return proc, port, token
+
+
+# ── 서버 통합 테스트 ───────────────────────────────────────────────────────────
+class TestImageAPIServer(unittest.TestCase):
+    """서버를 실제로 기동해 HTTP 동작을 검증합니다."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp())
+        cls.fake_mflux = _make_fake_mflux(cls.tmp)
+        cls.proc, cls.port, cls.token = _start_server(cls.tmp, cls.fake_mflux)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.proc.terminate()
+        cls.proc.wait(timeout=5)
+        shutil.rmtree(str(cls.tmp))
+
+    def _post(self, body: dict, token=None, expect_code: int = 200) -> dict:
+        data = json.dumps(body).encode()
+        headers: dict = {
+            "Content-Type": "application/json",
+            "Content-Length": str(len(data)),
+        }
+        if token is not None:
+            headers["Authorization"] = f"Bearer {token}"
+        req = urllib.request.Request(
+            f"http://127.0.0.1:{self.port}/v1/images/generations",
+            data=data,
+            headers=headers,
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.loads(resp.read())
+        except urllib.error.HTTPError as e:
+            if e.code == expect_code:
+                return json.loads(e.read())
+            raise
+
+    # ── 헬스 엔드포인트 ──────────────────────────────────────────────────────
+    def test_health_no_auth(self):
+        resp = json.loads(
+            urllib.request.urlopen(
+                f"http://127.0.0.1:{self.port}/health", timeout=5
+            ).read()
+        )
+        self.assertTrue(resp["ok"])
+        self.assertIn("busy", resp)
+
+    # ── 인증 ────────────────────────────────────────────────────────────────
+    def test_missing_auth_header_returns_401(self):
+        r = self._post({"prompt": "test"}, token=None, expect_code=401)
+        self.assertIn("error", r)
+
+    def test_wrong_token_returns_401(self):
+        r = self._post({"prompt": "test"}, token="wrong-token", expect_code=401)
+        self.assertIn("error", r)
+
+    def test_correct_token_returns_200(self):
+        r = self._post(
+            {"prompt": "A sunny mountain landscape.", "size": "32x16", "steps": 1},
+            token=self.token,
+        )
+        self.assertIn("data", r)
+        self.assertEqual(len(r["data"]), 1)
+        b64 = r["data"][0]["b64_json"]
+        img = Image.open(io.BytesIO(base64.b64decode(b64)))
+        self.assertEqual(img.format, "PNG")
+        self.assertIn("created", r)
+
+    # ── 크기 검증 ────────────────────────────────────────────────────────────
+    def test_size_not_multiple_of_16_returns_400(self):
+        r = self._post(
+            {"prompt": "test", "size": "100x200"}, token=self.token, expect_code=400
+        )
+        self.assertIn("error", r)
+
+    def test_size_exceeds_max_returns_400(self):
+        r = self._post(
+            {"prompt": "test", "size": "2048x2048"}, token=self.token, expect_code=400
+        )
+        self.assertIn("error", r)
+
+    # ── 기타 입력 검증 ────────────────────────────────────────────────────────
+    def test_n_not_1_returns_400(self):
+        r = self._post({"prompt": "test", "n": 2}, token=self.token, expect_code=400)
+        self.assertIn("error", r)
+
+    def test_missing_prompt_returns_400(self):
+        r = self._post({"size": "32x16"}, token=self.token, expect_code=400)
+        self.assertIn("error", r)
+
+
+# ── 429 대기열 단위 테스트 ─────────────────────────────────────────────────────
+class TestServerQueue(unittest.TestCase):
+    """대기열 로직을 server 모듈에서 직접 검증합니다."""
+
     def setUp(self):
-        self.tmp = Path(tempfile.mkdtemp())
-        self.fake_bin = _make_fake_mflux(self.tmp)
+        import server as s
+        self.s = s
+        self.orig = s._waiting
+        s._waiting = 0
 
-    def test_dry_run_writes_to_tmp_not_repo(self):
-        import logging
-        log = logging.getLogger("test")
-        day = "2026-10-30"
-        lang = "en"
-        dummy_out = self.tmp / "should_not_exist.jpg"
-        env_patch = {"FLUX_MODEL_DIR": "/fake/model", "MFLUX_BIN": str(self.fake_bin)}
-        with mock.patch.dict(os.environ, env_patch):
-            ok = make_photos.generate_one(lang, day, SCENE_40, dummy_out, dry_run=True, log=log)
-        self.assertTrue(ok)
-        # dry-run 이면 지정된 out_jpg 에 쓰지 않는다
-        self.assertFalse(dummy_out.exists())
-        # /tmp/<day>_<lang>.photo.jpg 에 생성됐는지 확인
-        import tempfile as tf
-        expected = Path(tf.gettempdir()) / f"{day}_{lang}.photo.jpg"
-        self.assertTrue(expected.exists())
-        from PIL import Image
-        img = Image.open(expected)
-        self.assertEqual(img.format, "JPEG")
+    def tearDown(self):
+        self.s._waiting = self.orig
+
+    def test_inc_waiting_fails_when_queue_full(self):
+        import server as s
+        s._waiting = s._MAX_WAIT   # 대기열이 꽉 찬 상태로 강제 설정
+        self.assertFalse(s._inc_waiting(), "꽉 찬 대기열에는 추가되면 안 됩니다")
+
+    def test_inc_waiting_succeeds_when_not_full(self):
+        import server as s
+        s._waiting = 0
+        result = s._inc_waiting()
+        self.assertTrue(result, "빈 대기열에는 추가돼야 합니다")
+        s._dec_waiting()  # 정리
 
 
-# ---------------------------------------------------------------------------
-# 4. 커밋 모드: 로컬 bare remote 로 실제 commit+push 검증
-# ---------------------------------------------------------------------------
-class TestCommitMode(unittest.TestCase):
-    def setUp(self):
-        self.tmp = Path(tempfile.mkdtemp())
-        self.fake_bin = _make_fake_mflux(self.tmp)
-        # bare remote
-        self.remote = self.tmp / "remote.git"
-        subprocess.run(["git", "init", "--bare", str(self.remote)], check=True, capture_output=True)
-        # clone
-        self.repo_path = self.tmp / "repo"
-        subprocess.run(["git", "clone", str(self.remote), str(self.repo_path)],
-                       check=True, capture_output=True)
-        # 초기 커밋
-        subprocess.run(["git", "-C", str(self.repo_path), "config", "user.email", "t@t.com"],
-                       check=True, capture_output=True)
-        subprocess.run(["git", "-C", str(self.repo_path), "config", "user.name", "Test"],
-                       check=True, capture_output=True)
-        init_file = self.repo_path / "README.md"
-        init_file.write_text("test")
-        subprocess.run(["git", "-C", str(self.repo_path), "add", "README.md"],
-                       check=True, capture_output=True)
-        subprocess.run(["git", "-C", str(self.repo_path), "commit", "-m", "init"],
-                       check=True, capture_output=True)
-        subprocess.run(["git", "-C", str(self.repo_path), "push", "-u", "origin", "main"],
-                       check=True, capture_output=True)
-        # content JSON
-        self.day = "2026-10-30"
-        _write_content(self.repo_path, "en", self.day, _base_doc(photo_scene=SCENE_40))
-
-    def test_commit_mode_creates_jpg_and_pushes(self):
-        env_patch = {"FLUX_MODEL_DIR": "/fake/model", "MFLUX_BIN": str(self.fake_bin)}
-        with mock.patch.object(make_photos, "REPO", self.repo_path), \
-             mock.patch.dict(os.environ, env_patch):
-            # pull 은 이미 clone 돼 있으므로 스킵하기 위해 dry_run=False 로 직접 generate_one 호출
-            out_jpg = self.repo_path / "content" / "en" / f"{self.day}.photo.jpg"
-            import logging
-            log = logging.getLogger("test")
-            ok = make_photos.generate_one("en", self.day, SCENE_40, out_jpg, dry_run=False, log=log)
-        self.assertTrue(ok)
-        self.assertTrue(out_jpg.exists())
-        from PIL import Image
-        img = Image.open(out_jpg)
-        self.assertEqual(img.format, "JPEG")
-
-    def test_git_commit_push_to_bare_remote(self):
-        """generate_one + git_commit_push 의 end-to-end 검증."""
-        import logging
-        log = logging.getLogger("test")
-        out_jpg = self.repo_path / "content" / "en" / f"{self.day}.photo.jpg"
-        env_patch = {"FLUX_MODEL_DIR": "/fake/model", "MFLUX_BIN": str(self.fake_bin)}
-        with mock.patch.object(make_photos, "REPO", self.repo_path), \
-             mock.patch.dict(os.environ, env_patch):
-            make_photos.generate_one("en", self.day, SCENE_40, out_jpg, dry_run=False, log=log)
-            make_photos.git_commit_push([out_jpg], self.day, ["en"], log)
-        # bare remote 에 파일이 올라갔는지 확인
+# ── install.sh / plist 검증 ───────────────────────────────────────────────────
+class TestInstallFiles(unittest.TestCase):
+    def test_bash_syntax(self):
         result = subprocess.run(
-            ["git", "-C", str(self.remote), "cat-file", "-e", f"HEAD:content/en/{self.day}.photo.jpg"],
+            ["bash", "-n", str(REPO / "tools" / "image-api" / "install.sh")],
             capture_output=True,
         )
-        self.assertEqual(result.returncode, 0, "photo.jpg 가 remote 에 push 되지 않았습니다")
+        self.assertEqual(result.returncode, 0, result.stderr.decode())
+
+    def test_plist_syntax_after_render(self):
+        if not shutil.which("plutil"):
+            self.skipTest("plutil 이 없어서 건너뜁니다")
+        template = (
+            REPO / "tools" / "image-api" / "com.chrisjo.image-api.plist.template"
+        ).read_text()
+        rendered = (
+            template.replace("__SERVER_PY__", "/Users/chrisjo/image-api/server.py")
+            .replace("__HOME__", "/Users/chrisjo")
+            .replace("__TAILNET_IP__", "100.123.77.30")
+            .replace("__FLUX_MODEL_DIR__", "/Users/chrisjo/models/schnell-q4")
+        )
+        with tempfile.NamedTemporaryFile(suffix=".plist", mode="w", delete=False) as f:
+            fname = f.name
+            f.write(rendered)
+        try:
+            r = subprocess.run(["plutil", "-lint", fname], capture_output=True)
+            self.assertEqual(r.returncode, 0, r.stderr.decode())
+        finally:
+            os.unlink(fname)
+
+
+# ── thumb.photo() 통합 테스트 ──────────────────────────────────────────────────
+def _fake_openai_response() -> bytes:
+    """OpenAI 이미지 API 응답을 흉내 낸 JSON 바이트."""
+    buf = io.BytesIO()
+    Image.new("RGB", (10, 10), (200, 100, 50)).save(buf, "PNG")
+    b64 = base64.b64encode(buf.getvalue()).decode()
+    return json.dumps({"data": [{"b64_json": b64}]}).encode()
+
+
+def _content_dir_with_scene(scene: str) -> "tuple[Path, Path]":
+    """photo_scene 이 있는 content JSON 을 담은 임시 루트와 JSON 경로를 반환합니다."""
+    d = Path(tempfile.mkdtemp())
+    (d / "content" / "en").mkdir(parents=True)
+    src = REPO / "content" / "en" / f"{DAY}.json"
+    data = json.loads(src.read_text(encoding="utf-8"))
+    data["photo_scene"] = scene
+    p = d / "content" / "en" / f"{DAY}.json"
+    p.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    return d, p
+
+
+class TestThumbLocalAPI(unittest.TestCase):
+    """thumb.photo() 가 로컬 API 와 OpenAI 폴백을 올바르게 사용하는지 검사합니다."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp())
+        cls.fake_mflux = _make_fake_mflux(cls.tmp)
+        cls.proc, cls.port, cls.token = _start_server(cls.tmp, cls.fake_mflux)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.proc.terminate()
+        cls.proc.wait(timeout=5)
+        shutil.rmtree(str(cls.tmp))
+
+    def test_uses_local_api_when_env_and_photo_scene(self):
+        """LOCAL_IMAGE_URL + LOCAL_IMAGE_TOKEN 있고 photo_scene 있으면 로컬 API 사용."""
+        d, _ = _content_dir_with_scene(SCENE)
+        patch = mock.patch.object(thumb, "ROOT", d)
+        patch.start()
+        try:
+            with mock.patch.dict(
+                os.environ,
+                {
+                    "LOCAL_IMAGE_URL": f"http://127.0.0.1:{self.port}",
+                    "LOCAL_IMAGE_TOKEN": self.token,
+                    "OPENAI_API_KEY": "",
+                },
+            ):
+                result = thumb.photo("en", DAY)
+            self.assertIsNotNone(result, "로컬 API 성공 시 None 이 아닌 이미지를 반환해야 합니다")
+            self.assertIsInstance(result, Image.Image)
+        finally:
+            patch.stop()
+            shutil.rmtree(str(d))
+
+    def test_falls_back_to_openai_when_local_fails(self):
+        """로컬 API 가 실패하면 OpenAI 경로로 폴백합니다."""
+        d, _ = _content_dir_with_scene(SCENE)
+        patch = mock.patch.object(thumb, "ROOT", d)
+        patch.start()
+        try:
+            openai_called = []
+
+            def mock_urlopen(req, timeout=None):
+                url = getattr(req, "full_url", str(req))
+                if f"127.0.0.1:{self.port}" in url:
+                    raise OSError("로컬 API 강제 오류")
+                openai_called.append(url)
+                resp = mock.MagicMock()
+                resp.read.return_value = _fake_openai_response()
+                return resp
+
+            with mock.patch.dict(
+                os.environ,
+                {
+                    "LOCAL_IMAGE_URL": f"http://127.0.0.1:{self.port}",
+                    "LOCAL_IMAGE_TOKEN": self.token,
+                    "OPENAI_API_KEY": "test-key",
+                },
+            ), mock.patch.object(thumb.urllib.request, "urlopen", mock_urlopen):
+                result = thumb.photo("en", DAY)
+
+            self.assertIsNotNone(result, "OpenAI 폴백 성공 시 이미지를 반환해야 합니다")
+            self.assertTrue(openai_called, "OpenAI 폴백이 호출되지 않았습니다")
+        finally:
+            patch.stop()
+            shutil.rmtree(str(d))
+
+    def test_no_photo_scene_skips_local_api(self):
+        """photo_scene 이 없으면 로컬 API 를 호출하지 않습니다."""
+        d = Path(tempfile.mkdtemp())
+        (d / "content" / "en").mkdir(parents=True)
+        src = REPO / "content" / "en" / f"{DAY}.json"
+        data = json.loads(src.read_text(encoding="utf-8"))
+        data.pop("photo_scene", None)
+        (d / "content" / "en" / f"{DAY}.json").write_text(
+            json.dumps(data), encoding="utf-8"
+        )
+        patch = mock.patch.object(thumb, "ROOT", d)
+        patch.start()
+        try:
+            local_called = []
+
+            def mock_urlopen(req, timeout=None):
+                url = getattr(req, "full_url", str(req))
+                if f"127.0.0.1:{self.port}" in url:
+                    local_called.append(url)
+                raise OSError("테스트 강제 오류")
+
+            with mock.patch.dict(
+                os.environ,
+                {
+                    "LOCAL_IMAGE_URL": f"http://127.0.0.1:{self.port}",
+                    "LOCAL_IMAGE_TOKEN": self.token,
+                    "OPENAI_API_KEY": "",
+                },
+            ), mock.patch.object(thumb.urllib.request, "urlopen", mock_urlopen):
+                result = thumb.photo("en", DAY)
+
+            self.assertFalse(
+                local_called, "photo_scene 없으면 로컬 API 를 호출하면 안 됩니다"
+            )
+            self.assertIsNone(result)
+        finally:
+            patch.stop()
+            shutil.rmtree(str(d))
+
+    def test_no_local_env_uses_openai_directly(self):
+        """LOCAL_IMAGE_URL 이 없으면 OpenAI 를 바로 시도합니다 (key 없으면 None)."""
+        d, _ = _content_dir_with_scene(SCENE)
+        patch = mock.patch.object(thumb, "ROOT", d)
+        patch.start()
+        try:
+            with mock.patch.dict(
+                os.environ,
+                {
+                    "LOCAL_IMAGE_URL": "",
+                    "LOCAL_IMAGE_TOKEN": "",
+                    "OPENAI_API_KEY": "",
+                },
+            ):
+                result = thumb.photo("en", DAY)
+            self.assertIsNone(result)
+        finally:
+            patch.stop()
+            shutil.rmtree(str(d))
 
 
 if __name__ == "__main__":

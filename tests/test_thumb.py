@@ -59,19 +59,6 @@ class TestThumb(unittest.TestCase):
         self.assertLess(sum(rgb.getpixel((20, 300))), sum((40, 90, 160)))
         self.assertGreater(sum(rgb.getpixel((1190, 20))), sum((40, 90, 160)) - 30)
 
-    def test_local_photo_used_without_api_call(self):
-        """content/<lang>/<day>.photo.jpg 가 있으면 photo() API 를 부르지 않는다."""
-        local_dir = self.tmp / "content" / "en"
-        local_dir.mkdir(parents=True, exist_ok=True)
-        # 1216x640 로컬 JPEG 생성
-        Image.new("RGB", (1216, 640), (60, 120, 200)).save(
-            local_dir / f"{DAY}.photo.jpg", "JPEG", quality=88
-        )
-        with mock.patch.object(thumb, "photo", side_effect=AssertionError("API 를 불러선 안 된다")):
-            thumb.build("en", DAY)
-        self.assertTrue(thumb.is_photo(self.out))
-        self.assertEqual(Image.open(self.out).size, (1200, 630))
-
     def test_existing_photo_thumb_is_not_redrawn(self):
         thumb.build("en", DAY, "science", Image.new("RGB", (1536, 1024), (40, 90, 160)))
         before = self.out.read_bytes()

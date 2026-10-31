@@ -170,30 +170,17 @@ jobs:
             python tools/audio.py $lang $day models --level v || echo "::warning::word audio (v) failed for $pair"
           done
 
-      - name: Wait for local photo (FLUX.1 맥 미니)
-        # photo_scene 이 있는 오늘 날짜 지문의 로컬 사진 파일(맥 미니 FLUX.1 생성)을 최대 8분 기다린다.
-        # 파일이 도착하면 가져오고, 시간 초과하거나 오류가 발생해도 API 폴백으로 발행을 계속한다. 절대 실패하지 않는다.
+      - name: Tailscale
+        # 맥 미니 이미지 API 에 접근하기 위해 Tailscale 망에 참여한다.
+        # 시크릿이 없거나 연결에 실패해도 OpenAI 폴백으로 발행은 계속된다.
+        if: ${{ secrets.TS_OAUTH_CLIENT_ID != '' }}
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+        timeout-minutes: 2
         continue-on-error: true
-        run: |
-          today="${{ steps.pick.outputs.today }}"
-          for pair in ${{ steps.pick.outputs.pairs }}; do
-            lang=${pair%%:*}; day=${pair#*:}
-            [ "$day" = "$today" ] || continue
-            python3 -c "import json,sys; c=json.load(open('content/$lang/$day.json')); sys.exit(0 if c.get('photo_scene') else 1)" 2>/dev/null || continue
-            [ -f "content/$lang/$day.photo.jpg" ] && echo "$lang/$day: 로컬 사진 이미 있음" && continue
-            echo "$lang/$day: 맥 미니 FLUX.1 사진 대기 시작 (최대 8분)..."
-            found=0
-            for i in $(seq 1 16); do
-              git fetch origin main --quiet 2>&1 || true
-              if git cat-file -e "origin/main:content/$lang/$day.photo.jpg" 2>/dev/null; then
-                git checkout origin/main -- "content/$lang/$day.photo.jpg"
-                echo "$lang/$day: 로컬 사진 취득 완료 (${i}번째 확인)"
-                found=1; break
-              fi
-              [ $i -lt 16 ] && echo "$lang/$day: 대기 중... ($((i * 30))초 경과)" && sleep 30
-            done
-            [ $found -eq 1 ] || echo "::notice::$lang/$day 로컬 사진이 8분 안에 도착하지 않아 OpenAI API 폴백으로 진행합니다."
-          done
 
       - name: Build pages
         run: |
@@ -204,14 +191,15 @@ jobs:
         env:
           # 썸네일 사진(tools/thumb.py). 비어 있거나 생성이 실패하면 분야 일러스트로 만들고 발행은 계속한다.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # 맥 미니 이미지 API (Tailscale 경유). 없거나 실패하면 OpenAI 폴백.
+          LOCAL_IMAGE_URL: ${{ secrets.LOCAL_IMAGE_URL }}
+          LOCAL_IMAGE_TOKEN: ${{ secrets.LOCAL_IMAGE_TOKEN }}
 
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A   # models/ 는 .gitignore 로 제외된다
-          # 맥 미니 FLUX.1 생성 사진(content/*/*.photo.jpg)은 별도 커밋으로 이미 main 에 있다. 이 커밋에서 제외한다.
-          git diff --cached --name-only | grep -F '.photo.jpg' | xargs -r git reset HEAD -- 2>/dev/null || true
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "Publish ${{ steps.pick.outputs.pairs }}"
           # 최대 3회 재시도: 거절되면 origin/main 으로 rebase 하고 생성 파일 충돌은 재생성으로 해결한다.

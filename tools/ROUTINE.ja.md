@@ -63,7 +63,7 @@
 4. **모범 해석** `answers`: 6개. 중급 문장 순서대로 자연스러운 한국어 해석.
 5. **한 단계 위 어휘** `advanced`: 6~8개. **N2 수준** 단어, 한국어 뜻, 혼동 주의(없으면 `null`), 지문 내용을 그 단어로 바꿔 쓴 예문(해당 단어는 `**…**`), `example_ko`(예문의 한국어 해석, 필수).
 6. 그 밖의 필드: `topic`(한국어 주제어 2~8자, 예: "동네 빵집". 썸네일과 목록에 쓰인다), `title_ko`(페이지와 메일 제목. "오늘은 ___ 이야기예요"에 들어갈 자연스러운 한국어 명사구, 예: "동네의 작은 빵집"), `headline`(제목 아래 작게 보이는 일본어 제목. N4 수준의 짧은 제목으로 새로 쓰고 한자에는 후리가나 표기, 예: "{近|ちか}くのパン{屋|や}"), `chips`(`["6문장", "N3 위주", "N3 문법 N문장", "약 4분"]`. N은 `"b2": true` 문장 수), `date`, `category`.
-   - `photo_scene`: FLUX.1 로 썸네일 사진을 생성할 장면 설명 **(선택 사항)**. 영어 한 문장, 40~300자. 구체적이고 시각적인 장면으로 쓰고 글자나 간판이 보이는 장면은 피한다. 예: `"A woman in casual clothes browsing fresh pastries at a neighborhood bakery counter."` 이 필드가 있으면 맥 미니 LaunchAgent 가 발행 직전에 FLUX.1 사진을 생성해 `content/ja/YYYY-MM-DD.photo.jpg` 로 커밋한다.
+   - `photo_scene`: 맥 미니 이미지 API 로 썸네일 사진을 생성할 때 쓰는 장면 설명 **(선택 사항)**. 영어 한 문장, 40~300자. 구체적이고 시각적인 장면으로 쓰고 글자나 간판이 보이는 장면은 피한다. 예: `"A woman in casual clothes browsing fresh pastries at a neighborhood bakery counter."` 이 필드가 있으면 발행 시 맥 미니 이미지 API(Tailscale 경유)가 FLUX.1 사진을 생성해 썸네일에 쓴다. 없거나 API 가 응답하지 않으면 OpenAI API 폴백이나 일러스트를 쓴다.
 
 ### 기초(`levels.a`) 필드
 형식: `"levels": {"a": {"sentences": [{"en": "..."}, ...], "answers": ["...", ...]}}`
