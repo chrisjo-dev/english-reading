@@ -1,6 +1,6 @@
 {
- "date": "2026-10-31",
- "words_total": 401,
+ "date": "2026-11-01",
+ "words_total": 408,
  "langs": {
   "en": {
    "count": 29,
@@ -99,14 +99,14 @@
    ]
   },
   "de": {
-   "count": 4,
-   "latest": "2026-10-31",
-   "topic": "보덴호 여행",
+   "count": 5,
+   "latest": "2026-11-01",
+   "topic": "11월의 안개",
    "sentences": [
-    "Der **Bodensee** liegt im Süden Deutschlands und grenzt an drei Länder: Deutschland, Österreich und die Schweiz.",
-    "Viele Reisende kommen im Sommer, weil sie mit dem **Fahrrad** am Ufer entlang fahren oder im klaren Wasser schwimmen möchten.",
-    "Mit der **Fähre** kann man in weniger als einer Stunde von einem Land ins andere fahren, ohne an der Grenze zu warten.",
-    "Besonders beliebt ist die **Blumeninsel** Mainau, deren von vielen Gärtnern sorgfältig gepflegte Parks jedes Jahr zahlreiche Besucher anziehen."
+    "Im November ist das Wetter in Deutschland oft grau, und an vielen Morgen liegt dichter **Nebel** über den Feldern und Flüssen.",
+    "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark abkühlt und sich daraus winzige **Tropfen** bilden.",
+    "Je länger die Nächte im Herbst werden, desto häufiger bildet sich der Nebel, besonders in **Tälern** und an Seen.",
+    "Im Straßenverkehr ist Nebel gefährlich, weil man andere Autos und Fußgänger oft erst sehr spät **erkennt**."
    ],
    "chips": [
     "6문장",
@@ -114,40 +114,45 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "보덴호는 독일 남부에 있으며 독일, 오스트리아, 스위스 세 나라와 맞닿아 있습니다.",
+   "answer": "11월에 독일의 날씨는 자주 흐리고, 많은 아침에 들판과 강 위로 짙은 안개가 깔립니다.",
    "words": [
     [
-     "Ufer",
-     "물가, 호숫가 (das Ufer)"
+     "Nebel",
+     "안개 (남성 der)"
     ],
     [
-     "Fähre",
-     "페리, 연락선 (die Fähre)"
+     "Tropfen",
+     "방울, 물방울 (남성 der)"
     ],
     [
-     "Grenze",
-     "국경 (die Grenze)"
+     "Tal",
+     "골짜기 (중성 das)"
     ],
     [
-     "Blumeninsel",
-     "꽃섬 (die Blumeninsel)"
+     "erkennen",
+     "알아보다, 식별하다"
     ],
     [
-     "Hang",
-     "비탈, 경사면 (der Hang, 복수 Hänge)"
+     "Nebelscheinwerfer",
+     "자동차 안개등 (남성 der)"
     ],
     [
-     "Wanderweg",
-     "산책로, 하이킹 길 (der Wanderweg)"
+     "gemütlich",
+     "아늑한, 편안한"
     ],
     [
-     "Weinberg",
-     "포도밭 (der Weinberg)"
+     "abkühlen",
+     "식다, 차가워지다"
     ]
    ]
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-01",
+   "topic": "11월의 안개"
+  },
   {
    "lang": "en",
    "day": "2026-10-31",
