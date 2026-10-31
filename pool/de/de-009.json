@@ -1,0 +1,349 @@
+{
+  "date": "",
+  "category": "culture",
+  "topic": "공공 도서관",
+  "title_ko": "누구나 이용하는 동네 도서관",
+  "headline": "Die Bibliothek in der Stadt",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "sentences": [
+    {
+      "en": "In vielen deutschen Städten gibt es eine öffentliche **Bibliothek**, in der man Bücher, Filme und Spiele ausleihen kann.",
+      "b2": false,
+      "chunks": [
+        [
+          "In vielen deutschen Städten",
+          "많은 독일 도시에는"
+        ],
+        [
+          "gibt es eine öffentliche **Bibliothek**,",
+          "공공 도서관이 있다"
+        ],
+        [
+          "in der man Bücher, Filme und Spiele",
+          "그 안에서 책, 영화, 게임을"
+        ],
+        [
+          "ausleihen kann.",
+          "빌릴 수 있는"
+        ]
+      ]
+    },
+    {
+      "en": "Für einen **Leseausweis** braucht man meistens nur einen Ausweis und eine Adresse, und für Kinder ist er oft kostenlos.",
+      "b2": false,
+      "chunks": [
+        [
+          "Für einen **Leseausweis**",
+          "도서관 이용증을 만들려면"
+        ],
+        [
+          "braucht man meistens nur",
+          "보통 필요한 것은 오직"
+        ],
+        [
+          "einen Ausweis und eine Adresse,",
+          "신분증과 주소뿐이다"
+        ],
+        [
+          "und für Kinder ist er oft kostenlos.",
+          "그리고 아이들에게는 종종 무료다"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Studierende lernen lieber in der Bibliothek als zu Hause, weil es dort ruhig ist und sie sich besser **konzentrieren** können.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viele Studierende lernen lieber",
+          "많은 대학생은 더 즐겨 공부한다"
+        ],
+        [
+          "in der Bibliothek als zu Hause,",
+          "집보다 도서관에서"
+        ],
+        [
+          "weil es dort ruhig ist",
+          "거기가 조용하고"
+        ],
+        [
+          "und sie sich besser **konzentrieren** können.",
+          "더 잘 집중할 수 있기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Ausgeliehene Bücher müssen pünktlich zurückgegeben werden, sonst wird eine kleine **Gebühr** fällig, die man an der Theke bezahlt.",
+      "b2": true,
+      "chunks": [
+        [
+          "Ausgeliehene Bücher",
+          "빌린 책은"
+        ],
+        [
+          "müssen pünktlich zurückgegeben werden,",
+          "제때 반납되어야 한다"
+        ],
+        [
+          "sonst wird eine kleine **Gebühr** fällig,",
+          "그렇지 않으면 약간의 연체료가 붙는다"
+        ],
+        [
+          "die man an der Theke bezahlt.",
+          "창구에서 내는"
+        ]
+      ]
+    },
+    {
+      "en": "Heute bieten viele Bibliotheken auch **E-Books** an, die man bequem mit dem Handy oder dem Tablet herunterladen kann.",
+      "b2": false,
+      "chunks": [
+        [
+          "Heute bieten viele Bibliotheken",
+          "오늘날 많은 도서관이 제공한다"
+        ],
+        [
+          "auch **E-Books** an,",
+          "전자책도"
+        ],
+        [
+          "die man bequem",
+          "편하게"
+        ],
+        [
+          "mit dem Handy oder dem Tablet",
+          "휴대폰이나 태블릿으로"
+        ],
+        [
+          "herunterladen kann.",
+          "내려받을 수 있는"
+        ]
+      ]
+    },
+    {
+      "en": "Ohne Bibliotheken wäre es für viele Menschen schwieriger, neues **Wissen** zu sammeln, ohne dafür viel Geld auszugeben.",
+      "b2": true,
+      "chunks": [
+        [
+          "Ohne Bibliotheken",
+          "도서관이 없다면"
+        ],
+        [
+          "wäre es für viele Menschen schwieriger,",
+          "많은 사람에게 더 어려울 것이다"
+        ],
+        [
+          "neues **Wissen** zu sammeln,",
+          "새로운 지식을 쌓는 것이"
+        ],
+        [
+          "ohne dafür viel Geld auszugeben.",
+          "그 때문에 많은 돈을 쓰지 않고"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Bibliothek",
+      "도서관"
+    ],
+    [
+      "ausleihen",
+      "빌리다"
+    ],
+    [
+      "Leseausweis",
+      "도서관 이용증"
+    ],
+    [
+      "sich konzentrieren",
+      "집중하다"
+    ],
+    [
+      "Gebühr",
+      "수수료, 요금"
+    ],
+    [
+      "Wissen",
+      "지식"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Passiv mit Modalverb — müssen ... werden",
+      "body": "`müssen pünktlich zurückgegeben werden`은 화법조동사(`müssen`) + 과거분사(`zurückgegeben`) + `werden` 구조의 수동태예요. '제때 반납되어야 한다'는 뜻으로, 규칙이나 의무를 말할 때 자주 씁니다."
+    },
+    {
+      "title": "ohne ... zu — ~하지 않고",
+      "body": "`ohne dafür viel Geld auszugeben`처럼 `ohne ... zu` 뒤에 부정사가 오면 '~하지 않고'라는 뜻이에요. 분리동사 `ausgeben`은 `zu`가 가운데로 들어가 `auszugeben`이 됩니다."
+    }
+  ],
+  "answers": [
+    "많은 독일 도시에는 책, 영화, 게임을 빌릴 수 있는 공공 도서관이 있습니다.",
+    "도서관 이용증을 만들려면 보통 신분증과 주소만 있으면 되고, 아이들은 대개 무료입니다.",
+    "많은 대학생은 집보다 도서관에서 공부하는 것을 더 좋아하는데, 그곳이 조용해서 더 잘 집중할 수 있기 때문입니다.",
+    "빌린 책은 제때 반납해야 하며, 그렇지 않으면 창구에서 내는 약간의 연체료가 붙습니다.",
+    "오늘날 많은 도서관은 휴대폰이나 태블릿으로 편하게 내려받을 수 있는 전자책도 제공합니다.",
+    "도서관이 없다면 많은 사람이 큰돈을 들이지 않고 새로운 지식을 쌓기가 더 어려울 것입니다."
+  ],
+  "advanced": [
+    {
+      "word": "fällig",
+      "meaning": "(기한이 되어) 지불해야 할, 만기가 된",
+      "confuse": null,
+      "example": "Die Miete ist am Monatsanfang **fällig**.",
+      "example_ko": "월세는 매달 초에 내야 합니다."
+    },
+    {
+      "word": "die Frist",
+      "meaning": "기한",
+      "confuse": null,
+      "example": "Die **Frist** für die Rückgabe endet am Freitag.",
+      "example_ko": "반납 기한은 금요일에 끝납니다."
+    },
+    {
+      "word": "verlängern",
+      "meaning": "연장하다",
+      "confuse": null,
+      "example": "Ich habe die Ausleihe online **verlängert**.",
+      "example_ko": "나는 대출 기간을 온라인으로 연장했습니다."
+    },
+    {
+      "word": "der Bestand",
+      "meaning": "소장품, 보유량",
+      "confuse": null,
+      "example": "Die Bibliothek erweitert jedes Jahr ihren **Bestand**.",
+      "example_ko": "그 도서관은 해마다 소장 자료를 늘립니다."
+    },
+    {
+      "word": "die Fernleihe",
+      "meaning": "상호대차(다른 도서관에서 빌려오기)",
+      "confuse": null,
+      "example": "Das Buch kann man über die **Fernleihe** bestellen.",
+      "example_ko": "그 책은 상호대차로 신청할 수 있습니다."
+    },
+    {
+      "word": "kostenlos",
+      "meaning": "무료의",
+      "confuse": "kostenlos vs. umsonst: 둘 다 '무료'지만 `umsonst`는 '헛되이'라는 뜻도 있어요.",
+      "example": "Für Kinder ist der Eintritt **kostenlos**.",
+      "example_ko": "아이들은 입장이 무료입니다."
+    }
+  ],
+  "source": null,
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Viele deutsche Städte haben eine öffentliche **Bibliothek** mit Büchern und Filmen.",
+          "chunks": [
+            [
+              "Viele deutsche Städte haben",
+              "많은 독일 도시에는 있다"
+            ],
+            [
+              "eine öffentliche **Bibliothek**",
+              "공공 도서관이"
+            ],
+            [
+              "mit Büchern und Filmen.",
+              "책과 영화가 있는"
+            ]
+          ]
+        },
+        {
+          "en": "Für einen **Leseausweis** braucht man nur einen Ausweis.",
+          "chunks": [
+            [
+              "Für einen **Leseausweis**",
+              "도서관 이용증을 위해"
+            ],
+            [
+              "braucht man nur einen Ausweis.",
+              "신분증만 있으면 된다"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Studierende lernen in der Bibliothek, denn dort können sie sich gut **konzentrieren**.",
+          "chunks": [
+            [
+              "Viele Studierende lernen",
+              "많은 대학생이 공부한다"
+            ],
+            [
+              "in der Bibliothek,",
+              "도서관에서"
+            ],
+            [
+              "denn dort können sie sich gut **konzentrieren**.",
+              "거기서 잘 집중할 수 있기 때문이다"
+            ]
+          ]
+        },
+        {
+          "en": "Man muss die Bücher pünktlich zurückbringen, sonst zahlt man eine **Gebühr**.",
+          "chunks": [
+            [
+              "Man muss die Bücher",
+              "책을"
+            ],
+            [
+              "pünktlich zurückbringen,",
+              "제때 돌려줘야 한다"
+            ],
+            [
+              "sonst zahlt man eine **Gebühr**.",
+              "그렇지 않으면 연체료를 낸다"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Bibliotheken haben auch **E-Books** für das Handy.",
+          "chunks": [
+            [
+              "Viele Bibliotheken haben auch",
+              "많은 도서관에는 또 있다"
+            ],
+            [
+              "**E-Books** für das Handy.",
+              "휴대폰용 전자책이"
+            ]
+          ]
+        },
+        {
+          "en": "In der Bibliothek bekommt man neues **Wissen** fast ohne Kosten.",
+          "chunks": [
+            [
+              "In der Bibliothek",
+              "도서관에서"
+            ],
+            [
+              "bekommt man neues **Wissen**",
+              "새로운 지식을 얻는다"
+            ],
+            [
+              "fast ohne Kosten.",
+              "거의 돈을 들이지 않고"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "많은 독일 도시에는 책과 영화가 있는 공공 도서관이 있습니다.",
+        "도서관 이용증을 만들려면 신분증만 있으면 됩니다.",
+        "많은 대학생이 도서관에서 공부하는데, 그곳에서 잘 집중할 수 있기 때문입니다.",
+        "책은 제때 돌려줘야 하고, 그렇지 않으면 연체료를 냅니다.",
+        "많은 도서관에는 휴대폰용 전자책도 있습니다.",
+        "도서관에서는 거의 돈을 들이지 않고 새로운 지식을 얻습니다."
+      ]
+    }
+  }
+}

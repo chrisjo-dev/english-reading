@@ -1,0 +1,361 @@
+{
+  "date": "",
+  "category": "culture",
+  "topic": "숲 산책",
+  "title_ko": "독일 사람들이 사랑하는 숲 산책",
+  "headline": "Ein Spaziergang im Wald",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "sentences": [
+    {
+      "en": "Viele Menschen in Deutschland gehen am Wochenende gern im **Wald** spazieren, weil sie dort Ruhe und frische Luft finden.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viele Menschen in Deutschland",
+          "많은 독일 사람들은"
+        ],
+        [
+          "gehen am Wochenende gern",
+          "주말에 즐겨 간다"
+        ],
+        [
+          "im **Wald** spazieren,",
+          "숲으로 산책하러"
+        ],
+        [
+          "weil sie dort Ruhe und frische Luft finden.",
+          "거기서 고요함과 맑은 공기를 찾기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Auf den gut markierten **Wanderwegen** kann man stundenlang laufen, ohne einem Auto zu begegnen oder sich zu verlaufen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Auf den gut markierten **Wanderwegen**",
+          "잘 표시된 산책로에서"
+        ],
+        [
+          "kann man stundenlang laufen,",
+          "몇 시간이고 걸을 수 있다"
+        ],
+        [
+          "ohne einem Auto zu begegnen",
+          "차 한 대 마주치지 않고"
+        ],
+        [
+          "oder sich zu verlaufen.",
+          "길을 잃지도 않고"
+        ]
+      ]
+    },
+    {
+      "en": "Familien nehmen oft ein kleines **Picknick** mit und machen auf einer Bank oder einer Lichtung eine lange Pause.",
+      "b2": false,
+      "chunks": [
+        [
+          "Familien nehmen oft",
+          "가족들은 자주 가져간다"
+        ],
+        [
+          "ein kleines **Picknick** mit",
+          "작은 소풍 도시락을"
+        ],
+        [
+          "und machen",
+          "그리고 갖는다"
+        ],
+        [
+          "auf einer Bank oder einer Lichtung",
+          "벤치나 숲속 빈터에서"
+        ],
+        [
+          "eine lange Pause.",
+          "긴 휴식을"
+        ]
+      ]
+    },
+    {
+      "en": "Der von vielen Kindern besonders geliebte **Waldkindergarten** zeigt, dass man auch ohne Spielzeug und Wände viel lernen kann.",
+      "b2": true,
+      "chunks": [
+        [
+          "Der von vielen Kindern besonders geliebte **Waldkindergarten**",
+          "많은 아이들이 특히 좋아하는 숲 유치원은"
+        ],
+        [
+          "zeigt,",
+          "보여 준다"
+        ],
+        [
+          "dass man auch ohne Spielzeug und Wände",
+          "장난감과 벽이 없어도"
+        ],
+        [
+          "viel lernen kann.",
+          "많이 배울 수 있다는 것을"
+        ]
+      ]
+    },
+    {
+      "en": "Im Wald sollte man auf den Wegen bleiben, damit die Tiere nicht **gestört** werden und junge Pflanzen wachsen können.",
+      "b2": false,
+      "chunks": [
+        [
+          "Im Wald",
+          "숲에서는"
+        ],
+        [
+          "sollte man auf den Wegen bleiben,",
+          "길 위에 머무르는 것이 좋다"
+        ],
+        [
+          "damit die Tiere nicht **gestört** werden",
+          "동물들이 방해받지 않도록"
+        ],
+        [
+          "und junge Pflanzen wachsen können.",
+          "그리고 어린 식물이 자랄 수 있도록"
+        ]
+      ]
+    },
+    {
+      "en": "Wer regelmäßig im Grünen spazieren geht, würde wahrscheinlich sagen, dass ein Waldspaziergang die beste **Erholung** nach einer stressigen Woche ist.",
+      "b2": true,
+      "chunks": [
+        [
+          "Wer regelmäßig im Grünen spazieren geht,",
+          "자연 속을 규칙적으로 산책하는 사람은"
+        ],
+        [
+          "würde wahrscheinlich sagen,",
+          "아마 말할 것이다"
+        ],
+        [
+          "dass ein Waldspaziergang",
+          "숲 산책이"
+        ],
+        [
+          "die beste **Erholung**",
+          "가장 좋은 휴식이라고"
+        ],
+        [
+          "nach einer stressigen Woche ist.",
+          "스트레스 많은 한 주 뒤의"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Wald",
+      "숲"
+    ],
+    [
+      "Wanderweg",
+      "산책로, 등산로"
+    ],
+    [
+      "Lichtung",
+      "숲속 빈터"
+    ],
+    [
+      "Waldkindergarten",
+      "숲 유치원"
+    ],
+    [
+      "stören",
+      "방해하다"
+    ],
+    [
+      "Erholung",
+      "휴식, 회복"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Partizipialattribut — 관사와 명사 사이의 긴 수식어",
+      "body": "`Der von vielen Kindern besonders geliebte Waldkindergarten`에서 `geliebte`(사랑받는)가 관사 `Der`와 명사 사이에 들어가 명사를 꾸며요. 한국어처럼 수식어가 명사 앞에 오므로 '많은 아이들이 특히 좋아하는 숲 유치원'으로 읽으면 됩니다."
+    },
+    {
+      "title": "damit — ~하도록 (목적)",
+      "body": "`damit die Tiere nicht gestört werden`처럼 `damit` 뒤에는 동사가 문장 끝으로 갑니다. 주어가 앞 문장(`man`)과 다를 때는 `um ... zu` 대신 `damit`을 써요."
+    }
+  ],
+  "answers": [
+    "많은 독일 사람들은 주말에 숲으로 산책하러 가는 것을 좋아하는데, 그곳에서 고요함과 맑은 공기를 찾을 수 있기 때문입니다.",
+    "잘 표시된 산책로에서는 차 한 대 마주치지 않고 길을 잃지도 않은 채 몇 시간이고 걸을 수 있습니다.",
+    "가족들은 자주 작은 소풍 도시락을 가져가서 벤치나 숲속 빈터에서 길게 쉽니다.",
+    "많은 아이들이 특히 좋아하는 숲 유치원은 장난감과 벽이 없어도 많은 것을 배울 수 있다는 것을 보여 줍니다.",
+    "숲에서는 동물들이 방해받지 않고 어린 식물이 자랄 수 있도록 길 위로만 다니는 것이 좋습니다.",
+    "자연 속을 규칙적으로 산책하는 사람이라면 아마 숲 산책이 스트레스 많은 한 주 뒤의 가장 좋은 휴식이라고 말할 것입니다."
+  ],
+  "advanced": [
+    {
+      "word": "sich verlaufen",
+      "meaning": "길을 잃다",
+      "confuse": "sich verlaufen vs. sich verfahren: `sich verlaufen`은 걸어가다 길을 잃는 것, `sich verfahren`은 차나 자전거로 가다 길을 잃는 것이에요.",
+      "example": "Ohne Karte kann man sich im Wald leicht **verlaufen**.",
+      "example_ko": "지도 없이는 숲에서 쉽게 길을 잃을 수 있습니다."
+    },
+    {
+      "word": "begegnen",
+      "meaning": "(우연히) 마주치다",
+      "confuse": "`begegnen`은 3격(Dativ)을 쓰고 완료형은 `ist begegnet`이에요.",
+      "example": "Auf dem Weg sind wir einem Reh **begegnet**.",
+      "example_ko": "길에서 우리는 노루 한 마리를 마주쳤습니다."
+    },
+    {
+      "word": "die Erholung",
+      "meaning": "휴식, 회복",
+      "confuse": "die Erholung vs. die Entspannung: `Erholung`은 지친 몸과 마음이 회복되는 것, `Entspannung`은 긴장이 풀리는 것에 초점이 있어요.",
+      "example": "Nach der Prüfung brauche ich dringend **Erholung**.",
+      "example_ko": "시험이 끝나고 나는 휴식이 절실히 필요합니다."
+    },
+    {
+      "word": "im Grünen",
+      "meaning": "자연 속에서, 야외 녹지에서",
+      "confuse": null,
+      "example": "Am Sonntag essen wir gern **im Grünen**.",
+      "example_ko": "일요일에 우리는 야외에서 식사하는 것을 좋아합니다."
+    },
+    {
+      "word": "das Naturschutzgebiet",
+      "meaning": "자연보호구역",
+      "confuse": null,
+      "example": "Im **Naturschutzgebiet** darf man keine Pflanzen pflücken.",
+      "example_ko": "자연보호구역에서는 식물을 꺾으면 안 됩니다."
+    },
+    {
+      "word": "markieren",
+      "meaning": "표시하다",
+      "confuse": null,
+      "example": "Der Weg ist mit roten Zeichen gut **markiert**.",
+      "example_ko": "그 길은 빨간 표지로 잘 표시되어 있습니다."
+    }
+  ],
+  "source": null,
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Viele Deutsche gehen am Wochenende gern im **Wald** spazieren.",
+          "chunks": [
+            [
+              "Viele Deutsche",
+              "많은 독일인은"
+            ],
+            [
+              "gehen am Wochenende gern",
+              "주말에 즐겨 간다"
+            ],
+            [
+              "im **Wald** spazieren.",
+              "숲으로 산책하러"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Wanderwege** sind gut markiert, und man trifft keine Autos.",
+          "chunks": [
+            [
+              "Die **Wanderwege**",
+              "산책로는"
+            ],
+            [
+              "sind gut markiert,",
+              "잘 표시되어 있다"
+            ],
+            [
+              "und man trifft keine Autos.",
+              "그리고 차를 만나지 않는다"
+            ]
+          ]
+        },
+        {
+          "en": "Familien nehmen oft ein **Picknick** mit und machen eine Pause.",
+          "chunks": [
+            [
+              "Familien nehmen oft",
+              "가족들은 자주 가져간다"
+            ],
+            [
+              "ein **Picknick** mit",
+              "소풍 도시락을"
+            ],
+            [
+              "und machen eine Pause.",
+              "그리고 쉰다"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Kinder lieben den **Waldkindergarten** und lernen dort ohne Spielzeug.",
+          "chunks": [
+            [
+              "Viele Kinder lieben",
+              "많은 아이들이 좋아한다"
+            ],
+            [
+              "den **Waldkindergarten**",
+              "숲 유치원을"
+            ],
+            [
+              "und lernen dort ohne Spielzeug.",
+              "그리고 거기서 장난감 없이 배운다"
+            ]
+          ]
+        },
+        {
+          "en": "Man bleibt auf den Wegen, so werden die Tiere nicht **gestört**.",
+          "chunks": [
+            [
+              "Man bleibt auf den Wegen,",
+              "길 위에 머문다"
+            ],
+            [
+              "so werden die Tiere",
+              "그러면 동물들이"
+            ],
+            [
+              "nicht **gestört**.",
+              "방해받지 않는다"
+            ]
+          ]
+        },
+        {
+          "en": "Ein Waldspaziergang ist eine gute **Erholung** nach einer stressigen Woche.",
+          "chunks": [
+            [
+              "Ein Waldspaziergang ist",
+              "숲 산책은"
+            ],
+            [
+              "eine gute **Erholung**",
+              "좋은 휴식이다"
+            ],
+            [
+              "nach einer stressigen Woche.",
+              "스트레스 많은 한 주 뒤에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "많은 독일인은 주말에 숲으로 산책하러 가는 것을 좋아합니다.",
+        "산책로는 잘 표시되어 있고, 차를 만나지 않습니다.",
+        "가족들은 자주 소풍 도시락을 가져가서 쉽니다.",
+        "많은 아이들이 숲 유치원을 좋아하고 그곳에서 장난감 없이 배웁니다.",
+        "길 위로만 다니면 동물들이 방해받지 않습니다.",
+        "숲 산책은 스트레스 많은 한 주 뒤에 좋은 휴식입니다."
+      ]
+    }
+  }
+}
