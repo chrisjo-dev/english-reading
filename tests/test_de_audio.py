@@ -129,6 +129,19 @@ def _patch_qwen(
             return wer_seq[idx]
         return 0.0
 
+    def fake_count_word_errors(audio_file, ref_text, wm_or_size="base"):
+        """문장 게이트: 0.0 → 0 오류(합격), 그 외 → 5 오류(불합격)."""
+        idx = call_counter["wer"]
+        call_counter["wer"] += 1
+        raw = wer_seq[idx] if idx < len(wer_seq) else 0.0
+        return 0 if raw == 0.0 else 5
+
+    def fake_compute_wer_word_clip(audio_file, word_text, wm_or_size="base", min_dur=0.25):
+        """단어 클립 게이트: wer_seq 값을 그대로 반환한다(0.0 = 합격)."""
+        idx = call_counter["wer"]
+        call_counter["wer"] += 1
+        return wer_seq[idx] if idx < len(wer_seq) else 0.0
+
     def fake_polish(wav, target=None, pad=None):
         pass
 
@@ -145,6 +158,8 @@ def _patch_qwen(
         "tts_qwen.trim_carrier": fake_trim_carrier,
         "tts_qwen.compute_wer": fake_compute_wer,
         "tts_qwen.compute_wer_word_carrier": fake_compute_wer_word_carrier,
+        "tts_qwen.count_word_errors": fake_count_word_errors,
+        "tts_qwen.compute_wer_word_clip": fake_compute_wer_word_clip,
         "tts_qwen.polish": fake_polish,
         "tts_qwen.to_mp3": fake_to_mp3,
         "tts_qwen.audio16k": fake_audio16k,
@@ -280,23 +295,25 @@ class TestQwenAcceptsOnFirstPass(unittest.TestCase):
             active = _apply_patches(patches)
             wer_call_count = [0]
 
-            def counting_wer(audio_file, ref_text, wm_or_size="base"):
+            def counting_word_errors(audio_file, ref_text, wm_or_size="base"):
+                """문장 게이트 mock: 항상 0 오류(합격)를 반환하고 호출 횟수를 센다."""
+                wer_call_count[0] += 1
+                return 0
+
+            def counting_wer_clip(audio_file, word_text, wm_or_size="base", min_dur=0.25):
+                """단어 클립 게이트 mock: 항상 0.0(합격)을 반환하고 호출 횟수를 센다."""
                 wer_call_count[0] += 1
                 return 0.0
 
-            def counting_wer_carrier(carrier_wav, word_text, wm_or_size="base"):
-                wer_call_count[0] += 1
-                return 0.0
-
-            with patch("tts_qwen.compute_wer", counting_wer), \
-                 patch("tts_qwen.compute_wer_word_carrier", counting_wer_carrier), \
+            with patch("tts_qwen.count_word_errors", counting_word_errors), \
+                 patch("tts_qwen.compute_wer_word_clip", counting_wer_clip), \
                  patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
                 audio_mod.qwen(DE_CONTENT, "de", out_dir, max_retries=4)
             _stop_patches(active)
 
-            # 항목 6개, WER 호출이 각 1회씩이면 총 6회
+            # 항목 6개, 검증 함수가 각 1회씩 호출되면 총 6회
             self.assertEqual(wer_call_count[0], len(ALL_KEYS),
-                             f"WER 0.0 이면 각 항목당 1회만 호출해야 합니다 (got {wer_call_count[0]})")
+                             f"합격이면 각 항목당 1회만 검증해야 합니다 (got {wer_call_count[0]})")
 
 
 # ── 4. WER 불합격 시 재시도, 가장 낮은 결과 유지 ─────────────────────────────
@@ -304,7 +321,7 @@ class TestQwenAcceptsOnFirstPass(unittest.TestCase):
 class TestQwenRetryKeepsBest(unittest.TestCase):
 
     def test_retries_up_to_max(self):
-        """WER 이 항상 높으면 max_retries 회 시도하고 가장 낮은 WER 결과를 유지한다."""
+        """오류 수가 항상 높으면 max_retries 회 시도하고 가장 낮은 WER 결과를 유지한다."""
         with tempfile.TemporaryDirectory() as tmp:
             out_dir = Path(tmp) / "audio"
 
@@ -313,27 +330,25 @@ class TestQwenRetryKeepsBest(unittest.TestCase):
             for key in ["s2", "w1", "w2", "v1", "v2"]:
                 (out_dir / f"{key}.mp3").write_bytes(b"")
 
-            # s1 의 WER: attempt 0=0.8, attempt 1=0.5, attempt 2=0.9, attempt 3=0.6
-            # 최솟값은 attempt 1 의 0.5
-            wer_values = [0.8, 0.5, 0.9, 0.6]
-            wer_idx = [0]
+            # s1 은 문장이므로 count_word_errors 가 호출된다. 모두 > 1 이므로 4회 시도한다.
+            err_values = [5, 3, 7, 4]
+            err_idx = [0]
 
-            def seq_wer(audio_file, ref_text, wm_or_size="base"):
-                v = wer_values[wer_idx[0] % len(wer_values)]
-                wer_idx[0] += 1
+            def seq_count_word_errors(audio_file, ref_text, wm_or_size="base"):
+                v = err_values[err_idx[0] % len(err_values)]
+                err_idx[0] += 1
                 return v
 
             # to_mp3 는 실제로 파일을 써야 best_mp3 가 존재하게 된다
             mp3_writes = []
 
             def tracking_to_mp3(wav, mp3, tempo=None, bitrate="128k"):
-                Path(mp3).write_bytes(f"attempt_{wer_idx[0]}".encode())
+                Path(mp3).write_bytes(f"attempt_{err_idx[0]}".encode())
                 mp3_writes.append(str(mp3))
 
             patches = _patch_qwen()
             active = _apply_patches(patches)
-            with patch("tts_qwen.compute_wer", seq_wer), \
-                 patch("tts_qwen.compute_wer_word_carrier", seq_wer), \
+            with patch("tts_qwen.count_word_errors", seq_count_word_errors), \
                  patch("tts_qwen.to_mp3", tracking_to_mp3), \
                  patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
                 audio_mod.qwen(DE_CONTENT, "de", out_dir, max_retries=4)
@@ -341,34 +356,34 @@ class TestQwenRetryKeepsBest(unittest.TestCase):
 
             # s1.mp3 가 생성됐어야 한다
             self.assertTrue((out_dir / "s1.mp3").exists(), "s1.mp3 가 없어요")
-            # 4회 시도했어야 한다 (WER 0.3 이하가 없으므로)
-            self.assertEqual(wer_idx[0], 4, f"4회 시도해야 하는데 {wer_idx[0]}회")
+            # 4회 시도했어야 한다 (오류 수 > 1 이 계속되므로)
+            self.assertEqual(err_idx[0], 4, f"4회 시도해야 하는데 {err_idx[0]}회")
 
     def test_stops_early_on_accept(self):
-        """WER 이 두 번째 시도에서 합격하면 세 번째 시도를 하지 않는다."""
+        """두 번째 시도에서 합격하면 세 번째 시도를 하지 않는다."""
         with tempfile.TemporaryDirectory() as tmp:
             out_dir = Path(tmp) / "audio"
             out_dir.mkdir()
             for key in ["s2", "w1", "w2", "v1", "v2"]:
                 (out_dir / f"{key}.mp3").write_bytes(b"")
 
-            wer_values = [0.9, 0.1]  # attempt 0 실패, attempt 1 합격
-            wer_idx = [0]
+            # s1 은 문장: attempt 0 → 오류 5개(불합격), attempt 1 → 오류 0개(합격)
+            err_values = [5, 0]
+            err_idx = [0]
 
-            def seq_wer(audio_file, ref_text, wm_or_size="base"):
-                v = wer_values[wer_idx[0] % len(wer_values)]
-                wer_idx[0] += 1
+            def seq_count_word_errors(audio_file, ref_text, wm_or_size="base"):
+                v = err_values[err_idx[0] % len(err_values)]
+                err_idx[0] += 1
                 return v
 
             patches = _patch_qwen()
             active = _apply_patches(patches)
-            with patch("tts_qwen.compute_wer", seq_wer), \
-                 patch("tts_qwen.compute_wer_word_carrier", seq_wer), \
+            with patch("tts_qwen.count_word_errors", seq_count_word_errors), \
                  patch("faster_whisper.WhisperModel", return_value=_FakeWhisperModel()):
                 audio_mod.qwen(DE_CONTENT, "de", out_dir, max_retries=4)
             _stop_patches(active)
 
-            self.assertEqual(wer_idx[0], 2, f"2회에서 합격하면 중단해야 하는데 {wer_idx[0]}회")
+            self.assertEqual(err_idx[0], 2, f"2회에서 합격하면 중단해야 하는데 {err_idx[0]}회")
 
 
 # ── 5. 모든 시도 실패해도 잡 중단 없음 ───────────────────────────────────────
@@ -795,6 +810,141 @@ class TestSidecarHashGuard(unittest.TestCase):
 
     def test_text_hash_differs_for_different_text(self):
         self.assertNotEqual(audio_mod._text_hash("abc"), audio_mod._text_hash("xyz"))
+
+
+# ── 10. 합격 판정 함수 단위 테스트 (모델 로드 없음) ───────────────────────────
+
+import tts_qwen as _qw
+
+
+class _FakeWM:
+    """합격 판정 함수 테스트용 가짜 WhisperModel.
+
+    transcribe() 호출 시 미리 지정한 텍스트를 반환한다.
+    """
+    def __init__(self, transcript: str):
+        self._transcript = transcript
+
+    def transcribe(self, audio, language="de", beam_size=5, **kw):
+        seg = MagicMock()
+        seg.text = self._transcript
+        return [seg], {}
+
+
+def _fake_audio_file(tmp_dir: "Path", name="test.mp3") -> "Path":
+    """더미 파일을 만들어 경로를 반환한다."""
+    p = Path(tmp_dir) / name
+    p.write_bytes(b"ID3\x00")
+    return p
+
+
+class TestCountWordErrors(unittest.TestCase):
+    """count_word_errors: 전사 텍스트와 참조 텍스트의 절대 오류 수를 확인한다."""
+
+    def _run(self, ref_text, transcript, tmp):
+        wm = _FakeWM(transcript)
+        with patch("tts_qwen.audio16k", return_value=MagicMock()):
+            return _qw.count_word_errors(_fake_audio_file(tmp), ref_text, wm)
+
+    def test_exact_match_returns_zero(self):
+        """전사가 참조와 정확히 일치하면 오류 수 = 0."""
+        with tempfile.TemporaryDirectory() as tmp:
+            errs = self._run("orange fällt", "orange fällt", tmp)
+            self.assertEqual(errs, 0)
+
+    def test_one_substitution_returns_one(self):
+        """단어 하나가 다르면 오류 수 = 1 (문장 게이트 합격)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            # "orange" → "gelb" : 1 substitution
+            errs = self._run("Im Herbst färben sich die Blätter orange",
+                             "Im Herbst färben sich die Blätter gelb", tmp)
+            self.assertEqual(errs, 1)
+
+    def test_two_substitutions_returns_two(self):
+        """두 단어가 다르면 오류 수 = 2 (불합격)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            errs = self._run("orange fallen", "gelb feiern", tmp)
+            self.assertEqual(errs, 2)
+
+    def test_empty_ref_returns_zero(self):
+        """참조가 빈 문자열이면 0을 반환한다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            errs = self._run("", "irgendwas", tmp)
+            self.assertEqual(errs, 0)
+
+    def test_accepts_one_error(self):
+        """오류 수 1 → 합격 기준(<=1) 충족."""
+        with tempfile.TemporaryDirectory() as tmp:
+            errs = self._run("Brot und Butter", "Brot und Käse", tmp)
+            self.assertLessEqual(errs, 1)
+
+    def test_rejects_two_errors(self):
+        """오류 수 2 → 불합격 기준(>1)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            errs = self._run("Brot und Butter", "Kuchen oder Käse", tmp)
+            self.assertGreater(errs, 1)
+
+
+class TestComputeWerWordClip(unittest.TestCase):
+    """compute_wer_word_clip: 트림된 클립 검증 (길이 + 관사 허용 전사 대조)."""
+
+    def _run(self, word_text, transcript, tmp, duration_val=0.5):
+        wm = _FakeWM(transcript)
+        with patch("tts_qwen.audio16k", return_value=MagicMock()), \
+             patch("tts_qwen.duration", return_value=duration_val):
+            return _qw.compute_wer_word_clip(_fake_audio_file(tmp), word_text, wm)
+
+    def test_exact_match_passes(self):
+        """전사가 단어와 정확히 일치하면 0.0 반환(합격)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            wer = self._run("orange", "orange", tmp)
+            self.assertEqual(wer, 0.0)
+
+    def test_article_allowed(self):
+        """전사에 관사가 포함돼도 핵심 단어가 있으면 0.0 반환."""
+        with tempfile.TemporaryDirectory() as tmp:
+            wer = self._run("die Sehenswürdigkeit", "Die Sehenswürdigkeit", tmp)
+            self.assertEqual(wer, 0.0)
+
+    def test_word_in_longer_transcript_passes(self):
+        """핵심 단어가 더 긴 전사에 포함되면 합격."""
+        with tempfile.TemporaryDirectory() as tmp:
+            wer = self._run("fallen", "gefallen fallen", tmp)
+            self.assertEqual(wer, 0.0)
+
+    def test_wrong_word_fails(self):
+        """전사가 완전히 다른 단어이면 1.0 반환(불합격)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            wer = self._run("fallen", "feiern", tmp)
+            self.assertGreater(wer, 0.0)
+
+    def test_too_short_fails(self):
+        """클립이 0.25초 미만이면 1.0 반환(거부)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            wer = self._run("orange", "orange", tmp, duration_val=0.1)
+            self.assertEqual(wer, 1.0)
+
+    def test_exactly_min_dur_passes(self):
+        """클립이 정확히 0.25초이면 거부하지 않는다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            wer = self._run("orange", "orange", tmp, duration_val=0.25)
+            self.assertEqual(wer, 0.0)
+
+    def test_duration_error_fails(self):
+        """duration() 이 예외를 던지면 1.0 반환(거부)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            wm = _FakeWM("orange")
+            with patch("tts_qwen.audio16k", return_value=MagicMock()), \
+                 patch("tts_qwen.duration", side_effect=Exception("ffprobe 없음")):
+                wer = _qw.compute_wer_word_clip(_fake_audio_file(tmp), "orange", wm)
+            self.assertEqual(wer, 1.0)
+
+    def test_article_only_ref_passes(self):
+        """참조 단어가 관사만이면(핵심 없음) 0.0 반환."""
+        with tempfile.TemporaryDirectory() as tmp:
+            # 관사만 있으면 ref_no_art = [] → 0.0 반환
+            wer = self._run("die", "irgendwas", tmp)
+            self.assertEqual(wer, 0.0)
 
 
 if __name__ == "__main__":

@@ -207,6 +207,71 @@ def compute_wer_word_carrier(carrier_wav, word_text, wm_or_size="base"):
     return min(errs / len(ref), 1.0)
 
 
+# ---------- 합격 판정 ----------
+
+def count_word_errors(audio_file, ref_text, wm_or_size="base"):
+    """참조 텍스트 대비 절대 단어 오류 수를 반환한다(WER 비율이 아닌 개수).
+
+    문장 게이트: 반환값이 1 이하면 합격으로 간주한다.
+    wm_or_size: WhisperModel 인스턴스 또는 크기 문자열.
+    """
+    import difflib
+    if isinstance(wm_or_size, str):
+        wm = whisper_model(wm_or_size)
+    else:
+        wm = wm_or_size
+    segs, _ = wm.transcribe(audio16k(audio_file), language="de", beam_size=5)
+    hyp = " ".join(s.text.strip() for s in segs)
+    r = norm_words(ref_text)
+    h = norm_words(hyp)
+    if not r:
+        return 0
+    return sum(max(a2 - a1, b2 - b1) for op, a1, a2, b1, b2 in
+               difflib.SequenceMatcher(a=r, b=h).get_opcodes() if op != "equal")
+
+
+# 독일어 정관사/부정관사: 전사에 포함돼도 단어 클립 허용
+_ARTICLES_DE = frozenset([
+    "der", "die", "das", "dem", "den", "des",
+    "ein", "eine", "einen", "einem", "einer",
+])
+
+
+def compute_wer_word_clip(audio_file, word_text, wm_or_size="base", min_dur=0.25):
+    """트림된 단어 클립을 검증한다.
+
+    - duration < min_dur(기본 0.25초)이면 1.0 반환(거부)
+    - 관사(der/die/das 등)를 제외하고 핵심 단어를 비교한다
+    - word_text 의 핵심 단어가 전사에 포함되면 0.0(합격), 아니면 편집거리 기반 WER(최대 1.0)
+
+    wm_or_size: WhisperModel 인스턴스 또는 크기 문자열.
+    """
+    import difflib
+    try:
+        dur = duration(audio_file)
+    except Exception:
+        return 1.0
+    if dur < min_dur:
+        return 1.0  # 너무 짧은 클립 거부
+    if isinstance(wm_or_size, str):
+        wm = whisper_model(wm_or_size)
+    else:
+        wm = wm_or_size
+    segs, _ = wm.transcribe(audio16k(audio_file), language="de", beam_size=5)
+    hyp = " ".join(s.text.strip() for s in segs)
+    ref = [w for w in norm_words(word_text) if w not in _ARTICLES_DE]
+    hyp_w = [w for w in norm_words(hyp) if w not in _ARTICLES_DE]
+    if not ref:
+        return 0.0
+    # ref 가 hyp_w 에 포함되면 합격 (관사 제외 후 순서 보존 부분일치)
+    for i in range(len(hyp_w) - len(ref) + 1):
+        if hyp_w[i:i + len(ref)] == ref:
+            return 0.0
+    errs = sum(max(a2 - a1, b2 - b1) for op, a1, a2, b1, b2 in
+               difflib.SequenceMatcher(a=ref, b=hyp_w).get_opcodes() if op != "equal")
+    return min(errs / len(ref), 1.0)
+
+
 # ---------- 생성 ----------
 
 def synth_items(m, items, out, trim_model="base"):

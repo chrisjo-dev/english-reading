@@ -132,9 +132,11 @@ def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
 
     - 문장 s{i}.mp3, 단어 w{i}.mp3, 고급 어휘 v{i}.mp3 를 out_dir 에 저장한다.
     - 이미 파일이 있으면 건너뛴다.
-    - 각 항목을 faster-whisper base 로 WER 검증하고 합격(WER <= QWEN_ACCEPT_WER) 때까지
-      QWEN_SEEDS 순서로 재시도한다(최대 max_retries 회).
-    - max_retries 를 모두 써도 실패하면 가장 WER 이 낮은 결과를 저장하고 ::warning:: 을 출력한다.
+    - 각 항목을 faster-whisper base 로 검증하고 합격할 때까지 QWEN_SEEDS 순서로 재시도한다.
+      - 문장(s*, a*): 절대 단어 오류 수 ≤ 1 이면 합격
+      - 단어(w*, v*): 트림된 클립 WER == 0.0 이고 길이 ≥ 0.25초이면 합격
+                      트림 실패 시 다음 시드로; 마지막 시도에서 실패하면 단독 생성 폴백
+    - max_retries 를 모두 써도 불합격이면 가장 낮은 WER 결과를 저장하고 ::warning:: 을 출력한다.
       잡 전체를 실패시키지 않는다.
     """
     out_dir = Path(out_dir)
@@ -195,6 +197,7 @@ def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
             key, text, kind = it["key"], it["text"], it["kind"]
             best_mp3 = None
             best_wer = 2.0
+            best_accepted = False
 
             for attempt in range(max_retries):
                 seed = QWEN_SEEDS[attempt % len(QWEN_SEEDS)]
@@ -203,23 +206,33 @@ def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
                 mp3 = tmp / f"{key}_a{attempt}.mp3"
                 try:
                     if kind == "word":
-                        # 캐리어 안에서 생성하고, Whisper 로 캐리어 맥락 검증 후 트림
+                        # 캐리어 안에서 생성하고 트림; 실패 시 다음 시드로
                         x, sr = qw.generate(m, qw.CARRIER.format(text), seed=seed)
                         sf.write(str(carrier_wav), x, sr)
-                        wer = qw.compute_wer_word_carrier(carrier_wav, text, wm)
                         y = qw.trim_carrier(x, sr, text, carrier_wav, trim_model)
                         if y is None:
-                            # 트림 실패: 단어 단독 생성, WER 소폭 패널티
+                            if attempt < max_retries - 1:
+                                # 트림 실패: 다음 시드로
+                                print(f"{key} attempt={attempt + 1} seed={seed} trim 실패, 다음 시드로")
+                                continue
+                            # 마지막 시도에서도 실패: 단어 단독 생성 폴백
                             y, sr = qw.generate(m, text, seed=seed)
-                            wer = max(wer, 0.35)
+                            print(f"{key} attempt={attempt + 1} seed={seed} trim 실패, 단독 생성 폴백")
                         sf.write(str(wav), y, sr)
+                        qw.polish(wav)
+                        qw.to_mp3(wav, mp3)
+                        # 트림된 클립 검증: 길이(≥0.25초) + 전사 대조
+                        wer = qw.compute_wer_word_clip(mp3, text, wm)
+                        _accept = (wer == 0.0)
                     else:
                         x, sr = qw.generate(m, text, seed=seed)
                         sf.write(str(wav), x, sr)
-                        wer = qw.compute_wer(wav, text, wm)
-
-                    qw.polish(wav)
-                    qw.to_mp3(wav, mp3)
+                        qw.polish(wav)
+                        qw.to_mp3(wav, mp3)
+                        # 문장 게이트: 절대 단어 오류 수 ≤ 1
+                        word_errs = qw.count_word_errors(mp3, text, wm)
+                        wer = word_errs / max(len(qw.norm_words(text)), 1)
+                        _accept = (word_errs <= 1)
 
                     print(f"{key} attempt={attempt + 1} seed={seed} WER={wer:.2f}")
 
@@ -228,13 +241,14 @@ def qwen(c, lang, out_dir, max_retries=4, trim_model="base"):
                         best_mp3 = tmp / f"{key}_best.mp3"
                         shutil.copy2(str(mp3), str(best_mp3))
 
-                    if wer <= QWEN_ACCEPT_WER:
+                    if _accept:
+                        best_accepted = True
                         break
                 except Exception as e:  # noqa: BLE001
                     print(f"::warning::de audio {key} attempt {attempt + 1} 오류: {e}")
 
             if best_mp3 and best_mp3.exists():
-                if best_wer > QWEN_ACCEPT_WER:
+                if not best_accepted:
                     warn_list.append(f"{key}(WER={best_wer:.2f})")
                 shutil.copy2(str(best_mp3), str(it["target"]))
                 print(f"ok {key} -> {it['target'].name} (WER={best_wer:.2f})")
