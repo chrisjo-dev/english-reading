@@ -177,8 +177,8 @@ class _Handler(BaseHTTPRequestHandler):
         """Bearer 토큰을 검증한다. 실패 시 응답을 보내고 False 를 돌려준다."""
         try:
             expected = _read_token()
-        except FileNotFoundError as e:
-            self._error(500, str(e), "configuration_error")
+        except FileNotFoundError:
+            self._error(500, "서버 설정 오류입니다.", "configuration_error")  # 파일 경로는 응답에 싣지 않는다
             return False
         hdr = self.headers.get("Authorization", "")
         scheme, _, token = hdr.partition(" ")
@@ -240,8 +240,16 @@ class _Handler(BaseHTTPRequestHandler):
             self._error(400, "n 은 1 만 지원합니다.", "invalid_request")
             return
 
-        seed  = body.get("seed")
-        steps = int(body.get("steps", 4))
+        try:
+            seed = body.get("seed")
+            seed = None if seed is None else int(seed)
+            steps = int(body.get("steps", 4))
+        except (TypeError, ValueError):
+            self._error(400, "seed 와 steps 는 정수여야 합니다.", "invalid_request")
+            return
+        if not 1 <= steps <= 50:
+            self._error(400, "steps 는 1~50 이어야 합니다.", "invalid_request")
+            return
 
         # ── 대기열 확인 ──────────────────────────────────────────────────────
         if not _inc_waiting():

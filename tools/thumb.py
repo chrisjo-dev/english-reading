@@ -15,8 +15,10 @@ import json
 import math
 import os
 import re
+import socket
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -246,6 +248,9 @@ def photo(lang, day):
                     {"Authorization": f"Bearer {local_token}",
                      "Content-Type": "application/json"},
                 )
+                # 생성은 2분쯤 걸려 읽기 시간은 길게 두되, 맥 미니가 꺼져 있으면 5초 안에 포기한다
+                u = urllib.parse.urlsplit(local_url)
+                socket.create_connection((u.hostname, u.port or 80), timeout=5).close()
                 r = json.loads(urllib.request.urlopen(req, timeout=300).read())
                 return Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
             except Exception as e:
