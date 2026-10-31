@@ -29,6 +29,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      # build_email 이 vote 를 거쳐 thumb(Pillow)을 불러온다. 없으면 메일 보충이 import 에서 실패했다(10/30부터).
+      - run: pip install pillow
       - name: Send to missed subscribers
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
