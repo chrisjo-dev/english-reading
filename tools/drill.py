@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "7"
+VERSION = "8"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -40,6 +40,22 @@ def rich(s):
 
 def _norm(s):
     return re.sub(r"\s+", " ", base(s)).strip().lower()
+
+
+def _fold(s):
+    """독일어 변이음을 접는다(Hänge ↔ Hang 을 같은 어간으로 찾으려고)."""
+    return s.replace("ä", "a").replace("ö", "o").replace("ü", "u").replace("ß", "ss")
+
+
+def _hint(m, word):
+    """단어 쓰기 힌트용 뜻: 괄호 속에 정답 낱말이 든 덧붙임((das Ufer), (teaming up: …))은 지운다.
+    그대로 두면 힌트에 답이 보였다(독일어 2026-10-31)."""
+    key = _fold(_norm(word).lstrip("〜~").split()[0]) if _norm(word) else ""
+    key = key[:max(3, len(key) - 2)] if len(key) > 4 else key
+    if not key or not re.match(r"[a-z]", key):
+        return m
+    out = re.sub(r"\s*\([^()]*\)", lambda g: "" if key in _fold(g.group(0).lower()) else g.group(0), m).strip()
+    return out or m
 
 
 def _match(bold, word):
@@ -84,6 +100,9 @@ def _find(word, sents):
     for k, s in enumerate(sents):
         if stem and stem in _norm(s["en"]):
             return k, None
+    for k, s in enumerate(sents):  # 같은 표기가 없을 때만 변이음을 접어 찾는다(Hang 이 문장에는 Hängen 으로)
+        if stem and _fold(stem) in _fold(_norm(s["en"])):
+            return k, None
     return None, None
 
 
@@ -102,7 +121,11 @@ def _target(raw, word, bold):
         first = w.split()[0]
         stem = first[:max(3, len(first) - 2)] if len(first) > 4 else first
         # ** 는 같은 길이의 \x01\x01 로 바꿔 찾아야 위치가 원문과 맞는다
-        m = re.search(r"(?<![\wÄÖÜäöüß])" + re.escape(stem) + r"[\wÄÖÜäöüß]*", raw.replace("**", "\x01\x01"), re.I)
+        src = raw.replace("**", "\x01\x01")
+        m = re.search(r"(?<![\wÄÖÜäöüß])" + re.escape(stem) + r"[\wÄÖÜäöüß]*", src, re.I)
+        if not m:  # 같은 표기가 없으면 어간의 a/o/u 자리에 변이음도 허용한다(Hang ↔ Hängen)
+            pat = "".join({"a": "[aä]", "o": "[oö]", "u": "[uü]"}.get(ch.lower(), re.escape(ch)) for ch in stem)
+            m = re.search(r"(?<![\wÄÖÜäöüß])" + pat + r"[\wÄÖÜäöüß]*", src, re.I)
         return (m.start(), m.end()) if m else None
     for m in RUBY.finditer(raw):
         if m.group(1) == w:
@@ -163,6 +186,9 @@ def cards(lang, day):
     out = []
     for i, (w, m) in enumerate(words):
         c = {"w": base(w), "m": m}
+        mh = _hint(m, w)
+        if mh != m:
+            c["mh"] = mh
         r = reading(w)
         if r and r != c["w"]:
             c["r"] = r

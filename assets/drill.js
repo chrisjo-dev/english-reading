@@ -101,7 +101,7 @@
       var k = kindOf(it), done = it.pick != null, num = '문제 ' + (S.answered + (done ? 0 : 1)) + '. ';
       var nextBtn = '<button class="dr-btn" type="button" data-act="next">' + (S.queue.length > 1 ? '다음 문제' : '결과 보기') + '</button>';
       if (k === 'write') {
-        h += '<div class="dr-fc fit"><div class="dr-q">' + num + '뜻을 보고 단어를 쓰세요</div><div class="dr-qmean">' + esc(c.m) + '</div><p class="dr-qhint">' + hint(c) + '</p>' +
+        h += '<div class="dr-fc fit"><div class="dr-q">' + num + '뜻을 보고 단어를 쓰세요</div><div class="dr-qmean">' + esc(c.mh || c.m) + '</div><p class="dr-qhint">' + hint(c) + '</p>' +
           '<form class="dr-write" autocomplete="off"><input class="dr-field' + (done ? (it.ok ? ' right' : ' wrong') : '') + '" type="text" lang="' + c.l +
           '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="단어 입력" placeholder="여기에 쓰세요"' +
           (done ? ' value="' + esc(it.pick) + '" disabled' : '') + '></form>';
@@ -174,6 +174,7 @@
   // 쓰기 채점: 대소문자, 띄어쓰기, 문장부호, 괄호 속 말은 보지 않는다. 독일어는 ae/oe/ue/ss, 일본어는 가타카나와 읽기도 정답.
   function norm(s, l, raw) {
     s = String(s).normalize('NFKC').toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[.,!?'"’`…~〜]/g, '').replace(/\s+/g, ' ').trim();
+    if (l === 'de') s = s.replace(/^(der|die|das) /, '');  // 관사를 붙여 써도(das Ufer) 정답
     if (l === 'de' && !raw) s = s.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
     if (l === 'en') s = s.replace(/^to /, '');
     if (l === 'ja') s = s.replace(/[\u30a1-\u30f6]/g, function (ch) { return String.fromCharCode(ch.charCodeAt(0) - 0x60); }).replace(/\s/g, '');

@@ -78,6 +78,21 @@ class TestCards(unittest.TestCase):
         self.assertNotIn("cz", c)
         self.assertIn("ex", c)
 
+    def test_write_hint_hides_answer_in_parentheses(self):
+        """독일어 2026-10-31: 뜻 '물가, 호숫가 (das Ufer)' 가 단어 쓰기 힌트에 답을 보여 줬다."""
+        cs = {x["w"]: x for x in drill.cards("de", "2026-10-31")}
+        self.assertEqual(cs["Ufer"]["m"], "물가, 호숫가 (das Ufer)")  # 카드 뒷면, 뜻 고르기는 그대로
+        self.assertEqual(cs["Ufer"]["mh"], "물가, 호숫가")
+        self.assertEqual(cs["Hang"]["mh"], "비탈, 경사면")
+        for c in cs.values():
+            self.assertNotIn(c["w"].lower(), c.get("mh", c["m"]).lower())
+        self.assertEqual(drill._hint("협력하다, 손잡다 (teaming up: 손잡는 중)", "team up"), "협력하다, 손잡다")
+        self.assertEqual(drill._hint("마음 (비유)", "heart"), "마음 (비유)")  # 답이 없는 괄호는 둔다
+
+    def test_de_word_found_through_umlaut_form(self):
+        c = next(x for x in drill.cards("de", "2026-10-31") if x["w"] == "Hang")  # 문장에는 Hängen
+        self.assertIn("<b>Hängen</b>", c["ex"])
+
     def test_missing_content_gives_no_cards(self):
         self.assertEqual(drill.cards("en", "2020-01-01"), [])
 
@@ -118,6 +133,8 @@ class TestApply(unittest.TestCase):
 
     def test_script_asset_exists(self):
         js = (ROOT / "assets" / "drill.js").read_text(encoding="utf-8")
+        self.assertIn("c.mh || c.m", js)  # 단어 쓰기 힌트는 답을 가린 뜻
+        self.assertIn("replace(/^(der|die|das) /, '')", js)  # 관사를 붙여 써도 정답
         for name in ("word_drill_start", "word_drill_done", "word_review_start", "drill:v1"):
             self.assertIn(name, js)
         self.assertNotIn("\u00b7", js)
