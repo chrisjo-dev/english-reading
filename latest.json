@@ -1,52 +1,52 @@
 {
  "date": "2026-11-01",
- "words_total": 415,
+ "words_total": 422,
  "langs": {
   "en": {
-   "count": 29,
-   "latest": "2026-10-31",
-   "topic": "거대한 카트리나",
+   "count": 30,
+   "latest": "2026-11-01",
+   "topic": "쌍둥이 소행성",
    "sentences": [
-    "On Thursday night, hundreds of people **gathered** in the main square of Mexico City to look up at a giant skeleton lady.",
-    "She is a **Catrina**, a well-known **symbol** of the Day of the Dead, and she stands more than thirty-three meters tall.",
-    "The figure, which a team of artists made almost entirely from paper and glue, is now the tallest **sculpture** of its kind in the world.",
-    "It **broke** the old record, which was set by a Catrina in another Mexican city in 2023."
+    "A European spacecraft called Hera has sent back its first **image** of a pair of small **asteroids** that travel through space together.",
+    "Until now, the two rocks looked like one point of light, but in this picture they can be seen **separately** for the first time.",
+    "The bigger asteroid, Didymos, is about 780 meters wide, while the smaller one is only about 151 meters **across**.",
+    "In 2022, the smaller asteroid was hit **on purpose** by another spacecraft, and the crash, which was a test of how to **protect** Earth from dangerous space rocks, changed the time it takes to circle the bigger one by about thirty-two minutes."
    ],
    "chips": [
-    "6문장",
+    "5문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 3분"
    ],
-   "answer": "목요일 밤, 수백 명의 사람들이 멕시코시티 중앙 광장에 모여 거대한 해골 여인을 올려다보았다.",
+   "answer": "Hera라는 유럽 우주선이 함께 우주를 이동하는 작은 소행성 한 쌍의 첫 사진을 보내왔다.",
    "words": [
     [
-     "gathered",
-     "모였다 (gather의 과거)"
+     "image",
+     "사진, 영상 (이미지)"
     ],
     [
-     "symbol",
-     "상징"
+     "asteroids",
+     "소행성들 (복수형)"
     ],
     [
-     "sculpture",
-     "조각, 조각품"
+     "separately",
+     "따로따로, 각각"
     ],
     [
-     "broke (a record)",
-     "(기록을) 깼다"
+     "across",
+     "폭이 ~인, 가로질러"
     ],
     [
-     "altar",
-     "제단"
+     "on purpose",
+     "일부러, 의도적으로"
     ],
     [
-     "marigolds",
-     "금잔화 (복수 -s)"
+     "protect",
+     "지키다, 보호하다"
     ],
     [
-     "equal",
-     "평등한, 같은"
+     "detailed",
+     "자세한, 상세한"
     ]
    ]
   },
@@ -149,6 +149,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-01",
+   "topic": "쌍둥이 소행성"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-01",
    "topic": "단풍 산책"
@@ -237,11 +242,6 @@
    "lang": "ja",
    "day": "2026-10-26",
    "topic": "손편지 쓰기"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-25",
-   "topic": "포보스 탐사"
   }
  ]
 }
