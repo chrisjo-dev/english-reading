@@ -89,6 +89,16 @@ class TestCards(unittest.TestCase):
         self.assertEqual(drill._hint("협력하다, 손잡다 (teaming up: 손잡는 중)", "team up"), "협력하다, 손잡다")
         self.assertEqual(drill._hint("마음 (비유)", "heart"), "마음 (비유)")  # 답이 없는 괄호는 둔다
 
+    def test_check_content_rejects_answer_in_meaning(self):
+        """새 지문이 뜻에 단어를 다시 쓰면 올리기 전 검사에서 막는다(그 전 지문은 페이지가 가린다)."""
+        import check_content
+        new = {"words": [["Ufer", "물가 (das Ufer)"], ["genes", "유전자들 (복수형)"]]}
+        errs = check_content.check_word_meanings(new, ROOT / "content" / "de" / "2026-11-01.json")
+        self.assertEqual(len(errs), 1)
+        self.assertIn("Ufer", errs[0])
+        self.assertEqual(check_content.check_word_meanings(new, ROOT / "content" / "de" / "2026-10-31.json"), [])
+        self.assertEqual(len(check_content.check_word_meanings(new, ROOT / "pool" / "de" / "x.json")), 1)
+
     def test_de_word_found_through_umlaut_form(self):
         c = next(x for x in drill.cards("de", "2026-10-31") if x["w"] == "Hang")  # 문장에는 Hängen
         self.assertIn("<b>Hängen</b>", c["ex"])
