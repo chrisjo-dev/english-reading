@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.wspace.read-photo</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>__PYTHON__</string>
+        <string>__REPO_PATH__/tools/local-photo/make_photos.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>FLUX_MODEL_DIR</key>
+        <string>__FLUX_MODEL_DIR__</string>
+        <key>PATH</key>
+        <string>__UV_BIN_DIR__:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+
+    <!-- 120초마다 실행. 스크립트 내에서 05:00~11:00(KST) 시간대 외에는 조용히 종료한다. -->
+    <key>StartInterval</key>
+    <integer>120</integer>
+
+    <key>StandardOutPath</key>
+    <string>__LOG_PATH__</string>
+    <key>StandardErrorPath</key>
+    <string>__LOG_PATH__</string>
+
+    <key>WorkingDirectory</key>
+    <string>__REPO_PATH__</string>
+
+    <!-- 부팅 시 즉시 실행하지 않는다. StartInterval 에 의해 처음 실행된다. -->
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
