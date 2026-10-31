@@ -1,0 +1,439 @@
+{
+  "date": "2026-11-01",
+  "category": "culture",
+  "topic": "11월의 안개",
+  "title_ko": "안개 낀 11월",
+  "headline": "Nebel im November",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "sentences": [
+    {
+      "en": "Im November ist das Wetter in Deutschland oft grau, und an vielen Morgen liegt dichter **Nebel** über den Feldern und Flüssen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Im November",
+          "11월에는"
+        ],
+        [
+          "ist das Wetter",
+          "날씨가"
+        ],
+        [
+          "in Deutschland",
+          "독일에서"
+        ],
+        [
+          "oft grau,",
+          "자주 흐립니다"
+        ],
+        [
+          "und an vielen Morgen",
+          "그리고 많은 아침에"
+        ],
+        [
+          "liegt dichter **Nebel**",
+          "짙은 안개가 깔려 있습니다"
+        ],
+        [
+          "über den Feldern und Flüssen.",
+          "들판과 강 위에"
+        ]
+      ]
+    },
+    {
+      "en": "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark abkühlt und sich daraus winzige **Tropfen** bilden.",
+      "b2": false,
+      "chunks": [
+        [
+          "Nebel entsteht,",
+          "안개는 생깁니다"
+        ],
+        [
+          "wenn sich feuchte Luft",
+          "습한 공기가 ~할 때"
+        ],
+        [
+          "in einer klaren Nacht",
+          "맑은 밤에"
+        ],
+        [
+          "stark abkühlt",
+          "크게 식을 때"
+        ],
+        [
+          "und sich daraus",
+          "그리고 거기에서"
+        ],
+        [
+          "winzige **Tropfen** bilden.",
+          "아주 작은 물방울이 생길 때"
+        ]
+      ]
+    },
+    {
+      "en": "Je länger die Nächte im Herbst werden, desto häufiger bildet sich der Nebel, besonders in **Tälern** und an Seen.",
+      "b2": true,
+      "chunks": [
+        [
+          "Je länger die Nächte",
+          "밤이 길어질수록"
+        ],
+        [
+          "im Herbst werden,",
+          "가을에"
+        ],
+        [
+          "desto häufiger",
+          "그만큼 더 자주"
+        ],
+        [
+          "bildet sich der Nebel,",
+          "안개가 생깁니다"
+        ],
+        [
+          "besonders in **Tälern**",
+          "특히 골짜기에서"
+        ],
+        [
+          "und an Seen.",
+          "그리고 호숫가에서"
+        ]
+      ]
+    },
+    {
+      "en": "Im Straßenverkehr ist Nebel gefährlich, weil man andere Autos und Fußgänger oft erst sehr spät **erkennt**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Im Straßenverkehr",
+          "도로 교통에서"
+        ],
+        [
+          "ist Nebel gefährlich,",
+          "안개는 위험합니다"
+        ],
+        [
+          "weil man",
+          "왜냐하면 사람들이"
+        ],
+        [
+          "andere Autos und Fußgänger",
+          "다른 차와 보행자를"
+        ],
+        [
+          "oft erst sehr spät **erkennt**.",
+          "자주 아주 늦게야 알아보기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Deshalb muss bei dichtem Nebel langsamer gefahren werden, und die **Nebelscheinwerfer** dürfen nur bei schlechter Sicht eingeschaltet werden.",
+      "b2": true,
+      "chunks": [
+        [
+          "Deshalb muss",
+          "그래서 ~해야 합니다"
+        ],
+        [
+          "bei dichtem Nebel",
+          "짙은 안개 속에서는"
+        ],
+        [
+          "langsamer gefahren werden,",
+          "더 천천히 운전되어야"
+        ],
+        [
+          "und die **Nebelscheinwerfer**",
+          "그리고 안개등은"
+        ],
+        [
+          "dürfen nur",
+          "~만 됩니다"
+        ],
+        [
+          "bei schlechter Sicht",
+          "시야가 나쁠 때만"
+        ],
+        [
+          "eingeschaltet werden.",
+          "켜져도"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Menschen machen es sich an solchen grauen Tagen zu Hause **gemütlich**, trinken heißen Tee und zünden eine Kerze an.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viele Menschen",
+          "많은 사람들은"
+        ],
+        [
+          "machen es sich",
+          "~하게 지냅니다"
+        ],
+        [
+          "an solchen grauen Tagen",
+          "이런 흐린 날에"
+        ],
+        [
+          "zu Hause **gemütlich**,",
+          "집에서 아늑하게"
+        ],
+        [
+          "trinken heißen Tee",
+          "뜨거운 차를 마시고"
+        ],
+        [
+          "und zünden eine Kerze an.",
+          "그리고 초에 불을 붙입니다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Nebel",
+      "안개 (남성 der)"
+    ],
+    [
+      "Tropfen",
+      "방울, 물방울 (남성 der)"
+    ],
+    [
+      "Tal",
+      "골짜기 (중성 das)"
+    ],
+    [
+      "erkennen",
+      "알아보다, 식별하다"
+    ],
+    [
+      "Nebelscheinwerfer",
+      "자동차 안개등 (남성 der)"
+    ],
+    [
+      "gemütlich",
+      "아늑한, 편안한"
+    ],
+    [
+      "abkühlen",
+      "식다, 차가워지다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "je ... desto — ~할수록 더 ~하다",
+      "body": "`Je länger die Nächte im Herbst werden, desto häufiger bildet sich der Nebel`에서 `je`절은 부문장이라 동사 `werden`이 맨 끝에 가요. `desto` 뒤에는 비교급(`häufiger`)이 오고, 바로 다음에 정동사 `bildet`가 옵니다. '밤이 길어질수록 안개가 더 자주 생긴다'로 읽으면 됩니다."
+    },
+    {
+      "title": "화법조동사 + 수동태 — muss ... gefahren werden",
+      "body": "`muss ... langsamer gefahren werden`은 '더 천천히 운전되어야 한다', 즉 '더 천천히 운전해야 한다'는 뜻이에요. 화법조동사(`muss`, `dürfen`)가 둘째 자리에, 과거분사(`gefahren`, `eingeschaltet`)와 `werden`이 문장 끝에 옵니다. 행위자(운전자)를 굳이 말하지 않고 규칙을 말할 때 자주 쓰는 형태예요."
+    }
+  ],
+  "answers": [
+    "11월에 독일의 날씨는 자주 흐리고, 많은 아침에 들판과 강 위로 짙은 안개가 깔립니다.",
+    "안개는 맑은 밤에 습한 공기가 크게 식어서 거기에서 아주 작은 물방울이 생길 때 만들어집니다.",
+    "가을에 밤이 길어질수록 안개는 더 자주 생기며, 특히 골짜기와 호숫가에서 그렇습니다.",
+    "도로에서 안개는 위험한데, 다른 차와 보행자를 아주 늦게야 알아보는 경우가 많기 때문입니다.",
+    "그래서 짙은 안개 속에서는 더 천천히 운전해야 하고, 안개등은 시야가 나쁠 때만 켜야 합니다.",
+    "많은 사람들은 이런 흐린 날 집에서 아늑하게 지내며 뜨거운 차를 마시고 초에 불을 켭니다."
+  ],
+  "advanced": [
+    {
+      "word": "die Sichtweite",
+      "meaning": "가시거리, 시야가 닿는 거리",
+      "confuse": "die Sicht는 '시야, 보이는 상태', die Sichtweite는 '몇 미터까지 보이는지'라는 거리를 말해요.",
+      "example": "Bei Nebel beträgt die **Sichtweite** manchmal weniger als fünfzig Meter.",
+      "example_ko": "안개가 끼면 가시거리가 때때로 50미터도 안 됩니다."
+    },
+    {
+      "word": "die Feuchtigkeit",
+      "meaning": "습기, 습도",
+      "confuse": null,
+      "example": "Im Herbst ist die **Feuchtigkeit** in der Luft oft sehr hoch.",
+      "example_ko": "가을에는 공기 중 습도가 자주 매우 높습니다."
+    },
+    {
+      "word": "sich auflösen",
+      "meaning": "(안개 등이) 걷히다, 녹아 없어지다",
+      "confuse": "재귀동사로 쓰면 '스스로 사라지다'예요. 재귀대명사 없이 `etwas auflösen`이면 '무엇을 녹이다, 해산시키다'가 됩니다.",
+      "example": "Am Mittag **löst sich** der Nebel meistens **auf**.",
+      "example_ko": "한낮이 되면 안개는 대개 걷힙니다."
+    },
+    {
+      "word": "die Glätte",
+      "meaning": "(도로의) 미끄러움, 빙판",
+      "confuse": null,
+      "example": "Nach einer kalten Nacht warnt der Wetterdienst vor **Glätte** auf den Straßen.",
+      "example_ko": "추운 밤이 지나면 기상청은 도로 결빙을 경고합니다."
+    },
+    {
+      "word": "trüb",
+      "meaning": "흐린, 침침한",
+      "confuse": "`trüb`는 하늘이나 물이 맑지 않은 상태, `traurig`는 사람의 마음이 슬픈 상태예요.",
+      "example": "An **trüben** Tagen schaltet man schon am Nachmittag das Licht ein.",
+      "example_ko": "흐린 날에는 오후에 벌써 불을 켭니다."
+    },
+    {
+      "word": "die Dämmerung",
+      "meaning": "어스름, 해 질 녘이나 동틀 녘",
+      "confuse": null,
+      "example": "Im November beginnt die **Dämmerung** schon gegen vier Uhr.",
+      "example_ko": "11월에는 4시쯤이면 벌써 어스름이 시작됩니다."
+    },
+    {
+      "word": "vorsichtig",
+      "meaning": "조심스러운, 주의 깊은",
+      "confuse": "`vorsichtig`는 '조심하는', `vorsichtshalber`는 '만일을 위해서'라는 부사예요.",
+      "example": "Bei Nebel sollte man besonders **vorsichtig** fahren.",
+      "example_ko": "안개가 끼면 특히 조심해서 운전해야 합니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Im November ist das Wetter oft grau, und morgens gibt es **Nebel**.",
+          "chunks": [
+            [
+              "Im November",
+              "11월에는"
+            ],
+            [
+              "ist das Wetter oft grau,",
+              "날씨가 자주 흐립니다"
+            ],
+            [
+              "und morgens",
+              "그리고 아침에는"
+            ],
+            [
+              "gibt es **Nebel**.",
+              "안개가 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "In klaren Nächten wird die Luft kalt, und es entstehen kleine **Tropfen**.",
+          "chunks": [
+            [
+              "In klaren Nächten",
+              "맑은 밤에는"
+            ],
+            [
+              "wird die Luft kalt,",
+              "공기가 차가워집니다"
+            ],
+            [
+              "und es entstehen",
+              "그리고 생겨납니다"
+            ],
+            [
+              "kleine **Tropfen**.",
+              "작은 물방울이"
+            ]
+          ]
+        },
+        {
+          "en": "Im Herbst sind die Nächte lang, deshalb gibt es oft Nebel in **Tälern**.",
+          "chunks": [
+            [
+              "Im Herbst",
+              "가을에는"
+            ],
+            [
+              "sind die Nächte lang,",
+              "밤이 깁니다"
+            ],
+            [
+              "deshalb gibt es oft Nebel",
+              "그래서 자주 안개가 생깁니다"
+            ],
+            [
+              "in **Tälern**.",
+              "골짜기에"
+            ]
+          ]
+        },
+        {
+          "en": "Nebel ist gefährlich, denn man **erkennt** andere Autos oft zu spät.",
+          "chunks": [
+            [
+              "Nebel ist gefährlich,",
+              "안개는 위험합니다"
+            ],
+            [
+              "denn man **erkennt**",
+              "왜냐하면 사람들은 알아봅니다"
+            ],
+            [
+              "andere Autos",
+              "다른 차를"
+            ],
+            [
+              "oft zu spät.",
+              "자주 너무 늦게"
+            ]
+          ]
+        },
+        {
+          "en": "Autofahrer müssen dann langsam fahren und die **Nebelscheinwerfer** einschalten.",
+          "chunks": [
+            [
+              "Autofahrer müssen dann",
+              "운전자는 그때 ~해야 합니다"
+            ],
+            [
+              "langsam fahren",
+              "천천히 운전하고"
+            ],
+            [
+              "und die **Nebelscheinwerfer**",
+              "그리고 안개등을"
+            ],
+            [
+              "einschalten.",
+              "켜야"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Menschen bleiben dann zu Hause, trinken Tee und finden es **gemütlich**.",
+          "chunks": [
+            [
+              "Viele Menschen",
+              "많은 사람들은"
+            ],
+            [
+              "bleiben dann zu Hause,",
+              "그때 집에 머뭅니다"
+            ],
+            [
+              "trinken Tee",
+              "차를 마시고"
+            ],
+            [
+              "und finden es **gemütlich**.",
+              "그것을 아늑하다고 느낍니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "11월에는 날씨가 자주 흐리고, 아침에는 안개가 낍니다.",
+        "맑은 밤에는 공기가 차가워지고, 작은 물방울이 생깁니다.",
+        "가을에는 밤이 길어서 골짜기에 안개가 자주 낍니다.",
+        "안개는 위험합니다. 다른 차를 너무 늦게 알아보는 경우가 많기 때문입니다.",
+        "그럴 때 운전자는 천천히 달리고 안개등을 켜야 합니다.",
+        "많은 사람들은 그럴 때 집에 머물며 차를 마시고 아늑함을 즐깁니다."
+      ]
+    }
+  }
+}
