@@ -204,6 +204,13 @@ PHOTO_STYLE = ("Editorial magazine photograph used as a news article thumbnail. 
                "Absolutely no text, letters, numbers, logos or watermarks anywhere in the image. "
                "Avoid shop signs, labels, cards, book covers, screens and packaging that would show writing; "
                "if such an object matters, show it from an angle or distance where no writing is visible.")
+LOCAL_STYLE = (
+    "Realistic full-bleed photograph that fills the entire frame edge to edge, "
+    "no borders, no white margins, no frames. Natural light, shallow depth of field, "
+    "one clear main subject shown large and prominent, calm composition. "
+    "Absolutely no text, letters, numbers, logos or watermarks anywhere. "
+    "Avoid signs, labels, screens and packaging with writing."
+)
 
 
 def _plain(s):
@@ -219,7 +226,32 @@ def photo_prompt(lang, day):
 
 
 def photo(lang, day):
-    """기사에 맞는 사진(PIL 이미지). 키가 없거나 실패하면 None. 키와 응답 본문은 출력하지 않는다."""
+    """기사에 맞는 사진(PIL 이미지). 실패하면 None. 토큰·키는 출력하지 않는다."""
+    # ── 로컬 이미지 API (맥 미니 Tailscale) ───────────────────────────────────
+    local_url   = os.environ.get("LOCAL_IMAGE_URL", "").strip()
+    local_token = os.environ.get("LOCAL_IMAGE_TOKEN", "").strip()
+    if local_url and local_token:
+        try:
+            c = json.loads((ROOT / "content" / lang / f"{day}.json").read_text(encoding="utf-8"))
+            scene = c.get("photo_scene", "").strip()
+        except Exception:
+            scene = ""
+        if scene:
+            try:
+                prompt = LOCAL_STYLE + "\nScene: " + scene
+                body = json.dumps({"prompt": prompt, "size": "1216x640", "n": 1}).encode()
+                req = urllib.request.Request(
+                    local_url.rstrip("/") + "/v1/images/generations",
+                    body,
+                    {"Authorization": f"Bearer {local_token}",
+                     "Content-Type": "application/json"},
+                )
+                r = json.loads(urllib.request.urlopen(req, timeout=300).read())
+                return Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
+            except Exception as e:
+                print(f"thumb: 로컬 API 실패 {type(e).__name__}, OpenAI 로 시도합니다", file=sys.stderr)
+
+    # ── OpenAI API ────────────────────────────────────────────────────────────
     key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not key or not (ROOT / "content" / lang / f"{day}.json").exists():
         return None
@@ -312,14 +344,6 @@ def build(lang, day, cat=None, pic=None):
     out = ROOT / lang / day / "thumb.png"
     if pic is None and is_photo(out) and os.environ.get("THUMB_REDRAW") != "1":
         return out  # 이미 사진 썸네일이면 다시 만들지 않는다(같은 날 다시 발행해도 비용이 들지 않고 그림도 그대로)
-    # 맥 미니가 FLUX.1 schnell 로 생성해 커밋한 로컬 사진 파일이 있으면 OpenAI API 를 부르지 않는다
-    if pic is None:
-        _local = ROOT / "content" / lang / f"{day}.photo.jpg"
-        if _local.exists():
-            try:
-                pic = Image.open(_local).convert("RGB")
-            except Exception as _e:
-                print(f"thumb: 로컬 사진 파일({_local.name}) 읽기 실패 {type(_e).__name__}, API 로 만든다", file=sys.stderr)
     pic = pic or photo(lang, day)
     if pic is not None:
         try:

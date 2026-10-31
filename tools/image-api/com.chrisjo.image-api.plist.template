@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.chrisjo.image-api</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/env</string>
+        <string>python3</string>
+        <string>__SERVER_PY__</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>FLUX_MODEL_DIR</key>
+        <string>__FLUX_MODEL_DIR__</string>
+        <key>IMAGE_API_HOST</key>
+        <string>__TAILNET_IP__</string>
+        <key>IMAGE_API_PORT</key>
+        <string>8790</string>
+        <key>IMAGE_API_TOKEN_FILE</key>
+        <string>__HOME__/.config/image-api/token</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:__HOME__/.local/bin</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>__HOME__/Library/Logs/image-api.log</string>
+    <key>StandardErrorPath</key>
+    <string>__HOME__/Library/Logs/image-api.log</string>
+</dict>
+</plist>
