@@ -1,0 +1,361 @@
+{
+  "date": "2026-11-01",
+  "category": "space",
+  "topic": "쌍둥이 소행성",
+  "title_ko": "함께 도는 두 소행성의 첫 사진",
+  "headline": "Two Small Asteroids, Seen Apart",
+  "chips": [
+    "5문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "A European spacecraft called Hera has sent back its first **image** of a pair of small **asteroids** that travel through space together.",
+      "b2": false,
+      "chunks": [
+        [
+          "A European spacecraft called Hera",
+          "Hera라는 유럽 우주선이"
+        ],
+        [
+          "has sent back its first **image**",
+          "첫 사진을 보내왔다"
+        ],
+        [
+          "of a pair of small **asteroids**",
+          "작은 소행성 한 쌍의"
+        ],
+        [
+          "that travel through space together.",
+          "함께 우주를 이동하는"
+        ]
+      ]
+    },
+    {
+      "en": "Until now, the two rocks looked like one point of light, but in this picture they can be seen **separately** for the first time.",
+      "b2": false,
+      "chunks": [
+        [
+          "Until now,",
+          "지금까지는"
+        ],
+        [
+          "the two rocks looked like",
+          "그 두 암석이 ~처럼 보였다"
+        ],
+        [
+          "one point of light,",
+          "하나의 빛의 점"
+        ],
+        [
+          "but in this picture",
+          "하지만 이 사진에서는"
+        ],
+        [
+          "they can be seen **separately**",
+          "그것들이 따로 보인다"
+        ],
+        [
+          "for the first time.",
+          "처음으로"
+        ]
+      ]
+    },
+    {
+      "en": "The bigger asteroid, Didymos, is about 780 meters wide, while the smaller one is only about 151 meters **across**.",
+      "b2": false,
+      "chunks": [
+        [
+          "The bigger asteroid, Didymos,",
+          "더 큰 소행성인 디디모스는"
+        ],
+        [
+          "is about 780 meters wide,",
+          "폭이 약 780미터다"
+        ],
+        [
+          "while the smaller one",
+          "반면 더 작은 것은"
+        ],
+        [
+          "is only about 151 meters **across**.",
+          "가로 길이가 약 151미터밖에 안 된다"
+        ]
+      ]
+    },
+    {
+      "en": "In 2022, the smaller asteroid was hit **on purpose** by another spacecraft, and the crash, which was a test of how to **protect** Earth from dangerous space rocks, changed the time it takes to circle the bigger one by about thirty-two minutes.",
+      "b2": true,
+      "chunks": [
+        [
+          "In 2022,",
+          "2022년에"
+        ],
+        [
+          "the smaller asteroid was hit",
+          "더 작은 소행성이 부딪혔다"
+        ],
+        [
+          "**on purpose**",
+          "일부러"
+        ],
+        [
+          "by another spacecraft,",
+          "다른 우주선에 의해"
+        ],
+        [
+          "and the crash,",
+          "그리고 그 충돌은"
+        ],
+        [
+          "which was a test",
+          "시험이었는데"
+        ],
+        [
+          "of how to **protect** Earth",
+          "지구를 지키는 방법에 대한"
+        ],
+        [
+          "from dangerous space rocks,",
+          "위험한 우주 암석으로부터"
+        ],
+        [
+          "changed the time",
+          "시간을 바꾸었다"
+        ],
+        [
+          "it takes to circle the bigger one",
+          "그것이 큰 소행성을 한 바퀴 도는 데 걸리는"
+        ],
+        [
+          "by about thirty-two minutes.",
+          "약 32분만큼"
+        ]
+      ]
+    },
+    {
+      "en": "Hera is now nearly thirteen hundred kilometers from the pair, and it will take **detailed** pictures of the smaller asteroid on November 25.",
+      "b2": false,
+      "chunks": [
+        [
+          "Hera is now",
+          "Hera는 지금"
+        ],
+        [
+          "nearly thirteen hundred kilometers",
+          "1,300킬로미터 가까이"
+        ],
+        [
+          "from the pair,",
+          "그 쌍으로부터 떨어져 있다"
+        ],
+        [
+          "and it will take **detailed** pictures",
+          "그리고 자세한 사진을 찍을 것이다"
+        ],
+        [
+          "of the smaller asteroid",
+          "더 작은 소행성의"
+        ],
+        [
+          "on November 25.",
+          "11월 25일에"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "image",
+      "사진, 영상 (이미지)"
+    ],
+    [
+      "asteroids",
+      "소행성들 (복수형)"
+    ],
+    [
+      "separately",
+      "따로따로, 각각"
+    ],
+    [
+      "across",
+      "폭이 ~인, 가로질러"
+    ],
+    [
+      "on purpose",
+      "일부러, 의도적으로"
+    ],
+    [
+      "protect",
+      "지키다, 보호하다"
+    ],
+    [
+      "detailed",
+      "자세한, 상세한"
+    ]
+  ],
+  "points": [
+    {
+      "title": "수동태 뒤 by: 누가 했는지",
+      "body": "`was hit on purpose by another spacecraft`는 '다른 우주선에 의해 일부러 부딪혔다'예요. 중간에 `on purpose`가 끼어 있어도 by 뒤의 `another spacecraft`가 부딪힌 주체예요. 같은 문장의 `the time it takes to circle the bigger one`은 '큰 소행성을 한 바퀴 도는 데 걸리는 시간'이에요."
+    },
+    {
+      "title": "문장 끝의 숫자",
+      "body": "`about 780 meters wide`, `about 151 meters across`, `by about thirty-two minutes`, `nearly thirteen hundred kilometers`처럼 크기와 거리가 문장 끝에 와요. `thirteen hundred`는 1,300이에요. 숫자를 읽을 때 머릿속에 바로 그려 보세요."
+    }
+  ],
+  "answers": [
+    "Hera라는 유럽 우주선이 함께 우주를 이동하는 작은 소행성 한 쌍의 첫 사진을 보내왔다.",
+    "지금까지 그 두 암석은 하나의 빛의 점처럼 보였지만, 이 사진에서는 처음으로 따로 보인다.",
+    "더 큰 소행성인 디디모스는 폭이 약 780미터인 반면, 더 작은 소행성은 가로 길이가 약 151미터밖에 되지 않는다.",
+    "2022년에 더 작은 소행성은 다른 우주선과 일부러 충돌했는데, 위험한 우주 암석으로부터 지구를 지키는 방법을 시험한 그 충돌로 작은 소행성이 큰 소행성을 한 바퀴 도는 데 걸리는 시간이 약 32분 바뀌었다.",
+    "Hera는 지금 그 쌍으로부터 1,300킬로미터 가까이 떨어져 있으며, 11월 25일에 더 작은 소행성의 자세한 사진을 찍을 것이다."
+  ],
+  "advanced": [
+    {
+      "word": "binary",
+      "meaning": "쌍을 이루는, 이중의",
+      "confuse": null,
+      "example": "Didymos and its partner form a **binary** asteroid system.",
+      "example_ko": "디디모스와 그 짝은 쌍을 이루는 소행성계를 이룹니다."
+    },
+    {
+      "word": "diameter",
+      "meaning": "지름",
+      "confuse": null,
+      "example": "The smaller asteroid has a **diameter** of about 151 meters.",
+      "example_ko": "더 작은 소행성은 지름이 약 151미터입니다."
+    },
+    {
+      "word": "deliberately",
+      "meaning": "의도적으로, 일부러",
+      "confuse": "delicately(섬세하게)와 혼동 주의",
+      "example": "A spacecraft **deliberately** crashed into the smaller asteroid in 2022.",
+      "example_ko": "2022년에 한 우주선이 일부러 더 작은 소행성에 충돌했습니다."
+    },
+    {
+      "word": "deflect",
+      "meaning": "(방향을) 빗나가게 하다",
+      "confuse": "reflect(반사하다)와 혼동 주의",
+      "example": "The test showed that a crash can **deflect** a small asteroid.",
+      "example_ko": "그 시험은 충돌로 작은 소행성의 방향을 바꿀 수 있다는 것을 보여 주었습니다."
+    },
+    {
+      "word": "orbital period",
+      "meaning": "공전 주기 (한 바퀴 도는 데 걸리는 시간)",
+      "confuse": null,
+      "example": "The crash changed the moon's **orbital period** by about thirty-two minutes.",
+      "example_ko": "그 충돌로 위성의 공전 주기가 약 32분 바뀌었습니다."
+    },
+    {
+      "word": "safeguard",
+      "meaning": "보호하다, 지키다",
+      "confuse": null,
+      "example": "Scientists want to learn how to **safeguard** Earth from dangerous space rocks.",
+      "example_ko": "과학자들은 위험한 우주 암석으로부터 지구를 지키는 법을 알고 싶어 합니다."
+    },
+    {
+      "word": "in close proximity",
+      "meaning": "아주 가까이에",
+      "confuse": "approximately(대략)와 혼동 주의",
+      "example": "The two asteroids travel **in close proximity** to each other.",
+      "example_ko": "두 소행성은 서로 아주 가까이에서 이동합니다."
+    }
+  ],
+  "source": {
+    "title": "Hera Probe Sees Asteroid Pair Separately for First Time (Universe Today, 2026-10-31)",
+    "url": "https://www.universetoday.com/articles/hera-probe-sees-asteroid-pair-separately-for-first-time"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "A spacecraft called Hera sent its first **image** of two small **asteroids**.",
+          "chunks": [
+            [
+              "A spacecraft called Hera",
+              "Hera라는 우주선이"
+            ],
+            [
+              "sent its first **image**",
+              "첫 사진을 보냈다"
+            ],
+            [
+              "of two small **asteroids**.",
+              "작은 소행성 두 개의"
+            ]
+          ]
+        },
+        {
+          "en": "Before, the two rocks looked like one light.",
+          "chunks": [
+            [
+              "Before, the two rocks",
+              "전에는 그 두 암석이"
+            ],
+            [
+              "looked like one light.",
+              "하나의 빛처럼 보였다"
+            ]
+          ]
+        },
+        {
+          "en": "Didymos is about 780 meters wide, and the small one is about 151 meters.",
+          "chunks": [
+            [
+              "Didymos is about 780 meters wide,",
+              "디디모스는 폭이 약 780미터다"
+            ],
+            [
+              "and the small one is about 151 meters.",
+              "그리고 작은 것은 약 151미터다"
+            ]
+          ]
+        },
+        {
+          "en": "In 2022, another spacecraft hit the small asteroid **on purpose**.",
+          "chunks": [
+            [
+              "In 2022, another spacecraft",
+              "2022년에 다른 우주선이"
+            ],
+            [
+              "hit the small asteroid",
+              "작은 소행성에 부딪혔다"
+            ],
+            [
+              "**on purpose**.",
+              "일부러"
+            ]
+          ]
+        },
+        {
+          "en": "Hera will take **detailed** pictures of it on November 25.",
+          "chunks": [
+            [
+              "Hera will take **detailed** pictures",
+              "Hera는 자세한 사진을 찍을 것이다"
+            ],
+            [
+              "of it",
+              "그것의"
+            ],
+            [
+              "on November 25.",
+              "11월 25일에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "Hera라는 우주선이 작은 소행성 두 개의 첫 사진을 보냈다.",
+        "전에는 그 두 암석이 하나의 빛처럼 보였다.",
+        "디디모스는 폭이 약 780미터이고, 작은 것은 약 151미터다.",
+        "2022년에 다른 우주선이 일부러 작은 소행성에 부딪혔다.",
+        "Hera는 11월 25일에 그것의 자세한 사진을 찍을 것이다."
+      ]
+    }
+  }
+}
