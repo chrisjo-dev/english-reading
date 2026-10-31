@@ -5,7 +5,7 @@
 ## 작동 방식
 
 1. content JSON 에 `photo_scene` 필드를 쓴다(영어 한 문장, 40~300자).
-2. LaunchAgent(120초마다 실행)가 05:00~11:00(KST) 에 `make_photos.py` 를 실행한다.
+2. LaunchAgent(60초마다 실행)가 05:00~11:00(KST) 에 `make_photos.py` 를 실행한다.
 3. 스크립트가 `photo_scene` 이 있고 `.photo.jpg` 가 없는 오늘 날짜 지문을 찾아 FLUX.1 로 생성한다.
 4. `content/<lang>/<day>.photo.jpg` 로 커밋, push 한다.
 5. GitHub Actions publish.yml 이 최대 8분 대기하다 파일이 도착하면 thumb.py 에서 그 사진을 사용한다.
