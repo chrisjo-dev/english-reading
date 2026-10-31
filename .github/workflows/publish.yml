@@ -41,6 +41,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      # secrets 는 단계 if: 에 바로 쓸 수 없어 여기서 참거짓으로 옮긴다
+      HAS_TS: ${{ secrets.TS_OAUTH_CLIENT_ID != '' }}
     services:
       # 일본어 음성 엔진(VOICEVOX). 영어만 올라온 날에도 같이 뜨지만 쓰지 않는다.
       voicevox:
@@ -173,7 +176,8 @@ jobs:
       - name: Tailscale
         # 맥 미니 이미지 API 에 접근하기 위해 Tailscale 망에 참여한다.
         # 시크릿이 없거나 연결에 실패해도 OpenAI 폴백으로 발행은 계속된다.
-        if: ${{ secrets.TS_OAUTH_CLIENT_ID != '' }}
+        id: tailscale
+        if: env.HAS_TS == 'true'
         uses: tailscale/github-action@v3
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
@@ -192,7 +196,8 @@ jobs:
           # 썸네일 사진(tools/thumb.py). 비어 있거나 생성이 실패하면 분야 일러스트로 만들고 발행은 계속한다.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           # 맥 미니 이미지 API (Tailscale 경유). 없거나 실패하면 OpenAI 폴백.
-          LOCAL_IMAGE_URL: ${{ secrets.LOCAL_IMAGE_URL }}
+          # Tailscale 연결에 실패한 날은 맥 미니를 아예 부르지 않는다(닿지 않는 주소에서 기다리지 않게)
+          LOCAL_IMAGE_URL: ${{ steps.tailscale.outcome == 'success' && secrets.LOCAL_IMAGE_URL || '' }}
           LOCAL_IMAGE_TOKEN: ${{ secrets.LOCAL_IMAGE_TOKEN }}
 
       - name: Commit
