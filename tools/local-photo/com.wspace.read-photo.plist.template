@@ -19,7 +19,7 @@
         <string>__UV_BIN_DIR__:/usr/local/bin:/usr/bin:/bin</string>
     </dict>
 
-    <!-- 120초마다 실행. 스크립트 내에서 05:00~11:00(KST) 시간대 외에는 조용히 종료한다. -->
+    <!-- 60초마다 실행. 스크립트 내에서 05:00~11:00(KST) 시간대 외에는 조용히 종료한다. -->
     <key>StartInterval</key>
     <integer>60</integer>
 
