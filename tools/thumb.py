@@ -312,6 +312,14 @@ def build(lang, day, cat=None, pic=None):
     out = ROOT / lang / day / "thumb.png"
     if pic is None and is_photo(out) and os.environ.get("THUMB_REDRAW") != "1":
         return out  # 이미 사진 썸네일이면 다시 만들지 않는다(같은 날 다시 발행해도 비용이 들지 않고 그림도 그대로)
+    # 맥 미니가 FLUX.1 schnell 로 생성해 커밋한 로컬 사진 파일이 있으면 OpenAI API 를 부르지 않는다
+    if pic is None:
+        _local = ROOT / "content" / lang / f"{day}.photo.jpg"
+        if _local.exists():
+            try:
+                pic = Image.open(_local).convert("RGB")
+            except Exception as _e:
+                print(f"thumb: 로컬 사진 파일({_local.name}) 읽기 실패 {type(_e).__name__}, API 로 만든다", file=sys.stderr)
     pic = pic or photo(lang, day)
     if pic is not None:
         try:

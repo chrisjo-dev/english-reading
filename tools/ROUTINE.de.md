@@ -66,6 +66,7 @@
 5. **모범 해석** `answers`: 6개. 문장 순서대로 자연스러운 한국어 해석.
 6. **한 단계 위 어휘** `advanced`: **반드시 6~8개**. B2 수준 단어, 한국어 뜻, 혼동 주의(없으면 `null`), 예문(`**…**`), `example_ko`.
 7. 기타: `topic`(한국어 주제어 2~8자), `title_ko`, `headline`(A2 수준 짧은 독일어 제목), `chips`(`["6문장", "B1 위주", "B2 1문장", "약 4분"]`), `date`, `category`.
+   - `photo_scene`: FLUX.1 로 썸네일 사진을 생성할 장면 설명 **(선택 사항)**. 영어 한 문장, 40~300자. 구체적이고 시각적인 장면으로 쓰고 글자나 간판이 보이는 장면은 피한다. 예: `"A baker in an apron placing a freshly baked loaf of bread on a wooden counter inside a traditional German bakery."` 이 필드가 있으면 맥 미니 LaunchAgent 가 발행 직전에 FLUX.1 사진을 생성해 `content/de/YYYY-MM-DD.photo.jpg` 로 커밋한다.
 
 ### 기초(levels.a) 지문 필드
 `levels.a`는 중급 지문과 1:1로 대응하는 6개 문장이다.
