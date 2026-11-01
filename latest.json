@@ -1,6 +1,6 @@
 {
- "date": "2026-11-01",
- "words_total": 422,
+ "date": "2026-11-02",
+ "words_total": 429,
  "langs": {
   "en": {
    "count": 30,
@@ -99,14 +99,14 @@
    ]
   },
   "de": {
-   "count": 5,
-   "latest": "2026-11-01",
-   "topic": "11월의 안개",
+   "count": 6,
+   "latest": "2026-11-02",
+   "topic": "병 보증금",
    "sentences": [
-    "Im November ist das Wetter in Deutschland oft grau, und an vielen Morgen liegt dichter **Nebel** über den Feldern und Flüssen.",
-    "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark abkühlt und sich daraus winzige **Tropfen** bilden.",
-    "Je länger die Nächte im Herbst werden, desto häufiger bildet sich der Nebel, besonders in **Tälern** und an Seen.",
-    "Im Straßenverkehr ist Nebel gefährlich, weil man andere Autos und Fußgänger oft erst sehr spät **erkennt**."
+    "In Deutschland zahlt man beim Kauf vieler Getränke einen kleinen Betrag extra, den man **Pfand** nennt.",
+    "Wenn die Flasche oder **Dose** leer ist, bringt man sie in den Supermarkt zurück und bekommt das Geld wieder.",
+    "Dafür stehen in fast jedem Supermarkt große **Automaten**, in die man die leeren Flaschen einzeln hineinlegt.",
+    "Nach der Rückgabe druckt der Automat einen **Bon** aus, den man beim nächsten Einkauf an der Kasse einlösen kann."
    ],
    "chips": [
     "6문장",
@@ -114,40 +114,45 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "11월에 독일의 날씨는 자주 흐리고, 많은 아침에 들판과 강 위로 짙은 안개가 깔립니다.",
+   "answer": "독일에서는 많은 음료를 살 때 작은 금액을 추가로 내는데, 이것을 판트(보증금)라고 부릅니다.",
    "words": [
     [
-     "Nebel",
-     "안개 (남성 der)"
+     "Pfand",
+     "병, 캔 보증금 (중성 das)"
     ],
     [
-     "Tropfen",
-     "방울, 물방울 (남성 der)"
+     "Dose",
+     "캔, 깡통 (여성 die)"
     ],
     [
-     "Tal",
-     "골짜기 (중성 das)"
+     "Automat",
+     "자동 반납기, 기계 (남성 der)"
     ],
     [
-     "erkennen",
-     "알아보다, 식별하다"
+     "Bon",
+     "영수증, 교환권 (남성 der)"
     ],
     [
-     "Nebelscheinwerfer",
-     "자동차 안개등 (남성 der)"
+     "Mehrwegflasche",
+     "씻어서 여러 번 쓰는 병 (여성 die)"
     ],
     [
-     "gemütlich",
-     "아늑한, 편안한"
+     "einlösen",
+     "(교환권을) 돈으로 바꾸다, 사용하다"
     ],
     [
-     "abkühlen",
-     "식다, 차가워지다"
+     "sinnvoll",
+     "의미 있는, 합리적인"
     ]
    ]
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-02",
+   "topic": "병 보증금"
+  },
   {
    "lang": "en",
    "day": "2026-11-01",
