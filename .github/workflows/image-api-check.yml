@@ -1,0 +1,37 @@
+# 맥 미니 이미지 API 점검(수동 실행). Tailscale 로 붙어 /health 와 작은 이미지 1장을 확인한다.
+# 메일, 페이지, 저장소는 건드리지 않는다.
+name: image-api-check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+        timeout-minutes: 2
+      - name: Health
+        env:
+          URL: ${{ secrets.LOCAL_IMAGE_URL }}
+        run: curl -fsS -m 10 "$URL/health"
+      - name: Small image
+        env:
+          URL: ${{ secrets.LOCAL_IMAGE_URL }}
+          TOKEN: ${{ secrets.LOCAL_IMAGE_TOKEN }}
+        run: |
+          start=$(date +%s)
+          curl -fsS -m 300 -X POST "$URL/v1/images/generations" \
+            -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+            -d '{"prompt":"A red apple on a wooden table, soft daylight.","size":"256x256","steps":2}' -o out.json
+          python3 -c "import json,base64; d=json.load(open('out.json')); b=base64.b64decode(d['data'][0]['b64_json']); print('PNG', len(b), 'bytes', b[:4]==b'\x89PNG')"
+          echo "took $(( $(date +%s) - start ))s"
