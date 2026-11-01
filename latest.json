@@ -1,52 +1,52 @@
 {
  "date": "2026-11-02",
- "words_total": 436,
+ "words_total": 443,
  "langs": {
   "en": {
-   "count": 30,
-   "latest": "2026-11-01",
-   "topic": "쌍둥이 소행성",
+   "count": 31,
+   "latest": "2026-11-02",
+   "topic": "나무의 근육",
    "sentences": [
-    "A European spacecraft called Hera has sent back its first **image** of a pair of small **asteroids** that travel through space together.",
-    "Until now, the two rocks looked like one point of light, but in this picture they can be seen **separately** for the first time.",
-    "The bigger asteroid, Didymos, is about 780 meters wide, while the smaller one is only about 151 meters **across**.",
-    "In 2022, the smaller asteroid was hit **on purpose** by another spacecraft, and the crash, which was a test of how to **protect** Earth from dangerous space rocks, changed the time it takes to circle the bigger one by about thirty-two minutes."
+    "Trees cannot walk or run, but a new study shows that they can still **sense** their own shape and fix it.",
+    "Researchers at INRAE, a research institute in France, grew young **poplar** trees on their side, and after about ten days the stems began to **curve** upward.",
+    "The scientists then put the trees on a slowly turning platform, so that light and **gravity** could no longer tell them which way was up.",
+    "Even so, the curved stems became almost straight again over the following weeks, which suggests that trees can feel the shape of their own bodies."
    ],
    "chips": [
-    "5문장",
+    "6문장",
     "B1 위주",
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "Hera라는 유럽 우주선이 함께 우주를 이동하는 작은 소행성 한 쌍의 첫 사진을 보내왔다.",
+   "answer": "나무는 걷거나 뛸 수 없지만, 새 연구에 따르면 나무도 자기 모양을 감지하고 바로잡을 수 있다.",
    "words": [
     [
-     "image",
-     "사진, 영상 (이미지)"
+     "sense",
+     "감지하다, 느끼다"
     ],
     [
-     "asteroids",
-     "소행성들 (복수형)"
+     "poplar",
+     "포플러 나무"
     ],
     [
-     "separately",
-     "따로따로, 각각"
+     "curve",
+     "휘다, 구부러지다"
     ],
     [
-     "across",
-     "폭이 ~인, 가로질러"
+     "gravity",
+     "중력"
     ],
     [
-     "on purpose",
-     "일부러, 의도적으로"
+     "opposite",
+     "반대(쪽)의"
     ],
     [
-     "protect",
-     "지키다, 보호하다"
+     "muscles",
+     "근육들 (복수형)"
     ],
     [
-     "detailed",
-     "자세한, 상세한"
+     "timber",
+     "목재"
     ]
    ]
   },
@@ -149,6 +149,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-02",
+   "topic": "나무의 근육"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-02",
    "topic": "튤립 심기"
@@ -242,11 +247,6 @@
    "lang": "ja",
    "day": "2026-10-27",
    "topic": "군고구마"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-26",
-   "topic": "새 공룡 화석"
   }
  ]
 }
