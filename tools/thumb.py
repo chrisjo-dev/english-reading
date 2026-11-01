@@ -228,7 +228,7 @@ def photo_prompt(lang, day):
 
 
 def photo(lang, day):
-    """기사에 맞는 사진(PIL 이미지). 실패하면 None. 토큰·키는 출력하지 않는다."""
+    """기사에 맞는 사진(PIL 이미지). 실패하면 None. 토큰과 키는 출력하지 않는다."""
     # ── 로컬 이미지 API (맥 미니 Tailscale) ───────────────────────────────────
     local_url   = os.environ.get("LOCAL_IMAGE_URL", "").strip()
     local_token = os.environ.get("LOCAL_IMAGE_TOKEN", "").strip()
