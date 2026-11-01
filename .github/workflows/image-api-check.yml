@@ -4,6 +4,15 @@ name: image-api-check
 
 on:
   workflow_dispatch:
+    inputs:
+      scene:
+        description: "photo 를 고르면 이 장면으로 실제 썸네일 크기 사진을 만들고 공유 카드에 얹어 artifact 로 남긴다"
+        required: false
+        default: ""
+      title:
+        description: "공유 카드에 얹을 제목"
+        required: false
+        default: "맥 미니 시험 사진"
 
 permissions:
   contents: read
@@ -35,3 +44,41 @@ jobs:
             -d '{"prompt":"A red apple on a wooden table, soft daylight.","size":"256x256","steps":2}' -o out.json
           python3 -c "import json,base64; d=json.load(open('out.json')); b=base64.b64decode(d['data'][0]['b64_json']); print('PNG', len(b), 'bytes', b[:4]==b'\x89PNG')"
           echo "took $(( $(date +%s) - start ))s"
+      # 장면이 주어지면 실제 발행과 같은 프롬프트(thumb.LOCAL_STYLE)로 만들고 공유 카드에 얹어 본다
+      - uses: actions/checkout@v4
+        if: inputs.scene != ''
+      - uses: actions/setup-python@v5
+        if: inputs.scene != ''
+        with:
+          python-version: "3.12"
+      - name: Full photo
+        if: inputs.scene != ''
+        env:
+          URL: ${{ secrets.LOCAL_IMAGE_URL }}
+          TOKEN: ${{ secrets.LOCAL_IMAGE_TOKEN }}
+          SCENE: ${{ inputs.scene }}
+          TITLE: ${{ inputs.title }}
+        run: |
+          pip install -q pillow
+          mkdir -p out
+          python3 - <<'PY'
+          import base64, io, json, os, sys, time, urllib.request
+          sys.path.insert(0, "tools")
+          import thumb
+          from PIL import Image
+          body = json.dumps({"prompt": thumb.LOCAL_STYLE + "\nScene: " + os.environ["SCENE"], "size": "1216x640"}).encode()
+          req = urllib.request.Request(os.environ["URL"].rstrip("/") + "/v1/images/generations", body,
+                                       {"Authorization": "Bearer " + os.environ["TOKEN"], "Content-Type": "application/json"})
+          t = time.time()
+          r = json.loads(urllib.request.urlopen(req, timeout=300).read())
+          img = Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
+          img.save("out/photo.png")
+          thumb.compose("en", "2026-10-30", "science", os.environ["TITLE"], img).convert("RGB").save("out/og.png")
+          print(f"photo {img.size} in {time.time() - t:.0f}s")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: inputs.scene != ''
+        with:
+          name: image-api-check
+          path: out/
+          retention-days: 3
