@@ -209,7 +209,10 @@ PHOTO_STYLE = ("Editorial magazine photograph used as a news article thumbnail. 
 LOCAL_STYLE = (  # 촬영 용어(렌즈, 조리개, 빛, 구도)를 넣으면 FLUX 사진이 더 사실적이고 빛이 살았다(2026-11-01 비교)
     "Award-winning editorial photograph, shot on a full-frame camera with a 35mm lens at f/2.8. "
     "Soft natural light, rich but true-to-life colors, fine detail and texture, crisp focus on the main subject "
-    "with gentle background blur, calm cinematic composition using the rule of thirds. "
+    "with gentle background blur. Balanced exposure with visible detail in the shadows, never too dark. "
+    # 썸네일은 왼쪽에 제목을 얹는다. 주인공을 오른쪽에 두면 제목이 주인공을 가리지 않았다(8장면 비교, 7장 성공)
+    "Composition for a news thumbnail: the main subject sits in the right third of the frame, "
+    "while the left half is a calm, simple, uncluttered continuation of the same scene (sky, wall, ground or soft blur). "
     "Full-bleed image filling the whole frame, no borders or margins. "
     "No text, letters, numbers, logos, watermarks, signs, labels or screens anywhere."
 )
