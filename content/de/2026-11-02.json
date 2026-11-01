@@ -1,0 +1,436 @@
+{
+  "date": "2026-11-02",
+  "category": "culture",
+  "topic": "병 보증금",
+  "title_ko": "빈 병을 돌려주는 독일의 판트 제도",
+  "headline": "Flaschen zurück in den Supermarkt",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "photo_scene": "Close-up of a hand placing an empty green glass bottle into the round opening of a bottle return machine inside a bright supermarket, soft even indoor light, shelves softly blurred behind.",
+  "sentences": [
+    {
+      "en": "In Deutschland zahlt man beim Kauf vieler Getränke einen kleinen Betrag extra, den man **Pfand** nennt.",
+      "b2": false,
+      "chunks": [
+        [
+          "In Deutschland",
+          "독일에서는"
+        ],
+        [
+          "zahlt man",
+          "사람들이 냅니다"
+        ],
+        [
+          "beim Kauf vieler Getränke",
+          "많은 음료를 살 때"
+        ],
+        [
+          "einen kleinen Betrag extra,",
+          "작은 금액을 추가로"
+        ],
+        [
+          "den man **Pfand** nennt.",
+          "그것을 판트(보증금)라고 부릅니다"
+        ]
+      ]
+    },
+    {
+      "en": "Wenn die Flasche oder **Dose** leer ist, bringt man sie in den Supermarkt zurück und bekommt das Geld wieder.",
+      "b2": false,
+      "chunks": [
+        [
+          "Wenn die Flasche oder **Dose**",
+          "병이나 캔이"
+        ],
+        [
+          "leer ist,",
+          "비었을 때"
+        ],
+        [
+          "bringt man sie",
+          "사람들은 그것을 가져갑니다"
+        ],
+        [
+          "in den Supermarkt zurück",
+          "슈퍼마켓으로 다시"
+        ],
+        [
+          "und bekommt das Geld wieder.",
+          "그리고 돈을 돌려받습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Dafür stehen in fast jedem Supermarkt große **Automaten**, in die man die leeren Flaschen einzeln hineinlegt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Dafür stehen",
+          "그것을 위해 서 있습니다"
+        ],
+        [
+          "in fast jedem Supermarkt",
+          "거의 모든 슈퍼마켓에"
+        ],
+        [
+          "große **Automaten**,",
+          "큰 기계들이"
+        ],
+        [
+          "in die man",
+          "그 안에 사람들이"
+        ],
+        [
+          "die leeren Flaschen",
+          "빈 병들을"
+        ],
+        [
+          "einzeln hineinlegt.",
+          "하나씩 넣습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Nach der Rückgabe druckt der Automat einen **Bon** aus, den man beim nächsten Einkauf an der Kasse einlösen kann.",
+      "b2": false,
+      "chunks": [
+        [
+          "Nach der Rückgabe",
+          "반납 후에"
+        ],
+        [
+          "druckt der Automat",
+          "기계가 인쇄합니다"
+        ],
+        [
+          "einen **Bon** aus,",
+          "영수증을 (뽑아)"
+        ],
+        [
+          "den man",
+          "그것을 사람들은"
+        ],
+        [
+          "beim nächsten Einkauf",
+          "다음 장을 볼 때"
+        ],
+        [
+          "an der Kasse",
+          "계산대에서"
+        ],
+        [
+          "einlösen kann.",
+          "돈으로 바꿀 수 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Die zurückgegebenen **Mehrwegflaschen** aus Glas können gereinigt und viele Male wieder befüllt werden, was Müll und Energie spart.",
+      "b2": true,
+      "chunks": [
+        [
+          "Die zurückgegebenen **Mehrwegflaschen**",
+          "반납된 재사용 병들은"
+        ],
+        [
+          "aus Glas",
+          "유리로 된"
+        ],
+        [
+          "können gereinigt",
+          "세척될 수 있고"
+        ],
+        [
+          "und viele Male",
+          "그리고 여러 번"
+        ],
+        [
+          "wieder befüllt werden,",
+          "다시 채워질 수 있습니다"
+        ],
+        [
+          "was Müll und Energie spart.",
+          "이것은 쓰레기와 에너지를 아낍니다"
+        ]
+      ]
+    },
+    {
+      "en": "Ohne das Pfandsystem würden wahrscheinlich viel mehr leere Flaschen in Parks und an Straßenrändern liegen, deshalb finden es die meisten Menschen **sinnvoll**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Ohne das Pfandsystem",
+          "판트 제도가 없다면"
+        ],
+        [
+          "würden wahrscheinlich",
+          "아마 ~할 것입니다"
+        ],
+        [
+          "viel mehr leere Flaschen",
+          "훨씬 더 많은 빈 병이"
+        ],
+        [
+          "in Parks und an Straßenrändern",
+          "공원과 길가에"
+        ],
+        [
+          "liegen,",
+          "놓여 있을 것입니다"
+        ],
+        [
+          "deshalb finden es",
+          "그래서 그것을 여깁니다"
+        ],
+        [
+          "die meisten Menschen **sinnvoll**.",
+          "대부분의 사람들은 합리적이라고"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Pfand",
+      "병, 캔 보증금 (중성 das)"
+    ],
+    [
+      "Dose",
+      "캔, 깡통 (여성 die)"
+    ],
+    [
+      "Automat",
+      "자동 반납기, 기계 (남성 der)"
+    ],
+    [
+      "Bon",
+      "영수증, 교환권 (남성 der)"
+    ],
+    [
+      "Mehrwegflasche",
+      "씻어서 여러 번 쓰는 병 (여성 die)"
+    ],
+    [
+      "einlösen",
+      "(교환권을) 돈으로 바꾸다, 사용하다"
+    ],
+    [
+      "sinnvoll",
+      "의미 있는, 합리적인"
+    ]
+  ],
+  "points": [
+    {
+      "title": "관계절과 분리동사 — 동사는 맨 끝에 붙여서",
+      "body": "`in die man die leeren Flaschen einzeln hineinlegt`와 `den man ... an der Kasse einlösen kann`은 관계절(부문장)이라 정동사가 맨 끝에 갑니다. 주문장에서는 `legt ... hinein`처럼 갈라지는 분리동사도 부문장 끝에서는 `hineinlegt` 한 단어로 붙어요. 주문장 `druckt der Automat einen Bon aus`와 비교해 보세요."
+    },
+    {
+      "title": "würden + 동사원형 — 사실과 반대되는 가정",
+      "body": "`Ohne das Pfandsystem würden ... viel mehr leere Flaschen ... liegen`은 접속법 2식으로 '판트 제도가 없다면 훨씬 더 많은 빈 병이 놓여 있을 것이다'라는 뜻입니다. 실제로는 제도가 있으니 일어나지 않는 일을 상상하는 말이에요. `würden`이 둘째 자리, 동사원형 `liegen`이 끝에 옵니다."
+    }
+  ],
+  "answers": [
+    "독일에서는 많은 음료를 살 때 작은 금액을 추가로 내는데, 이것을 판트(보증금)라고 부릅니다.",
+    "병이나 캔이 비면 슈퍼마켓에 다시 가져가서 돈을 돌려받습니다.",
+    "이를 위해 거의 모든 슈퍼마켓에 큰 기계가 있어서, 빈 병을 하나씩 넣습니다.",
+    "반납이 끝나면 기계가 영수증을 뽑아 주는데, 이것은 다음에 장을 볼 때 계산대에서 돈으로 쓸 수 있습니다.",
+    "반납된 유리 재사용 병은 세척해서 여러 번 다시 채울 수 있고, 이는 쓰레기와 에너지를 아껴 줍니다.",
+    "판트 제도가 없다면 아마 공원과 길가에 훨씬 더 많은 빈 병이 굴러다닐 것이기에, 대부분의 사람들은 이 제도를 합리적이라고 생각합니다."
+  ],
+  "advanced": [
+    {
+      "word": "das Leergut",
+      "meaning": "빈 병, 빈 용기(반납할 것들을 통틀어)",
+      "confuse": "`leer`(빈)와 `das Gut`(물건)이 합쳐진 말로, 복수형 없이 한데 묶어 씁니다.",
+      "example": "Am Samstag bringe ich das **Leergut** zum Supermarkt.",
+      "example_ko": "토요일에 저는 빈 병들을 슈퍼마켓에 가져갑니다."
+    },
+    {
+      "word": "die Einwegflasche",
+      "meaning": "한 번 쓰고 버리는 병",
+      "confuse": "`Einweg`는 '한 번만', `Mehrweg`는 '여러 번' 쓰는 용기예요.",
+      "example": "Eine **Einwegflasche** aus Plastik wird nach der Rückgabe recycelt.",
+      "example_ko": "플라스틱 일회용 병은 반납 후 재활용됩니다."
+    },
+    {
+      "word": "die Rückgabe",
+      "meaning": "반납, 돌려줌",
+      "confuse": "`die Rückgabe`는 물건을 돌려주는 것, `die Rückzahlung`은 돈을 돌려주는 것이에요.",
+      "example": "Die **Rückgabe** der Flaschen dauert nur ein paar Minuten.",
+      "example_ko": "병을 반납하는 데는 몇 분밖에 걸리지 않습니다."
+    },
+    {
+      "word": "wiederverwerten",
+      "meaning": "재활용하다",
+      "confuse": "`wiederverwenden`은 같은 물건을 그대로 다시 쓰는 것, `wiederverwerten`은 녹이거나 가공해서 원료로 다시 쓰는 것이에요.",
+      "example": "Altes Glas kann man gut **wiederverwerten**.",
+      "example_ko": "오래된 유리는 재활용하기 좋습니다."
+    },
+    {
+      "word": "verschwenden",
+      "meaning": "낭비하다",
+      "confuse": null,
+      "example": "Wer Flaschen wegwirft, **verschwendet** Geld und Rohstoffe.",
+      "example_ko": "병을 버리는 사람은 돈과 자원을 낭비하는 것입니다."
+    },
+    {
+      "word": "nachhaltig",
+      "meaning": "지속 가능한, 환경을 생각한",
+      "confuse": "`nachhaltig`는 오래 유지되도록 환경을 아끼는 것, `nachträglich`는 '나중에, 사후에'라는 뜻이에요.",
+      "example": "Viele Familien versuchen, im Alltag **nachhaltig** einzukaufen.",
+      "example_ko": "많은 가정이 일상에서 환경을 생각하며 장을 보려고 노력합니다."
+    },
+    {
+      "word": "der Umweltschutz",
+      "meaning": "환경 보호",
+      "confuse": null,
+      "example": "Das Pfandsystem ist ein kleiner Beitrag zum **Umweltschutz**.",
+      "example_ko": "판트 제도는 환경 보호에 작은 보탬이 됩니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "In Deutschland zahlt man für viele Getränke etwas extra: das **Pfand**.",
+          "chunks": [
+            [
+              "In Deutschland",
+              "독일에서는"
+            ],
+            [
+              "zahlt man",
+              "사람들이 냅니다"
+            ],
+            [
+              "für viele Getränke",
+              "많은 음료에 대해"
+            ],
+            [
+              "etwas extra:",
+              "조금 더"
+            ],
+            [
+              "das **Pfand**.",
+              "판트(보증금)를"
+            ]
+          ]
+        },
+        {
+          "en": "Eine leere Flasche oder **Dose** bringt man in den Supermarkt zurück.",
+          "chunks": [
+            [
+              "Eine leere Flasche oder **Dose**",
+              "빈 병이나 캔을"
+            ],
+            [
+              "bringt man",
+              "사람들은 가져갑니다"
+            ],
+            [
+              "in den Supermarkt zurück.",
+              "슈퍼마켓으로 다시"
+            ]
+          ]
+        },
+        {
+          "en": "Dort stehen große **Automaten** für die leeren Flaschen.",
+          "chunks": [
+            [
+              "Dort stehen",
+              "거기에는 서 있습니다"
+            ],
+            [
+              "große **Automaten**",
+              "큰 기계들이"
+            ],
+            [
+              "für die leeren Flaschen.",
+              "빈 병을 위한"
+            ]
+          ]
+        },
+        {
+          "en": "Danach druckt der Automat einen **Bon** aus, und man bekommt an der Kasse Geld.",
+          "chunks": [
+            [
+              "Danach druckt der Automat",
+              "그다음 기계가 인쇄합니다"
+            ],
+            [
+              "einen **Bon** aus,",
+              "영수증을"
+            ],
+            [
+              "und man bekommt",
+              "그리고 사람들은 받습니다"
+            ],
+            [
+              "an der Kasse Geld.",
+              "계산대에서 돈을"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Mehrwegflaschen** aus Glas werden gewaschen und wieder benutzt.",
+          "chunks": [
+            [
+              "Die **Mehrwegflaschen**",
+              "재사용 병들은"
+            ],
+            [
+              "aus Glas",
+              "유리로 된"
+            ],
+            [
+              "werden gewaschen",
+              "씻깁니다"
+            ],
+            [
+              "und wieder benutzt.",
+              "그리고 다시 쓰입니다"
+            ]
+          ]
+        },
+        {
+          "en": "Ohne Pfand gibt es mehr Müll, deshalb finden viele Menschen das System **sinnvoll**.",
+          "chunks": [
+            [
+              "Ohne Pfand",
+              "판트가 없으면"
+            ],
+            [
+              "gibt es mehr Müll,",
+              "쓰레기가 더 많습니다"
+            ],
+            [
+              "deshalb finden",
+              "그래서 여깁니다"
+            ],
+            [
+              "viele Menschen",
+              "많은 사람들은"
+            ],
+            [
+              "das System **sinnvoll**.",
+              "이 제도를 합리적이라고"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "독일에서는 많은 음료에 조금 더 돈을 냅니다. 그것이 판트(보증금)입니다.",
+        "빈 병이나 캔은 슈퍼마켓에 다시 가져갑니다.",
+        "거기에는 빈 병을 넣는 큰 기계가 있습니다.",
+        "그다음 기계가 영수증을 뽑아 주고, 계산대에서 돈을 받습니다.",
+        "유리로 된 재사용 병은 씻어서 다시 씁니다.",
+        "판트가 없으면 쓰레기가 더 많아서, 많은 사람들이 이 제도를 합리적이라고 생각합니다."
+      ]
+    }
+  }
+}
