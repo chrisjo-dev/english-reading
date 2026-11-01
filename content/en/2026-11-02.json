@@ -1,0 +1,410 @@
+{
+  "date": "2026-11-02",
+  "category": "science",
+  "topic": "나무의 근육",
+  "title_ko": "스스로 몸을 곧게 펴는 나무",
+  "headline": "How Trees Stand Up Straight",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Trees cannot walk or run, but a new study shows that they can still **sense** their own shape and fix it.",
+      "b2": false,
+      "chunks": [
+        [
+          "Trees cannot walk or run,",
+          "나무는 걷거나 뛸 수 없다"
+        ],
+        [
+          "but a new study shows",
+          "하지만 새 연구가 보여 준다"
+        ],
+        [
+          "that they can still **sense**",
+          "그래도 나무가 감지할 수 있다는 것을"
+        ],
+        [
+          "their own shape and fix it.",
+          "자기 모양을, 그리고 그것을 바로잡을 수 있다는 것을"
+        ]
+      ]
+    },
+    {
+      "en": "Researchers at INRAE, a research institute in France, grew young **poplar** trees on their side, and after about ten days the stems began to **curve** upward.",
+      "b2": false,
+      "chunks": [
+        [
+          "Researchers at INRAE,",
+          "INRAE의 연구자들이"
+        ],
+        [
+          "a research institute in France,",
+          "프랑스의 한 연구 기관인"
+        ],
+        [
+          "grew young **poplar** trees",
+          "어린 포플러 나무들을 길렀다"
+        ],
+        [
+          "on their side,",
+          "옆으로 눕힌 채로"
+        ],
+        [
+          "and after about ten days",
+          "그리고 약 열흘 뒤에"
+        ],
+        [
+          "the stems began to **curve** upward.",
+          "줄기들이 위쪽으로 휘기 시작했다"
+        ]
+      ]
+    },
+    {
+      "en": "The scientists then put the trees on a slowly turning platform, so that light and **gravity** could no longer tell them which way was up.",
+      "b2": false,
+      "chunks": [
+        [
+          "The scientists then put the trees",
+          "그다음 과학자들은 나무들을 올려놓았다"
+        ],
+        [
+          "on a slowly turning platform,",
+          "천천히 도는 받침대 위에"
+        ],
+        [
+          "so that light and **gravity**",
+          "그래서 빛과 중력이"
+        ],
+        [
+          "could no longer tell them",
+          "더 이상 나무에게 알려 줄 수 없게 했다"
+        ],
+        [
+          "which way was up.",
+          "어느 쪽이 위인지를"
+        ]
+      ]
+    },
+    {
+      "en": "Even so, the curved stems became almost straight again over the following weeks, which suggests that trees can feel the shape of their own bodies.",
+      "b2": false,
+      "chunks": [
+        [
+          "Even so,",
+          "그런데도"
+        ],
+        [
+          "the curved stems became",
+          "휘었던 줄기들이 되었다"
+        ],
+        [
+          "almost straight again",
+          "다시 거의 곧게"
+        ],
+        [
+          "over the following weeks,",
+          "그 뒤 몇 주에 걸쳐"
+        ],
+        [
+          "which suggests that",
+          "이것은 ~임을 시사한다"
+        ],
+        [
+          "trees can feel",
+          "나무가 느낄 수 있다는 것을"
+        ],
+        [
+          "the shape of their own bodies.",
+          "자기 몸의 모양을"
+        ]
+      ]
+    },
+    {
+      "en": "This happened because the trees made a special kind of wood, called **tension wood**, first on the upper side of the stem and later on the **opposite** side, so the two sides pulled against each other like a pair of **muscles**.",
+      "b2": true,
+      "chunks": [
+        [
+          "This happened because",
+          "이 일은 ~ 때문에 일어났다"
+        ],
+        [
+          "the trees made a special kind of wood,",
+          "나무들이 특별한 종류의 나무 조직을 만들었기"
+        ],
+        [
+          "called **tension wood**,",
+          "'인장재'라고 불리는"
+        ],
+        [
+          "first on the upper side of the stem",
+          "처음에는 줄기의 위쪽 면에"
+        ],
+        [
+          "and later on the **opposite** side,",
+          "그리고 나중에는 반대쪽 면에"
+        ],
+        [
+          "so the two sides pulled",
+          "그래서 양쪽 면이 잡아당겼다"
+        ],
+        [
+          "against each other",
+          "서로 반대 방향으로"
+        ],
+        [
+          "like a pair of **muscles**.",
+          "한 쌍의 근육처럼"
+        ]
+      ]
+    },
+    {
+      "en": "The team believes that the findings could one day help farmers grow straighter trees for **timber**, as well as grain crops that do not fall over so easily.",
+      "b2": false,
+      "chunks": [
+        [
+          "The team believes",
+          "연구팀은 믿는다"
+        ],
+        [
+          "that the findings could one day help farmers",
+          "이 발견이 언젠가 농부들을 도울 수 있다고"
+        ],
+        [
+          "grow straighter trees for **timber**,",
+          "목재용으로 더 곧은 나무를 기르도록"
+        ],
+        [
+          "as well as grain crops",
+          "그리고 곡물 작물도"
+        ],
+        [
+          "that do not fall over so easily.",
+          "그렇게 쉽게 쓰러지지 않는"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "sense",
+      "감지하다, 느끼다"
+    ],
+    [
+      "poplar",
+      "포플러 나무"
+    ],
+    [
+      "curve",
+      "휘다, 구부러지다"
+    ],
+    [
+      "gravity",
+      "중력"
+    ],
+    [
+      "opposite",
+      "반대(쪽)의"
+    ],
+    [
+      "muscles",
+      "근육들 (복수형)"
+    ],
+    [
+      "timber",
+      "목재"
+    ]
+  ],
+  "points": [
+    {
+      "title": "문장 끝의 시간 정보",
+      "body": "`after about ten days`(약 열흘 뒤에), `over the following weeks`(그 뒤 몇 주에 걸쳐)처럼 언제, 얼마 동안 일어났는지가 문장 중간과 끝에 붙어 있어요. 마지막 문장의 `for timber`(목재용으로)도 목적을 알려 주는 끝 정보예요."
+    },
+    {
+      "title": "suggests that = 시사하다",
+      "body": "`which suggests that trees can feel...`에서 suggest는 '제안하다'가 아니라 '(결과가) ~임을 보여 주다, 시사하다'예요. 주어가 사람이 아니라 실험 결과일 때 특히 이 뜻이에요."
+    }
+  ],
+  "answers": [
+    "나무는 걷거나 뛸 수 없지만, 새 연구에 따르면 나무도 자기 모양을 감지하고 바로잡을 수 있다.",
+    "프랑스의 연구 기관인 INRAE의 연구자들이 어린 포플러 나무를 옆으로 눕혀 길렀더니, 약 열흘 뒤 줄기가 위쪽으로 휘기 시작했다.",
+    "그다음 과학자들은 나무를 천천히 도는 받침대 위에 올려, 빛과 중력이 더 이상 어느 쪽이 위인지 알려 주지 못하게 했다.",
+    "그런데도 휘었던 줄기는 그 뒤 몇 주에 걸쳐 다시 거의 곧게 펴졌는데, 이는 나무가 자기 몸의 모양을 느낄 수 있다는 것을 시사한다.",
+    "이런 일이 일어난 것은 나무가 '인장재'라는 특별한 나무 조직을 처음에는 줄기 위쪽 면에, 나중에는 반대쪽 면에 만들어서, 양쪽이 한 쌍의 근육처럼 서로 반대로 잡아당겼기 때문이다.",
+    "연구팀은 이 발견이 언젠가 농부들이 목재용으로 더 곧은 나무를 기르고, 쉽게 쓰러지지 않는 곡물 작물을 기르는 데 도움이 될 수 있다고 본다."
+  ],
+  "advanced": [
+    {
+      "word": "perceive",
+      "meaning": "인지하다, 감지하다",
+      "confuse": null,
+      "example": "The study shows that trees can **perceive** the shape of their own stems.",
+      "example_ko": "이 연구는 나무가 자기 줄기의 모양을 인지할 수 있음을 보여 줍니다."
+    },
+    {
+      "word": "posture",
+      "meaning": "자세",
+      "confuse": "position(위치)과 혼동 주의",
+      "example": "Trees keep a good **posture** by growing special wood on both sides.",
+      "example_ko": "나무는 양쪽에 특별한 나무 조직을 길러 바른 자세를 유지합니다."
+    },
+    {
+      "word": "orientation",
+      "meaning": "방향, 향하는 쪽",
+      "confuse": null,
+      "example": "The turning platform hid the real **orientation** of the trees.",
+      "example_ko": "회전하는 받침대가 나무가 실제로 어느 쪽을 향하는지 감췄습니다."
+    },
+    {
+      "word": "counteract",
+      "meaning": "반대로 작용하다, 상쇄하다",
+      "confuse": null,
+      "example": "New wood on the lower side **counteracts** the pull from the upper side.",
+      "example_ko": "아래쪽의 새 나무 조직이 위쪽에서 당기는 힘을 상쇄합니다."
+    },
+    {
+      "word": "contract",
+      "meaning": "수축하다",
+      "confuse": "contact(접촉하다)와 혼동 주의",
+      "example": "Tension wood pulls on the stem as if it could **contract** like a muscle.",
+      "example_ko": "인장재는 마치 근육처럼 수축할 수 있는 것처럼 줄기를 잡아당깁니다."
+    },
+    {
+      "word": "gradually",
+      "meaning": "서서히, 점차",
+      "confuse": "graduate(졸업하다)와 혼동 주의",
+      "example": "The bent stems **gradually** became straight over several weeks.",
+      "example_ko": "휘었던 줄기가 몇 주에 걸쳐 서서히 곧아졌습니다."
+    },
+    {
+      "word": "yield",
+      "meaning": "(작물의) 수확량",
+      "confuse": null,
+      "example": "Crops that stay upright may produce a higher **yield**.",
+      "example_ko": "똑바로 서 있는 작물은 수확량이 더 많을 수 있습니다."
+    },
+    {
+      "word": "implication",
+      "meaning": "(결과가 갖는) 영향, 의미",
+      "confuse": "application(적용)과 혼동 주의",
+      "example": "The finding has **implications** for the timber industry.",
+      "example_ko": "이 발견은 목재 산업에 중요한 의미를 갖습니다."
+    }
+  ],
+  "source": {
+    "title": "Scientists discover the hidden 'muscles' trees use to straighten themselves (ScienceDaily, 2026-10-31)",
+    "url": "https://www.sciencedaily.com/releases/2026/10/261030003006.htm"
+  },
+  "photo_scene": "Close-up of a young poplar tree growing in a pot in a bright greenhouse, its thin trunk bending upward in a gentle curve, green leaves lit by soft morning sunlight.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Trees cannot walk, but they can **sense** their own shape.",
+          "chunks": [
+            [
+              "Trees cannot walk,",
+              "나무는 걸을 수 없다"
+            ],
+            [
+              "but they can **sense**",
+              "하지만 감지할 수 있다"
+            ],
+            [
+              "their own shape.",
+              "자기 모양을"
+            ]
+          ]
+        },
+        {
+          "en": "Scientists at INRAE in France laid young **poplar** trees on their side.",
+          "chunks": [
+            [
+              "Scientists at INRAE in France",
+              "프랑스 INRAE의 과학자들이"
+            ],
+            [
+              "laid young **poplar** trees",
+              "어린 포플러 나무들을 눕혔다"
+            ],
+            [
+              "on their side.",
+              "옆으로"
+            ]
+          ]
+        },
+        {
+          "en": "Then they put the trees on a slowly turning table.",
+          "chunks": [
+            [
+              "Then they put the trees",
+              "그다음 그들은 나무들을 올려놓았다"
+            ],
+            [
+              "on a slowly turning table.",
+              "천천히 도는 탁자 위에"
+            ]
+          ]
+        },
+        {
+          "en": "After a few weeks, the bent stems became straight again.",
+          "chunks": [
+            [
+              "After a few weeks,",
+              "몇 주 뒤에"
+            ],
+            [
+              "the bent stems",
+              "휘었던 줄기들이"
+            ],
+            [
+              "became straight again.",
+              "다시 곧아졌다"
+            ]
+          ]
+        },
+        {
+          "en": "Special wood on both sides pulled like **muscles**.",
+          "chunks": [
+            [
+              "Special wood on both sides",
+              "양쪽의 특별한 나무 조직이"
+            ],
+            [
+              "pulled like **muscles**.",
+              "근육처럼 잡아당겼다"
+            ]
+          ]
+        },
+        {
+          "en": "This may help farmers grow straighter trees and stronger crops.",
+          "chunks": [
+            [
+              "This may help farmers",
+              "이것은 농부들을 도울 수 있다"
+            ],
+            [
+              "grow straighter trees",
+              "더 곧은 나무를 기르도록"
+            ],
+            [
+              "and stronger crops.",
+              "그리고 더 튼튼한 작물을"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "나무는 걸을 수 없지만, 자기 모양을 감지할 수 있다.",
+        "프랑스 INRAE의 과학자들이 어린 포플러 나무를 옆으로 눕혔다.",
+        "그다음 그들은 나무를 천천히 도는 탁자 위에 올려놓았다.",
+        "몇 주 뒤, 휘었던 줄기가 다시 곧아졌다.",
+        "양쪽의 특별한 나무 조직이 근육처럼 잡아당겼다.",
+        "이것은 농부들이 더 곧은 나무와 더 튼튼한 작물을 기르는 데 도움이 될 수 있다."
+      ]
+    }
+  }
+}
