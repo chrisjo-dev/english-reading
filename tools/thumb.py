@@ -206,12 +206,12 @@ PHOTO_STYLE = ("Editorial magazine photograph used as a news article thumbnail. 
                "Absolutely no text, letters, numbers, logos or watermarks anywhere in the image. "
                "Avoid shop signs, labels, cards, book covers, screens and packaging that would show writing; "
                "if such an object matters, show it from an angle or distance where no writing is visible.")
-LOCAL_STYLE = (
-    "Realistic full-bleed photograph that fills the entire frame edge to edge, "
-    "no borders, no white margins, no frames. Natural light, shallow depth of field, "
-    "one clear main subject shown large and prominent, calm composition. "
-    "Absolutely no text, letters, numbers, logos or watermarks anywhere. "
-    "Avoid signs, labels, screens and packaging with writing."
+LOCAL_STYLE = (  # 촬영 용어(렌즈, 조리개, 빛, 구도)를 넣으면 FLUX 사진이 더 사실적이고 빛이 살았다(2026-11-01 비교)
+    "Award-winning editorial photograph, shot on a full-frame camera with a 35mm lens at f/2.8. "
+    "Soft natural light, rich but true-to-life colors, fine detail and texture, crisp focus on the main subject "
+    "with gentle background blur, calm cinematic composition using the rule of thirds. "
+    "Full-bleed image filling the whole frame, no borders or margins. "
+    "No text, letters, numbers, logos, watermarks, signs, labels or screens anywhere."
 )
 
 
