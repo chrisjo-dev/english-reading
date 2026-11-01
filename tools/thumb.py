@@ -214,6 +214,8 @@ LOCAL_STYLE = (  # 촬영 용어(렌즈, 조리개, 빛, 구도)를 넣으면 FL
     "Composition for a news thumbnail: the main subject sits in the right third of the frame, "
     "while the left half is a calm, simple, uncluttered continuation of the same scene (sky, wall, ground or soft blur). "
     "Full-bleed image filling the whole frame, no borders or margins. "
+    # 장면에 없는 물건(엉뚱한 책 등)이 끼어들고 물건에 작은 글씨 흉내가 생겨서 막는다(2026-11-01 재시험)
+    "Only the objects described in the scene appear; objects carry no engraved markings or tiny printed characters. "
     "No text, letters, numbers, logos, watermarks, signs, labels or screens anywhere."
 )
 
