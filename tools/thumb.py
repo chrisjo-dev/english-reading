@@ -206,18 +206,10 @@ PHOTO_STYLE = ("Editorial magazine photograph used as a news article thumbnail. 
                "Absolutely no text, letters, numbers, logos or watermarks anywhere in the image. "
                "Avoid shop signs, labels, cards, book covers, screens and packaging that would show writing; "
                "if such an object matters, show it from an angle or distance where no writing is visible.")
-LOCAL_STYLE = (  # 촬영 용어(렌즈, 조리개, 빛, 구도)를 넣으면 FLUX 사진이 더 사실적이고 빛이 살았다(2026-11-01 비교)
-    "Award-winning editorial photograph, shot on a full-frame camera with a 35mm lens at f/2.8. "
-    "Soft natural light, rich but true-to-life colors, fine detail and texture, crisp focus on the main subject "
-    "with gentle background blur. Balanced exposure with visible detail in the shadows, never too dark. "
-    # 썸네일은 왼쪽에 제목을 얹는다. 주인공을 오른쪽에 두면 제목이 주인공을 가리지 않았다(8장면 비교, 7장 성공)
-    "Composition for a news thumbnail: the main subject sits in the right third of the frame, "
-    "while the left half is a calm, simple, uncluttered continuation of the same scene (sky, wall, ground or soft blur). "
-    "Full-bleed image filling the whole frame, no borders or margins. "
-    # 장면에 없는 물건(엉뚱한 책 등)이 끼어들고 물건에 작은 글씨 흉내가 생겨서 막는다(2026-11-01 재시험)
-    "Only the objects described in the scene appear; objects carry no engraved markings or tiny printed characters. "
-    "No text, letters, numbers, logos, watermarks, signs, labels or screens anywhere."
-)
+# 스타일 프리셋은 styles.json 에서 읽어 웹 UI 와 동기화한다
+LOCAL_STYLE: str = json.loads(
+    (Path(__file__).resolve().parent / "image-api" / "styles.json").read_text(encoding="utf-8")
+)["thumbnail"]
 
 
 def _plain(s):

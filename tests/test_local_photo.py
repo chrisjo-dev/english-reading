@@ -410,5 +410,199 @@ class TestThumbLocalAPI(unittest.TestCase):
             shutil.rmtree(str(d))
 
 
+# ── web.py 프록시 테스트 헬퍼 ─────────────────────────────────────────────────
+def _start_web(
+    tmp: Path, upstream_port: int, token_file: Path
+) -> "tuple[subprocess.Popen, int]":
+    """테스트용 web.py 를 시작하고 (proc, port) 를 돌려준다."""
+    port = _free_port()
+    env = {
+        **os.environ,
+        "LOCAL_IMAGE_URL": f"http://127.0.0.1:{upstream_port}",
+        "IMAGE_API_TOKEN_FILE": str(token_file),
+        "IMAGE_WEB_PORT": str(port),
+    }
+    proc = subprocess.Popen(
+        [sys.executable, str(REPO / "tools" / "image-api" / "web.py")],
+        env=env,
+        stderr=subprocess.PIPE,
+    )
+    # 포트에 TCP 연결될 때까지 기다린다 (최대 5 초)
+    for _ in range(50):
+        try:
+            socket.create_connection(("127.0.0.1", port), timeout=0.2).close()
+            break
+        except OSError:
+            if proc.poll() is not None:
+                raise RuntimeError(f"web.py 가 일찍 종료됐습니다 (port {port})")
+            time.sleep(0.1)
+    else:
+        proc.terminate()
+        raise RuntimeError(f"web.py 가 5 초 내에 시작되지 않았습니다 (port {port})")
+    return proc, port
+
+
+# ── 응답에 seed 포함 여부 ─────────────────────────────────────────────────────
+class TestServerSeed(unittest.TestCase):
+    """생성 응답에 정수 seed 가 포함되는지 검증합니다."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp())
+        cls.fake_mflux = _make_fake_mflux(cls.tmp)
+        cls.proc, cls.port, cls.token = _start_server(cls.tmp, cls.fake_mflux)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.proc.terminate()
+        cls.proc.wait(timeout=5)
+        shutil.rmtree(str(cls.tmp))
+
+    def _post(self, body: dict) -> dict:
+        data = json.dumps(body).encode()
+        req = urllib.request.Request(
+            f"http://127.0.0.1:{self.port}/v1/images/generations",
+            data=data,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.token}",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read())
+
+    def test_response_includes_seed_integer(self):
+        """시드를 지정하지 않아도 응답에 정수 seed 가 포함됩니다."""
+        r = self._post({"prompt": "test", "size": "32x16", "steps": 1})
+        self.assertIn("seed", r)
+        self.assertIsInstance(r["seed"], int)
+
+    def test_explicit_seed_returned_unchanged(self):
+        """요청에 seed 를 지정하면 응답에 같은 값이 반환됩니다."""
+        r = self._post({"prompt": "test", "size": "32x16", "steps": 1, "seed": 42})
+        self.assertEqual(r["seed"], 42)
+
+
+# ── styles.json 구조 및 thumb 동기화 ──────────────────────────────────────────
+class TestStylesFile(unittest.TestCase):
+    """styles.json 키 구조와 thumb.LOCAL_STYLE 동기화를 검증합니다."""
+
+    def setUp(self):
+        p = REPO / "tools" / "image-api" / "styles.json"
+        self.styles = json.loads(p.read_text(encoding="utf-8"))
+
+    def test_styles_has_required_keys(self):
+        for key in ("thumbnail", "photo", "none"):
+            self.assertIn(key, self.styles, f"styles.json 에 {key!r} 키가 없습니다")
+
+    def test_thumb_local_style_matches_thumbnail(self):
+        """thumb.LOCAL_STYLE 은 styles.json thumbnail 값과 같아야 합니다."""
+        import importlib
+        importlib.reload(thumb)
+        self.assertEqual(thumb.LOCAL_STYLE, self.styles["thumbnail"])
+
+
+# ── web.py 프록시 정상 동작 ───────────────────────────────────────────────────
+class TestWebProxy(unittest.TestCase):
+    """web.py 가 업스트림에 토큰을 추가해 프록시하는지 검증합니다."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp())
+        cls.fake_mflux = _make_fake_mflux(cls.tmp)
+        cls.up_proc, cls.up_port, cls.token = _start_server(cls.tmp, cls.fake_mflux)
+        cls.token_file = cls.tmp / "token"  # _start_server 가 이미 만든 파일
+        cls.web_proc, cls.web_port = _start_web(cls.tmp, cls.up_port, cls.token_file)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.web_proc.terminate()
+        cls.web_proc.wait(timeout=5)
+        cls.up_proc.terminate()
+        cls.up_proc.wait(timeout=5)
+        shutil.rmtree(str(cls.tmp))
+
+    def test_root_returns_html(self):
+        """GET / 는 인증 없이 HTML 200 을 반환합니다."""
+        resp = urllib.request.urlopen(
+            f"http://127.0.0.1:{self.web_port}/", timeout=5
+        )
+        self.assertEqual(resp.status, 200)
+        self.assertIn("text/html", resp.headers.get("Content-Type", ""))
+
+    def test_styles_json_valid(self):
+        """GET /styles.json 는 thumbnail, photo, none 키가 있는 JSON 을 반환합니다."""
+        resp = urllib.request.urlopen(
+            f"http://127.0.0.1:{self.web_port}/styles.json", timeout=5
+        )
+        data = json.loads(resp.read())
+        for key in ("thumbnail", "photo", "none"):
+            self.assertIn(key, data)
+
+    def test_proxies_generation_adds_token(self):
+        """POST /v1/images/generations 는 토큰을 추가해 업스트림으로 전달합니다."""
+        body = json.dumps({"prompt": "proxy test", "size": "32x16", "steps": 1}).encode()
+        req = urllib.request.Request(
+            f"http://127.0.0.1:{self.web_port}/v1/images/generations",
+            data=body,
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read())
+        self.assertIn("data", data)
+        self.assertIn("seed", data)
+        self.assertIsInstance(data["seed"], int)
+
+    def test_binds_to_localhost(self):
+        """web.py 는 127.0.0.1 에서 응답합니다."""
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            s.settimeout(1)
+            self.assertEqual(
+                s.connect_ex(("127.0.0.1", self.web_port)), 0,
+                "127.0.0.1 에 연결되어야 합니다",
+            )
+        finally:
+            s.close()
+
+
+# ── web.py 업스트림 없음 → 502 ────────────────────────────────────────────────
+class TestWebProxy502(unittest.TestCase):
+    """업스트림에 연결할 수 없을 때 502 를 반환하는지 검증합니다."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp())
+        cls.token_file = cls.tmp / "token"
+        cls.token_file.write_text("dummy-token")
+        cls.token_file.chmod(0o600)
+        # 닫힌 포트를 업스트림으로 지정
+        with socket.socket() as s:
+            s.bind(("127.0.0.1", 0))
+            dead_port = s.getsockname()[1]
+        cls.web_proc, cls.web_port = _start_web(cls.tmp, dead_port, cls.token_file)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.web_proc.terminate()
+        cls.web_proc.wait(timeout=5)
+        shutil.rmtree(str(cls.tmp))
+
+    def test_returns_502_when_upstream_down(self):
+        """업스트림이 없으면 POST /v1/images/generations 는 502 를 반환합니다."""
+        body = json.dumps({"prompt": "fail test"}).encode()
+        req = urllib.request.Request(
+            f"http://127.0.0.1:{self.web_port}/v1/images/generations",
+            data=body,
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with self.assertRaises(urllib.error.HTTPError) as ctx:
+            urllib.request.urlopen(req, timeout=10)
+        self.assertEqual(ctx.exception.code, 502)
+
+
 if __name__ == "__main__":
     unittest.main()

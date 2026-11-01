@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>맥미니 이미지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
+  --line: #eef0f3; --opt: #f4f6f8; --opt-line: #e2e6ea; --chk-line: #c5ccd6;
+  --blue: #2a52d4; --blue-press: #2143ad; --blue-soft: #eff3fd;
+  --coral: #f04452; --coral-soft: #ffeeee; --green: #0f9d6b; --green-soft: #e8f7f1;
+  --hl: #fff3c4; --duck: #ffd84d;
+  --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
+  --font: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); font-family: var(--font); color: var(--ink); min-height: 100vh; }
+
+/* 상단 바 */
+.top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 32px; background: var(--card); box-shadow: var(--bar-sh);
+  position: sticky; top: 0; z-index: 10;
+}
+.top-title { font-size: 18px; font-weight: 800; letter-spacing: -0.03em; }
+.pill {
+  padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 700;
+  background: var(--green-soft); color: var(--green);
+}
+.pill.busy { background: var(--hl); color: #92660a; }
+.pill.error { background: var(--coral-soft); color: var(--coral); }
+
+/* 본문 레이아웃 */
+.wrap {
+  display: grid; grid-template-columns: 400px 1fr; gap: 24px;
+  padding: 24px 32px; max-width: 1400px; margin: 0 auto;
+}
+@media (max-width: 860px) {
+  .wrap { grid-template-columns: 1fr; padding: 16px; }
+  .top { padding: 14px 16px; }
+}
+
+/* 카드 */
+.card {
+  background: var(--card); border-radius: var(--card-r);
+  box-shadow: var(--card-sh); padding: 22px;
+}
+
+/* 폼 요소 */
+label { display: block; font-size: 13px; font-weight: 700; color: var(--sub); margin: 0 0 6px; }
+.hint { font-size: 12px; color: var(--muted); margin: 6px 0 18px; }
+
+textarea {
+  width: 100%; height: 132px; border: 1px solid var(--opt-line); border-radius: 12px;
+  padding: 12px; font-size: 15px; line-height: 1.5; color: var(--ink);
+  font-family: var(--font); resize: vertical; background: var(--card);
+  outline: none;
+}
+textarea:focus { border-color: var(--blue); }
+
+/* 세그먼트 */
+.seg { display: flex; gap: 6px; margin-bottom: 18px; }
+.seg button {
+  flex: 1; padding: 10px 0; border-radius: 10px; background: var(--opt);
+  font-size: 13px; font-weight: 600; color: var(--sub); border: none; cursor: pointer;
+  font-family: var(--font); transition: background 0.12s, color 0.12s;
+}
+.seg button.on {
+  background: var(--blue-soft); color: var(--blue);
+  outline: 1.5px solid var(--blue);
+}
+
+/* 시드 행 */
+.seed-row { display: flex; gap: 10px; margin-bottom: 20px; }
+.seed-row input {
+  flex: 1; border: 1px solid var(--opt-line); border-radius: 10px;
+  padding: 10px 12px; font-size: 14px; font-family: var(--font); color: var(--ink);
+  background: var(--card); outline: none;
+}
+.seed-row input:focus { border-color: var(--blue); }
+.btn-ghost {
+  padding: 10px 14px; border-radius: 10px; background: var(--opt);
+  font-size: 13px; font-weight: 600; color: var(--sub); border: none;
+  cursor: pointer; font-family: var(--font); white-space: nowrap;
+}
+.btn-ghost:hover { background: var(--opt-line); }
+
+/* 만들기 버튼 */
+.btn-make {
+  display: block; width: 100%; padding: 15px 0; border-radius: 14px;
+  background: var(--blue); color: #fff; font-size: 16px; font-weight: 800;
+  font-family: var(--font); border: none; cursor: pointer; text-align: center;
+  transition: background 0.12s;
+}
+.btn-make:hover:not(:disabled) { background: var(--blue-press); }
+.btn-make:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* 결과 카드 */
+.res-img {
+  width: 100%; border-radius: 14px; display: block;
+  background: var(--opt); min-height: 120px;
+}
+.res-placeholder {
+  width: 100%; aspect-ratio: 1216/640; border-radius: 14px;
+  background: var(--opt); display: flex; align-items: center;
+  justify-content: center; color: var(--muted); font-size: 14px;
+}
+.meta-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 14px; font-size: 13px; color: var(--sub); gap: 8px; flex-wrap: wrap;
+}
+.meta-acts { display: flex; gap: 8px; }
+
+/* 에러 메시지 */
+.res-error {
+  padding: 16px; border-radius: 14px; background: var(--coral-soft);
+  color: var(--coral); font-size: 14px; line-height: 1.5;
+}
+
+/* 최근 결과 그리드 */
+.hist-title { margin: 22px 0 10px; font-size: 14px; color: var(--sub); font-weight: 700; }
+.hist { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media (max-width: 600px) { .hist { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 400px) { .hist { grid-template-columns: repeat(2, 1fr); } }
+.hist-item {
+  cursor: pointer; border-radius: 10px; overflow: hidden;
+  border: 2px solid transparent; transition: border-color 0.12s;
+}
+.hist-item:hover { border-color: var(--blue); }
+.hist-item img { width: 100%; display: block; aspect-ratio: 1; object-fit: cover; }
+</style>
+</head>
+<body>
+<div class="top">
+  <span class="top-title">맥미니 이미지</span>
+  <span class="pill" id="status-pill">연결 확인 중</span>
+</div>
+
+<div class="wrap">
+  <!-- 왼쪽: 입력 카드 -->
+  <div class="card">
+    <label for="scene">장면 (영어로 쓰면 가장 잘 나와요)</label>
+    <textarea id="scene" placeholder="무엇이, 어디서, 어떤 빛인지 한 문장. 비유 대신 실제 모습으로."></textarea>
+    <div class="hint">무엇이, 어디서, 어떤 빛인지 한 문장. 비유 대신 실제 모습으로.</div>
+
+    <label>스타일</label>
+    <div class="seg" id="style-seg">
+      <button class="on" data-val="thumbnail">썸네일 사진</button>
+      <button data-val="photo">사진 그대로</button>
+      <button data-val="none">스타일 없음</button>
+    </div>
+
+    <label>크기</label>
+    <div class="seg" id="size-seg">
+      <button class="on" data-val="1216x640">가로 1216x640</button>
+      <button data-val="1024x1024">정사각 1024</button>
+      <button data-val="640x1216">세로 640x1216</button>
+    </div>
+
+    <label for="seed">시드</label>
+    <div class="seed-row">
+      <input type="number" id="seed" min="0" max="2147483647" value="">
+      <button class="btn-ghost" id="btn-random">무작위</button>
+    </div>
+
+    <button class="btn-make" id="btn-make">만들기 (약 1분 30초)</button>
+  </div>
+
+  <!-- 오른쪽: 결과 -->
+  <div>
+    <div class="card" id="result-card">
+      <div class="res-placeholder" id="res-placeholder">결과가 여기에 표시됩니다</div>
+      <img id="res-img" class="res-img" style="display:none" alt="생성된 이미지">
+      <div id="res-error" class="res-error" style="display:none"></div>
+      <div class="meta-row" id="meta-row" style="display:none">
+        <span id="meta-text"></span>
+        <div class="meta-acts">
+          <button class="btn-ghost" id="btn-copy">프롬프트 복사</button>
+          <button class="btn-ghost" id="btn-save">PNG 저장</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="hist-section" style="display:none">
+      <div class="hist-title">최근 결과 (이 브라우저에만 저장)</div>
+      <div class="hist" id="hist-grid"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── 상태 ──────────────────────────────────────────────────────────────────────
+let styles = { thumbnail: "", photo: "", none: "" };
+let styleKey = "thumbnail";
+let sizeVal = "1216x640";
+let currentPrompt = "";
+let currentSeed = null;
+let currentB64 = null;
+let elapsed = 0;
+let timerInterval = null;
+
+// ── 세그먼트 헬퍼 ─────────────────────────────────────────────────────────────
+function initSeg(id, onChange) {
+  const seg = document.getElementById(id);
+  seg.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      seg.querySelectorAll("button").forEach(b => b.classList.remove("on"));
+      btn.classList.add("on");
+      onChange(btn.dataset.val);
+    });
+  });
+}
+
+initSeg("style-seg", v => { styleKey = v; });
+initSeg("size-seg", v => { sizeVal = v; });
+
+// ── 무작위 시드 ───────────────────────────────────────────────────────────────
+function randomSeed() {
+  return Math.floor(Math.random() * 2147483648);
+}
+document.getElementById("btn-random").addEventListener("click", () => {
+  document.getElementById("seed").value = randomSeed();
+});
+
+// ── 상태 폴링 ─────────────────────────────────────────────────────────────────
+const pill = document.getElementById("status-pill");
+
+async function pollHealth() {
+  try {
+    const r = await fetch("/health");
+    if (!r.ok) throw new Error("http " + r.status);
+    const d = await r.json();
+    pill.textContent = d.busy ? "생성 중" : "대기 중";
+    pill.className = "pill" + (d.busy ? " busy" : "");
+  } catch {
+    pill.textContent = "맥미니 연결 안 됨";
+    pill.className = "pill error";
+  }
+}
+
+pollHealth();
+setInterval(pollHealth, 5000);
+
+// ── 스타일 프리셋 로드 ────────────────────────────────────────────────────────
+fetch("/styles.json")
+  .then(r => r.json())
+  .then(d => { styles = d; })
+  .catch(() => {});
+
+// ── 프롬프트 조립 ─────────────────────────────────────────────────────────────
+function buildPrompt(scene) {
+  const style = styles[styleKey] || "";
+  if (!style) return scene;
+  return style + "\nScene: " + scene;
+}
+
+// ── 결과 표시 ─────────────────────────────────────────────────────────────────
+function showResult(b64, prompt, seed, size, secs) {
+  document.getElementById("res-placeholder").style.display = "none";
+  document.getElementById("res-error").style.display = "none";
+
+  const img = document.getElementById("res-img");
+  img.src = "data:image/png;base64," + b64;
+  img.style.display = "block";
+
+  const [w, h] = size.split("x");
+  document.getElementById("meta-text").textContent =
+    `${w}x${h}, ${Math.round(secs)}초, 시드 ${seed}`;
+  document.getElementById("meta-row").style.display = "flex";
+
+  currentPrompt = prompt;
+  currentSeed = seed;
+  currentB64 = b64;
+}
+
+function showError(msg) {
+  document.getElementById("res-placeholder").style.display = "none";
+  document.getElementById("res-img").style.display = "none";
+  document.getElementById("meta-row").style.display = "none";
+
+  const el = document.getElementById("res-error");
+  el.textContent = msg;
+  el.style.display = "block";
+}
+
+// ── 버튼: 프롬프트 복사 ───────────────────────────────────────────────────────
+document.getElementById("btn-copy").addEventListener("click", () => {
+  if (!currentPrompt) return;
+  navigator.clipboard.writeText(currentPrompt).catch(() => {});
+});
+
+// ── 버튼: PNG 저장 ────────────────────────────────────────────────────────────
+document.getElementById("btn-save").addEventListener("click", () => {
+  if (!currentB64) return;
+  const a = document.createElement("a");
+  a.href = "data:image/png;base64," + currentB64;
+  a.download = `image-${currentSeed}.png`;
+  a.click();
+});
+
+// ── IndexedDB (최근 결과) ─────────────────────────────────────────────────────
+const DB_NAME = "image-web", DB_VER = 1, STORE = "results", MAX = 12;
+let db = null;
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    try {
+      const req = indexedDB.open(DB_NAME, DB_VER);
+      req.onupgradeneeded = e => {
+        const store = e.target.result.createObjectStore(STORE, { keyPath: "id", autoIncrement: true });
+        store.createIndex("ts", "ts");
+      };
+      req.onsuccess = e => resolve(e.target.result);
+      req.onerror   = () => resolve(null);
+    } catch { resolve(null); }
+  });
+}
+
+async function saveResult(entry) {
+  if (!db) return;
+  try {
+    const tx = db.transaction(STORE, "readwrite");
+    const store = tx.objectStore(STORE);
+    store.add(entry);
+    // 12개 초과분 삭제
+    const all = await new Promise(res => {
+      const r = store.index("ts").openCursor(null, "prev");
+      const rows = [];
+      r.onsuccess = e => {
+        const cur = e.target.result;
+        if (cur) { rows.push(cur.value); cur.continue(); }
+        else res(rows);
+      };
+    });
+    if (all.length > MAX) {
+      all.slice(MAX).forEach(row => store.delete(row.id));
+    }
+  } catch {}
+}
+
+async function loadHistory() {
+  if (!db) return [];
+  try {
+    return await new Promise(res => {
+      const tx = db.transaction(STORE, "readonly");
+      const r = tx.objectStore(STORE).index("ts").openCursor(null, "prev");
+      const rows = [];
+      r.onsuccess = e => {
+        const cur = e.target.result;
+        if (cur && rows.length < MAX) { rows.push(cur.value); cur.continue(); }
+        else res(rows);
+      };
+      r.onerror = () => res([]);
+    });
+  } catch { return []; }
+}
+
+function renderHistory(rows) {
+  const grid = document.getElementById("hist-grid");
+  const section = document.getElementById("hist-section");
+  if (!rows.length) { section.style.display = "none"; return; }
+  section.style.display = "block";
+  grid.innerHTML = "";
+  rows.forEach(row => {
+    const div = document.createElement("div");
+    div.className = "hist-item";
+    const img = document.createElement("img");
+    img.src = "data:image/png;base64," + row.b64;
+    img.alt = "";
+    div.appendChild(img);
+    div.addEventListener("click", () => {
+      showResult(row.b64, row.prompt, row.seed, row.size, row.secs);
+    });
+    grid.appendChild(div);
+  });
+}
+
+(async () => {
+  db = await openDB();
+  const rows = await loadHistory();
+  renderHistory(rows);
+})();
+
+// ── 만들기 ────────────────────────────────────────────────────────────────────
+const btnMake = document.getElementById("btn-make");
+
+btnMake.addEventListener("click", async () => {
+  const scene = document.getElementById("scene").value.trim();
+  if (!scene) {
+    document.getElementById("scene").focus();
+    return;
+  }
+
+  const seedInput = document.getElementById("seed").value;
+  const seedVal = seedInput === "" ? null : parseInt(seedInput, 10);
+  const prompt = buildPrompt(scene);
+
+  btnMake.disabled = true;
+  elapsed = 0;
+  btnMake.textContent = "생성 중… 0초";
+  timerInterval = setInterval(() => {
+    elapsed++;
+    btnMake.textContent = `생성 중… ${elapsed}초`;
+  }, 1000);
+
+  const t0 = Date.now();
+  try {
+    const body = { prompt, size: sizeVal, n: 1 };
+    if (seedVal !== null && !isNaN(seedVal)) body.seed = seedVal;
+
+    const resp = await fetch("/v1/images/generations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    const data = await resp.json();
+    const secs = (Date.now() - t0) / 1000;
+
+    if (!resp.ok) {
+      const msg = data?.error?.message || `오류 ${resp.status}`;
+      const detail = {
+        401: "인증 오류입니다. 서버의 토큰 파일을 확인하세요.",
+        429: "서버가 바쁩니다. 잠시 후 다시 시도하세요.",
+        500: "이미지 생성에 실패했습니다. mflux 설치를 확인하세요.",
+        502: "맥미니에 연결할 수 없습니다. Tailscale 연결을 확인하세요.",
+      }[resp.status] || msg;
+      showError(detail);
+      return;
+    }
+
+    const b64 = data.data?.[0]?.b64_json;
+    if (!b64) { showError("응답에 이미지가 없습니다."); return; }
+
+    const usedSeed = data.seed ?? seedVal ?? 0;
+    showResult(b64, prompt, usedSeed, sizeVal, secs);
+
+    const entry = { b64, prompt, seed: usedSeed, size: sizeVal, secs, ts: Date.now() };
+    await saveResult(entry);
+    const rows = await loadHistory();
+    renderHistory(rows);
+
+  } catch (err) {
+    showError("네트워크 오류입니다. 서버가 실행 중인지 확인하세요.");
+  } finally {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    btnMake.disabled = false;
+    btnMake.textContent = "만들기 (약 1분 30초)";
+  }
+});
+</script>
+</body>
+</html>

@@ -19,6 +19,7 @@ import base64
 import hmac
 import json
 import os
+import random
 import subprocess
 import sys
 import tempfile
@@ -242,7 +243,7 @@ class _Handler(BaseHTTPRequestHandler):
 
         try:
             seed = body.get("seed")
-            seed = None if seed is None else int(seed)
+            seed = random.randint(0, 2 ** 31 - 1) if seed is None else int(seed)
             steps = int(body.get("steps", 4))
         except (TypeError, ValueError):
             self._error(400, "seed 와 steps 는 정수여야 합니다.", "invalid_request")
@@ -274,6 +275,7 @@ class _Handler(BaseHTTPRequestHandler):
             self._json(200, {
                 "created": int(time.time()),
                 "data": [{"b64_json": b64}],
+                "seed": seed,
             })
         except subprocess.TimeoutExpired:
             elapsed = time.monotonic() - t0

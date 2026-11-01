@@ -3,6 +3,8 @@
 맥 미니에서 FLUX.1 schnell 이미지를 생성하는 로컬 HTTP 서버입니다.
 GitHub Actions 워크플로가 Tailscale 로 맥 미니에 접근해 이미지를 받아 갑니다.
 
+자세한 API 문서와 예제는 [API.md](API.md) 를 참고하세요.
+
 ## 구성 파일
 
 | 파일 | 설명 |
