@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "8"
+VERSION = "9"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -65,11 +65,25 @@ def _match(bold, word):
     if b == w or b in w or w in b:
         return True
     if re.match(r"[a-zäöüß]", w):  # 영어, 독일어: 앞 낱말이 같으면(range from A to B ↔ range from)
-        return b.split()[0] == w.split()[0] and len(w.split()[0]) > 2
+        if b.split()[0] == w.split()[0] and len(w.split()[0]) > 2:
+            return True
+        return _inflected(b.split()[0], w.split()[0])  # 활용형(erkennen ↔ erkennt)
     i = 0  # 일본어: 앞 두 글자 이상이 같으면(集中する ↔ 集中できる)
     while i < min(len(b), len(w)) and b[i] == w[i]:
         i += 1
     return i >= 2
+
+
+# 활용 어미. 이 어미끼리만 다르면 같은 단어로 본다(Bäcker ↔ Bäckerei 는 "ei" 라 다른 단어)
+ENDS = ("", "e", "n", "en", "s", "es", "t", "st", "et", "te", "ten", "er", "ern", "ed", "d", "ing", "ies", "ied")
+
+
+def _inflected(a, b):
+    """두 낱말이 같은 어간에 활용 어미만 다른지(erkennen ↔ erkennt). 어간은 네 글자 이상."""
+    i = 0
+    while i < min(len(a), len(b)) and a[i] == b[i]:
+        i += 1
+    return i >= 4 and a[i:] in ENDS and b[i:] in ENDS
 
 
 def _short(sent, bold=None):
@@ -100,6 +114,11 @@ def _find(word, sents):
     for k, s in enumerate(sents):
         if stem and stem in _norm(s["en"]):
             return k, None
+    if re.match(r"[a-zäöüß]", w):  # 강조 없이 활용형으로만 나온 경우(abkühlen 이 문장에는 abkühlt 로)
+        first = w.split()[0]
+        for k, s in enumerate(sents):
+            if any(_inflected(t, first) for t in re.findall(r"[a-zäöüß]+", _norm(s["en"]))):
+                return k, None
     for k, s in enumerate(sents):  # 같은 표기가 없을 때만 변이음을 접어 찾는다(Hang 이 문장에는 Hängen 으로)
         if stem and _fold(stem) in _fold(_norm(s["en"])):
             return k, None
@@ -150,7 +169,7 @@ def _fits(ans, word):
         fa, fw = a.split()[0] if a.split() else "", w.split()[0]
         ends = ("", "s", "es", "n", "en", "e", "er", "ern", "ed", "d", "ing", "ies", "ied")
         roots = {fw} | ({fw[:-1]} if fw[-1:] in "ey" and len(fw) > 3 else set())
-        return any(fa.startswith(r) and fa[len(r):] in ends for r in roots)
+        return any(fa.startswith(r) and fa[len(r):] in ends for r in roots) or _inflected(fa, fw)
     k = re.match(r"[\u4e00-\u9fff]+", w)
     return bool(a) and a.startswith(k.group(0) if k else w[:2])
 

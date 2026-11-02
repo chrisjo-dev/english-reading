@@ -103,6 +103,16 @@ class TestCards(unittest.TestCase):
         c = next(x for x in drill.cards("de", "2026-10-31") if x["w"] == "Hang")  # 문장에는 Hängen
         self.assertIn("<b>Hängen</b>", c["ex"])
 
+    def test_inflected_verb_finds_example(self):
+        """주요 단어가 원형(erkennen)이고 문장에는 활용형(erkennt)만 있어도 예문을 찾는다."""
+        c = next(x for x in drill.cards("de", "2026-11-01") if x["w"] == "erkennen")
+        self.assertIn("<b>erkennt</b>", c["ex"])
+        self.assertEqual(c.get("ca"), "erkennt")
+        c2 = next(x for x in drill.cards("de", "2026-11-01") if x["w"] == "abkühlen")  # 강조 없이 abkühlt 로만 나옴
+        self.assertIn("<b>abkühlt</b>", c2["ex"])
+        self.assertTrue(drill._inflected("erkennt", "erkennen"))
+        self.assertFalse(drill._inflected("bäckerei", "bäcker"))
+
     def test_missing_content_gives_no_cards(self):
         self.assertEqual(drill.cards("en", "2020-01-01"), [])
 
