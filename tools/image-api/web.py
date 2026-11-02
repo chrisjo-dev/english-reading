@@ -83,6 +83,11 @@ _SYSTEM_PROMPT = (
 _THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL | re.IGNORECASE)
 
 
+# 번역 모델(약 5GB)은 마지막 번역 뒤 이 시간(초) 동안 쓰지 않으면 메모리에서 내린다. 다시 쓰면 몇 초 안에 다시 올린다.
+_IDLE_SECONDS = float(os.environ.get("TRANSLATE_IDLE_SECONDS", "30"))
+_idle_timer: "threading.Timer | None" = None
+
+
 def _load_mlx():
     """mlx_lm 모델을 한 번만 로드한다. 없으면 ImportError 를 전파한다."""
     global _mlx_model, _mlx_tokenizer
@@ -90,6 +95,33 @@ def _load_mlx():
         return
     import mlx_lm  # noqa: PLC0415
     _mlx_model, _mlx_tokenizer = mlx_lm.load("Qwen/Qwen3-8B-MLX-4bit")
+
+
+def _unload_mlx():
+    """쓰지 않는 번역 모델을 내리고 MLX 캐시를 비운다."""
+    global _mlx_model, _mlx_tokenizer
+    with _TRANSLATE_LOCK:
+        if _mlx_model is None:
+            return
+        _mlx_model = _mlx_tokenizer = None
+        import gc  # noqa: PLC0415
+        gc.collect()
+        try:
+            import mlx.core as mx  # noqa: PLC0415
+            mx.clear_cache()
+        except Exception:
+            pass
+        print("번역 모델을 메모리에서 내렸습니다", file=sys.stderr, flush=True)
+
+
+def _schedule_unload():
+    """마지막 번역 시각부터 _IDLE_SECONDS 뒤에 모델을 내리도록 타이머를 다시 건다."""
+    global _idle_timer
+    if _idle_timer is not None:
+        _idle_timer.cancel()
+    _idle_timer = threading.Timer(_IDLE_SECONDS, _unload_mlx)
+    _idle_timer.daemon = True
+    _idle_timer.start()
 
 
 def translate_text(text: str) -> "tuple[str, float]":
@@ -123,6 +155,7 @@ def translate_text(text: str) -> "tuple[str, float]":
             verbose=False,
         )
         secs = time.monotonic() - t0
+        _schedule_unload()
 
     # <think>…</think> 제거, 앞뒤 따옴표/공백 제거
     scene = _THINK_RE.sub("", result).strip().strip('"\'')

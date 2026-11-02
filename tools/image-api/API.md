@@ -22,6 +22,7 @@ Tailscale 테일넷 안에서만 접근할 수 있습니다.
 | `IMAGE_API_TOKEN_FILE` | `~/.config/image-api/mini-token` | 토큰 파일 경로 |
 | `IMAGE_WEB_PORT` | `8793` | 웹 서버 포트 |
 | `IMAGE_WEB_DIR` | `~/Pictures/mini-image` | 이미지 자동 저장 폴더 |
+| `TRANSLATE_IDLE_SECONDS` | `30` | 마지막 번역 뒤 이 시간(초) 동안 안 쓰면 번역 모델(약 4GB)을 메모리에서 내림. 다시 쓰면 몇 초 안에 다시 올림 |
 
 ### 번역 (한국어 → 영어 장면)
 
