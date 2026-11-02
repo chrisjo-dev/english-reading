@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "10"
+VERSION = "11"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -69,9 +69,15 @@ def _match(bold, word):
         if b.split()[0] == w.split()[0] and len(w.split()[0]) > 2:
             return True
         return _inflected(b.split()[0], w.split()[0])  # 활용형(erkennen ↔ erkennt)
-    if b in w or w in b:
-        return True
-    i = 0  # 일본어: 앞 두 글자 이상이 같으면(集中する ↔ 集中できる)
+    # 일본어: 굵은 글자는 카드 단어의 앞 한자 덩이로 시작해야 함
+    # 부분 포함(魚 ↔ 秋刀魚, 紅葉 ↔ 葉, ノーベル化学賞 ↔ 化学)은 거부하고
+    # 앞 두 글자 이상이 같은 활용형(集中する ↔ 集中できる)만 허용한다
+    k = re.match(r"[一-鿿]+", w)
+    if k:
+        # 한자로 시작하는 단어: 굵은 글자가 카드 단어의 앞 한자 덩이로 시작해야 함
+        return b.startswith(k.group(0))
+    # 한자가 없는 단어(히라가나/가타카나): 앞 두 글자 이상이 같으면(ならぶ ↔ ならんで)
+    i = 0
     while i < min(len(b), len(w)) and b[i] == w[i]:
         i += 1
     return i >= 2
@@ -192,15 +198,38 @@ def _fits(ans, word):
         fa, fw = a.split()[0] if a.split() else "", w.split()[0]
         ends = ("", "s", "es", "n", "en", "e", "er", "ern", "ed", "d", "ing", "ies", "ied")
         roots = {fw} | ({fw[:-1]} if fw[-1:] in "ey" and len(fw) > 3 else set())
-        return any(fa.startswith(r) and fa[len(r):] in ends for r in roots) or _inflected(fa, fw)
+        # 독일어 변이음 처리: Hang↔Hängen, Tal↔Tälern (ä/ö/ü/ß 접어서도 검사)
+        ffa, ffw = _fold(fa), _fold(fw)
+        froots = {ffw} | ({ffw[:-1]} if ffw[-1:] in "ey" and len(ffw) > 3 else set())
+        return (any(fa.startswith(r) and fa[len(r):] in ends for r in roots)
+                or _inflected(fa, fw)
+                or any(ffa.startswith(r) and ffa[len(r):] in ends for r in froots)
+                or _inflected(ffa, ffw))
     k = re.match(r"[\u4e00-\u9fff]+", w)
-    return bool(a) and a.startswith(k.group(0) if k else w[:2])
+    if k:
+        kanji_block = k.group(0)
+        after_kanji = w[len(kanji_block):]
+        # 앞 한자 뒤에 한자가 더 있는 복합어(洗い場의 場, 鳴き声의 声): 빈칸은 단어 전체여야 함
+        if re.search(r"[一-鿿]", after_kanji):
+            return a == w
+        return bool(a) and a.startswith(kanji_block)
+    return bool(a) and a.startswith(w[:2])
 
 
-def _shown(cz, ans):
-    """빈칸 밖에 정답이 또 보이면 참(같은 단어가 문장에 두 번 나온 경우). 루비 읽기는 빼고 본다."""
-    text = re.sub(r"<[^>]+>", "", re.sub(r"<rt>.*?</rt>", "", cz))
-    return html.unescape(ans).lower() in html.unescape(text).lower()
+def _shown(cz, ans, lang="en"):
+    """빈칸 밖에 정답이 또 보이면 참(같은 단어가 문장에 두 번 나온 경우). 루비 읽기는 빼고 본다.
+    영어/독일어는 어간 일치(send↔sent, melt↔melting)도 검사한다."""
+    text = html.unescape(re.sub(r"<[^>]+>", "", re.sub(r"<rt>.*?</rt>", "", cz))).lower()
+    a = html.unescape(ans).lower()
+    if a in text:
+        return True
+    if lang != "ja" and re.match(r"[a-zäöüß]", a):
+        first = _fold(a.split()[0]) if a.split() else _fold(a)
+        # audit.py 와 같은 기준: 어간 앞 max(3, len-2) 글자를 단어 경계에서 찾는다
+        st = first[:max(3, len(first) - 2)]
+        if len(st) >= 3 and re.search(r"(?<![a-zäöüß])" + re.escape(st), _fold(text)):
+            return True
+    return False
 
 
 def _marked(raw, span):
@@ -240,7 +269,7 @@ def cards(lang, day):
             span = _target(raw, w, b)
             if span:  # 카드와 문제에 그 단어만 강조하고, 빈칸 채우기 자료를 만든다
                 cz, ca = _cloze(raw, span)
-                if _fits(ca, w) and not _shown(cz, ca):
+                if _fits(ca, w) and not _shown(cz, ca, lang):
                     c["cz"], c["ca"] = cz, ca
                 raw = _marked(raw, span)
                 b = base(raw[raw.index("**") + 2:raw.index("**", raw.index("**") + 2)])
@@ -252,8 +281,30 @@ def cards(lang, day):
             c["au"] = f"/{lang}/{day}/audio/w{i + 1}.mp3"
         out.append(c)
     for c in out:
-        c["alts"] = [o["m"] for o in out if o is not c]
+        # 뜻 고르기 보기에서 단어가 노출되지 않도록 힌트 뜻(mh)을 우선 사용; 정답과 같은 오답 제거
+        correct_m = c.get("mh", c["m"])
+        c["alts"] = list(dict.fromkeys(
+            o.get("mh", o["m"]) for o in out
+            if o is not c and o.get("mh", o["m"]) != correct_m
+        ))
     return out
+
+
+
+def problems(lang, day):
+    """하루 카드 자료에서 컨텐츠 수준 품질 문제를 반환한다. check_content.py 가 발행 전 검사에 쓴다.
+    - duplicate_meanings: 같은 날 두 단어의 뜻(힌트 뜻 기준)이 동일한 경우 -> 루틴이 뜻을 수정해 해결
+    반환: {"duplicate_meanings": [(word1, word2, meaning), ...]}
+    """
+    cs = cards(lang, day)
+    dups = []
+    for i, a in enumerate(cs):
+        ma = a.get("mh", a["m"])
+        for b in cs[i + 1:]:
+            mb = b.get("mh", b["m"])
+            if ma == mb:
+                dups.append((a["w"], b["w"], ma))
+    return {"duplicate_meanings": dups}
 
 
 CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
