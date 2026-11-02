@@ -1,16 +1,16 @@
 {
  "date": "2026-11-03",
- "words_total": 457,
+ "words_total": 464,
  "langs": {
   "en": {
-   "count": 31,
-   "latest": "2026-11-02",
-   "topic": "나무의 근육",
+   "count": 32,
+   "latest": "2026-11-03",
+   "topic": "안개 체임버",
    "sentences": [
-    "Trees cannot walk or run, but a new study shows that they can still **sense** their own shape and fix it.",
-    "Researchers at INRAE, a research institute in France, grew young **poplar** trees on their side, and after about ten days the stems began to **curve** upward.",
-    "The scientists then put the trees on a slowly turning platform, so that light and **gravity** could no longer tell them which way was up.",
-    "Even so, the curved stems became almost straight again over the following weeks, which suggests that trees can feel the shape of their own bodies."
+    "A security camera that works well on a sunny day may not be able to see a person in thick fog or heavy rain.",
+    "To test cameras in these conditions, researchers at Sandia National Laboratories make bad weather **on purpose** inside a special room called a fog **chamber**.",
+    "To create fog, they mix water, ice, and salt, and sixty-four **nozzles** near the ceiling spray the mixture into the air.",
+    "The salt, which **absorbs** water from the air around it, helps the tiny particles grow larger, while the ice keeps the room cold."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "나무는 걷거나 뛸 수 없지만, 새 연구에 따르면 나무도 자기 모양을 감지하고 바로잡을 수 있다.",
+   "answer": "맑은 날에 잘 작동하는 보안 카메라도 짙은 안개나 폭우 속에서는 사람을 보지 못할 수 있다.",
    "words": [
     [
-     "sense",
-     "감지하다, 느끼다"
+     "on purpose",
+     "일부러, 고의로"
     ],
     [
-     "poplar",
-     "포플러 나무"
+     "chamber",
+     "(특수한 용도의) 방, 실"
     ],
     [
-     "curve",
-     "휘다, 구부러지다"
+     "nozzles",
+     "노즐들, 분사구들 (복수형)"
     ],
     [
-     "gravity",
-     "중력"
+     "absorbs",
+     "빨아들이다, 흡수하다 (3인칭 단수형)"
     ],
     [
-     "opposite",
-     "반대(쪽)의"
+     "netting",
+     "그물, 망"
     ],
     [
-     "muscles",
-     "근육들 (복수형)"
+     "including",
+     "~을 포함하여"
     ],
     [
-     "timber",
-     "목재"
+     "compare",
+     "비교하다"
     ]
    ]
   },
@@ -149,6 +149,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-03",
+   "topic": "안개 체임버"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-03",
    "topic": "문화의 날"
@@ -247,11 +252,6 @@
    "lang": "de",
    "day": "2026-10-28",
    "topic": "동네 빵집"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-27",
-   "topic": "근육 로봇"
   }
  ]
 }
