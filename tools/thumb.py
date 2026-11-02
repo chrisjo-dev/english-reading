@@ -36,11 +36,11 @@ INK, SUB, BG = (25, 31, 40), (78, 89, 104), (242, 244, 246)
 # 요일별 분야(예약 작업 지침과 같다): 월 과학, 화 기술, 수 사회, 목 미래, 금 과학, 토 일상·문화, 일 우주·미래
 WEEKDAY = ["science", "tech", "society", "future", "science", "culture", "space"]
 CATS = {
-    "science": ("과학", (49, 130, 246), (232, 243, 255)),
+    "science": ("과학", (49, 130, 246), (232, 243, 255), (27, 100, 218)),  # html_color: #1b64da (4.82:1 on #e8f3ff)
     "tech": ("기술", (107, 92, 246), (240, 238, 255)),
     "society": ("사회", (240, 112, 64), (255, 240, 233)),
     "future": ("미래", (18, 172, 124), (230, 248, 241)),
-    "culture": ("일상과 문화", (232, 154, 20), (255, 245, 224)),
+    "culture": ("일상과 문화", (232, 154, 20), (255, 245, 224), (162, 92, 0)),  # html_color: #a25c00 (4.74:1 on #fff4e0)
     "space": ("우주", (61, 76, 196), (234, 236, 252)),
 }
 DAYS = "월화수목금토일"
@@ -305,7 +305,7 @@ def cover(pic, w, h):
 def compose(lang, day, cat, topic, pic):
     """사진을 1200x630 전체에 깔고(가운데 기준으로 잘라) 왼쪽을 어둡게 눌러 흰 글씨를 올린다."""
     date = dt.date.fromisoformat(day)
-    label, color, _ = CATS[cat]
+    label, color, _ = CATS[cat][:3]
     img = cover(pic, W, H).convert("RGBA")
     # 왼쪽 어둡게: 0~48% 는 .78→.45, 48~78% 는 .45→0 (시안의 linear-gradient 와 같다)
     shade = Image.new("L", (W, 1))
@@ -344,7 +344,7 @@ def is_photo(path):
 def build(lang, day, cat=None, pic=None):
     date = dt.date.fromisoformat(day)
     cat = cat or WEEKDAY[date.weekday()]
-    label, color, soft = CATS[cat]
+    label, color, soft = CATS[cat][:3]
     page = (ROOT / lang / day / "index.html").read_text(encoding="utf-8")
     topic = re.search(r"<h1>.*?<em>(.*?)</em>", page, re.S).group(1).strip()
     out = ROOT / lang / day / "thumb.png"

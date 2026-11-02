@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root {
-    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
-    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
+    --line: #f2f4f6; --blue: #1b64da; --blue-soft: #e8f3ff; --blue-press: #1550b8;
     --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
     /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
     --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
@@ -55,9 +55,10 @@
   /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
   .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
   .sent:last-of-type { padding-bottom: 0; }
-  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+  .no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;
         background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
-        display: grid; place-items: center; }
+        display: grid; place-items: center; position: relative; }
+  .no::before { content: ''; position: absolute; inset: -6px; }
   .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
@@ -156,7 +157,7 @@
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
   .top { position: relative; }
   .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
-  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
   .sub h2 { margin-bottom: 4px; }
@@ -180,33 +181,6 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  /* vote-css */
-  .cat-science { color: #3182f6; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #e89a14; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #3182f6; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #e89a14; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -361,6 +335,33 @@
   .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
   .lang-row a.lang-go { margin: 0; }
   .gnb .brand img { vertical-align: middle; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb nav { display: flex; gap: 4px; }
@@ -523,7 +524,7 @@
   </section>
 <!-- /drill-card -->
 
-  <section class="card vote" id="vote" data-v="2" data-cat="tech" data-wd="1">
+  <section class="card vote" id="vote" data-v="4" data-cat="tech" data-wd="1">
     <h2>오늘 주제 어땠어요?</h2>
     <p class="desc">오늘은 <span class="cat cat-tech">기술</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
     <div class="vote-btns">
@@ -988,6 +989,8 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
+<script type="application/json" id="drill-data">[{"w": "muscle", "m": "근육", "cz": "Most robots are made of metal and plastic, but a tiny new one from MIT moves with the help of living <span class=\"dr-blank\"><\/span> cells.", "ca": "muscle", "ex": "Most robots are made of metal and plastic, but a tiny new one from MIT moves with the help of living <b>muscle<\/b> cells.", "sh": "… moves with the help of living <b>muscle<\/b> cells.", "ek": "대부분의 로봇은 금속과 플라스틱으로 만들어지지만, MIT가 만든 아주 작은 새 로봇은 살아 있는 근육 세포의 도움을 받아 움직인다.", "au": "/en/2026-10-27/audio/w1.mp3", "alts": ["지느러미들 (fin의 복수)", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "속도", "안내하다, 이끌다", "미로"]}, {"w": "fins", "m": "지느러미들 (fin의 복수)", "cz": "Its body is a soft gel about the size of a stick of gum, and it has two <span class=\"dr-blank\"><\/span>, one on each side.", "ca": "fins", "ex": "Its body is a soft gel about the size of a stick of gum, and it has two <b>fins<\/b>, one on each side.", "sh": "Its body is a soft gel about the size of a stick of gum, and it has two <b>fins<\/b>, one on each side.", "ek": "로봇의 몸은 껌 한 개 크기쯤 되는 부드러운 젤이고, 양쪽에 하나씩 지느러미 두 개가 달려 있다.", "au": "/en/2026-10-27/audio/w2.mp3", "alts": ["근육", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "속도", "안내하다, 이끌다", "미로"]}, {"w": "tighten", "m": "조여지다, 수축하다", "cz": "Each fin is covered with a layer of muscle cells, thinner than a human hair, that were changed in the lab so that they <span class=\"dr-blank\"><\/span> whenever light shines on them.", "ca": "tighten", "ex": "Each fin is covered with a layer of muscle cells, thinner than a human hair, that were changed in the lab so that they <b>tighten<\/b> whenever light shines on them.", "sh": "… so that they <b>tighten<\/b> whenever light shines on them.", "ek": "각 지느러미는 사람 머리카락보다 얇은 근육 세포 층으로 덮여 있는데, 이 세포들은 빛이 비칠 때마다 수축하도록 실험실에서 바뀐 것이다.", "au": "/en/2026-10-27/audio/w3.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "퍼덕이다, 펄럭이다", "속도", "안내하다, 이끌다", "미로"]}, {"w": "flap", "m": "퍼덕이다, 펄럭이다", "cz": "When light hits one fin, that fin <span class=\"dr-blank\"><\/span> and turns the robot to one side, but when light hits both fins, the robot swims forward.", "ca": "flaps", "ex": "When light hits one fin, that fin <b>flaps<\/b> and turns the robot to one side, but when light hits both fins, the robot swims forward.", "sh": "… that fin <b>flaps<\/b> and turns the robot to one side, …", "ek": "빛이 한쪽 지느러미에 닿으면 그 지느러미가 퍼덕이며 로봇을 한쪽으로 돌리지만, 빛이 두 지느러미에 모두 닿으면 로봇은 앞으로 헤엄친다.", "au": "/en/2026-10-27/audio/w4.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "조여지다, 수축하다", "속도", "안내하다, 이끌다", "미로"]}, {"w": "speed", "m": "속도", "cz": "Its top <span class=\"dr-blank\"><\/span> is only about four body lengths per minute, while an Olympic swimmer can cover up to sixty-five.", "ca": "speed", "ex": "Its top <b>speed<\/b> is only about four body lengths per minute, while an Olympic swimmer can cover up to sixty-five.", "sh": "Its top <b>speed<\/b> is only about four body lengths per minute, while an Olympic swimmer can cover up to sixty-five.", "ek": "로봇의 최고 속도는 1분에 몸길이의 약 네 배에 불과한 반면, 올림픽 수영 선수는 최대 65배까지 나아갈 수 있다.", "au": "/en/2026-10-27/audio/w5.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "안내하다, 이끌다", "미로"]}, {"w": "guide", "m": "안내하다, 이끌다", "cz": "Still, by moving a light by hand, the researchers <span class=\"dr-blank\"><\/span> the robot through a small maze in a dish.", "ca": "guided", "ex": "Still, by moving a light by hand, the researchers <b>guided<\/b> the robot through a small maze in a dish.", "sh": "Still, by moving a light by hand, the researchers <b>guided<\/b> the robot through a small maze in a dish.", "ek": "그래도 연구자들은 손으로 불빛을 움직여 접시 안의 작은 미로를 지나도록 로봇을 이끌었다.", "au": "/en/2026-10-27/audio/w6.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "속도", "미로"]}, {"w": "maze", "m": "미로", "cz": "Still, by moving a light by hand, the researchers guided the robot through a small <span class=\"dr-blank\"><\/span> in a dish.", "ca": "maze", "ex": "Still, by moving a light by hand, the researchers guided the robot through a small <b>maze<\/b> in a dish.", "sh": "Still, by moving a light by hand, the researchers guided the robot through a small <b>maze<\/b> in a dish.", "ek": "그래도 연구자들은 손으로 불빛을 움직여 접시 안의 작은 미로를 지나도록 로봇을 이끌었다.", "au": "/en/2026-10-27/audio/w7.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "속도", "안내하다, 이끌다"]}]</script>
+<script id="drill-js" data-v="11" src="/assets/drill.js?v=11" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1020,7 +1023,5 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "muscle", "m": "근육", "cz": "Most robots are made of metal and plastic, but a tiny new one from MIT moves with the help of living <span class=\"dr-blank\"><\/span> cells.", "ca": "muscle", "ex": "Most robots are made of metal and plastic, but a tiny new one from MIT moves with the help of living <b>muscle<\/b> cells.", "sh": "… moves with the help of living <b>muscle<\/b> cells.", "ek": "대부분의 로봇은 금속과 플라스틱으로 만들어지지만, MIT가 만든 아주 작은 새 로봇은 살아 있는 근육 세포의 도움을 받아 움직인다.", "au": "/en/2026-10-27/audio/w1.mp3", "alts": ["지느러미들 (fin의 복수)", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "속도", "안내하다, 이끌다", "미로"]}, {"w": "fins", "m": "지느러미들 (fin의 복수)", "cz": "Its body is a soft gel about the size of a stick of gum, and it has two <span class=\"dr-blank\"><\/span>, one on each side.", "ca": "fins", "ex": "Its body is a soft gel about the size of a stick of gum, and it has two <b>fins<\/b>, one on each side.", "sh": "Its body is a soft gel about the size of a stick of gum, and it has two <b>fins<\/b>, one on each side.", "ek": "로봇의 몸은 껌 한 개 크기쯤 되는 부드러운 젤이고, 양쪽에 하나씩 지느러미 두 개가 달려 있다.", "au": "/en/2026-10-27/audio/w2.mp3", "alts": ["근육", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "속도", "안내하다, 이끌다", "미로"]}, {"w": "tighten", "m": "조여지다, 수축하다", "cz": "Each fin is covered with a layer of muscle cells, thinner than a human hair, that were changed in the lab so that they <span class=\"dr-blank\"><\/span> whenever light shines on them.", "ca": "tighten", "ex": "Each fin is covered with a layer of muscle cells, thinner than a human hair, that were changed in the lab so that they <b>tighten<\/b> whenever light shines on them.", "sh": "… so that they <b>tighten<\/b> whenever light shines on them.", "ek": "각 지느러미는 사람 머리카락보다 얇은 근육 세포 층으로 덮여 있는데, 이 세포들은 빛이 비칠 때마다 수축하도록 실험실에서 바뀐 것이다.", "au": "/en/2026-10-27/audio/w3.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "퍼덕이다, 펄럭이다", "속도", "안내하다, 이끌다", "미로"]}, {"w": "flap", "m": "퍼덕이다, 펄럭이다", "cz": "When light hits one fin, that fin <span class=\"dr-blank\"><\/span> and turns the robot to one side, but when light hits both fins, the robot swims forward.", "ca": "flaps", "ex": "When light hits one fin, that fin <b>flaps<\/b> and turns the robot to one side, but when light hits both fins, the robot swims forward.", "sh": "… that fin <b>flaps<\/b> and turns the robot to one side, …", "ek": "빛이 한쪽 지느러미에 닿으면 그 지느러미가 퍼덕이며 로봇을 한쪽으로 돌리지만, 빛이 두 지느러미에 모두 닿으면 로봇은 앞으로 헤엄친다.", "au": "/en/2026-10-27/audio/w4.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "조여지다, 수축하다", "속도", "안내하다, 이끌다", "미로"]}, {"w": "speed", "m": "속도", "cz": "Its top <span class=\"dr-blank\"><\/span> is only about four body lengths per minute, while an Olympic swimmer can cover up to sixty-five.", "ca": "speed", "ex": "Its top <b>speed<\/b> is only about four body lengths per minute, while an Olympic swimmer can cover up to sixty-five.", "sh": "Its top <b>speed<\/b> is only about four body lengths per minute, while an Olympic swimmer can cover up to sixty-five.", "ek": "로봇의 최고 속도는 1분에 몸길이의 약 네 배에 불과한 반면, 올림픽 수영 선수는 최대 65배까지 나아갈 수 있다.", "au": "/en/2026-10-27/audio/w5.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "안내하다, 이끌다", "미로"]}, {"w": "guide", "m": "안내하다, 이끌다", "cz": "Still, by moving a light by hand, the researchers <span class=\"dr-blank\"><\/span> the robot through a small maze in a dish.", "ca": "guided", "ex": "Still, by moving a light by hand, the researchers <b>guided<\/b> the robot through a small maze in a dish.", "sh": "Still, by moving a light by hand, the researchers <b>guided<\/b> the robot through a small maze in a dish.", "ek": "그래도 연구자들은 손으로 불빛을 움직여 접시 안의 작은 미로를 지나도록 로봇을 이끌었다.", "au": "/en/2026-10-27/audio/w6.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "속도", "미로"]}, {"w": "maze", "m": "미로", "cz": "Still, by moving a light by hand, the researchers guided the robot through a small <span class=\"dr-blank\"><\/span> in a dish.", "ca": "maze", "ex": "Still, by moving a light by hand, the researchers guided the robot through a small <b>maze<\/b> in a dish.", "sh": "Still, by moving a light by hand, the researchers guided the robot through a small <b>maze<\/b> in a dish.", "ek": "그래도 연구자들은 손으로 불빛을 움직여 접시 안의 작은 미로를 지나도록 로봇을 이끌었다.", "au": "/en/2026-10-27/audio/w7.mp3", "alts": ["근육", "지느러미들 (fin의 복수)", "조여지다, 수축하다", "퍼덕이다, 펄럭이다", "속도", "안내하다, 이끌다"]}]</script>
-<script id="drill-js" data-v="11" src="/assets/drill.js?v=11" defer></script>
 </body>
 </html>

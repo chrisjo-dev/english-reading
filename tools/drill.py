@@ -525,4 +525,8 @@ def apply(page, lang, day):
                 break
     data = json.dumps(items, ensure_ascii=False).replace("</", "<\\/")
     tail = f'<script type="application/json" id="drill-data">{data}</script>\n' + SCRIPT.replace("__V__", VERSION)
+    # vote-js 스크립트가 있으면 그 앞에 삽입해 순서를 drill-data < vote-js 로 고정한다
+    m = re.search(r'<script id="vote-js">', page)
+    if m:
+        return page[:m.start()] + tail + page[m.start():]
     return page.replace("</body>", tail + "</body>", 1)

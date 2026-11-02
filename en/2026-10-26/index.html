@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root {
-    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
-    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
+    --line: #f2f4f6; --blue: #1b64da; --blue-soft: #e8f3ff; --blue-press: #1550b8;
     --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
     /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
     --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
@@ -55,9 +55,10 @@
   /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
   .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
   .sent:last-of-type { padding-bottom: 0; }
-  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+  .no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;
         background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
-        display: grid; place-items: center; }
+        display: grid; place-items: center; position: relative; }
+  .no::before { content: ''; position: absolute; inset: -6px; }
   .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
@@ -156,7 +157,7 @@
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
   .top { position: relative; }
   .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
-  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
   .sub h2 { margin-bottom: 4px; }
@@ -180,33 +181,6 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  /* vote-css */
-  .cat-science { color: #3182f6; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #e89a14; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #3182f6; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #e89a14; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -361,6 +335,33 @@
   .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
   .lang-row a.lang-go { margin: 0; }
   .gnb .brand img { vertical-align: middle; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb nav { display: flex; gap: 4px; }
@@ -523,7 +524,7 @@
   </section>
 <!-- /drill-card -->
 
-  <section class="card vote" id="vote" data-v="2" data-cat="science" data-wd="0">
+  <section class="card vote" id="vote" data-v="4" data-cat="science" data-wd="0">
     <h2>오늘 주제 어땠어요?</h2>
     <p class="desc">오늘은 <span class="cat cat-science">과학</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
     <div class="vote-btns">
@@ -988,6 +989,8 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
+<script type="application/json" id="drill-data">[{"w": "fossil", "m": "화석", "cz": "A <span class=\"dr-blank\"><\/span> that sat in a museum drawer for more than a hundred years has turned out to be a new kind of dinosaur.", "ca": "fossil", "ex": "A <b>fossil<\/b> that sat in a museum drawer for more than a hundred years has turned out to be a new kind of dinosaur.", "sh": "A <b>fossil<\/b> that sat in a museum drawer …", "ek": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.", "au": "/en/2026-10-26/audio/w1.mp3", "alts": ["서랍", "두개골", "~에 속하다", "(동물의) 발톱들", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "drawer", "m": "서랍", "cz": "A fossil that sat in a museum <span class=\"dr-blank\"><\/span> for more than a hundred years has turned out to be a new kind of dinosaur.", "ca": "drawer", "ex": "A fossil that sat in a museum <b>drawer<\/b> for more than a hundred years has turned out to be a new kind of dinosaur.", "sh": "… that sat in a museum <b>drawer<\/b> for more than a hundred years …", "ek": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.", "au": "/en/2026-10-26/audio/w2.mp3", "alts": ["화석", "두개골", "~에 속하다", "(동물의) 발톱들", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "skull", "m": "두개골", "cz": "About six years ago, part of the <span class=\"dr-blank\"><\/span> was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.", "ca": "skull", "ex": "About six years ago, part of the <b>skull<\/b> was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.", "sh": "… part of the <b>skull<\/b> was noticed again …", "ek": "약 6년 전, 그 박물관의 한 과학자가 두개골 일부를 다시 눈여겨보았는데, 그는 그것이 특이해 보인다고 생각해 다른 연구자들에게 더 자세히 연구해 달라고 부탁했다.", "au": "/en/2026-10-26/audio/w3.mp3", "alts": ["화석", "서랍", "~에 속하다", "(동물의) 발톱들", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "belong to", "m": "~에 속하다", "cz": "The team found that the animal lived about one hundred twenty million years ago and <span class=\"dr-blank\"><\/span> a group of hunters with very large claws on their hands.", "ca": "belonged to", "ex": "The team found that the animal lived about one hundred twenty million years ago and <b>belonged to<\/b> a group of hunters with very large claws on their hands.", "sh": "… and <b>belonged to<\/b> a group of hunters with very large claws …", "ek": "연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.", "au": "/en/2026-10-26/audio/w4.mp3", "alts": ["화석", "서랍", "두개골", "(동물의) 발톱들", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "claws", "m": "(동물의) 발톱들 (claw의 복수)", "mh": "(동물의) 발톱들", "cz": "The team found that the animal lived about one hundred twenty million years ago and belonged to a group of hunters with very large <span class=\"dr-blank\"><\/span> on their hands.", "ca": "claws", "ex": "The team found that the animal lived about one hundred twenty million years ago and belonged to a group of hunters with very large <b>claws<\/b> on their hands.", "sh": "… with very large <b>claws<\/b> on their hands.", "ek": "연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.", "au": "/en/2026-10-26/audio/w5.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "mainly", "m": "주로", "cz": "Until now, dinosaurs from this group had been found <span class=\"dr-blank\"><\/span> in South America, Asia and Australia, so this is the first one ever identified in Europe.", "ca": "mainly", "ex": "Until now, dinosaurs from this group had been found <b>mainly<\/b> in South America, Asia and Australia, so this is the first one ever identified in Europe.", "sh": "… had been found <b>mainly<\/b> in South America, Asia and Australia, …", "ek": "지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.", "au": "/en/2026-10-26/audio/w6.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "(동물의) 발톱들", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "identified", "m": "확인된, 밝혀진 (identify의 과거분사)", "cz": "Until now, dinosaurs from this group had been found mainly in South America, Asia and Australia, so this is the first one ever <span class=\"dr-blank\"><\/span> in Europe.", "ca": "identified", "ex": "Until now, dinosaurs from this group had been found mainly in South America, Asia and Australia, so this is the first one ever <b>identified<\/b> in Europe.", "sh": "… so this is the first one ever <b>identified<\/b> in Europe.", "ek": "지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.", "au": "/en/2026-10-26/audio/w7.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "(동물의) 발톱들", "주로"]}]</script>
+<script id="drill-js" data-v="11" src="/assets/drill.js?v=11" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1020,7 +1023,5 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "fossil", "m": "화석", "cz": "A <span class=\"dr-blank\"><\/span> that sat in a museum drawer for more than a hundred years has turned out to be a new kind of dinosaur.", "ca": "fossil", "ex": "A <b>fossil<\/b> that sat in a museum drawer for more than a hundred years has turned out to be a new kind of dinosaur.", "sh": "A <b>fossil<\/b> that sat in a museum drawer …", "ek": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.", "au": "/en/2026-10-26/audio/w1.mp3", "alts": ["서랍", "두개골", "~에 속하다", "(동물의) 발톱들", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "drawer", "m": "서랍", "cz": "A fossil that sat in a museum <span class=\"dr-blank\"><\/span> for more than a hundred years has turned out to be a new kind of dinosaur.", "ca": "drawer", "ex": "A fossil that sat in a museum <b>drawer<\/b> for more than a hundred years has turned out to be a new kind of dinosaur.", "sh": "… that sat in a museum <b>drawer<\/b> for more than a hundred years …", "ek": "박물관 서랍 속에 백 년 넘게 놓여 있던 화석 하나가 새로운 종류의 공룡인 것으로 밝혀졌다.", "au": "/en/2026-10-26/audio/w2.mp3", "alts": ["화석", "두개골", "~에 속하다", "(동물의) 발톱들", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "skull", "m": "두개골", "cz": "About six years ago, part of the <span class=\"dr-blank\"><\/span> was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.", "ca": "skull", "ex": "About six years ago, part of the <b>skull<\/b> was noticed again by a scientist at the museum, who thought it looked unusual and asked other researchers to study it more closely.", "sh": "… part of the <b>skull<\/b> was noticed again …", "ek": "약 6년 전, 그 박물관의 한 과학자가 두개골 일부를 다시 눈여겨보았는데, 그는 그것이 특이해 보인다고 생각해 다른 연구자들에게 더 자세히 연구해 달라고 부탁했다.", "au": "/en/2026-10-26/audio/w3.mp3", "alts": ["화석", "서랍", "~에 속하다", "(동물의) 발톱들", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "belong to", "m": "~에 속하다", "cz": "The team found that the animal lived about one hundred twenty million years ago and <span class=\"dr-blank\"><\/span> a group of hunters with very large claws on their hands.", "ca": "belonged to", "ex": "The team found that the animal lived about one hundred twenty million years ago and <b>belonged to<\/b> a group of hunters with very large claws on their hands.", "sh": "… and <b>belonged to<\/b> a group of hunters with very large claws …", "ek": "연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.", "au": "/en/2026-10-26/audio/w4.mp3", "alts": ["화석", "서랍", "두개골", "(동물의) 발톱들", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "claws", "m": "(동물의) 발톱들 (claw의 복수)", "mh": "(동물의) 발톱들", "cz": "The team found that the animal lived about one hundred twenty million years ago and belonged to a group of hunters with very large <span class=\"dr-blank\"><\/span> on their hands.", "ca": "claws", "ex": "The team found that the animal lived about one hundred twenty million years ago and belonged to a group of hunters with very large <b>claws<\/b> on their hands.", "sh": "… with very large <b>claws<\/b> on their hands.", "ek": "연구팀은 그 동물이 약 1억 2천만 년 전에 살았으며, 손에 아주 큰 발톱이 달린 사냥꾼 무리에 속했다는 것을 알아냈다.", "au": "/en/2026-10-26/audio/w5.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "주로", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "mainly", "m": "주로", "cz": "Until now, dinosaurs from this group had been found <span class=\"dr-blank\"><\/span> in South America, Asia and Australia, so this is the first one ever identified in Europe.", "ca": "mainly", "ex": "Until now, dinosaurs from this group had been found <b>mainly<\/b> in South America, Asia and Australia, so this is the first one ever identified in Europe.", "sh": "… had been found <b>mainly<\/b> in South America, Asia and Australia, …", "ek": "지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.", "au": "/en/2026-10-26/audio/w6.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "(동물의) 발톱들", "확인된, 밝혀진 (identify의 과거분사)"]}, {"w": "identified", "m": "확인된, 밝혀진 (identify의 과거분사)", "cz": "Until now, dinosaurs from this group had been found mainly in South America, Asia and Australia, so this is the first one ever <span class=\"dr-blank\"><\/span> in Europe.", "ca": "identified", "ex": "Until now, dinosaurs from this group had been found mainly in South America, Asia and Australia, so this is the first one ever <b>identified<\/b> in Europe.", "sh": "… so this is the first one ever <b>identified<\/b> in Europe.", "ek": "지금까지 이 무리의 공룡들은 주로 남아메리카, 아시아, 호주에서 발견되어 왔기 때문에, 이것은 유럽에서 확인된 첫 번째 공룡이다.", "au": "/en/2026-10-26/audio/w7.mp3", "alts": ["화석", "서랍", "두개골", "~에 속하다", "(동물의) 발톱들", "주로"]}]</script>
-<script id="drill-js" data-v="11" src="/assets/drill.js?v=11" defer></script>
 </body>
 </html>
