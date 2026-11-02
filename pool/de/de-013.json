@@ -1,0 +1,342 @@
+{
+  "date": "2026-10-13",
+  "category": "culture",
+  "topic": "주말 시장",
+  "title_ko": "독일의 주말 야외 시장",
+  "headline": "Der Wochenmarkt am Samstag",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "photo_scene": "A colourful outdoor market with wooden stalls displaying fresh vegetables and bunches of flowers, shoppers browsing with baskets and bags, bright Saturday morning sunlight.",
+  "sentences": [
+    {
+      "en": "In deutschen Städten und Dörfern findet fast jede Woche ein **Wochenmarkt** statt, auf dem frische **Lebensmittel** verkauft werden.",
+      "b2": false,
+      "chunks": [
+        [
+          "In deutschen Städten und Dörfern",
+          "독일 도시와 마을에서는"
+        ],
+        [
+          "findet fast jede Woche",
+          "거의 매주"
+        ],
+        [
+          "ein **Wochenmarkt** statt,",
+          "주말 시장이 열립니다"
+        ],
+        [
+          "auf dem frische **Lebensmittel** verkauft werden.",
+          "그곳에서 신선한 식품이 판매됩니다"
+        ]
+      ]
+    },
+    {
+      "en": "**Bauern** aus der Region bringen ihr Gemüse, Obst, Fleisch, Käse und **Backwaren** direkt auf den Marktplatz.",
+      "b2": false,
+      "chunks": [
+        [
+          "**Bauern** aus der Region",
+          "지역 농부들이"
+        ],
+        [
+          "bringen ihr Gemüse, Obst, Fleisch, Käse",
+          "채소, 과일, 고기, 치즈를 가져옵니다"
+        ],
+        [
+          "und **Backwaren** direkt auf den Marktplatz.",
+          "그리고 제빵 제품을 직접 광장으로"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Menschen gehen am Samstagmorgen gern auf den **Wochenmarkt**, weil die Waren dort frischer und oft **regionaler** sind als im Supermarkt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viele Menschen gehen am Samstagmorgen gern",
+          "많은 사람들이 토요일 아침에 즐겨 갑니다"
+        ],
+        [
+          "auf den **Wochenmarkt**,",
+          "주말 시장에"
+        ],
+        [
+          "weil die Waren dort frischer",
+          "왜냐하면 그곳의 상품이 더 신선하고"
+        ],
+        [
+          "und oft **regionaler** sind als im Supermarkt.",
+          "종종 슈퍼마켓보다 더 지역적이기 때문입니다"
+        ]
+      ]
+    },
+    {
+      "en": "Neben **Lebensmitteln** findet man auf vielen Märkten auch Blumen, Pflanzen, Kleidung und handgemachte Waren verschiedener **Händler**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Neben **Lebensmitteln**",
+          "식품 외에도"
+        ],
+        [
+          "findet man auf vielen Märkten",
+          "많은 시장에서 볼 수 있습니다"
+        ],
+        [
+          "auch Blumen, Pflanzen, Kleidung",
+          "꽃, 식물, 의류"
+        ],
+        [
+          "und handgemachte Waren verschiedener **Händler**.",
+          "그리고 다양한 상인의 수제품을"
+        ]
+      ]
+    },
+    {
+      "en": "Für ältere Menschen, die keinen Supermarkt in der Nähe haben, **wäre** der Wochenmarkt oft die wichtigste **Einkaufsmöglichkeit** in der Woche.",
+      "b2": true,
+      "chunks": [
+        [
+          "Für ältere Menschen,",
+          "노인들에게는"
+        ],
+        [
+          "die keinen Supermarkt in der Nähe haben,",
+          "근처에 슈퍼마켓이 없는"
+        ],
+        [
+          "**wäre** der Wochenmarkt oft",
+          "주말 시장이 종종 됩니다"
+        ],
+        [
+          "die wichtigste **Einkaufsmöglichkeit** in der Woche.",
+          "그 주의 가장 중요한 구매 수단이"
+        ]
+      ]
+    },
+    {
+      "en": "Der **Wochenmarkt** ist nicht nur ein Ort zum Einkaufen, sondern auch ein **Treffpunkt**, an dem Nachbarn ins Gespräch kommen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der **Wochenmarkt** ist nicht nur",
+          "주말 시장은"
+        ],
+        [
+          "ein Ort zum Einkaufen,",
+          "쇼핑 장소일 뿐만 아니라"
+        ],
+        [
+          "sondern auch ein **Treffpunkt**,",
+          "만남의 장소이기도 합니다"
+        ],
+        [
+          "an dem Nachbarn ins Gespräch kommen.",
+          "이웃들이 대화를 나누는"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Wochenmarkt",
+      "주말 시장 (남성 der)"
+    ],
+    [
+      "Bauer",
+      "농부 (남성 der)"
+    ],
+    [
+      "Backwaren",
+      "제빵 제품, 빵류 (여성 die, 복수 Backwaren)"
+    ],
+    [
+      "Händler",
+      "상인 (남성 der)"
+    ],
+    [
+      "Einkaufsmöglichkeit",
+      "구매 수단, 쇼핑 방법 (여성 die)"
+    ],
+    [
+      "Treffpunkt",
+      "만남의 장소 (남성 der)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "stattfinden — 분리동사",
+      "body": "`stattfinden`은 '열리다, 개최되다'는 뜻의 분리동사예요. `findet ... statt` 형태로 분리됩니다."
+    },
+    {
+      "title": "Konjunktiv II: wäre",
+      "body": "`wäre`는 `sein`의 Konjunktiv II 형태예요. `wäre ... die wichtigste`처럼 사실과 다른 가정을 표현할 때 씁니다."
+    }
+  ],
+  "answers": [
+    "독일 도시와 마을에서는 거의 매주 주말 시장이 열리며, 그곳에서 신선한 식품이 판매됩니다.",
+    "지역 농부들이 채소, 과일, 고기, 치즈, 제빵 제품을 직접 광장으로 가져옵니다.",
+    "많은 사람들이 토요일 아침에 주말 시장에 즐겨 가는데, 그곳의 상품이 슈퍼마켓보다 더 신선하고 지역적이기 때문입니다.",
+    "식품 외에도 많은 시장에서 꽃, 식물, 의류, 다양한 상인의 수제품을 찾을 수 있습니다.",
+    "근처에 슈퍼마켓이 없는 노인들에게 주말 시장은 그 주의 가장 중요한 구매 수단이 될 것입니다.",
+    "주말 시장은 쇼핑 장소일 뿐만 아니라 이웃들이 대화를 나누는 만남의 장소이기도 합니다."
+  ],
+  "advanced": [
+    {
+      "word": "regional",
+      "meaning": "지역의, 지역산의",
+      "confuse": "regional vs. lokal: `regional`은 더 넓은 지역(예: 주), `lokal`은 좁은 지역이나 동네를 가리켜요.",
+      "example": "Viele Kunden **bevorzugen regionale** Produkte vom Wochenmarkt.",
+      "example_ko": "많은 고객들이 주말 시장의 지역 상품을 선호합니다."
+    },
+    {
+      "word": "bevorzugen",
+      "meaning": "더 좋아하다, 선호하다",
+      "confuse": null,
+      "example": "Er **bevorzugt** frisches Gemüse vom Markt gegenüber Supermarktprodukten.",
+      "example_ko": "그는 슈퍼마켓 제품보다 시장의 신선한 채소를 더 좋아합니다."
+    },
+    {
+      "word": "handgemacht",
+      "meaning": "손으로 만든, 수제의",
+      "confuse": null,
+      "example": "Auf dem Markt gibt es **handgemachte** Schmuckstücke und Keramik.",
+      "example_ko": "시장에서는 수제 장신구와 도자기를 볼 수 있습니다."
+    },
+    {
+      "word": "Treffpunkt",
+      "meaning": "만남의 장소 (남성 der)",
+      "confuse": null,
+      "example": "Der Marktplatz ist ein beliebter **Treffpunkt** für Jung und Alt.",
+      "example_ko": "시장 광장은 젊은이와 노인 모두에게 인기 있는 만남의 장소입니다."
+    },
+    {
+      "word": "ins Gespräch kommen",
+      "meaning": "대화를 나누게 되다",
+      "confuse": null,
+      "example": "Beim Marktbesuch **kommt** man leicht mit Fremden **ins Gespräch**.",
+      "example_ko": "시장을 방문하면 낯선 사람들과 쉽게 대화를 나눌 수 있습니다."
+    },
+    {
+      "word": "Einkaufsmöglichkeit",
+      "meaning": "쇼핑 기회, 구매 수단 (여성 die)",
+      "confuse": null,
+      "example": "In kleinen Dörfern ist der Wochenmarkt oft die einzige **Einkaufsmöglichkeit**.",
+      "example_ko": "작은 마을에서는 주말 시장이 종종 유일한 구매 수단입니다."
+    }
+  ],
+  "source": null,
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "In deutschen Städten findet fast jede Woche ein **Wochenmarkt** statt.",
+          "chunks": [
+            [
+              "In deutschen Städten",
+              "독일 도시에서는"
+            ],
+            [
+              "findet fast jede Woche",
+              "거의 매주"
+            ],
+            [
+              "ein **Wochenmarkt** statt.",
+              "주말 시장이 열립니다"
+            ]
+          ]
+        },
+        {
+          "en": "**Bauern** verkaufen dort frisches Gemüse, Obst, Käse und **Backwaren**.",
+          "chunks": [
+            [
+              "**Bauern** verkaufen dort",
+              "농부들이 그곳에서 판매합니다"
+            ],
+            [
+              "frisches Gemüse, Obst, Käse und **Backwaren**.",
+              "신선한 채소, 과일, 치즈, 빵류를"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Menschen gehen am Samstagmorgen auf den Markt, weil das Gemüse dort frischer ist.",
+          "chunks": [
+            [
+              "Viele Menschen gehen am Samstagmorgen",
+              "많은 사람들이 토요일 아침에 갑니다"
+            ],
+            [
+              "auf den Markt,",
+              "시장에"
+            ],
+            [
+              "weil das Gemüse dort frischer ist.",
+              "왜냐하면 그곳의 채소가 더 신선하기 때문입니다"
+            ]
+          ]
+        },
+        {
+          "en": "Man findet auch Blumen, Pflanzen und **Händler** mit anderen Waren.",
+          "chunks": [
+            [
+              "Man findet auch Blumen, Pflanzen",
+              "꽃, 식물도 볼 수 있고"
+            ],
+            [
+              "und **Händler** mit anderen Waren.",
+              "다른 상품을 파는 상인들도 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Für ältere Menschen **wäre** der **Wochenmarkt** oft die wichtigste Möglichkeit zum Einkaufen.",
+          "chunks": [
+            [
+              "Für ältere Menschen",
+              "노인들에게"
+            ],
+            [
+              "**wäre** der **Wochenmarkt**",
+              "주말 시장은 됩니다"
+            ],
+            [
+              "oft die wichtigste Möglichkeit zum Einkaufen.",
+              "종종 가장 중요한 쇼핑 방법이"
+            ]
+          ]
+        },
+        {
+          "en": "Der Markt ist nicht nur zum Einkaufen, sondern auch ein **Treffpunkt** für Nachbarn.",
+          "chunks": [
+            [
+              "Der Markt ist nicht nur",
+              "시장은"
+            ],
+            [
+              "zum Einkaufen,",
+              "쇼핑뿐만 아니라"
+            ],
+            [
+              "sondern auch ein **Treffpunkt** für Nachbarn.",
+              "이웃들의 만남의 장소이기도 합니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "독일 도시에서는 거의 매주 주말 시장이 열립니다.",
+        "농부들이 그곳에서 신선한 채소, 과일, 치즈, 빵류를 판매합니다.",
+        "채소가 더 신선하기 때문에 많은 사람들이 토요일 아침에 시장에 갑니다.",
+        "꽃, 식물도 볼 수 있고 다른 상품을 파는 상인들도 있습니다.",
+        "노인들에게 주말 시장은 종종 가장 중요한 쇼핑 방법이 됩니다.",
+        "시장은 쇼핑뿐만 아니라 이웃들의 만남의 장소이기도 합니다."
+      ]
+    }
+  }
+}

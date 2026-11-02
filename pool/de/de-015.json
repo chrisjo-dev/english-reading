@@ -1,0 +1,362 @@
+{
+  "date": "2026-10-15",
+  "category": "culture",
+  "topic": "공공 수영장",
+  "title_ko": "독일의 야외 공공 수영장",
+  "headline": "Das Freibad im Sommer",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "photo_scene": "Families and children swimming and splashing in a bright outdoor public pool in Germany on a sunny summer afternoon, blue water and blue sky, wide shot.",
+  "sentences": [
+    {
+      "en": "In Deutschland gibt es in fast jeder Stadt ein **Schwimmbad** oder ein **Freibad**, das im Sommer von vielen Familien besucht wird.",
+      "b2": false,
+      "chunks": [
+        [
+          "In Deutschland gibt es in fast jeder Stadt",
+          "독일에서는 거의 모든 도시에"
+        ],
+        [
+          "ein **Schwimmbad** oder ein **Freibad**,",
+          "수영장이나 야외 수영장이 있습니다"
+        ],
+        [
+          "das im Sommer",
+          "여름에"
+        ],
+        [
+          "von vielen Familien besucht wird.",
+          "많은 가족들이 방문하는"
+        ]
+      ]
+    },
+    {
+      "en": "Das **Freibad** hat normalerweise mehrere **Becken** für Schwimmer, ein Planschbecken für Kinder und oft auch Liegewiesen zum Entspannen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Das **Freibad** hat normalerweise",
+          "야외 수영장에는 보통"
+        ],
+        [
+          "mehrere **Becken** für Schwimmer,",
+          "수영 선수를 위한 레인이 여러 개 있고"
+        ],
+        [
+          "ein Planschbecken für Kinder",
+          "아이를 위한 어린이 풀"
+        ],
+        [
+          "und oft auch Liegewiesen zum Entspannen.",
+          "그리고 종종 일광욕 잔디밭도 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Der **Eintritt** ist in den meisten öffentlichen Schwimmbädern recht günstig, und Kinder sowie **Rentner** bekommen oft **Ermäßigung**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der **Eintritt** ist in den meisten",
+          "대부분의"
+        ],
+        [
+          "öffentlichen Schwimmbädern recht günstig,",
+          "공공 수영장에서 입장료가 꽤 저렴합니다"
+        ],
+        [
+          "und Kinder sowie **Rentner**",
+          "그리고 어린이와 노인은"
+        ],
+        [
+          "bekommen oft **Ermäßigung**.",
+          "종종 할인을 받습니다"
+        ]
+      ]
+    },
+    {
+      "en": "In **Hallenbädern** kann man das ganze Jahr schwimmen, während **Freibäder** meistens nur von Mai bis September geöffnet sind.",
+      "b2": false,
+      "chunks": [
+        [
+          "In **Hallenbädern**",
+          "실내 수영장에서는"
+        ],
+        [
+          "kann man das ganze Jahr schwimmen,",
+          "1년 내내 수영할 수 있는 반면"
+        ],
+        [
+          "während **Freibäder**",
+          "야외 수영장은"
+        ],
+        [
+          "meistens nur von Mai bis September geöffnet sind.",
+          "대부분 5월부터 9월까지만 운영됩니다"
+        ]
+      ]
+    },
+    {
+      "en": "In vielen Freibädern **können** Schwimmkurse für Kinder und Erwachsene **gebucht werden**, sodass auch Nicht-Schwimmer das Schwimmen erlernen können.",
+      "b2": true,
+      "chunks": [
+        [
+          "In vielen Freibädern",
+          "많은 야외 수영장에서"
+        ],
+        [
+          "**können** Schwimmkurse für Kinder und Erwachsene",
+          "어린이와 성인을 위한 수영 강습을"
+        ],
+        [
+          "**gebucht werden**,",
+          "예약할 수 있습니다"
+        ],
+        [
+          "sodass auch Nicht-Schwimmer",
+          "그래서 수영을 못 하는 사람도"
+        ],
+        [
+          "das Schwimmen erlernen können.",
+          "수영을 배울 수 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Das **Freibad** ist für viele Deutsche ein wichtiger Ort der **Erholung** im Sommer und ein **Treffpunkt** für die ganze Nachbarschaft.",
+      "b2": false,
+      "chunks": [
+        [
+          "Das **Freibad** ist für viele Deutsche",
+          "야외 수영장은 많은 독일인들에게"
+        ],
+        [
+          "ein wichtiger Ort der **Erholung** im Sommer",
+          "여름 휴식의 중요한 장소이자"
+        ],
+        [
+          "und ein **Treffpunkt**",
+          "만남의 장소입니다"
+        ],
+        [
+          "für die ganze Nachbarschaft.",
+          "온 동네 사람들의"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Schwimmbad",
+      "수영장 (중성 das)"
+    ],
+    [
+      "Freibad",
+      "야외 수영장 (중성 das)"
+    ],
+    [
+      "Becken",
+      "수영 레인, 수영조 (중성 das)"
+    ],
+    [
+      "Eintritt",
+      "입장, 입장료 (남성 der)"
+    ],
+    [
+      "Ermäßigung",
+      "할인 (여성 die)"
+    ],
+    [
+      "Hallenbad",
+      "실내 수영장 (중성 das)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Passiv mit Modalverb",
+      "body": "`können Schwimmkurse gebucht werden`은 `können`+Partizip II+`werden` 구조예요. '예약될 수 있다'는 의미의 수동태입니다."
+    },
+    {
+      "title": "während — 대조의 접속사",
+      "body": "`während Freibäder ... geöffnet sind`처럼 `während`가 접속사로 쓰이면 '~인 반면에'라는 대조의 의미로, 종속절(Nebensatz)을 이끌어요."
+    }
+  ],
+  "answers": [
+    "독일에서는 거의 모든 도시에 여름에 많은 가족들이 방문하는 수영장이나 야외 수영장이 있습니다.",
+    "야외 수영장에는 보통 수영 레인이 여러 개 있고, 아이를 위한 어린이 풀, 종종 일광욕 잔디밭도 있습니다.",
+    "대부분의 공공 수영장에서 입장료가 꽤 저렴하며, 어린이와 노인은 종종 할인을 받습니다.",
+    "실내 수영장에서는 1년 내내 수영할 수 있는 반면, 야외 수영장은 대부분 5월부터 9월까지만 운영됩니다.",
+    "많은 야외 수영장에서는 어린이와 성인을 위한 수영 강습을 예약할 수 있어 수영을 못 하는 사람도 배울 수 있습니다.",
+    "야외 수영장은 많은 독일인들에게 여름 휴식의 중요한 장소이자 온 동네 사람들의 만남의 장소입니다."
+  ],
+  "advanced": [
+    {
+      "word": "Liegewiese",
+      "meaning": "잔디밭 일광욕 구역 (여성 die)",
+      "confuse": null,
+      "example": "Viele Besucher entspannen sich auf der **Liegewiese** neben dem Pool.",
+      "example_ko": "많은 방문객들이 수영장 옆 일광욕 잔디밭에서 쉽니다."
+    },
+    {
+      "word": "Ermäßigung",
+      "meaning": "할인, 요금 감면 (여성 die)",
+      "confuse": "Ermäßigung vs. Rabatt: `Ermäßigung`은 특정 그룹에 대한 공식 할인, `Rabatt`는 일반적인 가격 인하예요.",
+      "example": "Mit dem Studentenausweis bekommt man eine **Ermäßigung** beim Eintritt.",
+      "example_ko": "학생증이 있으면 입장료를 할인받을 수 있습니다."
+    },
+    {
+      "word": "Hallenbad",
+      "meaning": "실내 수영장 (중성 das)",
+      "confuse": "Hallenbad vs. Freibad: `Hallenbad`는 지붕이 있는 실내, `Freibad`는 야외 수영장이에요.",
+      "example": "Im Winter benutzen wir das **Hallenbad**, weil das Freibad geschlossen ist.",
+      "example_ko": "야외 수영장이 닫혀 있어 겨울에는 실내 수영장을 이용합니다."
+    },
+    {
+      "word": "erlernen",
+      "meaning": "배워 익히다, 습득하다",
+      "confuse": "erlernen vs. lernen: `erlernen`은 기술이나 능력을 완전히 익히는 것, `lernen`은 일반적으로 배우는 과정이에요.",
+      "example": "Viele Kinder **erlernen** das Schwimmen im öffentlichen Schwimmbad.",
+      "example_ko": "많은 아이들이 공공 수영장에서 수영을 배워 익힙니다."
+    },
+    {
+      "word": "buchen",
+      "meaning": "예약하다",
+      "confuse": "buchen vs. reservieren: `buchen`은 지불을 동반한 예약, `reservieren`은 자리를 맡아두는 예약이에요.",
+      "example": "Die Eltern haben einen Schwimmkurs für ihre Kinder **gebucht**.",
+      "example_ko": "부모님이 자녀를 위해 수영 강습을 예약했습니다."
+    },
+    {
+      "word": "Entspannen",
+      "meaning": "긴장을 풀다, 휴식을 취하다",
+      "confuse": null,
+      "example": "Viele Besucher kommen ins Freibad, um sich zu **entspannen**.",
+      "example_ko": "많은 방문객들이 긴장을 풀러 야외 수영장에 옵니다."
+    }
+  ],
+  "source": null,
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "In Deutschland gibt es in fast jeder Stadt ein **Schwimmbad** oder **Freibad**.",
+          "chunks": [
+            [
+              "In Deutschland gibt es",
+              "독일에는 있습니다"
+            ],
+            [
+              "in fast jeder Stadt",
+              "거의 모든 도시에"
+            ],
+            [
+              "ein **Schwimmbad** oder **Freibad**.",
+              "수영장이나 야외 수영장이"
+            ]
+          ]
+        },
+        {
+          "en": "Das **Freibad** hat **Becken** für Schwimmer, ein Planschbecken für Kinder und Liegewiesen.",
+          "chunks": [
+            [
+              "Das **Freibad** hat **Becken** für Schwimmer,",
+              "야외 수영장에는 수영 레인이 있고"
+            ],
+            [
+              "ein Planschbecken für Kinder",
+              "아이를 위한 어린이 풀"
+            ],
+            [
+              "und Liegewiesen.",
+              "그리고 일광욕 잔디밭이 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Der **Eintritt** ist günstig, und Kinder sowie **Rentner** bekommen oft **Ermäßigung**.",
+          "chunks": [
+            [
+              "Der **Eintritt** ist günstig,",
+              "입장료가 저렴하고"
+            ],
+            [
+              "und Kinder sowie **Rentner**",
+              "어린이와 노인은"
+            ],
+            [
+              "bekommen oft **Ermäßigung**.",
+              "종종 할인을 받습니다"
+            ]
+          ]
+        },
+        {
+          "en": "In einem **Hallenbad** kann man das ganze Jahr schwimmen, aber **Freibäder** sind nur im Sommer geöffnet.",
+          "chunks": [
+            [
+              "In einem **Hallenbad**",
+              "실내 수영장에서는"
+            ],
+            [
+              "kann man das ganze Jahr schwimmen,",
+              "1년 내내 수영할 수 있지만"
+            ],
+            [
+              "aber **Freibäder**",
+              "야외 수영장은"
+            ],
+            [
+              "sind nur im Sommer geöffnet.",
+              "여름에만 열립니다"
+            ]
+          ]
+        },
+        {
+          "en": "In vielen Schwimmbädern **können** Schwimmkurse **gebucht werden**, sodass alle schwimmen lernen können.",
+          "chunks": [
+            [
+              "In vielen Schwimmbädern",
+              "많은 수영장에서"
+            ],
+            [
+              "**können** Schwimmkurse **gebucht werden**,",
+              "수영 강습을 예약할 수 있습니다"
+            ],
+            [
+              "sodass alle schwimmen lernen können.",
+              "그래서 모두 수영을 배울 수 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Das **Freibad** ist ein wichtiger Ort der **Erholung** und ein **Treffpunkt** für die Nachbarschaft.",
+          "chunks": [
+            [
+              "Das **Freibad** ist",
+              "야외 수영장은"
+            ],
+            [
+              "ein wichtiger Ort der **Erholung**",
+              "휴식의 중요한 장소이자"
+            ],
+            [
+              "und ein **Treffpunkt** für die Nachbarschaft.",
+              "동네의 만남의 장소입니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "독일에는 거의 모든 도시에 수영장이나 야외 수영장이 있습니다.",
+        "야외 수영장에는 수영 레인, 어린이 풀, 일광욕 잔디밭이 있습니다.",
+        "입장료가 저렴하고 어린이와 노인은 종종 할인을 받습니다.",
+        "실내 수영장에서는 1년 내내 수영할 수 있지만 야외 수영장은 여름에만 열립니다.",
+        "많은 수영장에서 수영 강습을 예약할 수 있어 모두 수영을 배울 수 있습니다.",
+        "야외 수영장은 휴식의 중요한 장소이자 동네의 만남의 장소입니다."
+      ]
+    }
+  }
+}

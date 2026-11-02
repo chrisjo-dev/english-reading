@@ -1,0 +1,362 @@
+{
+  "date": "2026-10-14",
+  "category": "culture",
+  "topic": "텃밭 정원",
+  "title_ko": "독일의 시민 텃밭 정원",
+  "headline": "Der Kleingarten in Deutschland",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "photo_scene": "A person in garden gloves kneeling beside a raised wooden planter bed filled with green vegetables and herbs in a small allotment garden, warm late afternoon sunlight.",
+  "sentences": [
+    {
+      "en": "In Deutschland gibt es mehr als eine Million **Kleingärten**, die von Stadtmenschen gemietet werden, um Gemüse anzubauen und sich zu erholen.",
+      "b2": false,
+      "chunks": [
+        [
+          "In Deutschland gibt es",
+          "독일에는 있습니다"
+        ],
+        [
+          "mehr als eine Million **Kleingärten**,",
+          "백만 개 이상의 텃밭 정원이"
+        ],
+        [
+          "die von Stadtmenschen gemietet werden,",
+          "도시 사람들이 임차하는"
+        ],
+        [
+          "um Gemüse anzubauen",
+          "채소를 재배하기 위해"
+        ],
+        [
+          "und sich zu erholen.",
+          "그리고 휴식을 취하기 위해"
+        ]
+      ]
+    },
+    {
+      "en": "Jeder dieser Gärten hat eine kleine **Laube**, in der man bei schlechtem Wetter **Werkzeug** aufbewahren oder eine Pause machen kann.",
+      "b2": false,
+      "chunks": [
+        [
+          "Jeder dieser Gärten hat eine kleine **Laube**,",
+          "각 정원에는 작은 오두막이 있어"
+        ],
+        [
+          "in der man bei schlechtem Wetter",
+          "날씨가 나쁠 때"
+        ],
+        [
+          "**Werkzeug** aufbewahren",
+          "도구를 보관하거나"
+        ],
+        [
+          "oder eine Pause machen kann.",
+          "쉬어갈 수 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Die Kleingärtner **pflanzen** Tomaten, Kartoffeln, Kräuter und Blumen und sorgen selbst dafür, dass der **Boden** gut gepflegt bleibt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Die Kleingärtner **pflanzen**",
+          "텃밭 정원 가꾸는 사람들은 심습니다"
+        ],
+        [
+          "Tomaten, Kartoffeln, Kräuter und Blumen",
+          "토마토, 감자, 허브, 꽃을"
+        ],
+        [
+          "und sorgen selbst dafür,",
+          "그리고 직접 신경 씁니다"
+        ],
+        [
+          "dass der **Boden** gut gepflegt bleibt.",
+          "토양이 잘 관리되도록"
+        ]
+      ]
+    },
+    {
+      "en": "Für viele **Stadtbewohner** ist der Kleingarten ein **Ausgleich** zum stressigen Alltag und ein Stück Natur mitten in der Stadt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Für viele **Stadtbewohner**",
+          "많은 도시 거주자에게"
+        ],
+        [
+          "ist der Kleingarten ein **Ausgleich**",
+          "텃밭 정원은 균형입니다"
+        ],
+        [
+          "zum stressigen Alltag",
+          "바쁜 일상에서의"
+        ],
+        [
+          "und ein Stück Natur mitten in der Stadt.",
+          "그리고 도심 속 자연의 한 조각입니다"
+        ]
+      ]
+    },
+    {
+      "en": "Wer in einer kleinen Stadtwohnung lebt und keinen eigenen Garten hat, **würde** den Kleingarten als willkommene **Erholung** von der Stadt nutzen.",
+      "b2": true,
+      "chunks": [
+        [
+          "Wer in einer kleinen Stadtwohnung lebt",
+          "작은 도시 아파트에 살며"
+        ],
+        [
+          "und keinen eigenen Garten hat,",
+          "자기 정원이 없는 사람은"
+        ],
+        [
+          "**würde** den Kleingarten",
+          "텃밭 정원을 활용할 것입니다"
+        ],
+        [
+          "als willkommene **Erholung** von der Stadt nutzen.",
+          "도시에서의 환영받는 휴식으로"
+        ]
+      ]
+    },
+    {
+      "en": "Kleingärten **fördern** nicht nur die eigene Gesundheit, sondern auch den **Zusammenhalt** in der Gemeinschaft, weil sich Nachbarn dort regelmäßig begegnen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Kleingärten **fördern** nicht nur",
+          "텃밭 정원은 촉진할 뿐만 아니라"
+        ],
+        [
+          "die eigene Gesundheit,",
+          "개인 건강을"
+        ],
+        [
+          "sondern auch den **Zusammenhalt** in der Gemeinschaft,",
+          "공동체의 결속력도 강화합니다"
+        ],
+        [
+          "weil sich Nachbarn dort regelmäßig begegnen.",
+          "이웃들이 그곳에서 정기적으로 만나기 때문에"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Kleingarten",
+      "시민 텃밭 정원 (남성 der)"
+    ],
+    [
+      "Laube",
+      "정원 오두막 (여성 die)"
+    ],
+    [
+      "Stadtbewohner",
+      "도시 거주자 (남성 der)"
+    ],
+    [
+      "Ausgleich",
+      "균형, 해소 (남성 der)"
+    ],
+    [
+      "Erholung",
+      "휴식, 회복 (여성 die)"
+    ],
+    [
+      "Zusammenhalt",
+      "결속력, 단결 (남성 der)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Konjunktiv II: würde",
+      "body": "`würde ... nutzen`은 `würde`+동사원형 형태의 Konjunktiv II예요. 가정적 상황을 부드럽게 표현합니다."
+    },
+    {
+      "title": "dafür sorgen, dass — 목적절",
+      "body": "`sorgen dafür, dass ...`는 '...하도록 신경 쓰다'는 뜻이에요. `dafür`가 목적절을 예고하는 역할을 합니다."
+    }
+  ],
+  "answers": [
+    "독일에는 도시 사람들이 채소를 재배하고 휴식을 취하기 위해 임차하는 텃밭 정원이 백만 개 이상 있습니다.",
+    "각 정원에는 작은 오두막이 있어 날씨가 나쁠 때 도구를 보관하거나 쉬어갈 수 있습니다.",
+    "텃밭 정원 가꾸는 사람들은 토마토, 감자, 허브, 꽃을 심고 토양이 잘 관리되도록 직접 신경 씁니다.",
+    "많은 도시 거주자에게 텃밭 정원은 바쁜 일상에서의 균형이자 도심 속 자연의 한 조각입니다.",
+    "작은 도시 아파트에 살며 자기 정원이 없는 사람은 텃밭 정원을 도시에서의 환영받는 휴식으로 활용할 것입니다.",
+    "텃밭 정원은 개인 건강을 촉진할 뿐만 아니라 이웃들이 정기적으로 만나기 때문에 공동체의 결속력도 강화합니다."
+  ],
+  "advanced": [
+    {
+      "word": "pflanzen",
+      "meaning": "심다, 재배하다",
+      "confuse": "pflanzen vs. anpflanzen: `pflanzen`은 일반적으로 심는 행위, `anpflanzen`은 특정 목적을 위해 심는 뜻이 강해요.",
+      "example": "Im Frühjahr **pflanzt** man Tomaten und Kräuter im Kleingarten.",
+      "example_ko": "봄에 텃밭에 토마토와 허브를 심습니다."
+    },
+    {
+      "word": "aufbewahren",
+      "meaning": "보관하다, 간직하다",
+      "confuse": null,
+      "example": "Das Werkzeug wird in der Laube **aufbewahrt**.",
+      "example_ko": "도구는 오두막에 보관됩니다."
+    },
+    {
+      "word": "Ausgleich",
+      "meaning": "균형, 해소 (남성 der)",
+      "confuse": "Ausgleich vs. Gleichgewicht: `Ausgleich`는 무언가를 보완하는 균형, `Gleichgewicht`는 균형 상태 자체예요.",
+      "example": "Sport ist ein guter **Ausgleich** für viele Büroangestellte.",
+      "example_ko": "스포츠는 많은 사무직 직원들에게 좋은 균형입니다."
+    },
+    {
+      "word": "fördern",
+      "meaning": "촉진하다, 장려하다",
+      "confuse": null,
+      "example": "Kleingärten **fördern** die Gesundheit und das Gemeinschaftsgefühl.",
+      "example_ko": "텃밭 정원은 건강과 공동체 의식을 촉진합니다."
+    },
+    {
+      "word": "Zusammenhalt",
+      "meaning": "결속력, 단결 (남성 der)",
+      "confuse": null,
+      "example": "Der Kleingarten stärkt den **Zusammenhalt** zwischen den Nachbarn.",
+      "example_ko": "텃밭 정원은 이웃 간의 결속력을 강화합니다."
+    },
+    {
+      "word": "begegnen",
+      "meaning": "(우연히) 만나다, 마주치다",
+      "confuse": "begegnen vs. treffen: `begegnen`은 우연한 만남, `treffen`은 약속된 만남이에요.",
+      "example": "Im Kleingarten **begegnet** man oft seinen Nachbarn.",
+      "example_ko": "텃밭 정원에서 종종 이웃을 만납니다."
+    }
+  ],
+  "source": null,
+  "example": true,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "In Deutschland haben viele Stadtmenschen einen **Kleingarten**, wo sie Gemüse anbauen und sich erholen.",
+          "chunks": [
+            [
+              "In Deutschland",
+              "독일에서"
+            ],
+            [
+              "haben viele Stadtmenschen einen **Kleingarten**,",
+              "많은 도시 사람들이 텃밭 정원을 가지고 있습니다"
+            ],
+            [
+              "wo sie Gemüse anbauen",
+              "그곳에서 채소를 재배하고"
+            ],
+            [
+              "und sich erholen.",
+              "휴식을 취합니다"
+            ]
+          ]
+        },
+        {
+          "en": "Jeder Garten hat eine kleine **Laube**, wo man eine Pause machen und **Werkzeug** aufbewahren kann.",
+          "chunks": [
+            [
+              "Jeder Garten hat eine kleine **Laube**,",
+              "모든 정원에는 작은 오두막이 있어"
+            ],
+            [
+              "wo man eine Pause machen",
+              "쉬고"
+            ],
+            [
+              "und **Werkzeug** aufbewahren kann.",
+              "도구를 보관할 수 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die Kleingärtner **pflanzen** Tomaten, Kräuter und Blumen und pflegen den **Boden** selbst.",
+          "chunks": [
+            [
+              "Die Kleingärtner **pflanzen**",
+              "텃밭 정원 가꾸는 사람들은 심고"
+            ],
+            [
+              "Tomaten, Kräuter und Blumen",
+              "토마토, 허브, 꽃을"
+            ],
+            [
+              "und pflegen den **Boden** selbst.",
+              "토양을 직접 가꿉니다"
+            ]
+          ]
+        },
+        {
+          "en": "Für **Stadtbewohner** ist der Kleingarten ein **Ausgleich** und ein Stück Natur in der Stadt.",
+          "chunks": [
+            [
+              "Für **Stadtbewohner**",
+              "도시 거주자들에게"
+            ],
+            [
+              "ist der Kleingarten ein **Ausgleich**",
+              "텃밭 정원은 균형입니다"
+            ],
+            [
+              "und ein Stück Natur in der Stadt.",
+              "그리고 도시 속 자연의 한 조각입니다"
+            ]
+          ]
+        },
+        {
+          "en": "Wer keinen eigenen Garten hat, **würde** den Kleingarten als schöne **Erholung** nutzen.",
+          "chunks": [
+            [
+              "Wer keinen eigenen Garten hat,",
+              "자기 정원이 없는 사람은"
+            ],
+            [
+              "**würde** den Kleingarten",
+              "텃밭 정원을 활용할 것입니다"
+            ],
+            [
+              "als schöne **Erholung** nutzen.",
+              "아름다운 휴식으로"
+            ]
+          ]
+        },
+        {
+          "en": "Kleingärten sind gut für die Gesundheit und stärken den **Zusammenhalt**, weil Nachbarn sich dort begegnen.",
+          "chunks": [
+            [
+              "Kleingärten sind gut für die Gesundheit",
+              "텃밭 정원은 건강에 좋고"
+            ],
+            [
+              "und stärken den **Zusammenhalt**,",
+              "결속력을 강화합니다"
+            ],
+            [
+              "weil Nachbarn sich dort begegnen.",
+              "이웃들이 그곳에서 만나기 때문에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "독일에서 많은 도시 사람들이 채소를 재배하고 쉬기 위해 텃밭 정원을 가지고 있습니다.",
+        "모든 정원에는 쉬고 도구를 보관할 수 있는 작은 오두막이 있습니다.",
+        "텃밭 정원 가꾸는 사람들은 토마토, 허브, 꽃을 심고 토양을 직접 가꿉니다.",
+        "도시 거주자들에게 텃밭 정원은 균형이자 도시 속 자연의 한 조각입니다.",
+        "자기 정원이 없는 사람은 텃밭 정원을 아름다운 휴식으로 활용할 것입니다.",
+        "텃밭 정원은 건강에 좋고 이웃들이 만나기 때문에 결속력을 강화합니다."
+      ]
+    }
+  }
+}
