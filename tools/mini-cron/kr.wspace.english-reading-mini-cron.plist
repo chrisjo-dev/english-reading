@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>kr.wspace.english-reading-mini-cron</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <!-- YOURNAME 을 맥 미니 사용자 이름으로 바꾸고, 경로가 맞는지 확인한다 -->
+    <string>/Users/YOURNAME/test/english-reading/tools/mini-cron/mini-cron.sh</string>
+  </array>
+
+  <!-- StartCalendarInterval 은 맥의 현지 시각(KST)을 기준으로 한다.
+       맥 미니 시스템 환경설정 > 일반 > 날짜 및 시간 > 시간대를 Asia/Seoul 로 맞춰야 한다. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <!-- fallback.yml: 07:15 KST -->
+    <dict>
+      <key>Hour</key><integer>7</integer>
+      <key>Minute</key><integer>15</integer>
+    </dict>
+    <!-- fallback.yml: 07:45 KST (예비 슬롯) -->
+    <dict>
+      <key>Hour</key><integer>7</integer>
+      <key>Minute</key><integer>45</integer>
+    </dict>
+    <!-- catchup.yml: 08:00 KST -->
+    <dict>
+      <key>Hour</key><integer>8</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <!-- weekly.yml: 08:30 KST 일요일(Weekday 0=일) -->
+    <dict>
+      <key>Hour</key><integer>8</integer>
+      <key>Minute</key><integer>30</integer>
+      <key>Weekday</key><integer>0</integer>
+    </dict>
+  </array>
+
+  <!-- YOURNAME 을 맥 미니 사용자 이름으로 바꾼다 -->
+  <key>StandardOutPath</key>
+  <string>/Users/YOURNAME/Library/Logs/english-reading-mini-cron.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/YOURNAME/Library/Logs/english-reading-mini-cron.log</string>
+</dict>
+</plist>

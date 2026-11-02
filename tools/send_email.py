@@ -38,15 +38,21 @@ def call(method, path, body=None):
         raise SystemExit(f"Buttondown {method} {path} -> {e.code}: {e.read().decode()[:300]}")
 
 
-def wait_live(url, text, extra=None):
-    """url 이 200 으로 열리고 text 가 보이며, extra(썸네일 등)도 200 일 때까지 최대 10분 기다린다."""
-    for _ in range(40):
+def wait_live(url, text, extra=None, timeout_min=15):
+    """url 이 200 으로 열리고 text 가 보이며, extra(썸네일 등)도 200 일 때까지 최대 timeout_min 분 기다린다.
+
+    extra(썸네일 URL 등)도 캐시 버스팅(?v=타임스탬프)을 붙여 최신 여부를 확인한다.
+    """
+    n = timeout_min * 4  # 15초 간격으로 timeout_min 분
+    for _ in range(n):
         try:
             with urllib.request.urlopen(url + f"?v={time.time():.0f}", timeout=15) as r:
                 page = r.read().decode("utf-8")
             extra_ok = True
             if extra:
-                with urllib.request.urlopen(extra, timeout=15) as r:
+                # 썸네일도 캐시 버스팅: Pages max-age 안에서 낡은 응답을 받지 않는다
+                extra_v = extra + f"?v={time.time():.0f}"
+                with urllib.request.urlopen(extra_v, timeout=15) as r:
                     extra_ok = r.status == 200
             if text in page and extra_ok:
                 return
@@ -168,6 +174,11 @@ def send(mail, lang, key, value, level="b", extra_meta=None):
             print(f"sent {draft['id']}")
             return
         time.sleep(10)
+    # in_flight 는 Buttondown 큐에 대기 중인 상태로, 곧 발송될 가능성이 높다. 경고만 남기고 계속 진행한다.
+    # 그 외 상태(errored, throttled 등)는 실제 실패이므로 종료한다.
+    if status == "in_flight":
+        print(f"::warning::발송 대기 중(in_flight): {draft['id']} — Buttondown 큐에 있어 정상 발송될 가능성이 높습니다. 수동 확인을 권장합니다.")
+        return
     raise SystemExit(f"발송 상태 확인 실패: {draft['id']} ({status})")
 
 
@@ -277,12 +288,17 @@ def catchup(lang, day, level="b"):
                                           "metadata": {"lang": lang, "level": meta_level(effective_level), "catchup_of": catchup_tag_prefix}})
         call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
         for _ in range(30):
-            if call("GET", f"/emails/{draft['id']}")["status"] == "sent":
+            status = call("GET", f"/emails/{draft['id']}")["status"]
+            if status == "sent":
                 print(f"catch-up sent {draft['id']} to {len(targets)}")
                 break
             time.sleep(10)
         else:
-            raise SystemExit(f"보충 발송 상태 확인 실패: {draft['id']}")
+            # in_flight 는 큐 대기 상태, 경고만 남긴다. 다른 상태는 실패로 처리한다.
+            if status == "in_flight":
+                print(f"::warning::보충 발송 대기 중(in_flight): {draft['id']} — Buttondown 큐에 있습니다.")
+            else:
+                raise SystemExit(f"보충 발송 상태 확인 실패: {draft['id']} ({status})")
     finally:
         # 발송 대상 표시는 남겨 두지 않는다. 다음 보충은 이벤트 기록으로 다시 계산한다.
         for sub in targets:
