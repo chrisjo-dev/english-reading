@@ -8,8 +8,8 @@ Tailscale 테일넷 안에서만 접근할 수 있습니다.
 맥북에서 로컬 프록시 서버를 시작하면 토큰 없이 브라우저로 사용할 수 있습니다.
 
 ```bash
-# 터미널에서 한 번만 실행
-python3 tools/image-api/web.py
+# mlx-lm 파이썬으로 실행해야 번역이 동작합니다
+~/.local/share/uv/tools/mlx-lm/bin/python tools/image-api/web.py
 ```
 
 브라우저에서 http://127.0.0.1:8793 을 열면 됩니다.
@@ -21,6 +21,75 @@ python3 tools/image-api/web.py
 | `LOCAL_IMAGE_URL` | `http://100.123.77.30:8790` | 맥미니 주소 |
 | `IMAGE_API_TOKEN_FILE` | `~/.config/image-api/mini-token` | 토큰 파일 경로 |
 | `IMAGE_WEB_PORT` | `8793` | 웹 서버 포트 |
+| `IMAGE_WEB_DIR` | `~/Pictures/mini-image` | 이미지 자동 저장 폴더 |
+
+### 번역 (한국어 → 영어 장면)
+
+한국어로 장면을 입력하면 로컬 LLM(Qwen3-8B-MLX-4bit, mlx_lm)으로 영어 장면 문장을 만들어 FLUX 에 전달합니다.
+mlx-lm python 으로 실행하지 않으면 번역 없이 501 을 반환합니다.
+
+### 자동 저장
+
+생성에 성공하면 서버가 `IMAGE_WEB_DIR` 에 자동 저장합니다.
+
+```
+~/Pictures/mini-image/
+  YYYY-MM-DD/
+    HHMMSS-<seed>.png     ← PNG 원본
+    HHMMSS-<seed>.json    ← 메타데이터 사이드카
+```
+
+JSON 사이드카 필드: `created` (ISO, Asia/Seoul), `idea` (원문), `scene` (영어 장면), `style`, `size`, `seed`, `seconds`, `prompt`.
+파일이 겹치면 `-1`, `-2` 접미사를 붙이며 절대 덮어쓰지 않습니다.
+
+### 웹 UI 전용 엔드포인트
+
+#### `POST /translate`
+
+한국어(또는 영어) 텍스트를 영어 장면 설명으로 변환합니다.
+
+```json
+{ "text": "남자 아이가 우는 모습" }
+```
+
+응답:
+
+```json
+{ "scene": "A young boy sitting on a park bench, crying ...", "seconds": 2.8 }
+```
+
+mlx_lm 이 없으면 501 을 반환합니다.
+
+#### `GET /history?offset=0&limit=24`
+
+저장 폴더에서 최신 순으로 목록을 반환합니다.
+
+```json
+{
+  "items": [
+    {
+      "created": "2026-11-02T12:00:00+09:00",
+      "idea": "남자 아이가 우는 모습",
+      "scene": "A young boy ...",
+      "style": "thumbnail",
+      "size": "1216x640",
+      "seed": 42,
+      "seconds": 91.0,
+      "prompt": "...",
+      "url": "/files/2026-11-02/120000-42.png",
+      "filename": "120000-42.png",
+      "date": "2026-11-02"
+    }
+  ],
+  "offset": 0,
+  "limit": 24,
+  "count": 1
+}
+```
+
+#### `GET /files/<date>/<name>.png`
+
+저장된 이미지를 서빙합니다. `IMAGE_WEB_DIR` 바깥으로의 경로 이탈은 403 으로 거부합니다.
 
 토큰은 `~/.config/image-api/mini-token` 파일에 넣어 두면 됩니다.
 맥미니에서 `cat ~/.config/image-api/token` 으로 값을 확인하고, 맥북으로 옮길 때는
