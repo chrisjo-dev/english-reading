@@ -32,14 +32,14 @@ if [ "$hour" = "07" ]; then
 # 08:00 KST → catchup.yml
 # 아침 본 메일을 받지 못한 구독자에게 보충 발송한다.
 # send_email.catchup 은 이미 받은 구독자를 건너뛰므로 중복 실행에 안전하다.
-elif [ "$hour" = "08" ] && [ "$min" = "00" ]; then
+elif [ "$hour" = "08" ] && [ "${min#0}" -lt 15 ]; then  # 몇 분 늦게 깨어나도 놓치지 않게 범위로
   run catchup.yml
 
 # 08:30 KST 일요일 → weekly.yml
 # 주간 단어 복습 메일. send_email.send 의 중복 발송 방지 로직으로 안전하다.
 # GitHub 크론(30 23 * * 6 UTC = 08:30 KST 일요일)이 백업으로 남아 있으므로,
 # 미니 트리거가 먼저 실행돼도 GitHub 크론이 나중에 실행해도 중복 발송이 없다.
-elif [ "$hour" = "08" ] && [ "$min" = "30" ] && [ "$dow" = "7" ]; then
+elif [ "$hour" = "08" ] && [ "${min#0}" -ge 30 ] && [ "$dow" = "7" ]; then
   run weekly.yml
 
 else
