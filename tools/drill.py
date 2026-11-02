@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "9"
+VERSION = "10"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -62,12 +62,15 @@ def _match(bold, word):
     b, w = _norm(bold), _norm(word)
     if not b or not w:
         return False
-    if b == w or b in w or w in b:
+    if b == w:
         return True
     if re.match(r"[a-zäöüß]", w):  # 영어, 독일어: 앞 낱말이 같으면(range from A to B ↔ range from)
+        # 한쪽이 다른 쪽 안에 들어 있다고 같은 단어로 보지 않는다(Nebel ↔ Nebelscheinwerfer, Bäcker ↔ Bäckerei)
         if b.split()[0] == w.split()[0] and len(w.split()[0]) > 2:
             return True
         return _inflected(b.split()[0], w.split()[0])  # 활용형(erkennen ↔ erkennt)
+    if b in w or w in b:
+        return True
     i = 0  # 일본어: 앞 두 글자 이상이 같으면(集中する ↔ 集中できる)
     while i < min(len(b), len(w)) and b[i] == w[i]:
         i += 1
@@ -79,24 +82,40 @@ ENDS = ("", "e", "n", "en", "s", "es", "t", "st", "et", "te", "ten", "er", "ern"
 
 
 def _inflected(a, b):
-    """두 낱말이 같은 어간에 활용 어미만 다른지(erkennen ↔ erkennt). 어간은 네 글자 이상."""
+    """두 낱말이 같은 어간에 활용 어미만 다른지(erkennen ↔ erkennt)."""
     i = 0
     while i < min(len(a), len(b)) and a[i] == b[i]:
         i += 1
-    return i >= 4 and a[i:] in ENDS and b[i:] in ENDS
+    # 어간은 네 글자 이상, 짧은 단어는 단어 전체가 어간일 때만(Tal ↔ Tälern 은 접은 꼴 tal ↔ talern)
+    return (i >= 4 or (i >= 3 and i == min(len(a), len(b)))) and a[i:] in ENDS and b[i:] in ENDS
 
 
-def _short(sent, bold=None):
-    """문제 풀기 화면에 쓸 짧은 문장. 길면 그 단어가 든 끊어 읽기 두 덩이만."""
+# 이 길이 이하면 문장을 통째로 보여 준다. 독일어는 문장이 길어 두 덩이만 자르면 뜻 없는 조각이 됐다.
+FULL_LEN = {"de": 160}
+MIN_WORDS = 6  # 잘라 보여 줄 때도 이만큼은 남긴다(… die Berufsschule, wo sie … 같은 조각 방지)
+
+
+def _short(sent, bold=None, lang="en"):
+    """문제 풀기 화면에 쓸 짧은 문장. 길면 그 단어가 든 끊어 읽기 덩이만, 낱말 수가 모자라면 덩이를 늘린다."""
     en = sent["en"]
-    if len(base(en)) <= 110 or not sent.get("chunks"):
+    if len(base(en)) <= FULL_LEN.get(lang, 110) or not sent.get("chunks"):
         return en
-    ch = [c[0] for c in sent["chunks"]]
+    # 끊어 읽기 덩이에는 원래 강조(**)가 남아 있어 다른 낱말이 굵게 보였다(Blatt 카드에 Farbstoffe). 지우고 그 단어만 다시 강조한다
+    ch = [c[0].replace("**", "") for c in sent["chunks"]]
     key = _norm(bold) if bold else None
-    j = next((k for k, c in enumerate(ch) if (key and key in _norm(c)) or (not key and "**" in c)), 0)
+    j = next((k for k, c in enumerate(ch) if key and key in _norm(c)), 0)
     j = min(j, len(ch) - 2) if len(ch) > 1 else 0
-    part = " ".join(ch[j:j + 2])
-    return ("… " if j > 0 else "") + part + (" …" if j + 2 < len(ch) else "")
+    a, b = j, min(j + 2, len(ch))
+    if lang != "ja":  # 일본어는 낱말을 띄어 쓰지 않아 낱말 수로 늘리지 않는다
+        while len(" ".join(ch[a:b]).split()) < MIN_WORDS and (a > 0 or b < len(ch)):
+            if b < len(ch):
+                b += 1
+            else:
+                a -= 1
+    part = " ".join(ch[a:b])
+    if bold:
+        part = re.sub(r"(?<![\wÄÖÜäöüß])" + re.escape(bold) + r"(?![\wÄÖÜäöüß])", lambda m: f"**{m.group(0)}**", part, count=1)
+    return ("… " if a > 0 else "") + part + (" …" if b < len(ch) else "")
 
 
 def _find(word, sents):
@@ -111,16 +130,18 @@ def _find(word, sents):
     else:  # 일본어: 앞의 한자 덩이(住む → 住), 한자가 없으면 앞 두 글자
         m = re.match(r"[\u4e00-\u9fff]+", w)
         stem = m.group(0) if m else w[:2]
+    if re.match(r"[a-zäöüß]", w):  # 영어, 독일어: 낱말 단위로 같거나 활용형만(abkühlen ↔ abkühlt). 합성어 속 일부는 아님
+        first = w.split()[0]
+        # 같은 꼴을 먼저 모든 문장에서 찾고, 없을 때만 활용형으로(Grenze 를 grenzt 보다 Grenze 에서),
+        # 그래도 없으면 변이음을 접어 찾는다(Hang 이 문장에는 Hängen 으로)
+        for fold, same in ((lambda x: x, True), (lambda x: x, False), (_fold, False)):
+            f = fold(first)
+            for k, s in enumerate(sents):
+                if any(t == f if same else _inflected(t, f) for t in re.findall(r"[a-zäöüß]+", fold(_norm(s["en"])))):
+                    return k, None
+        return None, None
     for k, s in enumerate(sents):
         if stem and stem in _norm(s["en"]):
-            return k, None
-    if re.match(r"[a-zäöüß]", w):  # 강조 없이 활용형으로만 나온 경우(abkühlen 이 문장에는 abkühlt 로)
-        first = w.split()[0]
-        for k, s in enumerate(sents):
-            if any(_inflected(t, first) for t in re.findall(r"[a-zäöüß]+", _norm(s["en"]))):
-                return k, None
-    for k, s in enumerate(sents):  # 같은 표기가 없을 때만 변이음을 접어 찾는다(Hang 이 문장에는 Hängen 으로)
-        if stem and _fold(stem) in _fold(_norm(s["en"])):
             return k, None
     return None, None
 
@@ -141,7 +162,9 @@ def _target(raw, word, bold):
         stem = first[:max(3, len(first) - 2)] if len(first) > 4 else first
         # ** 는 같은 길이의 \x01\x01 로 바꿔 찾아야 위치가 원문과 맞는다
         src = raw.replace("**", "\x01\x01")
-        m = re.search(r"(?<![\wÄÖÜäöüß])" + re.escape(stem) + r"[\wÄÖÜäöüß]*", src, re.I)
+        ms = list(re.finditer(r"(?<![\wÄÖÜäöüß])" + re.escape(stem) + r"[\wÄÖÜäöüß]*", src, re.I))
+        # 같은 어간으로 시작하는 낱말이 여럿이면 그 단어의 활용형을 고른다(Bäcker 를 Bäckerei 대신 Bäcker 에서)
+        m = next((x for x in ms if x.group(0).lower() == first.lower() or _inflected(x.group(0).lower(), first.lower())), ms[0] if ms else None)
         if not m:  # 같은 표기가 없으면 어간의 a/o/u 자리에 변이음도 허용한다(Hang ↔ Hängen)
             pat = "".join({"a": "[aä]", "o": "[oö]", "u": "[uü]"}.get(ch.lower(), re.escape(ch)) for ch in stem)
             m = re.search(r"(?<![\wÄÖÜäöüß])" + pat + r"[\wÄÖÜäöüß]*", src, re.I)
@@ -222,7 +245,7 @@ def cards(lang, day):
                 raw = _marked(raw, span)
                 b = base(raw[raw.index("**") + 2:raw.index("**", raw.index("**") + 2)])
             c["ex"] = rich(raw)
-            c["sh"] = rich(_short(dict(sents[k], en=raw), b))
+            c["sh"] = rich(_short(dict(sents[k], en=raw), b, lang))
             if k < len(answers):
                 c["ek"] = answers[k]
         if (ROOT / lang / day / "audio" / f"w{i + 1}.mp3").exists():

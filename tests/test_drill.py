@@ -113,6 +113,24 @@ class TestCards(unittest.TestCase):
         self.assertTrue(drill._inflected("erkennt", "erkennen"))
         self.assertFalse(drill._inflected("bäckerei", "bäcker"))
 
+    def test_compound_word_does_not_steal_example(self):
+        """합성어 속 일부(Bäckerei 의 Bäcker, Nebelscheinwerfer 의 Nebel)를 같은 단어로 보지 않는다."""
+        de28 = {x["w"]: x for x in drill.cards("de", "2026-10-28")}
+        self.assertEqual(re.findall(r"<b>(.*?)</b>", de28["Bäcker"]["ex"]), ["Bäcker"])
+        de01 = {x["w"]: x for x in drill.cards("de", "2026-11-01")}
+        self.assertEqual(re.findall(r"<b>(.*?)</b>", de01["Nebelscheinwerfer"]["ex"]), ["Nebelscheinwerfer"])
+        de31 = {x["w"]: x for x in drill.cards("de", "2026-10-31")}
+        self.assertEqual(de31["Grenze"]["ca"], "Grenze")  # 동사 grenzt 보다 같은 꼴을 먼저
+
+    def test_short_example_keeps_enough_words_and_only_target_bold(self):
+        for f in sorted((ROOT / "content").glob("*/*.json")):
+            if f.parent.name == "ja":
+                continue
+            for c in drill.cards(f.parent.name, f.stem):
+                if "sh" in c:
+                    self.assertEqual(len(re.findall(r"<b>", c["sh"])), 1, f"{f.stem} {c['w']}")
+                    self.assertGreaterEqual(len(re.sub(r"<[^>]+>|…", "", c["sh"]).split()), 6, f"{f.stem} {c['w']}")
+
     def test_missing_content_gives_no_cards(self):
         self.assertEqual(drill.cards("en", "2020-01-01"), [])
 
