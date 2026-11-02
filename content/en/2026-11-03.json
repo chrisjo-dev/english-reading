@@ -1,0 +1,447 @@
+{
+  "date": "2026-11-03",
+  "category": "tech",
+  "topic": "안개 체임버",
+  "title_ko": "카메라를 시험하려고 일부러 만드는 안개와 비",
+  "headline": "Making Fog and Rain Inside a Room",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "A security camera that works well on a sunny day may not be able to see a person in thick fog or heavy rain.",
+      "b2": false,
+      "chunks": [
+        [
+          "A security camera",
+          "보안 카메라가"
+        ],
+        [
+          "that works well",
+          "잘 작동하는"
+        ],
+        [
+          "on a sunny day",
+          "맑은 날에"
+        ],
+        [
+          "may not be able to see a person",
+          "사람을 못 볼 수도 있다"
+        ],
+        [
+          "in thick fog or heavy rain.",
+          "짙은 안개나 폭우 속에서는"
+        ]
+      ]
+    },
+    {
+      "en": "To test cameras in these conditions, researchers at Sandia National Laboratories make bad weather **on purpose** inside a special room called a fog **chamber**.",
+      "b2": false,
+      "chunks": [
+        [
+          "To test cameras",
+          "카메라를 시험하려고"
+        ],
+        [
+          "in these conditions,",
+          "이런 조건에서"
+        ],
+        [
+          "researchers at Sandia National Laboratories",
+          "샌디아 국립연구소 연구자들은"
+        ],
+        [
+          "make bad weather **on purpose**",
+          "일부러 나쁜 날씨를 만든다"
+        ],
+        [
+          "inside a special room",
+          "특별한 방 안에서"
+        ],
+        [
+          "called a fog **chamber**.",
+          "안개 체임버라고 불리는"
+        ]
+      ]
+    },
+    {
+      "en": "To create fog, they mix water, ice, and salt, and sixty-four **nozzles** near the ceiling spray the mixture into the air.",
+      "b2": false,
+      "chunks": [
+        [
+          "To create fog,",
+          "안개를 만들려고"
+        ],
+        [
+          "they mix water, ice, and salt,",
+          "물, 얼음, 소금을 섞고"
+        ],
+        [
+          "and sixty-four **nozzles**",
+          "64개의 노즐이"
+        ],
+        [
+          "near the ceiling",
+          "천장 근처의"
+        ],
+        [
+          "spray the mixture",
+          "그 혼합물을 뿜는다"
+        ],
+        [
+          "into the air.",
+          "공기 중으로"
+        ]
+      ]
+    },
+    {
+      "en": "The salt, which **absorbs** water from the air around it, helps the tiny particles grow larger, while the ice keeps the room cold.",
+      "b2": true,
+      "chunks": [
+        [
+          "The salt,",
+          "소금은"
+        ],
+        [
+          "which **absorbs** water",
+          "물을 빨아들이는데"
+        ],
+        [
+          "from the air around it,",
+          "주변 공기에서"
+        ],
+        [
+          "helps the tiny particles",
+          "아주 작은 입자들이"
+        ],
+        [
+          "grow larger,",
+          "더 커지도록 돕고"
+        ],
+        [
+          "while the ice",
+          "한편 얼음은"
+        ],
+        [
+          "keeps the room cold.",
+          "방을 차갑게 유지한다"
+        ]
+      ]
+    },
+    {
+      "en": "For rain, sixteen more nozzles spray water onto layers of **netting**, which collects it into bigger drops that fall for thirty to sixty seconds.",
+      "b2": false,
+      "chunks": [
+        [
+          "For rain,",
+          "비를 위해서는"
+        ],
+        [
+          "sixteen more nozzles",
+          "노즐 16개가 더"
+        ],
+        [
+          "spray water",
+          "물을 뿜는다"
+        ],
+        [
+          "onto layers of **netting**,",
+          "여러 겹의 그물 위로"
+        ],
+        [
+          "which collects it",
+          "그물은 물을 모아"
+        ],
+        [
+          "into bigger drops",
+          "더 큰 물방울로 만들고"
+        ],
+        [
+          "that fall",
+          "그 물방울이 떨어진다"
+        ],
+        [
+          "for thirty to sixty seconds.",
+          "30초에서 60초 동안"
+        ]
+      ]
+    },
+    {
+      "en": "Six cameras, **including** one that senses heat, are tested at the same time, so the team can **compare** what each camera saw at the same moment.",
+      "b2": false,
+      "chunks": [
+        [
+          "Six cameras,",
+          "카메라 여섯 대가"
+        ],
+        [
+          "**including** one that senses heat,",
+          "열을 감지하는 한 대를 포함해"
+        ],
+        [
+          "are tested at the same time,",
+          "동시에 시험된다"
+        ],
+        [
+          "so the team can **compare**",
+          "그래서 팀은 비교할 수 있다"
+        ],
+        [
+          "what each camera saw",
+          "각 카메라가 본 것을"
+        ],
+        [
+          "at the same moment.",
+          "같은 순간에"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "on purpose",
+      "일부러, 고의로"
+    ],
+    [
+      "chamber",
+      "(특수한 용도의) 방, 실"
+    ],
+    [
+      "nozzles",
+      "노즐들, 분사구들 (복수형)"
+    ],
+    [
+      "absorbs",
+      "빨아들이다, 흡수하다 (3인칭 단수형)"
+    ],
+    [
+      "netting",
+      "그물, 망"
+    ],
+    [
+      "including",
+      "~을 포함하여"
+    ],
+    [
+      "compare",
+      "비교하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "숫자와 more",
+      "body": "`sixty-four`는 64, `sixteen`은 16이에요. 5번 문장의 `sixteen more nozzles`는 \"노즐 16개 넘게\"가 아니라 \"노즐 16개가 더\"라는 뜻으로, 앞 문장의 64개에 추가로 16개가 있다는 말입니다. `nozzles`, `drops`, `seconds`의 복수 -s도 함께 보세요."
+    },
+    {
+      "title": "문장 중간에 끼어드는 설명",
+      "body": "4번 문장은 `The salt,` 뒤에 `which absorbs water from the air around it,`이 끼어들어 있어요. 이 부분을 잠시 괄호로 묶고 `The salt ... helps the tiny particles grow larger`로 이어 읽으면 주어와 동사가 바로 보입니다. 6번 문장의 `including one that senses heat`도 같은 방식으로 읽어 보세요."
+    }
+  ],
+  "answers": [
+    "맑은 날에 잘 작동하는 보안 카메라도 짙은 안개나 폭우 속에서는 사람을 보지 못할 수 있다.",
+    "이런 조건에서 카메라를 시험하기 위해, 샌디아 국립연구소 연구자들은 안개 체임버라고 불리는 특별한 방 안에서 일부러 나쁜 날씨를 만든다.",
+    "안개를 만들기 위해 연구자들은 물, 얼음, 소금을 섞고, 천장 근처에 있는 노즐 64개가 그 혼합물을 공기 중으로 뿜어낸다.",
+    "주변 공기에서 물을 빨아들이는 소금은 아주 작은 입자들이 더 커지도록 돕고, 얼음은 방을 차갑게 유지한다.",
+    "비를 만들 때는 노즐 16개가 더 여러 겹의 그물 위로 물을 뿜는데, 그물이 이 물을 더 큰 물방울로 모으고 그 물방울이 30초에서 60초 동안 떨어진다.",
+    "열을 감지하는 카메라 한 대를 포함해 카메라 여섯 대가 동시에 시험되기 때문에, 연구팀은 같은 순간에 각 카메라가 본 것을 비교할 수 있다."
+  ],
+  "advanced": [
+    {
+      "word": "simulate",
+      "meaning": "모의로 재현하다, 흉내 내다",
+      "confuse": "stimulate(자극하다)와 혼동 주의",
+      "example": "The chamber can **simulate** thick fog and heavy rain indoors.",
+      "example_ko": "그 체임버는 실내에서 짙은 안개와 폭우를 재현할 수 있습니다."
+    },
+    {
+      "word": "deliberately",
+      "meaning": "일부러, 의도적으로",
+      "confuse": null,
+      "example": "The researchers **deliberately** create bad weather to test the cameras.",
+      "example_ko": "연구자들은 카메라를 시험하려고 일부러 나쁜 날씨를 만듭니다."
+    },
+    {
+      "word": "visibility",
+      "meaning": "시야, 가시성(얼마나 멀리 잘 보이는지)",
+      "confuse": null,
+      "example": "Thick fog can reduce **visibility** to almost nothing.",
+      "example_ko": "짙은 안개는 시야를 거의 없게 만들 수 있습니다."
+    },
+    {
+      "word": "precipitation",
+      "meaning": "강수(비, 눈 등)",
+      "confuse": "precipice(절벽)와 혼동 주의",
+      "example": "The team tested the cameras with and without heavy **precipitation**.",
+      "example_ko": "연구팀은 강한 비가 내릴 때와 내리지 않을 때 모두 카메라를 시험했습니다."
+    },
+    {
+      "word": "droplet",
+      "meaning": "작은 물방울",
+      "confuse": null,
+      "example": "The netting gathers the spray into larger **droplets**.",
+      "example_ko": "그물은 뿜어진 물을 더 큰 물방울로 모읍니다."
+    },
+    {
+      "word": "simultaneously",
+      "meaning": "동시에",
+      "confuse": null,
+      "example": "All six cameras record **simultaneously**, so the comparison is fair.",
+      "example_ko": "카메라 여섯 대가 모두 동시에 촬영하기 때문에 비교가 공정합니다."
+    },
+    {
+      "word": "benchmark",
+      "meaning": "비교 기준(으로 삼는 자료)",
+      "confuse": null,
+      "example": "The recordings will serve as a **benchmark** for judging camera performance.",
+      "example_ko": "그 녹화 영상은 카메라 성능을 판단하는 비교 기준이 될 것입니다."
+    }
+  ],
+  "source": {
+    "title": "Bad Weather On Purpose (Mirage News / Sandia National Laboratories, 2026-10-30)",
+    "url": "https://www.miragenews.com/bad-weather-on-purpose-1769030/"
+  },
+  "photo_scene": "Close-up of a small white security camera mounted on a grey wall inside a room filled with thick white fog, tiny water drops on its lens, soft cool light glowing through the mist.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "A security camera may work well on a sunny day, but not in thick fog or heavy rain.",
+          "chunks": [
+            [
+              "A security camera",
+              "보안 카메라는"
+            ],
+            [
+              "may work well",
+              "잘 작동할 수 있다"
+            ],
+            [
+              "on a sunny day,",
+              "맑은 날에는"
+            ],
+            [
+              "but not in thick fog or heavy rain.",
+              "하지만 짙은 안개나 폭우 속에서는 아니다"
+            ]
+          ]
+        },
+        {
+          "en": "So researchers at Sandia National Laboratories make bad weather **on purpose** in a special **chamber**.",
+          "chunks": [
+            [
+              "So researchers",
+              "그래서 연구자들은"
+            ],
+            [
+              "at Sandia National Laboratories",
+              "샌디아 국립연구소의"
+            ],
+            [
+              "make bad weather **on purpose**",
+              "일부러 나쁜 날씨를 만든다"
+            ],
+            [
+              "in a special **chamber**.",
+              "특별한 방 안에서"
+            ]
+          ]
+        },
+        {
+          "en": "They mix water, ice, and salt, and sixty-four **nozzles** spray it into the air.",
+          "chunks": [
+            [
+              "They mix water, ice, and salt,",
+              "그들은 물, 얼음, 소금을 섞고"
+            ],
+            [
+              "and sixty-four **nozzles**",
+              "64개의 노즐이"
+            ],
+            [
+              "spray it into the air.",
+              "그것을 공기 중으로 뿜는다"
+            ]
+          ]
+        },
+        {
+          "en": "The salt **absorbs** water and helps tiny drops grow, and the ice keeps the air cold.",
+          "chunks": [
+            [
+              "The salt **absorbs** water",
+              "소금은 물을 빨아들이고"
+            ],
+            [
+              "and helps tiny drops grow,",
+              "작은 물방울이 자라게 돕고"
+            ],
+            [
+              "and the ice",
+              "얼음은"
+            ],
+            [
+              "keeps the air cold.",
+              "공기를 차갑게 유지한다"
+            ]
+          ]
+        },
+        {
+          "en": "For rain, sixteen more nozzles spray water onto **netting**, and big drops fall for thirty to sixty seconds.",
+          "chunks": [
+            [
+              "For rain,",
+              "비를 위해서는"
+            ],
+            [
+              "sixteen more nozzles",
+              "노즐 16개가 더"
+            ],
+            [
+              "spray water onto **netting**,",
+              "그물 위로 물을 뿜고"
+            ],
+            [
+              "and big drops fall",
+              "큰 물방울이 떨어진다"
+            ],
+            [
+              "for thirty to sixty seconds.",
+              "30초에서 60초 동안"
+            ]
+          ]
+        },
+        {
+          "en": "Six cameras, **including** a heat camera, work at the same time, so the team can **compare** them.",
+          "chunks": [
+            [
+              "Six cameras,",
+              "카메라 여섯 대가"
+            ],
+            [
+              "**including** a heat camera,",
+              "열 카메라 한 대를 포함해"
+            ],
+            [
+              "work at the same time,",
+              "동시에 작동한다"
+            ],
+            [
+              "so the team can **compare** them.",
+              "그래서 팀은 그것들을 비교할 수 있다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "보안 카메라는 맑은 날에는 잘 작동해도, 짙은 안개나 폭우 속에서는 그렇지 않을 수 있다.",
+        "그래서 샌디아 국립연구소 연구자들은 특별한 방 안에서 일부러 나쁜 날씨를 만든다.",
+        "그들은 물, 얼음, 소금을 섞고, 64개의 노즐이 그것을 공기 중으로 뿜는다.",
+        "소금은 물을 빨아들여 작은 물방울이 자라게 돕고, 얼음은 공기를 차갑게 유지한다.",
+        "비를 만들 때는 노즐 16개가 더 그물 위로 물을 뿜고, 큰 물방울이 30초에서 60초 동안 떨어진다.",
+        "열 카메라 한 대를 포함한 카메라 여섯 대가 동시에 작동해서, 팀은 그것들을 비교할 수 있다."
+      ]
+    }
+  }
+}
