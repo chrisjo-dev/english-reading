@@ -167,27 +167,27 @@
   "words": [
     [
       "Arbeitszeit",
-      "근무 시간"
+      "근무 시간 (여성 die)"
     ],
     [
       "Gleitzeit",
-      "탄력 근무제"
+      "탄력 근무제 (여성 die)"
     ],
     [
       "Feierabend",
-      "퇴근 후 여가 시간"
+      "퇴근 후 여가 시간 (남성 der)"
     ],
     [
       "Überstunden",
-      "초과 근무"
+      "초과 근무 (여성 die, 복수 Überstunden)"
     ],
     [
       "Homeoffice",
-      "재택근무"
+      "재택근무 (중성 das)"
     ],
     [
       "Freizeitausgleich",
-      "초과 근무 보상 휴가"
+      "초과 근무 보상 휴가 (남성 der)"
     ]
   ],
   "points": [

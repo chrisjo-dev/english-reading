@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "12"
+VERSION = "13"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -262,6 +262,11 @@ def cards(lang, day):
         mh = _hint(m, w)
         if mh != m:
             c["mh"] = mh
+        # 독일어 명사(대문자로 시작): 뜻에서 관사를 추출해 ar 필드 추가(쓰기 문제에서 관사까지 요구)
+        if lang == "de" and base(w)[:1].isupper():
+            ar_m = re.search(r'\((?:남성|여성|중성)\s+(der|die|das)\b', m, re.I)
+            if ar_m:
+                c["ar"] = ar_m.group(1)
         r = reading(w)
         if r and r != c["w"]:
             c["r"] = r

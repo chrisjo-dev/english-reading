@@ -151,7 +151,7 @@
   "words": [
     [
       "Bibliothek",
-      "도서관"
+      "도서관 (여성 die)"
     ],
     [
       "ausleihen",
@@ -159,7 +159,7 @@
     ],
     [
       "Leseausweis",
-      "도서관 이용증"
+      "도서관 이용증 (남성 der)"
     ],
     [
       "sich konzentrieren",
@@ -167,11 +167,11 @@
     ],
     [
       "Gebühr",
-      "수수료, 요금"
+      "수수료, 요금 (여성 die)"
     ],
     [
       "Wissen",
-      "지식"
+      "지식 (중성 das)"
     ]
   ],
   "points": [

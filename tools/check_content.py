@@ -148,6 +148,7 @@ def check(path):
     errors += overlap(path, c)
     errors += check_word_meanings(c, path)
     errors += check_duplicate_meanings(c, path)
+    errors += check_de_noun_gender(c, path)
     if path.parent.name == "de":
         de_errors, de_warnings = check_de_quality(c, path)
         errors += de_errors
@@ -178,20 +179,57 @@ def check_duplicate_meanings(c, path):
     return errors
 
 
+_GENDER_BRACKET = re.compile(r'\s*\((?:남성|여성|중성)\b[^()]*\)')  # (남성 der), (여성 die), (중성 das, 복수 …) 등
+
+
 def check_word_meanings(c, path):
-    """뜻 괄호에 답이 든 주요 단어. 판정은 페이지가 힌트에서 가리는 규칙(drill._hint)과 같다."""
+    """뜻 괄호에 답이 든 주요 단어. 판정은 페이지가 힌트에서 가리는 규칙(drill._hint)과 같다.
+    관사 표기 (남성 der)/(여성 die)/(중성 das) 는 정상이므로 제거 후 검사한다."""
     if path.parent.parent.name != "pool":
         try:
             if dt.date.fromisoformat(path.stem) < WORD_HINT_FROM:
                 return []
         except ValueError:
             return []
-    import drill  # 페이지 생성 모듈. 이 검사에서만 쓴다
+    import drill  # 페이지 생성 모듈. 이 검사에서만 쓴다  # noqa: PLC0415
     out = []
     for w in c.get("words", []):
-        if len(w) >= 2 and drill._hint(w[1], w[0]) != w[1]:
+        if len(w) < 2:
+            continue
+        # 관사 표기 괄호를 제외한 뜻 기준으로 검사: (여성 die), (중성 das, 복수 Blätter) 등은 정상
+        m_clean = _GENDER_BRACKET.sub("", w[1]).strip()
+        if drill._hint(m_clean, w[0]) != m_clean:
             out.append(f"words: '{w[0]}' 의 뜻 괄호에 그 단어가 들어 있어 단어 쓰기 힌트에 답이 보여요: {w[1]}. "
                        "관사는 '(중성 das)'처럼 관사만, 복수형이나 과거형은 '(복수형)', '(과거형)'처럼 단어를 쓰지 말고 적으세요.")
+    return out
+
+
+DE_GENDER_FROM = dt.date(2026, 10, 28)  # 이날부터 독일어 명사는 뜻에 성별 표기가 있어야 한다
+
+
+def check_de_noun_gender(c, path):
+    """독일어 명사(대문자로 시작)는 뜻에 성별 표기((남성 der), (여성 die), (중성 das))가 있어야 한다."""
+    lang = path.parent.name
+    if lang != "de":
+        return []
+    if path.parent.parent.name != "pool":
+        try:
+            if dt.date.fromisoformat(path.stem) < DE_GENDER_FROM:
+                return []
+        except ValueError:
+            return []
+    gender_pat = re.compile(r'\((?:남성|여성|중성)\s+(?:der|die|das)\b')
+    out = []
+    for w in c.get("words", []):
+        if len(w) < 2:
+            continue
+        word, meaning = w[0], w[1]
+        if word[:1].isupper() and not gender_pat.search(meaning):
+            out.append(
+                f"words: '{word}' 는 명사이므로 뜻에 성별 표기가 필요합니다. "
+                "뜻 끝에 '(남성 der)', '(여성 die)', '(중성 das)' 중 하나를 추가하세요. "
+                "복수형이 있으면 '(중성 das, 복수 Blätter)'처럼 한 괄호 안에 씁니다."
+            )
     return out
 
 

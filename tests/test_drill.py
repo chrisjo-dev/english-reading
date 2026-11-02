@@ -81,7 +81,7 @@ class TestCards(unittest.TestCase):
     def test_write_hint_hides_answer_in_parentheses(self):
         """독일어 2026-10-31: 뜻 '물가, 호숫가 (das Ufer)' 가 단어 쓰기 힌트에 답을 보여 줬다."""
         cs = {x["w"]: x for x in drill.cards("de", "2026-10-31")}
-        self.assertEqual(cs["Ufer"]["m"], "물가, 호숫가 (das Ufer)")  # 카드 뒷면, 뜻 고르기는 그대로
+        self.assertEqual(cs["Ufer"]["m"], "물가, 호숫가 (중성 das)")  # 카드 뒷면, 뜻 고르기는 그대로
         self.assertEqual(cs["Ufer"]["mh"], "물가, 호숫가")
         self.assertEqual(cs["Hang"]["mh"], "비탈, 경사면")
         for c in cs.values():

@@ -273,6 +273,8 @@ class PatchOldJaPageTest(unittest.TestCase):
             p = re.sub(r'/\* gnb-narrow \*/[^\n]*\n?', '', p)
             # GNB 브랜드 img CSS 규칙 주입 (inline style → CSS) 도 rebrand patch 범위
             p = re.sub(r'  \.gnb \.brand img \{ vertical-align: middle; \}\n', '', p)
+            # drill.py VERSION 변경으로 data-v 값이 바뀌어도 이 테스트(구독 카드 교체)와 무관
+            p = re.sub(r'(<script id="drill-js") data-v="[^"]*"', r'\1 data-v=""', p)
             return p
         self.assertEqual(strip(before), strip(after), "구독 칸 밖 콘텐츠는 바뀌지 않아야 합니다")
 
