@@ -106,7 +106,7 @@
           '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="단어 입력" placeholder="여기에 쓰세요"' +
           (done ? ' value="' + esc(it.pick) + '" disabled' : '') + '></form>';
         if (!done) h += '<button class="dr-skip" type="button" data-act="giveup">모르겠어요</button>';
-        else h += verdict(it, k) + '<div class="dr-answer"><div><span class="lb">정답</span><b lang="' + c.l + '">' + esc(c.w) + '</b>' + (c.r ? '<span class="rd" lang="' + c.l + '">' + esc(c.r) + '</span>' : '') +
+        else h += verdict(it, k) + '<div class="dr-answer"><div><span class="lb">정답</span><b lang="' + c.l + '">' + esc((c.ar ? c.ar + ' ' : '') + c.w) + '</b>' + (c.r ? '<span class="rd" lang="' + c.l + '">' + esc(c.r) + '</span>' : '') +
           '</div><button class="dr-listen" type="button" data-act="say">' + ICON_SPK + ' <span>듣기</span></button></div>' +
           (c.ex ? '<div class="dr-ex dr-gap10"><div class="lb">지문 속 문장</div><p class="en" lang="' + c.l + '">' + c.ex + '</p></div>' : '');
         h += '</div><div class="dr-acts">' + (done ? nextBtn : '<button class="dr-btn" type="button" data-act="check">확인</button>') + '</div>';
@@ -168,8 +168,13 @@
     return '<div class="dr-verdict' + (it.ok ? ' ok' : '') + '">' + esc(t) + '</div>';
   }
   function hint(c) {
+    // 독일어 명사(ar 있음): 관사 포함 정답이므로 “관사 + 단어” 안내, 첫 글자 힌트
+    if (c.ar) {
+      var n = c.w.replace(/\s/g, '').length;
+      return '관사 + 단어 | “' + esc(c.w.charAt(0)) + '”로 시작하는 ' + n + '글자';
+    }
     var s = c.l === 'ja' ? (c.r || c.w) : c.w.replace(/\s*\([^)]*\)/g, ''), n = s.replace(/\s/g, '').length;
-    return (c.l === 'ja' ? '읽기 ' : '') + '“' + esc(s.charAt(0)) + '”로 시작하는 ' + n + '글자' + (c.l !== 'ja' && /\s/.test(s.trim()) ? ', 낱말 ' + s.trim().split(/\s+/).length + '개' : '');
+    return (c.l === 'ja' ? '읽기 ' : '') + '”' + esc(s.charAt(0)) + '”로 시작하는 ' + n + '글자' + (c.l !== 'ja' && /\s/.test(s.trim()) ? ', 낱말 ' + s.trim().split(/\s+/).length + '개' : '');
   }
   // 쓰기 채점: 대소문자, 띄어쓰기, 문장부호, 괄호 속 말은 보지 않는다. 독일어는 ae/oe/ue/ss, 일본어는 가타카나와 읽기도 정답.
   function norm(s, l, raw) {
@@ -189,6 +194,26 @@
     return d[a.length][b.length];
   }
   function grade(c, v) {
+    // 독일어 명사(ar 있음): 관사 포함 정답, 예: "die Dose"
+    if (c.ar) {
+      // 관사를 빼지 않는 norm: 대소문자/문장부호/띄어쓰기 정규화, 움라우트는 ae/oe/ue/ss로
+      var normNoun = function (s, raw) {
+        s = String(s).normalize('NFKC').toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[.,!?'"'`…~〜]/g, '').replace(/\s+/g, ' ').trim();
+        if (!raw) s = s.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+        return s;
+      };
+      var full = c.ar + ' ' + c.w;
+      var t = normNoun(v), key = normNoun(full);
+      if (t === key) return { ok: true };
+      // 한 글자 오타 허용 (움라우트 누락은 오답)
+      var rt = normNoun(v, true), rk = normNoun(full, true);
+      var fold = function (x) { return x.replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 's'); };
+      var near = rk.length >= 6 && dist(rt, rk) <= 1 && !(fold(rt) === fold(rk));
+      if (near) return { ok: true, near: true };
+      // 관사 없이 명사만 썼는지 확인 → 재시도 안내
+      if (norm(v, 'de') === norm(c.w, 'de')) return { ok: false, missingArticle: true };
+      return { ok: false };
+    }
     // linked (to) 는 linked, linked to 둘 다 정답
     var forms = [c.w, c.w.replace(/[()]/g, '')].concat(c.r ? [c.r] : []);
     var t = norm(v, c.l), keys = forms.map(function (x) { return norm(x, c.l); });
@@ -209,7 +234,15 @@
     var it = S.queue[0], f = root.querySelector('.dr-field');
     if (!f || f.disabled) return;
     if (!f.value.trim()) return f.focus();
-    var g = grade(it.c, f.value); answer(it, f.value.trim(), g.ok, g.near);
+    var g = grade(it.c, f.value);
+    // 독일어 명사에서 관사 없이 명사만 쓴 경우: 재시도 허용, 관사 안내 표시
+    if (g.missingArticle) {
+      var ph = root.querySelector('.dr-qhint');
+      if (ph) ph.textContent = '관사도 함께 써 주세요 (예: der …)';
+      f.select();
+      return;
+    }
+    answer(it, f.value.trim(), g.ok, g.near);
   }
   function later(it) { S.queue.splice(Math.min(3, S.queue.length), 0, it); }
 
