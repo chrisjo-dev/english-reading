@@ -195,3 +195,12 @@ class TestGuard(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class TestGermanGenderHidden(unittest.TestCase):
+    def test_quiz_meaning_has_no_gender(self):
+        """독일어 명사의 성(남성 der 등)은 외울 거리라 문제(뜻 고르기 보기, 쓰기 힌트)에 보이면 안 된다."""
+        pat = re.compile(r"남성|여성|중성|\((der|die|das)\b")
+        for f in sorted((ROOT / "content" / "de").glob("*.json")):
+            for c in drill.cards("de", f.stem):
+                for text in [c.get("mh", c["m"])] + c["alts"]:
+                    self.assertIsNone(pat.search(text), f"{f.stem} {c['w']}: {text}")

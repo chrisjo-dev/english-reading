@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "11"
+VERSION = "12"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -54,7 +54,9 @@ def _hint(m, word):
     key = key[:max(3, len(key) - 2)] if len(key) > 4 else key
     if not key or not re.match(r"[a-z]", key):
         return m
-    out = re.sub(r"\s*\([^()]*\)", lambda g: "" if key in _fold(g.group(0).lower()) else g.group(0), m).strip()
+    # 독일어 명사의 성(남성 der, 여성 die, 중성 das)도 외울 거리라 문제에는 보이지 않게 한다. 카드 뒷면에는 그대로 둔다
+    gender = re.compile(r"남성|여성|중성|^\s*\(?\s*(der|die|das)\b", re.I)
+    out = re.sub(r"\s*\([^()]*\)", lambda g: "" if key in _fold(g.group(0).lower()) or gender.search(g.group(0)) else g.group(0), m).strip()
     return out or m
 
 
