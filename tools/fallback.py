@@ -120,7 +120,20 @@ def process_lang(lang: str, day: str, dry_run: bool) -> str:
             dest.unlink(missing_ok=True)
             continue
 
-        # 성공: pool 파일을 git rm (스테이징 + 삭제)
+        # 성공: pool 사진(jpg)이 있으면 content 에 photo.jpg 로 복사하고 pool jpg 도 git rm
+        pool_jpg = pool_file.with_suffix(".jpg")
+        if pool_jpg.exists():
+            photo_dest = dest.with_name(f"{day}.photo.jpg")
+            shutil.copy2(pool_jpg, photo_dest)
+            result_jpg = subprocess.run(
+                ["git", "rm", str(pool_jpg.relative_to(ROOT))],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            if result_jpg.returncode != 0:
+                print(f"[fallback] jpg git rm 실패, 직접 삭제: {result_jpg.stderr.strip()}", file=sys.stderr)
+            pool_jpg.unlink(missing_ok=True)
+
+        # pool JSON 파일을 git rm (스테이징 + 삭제)
         result = subprocess.run(
             ["git", "rm", str(pool_file.relative_to(ROOT))],
             cwd=ROOT, capture_output=True, text=True,

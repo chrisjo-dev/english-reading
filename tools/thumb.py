@@ -352,6 +352,15 @@ def build(lang, day, cat=None, pic=None):
         # 이미 사진 썸네일이면 다시 만들지 않는다(같은 날 다시 발행해도 비용이 들지 않고 그림도 그대로)
         print(f"thumb: {lang} {day} source=existing")
         return out
+    # pool 에서 미리 생성된 사진이 있으면 API 를 부르지 않고 재사용한다
+    if pic is None:
+        pool_photo = ROOT / "content" / lang / f"{day}.photo.jpg"
+        if pool_photo.exists():
+            try:
+                pic = Image.open(pool_photo).convert("RGB")
+                print(f"thumb: {lang} {day} source=pool")
+            except Exception as e:
+                print(f"thumb: pool 사진 로드 실패 {type(e).__name__}, API 로 시도합니다", file=sys.stderr)
     pic = pic or photo(lang, day)
     if pic is not None:
         try:
