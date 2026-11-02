@@ -1,0 +1,432 @@
+{
+  "date": "2026-11-03",
+  "category": "culture",
+  "topic": "마르틴 축일",
+  "title_ko": "초롱을 들고 걷는 독일의 마르틴 축일",
+  "headline": "Mit Laternen durch die Straßen",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "photo_scene": "Close-up at dusk of two small children holding glowing handmade paper lanterns on sticks side by side on a cobblestone street, warm orange lantern light on their faces, cold blue evening sky softly blurred behind.",
+  "sentences": [
+    {
+      "en": "Am 11. November feiern viele Kinder in Deutschland den **Martinstag**, der an den heiligen Martin von Tours erinnert.",
+      "b2": false,
+      "chunks": [
+        [
+          "Am 11. November",
+          "11월 11일에"
+        ],
+        [
+          "feiern viele Kinder",
+          "많은 아이들이 기념합니다"
+        ],
+        [
+          "in Deutschland",
+          "독일에서"
+        ],
+        [
+          "den **Martinstag**,",
+          "마르틴 축일을"
+        ],
+        [
+          "der an den heiligen Martin von Tours erinnert.",
+          "그것은 투르의 성 마르틴을 기억하게 합니다"
+        ]
+      ]
+    },
+    {
+      "en": "Nach einer bekannten **Legende** teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.",
+      "b2": false,
+      "chunks": [
+        [
+          "Nach einer bekannten **Legende**",
+          "잘 알려진 전설에 따르면"
+        ],
+        [
+          "teilte Martin",
+          "마르틴은 나누었습니다"
+        ],
+        [
+          "an einem kalten Abend",
+          "어느 추운 저녁에"
+        ],
+        [
+          "seinen Mantel",
+          "자기 외투를"
+        ],
+        [
+          "mit einem armen Mann,",
+          "한 가난한 남자와"
+        ],
+        [
+          "der fror.",
+          "추위에 떨던"
+        ]
+      ]
+    },
+    {
+      "en": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte **Laternen** aus Papier und Pappe.",
+      "b2": false,
+      "chunks": [
+        [
+          "Schon Wochen vorher",
+          "벌써 몇 주 전부터"
+        ],
+        [
+          "basteln die Kinder",
+          "아이들은 만듭니다"
+        ],
+        [
+          "im Kindergarten oder in der Schule",
+          "유치원이나 학교에서"
+        ],
+        [
+          "bunte **Laternen**",
+          "알록달록한 초롱을"
+        ],
+        [
+          "aus Papier und Pappe.",
+          "종이와 두꺼운 종이로"
+        ]
+      ]
+    },
+    {
+      "en": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle **Martinslieder**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Wenn es dunkel wird,",
+          "날이 어두워지면"
+        ],
+        [
+          "ziehen sie",
+          "그들은 행진합니다"
+        ],
+        [
+          "mit ihren Eltern",
+          "부모님과 함께"
+        ],
+        [
+          "durch die Straßen",
+          "거리를 지나"
+        ],
+        [
+          "und singen dabei",
+          "그리고 그러면서 부릅니다"
+        ],
+        [
+          "traditionelle **Martinslieder**.",
+          "전통 마르틴 노래를"
+        ]
+      ]
+    },
+    {
+      "en": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes **Feuer**, an dem sich alle aufwärmen können.",
+      "b2": true,
+      "chunks": [
+        [
+          "Am Ende des Umzugs",
+          "행진의 끝에는"
+        ],
+        [
+          "wartet oft",
+          "자주 기다리고 있습니다"
+        ],
+        [
+          "ein großes, von vielen Helfern vorbereitetes **Feuer**,",
+          "많은 도우미들이 준비한 큰 불이"
+        ],
+        [
+          "an dem sich alle",
+          "그 곁에서 모두가"
+        ],
+        [
+          "aufwärmen können.",
+          "몸을 녹일 수 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Für viele Familien wäre der November ohne diesen **Brauch** viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.",
+      "b2": true,
+      "chunks": [
+        [
+          "Für viele Familien",
+          "많은 가족에게"
+        ],
+        [
+          "wäre der November",
+          "11월은 ~일 것입니다"
+        ],
+        [
+          "ohne diesen **Brauch**",
+          "이 풍습이 없다면"
+        ],
+        [
+          "viel dunkler,",
+          "훨씬 더 어두울"
+        ],
+        [
+          "denn die Lichter bringen",
+          "왜냐하면 불빛들이 가져오기 때문입니다"
+        ],
+        [
+          "Wärme",
+          "따뜻함을"
+        ],
+        [
+          "in die kalten Abende.",
+          "추운 저녁들 속으로"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Martinstag",
+      "성 마르틴 축일, 11월 11일 (남성 der)"
+    ],
+    [
+      "Legende",
+      "전설, 옛이야기 (여성 die, 복수 Legenden)"
+    ],
+    [
+      "Laterne",
+      "초롱, 등불 (여성 die, 복수 Laternen)"
+    ],
+    [
+      "Martinslied",
+      "마르틴 축일에 부르는 노래 (중성 das, 복수 Martinslieder)"
+    ],
+    [
+      "Feuer",
+      "불, 모닥불 (중성 das)"
+    ],
+    [
+      "Brauch",
+      "풍습, 관습 (남성 der, 복수 Bräuche)"
+    ],
+    [
+      "basteln",
+      "손으로 만들다, 공작하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "분사 수식어 — 관사와 명사 사이의 긴 꾸밈말",
+      "body": "`ein großes, von vielen Helfern vorbereitetes Feuer`는 관사 `ein`과 명사 `Feuer` 사이에 `von vielen Helfern vorbereitet`(많은 도우미가 준비한)이 들어간 구조입니다. 분사 `vorbereitet`도 형용사처럼 `-es`가 붙어요. 관계절로 풀면 `ein großes Feuer, das von vielen Helfern vorbereitet wurde`입니다."
+    },
+    {
+      "title": "wäre — 사실과 반대되는 가정",
+      "body": "`Für viele Familien wäre der November ohne diesen Brauch viel dunkler`는 접속법 2식으로 '이 풍습이 없다면 11월은 훨씬 더 어두울 것이다'라는 뜻입니다. `sein`의 접속법 2식 `wäre`가 둘째 자리에 오고, `ohne ...`가 조건 역할을 합니다."
+    }
+  ],
+  "answers": [
+    "11월 11일에 독일의 많은 아이들은 투르의 성 마르틴을 기리는 마르틴 축일을 기념합니다.",
+    "잘 알려진 전설에 따르면 마르틴은 어느 추운 저녁, 추위에 떨던 가난한 남자와 자기 외투를 나누었습니다.",
+    "아이들은 벌써 몇 주 전부터 유치원이나 학교에서 종이와 두꺼운 종이로 알록달록한 초롱을 만듭니다.",
+    "날이 어두워지면 아이들은 부모님과 함께 거리를 행진하며 전통 마르틴 노래를 부릅니다.",
+    "행진이 끝나는 곳에는 많은 도우미들이 준비한 큰 모닥불이 기다리고 있을 때가 많아, 모두 그 곁에서 몸을 녹일 수 있습니다.",
+    "이 풍습이 없다면 많은 가족에게 11월은 훨씬 더 어둡게 느껴질 텐데, 불빛이 추운 저녁에 따뜻함을 가져다주기 때문입니다."
+  ],
+  "advanced": [
+    {
+      "word": "der Umzug",
+      "meaning": "행진, 퍼레이드",
+      "confuse": "`der Umzug`에는 '이사'라는 뜻도 있어요. `umziehen`(이사하다)과 같은 뿌리입니다.",
+      "example": "Der **Umzug** beginnt um fünf Uhr vor der Kirche.",
+      "example_ko": "행진은 다섯 시에 교회 앞에서 시작합니다."
+    },
+    {
+      "word": "frieren",
+      "meaning": "추위에 떨다, 춥다",
+      "confuse": "과거형은 `fror`, 과거분사는 `gefroren`입니다. '물이 얼다'는 `gefrieren`이에요.",
+      "example": "Ohne Handschuhe **friere** ich an den Händen.",
+      "example_ko": "장갑이 없으면 저는 손이 시립니다."
+    },
+    {
+      "word": "sich aufwärmen",
+      "meaning": "몸을 녹이다, 따뜻하게 하다",
+      "confuse": "분리동사라서 주문장에서는 `Wir wärmen uns auf`처럼 갈라집니다.",
+      "example": "Nach dem Spaziergang **wärmen** wir uns mit Tee **auf**.",
+      "example_ko": "산책 후에 우리는 차로 몸을 녹입니다."
+    },
+    {
+      "word": "die Pappe",
+      "meaning": "두꺼운 종이, 판지",
+      "confuse": "`der Karton`은 주로 종이 상자를 가리켜요.",
+      "example": "Für die Laterne braucht man ein Stück feste **Pappe**.",
+      "example_ko": "초롱을 만들려면 단단한 판지 한 장이 필요합니다."
+    },
+    {
+      "word": "das Gebäck",
+      "meaning": "구운 과자, 빵류",
+      "confuse": null,
+      "example": "Nach dem Umzug gibt es warmes **Gebäck** für alle Kinder.",
+      "example_ko": "행진이 끝나면 모든 아이에게 따뜻한 구운 빵을 줍니다."
+    },
+    {
+      "word": "gemütlich",
+      "meaning": "아늑한, 편안한",
+      "confuse": "영어로 딱 맞는 말이 없을 만큼 독일어다운 말이에요. `bequem`은 의자나 옷이 '편한' 것입니다.",
+      "example": "Mit Kerzen wird das Wohnzimmer im Herbst sehr **gemütlich**.",
+      "example_ko": "가을에 촛불을 켜면 거실이 아주 아늑해집니다."
+    },
+    {
+      "word": "teilen",
+      "meaning": "나누다, 함께 쓰다",
+      "confuse": "`mit + 3격`과 함께 '누구와 나누다'가 됩니다. `verteilen`은 '여럿에게 나눠 주다'예요.",
+      "example": "Die Kinder **teilen** ihre Süßigkeiten mit den Freunden.",
+      "example_ko": "아이들은 사탕을 친구들과 나눕니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Am 11. November feiern viele Kinder in Deutschland den **Martinstag**.",
+          "chunks": [
+            [
+              "Am 11. November",
+              "11월 11일에"
+            ],
+            [
+              "feiern viele Kinder",
+              "많은 아이들이 기념합니다"
+            ],
+            [
+              "in Deutschland",
+              "독일에서"
+            ],
+            [
+              "den **Martinstag**.",
+              "마르틴 축일을"
+            ]
+          ]
+        },
+        {
+          "en": "Eine **Legende** erzählt: Martin teilte seinen Mantel mit einem armen Mann.",
+          "chunks": [
+            [
+              "Eine **Legende** erzählt:",
+              "한 전설이 이야기합니다"
+            ],
+            [
+              "Martin teilte",
+              "마르틴은 나누었습니다"
+            ],
+            [
+              "seinen Mantel",
+              "자기 외투를"
+            ],
+            [
+              "mit einem armen Mann.",
+              "한 가난한 남자와"
+            ]
+          ]
+        },
+        {
+          "en": "Vorher basteln die Kinder bunte **Laternen** aus Papier.",
+          "chunks": [
+            [
+              "Vorher",
+              "그 전에"
+            ],
+            [
+              "basteln die Kinder",
+              "아이들은 만듭니다"
+            ],
+            [
+              "bunte **Laternen**",
+              "알록달록한 초롱을"
+            ],
+            [
+              "aus Papier.",
+              "종이로"
+            ]
+          ]
+        },
+        {
+          "en": "Am Abend gehen sie mit den Eltern durch die Straßen und singen **Martinslieder**.",
+          "chunks": [
+            [
+              "Am Abend",
+              "저녁에"
+            ],
+            [
+              "gehen sie",
+              "그들은 걸어갑니다"
+            ],
+            [
+              "mit den Eltern",
+              "부모님과 함께"
+            ],
+            [
+              "durch die Straßen",
+              "거리를 지나"
+            ],
+            [
+              "und singen **Martinslieder**.",
+              "그리고 마르틴 노래를 부릅니다"
+            ]
+          ]
+        },
+        {
+          "en": "Am Ende gibt es oft ein großes **Feuer**, und alle wärmen sich auf.",
+          "chunks": [
+            [
+              "Am Ende",
+              "끝에는"
+            ],
+            [
+              "gibt es oft",
+              "자주 있습니다"
+            ],
+            [
+              "ein großes **Feuer**,",
+              "큰 불이"
+            ],
+            [
+              "und alle wärmen sich auf.",
+              "그리고 모두 몸을 녹입니다"
+            ]
+          ]
+        },
+        {
+          "en": "Dieser **Brauch** bringt Licht und Wärme in den dunklen November.",
+          "chunks": [
+            [
+              "Dieser **Brauch**",
+              "이 풍습은"
+            ],
+            [
+              "bringt",
+              "가져옵니다"
+            ],
+            [
+              "Licht und Wärme",
+              "빛과 따뜻함을"
+            ],
+            [
+              "in den dunklen November.",
+              "어두운 11월에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "11월 11일에 독일의 많은 아이들은 마르틴 축일을 기념합니다.",
+        "한 전설에 따르면 마르틴은 가난한 남자와 자기 외투를 나누었습니다.",
+        "그 전에 아이들은 종이로 알록달록한 초롱을 만듭니다.",
+        "저녁에 아이들은 부모님과 함께 거리를 걸으며 마르틴 노래를 부릅니다.",
+        "끝에는 큰 모닥불이 있을 때가 많고, 모두 몸을 녹입니다.",
+        "이 풍습은 어두운 11월에 빛과 따뜻함을 가져다줍니다."
+      ]
+    }
+  }
+}
