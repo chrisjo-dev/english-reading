@@ -147,6 +147,7 @@ def check(path):
     errors += check_example_ko(c, path)
     errors += overlap(path, c)
     errors += check_word_meanings(c, path)
+    errors += check_duplicate_meanings(c, path)
     if path.parent.name == "de":
         de_errors, de_warnings = check_de_quality(c, path)
         errors += de_errors
@@ -157,6 +158,24 @@ def check(path):
 
 
 WORD_HINT_FROM = dt.date(2026, 11, 1)  # 이날 지문부터 뜻에 단어를 다시 쓰면 오류(그 전 36개는 페이지에서 가린다)
+
+
+def check_duplicate_meanings(c, path):
+    """같은 날 단어 중 뜻이 겹치는 쌍을 오류로 잡는다(4지선다 답 누출 방지)."""
+    try:
+        import drill  # noqa: PLC0415
+    except ImportError:
+        return []
+    lang = path.parent.name
+    day = path.stem
+    try:
+        probs = drill.problems(lang, day)
+    except Exception:
+        return []
+    errors = []
+    for a, b, m in probs.get("duplicate_meanings", []):
+        errors.append(f"단어 뜻 중복: '{a}'와 '{b}'의 뜻이 같습니다 ({m}). 4지선다 답이 새어 나옵니다.")
+    return errors
 
 
 def check_word_meanings(c, path):

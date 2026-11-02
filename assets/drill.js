@@ -111,7 +111,7 @@
           (c.ex ? '<div class="dr-ex dr-gap10"><div class="lb">지문 속 문장</div><p class="en" lang="' + c.l + '">' + c.ex + '</p></div>' : '');
         h += '</div><div class="dr-acts">' + (done ? nextBtn : '<button class="dr-btn" type="button" data-act="check">확인</button>') + '</div>';
       } else {
-        var cz = k === 'cloze', ans = cz ? c.ca : c.m;
+        var cz = k === 'cloze', ans = cz ? c.ca : (c.mh || c.m);
         if (!it.opts || it.qk !== k) {
           var pool = cz ? CARDS.concat(S.list.map(function (x) { return x.c; })).map(function (x) { return x.ca || x.w; }) : (c.alts || []);
           pool = pool.filter(function (m, i, a) { return m !== ans && a.indexOf(m) === i; });
@@ -337,7 +337,7 @@
     if (act === 'pick') {
       if (it.pick != null) return;
       var i = +b.getAttribute('data-i');
-      return answer(it, i, it.opts[i] === (kindOf(it) === 'cloze' ? it.c.ca : it.c.m));
+      return answer(it, i, it.opts[i] === (kindOf(it) === 'cloze' ? it.c.ca : (it.c.mh || it.c.m)));
     }
     if (act === 'check') return check();
     if (act === 'giveup') { if (it.pick == null) answer(it, '', false); return; }
@@ -369,7 +369,7 @@
       if (!rec) { rec = {}; rec.s = 0; rec.due = add(t, 1); }
       else if (it.wrong > 0) { rec.s = 0; rec.due = add(t, 1); }
       else if (rec.due && rec.due <= t) { rec.s = (rec.s || 0) + 1; rec.due = rec.s >= INT.length ? null : add(t, INT[rec.s]); }
-      ['k', 'l', 'd', 'w', 'r', 'm', 'ex', 'sh', 'ek', 'au', 'alts'].forEach(function (f) { if (c[f] != null) rec[f] = c[f]; });
+      ['k', 'l', 'd', 'w', 'r', 'm', 'mh', 'ex', 'sh', 'ek', 'au', 'alts'].forEach(function (f) { if (c[f] != null) rec[f] = c[f]; });
       rec.x = it.wrong;
       db.items[c.k] = rec;
     });
