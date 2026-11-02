@@ -22,8 +22,8 @@
 <style>.en, .en-a, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .en-a, .adv .ex { word-break: normal; line-break: strict; } .en, .en-a { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
 <style>
   :root {
-    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
-    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
+    --line: #f2f4f6; --blue: #1b64da; --blue-soft: #e8f3ff; --blue-press: #1550b8;
     --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
     /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
     --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
@@ -57,9 +57,10 @@
   /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
   .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
   .sent:last-of-type { padding-bottom: 0; }
-  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+  .no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;
         background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
-        display: grid; place-items: center; }
+        display: grid; place-items: center; position: relative; }
+  .no::before { content: ''; position: absolute; inset: -6px; }
   .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
@@ -162,7 +163,7 @@
   a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }
   .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
   .lang-row a.lang-go { margin: 0; }
-  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
   .sub h2 { margin-bottom: 4px; }
@@ -186,33 +187,6 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  /* vote-css */
-  .cat-science { color: #3182f6; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #e89a14; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #3182f6; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #e89a14; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -360,6 +334,33 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb .brand img { vertical-align: middle; }
@@ -516,7 +517,7 @@
   </section>
 <!-- /drill-card -->
 
-  <section class="card vote" id="vote" data-v="2" data-cat="culture" data-wd="6">
+  <section class="card vote" id="vote" data-v="4" data-cat="culture" data-wd="6">
     <h2>오늘 주제 어땠어요?</h2>
     <p class="desc">오늘은 <span class="cat cat-culture">일상과 문화</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
     <div class="vote-btns">
@@ -980,6 +981,8 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
+<script type="application/json" id="drill-data">[{"w": "急に", "m": "갑자기", "r": "きゅうに", "cz": "<ruby>土曜日<rt>どようび<\/rt><\/ruby>の<ruby>午後<rt>ごご<\/rt><\/ruby>3<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<span class=\"dr-blank\"><\/span><ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>降<rt>ふ<\/rt><\/ruby>りました。", "ca": "急に", "ex": "<ruby>土曜日<rt>どようび<\/rt><\/ruby>の<ruby>午後<rt>ごご<\/rt><\/ruby>3<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<b><ruby>急<rt>きゅう<\/rt><\/ruby>に<\/b><ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>降<rt>ふ<\/rt><\/ruby>りました。", "sh": "<ruby>土曜日<rt>どようび<\/rt><\/ruby>の<ruby>午後<rt>ごご<\/rt><\/ruby>3<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<b><ruby>急<rt>きゅう<\/rt><\/ruby>に<\/b><ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>降<rt>ふ<\/rt><\/ruby>りました。", "ek": "토요일 오후 3시쯤 갑자기 비가 내렸습니다.", "au": "/ja/2026-10-18/audio/w1.mp3", "alts": ["우산", "편의점", "춥다", "일기예보", "넣다"]}, {"w": "傘", "m": "우산", "r": "かさ", "cz": "わたしは<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>にいましたが、<span class=\"dr-blank\"><\/span>がありませんでした。", "ca": "傘", "ex": "わたしは<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>にいましたが、<b><ruby>傘<rt>かさ<\/rt><\/ruby><\/b>がありませんでした。", "sh": "わたしは<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>にいましたが、<b><ruby>傘<rt>かさ<\/rt><\/ruby><\/b>がありませんでした。", "ek": "저는 역 앞에 있었는데, 우산이 없었습니다.", "au": "/ja/2026-10-18/audio/w2.mp3", "alts": ["갑자기", "편의점", "춥다", "일기예보", "넣다"]}, {"w": "コンビニ", "m": "편의점", "cz": "<ruby>近<rt>ちか<\/rt><\/ruby>くの<span class=\"dr-blank\"><\/span>で、<ruby>白<rt>しろ<\/rt><\/ruby>い<ruby>傘<rt>かさ<\/rt><\/ruby>を<ruby>一本<rt>いっぽん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>いました。", "ca": "コンビニ", "ex": "<ruby>近<rt>ちか<\/rt><\/ruby>くの<b>コンビニ<\/b>で、<ruby>白<rt>しろ<\/rt><\/ruby>い<ruby>傘<rt>かさ<\/rt><\/ruby>を<ruby>一本<rt>いっぽん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>いました。", "sh": "<ruby>近<rt>ちか<\/rt><\/ruby>くの<b>コンビニ<\/b>で、<ruby>白<rt>しろ<\/rt><\/ruby>い<ruby>傘<rt>かさ<\/rt><\/ruby>を<ruby>一本<rt>いっぽん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>いました。", "ek": "근처 편의점에서 하얀 우산을 한 개 샀습니다.", "au": "/ja/2026-10-18/audio/w3.mp3", "alts": ["갑자기", "우산", "춥다", "일기예보", "넣다"]}, {"w": "寒い", "m": "춥다", "r": "さむい", "cz": "<ruby>家<rt>いえ<\/rt><\/ruby>に<ruby>帰<rt>かえ<\/rt><\/ruby>る<ruby>道<rt>みち<\/rt><\/ruby>は、とても<span class=\"dr-blank\"><\/span>です。", "ca": "寒かった", "ex": "<ruby>家<rt>いえ<\/rt><\/ruby>に<ruby>帰<rt>かえ<\/rt><\/ruby>る<ruby>道<rt>みち<\/rt><\/ruby>は、とても<b><ruby>寒<rt>さむ<\/rt><\/ruby>かった<\/b>です。", "sh": "<ruby>家<rt>いえ<\/rt><\/ruby>に<ruby>帰<rt>かえ<\/rt><\/ruby>る<ruby>道<rt>みち<\/rt><\/ruby>は、とても<b><ruby>寒<rt>さむ<\/rt><\/ruby>かった<\/b>です。", "ek": "집에 돌아가는 길은 매우 추웠습니다.", "au": "/ja/2026-10-18/audio/w4.mp3", "alts": ["갑자기", "우산", "편의점", "일기예보", "넣다"]}, {"w": "天気予報", "m": "일기예보", "r": "てんきよほう", "cz": "<span class=\"dr-blank\"><\/span>を<ruby>見<rt>み<\/rt><\/ruby>てから<ruby>出<rt>で<\/rt><\/ruby>かけたほうがいいと<ruby>思<rt>おも<\/rt><\/ruby>いました。", "ca": "天気予報", "ex": "<b><ruby>天気予報<rt>てんきよほう<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>てから<ruby>出<rt>で<\/rt><\/ruby>かけたほうがいいと<ruby>思<rt>おも<\/rt><\/ruby>いました。", "sh": "<b><ruby>天気予報<rt>てんきよほう<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>てから<ruby>出<rt>で<\/rt><\/ruby>かけたほうがいいと<ruby>思<rt>おも<\/rt><\/ruby>いました。", "ek": "일기예보를 보고 나서 나가는 편이 좋겠다고 생각했습니다.", "au": "/ja/2026-10-18/audio/w5.mp3", "alts": ["갑자기", "우산", "편의점", "춥다", "넣다"]}, {"w": "入れる", "m": "넣다", "r": "いれる", "cz": "<ruby>明日<rt>あした<\/rt><\/ruby>からは、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>傘<rt>かさ<\/rt><\/ruby>をかばんに<span class=\"dr-blank\"><\/span>。", "ca": "入れます", "ex": "<ruby>明日<rt>あした<\/rt><\/ruby>からは、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>傘<rt>かさ<\/rt><\/ruby>をかばんに<b><ruby>入<rt>い<\/rt><\/ruby>れます<\/b>。", "sh": "<ruby>明日<rt>あした<\/rt><\/ruby>からは、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>傘<rt>かさ<\/rt><\/ruby>をかばんに<b><ruby>入<rt>い<\/rt><\/ruby>れます<\/b>。", "ek": "내일부터는 작은 우산을 가방에 넣겠습니다.", "au": "/ja/2026-10-18/audio/w6.mp3", "alts": ["갑자기", "우산", "편의점", "춥다", "일기예보"]}]</script>
+<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1012,7 +1015,5 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "急に", "m": "갑자기", "r": "きゅうに", "cz": "<ruby>土曜日<rt>どようび<\/rt><\/ruby>の<ruby>午後<rt>ごご<\/rt><\/ruby>3<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<span class=\"dr-blank\"><\/span><ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>降<rt>ふ<\/rt><\/ruby>りました。", "ca": "急に", "ex": "<ruby>土曜日<rt>どようび<\/rt><\/ruby>の<ruby>午後<rt>ごご<\/rt><\/ruby>3<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<b><ruby>急<rt>きゅう<\/rt><\/ruby>に<\/b><ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>降<rt>ふ<\/rt><\/ruby>りました。", "sh": "<ruby>土曜日<rt>どようび<\/rt><\/ruby>の<ruby>午後<rt>ごご<\/rt><\/ruby>3<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<b><ruby>急<rt>きゅう<\/rt><\/ruby>に<\/b><ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>降<rt>ふ<\/rt><\/ruby>りました。", "ek": "토요일 오후 3시쯤 갑자기 비가 내렸습니다.", "au": "/ja/2026-10-18/audio/w1.mp3", "alts": ["우산", "편의점", "춥다", "일기예보", "넣다"]}, {"w": "傘", "m": "우산", "r": "かさ", "cz": "わたしは<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>にいましたが、<span class=\"dr-blank\"><\/span>がありませんでした。", "ca": "傘", "ex": "わたしは<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>にいましたが、<b><ruby>傘<rt>かさ<\/rt><\/ruby><\/b>がありませんでした。", "sh": "わたしは<ruby>駅<rt>えき<\/rt><\/ruby>の<ruby>前<rt>まえ<\/rt><\/ruby>にいましたが、<b><ruby>傘<rt>かさ<\/rt><\/ruby><\/b>がありませんでした。", "ek": "저는 역 앞에 있었는데, 우산이 없었습니다.", "au": "/ja/2026-10-18/audio/w2.mp3", "alts": ["갑자기", "편의점", "춥다", "일기예보", "넣다"]}, {"w": "コンビニ", "m": "편의점", "cz": "<ruby>近<rt>ちか<\/rt><\/ruby>くの<span class=\"dr-blank\"><\/span>で、<ruby>白<rt>しろ<\/rt><\/ruby>い<ruby>傘<rt>かさ<\/rt><\/ruby>を<ruby>一本<rt>いっぽん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>いました。", "ca": "コンビニ", "ex": "<ruby>近<rt>ちか<\/rt><\/ruby>くの<b>コンビニ<\/b>で、<ruby>白<rt>しろ<\/rt><\/ruby>い<ruby>傘<rt>かさ<\/rt><\/ruby>を<ruby>一本<rt>いっぽん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>いました。", "sh": "<ruby>近<rt>ちか<\/rt><\/ruby>くの<b>コンビニ<\/b>で、<ruby>白<rt>しろ<\/rt><\/ruby>い<ruby>傘<rt>かさ<\/rt><\/ruby>を<ruby>一本<rt>いっぽん<\/rt><\/ruby><ruby>買<rt>か<\/rt><\/ruby>いました。", "ek": "근처 편의점에서 하얀 우산을 한 개 샀습니다.", "au": "/ja/2026-10-18/audio/w3.mp3", "alts": ["갑자기", "우산", "춥다", "일기예보", "넣다"]}, {"w": "寒い", "m": "춥다", "r": "さむい", "cz": "<ruby>家<rt>いえ<\/rt><\/ruby>に<ruby>帰<rt>かえ<\/rt><\/ruby>る<ruby>道<rt>みち<\/rt><\/ruby>は、とても<span class=\"dr-blank\"><\/span>です。", "ca": "寒かった", "ex": "<ruby>家<rt>いえ<\/rt><\/ruby>に<ruby>帰<rt>かえ<\/rt><\/ruby>る<ruby>道<rt>みち<\/rt><\/ruby>は、とても<b><ruby>寒<rt>さむ<\/rt><\/ruby>かった<\/b>です。", "sh": "<ruby>家<rt>いえ<\/rt><\/ruby>に<ruby>帰<rt>かえ<\/rt><\/ruby>る<ruby>道<rt>みち<\/rt><\/ruby>は、とても<b><ruby>寒<rt>さむ<\/rt><\/ruby>かった<\/b>です。", "ek": "집에 돌아가는 길은 매우 추웠습니다.", "au": "/ja/2026-10-18/audio/w4.mp3", "alts": ["갑자기", "우산", "편의점", "일기예보", "넣다"]}, {"w": "天気予報", "m": "일기예보", "r": "てんきよほう", "cz": "<span class=\"dr-blank\"><\/span>を<ruby>見<rt>み<\/rt><\/ruby>てから<ruby>出<rt>で<\/rt><\/ruby>かけたほうがいいと<ruby>思<rt>おも<\/rt><\/ruby>いました。", "ca": "天気予報", "ex": "<b><ruby>天気予報<rt>てんきよほう<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>てから<ruby>出<rt>で<\/rt><\/ruby>かけたほうがいいと<ruby>思<rt>おも<\/rt><\/ruby>いました。", "sh": "<b><ruby>天気予報<rt>てんきよほう<\/rt><\/ruby><\/b>を<ruby>見<rt>み<\/rt><\/ruby>てから<ruby>出<rt>で<\/rt><\/ruby>かけたほうがいいと<ruby>思<rt>おも<\/rt><\/ruby>いました。", "ek": "일기예보를 보고 나서 나가는 편이 좋겠다고 생각했습니다.", "au": "/ja/2026-10-18/audio/w5.mp3", "alts": ["갑자기", "우산", "편의점", "춥다", "넣다"]}, {"w": "入れる", "m": "넣다", "r": "いれる", "cz": "<ruby>明日<rt>あした<\/rt><\/ruby>からは、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>傘<rt>かさ<\/rt><\/ruby>をかばんに<span class=\"dr-blank\"><\/span>。", "ca": "入れます", "ex": "<ruby>明日<rt>あした<\/rt><\/ruby>からは、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>傘<rt>かさ<\/rt><\/ruby>をかばんに<b><ruby>入<rt>い<\/rt><\/ruby>れます<\/b>。", "sh": "<ruby>明日<rt>あした<\/rt><\/ruby>からは、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>傘<rt>かさ<\/rt><\/ruby>をかばんに<b><ruby>入<rt>い<\/rt><\/ruby>れます<\/b>。", "ek": "내일부터는 작은 우산을 가방에 넣겠습니다.", "au": "/ja/2026-10-18/audio/w6.mp3", "alts": ["갑자기", "우산", "편의점", "춥다", "일기예보"]}]</script>
-<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 </body>
 </html>

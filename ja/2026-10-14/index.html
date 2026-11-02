@@ -22,8 +22,8 @@
 <style>.en, .en-a, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .en-a, .adv .ex { word-break: normal; line-break: strict; } .en, .en-a { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
 <style>
   :root {
-    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
-    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
+    --line: #f2f4f6; --blue: #1b64da; --blue-soft: #e8f3ff; --blue-press: #1550b8;
     --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
     /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
     --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
@@ -57,9 +57,10 @@
   /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
   .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
   .sent:last-of-type { padding-bottom: 0; }
-  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+  .no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;
         background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
-        display: grid; place-items: center; }
+        display: grid; place-items: center; position: relative; }
+  .no::before { content: ''; position: absolute; inset: -6px; }
   .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
@@ -162,7 +163,7 @@
   a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }
   .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
   .lang-row a.lang-go { margin: 0; }
-  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
   .sub h2 { margin-bottom: 4px; }
@@ -186,33 +187,6 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  /* vote-css */
-  .cat-science { color: #3182f6; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #e89a14; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #3182f6; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #e89a14; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -360,6 +334,33 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb .brand img { vertical-align: middle; }
@@ -516,7 +517,7 @@
   </section>
 <!-- /drill-card -->
 
-  <section class="card vote" id="vote" data-v="2" data-cat="society" data-wd="2">
+  <section class="card vote" id="vote" data-v="4" data-cat="society" data-wd="2">
     <h2>오늘 주제 어땠어요?</h2>
     <p class="desc">오늘은 <span class="cat cat-society">사회</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
     <div class="vote-btns">
@@ -980,6 +981,8 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
+<script type="application/json" id="drill-data">[{"w": "分ける", "m": "나누다", "r": "わける", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<span class=\"dr-blank\"><\/span><ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "分けて", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<b><ruby>分<rt>わ<\/rt><\/ruby>けて<\/b><ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<b><ruby>分<rt>わ<\/rt><\/ruby>けて<\/b><ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "일본의 동네에서는 쓰레기를 나눠서 내놓습니다.", "au": "/ja/2026-10-14/audio/w1.mp3", "alts": ["쓰레기", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "ごみ", "m": "쓰레기", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<span class=\"dr-blank\"><\/span>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "ごみ", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<b>ごみ<\/b>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<b>ごみ<\/b>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "일본의 동네에서는 쓰레기를 나눠서 내놓습니다.", "au": "/ja/2026-10-14/audio/w2.mp3", "alts": ["나누다", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "燃える", "m": "타다", "r": "もえる", "cz": "たとえば、<span class=\"dr-blank\"><\/span>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "燃える", "ex": "たとえば、<b><ruby>燃<rt>も<\/rt><\/ruby>える<\/b>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "たとえば、<b><ruby>燃<rt>も<\/rt><\/ruby>える<\/b>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "예를 들어 타는 쓰레기는 월요일과 목요일에 내놓습니다.", "au": "/ja/2026-10-14/audio/w3.mp3", "alts": ["나누다", "쓰레기", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "一週間", "m": "일주일", "r": "いっしゅうかん", "cz": "ペットボトルやびんは、<span class=\"dr-blank\"><\/span>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "ca": "一週間", "ex": "ペットボトルやびんは、<b><ruby>一週間<rt>いっしゅうかん<\/rt><\/ruby><\/b>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "sh": "ペットボトルやびんは、<b><ruby>一週間<rt>いっしゅうかん<\/rt><\/ruby><\/b>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "ek": "페트병이나 병은 일주일에 한 번뿐입니다.", "au": "/ja/2026-10-14/audio/w4.mp3", "alts": ["나누다", "쓰레기", "타다", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "場所", "m": "장소, 곳", "r": "ばしょ", "cz": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<span class=\"dr-blank\"><\/span>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "ca": "場所", "ex": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<b><ruby>場所<rt>ばしょ<\/rt><\/ruby><\/b>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "sh": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<b><ruby>場所<rt>ばしょ<\/rt><\/ruby><\/b>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "ek": "쓰레기는 아침 8시까지 정해진 장소에 내놓아야 합니다.", "au": "/ja/2026-10-14/audio/w5.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "틀리다, 잘못 알다", "달력"]}, {"w": "まちがえる", "m": "틀리다, 잘못 알다", "cz": "<ruby>日<rt>ひ<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ca": "まちがえないで", "ex": "<ruby>日<rt>ひ<\/rt><\/ruby>を<b>まちがえないで<\/b>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "sh": "<ruby>日<rt>ひ<\/rt><\/ruby>を<b>まちがえないで<\/b>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ek": "날짜를 틀리지 말고, 달력을 잘 봅시다.", "au": "/ja/2026-10-14/audio/w6.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "장소, 곳", "달력"]}, {"w": "カレンダー", "m": "달력", "cz": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<span class=\"dr-blank\"><\/span>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ca": "カレンダー", "ex": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<b>カレンダー<\/b>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "sh": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<b>カレンダー<\/b>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ek": "날짜를 틀리지 말고, 달력을 잘 봅시다.", "au": "/ja/2026-10-14/audio/w7.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다"]}]</script>
+<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1012,7 +1015,5 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "分ける", "m": "나누다", "r": "わける", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<span class=\"dr-blank\"><\/span><ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "分けて", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<b><ruby>分<rt>わ<\/rt><\/ruby>けて<\/b><ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<b><ruby>分<rt>わ<\/rt><\/ruby>けて<\/b><ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "일본의 동네에서는 쓰레기를 나눠서 내놓습니다.", "au": "/ja/2026-10-14/audio/w1.mp3", "alts": ["쓰레기", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "ごみ", "m": "쓰레기", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<span class=\"dr-blank\"><\/span>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "ごみ", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<b>ごみ<\/b>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<b>ごみ<\/b>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "일본의 동네에서는 쓰레기를 나눠서 내놓습니다.", "au": "/ja/2026-10-14/audio/w2.mp3", "alts": ["나누다", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "燃える", "m": "타다", "r": "もえる", "cz": "たとえば、<span class=\"dr-blank\"><\/span>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "燃える", "ex": "たとえば、<b><ruby>燃<rt>も<\/rt><\/ruby>える<\/b>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "たとえば、<b><ruby>燃<rt>も<\/rt><\/ruby>える<\/b>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "예를 들어 타는 쓰레기는 월요일과 목요일에 내놓습니다.", "au": "/ja/2026-10-14/audio/w3.mp3", "alts": ["나누다", "쓰레기", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "一週間", "m": "일주일", "r": "いっしゅうかん", "cz": "ペットボトルやびんは、<span class=\"dr-blank\"><\/span>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "ca": "一週間", "ex": "ペットボトルやびんは、<b><ruby>一週間<rt>いっしゅうかん<\/rt><\/ruby><\/b>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "sh": "ペットボトルやびんは、<b><ruby>一週間<rt>いっしゅうかん<\/rt><\/ruby><\/b>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "ek": "페트병이나 병은 일주일에 한 번뿐입니다.", "au": "/ja/2026-10-14/audio/w4.mp3", "alts": ["나누다", "쓰레기", "타다", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "場所", "m": "장소, 곳", "r": "ばしょ", "cz": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<span class=\"dr-blank\"><\/span>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "ca": "場所", "ex": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<b><ruby>場所<rt>ばしょ<\/rt><\/ruby><\/b>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "sh": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<b><ruby>場所<rt>ばしょ<\/rt><\/ruby><\/b>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "ek": "쓰레기는 아침 8시까지 정해진 장소에 내놓아야 합니다.", "au": "/ja/2026-10-14/audio/w5.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "틀리다, 잘못 알다", "달력"]}, {"w": "まちがえる", "m": "틀리다, 잘못 알다", "cz": "<ruby>日<rt>ひ<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ca": "まちがえないで", "ex": "<ruby>日<rt>ひ<\/rt><\/ruby>を<b>まちがえないで<\/b>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "sh": "<ruby>日<rt>ひ<\/rt><\/ruby>を<b>まちがえないで<\/b>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ek": "날짜를 틀리지 말고, 달력을 잘 봅시다.", "au": "/ja/2026-10-14/audio/w6.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "장소, 곳", "달력"]}, {"w": "カレンダー", "m": "달력", "cz": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<span class=\"dr-blank\"><\/span>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ca": "カレンダー", "ex": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<b>カレンダー<\/b>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "sh": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<b>カレンダー<\/b>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ek": "날짜를 틀리지 말고, 달력을 잘 봅시다.", "au": "/ja/2026-10-14/audio/w7.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다"]}]</script>
-<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 </body>
 </html>

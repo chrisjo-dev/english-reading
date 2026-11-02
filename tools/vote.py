@@ -13,7 +13,7 @@ import thumb
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://read.wspace.ai.kr"
-VERSION = "2"
+VERSION = "4"
 
 # 요일별 분야와 글 형태(tools/ROUTINE*.md 와 같아야 한다). 월요일부터.
 WEEK = {
@@ -42,7 +42,7 @@ def rgb(t):
 
 
 CSS = "".join(
-    f"  .cat-{k} {{ color: {rgb(v[1])}; background: {rgb(v[2])}; }}\n" for k, v in thumb.CATS.items()
+    f"  .cat-{k} {{ color: {rgb(v[3] if len(v) > 3 else v[1])}; background: {rgb(v[2])}; }}\n" for k, v in thumb.CATS.items()
 ) + (
     "  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }\n"
     "  .vote h2 { margin: 0 0 6px; }\n"
@@ -58,7 +58,7 @@ CSS = "".join(
     "  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }\n"
     "  .vote .week b { color: var(--ink); }\n"
     "  .vote .week .today { font-weight: 700; }\n"
-) + "".join(f'  .vote[data-cat="{k}"] .week .today {{ color: {rgb(v[1])}; }}\n' for k, v in thumb.CATS.items())
+) + "".join(f'  .vote[data-cat="{k}"] .week .today {{ color: {rgb(v[3] if len(v) > 3 else v[1])}; }}\n' for k, v in thumb.CATS.items())
 
 
 def card_html(lang, day, cat):

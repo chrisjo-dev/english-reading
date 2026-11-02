@@ -58,7 +58,7 @@ SUB_CSS = (
 
 
 # wspace 전체 공통 하단. 애드센스 심사에서 정책 페이지로 가는 길이 모든 페이지에 있어야 한다.
-FOOTER_CSS = (".site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; "
+FOOTER_CSS = (".site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; "
               "display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }\n")
 FOOTER_HTML = ('<footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a>'
                '<a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a>'
@@ -413,6 +413,22 @@ def patch_page(lang, day):
     page = page.replace("localStorage.setItem('read_level', lp);", "localStorage.setItem('read_level:' + _gaLang, lp);")
     page = page.replace("localStorage.setItem('read_level', to);", "localStorage.setItem('read_level:' + _gaLang, to);")
     page = drill.apply(page, lang, day)  # 단어 암기 반복과 복습 띠(#16)
+    # a11y-b1-contrast: 대비 상향, .no 버튼 B1 크기 (모든 기존 페이지 멱등 반영)
+    page = page.replace("color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer",
+                        "color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer")
+    page = page.replace("--muted: #8b95a1", "--muted: #6b7684", 1)
+    page = page.replace("--blue: #3182f6", "--blue: #1b64da", 1)
+    page = page.replace("--blue-press: #1b64da", "--blue-press: #1550b8", 1)
+    page = page.replace(
+        ".no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;\n"
+        "        background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;\n"
+        "        display: grid; place-items: center; }",
+        ".no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;\n"
+        "        background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;\n"
+        "        display: grid; place-items: center; position: relative; }\n"
+        "  .no::before { content: \'\'; position: absolute; inset: -6px; }",
+        1,
+    )
     path.write_text(page, encoding="utf-8")
 
 
@@ -570,7 +586,7 @@ ARCHIVE = r"""<!doctype html>
 <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
-  :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1; --blue: #3182f6; }
+  :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #6b7684; --blue: #1b64da; }
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
   main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
   h1 { font-size: 26px; font-weight: 800; margin: 0 8px 16px; letter-spacing: -0.03em; }
@@ -581,20 +597,20 @@ ARCHIVE = r"""<!doctype html>
   .gnb nav { display: flex; gap: 4px; }
   .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
   .gnb nav a:hover { background: #f2f4f6; }
-  .gnb nav a.cta { color: #3182f6; background: #e8f3ff; }
+  .gnb nav a.cta { color: #1b64da; background: #e8f3ff; }
   .gnb nav a.cta:hover { background: #d6e8ff; }
 __GNB_NARROW__  .ltabs { display: flex; gap: 6px; margin: 0 0 16px; padding: 4px; border-radius: 14px; background: #e8ebef; }
   .ltabs a { flex: 1; text-align: center; font-size: 15px; font-weight: 700; color: var(--sub); padding: 10px 0; border-radius: 10px; text-decoration: none; }
   .ltabs a.on { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(16,24,40,.08); }
-  .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #3182f6; text-decoration: none; }
+  .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #1b64da; text-decoration: none; }
   .search { display: block; width: 100%; box-sizing: border-box; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: #fff; box-shadow: 0 2px 10px rgba(16,24,40,.06);
             padding: 0 16px; font: 400 16px Pretendard, -apple-system, sans-serif; color: #191f28; outline: 0; }
-  .search:focus { border-color: #3182f6; }
+  .search:focus { border-color: #1b64da; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 0 8px; }
   .chips::-webkit-scrollbar { display: none; }
   .chip { flex: none; height: 34px; padding: 0 14px; border: 0; border-radius: 999px; background: #fff; color: #4e5968;
           font: 600 14px Pretendard, -apple-system, sans-serif; cursor: pointer; }
-  .chip[aria-pressed="true"] { background: #3182f6; color: #fff; }
+  .chip[aria-pressed="true"] { background: #1b64da; color: #fff; }
   .month h2 { font-size: 15px; font-weight: 700; color: #4e5968; margin: 20px 8px 8px; }
   .card { background: #fff; border-radius: 20px; padding: 4px 20px; box-shadow: 0 4px 18px rgba(16,24,40,.07); }
   [id] { scroll-margin-top: 84px; }
@@ -602,14 +618,14 @@ __GNB_NARROW__  .ltabs { display: flex; gap: 6px; margin: 0 0 16px; padding: 4px
   .item.first { border-top: 0; }
   .item img { flex: none; width: 56px; height: 56px; object-fit: cover; object-position: 100% 50%; }
   .item img.ph { object-position: 50% 50%; border-radius: 14px; }
-  .d { display: block; font-size: 14px; color: #8b95a1; font-weight: 600; }
-  .c { margin-left: 8px; font-size: 12px; color: #3182f6; }
+  .d { display: block; font-size: 14px; color: #6b7684; font-weight: 600; }
+  .c { margin-left: 8px; font-size: 12px; color: #1b64da; }
   .t { display: block; font-size: 17px; font-weight: 700; color: #191f28; margin-top: 2px; }
-  .empty { text-align: center; color: #8b95a1; font-size: 15px; padding: 40px 0; }
-  .more { display: block; width: 100%; height: 52px; margin-top: 16px; border: 0; border-radius: 12px; background: #e8f3ff; color: #3182f6;
+  .empty { text-align: center; color: #6b7684; font-size: 15px; padding: 40px 0; }
+  .more { display: block; width: 100%; height: 52px; margin-top: 16px; border: 0; border-radius: 12px; background: #e8f3ff; color: #1b64da;
           font: 700 16px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   [hidden] { display: none !important; }
-  .review { display: flex; justify-content: space-between; align-items: center; margin: 0 0 12px; padding: 14px 18px; border-radius: 16px; background: #e8f3ff; color: #3182f6; font-size: 15px; font-weight: 700; text-decoration: none; }
+  .review { display: flex; justify-content: space-between; align-items: center; margin: 0 0 12px; padding: 14px 18px; border-radius: 16px; background: #e8f3ff; color: #1b64da; font-size: 15px; font-weight: 700; text-decoration: none; }
   .sub-wrap { margin-top: 28px; }
   .sub-wrap .card { padding: 22px 20px; }
   .sub-wrap h2 { font-size: 20px; font-weight: 700; margin: 0 0 4px; }

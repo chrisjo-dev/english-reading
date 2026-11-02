@@ -22,8 +22,8 @@
 <style>.en, .en-a, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .en-a, .adv .ex { word-break: normal; line-break: strict; } .en, .en-a { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
 <style>
   :root {
-    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
-    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
+    --line: #f2f4f6; --blue: #1b64da; --blue-soft: #e8f3ff; --blue-press: #1550b8;
     --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
     /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
     --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
@@ -57,9 +57,10 @@
   /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
   .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
   .sent:last-of-type { padding-bottom: 0; }
-  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+  .no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;
         background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
-        display: grid; place-items: center; }
+        display: grid; place-items: center; position: relative; }
+  .no::before { content: ''; position: absolute; inset: -6px; }
   .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
@@ -162,7 +163,7 @@
   a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }
   .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
   .lang-row a.lang-go { margin: 0; }
-  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
   .sub h2 { margin-bottom: 4px; }
@@ -186,33 +187,6 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  /* vote-css */
-  .cat-science { color: #3182f6; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #e89a14; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #3182f6; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #e89a14; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -360,6 +334,33 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb .brand img { vertical-align: middle; }
@@ -517,7 +518,7 @@
   </section>
 <!-- /drill-card -->
 
-  <section class="card vote" id="vote" data-v="2" data-cat="society" data-wd="2">
+  <section class="card vote" id="vote" data-v="4" data-cat="society" data-wd="2">
     <h2>오늘 주제 어땠어요?</h2>
     <p class="desc">오늘은 <span class="cat cat-society">사회</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
     <div class="vote-btns">
@@ -984,6 +985,8 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
+<script type="application/json" id="drill-data">[{"w": "大会", "m": "대회", "r": "たいかい", "cz": "<ruby>愛知県<rt>あいちけん<\/rt><\/ruby>と<ruby>名古屋市<rt>なごやし<\/rt><\/ruby>で、「アジアパラ<span class=\"dr-blank\"><\/span>」が<ruby>始<rt>はじ<\/rt><\/ruby>まりました。", "ca": "大会", "ex": "<ruby>愛知県<rt>あいちけん<\/rt><\/ruby>と<ruby>名古屋市<rt>なごやし<\/rt><\/ruby>で、「アジアパラ<b><ruby>大会<rt>たいかい<\/rt><\/ruby><\/b>」が<ruby>始<rt>はじ<\/rt><\/ruby>まりました。", "sh": "<ruby>愛知県<rt>あいちけん<\/rt><\/ruby>と<ruby>名古屋市<rt>なごやし<\/rt><\/ruby>で、「アジアパラ<b><ruby>大会<rt>たいかい<\/rt><\/ruby><\/b>」が<ruby>始<rt>はじ<\/rt><\/ruby>まりました。", "ek": "아이치현과 나고야시에서 '아시아 패러(장애인) 경기 대회'가 시작되었습니다.", "au": "/ja/2026-10-21/audio/w1.mp3", "alts": ["장애", "선수", "열리다, 개최되다", "약, 대략", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "障害", "m": "장애", "r": "しょうがい", "cz": "<span class=\"dr-blank\"><\/span>のある<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が、いろいろなスポーツをします。", "ca": "障害", "ex": "<b><ruby>障害<rt>しょうがい<\/rt><\/ruby><\/b>のある<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が、いろいろなスポーツをします。", "sh": "<b><ruby>障害<rt>しょうがい<\/rt><\/ruby><\/b>のある<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が、いろいろなスポーツをします。", "ek": "장애가 있는 선수들이 여러 가지 스포츠를 합니다.", "au": "/ja/2026-10-21/audio/w2.mp3", "alts": ["대회", "선수", "열리다, 개최되다", "약, 대략", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "選手", "m": "선수", "r": "せんしゅ", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "ca": "選手", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<b><ruby>選手<rt>せんしゅ<\/rt><\/ruby><\/b>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<b><ruby>選手<rt>せんしゅ<\/rt><\/ruby><\/b>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "ek": "일본에서는 약 280명의 선수가 출전합니다.", "au": "/ja/2026-10-21/audio/w3.mp3", "alts": ["대회", "장애", "열리다, 개최되다", "약, 대략", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "開かれる", "m": "열리다, 개최되다", "r": "ひらかれる", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>でこの<ruby>大会<rt>たいかい<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>のは、はじめてです。", "ca": "開かれる", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>でこの<ruby>大会<rt>たいかい<\/rt><\/ruby>が<b><ruby>開<rt>ひら<\/rt><\/ruby>かれる<\/b>のは、はじめてです。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>でこの<ruby>大会<rt>たいかい<\/rt><\/ruby>が<b><ruby>開<rt>ひら<\/rt><\/ruby>かれる<\/b>のは、はじめてです。", "ek": "일본에서 이 대회가 열리는 것은 처음입니다.", "au": "/ja/2026-10-21/audio/w4.mp3", "alts": ["대회", "장애", "선수", "약, 대략", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "約", "m": "약, 대략", "r": "やく", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<span class=\"dr-blank\"><\/span>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "ca": "約", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<b><ruby>約<rt>やく<\/rt><\/ruby><\/b>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<b><ruby>約<rt>やく<\/rt><\/ruby><\/b>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "ek": "일본에서는 약 280명의 선수가 출전합니다.", "au": "/ja/2026-10-21/audio/w5.mp3", "alts": ["대회", "장애", "선수", "열리다, 개최되다", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "出ます", "m": "(대회, 시합에) 나갑니다", "r": "でます", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>。", "ca": "出ます", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<b><ruby>出<rt>で<\/rt><\/ruby>ます<\/b>。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<b><ruby>出<rt>で<\/rt><\/ruby>ます<\/b>。", "ek": "일본에서는 약 280명의 선수가 출전합니다.", "au": "/ja/2026-10-21/audio/w6.mp3", "alts": ["대회", "장애", "선수", "열리다, 개최되다", "약, 대략", "종류"]}, {"w": "種類", "m": "종류", "r": "しゅるい", "cz": "スポーツは、18<span class=\"dr-blank\"><\/span>もあります。", "ca": "種類", "ex": "スポーツは、18<b><ruby>種類<rt>しゅるい<\/rt><\/ruby><\/b>もあります。", "sh": "スポーツは、18<b><ruby>種類<rt>しゅるい<\/rt><\/ruby><\/b>もあります。", "ek": "스포츠(종목)는 18종류나 됩니다.", "au": "/ja/2026-10-21/audio/w7.mp3", "alts": ["대회", "장애", "선수", "열리다, 개최되다", "약, 대략", "(대회, 시합에) 나갑니다"]}]</script>
+<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1016,7 +1019,5 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "大会", "m": "대회", "r": "たいかい", "cz": "<ruby>愛知県<rt>あいちけん<\/rt><\/ruby>と<ruby>名古屋市<rt>なごやし<\/rt><\/ruby>で、「アジアパラ<span class=\"dr-blank\"><\/span>」が<ruby>始<rt>はじ<\/rt><\/ruby>まりました。", "ca": "大会", "ex": "<ruby>愛知県<rt>あいちけん<\/rt><\/ruby>と<ruby>名古屋市<rt>なごやし<\/rt><\/ruby>で、「アジアパラ<b><ruby>大会<rt>たいかい<\/rt><\/ruby><\/b>」が<ruby>始<rt>はじ<\/rt><\/ruby>まりました。", "sh": "<ruby>愛知県<rt>あいちけん<\/rt><\/ruby>と<ruby>名古屋市<rt>なごやし<\/rt><\/ruby>で、「アジアパラ<b><ruby>大会<rt>たいかい<\/rt><\/ruby><\/b>」が<ruby>始<rt>はじ<\/rt><\/ruby>まりました。", "ek": "아이치현과 나고야시에서 '아시아 패러(장애인) 경기 대회'가 시작되었습니다.", "au": "/ja/2026-10-21/audio/w1.mp3", "alts": ["장애", "선수", "열리다, 개최되다", "약, 대략", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "障害", "m": "장애", "r": "しょうがい", "cz": "<span class=\"dr-blank\"><\/span>のある<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が、いろいろなスポーツをします。", "ca": "障害", "ex": "<b><ruby>障害<rt>しょうがい<\/rt><\/ruby><\/b>のある<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が、いろいろなスポーツをします。", "sh": "<b><ruby>障害<rt>しょうがい<\/rt><\/ruby><\/b>のある<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が、いろいろなスポーツをします。", "ek": "장애가 있는 선수들이 여러 가지 스포츠를 합니다.", "au": "/ja/2026-10-21/audio/w2.mp3", "alts": ["대회", "선수", "열리다, 개최되다", "약, 대략", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "選手", "m": "선수", "r": "せんしゅ", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "ca": "選手", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<b><ruby>選手<rt>せんしゅ<\/rt><\/ruby><\/b>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<b><ruby>選手<rt>せんしゅ<\/rt><\/ruby><\/b>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "ek": "일본에서는 약 280명의 선수가 출전합니다.", "au": "/ja/2026-10-21/audio/w3.mp3", "alts": ["대회", "장애", "열리다, 개최되다", "약, 대략", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "開かれる", "m": "열리다, 개최되다", "r": "ひらかれる", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>でこの<ruby>大会<rt>たいかい<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>のは、はじめてです。", "ca": "開かれる", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>でこの<ruby>大会<rt>たいかい<\/rt><\/ruby>が<b><ruby>開<rt>ひら<\/rt><\/ruby>かれる<\/b>のは、はじめてです。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>でこの<ruby>大会<rt>たいかい<\/rt><\/ruby>が<b><ruby>開<rt>ひら<\/rt><\/ruby>かれる<\/b>のは、はじめてです。", "ek": "일본에서 이 대회가 열리는 것은 처음입니다.", "au": "/ja/2026-10-21/audio/w4.mp3", "alts": ["대회", "장애", "선수", "약, 대략", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "約", "m": "약, 대략", "r": "やく", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<span class=\"dr-blank\"><\/span>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "ca": "約", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<b><ruby>約<rt>やく<\/rt><\/ruby><\/b>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<b><ruby>約<rt>やく<\/rt><\/ruby><\/b>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>ます。", "ek": "일본에서는 약 280명의 선수가 출전합니다.", "au": "/ja/2026-10-21/audio/w5.mp3", "alts": ["대회", "장애", "선수", "열리다, 개최되다", "(대회, 시합에) 나갑니다", "종류"]}, {"w": "出ます", "m": "(대회, 시합에) 나갑니다", "r": "でます", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>。", "ca": "出ます", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<b><ruby>出<rt>で<\/rt><\/ruby>ます<\/b>。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>からは、<ruby>約<rt>やく<\/rt><\/ruby>280<ruby>人<rt>にん<\/rt><\/ruby>の<ruby>選手<rt>せんしゅ<\/rt><\/ruby>が<b><ruby>出<rt>で<\/rt><\/ruby>ます<\/b>。", "ek": "일본에서는 약 280명의 선수가 출전합니다.", "au": "/ja/2026-10-21/audio/w6.mp3", "alts": ["대회", "장애", "선수", "열리다, 개최되다", "약, 대략", "종류"]}, {"w": "種類", "m": "종류", "r": "しゅるい", "cz": "スポーツは、18<span class=\"dr-blank\"><\/span>もあります。", "ca": "種類", "ex": "スポーツは、18<b><ruby>種類<rt>しゅるい<\/rt><\/ruby><\/b>もあります。", "sh": "スポーツは、18<b><ruby>種類<rt>しゅるい<\/rt><\/ruby><\/b>もあります。", "ek": "스포츠(종목)는 18종류나 됩니다.", "au": "/ja/2026-10-21/audio/w7.mp3", "alts": ["대회", "장애", "선수", "열리다, 개최되다", "약, 대략", "(대회, 시합에) 나갑니다"]}]</script>
-<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 </body>
 </html>

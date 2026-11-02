@@ -82,7 +82,7 @@ def build_email(lang, end):
     url = f"{SITE}/{lang}/review/{end}/"
     font = "-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic','Hiragino Sans','Noto Sans JP',sans-serif"
     rows = "".join(
-        f'<tr><td style="padding:10px 0;border-top:1px solid #f2f4f6;font-size:13px;font-weight:700;color:#8b95a1;white-space:nowrap;vertical-align:top;">{short(x["day"])}</td>'
+        f'<tr><td style="padding:10px 0;border-top:1px solid #f2f4f6;font-size:13px;font-weight:700;color:#6b7684;white-space:nowrap;vertical-align:top;">{short(x["day"])}</td>'
         f'<td style="padding:10px 0 10px 12px;border-top:1px solid #f2f4f6;font-size:16px;line-height:1.6;color:#191f28;">'
         f'{", ".join(html.escape(plain(w)) for w, _ in x["words"])}</td></tr>'
         for x in days
@@ -93,19 +93,19 @@ def build_email(lang, end):
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
 <tr><td style="padding:16px 0 4px;text-align:center;"><img src="{SITE}/assets/brand/badge-192.png" width="88" height="88" alt="독해한입" style="display:block;margin:0 auto;border:0;"></td></tr>
 <tr><td style="background:#ffffff;border-radius:20px;padding:22px 20px;">
-  <p style="margin:0;font-size:14px;font-weight:600;color:#8b95a1;">{span(end)}</p>
-  <h1 style="margin:6px 0 8px;font-size:24px;line-height:1.35;font-weight:800;color:#191f28;">이번 주 <span style="color:#3182f6;">단어 {total}개</span> 복습해요</h1>
+  <p style="margin:0;font-size:14px;font-weight:600;color:#6b7684;">{span(end)}</p>
+  <h1 style="margin:6px 0 8px;font-size:24px;line-height:1.35;font-weight:800;color:#191f28;">이번 주 <span style="color:#1b64da;">단어 {total}개</span> 복습해요</h1>
   <p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#4e5968;">뜻이 바로 떠오르는지 먼저 확인해 보세요. 버튼을 누르면 단어 카드를 눌러 뜻을 하나씩 확인할 수 있어요.</p>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{rows}</table>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:18px;"><tr>
-    <td align="center" style="background:#3182f6;border-radius:14px;">
+    <td align="center" style="background:#1b64da;border-radius:14px;">
       <a href="{url}" style="display:block;padding:16px 12px;font-size:16px;font-weight:700;color:#ffffff;text-decoration:none;">뜻 가리고 복습하기</a>
     </td></tr></table>
 </td></tr>
-<tr><td style="padding:16px 8px 0;font-size:13px;color:#8b95a1;text-align:center;">
+<tr><td style="padding:16px 8px 0;font-size:13px;color:#6b7684;text-align:center;">
   <a href="{SITE}/{lang}/archive/" style="color:#4e5968;">지난 지문 모아 보기</a>
-  <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:#8b95a1;">매일 아침 {L["level"]} {L["name"]} 지문을, 일요일에는 한 주 단어 복습을 보내 드려요.<br>
-  더 받지 않으려면 <a href="{{{{ unsubscribe_url }}}}" style="color:#8b95a1;">수신거부</a>를 눌러 주세요.</p>
+  <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:#6b7684;">매일 아침 {L["level"]} {L["name"]} 지문을, 일요일에는 한 주 단어 복습을 보내 드려요.<br>
+  더 받지 않으려면 <a href="{{{{ unsubscribe_url }}}}" style="color:#6b7684;">수신거부</a>를 눌러 주세요.</p>
 </td></tr>
 </table>
 </div>"""
@@ -133,15 +133,15 @@ __HEAD_EXTRA__
   .gnb nav { display: flex; gap: 4px; }
   .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
   .gnb nav a:hover { background: #f2f4f6; }
-  .gnb nav a.cta { color: #3182f6; background: #e8f3ff; }
+  .gnb nav a.cta { color: #1b64da; background: #e8f3ff; }
   .gnb nav a.cta:hover { background: #d6e8ff; }
-  .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #3182f6; text-decoration: none; }
+  .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #1b64da; text-decoration: none; }
   .head { background: #fff; border-radius: 20px; padding: 22px 20px; box-shadow: 0 4px 18px rgba(16,24,40,.07); }
-  .span { font-size: 14px; font-weight: 600; color: #8b95a1; }
+  .span { font-size: 14px; font-weight: 600; color: #6b7684; }
   h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 8px; letter-spacing: -0.03em; }
-  h1 em { font-style: normal; color: #3182f6; }
+  h1 em { font-style: normal; color: #1b64da; }
   .lead { margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: #4e5968; }
-  .toggle { width: 100%; height: 48px; border: 0; border-radius: 12px; background: #e8f3ff; color: #3182f6; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .toggle { width: 100%; height: 48px; border: 0; border-radius: 12px; background: #e8f3ff; color: #1b64da; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
   .day { margin-top: 20px; }
   .day h2 { font-size: 15px; font-weight: 700; color: #4e5968; margin: 0 8px 8px; }
   .day h2 a { color: #191f28; text-decoration: none; margin-left: 4px; }

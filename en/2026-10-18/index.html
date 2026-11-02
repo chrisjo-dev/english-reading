@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root {
-    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
-    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
+    --line: #f2f4f6; --blue: #1b64da; --blue-soft: #e8f3ff; --blue-press: #1550b8;
     --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
     /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
     --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
@@ -55,9 +55,10 @@
   /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
   .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
   .sent:last-of-type { padding-bottom: 0; }
-  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+  .no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;
         background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
-        display: grid; place-items: center; }
+        display: grid; place-items: center; position: relative; }
+  .no::before { content: ''; position: absolute; inset: -6px; }
   .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
@@ -160,7 +161,7 @@
   a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }
   .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
   .lang-row a.lang-go { margin: 0; }
-  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
   .sub h2 { margin-bottom: 4px; }
@@ -184,33 +185,6 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  /* vote-css */
-  .cat-science { color: #3182f6; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #e89a14; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #3182f6; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #e89a14; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -358,6 +332,33 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb .brand img { vertical-align: middle; }
@@ -515,7 +516,7 @@
   </section>
 <!-- /drill-card -->
 
-  <section class="card vote" id="vote" data-v="2" data-cat="space" data-wd="6">
+  <section class="card vote" id="vote" data-v="4" data-cat="space" data-wd="6">
     <h2>오늘 주제 어땠어요?</h2>
     <p class="desc">오늘은 <span class="cat cat-space">우주</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
     <div class="vote-btns">
@@ -980,6 +981,8 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
+<script type="application/json" id="drill-data">[{"w": "astronomers", "m": "천문학자들 (복수 -s)", "cz": "<span class=\"dr-blank\"><\/span> have found that a giant planet outside our solar system is not perfectly round.", "ca": "Astronomers", "ex": "<b>Astronomers<\/b> have found that a giant planet outside our solar system is not perfectly round.", "sh": "<b>Astronomers<\/b> have found that a giant planet outside our solar system is not perfectly round.", "ek": "천문학자들이 우리 태양계 밖의 한 거대 행성이 완벽하게 둥글지 않다는 것을 알아냈다.", "au": "/en/2026-10-18/audio/w1.mp3", "alts": ["~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "faces", "m": "~을 향하다 (face의 3인칭 단수)", "mh": "~을 향하다", "cz": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always <span class=\"dr-blank\"><\/span> its star.", "ca": "faces", "ex": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always <b>faces<\/b> its star.", "sh": "… and one side of it always <b>faces<\/b> its star.", "ek": "그 행성은 지구에서 약 1,300광년 떨어진 뜨거운 가스 행성으로, 한쪽 면이 항상 자기 별을 향하고 있다.", "au": "/en/2026-10-18/audio/w2.mp3", "alts": ["천문학자들 (복수 -s)", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "edges", "m": "가장자리들 (edge의 복수)", "mh": "가장자리들", "cz": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the <span class=\"dr-blank\"><\/span> of its atmosphere.", "ca": "edges", "ex": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the <b>edges<\/b> of its atmosphere.", "sh": "… that passes through the <b>edges<\/b> of its atmosphere.", "ek": "한 과학자 팀이 제임스 웹 우주 망원경을 이용해, 그 행성 대기의 가장자리들을 통과하는 별빛을 연구했다.", "au": "/en/2026-10-18/audio/w3.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "stretches", "m": "뻗어 나가다, 늘어나다", "cz": "They found that the atmosphere <span class=\"dr-blank\"><\/span> farther out on the evening side than on the cooler morning side.", "ca": "stretches", "ex": "They found that the atmosphere <b>stretches<\/b> farther out on the evening side than on the cooler morning side.", "sh": "They found that the atmosphere <b>stretches<\/b> farther out on the evening side than on the cooler morning side.", "ek": "그들은 대기가 더 서늘한 아침 쪽보다 저녁 쪽에서 더 멀리 바깥으로 뻗어 있다는 것을 발견했다.", "au": "/en/2026-10-18/audio/w4.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "probably", "m": "아마도", "cz": "Strong winds, which carry heat from the bright day side to the dark night side, are <span class=\"dr-blank\"><\/span> what causes this bulge.", "ca": "probably", "ex": "Strong winds, which carry heat from the bright day side to the dark night side, are <b>probably<\/b> what causes this bulge.", "sh": "… are <b>probably<\/b> what causes this bulge.", "ek": "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 이 부풂의 원인일 것이다.", "au": "/en/2026-10-18/audio/w5.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "불룩한 부분, 부풂", "방법"]}, {"w": "bulge", "m": "불룩한 부분, 부풂", "cz": "Strong winds, which carry heat from the bright day side to the dark night side, are probably what causes this <span class=\"dr-blank\"><\/span>.", "ca": "bulge", "ex": "Strong winds, which carry heat from the bright day side to the dark night side, are probably what causes this <b>bulge<\/b>.", "sh": "… are probably what causes this <b>bulge<\/b>.", "ek": "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 이 부풂의 원인일 것이다.", "au": "/en/2026-10-18/audio/w6.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "방법"]}, {"w": "method", "m": "방법", "cz": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this <span class=\"dr-blank\"><\/span> will help them study the weather on many of them.", "ca": "method", "ex": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this <b>method<\/b> will help them study the weather on many of them.", "sh": "… this <b>method<\/b> will help them study the weather …", "ek": "지금까지 우리 태양계 밖에서 6,000개가 넘는 행성이 발견되었기 때문에, 연구팀은 이 방법이 그중 많은 행성의 날씨를 연구하는 데 도움이 되기를 바란다.", "au": "/en/2026-10-18/audio/w7.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂"]}]</script>
+<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1012,7 +1015,5 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "astronomers", "m": "천문학자들 (복수 -s)", "cz": "<span class=\"dr-blank\"><\/span> have found that a giant planet outside our solar system is not perfectly round.", "ca": "Astronomers", "ex": "<b>Astronomers<\/b> have found that a giant planet outside our solar system is not perfectly round.", "sh": "<b>Astronomers<\/b> have found that a giant planet outside our solar system is not perfectly round.", "ek": "천문학자들이 우리 태양계 밖의 한 거대 행성이 완벽하게 둥글지 않다는 것을 알아냈다.", "au": "/en/2026-10-18/audio/w1.mp3", "alts": ["~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "faces", "m": "~을 향하다 (face의 3인칭 단수)", "mh": "~을 향하다", "cz": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always <span class=\"dr-blank\"><\/span> its star.", "ca": "faces", "ex": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always <b>faces<\/b> its star.", "sh": "… and one side of it always <b>faces<\/b> its star.", "ek": "그 행성은 지구에서 약 1,300광년 떨어진 뜨거운 가스 행성으로, 한쪽 면이 항상 자기 별을 향하고 있다.", "au": "/en/2026-10-18/audio/w2.mp3", "alts": ["천문학자들 (복수 -s)", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "edges", "m": "가장자리들 (edge의 복수)", "mh": "가장자리들", "cz": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the <span class=\"dr-blank\"><\/span> of its atmosphere.", "ca": "edges", "ex": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the <b>edges<\/b> of its atmosphere.", "sh": "… that passes through the <b>edges<\/b> of its atmosphere.", "ek": "한 과학자 팀이 제임스 웹 우주 망원경을 이용해, 그 행성 대기의 가장자리들을 통과하는 별빛을 연구했다.", "au": "/en/2026-10-18/audio/w3.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "stretches", "m": "뻗어 나가다, 늘어나다", "cz": "They found that the atmosphere <span class=\"dr-blank\"><\/span> farther out on the evening side than on the cooler morning side.", "ca": "stretches", "ex": "They found that the atmosphere <b>stretches<\/b> farther out on the evening side than on the cooler morning side.", "sh": "They found that the atmosphere <b>stretches<\/b> farther out on the evening side than on the cooler morning side.", "ek": "그들은 대기가 더 서늘한 아침 쪽보다 저녁 쪽에서 더 멀리 바깥으로 뻗어 있다는 것을 발견했다.", "au": "/en/2026-10-18/audio/w4.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "아마도", "불룩한 부분, 부풂", "방법"]}, {"w": "probably", "m": "아마도", "cz": "Strong winds, which carry heat from the bright day side to the dark night side, are <span class=\"dr-blank\"><\/span> what causes this bulge.", "ca": "probably", "ex": "Strong winds, which carry heat from the bright day side to the dark night side, are <b>probably<\/b> what causes this bulge.", "sh": "… are <b>probably<\/b> what causes this bulge.", "ek": "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 이 부풂의 원인일 것이다.", "au": "/en/2026-10-18/audio/w5.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "불룩한 부분, 부풂", "방법"]}, {"w": "bulge", "m": "불룩한 부분, 부풂", "cz": "Strong winds, which carry heat from the bright day side to the dark night side, are probably what causes this <span class=\"dr-blank\"><\/span>.", "ca": "bulge", "ex": "Strong winds, which carry heat from the bright day side to the dark night side, are probably what causes this <b>bulge<\/b>.", "sh": "… are probably what causes this <b>bulge<\/b>.", "ek": "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 이 부풂의 원인일 것이다.", "au": "/en/2026-10-18/audio/w6.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "방법"]}, {"w": "method", "m": "방법", "cz": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this <span class=\"dr-blank\"><\/span> will help them study the weather on many of them.", "ca": "method", "ex": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this <b>method<\/b> will help them study the weather on many of them.", "sh": "… this <b>method<\/b> will help them study the weather …", "ek": "지금까지 우리 태양계 밖에서 6,000개가 넘는 행성이 발견되었기 때문에, 연구팀은 이 방법이 그중 많은 행성의 날씨를 연구하는 데 도움이 되기를 바란다.", "au": "/en/2026-10-18/audio/w7.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 부풂"]}]</script>
-<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 </body>
 </html>

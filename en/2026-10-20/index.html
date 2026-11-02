@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root {
-    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
-    --line: #f2f4f6; --blue: #3182f6; --blue-soft: #e8f3ff; --blue-press: #1b64da;
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
+    --line: #f2f4f6; --blue: #1b64da; --blue-soft: #e8f3ff; --blue-press: #1550b8;
     --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
     /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
     --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
@@ -55,9 +55,10 @@
   /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
   .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
   .sent:last-of-type { padding-bottom: 0; }
-  .no { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 8px;
+  .no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;
         background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
-        display: grid; place-items: center; }
+        display: grid; place-items: center; position: relative; }
+  .no::before { content: ''; position: absolute; inset: -6px; }
   .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
   .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
   .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
@@ -160,7 +161,7 @@
   a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }
   .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
   .lang-row a.lang-go { margin: 0; }
-  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
   .sub h2 { margin-bottom: 4px; }
@@ -184,33 +185,6 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  /* vote-css */
-  .cat-science { color: #3182f6; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #e89a14; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #3182f6; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #e89a14; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -358,6 +332,33 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
   .gnb .brand img { vertical-align: middle; }
@@ -515,7 +516,7 @@
   </section>
 <!-- /drill-card -->
 
-  <section class="card vote" id="vote" data-v="2" data-cat="tech" data-wd="1">
+  <section class="card vote" id="vote" data-v="4" data-cat="tech" data-wd="1">
     <h2>오늘 주제 어땠어요?</h2>
     <p class="desc">오늘은 <span class="cat cat-tech">기술</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
     <div class="vote-btns">
@@ -980,6 +981,8 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
+<script type="application/json" id="drill-data">[{"w": "materials", "m": "재료, 물질들 (material의 복수)", "mh": "재료, 물질들", "cz": "The idea is simple: when two different <span class=\"dr-blank\"><\/span> touch and then pull apart, they create a small electric charge.", "ca": "materials", "ex": "The idea is simple: when two different <b>materials<\/b> touch and then pull apart, they create a small electric charge.", "sh": "… when two different <b>materials<\/b> touch and then pull apart, …", "ek": "원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.", "au": "/en/2026-10-20/audio/w1.mp3", "alts": ["전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "charge", "m": "전하, (전기의) 충전량", "cz": "The idea is simple: when two different materials touch and then pull apart, they create a small electric <span class=\"dr-blank\"><\/span>.", "ca": "charge", "ex": "The idea is simple: when two different materials touch and then pull apart, they create a small electric <b>charge<\/b>.", "sh": "… touch and then pull apart, they create a small electric <b>charge<\/b>.", "ek": "원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.", "au": "/en/2026-10-20/audio/w2.mp3", "alts": ["재료, 물질들", "잘 휘는, 유연한", "센서들, 감지기들", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "flexible", "m": "잘 휘는, 유연한", "cz": "Three thin, <span class=\"dr-blank\"><\/span> sensors on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "ca": "flexible", "ex": "Three thin, <b>flexible<\/b> sensors on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "sh": "Three thin, <b>flexible<\/b> sensors on the frame …", "ek": "안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.", "au": "/en/2026-10-20/audio/w3.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "센서들, 감지기들", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "sensors", "m": "센서들, 감지기들 (sensor의 복수)", "mh": "센서들, 감지기들", "cz": "Three thin, flexible <span class=\"dr-blank\"><\/span> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "ca": "sensors", "ex": "Three thin, flexible <b>sensors<\/b> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "sh": "Three thin, flexible <b>sensors<\/b> on the frame …", "ek": "안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.", "au": "/en/2026-10-20/audio/w4.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "잘 휘는, 유연한", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "steady", "m": "꾸준한, 끊이지 않는", "cz": "Because people blink about fourteen to twenty times a minute, the sensors get a <span class=\"dr-blank\"><\/span> supply of tiny movements.", "ca": "steady", "ex": "Because people blink about fourteen to twenty times a minute, the sensors get a <b>steady<\/b> supply of tiny movements.", "sh": "… the sensors get a <b>steady<\/b> supply of tiny movements.", "ek": "사람은 1분에 약 14~20번 눈을 깜빡이기 때문에, 센서들은 작은 움직임을 꾸준히 공급받는다.", "au": "/en/2026-10-20/audio/w5.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "pattern", "m": "패턴, 일정한 모양", "cz": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <span class=\"dr-blank\"><\/span>, which a computer program learns to recognize.", "ca": "pattern", "ex": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <b>pattern<\/b>, which a computer program learns to recognize.", "sh": "… makes a different electrical <b>pattern<\/b>, which a computer program …", "ek": "씹기든, 말하기든, 눈썹 올리기든 각각의 동작은 서로 다른 전기 패턴을 만들고, 컴퓨터 프로그램이 이를 알아보도록 학습한다.", "au": "/en/2026-10-20/audio/w6.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들", "꾸준한, 끊이지 않는", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "identified", "m": "알아냈다, 식별했다 (identify의 과거형)", "cz": "In tests with twenty volunteers, the glasses correctly <span class=\"dr-blank\"><\/span> what people were doing almost 94 percent of the time.", "ca": "identified", "ex": "In tests with twenty volunteers, the glasses correctly <b>identified<\/b> what people were doing almost 94 percent of the time.", "sh": "… the glasses correctly <b>identified<\/b> what people were doing …", "ek": "자원자 20명을 대상으로 한 실험에서, 그 안경은 사람들이 무엇을 하고 있는지 거의 94%의 경우에 정확히 알아냈다.", "au": "/en/2026-10-20/audio/w7.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들", "꾸준한, 끊이지 않는", "패턴, 일정한 모양"]}]</script>
+<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1012,7 +1015,5 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "materials", "m": "재료, 물질들 (material의 복수)", "mh": "재료, 물질들", "cz": "The idea is simple: when two different <span class=\"dr-blank\"><\/span> touch and then pull apart, they create a small electric charge.", "ca": "materials", "ex": "The idea is simple: when two different <b>materials<\/b> touch and then pull apart, they create a small electric charge.", "sh": "… when two different <b>materials<\/b> touch and then pull apart, …", "ek": "원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.", "au": "/en/2026-10-20/audio/w1.mp3", "alts": ["전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "charge", "m": "전하, (전기의) 충전량", "cz": "The idea is simple: when two different materials touch and then pull apart, they create a small electric <span class=\"dr-blank\"><\/span>.", "ca": "charge", "ex": "The idea is simple: when two different materials touch and then pull apart, they create a small electric <b>charge<\/b>.", "sh": "… touch and then pull apart, they create a small electric <b>charge<\/b>.", "ek": "원리는 간단하다. 서로 다른 두 물질이 닿았다가 떨어지면 작은 전하가 생긴다.", "au": "/en/2026-10-20/audio/w2.mp3", "alts": ["재료, 물질들", "잘 휘는, 유연한", "센서들, 감지기들", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "flexible", "m": "잘 휘는, 유연한", "cz": "Three thin, <span class=\"dr-blank\"><\/span> sensors on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "ca": "flexible", "ex": "Three thin, <b>flexible<\/b> sensors on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "sh": "Three thin, <b>flexible<\/b> sensors on the frame …", "ek": "안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.", "au": "/en/2026-10-20/audio/w3.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "센서들, 감지기들", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "sensors", "m": "센서들, 감지기들 (sensor의 복수)", "mh": "센서들, 감지기들", "cz": "Three thin, flexible <span class=\"dr-blank\"><\/span> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "ca": "sensors", "ex": "Three thin, flexible <b>sensors<\/b> on the frame press together and separate every time the wearer blinks, smiles, or moves the jaw.", "sh": "Three thin, flexible <b>sensors<\/b> on the frame …", "ek": "안경테에 있는 얇고 잘 휘는 센서 세 개는 착용자가 눈을 깜빡이거나, 웃거나, 턱을 움직일 때마다 서로 눌렸다가 떨어진다.", "au": "/en/2026-10-20/audio/w4.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "잘 휘는, 유연한", "꾸준한, 끊이지 않는", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "steady", "m": "꾸준한, 끊이지 않는", "cz": "Because people blink about fourteen to twenty times a minute, the sensors get a <span class=\"dr-blank\"><\/span> supply of tiny movements.", "ca": "steady", "ex": "Because people blink about fourteen to twenty times a minute, the sensors get a <b>steady<\/b> supply of tiny movements.", "sh": "… the sensors get a <b>steady<\/b> supply of tiny movements.", "ek": "사람은 1분에 약 14~20번 눈을 깜빡이기 때문에, 센서들은 작은 움직임을 꾸준히 공급받는다.", "au": "/en/2026-10-20/audio/w5.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들", "패턴, 일정한 모양", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "pattern", "m": "패턴, 일정한 모양", "cz": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <span class=\"dr-blank\"><\/span>, which a computer program learns to recognize.", "ca": "pattern", "ex": "Each action, whether it is chewing, talking, or raising an eyebrow, makes a different electrical <b>pattern<\/b>, which a computer program learns to recognize.", "sh": "… makes a different electrical <b>pattern<\/b>, which a computer program …", "ek": "씹기든, 말하기든, 눈썹 올리기든 각각의 동작은 서로 다른 전기 패턴을 만들고, 컴퓨터 프로그램이 이를 알아보도록 학습한다.", "au": "/en/2026-10-20/audio/w6.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들", "꾸준한, 끊이지 않는", "알아냈다, 식별했다 (identify의 과거형)"]}, {"w": "identified", "m": "알아냈다, 식별했다 (identify의 과거형)", "cz": "In tests with twenty volunteers, the glasses correctly <span class=\"dr-blank\"><\/span> what people were doing almost 94 percent of the time.", "ca": "identified", "ex": "In tests with twenty volunteers, the glasses correctly <b>identified<\/b> what people were doing almost 94 percent of the time.", "sh": "… the glasses correctly <b>identified<\/b> what people were doing …", "ek": "자원자 20명을 대상으로 한 실험에서, 그 안경은 사람들이 무엇을 하고 있는지 거의 94%의 경우에 정확히 알아냈다.", "au": "/en/2026-10-20/audio/w7.mp3", "alts": ["재료, 물질들", "전하, (전기의) 충전량", "잘 휘는, 유연한", "센서들, 감지기들", "꾸준한, 끊이지 않는", "패턴, 일정한 모양"]}]</script>
-<script id="drill-js" data-v="12" src="/assets/drill.js?v=12" defer></script>
 </body>
 </html>
