@@ -63,9 +63,9 @@ textarea, .scene-en {
 textarea { height: 88px; resize: vertical; }
 textarea:focus, .scene-en:focus { border-color: var(--blue); }
 .scene-en { height: 72px; resize: vertical; }
-.scene-en-row { position: relative; margin-bottom: 4px; }
+.scene-en-row { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; margin-bottom: 4px; }
+.scene-en-row .scene-en { width: 100%; box-sizing: border-box; }
 .btn-translate {
-  position: absolute; bottom: 10px; right: 10px;
   padding: 4px 10px; border-radius: 8px; background: var(--blue-soft);
   color: var(--blue); font-size: 12px; font-weight: 700; border: none;
   cursor: pointer; font-family: var(--font);

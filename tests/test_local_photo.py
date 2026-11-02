@@ -421,6 +421,7 @@ def _start_web(
         "LOCAL_IMAGE_URL": f"http://127.0.0.1:{upstream_port}",
         "IMAGE_API_TOKEN_FILE": str(token_file),
         "IMAGE_WEB_PORT": str(port),
+        "IMAGE_WEB_DIR": str(tmp / "saved"),  # 사용자 기록 폴더(~/Pictures/mini-image)에 시험 이미지를 남기지 않는다
     }
     proc = subprocess.Popen(
         [sys.executable, str(REPO / "tools" / "image-api" / "web.py")],
