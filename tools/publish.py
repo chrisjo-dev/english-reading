@@ -230,16 +230,23 @@ def patch_page(lang, day):
     path = ROOT / lang / day / "index.html"
     page = path.read_text(encoding="utf-8")
     url = f"{SITE}/{lang}/{day}/"
+    # 주제를 포함한 메타 설명 (새 페이지/기존 페이지 공통으로 계산)
+    try:
+        m_topic = re.search(r"<h1>.*?<em>(.*?)</em>", page, re.S)
+        topic_text = html.unescape(m_topic.group(1).strip()) if m_topic else topic_of(lang, day)
+    except Exception:
+        topic_text = ""
+    new_desc = f"{L['level']} {L['name']} 읽기 — {topic_text}. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요."
     if 'property="og:image"' not in page:
         # og:title: 브랜드명만 붙인다(og:site_name 에 전체 이름이 들어간다)
-        title = html.escape(f"오늘은 {topic_of(lang, day)} 이야기예요 | {langs.BRAND}")
-        desc = f"{L['level']} 학습자를 위한 하루 한 단락 {L['name']} 읽기. 문장별 음성, 주요 단어, 모범 해석."
+        title = html.escape(f"오늘은 {topic_text} 이야기예요 | {langs.BRAND}")
+        desc_esc = html.escape(new_desc, quote=True)
         meta = (
-            f'<meta name="description" content="{desc}">\n'
+            f'<meta name="description" content="{desc_esc}">\n'
             f'<meta property="og:type" content="article">\n'
             f'<meta property="og:site_name" content="{L["site"]}">\n'
             f'<meta property="og:title" content="{title}">\n'
-            f'<meta property="og:description" content="{desc}">\n'
+            f'<meta property="og:description" content="{desc_esc}">\n'
             f'<meta property="og:url" content="{url}">\n'
             f'<meta property="og:image" content="{url}thumb.png">\n'
             f'<meta property="og:image:width" content="1200">\n'
@@ -247,6 +254,11 @@ def patch_page(lang, day):
             f'<meta name="twitter:card" content="summary_large_image">\n'
         )
         page = page.replace("<link rel=\"stylesheet\"", meta + "<link rel=\"stylesheet\"", 1)
+    else:
+        # 기존 페이지: 주제를 포함한 메타 설명으로 갱신 (멱등)
+        desc_esc = html.escape(new_desc, quote=True)
+        page = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{desc_esc}">', page, count=1)
+        page = re.sub(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{desc_esc}">', page, count=1)
     photo = (ROOT / lang / day / "photo.jpg").exists()
     if photo and 'class="hero"' not in page:
         # 사진이 있는 날은 OG 썸네일(글씨, 그림자가 든 thumb.png) 대신 글 없는 사진을 카드 맨 위 배너로(시안 design/article-thumb P1)
@@ -426,9 +438,13 @@ def rebuild_lists(lang):
                 month = e["month"]
                 groups.append(f'  <section class="month">\n    <h2>{month}</h2>\n    <div class="card">')
             # 사진이 있는 날은 글 없는 사진을 둥근 네모로(시안 P4), 없는 날은 예전 일러스트 썸네일
-            img = (f'<img class="ph" src="{p}{e["day"]}/photo.jpg" width="56" height="56" alt="" loading="lazy">'
-                   if (ROOT / lang / e["day"] / "photo.jpg").exists() else
-                   f'<img src="{p}{e["day"]}/thumb.png" width="56" height="56" alt="" loading="lazy">')
+            # thumb-sq.jpg(112×112 중앙 잘라낸 정사각 사진)가 있으면 우선 쓴다(용량이 더 작고 비율이 맞음)
+            if (ROOT / lang / e["day"] / "thumb-sq.jpg").exists():
+                img = f'<img class="ph" src="{p}{e["day"]}/thumb-sq.jpg" width="56" height="56" alt="" loading="lazy">'
+            elif (ROOT / lang / e["day"] / "photo.jpg").exists():
+                img = f'<img class="ph" src="{p}{e["day"]}/photo.jpg" width="56" height="56" alt="" loading="lazy">'
+            else:
+                img = f'<img src="{p}{e["day"]}/thumb.png" width="56" height="56" alt="" loading="lazy">'
             groups.append(
                 f'      <a class="item" href="{p}{e["day"]}/" data-cat="{e["cat"]}" data-q="{html.escape(e["q"])}">'
                 f'{img}'
@@ -437,13 +453,15 @@ def rebuild_lists(lang):
             )
         groups.append("    </div>\n  </section>")
         review = (f'  <a class="review" href="{p}review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
+        meta_desc = html.escape(f"{L['intro']} 지금까지 {len(entries)}편 수록.", quote=True)
+        canonical = f"{SITE}/{lang}/" if p == "./" else f"{SITE}/{lang}/archive/"
         page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
                 .replace("__TITLE__", title).replace("__ARCHIVE__", f"{p}archive/" if p == "./" else "./").replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
                 .replace("__NAME__", L["name"]).replace("__GNB_NARROW__", GNB_NARROW_CSS).replace("__BRAND__", langs.BRAND).replace("__GNB_BRAND__", GNB_BRAND_INNER)
                 .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
                 .replace("__CHIPS__", chips).replace("__LANGTABS__", tabs).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
-                .replace("__CANONICAL__", f"{SITE}/{lang}/").replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
+                .replace("__META_DESC__", meta_desc).replace("__CANONICAL__", canonical).replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
         if L.get("noindex", False):
             page = page.replace('<link rel="stylesheet"', '<meta name="robots" content="noindex">\n<link rel="stylesheet"', 1)
         out.mkdir(parents=True, exist_ok=True)
@@ -510,7 +528,9 @@ def write_sitemap():
 
     noindex 언어는 사이트맵에서 제외한다.
     """
-    urls = [f"{SITE}/"]
+    today = dt.date.today().isoformat()
+    # (url, lastmod) 쌍의 목록
+    entries = [(f"{SITE}/", today)]
     for code in langs.LANGS:
         L = langs.LANGS[code]
         if L.get("noindex", False):
@@ -518,12 +538,14 @@ def write_sitemap():
         days = days_of(code)
         if not days:
             continue
-        urls.append(f"{SITE}/{code}/")
-        urls += [f"{SITE}/{code}/{d}/" for d in days]
+        latest = days[0]
+        entries.append((f"{SITE}/{code}/", latest))
+        entries.append((f"{SITE}/{code}/archive/", latest))
+        entries += [(f"{SITE}/{code}/{d}/", d) for d in days]
         rdir = ROOT / code / "review"
         if rdir.exists():
-            urls += [f"{SITE}/{code}/review/{r.name}/" for r in sorted(rdir.iterdir()) if r.is_dir()]
-    body = "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls)
+            entries += [(f"{SITE}/{code}/review/{r.name}/", r.name) for r in sorted(rdir.iterdir()) if r.is_dir()]
+    body = "".join(f"  <url><loc>{u}</loc><lastmod>{lm}</lastmod></url>\n" for u, lm in entries)
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
                                       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
@@ -533,6 +555,7 @@ def write_sitemap():
 ARCHIVE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light only"><title>__TITLE__ | __SITE__</title>
+<meta name="description" content="__META_DESC__">
 <meta property="og:title" content="__TITLE__ | __BRAND__"><meta property="og:image" content="__OG_IMAGE__">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__CANONICAL__">

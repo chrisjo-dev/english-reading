@@ -146,7 +146,7 @@ class RenderJaLevelsTest(unittest.TestCase):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def test_basic_sentences_have_ruby(self):
-        en_a = re.findall(r'<div class="en-a">(.*?)</div>', self.page)
+        en_a = re.findall(r'<div class="en-a"[^>]*>(.*?)</div>', self.page)
         self.assertEqual(len(en_a), 6)
         self.assertIn("<ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>", en_a[0])
         self.assertIn("<b><ruby>本屋", en_a[0])
@@ -265,6 +265,9 @@ class PatchOldJaPageTest(unittest.TestCase):
             p = re.sub(r'<section class="card sub".*?</section>', "", p, flags=re.S)
             p = re.sub(r'<title>[^<]*</title>', "<title/>", p)
             p = re.sub(r'<meta property="og:(?:title|site_name)" content="[^"]*"', '<meta property="og:brand" content=""', p)
+            # patch_page 가 메타 설명에 주제를 포함한 새 형식으로 갱신하므로 비교에서 제외한다
+            p = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content=""/>', p)
+            p = re.sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content=""/>', p)
             p = re.sub(r'<link rel="icon"[^>]*/?>', "", p)
             p = re.sub(r'(<a class="brand" href="/">).*?(</a>)', r'\1\2', p, flags=re.S)
             p = re.sub(r'/\* gnb-narrow \*/[^\n]*\n?', '', p)

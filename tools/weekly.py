@@ -66,7 +66,7 @@ def build_page(lang, end):
             f'  <section class="day">\n    <h2>{short(x["day"])} <a href="../../{x["day"]}/">{html.escape(x["topic"])}</a></h2>\n'
             f'    <div class="grid">{cards}</div>\n  </section>'
         )
-    page = PAGE.replace("__SITE__", L["site"]).replace("__HEAD_EXTRA__", L["head_extra"]).replace("__SPAN__", span(end)).replace("__TOTAL__", str(total)).replace("__COUNT__", str(len(days)))
+    page = PAGE.replace("__SITE__", L["site"]).replace("__HEAD_EXTRA__", L["head_extra"]).replace("__SPAN__", span(end)).replace("__TOTAL__", str(total)).replace("__COUNT__", str(len(days))).replace("__LANG_NAME__", L["name"])
     page = page.replace("__GROUPS__", "\n".join(groups)).replace("__URL__", f"{SITE}/{lang}/review/{end}/")
     page = page.replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML)
     page = page.replace("__OG_IMAGE__", f"{SITE}/{lang}/{days[-1]['day']}/thumb.png")
@@ -115,10 +115,11 @@ def build_email(lang, end):
 # 복습 페이지. 단어 카드를 누르면 뜻이 보인다. 날짜 페이지와 같은 색과 글꼴을 쓴다.
 PAGE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light only"><title>이번 주 단어 복습 | 독해한입</title>
+<meta name="color-scheme" content="light only"><title>이번 주 __LANG_NAME__ 단어 복습 (__SPAN__) | 독해한입</title>
 <meta name="description" content="__SPAN__ 동안 나온 주요 단어 __TOTAL__개를 뜻을 가리고 복습해요.">
-<meta property="og:title" content="이번 주 단어 복습 (__SPAN__) | 독해한입">
+<meta property="og:title" content="이번 주 __LANG_NAME__ 단어 복습 (__SPAN__) | 독해한입">
 <meta property="og:url" content="__URL__"><meta property="og:image" content="__OG_IMAGE__"><meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__URL__">
 <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 __HEAD_EXTRA__

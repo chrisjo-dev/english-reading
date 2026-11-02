@@ -361,6 +361,7 @@ def build(lang, day, cat=None, pic=None):
             small.quantize(palette=_palette(small), dither=Image.Dither.FLOYDSTEINBERG).save(out, optimize=True, pnginfo=meta)
             # 날짜 페이지 배너와 지난 지문 목록에는 글 없는 사진을 쓴다(시안 P1, P4)
             cover(pic, 1200, 630).save(out.with_name("photo.jpg"), quality=82, optimize=True, progressive=True)
+            cover(pic, 112, 112).save(out.with_name("thumb-sq.jpg"), quality=80, optimize=True)
             return out
         except Exception as e:
             print(f"thumb: 사진 합성 실패 {type(e).__name__}, 일러스트로 만든다", file=sys.stderr)

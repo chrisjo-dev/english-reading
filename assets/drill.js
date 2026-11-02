@@ -79,7 +79,7 @@
     var tot = S.list.length, a, b, la, lb, lc;
     if (S.mode !== 'card') {
       a = S.list.filter(function (x) { return x.first === true; }).length; b = S.list.filter(function (x) { return x.first === false; }).length;
-      la = '맞힘 ' + a; lb = '오답 ' + b; lc = '남은 문제 ' + S.queue.length;
+      var it0 = S.queue[0]; la = '맞힘 ' + a; lb = '오답 ' + b; lc = '남은 문제 ' + (S.queue.length - (it0 && it0.pick != null ? 1 : 0));
     } else {
       a = S.list.filter(function (x) { return x.done; }).length; b = S.list.filter(function (x) { return !x.done && x.wrong > 0; }).length;
       la = '외운 단어 ' + a; lb = '다시 볼 단어 ' + b; lc = '남은 카드 ' + S.queue.length;
