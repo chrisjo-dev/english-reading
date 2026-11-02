@@ -225,6 +225,10 @@ def label(day):
     return f"{d.month}월 {d.day}일 {DAYS[d.weekday()]}요일"
 
 
+LEVEL_HEAD_OLD = "<script>try{var _ql=new URLSearchParams(location.search).get('level');if(!_ql)_ql=localStorage.getItem('read_level');if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>"
+LEVEL_HEAD_NEW = "<script>try{var _lc=location.pathname.split('/')[1]||'en';var _ql=new URLSearchParams(location.search).get('level');if(!_ql){_ql=localStorage.getItem('read_level:'+_lc);if(!_ql&&_lc==='en'){var _old=localStorage.getItem('read_level');if(_old){_ql=_old;localStorage.setItem('read_level:en',_old);localStorage.removeItem('read_level');}}}if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>"
+
+
 def patch_page(lang, day):
     L = langs.get(lang)
     path = ROOT / lang / day / "index.html"
@@ -404,6 +408,10 @@ def patch_page(lang, day):
         for old, new in LEVEL_A_CSS:
             page = page.replace(old, new, 1)
     page = vote.apply(page, lang, day)  # 오늘 분야 배지와 주제 반응 카드(#13)
+    # 수준 설정을 언어별로 저장한다(read_level:en 등). 템플릿만 바꾸면 지난 페이지에는 옛 공용 키가 남아 언어끼리 섞였다
+    page = page.replace(LEVEL_HEAD_OLD, LEVEL_HEAD_NEW, 1)
+    page = page.replace("localStorage.setItem('read_level', lp);", "localStorage.setItem('read_level:' + _gaLang, lp);")
+    page = page.replace("localStorage.setItem('read_level', to);", "localStorage.setItem('read_level:' + _gaLang, to);")
     page = drill.apply(page, lang, day)  # 단어 암기 반복과 복습 띠(#16)
     path.write_text(page, encoding="utf-8")
 

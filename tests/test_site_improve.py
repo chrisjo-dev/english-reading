@@ -370,3 +370,13 @@ class TestWeeklyPageTitleTask3c(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestOldPagesLevelKey(unittest.TestCase):
+    """지난 페이지도 수준을 언어별 키로 저장한다(공용 read_level 에 쓰지 않는다)."""
+
+    def test_all_pages_use_per_language_key(self):
+        for f in sorted(Path(__file__).resolve().parent.parent.glob("*/20??-??-??/index.html")):
+            s = f.read_text(encoding="utf-8")
+            self.assertNotIn("setItem('read_level',", s, str(f))
+            self.assertIn("var _lc=location", s, str(f))

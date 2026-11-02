@@ -413,7 +413,7 @@
   .pbar-close { flex: none; width: 28px; height: 28px; border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 18px; display: grid; place-items: center; padding: 0; line-height: 1; }
   body.pbar-vis main { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
 </style>
-<script>try{var _ql=new URLSearchParams(location.search).get('level');if(!_ql)_ql=localStorage.getItem('read_level');if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>
+<script>try{var _lc=location.pathname.split('/')[1]||'en';var _ql=new URLSearchParams(location.search).get('level');if(!_ql){_ql=localStorage.getItem('read_level:'+_lc);if(!_ql&&_lc==='en'){var _old=localStorage.getItem('read_level');if(_old){_ql=_old;localStorage.setItem('read_level:en',_old);localStorage.removeItem('read_level');}}}if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
@@ -772,7 +772,7 @@
       var lp = new URLSearchParams(location.search).get('level');
       if (lp === 'a' || lp === 'b') {
         document.documentElement.classList.toggle('level-a', lp === 'a');
-        localStorage.setItem('read_level', lp);
+        localStorage.setItem('read_level:' + _gaLang, lp);
       }
     } catch (e) {}
   })();
@@ -962,7 +962,7 @@
       e.preventDefault();
       var from = isLevelA() ? 'a' : 'b';
       document.documentElement.classList.toggle('level-a', to === 'a');
-      try { localStorage.setItem('read_level', to); } catch (ex) {}
+      try { localStorage.setItem('read_level:' + _gaLang, to); } catch (ex) {}
       gaEvent('level_switch', { from: from, to: to, lang: _gaLang, day: _gaDay });
       updateLinks();
       // URL 에 ?level= 파라미터 반영 (히스토리 교체)
