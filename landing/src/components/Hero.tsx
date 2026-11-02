@@ -59,7 +59,7 @@ export default function Hero() {
         </h1>
         {/* 메인 배지 로고: 데스크톱에서 헤드라인 왼쪽, 모바일에서 위 */}
         <img
-          src="/assets/brand/badge-512.png"
+          src="/assets/brand/badge-192.png"
           alt="독해한입"
           className="hero-badge"
           width={512}

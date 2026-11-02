@@ -176,10 +176,10 @@ def render(lang, day):
     chunks_a = chunk_rows_a(lang, day, levels_a["sentences"]) if levels_a else None
     sentences = "".join(
         f'    <div class="sent"><button class="no" type="button" data-i="{i}" aria-label="{i + 1}번 문장 듣기">{i + 1}</button>'
-        f'<div class="say"><div class="en">{marks(s["en"], "b")}{BADGE.format(L["hard_badge"]) if s.get("b2") else ""}</div>'
+        f'<div class="say"><div class="en" lang="{lang}">{marks(s["en"], "b")}{BADGE.format(L["hard_badge"]) if s.get("b2") else ""}</div>'
         f'{chunks[i] if chunks else ""}<div class="ko" hidden>{marks(a, "")}</div>'
         + (
-            f'<div class="en-a">{marks(levels_a["sentences"][i]["en"], "b")}</div>'
+            f'<div class="en-a" lang="{lang}">{marks(levels_a["sentences"][i]["en"], "b")}</div>'
             f'{chunks_a[i] if chunks_a else ""}'
             f'<div class="ko-a" hidden>{marks(levels_a["answers"][i], "")}</div>'
             if levels_a else ""
@@ -197,7 +197,7 @@ def render(lang, day):
     words = "".join(
         '    <div class="word">'
         '<span class="wl">'
-        + f'<span class="w">{marks(w, "")}</span>'
+        + f'<span class="w" lang="{lang}">{marks(w, "")}</span>'
         + _SPKR_BTN.format(kind="w", i=i, word=html.escape(plain_word_tts(w, lang), quote=True))
         + '</span>'
         + f'<span class="m">{esc(m)}</span></div>\n'
@@ -213,7 +213,7 @@ def render(lang, day):
     )
     advanced = "".join(
         '      <div class="adv"><div class="w">'
-        + f'<span class="wt">{marks(a["word"], "")}</span>'
+        + f'<span class="wt" lang="{lang}">{marks(a["word"], "")}</span>'
         + _SPKR_BTN.format(kind="v", i=i, word=html.escape(plain_word_tts(a["word"], lang), quote=True))
         + '</div>'
         + f'<div class="m">{esc(a["meaning"])}'
