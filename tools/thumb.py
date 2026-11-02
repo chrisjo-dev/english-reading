@@ -249,7 +249,9 @@ def photo(lang, day):
                 u = urllib.parse.urlsplit(local_url)
                 socket.create_connection((u.hostname, u.port or 80), timeout=5).close()
                 r = json.loads(urllib.request.urlopen(req, timeout=300).read())
-                return Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
+                img = Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
+                print(f"thumb: {lang} {day} source=mini")
+                return img
             except Exception as e:
                 print(f"thumb: 로컬 API 실패 {type(e).__name__}, OpenAI 로 시도합니다", file=sys.stderr)
 
@@ -262,7 +264,9 @@ def photo(lang, day):
         req = urllib.request.Request("https://api.openai.com/v1/images/generations", body,
                                      {"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
         r = json.loads(urllib.request.urlopen(req, timeout=180).read())
-        return Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
+        img = Image.open(io.BytesIO(base64.b64decode(r["data"][0]["b64_json"]))).convert("RGB")
+        print(f"thumb: {lang} {day} source=openai")
+        return img
     except urllib.error.HTTPError as e:
         print(f"thumb: 사진 생성 실패 HTTP {e.code}, 일러스트로 만든다", file=sys.stderr)
     except Exception as e:  # 네트워크, 응답 형식 오류
@@ -345,7 +349,9 @@ def build(lang, day, cat=None, pic=None):
     topic = re.search(r"<h1>.*?<em>(.*?)</em>", page, re.S).group(1).strip()
     out = ROOT / lang / day / "thumb.png"
     if pic is None and is_photo(out) and os.environ.get("THUMB_REDRAW") != "1":
-        return out  # 이미 사진 썸네일이면 다시 만들지 않는다(같은 날 다시 발행해도 비용이 들지 않고 그림도 그대로)
+        # 이미 사진 썸네일이면 다시 만들지 않는다(같은 날 다시 발행해도 비용이 들지 않고 그림도 그대로)
+        print(f"thumb: {lang} {day} source=existing")
+        return out
     pic = pic or photo(lang, day)
     if pic is not None:
         try:
@@ -359,6 +365,8 @@ def build(lang, day, cat=None, pic=None):
         except Exception as e:
             print(f"thumb: 사진 합성 실패 {type(e).__name__}, 일러스트로 만든다", file=sys.stderr)
 
+    # 일러스트 폴백
+    print(f"thumb: {lang} {day} source=illustration")
     img = Image.new("RGBA", (W, H), (255, 255, 255, 255))
     d = ImageDraw.Draw(img)
     # 오른쪽: 분야 색 원 안에 일러스트

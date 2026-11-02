@@ -23,16 +23,21 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Tailscale
+        # Tailscale 액션은 인증 실패(404 등) 시에도 성공을 반환하는 경우가 있다.
+        # 아래 Reachability 단계에서 실제 연결 여부를 명시적으로 확인한다.
         uses: tailscale/github-action@v3
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:ci
         timeout-minutes: 2
-      - name: Health
+      - name: Reachability
+        # /health 응답 실패(Tailscale 인증 실패 포함) 시 잡이 여기서 명확히 실패로 종료된다(continue-on-error 없음).
         env:
           URL: ${{ secrets.LOCAL_IMAGE_URL }}
-        run: curl -fsS -m 10 "$URL/health"
+        run: |
+          echo "맥 미니 /health 확인..."
+          curl -fsS -m 10 "$URL/health"
       - name: Small image
         env:
           URL: ${{ secrets.LOCAL_IMAGE_URL }}

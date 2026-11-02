@@ -42,9 +42,14 @@ jobs:
           day="$DAY"
           [ -n "$day" ] || day=$(TZ=Asia/Seoul date +%F)
           echo "catch-up: $codes $day"
-          # 한 언어가 실패해도(예: 그날 본 메일이 없음) 나머지 언어는 보충하고, 끝에 실패로 드러낸다.
+          # (언어, 수준) 조합별로 보충한다. 한 쌍이 실패해도 나머지는 계속 보충하고 끝에 실패로 드러낸다.
+          # levels=True 인 언어는 a 와 b 모두 보충한다(ja 기본 수준은 a 이므로 b 만 보충하면 기초 구독자가 누락된다).
           failed=""
           for code in $codes; do
-            python tools/send_email.py "$code" "$day" --catchup || failed="$failed $code"
+            levels=$(python -c "import sys; sys.path.insert(0,'tools'); import langs; L=langs.LANGS.get('$code',{}); print('a b' if L.get('levels') else 'b')")
+            for level in $levels; do
+              python tools/send_email.py "$code" "$day" --level "$level" --catchup \
+                || failed="$failed ${code}:${level}"
+            done
           done
           [ -z "$failed" ] || { echo "catch-up failed:$failed"; exit 1; }

@@ -186,6 +186,24 @@ jobs:
         timeout-minutes: 2
         continue-on-error: true
 
+      - name: Check mini reachability
+        # Tailscale 액션은 인증 실패 시에도 outcome=success 를 반환할 수 있다.
+        # /health 엔드포인트로 실제 연결 여부를 확인해 mini 출력값을 설정한다.
+        # 이 단계는 절대 잡을 실패시키지 않는다(continue-on-error + 조건부 실행).
+        id: mini_check
+        if: steps.tailscale.outcome == 'success'
+        env:
+          LOCAL_IMAGE_URL: ${{ secrets.LOCAL_IMAGE_URL }}
+        run: |
+          if curl -fsS -m 10 "$LOCAL_IMAGE_URL/health" 2>/dev/null; then
+            echo "mini=ok" >> "$GITHUB_OUTPUT"
+            echo "맥 미니 API 연결 확인"
+          else
+            echo "mini=down" >> "$GITHUB_OUTPUT"
+            echo "::warning::맥 미니 /health 에 닿지 않음 — OpenAI 폴백으로 진행합니다"
+          fi
+        continue-on-error: true
+
       - name: Build pages
         run: |
           for pair in ${{ steps.pick.outputs.pairs }}; do
@@ -195,9 +213,9 @@ jobs:
         env:
           # 썸네일 사진(tools/thumb.py). 비어 있거나 생성이 실패하면 분야 일러스트로 만들고 발행은 계속한다.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          # 맥 미니 이미지 API (Tailscale 경유). 없거나 실패하면 OpenAI 폴백.
-          # Tailscale 연결에 실패한 날은 맥 미니를 아예 부르지 않는다(닿지 않는 주소에서 기다리지 않게)
-          LOCAL_IMAGE_URL: ${{ steps.tailscale.outcome == 'success' && secrets.LOCAL_IMAGE_URL || '' }}
+          # 맥 미니 이미지 API (Tailscale 경유). /health 확인 성공 시에만 전달한다.
+          # Tailscale 액션이 성공 보고를 해도 실제 연결이 안 된 경우를 mini_check 로 걸러낸다.
+          LOCAL_IMAGE_URL: ${{ steps.mini_check.outputs.mini == 'ok' && secrets.LOCAL_IMAGE_URL || '' }}
           LOCAL_IMAGE_TOKEN: ${{ secrets.LOCAL_IMAGE_TOKEN }}
 
       - name: Commit
@@ -246,22 +264,29 @@ jobs:
 
       - name: Send email
         # 지난 날짜를 다시 만들 때는 보내지 않는다(수동 실행에서 send 를 켠 경우만 예외). no_email 이면 오늘 날짜여도 보내지 않는다.
-        # 중급(b)을 먼저 발송한다. 실패하면 워크플로 중단. 기초(a) 발송 실패는 경고만 남기고 계속 진행.
+        # b 와 a 발송은 서로 독립이다. 한쪽의 실패나 in_flight 타임아웃이 다른 쪽을 건너뛰지 않는다.
+        # 진짜 실패(API 오류 등)는 단계 끝에 모아 한 번에 드러낸다.
         run: |
+          step_failed=""
           for pair in ${{ steps.pick.outputs.pairs }}; do
             lang=${pair%%:*}; day=${pair#*:}
             if [ "${{ inputs.no_email }}" = "true" ]; then
               echo "skip email for $pair (no_email)"
             elif [ "$day" = "${{ steps.pick.outputs.today }}" ] || [ "${{ inputs.send }}" = "true" ]; then
-              python tools/send_email.py $lang $day --level b
-              # level a 는 levels 플래그가 True 인 언어(영어, 독일어, 일본어)만. send_email.py 도 email 플래그를 확인한다.
+              # b 발송. send_email.py 에서 in_flight 는 경고로 처리하므로 종료 코드 0 이 된다.
+              python tools/send_email.py $lang $day --level b \
+                || step_failed="$step_failed b:$pair"
+              # level a 는 levels 플래그가 True 인 언어(영어, 독일어, 일본어)만.
               _has_levels=$(python -c "import sys; sys.path.insert(0,'tools'); import langs; print(langs.LANGS.get('$lang',{}).get('levels',False))")
               if [ "$_has_levels" = "True" ]; then
-                python tools/send_email.py $lang $day --level a || echo "::warning::level a email skipped for $pair"
+                python tools/send_email.py $lang $day --level a \
+                  || step_failed="$step_failed a:$pair"
               fi
             else
               echo "skip email for $pair (not today)"
             fi
           done
+          # 하나라도 진짜 실패가 있으면 단계를 실패로 끝낸다
+          [ -z "${step_failed// /}" ] || { echo "::error::이메일 발송 실패: $step_failed"; exit 1; }
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}

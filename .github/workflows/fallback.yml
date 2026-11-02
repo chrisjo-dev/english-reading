@@ -91,8 +91,15 @@ jobs:
         run: |
           for pair in $USED_PAIRS; do
             lang="${pair%%:*}"; day="${pair#*:}"
-            echo "publish 트리거: $lang $day"
-            gh workflow run publish.yml -f lang="$lang" -f day="$day"
+            if [ "$lang" = "de" ]; then
+              # de 는 TTS 엔진(qwen)이 별도 경로라 publish.yml 을 직접 부르면 음성 없이 페이지가 만들어진다.
+              # de-audio.yml 이 음성을 생성한 뒤 publish.yml 을 dispatch 하므로 이 경로를 써야 한다.
+              echo "de 오디오+publish 트리거: de-audio.yml day=$day"
+              gh workflow run de-audio.yml -f day="$day"
+            else
+              echo "publish 트리거: $lang $day"
+              gh workflow run publish.yml -f lang="$lang" -f day="$day"
+            fi
           done
 
       - name: Open issues for used langs
