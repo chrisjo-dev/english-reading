@@ -6,10 +6,12 @@ Tailscale 테일넷 안에서만 접근할 수 있습니다.
 ## 웹 UI 사용법
 
 맥북에서 로컬 프록시 서버를 시작하면 토큰 없이 브라우저로 사용할 수 있습니다.
+웹 UI 코드는 이 저장소가 아니라 맥북의 `~/test/local-model/`(web.py, web/, tests/)에 있습니다.
+스타일 문구는 이 저장소의 `tools/image-api/styles.json` 하나를 같이 읽습니다(`IMAGE_STYLES_FILE` 로 바꿀 수 있음).
 
 ```bash
 # mlx-lm 파이썬으로 실행해야 번역이 동작합니다
-~/.local/share/uv/tools/mlx-lm/bin/python tools/image-api/web.py
+~/.local/share/uv/tools/mlx-lm/bin/python ~/test/local-model/web.py
 ```
 
 브라우저에서 http://127.0.0.1:8793 을 열면 됩니다.
@@ -22,6 +24,7 @@ Tailscale 테일넷 안에서만 접근할 수 있습니다.
 | `IMAGE_API_TOKEN_FILE` | `~/.config/image-api/mini-token` | 토큰 파일 경로 |
 | `IMAGE_WEB_PORT` | `8793` | 웹 서버 포트 |
 | `IMAGE_WEB_DIR` | `~/Pictures/mini-image` | 이미지 자동 저장 폴더 |
+| `IMAGE_STYLES_FILE` | `~/test/english-reading/tools/image-api/styles.json` | 스타일 프리셋 파일 |
 | `TRANSLATE_IDLE_SECONDS` | `30` | 마지막 번역 뒤 이 시간(초) 동안 안 쓰면 번역 모델(약 4GB)을 메모리에서 내림. 다시 쓰면 몇 초 안에 다시 올림 |
 
 ### 번역 (한국어 → 영어 장면)
