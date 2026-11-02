@@ -6,11 +6,11 @@
 <meta name="color-scheme" content="light only">
 <title>일본어 읽기, 10월 10일 | 독해한입</title>
 <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
-<meta name="description" content="JLPT N4~N5 학습자를 위한 하루 한 단락 일본어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
+<meta name="description" content="JLPT N3 학습자를 위한 하루 한 단락 일본어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="독해한입: 매일 일본어 읽기">
 <meta property="og:title" content="오늘은 일본의 온천 이야기예요 | 독해한입">
-<meta property="og:description" content="JLPT N4~N5 학습자를 위한 하루 한 단락 일본어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
+<meta property="og:description" content="JLPT N3 학습자를 위한 하루 한 단락 일본어 읽기. 문장별 음성, 주요 단어, 모범 해석.">
 <meta property="og:url" content="https://read.wspace.ai.kr/ja/2026-10-10/">
 <meta property="og:image" content="https://read.wspace.ai.kr/ja/2026-10-10/thumb.png">
 <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
 <link rel="canonical" href="https://read.wspace.ai.kr/ja/2026-10-10/">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap">
-<style>.en, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .adv .ex { word-break: normal; line-break: strict; } .en { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
+<style>.en, .en-a, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .en-a, .adv .ex { word-break: normal; line-break: strict; } .en, .en-a { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
 <style>
   :root {
     --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #8b95a1;
@@ -157,7 +157,11 @@
   .mine .tool { width: 100%; margin-top: 8px; flex: none; }
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
   .top { position: relative; }
-  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
+  .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
+  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }
+  .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
+  .lang-row a.lang-go { margin: 0; }
   .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #8b95a1; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
@@ -356,15 +360,9 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
-  .top { position: relative; }
-  .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
-  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px; background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }
-  .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }
-  .lang-row a.lang-go { margin: 0; }
-  .gnb .brand img { vertical-align: middle; }
   .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
   .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
+  .gnb .brand img { vertical-align: middle; }
   .gnb nav { display: flex; gap: 4px; }
   .gnb nav a { font-size: 14px; font-weight: 600; color: var(--sub); text-decoration: none; padding: 8px 12px; border-radius: 10px; }
   .gnb nav a:hover { background: var(--bg); }
@@ -443,7 +441,7 @@
       <span class="chip">N4 1문장</span>
       <span class="chip">약 3분</span>
     </div>
-    <p class="intro">매일 아침 새로 올라오는 JLPT N4~N5 일본어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요. <a href="#subscribe">메일로 받기</a></p>
+    <p class="intro">매일 아침 새로 올라오는 JLPT N3(기초 N4~N5) 일본어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요. <a href="#subscribe">메일로 받기</a></p>
   </div>
 
   <section class="card" id="passage">
@@ -456,7 +454,7 @@
       <button class="tool" id="furi" type="button" aria-pressed="true">후리가나 끄기</button>
     </div>
     <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en"><ruby>日本<rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>には<ruby>全国<rp>(</rp><rt>ぜんこく</rt><rp>)</rp></ruby>に<b><ruby>温泉<rp>(</rp><rt>おんせん</rt><rp>)</rp></ruby></b>が<ruby>約<rp>(</rp><rt>やく</rt><rp>)</rp></ruby>3000ヶ<ruby>所<rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>あります。</div><div class="ko" hidden>일본에는 전국에 온천이 약 3000개 있습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en"><ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby>の<b><ruby>紅葉<rp>(</rp><rt>こうよう</rt><rp>)</rp></ruby></b>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ながら<ruby>温泉<rp>(</rp><rt>おんせん</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>るのはとても<ruby>人気<rp>(</rp><rt>にんき</rt><rp>)</rp></ruby>があります。<span class="badge">N4</span></div><div class="ko" hidden>가을 단풍을 보면서 온천에 들어가는 것은 매우 인기 있습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en"><ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby>の<b><ruby>紅葉<rp>(</rp><rt>こうよう</rt><rp>)</rp></ruby></b>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ながら<ruby>温泉<rp>(</rp><rt>おんせん</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>るのはとても<ruby>人気<rp>(</rp><rt>にんき</rt><rp>)</rp></ruby>があります。<span class="badge">N3</span></div><div class="ko" hidden>가을 단풍을 보면서 온천에 들어가는 것은 매우 인기 있습니다.</div></div></div>
     <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en"><b><ruby>浴衣<rp>(</rp><rt>ゆかた</rt><rp>)</rp></ruby></b>を<ruby>着<rp>(</rp><rt>き</rt><rp>)</rp></ruby>て<ruby>旅館<rp>(</rp><rt>りょかん</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>を<ruby>歩<rp>(</rp><rt>ある</rt><rp>)</rp></ruby>くのも<ruby>楽<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>しいです。</div><div class="ko" hidden>유카타를 입고 료칸 안을 걷는 것도 즐겁습니다.</div></div></div>
     <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">お<ruby>風呂<rp>(</rp><rt>ふろ</rt><rp>)</rp></ruby>の<ruby>後<rp>(</rp><rt>あと</rt><rp>)</rp></ruby>は<b><ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby></b>でゆっくりと<ruby>休<rp>(</rp><rt>やす</rt><rp>)</rp></ruby>みます。</div><div class="ko" hidden>목욕 후에는 방에서 느긋하게 쉽니다.</div></div></div>
     <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en"><ruby>次<rp>(</rp><rt>つぎ</rt><rp>)</rp></ruby>は<ruby>友<rp>(</rp><rt>とも</rt><rp>)</rp></ruby>だちと<ruby>一緒<rp>(</rp><rt>いっしょ</rt><rp>)</rp></ruby>に<b><ruby>旅館<rp>(</rp><rt>りょかん</rt><rp>)</rp></ruby></b>に<ruby>泊<rp>(</rp><rt>と</rt><rp>)</rp></ruby>まりたいです。</div><div class="ko" hidden>다음에는 친구와 함께 료칸에 묵고 싶습니다.</div></div></div>
@@ -758,8 +756,8 @@
 
   var AUDIO = ["audio/s1.mp3", "audio/s2.mp3", "audio/s3.mp3", "audio/s4.mp3", "audio/s5.mp3"];
   var AUDIO_A = [];
-  var WORD_AUDIO = [];
-  var ADV_AUDIO = [];
+  var WORD_AUDIO = ["audio/w1.mp3", "audio/w2.mp3", "audio/w3.mp3", "audio/w4.mp3", "audio/w5.mp3", "audio/w6.mp3"];
+  var ADV_AUDIO = ["audio/v1.mp3", "audio/v2.mp3", "audio/v3.mp3", "audio/v4.mp3", "audio/v5.mp3", "audio/v6.mp3"];
   // 수준 결정: URL ?level= → localStorage → 기본 중급(b)
   // head 스크립트가 먼저 적용하므로 URL 파라미터가 있을 때만 갱신한다.
   (function () {
@@ -924,7 +922,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
     else fallback();
   }
-  var HEAD = '나는 JLPT N4~N5 수준의 한국인 일본어 학습자입니다. 아래는 오늘의 일본어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
+  var HEAD = '나는 JLPT N3 수준의 한국인 일본어 학습자입니다. 아래는 오늘의 일본어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
   var WEAK = '자주 틀리는 부분(조사 は・が・を・に・で, 동사 활용과 시제, 한자 읽기, 숫자와 조수사)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[일본어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
@@ -1010,7 +1008,7 @@
   }
 })();
 </script>
-<script type="application/json" id="drill-data">[{"w": "温泉", "m": "온천", "r": "おんせん", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ca": "温泉", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ek": "일본에는 전국에 온천이 약 3000개 있습니다.", "alts": ["전국", "유카타", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "全国", "m": "전국", "r": "ぜんこく", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<span class=\"dr-blank\"><\/span>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ca": "全国", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<b><ruby>全国<rt>ぜんこく<\/rt><\/ruby><\/b>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<b><ruby>全国<rt>ぜんこく<\/rt><\/ruby><\/b>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ek": "일본에는 전국에 온천이 약 3000개 있습니다.", "alts": ["온천", "유카타", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "浴衣", "m": "유카타", "r": "ゆかた", "cz": "<span class=\"dr-blank\"><\/span>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "ca": "浴衣", "ex": "<b><ruby>浴衣<rt>ゆかた<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "sh": "<b><ruby>浴衣<rt>ゆかた<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "ek": "유카타를 입고 료칸 안을 걷는 것도 즐겁습니다.", "alts": ["온천", "전국", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "旅館", "m": "료칸", "r": "りょかん", "cz": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "ca": "旅館", "ex": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "sh": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "ek": "다음에는 친구와 함께 료칸에 묵고 싶습니다.", "alts": ["온천", "전국", "유카타", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "風呂", "m": "욕탕, 목욕", "r": "ふろ", "cz": "お<span class=\"dr-blank\"><\/span>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "ca": "風呂", "ex": "お<b><ruby>風呂<rt>ふろ<\/rt><\/ruby><\/b>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "sh": "お<b><ruby>風呂<rt>ふろ<\/rt><\/ruby><\/b>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "ek": "목욕 후에는 방에서 느긋하게 쉽니다.", "alts": ["온천", "전국", "유카타", "료칸", "숙박하다, 머물다"]}, {"w": "泊まる", "m": "숙박하다, 머물다", "r": "とまる", "cz": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>。", "ca": "泊まりたいです", "ex": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<b><ruby>泊<rt>と<\/rt><\/ruby>まりたいです<\/b>。", "sh": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<b><ruby>泊<rt>と<\/rt><\/ruby>まりたいです<\/b>。", "ek": "다음에는 친구와 함께 료칸에 묵고 싶습니다.", "alts": ["온천", "전국", "유카타", "료칸", "욕탕, 목욕"]}]</script>
+<script type="application/json" id="drill-data">[{"w": "温泉", "m": "온천", "r": "おんせん", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ca": "温泉", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<ruby>全国<rt>ぜんこく<\/rt><\/ruby>に<b><ruby>温泉<rt>おんせん<\/rt><\/ruby><\/b>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ek": "일본에는 전국에 온천이 약 3000개 있습니다.", "au": "/ja/2026-10-10/audio/w1.mp3", "alts": ["전국", "유카타", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "全国", "m": "전국", "r": "ぜんこく", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<span class=\"dr-blank\"><\/span>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ca": "全国", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<b><ruby>全国<rt>ぜんこく<\/rt><\/ruby><\/b>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>には<b><ruby>全国<rt>ぜんこく<\/rt><\/ruby><\/b>に<ruby>温泉<rt>おんせん<\/rt><\/ruby>が<ruby>約<rt>やく<\/rt><\/ruby>3000ヶ<ruby>所<rt>しょ<\/rt><\/ruby>あります。", "ek": "일본에는 전국에 온천이 약 3000개 있습니다.", "au": "/ja/2026-10-10/audio/w2.mp3", "alts": ["온천", "유카타", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "浴衣", "m": "유카타", "r": "ゆかた", "cz": "<span class=\"dr-blank\"><\/span>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "ca": "浴衣", "ex": "<b><ruby>浴衣<rt>ゆかた<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "sh": "<b><ruby>浴衣<rt>ゆかた<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>て<ruby>旅館<rt>りょかん<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>を<ruby>歩<rt>ある<\/rt><\/ruby>くのも<ruby>楽<rt>たの<\/rt><\/ruby>しいです。", "ek": "유카타를 입고 료칸 안을 걷는 것도 즐겁습니다.", "au": "/ja/2026-10-10/audio/w3.mp3", "alts": ["온천", "전국", "료칸", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "旅館", "m": "료칸", "r": "りょかん", "cz": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "ca": "旅館", "ex": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "sh": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>旅館<rt>りょかん<\/rt><\/ruby><\/b>に<ruby>泊<rt>と<\/rt><\/ruby>まりたいです。", "ek": "다음에는 친구와 함께 료칸에 묵고 싶습니다.", "au": "/ja/2026-10-10/audio/w4.mp3", "alts": ["온천", "전국", "유카타", "욕탕, 목욕", "숙박하다, 머물다"]}, {"w": "風呂", "m": "욕탕, 목욕", "r": "ふろ", "cz": "お<span class=\"dr-blank\"><\/span>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "ca": "風呂", "ex": "お<b><ruby>風呂<rt>ふろ<\/rt><\/ruby><\/b>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "sh": "お<b><ruby>風呂<rt>ふろ<\/rt><\/ruby><\/b>の<ruby>後<rt>あと<\/rt><\/ruby>は<ruby>部屋<rt>へや<\/rt><\/ruby>でゆっくりと<ruby>休<rt>やす<\/rt><\/ruby>みます。", "ek": "목욕 후에는 방에서 느긋하게 쉽니다.", "au": "/ja/2026-10-10/audio/w5.mp3", "alts": ["온천", "전국", "유카타", "료칸", "숙박하다, 머물다"]}, {"w": "泊まる", "m": "숙박하다, 머물다", "r": "とまる", "cz": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>。", "ca": "泊まりたいです", "ex": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<b><ruby>泊<rt>と<\/rt><\/ruby>まりたいです<\/b>。", "sh": "<ruby>次<rt>つぎ<\/rt><\/ruby>は<ruby>友<rt>とも<\/rt><\/ruby>だちと<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>旅館<rt>りょかん<\/rt><\/ruby>に<b><ruby>泊<rt>と<\/rt><\/ruby>まりたいです<\/b>。", "ek": "다음에는 친구와 함께 료칸에 묵고 싶습니다.", "au": "/ja/2026-10-10/audio/w6.mp3", "alts": ["온천", "전국", "유카타", "료칸", "욕탕, 목욕"]}]</script>
 <script id="drill-js" data-v="10" src="/assets/drill.js?v=10" defer></script>
 </body>
 </html>
