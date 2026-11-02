@@ -1,0 +1,102 @@
+# 지난 날짜의 단어 발음 음성(w*, v*)만 한 번에 만든다(수동 실행). 메일은 보내지 않는다.
+# 단어 음성 기능이 생기기 전 날짜(en 10/03~10/22, ja 10/04~10/22)는 카드 발음이 브라우저 음성으로 나왔다.
+# 날짜마다 publish.yml 을 돌리면 같은 동시 실행 그룹에서 대기 실행이 서로 취소돼 아침 발행이 빠질 수 있어,
+# 한 번의 실행에서 모든 날짜를 만들고 커밋 하나로 올린다.
+name: backfill-word-audio
+
+on:
+  workflow_dispatch:
+    inputs:
+      langs:
+        description: "언어 (공백으로 구분)"
+        required: false
+        default: "en ja"
+
+# publish 와 같은 그룹: 발행 커밋과 동시에 push 하지 않는다. 아침 발행 시간(05:50~07:10 KST)을 피해 실행한다.
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    services:
+      voicevox:
+        image: voicevox/voicevox_engine:cpu-latest
+        ports: ["50021:50021"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q pillow kokoro-onnx soundfile
+          for i in $(seq 1 60); do curl -sf http://localhost:50021/version && break; sleep 5; done
+      - uses: actions/cache@v4
+        with:
+          path: models
+          key: kokoro-v1.0
+      - name: Word audio
+        env:
+          LANGS: ${{ inputs.langs }}
+        run: |
+          mkdir -p models
+          base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
+          [ -f models/kokoro-v1.0.int8.onnx ] || curl -sSfL --retry 3 -o models/kokoro-v1.0.int8.onnx $base/kokoro-v1.0.int8.onnx
+          [ -f models/voices-v1.0.bin ] || curl -sSfL --retry 3 -o models/voices-v1.0.bin $base/voices-v1.0.bin
+          done_days=""
+          for lang in $LANGS; do
+            for f in content/$lang/20??-??-??.json; do
+              day=$(basename "$f" .json)
+              [ -d "$lang/$day" ] || continue
+              [ -f "$lang/$day/audio/w1.mp3" ] && continue   # 이미 있는 날은 건드리지 않는다
+              echo "== $lang $day"
+              python tools/audio.py $lang $day models --level w
+              python tools/audio.py $lang $day models --level v
+              python tools/render.py $lang $day
+              python -c "import sys; sys.path.insert(0,'tools'); import publish; publish.patch_page('$lang', '$day')"
+              done_days="$done_days $lang:$day"
+            done
+          done
+          python -c "import sys; sys.path.insert(0,'tools'); import langs, publish; [publish.rebuild_lists(c) for c in langs.LANGS]; publish.rebuild_root()"
+          echo "DONE_DAYS=$done_days" >> "$GITHUB_ENV"
+          echo "만든 날짜:$done_days"
+      - name: Check
+        run: |
+          # 날짜마다 단어 수와 음성 수가 같은지 확인한다
+          python - <<'PY'
+          import json, os, sys
+          bad = []
+          for pair in os.environ.get("DONE_DAYS", "").split():
+              lang, day = pair.split(":")
+              d = json.load(open(f"content/{lang}/{day}.json", encoding="utf-8"))
+              for prefix, n in (("w", len(d.get("words") or [])), ("v", len(d.get("advanced") or []))):
+                  have = sum(os.path.exists(f"{lang}/{day}/audio/{prefix}{i}.mp3") for i in range(1, n + 1))
+                  if have != n:
+                      bad.append(f"{pair} {prefix} {have}/{n}")
+          print("빠진 음성:", bad or "없음")
+          sys.exit(1 if bad else 0)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -q -m "Backfill word audio:${DONE_DAYS}"
+          for attempt in 1 2 3; do
+            git push && break
+            git pull --rebase origin main || { echo "::error::rebase 충돌, 수동 확인 필요"; exit 1; }
+          done
+          gh api -X POST repos/${{ github.repository }}/pages/builds
+        env:
+          GH_TOKEN: ${{ github.token }}
