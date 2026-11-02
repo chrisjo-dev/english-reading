@@ -1,6 +1,6 @@
 {
- "date": "2026-11-02",
- "words_total": 443,
+ "date": "2026-11-03",
+ "words_total": 450,
  "langs": {
   "en": {
    "count": 31,
@@ -99,14 +99,14 @@
    ]
   },
   "de": {
-   "count": 6,
-   "latest": "2026-11-02",
-   "topic": "병 보증금",
+   "count": 7,
+   "latest": "2026-11-03",
+   "topic": "마르틴 축일",
    "sentences": [
-    "In Deutschland zahlt man beim Kauf vieler Getränke einen kleinen Betrag extra, den man **Pfand** nennt.",
-    "Wenn die Flasche oder **Dose** leer ist, bringt man sie in den Supermarkt zurück und bekommt das Geld wieder.",
-    "Dafür stehen in fast jedem Supermarkt große **Automaten**, in die man die leeren Flaschen einzeln hineinlegt.",
-    "Nach der Rückgabe druckt der Automat einen **Bon** aus, den man beim nächsten Einkauf an der Kasse einlösen kann."
+    "Am 11. November feiern viele Kinder in Deutschland den **Martinstag**, der an den heiligen Martin von Tours erinnert.",
+    "Nach einer bekannten **Legende** teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.",
+    "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte **Laternen** aus Papier und Pappe.",
+    "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle **Martinslieder**."
    ],
    "chips": [
     "6문장",
@@ -114,40 +114,45 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "독일에서는 많은 음료를 살 때 작은 금액을 추가로 내는데, 이것을 판트(보증금)라고 부릅니다.",
+   "answer": "11월 11일에 독일의 많은 아이들은 투르의 성 마르틴을 기리는 마르틴 축일을 기념합니다.",
    "words": [
     [
-     "Pfand",
-     "병, 캔 보증금 (중성 das)"
+     "Martinstag",
+     "성 마르틴 축일, 11월 11일 (남성 der)"
     ],
     [
-     "Dose",
-     "캔, 깡통 (여성 die)"
+     "Legende",
+     "전설, 옛이야기 (여성 die, 복수 Legenden)"
     ],
     [
-     "Automat",
-     "자동 반납기, 기계 (남성 der)"
+     "Laterne",
+     "초롱, 등불 (여성 die, 복수 Laternen)"
     ],
     [
-     "Bon",
-     "영수증, 교환권 (남성 der)"
+     "Martinslied",
+     "마르틴 축일에 부르는 노래 (중성 das, 복수 Martinslieder)"
     ],
     [
-     "Mehrwegflasche",
-     "씻어서 여러 번 쓰는 병 (여성 die)"
+     "Feuer",
+     "불, 모닥불 (중성 das)"
     ],
     [
-     "einlösen",
-     "(교환권을) 돈으로 바꾸다, 사용하다"
+     "Brauch",
+     "풍습, 관습 (남성 der, 복수 Bräuche)"
     ],
     [
-     "sinnvoll",
-     "의미 있는, 합리적인"
+     "basteln",
+     "손으로 만들다, 공작하다"
     ]
    ]
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-03",
+   "topic": "마르틴 축일"
+  },
   {
    "lang": "en",
    "day": "2026-11-02",
