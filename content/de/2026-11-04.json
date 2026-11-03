@@ -1,0 +1,435 @@
+{
+  "date": "2026-11-04",
+  "category": "society",
+  "topic": "철도 대공사",
+  "title_ko": "대공사에 들어간 하노버–베를린 철도",
+  "headline": "Bauarbeiten auf der Bahnstrecke",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "photo_scene": "Close-up on an overcast autumn afternoon of railway workers in orange safety vests laying new steel rails on concrete sleepers, a large yellow track machine right behind them, soft grey daylight.",
+  "sentences": [
+    {
+      "en": "Seit Anfang Oktober wird die wichtige **Bahnstrecke** zwischen Hannover und Berlin gründlich erneuert, und die Arbeiten dauern bis Dezember 2027.",
+      "b2": false,
+      "chunks": [
+        [
+          "Seit Anfang Oktober",
+          "10월 초부터"
+        ],
+        [
+          "wird die wichtige **Bahnstrecke**",
+          "중요한 철도 노선이"
+        ],
+        [
+          "zwischen Hannover und Berlin",
+          "하노버와 베를린 사이의"
+        ],
+        [
+          "gründlich erneuert,",
+          "철저히 새로 고쳐지고 있고"
+        ],
+        [
+          "und die Arbeiten dauern",
+          "공사는 계속됩니다"
+        ],
+        [
+          "bis Dezember 2027.",
+          "2027년 12월까지"
+        ]
+      ]
+    },
+    {
+      "en": "Die Bauarbeiter erneuern dabei nicht nur die **Gleise** und die Oberleitungen, sondern modernisieren auch insgesamt 27 Bahnhöfe entlang der Strecke.",
+      "b2": false,
+      "chunks": [
+        [
+          "Die Bauarbeiter erneuern dabei",
+          "작업자들은 이때 새로 바꿉니다"
+        ],
+        [
+          "nicht nur die **Gleise** und die Oberleitungen,",
+          "선로와 가선만이 아니라"
+        ],
+        [
+          "sondern modernisieren auch",
+          "현대화하기도 합니다"
+        ],
+        [
+          "insgesamt 27 Bahnhöfe",
+          "모두 27개 역을"
+        ],
+        [
+          "entlang der Strecke.",
+          "노선을 따라 있는"
+        ]
+      ]
+    },
+    {
+      "en": "Ab dem Fahrplanwechsel im Dezember fahren die Fernzüge einen **Umweg** über Braunschweig und Magdeburg, sodass die Fahrt etwa achtzig Minuten länger dauert.",
+      "b2": false,
+      "chunks": [
+        [
+          "Ab dem Fahrplanwechsel im Dezember",
+          "12월 시간표 변경부터"
+        ],
+        [
+          "fahren die Fernzüge",
+          "장거리 열차들은 달립니다"
+        ],
+        [
+          "einen **Umweg**",
+          "돌아가는 길로"
+        ],
+        [
+          "über Braunschweig und Magdeburg,",
+          "브라운슈바이크와 마그데부르크를 거쳐"
+        ],
+        [
+          "sodass die Fahrt",
+          "그래서 이동 시간은"
+        ],
+        [
+          "etwa achtzig Minuten länger dauert.",
+          "약 80분 더 걸립니다"
+        ]
+      ]
+    },
+    {
+      "en": "Wo keine Züge fahren können, sollen **Ersatzbusse** die Fahrgäste zu den nächsten Bahnhöfen bringen, damit niemand ohne Verbindung bleibt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Wo keine Züge fahren können,",
+          "열차가 다닐 수 없는 곳에서는"
+        ],
+        [
+          "sollen **Ersatzbusse**",
+          "대체 버스가 ~할 예정입니다"
+        ],
+        [
+          "die Fahrgäste",
+          "승객들을"
+        ],
+        [
+          "zu den nächsten Bahnhöfen bringen,",
+          "가장 가까운 역까지 데려다주어"
+        ],
+        [
+          "damit niemand",
+          "아무도 ~하지 않도록"
+        ],
+        [
+          "ohne Verbindung bleibt.",
+          "교통편 없이 남지"
+        ]
+      ]
+    },
+    {
+      "en": "Wer die von vielen **Pendlern** täglich genutzte Strecke fährt, muss während der Bauzeit mehr Zeit für die Reise einplanen.",
+      "b2": true,
+      "chunks": [
+        [
+          "Wer die von vielen **Pendlern** täglich genutzte Strecke",
+          "많은 통근자가 매일 이용하는 이 노선을"
+        ],
+        [
+          "fährt,",
+          "타는 사람은"
+        ],
+        [
+          "muss während der Bauzeit",
+          "공사 기간 동안 ~해야 합니다"
+        ],
+        [
+          "mehr Zeit für die Reise",
+          "이동에 더 많은 시간을"
+        ],
+        [
+          "einplanen.",
+          "미리 계산해 두어야"
+        ]
+      ]
+    },
+    {
+      "en": "Ohne diese große **Sanierung** würde es auf der alten Strecke in Zukunft wohl noch öfter Störungen und Verspätungen geben.",
+      "b2": true,
+      "chunks": [
+        [
+          "Ohne diese große **Sanierung**",
+          "이 대규모 보수 공사가 없다면"
+        ],
+        [
+          "würde es",
+          "~이 있을 것입니다"
+        ],
+        [
+          "auf der alten Strecke",
+          "낡은 노선에서"
+        ],
+        [
+          "in Zukunft wohl noch öfter",
+          "앞으로 아마 더 자주"
+        ],
+        [
+          "Störungen und Verspätungen",
+          "고장과 지연이"
+        ],
+        [
+          "geben.",
+          "(있을 것입니다)"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Bahnstrecke",
+      "철도 노선 (여성 die, 복수 Bahnstrecken)"
+    ],
+    [
+      "Gleis",
+      "선로, 철로 (중성 das, 복수 Gleise)"
+    ],
+    [
+      "Umweg",
+      "우회로, 돌아가는 길 (남성 der, 복수 Umwege)"
+    ],
+    [
+      "Ersatzbus",
+      "대체 버스 (남성 der, 복수 Ersatzbusse)"
+    ],
+    [
+      "Pendler",
+      "통근자 (남성 der, 복수 Pendler)"
+    ],
+    [
+      "Sanierung",
+      "보수, 개보수 (여성 die)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "분사 수식어 — 관사와 명사 사이의 긴 꾸밈말",
+      "body": "`die von vielen Pendlern täglich genutzte Strecke`는 관사 `die`와 명사 `Strecke` 사이에 `von vielen Pendlern täglich genutzt`(많은 통근자가 매일 이용하는)가 들어간 구조입니다. 분사 `genutzt`에 형용사 어미 `-e`가 붙었어요. 관계절로 풀면 `die Strecke, die von vielen Pendlern täglich genutzt wird`입니다."
+    },
+    {
+      "title": "würde es ... geben — 사실과 반대되는 가정",
+      "body": "`Ohne diese große Sanierung würde es ... Störungen und Verspätungen geben`은 접속법 2식으로 '이 공사가 없다면 고장과 지연이 더 많을 것이다'라는 뜻입니다. `würde`가 둘째 자리, 본동사 `geben`은 문장 끝에 오고, `ohne ...`가 조건 역할을 합니다."
+    }
+  ],
+  "answers": [
+    "10월 초부터 하노버와 베를린을 잇는 중요한 철도 노선이 대대적으로 보수되고 있으며, 공사는 2027년 12월까지 이어집니다.",
+    "작업자들은 이 기간에 선로와 가선을 새로 바꿀 뿐 아니라 노선을 따라 있는 역 27곳도 현대화합니다.",
+    "12월 시간표 변경부터 장거리 열차는 브라운슈바이크와 마그데부르크를 거쳐 돌아가기 때문에 이동 시간이 평소보다 약 80분 더 걸립니다.",
+    "열차가 다닐 수 없는 구간에서는 아무도 교통편 없이 남지 않도록 대체 버스가 승객을 가장 가까운 역까지 데려다줄 예정입니다.",
+    "많은 통근자가 매일 이용하는 이 노선을 타는 사람은 공사 기간 동안 이동 시간을 더 넉넉히 잡아야 합니다.",
+    "이런 대규모 보수 공사가 없다면 낡은 노선에서는 앞으로 아마 고장과 지연이 더 자주 생길 것입니다."
+  ],
+  "advanced": [
+    {
+      "word": "die Oberleitung",
+      "meaning": "가선, 전차선",
+      "confuse": "`die Leitung`만 쓰면 '관리, 지도'나 '전선, 배관'이라는 뜻도 돼요.",
+      "example": "Wegen eines Schadens an der **Oberleitung** fährt heute kein Zug.",
+      "example_ko": "가선 손상 때문에 오늘은 열차가 다니지 않습니다."
+    },
+    {
+      "word": "der Fahrplanwechsel",
+      "meaning": "시간표 변경, 운행표 개편",
+      "confuse": null,
+      "example": "Nach dem **Fahrplanwechsel** fährt mein Zug zehn Minuten früher.",
+      "example_ko": "시간표가 바뀐 뒤로 제 열차는 10분 일찍 떠납니다."
+    },
+    {
+      "word": "die Verbindung",
+      "meaning": "교통편, 연결",
+      "confuse": "전화나 인터넷의 '연결'에도 써요. 기차표 검색에서는 '노선, 편'이라는 뜻입니다.",
+      "example": "Gibt es eine direkte **Verbindung** von Köln nach Leipzig?",
+      "example_ko": "쾰른에서 라이프치히로 가는 직행편이 있나요?"
+    },
+    {
+      "word": "einplanen",
+      "meaning": "미리 계획에 넣다, 감안하다",
+      "confuse": "분리동사라서 주문장에서는 `Ich plane mehr Zeit ein`처럼 갈라집니다.",
+      "example": "Für den Weg zum Flughafen sollte man eine Stunde **einplanen**.",
+      "example_ko": "공항까지 가는 길에는 한 시간을 잡아 두는 게 좋습니다."
+    },
+    {
+      "word": "die Störung",
+      "meaning": "고장, 장애",
+      "confuse": "`stören`(방해하다)에서 왔어요. '방해'라는 뜻으로도 씁니다.",
+      "example": "Wegen einer technischen **Störung** hat der Zug Verspätung.",
+      "example_ko": "기술적 고장 때문에 열차가 늦습니다."
+    },
+    {
+      "word": "der Fernverkehr",
+      "meaning": "장거리 교통",
+      "confuse": "반대말은 `der Nahverkehr`(근거리 교통)입니다.",
+      "example": "Im **Fernverkehr** fahren vor allem ICE- und IC-Züge.",
+      "example_ko": "장거리 교통에는 주로 ICE와 IC 열차가 다닙니다."
+    },
+    {
+      "word": "umsteigen",
+      "meaning": "갈아타다, 환승하다",
+      "confuse": "분리동사입니다. `umziehen`(이사하다), `einsteigen`(타다)과 헷갈리지 마세요.",
+      "example": "In Magdeburg müssen wir in einen anderen Zug **umsteigen**.",
+      "example_ko": "마그데부르크에서 우리는 다른 열차로 갈아타야 합니다."
+    }
+  ],
+  "source": {
+    "title": "Everything that changes in Germany in October 2026 (The Local, 2026-09-22)",
+    "url": "https://www.thelocal.de/20260922/everything-that-changes-in-germany-in-october-2026"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Seit Oktober wird die **Bahnstrecke** zwischen Hannover und Berlin erneuert.",
+          "chunks": [
+            [
+              "Seit Oktober",
+              "10월부터"
+            ],
+            [
+              "wird die **Bahnstrecke**",
+              "철도 노선이"
+            ],
+            [
+              "zwischen Hannover und Berlin",
+              "하노버와 베를린 사이의"
+            ],
+            [
+              "erneuert.",
+              "새로 고쳐지고 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die Arbeiter bauen neue **Gleise** und modernisieren 27 Bahnhöfe.",
+          "chunks": [
+            [
+              "Die Arbeiter",
+              "작업자들은"
+            ],
+            [
+              "bauen neue **Gleise**",
+              "새 선로를 놓고"
+            ],
+            [
+              "und modernisieren",
+              "현대화합니다"
+            ],
+            [
+              "27 Bahnhöfe.",
+              "27개 역을"
+            ]
+          ]
+        },
+        {
+          "en": "Ab Dezember fahren Fernzüge einen **Umweg** und brauchen etwa achtzig Minuten länger.",
+          "chunks": [
+            [
+              "Ab Dezember",
+              "12월부터"
+            ],
+            [
+              "fahren Fernzüge",
+              "장거리 열차들은 달리고"
+            ],
+            [
+              "einen **Umweg**",
+              "돌아가는 길로"
+            ],
+            [
+              "und brauchen",
+              "걸립니다"
+            ],
+            [
+              "etwa achtzig Minuten länger.",
+              "약 80분 더"
+            ]
+          ]
+        },
+        {
+          "en": "An manchen Orten bringen **Ersatzbusse** die Fahrgäste zum nächsten Bahnhof.",
+          "chunks": [
+            [
+              "An manchen Orten",
+              "몇몇 곳에서는"
+            ],
+            [
+              "bringen **Ersatzbusse**",
+              "대체 버스가 데려다줍니다"
+            ],
+            [
+              "die Fahrgäste",
+              "승객들을"
+            ],
+            [
+              "zum nächsten Bahnhof.",
+              "가장 가까운 역까지"
+            ]
+          ]
+        },
+        {
+          "en": "Viele **Pendler** fahren jeden Tag auf dieser Strecke und brauchen jetzt mehr Zeit.",
+          "chunks": [
+            [
+              "Viele **Pendler**",
+              "많은 통근자들이"
+            ],
+            [
+              "fahren jeden Tag",
+              "매일 탑니다"
+            ],
+            [
+              "auf dieser Strecke",
+              "이 노선을"
+            ],
+            [
+              "und brauchen jetzt",
+              "그리고 이제 필요합니다"
+            ],
+            [
+              "mehr Zeit.",
+              "더 많은 시간이"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Sanierung** soll später Störungen und Verspätungen verhindern.",
+          "chunks": [
+            [
+              "Die **Sanierung**",
+              "보수 공사는"
+            ],
+            [
+              "soll später",
+              "나중에 ~할 것입니다"
+            ],
+            [
+              "Störungen und Verspätungen",
+              "고장과 지연을"
+            ],
+            [
+              "verhindern.",
+              "막을"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "10월부터 하노버와 베를린 사이의 철도 노선이 새로 고쳐지고 있습니다.",
+        "작업자들은 새 선로를 놓고 역 27곳을 현대화합니다.",
+        "12월부터 장거리 열차는 돌아가는 길로 다니고, 약 80분이 더 걸립니다.",
+        "몇몇 곳에서는 대체 버스가 승객을 가장 가까운 역까지 데려다줍니다.",
+        "많은 통근자가 매일 이 노선을 타는데, 이제 시간이 더 필요합니다.",
+        "보수 공사는 나중에 고장과 지연을 막아 줄 것입니다."
+      ]
+    }
+  }
+}
