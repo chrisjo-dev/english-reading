@@ -1,52 +1,52 @@
 {
  "date": "2026-11-04",
- "words_total": 476,
+ "words_total": 483,
  "langs": {
   "en": {
-   "count": 32,
-   "latest": "2026-11-03",
-   "topic": "안개 체임버",
+   "count": 33,
+   "latest": "2026-11-04",
+   "topic": "불 끄는 섬",
    "sentences": [
-    "A security camera that works well on a sunny day may not be able to see a person in thick fog or heavy rain.",
-    "To test cameras in these conditions, researchers at Sandia National Laboratories make bad weather **on purpose** inside a special room called a fog **chamber**.",
-    "To create fog, they mix water, ice, and salt, and sixty-four **nozzles** near the ceiling spray the mixture into the air.",
-    "The salt, which **absorbs** water from the air around it, helps the tiny particles grow larger, while the ice keeps the room cold."
+    "On the small island of Corvo in the Azores, about four hundred and fifty people have agreed to live in the dark for a while.",
+    "Since October twenty-first, the streets and public buildings have turned off their lights at night, and the **blackout** will last for almost three weeks.",
+    "The reason is a seabird called the shearwater: around six thousand pairs **nest** on the island, and their young birds leave home at this time of year.",
+    "The young birds, which usually find their way to the ocean by following the light of the stars, can easily be **confused** by bright street lamps and fly **inland** instead."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 3분"
    ],
-   "answer": "맑은 날에 잘 작동하는 보안 카메라도 짙은 안개나 폭우 속에서는 사람을 보지 못할 수 있다.",
+   "answer": "아조레스 제도의 작은 섬 코르부에서는 약 450명의 주민이 한동안 어둠 속에서 지내기로 했다.",
    "words": [
     [
-     "on purpose",
-     "일부러, 고의로"
+     "blackout",
+     "소등, 정전"
     ],
     [
-     "chamber",
-     "(특수한 용도의) 방, 실"
+     "nest",
+     "둥지를 틀다"
     ],
     [
-     "nozzles",
-     "노즐들, 분사구들 (복수형)"
+     "confused",
+     "혼란스러운"
     ],
     [
-     "absorbs",
-     "빨아들이다, 흡수하다 (3인칭 단수형)"
+     "inland",
+     "내륙으로"
     ],
     [
-     "netting",
-     "그물, 망"
+     "crash",
+     "충돌하다, 부딪히다"
     ],
     [
-     "including",
-     "~을 포함하여"
+     "reduced",
+     "줄이다 (과거분사형)"
     ],
     [
-     "compare",
-     "비교하다"
+     "chick",
+     "새끼 새"
     ]
    ],
    "review": {
@@ -156,6 +156,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-04",
+   "topic": "불 끄는 섬"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-04",
    "topic": "동물원 자원봉사"
@@ -254,11 +259,6 @@
    "lang": "de",
    "day": "2026-10-29",
    "topic": "직업 교육"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-28",
-   "topic": "거대한 팝업북"
   }
  ]
 }
