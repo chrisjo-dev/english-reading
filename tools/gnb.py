@@ -54,31 +54,37 @@ CSS = """.gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-
 /* 언어 시트(휴대폰) */
 .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
 .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
-             padding: 8px 16px calc(24px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
+             padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
              font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
 .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
+/* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
+.gnb-sheet:focus { outline: none; }
 html.gnb-lock, html.gnb-lock body { overflow: hidden; }
 .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
 .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
-.gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 4px; margin: 0; line-height: 1.4; }
-.gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 4px 12px; line-height: 1.5; }
-.gs-row { display: flex; align-items: center; gap: 12px; min-height: 68px; padding: 10px 8px 10px 12px; border-radius: 16px; box-sizing: border-box; }
+/* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
+.gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
+.gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
+/* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
+.gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
 .gs-row.on { background: #e8f3ff; }
 .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
 .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
-.gs-tx { flex: 1; min-width: 0; display: block; min-height: 44px; }
+.gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
+.gs-tt { flex: 1; min-width: 0; }
 .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
 .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
 .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.gs-past { flex: none; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+.gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
 .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
-.gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 4px; }
+.gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
 .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
 .gs-review[hidden] { display: none; }
 .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
 .gs-review .gs-badge svg { width: 20px; height: 20px; }
-.gs-review .gs-tx { display: block; }
 .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
+/* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
+.gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
 """
 
 # 지문 페이지에만 쓰는 것: 카드 안 "읽기 수준" 세그먼트, PC 첫 카드(글 왼쪽, 사진 오른쪽), PC 본문 폭.
@@ -149,10 +155,11 @@ def header_html(lang=None, mail="#subscribe", on_archive=False):
         L = langs.LANGS[c]
         on = c == lang
         rows.append(
-            f'  <div class="gs-row{" on" if on else ""}"><span class="gs-badge" aria-hidden="true">{c.upper()}</span>'
+            f'  <div class="gs-row{" on" if on else ""}">'
             f'<a class="gs-tx" href="/{c}/" data-today="{c}"' + (' aria-current="true"' if on else "") + '>'
+            f'<span class="gs-badge" aria-hidden="true">{c.upper()}</span><span class="gs-tt">'
             f'<span class="gs-nm">{L["name"]}{ICON_CHECK if on else ""}</span>'
-            f'<span class="gs-ds" data-ds="{c}" data-level="{html.escape(L["level"])}">{html.escape(L["level"])} {L["name"]} 읽기</span></a>'
+            f'<span class="gs-ds" data-ds="{c}" data-level="{html.escape(L["level"])}">{html.escape(L["level"])} {L["name"]} 읽기</span></span></a>'
             f'<a class="gs-past" href="/{c}/archive/" aria-label="{L["name"]} 지난 지문">지난 지문{ICON_RIGHT}</a></div>\n'
         )
     review = ""
@@ -163,7 +170,7 @@ def header_html(lang=None, mail="#subscribe", on_archive=False):
             '  <hr>\n'
             f'  <a class="gs-review" id="gnb-review" data-lang="{lang}" href="{href}"' + ("" if r else " hidden") + '>'
             f'<span class="gs-badge" aria-hidden="true">{ICON_CARDS}</span>'
-            f'<span class="gs-tx"><span class="gs-nm">이번 주 단어 복습</span><span class="gs-ds" id="gnb-review-ds">{desc}</span></span>{ICON_RIGHT}</a>\n'
+            f'<span class="gs-tt"><span class="gs-nm">이번 주 단어 복습</span><span class="gs-ds" id="gnb-review-ds">{desc}</span></span>{ICON_RIGHT}</a>\n'
         )
     return (
         "<!-- gnb -->\n"
@@ -176,7 +183,7 @@ def header_html(lang=None, mail="#subscribe", on_archive=False):
         f'<a class="gnb-tap gnb-mail" href="{mail}"><span class="gnb-pill">메일로 받기</span></a>'
         "</div></header>\n"
         '<div class="gnb-scrim" id="gnb-scrim" hidden></div>\n'
-        '<div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" hidden>\n'
+        '<div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>\n'
         '  <div class="gs-handle"></div>\n'
         '  <h2 id="gnb-sheet-h">어떤 언어를 읽을까요?</h2>\n'
         '  <p class="gs-hint">언어를 누르면 그 언어의 오늘 지문으로 가요</p>\n'
@@ -191,30 +198,39 @@ SCRIPT = r"""<script id="gnb-js">(function(){
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
   if(!chip||!sheet||!scrim)return;
   var root=document.documentElement;
+  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
+  var tm=null,tprev=null;
+  function tint(on){
+    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
+      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
+      tm.setAttribute('content','#9fa3a9');}
+    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
+  }
   function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
   function key(e){
     if(e.key==='Escape'){e.preventDefault();close();return;}
     if(e.key!=='Tab')return;
     var f=items();if(!f.length)return;
     var a=f[0],z=f[f.length-1];
-    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
+    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
     else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
     else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
   }
   function open(){
     sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
-    var cur=sheet.querySelector('.gs-row.on .gs-tx')||items()[0];if(cur)cur.focus();
+    tint(true);sheet.focus();
     document.addEventListener('keydown',key);
     try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
   }
   function close(){
     if(sheet.hidden)return;
-    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');
+    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
     document.removeEventListener('keydown',key);chip.focus();
   }
   chip.addEventListener('click',function(){sheet.hidden?open():close();});
   scrim.addEventListener('click',close);
-  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');}});
+  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
   if(!window.fetch)return;
   fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
     if(!d||!d.langs)return;

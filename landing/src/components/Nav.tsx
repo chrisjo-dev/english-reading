@@ -13,6 +13,24 @@ const LANGS = [
   { code: "de", name: "독일어", level: "B1~B2" },
 ];
 
+// 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 돌려주는 함수가 원래대로 되돌린다(없었으면 지운다)
+const SHEET_THEME = "#9fa3a9";
+function tintThemeColor(): () => void {
+  let m = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  const prev = m ? m.getAttribute("content") : null;
+  if (!m) {
+    m = document.createElement("meta");
+    m.name = "theme-color";
+    document.head.appendChild(m);
+  }
+  m.setAttribute("content", SHEET_THEME);
+  const meta = m;
+  return () => {
+    if (prev === null) meta.remove();
+    else meta.setAttribute("content", prev);
+  };
+}
+
 const plain = (t: string) => t.replace(/\{([^{}|]+)\|[^{}|]+\}/g, "$1");
 
 const Down = () => (
@@ -42,7 +60,9 @@ export default function Nav() {
     if (!open) return;
     const root = document.documentElement;
     root.classList.add("gnb-lock");
-    sheet.current?.querySelector<HTMLAnchorElement>("a[href]")?.focus();
+    const untint = tintThemeColor();
+    // 포커스는 시트 자체로(링크로 옮기면 iOS Safari가 파란 테두리를 그린다)
+    sheet.current?.focus();
     const key = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.preventDefault();
@@ -54,7 +74,10 @@ export default function Nav() {
       if (!f.length) return;
       const a = f[0];
       const z = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === a) {
+      if (document.activeElement === sheet.current) {
+        e.preventDefault();
+        (e.shiftKey ? z : a).focus();
+      } else if (e.shiftKey && document.activeElement === a) {
         e.preventDefault();
         z.focus();
       } else if (!e.shiftKey && document.activeElement === z) {
@@ -69,6 +92,7 @@ export default function Nav() {
     return () => {
       document.removeEventListener("keydown", key);
       root.classList.remove("gnb-lock");
+      untint();
     };
   }, [open, close]);
 
@@ -126,6 +150,7 @@ export default function Nav() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="gnb-sheet-h"
+        tabIndex={-1}
         hidden={!open}
       >
         <div className="gs-handle" />
@@ -133,13 +158,15 @@ export default function Nav() {
         <p className="gs-hint">언어를 누르면 그 언어의 오늘 지문으로 가요</p>
         {LANGS.map((l) => (
           <div className="gs-row" key={l.code}>
-            <span className="gs-badge" aria-hidden="true">
-              {l.code.toUpperCase()}
-            </span>
             <a className="gs-tx" href={today(l.code)} onClick={() => fireGtag("read_today_click", { lang: l.code })}>
-              <span className="gs-nm">{l.name}</span>
-              <span className="gs-ds">
-                {data[l.code]?.topic ? `${l.level}, 오늘은 ${plain(data[l.code].topic)}` : `${l.level} ${l.name} 읽기`}
+              <span className="gs-badge" aria-hidden="true">
+                {l.code.toUpperCase()}
+              </span>
+              <span className="gs-tt">
+                <span className="gs-nm">{l.name}</span>
+                <span className="gs-ds">
+                  {data[l.code]?.topic ? `${l.level}, 오늘은 ${plain(data[l.code].topic)}` : `${l.level} ${l.name} 읽기`}
+                </span>
               </span>
             </a>
             <a className="gs-past" href={`/${l.code}/archive/`} aria-label={`${l.name} 지난 지문`}>

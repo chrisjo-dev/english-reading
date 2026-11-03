@@ -82,11 +82,51 @@ class TestMenuMarkup(unittest.TestCase):
     def test_sheet_aria_and_languages(self):
         h = gnb.header_html("de")
         self.assertIn('aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet"', h)
-        self.assertIn('role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" hidden', h)
+        self.assertIn('role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden', h)
         self.assertEqual(h.count('class="gs-row'), 3)
-        self.assertIn('<div class="gs-row on"><span class="gs-badge" aria-hidden="true">DE</span>', h)
+        # 줄 전체가 링크: 배지가 .gs-tx 링크 안에 있다(지난 지문은 따로)
+        self.assertIn('<div class="gs-row on"><a class="gs-tx" href="/de/" data-today="de" aria-current="true">'
+                      '<span class="gs-badge" aria-hidden="true">DE</span><span class="gs-tt">', h)
+        self.assertNotIn('"gs-row"><span class="gs-badge"', h)
+        self.assertEqual(h.count('<a class="gs-past"'), 3)
         self.assertIn('<a href="/de/" data-today="de" class="on" aria-current="page">독일어</a>', h)
         self.assertIn('<span class="gnb-pill">독일어<svg', h)
+
+    def test_sheet_focus_goes_to_sheet_itself(self):
+        # 시트를 열면 링크가 아니라 시트 자체(tabindex=-1, 테두리 없음)에 포커스. iOS Safari 파란 상자 방지
+        h = gnb.header_html("en")
+        self.assertIn('aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>', h)
+        self.assertIn(".gnb-sheet:focus { outline: none; }", gnb.CSS)
+        self.assertIn("sheet.focus();", gnb.SCRIPT)
+        self.assertNotIn(".gs-tx').focus", gnb.SCRIPT)
+        self.assertNotIn("cur.focus()", gnb.SCRIPT)
+        # 시트에 포커스가 있을 때 Tab 은 첫 항목, Shift+Tab 은 마지막 항목
+        self.assertIn("if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}", gnb.SCRIPT)
+        # 닫으면 칩으로 돌아간다
+        self.assertIn("chip.focus();", gnb.SCRIPT)
+
+    def test_sheet_theme_color_tint_and_restore(self):
+        s = gnb.SCRIPT
+        # 흰 바탕 위 rgba(16,24,40,.40) 합성색
+        self.assertEqual("#%02x%02x%02x" % tuple(round(255 * .6 + c * .4) for c in (16, 24, 40)), "#9fa3a9")
+        self.assertIn("tm.setAttribute('content','#9fa3a9');", s)
+        self.assertIn("if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);", s)
+        self.assertIn("tint(true);sheet.focus();", s)
+        self.assertEqual(s.count("tint(false);"), 2)  # 닫기, pageshow
+        nav = (ROOT / "landing" / "src" / "components" / "Nav.tsx").read_text(encoding="utf-8")
+        for x in ('const SHEET_THEME = "#9fa3a9";', "untint();", "sheet.current?.focus();", "tabIndex={-1}",
+                  "(e.shiftKey ? z : a).focus();"):
+            self.assertIn(x, nav)
+
+    def test_sheet_single_left_baseline_and_bottom_padding(self):
+        c = gnb.CSS
+        # 제목, 안내, 구분선, 배지(줄 링크 padding-left 12px) 모두 시트 padding 16 + 12 = 28px
+        self.assertIn("padding: 8px 16px calc(12px + env(safe-area-inset-bottom));", c)
+        self.assertIn(".gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px;", c)
+        self.assertIn(".gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px;", c)
+        self.assertIn(".gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }", c)
+        self.assertIn(".gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px;", c)
+        self.assertIn(".gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px;", c)
 
     def test_review_row_only_when_review_exists(self):
         with tempfile.TemporaryDirectory() as t, mock.patch.object(gnb, "ROOT", Path(t)):
