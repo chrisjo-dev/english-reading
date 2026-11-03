@@ -1,6 +1,6 @@
 {
- "date": "2026-11-03",
- "words_total": 464,
+ "date": "2026-11-04",
+ "words_total": 470,
  "langs": {
   "en": {
    "count": 32,
@@ -109,14 +109,14 @@
    }
   },
   "de": {
-   "count": 7,
-   "latest": "2026-11-03",
-   "topic": "마르틴 축일",
+   "count": 8,
+   "latest": "2026-11-04",
+   "topic": "철도 대공사",
    "sentences": [
-    "Am 11. November feiern viele Kinder in Deutschland den **Martinstag**, der an den heiligen Martin von Tours erinnert.",
-    "Nach einer bekannten **Legende** teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.",
-    "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte **Laternen** aus Papier und Pappe.",
-    "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle **Martinslieder**."
+    "Seit Anfang Oktober wird die wichtige **Bahnstrecke** zwischen Hannover und Berlin gründlich erneuert, und die Arbeiten dauern bis Dezember 2027.",
+    "Die Bauarbeiter erneuern dabei nicht nur die **Gleise** und die Oberleitungen, sondern modernisieren auch insgesamt 27 Bahnhöfe entlang der Strecke.",
+    "Ab dem Fahrplanwechsel im Dezember fahren die Fernzüge einen **Umweg** über Braunschweig und Magdeburg, sodass die Fahrt etwa achtzig Minuten länger dauert.",
+    "Wo keine Züge fahren können, sollen **Ersatzbusse** die Fahrgäste zu den nächsten Bahnhöfen bringen, damit niemand ohne Verbindung bleibt."
    ],
    "chips": [
     "6문장",
@@ -124,35 +124,31 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "11월 11일에 독일의 많은 아이들은 투르의 성 마르틴을 기리는 마르틴 축일을 기념합니다.",
+   "answer": "10월 초부터 하노버와 베를린을 잇는 중요한 철도 노선이 대대적으로 보수되고 있으며, 공사는 2027년 12월까지 이어집니다.",
    "words": [
     [
-     "Martinstag",
-     "성 마르틴 축일 (남성 der)"
+     "Bahnstrecke",
+     "철도 노선 (여성 die, 복수 Bahnstrecken)"
     ],
     [
-     "Legende",
-     "전설, 옛이야기 (여성 die, 복수 Legenden)"
+     "Gleis",
+     "선로, 철로 (중성 das, 복수 Gleise)"
     ],
     [
-     "Laterne",
-     "초롱, 등불 (여성 die, 복수 Laternen)"
+     "Umweg",
+     "우회로, 돌아가는 길 (남성 der, 복수 Umwege)"
     ],
     [
-     "Martinslied",
-     "마르틴 축일 노래 (중성 das, 복수 Martinslieder)"
+     "Ersatzbus",
+     "대체 버스 (남성 der, 복수 Ersatzbusse)"
     ],
     [
-     "Feuer",
-     "불, 모닥불 (중성 das)"
+     "Pendler",
+     "통근자 (남성 der, 복수 Pendler)"
     ],
     [
-     "Brauch",
-     "풍습, 관습 (남성 der, 복수 Bräuche)"
-    ],
-    [
-     "basteln",
-     "손으로 만들다, 공작하다"
+     "Sanierung",
+     "보수, 개보수 (여성 die)"
     ]
    ],
    "review": {
@@ -163,6 +159,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-04",
+   "topic": "철도 대공사"
+  },
   {
    "lang": "en",
    "day": "2026-11-03",
@@ -262,11 +263,6 @@
    "lang": "ja",
    "day": "2026-10-28",
    "topic": "감의 날"
-  },
-  {
-   "lang": "de",
-   "day": "2026-10-28",
-   "topic": "동네 빵집"
   }
  ]
 }
