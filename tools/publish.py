@@ -222,6 +222,29 @@ LEVEL_HEAD_NEW = "<script>try{var _lc=location.pathname.split('/')[1]||'en';var 
 MODEL_NAMES = (("ChatGPT나 Claude 같은 AI 채팅에", "평소 쓰는 AI 채팅에"), ("AI 채팅(ChatGPT, Claude 등)에", "AI 채팅에"))
 
 
+# 글자색은 접근성 대비 기준(tests/test_a11y_b1_contrast.py)에 맞춰 하단 링크 줄과 같은 #6b7684
+CREDIT_CSS = "  .site-footer .credit { flex-basis: 100%; font-size: 12px; color: #6b7684; }\n"
+
+
+def credit_to_footer(page, lang):
+    """음성 크레딧(이용 조건으로 표기해야 함)을 듣기 안내 줄 끝에서 하단 링크 줄 아래로 옮긴다(design/ja-credit J01).
+    크레딧이 없는 언어나 하단 링크가 없는 페이지는 그대로 둔다. 여러 번 돌려도 같다."""
+    credit = langs.LANGS.get(lang, {}).get("credit")
+    if not credit or '<footer class="site-footer">' not in page:
+        return page
+    text = html.escape(credit)
+    page = page.replace(f" {text}</p>", "</p>").replace(f" {credit}</p>", "</p>")
+    span = f'<span class="credit">{text}</span>'
+    if span not in page:
+        at = page.index('<footer class="site-footer">')
+        end = page.index("</footer>", at)
+        page = page[:end] + span + page[end:]
+    if CREDIT_CSS not in page:
+        at = page.find("</style>", max(page.find(".site-footer {"), 0))
+        page = page[:at] + CREDIT_CSS + page[at:]
+    return page
+
+
 def patch_page(lang, day):
     L = langs.get(lang)
     path = ROOT / lang / day / "index.html"
@@ -410,6 +433,7 @@ def patch_page(lang, day):
     for old, new in MODEL_NAMES:
         page = page.replace(old, new)
     page = gnb.apply(page, lang, mail, day=True)
+    page = credit_to_footer(page, lang)
     # 의견 보내기(이슈 #21): 하단 링크 위 기능 건의, 버그 제보 버튼
     page = feedback.apply(page, lang, url)
     path.write_text(page, encoding="utf-8")

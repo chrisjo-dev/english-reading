@@ -295,7 +295,7 @@ def render(lang, day):
         "tts_lang": L["tts_lang"],
         "copy_head": L["copy_head"],
         "copy_weak": L["copy_weak"],
-        "credit": f" {esc(L['credit'])}" if L.get("credit") else "",
+        # 음성 크레딧은 publish.patch_page 가 하단 링크 줄 아래에 넣는다(design/ja-credit J01)
     }
     page = TEMPLATE.read_text(encoding="utf-8")
     for k, v in values.items():
