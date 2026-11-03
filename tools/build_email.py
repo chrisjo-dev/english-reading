@@ -40,8 +40,9 @@ def parse(lang, day):
                                                         grab(r'<div class="chips">(.*?)</div>', page))],
         "chips_a": [html.unescape(c) for c in re.findall(r'<span class="chip[^"]*">(.*?)</span>',
                                                           (re.search(r'<div class="chips chips-a">(.*?)</div>', page, re.S) or [None, ""])[1])],
-        "sentences": re.findall(r'<div class="en">(.*?)</div>', passage, re.S),
-        "words": re.findall(r'<span class="w">(.*?)</span>.*?<span class="m">(.*?)</span>', words_sec, re.DOTALL),
+        # 속성(lang="de" 등)이 붙어도 찾는다. 11/3 페이지에 lang 속성이 생기자 메일 본문과 단어가 통째로 빠졌다
+        "sentences": re.findall(r'<div class="en"(?:\s[^>]*)?>(.*?)</div>', passage, re.S),
+        "words": re.findall(r'<span class="w"(?:\s[^>]*)?>(.*?)</span>.*?<span class="m"(?:\s[^>]*)?>(.*?)</span>', words_sec, re.DOTALL),
         "source": (src.group(1), src.group(2)) if src else None,
     }
 

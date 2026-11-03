@@ -612,3 +612,26 @@ class TestLevelAllSentinel(unittest.TestCase):
         meta = {"lang": "en", "day": "2026-10-20"}
         self.assertTrue(send_email.same_issue(meta, "en", "day", "2026-10-20", "b"))
         self.assertFalse(send_email.same_issue(meta, "en", "day", "2026-10-20", None))
+
+
+class TestEmailFromCurrentTemplate(unittest.TestCase):
+    """지금 템플릿으로 막 렌더한 페이지에서 메일을 만들어도 본문 문장과 단어가 빠지지 않는다.
+    (2026-11-03 페이지 마크업에 lang 속성이 생기자 메일 본문이 비어서 나갔다)"""
+
+    def test_sentences_and_words_present(self):
+        import subprocess
+        for lang in ("en", "ja", "de"):
+            days = sorted((REPO / "content" / lang).glob("20??-??-??.json"))
+            day = days[-1].stem
+            page = REPO / lang / day / "index.html"
+            if not page.exists():
+                continue
+            backup = page.read_text(encoding="utf-8")
+            try:
+                subprocess.run([sys.executable, str(REPO / "tools" / "render.py"), lang, day], check=True, capture_output=True)
+                d = build_email.parse(lang, day)
+                n = len(json.loads((REPO / "content" / lang / f"{day}.json").read_text(encoding="utf-8"))["sentences"])
+                self.assertEqual(len(d["sentences"]), n, f"{lang} {day} 메일 문장 수")
+                self.assertTrue(d["words"], f"{lang} {day} 메일 단어")
+            finally:
+                page.write_text(backup, encoding="utf-8")
