@@ -19,6 +19,7 @@ import vote  # noqa: E402
 import drill  # noqa: E402
 import gnb  # noqa: E402
 import feedback  # noqa: E402
+import track  # noqa: E402
 from render import LEVEL_SEG  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -436,6 +437,8 @@ def patch_page(lang, day):
     page = credit_to_footer(page, lang)
     # 의견 보내기(이슈 #21): 하단 링크 위 기능 건의, 버그 제보 버튼
     page = feedback.apply(page, lang, url)
+    # 구역 도달 측정(이슈 #24, 문법 섹션 0단계)
+    page = track.apply(page)
     path.write_text(page, encoding="utf-8")
 
 
