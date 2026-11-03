@@ -16,6 +16,7 @@ import langs  # noqa: E402
 from render import ruby  # noqa: E402
 from publish import FOOTER_CSS, FOOTER_HTML  # noqa: E402
 import gnb  # noqa: E402
+import feedback  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://read.wspace.ai.kr"
@@ -73,6 +74,7 @@ def build_page(lang, end):
     page = page.replace("__OG_IMAGE__", f"{SITE}/{lang}/{days[-1]['day']}/thumb.png")
     # 위 메뉴(시안 A, 이슈 #20). 복습 페이지에는 구독 칸이 없어 그 언어 첫 화면의 구독 칸으로 보낸다
     page = page.replace("__GNB_CSS__", gnb.css_block()).replace("__GNB_JS__", gnb.SCRIPT).replace("__GNB__", gnb.header_html(lang, f"/{lang}/#subscribe"))
+    page = feedback.apply(page, lang, f"{SITE}/{lang}/review/{end}/")
     out = ROOT / lang / "review" / end / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")

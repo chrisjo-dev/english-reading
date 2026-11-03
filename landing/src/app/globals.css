@@ -1444,6 +1444,43 @@ html:not(.js) .sw {
   color: var(--mute);
 }
 
+/* 의견 보내기(이슈 #21): 브랜드 소개 아래 알약 버튼 두 개 */
+.fb-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.fb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fb-btn:hover {
+  background: var(--bg);
+}
+
+.fb-btn svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  fill: none;
+  stroke: var(--mute);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* ───── responsive ───── */
 /* 폰과 큰 제목이 두 열 사이에 들어가도록 제목을 줄이고, 아래 제목과 일요일 카드를 내린다.
    확인 메일 안내로 폼이 길어져 첫 화면 높이도 늘린다. */

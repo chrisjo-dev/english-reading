@@ -12,6 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
 import vote  # noqa: E402
+import feedback  # noqa: E402
 
 SITE = "https://read.wspace.ai.kr"
 BLUE, INK, SUB, MUTED, BG, HL = "#3182f6", "#191f28", "#4e5968", "#8b95a1", "#f2f4f6", "#fff3c4"
@@ -84,6 +85,9 @@ def build(lang, day, level="b"):
         url = url_base  # 중급 이메일: 쿼리 없음(페이지 기본값 b), Phase 2 이전과 바이트 동일
         level_label = L["level"]
     cat_label = html.escape(vote.thumb.CATS[vote.category(lang, day)][0])
+    # 의견 보내기(이슈 #21): 사이트 하단 버튼과 같은 메일 양식. 버그 제보에는 그날 지문 주소를 넣어 둔다
+    fb_idea = html.escape(feedback.mailto(feedback.IDEA_SUBJECT, feedback.idea_body(lang)))
+    fb_bug = html.escape(feedback.mailto(feedback.BUG_SUBJECT, feedback.bug_body(url_base)))
     vote_sep = "&amp;" if "?" in url else "?"
 
     def vote_btn(v, text):  # 주제 반응(#13): 페이지가 ?vote= 를 읽어 GA 이벤트를 보낸다
@@ -152,6 +156,7 @@ def build(lang, day, level="b"):
 </td></tr>
 <tr><td style="padding:16px 8px 0;font-size:13px;color:{MUTED};text-align:center;">
   <a href="{SITE}/{lang}/archive/" style="color:{SUB};">지난 지문 모아 보기</a>
+  <p style="margin:12px 0 0;padding:12px 14px;background:#ffffff;border-radius:12px;font-size:13px;line-height:1.6;color:{SUB};">독해한입에 바라는 점이 있으면 <a href="{fb_idea}" style="color:#2a52d4;font-weight:600;">기능 건의</a>, 이상한 곳을 보셨다면 <a href="{fb_bug}" style="color:#2a52d4;font-weight:600;">버그 제보</a>로 알려 주세요.</p>
   <p style="margin:12px 0 0;font-size:12px;line-height:1.6;color:{MUTED};">매일 아침 {level_label} {L["name"]} 지문을 보내 드려요.<br>
   수준이나 언어를 바꾸고 싶으면 <a href="{SITE}/{lang}/#subscribe" style="color:{MUTED};">여기</a>에서 같은 이메일로 다시 구독해 주세요. 확인 메일 없이 바로 바뀌어요.<br>
   더 받지 않으려면 <a href="{{{{ unsubscribe_url }}}}" style="color:{MUTED};">수신거부</a>를 눌러 주세요.</p>

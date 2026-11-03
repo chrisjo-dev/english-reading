@@ -1,3 +1,5 @@
+import Feedback from "./Feedback";
+
 const W = "https://www.wspace.ai.kr";
 
 const LINKS = [
@@ -17,6 +19,7 @@ export default function Footer() {
             독해한입
           </b>
           <span>매일 아침 한 편, 외국어로 읽는 세상.</span>
+          <Feedback />
         </div>
         <nav className="foot-links" aria-label="하단 메뉴">
           <a href="/en/">영어 지문</a>

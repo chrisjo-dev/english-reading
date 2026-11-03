@@ -18,6 +18,7 @@ import thumb  # noqa: E402
 import vote  # noqa: E402
 import drill  # noqa: E402
 import gnb  # noqa: E402
+import feedback  # noqa: E402
 from render import LEVEL_SEG  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -403,6 +404,8 @@ def patch_page(lang, day):
     # 위 메뉴(시안 A): 화면 위에 붙은 흰 바, 언어 칩 시트, PC 언어 탭. 예전 떠 있는 바와 그 CSS 는 지운다
     mail = "#subscribe" if 'id="subscribe"' in page else f"/{lang}/#subscribe"
     page = gnb.apply(page, lang, mail, day=True)
+    # 의견 보내기(이슈 #21): 하단 링크 위 기능 건의, 버그 제보 버튼
+    page = feedback.apply(page, lang, url)
     path.write_text(page, encoding="utf-8")
 
 
@@ -461,6 +464,7 @@ def rebuild_lists(lang):
                 .replace("__CHIPS__", chips).replace("__LANGTABS__", tabs).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
                 .replace("__META_DESC__", meta_desc).replace("__CANONICAL__", canonical).replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
+        page = feedback.apply(page, lang, canonical)
         if L.get("noindex", False):
             page = page.replace('<link rel="stylesheet"', '<meta name="robots" content="noindex">\n<link rel="stylesheet"', 1)
         out.mkdir(parents=True, exist_ok=True)
