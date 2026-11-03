@@ -1,0 +1,411 @@
+{
+  "date": "2026-11-04",
+  "category": "society",
+  "topic": "불 끄는 섬",
+  "title_ko": "바닷새를 위해 불을 끄는 섬",
+  "headline": "An Island Turns Off Its Lights for Birds",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "On the small island of Corvo in the Azores, about four hundred and fifty people have agreed to live in the dark for a while.",
+      "b2": false,
+      "chunks": [
+        [
+          "On the small island of Corvo",
+          "작은 섬 코르부에서"
+        ],
+        [
+          "in the Azores,",
+          "아조레스 제도의"
+        ],
+        [
+          "about four hundred and fifty people",
+          "약 450명의 사람들이"
+        ],
+        [
+          "have agreed to live",
+          "살기로 동의했다"
+        ],
+        [
+          "in the dark",
+          "어둠 속에서"
+        ],
+        [
+          "for a while.",
+          "한동안"
+        ]
+      ]
+    },
+    {
+      "en": "Since October twenty-first, the streets and public buildings have turned off their lights at night, and the **blackout** will last for almost three weeks.",
+      "b2": false,
+      "chunks": [
+        [
+          "Since October twenty-first,",
+          "10월 21일부터"
+        ],
+        [
+          "the streets and public buildings",
+          "거리와 공공건물들은"
+        ],
+        [
+          "have turned off their lights",
+          "불을 꺼 왔다"
+        ],
+        [
+          "at night,",
+          "밤에"
+        ],
+        [
+          "and the **blackout** will last",
+          "그리고 그 소등은 이어질 것이다"
+        ],
+        [
+          "for almost three weeks.",
+          "거의 3주 동안"
+        ]
+      ]
+    },
+    {
+      "en": "The reason is a seabird called the shearwater: around six thousand pairs **nest** on the island, and their young birds leave home at this time of year.",
+      "b2": false,
+      "chunks": [
+        [
+          "The reason is",
+          "그 이유는"
+        ],
+        [
+          "a seabird called the shearwater:",
+          "슴새라는 바닷새다"
+        ],
+        [
+          "around six thousand pairs",
+          "약 6,000쌍이"
+        ],
+        [
+          "**nest** on the island,",
+          "그 섬에 둥지를 틀고"
+        ],
+        [
+          "and their young birds leave home",
+          "그 어린 새들이 집을 떠난다"
+        ],
+        [
+          "at this time of year.",
+          "해마다 이맘때"
+        ]
+      ]
+    },
+    {
+      "en": "The young birds, which usually find their way to the ocean by following the light of the stars, can easily be **confused** by bright street lamps and fly **inland** instead.",
+      "b2": true,
+      "chunks": [
+        [
+          "The young birds,",
+          "그 어린 새들은"
+        ],
+        [
+          "which usually find their way",
+          "보통 길을 찾는데"
+        ],
+        [
+          "to the ocean",
+          "바다로 가는"
+        ],
+        [
+          "by following the light of the stars,",
+          "별빛을 따라가서"
+        ],
+        [
+          "can easily be **confused**",
+          "쉽게 혼란에 빠질 수 있다"
+        ],
+        [
+          "by bright street lamps",
+          "밝은 가로등 때문에"
+        ],
+        [
+          "and fly **inland** instead.",
+          "그리고 대신 내륙으로 날아간다"
+        ]
+      ]
+    },
+    {
+      "en": "Many of them then **crash** into buildings or end up on roads, far from the sea.",
+      "b2": false,
+      "chunks": [
+        [
+          "Many of them then **crash**",
+          "그러면 그중 많은 새가 부딪힌다"
+        ],
+        [
+          "into buildings",
+          "건물에"
+        ],
+        [
+          "or end up on roads,",
+          "또는 결국 도로에 떨어진다"
+        ],
+        [
+          "far from the sea.",
+          "바다에서 멀리 떨어진"
+        ]
+      ]
+    },
+    {
+      "en": "A local bird group says that the dark nights have **reduced** the number of birds that are found on the ground or killed, which is important because each pair raises only one **chick** a year.",
+      "b2": true,
+      "chunks": [
+        [
+          "A local bird group says",
+          "한 지역 조류 단체는 말한다"
+        ],
+        [
+          "that the dark nights have **reduced**",
+          "어두운 밤이 줄였다고"
+        ],
+        [
+          "the number of birds",
+          "새들의 수를"
+        ],
+        [
+          "that are found on the ground or killed,",
+          "땅에서 발견되거나 죽는"
+        ],
+        [
+          "which is important",
+          "그리고 이것은 중요하다"
+        ],
+        [
+          "because each pair raises",
+          "각 쌍이 키우기 때문에"
+        ],
+        [
+          "only one **chick** a year.",
+          "1년에 새끼 한 마리만"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "blackout",
+      "소등, 정전"
+    ],
+    [
+      "nest",
+      "둥지를 틀다"
+    ],
+    [
+      "confused",
+      "혼란스러운"
+    ],
+    [
+      "inland",
+      "내륙으로"
+    ],
+    [
+      "crash",
+      "충돌하다, 부딪히다"
+    ],
+    [
+      "reduced",
+      "줄이다 (과거분사형)"
+    ],
+    [
+      "chick",
+      "새끼 새"
+    ]
+  ],
+  "points": [
+    {
+      "title": "큰 숫자 바로 그리기",
+      "body": "`four hundred and fifty`는 450, `six thousand pairs`는 6,000쌍이에요. `thousand` 앞의 숫자를 먼저 잡고 뒤에 0을 세 개 붙이면 빨리 그려집니다. `pairs`의 복수 -s는 \"쌍들\"이니, 새로 치면 1만 2천 마리쯤 된다는 뜻이에요."
+    },
+    {
+      "title": "문장 끝에 붙은 시간과 수량",
+      "body": "2번 문장의 `for almost three weeks`, 3번 문장의 `at this time of year`, 6번 문장의 `only one chick a year`처럼 기간과 수량이 문장 맨 끝에 와요. 특히 `a year`는 \"한 해\"가 아니라 \"1년에\"라는 비율 표현입니다."
+    }
+  ],
+  "answers": [
+    "아조레스 제도의 작은 섬 코르부에서는 약 450명의 주민이 한동안 어둠 속에서 지내기로 했다.",
+    "10월 21일부터 거리와 공공건물은 밤마다 불을 꺼 왔고, 이 소등은 거의 3주 동안 이어진다.",
+    "그 이유는 슴새라는 바닷새 때문이다. 약 6,000쌍이 그 섬에 둥지를 틀고 사는데, 해마다 이맘때 어린 새들이 둥지를 떠난다.",
+    "보통 별빛을 따라 바다로 가는 길을 찾는 어린 새들은 밝은 가로등 때문에 쉽게 혼란에 빠져 바다 대신 내륙으로 날아갈 수 있다.",
+    "그러면 그중 많은 새가 건물에 부딪히거나, 바다에서 멀리 떨어진 도로 위에 내려앉게 된다.",
+    "한 지역 조류 단체는 어두운 밤 덕분에 땅에서 발견되거나 죽는 새의 수가 줄었다고 말하는데, 각 쌍이 1년에 새끼를 한 마리만 키우기 때문에 이는 중요한 일이다."
+  ],
+  "advanced": [
+    {
+      "word": "illumination",
+      "meaning": "조명",
+      "confuse": "elimination(제거)과 혼동 주의",
+      "example": "The island switched off all public **illumination** after dark.",
+      "example_ko": "그 섬은 해가 진 뒤 모든 공공 조명을 껐습니다."
+    },
+    {
+      "word": "disorient",
+      "meaning": "방향 감각을 잃게 하다",
+      "confuse": null,
+      "example": "Bright street lamps can **disorient** young seabirds on their first flight.",
+      "example_ko": "밝은 가로등은 첫 비행에 나선 어린 바닷새의 방향 감각을 잃게 할 수 있습니다."
+    },
+    {
+      "word": "fledgling",
+      "meaning": "갓 날기 시작한 새끼 새",
+      "confuse": null,
+      "example": "Each **fledgling** tries to reach the ocean by following the stars.",
+      "example_ko": "갓 날기 시작한 새끼 새는 저마다 별을 따라 바다에 닿으려 합니다."
+    },
+    {
+      "word": "breed",
+      "meaning": "번식하다",
+      "confuse": "bread(빵)와 혼동 주의",
+      "example": "Around six thousand pairs of shearwaters **breed** on the island.",
+      "example_ko": "약 6,000쌍의 슴새가 그 섬에서 번식합니다."
+    },
+    {
+      "word": "residents",
+      "meaning": "주민들 (복수형)",
+      "confuse": "resistance(저항)와 혼동 주의",
+      "example": "The island's **residents** agreed to spend several weeks in the dark.",
+      "example_ko": "섬 주민들은 몇 주 동안 어둠 속에서 지내기로 동의했습니다."
+    },
+    {
+      "word": "conservation",
+      "meaning": "보존, 보호",
+      "confuse": "conversation(대화)과 혼동 주의",
+      "example": "A local **conservation** group says the dark nights are working.",
+      "example_ko": "한 지역 보호 단체는 어두운 밤이 효과를 내고 있다고 말합니다."
+    },
+    {
+      "word": "collision",
+      "meaning": "충돌",
+      "confuse": null,
+      "example": "Fewer birds have died in **collisions** with buildings.",
+      "example_ko": "건물에 부딪혀 죽는 새가 줄었습니다."
+    }
+  ],
+  "source": {
+    "title": "What went right this week: the good news that matters (Positive News, 2026-10-30)",
+    "url": "https://www.positive.news/society/good-news-stories-from-week-44-of-2026/"
+  },
+  "photo_scene": "Close-up at dusk of a brown and white shearwater seabird sitting on a rocky cliff edge above a dark blue ocean, a small village with unlit houses blurred behind, soft fading evening light.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "About four hundred and fifty people live on Corvo, a small island in the Azores.",
+          "chunks": [
+            [
+              "About four hundred and fifty people",
+              "약 450명의 사람들이"
+            ],
+            [
+              "live on Corvo,",
+              "코르부에 산다"
+            ],
+            [
+              "a small island in the Azores.",
+              "아조레스 제도의 작은 섬인"
+            ]
+          ]
+        },
+        {
+          "en": "Since October twenty-first, the island turns off its lights at night.",
+          "chunks": [
+            [
+              "Since October twenty-first,",
+              "10월 21일부터"
+            ],
+            [
+              "the island turns off its lights",
+              "그 섬은 불을 끈다"
+            ],
+            [
+              "at night.",
+              "밤에"
+            ]
+          ]
+        },
+        {
+          "en": "About six thousand pairs of seabirds **nest** there, and their babies leave home now.",
+          "chunks": [
+            [
+              "About six thousand pairs of seabirds",
+              "약 6,000쌍의 바닷새가"
+            ],
+            [
+              "**nest** there,",
+              "그곳에 둥지를 튼다"
+            ],
+            [
+              "and their babies leave home now.",
+              "그리고 그 새끼들이 지금 집을 떠난다"
+            ]
+          ]
+        },
+        {
+          "en": "The young birds follow the stars, but bright lamps make them **confused**.",
+          "chunks": [
+            [
+              "The young birds follow the stars,",
+              "어린 새들은 별을 따라간다"
+            ],
+            [
+              "but bright lamps make them **confused**.",
+              "하지만 밝은 등이 그들을 혼란스럽게 만든다"
+            ]
+          ]
+        },
+        {
+          "en": "Some birds **crash** into buildings or land on roads.",
+          "chunks": [
+            [
+              "Some birds **crash**",
+              "어떤 새들은 부딪힌다"
+            ],
+            [
+              "into buildings",
+              "건물에"
+            ],
+            [
+              "or land on roads.",
+              "또는 도로에 내려앉는다"
+            ]
+          ]
+        },
+        {
+          "en": "Dark nights help, because each pair has only one **chick** a year.",
+          "chunks": [
+            [
+              "Dark nights help,",
+              "어두운 밤은 도움이 된다"
+            ],
+            [
+              "because each pair has",
+              "각 쌍이 가지기 때문에"
+            ],
+            [
+              "only one **chick** a year.",
+              "1년에 새끼 한 마리만"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "약 450명이 아조레스 제도의 작은 섬 코르부에 산다.",
+        "10월 21일부터 그 섬은 밤에 불을 끈다.",
+        "약 6,000쌍의 바닷새가 그곳에 둥지를 틀고, 지금 그 새끼들이 둥지를 떠난다.",
+        "어린 새들은 별을 따라가지만, 밝은 등 때문에 혼란에 빠진다.",
+        "어떤 새들은 건물에 부딪히거나 도로에 내려앉는다.",
+        "각 쌍이 1년에 새끼를 한 마리만 낳기 때문에 어두운 밤은 도움이 된다."
+      ]
+    }
+  }
+}
