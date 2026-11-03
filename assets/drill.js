@@ -229,6 +229,8 @@
     if (it.first === null) it.first = ok;
     if (!ok) it.wrong++;
     S.answered++; S.shown++; render();
+    // 맞든 틀리든 판정하는 순간 소리를 들려준다. 빈칸 채우기는 예문 전체, 나머지는 단어(이슈 #23)
+    say(it.c, kindOf(it) === 'cloze');
   }
   function check() {
     var it = S.queue[0], f = root.querySelector('.dr-field');
@@ -248,7 +250,14 @@
 
   // iOS는 처음 누름에서 재생한 Audio 요소만 이후 자동 재생을 허락하므로 하나를 계속 쓴다.
   var player = null, sayN = 0;
-  function say(c) {
+  // 예문 글자(루비 읽기는 빼고). 예문 음성 파일이 없거나 예전에 담은 카드일 때 브라우저 음성으로 읽는다
+  function exText(c) {
+    var d = document.createElement('div'); d.innerHTML = c.ex || '';
+    [].forEach.call(d.querySelectorAll('rt'), function (e) { e.remove(); });
+    return d.textContent.trim();
+  }
+  function say(c, ex) {
+    var src = ex ? c.sa : c.au, text = ex ? exText(c) || c.w : c.w;
     var n = ++sayN, btn = root && root.querySelector('.dr-listen');
     function on(v) {
       if (n !== sayN || !btn) return;
@@ -256,16 +265,16 @@
     }
     function speak() {
       if (n !== sayN || !('speechSynthesis' in window)) return on(false);
-      speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(c.w); u.lang = SPEECH[c.l] || 'en-US'; u.rate = 0.9;
+      speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(text); u.lang = SPEECH[c.l] || 'en-US'; u.rate = 0.9;
       u.onend = u.onerror = function () { on(false); }; on(true); speechSynthesis.speak(u);
     }
     if ('speechSynthesis' in window) speechSynthesis.cancel();
     if (player) player.pause();
-    if (!c.au) return speak();
+    if (!src) return speak();
     if (!player) player = new Audio();
     player.onended = function () { on(false); };
     player.onerror = function () { if (n === sayN) speak(); };
-    player.src = c.au; on(true);
+    player.src = src; on(true);
     var pr = player.play(); if (pr && pr.catch) pr.catch(speak);
   }
   function hush() { sayN++; if (player) player.pause(); if ('speechSynthesis' in window) speechSynthesis.cancel(); }
@@ -376,6 +385,7 @@
     if (act === 'giveup') { if (it.pick == null) answer(it, '', false); return; }
     if (act === 'next') {
       // 카드와 같은 규칙: 틀리면 같은 회차 뒤로, 한 번에 못 맞힌 단어는 연속 2번 맞혀야 빠진다.
+      hush();  // 긴 예문을 읽는 중에 다음 문제로 넘어가면 멈춘다
       var right = it.ok; S.queue.shift(); it.pick = null; it.ok = null;
       if (!right) { it.streak = 0; later(it); }
       else if (it.wrong === 0 || it.streak >= 1) it.done = true;
@@ -402,7 +412,7 @@
       if (!rec) { rec = {}; rec.s = 0; rec.due = add(t, 1); }
       else if (it.wrong > 0) { rec.s = 0; rec.due = add(t, 1); }
       else if (rec.due && rec.due <= t) { rec.s = (rec.s || 0) + 1; rec.due = rec.s >= INT.length ? null : add(t, INT[rec.s]); }
-      ['k', 'l', 'd', 'w', 'r', 'm', 'mh', 'ex', 'sh', 'ek', 'au', 'alts'].forEach(function (f) { if (c[f] != null) rec[f] = c[f]; });
+      ['k', 'l', 'd', 'w', 'r', 'm', 'mh', 'ex', 'sh', 'ek', 'au', 'sa', 'alts'].forEach(function (f) { if (c[f] != null) rec[f] = c[f]; });
       rec.x = it.wrong;
       db.items[c.k] = rec;
     });

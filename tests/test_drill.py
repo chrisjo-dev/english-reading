@@ -3,6 +3,7 @@ import json
 import re
 import sys
 import unittest
+import unittest.mock
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,6 +30,24 @@ class TestCards(unittest.TestCase):
         self.assertEqual(insp["au"], "/en/2026-10-29/audio/w4.mp3")
         self.assertEqual(len(insp["alts"]), len(cs) - 1)
         self.assertNotIn(insp["m"], insp["alts"])
+
+    def test_example_audio_is_the_sentence_of_the_example(self):
+        """빈칸 채우기 판정 뒤 읽는 예문 음성(sa)은 카드 예문과 같은 문장의 s{k+1}.mp3 다(이슈 #23)."""
+        d = json.loads((ROOT / "content" / "en" / "2026-10-29.json").read_text(encoding="utf-8"))
+        plain = [re.sub(r"\*\*", "", s["en"]) for s in d["sentences"]]
+        for c in drill.cards("en", "2026-10-29"):
+            text = re.sub(r"<[^>]+>", "", c["ex"])
+            k = plain.index(text)
+            self.assertEqual(c["sa"], f"/en/2026-10-29/audio/s{k + 1}.mp3", c["w"])
+
+    def test_example_audio_only_when_file_exists(self):
+        """음성 파일이 없으면 sa 를 넣지 않는다(브라우저 음성으로 읽는다)."""
+        real = Path.exists
+        with unittest.mock.patch.object(Path, "exists", lambda self: False if self.name.startswith("s") and self.suffix == ".mp3" else real(self)):
+            cs = drill.cards("en", "2026-10-29")
+        self.assertTrue(cs)
+        self.assertTrue(all("sa" not in c for c in cs))
+        self.assertTrue(all("au" in c for c in cs))
 
     def test_ja_word_has_reading_and_ruby_example(self):
         cs = drill.cards("ja", "2026-10-29")

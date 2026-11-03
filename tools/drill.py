@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "13"
+VERSION = "14"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -284,6 +284,9 @@ def cards(lang, day):
             c["sh"] = rich(_short(dict(sents[k], en=raw), b, lang))
             if k < len(answers):
                 c["ek"] = answers[k]
+            # 예문 전체 음성(빈칸 채우기 판정 뒤에 읽는다). 카드 예문은 중급(sentences) 문장이라 s{k+1}.mp3 다
+            if (ROOT / lang / day / "audio" / f"s{k + 1}.mp3").exists():
+                c["sa"] = f"/{lang}/{day}/audio/s{k + 1}.mp3"
         if (ROOT / lang / day / "audio" / f"w{i + 1}.mp3").exists():
             c["au"] = f"/{lang}/{day}/audio/w{i + 1}.mp3"
         out.append(c)
