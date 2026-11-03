@@ -99,6 +99,8 @@
 2. **content JSON 쓰기**: 위 형식 그대로 중급 본문과 `levels.a`를 함께 넣어 `content/ja/YYYY-MM-DD.json`을 씁니다. 모든 문자열은 일반 텍스트(HTML 태그 금지).
 3. **검증**: `python3 tools/render.py ja YYYY-MM-DD`를 실행해 오류 없이 끝나는지 확인합니다. 만들어진 `ja/YYYY-MM-DD/index.html`에서 `{`나 `|`가 남아 있지 않은지(후리가나 표기 실수) `grep -c '[{|]' ja/YYYY-MM-DD/index.html`로 확인하고, 0이 아니면 JSON을 고칩니다(페이지의 다른 곳에도 `{`가 있으니 지문 부분, 특히 중급 `class="en"`과 기초 `class="en-a"` 줄을 직접 열어 확인). 확인이 끝나면 `git checkout -- . && git clean -fd -- ja/YYYY-MM-DD`로 되돌린 뒤 content 파일만 남깁니다.
    그다음 `python3 tools/check_content.py ja YYYY-MM-DD`를 실행합니다.
+   - `::warning`(뜻풀이가 설명 같음, 제목이 길다): 해당 필드를 고쳐 다시 실행합니다. 경고는 발행을 막지 않지만 그대로 올리지 않습니다.
+   - `::warning`(화, 수, 금인데 출처 없음): 2번 절차로 출처를 다시 찾습니다. 두세 번 실패해 출처 없이 올릴 때는 마지막 답변에 그 이유를 적습니다.
    - `::error`(levels.a 없음, 문장 수나 해석 수가 맞지 않음): `levels.a`를 고쳐 다시 실행합니다. 기초 지문은 필수라서 지우고 올리면 안 됩니다.
    - `::error`(화면에 그대로 보이는 마크다운 기호 등): JSON을 고쳐 다시 실행합니다.
    - `::error`(최근 지문과 내용 겹침): 다른 소재로 다시 씁니다. 겹친 채로 올리면 발행 단계에서 비축분으로 바뀝니다.

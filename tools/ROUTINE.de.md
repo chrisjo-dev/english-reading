@@ -92,6 +92,7 @@
 1. **이미 올라간 날인지 확인**: `content/de/YYYY-MM-DD.json`이 있으면 새로 만들지 말고 끝낸다.
 2. **content JSON 쓰기**: 중급(`sentences`, `levels.a`)을 포함해 위 형식 그대로 `content/de/YYYY-MM-DD.json`을 쓴다.
 3. **검증**: `python3 tools/render.py de YYYY-MM-DD` → `python3 tools/check_content.py de YYYY-MM-DD`. `::error`가 나오면 JSON을 고쳐 다시 실행.
+   - `::warning`(뜻풀이가 설명 같음, 제목이 길다): 해당 필드를 고쳐 다시 실행한다. 경고는 발행을 막지 않지만 그대로 올리지 않는다.
 4. **확인 후 되돌리기**: `git checkout -- . && git clean -fd -- de/YYYY-MM-DD`로 생성 파일 삭제, content 파일만 유지.
 5. **push**: `git add content/de/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add de YYYY-MM-DD: 주제어 Refs #9" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 줄 금지.
 6. **마지막 답변**: 한두 문장과 페이지 주소 `https://read.wspace.ai.kr/de/YYYY-MM-DD/`. 실패하면 원인 명시.

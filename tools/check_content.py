@@ -155,6 +155,56 @@ def check(path):
         warnings += de_warnings
     if path.parent.name == "ja":
         warnings += check_ja_quality(c, path)
+    style_errors, style_warnings = check_style(c, path)
+    errors += style_errors
+    warnings += style_warnings
+    return errors, warnings
+
+
+STYLE_FROM = dt.date(2026, 11, 4)  # 이날 지문부터 뜻풀이, 제목, 일본어 출처 경고(그 전 발행분은 2026-11-03 손으로 점검해 고침)
+_JA_CHARS = re.compile(r"[\u3040-\u30ff\u4e00-\u9fff]")
+_PAREN = re.compile(r"\([^()]*\)")
+_PARAPHRASE = re.compile(r"(는 것|하는 |없고|이 없는|정한 |하는 일|좋은 때|드는 정도)")
+_TITLE_TAIL = re.compile(r"(하려고|기까지의|하기 위해|위한 )")
+
+
+def _gloss_head(m):
+    """뜻의 첫 대응어(쓰임을 좁히는 괄호와 성별 괄호는 뺀다)."""
+    return _PAREN.sub("", m).strip().split(",")[0].strip()
+
+
+def check_style(c, path):
+    """2026-11-03 사용자 지적이 다시 나오지 않게 막는다.
+    - 오류: 일본어 뜻에 가나나 한자(일본어 읽기)가 들어 있으면 단어 쓰기 힌트에 답이 보인다(7つ '일곱 개 (ななつ)').
+    - 경고: 뜻을 사전 대응어 대신 풀어 썼거나(平和 '전쟁이 없고 평온함'), 제목이 설명처럼 길거나,
+      일본어 화, 수, 금 지문에 출처가 없을 때. 경고는 발행을 막지 않지만 루틴이 고치고 다시 검사한다."""
+    errors, warnings = [], []
+    lang = path.parent.name
+    if lang == "ja":
+        for w in c.get("words", []):
+            if len(w) >= 2 and _JA_CHARS.search(w[1]):
+                errors.append(f"words: '{w[0]}' 의 뜻에 일본어(가나, 한자)가 들어 있어 단어 쓰기 힌트에 답이 보여요: {w[1]}. 한국어로만 쓰세요.")
+    if path.parent.parent.name != "pool":
+        try:
+            day = dt.date.fromisoformat(path.stem)
+        except ValueError:
+            return errors, warnings
+        if day < STYLE_FROM:
+            return errors, warnings
+    else:
+        day = None
+    glosses = [("words", w[0], w[1]) for w in c.get("words", []) if len(w) >= 2]
+    glosses += [("advanced", a.get("word", ""), a.get("meaning", "")) for a in c.get("advanced") or []]
+    for kind, word, m in glosses:
+        h = _gloss_head(m)
+        if len(h.replace(" ", "")) > 9 or _PARAPHRASE.search(h):
+            warnings.append(f"{kind}: '{word}' 의 뜻 '{m}' 이 풀어 쓴 설명 같아요. 한국어 사전의 대응어로 짧게 쓰세요"
+                            "(예: 平和 → 평화, 機会 → 기회, Einwegflasche → 일회용 병). 대응어가 정말 없을 때만 설명을 두세요.")
+    t = str(c.get("title_ko") or "")
+    if len(t.replace(" ", "")) > 18 or _TITLE_TAIL.search(t):
+        warnings.append(f"title_ko '{t}' 가 설명처럼 길어요. 15자 안팎의 명사구로, 원문 제목을 옮기지 말고 새로 지으세요(ROUTINE 의 제목 짓는 법).")
+    if lang == "ja" and day and day.weekday() in (1, 2, 4) and not c.get("source"):
+        warnings.append("화, 수, 금 일본어 지문은 출처가 필요해요(ROUTINE.ja.md 2번). 공식 페이지를 찾아 source 를 달거나, 못 찾았으면 마지막 답변에 이유를 적으세요.")
     return errors, warnings
 
 
