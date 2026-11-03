@@ -3,12 +3,14 @@
 사용: BUTTONDOWN_API_KEY=... python3 tools/send_email.py en 2026-10-12
       BUTTONDOWN_API_KEY=... python3 tools/send_email.py ja 2026-10-18 --weekly   (주간 단어 복습)
       BUTTONDOWN_API_KEY=... python3 tools/send_email.py en 2026-10-14 --catchup  (그날 메일을 못 받은 구독자에게만 다시 보냄)
+      BUTTONDOWN_API_KEY=... python3 tools/send_email.py en 2026-10-14 --level b --resend <실행 id> [--note "안내"]  (운영자 재발송, 원래 제목 그대로)
 - 페이지와 썸네일이 200 으로 열리고 페이지에 주제어가 보일 때만 보낸다(최대 10분 대기).
 - 같은 언어와 날짜로 이미 만든 메일(metadata.lang, metadata.day)이 있으면 보내지 않는다. 다시 실행해도 중복 발송되지 않는다.
 - 받는 사람은 구독자 metadata.lang 으로 거른다. 영어는 "ja 등 다른 언어가 아닌" 구독자 전부.
 - Buttondown 필터는 lang 값이 없는 구독자를 not_equals 에서도 빼므로, 보내기 전에 lang 이 없는 구독자를 기본 언어(en)로 채운다.
 """
 import datetime
+import html
 import json
 import os
 import sys
@@ -309,21 +311,21 @@ def catchup(lang, day, level="b"):
                 print(f"표시 정리 실패, 다음 구독자로 계속: {sub['id']} {exc}")
 
 
-RESEND_NOTE = ('<p style="max-width:560px;margin:0 auto 8px;font-size:13px;color:#6b7684;text-align:center;">'
-               '아침 메일에 본문이 빠져 다시 보내 드려요.</p>\n')
+def with_note(mail, note):
+    """운영자가 다시 보낼 때 적은 안내 한 줄을 본문 맨 위에 넣는다. 비우면 원래 메일 그대로다."""
+    if not note:
+        return mail
+    p = ('<p style="max-width:560px;margin:0 auto 8px;font-size:13px;color:#6b7684;text-align:center;">'
+         f'{html.escape(note)}</p>\n')
+    return {**mail, "body": mail["body"].replace('<table role="presentation"', p + '<table role="presentation"', 1)}
 
 
-def as_resend(mail):
-    """본문이 잘못 나간 날 다시 보내는 메일: 제목 앞에 표시를 달고 안내 한 줄을 넣는다."""
-    return {"subject": "[다시 보냄] " + mail["subject"],
-            "body": mail["body"].replace('<table role="presentation"', RESEND_NOTE + '<table role="presentation"', 1)}
-
-
-def main(lang, day, level="b", resend=False):
-    """resend=True 는 그날 메일을 한 번 더 보낸다. metadata 키가 'resend' 라 본 메일 중복 막기와 보충 발송에 섞이지 않고,
-    다시 실행해도 재발송은 한 번만 나간다."""
-    key = "resend" if resend else "day"
-    fix = as_resend if resend else (lambda m: m)
+def main(lang, day, level="b", resend=None, note=""):
+    """resend 는 운영자가 그날 메일을 다시 보낼 때 주는 실행 표시(resend 워크플로의 run id)다.
+    metadata 키가 'resend' 라 본 메일 중복 막기와 보충 발송에 섞이지 않는다.
+    같은 실행을 재시도하면 건너뛰고, 새로 실행하면 또 보낸다."""
+    key, value = ("resend", f"{day}:{resend}") if resend else ("day", day)
+    fix = lambda m: with_note(m, note)
     L = langs.LANGS.get(lang, {})
     if not L.get("email", True):
         print(f"이 언어는 아직 메일을 보내지 않습니다 (email=False, {lang}). 종료합니다.")
@@ -335,13 +337,13 @@ def main(lang, day, level="b", resend=False):
         if mail is None:
             print(f"기초 지문 없음, 중급 메일에 포함됨 ({lang} {day})")
             return  # exit 0: 중급(b) 발송 시 이미 a-구독자 포함
-        send(fix(mail), lang, key, day, level="a")
+        send(fix(mail), lang, key, value, level="a")
         return
     # level == "b": 기초 지문이 없으면 a-구독자도 중급 메일에 포함한다(수준 필터 없음)
     mail = build_email.build(lang, day, "b")
     has_level_a = build_email.build(lang, day, "a") is not None
     effective_level = "b" if has_level_a else None
-    send(fix(mail), lang, key, day, level=effective_level)
+    send(fix(mail), lang, key, value, level=effective_level)
 
 
 def main_weekly(lang, end):
@@ -371,4 +373,5 @@ if __name__ == "__main__":
     elif "--catchup" in sys.argv:
         catchup(sys.argv[1], sys.argv[2], level)
     else:
-        main(sys.argv[1], sys.argv[2], level, resend="--resend" in sys.argv)
+        arg = lambda flag: sys.argv[sys.argv.index(flag) + 1] if flag in sys.argv else None
+        main(sys.argv[1], sys.argv[2], level, resend=arg("--resend"), note=arg("--note") or "")
