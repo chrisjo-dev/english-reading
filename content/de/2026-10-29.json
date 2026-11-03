@@ -191,7 +191,7 @@
     ],
     [
       "Auszubildende",
-      "직업 교육생 (남성 der)"
+      "견습생, 교육생 (남성 der)"
     ],
     [
       "Betrieb",
@@ -256,7 +256,7 @@
     },
     {
       "word": "der Einstieg",
-      "meaning": "진입, 첫 시작",
+      "meaning": "시작, 입문",
       "confuse": null,
       "example": "Ein Praktikum erleichtert den **Einstieg** in den Beruf.",
       "example_ko": "인턴십은 직업 세계로의 진입을 쉽게 해 줍니다."

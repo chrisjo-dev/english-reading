@@ -158,93 +158,6 @@
   .top { position: relative; }
   .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
   .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
-  /* gnb-a */
-  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
-  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
-  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
-  .gnb-brand img { display: block; height: 26px; width: auto; }
-  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
-  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
-  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
-  .gnb-chip .gnb-pill svg { color: #6b7684; }
-  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
-  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
-  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
-  .gnb-seg, .gnb-past { display: none; }
-  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
-  @media (max-width: 350px) { .gnb-brand span { display: none; } }
-  @media (min-width: 768px) {
-    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
-    .gnb-brand { font-size: 18px; margin-right: 24px; }
-    .gnb-brand img { height: 28px; }
-    .gnb-chip { display: none; }
-    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
-    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
-    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
-    .gnb-seg a:hover { color: #191f28; }
-    .gnb-seg a.on { color: #191f28; font-weight: 700; }
-    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
-    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
-    .gnb-past:hover { background: #f2f4f6; }
-    .gnb-past.on { color: #191f28; font-weight: 700; }
-  }
-  /* 언어 시트(휴대폰) */
-  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
-  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
-               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
-               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
-  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
-  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
-  .gnb-sheet:focus { outline: none; }
-  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
-  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
-  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
-  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
-  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
-  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
-  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
-  .gs-row.on { background: #e8f3ff; }
-  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
-  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
-  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
-  .gs-tt { flex: 1; min-width: 0; }
-  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
-  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
-  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
-  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
-  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
-  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
-  .gs-review[hidden] { display: none; }
-  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
-  .gs-review .gs-badge svg { width: 20px; height: 20px; }
-  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
-  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
-  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
-  /* /gnb-a */
-  /* day-a */
-  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
-  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
-  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
-  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
-  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
-  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
-  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
-  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
-  .top:has(> .hero) h1 { padding-right: 0; }
-  @media (min-width: 768px) {
-    body > main { max-width: 784px; }
-    main .pbar { max-width: 760px; }
-    .top { padding: 28px 28px 24px; margin-top: 24px; }
-    .top h1 { font-size: 28px; }
-    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
-    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
-  }
-  /* /day-a */
   .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
@@ -269,6 +182,33 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -416,33 +356,93 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
-  /* vote-css */
-  .cat-science { color: #1b64da; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #a25c00; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #1b64da; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #a25c00; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
+  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
+  /* gnb-a */
+  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
+  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
+  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
+  .gnb-brand img { display: block; height: 26px; width: auto; }
+  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
+  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
+  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
+  .gnb-chip .gnb-pill svg { color: #6b7684; }
+  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
+  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
+  .gnb-seg, .gnb-past { display: none; }
+  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
+  @media (max-width: 350px) { .gnb-brand span { display: none; } }
+  @media (min-width: 768px) {
+    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
+    .gnb-brand { font-size: 18px; margin-right: 24px; }
+    .gnb-brand img { height: 28px; }
+    .gnb-chip { display: none; }
+    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
+    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
+    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
+    .gnb-seg a:hover { color: #191f28; }
+    .gnb-seg a.on { color: #191f28; font-weight: 700; }
+    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+    .gnb-past:hover { background: #f2f4f6; }
+    .gnb-past.on { color: #191f28; font-weight: 700; }
+  }
+  /* 언어 시트(휴대폰) */
+  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
+  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
+               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
+               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
+  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
+  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
+  .gnb-sheet:focus { outline: none; }
+  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
+  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
+  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
+  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
+  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
+  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
+  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
+  .gs-row.on { background: #e8f3ff; }
+  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
+  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
+  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
+  .gs-tt { flex: 1; min-width: 0; }
+  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
+  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
+  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
+  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
+  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
+  .gs-review[hidden] { display: none; }
+  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
+  .gs-review .gs-badge svg { width: 20px; height: 20px; }
+  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
+  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
+  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
+  /* /gnb-a */
+  /* day-a */
+  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
+  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
+  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
+  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
+  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
+  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
+  .top:has(> .hero) h1 { padding-right: 0; }
+  @media (min-width: 768px) {
+    body > main { max-width: 784px; }
+    main .pbar { max-width: 760px; }
+    .top { padding: 28px 28px 24px; margin-top: 24px; }
+    .top h1 { font-size: 28px; }
+    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
+    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
+  }
+  /* /day-a */
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
@@ -544,12 +544,12 @@
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
       <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">A small brown bird called the <b>nightjar</b> flies thousands of kilometers every year between Europe and southern Africa.</div><div class="chunks"><span class="ck"><span class="e">A small brown bird<span class="s">/</span></span><span class="k">작은 갈색 새가</span></span><span class="ck"><span class="e">called the <b>nightjar</b><span class="s">/</span></span><span class="k">쏙독새라고 불리는</span></span><span class="ck"><span class="e">flies thousands of kilometers<span class="s">/</span></span><span class="k">수천 킬로미터를 난다</span></span><span class="ck"><span class="e">every year<span class="s">/</span></span><span class="k">해마다</span></span><span class="ck"><span class="e">between Europe and southern Africa.</span><span class="k">유럽과 아프리카 남부 사이를</span></span></div><div class="ko" hidden>쏙독새라고 불리는 작은 갈색 새는 매년 유럽과 아프리카 남부 사이를 수천 킬로미터 날아간다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">However, a new study suggests that its wings are not perfectly <b>designed</b> for such long trips.</div><div class="chunks"><span class="ck"><span class="e">However,<span class="s">/</span></span><span class="k">하지만</span></span><span class="ck"><span class="e">a new study suggests<span class="s">/</span></span><span class="k">새 연구는 말한다</span></span><span class="ck"><span class="e">that its wings<span class="s">/</span></span><span class="k">그 날개가</span></span><span class="ck"><span class="e">are not perfectly <b>designed</b><span class="s">/</span></span><span class="k">완벽하게 만들어지진 않았다고</span></span><span class="ck"><span class="e">for such long trips.</span><span class="k">그렇게 긴 여행에 맞게</span></span></div><div class="ko" hidden>하지만 한 새로운 연구는 그 새의 날개가 그렇게 긴 여행에 딱 맞게 만들어진 것은 아니라는 점을 시사한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">Researchers at Lund University in Sweden <b>recorded</b> the birds as they flew through a wind tunnel at different speeds.</div><div class="chunks"><span class="ck"><span class="e">Researchers at Lund University in Sweden<span class="s">/</span></span><span class="k">스웨덴 룬드 대학교 연구자들은</span></span><span class="ck"><span class="e"><b>recorded</b> the birds<span class="s">/</span></span><span class="k">그 새들을 기록했다</span></span><span class="ck"><span class="e">as they flew through a wind tunnel<span class="s">/</span></span><span class="k">새들이 풍동 속을 날 때</span></span><span class="ck"><span class="e">at different speeds.</span><span class="k">여러 속도로</span></span></div><div class="ko" hidden>스웨덴 룬드 대학교의 연구자들은 그 새들이 풍동(바람 터널) 안에서 여러 속도로 나는 모습을 기록했다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">They found that the nightjar's wide wing <b>tips</b> help it turn quickly when it hunts insects at night, but they make fast flight less <b>efficient</b>.</div><div class="chunks"><span class="ck"><span class="e">They found<span class="s">/</span></span><span class="k">그들은 알아냈다</span></span><span class="ck"><span class="e">that the nightjar's wide wing <b>tips</b><span class="s">/</span></span><span class="k">쏙독새의 넓은 날개 끝이</span></span><span class="ck"><span class="e">help it turn quickly<span class="s">/</span></span><span class="k">빨리 방향을 틀도록 돕는다는 것을</span></span><span class="ck"><span class="e">when it hunts insects at night,<span class="s">/</span></span><span class="k">밤에 곤충을 사냥할 때</span></span><span class="ck"><span class="e">but they make fast flight<span class="s">/</span></span><span class="k">하지만 그것은 빠른 비행을 만든다</span></span><span class="ck"><span class="e">less <b>efficient</b>.</span><span class="k">덜 효율적으로</span></span></div><div class="ko" hidden>그들은 쏙독새의 넓은 날개 끝이 밤에 곤충을 사냥할 때 빠르게 방향을 바꾸도록 돕지만, 빠른 비행은 덜 효율적으로 만든다는 것을 알아냈다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">The birds also produce <b>thrust</b>, a force that pushes them forward, when they lift their wings up, something scientists had mainly linked to bats and insects.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The birds also produce <b>thrust</b>,<span class="s">/</span></span><span class="k">이 새들은 추진력도 만든다</span></span><span class="ck"><span class="e">a force that pushes them forward,<span class="s">/</span></span><span class="k">앞으로 미는 힘인</span></span><span class="ck"><span class="e">when they lift their wings up,<span class="s">/</span></span><span class="k">날개를 들어 올릴 때</span></span><span class="ck"><span class="e">something scientists had mainly linked<span class="s">/</span></span><span class="k">과학자들이 주로 연결 지었던 일이다</span></span><span class="ck"><span class="e">to bats and insects.</span><span class="k">박쥐와 곤충에</span></span></div><div class="ko" hidden>그 새들은 날개를 위로 들어 올릴 때도 몸을 앞으로 미는 힘인 추진력을 만들어 내는데, 이는 과학자들이 주로 박쥐와 곤충과 연관 지어 온 것이다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">The team believes that these <b>findings</b>, which were published in a science journal last week, could help engineers build better flying robots.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The team believes<span class="s">/</span></span><span class="k">연구팀은 믿는다</span></span><span class="ck"><span class="e">that these <b>findings</b>,<span class="s">/</span></span><span class="k">이 연구 결과가</span></span><span class="ck"><span class="e">which were published<span class="s">/</span></span><span class="k">발표되었는데</span></span><span class="ck"><span class="e">in a science journal last week,<span class="s">/</span></span><span class="k">지난주 과학 학술지에</span></span><span class="ck"><span class="e">could help engineers<span class="s">/</span></span><span class="k">엔지니어들을 도울 수 있다고</span></span><span class="ck"><span class="e">build better flying robots.</span><span class="k">더 나은 비행 로봇을 만들도록</span></span></div><div class="ko" hidden>연구팀은 지난주 한 과학 학술지에 실린 이 연구 결과가 엔지니어들이 더 나은 비행 로봇을 만드는 데 도움이 될 수 있다고 생각한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en" lang="en">A small brown bird called the <b>nightjar</b> flies thousands of kilometers every year between Europe and southern Africa.</div><div class="chunks"><span class="ck"><span class="e">A small brown bird<span class="s">/</span></span><span class="k">작은 갈색 새가</span></span><span class="ck"><span class="e">called the <b>nightjar</b><span class="s">/</span></span><span class="k">쏙독새라고 불리는</span></span><span class="ck"><span class="e">flies thousands of kilometers<span class="s">/</span></span><span class="k">수천 킬로미터를 난다</span></span><span class="ck"><span class="e">every year<span class="s">/</span></span><span class="k">해마다</span></span><span class="ck"><span class="e">between Europe and southern Africa.</span><span class="k">유럽과 아프리카 남부 사이를</span></span></div><div class="ko" hidden>쏙독새라고 불리는 작은 갈색 새는 매년 유럽과 아프리카 남부 사이를 수천 킬로미터 날아간다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en" lang="en">However, a new study suggests that its wings are not perfectly <b>designed</b> for such long trips.</div><div class="chunks"><span class="ck"><span class="e">However,<span class="s">/</span></span><span class="k">하지만</span></span><span class="ck"><span class="e">a new study suggests<span class="s">/</span></span><span class="k">새 연구는 말한다</span></span><span class="ck"><span class="e">that its wings<span class="s">/</span></span><span class="k">그 날개가</span></span><span class="ck"><span class="e">are not perfectly <b>designed</b><span class="s">/</span></span><span class="k">완벽하게 만들어지진 않았다고</span></span><span class="ck"><span class="e">for such long trips.</span><span class="k">그렇게 긴 여행에 맞게</span></span></div><div class="ko" hidden>하지만 한 새로운 연구는 그 새의 날개가 그렇게 긴 여행에 딱 맞게 만들어진 것은 아니라는 점을 시사한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en" lang="en">Researchers at Lund University in Sweden <b>recorded</b> the birds as they flew through a wind tunnel at different speeds.</div><div class="chunks"><span class="ck"><span class="e">Researchers at Lund University in Sweden<span class="s">/</span></span><span class="k">스웨덴 룬드 대학교 연구자들은</span></span><span class="ck"><span class="e"><b>recorded</b> the birds<span class="s">/</span></span><span class="k">그 새들을 기록했다</span></span><span class="ck"><span class="e">as they flew through a wind tunnel<span class="s">/</span></span><span class="k">새들이 풍동 속을 날 때</span></span><span class="ck"><span class="e">at different speeds.</span><span class="k">여러 속도로</span></span></div><div class="ko" hidden>스웨덴 룬드 대학교의 연구자들은 그 새들이 풍동(바람 터널) 안에서 여러 속도로 나는 모습을 기록했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en" lang="en">They found that the nightjar's wide wing <b>tips</b> help it turn quickly when it hunts insects at night, but they make fast flight less <b>efficient</b>.</div><div class="chunks"><span class="ck"><span class="e">They found<span class="s">/</span></span><span class="k">그들은 알아냈다</span></span><span class="ck"><span class="e">that the nightjar's wide wing <b>tips</b><span class="s">/</span></span><span class="k">쏙독새의 넓은 날개 끝이</span></span><span class="ck"><span class="e">help it turn quickly<span class="s">/</span></span><span class="k">빨리 방향을 틀도록 돕는다는 것을</span></span><span class="ck"><span class="e">when it hunts insects at night,<span class="s">/</span></span><span class="k">밤에 곤충을 사냥할 때</span></span><span class="ck"><span class="e">but they make fast flight<span class="s">/</span></span><span class="k">하지만 그것은 빠른 비행을 만든다</span></span><span class="ck"><span class="e">less <b>efficient</b>.</span><span class="k">덜 효율적으로</span></span></div><div class="ko" hidden>그들은 쏙독새의 넓은 날개 끝이 밤에 곤충을 사냥할 때 빠르게 방향을 바꾸도록 돕지만, 빠른 비행은 덜 효율적으로 만든다는 것을 알아냈다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en" lang="en">The birds also produce <b>thrust</b>, a force that pushes them forward, when they lift their wings up, something scientists had mainly linked to bats and insects.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The birds also produce <b>thrust</b>,<span class="s">/</span></span><span class="k">이 새들은 추진력도 만든다</span></span><span class="ck"><span class="e">a force that pushes them forward,<span class="s">/</span></span><span class="k">앞으로 미는 힘인</span></span><span class="ck"><span class="e">when they lift their wings up,<span class="s">/</span></span><span class="k">날개를 들어 올릴 때</span></span><span class="ck"><span class="e">something scientists had mainly linked<span class="s">/</span></span><span class="k">과학자들이 주로 연결 지었던 일이다</span></span><span class="ck"><span class="e">to bats and insects.</span><span class="k">박쥐와 곤충에</span></span></div><div class="ko" hidden>그 새들은 날개를 위로 들어 올릴 때도 몸을 앞으로 미는 힘인 추진력을 만들어 내는데, 이는 과학자들이 주로 박쥐와 곤충과 연관 지어 온 것이다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en" lang="en">The team believes that these <b>findings</b>, which were published in a science journal last week, could help engineers build better flying robots.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">The team believes<span class="s">/</span></span><span class="k">연구팀은 믿는다</span></span><span class="ck"><span class="e">that these <b>findings</b>,<span class="s">/</span></span><span class="k">이 연구 결과가</span></span><span class="ck"><span class="e">which were published<span class="s">/</span></span><span class="k">발표되었는데</span></span><span class="ck"><span class="e">in a science journal last week,<span class="s">/</span></span><span class="k">지난주 과학 학술지에</span></span><span class="ck"><span class="e">could help engineers<span class="s">/</span></span><span class="k">엔지니어들을 도울 수 있다고</span></span><span class="ck"><span class="e">build better flying robots.</span><span class="k">더 나은 비행 로봇을 만들도록</span></span></div><div class="ko" hidden>연구팀은 지난주 한 과학 학술지에 실린 이 연구 결과가 엔지니어들이 더 나은 비행 로봇을 만드는 데 도움이 될 수 있다고 생각한다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://www.sciencedaily.com/releases/2026/10/261016070624.htm" target="_blank" rel="noopener">This bird flies thousands of miles, but its wings have a catch (ScienceDaily, 2026-10-17)</a></p>
     <div class="mine">
@@ -563,13 +563,13 @@
   <section class="card">
     <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
-    <div class="word"><span class="wl"><span class="w">nightjar</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="nightjar" aria-label="nightjar 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">쏙독새 (밤에 사냥하는 새)</span></div>
-    <div class="word"><span class="wl"><span class="w">designed</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="designed" aria-label="designed 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">만들어진, 설계된</span></div>
-    <div class="word"><span class="wl"><span class="w">recorded</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="recorded" aria-label="recorded 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">기록했다, 촬영했다</span></div>
-    <div class="word"><span class="wl"><span class="w">tips</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="tips" aria-label="tips 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">끝부분들 (tip의 복수)</span></div>
-    <div class="word"><span class="wl"><span class="w">efficient</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="efficient" aria-label="efficient 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">효율적인</span></div>
-    <div class="word"><span class="wl"><span class="w">thrust</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="thrust" aria-label="thrust 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">추진력, 앞으로 미는 힘</span></div>
-    <div class="word"><span class="wl"><span class="w">findings</span><button class="wbtn" type="button" data-kind="w" data-i="6" data-word="findings" aria-label="findings 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">연구 결과 (보통 복수로 씀)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">nightjar</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="nightjar" aria-label="nightjar 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">쏙독새 (밤에 사냥하는 새)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">designed</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="designed" aria-label="designed 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">만들어진, 설계된</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">recorded</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="recorded" aria-label="recorded 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">기록했다, 촬영했다</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">tips</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="tips" aria-label="tips 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">끝부분들 (tip의 복수)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">efficient</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="efficient" aria-label="efficient 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">효율적인</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">thrust</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="thrust" aria-label="thrust 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">추진력, 앞으로 미는 힘</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">findings</span><button class="wbtn" type="button" data-kind="w" data-i="6" data-word="findings" aria-label="findings 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">연구 결과 (보통 복수로 씀)</span></div>
   </section>
 
   <section class="card">
@@ -625,25 +625,25 @@
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w"><span class="wt">migrate</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="migrate" aria-label="migrate 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(철새가) 이동하다, 이주하다<span class="warn">immigrate(이민 오다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">migrate</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="migrate" aria-label="migrate 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(철새가) 이동하다, 이주하다<span class="warn">immigrate(이민 오다)와 혼동 주의</span></div>
         <div class="ex">The nightjar <b>migrates</b> thousands of kilometers between Europe and southern Africa.</div>
         <div class="ex-ko">나이트자 새는 유럽과 남부 아프리카 사이를 수천 킬로미터 이동합니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">trade-off</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="trade-off" aria-label="trade-off 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(하나를 얻으면 하나를 잃는) 맞바꿈, 절충</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">trade-off</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="trade-off" aria-label="trade-off 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">절충, 맞바꿈</div>
         <div class="ex">The wing shape is a <b>trade-off</b> between long-distance flight and hunting.</div>
         <div class="ex-ko">날개 모양은 장거리 비행과 사냥 사이의 타협점입니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">maneuver</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="maneuver" aria-label="maneuver 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">방향을 바꾸며 움직이다, 기동하다</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">maneuver</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="maneuver" aria-label="maneuver 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">방향을 바꾸며 움직이다, 기동하다</div>
         <div class="ex">Broad wing tips help the bird <b>maneuver</b> when it hunts insects.</div>
         <div class="ex-ko">넓은 날개 끝부분이 새가 곤충을 사냥할 때 기동하는 데 도움을 줍니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">agility</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="agility" aria-label="agility 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">민첩함<span class="warn">ability(능력)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">agility</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="agility" aria-label="agility 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">민첩함<span class="warn">ability(능력)와 혼동 주의</span></div>
         <div class="ex">The nightjar gains <b>agility</b> but loses some speed.</div>
         <div class="ex-ko">나이트자 새는 민첩성을 얻는 대신 속도를 일부 잃습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">efficiency</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="efficiency" aria-label="efficiency 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">효율<span class="warn">effectiveness(효과)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">efficiency</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="efficiency" aria-label="efficiency 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">효율<span class="warn">effectiveness(효과)와 혼동 주의</span></div>
         <div class="ex">Wide wing tips reduce the bird's <b>efficiency</b> at high speeds.</div>
         <div class="ex-ko">넓은 날개 끝부분은 고속에서 새의 효율성을 떨어뜨립니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">propel</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="propel" aria-label="propel 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">앞으로 나아가게 하다<span class="warn">repel(물리치다)과 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">propel</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="propel" aria-label="propel 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">추진하다, 앞으로 나아가게 하다<span class="warn">repel(물리치다)과 혼동 주의</span></div>
         <div class="ex">The upstroke also <b>propels</b> the bird forward.</div>
         <div class="ex-ko">날개를 위로 치는 동작도 새를 앞으로 나아가게 합니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">aerodynamic</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="aerodynamic" aria-label="aerodynamic 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">공기 역학적인</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">aerodynamic</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="aerodynamic" aria-label="aerodynamic 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">공기 역학적인</div>
         <div class="ex">The team measured the <b>aerodynamic</b> forces in a wind tunnel.</div>
         <div class="ex-ko">연구팀은 풍동에서 공기 역학적 힘을 측정했습니다.</div></div>
     </div>
@@ -1040,15 +1040,16 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
-  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  // 수준 전환(카드 안 읽기 수준 세그먼트): 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
   (function () {
     var toLevelA = document.getElementById('to-level-a');
     var toLevelB = document.getElementById('to-level-b');
     if (!toLevelA || !toLevelB) return;
     function updateLinks() {
       var isA = isLevelA();
-      toLevelA.hidden = isA;
-      toLevelB.hidden = !isA;
+      // 켜진 쪽 모양은 CSS(html.level-a)가 정한다. 여기서는 화면 읽기 프로그램용 표시만 맞춘다
+      toLevelA.setAttribute('aria-current', String(isA));
+      toLevelB.setAttribute('aria-current', String(!isA));
     }
     updateLinks();
     function switchLevel(e, to) {

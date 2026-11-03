@@ -158,93 +158,6 @@
   .top { position: relative; }
   .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
   .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
-  /* gnb-a */
-  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
-  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
-  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
-  .gnb-brand img { display: block; height: 26px; width: auto; }
-  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
-  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
-  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
-  .gnb-chip .gnb-pill svg { color: #6b7684; }
-  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
-  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
-  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
-  .gnb-seg, .gnb-past { display: none; }
-  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
-  @media (max-width: 350px) { .gnb-brand span { display: none; } }
-  @media (min-width: 768px) {
-    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
-    .gnb-brand { font-size: 18px; margin-right: 24px; }
-    .gnb-brand img { height: 28px; }
-    .gnb-chip { display: none; }
-    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
-    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
-    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
-    .gnb-seg a:hover { color: #191f28; }
-    .gnb-seg a.on { color: #191f28; font-weight: 700; }
-    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
-    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
-    .gnb-past:hover { background: #f2f4f6; }
-    .gnb-past.on { color: #191f28; font-weight: 700; }
-  }
-  /* 언어 시트(휴대폰) */
-  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
-  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
-               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
-               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
-  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
-  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
-  .gnb-sheet:focus { outline: none; }
-  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
-  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
-  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
-  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
-  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
-  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
-  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
-  .gs-row.on { background: #e8f3ff; }
-  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
-  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
-  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
-  .gs-tt { flex: 1; min-width: 0; }
-  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
-  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
-  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
-  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
-  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
-  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
-  .gs-review[hidden] { display: none; }
-  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
-  .gs-review .gs-badge svg { width: 20px; height: 20px; }
-  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
-  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
-  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
-  /* /gnb-a */
-  /* day-a */
-  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
-  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
-  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
-  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
-  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
-  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
-  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
-  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
-  .top:has(> .hero) h1 { padding-right: 0; }
-  @media (min-width: 768px) {
-    body > main { max-width: 784px; }
-    main .pbar { max-width: 760px; }
-    .top { padding: 28px 28px 24px; margin-top: 24px; }
-    .top h1 { font-size: 28px; }
-    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
-    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
-  }
-  /* /day-a */
   .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
@@ -269,6 +182,33 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -416,33 +356,93 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
-  /* vote-css */
-  .cat-science { color: #1b64da; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #a25c00; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #1b64da; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #a25c00; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
+  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
+  /* gnb-a */
+  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
+  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
+  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
+  .gnb-brand img { display: block; height: 26px; width: auto; }
+  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
+  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
+  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
+  .gnb-chip .gnb-pill svg { color: #6b7684; }
+  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
+  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
+  .gnb-seg, .gnb-past { display: none; }
+  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
+  @media (max-width: 350px) { .gnb-brand span { display: none; } }
+  @media (min-width: 768px) {
+    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
+    .gnb-brand { font-size: 18px; margin-right: 24px; }
+    .gnb-brand img { height: 28px; }
+    .gnb-chip { display: none; }
+    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
+    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
+    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
+    .gnb-seg a:hover { color: #191f28; }
+    .gnb-seg a.on { color: #191f28; font-weight: 700; }
+    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+    .gnb-past:hover { background: #f2f4f6; }
+    .gnb-past.on { color: #191f28; font-weight: 700; }
+  }
+  /* 언어 시트(휴대폰) */
+  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
+  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
+               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
+               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
+  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
+  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
+  .gnb-sheet:focus { outline: none; }
+  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
+  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
+  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
+  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
+  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
+  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
+  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
+  .gs-row.on { background: #e8f3ff; }
+  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
+  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
+  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
+  .gs-tt { flex: 1; min-width: 0; }
+  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
+  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
+  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
+  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
+  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
+  .gs-review[hidden] { display: none; }
+  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
+  .gs-review .gs-badge svg { width: 20px; height: 20px; }
+  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
+  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
+  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
+  /* /gnb-a */
+  /* day-a */
+  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
+  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
+  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
+  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
+  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
+  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
+  .top:has(> .hero) h1 { padding-right: 0; }
+  @media (min-width: 768px) {
+    body > main { max-width: 784px; }
+    main .pbar { max-width: 760px; }
+    .top { padding: 28px 28px 24px; margin-top: 24px; }
+    .top h1 { font-size: 28px; }
+    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
+    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
+  }
+  /* /day-a */
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
@@ -544,11 +544,11 @@
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
       <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Every second, <b>billions</b> of tiny particles called <b>neutrinos</b> pass through your entire body without you feeling anything at all.</div><div class="chunks"><span class="ck"><span class="e">Every second,<span class="s">/</span></span><span class="k">매초</span></span><span class="ck"><span class="e"><b>billions</b> of tiny particles<span class="s">/</span></span><span class="k">수십억 개의 작은 입자가</span></span><span class="ck"><span class="e">called <b>neutrinos</b><span class="s">/</span></span><span class="k">중성미자라고 불리는</span></span><span class="ck"><span class="e">pass through your entire body<span class="s">/</span></span><span class="k">당신의 온몸을 통과한다</span></span><span class="ck"><span class="e">without you feeling anything at all.</span><span class="k">당신이 아무것도 느끼지 못한 채</span></span></div><div class="ko" hidden>매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Most neutrinos come from the sun, but some travel from the far edges of the <b>universe</b> and carry enormous amounts of energy.</div><div class="chunks"><span class="ck"><span class="e">Most neutrinos come from the sun,<span class="s">/</span></span><span class="k">대부분의 중성미자는 태양에서 오지만</span></span><span class="ck"><span class="e">but some travel<span class="s">/</span></span><span class="k">일부는 날아온다</span></span><span class="ck"><span class="e">from the far edges of the <b>universe</b><span class="s">/</span></span><span class="k">우주의 먼 끝에서</span></span><span class="ck"><span class="e">and carry enormous amounts of energy.</span><span class="k">그리고 엄청난 양의 에너지를 지닌다</span></span></div><div class="ko" hidden>대부분의 중성미자는 태양에서 오지만, 일부는 우주의 먼 끝에서 날아와 엄청난 에너지를 지닌 채 도착한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The IceCube <b>Observatory</b> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <b>detect</b> these particles.</div><div class="chunks"><span class="ck"><span class="e">The IceCube <b>Observatory</b> in Antarctica<span class="s">/</span></span><span class="k">남극의 아이스큐브 관측소는</span></span><span class="ck"><span class="e">uses more than five thousand sensors<span class="s">/</span></span><span class="k">5천 개가 넘는 센서를 쓴다</span></span><span class="ck"><span class="e">buried up to two and a half kilometres deep<span class="s">/</span></span><span class="k">최대 2.5킬로미터 깊이로 묻힌</span></span><span class="ck"><span class="e">in the ice<span class="s">/</span></span><span class="k">얼음 속에</span></span><span class="ck"><span class="e">to <b>detect</b> these particles.</span><span class="k">이 입자들을 감지하기 위해</span></span></div><div class="ko" hidden>남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">When a neutrino <b>collides</b> with an ice molecule, it produces a brief <b>flash</b> of blue light that the sensors record.</div><div class="chunks"><span class="ck"><span class="e">When a neutrino <b>collides</b><span class="s">/</span></span><span class="k">중성미자가 부딪히면</span></span><span class="ck"><span class="e">with an ice molecule,<span class="s">/</span></span><span class="k">얼음 분자와</span></span><span class="ck"><span class="e">it produces a brief <b>flash</b> of blue light<span class="s">/</span></span><span class="k">짧은 푸른 빛을 만들어 낸다</span></span><span class="ck"><span class="e">that the sensors record.</span><span class="k">센서가 기록하는</span></span></div><div class="ko" hidden>중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">Francis Halzen, the Belgian-American physicist who spent decades designing and building IceCube, was awarded the 2026 Nobel Prize in Physics on October 6 for this pioneering work.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Francis Halzen,<span class="s">/</span></span><span class="k">프랜시스 할젠은</span></span><span class="ck"><span class="e">the Belgian-American physicist<span class="s">/</span></span><span class="k">벨기에계 미국인 물리학자로</span></span><span class="ck"><span class="e">who spent decades<span class="s">/</span></span><span class="k">수십 년을 들였다</span></span><span class="ck"><span class="e">designing and building IceCube,<span class="s">/</span></span><span class="k">아이스큐브를 설계하고 짓는 데</span></span><span class="ck"><span class="e">was awarded the 2026 Nobel Prize in Physics<span class="s">/</span></span><span class="k">2026년 노벨 물리학상을 받았다</span></span><span class="ck"><span class="e">on October 6<span class="s">/</span></span><span class="k">10월 6일에</span></span><span class="ck"><span class="e">for this pioneering work.</span><span class="k">이 선구적인 업적으로</span></span></div><div class="ko" hidden>수십 년에 걸쳐 아이스큐브를 설계하고 건설한 벨기에계 미국인 물리학자 프랜시스 할젠은 이 선구적인 연구로 2026년 10월 6일 노벨 물리학상을 수상했다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en" lang="en">Every second, <b>billions</b> of tiny particles called <b>neutrinos</b> pass through your entire body without you feeling anything at all.</div><div class="chunks"><span class="ck"><span class="e">Every second,<span class="s">/</span></span><span class="k">매초</span></span><span class="ck"><span class="e"><b>billions</b> of tiny particles<span class="s">/</span></span><span class="k">수십억 개의 작은 입자가</span></span><span class="ck"><span class="e">called <b>neutrinos</b><span class="s">/</span></span><span class="k">중성미자라고 불리는</span></span><span class="ck"><span class="e">pass through your entire body<span class="s">/</span></span><span class="k">당신의 온몸을 통과한다</span></span><span class="ck"><span class="e">without you feeling anything at all.</span><span class="k">당신이 아무것도 느끼지 못한 채</span></span></div><div class="ko" hidden>매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en" lang="en">Most neutrinos come from the sun, but some travel from the far edges of the <b>universe</b> and carry enormous amounts of energy.</div><div class="chunks"><span class="ck"><span class="e">Most neutrinos come from the sun,<span class="s">/</span></span><span class="k">대부분의 중성미자는 태양에서 오지만</span></span><span class="ck"><span class="e">but some travel<span class="s">/</span></span><span class="k">일부는 날아온다</span></span><span class="ck"><span class="e">from the far edges of the <b>universe</b><span class="s">/</span></span><span class="k">우주의 먼 끝에서</span></span><span class="ck"><span class="e">and carry enormous amounts of energy.</span><span class="k">그리고 엄청난 양의 에너지를 지닌다</span></span></div><div class="ko" hidden>대부분의 중성미자는 태양에서 오지만, 일부는 우주의 먼 끝에서 날아와 엄청난 에너지를 지닌 채 도착한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en" lang="en">The IceCube <b>Observatory</b> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <b>detect</b> these particles.</div><div class="chunks"><span class="ck"><span class="e">The IceCube <b>Observatory</b> in Antarctica<span class="s">/</span></span><span class="k">남극의 아이스큐브 관측소는</span></span><span class="ck"><span class="e">uses more than five thousand sensors<span class="s">/</span></span><span class="k">5천 개가 넘는 센서를 쓴다</span></span><span class="ck"><span class="e">buried up to two and a half kilometres deep<span class="s">/</span></span><span class="k">최대 2.5킬로미터 깊이로 묻힌</span></span><span class="ck"><span class="e">in the ice<span class="s">/</span></span><span class="k">얼음 속에</span></span><span class="ck"><span class="e">to <b>detect</b> these particles.</span><span class="k">이 입자들을 감지하기 위해</span></span></div><div class="ko" hidden>남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en" lang="en">When a neutrino <b>collides</b> with an ice molecule, it produces a brief <b>flash</b> of blue light that the sensors record.</div><div class="chunks"><span class="ck"><span class="e">When a neutrino <b>collides</b><span class="s">/</span></span><span class="k">중성미자가 부딪히면</span></span><span class="ck"><span class="e">with an ice molecule,<span class="s">/</span></span><span class="k">얼음 분자와</span></span><span class="ck"><span class="e">it produces a brief <b>flash</b> of blue light<span class="s">/</span></span><span class="k">짧은 푸른 빛을 만들어 낸다</span></span><span class="ck"><span class="e">that the sensors record.</span><span class="k">센서가 기록하는</span></span></div><div class="ko" hidden>중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en" lang="en">Francis Halzen, the Belgian-American physicist who spent decades designing and building IceCube, was awarded the 2026 Nobel Prize in Physics on October 6 for this pioneering work.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Francis Halzen,<span class="s">/</span></span><span class="k">프랜시스 할젠은</span></span><span class="ck"><span class="e">the Belgian-American physicist<span class="s">/</span></span><span class="k">벨기에계 미국인 물리학자로</span></span><span class="ck"><span class="e">who spent decades<span class="s">/</span></span><span class="k">수십 년을 들였다</span></span><span class="ck"><span class="e">designing and building IceCube,<span class="s">/</span></span><span class="k">아이스큐브를 설계하고 짓는 데</span></span><span class="ck"><span class="e">was awarded the 2026 Nobel Prize in Physics<span class="s">/</span></span><span class="k">2026년 노벨 물리학상을 받았다</span></span><span class="ck"><span class="e">on October 6<span class="s">/</span></span><span class="k">10월 6일에</span></span><span class="ck"><span class="e">for this pioneering work.</span><span class="k">이 선구적인 업적으로</span></span></div><div class="ko" hidden>수십 년에 걸쳐 아이스큐브를 설계하고 건설한 벨기에계 미국인 물리학자 프랜시스 할젠은 이 선구적인 연구로 2026년 10월 6일 노벨 물리학상을 수상했다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://www.dailymaverick.co.za/article/2026-10-06-francis-halzen-wins-2026-nobel-prize-in-physics.md" target="_blank" rel="noopener">Francis Halzen wins 2026 Nobel Prize in Physics (Daily Maverick, 2026-10-06)</a></p>
     <div class="mine">
@@ -562,12 +562,12 @@
   <section class="card">
     <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
-    <div class="word"><span class="wl"><span class="w">billions</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="billions" aria-label="billions 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">수십억 (의)</span></div>
-    <div class="word"><span class="wl"><span class="w">neutrino</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="neutrino" aria-label="neutrino 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">중성미자 (전하가 없는 아주 작은 입자)</span></div>
-    <div class="word"><span class="wl"><span class="w">observatory</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="observatory" aria-label="observatory 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">천문대, 관측소</span></div>
-    <div class="word"><span class="wl"><span class="w">detect</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="detect" aria-label="detect 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">감지하다, 탐지하다</span></div>
-    <div class="word"><span class="wl"><span class="w">collide</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="collide" aria-label="collide 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">충돌하다</span></div>
-    <div class="word"><span class="wl"><span class="w">flash</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="flash" aria-label="flash 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">섬광, 순간 빛남</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">billions</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="billions" aria-label="billions 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">수십억 (의)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">neutrino</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="neutrino" aria-label="neutrino 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">중성미자 (전하가 없는 아주 작은 입자)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">observatory</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="observatory" aria-label="observatory 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">천문대, 관측소</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">detect</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="detect" aria-label="detect 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">감지하다, 탐지하다</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">collide</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="collide" aria-label="collide 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">충돌하다</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">flash</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="flash" aria-label="flash 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">섬광, 번쩍임</span></div>
   </section>
 
   <section class="card">
@@ -623,25 +623,25 @@
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w"><span class="wt">particle</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="particle" aria-label="particle 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">입자<span class="warn">particular(특정한, 형용사)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">particle</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="particle" aria-label="particle 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">입자<span class="warn">particular(특정한, 형용사)와 혼동 주의</span></div>
         <div class="ex">A neutrino is a <b>particle</b> so tiny it can pass through a light-year of lead.</div>
         <div class="ex-ko">중성미자는 너무 작아서 1광년 두께의 납을 통과할 수 있는 입자입니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">penetrate</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="penetrate" aria-label="penetrate 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">통과하다, 침투하다</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">penetrate</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="penetrate" aria-label="penetrate 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">통과하다, 침투하다</div>
         <div class="ex">Neutrinos can <b>penetrate</b> the entire Earth without hitting anything.</div>
         <div class="ex-ko">중성미자는 아무것도 건드리지 않고 지구 전체를 통과할 수 있습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">emit</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="emit" aria-label="emit 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">방출하다, 내뿜다<span class="warn">omit(빠뜨리다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">emit</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="emit" aria-label="emit 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">방출하다, 내뿜다<span class="warn">omit(빠뜨리다)와 혼동 주의</span></div>
         <div class="ex">The charged particle <b>emits</b> a faint blue glow as it moves through the ice.</div>
         <div class="ex-ko">하전 입자는 얼음 속을 이동하면서 희미한 파란빛을 냅니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">astrophysical</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="astrophysical" aria-label="astrophysical 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">천체물리학적<span class="warn">astronomical(천문학적)과 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">astrophysical</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="astrophysical" aria-label="astrophysical 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">천체물리학적<span class="warn">astronomical(천문학적)과 혼동 주의</span></div>
         <div class="ex">IceCube proved that some neutrinos have an <b>astrophysical</b> origin far outside our galaxy.</div>
         <div class="ex-ko">아이스큐브는 일부 중성미자가 우리 은하 밖 먼 곳에서 기원한다는 것을 증명했습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">pioneer</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="pioneer" aria-label="pioneer 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">개척하다, 선구자가 되다</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">pioneer</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="pioneer" aria-label="pioneer 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">개척하다, 선구자가 되다</div>
         <div class="ex">Halzen <b>pioneered</b> the idea of turning natural Antarctic ice into a neutrino detector.</div>
         <div class="ex-ko">할젠은 남극의 자연 얼음을 중성미자 검출기로 만든다는 아이디어를 처음 주창했습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">subatomic</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="subatomic" aria-label="subatomic 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">원자보다 작은, 아원자의</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">subatomic</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="subatomic" aria-label="subatomic 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">원자보다 작은, 아원자의</div>
         <div class="ex">Neutrinos belong to a family of <b>subatomic</b> particles with almost no mass.</div>
         <div class="ex-ko">중성미자는 질량이 거의 없는 아원자 입자 집합에 속합니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">array</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="array" aria-label="array 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(많은 수의) 배열, 집합체</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">array</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="array" aria-label="array 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(많은 수의) 배열, 집합체</div>
         <div class="ex">An <b>array</b> of over five thousand sensors records every blue flash in the ice.</div>
         <div class="ex-ko">5000개 이상의 센서 배열이 얼음 속의 모든 파란 섬광을 기록합니다.</div></div>
     </div>
@@ -1038,15 +1038,16 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
-  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  // 수준 전환(카드 안 읽기 수준 세그먼트): 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
   (function () {
     var toLevelA = document.getElementById('to-level-a');
     var toLevelB = document.getElementById('to-level-b');
     if (!toLevelA || !toLevelB) return;
     function updateLinks() {
       var isA = isLevelA();
-      toLevelA.hidden = isA;
-      toLevelB.hidden = !isA;
+      // 켜진 쪽 모양은 CSS(html.level-a)가 정한다. 여기서는 화면 읽기 프로그램용 표시만 맞춘다
+      toLevelA.setAttribute('aria-current', String(isA));
+      toLevelB.setAttribute('aria-current', String(!isA));
     }
     updateLinks();
     function switchLevel(e, to) {
@@ -1074,7 +1075,7 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
-<script type="application/json" id="drill-data">[{"w": "billions", "m": "수십억 (의)", "cz": "Every second, <span class=\"dr-blank\"><\/span> of tiny particles called neutrinos pass through your entire body without you feeling anything at all.", "ca": "billions", "ex": "Every second, <b>billions<\/b> of tiny particles called neutrinos pass through your entire body without you feeling anything at all.", "sh": "… <b>billions<\/b> of tiny particles called neutrinos …", "ek": "매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.", "sa": "/en/2026-10-06/audio/s1.mp3", "au": "/en/2026-10-06/audio/w1.mp3", "alts": ["중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다", "섬광, 순간 빛남"]}, {"w": "neutrino", "m": "중성미자 (전하가 없는 아주 작은 입자)", "cz": "Every second, billions of tiny particles called <span class=\"dr-blank\"><\/span> pass through your entire body without you feeling anything at all.", "ca": "neutrinos", "ex": "Every second, billions of tiny particles called <b>neutrinos<\/b> pass through your entire body without you feeling anything at all.", "sh": "… called <b>neutrinos<\/b> pass through your entire body …", "ek": "매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.", "sa": "/en/2026-10-06/audio/s1.mp3", "au": "/en/2026-10-06/audio/w2.mp3", "alts": ["수십억 (의)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다", "섬광, 순간 빛남"]}, {"w": "observatory", "m": "천문대, 관측소", "cz": "The IceCube <span class=\"dr-blank\"><\/span> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to detect these particles.", "ca": "Observatory", "ex": "The IceCube <b>Observatory<\/b> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to detect these particles.", "sh": "The IceCube <b>Observatory<\/b> in Antarctica uses more than five thousand sensors …", "ek": "남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.", "sa": "/en/2026-10-06/audio/s3.mp3", "au": "/en/2026-10-06/audio/w3.mp3", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "감지하다, 탐지하다", "충돌하다", "섬광, 순간 빛남"]}, {"w": "detect", "m": "감지하다, 탐지하다", "cz": "The IceCube Observatory in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <span class=\"dr-blank\"><\/span> these particles.", "ca": "detect", "ex": "The IceCube Observatory in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <b>detect<\/b> these particles.", "sh": "… in the ice to <b>detect<\/b> these particles.", "ek": "남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.", "sa": "/en/2026-10-06/audio/s3.mp3", "au": "/en/2026-10-06/audio/w4.mp3", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "충돌하다", "섬광, 순간 빛남"]}, {"w": "collide", "m": "충돌하다", "cz": "When a neutrino <span class=\"dr-blank\"><\/span> with an ice molecule, it produces a brief flash of blue light that the sensors record.", "ca": "collides", "ex": "When a neutrino <b>collides<\/b> with an ice molecule, it produces a brief flash of blue light that the sensors record.", "sh": "When a neutrino <b>collides<\/b> with an ice molecule, …", "ek": "중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.", "sa": "/en/2026-10-06/audio/s4.mp3", "au": "/en/2026-10-06/audio/w5.mp3", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "섬광, 순간 빛남"]}, {"w": "flash", "m": "섬광, 순간 빛남", "cz": "When a neutrino collides with an ice molecule, it produces a brief <span class=\"dr-blank\"><\/span> of blue light that the sensors record.", "ca": "flash", "ex": "When a neutrino collides with an ice molecule, it produces a brief <b>flash<\/b> of blue light that the sensors record.", "sh": "… it produces a brief <b>flash<\/b> of blue light that the sensors record.", "ek": "중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.", "sa": "/en/2026-10-06/audio/s4.mp3", "au": "/en/2026-10-06/audio/w6.mp3", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다"]}]</script>
+<script type="application/json" id="drill-data">[{"w": "billions", "m": "수십억 (의)", "cz": "Every second, <span class=\"dr-blank\"><\/span> of tiny particles called neutrinos pass through your entire body without you feeling anything at all.", "ca": "billions", "ex": "Every second, <b>billions<\/b> of tiny particles called neutrinos pass through your entire body without you feeling anything at all.", "sh": "… <b>billions<\/b> of tiny particles called neutrinos …", "ek": "매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.", "sa": "/en/2026-10-06/audio/s1.mp3", "au": "/en/2026-10-06/audio/w1.mp3", "alts": ["중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다", "섬광, 번쩍임"]}, {"w": "neutrino", "m": "중성미자 (전하가 없는 아주 작은 입자)", "cz": "Every second, billions of tiny particles called <span class=\"dr-blank\"><\/span> pass through your entire body without you feeling anything at all.", "ca": "neutrinos", "ex": "Every second, billions of tiny particles called <b>neutrinos<\/b> pass through your entire body without you feeling anything at all.", "sh": "… called <b>neutrinos<\/b> pass through your entire body …", "ek": "매초 수십억 개의 중성미자라는 아주 작은 입자가 여러분의 몸 전체를 통과하지만 전혀 느낄 수가 없다.", "sa": "/en/2026-10-06/audio/s1.mp3", "au": "/en/2026-10-06/audio/w2.mp3", "alts": ["수십억 (의)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다", "섬광, 번쩍임"]}, {"w": "observatory", "m": "천문대, 관측소", "cz": "The IceCube <span class=\"dr-blank\"><\/span> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to detect these particles.", "ca": "Observatory", "ex": "The IceCube <b>Observatory<\/b> in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to detect these particles.", "sh": "The IceCube <b>Observatory<\/b> in Antarctica uses more than five thousand sensors …", "ek": "남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.", "sa": "/en/2026-10-06/audio/s3.mp3", "au": "/en/2026-10-06/audio/w3.mp3", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "감지하다, 탐지하다", "충돌하다", "섬광, 번쩍임"]}, {"w": "detect", "m": "감지하다, 탐지하다", "cz": "The IceCube Observatory in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <span class=\"dr-blank\"><\/span> these particles.", "ca": "detect", "ex": "The IceCube Observatory in Antarctica uses more than five thousand sensors buried up to two and a half kilometres deep in the ice to <b>detect<\/b> these particles.", "sh": "… in the ice to <b>detect<\/b> these particles.", "ek": "남극의 아이스큐브 천문대는 얼음 속 최대 2.5킬로미터 깊이에 묻힌 5천여 개의 센서를 이용해 이 입자들을 감지한다.", "sa": "/en/2026-10-06/audio/s3.mp3", "au": "/en/2026-10-06/audio/w4.mp3", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "충돌하다", "섬광, 번쩍임"]}, {"w": "collide", "m": "충돌하다", "cz": "When a neutrino <span class=\"dr-blank\"><\/span> with an ice molecule, it produces a brief flash of blue light that the sensors record.", "ca": "collides", "ex": "When a neutrino <b>collides<\/b> with an ice molecule, it produces a brief flash of blue light that the sensors record.", "sh": "When a neutrino <b>collides<\/b> with an ice molecule, …", "ek": "중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.", "sa": "/en/2026-10-06/audio/s4.mp3", "au": "/en/2026-10-06/audio/w5.mp3", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "섬광, 번쩍임"]}, {"w": "flash", "m": "섬광, 번쩍임", "cz": "When a neutrino collides with an ice molecule, it produces a brief <span class=\"dr-blank\"><\/span> of blue light that the sensors record.", "ca": "flash", "ex": "When a neutrino collides with an ice molecule, it produces a brief <b>flash<\/b> of blue light that the sensors record.", "sh": "… it produces a brief <b>flash<\/b> of blue light that the sensors record.", "ek": "중성미자가 얼음 분자와 충돌하면 센서가 기록할 수 있는 짧은 파란빛 섬광이 생겨난다.", "sa": "/en/2026-10-06/audio/s4.mp3", "au": "/en/2026-10-06/audio/w6.mp3", "alts": ["수십억 (의)", "중성미자 (전하가 없는 아주 작은 입자)", "천문대, 관측소", "감지하다, 탐지하다", "충돌하다"]}]</script>
 <script id="drill-js" data-v="14" src="/assets/drill.js?v=14" defer></script>
 <script id="vote-js">
 (function () {

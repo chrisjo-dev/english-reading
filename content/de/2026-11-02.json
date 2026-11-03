@@ -196,7 +196,7 @@
   "words": [
     [
       "Pfand",
-      "병, 캔 보증금 (중성 das)"
+      "(빈 병) 보증금 (중성 das)"
     ],
     [
       "Dose",
@@ -204,7 +204,7 @@
     ],
     [
       "Automat",
-      "자동 반납기, 기계 (남성 der)"
+      "빈 병 회수기, 자동 기계 (남성 der)"
     ],
     [
       "Bon",
@@ -212,7 +212,7 @@
     ],
     [
       "Mehrwegflasche",
-      "씻어서 여러 번 쓰는 병 (여성 die)"
+      "다회용 병, 재사용 병 (여성 die)"
     ],
     [
       "einlösen",
@@ -244,21 +244,21 @@
   "advanced": [
     {
       "word": "das Leergut",
-      "meaning": "빈 병, 빈 용기(반납할 것들을 통틀어)",
+      "meaning": "(반납할) 빈 병, 빈 용기",
       "confuse": "`leer`(빈)와 `das Gut`(물건)이 합쳐진 말로, 복수형 없이 한데 묶어 씁니다.",
       "example": "Am Samstag bringe ich das **Leergut** zum Supermarkt.",
       "example_ko": "토요일에 저는 빈 병들을 슈퍼마켓에 가져갑니다."
     },
     {
       "word": "die Einwegflasche",
-      "meaning": "한 번 쓰고 버리는 병",
+      "meaning": "일회용 병",
       "confuse": "`Einweg`는 '한 번만', `Mehrweg`는 '여러 번' 쓰는 용기예요.",
       "example": "Eine **Einwegflasche** aus Plastik wird nach der Rückgabe recycelt.",
       "example_ko": "플라스틱 일회용 병은 반납 후 재활용됩니다."
     },
     {
       "word": "die Rückgabe",
-      "meaning": "반납, 돌려줌",
+      "meaning": "반납, 반환",
       "confuse": "`die Rückgabe`는 물건을 돌려주는 것, `die Rückzahlung`은 돈을 돌려주는 것이에요.",
       "example": "Die **Rückgabe** der Flaschen dauert nur ein paar Minuten.",
       "example_ko": "병을 반납하는 데는 몇 분밖에 걸리지 않습니다."
@@ -279,7 +279,7 @@
     },
     {
       "word": "nachhaltig",
-      "meaning": "지속 가능한, 환경을 생각한",
+      "meaning": "지속 가능한, 친환경적인",
       "confuse": "`nachhaltig`는 오래 유지되도록 환경을 아끼는 것, `nachträglich`는 '나중에, 사후에'라는 뜻이에요.",
       "example": "Viele Familien versuchen, im Alltag **nachhaltig** einzukaufen.",
       "example_ko": "많은 가정이 일상에서 환경을 생각하며 장을 보려고 노력합니다."

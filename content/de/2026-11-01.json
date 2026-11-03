@@ -215,7 +215,7 @@
     ],
     [
       "Nebelscheinwerfer",
-      "자동차 안개등 (남성 der)"
+      "안개등 (남성 der)"
     ],
     [
       "gemütlich",
@@ -247,7 +247,7 @@
   "advanced": [
     {
       "word": "die Sichtweite",
-      "meaning": "가시거리, 시야가 닿는 거리",
+      "meaning": "가시거리, 시야",
       "confuse": "die Sicht는 '시야, 보이는 상태', die Sichtweite는 '몇 미터까지 보이는지'라는 거리를 말해요.",
       "example": "Bei Nebel beträgt die **Sichtweite** manchmal weniger als fünfzig Meter.",
       "example_ko": "안개가 끼면 가시거리가 때때로 50미터도 안 됩니다."
@@ -282,7 +282,7 @@
     },
     {
       "word": "die Dämmerung",
-      "meaning": "어스름, 해 질 녘이나 동틀 녘",
+      "meaning": "어스름, 황혼",
       "confuse": null,
       "example": "Im November beginnt die **Dämmerung** schon gegen vier Uhr.",
       "example_ko": "11월에는 4시쯤이면 벌써 어스름이 시작됩니다."

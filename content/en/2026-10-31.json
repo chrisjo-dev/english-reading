@@ -38,7 +38,7 @@
     {"word": "surpass", "meaning": "능가하다, 넘어서다", "confuse": null, "example": "The new figure **surpassed** the record set in 2023.", "example_ko": "새 조각은 2023년에 세워진 기록을 넘어섰습니다."},
     {"word": "adorn", "meaning": "장식하다, 꾸미다", "confuse": "adore(아주 좋아하다)와 혼동 주의", "example": "Seventy thousand marigolds **adorn** the altar.", "example_ko": "금잔화 7만 송이가 제단을 장식하고 있습니다."},
     {"word": "commemorate", "meaning": "기념하다, 추모하다", "confuse": null, "example": "Families build altars to **commemorate** loved ones who have died.", "example_ko": "가족들은 세상을 떠난 사랑하는 사람들을 추모하려고 제단을 만듭니다."},
-    {"word": "mortality", "meaning": "죽음을 피할 수 없음, 사망률", "confuse": "morality(도덕)와 혼동 주의", "example": "The skeleton reminds visitors of their own **mortality**.", "example_ko": "그 해골은 방문객들에게 자신도 언젠가 죽는다는 사실을 떠올리게 합니다."},
+    {"word": "mortality", "meaning": "죽을 운명, 사망률", "confuse": "morality(도덕)와 혼동 주의", "example": "The skeleton reminds visitors of their own **mortality**.", "example_ko": "그 해골은 방문객들에게 자신도 언젠가 죽는다는 사실을 떠올리게 합니다."},
     {"word": "vanity", "meaning": "허영, 겉치레", "confuse": "variety(다양성)와 혼동 주의", "example": "The mayor said the Catrina is a critique of **vanity**.", "example_ko": "시장은 카트리나가 허영에 대한 비판이라고 말했습니다."}
   ],
   "source": {"title": "Mexico City unveils record-setting giant Catrina for Day of the Dead (Mexico News Daily, 2026-10-30)", "url": "https://mexiconewsdaily.com/culture/mexico-city-tallest-catrina-record-day-of-the-dead/"},

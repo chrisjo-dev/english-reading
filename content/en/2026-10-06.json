@@ -18,7 +18,7 @@
     ["observatory", "천문대, 관측소"],
     ["detect", "감지하다, 탐지하다"],
     ["collide", "충돌하다"],
-    ["flash", "섬광, 순간 빛남"]
+    ["flash", "섬광, 번쩍임"]
   ],
   "points": [
     {"title": "문장 끝 수량 정보", "body": "3번 문장의 숫자 정보가 끝 쪽에 있어요. `more than five thousand sensors`(5천여 개), `up to two and a half kilometres deep`(최대 2.5킬로미터 깊이) — 끝까지 읽어야 규모를 파악할 수 있어요."},

@@ -19,7 +19,7 @@
 <link rel="canonical" href="https://read.wspace.ai.kr/ja/2026-10-23/">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap">
-<style>.en, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .adv .ex { word-break: normal; line-break: strict; } .en { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
+<style>.en, .en-a, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .en-a, .adv .ex { word-break: normal; line-break: strict; } .en, .en-a { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
 <style>
   :root {
     --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
@@ -158,7 +158,8 @@
   .mine .tool { width: 100%; margin-top: 8px; flex: none; }
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
   .top { position: relative; }
-  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
+  .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
+  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
@@ -183,6 +184,33 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -330,9 +358,6 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
-  .top { position: relative; }
-  .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
-  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
   /* gnb-a */
   .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -420,33 +445,6 @@
     .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
   }
   /* /day-a */
-  /* vote-css */
-  .cat-science { color: #1b64da; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #a25c00; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #1b64da; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #a25c00; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
@@ -537,7 +535,7 @@
       <span class="chip">N4 1문장</span>
       <span class="chip">약 3분</span>
     </div>
-    <p class="intro">매일 아침 새로 올라오는 JLPT N4~N5 일본어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요.</p>
+    <p class="intro">매일 아침 새로 올라오는 JLPT N3(기초 N4~N5) 일본어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요.</p>
   </div>
 
   <section class="card" id="passage">
@@ -549,12 +547,12 @@
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
       <button class="tool" id="furi" type="button" aria-pressed="true">후리가나 끄기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en"><ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>が<ruby>止<rp>(</rp><rt>や</rt><rp>)</rp></ruby>んだあと、<ruby>空<rp>(</rp><rt>そら</rt><rp>)</rp></ruby>に<b><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby></b>が<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>ることがあります。<span class="badge">N4</span></div><div class="ko" hidden>비가 그친 뒤 하늘에 무지개가 뜰 때가 있습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en"><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>は、<ruby>太陽<rp>(</rp><rt>たいよう</rt><rp>)</rp></ruby>を<b><ruby>後<rp>(</rp><rt>うし</rt><rp>)</rp></ruby>ろ</b>にして<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ます。</div><div class="ko" hidden>무지개는 해를 등지고 봅니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en"><ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>のあとの<ruby>空<rp>(</rp><rt>そら</rt><rp>)</rp></ruby>には、<ruby>小<rp>(</rp><rt>ちい</rt><rp>)</rp></ruby>さい<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>の<b>つぶ</b>がたくさんあります。</div><div class="ko" hidden>비가 온 뒤의 하늘에는 작은 물방울이 많이 있습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en"><ruby>光<rp>(</rp><rt>ひかり</rt><rp>)</rp></ruby>がつぶに<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>ると、いろいろな<b><ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby></b>に<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かれます。</div><div class="ko" hidden>빛이 물방울에 들어가면 여러 가지 색으로 나뉩니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en"><ruby>日本<rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>では、<ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>の<ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby>は<b>7つ</b>だと<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>います。</div><div class="ko" hidden>일본에서는 무지개의 색이 일곱 가지라고 합니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en"><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>は、<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>や<b><ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby></b>によく<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>えます。</div><div class="ko" hidden>무지개는 아침이나 저녁 무렵에 잘 보입니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en" lang="ja"><ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>が<ruby>止<rp>(</rp><rt>や</rt><rp>)</rp></ruby>んだあと、<ruby>空<rp>(</rp><rt>そら</rt><rp>)</rp></ruby>に<b><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby></b>が<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>ることがあります。<span class="badge">N3</span></div><div class="ko" hidden>비가 그친 뒤 하늘에 무지개가 뜰 때가 있습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en" lang="ja"><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>は、<ruby>太陽<rp>(</rp><rt>たいよう</rt><rp>)</rp></ruby>を<b><ruby>後<rp>(</rp><rt>うし</rt><rp>)</rp></ruby>ろ</b>にして<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ます。</div><div class="ko" hidden>무지개는 해를 등지고 봅니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en" lang="ja"><ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>のあとの<ruby>空<rp>(</rp><rt>そら</rt><rp>)</rp></ruby>には、<ruby>小<rp>(</rp><rt>ちい</rt><rp>)</rp></ruby>さい<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>の<b>つぶ</b>がたくさんあります。</div><div class="ko" hidden>비가 온 뒤의 하늘에는 작은 물방울이 많이 있습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en" lang="ja"><ruby>光<rp>(</rp><rt>ひかり</rt><rp>)</rp></ruby>がつぶに<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>ると、いろいろな<b><ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby></b>に<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かれます。</div><div class="ko" hidden>빛이 물방울에 들어가면 여러 가지 색으로 나뉩니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en" lang="ja"><ruby>日本<rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>では、<ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>の<ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby>は<b>7つ</b>だと<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>います。</div><div class="ko" hidden>일본에서는 무지개의 색이 일곱 가지라고 합니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en" lang="ja"><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>は、<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>や<b><ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby></b>によく<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>えます。</div><div class="ko" hidden>무지개는 아침이나 저녁 무렵에 잘 보입니다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">특정 기사를 바탕으로 하지 않은 학습용 글입니다.</p>
     <div class="mine">
@@ -568,12 +566,12 @@
   <section class="card">
     <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
-    <div class="word"><span class="wl"><span class="w"><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="にじ" aria-label="にじ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">무지개</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>後<rp>(</rp><rt>うし</rt><rp>)</rp></ruby>ろ</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="うしろ" aria-label="うしろ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">뒤</span></div>
-    <div class="word"><span class="wl"><span class="w">つぶ</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="つぶ" aria-label="つぶ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">알갱이, 방울</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="いろ" aria-label="いろ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">색</span></div>
-    <div class="word"><span class="wl"><span class="w">7つ</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="7つ" aria-label="7つ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">일곱 개 (ななつ)</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="ゆうがた" aria-label="ゆうがた 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">저녁 무렵</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="にじ" aria-label="にじ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">무지개</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>後<rp>(</rp><rt>うし</rt><rp>)</rp></ruby>ろ</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="うしろ" aria-label="うしろ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">뒤</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja">つぶ</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="つぶ" aria-label="つぶ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">알갱이, 방울</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="いろ" aria-label="いろ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">색</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja">7つ</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="7つ" aria-label="7つ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">일곱 개</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="ゆうがた" aria-label="ゆうがた 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">저녁 무렵</span></div>
   </section>
 
   <section class="card">
@@ -629,25 +627,25 @@
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w"><span class="wt"><ruby>水滴<rp>(</rp><rt>すいてき</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="すいてき" aria-label="すいてき 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">물방울</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>水滴<rp>(</rp><rt>すいてき</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="すいてき" aria-label="すいてき 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">물방울</div>
         <div class="ex"><ruby>空<rp>(</rp><rt>そら</rt><rp>)</rp></ruby>の<b><ruby>水滴<rp>(</rp><rt>すいてき</rt><rp>)</rp></ruby></b>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>で<ruby>光<rp>(</rp><rt>ひかり</rt><rp>)</rp></ruby>が<ruby>曲<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>がります。</div>
         <div class="ex-ko">하늘의 물방울 속에서 빛이 꺾입니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>屈折<rp>(</rp><rt>くっせつ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="くっせつ" aria-label="くっせつ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">굴절</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>屈折<rp>(</rp><rt>くっせつ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="くっせつ" aria-label="くっせつ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">굴절</div>
         <div class="ex"><ruby>光<rp>(</rp><rt>ひかり</rt><rp>)</rp></ruby>が<b><ruby>屈折<rp>(</rp><rt>くっせつ</rt><rp>)</rp></ruby></b>して、いろいろな<ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby>に<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かれます。</div>
         <div class="ex-ko">빛이 굴절해서 여러 가지 색으로 나뉩니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>七色<rp>(</rp><rt>なないろ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="なないろ" aria-label="なないろ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">일곱 빛깔<span class="warn">しちいろ가 아니라 なないろ로 읽어요</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>七色<rp>(</rp><rt>なないろ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="なないろ" aria-label="なないろ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">일곱 빛깔<span class="warn">しちいろ가 아니라 なないろ로 읽어요</span></div>
         <div class="ex"><ruby>日本<rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>では、<ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>は<b><ruby>七色<rp>(</rp><rt>なないろ</rt><rp>)</rp></ruby></b>だと<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>います。</div>
         <div class="ex-ko">일본에서는 무지개가 일곱 빛깔이라고 합니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>晴<rp>(</rp><rt>は</rt><rp>)</rp></ruby>れ<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="はれま" aria-label="はれま 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(비 사이) 갠 틈</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>晴<rp>(</rp><rt>は</rt><rp>)</rp></ruby>れ<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="はれま" aria-label="はれま 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(비 사이) 갠 틈</div>
         <div class="ex"><ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>のあとの<b><ruby>晴<rp>(</rp><rt>は</rt><rp>)</rp></ruby>れ<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby></b>に<ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>が<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>ました。</div>
         <div class="ex-ko">비가 온 뒤 갠 틈에 무지개가 떴습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>反対側<rp>(</rp><rt>はんたいがわ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="はんたいがわ" aria-label="はんたいがわ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">반대쪽</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>反対側<rp>(</rp><rt>はんたいがわ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="はんたいがわ" aria-label="はんたいがわ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">반대쪽</div>
         <div class="ex"><ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>は<ruby>太陽<rp>(</rp><rt>たいよう</rt><rp>)</rp></ruby>の<b><ruby>反対側<rp>(</rp><rt>はんたいがわ</rt><rp>)</rp></ruby></b>に<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>えます。</div>
         <div class="ex-ko">무지개는 해의 반대쪽에 보입니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>鮮<rp>(</rp><rt>あざ</rt><rp>)</rp></ruby>やか</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="あざやか" aria-label="あざやか 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">선명함, 산뜻함</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>鮮<rp>(</rp><rt>あざ</rt><rp>)</rp></ruby>やか</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="あざやか" aria-label="あざやか 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">선명함, 산뜻함</div>
         <div class="ex"><ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby>の<ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>はとても<b><ruby>鮮<rp>(</rp><rt>あざ</rt><rp>)</rp></ruby>やか</b>でした。</div>
         <div class="ex-ko">저녁 무렵의 무지개는 아주 선명했습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>現<rp>(</rp><rt>あらわ</rt><rp>)</rp></ruby>れる</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="あらわれる" aria-label="あらわれる 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">나타나다<span class="warn">表す(あらわす, 표현하다)와 한자가 달라요</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>現<rp>(</rp><rt>あらわ</rt><rp>)</rp></ruby>れる</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="あらわれる" aria-label="あらわれる 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">나타나다<span class="warn">表す(あらわす, 표현하다)와 한자가 달라요</span></div>
         <div class="ex"><ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>が<ruby>止<rp>(</rp><rt>や</rt><rp>)</rp></ruby>むと、<ruby>空<rp>(</rp><rt>そら</rt><rp>)</rp></ruby>に<ruby>虹<rp>(</rp><rt>にじ</rt><rp>)</rp></ruby>が<b><ruby>現<rp>(</rp><rt>あらわ</rt><rp>)</rp></ruby>れました</b>。</div>
         <div class="ex-ko">비가 그치자 하늘에 무지개가 나타났습니다.</div></div>
     </div>
@@ -1025,7 +1023,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
     else fallback();
   }
-  var HEAD = '나는 JLPT N4~N5 수준의 한국인 일본어 학습자입니다. 아래는 오늘의 일본어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
+  var HEAD = '나는 JLPT N3 수준의 한국인 일본어 학습자입니다. 아래는 오늘의 일본어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
   var WEAK = '자주 틀리는 부분(조사 は・が・を・に・で, 동사 활용과 시제, 한자 읽기, 숫자와 조수사)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[일본어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
@@ -1043,15 +1041,16 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
-  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  // 수준 전환(카드 안 읽기 수준 세그먼트): 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
   (function () {
     var toLevelA = document.getElementById('to-level-a');
     var toLevelB = document.getElementById('to-level-b');
     if (!toLevelA || !toLevelB) return;
     function updateLinks() {
       var isA = isLevelA();
-      toLevelA.hidden = isA;
-      toLevelB.hidden = !isA;
+      // 켜진 쪽 모양은 CSS(html.level-a)가 정한다. 여기서는 화면 읽기 프로그램용 표시만 맞춘다
+      toLevelA.setAttribute('aria-current', String(isA));
+      toLevelB.setAttribute('aria-current', String(!isA));
     }
     updateLinks();
     function switchLevel(e, to) {
@@ -1079,7 +1078,7 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
-<script type="application/json" id="drill-data">[{"w": "虹", "m": "무지개", "r": "にじ", "cz": "<ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>止<rt>や<\/rt><\/ruby>んだあと、<ruby>空<rt>そら<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>が<ruby>出<rt>で<\/rt><\/ruby>ることがあります。", "ca": "虹", "ex": "<ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>止<rt>や<\/rt><\/ruby>んだあと、<ruby>空<rt>そら<\/rt><\/ruby>に<b><ruby>虹<rt>にじ<\/rt><\/ruby><\/b>が<ruby>出<rt>で<\/rt><\/ruby>ることがあります。", "sh": "<ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>止<rt>や<\/rt><\/ruby>んだあと、<ruby>空<rt>そら<\/rt><\/ruby>に<b><ruby>虹<rt>にじ<\/rt><\/ruby><\/b>が<ruby>出<rt>で<\/rt><\/ruby>ることがあります。", "ek": "비가 그친 뒤 하늘에 무지개가 뜰 때가 있습니다.", "sa": "/ja/2026-10-23/audio/s1.mp3", "au": "/ja/2026-10-23/audio/w1.mp3", "alts": ["뒤", "알갱이, 방울", "색", "일곱 개 (ななつ)", "저녁 무렵"]}, {"w": "後ろ", "m": "뒤", "r": "うしろ", "cz": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>太陽<rt>たいよう<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span>にして<ruby>見<rt>み<\/rt><\/ruby>ます。", "ca": "後ろ", "ex": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>太陽<rt>たいよう<\/rt><\/ruby>を<b><ruby>後<rt>うし<\/rt><\/ruby>ろ<\/b>にして<ruby>見<rt>み<\/rt><\/ruby>ます。", "sh": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>太陽<rt>たいよう<\/rt><\/ruby>を<b><ruby>後<rt>うし<\/rt><\/ruby>ろ<\/b>にして<ruby>見<rt>み<\/rt><\/ruby>ます。", "ek": "무지개는 해를 등지고 봅니다.", "sa": "/ja/2026-10-23/audio/s2.mp3", "au": "/ja/2026-10-23/audio/w2.mp3", "alts": ["무지개", "알갱이, 방울", "색", "일곱 개 (ななつ)", "저녁 무렵"]}, {"w": "つぶ", "m": "알갱이, 방울", "cz": "<ruby>雨<rt>あめ<\/rt><\/ruby>のあとの<ruby>空<rt>そら<\/rt><\/ruby>には、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>水<rt>みず<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>がたくさんあります。", "ca": "つぶ", "ex": "<ruby>雨<rt>あめ<\/rt><\/ruby>のあとの<ruby>空<rt>そら<\/rt><\/ruby>には、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>水<rt>みず<\/rt><\/ruby>の<b>つぶ<\/b>がたくさんあります。", "sh": "<ruby>雨<rt>あめ<\/rt><\/ruby>のあとの<ruby>空<rt>そら<\/rt><\/ruby>には、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>水<rt>みず<\/rt><\/ruby>の<b>つぶ<\/b>がたくさんあります。", "ek": "비가 온 뒤의 하늘에는 작은 물방울이 많이 있습니다.", "sa": "/ja/2026-10-23/audio/s3.mp3", "au": "/ja/2026-10-23/audio/w3.mp3", "alts": ["무지개", "뒤", "색", "일곱 개 (ななつ)", "저녁 무렵"]}, {"w": "色", "m": "색", "r": "いろ", "cz": "<ruby>光<rt>ひかり<\/rt><\/ruby>がつぶに<ruby>入<rt>はい<\/rt><\/ruby>ると、いろいろな<span class=\"dr-blank\"><\/span>に<ruby>分<rt>わ<\/rt><\/ruby>かれます。", "ca": "色", "ex": "<ruby>光<rt>ひかり<\/rt><\/ruby>がつぶに<ruby>入<rt>はい<\/rt><\/ruby>ると、いろいろな<b><ruby>色<rt>いろ<\/rt><\/ruby><\/b>に<ruby>分<rt>わ<\/rt><\/ruby>かれます。", "sh": "<ruby>光<rt>ひかり<\/rt><\/ruby>がつぶに<ruby>入<rt>はい<\/rt><\/ruby>ると、いろいろな<b><ruby>色<rt>いろ<\/rt><\/ruby><\/b>に<ruby>分<rt>わ<\/rt><\/ruby>かれます。", "ek": "빛이 물방울에 들어가면 여러 가지 색으로 나뉩니다.", "sa": "/ja/2026-10-23/audio/s4.mp3", "au": "/ja/2026-10-23/audio/w4.mp3", "alts": ["무지개", "뒤", "알갱이, 방울", "일곱 개 (ななつ)", "저녁 무렵"]}, {"w": "7つ", "m": "일곱 개 (ななつ)", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>では、<ruby>虹<rt>にじ<\/rt><\/ruby>の<ruby>色<rt>いろ<\/rt><\/ruby>は<span class=\"dr-blank\"><\/span>だと<ruby>言<rt>い<\/rt><\/ruby>います。", "ca": "7つ", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>では、<ruby>虹<rt>にじ<\/rt><\/ruby>の<ruby>色<rt>いろ<\/rt><\/ruby>は<b>7つ<\/b>だと<ruby>言<rt>い<\/rt><\/ruby>います。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>では、<ruby>虹<rt>にじ<\/rt><\/ruby>の<ruby>色<rt>いろ<\/rt><\/ruby>は<b>7つ<\/b>だと<ruby>言<rt>い<\/rt><\/ruby>います。", "ek": "일본에서는 무지개의 색이 일곱 가지라고 합니다.", "sa": "/ja/2026-10-23/audio/s5.mp3", "au": "/ja/2026-10-23/audio/w5.mp3", "alts": ["무지개", "뒤", "알갱이, 방울", "색", "저녁 무렵"]}, {"w": "夕方", "m": "저녁 무렵", "r": "ゆうがた", "cz": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>朝<rt>あさ<\/rt><\/ruby>や<span class=\"dr-blank\"><\/span>によく<ruby>見<rt>み<\/rt><\/ruby>えます。", "ca": "夕方", "ex": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>朝<rt>あさ<\/rt><\/ruby>や<b><ruby>夕方<rt>ゆうがた<\/rt><\/ruby><\/b>によく<ruby>見<rt>み<\/rt><\/ruby>えます。", "sh": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>朝<rt>あさ<\/rt><\/ruby>や<b><ruby>夕方<rt>ゆうがた<\/rt><\/ruby><\/b>によく<ruby>見<rt>み<\/rt><\/ruby>えます。", "ek": "무지개는 아침이나 저녁 무렵에 잘 보입니다.", "sa": "/ja/2026-10-23/audio/s6.mp3", "au": "/ja/2026-10-23/audio/w6.mp3", "alts": ["무지개", "뒤", "알갱이, 방울", "색", "일곱 개 (ななつ)"]}]</script>
+<script type="application/json" id="drill-data">[{"w": "虹", "m": "무지개", "r": "にじ", "cz": "<ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>止<rt>や<\/rt><\/ruby>んだあと、<ruby>空<rt>そら<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>が<ruby>出<rt>で<\/rt><\/ruby>ることがあります。", "ca": "虹", "ex": "<ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>止<rt>や<\/rt><\/ruby>んだあと、<ruby>空<rt>そら<\/rt><\/ruby>に<b><ruby>虹<rt>にじ<\/rt><\/ruby><\/b>が<ruby>出<rt>で<\/rt><\/ruby>ることがあります。", "sh": "<ruby>雨<rt>あめ<\/rt><\/ruby>が<ruby>止<rt>や<\/rt><\/ruby>んだあと、<ruby>空<rt>そら<\/rt><\/ruby>に<b><ruby>虹<rt>にじ<\/rt><\/ruby><\/b>が<ruby>出<rt>で<\/rt><\/ruby>ることがあります。", "ek": "비가 그친 뒤 하늘에 무지개가 뜰 때가 있습니다.", "sa": "/ja/2026-10-23/audio/s1.mp3", "au": "/ja/2026-10-23/audio/w1.mp3", "alts": ["뒤", "알갱이, 방울", "색", "일곱 개", "저녁 무렵"]}, {"w": "後ろ", "m": "뒤", "r": "うしろ", "cz": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>太陽<rt>たいよう<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span>にして<ruby>見<rt>み<\/rt><\/ruby>ます。", "ca": "後ろ", "ex": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>太陽<rt>たいよう<\/rt><\/ruby>を<b><ruby>後<rt>うし<\/rt><\/ruby>ろ<\/b>にして<ruby>見<rt>み<\/rt><\/ruby>ます。", "sh": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>太陽<rt>たいよう<\/rt><\/ruby>を<b><ruby>後<rt>うし<\/rt><\/ruby>ろ<\/b>にして<ruby>見<rt>み<\/rt><\/ruby>ます。", "ek": "무지개는 해를 등지고 봅니다.", "sa": "/ja/2026-10-23/audio/s2.mp3", "au": "/ja/2026-10-23/audio/w2.mp3", "alts": ["무지개", "알갱이, 방울", "색", "일곱 개", "저녁 무렵"]}, {"w": "つぶ", "m": "알갱이, 방울", "cz": "<ruby>雨<rt>あめ<\/rt><\/ruby>のあとの<ruby>空<rt>そら<\/rt><\/ruby>には、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>水<rt>みず<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>がたくさんあります。", "ca": "つぶ", "ex": "<ruby>雨<rt>あめ<\/rt><\/ruby>のあとの<ruby>空<rt>そら<\/rt><\/ruby>には、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>水<rt>みず<\/rt><\/ruby>の<b>つぶ<\/b>がたくさんあります。", "sh": "<ruby>雨<rt>あめ<\/rt><\/ruby>のあとの<ruby>空<rt>そら<\/rt><\/ruby>には、<ruby>小<rt>ちい<\/rt><\/ruby>さい<ruby>水<rt>みず<\/rt><\/ruby>の<b>つぶ<\/b>がたくさんあります。", "ek": "비가 온 뒤의 하늘에는 작은 물방울이 많이 있습니다.", "sa": "/ja/2026-10-23/audio/s3.mp3", "au": "/ja/2026-10-23/audio/w3.mp3", "alts": ["무지개", "뒤", "색", "일곱 개", "저녁 무렵"]}, {"w": "色", "m": "색", "r": "いろ", "cz": "<ruby>光<rt>ひかり<\/rt><\/ruby>がつぶに<ruby>入<rt>はい<\/rt><\/ruby>ると、いろいろな<span class=\"dr-blank\"><\/span>に<ruby>分<rt>わ<\/rt><\/ruby>かれます。", "ca": "色", "ex": "<ruby>光<rt>ひかり<\/rt><\/ruby>がつぶに<ruby>入<rt>はい<\/rt><\/ruby>ると、いろいろな<b><ruby>色<rt>いろ<\/rt><\/ruby><\/b>に<ruby>分<rt>わ<\/rt><\/ruby>かれます。", "sh": "<ruby>光<rt>ひかり<\/rt><\/ruby>がつぶに<ruby>入<rt>はい<\/rt><\/ruby>ると、いろいろな<b><ruby>色<rt>いろ<\/rt><\/ruby><\/b>に<ruby>分<rt>わ<\/rt><\/ruby>かれます。", "ek": "빛이 물방울에 들어가면 여러 가지 색으로 나뉩니다.", "sa": "/ja/2026-10-23/audio/s4.mp3", "au": "/ja/2026-10-23/audio/w4.mp3", "alts": ["무지개", "뒤", "알갱이, 방울", "일곱 개", "저녁 무렵"]}, {"w": "7つ", "m": "일곱 개", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>では、<ruby>虹<rt>にじ<\/rt><\/ruby>の<ruby>色<rt>いろ<\/rt><\/ruby>は<span class=\"dr-blank\"><\/span>だと<ruby>言<rt>い<\/rt><\/ruby>います。", "ca": "7つ", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>では、<ruby>虹<rt>にじ<\/rt><\/ruby>の<ruby>色<rt>いろ<\/rt><\/ruby>は<b>7つ<\/b>だと<ruby>言<rt>い<\/rt><\/ruby>います。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>では、<ruby>虹<rt>にじ<\/rt><\/ruby>の<ruby>色<rt>いろ<\/rt><\/ruby>は<b>7つ<\/b>だと<ruby>言<rt>い<\/rt><\/ruby>います。", "ek": "일본에서는 무지개의 색이 일곱 가지라고 합니다.", "sa": "/ja/2026-10-23/audio/s5.mp3", "au": "/ja/2026-10-23/audio/w5.mp3", "alts": ["무지개", "뒤", "알갱이, 방울", "색", "저녁 무렵"]}, {"w": "夕方", "m": "저녁 무렵", "r": "ゆうがた", "cz": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>朝<rt>あさ<\/rt><\/ruby>や<span class=\"dr-blank\"><\/span>によく<ruby>見<rt>み<\/rt><\/ruby>えます。", "ca": "夕方", "ex": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>朝<rt>あさ<\/rt><\/ruby>や<b><ruby>夕方<rt>ゆうがた<\/rt><\/ruby><\/b>によく<ruby>見<rt>み<\/rt><\/ruby>えます。", "sh": "<ruby>虹<rt>にじ<\/rt><\/ruby>は、<ruby>朝<rt>あさ<\/rt><\/ruby>や<b><ruby>夕方<rt>ゆうがた<\/rt><\/ruby><\/b>によく<ruby>見<rt>み<\/rt><\/ruby>えます。", "ek": "무지개는 아침이나 저녁 무렵에 잘 보입니다.", "sa": "/ja/2026-10-23/audio/s6.mp3", "au": "/ja/2026-10-23/audio/w6.mp3", "alts": ["무지개", "뒤", "알갱이, 방울", "색", "일곱 개"]}]</script>
 <script id="drill-js" data-v="14" src="/assets/drill.js?v=14" defer></script>
 <script id="vote-js">
 (function () {

@@ -160,93 +160,6 @@
   .top { position: relative; }
   .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
   .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
-  /* gnb-a */
-  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
-  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
-  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
-  .gnb-brand img { display: block; height: 26px; width: auto; }
-  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
-  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
-  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
-  .gnb-chip .gnb-pill svg { color: #6b7684; }
-  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
-  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
-  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
-  .gnb-seg, .gnb-past { display: none; }
-  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
-  @media (max-width: 350px) { .gnb-brand span { display: none; } }
-  @media (min-width: 768px) {
-    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
-    .gnb-brand { font-size: 18px; margin-right: 24px; }
-    .gnb-brand img { height: 28px; }
-    .gnb-chip { display: none; }
-    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
-    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
-    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
-    .gnb-seg a:hover { color: #191f28; }
-    .gnb-seg a.on { color: #191f28; font-weight: 700; }
-    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
-    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
-    .gnb-past:hover { background: #f2f4f6; }
-    .gnb-past.on { color: #191f28; font-weight: 700; }
-  }
-  /* 언어 시트(휴대폰) */
-  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
-  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
-               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
-               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
-  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
-  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
-  .gnb-sheet:focus { outline: none; }
-  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
-  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
-  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
-  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
-  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
-  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
-  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
-  .gs-row.on { background: #e8f3ff; }
-  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
-  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
-  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
-  .gs-tt { flex: 1; min-width: 0; }
-  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
-  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
-  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
-  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
-  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
-  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
-  .gs-review[hidden] { display: none; }
-  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
-  .gs-review .gs-badge svg { width: 20px; height: 20px; }
-  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
-  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
-  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
-  /* /gnb-a */
-  /* day-a */
-  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
-  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
-  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
-  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
-  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
-  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
-  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
-  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
-  .top:has(> .hero) h1 { padding-right: 0; }
-  @media (min-width: 768px) {
-    body > main { max-width: 784px; }
-    main .pbar { max-width: 760px; }
-    .top { padding: 28px 28px 24px; margin-top: 24px; }
-    .top h1 { font-size: 28px; }
-    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
-    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
-  }
-  /* /day-a */
   .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
@@ -271,6 +184,33 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -418,33 +358,93 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
-  /* vote-css */
-  .cat-science { color: #1b64da; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #a25c00; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #1b64da; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #a25c00; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
+  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
+  /* gnb-a */
+  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
+  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
+  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
+  .gnb-brand img { display: block; height: 26px; width: auto; }
+  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
+  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
+  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
+  .gnb-chip .gnb-pill svg { color: #6b7684; }
+  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
+  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
+  .gnb-seg, .gnb-past { display: none; }
+  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
+  @media (max-width: 350px) { .gnb-brand span { display: none; } }
+  @media (min-width: 768px) {
+    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
+    .gnb-brand { font-size: 18px; margin-right: 24px; }
+    .gnb-brand img { height: 28px; }
+    .gnb-chip { display: none; }
+    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
+    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
+    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
+    .gnb-seg a:hover { color: #191f28; }
+    .gnb-seg a.on { color: #191f28; font-weight: 700; }
+    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+    .gnb-past:hover { background: #f2f4f6; }
+    .gnb-past.on { color: #191f28; font-weight: 700; }
+  }
+  /* 언어 시트(휴대폰) */
+  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
+  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
+               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
+               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
+  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
+  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
+  .gnb-sheet:focus { outline: none; }
+  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
+  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
+  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
+  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
+  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
+  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
+  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
+  .gs-row.on { background: #e8f3ff; }
+  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
+  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
+  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
+  .gs-tt { flex: 1; min-width: 0; }
+  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
+  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
+  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
+  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
+  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
+  .gs-review[hidden] { display: none; }
+  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
+  .gs-review .gs-badge svg { width: 20px; height: 20px; }
+  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
+  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
+  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
+  /* /gnb-a */
+  /* day-a */
+  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
+  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
+  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
+  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
+  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
+  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
+  .top:has(> .hero) h1 { padding-right: 0; }
+  @media (min-width: 768px) {
+    body > main { max-width: 784px; }
+    main .pbar { max-width: 760px; }
+    .top { padding: 28px 28px 24px; margin-top: 24px; }
+    .top h1 { font-size: 28px; }
+    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
+    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
+  }
+  /* /day-a */
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
@@ -547,11 +547,11 @@
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
       <button class="tool" id="furi" type="button" aria-pressed="true">후리가나 끄기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en"><ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>と<ruby>一緒<rp>(</rp><rt>いっしょ</rt><rp>)</rp></ruby>に<b><ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby></b>の<ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>りました。</div><div class="ko" hidden>오늘은 어머니와 함께 가을 요리를 만들었습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en"><ruby>栗<rp>(</rp><rt>くり</rt><rp>)</rp></ruby>ときのこをつかって、<b><ruby>炊<rp>(</rp><rt>た</rt><rp>)</rp></ruby>き<ruby>込<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>みご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby></b>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>りました。</div><div class="ko" hidden>밤과 버섯을 사용해서 다키코미 고항을 만들었습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en"><ruby>市場<rp>(</rp><rt>いちば</rt><rp>)</rp></ruby>で<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>った<ruby>新鮮<rp>(</rp><rt>しんせん</rt><rp>)</rp></ruby>な<ruby>栗<rp>(</rp><rt>くり</rt><rp>)</rp></ruby>は<b><ruby>甘<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>くて</b>、とてもおいしかったです。</div><div class="ko" hidden>시장에서 산 신선한 밤은 달콤해서 정말 맛있었습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en"><ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は「<ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby>は<ruby>食<rp>(</rp><rt>しょく</rt><rp>)</rp></ruby>の<ruby>季節<rp>(</rp><rt>きせつ</rt><rp>)</rp></ruby>だ」とよく<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>いますが、<ruby>本当<rp>(</rp><rt>ほんとう</rt><rp>)</rp></ruby>にそうだと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>います。<span class="badge">N3</span></div><div class="ko" hidden>어머니는 '가을은 먹거리의 계절'이라고 자주 말하는데, 정말 그렇다고 생각합니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en"><ruby>今度<rp>(</rp><rt>こんど</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby><ruby>一人<rp>(</rp><rt>ひとり</rt><rp>)</rp></ruby>で<b><ruby>挑戦<rp>(</rp><rt>ちょうせん</rt><rp>)</rp></ruby></b>してみたいです。</div><div class="ko" hidden>다음번에는 혼자서 도전해 보고 싶습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en" lang="ja"><ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>と<ruby>一緒<rp>(</rp><rt>いっしょ</rt><rp>)</rp></ruby>に<b><ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby></b>の<ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>りました。</div><div class="ko" hidden>오늘은 어머니와 함께 가을 요리를 만들었습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en" lang="ja"><ruby>栗<rp>(</rp><rt>くり</rt><rp>)</rp></ruby>ときのこをつかって、<b><ruby>炊<rp>(</rp><rt>た</rt><rp>)</rp></ruby>き<ruby>込<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>みご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby></b>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>りました。</div><div class="ko" hidden>밤과 버섯을 넣어서 영양밥을 만들었습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en" lang="ja"><ruby>市場<rp>(</rp><rt>いちば</rt><rp>)</rp></ruby>で<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>った<ruby>新鮮<rp>(</rp><rt>しんせん</rt><rp>)</rp></ruby>な<ruby>栗<rp>(</rp><rt>くり</rt><rp>)</rp></ruby>は<b><ruby>甘<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>くて</b>、とてもおいしかったです。</div><div class="ko" hidden>시장에서 산 신선한 밤은 달콤해서 정말 맛있었습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en" lang="ja"><ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は「<ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby>は<ruby>食<rp>(</rp><rt>しょく</rt><rp>)</rp></ruby>の<ruby>季節<rp>(</rp><rt>きせつ</rt><rp>)</rp></ruby>だ」とよく<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>いますが、<ruby>本当<rp>(</rp><rt>ほんとう</rt><rp>)</rp></ruby>にそうだと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>います。<span class="badge">N3</span></div><div class="ko" hidden>어머니는 '가을은 먹거리의 계절'이라고 자주 말하는데, 정말 그렇다고 생각합니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en" lang="ja"><ruby>今度<rp>(</rp><rt>こんど</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby><ruby>一人<rp>(</rp><rt>ひとり</rt><rp>)</rp></ruby>で<b><ruby>挑戦<rp>(</rp><rt>ちょうせん</rt><rp>)</rp></ruby></b>してみたいです。</div><div class="ko" hidden>다음번에는 혼자서 도전해 보고 싶습니다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">특정 기사를 바탕으로 하지 않은 학습용 글입니다.</p>
     <div class="mine">
@@ -565,12 +565,12 @@
   <section class="card">
     <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
-    <div class="word"><span class="wl"><span class="w"><ruby>炊<rp>(</rp><rt>た</rt><rp>)</rp></ruby>き<ruby>込<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>みご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="たきこみごはん" aria-label="たきこみごはん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">다키코미 고항 (재료 넣어 지은 밥)</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>栗<rp>(</rp><rt>くり</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="くり" aria-label="くり 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">밤(chestnut)</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>市場<rp>(</rp><rt>いちば</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="いちば" aria-label="いちば 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">시장</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>新鮮<rp>(</rp><rt>しんせん</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="しんせん" aria-label="しんせん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">신선한</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>挑戦<rp>(</rp><rt>ちょうせん</rt><rp>)</rp></ruby>する</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="ちょうせんする" aria-label="ちょうせんする 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">도전하다</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>甘<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>い</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="あまい" aria-label="あまい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">달다, 달콤하다</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>炊<rp>(</rp><rt>た</rt><rp>)</rp></ruby>き<ruby>込<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>みご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="たきこみごはん" aria-label="たきこみごはん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">영양밥</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>栗<rp>(</rp><rt>くり</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="くり" aria-label="くり 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">(열매) 밤</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>市場<rp>(</rp><rt>いちば</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="いちば" aria-label="いちば 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">시장</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>新鮮<rp>(</rp><rt>しんせん</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="しんせん" aria-label="しんせん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">신선한</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>挑戦<rp>(</rp><rt>ちょうせん</rt><rp>)</rp></ruby>する</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="ちょうせんする" aria-label="ちょうせんする 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">도전하다</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>甘<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>い</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="あまい" aria-label="あまい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">달다, 달콤하다</span></div>
   </section>
 
   <section class="card">
@@ -626,22 +626,22 @@
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w"><span class="wt"><ruby>食材<rp>(</rp><rt>しょくざい</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="しょくざい" aria-label="しょくざい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">식재료</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>食材<rp>(</rp><rt>しょくざい</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="しょくざい" aria-label="しょくざい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">식재료</div>
         <div class="ex"><ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby>の<b><ruby>食材<rp>(</rp><rt>しょくざい</rt><rp>)</rp></ruby></b>は<ruby>種類<rp>(</rp><rt>しゅるい</rt><rp>)</rp></ruby>が<ruby>豊<rp>(</rp><rt>ゆた</rt><rp>)</rp></ruby>かです。</div>
         <div class="ex-ko">가을 식재료는 종류가 풍부합니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>旬<rp>(</rp><rt>しゅん</rt><rp>)</rp></ruby>の<ruby>食材<rp>(</rp><rt>しょくざい</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="しゅんのしょくざい" aria-label="しゅんのしょくざい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">제철 식재료</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>旬<rp>(</rp><rt>しゅん</rt><rp>)</rp></ruby>の<ruby>食材<rp>(</rp><rt>しょくざい</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="しゅんのしょくざい" aria-label="しゅんのしょくざい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">제철 식재료</div>
         <div class="ex"><b><ruby>旬<rp>(</rp><rt>しゅん</rt><rp>)</rp></ruby></b>の<ruby>栗<rp>(</rp><rt>くり</rt><rp>)</rp></ruby>はとくにおいしいです。</div>
         <div class="ex-ko">제철 밤은 특히 맛있습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>香<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>ばしい</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="かおばしい" aria-label="かおばしい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">고소하다, 구수하다<span class="warn"><ruby>香<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>り(향기)와 관련 있는 형용사</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>香<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>ばしい</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="かおばしい" aria-label="かおばしい 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">고소하다, 구수하다<span class="warn"><ruby>香<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>り(향기)와 관련 있는 형용사</span></div>
         <div class="ex"><ruby>炊<rp>(</rp><rt>た</rt><rp>)</rp></ruby>き<ruby>込<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>みご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby>の<b><ruby>香<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>ばしい</b>においがします。</div>
         <div class="ex-ko">다키코미 고항의 구수한 냄새가 납니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>盛<rp>(</rp><rt>も</rt><rp>)</rp></ruby>り<ruby>付<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>け</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="もりつけ" aria-label="もりつけ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">담음새, 플레이팅</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>盛<rp>(</rp><rt>も</rt><rp>)</rp></ruby>り<ruby>付<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>け</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="もりつけ" aria-label="もりつけ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">담음새, 플레이팅</div>
         <div class="ex">お<ruby>皿<rp>(</rp><rt>さら</rt><rp>)</rp></ruby>の<b><ruby>盛<rp>(</rp><rt>も</rt><rp>)</rp></ruby>り<ruby>付<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>け</b>をきれいにしました。</div>
         <div class="ex-ko">접시 담음새를 예쁘게 했습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>味覚<rp>(</rp><rt>みかく</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="みかく" aria-label="みかく 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">미각, 미각의 즐거움</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>味覚<rp>(</rp><rt>みかく</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="みかく" aria-label="みかく 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">미각, 제철 먹거리</div>
         <div class="ex"><ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby>は<b><ruby>味覚<rp>(</rp><rt>みかく</rt><rp>)</rp></ruby></b>の<ruby>季節<rp>(</rp><rt>きせつ</rt><rp>)</rp></ruby>と<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>われています。</div>
         <div class="ex-ko">가을은 미각의 계절이라고 불립니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>炊<rp>(</rp><rt>た</rt><rp>)</rp></ruby>く</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="たく" aria-label="たく 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">밥을 짓다, 끓이다<span class="warn"><ruby>焼<rp>(</rp><rt>や</rt><rp>)</rp></ruby>く(굽다)・<ruby>煮<rp>(</rp><rt>に</rt><rp>)</rp></ruby>る(끓이다)와 구분</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>炊<rp>(</rp><rt>た</rt><rp>)</rp></ruby>く</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="たく" aria-label="たく 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(밥을) 짓다<span class="warn"><ruby>焼<rp>(</rp><rt>や</rt><rp>)</rp></ruby>く(굽다)・<ruby>煮<rp>(</rp><rt>に</rt><rp>)</rp></ruby>る(끓이다)와 구분</span></div>
         <div class="ex">ご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby>を<b><ruby>炊<rp>(</rp><rt>た</rt><rp>)</rp></ruby>き</b>ます。</div>
         <div class="ex-ko">밥을 짓습니다.</div></div>
     </div>
@@ -1037,15 +1037,16 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
-  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  // 수준 전환(카드 안 읽기 수준 세그먼트): 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
   (function () {
     var toLevelA = document.getElementById('to-level-a');
     var toLevelB = document.getElementById('to-level-b');
     if (!toLevelA || !toLevelB) return;
     function updateLinks() {
       var isA = isLevelA();
-      toLevelA.hidden = isA;
-      toLevelB.hidden = !isA;
+      // 켜진 쪽 모양은 CSS(html.level-a)가 정한다. 여기서는 화면 읽기 프로그램용 표시만 맞춘다
+      toLevelA.setAttribute('aria-current', String(isA));
+      toLevelB.setAttribute('aria-current', String(!isA));
     }
     updateLinks();
     function switchLevel(e, to) {
@@ -1073,7 +1074,7 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
-<script type="application/json" id="drill-data">[{"w": "炊き込みご飯", "m": "다키코미 고항 (재료 넣어 지은 밥)", "r": "たきこみごはん", "cz": "<ruby>栗<rt>くり<\/rt><\/ruby>ときのこをつかって、<span class=\"dr-blank\"><\/span>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "ca": "炊き込みご飯", "ex": "<ruby>栗<rt>くり<\/rt><\/ruby>ときのこをつかって、<b><ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby><\/b>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "sh": "<ruby>栗<rt>くり<\/rt><\/ruby>ときのこをつかって、<b><ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby><\/b>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "ek": "밤과 버섯을 사용해서 다키코미 고항을 만들었습니다.", "sa": "/ja/2026-10-12/audio/s2.mp3", "au": "/ja/2026-10-12/audio/w1.mp3", "alts": ["밤(chestnut)", "시장", "신선한", "도전하다", "달다, 달콤하다"]}, {"w": "栗", "m": "밤(chestnut)", "r": "くり", "cz": "<span class=\"dr-blank\"><\/span>ときのこをつかって、<ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "ca": "栗", "ex": "<b><ruby>栗<rt>くり<\/rt><\/ruby><\/b>ときのこをつかって、<ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "sh": "<b><ruby>栗<rt>くり<\/rt><\/ruby><\/b>ときのこをつかって、<ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "ek": "밤과 버섯을 사용해서 다키코미 고항을 만들었습니다.", "sa": "/ja/2026-10-12/audio/s2.mp3", "au": "/ja/2026-10-12/audio/w2.mp3", "alts": ["다키코미 고항 (재료 넣어 지은 밥)", "시장", "신선한", "도전하다", "달다, 달콤하다"]}, {"w": "市場", "m": "시장", "r": "いちば", "cz": "<span class=\"dr-blank\"><\/span>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "ca": "市場", "ex": "<b><ruby>市場<rt>いちば<\/rt><\/ruby><\/b>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "sh": "<b><ruby>市場<rt>いちば<\/rt><\/ruby><\/b>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "ek": "시장에서 산 신선한 밤은 달콤해서 정말 맛있었습니다.", "sa": "/ja/2026-10-12/audio/s3.mp3", "au": "/ja/2026-10-12/audio/w3.mp3", "alts": ["다키코미 고항 (재료 넣어 지은 밥)", "밤(chestnut)", "신선한", "도전하다", "달다, 달콤하다"]}, {"w": "新鮮", "m": "신선한", "r": "しんせん", "cz": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<span class=\"dr-blank\"><\/span>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "ca": "新鮮", "ex": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<b><ruby>新鮮<rt>しんせん<\/rt><\/ruby><\/b>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "sh": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<b><ruby>新鮮<rt>しんせん<\/rt><\/ruby><\/b>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "ek": "시장에서 산 신선한 밤은 달콤해서 정말 맛있었습니다.", "sa": "/ja/2026-10-12/audio/s3.mp3", "au": "/ja/2026-10-12/audio/w4.mp3", "alts": ["다키코미 고항 (재료 넣어 지은 밥)", "밤(chestnut)", "시장", "도전하다", "달다, 달콤하다"]}, {"w": "挑戦する", "m": "도전하다", "r": "ちょうせんする", "cz": "<ruby>今度<rt>こんど<\/rt><\/ruby>は<ruby>自分<rt>じぶん<\/rt><\/ruby><ruby>一人<rt>ひとり<\/rt><\/ruby>で<span class=\"dr-blank\"><\/span>してみたいです。", "ca": "挑戦", "ex": "<ruby>今度<rt>こんど<\/rt><\/ruby>は<ruby>自分<rt>じぶん<\/rt><\/ruby><ruby>一人<rt>ひとり<\/rt><\/ruby>で<b><ruby>挑戦<rt>ちょうせん<\/rt><\/ruby><\/b>してみたいです。", "sh": "<ruby>今度<rt>こんど<\/rt><\/ruby>は<ruby>自分<rt>じぶん<\/rt><\/ruby><ruby>一人<rt>ひとり<\/rt><\/ruby>で<b><ruby>挑戦<rt>ちょうせん<\/rt><\/ruby><\/b>してみたいです。", "ek": "다음번에는 혼자서 도전해 보고 싶습니다.", "sa": "/ja/2026-10-12/audio/s5.mp3", "au": "/ja/2026-10-12/audio/w5.mp3", "alts": ["다키코미 고항 (재료 넣어 지은 밥)", "밤(chestnut)", "시장", "신선한", "달다, 달콤하다"]}, {"w": "甘い", "m": "달다, 달콤하다", "r": "あまい", "cz": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<span class=\"dr-blank\"><\/span>、とてもおいしかったです。", "ca": "甘くて", "ex": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<b><ruby>甘<rt>あま<\/rt><\/ruby>くて<\/b>、とてもおいしかったです。", "sh": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<b><ruby>甘<rt>あま<\/rt><\/ruby>くて<\/b>、とてもおいしかったです。", "ek": "시장에서 산 신선한 밤은 달콤해서 정말 맛있었습니다.", "sa": "/ja/2026-10-12/audio/s3.mp3", "au": "/ja/2026-10-12/audio/w6.mp3", "alts": ["다키코미 고항 (재료 넣어 지은 밥)", "밤(chestnut)", "시장", "신선한", "도전하다"]}]</script>
+<script type="application/json" id="drill-data">[{"w": "炊き込みご飯", "m": "영양밥", "r": "たきこみごはん", "cz": "<ruby>栗<rt>くり<\/rt><\/ruby>ときのこをつかって、<span class=\"dr-blank\"><\/span>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "ca": "炊き込みご飯", "ex": "<ruby>栗<rt>くり<\/rt><\/ruby>ときのこをつかって、<b><ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby><\/b>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "sh": "<ruby>栗<rt>くり<\/rt><\/ruby>ときのこをつかって、<b><ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby><\/b>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "ek": "밤과 버섯을 넣어서 영양밥을 만들었습니다.", "sa": "/ja/2026-10-12/audio/s2.mp3", "au": "/ja/2026-10-12/audio/w1.mp3", "alts": ["(열매) 밤", "시장", "신선한", "도전하다", "달다, 달콤하다"]}, {"w": "栗", "m": "(열매) 밤", "r": "くり", "cz": "<span class=\"dr-blank\"><\/span>ときのこをつかって、<ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "ca": "栗", "ex": "<b><ruby>栗<rt>くり<\/rt><\/ruby><\/b>ときのこをつかって、<ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "sh": "<b><ruby>栗<rt>くり<\/rt><\/ruby><\/b>ときのこをつかって、<ruby>炊<rt>た<\/rt><\/ruby>き<ruby>込<rt>こ<\/rt><\/ruby>みご<ruby>飯<rt>はん<\/rt><\/ruby>を<ruby>作<rt>つく<\/rt><\/ruby>りました。", "ek": "밤과 버섯을 넣어서 영양밥을 만들었습니다.", "sa": "/ja/2026-10-12/audio/s2.mp3", "au": "/ja/2026-10-12/audio/w2.mp3", "alts": ["영양밥", "시장", "신선한", "도전하다", "달다, 달콤하다"]}, {"w": "市場", "m": "시장", "r": "いちば", "cz": "<span class=\"dr-blank\"><\/span>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "ca": "市場", "ex": "<b><ruby>市場<rt>いちば<\/rt><\/ruby><\/b>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "sh": "<b><ruby>市場<rt>いちば<\/rt><\/ruby><\/b>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "ek": "시장에서 산 신선한 밤은 달콤해서 정말 맛있었습니다.", "sa": "/ja/2026-10-12/audio/s3.mp3", "au": "/ja/2026-10-12/audio/w3.mp3", "alts": ["영양밥", "(열매) 밤", "신선한", "도전하다", "달다, 달콤하다"]}, {"w": "新鮮", "m": "신선한", "r": "しんせん", "cz": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<span class=\"dr-blank\"><\/span>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "ca": "新鮮", "ex": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<b><ruby>新鮮<rt>しんせん<\/rt><\/ruby><\/b>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "sh": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<b><ruby>新鮮<rt>しんせん<\/rt><\/ruby><\/b>な<ruby>栗<rt>くり<\/rt><\/ruby>は<ruby>甘<rt>あま<\/rt><\/ruby>くて、とてもおいしかったです。", "ek": "시장에서 산 신선한 밤은 달콤해서 정말 맛있었습니다.", "sa": "/ja/2026-10-12/audio/s3.mp3", "au": "/ja/2026-10-12/audio/w4.mp3", "alts": ["영양밥", "(열매) 밤", "시장", "도전하다", "달다, 달콤하다"]}, {"w": "挑戦する", "m": "도전하다", "r": "ちょうせんする", "cz": "<ruby>今度<rt>こんど<\/rt><\/ruby>は<ruby>自分<rt>じぶん<\/rt><\/ruby><ruby>一人<rt>ひとり<\/rt><\/ruby>で<span class=\"dr-blank\"><\/span>してみたいです。", "ca": "挑戦", "ex": "<ruby>今度<rt>こんど<\/rt><\/ruby>は<ruby>自分<rt>じぶん<\/rt><\/ruby><ruby>一人<rt>ひとり<\/rt><\/ruby>で<b><ruby>挑戦<rt>ちょうせん<\/rt><\/ruby><\/b>してみたいです。", "sh": "<ruby>今度<rt>こんど<\/rt><\/ruby>は<ruby>自分<rt>じぶん<\/rt><\/ruby><ruby>一人<rt>ひとり<\/rt><\/ruby>で<b><ruby>挑戦<rt>ちょうせん<\/rt><\/ruby><\/b>してみたいです。", "ek": "다음번에는 혼자서 도전해 보고 싶습니다.", "sa": "/ja/2026-10-12/audio/s5.mp3", "au": "/ja/2026-10-12/audio/w5.mp3", "alts": ["영양밥", "(열매) 밤", "시장", "신선한", "달다, 달콤하다"]}, {"w": "甘い", "m": "달다, 달콤하다", "r": "あまい", "cz": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<span class=\"dr-blank\"><\/span>、とてもおいしかったです。", "ca": "甘くて", "ex": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<b><ruby>甘<rt>あま<\/rt><\/ruby>くて<\/b>、とてもおいしかったです。", "sh": "<ruby>市場<rt>いちば<\/rt><\/ruby>で<ruby>買<rt>か<\/rt><\/ruby>った<ruby>新鮮<rt>しんせん<\/rt><\/ruby>な<ruby>栗<rt>くり<\/rt><\/ruby>は<b><ruby>甘<rt>あま<\/rt><\/ruby>くて<\/b>、とてもおいしかったです。", "ek": "시장에서 산 신선한 밤은 달콤해서 정말 맛있었습니다.", "sa": "/ja/2026-10-12/audio/s3.mp3", "au": "/ja/2026-10-12/audio/w6.mp3", "alts": ["영양밥", "(열매) 밤", "시장", "신선한", "도전하다"]}]</script>
 <script id="drill-js" data-v="14" src="/assets/drill.js?v=14" defer></script>
 <script id="vote-js">
 (function () {

@@ -251,7 +251,7 @@
   "advanced": [
     {
       "word": "simulate",
-      "meaning": "모의로 재현하다, 흉내 내다",
+      "meaning": "재현하다, 모의 실험하다",
       "confuse": "stimulate(자극하다)와 혼동 주의",
       "example": "The chamber can **simulate** thick fog and heavy rain indoors.",
       "example_ko": "그 체임버는 실내에서 짙은 안개와 폭우를 재현할 수 있습니다."
@@ -265,7 +265,7 @@
     },
     {
       "word": "visibility",
-      "meaning": "시야, 가시성(얼마나 멀리 잘 보이는지)",
+      "meaning": "시야, 가시거리",
       "confuse": null,
       "example": "Thick fog can reduce **visibility** to almost nothing.",
       "example_ko": "짙은 안개는 시야를 거의 없게 만들 수 있습니다."
@@ -293,7 +293,7 @@
     },
     {
       "word": "benchmark",
-      "meaning": "비교 기준(으로 삼는 자료)",
+      "meaning": "기준, 기준점",
       "confuse": null,
       "example": "The recordings will serve as a **benchmark** for judging camera performance.",
       "example_ko": "그 녹화 영상은 카메라 성능을 판단하는 비교 기준이 될 것입니다."

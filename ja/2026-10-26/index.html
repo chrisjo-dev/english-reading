@@ -19,7 +19,7 @@
 <link rel="canonical" href="https://read.wspace.ai.kr/ja/2026-10-26/">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap">
-<style>.en, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .adv .ex { word-break: normal; line-break: strict; } .en { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
+<style>.en, .en-a, .adv .ex, .word .w, .adv .w { font-family: "Noto Sans JP", Pretendard, sans-serif; } .en, .en-a, .adv .ex { word-break: normal; line-break: strict; } .en, .en-a { line-height: 2.2; } rt { font-size: 0.55em; font-weight: 500; color: var(--sub); }</style>
 <style>
   :root {
     --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
@@ -158,7 +158,8 @@
   .mine .tool { width: 100%; margin-top: 8px; flex: none; }
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
   .top { position: relative; }
-  .thumb { position: absolute; top: 18px; right: 18px; width: 76px; height: 76px; object-fit: cover; object-position: 100% 50%; }
+  .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
+  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
@@ -183,6 +184,33 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -330,9 +358,6 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
-  .top { position: relative; }
-  .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
-  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
   /* gnb-a */
   .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -420,33 +445,6 @@
     .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
   }
   /* /day-a */
-  /* vote-css */
-  .cat-science { color: #1b64da; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #a25c00; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #1b64da; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #a25c00; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
@@ -537,7 +535,7 @@
       <span class="chip">N4 1문장</span>
       <span class="chip">약 3분</span>
     </div>
-    <p class="intro">매일 아침 새로 올라오는 JLPT N4~N5 일본어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요.</p>
+    <p class="intro">매일 아침 새로 올라오는 JLPT N3(기초 N4~N5) 일본어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요.</p>
   </div>
 
   <section class="card" id="passage">
@@ -549,12 +547,12 @@
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
       <button class="tool" id="furi" type="button" aria-pressed="true">후리가나 끄기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">きのうの<ruby>夜<rp>(</rp><rt>よる</rt><rp>)</rp></ruby>、<ruby>友<rp>(</rp><rt>とも</rt><rp>)</rp></ruby>だちに<b><ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby></b>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。</div><div class="ko" hidden>어젯밤에 친구에게 편지를 썼습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en"><ruby>友<rp>(</rp><rt>とも</rt><rp>)</rp></ruby>だちは<ruby>去年<rp>(</rp><rt>きょねん</rt><rp>)</rp></ruby>から<ruby>大阪<rp>(</rp><rt>おおさか</rt><rp>)</rp></ruby>に<b><ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>んで</b>います。</div><div class="ko" hidden>친구는 작년부터 오사카에 살고 있습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">かわいい<b><ruby>便箋<rp>(</rp><rt>びんせん</rt><rp>)</rp></ruby></b>に、<ruby>最近<rp>(</rp><rt>さいきん</rt><rp>)</rp></ruby>のことを<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。</div><div class="ko" hidden>귀여운 편지지에 요즘 있었던 일을 썼습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">メールより<b><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>がかかります</b>が、<ruby>手<rp>(</rp><rt>て</rt><rp>)</rp></ruby>で<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>くのが<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きです。<span class="badge">N4</span></div><div class="ko" hidden>메일보다 시간이 걸리지만, 손으로 쓰는 것을 좋아합니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en"><ruby>今朝<rp>(</rp><rt>けさ</rt><rp>)</rp></ruby>、<ruby>郵便局<rp>(</rp><rt>ゆうびんきょく</rt><rp>)</rp></ruby>で110<ruby>円<rp>(</rp><rt>えん</rt><rp>)</rp></ruby>の<b><ruby>切手<rp>(</rp><rt>きって</rt><rp>)</rp></ruby></b>を<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いました。</div><div class="ko" hidden>오늘 아침 우체국에서 110엔짜리 우표를 샀습니다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en"><ruby>友<rp>(</rp><rt>とも</rt><rp>)</rp></ruby>だちの<b><ruby>返事<rp>(</rp><rt>へんじ</rt><rp>)</rp></ruby></b>が、<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>から<ruby>楽<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>しみです。</div><div class="ko" hidden>친구의 답장이 벌써부터 기대됩니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en" lang="ja">きのうの<ruby>夜<rp>(</rp><rt>よる</rt><rp>)</rp></ruby>、<ruby>友<rp>(</rp><rt>とも</rt><rp>)</rp></ruby>だちに<b><ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby></b>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。</div><div class="ko" hidden>어젯밤에 친구에게 편지를 썼습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en" lang="ja"><ruby>友<rp>(</rp><rt>とも</rt><rp>)</rp></ruby>だちは<ruby>去年<rp>(</rp><rt>きょねん</rt><rp>)</rp></ruby>から<ruby>大阪<rp>(</rp><rt>おおさか</rt><rp>)</rp></ruby>に<b><ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>んで</b>います。</div><div class="ko" hidden>친구는 작년부터 오사카에 살고 있습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en" lang="ja">かわいい<b><ruby>便箋<rp>(</rp><rt>びんせん</rt><rp>)</rp></ruby></b>に、<ruby>最近<rp>(</rp><rt>さいきん</rt><rp>)</rp></ruby>のことを<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。</div><div class="ko" hidden>귀여운 편지지에 요즘 있었던 일을 썼습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en" lang="ja">メールより<b><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>がかかります</b>が、<ruby>手<rp>(</rp><rt>て</rt><rp>)</rp></ruby>で<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>くのが<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きです。<span class="badge">N3</span></div><div class="ko" hidden>메일보다 시간이 걸리지만, 손으로 쓰는 것을 좋아합니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en" lang="ja"><ruby>今朝<rp>(</rp><rt>けさ</rt><rp>)</rp></ruby>、<ruby>郵便局<rp>(</rp><rt>ゆうびんきょく</rt><rp>)</rp></ruby>で110<ruby>円<rp>(</rp><rt>えん</rt><rp>)</rp></ruby>の<b><ruby>切手<rp>(</rp><rt>きって</rt><rp>)</rp></ruby></b>を<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いました。</div><div class="ko" hidden>오늘 아침 우체국에서 110엔짜리 우표를 샀습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en" lang="ja"><ruby>友<rp>(</rp><rt>とも</rt><rp>)</rp></ruby>だちの<b><ruby>返事<rp>(</rp><rt>へんじ</rt><rp>)</rp></ruby></b>が、<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>から<ruby>楽<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>しみです。</div><div class="ko" hidden>친구의 답장이 벌써부터 기대됩니다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">실제 사례가 아니라 학습용으로 지어낸 이야기입니다. 등장하는 장소, 인물, 숫자는 예시입니다.</p>
     <div class="mine">
@@ -568,12 +566,12 @@
   <section class="card">
     <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
-    <div class="word"><span class="wl"><span class="w"><ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="てがみ" aria-label="てがみ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">편지</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>む</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="すむ" aria-label="すむ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">살다(거주하다)</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>便箋<rp>(</rp><rt>びんせん</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="びんせん" aria-label="びんせん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">편지지</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>がかかる</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="じかんがかかる" aria-label="じかんがかかる 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">시간이 걸리다</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>切手<rp>(</rp><rt>きって</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="きって" aria-label="きって 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">우표</span></div>
-    <div class="word"><span class="wl"><span class="w"><ruby>返事<rp>(</rp><rt>へんじ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="へんじ" aria-label="へんじ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">답장, 대답</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="てがみ" aria-label="てがみ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">편지</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>む</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="すむ" aria-label="すむ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">살다(거주하다)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>便箋<rp>(</rp><rt>びんせん</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="びんせん" aria-label="びんせん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">편지지</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>がかかる</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="じかんがかかる" aria-label="じかんがかかる 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">시간이 걸리다</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>切手<rp>(</rp><rt>きって</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="きって" aria-label="きって 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">우표</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="ja"><ruby>返事<rp>(</rp><rt>へんじ</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="へんじ" aria-label="へんじ 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">답장, 대답</span></div>
   </section>
 
   <section class="card">
@@ -629,25 +627,25 @@
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w"><span class="wt"><ruby>封筒<rp>(</rp><rt>ふうとう</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="ふうとう" aria-label="ふうとう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">봉투</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>封筒<rp>(</rp><rt>ふうとう</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="ふうとう" aria-label="ふうとう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">봉투</div>
         <div class="ex"><ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>を<ruby>白<rp>(</rp><rt>しろ</rt><rp>)</rp></ruby>い<b><ruby>封筒<rp>(</rp><rt>ふうとう</rt><rp>)</rp></ruby></b>に<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れました。</div>
         <div class="ex-ko">편지를 하얀 봉투에 넣었습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>届<rp>(</rp><rt>とど</rt><rp>)</rp></ruby>く</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="とどく" aria-label="とどく 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(물건, 편지가) 도착하다, 닿다<span class="warn">届ける(とどける)는 '전해 주다'라는 타동사예요</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>届<rp>(</rp><rt>とど</rt><rp>)</rp></ruby>く</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="とどく" aria-label="とどく 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(물건, 편지가) 도착하다, 닿다<span class="warn">届ける(とどける)는 '전해 주다'라는 타동사예요</span></div>
         <div class="ex"><ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>は<ruby>金曜日<rp>(</rp><rt>きんようび</rt><rp>)</rp></ruby>ごろ<ruby>大阪<rp>(</rp><rt>おおさか</rt><rp>)</rp></ruby>に<b><ruby>届<rp>(</rp><rt>とど</rt><rp>)</rp></ruby>きます</b>。</div>
         <div class="ex-ko">편지는 금요일쯤 오사카에 도착합니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>宛先<rp>(</rp><rt>あてさき</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="あてさき" aria-label="あてさき 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">받는 곳(주소)</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>宛先<rp>(</rp><rt>あてさき</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="あてさき" aria-label="あてさき 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">수신처, 받는 사람 주소</div>
         <div class="ex"><ruby>封筒<rp>(</rp><rt>ふうとう</rt><rp>)</rp></ruby>に<b><ruby>宛先<rp>(</rp><rt>あてさき</rt><rp>)</rp></ruby></b>をていねいに<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。</div>
         <div class="ex-ko">봉투에 받는 사람 주소를 정성껏 썼습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>久<rp>(</rp><rt>ひさ</rt><rp>)</rp></ruby>しぶり</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="ひさしぶり" aria-label="ひさしぶり 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">오랜만</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>久<rp>(</rp><rt>ひさ</rt><rp>)</rp></ruby>しぶり</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="ひさしぶり" aria-label="ひさしぶり 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">오랜만</div>
         <div class="ex"><b><ruby>久<rp>(</rp><rt>ひさ</rt><rp>)</rp></ruby>しぶり</b>に<ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。</div>
         <div class="ex-ko">오랜만에 편지를 썼습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>返信<rp>(</rp><rt>へんしん</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="へんしん" aria-label="へんしん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">회신, 답장(주로 메일, 메시지)<span class="warn">返事(へんじ)는 말이나 편지의 대답에 두루 써요</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>返信<rp>(</rp><rt>へんしん</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="へんしん" aria-label="へんしん 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">회신, 답장(주로 메일, 메시지)<span class="warn">返事(へんじ)는 말이나 편지의 대답에 두루 써요</span></div>
         <div class="ex">メールなら、すぐに<b><ruby>返信<rp>(</rp><rt>へんしん</rt><rp>)</rp></ruby></b>が<ruby>来<rp>(</rp><rt>き</rt><rp>)</rp></ruby>ます。</div>
         <div class="ex-ko">메일이라면 바로 답장이 옵니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>文通<rp>(</rp><rt>ぶんつう</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="ぶんつう" aria-label="ぶんつう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">편지 주고받기(펜팔)</div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>文通<rp>(</rp><rt>ぶんつう</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="ぶんつう" aria-label="ぶんつう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">편지 왕래, 펜팔</div>
         <div class="ex"><ruby>大阪<rp>(</rp><rt>おおさか</rt><rp>)</rp></ruby>の<ruby>友<rp>(</rp><rt>とも</rt><rp>)</rp></ruby>だちと<b><ruby>文通<rp>(</rp><rt>ぶんつう</rt><rp>)</rp></ruby></b>をしています。</div>
         <div class="ex-ko">오사카에 사는 친구와 편지를 주고받고 있습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt"><ruby>近況<rp>(</rp><rt>きんきょう</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="きんきょう" aria-label="きんきょう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">근황<span class="warn">近(きん)을 ちか로 읽지 않아요</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="ja"><ruby>近況<rp>(</rp><rt>きんきょう</rt><rp>)</rp></ruby></span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="きんきょう" aria-label="きんきょう 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">근황<span class="warn">近(きん)을 ちか로 읽지 않아요</span></div>
         <div class="ex"><ruby>便箋<rp>(</rp><rt>びんせん</rt><rp>)</rp></ruby>に<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<b><ruby>近況<rp>(</rp><rt>きんきょう</rt><rp>)</rp></ruby></b>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。</div>
         <div class="ex-ko">편지지에 제 근황을 썼습니다.</div></div>
     </div>
@@ -1025,7 +1023,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
     else fallback();
   }
-  var HEAD = '나는 JLPT N4~N5 수준의 한국인 일본어 학습자입니다. 아래는 오늘의 일본어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
+  var HEAD = '나는 JLPT N3 수준의 한국인 일본어 학습자입니다. 아래는 오늘의 일본어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
   var WEAK = '자주 틀리는 부분(조사 は・が・を・に・で, 동사 활용과 시제, 한자 읽기, 숫자와 조수사)도 함께 짚어 주세요.';
   function passageBlock() {
     return '[일본어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
@@ -1043,15 +1041,16 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
-  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  // 수준 전환(카드 안 읽기 수준 세그먼트): 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
   (function () {
     var toLevelA = document.getElementById('to-level-a');
     var toLevelB = document.getElementById('to-level-b');
     if (!toLevelA || !toLevelB) return;
     function updateLinks() {
       var isA = isLevelA();
-      toLevelA.hidden = isA;
-      toLevelB.hidden = !isA;
+      // 켜진 쪽 모양은 CSS(html.level-a)가 정한다. 여기서는 화면 읽기 프로그램용 표시만 맞춘다
+      toLevelA.setAttribute('aria-current', String(isA));
+      toLevelB.setAttribute('aria-current', String(!isA));
     }
     updateLinks();
     function switchLevel(e, to) {
