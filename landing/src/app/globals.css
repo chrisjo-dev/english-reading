@@ -1154,6 +1154,8 @@ html:not(.js) .sw {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--g);
   margin-left: calc(3 * (var(--col) + var(--g)));
+  /* 구독 폼과 언어 추가 요청 카드는 각자 높이대로(design/sub-tabs S04) */
+  align-items: start;
 }
 
 .sub-form {
@@ -1186,6 +1188,48 @@ html:not(.js) .sw {
 
 .sub .note {
   margin-top: 32px;
+}
+
+/* 받을 언어 탭 (design/sub-tabs 시안 A). 이메일 하나에 언어 하나라 폼 하나에서 언어를 고른다 */
+.sub-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: #f2f4f6;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 18px;
+}
+
+.sub-tabs button {
+  height: 40px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mute);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sub-tabs button[aria-selected="true"] {
+  background: #fff;
+  color: var(--ink);
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.12);
+}
+
+.sub-tabs button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.sub-one {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--mute);
 }
 
 /* 수준 선택 카드 (영어 구독 폼) */
@@ -1285,7 +1329,7 @@ html:not(.js) .sw {
   display: block;
 }
 
-/* 언어 추가 요청 (네 번째 칸, design/lang-request L02, L04) */
+/* 언어 추가 요청 (두 번째 칸, design/lang-request L02, L04) */
 .lang-req {
   display: flex;
   flex-direction: column;
