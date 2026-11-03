@@ -6,11 +6,11 @@
 <meta name="color-scheme" content="light only">
 <title>영어 읽기, 11월 2일 | 독해한입</title>
 <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
-<meta name="description" content="B1~B2 영어 읽기 — 스스로 몸을 곧게 펴는 나무. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.">
+<meta name="description" content="B1~B2 영어 읽기 — 스스로 허리를 펴는 나무. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="독해한입: 매일 영어 읽기">
-<meta property="og:title" content="오늘은 스스로 몸을 곧게 펴는 나무 이야기예요 | 독해한입">
-<meta property="og:description" content="B1~B2 영어 읽기 — 스스로 몸을 곧게 펴는 나무. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.">
+<meta property="og:title" content="오늘은 스스로 허리를 펴는 나무 이야기예요 | 독해한입">
+<meta property="og:description" content="B1~B2 영어 읽기 — 스스로 허리를 펴는 나무. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.">
 <meta property="og:url" content="https://read.wspace.ai.kr/en/2026-11-02/">
 <meta property="og:image" content="https://read.wspace.ai.kr/en/2026-11-02/thumb.png">
 <meta property="og:image:width" content="1200">
@@ -158,93 +158,6 @@
   .top { position: relative; }
   .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
   .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
-  /* gnb-a */
-  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
-  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
-  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
-  .gnb-brand img { display: block; height: 26px; width: auto; }
-  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
-  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
-  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
-  .gnb-chip .gnb-pill svg { color: #6b7684; }
-  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
-  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
-  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
-  .gnb-seg, .gnb-past { display: none; }
-  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
-  @media (max-width: 350px) { .gnb-brand span { display: none; } }
-  @media (min-width: 768px) {
-    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
-    .gnb-brand { font-size: 18px; margin-right: 24px; }
-    .gnb-brand img { height: 28px; }
-    .gnb-chip { display: none; }
-    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
-    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
-    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
-    .gnb-seg a:hover { color: #191f28; }
-    .gnb-seg a.on { color: #191f28; font-weight: 700; }
-    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
-    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
-    .gnb-past:hover { background: #f2f4f6; }
-    .gnb-past.on { color: #191f28; font-weight: 700; }
-  }
-  /* 언어 시트(휴대폰) */
-  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
-  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
-               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
-               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
-  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
-  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
-  .gnb-sheet:focus { outline: none; }
-  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
-  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
-  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
-  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
-  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
-  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
-  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
-  .gs-row.on { background: #e8f3ff; }
-  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
-  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
-  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
-  .gs-tt { flex: 1; min-width: 0; }
-  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
-  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
-  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
-  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
-  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
-  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
-  .gs-review[hidden] { display: none; }
-  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
-  .gs-review .gs-badge svg { width: 20px; height: 20px; }
-  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
-  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
-  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
-  /* /gnb-a */
-  /* day-a */
-  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
-  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
-  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
-  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
-  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
-  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
-  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
-  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
-  .top:has(> .hero) h1 { padding-right: 0; }
-  @media (min-width: 768px) {
-    body > main { max-width: 784px; }
-    main .pbar { max-width: 760px; }
-    .top { padding: 28px 28px 24px; margin-top: 24px; }
-    .top h1 { font-size: 28px; }
-    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
-    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
-  }
-  /* /day-a */
   .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
   .site-footer { padding-bottom: 32px; }
   .sub { scroll-margin-top: 84px; }
@@ -269,6 +182,33 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -416,33 +356,93 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
-  /* vote-css */
-  .cat-science { color: #1b64da; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #a25c00; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #1b64da; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #a25c00; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
+  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
+  /* gnb-a */
+  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
+  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
+  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
+  .gnb-brand img { display: block; height: 26px; width: auto; }
+  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
+  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
+  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
+  .gnb-chip .gnb-pill svg { color: #6b7684; }
+  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
+  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
+  .gnb-seg, .gnb-past { display: none; }
+  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
+  @media (max-width: 350px) { .gnb-brand span { display: none; } }
+  @media (min-width: 768px) {
+    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
+    .gnb-brand { font-size: 18px; margin-right: 24px; }
+    .gnb-brand img { height: 28px; }
+    .gnb-chip { display: none; }
+    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
+    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
+    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
+    .gnb-seg a:hover { color: #191f28; }
+    .gnb-seg a.on { color: #191f28; font-weight: 700; }
+    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+    .gnb-past:hover { background: #f2f4f6; }
+    .gnb-past.on { color: #191f28; font-weight: 700; }
+  }
+  /* 언어 시트(휴대폰) */
+  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
+  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
+               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
+               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
+  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
+  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
+  .gnb-sheet:focus { outline: none; }
+  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
+  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
+  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
+  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
+  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
+  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
+  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
+  .gs-row.on { background: #e8f3ff; }
+  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
+  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
+  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
+  .gs-tt { flex: 1; min-width: 0; }
+  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
+  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
+  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
+  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
+  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
+  .gs-review[hidden] { display: none; }
+  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
+  .gs-review .gs-badge svg { width: 20px; height: 20px; }
+  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
+  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
+  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
+  /* /gnb-a */
+  /* day-a */
+  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
+  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
+  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
+  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
+  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
+  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
+  .top:has(> .hero) h1 { padding-right: 0; }
+  @media (min-width: 768px) {
+    body > main { max-width: 784px; }
+    main .pbar { max-width: 760px; }
+    .top { padding: 28px 28px 24px; margin-top: 24px; }
+    .top h1 { font-size: 28px; }
+    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
+    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
+  }
+  /* /day-a */
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
@@ -524,7 +524,7 @@
   <div class="top">
     <div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>
     <div class="date">11월 2일 월요일 <span class="cat cat-science">과학</span></div>
-    <h1>오늘은 <em>스스로 몸을 곧게 펴는 나무</em> 이야기예요</h1>
+    <h1>오늘은 <em>스스로 허리를 펴는 나무</em> 이야기예요</h1>
     <p class="headline" lang="en">How Trees Stand Up Straight</p>
     <div class="chips">
       <span class="chip blue">6문장</span>
@@ -550,12 +550,12 @@
       <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
       <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
     </div>
-    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en">Trees cannot walk or run, but a new study shows that they can still <b>sense</b> their own shape and fix it.</div><div class="chunks"><span class="ck"><span class="e">Trees cannot walk or run,<span class="s">/</span></span><span class="k">나무는 걷거나 뛸 수 없다</span></span><span class="ck"><span class="e">but a new study shows<span class="s">/</span></span><span class="k">하지만 새 연구가 보여 준다</span></span><span class="ck"><span class="e">that they can still <b>sense</b><span class="s">/</span></span><span class="k">그래도 나무가 감지할 수 있다는 것을</span></span><span class="ck"><span class="e">their own shape and fix it.</span><span class="k">자기 모양을, 그리고 그것을 바로잡을 수 있다는 것을</span></span></div><div class="ko" hidden>나무는 걷거나 뛸 수 없지만, 새 연구에 따르면 나무도 자기 모양을 감지하고 바로잡을 수 있다.</div><div class="en-a">Trees cannot walk, but they can <b>sense</b> their own shape.</div><div class="chunks-a"><span class="ck"><span class="e">Trees cannot walk,<span class="s">/</span></span><span class="k">나무는 걸을 수 없다</span></span><span class="ck"><span class="e">but they can <b>sense</b><span class="s">/</span></span><span class="k">하지만 감지할 수 있다</span></span><span class="ck"><span class="e">their own shape.</span><span class="k">자기 모양을</span></span></div><div class="ko-a" hidden>나무는 걸을 수 없지만, 자기 모양을 감지할 수 있다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en">Researchers at INRAE, a research institute in France, grew young <b>poplar</b> trees on their side, and after about ten days the stems began to <b>curve</b> upward.</div><div class="chunks"><span class="ck"><span class="e">Researchers at INRAE,<span class="s">/</span></span><span class="k">INRAE의 연구자들이</span></span><span class="ck"><span class="e">a research institute in France,<span class="s">/</span></span><span class="k">프랑스의 한 연구 기관인</span></span><span class="ck"><span class="e">grew young <b>poplar</b> trees<span class="s">/</span></span><span class="k">어린 포플러 나무들을 길렀다</span></span><span class="ck"><span class="e">on their side,<span class="s">/</span></span><span class="k">옆으로 눕힌 채로</span></span><span class="ck"><span class="e">and after about ten days<span class="s">/</span></span><span class="k">그리고 약 열흘 뒤에</span></span><span class="ck"><span class="e">the stems began to <b>curve</b> upward.</span><span class="k">줄기들이 위쪽으로 휘기 시작했다</span></span></div><div class="ko" hidden>프랑스의 연구 기관인 INRAE의 연구자들이 어린 포플러 나무를 옆으로 눕혀 길렀더니, 약 열흘 뒤 줄기가 위쪽으로 휘기 시작했다.</div><div class="en-a">Scientists at INRAE in France laid young <b>poplar</b> trees on their side.</div><div class="chunks-a"><span class="ck"><span class="e">Scientists at INRAE in France<span class="s">/</span></span><span class="k">프랑스 INRAE의 과학자들이</span></span><span class="ck"><span class="e">laid young <b>poplar</b> trees<span class="s">/</span></span><span class="k">어린 포플러 나무들을 눕혔다</span></span><span class="ck"><span class="e">on their side.</span><span class="k">옆으로</span></span></div><div class="ko-a" hidden>프랑스 INRAE의 과학자들이 어린 포플러 나무를 옆으로 눕혔다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en">The scientists then put the trees on a slowly turning platform, so that light and <b>gravity</b> could no longer tell them which way was up.</div><div class="chunks"><span class="ck"><span class="e">The scientists then put the trees<span class="s">/</span></span><span class="k">그다음 과학자들은 나무들을 올려놓았다</span></span><span class="ck"><span class="e">on a slowly turning platform,<span class="s">/</span></span><span class="k">천천히 도는 받침대 위에</span></span><span class="ck"><span class="e">so that light and <b>gravity</b><span class="s">/</span></span><span class="k">그래서 빛과 중력이</span></span><span class="ck"><span class="e">could no longer tell them<span class="s">/</span></span><span class="k">더 이상 나무에게 알려 줄 수 없게 했다</span></span><span class="ck"><span class="e">which way was up.</span><span class="k">어느 쪽이 위인지를</span></span></div><div class="ko" hidden>그다음 과학자들은 나무를 천천히 도는 받침대 위에 올려, 빛과 중력이 더 이상 어느 쪽이 위인지 알려 주지 못하게 했다.</div><div class="en-a">Then they put the trees on a slowly turning table.</div><div class="chunks-a"><span class="ck"><span class="e">Then they put the trees<span class="s">/</span></span><span class="k">그다음 그들은 나무들을 올려놓았다</span></span><span class="ck"><span class="e">on a slowly turning table.</span><span class="k">천천히 도는 탁자 위에</span></span></div><div class="ko-a" hidden>그다음 그들은 나무를 천천히 도는 탁자 위에 올려놓았다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en">Even so, the curved stems became almost straight again over the following weeks, which suggests that trees can feel the shape of their own bodies.</div><div class="chunks"><span class="ck"><span class="e">Even so,<span class="s">/</span></span><span class="k">그런데도</span></span><span class="ck"><span class="e">the curved stems became<span class="s">/</span></span><span class="k">휘었던 줄기들이 되었다</span></span><span class="ck"><span class="e">almost straight again<span class="s">/</span></span><span class="k">다시 거의 곧게</span></span><span class="ck"><span class="e">over the following weeks,<span class="s">/</span></span><span class="k">그 뒤 몇 주에 걸쳐</span></span><span class="ck"><span class="e">which suggests that<span class="s">/</span></span><span class="k">이것은 ~임을 시사한다</span></span><span class="ck"><span class="e">trees can feel<span class="s">/</span></span><span class="k">나무가 느낄 수 있다는 것을</span></span><span class="ck"><span class="e">the shape of their own bodies.</span><span class="k">자기 몸의 모양을</span></span></div><div class="ko" hidden>그런데도 휘었던 줄기는 그 뒤 몇 주에 걸쳐 다시 거의 곧게 펴졌는데, 이는 나무가 자기 몸의 모양을 느낄 수 있다는 것을 시사한다.</div><div class="en-a">After a few weeks, the bent stems became straight again.</div><div class="chunks-a"><span class="ck"><span class="e">After a few weeks,<span class="s">/</span></span><span class="k">몇 주 뒤에</span></span><span class="ck"><span class="e">the bent stems<span class="s">/</span></span><span class="k">휘었던 줄기들이</span></span><span class="ck"><span class="e">became straight again.</span><span class="k">다시 곧아졌다</span></span></div><div class="ko-a" hidden>몇 주 뒤, 휘었던 줄기가 다시 곧아졌다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en">This happened because the trees made a special kind of wood, called <b>tension wood</b>, first on the upper side of the stem and later on the <b>opposite</b> side, so the two sides pulled against each other like a pair of <b>muscles</b>.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">This happened because<span class="s">/</span></span><span class="k">이 일은 ~ 때문에 일어났다</span></span><span class="ck"><span class="e">the trees made a special kind of wood,<span class="s">/</span></span><span class="k">나무들이 특별한 종류의 나무 조직을 만들었기</span></span><span class="ck"><span class="e">called <b>tension wood</b>,<span class="s">/</span></span><span class="k">'인장재'라고 불리는</span></span><span class="ck"><span class="e">first on the upper side of the stem<span class="s">/</span></span><span class="k">처음에는 줄기의 위쪽 면에</span></span><span class="ck"><span class="e">and later on the <b>opposite</b> side,<span class="s">/</span></span><span class="k">그리고 나중에는 반대쪽 면에</span></span><span class="ck"><span class="e">so the two sides pulled<span class="s">/</span></span><span class="k">그래서 양쪽 면이 잡아당겼다</span></span><span class="ck"><span class="e">against each other<span class="s">/</span></span><span class="k">서로 반대 방향으로</span></span><span class="ck"><span class="e">like a pair of <b>muscles</b>.</span><span class="k">한 쌍의 근육처럼</span></span></div><div class="ko" hidden>이런 일이 일어난 것은 나무가 '인장재'라는 특별한 나무 조직을 처음에는 줄기 위쪽 면에, 나중에는 반대쪽 면에 만들어서, 양쪽이 한 쌍의 근육처럼 서로 반대로 잡아당겼기 때문이다.</div><div class="en-a">Special wood on both sides pulled like <b>muscles</b>.</div><div class="chunks-a"><span class="ck"><span class="e">Special wood on both sides<span class="s">/</span></span><span class="k">양쪽의 특별한 나무 조직이</span></span><span class="ck"><span class="e">pulled like <b>muscles</b>.</span><span class="k">근육처럼 잡아당겼다</span></span></div><div class="ko-a" hidden>양쪽의 특별한 나무 조직이 근육처럼 잡아당겼다.</div></div></div>
-    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en">The team believes that the findings could one day help farmers grow straighter trees for <b>timber</b>, as well as grain crops that do not fall over so easily.</div><div class="chunks"><span class="ck"><span class="e">The team believes<span class="s">/</span></span><span class="k">연구팀은 믿는다</span></span><span class="ck"><span class="e">that the findings could one day help farmers<span class="s">/</span></span><span class="k">이 발견이 언젠가 농부들을 도울 수 있다고</span></span><span class="ck"><span class="e">grow straighter trees for <b>timber</b>,<span class="s">/</span></span><span class="k">목재용으로 더 곧은 나무를 기르도록</span></span><span class="ck"><span class="e">as well as grain crops<span class="s">/</span></span><span class="k">그리고 곡물 작물도</span></span><span class="ck"><span class="e">that do not fall over so easily.</span><span class="k">그렇게 쉽게 쓰러지지 않는</span></span></div><div class="ko" hidden>연구팀은 이 발견이 언젠가 농부들이 목재용으로 더 곧은 나무를 기르고, 쉽게 쓰러지지 않는 곡물 작물을 기르는 데 도움이 될 수 있다고 본다.</div><div class="en-a">This may help farmers grow straighter trees and stronger crops.</div><div class="chunks-a"><span class="ck"><span class="e">This may help farmers<span class="s">/</span></span><span class="k">이것은 농부들을 도울 수 있다</span></span><span class="ck"><span class="e">grow straighter trees<span class="s">/</span></span><span class="k">더 곧은 나무를 기르도록</span></span><span class="ck"><span class="e">and stronger crops.</span><span class="k">그리고 더 튼튼한 작물을</span></span></div><div class="ko-a" hidden>이것은 농부들이 더 곧은 나무와 더 튼튼한 작물을 기르는 데 도움이 될 수 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en" lang="en">Trees cannot walk or run, but a new study shows that they can still <b>sense</b> their own shape and fix it.</div><div class="chunks"><span class="ck"><span class="e">Trees cannot walk or run,<span class="s">/</span></span><span class="k">나무는 걷거나 뛸 수 없다</span></span><span class="ck"><span class="e">but a new study shows<span class="s">/</span></span><span class="k">하지만 새 연구가 보여 준다</span></span><span class="ck"><span class="e">that they can still <b>sense</b><span class="s">/</span></span><span class="k">그래도 나무가 감지할 수 있다는 것을</span></span><span class="ck"><span class="e">their own shape and fix it.</span><span class="k">자기 모양을, 그리고 그것을 바로잡을 수 있다는 것을</span></span></div><div class="ko" hidden>나무는 걷거나 뛸 수 없지만, 새 연구에 따르면 나무도 자기 모양을 감지하고 바로잡을 수 있다.</div><div class="en-a" lang="en">Trees cannot walk, but they can <b>sense</b> their own shape.</div><div class="chunks-a"><span class="ck"><span class="e">Trees cannot walk,<span class="s">/</span></span><span class="k">나무는 걸을 수 없다</span></span><span class="ck"><span class="e">but they can <b>sense</b><span class="s">/</span></span><span class="k">하지만 감지할 수 있다</span></span><span class="ck"><span class="e">their own shape.</span><span class="k">자기 모양을</span></span></div><div class="ko-a" hidden>나무는 걸을 수 없지만, 자기 모양을 감지할 수 있다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en" lang="en">Researchers at INRAE, a research institute in France, grew young <b>poplar</b> trees on their side, and after about ten days the stems began to <b>curve</b> upward.</div><div class="chunks"><span class="ck"><span class="e">Researchers at INRAE,<span class="s">/</span></span><span class="k">INRAE의 연구자들이</span></span><span class="ck"><span class="e">a research institute in France,<span class="s">/</span></span><span class="k">프랑스의 한 연구 기관인</span></span><span class="ck"><span class="e">grew young <b>poplar</b> trees<span class="s">/</span></span><span class="k">어린 포플러 나무들을 길렀다</span></span><span class="ck"><span class="e">on their side,<span class="s">/</span></span><span class="k">옆으로 눕힌 채로</span></span><span class="ck"><span class="e">and after about ten days<span class="s">/</span></span><span class="k">그리고 약 열흘 뒤에</span></span><span class="ck"><span class="e">the stems began to <b>curve</b> upward.</span><span class="k">줄기들이 위쪽으로 휘기 시작했다</span></span></div><div class="ko" hidden>프랑스의 연구 기관인 INRAE의 연구자들이 어린 포플러 나무를 옆으로 눕혀 길렀더니, 약 열흘 뒤 줄기가 위쪽으로 휘기 시작했다.</div><div class="en-a" lang="en">Scientists at INRAE in France laid young <b>poplar</b> trees on their side.</div><div class="chunks-a"><span class="ck"><span class="e">Scientists at INRAE in France<span class="s">/</span></span><span class="k">프랑스 INRAE의 과학자들이</span></span><span class="ck"><span class="e">laid young <b>poplar</b> trees<span class="s">/</span></span><span class="k">어린 포플러 나무들을 눕혔다</span></span><span class="ck"><span class="e">on their side.</span><span class="k">옆으로</span></span></div><div class="ko-a" hidden>프랑스 INRAE의 과학자들이 어린 포플러 나무를 옆으로 눕혔다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en" lang="en">The scientists then put the trees on a slowly turning platform, so that light and <b>gravity</b> could no longer tell them which way was up.</div><div class="chunks"><span class="ck"><span class="e">The scientists then put the trees<span class="s">/</span></span><span class="k">그다음 과학자들은 나무들을 올려놓았다</span></span><span class="ck"><span class="e">on a slowly turning platform,<span class="s">/</span></span><span class="k">천천히 도는 받침대 위에</span></span><span class="ck"><span class="e">so that light and <b>gravity</b><span class="s">/</span></span><span class="k">그래서 빛과 중력이</span></span><span class="ck"><span class="e">could no longer tell them<span class="s">/</span></span><span class="k">더 이상 나무에게 알려 줄 수 없게 했다</span></span><span class="ck"><span class="e">which way was up.</span><span class="k">어느 쪽이 위인지를</span></span></div><div class="ko" hidden>그다음 과학자들은 나무를 천천히 도는 받침대 위에 올려, 빛과 중력이 더 이상 어느 쪽이 위인지 알려 주지 못하게 했다.</div><div class="en-a" lang="en">Then they put the trees on a slowly turning table.</div><div class="chunks-a"><span class="ck"><span class="e">Then they put the trees<span class="s">/</span></span><span class="k">그다음 그들은 나무들을 올려놓았다</span></span><span class="ck"><span class="e">on a slowly turning table.</span><span class="k">천천히 도는 탁자 위에</span></span></div><div class="ko-a" hidden>그다음 그들은 나무를 천천히 도는 탁자 위에 올려놓았다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en" lang="en">Even so, the curved stems became almost straight again over the following weeks, which suggests that trees can feel the shape of their own bodies.</div><div class="chunks"><span class="ck"><span class="e">Even so,<span class="s">/</span></span><span class="k">그런데도</span></span><span class="ck"><span class="e">the curved stems became<span class="s">/</span></span><span class="k">휘었던 줄기들이 되었다</span></span><span class="ck"><span class="e">almost straight again<span class="s">/</span></span><span class="k">다시 거의 곧게</span></span><span class="ck"><span class="e">over the following weeks,<span class="s">/</span></span><span class="k">그 뒤 몇 주에 걸쳐</span></span><span class="ck"><span class="e">which suggests that<span class="s">/</span></span><span class="k">이것은 ~임을 시사한다</span></span><span class="ck"><span class="e">trees can feel<span class="s">/</span></span><span class="k">나무가 느낄 수 있다는 것을</span></span><span class="ck"><span class="e">the shape of their own bodies.</span><span class="k">자기 몸의 모양을</span></span></div><div class="ko" hidden>그런데도 휘었던 줄기는 그 뒤 몇 주에 걸쳐 다시 거의 곧게 펴졌는데, 이는 나무가 자기 몸의 모양을 느낄 수 있다는 것을 시사한다.</div><div class="en-a" lang="en">After a few weeks, the bent stems became straight again.</div><div class="chunks-a"><span class="ck"><span class="e">After a few weeks,<span class="s">/</span></span><span class="k">몇 주 뒤에</span></span><span class="ck"><span class="e">the bent stems<span class="s">/</span></span><span class="k">휘었던 줄기들이</span></span><span class="ck"><span class="e">became straight again.</span><span class="k">다시 곧아졌다</span></span></div><div class="ko-a" hidden>몇 주 뒤, 휘었던 줄기가 다시 곧아졌다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en" lang="en">This happened because the trees made a special kind of wood, called <b>tension wood</b>, first on the upper side of the stem and later on the <b>opposite</b> side, so the two sides pulled against each other like a pair of <b>muscles</b>.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">This happened because<span class="s">/</span></span><span class="k">이 일은 ~ 때문에 일어났다</span></span><span class="ck"><span class="e">the trees made a special kind of wood,<span class="s">/</span></span><span class="k">나무들이 특별한 종류의 나무 조직을 만들었기</span></span><span class="ck"><span class="e">called <b>tension wood</b>,<span class="s">/</span></span><span class="k">'인장재'라고 불리는</span></span><span class="ck"><span class="e">first on the upper side of the stem<span class="s">/</span></span><span class="k">처음에는 줄기의 위쪽 면에</span></span><span class="ck"><span class="e">and later on the <b>opposite</b> side,<span class="s">/</span></span><span class="k">그리고 나중에는 반대쪽 면에</span></span><span class="ck"><span class="e">so the two sides pulled<span class="s">/</span></span><span class="k">그래서 양쪽 면이 잡아당겼다</span></span><span class="ck"><span class="e">against each other<span class="s">/</span></span><span class="k">서로 반대 방향으로</span></span><span class="ck"><span class="e">like a pair of <b>muscles</b>.</span><span class="k">한 쌍의 근육처럼</span></span></div><div class="ko" hidden>이런 일이 일어난 것은 나무가 '인장재'라는 특별한 나무 조직을 처음에는 줄기 위쪽 면에, 나중에는 반대쪽 면에 만들어서, 양쪽이 한 쌍의 근육처럼 서로 반대로 잡아당겼기 때문이다.</div><div class="en-a" lang="en">Special wood on both sides pulled like <b>muscles</b>.</div><div class="chunks-a"><span class="ck"><span class="e">Special wood on both sides<span class="s">/</span></span><span class="k">양쪽의 특별한 나무 조직이</span></span><span class="ck"><span class="e">pulled like <b>muscles</b>.</span><span class="k">근육처럼 잡아당겼다</span></span></div><div class="ko-a" hidden>양쪽의 특별한 나무 조직이 근육처럼 잡아당겼다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en" lang="en">The team believes that the findings could one day help farmers grow straighter trees for <b>timber</b>, as well as grain crops that do not fall over so easily.</div><div class="chunks"><span class="ck"><span class="e">The team believes<span class="s">/</span></span><span class="k">연구팀은 믿는다</span></span><span class="ck"><span class="e">that the findings could one day help farmers<span class="s">/</span></span><span class="k">이 발견이 언젠가 농부들을 도울 수 있다고</span></span><span class="ck"><span class="e">grow straighter trees for <b>timber</b>,<span class="s">/</span></span><span class="k">목재용으로 더 곧은 나무를 기르도록</span></span><span class="ck"><span class="e">as well as grain crops<span class="s">/</span></span><span class="k">그리고 곡물 작물도</span></span><span class="ck"><span class="e">that do not fall over so easily.</span><span class="k">그렇게 쉽게 쓰러지지 않는</span></span></div><div class="ko" hidden>연구팀은 이 발견이 언젠가 농부들이 목재용으로 더 곧은 나무를 기르고, 쉽게 쓰러지지 않는 곡물 작물을 기르는 데 도움이 될 수 있다고 본다.</div><div class="en-a" lang="en">This may help farmers grow straighter trees and stronger crops.</div><div class="chunks-a"><span class="ck"><span class="e">This may help farmers<span class="s">/</span></span><span class="k">이것은 농부들을 도울 수 있다</span></span><span class="ck"><span class="e">grow straighter trees<span class="s">/</span></span><span class="k">더 곧은 나무를 기르도록</span></span><span class="ck"><span class="e">and stronger crops.</span><span class="k">그리고 더 튼튼한 작물을</span></span></div><div class="ko-a" hidden>이것은 농부들이 더 곧은 나무와 더 튼튼한 작물을 기르는 데 도움이 될 수 있다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://www.sciencedaily.com/releases/2026/10/261030003006.htm" target="_blank" rel="noopener">Scientists discover the hidden 'muscles' trees use to straighten themselves (ScienceDaily, 2026-10-31)</a></p>
     <div class="mine">
@@ -569,13 +569,13 @@
   <section class="card">
     <div class="step" id="step-words">STEP 2</div>
     <h2>주요 단어</h2>
-    <div class="word"><span class="wl"><span class="w">sense</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="sense" aria-label="sense 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">감지하다, 느끼다</span></div>
-    <div class="word"><span class="wl"><span class="w">poplar</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="poplar" aria-label="poplar 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">포플러 나무</span></div>
-    <div class="word"><span class="wl"><span class="w">curve</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="curve" aria-label="curve 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">휘다, 구부러지다</span></div>
-    <div class="word"><span class="wl"><span class="w">gravity</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="gravity" aria-label="gravity 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">중력</span></div>
-    <div class="word"><span class="wl"><span class="w">opposite</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="opposite" aria-label="opposite 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">반대(쪽)의</span></div>
-    <div class="word"><span class="wl"><span class="w">muscles</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="muscles" aria-label="muscles 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">근육들 (복수형)</span></div>
-    <div class="word"><span class="wl"><span class="w">timber</span><button class="wbtn" type="button" data-kind="w" data-i="6" data-word="timber" aria-label="timber 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">목재</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">sense</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="sense" aria-label="sense 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">감지하다, 느끼다</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">poplar</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="poplar" aria-label="poplar 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">포플러 나무</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">curve</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="curve" aria-label="curve 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">휘다, 구부러지다</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">gravity</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="gravity" aria-label="gravity 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">중력</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">opposite</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="opposite" aria-label="opposite 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">반대(쪽)의</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">muscles</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="muscles" aria-label="muscles 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">근육들 (복수형)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="en">timber</span><button class="wbtn" type="button" data-kind="w" data-i="6" data-word="timber" aria-label="timber 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">목재</span></div>
   </section>
 
   <section class="card">
@@ -631,28 +631,28 @@
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
     </summary>
     <div class="body">
-      <div class="adv"><div class="w"><span class="wt">perceive</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="perceive" aria-label="perceive 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">인지하다, 감지하다</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">perceive</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="perceive" aria-label="perceive 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">인지하다, 감지하다</div>
         <div class="ex">The study shows that trees can <b>perceive</b> the shape of their own stems.</div>
         <div class="ex-ko">이 연구는 나무가 자기 줄기의 모양을 인지할 수 있음을 보여 줍니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">posture</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="posture" aria-label="posture 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">자세<span class="warn">position(위치)과 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">posture</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="posture" aria-label="posture 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">자세<span class="warn">position(위치)과 혼동 주의</span></div>
         <div class="ex">Trees keep a good <b>posture</b> by growing special wood on both sides.</div>
         <div class="ex-ko">나무는 양쪽에 특별한 나무 조직을 길러 바른 자세를 유지합니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">orientation</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="orientation" aria-label="orientation 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">방향, 향하는 쪽</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">orientation</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="orientation" aria-label="orientation 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">방향, 향하는 쪽</div>
         <div class="ex">The turning platform hid the real <b>orientation</b> of the trees.</div>
         <div class="ex-ko">회전하는 받침대가 나무가 실제로 어느 쪽을 향하는지 감췄습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">counteract</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="counteract" aria-label="counteract 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">반대로 작용하다, 상쇄하다</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">counteract</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="counteract" aria-label="counteract 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">반대로 작용하다, 상쇄하다</div>
         <div class="ex">New wood on the lower side <b>counteracts</b> the pull from the upper side.</div>
         <div class="ex-ko">아래쪽의 새 나무 조직이 위쪽에서 당기는 힘을 상쇄합니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">contract</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="contract" aria-label="contract 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">수축하다<span class="warn">contact(접촉하다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">contract</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="contract" aria-label="contract 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">수축하다<span class="warn">contact(접촉하다)와 혼동 주의</span></div>
         <div class="ex">Tension wood pulls on the stem as if it could <b>contract</b> like a muscle.</div>
         <div class="ex-ko">인장재는 마치 근육처럼 수축할 수 있는 것처럼 줄기를 잡아당깁니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">gradually</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="gradually" aria-label="gradually 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">서서히, 점차<span class="warn">graduate(졸업하다)와 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">gradually</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="gradually" aria-label="gradually 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">서서히, 점차<span class="warn">graduate(졸업하다)와 혼동 주의</span></div>
         <div class="ex">The bent stems <b>gradually</b> became straight over several weeks.</div>
         <div class="ex-ko">휘었던 줄기가 몇 주에 걸쳐 서서히 곧아졌습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">yield</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="yield" aria-label="yield 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(작물의) 수확량</div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">yield</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="yield" aria-label="yield 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(작물의) 수확량</div>
         <div class="ex">Crops that stay upright may produce a higher <b>yield</b>.</div>
         <div class="ex-ko">똑바로 서 있는 작물은 수확량이 더 많을 수 있습니다.</div></div>
-      <div class="adv"><div class="w"><span class="wt">implication</span><button class="wbtn" type="button" data-kind="v" data-i="7" data-word="implication" aria-label="implication 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(결과가 갖는) 영향, 의미<span class="warn">application(적용)과 혼동 주의</span></div>
+      <div class="adv"><div class="w"><span class="wt" lang="en">implication</span><button class="wbtn" type="button" data-kind="v" data-i="7" data-word="implication" aria-label="implication 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">(결과가 갖는) 영향, 의미<span class="warn">application(적용)과 혼동 주의</span></div>
         <div class="ex">The finding has <b>implications</b> for the timber industry.</div>
         <div class="ex-ko">이 발견은 목재 산업에 중요한 의미를 갖습니다.</div></div>
     </div>
@@ -1049,7 +1049,7 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
-  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  // 수준 전환(카드 안 읽기 수준 세그먼트): 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
   (function () {
     var toLevelA = document.getElementById('to-level-a');
     var toLevelB = document.getElementById('to-level-b');
