@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
 from render import ruby  # noqa: E402
 from publish import FOOTER_CSS, FOOTER_HTML  # noqa: E402
+import gnb  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://read.wspace.ai.kr"
@@ -70,6 +71,8 @@ def build_page(lang, end):
     page = page.replace("__GROUPS__", "\n".join(groups)).replace("__URL__", f"{SITE}/{lang}/review/{end}/")
     page = page.replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML)
     page = page.replace("__OG_IMAGE__", f"{SITE}/{lang}/{days[-1]['day']}/thumb.png")
+    # 위 메뉴(시안 A, 이슈 #20). 복습 페이지에는 구독 칸이 없어 그 언어 첫 화면의 구독 칸으로 보낸다
+    page = page.replace("__GNB_CSS__", gnb.css_block()).replace("__GNB_JS__", gnb.SCRIPT).replace("__GNB__", gnb.header_html(lang, f"/{lang}/#subscribe"))
     out = ROOT / lang / "review" / end / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
@@ -125,17 +128,8 @@ PAGE = r"""<!doctype html>
 __HEAD_EXTRA__
 <style>
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
-  main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
-  /* 소프트 UI: 날짜 페이지, 지난 지문 페이지와 같은 떠 있는 흰 바와 옅은 그림자의 흰 카드 */
-  .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: -16px 0 20px; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: 0 2px 10px rgba(16,24,40,.06); }
-  .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: #191f28; text-decoration: none; }
-  .gnb .brand img { vertical-align: middle; }
-  .gnb nav { display: flex; gap: 4px; }
-  .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
-  .gnb nav a:hover { background: #f2f4f6; }
-  .gnb nav a.cta { color: #1b64da; background: #e8f3ff; }
-  .gnb nav a.cta:hover { background: #d6e8ff; }
-  .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #1b64da; text-decoration: none; }
+  main { max-width: 560px; margin: 0 auto; padding: 20px 12px 40px; }
+__GNB_CSS__  .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #1b64da; text-decoration: none; }
   .head { background: #fff; border-radius: 20px; padding: 22px 20px; box-shadow: 0 4px 18px rgba(16,24,40,.07); }
   .span { font-size: 14px; font-weight: 600; color: #6b7684; }
   h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 8px; letter-spacing: -0.03em; }
@@ -159,11 +153,8 @@ __FOOTER_CSS__</style>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
 </head>
-<body><main>
-  <header class="gnb">
-    <a class="brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" height="30"> 독해한입</a>
-    <nav aria-label="사이트 메뉴"><a href="../../archive/">지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
-  </header>
+<body>
+__GNB__<main>
   <a class="back" href="../../archive/">← 지난 지문</a>
   <div class="head">
     <div class="span">__SPAN__</div>
@@ -184,7 +175,7 @@ __FOOTER__<script>
     all.textContent = open ? '뜻 모두 가리기' : '뜻 모두 보기';
   });
 </script>
-</body></html>
+__GNB_JS__</body></html>
 """
 
 

@@ -32,9 +32,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
+import gnb  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE = Path(__file__).resolve().parent / "template.html"
+# 첫 카드 맨 아래 "읽기 수준 [기초|중급]" 세그먼트(시안 design/gnb-mobile G01). 켜진 쪽 모양은 html.level-a CSS 가 정한다
+LEVEL_SEG = ('    <div class="lvl" id="level-link"><span class="lb">읽기 수준</span><nav class="lvl-seg" aria-label="읽기 수준">'
+             '<a href="?level=a" id="to-level-a">기초</a><a href="?level=b" id="to-level-b">중급</a></nav></div>\n')
 DAYS = "월화수목금토일"
 CATEGORIES = {"science", "tech", "society", "future", "culture", "space"}
 BADGE = '<span class="badge">{}</span>'
@@ -236,14 +240,9 @@ def render(lang, day):
     files_v = [f"audio/v{i}.mp3" for i in range(1, nv + 1)]
     word_audio = json.dumps(files_w) if nw and all((out_dir / f).exists() for f in files_w) else "[]"
     adv_audio = json.dumps(files_v) if nv and all((out_dir / f).exists() for f in files_v) else "[]"
-    # 수준 전환 링크: levels.a 가 있을 때만 표시
+    # 읽기 수준 세그먼트(카드 안 [기초|중급]): levels.a 가 있을 때만 표시
     if levels_a:
-        level_link = (
-            '<p class="level-link" id="level-link">'
-            '<a href="?level=a" id="to-level-a">기초로 보기</a>'
-            '<a href="?level=b" id="to-level-b" hidden>중급으로 보기</a>'
-            '</p>\n'
-        )
+        level_link = LEVEL_SEG
     else:
         level_link = ""
     # 기초 수준 칩: levels.a 가 있을 때만 생성. 문장 수 칩 + 기초 수준 칩(level_a_label) + 예상 읽기 시간 칩.
@@ -285,6 +284,9 @@ def render(lang, day):
         "word_audio": word_audio,
         "adv_audio": adv_audio,
         "level_link": level_link,
+        "gnb_css": gnb.css_block(day=True),
+        "gnb": gnb.header_html(lang, "#subscribe" if L.get("email", True) else f"/{lang}/#subscribe"),
+        "gnb_js": gnb.SCRIPT,
         "name": L["name"],
         "head_extra": L["head_extra"] + ("\n" if L["head_extra"] else ""),
         "tools_extra": L["tools_extra"],

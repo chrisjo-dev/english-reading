@@ -144,15 +144,7 @@
   .mine textarea::placeholder { color: var(--muted); }
   .mine .tool { width: 100%; margin-top: 8px; flex: none; }
   .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
-  .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 12px 12px 0; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: var(--bar-sh); }
-  .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
-  .gnb .brand img { vertical-align: middle; }
-  .gnb nav { display: flex; gap: 4px; }
-  .gnb nav a { font-size: 14px; font-weight: 600; color: var(--sub); text-decoration: none; padding: 8px 12px; border-radius: 10px; }
-  .gnb nav a:hover { background: var(--bg); }
-  .gnb nav a.cta { color: var(--blue); background: var(--blue-soft); }
-  .gnb nav a.cta:hover { background: #d6e8ff; }
-  .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+{{gnb_css}}  .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
      해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
@@ -181,8 +173,6 @@
   html.level-a .chunks { display: none !important; }
   html.level-a body.chunked .chunks-a { display: flex; }
   html.level-a body.chunked #passage .say:has(> .ko-a:not([hidden])) .chunks-a .ck .k { display: block; }
-  .level-link { margin: 8px 0 0; font-size: 13px; text-align: right; }
-  .level-link a { color: var(--sub); }
   /* ── 플레이어 바 ─────────────────────── */
   .pbar { position: fixed; left: 0; right: 0; margin: 0 auto; width: calc(100% - 24px); max-width: 536px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 30; display: none; align-items: center; gap: 10px; background: rgba(255,255,255,.97); border-radius: 18px; padding: 10px 10px 10px 12px; box-shadow: 0 6px 24px rgba(16,24,40,.14); }
   .pbar.vis { display: flex; }
@@ -204,11 +194,7 @@
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
 </head>
 <body>
-<main>
-  <header class="gnb">
-    <a class="brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" height="30"> 독해한입</a>
-    <nav aria-label="사이트 메뉴"><a href="../archive/">{{name}} 지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
-  </header>
+{{gnb}}<main>
   <div class="top">
     <div class="date">{{date_label}}</div>
     <h1>오늘은 <em>{{topic}}</em> 이야기예요</h1>
@@ -593,15 +579,16 @@
       '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
     ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
   });
-  // 수준 전환 링크: 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  // 수준 전환(카드 안 읽기 수준 세그먼트): 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
   (function () {
     var toLevelA = document.getElementById('to-level-a');
     var toLevelB = document.getElementById('to-level-b');
     if (!toLevelA || !toLevelB) return;
     function updateLinks() {
       var isA = isLevelA();
-      toLevelA.hidden = isA;
-      toLevelB.hidden = !isA;
+      // 켜진 쪽 모양은 CSS(html.level-a)가 정한다. 여기서는 화면 읽기 프로그램용 표시만 맞춘다
+      toLevelA.setAttribute('aria-current', String(isA));
+      toLevelB.setAttribute('aria-current', String(!isA));
     }
     updateLinks();
     function switchLevel(e, to) {
@@ -629,5 +616,5 @@
     gaEvent('furigana_toggle', {on: !off});
   });
 </script>
-</body>
+{{gnb_js}}</body>
 </html>

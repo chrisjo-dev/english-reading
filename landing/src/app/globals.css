@@ -98,31 +98,6 @@ input {
   outline-offset: 3px;
 }
 
-/* ───── nav ───── */
-.nav {
-  height: 64px;
-  margin: 12px 12px 0;
-  border-radius: 16px;
-  background: var(--paper);
-  box-shadow: var(--bar-sh);
-  /* 스크롤해도 화면 위 12px 틈을 두고 떠 있는 바 */
-  position: sticky;
-  top: 12px;
-  z-index: 30;
-}
-
-/* 바가 화면 끝에서 12px 들어온 만큼 안쪽 여백을 줄여 로고와 버튼이 본문 열에 맞게 한다 */
-.nav .nav-in {
-  padding: 0 max(16px, calc(var(--m) - 12px));
-}
-
-.nav-in {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
 .brand {
   display: flex;
   align-items: center;
@@ -149,41 +124,6 @@ input {
     background-image: url('/assets/brand/badge-192.png');
     filter: drop-shadow(0 2px 6px rgba(16, 24, 40, 0.14));
   }
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  margin-left: auto;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--mute);
-}
-
-.nav-links a {
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: var(--ink);
-}
-
-.nav-cta {
-  height: 38px;
-  padding: 0 16px;
-  display: inline-flex;
-  align-items: center;
-  background: var(--blue);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  border-radius: 10px;
-  letter-spacing: -0.01em;
-  transition: background-color 0.2s;
-}
-
-.nav-cta:hover {
-  background: var(--blue-h);
 }
 
 /* ───── hero (C3) ───── */
@@ -988,10 +928,6 @@ html:not(.js) .sw {
   color: var(--ink2);
 }
 
-.nav-m {
-  display: none;
-}
-
 /* week */
 .week-all {
   scroll-margin-top: 96px;
@@ -1545,55 +1481,8 @@ html:not(.js) .sw {
     --cols: 4;
   }
 
-  .nav {
-    height: 56px;
-  }
-
-  .nav .nav-in {
-    padding: 0 12px 0 16px;
-    gap: 8px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
   .week-all {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .nav-m {
-    display: inline-flex;
-    align-items: center;
-    margin-left: auto;
-    padding: 0 8px;
-    white-space: nowrap;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink2);
-    text-decoration: none;
-  }
-
-  .nav-m + .nav-cta {
-    margin-left: 4px;
-  }
-
-  /* 휴대폰 머리줄은 한 줄로: 브랜드, 지난 지문, 시작하기 버튼이 줄바꿈되지 않게 */
-  .nav .brand,
-  .nav .nav-cta {
-    white-space: nowrap;
-  }
-
-  .nav .nav-cta {
-    padding: 0 12px;
-    font-size: 13px;
-  }
-
-  .nav-cta {
-    margin-left: auto;
-    height: 34px;
-    font-size: 13px;
-    padding: 0 12px;
   }
 
   .brand {
@@ -1864,12 +1753,6 @@ html:not(.js) .sw {
 @keyframes blink {
   50% {
     opacity: 0;
-  }
-}
-
-@media (max-width: 380px) {
-  .nav .brand-mark {
-    display: none;
   }
 }
 

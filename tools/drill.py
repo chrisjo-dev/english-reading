@@ -523,7 +523,9 @@ def apply(page, lang, day):
     items = cards(lang, day)
     if not css_at:
         page = page.replace("  .gnb {", "  /* drill-css */\n" + CSS + "  /* /drill-css */\n  .gnb {", 1)
-    page = page.replace("</header>\n", "</header>\n" + DUE_HTML, 1)
+    # 복습 띠는 본문 맨 위에. 위 메뉴가 본문(main) 밖으로 나간 뒤(이슈 #20)에는 <main> 바로 다음이 그 자리다
+    at = "<main>\n" if "<main>\n" in page and page.index("</header>\n") < page.index("<main>\n") else "</header>\n"
+    page = page.replace(at, at + DUE_HTML, 1)
     if items:
         card = card_html(lang, day, items, _next_step(page))
         for anchor in ('  <section class="card vote"', '  <details class="card">', '  <section class="card sub"', "</main>"):

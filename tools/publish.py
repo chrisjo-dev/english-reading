@@ -17,6 +17,8 @@ import langs  # noqa: E402
 import thumb  # noqa: E402
 import vote  # noqa: E402
 import drill  # noqa: E402
+import gnb  # noqa: E402
+from render import LEVEL_SEG  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://read.wspace.ai.kr"
@@ -65,33 +67,19 @@ FOOTER_HTML = ('<footer class="site-footer"><a href="https://www.wspace.ai.kr/">
                '<a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>\n')
 
 
-LANG_GO_CSS = ("  a.lang-go { display: inline-flex; align-items: center; margin: 8px 6px 0 0; padding: 6px 12px; border-radius: 999px;"
-               " background: #eff3fd; color: var(--blue); font-weight: 700; white-space: nowrap; text-decoration: none; }\n"
-               "  .lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 12px; }\n  .lang-row a.lang-go { margin: 0; }\n")
-# 상단 메뉴 이름에 언어를 붙여("일본어 지난 지문") 길어졌다. 좁은 휴대폰에서 한 줄에 들어가게 줄인다.
-# duck-lying-64.png 도 좁은 화면에서 24px로 줄여 브랜드+nav 가 한 줄에 들어가게 한다.
-GNB_NARROW_CSS = ("  /* gnb-narrow */ @media (max-width: 400px) { .gnb { padding: 0 6px 0 14px; } .gnb .brand { font-size: 15px; }"
-                  " .gnb .brand img { height: 24px; } .gnb nav { gap: 2px; } .gnb nav a { padding: 8px 8px; font-size: 13px; white-space: nowrap; } }\n")
-# 브랜드명과 GNB 브랜드 링크 내부 HTML (누운 오리 이미지 + 텍스트)
-# style= 속성 대신 CSS 규칙(.gnb .brand img)으로 수직 정렬 — patch_page 가 멱등으로 주입한다
-GNB_BRAND_INNER = '<img src="/assets/brand/duck-lying-64.png" alt="" height="30"> 독해한입'
-GNB_IMG_CSS = "  .gnb .brand img { vertical-align: middle; }\n"
+# 지문 페이지 첫 카드가 끝나는 자리. 소개 문단과 읽기 수준 세그먼트를 이 앞에 둔다
+TOP_END = "\n  </div>\n\n  <section class=\"card\" id=\"passage\">"
 
 
 def public_langs(current=None):
     """언어 전환에 보여 줄 언어: 공개(noindex 아님) 언어와, 지금 보고 있는 언어(비공개여도)."""
-    return [c for c in langs.LANGS if not langs.LANGS[c].get("noindex") or c == current]
-
-
-def other_lang_links(lang):
-    """지문 페이지 소개 끝의 다른 언어 링크. 예전에는 '다른 언어'가 첫 화면(구독 안내)으로 가서 목록을 못 찾았다(이슈 #19)."""
-    return "".join(f'<a class="lang-go" href="/{c}/archive/">{langs.LANGS[c]["name"]} 지난 지문 보기 →</a>' for c in public_langs() if c != lang)
+    return gnb.public_langs(current)
 
 
 def intro_html(lang):
     L = langs.get(lang)
-    return (f'    <p class="intro">{L["intro"]} 듣고, 해석하고, AI에게 피드백을 받아 보세요. '
-            '<a href="#subscribe">메일로 받기</a></p>\n')
+    # 메일로 받기는 위 메뉴(GNB)로 옮겼다(시안 A, 이슈 #20)
+    return f'    <p class="intro">{L["intro"]} 듣고, 해석하고, AI에게 피드백을 받아 보세요.</p>\n'
 
 
 def _sub_script(lang):
@@ -287,16 +275,7 @@ def patch_page(lang, day):
         )
     # 지난 날짜에도 "오늘의"가 붙어 헷갈렸다(이슈 #19): 제목은 "○○ 읽기, 10월 20일"
     page = re.sub(r"<title>오늘의 ([^<]+ 읽기, [^<]+)</title>", r"<title>\1</title>", page, count=1)
-    # ── 브랜드 패치 (독해한입). 아래 항목은 모두 멱등적으로 동작한다 ──
-    # 1) .gnb .brand img CSS 규칙 주입 (inline style → CSS 규칙. 멱등: 정확히 이 문자열로 확인)
-    if GNB_IMG_CSS not in page:
-        page = page.replace("  .gnb {", GNB_IMG_CSS + "  .gnb {", 1)
-    # 2) 기존 페이지의 inline style 제거 — GNB_BRAND_INNER 체크 전에 실행해야 멱등이 된다
-    page = re.sub(
-        r'(<img src="/assets/brand/duck-lying-64\.png"[^>]*?) style="vertical-align:middle"',
-        r'\1',
-        page,
-    )
+    # ── 브랜드 패치 (독해한입). 아래 항목은 모두 멱등적으로 동작한다. 위 메뉴는 맨 끝 gnb.apply 가 통째로 바꾼다 ──
     # <title>에 "| 독해한입" 서픽스 추가 (이미 있으면 건드리지 않는다)
     page = re.sub(
         r"<title>([^<]+ 읽기, [^<]+)</title>",
@@ -322,33 +301,16 @@ def patch_page(lang, day):
             '<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png">',
             1,
         )
-    # GNB 브랜드 링크: 텍스트 → 오리 이미지 + 독해한입 (이미 이미지가 있으면 건드리지 않는다)
-    if GNB_BRAND_INNER not in page:
-        page = re.sub(
-            r'(<a class="brand" href="/">)[^<]*(</a>)',
-            rf'\g<1>{GNB_BRAND_INNER}\g<2>',
-            page, count=1,
-        )
     # 공개로 바뀐 언어(독일어, 2026-10-30)의 지난 페이지에서 검색엔진 숨김을 걷는다
     if not L.get("noindex", False):
         page = page.replace('<meta name="robots" content="noindex">\n', "", 1)
-    if 'class="lang-row"' not in page and '<div class="date">' in page:
-        # 다른 언어 지난 지문 링크는 카드 맨 위(사진 아래, 날짜 위) 알약 줄로. 소개 문단 끝에 두면
-        # 작은 휴대폰(320x568)에서 첫 화면 밖으로 밀렸다(이슈 #19 4차). 예전 자리의 링크는 지운다.
-        page = page.replace('<a href="../../">다른 언어</a>', "", 1)
-        page = re.sub(r'<a class="lang-go" href="[^"]*">[^<]*</a>', "", page)
-        page = page.replace('<div class="date">', f'<p class="lang-row">{other_lang_links(lang)}</p>\n    <div class="date">', 1)
-    else:  # 공개 언어가 바뀌면(독일어 공개 등) 줄을 지금 목록으로 맞춘다
-        row = f'<p class="lang-row">{other_lang_links(lang)}</p>'
-        page = re.sub(r'<p class="lang-row">.*?</p>', lambda m: row, page, count=1)
-    if ".lang-row {" not in page and 'class="lang-row"' in page:
-        page = re.sub(r"  \.intro a\.lang-go \{[^}]*\}\n", "", page)  # 2차 때 넣은 CSS 를 새 것으로 바꾼다
-        page = page.replace("  .gnb {", LANG_GO_CSS + "  .gnb {", 1)
-    # 상단 메뉴 "지난 지문"이 어느 언어 목록인지 몰랐다(이슈 #19 남은 의견): "일본어 지난 지문"
-    page = page.replace('<a href="../archive/">지난 지문</a>', f'<a href="../archive/">{L["name"]} 지난 지문</a>', 1)
-    page = re.sub(r"  /\* gnb-narrow \*/.*?\n", "", page)  # 지우고 다시 넣어 늘 지금 규칙으로 맞춘다
-    cta = "  .gnb nav a.cta:hover { background: #d6e8ff; }\n"  # 기본 .gnb 규칙 뒤에 둬야 덮어쓴다
-    page = page.replace(cta, cta + GNB_NARROW_CSS, 1)
+    # 다른 언어 지난 지문 알약 줄(이슈 #19)과 예전 '다른 언어' 링크는 위 메뉴 언어 시트로 옮겼다(시안 A, 이슈 #20)
+    page = page.replace('<a href="../../">다른 언어</a>', "", 1)
+    page = re.sub(r'[ \t]*<p class="lang-row">.*?</p>\n', "", page, count=1)
+    page = re.sub(r'<a class="lang-go" href="[^"]*">[^<]*</a>', "", page)
+    page = re.sub(r"  \.intro a\.lang-go \{[^}]*\}\n", "", page)
+    # 소개 문단 끝 '메일로 받기'도 위 메뉴로 옮겼다
+    page = re.sub(r'(<p class="intro">[^<]*?) ?<a href="#subscribe">메일로 받기</a>(</p>)', r"\1\2", page, count=1)
     if 'class="site-footer"' not in page:
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
@@ -363,7 +325,7 @@ def patch_page(lang, day):
             page = page.replace("  .gnb {", SUB_CSS + "  .intro {", 1)
             page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
             page = page.replace("</main>", sub_html(lang) + "</main>", 1)
-            page = page.replace("\n  </div>\n\n  <section class=\"card\" id=\"passage\">", "\n" + intro_html(lang) + "  </div>\n\n  <section class=\"card\" id=\"passage\">", 1)
+            page = page.replace(TOP_END, "\n" + intro_html(lang) + TOP_END[1:], 1)
     elif 'data-v="3"' not in page or (L_pub.get("levels") and not re.search(r'<input[^>]+name="metadata__level"', page)):
         # 수준 선택이 새로 생긴 언어(ja, 2026-10-29)의 지난 페이지 카드도 같은 방식으로 바꾼다.
         # 이전 버전 카드가 있는 경우: 카드 HTML만 교체하고 수준 선택 CSS를 추가한다
@@ -429,6 +391,18 @@ def patch_page(lang, day):
         "  .no::before { content: \'\'; position: absolute; inset: -6px; }",
         1,
     )
+    # 읽기 수준: 예전 '기초로 보기' 링크를 카드 맨 아래 [기초|중급] 세그먼트로(시안 A G01). 저장 키 read_level:<언어> 는 그대로
+    if 'id="to-level-a"' in page:
+        page = re.sub(r'<p class="level-link" id="level-link">.*?</p>\n', "", page, count=1)
+        page = page.replace(LEVEL_SEG, "", 1)
+        page = page.replace(TOP_END, "\n" + LEVEL_SEG + TOP_END[1:], 1)
+        page = page.replace("      toLevelA.hidden = isA;\n      toLevelB.hidden = !isA;\n",
+                            "      // 켜진 쪽 모양은 CSS(html.level-a)가 정한다. 여기서는 화면 읽기 프로그램용 표시만 맞춘다\n"
+                            "      toLevelA.setAttribute('aria-current', String(isA));\n"
+                            "      toLevelB.setAttribute('aria-current', String(!isA));\n", 1)
+    # 위 메뉴(시안 A): 화면 위에 붙은 흰 바, 언어 칩 시트, PC 언어 탭. 예전 떠 있는 바와 그 CSS 는 지운다
+    mail = "#subscribe" if 'id="subscribe"' in page else f"/{lang}/#subscribe"
+    page = gnb.apply(page, lang, mail, day=True)
     path.write_text(page, encoding="utf-8")
 
 
@@ -481,7 +455,8 @@ def rebuild_lists(lang):
         canonical = f"{SITE}/{lang}/" if p == "./" else f"{SITE}/{lang}/archive/"
         page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
                 .replace("__TITLE__", title).replace("__ARCHIVE__", f"{p}archive/" if p == "./" else "./").replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
-                .replace("__NAME__", L["name"]).replace("__GNB_NARROW__", GNB_NARROW_CSS).replace("__BRAND__", langs.BRAND).replace("__GNB_BRAND__", GNB_BRAND_INNER)
+                .replace("__NAME__", L["name"]).replace("__GNB_CSS__", gnb.css_block()).replace("__BRAND__", langs.BRAND)
+                .replace("__GNB__", gnb.header_html(lang, "#subscribe", on_archive=p == "../")).replace("__GNB_JS__", gnb.SCRIPT)
                 .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
                 .replace("__CHIPS__", chips).replace("__LANGTABS__", tabs).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
@@ -516,7 +491,8 @@ def rebuild_root():
 
     모양: {"date", "words_total"(올라간 지문 전체의 주요 단어 수),
            "langs": {code: {"count", "latest", "topic", "sentences"(앞 4문장, 원문 표기 그대로),
-                            "chips", "answer"(1번 모범 해석), "words"}},
+                            "chips", "answer"(1번 모범 해석), "words",
+                            "review"(있을 때만: 가장 최근 주간 복습 {"day", "words", "desc"})}},
            "recent"(공개 언어마다 최근 7일. 첫 화면의 이번 주 달력과 주제 띠에 씀)}
     """
     data, recent = {"date": "", "words_total": 0, "langs": {}, "recent": []}, []
@@ -535,6 +511,9 @@ def rebuild_root():
             "sentences": [s["en"] for s in c.get("sentences", [])[:4]],
             "chips": c.get("chips", []), "answer": (c.get("answers") or [""])[0], "words": c.get("words", []),
         }
+        rv = gnb.latest_review(code)  # 위 메뉴 언어 시트의 '이번 주 단어 복습' 줄이 읽는다
+        if rv:
+            data["langs"][code]["review"] = {"day": rv[0], "words": rv[1], "desc": gnb.review_desc(code, rv[1])}
         data["date"] = max(data["date"], days[0])
         for d in days:
             f = ROOT / "content" / code / f"{d}.json"
@@ -588,18 +567,9 @@ ARCHIVE = r"""<!doctype html>
 <style>
   :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #6b7684; --blue: #1b64da; }
   body { margin: 0; background: #f2f4f6; color: #191f28; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; letter-spacing: -0.01em; word-break: keep-all; }
-  main { max-width: 560px; margin: 0 auto; padding: 28px 12px 40px; }
+  main { max-width: 560px; margin: 0 auto; padding: 20px 12px 40px; }
   h1 { font-size: 26px; font-weight: 800; margin: 0 8px 16px; letter-spacing: -0.03em; }
-  /* 소프트 UI: 날짜 페이지와 같은 떠 있는 흰 바, 흰 카드의 아주 옅은 그림자 */
-  .gnb { position: sticky; top: 12px; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 56px; margin: -16px 0 20px; padding: 0 10px 0 18px; border-radius: 16px; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); box-shadow: 0 2px 10px rgba(16,24,40,.06); }
-  .gnb .brand { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: #191f28; text-decoration: none; }
-  .gnb .brand img { vertical-align: middle; }
-  .gnb nav { display: flex; gap: 4px; }
-  .gnb nav a { font-size: 14px; font-weight: 600; color: #4e5968; text-decoration: none; padding: 8px 12px; border-radius: 10px; }
-  .gnb nav a:hover { background: #f2f4f6; }
-  .gnb nav a.cta { color: #1b64da; background: #e8f3ff; }
-  .gnb nav a.cta:hover { background: #d6e8ff; }
-__GNB_NARROW__  .ltabs { display: flex; gap: 6px; margin: 0 0 16px; padding: 4px; border-radius: 14px; background: #e8ebef; }
+__GNB_CSS__  .ltabs { display: flex; gap: 6px; margin: 0 0 16px; padding: 4px; border-radius: 14px; background: #e8ebef; }
   .ltabs a { flex: 1; text-align: center; font-size: 15px; font-weight: 700; color: var(--sub); padding: 10px 0; border-radius: 10px; text-decoration: none; }
   .ltabs a.on { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(16,24,40,.08); }
   .back { display: inline-block; margin: 0 8px 12px; font-size: 14px; font-weight: 600; color: #1b64da; text-decoration: none; }
@@ -636,15 +606,12 @@ __SUB_CSS____INTRO_CSS____FOOTER_CSS__</style>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
 </head>
-<body><main>
-  <header class="gnb">
-    <a class="brand" href="/">__GNB_BRAND__</a>
-    <nav aria-label="사이트 메뉴"><a href="__ARCHIVE__">__NAME__ 지난 지문</a><a class="cta" href="/#subscribe">메일로 받기</a></nav>
-  </header>
+<body>
+__GNB__<main>
   <a class="back" href="__TODAY__">오늘의 지문 바로 가기 →</a>
   <h1>__TITLE__</h1>
   <nav class="ltabs" aria-label="언어">__LANGTABS__</nav>
-  <p class="intro" style="margin: -8px 8px 14px">__INTRO__ <a href="#subscribe">메일로 받기</a></p>
+  <p class="intro" style="margin: -8px 8px 14px">__INTRO__</p>
 __REVIEW__  <input class="search" id="q" type="search" placeholder="날짜, 주제로 찾기 (예: 10월 20일, __SEARCH_EXAMPLE__)" aria-label="지난 지문 검색" autocomplete="off">
   <div class="chips" role="group" aria-label="분야"><button type="button" class="chip" data-cat="" aria-pressed="true">전체</button>__CHIPS__</div>
 __GROUPS__
@@ -687,7 +654,7 @@ __FOOTER__<script>
   more.addEventListener('click', function () { shown += PAGE; apply(); });
   apply();
 </script>
-</body></html>
+__GNB_JS__</body></html>
 """
 
 

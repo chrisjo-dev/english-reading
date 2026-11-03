@@ -2,8 +2,8 @@
 
 - 일간 이메일 본문 첫 번째 행에 배지 이미지가 있는지
 - 주간 이메일 본문 첫 번째 행에 배지 이미지가 있는지
-- patch_page 후 .gnb .brand img 에 style 속성이 없는지
-- patch_page 가 .gnb .brand img CSS 규칙을 주입하는지
+- patch_page 후 위 메뉴 브랜드 img 에 style 속성이 없는지
+- patch_page 가 예전 .gnb 규칙을 새 위 메뉴 CSS 로 바꾸는지
 - patch_page 가 멱등적으로 동작하는지 (두 번 실행해도 CSS 규칙 중복 없음)
 
 실행: python -m pytest -q tests/test_brand_badge.py
@@ -126,39 +126,39 @@ class PatchPageBadgeTest(unittest.TestCase):
         finally:
             publish.ROOT = original_root
 
+    def _brand_img(self, page):
+        m = re.search(r'<a class="gnb-brand"[^>]*>(.*?)</a>', page, re.S)
+        self.assertIsNotNone(m, "위 메뉴 브랜드 링크(gnb-brand)를 찾지 못했습니다")
+        return m.group(1)
+
     def test_no_inline_style_on_brand_img(self):
-        """patch_page 후 .gnb .brand img 에 style= 속성이 없어야 한다."""
+        """patch_page 후 위 메뉴 브랜드(오리+독해한입)가 있고 img 에 style= 속성이 없어야 한다."""
         result = self._patch(MINIMAL_WITH_INLINE_STYLE)
-        # <a class="brand"> 안의 img 를 찾는다
-        brand_img = re.search(r'<a class="brand"[^>]*>(.*?)</a>', result, re.S)
-        self.assertIsNotNone(brand_img, "brand 링크를 찾지 못했습니다")
-        img_tag = brand_img.group(1)
-        self.assertNotIn('style=', img_tag,
-                         "brand img에 inline style이 남아 있으면 안 됩니다")
+        img = self._brand_img(result)
+        self.assertIn("duck-lying-64.png", img)
+        self.assertIn("독해한입", img)
+        self.assertNotIn("style=", img)
 
     def test_gnb_brand_img_css_injected(self):
-        """patch_page 후 .gnb .brand img CSS 규칙이 페이지에 있어야 한다."""
+        """예전 .gnb 규칙은 지우고 새 위 메뉴 CSS(.gnb-brand img)를 넣는다(시안 A, 이슈 #20)."""
         result = self._patch(MINIMAL_WITH_INLINE_STYLE)
-        self.assertIn('.gnb .brand img', result,
-                      ".gnb .brand img CSS 규칙이 주입되어야 합니다")
+        self.assertIn(".gnb-brand img {", result)
+        self.assertNotIn(".gnb .brand", result)
+        self.assertNotIn('<a class="brand"', result)
 
     def test_patch_page_idempotent_no_duplicate_css(self):
-        """patch_page 를 두 번 실행해도 vertical-align CSS 규칙이 한 번만 주입되어야 한다."""
+        """patch_page 를 두 번 실행해도 결과가 같고 위 메뉴 CSS 블록은 하나다."""
         result_first = self._patch(MINIMAL_WITH_INLINE_STYLE)
         result_second = self._patch(result_first)
-        # GNB_NARROW_CSS 안에도 .gnb .brand img 가 있으므로 정확한 standalone 규칙 문자열로 확인
-        target = publish.GNB_IMG_CSS.rstrip()
-        count = result_second.count(target)
-        self.assertEqual(count, 1,
-                         f"'{target}' 규칙이 {count}개입니다 (1개여야 합니다)")
+        self.assertEqual(result_first, result_second)
+        self.assertEqual(result_second.count("/* gnb-a */"), 1)
+        self.assertEqual(result_second.count('<header class="gnb">'), 1)
 
     def test_patch_page_idempotent_no_inline_style_twice(self):
         """이미 패치된 페이지를 다시 패치해도 inline style이 없어야 한다."""
         result_first = self._patch(MINIMAL_WITH_INLINE_STYLE)
         result_second = self._patch(result_first)
-        brand_img = re.search(r'<a class="brand"[^>]*>(.*?)</a>', result_second, re.S)
-        self.assertIsNotNone(brand_img)
-        self.assertNotIn('style=', brand_img.group(1))
+        self.assertNotIn("style=", self._brand_img(result_second))
 
 
 class FixtureEmailBadgeTest(unittest.TestCase):

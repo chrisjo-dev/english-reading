@@ -1,4 +1,4 @@
-"""언어별 지난 지문으로 가는 길(이슈 #19): 지문 페이지의 다른 언어 링크, 목록 언어 탭, 날짜 검색."""
+"""언어별 지난 지문으로 가는 길(이슈 #19, #20): 위 메뉴 언어 시트, 목록 언어 탭, 날짜 검색."""
 import re
 import shutil
 import sys
@@ -11,24 +11,26 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 import publish  # noqa: E402
 
+# 위 메뉴 시안 A 이전의 생성 페이지(예전 모양을 새 모양으로 바꾸는 테스트에 쓴다)
+OLD_PAGE = ROOT / "tests" / "fixtures" / "old_gnb_en_2026-10-29.html"
+
 
 class TestFindability(unittest.TestCase):
-    def test_other_language_links_skip_hidden_languages(self):
-        self.assertEqual(publish.other_lang_links("en"), '<a class="lang-go" href="/ja/archive/">일본어 지난 지문 보기 →</a>'
-                         '<a class="lang-go" href="/de/archive/">독일어 지난 지문 보기 →</a>')  # 독일어 공개(2026-10-30)
-        self.assertIn("/en/archive/", publish.other_lang_links("ja"))
-        self.assertNotIn("/de/", publish.other_lang_links("de"))  # 지금 언어는 빼고
-        with mock.patch.dict(publish.langs.LANGS["de"], {"noindex": True}):  # 숨긴 언어는 링크에 없다
-            self.assertNotIn("/de/", publish.other_lang_links("en"))
+    def test_menu_languages_skip_hidden_languages(self):
+        """위 메뉴 언어 시트와 PC 언어 탭: 숨긴 언어는 빼고, 지금 보고 있는 언어는 숨겨도 보인다."""
+        self.assertEqual(publish.public_langs(), ["en", "ja", "de"])  # 독일어 공개(2026-10-30)
+        with mock.patch.dict(publish.langs.LANGS["de"], {"noindex": True}):
+            self.assertNotIn('href="/de/archive/"', publish.gnb.header_html("en"))
+            self.assertIn('href="/de/archive/"', publish.gnb.header_html("de"))
 
-    def test_old_page_links_move_to_row_above_date(self):
-        """예전 '다른 언어'(첫 화면) 링크와 2차 때 소개 문단 끝에 둔 링크를 지우고, 날짜 위 한 줄로 모은다."""
+    def test_old_page_language_row_moves_to_menu_sheet(self):
+        """예전 '다른 언어' 링크, 날짜 위 알약 줄, 소개 끝 '메일로 받기'를 지우고 위 메뉴 시트로 모은다(이슈 #20)."""
         tmp = Path(tempfile.mkdtemp())
         try:
             day = "2026-10-29"
             (tmp / "en" / day).mkdir(parents=True)
-            page = (ROOT / "en" / day / "index.html").read_text(encoding="utf-8")
-            page = re.sub(r'<p class="lang-row">.*?</p>\n    ', "", page)  # 줄을 빼고 예전 모양으로
+            page = OLD_PAGE.read_text(encoding="utf-8")  # 시안 A 이전 생성물 그대로
+            self.assertIn('class="lang-row"', page)
             page = page.replace('<a href="#subscribe">메일로 받기</a></p>', '<a href="#subscribe">메일로 받기</a><a href="../../">다른 언어</a></p>', 1)
             (tmp / "en" / day / "index.html").write_text(page, encoding="utf-8")
             with mock.patch.object(publish, "ROOT", tmp):
@@ -37,10 +39,11 @@ class TestFindability(unittest.TestCase):
                 publish.patch_page("en", day)
                 again = (tmp / "en" / day / "index.html").read_text(encoding="utf-8")
             self.assertNotIn('<a href="../../">다른 언어</a>', once)
-            self.assertIn('<p class="lang-row"><a class="lang-go" href="/ja/archive/">일본어 지난 지문 보기 →</a>'
-                          '<a class="lang-go" href="/de/archive/">독일어 지난 지문 보기 →</a></p>\n    <div class="date">', once)
-            self.assertEqual(once.count('class="lang-go"'), 2)
-            self.assertEqual(once.count(".lang-row {"), 1)
+            self.assertNotIn("lang-go", once)
+            self.assertNotIn("lang-row", once)
+            self.assertNotRegex(once, r'<p class="intro">[^<]*<a href="#subscribe">')
+            self.assertIn('<a class="gs-past" href="/ja/archive/"', once)
+            self.assertIn('<a class="gs-past" href="/de/archive/"', once)
             self.assertEqual(once, again)
         finally:
             shutil.rmtree(tmp)
@@ -71,30 +74,15 @@ class TestFindability(unittest.TestCase):
             shutil.rmtree(tmp)
 
     def test_top_menu_names_the_language(self):
-        """상단 메뉴 '지난 지문'에 언어를 붙이고, 좁은 휴대폰 CSS는 기본 .gnb 규칙 뒤에 한 번만 둔다."""
-        tmp = Path(tempfile.mkdtemp())
-        try:
-            day = "2026-10-20"
-            (tmp / "ja" / day).mkdir(parents=True)
-            page = (ROOT / "ja" / day / "index.html").read_text(encoding="utf-8")
-            page = page.replace('<a href="../archive/">일본어 지난 지문</a>', '<a href="../archive/">지난 지문</a>', 1)
-            page = re.sub(r"  /\* gnb-narrow \*/.*?\n", "", page)  # 예전 모양으로
-            (tmp / "ja" / day / "index.html").write_text(page, encoding="utf-8")
-            with mock.patch.object(publish, "ROOT", tmp):
-                publish.patch_page("ja", day)
-                once = (tmp / "ja" / day / "index.html").read_text(encoding="utf-8")
-                publish.patch_page("ja", day)
-                again = (tmp / "ja" / day / "index.html").read_text(encoding="utf-8")
-            self.assertIn('<nav aria-label="사이트 메뉴"><a href="../archive/">일본어 지난 지문</a>', once)
-            self.assertEqual(once.count("/* gnb-narrow */"), 1)
-            self.assertLess(once.index(".gnb nav a.cta:hover"), once.index("/* gnb-narrow */"))
-            self.assertEqual(once, again)
-        finally:
-            shutil.rmtree(tmp)
+        """위 메뉴 언어 칩은 지금 언어 이름, PC '지난 지문'은 그 언어 목록으로 간다. 목록 페이지에서는 켜져 있다."""
+        page = (ROOT / "ja" / "2026-10-20" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<span class="gnb-pill">일본어<svg', page)
+        self.assertIn('<a class="gnb-past" href="/ja/archive/">지난 지문</a>', page)
         arch = (ROOT / "de" / "archive" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('<nav aria-label="사이트 메뉴"><a href="./">독일어 지난 지문</a>', arch)
-        self.assertIn("/* gnb-narrow */", arch)
-        self.assertIn("{{name}} 지난 지문</a>", (ROOT / "tools" / "template.html").read_text(encoding="utf-8"))
+        self.assertIn('<a class="gnb-past on" href="/de/archive/" aria-current="page">지난 지문</a>', arch)
+        self.assertIn('<span class="gnb-pill">독일어<svg', arch)
+        self.assertNotIn("/* gnb-narrow */", arch)
+        self.assertIn("{{gnb}}<main>", (ROOT / "tools" / "template.html").read_text(encoding="utf-8"))
 
     def test_search_text_includes_dates(self):
         q = publish.entry("ja", "2026-10-20")["q"]

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FAQ } from "@/lib/faq";
 import { loadLatest } from "@/lib/reading";
 import "./globals.css";
+import "./gnb.css";
 
 const SITE = "https://read.wspace.ai.kr";
 const TITLE = "독해한입 | 매일 영어, 일본어, 독일어 독해 연습 (무료 뉴스레터)";
