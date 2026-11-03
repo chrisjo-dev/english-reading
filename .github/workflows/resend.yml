@@ -1,0 +1,45 @@
+name: resend
+
+# 그날 메일이 잘못 나갔을 때(본문 빠짐 등) 같은 날 지문을 "[다시 보냄]" 메일로 한 번 더 보낸다. 수동 실행만 한다.
+# metadata 키가 resend 라 다시 실행해도 언어+수준마다 한 번만 나간다.
+on:
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: "언어 코드, 공백으로 구분 (비우면 모든 언어)"
+        required: false
+        default: ""
+      day:
+        description: "YYYY-MM-DD"
+        required: true
+
+concurrency:
+  group: resend
+  cancel-in-progress: false
+
+jobs:
+  resend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Resend
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          LANG_CODE: ${{ inputs.lang }}
+          DAY: ${{ inputs.day }}
+        run: |
+          codes="$LANG_CODE"
+          [ -n "$codes" ] || codes=$(python -c "import sys; sys.path.insert(0, 'tools'); import langs; print(' '.join(langs.LANGS))")
+          failed=""
+          for code in $codes; do
+            levels=$(python -c "import sys; sys.path.insert(0,'tools'); import langs; L=langs.LANGS.get('$code',{}); print('a b' if L.get('levels') else 'b')")
+            for level in $levels; do
+              python tools/send_email.py "$code" "$DAY" --level "$level" --resend \
+                || failed="$failed ${code}:${level}"
+            done
+          done
+          [ -z "$failed" ] || { echo "resend failed:$failed"; exit 1; }

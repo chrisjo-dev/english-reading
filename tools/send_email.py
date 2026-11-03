@@ -309,7 +309,21 @@ def catchup(lang, day, level="b"):
                 print(f"표시 정리 실패, 다음 구독자로 계속: {sub['id']} {exc}")
 
 
-def main(lang, day, level="b"):
+RESEND_NOTE = ('<p style="max-width:560px;margin:0 auto 8px;font-size:13px;color:#6b7684;text-align:center;">'
+               '아침 메일에 본문이 빠져 다시 보내 드려요.</p>\n')
+
+
+def as_resend(mail):
+    """본문이 잘못 나간 날 다시 보내는 메일: 제목 앞에 표시를 달고 안내 한 줄을 넣는다."""
+    return {"subject": "[다시 보냄] " + mail["subject"],
+            "body": mail["body"].replace('<table role="presentation"', RESEND_NOTE + '<table role="presentation"', 1)}
+
+
+def main(lang, day, level="b", resend=False):
+    """resend=True 는 그날 메일을 한 번 더 보낸다. metadata 키가 'resend' 라 본 메일 중복 막기와 보충 발송에 섞이지 않고,
+    다시 실행해도 재발송은 한 번만 나간다."""
+    key = "resend" if resend else "day"
+    fix = as_resend if resend else (lambda m: m)
     L = langs.LANGS.get(lang, {})
     if not L.get("email", True):
         print(f"이 언어는 아직 메일을 보내지 않습니다 (email=False, {lang}). 종료합니다.")
@@ -321,13 +335,13 @@ def main(lang, day, level="b"):
         if mail is None:
             print(f"기초 지문 없음, 중급 메일에 포함됨 ({lang} {day})")
             return  # exit 0: 중급(b) 발송 시 이미 a-구독자 포함
-        send(mail, lang, "day", day, level="a")
+        send(fix(mail), lang, key, day, level="a")
         return
     # level == "b": 기초 지문이 없으면 a-구독자도 중급 메일에 포함한다(수준 필터 없음)
     mail = build_email.build(lang, day, "b")
     has_level_a = build_email.build(lang, day, "a") is not None
     effective_level = "b" if has_level_a else None
-    send(mail, lang, "day", day, level=effective_level)
+    send(fix(mail), lang, key, day, level=effective_level)
 
 
 def main_weekly(lang, end):
@@ -357,4 +371,4 @@ if __name__ == "__main__":
     elif "--catchup" in sys.argv:
         catchup(sys.argv[1], sys.argv[2], level)
     else:
-        main(sys.argv[1], sys.argv[2], level)
+        main(sys.argv[1], sys.argv[2], level, resend="--resend" in sys.argv)

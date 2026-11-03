@@ -635,3 +635,23 @@ class TestEmailFromCurrentTemplate(unittest.TestCase):
                 self.assertTrue(d["words"], f"{lang} {day} 메일 단어")
             finally:
                 page.write_text(backup, encoding="utf-8")
+
+
+class TestResend(unittest.TestCase):
+    """본문이 잘못 나간 날 다시 보내기: 'resend' 키로 보내 본 메일 중복 막기에 걸리지 않고, 제목과 안내가 붙는다."""
+
+    def test_resend_uses_own_key_and_marks_mail(self):
+        lang, day = "en", sorted((REPO / "content" / "en").glob("20??-??-??.json"))[-1].stem
+        if not (REPO / lang / day / "index.html").exists():
+            self.skipTest("페이지 없음")
+        for level in ("a", "b"):
+            with patch.object(send_email, "wait_live"), patch.object(send_email, "send") as s:
+                send_email.main(lang, day, level, resend=True)
+            mail, _, key, value = s.call_args.args[:4]
+            self.assertEqual((key, value), ("resend", day))
+            self.assertTrue(mail["subject"].startswith("[다시 보냄] "))
+            self.assertIn("다시 보내 드려요", mail["body"])
+            with patch.object(send_email, "wait_live"), patch.object(send_email, "send") as s:
+                send_email.main(lang, day, level)
+            self.assertEqual(s.call_args.args[2], "day")
+            self.assertFalse(s.call_args.args[0]["subject"].startswith("[다시 보냄]"))
