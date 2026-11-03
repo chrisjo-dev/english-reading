@@ -218,6 +218,10 @@ LEVEL_HEAD_OLD = "<script>try{var _ql=new URLSearchParams(location.search).get('
 LEVEL_HEAD_NEW = "<script>try{var _lc=location.pathname.split('/')[1]||'en';var _ql=new URLSearchParams(location.search).get('level');if(!_ql){_ql=localStorage.getItem('read_level:'+_lc);if(!_ql&&_lc==='en'){var _old=localStorage.getItem('read_level');if(_old){_ql=_old;localStorage.setItem('read_level:en',_old);localStorage.removeItem('read_level');}}}if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>"
 
 
+# AI 피드백 안내에서 특정 AI 서비스 이름을 빼고 '평소 쓰는 AI 채팅'으로 부른다(예전 페이지 갱신용)
+MODEL_NAMES = (("ChatGPT나 Claude 같은 AI 채팅에", "평소 쓰는 AI 채팅에"), ("AI 채팅(ChatGPT, Claude 등)에", "AI 채팅에"))
+
+
 def patch_page(lang, day):
     L = langs.get(lang)
     path = ROOT / lang / day / "index.html"
@@ -403,6 +407,8 @@ def patch_page(lang, day):
                             "      toLevelB.setAttribute('aria-current', String(!isA));\n", 1)
     # 위 메뉴(시안 A): 화면 위에 붙은 흰 바, 언어 칩 시트, PC 언어 탭. 예전 떠 있는 바와 그 CSS 는 지운다
     mail = "#subscribe" if 'id="subscribe"' in page else f"/{lang}/#subscribe"
+    for old, new in MODEL_NAMES:
+        page = page.replace(old, new)
     page = gnb.apply(page, lang, mail, day=True)
     # 의견 보내기(이슈 #21): 하단 링크 위 기능 건의, 버그 제보 버튼
     page = feedback.apply(page, lang, url)
