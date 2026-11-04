@@ -1,0 +1,432 @@
+{
+  "date": "2026-11-05",
+  "category": "society",
+  "topic": "유연 근무제",
+  "title_ko": "출근 시간을 고르는 독일 회사",
+  "headline": "Arbeiten mit Gleitzeit",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "photo_scene": "Close-up in early morning sunlight of a smiling office worker hanging a coat by a desk in a bright, nearly empty open-plan office, a coffee mug and laptop on the desk, soft warm light through tall windows.",
+  "sentences": [
+    {
+      "en": "In vielen deutschen Firmen gibt es **Gleitzeit**, sodass die Mitarbeiter selbst entscheiden können, wann sie morgens mit der Arbeit beginnen.",
+      "b2": false,
+      "chunks": [
+        [
+          "In vielen deutschen Firmen",
+          "많은 독일 회사에는"
+        ],
+        [
+          "gibt es **Gleitzeit**,",
+          "유연 근무제가 있어서"
+        ],
+        [
+          "sodass die Mitarbeiter selbst entscheiden können,",
+          "직원들이 스스로 정할 수 있습니다"
+        ],
+        [
+          "wann sie morgens",
+          "아침 언제"
+        ],
+        [
+          "mit der Arbeit beginnen.",
+          "일을 시작할지"
+        ]
+      ]
+    },
+    {
+      "en": "Meistens gibt es aber eine **Kernzeit**, zum Beispiel von zehn bis fünfzehn Uhr, in der alle im Büro sein sollen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Meistens gibt es aber",
+          "하지만 대개 있습니다"
+        ],
+        [
+          "eine **Kernzeit**,",
+          "핵심 근무 시간이"
+        ],
+        [
+          "zum Beispiel",
+          "예를 들어"
+        ],
+        [
+          "von zehn bis fünfzehn Uhr,",
+          "10시부터 15시까지"
+        ],
+        [
+          "in der alle",
+          "그 시간에는 모두가"
+        ],
+        [
+          "im Büro sein sollen.",
+          "사무실에 있어야 합니다"
+        ]
+      ]
+    },
+    {
+      "en": "Wer früh anfängt, kann am Nachmittag früher **Feierabend** machen und hat mehr Zeit für die Familie oder Hobbys.",
+      "b2": false,
+      "chunks": [
+        [
+          "Wer früh anfängt,",
+          "일찍 시작하는 사람은"
+        ],
+        [
+          "kann am Nachmittag",
+          "오후에"
+        ],
+        [
+          "früher **Feierabend** machen",
+          "더 일찍 퇴근할 수 있고"
+        ],
+        [
+          "und hat mehr Zeit",
+          "더 많은 시간을 갖습니다"
+        ],
+        [
+          "für die Familie oder Hobbys.",
+          "가족이나 취미를 위한"
+        ]
+      ]
+    },
+    {
+      "en": "Die von den Mitarbeitern geleisteten Stunden werden auf einem **Arbeitszeitkonto** gespeichert, damit Überstunden später durch freie Tage ausgeglichen werden können.",
+      "b2": true,
+      "chunks": [
+        [
+          "Die von den Mitarbeitern geleisteten Stunden",
+          "직원들이 일한 시간은"
+        ],
+        [
+          "werden",
+          "됩니다"
+        ],
+        [
+          "auf einem **Arbeitszeitkonto**",
+          "근무 시간 계좌에"
+        ],
+        [
+          "gespeichert,",
+          "저장"
+        ],
+        [
+          "damit Überstunden später",
+          "초과 근무를 나중에"
+        ],
+        [
+          "durch freie Tage",
+          "쉬는 날로"
+        ],
+        [
+          "ausgeglichen werden können.",
+          "메울 수 있도록"
+        ]
+      ]
+    },
+    {
+      "en": "Allerdings müssen die Beschäftigten ihre Zeiten genau **erfassen**, weil der Arbeitgeber die Einhaltung der Regeln kontrollieren muss.",
+      "b2": false,
+      "chunks": [
+        [
+          "Allerdings müssen die Beschäftigten",
+          "다만 직원들은 해야 합니다"
+        ],
+        [
+          "ihre Zeiten genau **erfassen**,",
+          "자기 시간을 정확히 기록"
+        ],
+        [
+          "weil der Arbeitgeber",
+          "왜냐하면 고용주가"
+        ],
+        [
+          "die Einhaltung der Regeln",
+          "규칙 준수를"
+        ],
+        [
+          "kontrollieren muss.",
+          "확인해야 하기 때문입니다"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Angestellte sagen, ohne Gleitzeit wäre es für sie kaum möglich, Arbeit und Privatleben gut miteinander zu **vereinbaren**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Viele Angestellte sagen,",
+          "많은 직원들은 말합니다"
+        ],
+        [
+          "ohne Gleitzeit",
+          "유연 근무제가 없다면"
+        ],
+        [
+          "wäre es für sie kaum möglich,",
+          "그들에게는 거의 불가능할 것이라고"
+        ],
+        [
+          "Arbeit und Privatleben",
+          "일과 사생활을"
+        ],
+        [
+          "gut miteinander zu **vereinbaren**.",
+          "서로 잘 양립시키는 것이"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Gleitzeit",
+      "유연 근무제 (여성 die)"
+    ],
+    [
+      "Kernzeit",
+      "핵심 근무 시간 (여성 die)"
+    ],
+    [
+      "Feierabend",
+      "퇴근, 일과 후 (남성 der, 복수 Feierabende)"
+    ],
+    [
+      "Arbeitszeitkonto",
+      "근무 시간 계좌 (중성 das, 복수 Arbeitszeitkonten)"
+    ],
+    [
+      "erfassen",
+      "기록하다, 파악하다"
+    ],
+    [
+      "vereinbaren",
+      "양립시키다, 조화시키다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "분사 수식어 + 화법조동사 수동태",
+      "body": "`Die von den Mitarbeitern geleisteten Stunden`은 관사 `Die`와 명사 `Stunden` 사이에 `von den Mitarbeitern geleistet`(직원들이 해낸)가 들어간 구조입니다. 관계절로 풀면 `die Stunden, die von den Mitarbeitern geleistet werden`이에요. 뒤의 `damit ... ausgeglichen werden können`은 화법조동사 수동태로, 부문장이라 정동사 `können`이 맨 끝에 옵니다."
+    },
+    {
+      "title": "wäre es kaum möglich — 사실과 반대되는 가정",
+      "body": "`ohne Gleitzeit wäre es für sie kaum möglich`는 접속법 2식으로 '유연 근무제가 없다면 거의 불가능할 것'이라는 뜻입니다. 실제로는 제도가 있다는 전제예요. `ohne ...`가 조건(wenn es keine Gleitzeit gäbe) 역할을 하고, `wäre`가 둘째 자리에 옵니다."
+    }
+  ],
+  "answers": [
+    "많은 독일 회사에는 유연 근무제가 있어서, 직원들이 아침 몇 시에 일을 시작할지 스스로 정할 수 있습니다.",
+    "하지만 대개는 예를 들어 10시부터 15시까지처럼 모두가 사무실에 있어야 하는 핵심 근무 시간이 있습니다.",
+    "일찍 시작하는 사람은 오후에 더 일찍 퇴근할 수 있어 가족이나 취미에 쓸 시간이 늘어납니다.",
+    "직원들이 일한 시간은 근무 시간 계좌에 쌓이기 때문에, 초과 근무는 나중에 쉬는 날로 메울 수 있습니다.",
+    "다만 고용주가 규칙을 지키는지 확인해야 하므로, 직원들은 자기 근무 시간을 정확히 기록해야 합니다.",
+    "많은 직원들은 유연 근무제가 없다면 일과 사생활을 잘 병행하기가 거의 불가능할 것이라고 말합니다."
+  ],
+  "advanced": [
+    {
+      "word": "der Arbeitnehmer",
+      "meaning": "근로자, 피고용인",
+      "confuse": "`der Arbeitgeber`는 반대로 '고용주'예요. 일을 '받는' 쪽이 Arbeitnehmer입니다.",
+      "example": "Jeder **Arbeitnehmer** hat Anspruch auf bezahlten Urlaub.",
+      "example_ko": "모든 근로자는 유급 휴가를 받을 권리가 있습니다."
+    },
+    {
+      "word": "die Überstunde",
+      "meaning": "초과 근무 (시간)",
+      "confuse": "보통 복수 `Überstunden`으로 씁니다. `Überstunden machen`(야근하다)으로 외워 두세요.",
+      "example": "Diese Woche habe ich fünf **Überstunden** gemacht.",
+      "example_ko": "이번 주에 저는 다섯 시간을 초과 근무했습니다."
+    },
+    {
+      "word": "ausgleichen",
+      "meaning": "메우다, 상쇄하다",
+      "confuse": "분리동사라서 `Ich gleiche die Stunden aus`처럼 갈라집니다.",
+      "example": "Am Freitag **gleiche** ich meine Überstunden **aus** und gehe früher.",
+      "example_ko": "금요일에 저는 초과 근무를 메우고 일찍 갑니다."
+    },
+    {
+      "word": "die Vereinbarkeit",
+      "meaning": "양립, 병행",
+      "confuse": "`die Vereinbarung`은 '합의, 약속'이라는 다른 뜻이에요.",
+      "example": "Die **Vereinbarkeit** von Beruf und Familie ist vielen Eltern wichtig.",
+      "example_ko": "직업과 가정의 양립은 많은 부모에게 중요합니다."
+    },
+    {
+      "word": "die Teilzeit",
+      "meaning": "시간제 근무",
+      "confuse": "반대말은 `die Vollzeit`(전일제)입니다. `in Teilzeit arbeiten`처럼 써요.",
+      "example": "Seit der Geburt ihres Sohnes arbeitet sie in **Teilzeit**.",
+      "example_ko": "아들이 태어난 뒤로 그녀는 시간제로 일합니다."
+    },
+    {
+      "word": "der Arbeitsvertrag",
+      "meaning": "근로 계약(서)",
+      "confuse": null,
+      "example": "Im **Arbeitsvertrag** steht, wie viele Stunden man pro Woche arbeitet.",
+      "example_ko": "근로 계약서에는 일주일에 몇 시간 일하는지 적혀 있습니다."
+    },
+    {
+      "word": "flexibel",
+      "meaning": "유연한, 융통성 있는",
+      "confuse": "강세가 둘째 음절(fle-XI-bel)에 와요.",
+      "example": "Unsere Firma ist bei den Arbeitszeiten sehr **flexibel**.",
+      "example_ko": "우리 회사는 근무 시간에 아주 유연합니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "In vielen deutschen Firmen gibt es **Gleitzeit**: Man wählt die Anfangszeit selbst.",
+          "chunks": [
+            [
+              "In vielen deutschen Firmen",
+              "많은 독일 회사에는"
+            ],
+            [
+              "gibt es **Gleitzeit**:",
+              "유연 근무제가 있습니다"
+            ],
+            [
+              "Man wählt",
+              "사람들은 고릅니다"
+            ],
+            [
+              "die Anfangszeit selbst.",
+              "시작 시간을 스스로"
+            ]
+          ]
+        },
+        {
+          "en": "In der **Kernzeit** sind alle im Büro, zum Beispiel von zehn bis fünfzehn Uhr.",
+          "chunks": [
+            [
+              "In der **Kernzeit**",
+              "핵심 근무 시간에는"
+            ],
+            [
+              "sind alle",
+              "모두가 있습니다"
+            ],
+            [
+              "im Büro,",
+              "사무실에"
+            ],
+            [
+              "zum Beispiel",
+              "예를 들어"
+            ],
+            [
+              "von zehn bis fünfzehn Uhr.",
+              "10시부터 15시까지"
+            ]
+          ]
+        },
+        {
+          "en": "Man fängt früh an und macht am Nachmittag früher **Feierabend**.",
+          "chunks": [
+            [
+              "Man fängt früh an",
+              "일찍 시작하고"
+            ],
+            [
+              "und macht",
+              "그리고 합니다"
+            ],
+            [
+              "am Nachmittag",
+              "오후에"
+            ],
+            [
+              "früher **Feierabend**.",
+              "더 일찍 퇴근을"
+            ]
+          ]
+        },
+        {
+          "en": "Man sammelt die Stunden auf einem **Arbeitszeitkonto** und nimmt später freie Tage.",
+          "chunks": [
+            [
+              "Man sammelt",
+              "모읍니다"
+            ],
+            [
+              "die Stunden",
+              "일한 시간을"
+            ],
+            [
+              "auf einem **Arbeitszeitkonto**",
+              "근무 시간 계좌에"
+            ],
+            [
+              "und nimmt später",
+              "그리고 나중에 씁니다"
+            ],
+            [
+              "freie Tage.",
+              "쉬는 날을"
+            ]
+          ]
+        },
+        {
+          "en": "Die Mitarbeiter müssen ihre Arbeitszeiten für den Arbeitgeber genau **aufschreiben**.",
+          "chunks": [
+            [
+              "Die Mitarbeiter müssen",
+              "직원들은 해야 합니다"
+            ],
+            [
+              "ihre Arbeitszeiten",
+              "자기 근무 시간을"
+            ],
+            [
+              "für den Arbeitgeber",
+              "고용주를 위해"
+            ],
+            [
+              "genau **aufschreiben**.",
+              "정확히 적어야"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Angestellte sagen: Mit Gleitzeit kann man Arbeit und Privatleben gut **verbinden**.",
+          "chunks": [
+            [
+              "Viele Angestellte sagen:",
+              "많은 직원들이 말합니다"
+            ],
+            [
+              "Mit Gleitzeit",
+              "유연 근무제가 있으면"
+            ],
+            [
+              "kann man",
+              "할 수 있다고"
+            ],
+            [
+              "Arbeit und Privatleben",
+              "일과 사생활을"
+            ],
+            [
+              "gut **verbinden**.",
+              "잘 연결"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "많은 독일 회사에는 유연 근무제가 있습니다. 시작 시간을 스스로 고릅니다.",
+        "핵심 근무 시간에는 모두가 사무실에 있습니다. 예를 들어 10시부터 15시까지입니다.",
+        "일찍 시작하고 오후에 더 일찍 퇴근합니다.",
+        "일한 시간을 근무 시간 계좌에 모으고, 나중에 쉬는 날로 씁니다.",
+        "직원들은 고용주를 위해 자기 근무 시간을 정확히 적어야 합니다.",
+        "많은 직원들은 유연 근무제가 있으면 일과 사생활을 잘 연결할 수 있다고 말합니다."
+      ]
+    }
+  }
+}
