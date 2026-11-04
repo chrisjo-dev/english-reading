@@ -1,0 +1,423 @@
+{
+  "date": "2026-11-05",
+  "category": "future",
+  "topic": "로보택시",
+  "title_ko": "운전석이 빈 택시",
+  "headline": "Taxis With No Driver",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "Starting on November second, people in Fort Worth, a large American city, can use an app to call a car with nobody in the driver's seat.",
+      "b2": false,
+      "chunks": [
+        [
+          "Starting on November second,",
+          "11월 2일부터"
+        ],
+        [
+          "people in Fort Worth,",
+          "포트워스의 사람들은"
+        ],
+        [
+          "a large American city,",
+          "미국의 큰 도시인"
+        ],
+        [
+          "can use an app",
+          "앱을 써서"
+        ],
+        [
+          "to call a car",
+          "차를 부를 수 있다"
+        ],
+        [
+          "with nobody in the driver's seat.",
+          "운전석에 아무도 없는"
+        ]
+      ]
+    },
+    {
+      "en": "The new service, which is run by Tesla, **covers** about one hundred and forty-five square miles, and each car can carry up to four **passengers**.",
+      "b2": true,
+      "chunks": [
+        [
+          "The new service,",
+          "그 새 서비스는"
+        ],
+        [
+          "which is run by Tesla,",
+          "테슬라가 운영하는데"
+        ],
+        [
+          "**covers** about one hundred and forty-five square miles,",
+          "약 145제곱마일을 아우른다"
+        ],
+        [
+          "and each car can carry",
+          "그리고 각 차는 태울 수 있다"
+        ],
+        [
+          "up to four **passengers**.",
+          "최대 네 명의 승객을"
+        ]
+      ]
+    },
+    {
+      "en": "The company says the service is reliable and **convenient**, and about nine out of ten of the first recorded trips cost less than sixteen dollars.",
+      "b2": false,
+      "chunks": [
+        [
+          "The company says",
+          "그 회사는 말한다"
+        ],
+        [
+          "the service is reliable and **convenient**,",
+          "그 서비스가 믿을 만하고 편리하다고"
+        ],
+        [
+          "and about nine out of ten",
+          "그리고 열 건 중 약 아홉 건이"
+        ],
+        [
+          "of the first recorded trips",
+          "처음 기록된 이용 중"
+        ],
+        [
+          "cost less than sixteen dollars.",
+          "16달러보다 적게 들었다"
+        ]
+      ]
+    },
+    {
+      "en": "However, not everyone is ready to **trust** a car that drives itself.",
+      "b2": false,
+      "chunks": [
+        [
+          "However, not everyone is ready",
+          "하지만 모두가 준비된 것은 아니다"
+        ],
+        [
+          "to **trust** a car",
+          "차를 믿을"
+        ],
+        [
+          "that drives itself.",
+          "스스로 운전하는"
+        ]
+      ]
+    },
+    {
+      "en": "Some people **worry** about what will happen if the computer makes a mistake on a busy road, and others ask what these cars will mean for people who drive taxis **for a living**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Some people **worry**",
+          "어떤 사람들은 걱정한다"
+        ],
+        [
+          "about what will happen",
+          "무슨 일이 생길지"
+        ],
+        [
+          "if the computer makes a mistake",
+          "컴퓨터가 실수를 하면"
+        ],
+        [
+          "on a busy road,",
+          "붐비는 도로에서"
+        ],
+        [
+          "and others ask",
+          "그리고 다른 사람들은 묻는다"
+        ],
+        [
+          "what these cars will mean",
+          "이 차들이 무엇을 의미할지"
+        ],
+        [
+          "for people who drive taxis",
+          "택시를 모는 사람들에게"
+        ],
+        [
+          "**for a living**.",
+          "생계로"
+        ]
+      ]
+    },
+    {
+      "en": "On Tuesday morning, only eight of these cars were **available** in the whole area, so it will take some time to learn which side is right.",
+      "b2": false,
+      "chunks": [
+        [
+          "On Tuesday morning,",
+          "화요일 아침에"
+        ],
+        [
+          "only eight of these cars",
+          "이 차들 중 여덟 대만"
+        ],
+        [
+          "were **available**",
+          "이용할 수 있었다"
+        ],
+        [
+          "in the whole area,",
+          "그 지역 전체에서"
+        ],
+        [
+          "so it will take some time",
+          "그래서 시간이 좀 걸릴 것이다"
+        ],
+        [
+          "to learn which side is right.",
+          "어느 쪽이 맞는지 알기까지"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "covers",
+      "(지역을) 아우르다, 포함하다"
+    ],
+    [
+      "passengers",
+      "승객들 (복수형)"
+    ],
+    [
+      "convenient",
+      "편리한"
+    ],
+    [
+      "trust",
+      "믿다, 신뢰하다"
+    ],
+    [
+      "worry",
+      "걱정하다"
+    ],
+    [
+      "for a living",
+      "생계로, 직업으로"
+    ],
+    [
+      "available",
+      "이용할 수 있는"
+    ]
+  ],
+  "points": [
+    {
+      "title": "큰 숫자와 비율",
+      "body": "`one hundred and forty-five square miles`는 145제곱마일, `nine out of ten`은 '열 건 중 아홉 건(90%)'이에요. 숫자를 읽는 즉시 아라비아 숫자로 바꿔 그려 보세요."
+    },
+    {
+      "title": "take + 시간 + to 동사",
+      "body": "`it will take some time to learn`은 '알기까지 시간이 좀 걸릴 것이다'라는 뜻이에요. take를 '가져가다, 사용하다'로 읽지 않도록 주의하세요."
+    }
+  ],
+  "answers": [
+    "11월 2일부터 미국의 큰 도시인 포트워스 사람들은 앱으로 운전석에 아무도 없는 차를 부를 수 있다.",
+    "테슬라가 운영하는 이 새 서비스는 약 145제곱마일을 아우르며, 차 한 대에 승객을 최대 네 명까지 태울 수 있다.",
+    "회사는 이 서비스가 믿을 만하고 편리하다고 말하며, 처음 기록된 이용 중 열 건에 아홉 건 정도는 요금이 16달러가 안 됐다.",
+    "하지만 모두가 스스로 운전하는 차를 믿을 준비가 된 것은 아니다.",
+    "어떤 사람들은 붐비는 도로에서 컴퓨터가 실수하면 어떻게 될지 걱정하고, 또 어떤 사람들은 택시 운전으로 생계를 꾸리는 사람들에게 이 차들이 어떤 의미가 될지 묻는다.",
+    "화요일 아침에는 그 지역 전체에서 이용할 수 있는 차가 여덟 대뿐이어서, 어느 쪽이 맞는지 알기까지는 시간이 좀 걸릴 것이다."
+  ],
+  "advanced": [
+    {
+      "word": "autonomous",
+      "meaning": "자율의, 자율 주행의",
+      "confuse": null,
+      "example": "The **autonomous** cars drive around the city with nobody in the driver's seat.",
+      "example_ko": "자율 주행 차들은 운전석에 아무도 없이 도시를 돌아다닌다."
+    },
+    {
+      "word": "reliable",
+      "meaning": "믿을 만한, 신뢰할 수 있는",
+      "confuse": "reliant(의존하는)와 혼동 주의",
+      "example": "The company claims that the service is **reliable**.",
+      "example_ko": "회사는 그 서비스가 믿을 만하다고 주장한다."
+    },
+    {
+      "word": "affordable",
+      "meaning": "(가격이) 적당한, 저렴한",
+      "confuse": null,
+      "example": "Most of the first rides were **affordable**, costing less than sixteen dollars.",
+      "example_ko": "첫 이용 대부분은 16달러도 안 들어 부담이 적었다."
+    },
+    {
+      "word": "skeptical",
+      "meaning": "회의적인",
+      "confuse": null,
+      "example": "Many residents are still **skeptical** about cars that drive themselves.",
+      "example_ko": "많은 주민이 스스로 운전하는 차에 대해 아직 회의적이다."
+    },
+    {
+      "word": "livelihood",
+      "meaning": "생계",
+      "confuse": null,
+      "example": "Some taxi drivers fear that robotaxis could threaten their **livelihood**.",
+      "example_ko": "일부 택시 기사들은 로보택시가 자신들의 생계를 위협할까 봐 두려워한다."
+    },
+    {
+      "word": "expand",
+      "meaning": "확장하다, 넓히다",
+      "confuse": "expend(소비하다)와 혼동 주의",
+      "example": "The company has **expanded** its driverless service to a seventh American city.",
+      "example_ko": "그 회사는 무인 서비스를 미국의 일곱 번째 도시로 넓혔다."
+    },
+    {
+      "word": "liability",
+      "meaning": "(법적) 책임",
+      "confuse": "reliability(신뢰성)와 혼동 주의",
+      "example": "If a driverless car causes a crash, it is not always clear who has **liability**.",
+      "example_ko": "무인 차가 사고를 내면 누구에게 책임이 있는지 늘 분명하지는 않다."
+    }
+  ],
+  "source": {
+    "title": "Driverless Tesla Robotaxis are now cruising on Fort Worth streets (CultureMap Fort Worth, 2026-11-03)",
+    "url": "https://fortworth.culturemap.com/news/city-life/tesla-robotaxis-launch-fort-worth/"
+  },
+  "photo_scene": "Medium close-up of a clean white electric SUV with a small sensor unit on its roof, driving slowly down a sunny tree-lined city street, the driver's seat clearly empty through the side window, warm late-afternoon light.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Since November second, people in Fort Worth can call a car with no driver.",
+          "chunks": [
+            [
+              "Since November second,",
+              "11월 2일부터"
+            ],
+            [
+              "people in Fort Worth",
+              "포트워스 사람들은"
+            ],
+            [
+              "can call a car",
+              "차를 부를 수 있다"
+            ],
+            [
+              "with no driver.",
+              "운전자가 없는"
+            ]
+          ]
+        },
+        {
+          "en": "The area is about one hundred and forty-five square miles, and each car carries up to four **passengers**.",
+          "chunks": [
+            [
+              "The area is about",
+              "그 지역은 약"
+            ],
+            [
+              "one hundred and forty-five square miles,",
+              "145제곱마일이고"
+            ],
+            [
+              "and each car carries",
+              "각 차는 태운다"
+            ],
+            [
+              "up to four **passengers**.",
+              "최대 네 명의 승객을"
+            ]
+          ]
+        },
+        {
+          "en": "Tesla says the service is **convenient**, and most early trips cost less than sixteen dollars.",
+          "chunks": [
+            [
+              "Tesla says",
+              "테슬라는 말한다"
+            ],
+            [
+              "the service is **convenient**,",
+              "그 서비스가 편리하다고"
+            ],
+            [
+              "and most early trips",
+              "그리고 초기 이용 대부분은"
+            ],
+            [
+              "cost less than sixteen dollars.",
+              "16달러보다 적게 들었다"
+            ]
+          ]
+        },
+        {
+          "en": "But not everyone wants to **trust** a car that drives itself.",
+          "chunks": [
+            [
+              "But not everyone wants",
+              "하지만 모두가 원하지는 않는다"
+            ],
+            [
+              "to **trust** a car",
+              "차를 믿기를"
+            ],
+            [
+              "that drives itself.",
+              "스스로 운전하는"
+            ]
+          ]
+        },
+        {
+          "en": "Some people **worry** about mistakes on busy roads, and some taxi drivers worry about their jobs.",
+          "chunks": [
+            [
+              "Some people **worry**",
+              "어떤 사람들은 걱정한다"
+            ],
+            [
+              "about mistakes on busy roads,",
+              "붐비는 도로에서의 실수를"
+            ],
+            [
+              "and some taxi drivers",
+              "그리고 어떤 택시 기사들은"
+            ],
+            [
+              "worry about their jobs.",
+              "자기 일자리를 걱정한다"
+            ]
+          ]
+        },
+        {
+          "en": "On Tuesday morning, only eight cars were **available**, so we need time to learn more.",
+          "chunks": [
+            [
+              "On Tuesday morning,",
+              "화요일 아침에"
+            ],
+            [
+              "only eight cars were **available**,",
+              "여덟 대만 이용할 수 있었다"
+            ],
+            [
+              "so we need time",
+              "그래서 시간이 필요하다"
+            ],
+            [
+              "to learn more.",
+              "더 알아보려면"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "11월 2일부터 포트워스 사람들은 운전자가 없는 차를 부를 수 있다.",
+        "그 지역은 약 145제곱마일이고, 차 한 대에 승객을 최대 네 명까지 태운다.",
+        "테슬라는 그 서비스가 편리하다고 말하고, 초기 이용 대부분은 16달러가 안 들었다.",
+        "하지만 모두가 스스로 운전하는 차를 믿고 싶어 하는 것은 아니다.",
+        "어떤 사람들은 붐비는 도로에서의 실수를 걱정하고, 어떤 택시 기사들은 일자리를 걱정한다.",
+        "화요일 아침에는 여덟 대만 이용할 수 있어서, 더 알아보려면 시간이 필요하다."
+      ]
+    }
+  }
+}
