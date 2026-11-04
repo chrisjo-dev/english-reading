@@ -1,16 +1,16 @@
 {
  "date": "2026-11-05",
- "words_total": 496,
+ "words_total": 503,
  "langs": {
   "en": {
-   "count": 33,
-   "latest": "2026-11-04",
-   "topic": "불 끄는 섬",
+   "count": 34,
+   "latest": "2026-11-05",
+   "topic": "로보택시",
    "sentences": [
-    "On the small island of Corvo in the Azores, about four hundred and fifty people have agreed to live in the dark for a while.",
-    "Since October twenty-first, the streets and public buildings have turned off their lights at night, and the **blackout** will last for almost three weeks.",
-    "The reason is a seabird called the shearwater: around six thousand pairs **nest** on the island, and their young birds leave home at this time of year.",
-    "The young birds, which usually find their way to the ocean by following the light of the stars, can easily be **confused** by bright street lamps and fly **inland** instead."
+    "Starting on November second, people in Fort Worth, a large American city, can use an app to call a car with nobody in the driver's seat.",
+    "The new service, which is run by Tesla, **covers** about one hundred and forty-five square miles, and each car can carry up to four **passengers**.",
+    "The company says the service is reliable and **convenient**, and about nine out of ten of the first recorded trips cost less than sixteen dollars.",
+    "However, not everyone is ready to **trust** a car that drives itself."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 2문장",
     "약 3분"
    ],
-   "answer": "아조레스 제도의 작은 섬 코르부에서는 약 450명의 주민이 한동안 어둠 속에서 지내기로 했다.",
+   "answer": "11월 2일부터 미국의 큰 도시인 포트워스 사람들은 앱으로 운전석에 아무도 없는 차를 부를 수 있다.",
    "words": [
     [
-     "blackout",
-     "소등, 정전"
+     "covers",
+     "(지역을) 아우르다, 포함하다"
     ],
     [
-     "nest",
-     "둥지를 틀다"
+     "passengers",
+     "승객들 (복수형)"
     ],
     [
-     "confused",
-     "혼란스러운"
+     "convenient",
+     "편리한"
     ],
     [
-     "inland",
-     "내륙으로"
+     "trust",
+     "믿다, 신뢰하다"
     ],
     [
-     "crash",
-     "충돌하다, 부딪히다"
+     "worry",
+     "걱정하다"
     ],
     [
-     "reduced",
-     "줄이다 (과거분사형)"
+     "for a living",
+     "생계로, 직업으로"
     ],
     [
-     "chick",
-     "새끼 새"
+     "available",
+     "이용할 수 있는"
     ]
    ],
    "review": {
@@ -160,6 +160,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-05",
+   "topic": "로보택시"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-05",
    "topic": "서점 아르바이트"
@@ -258,11 +263,6 @@
    "lang": "de",
    "day": "2026-10-30",
    "topic": "단풍의 과학"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-29",
-   "topic": "휴머노이드 공장"
   }
  ]
 }
