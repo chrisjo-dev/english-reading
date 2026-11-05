@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-06",
+  "category": "science",
+  "topic": "교차된 뇌",
+  "title_ko": "왼손을 오른쪽 뇌가 맡는 이유",
+  "headline": "Why Each Side of the Brain Works the Other Side",
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "When you touch something with your left hand, the signal goes to the right side of your brain, and when you move your right leg, the order comes from the left side.", "b2": false,
+     "chunks": [["When you touch something", "네가 무언가를 만질 때"], ["with your left hand,", "왼손으로"], ["the signal goes", "그 신호는 간다"], ["to the right side of your brain,", "뇌의 오른쪽으로"], ["and when you move your right leg,", "그리고 오른쪽 다리를 움직일 때"], ["the order comes", "그 명령은 온다"], ["from the left side.", "왼쪽에서"]]},
+    {"en": "Scientists have known about this crossed wiring for a long time, but they have never fully understood why it **exists**.", "b2": false,
+     "chunks": [["Scientists have known", "과학자들은 알고 있었다"], ["about this crossed wiring", "이 교차된 연결에 대해"], ["for a long time,", "오랫동안"], ["but they have never fully understood", "하지만 완전히 이해한 적은 없다"], ["why it **exists**.", "그것이 왜 존재하는지"]]},
+    {"en": "A new paper **suggests** that it all started with the eyes of simple fish that lived more than five hundred million years ago.", "b2": false,
+     "chunks": [["A new paper **suggests**", "새 논문은 시사한다"], ["that it all started", "그 모든 것이 시작되었다고"], ["with the eyes of simple fish", "단순한 물고기의 눈에서"], ["that lived", "살았던"], ["more than five hundred million years ago.", "5억 년도 더 전에"]]},
+    {"en": "In these early fish, signals from each eye crossed to the **opposite** side of the brain, which helped the fish react quickly to things they saw.", "b2": false,
+     "chunks": [["In these early fish,", "이 초기 물고기들에서는"], ["signals from each eye", "각 눈에서 온 신호가"], ["crossed to the **opposite** side", "반대쪽으로 건너갔다"], ["of the brain,", "뇌의"], ["which helped the fish", "그것은 물고기를 도왔다"], ["react quickly", "빠르게 반응하도록"], ["to things they saw.", "눈에 보인 것들에"]]},
+    {"en": "Later, new **pathways** for touch and movement, which appeared long after the eyes, were built on top of this old system and kept its crossed design.", "b2": true,
+     "chunks": [["Later,", "나중에"], ["new **pathways** for touch and movement,", "촉각과 움직임을 위한 새 경로들이"], ["which appeared long after the eyes,", "눈보다 한참 뒤에 생겨난"], ["were built", "만들어졌다"], ["on top of this old system", "이 오래된 체계 위에"], ["and kept its crossed design.", "그리고 그 교차된 구조를 그대로 유지했다"]]},
+    {"en": "The authors think this crossing is not a special **advantage** but a **side effect**, and they say the idea could be tested with **fossil** skulls of those fish.", "b2": false,
+     "chunks": [["The authors think", "저자들은 생각한다"], ["this crossing is not a special **advantage**", "이 교차가 특별한 이점이 아니라"], ["but a **side effect**,", "부수적인 결과라고"], ["and they say", "그리고 그들은 말한다"], ["the idea could be tested", "그 생각은 검증될 수 있다고"], ["with **fossil** skulls of those fish.", "그 물고기들의 화석 두개골로"]]}
+  ],
+  "words": [
+    ["exists", "존재하다"],
+    ["suggests", "시사하다, 암시하다"],
+    ["opposite", "반대(쪽)의"],
+    ["pathways", "경로들 (복수형)"],
+    ["advantage", "이점, 장점"],
+    ["side effect", "부작용, 부수 효과"],
+    ["fossil", "화석"]
+  ],
+  "points": [
+    {"title": "suggests that = 시사하다", "body": "`A new paper suggests that ...`의 suggest는 '제안하다'가 아니라 '(연구나 증거가) ~라는 것을 시사하다'예요. 논문이나 연구가 주어로 오면 거의 이 뜻입니다."},
+    {"title": "문장 끝의 큰 숫자", "body": "`more than five hundred million years ago`는 '5억 년도 더 전에'예요. hundred million = 1억이니, five hundred million = 5억입니다. 시간 정보가 문장 맨 끝에 있어요."}
+  ],
+  "answers": [
+    "왼손으로 무언가를 만지면 그 신호는 뇌의 오른쪽으로 가고, 오른쪽 다리를 움직일 때는 그 명령이 왼쪽에서 나온다.",
+    "과학자들은 이 교차된 연결에 대해 오래전부터 알고 있었지만, 그것이 왜 존재하는지는 한 번도 완전히 이해하지 못했다.",
+    "새 논문은 이 모든 것이 5억 년도 더 전에 살았던 단순한 물고기의 눈에서 시작되었다고 시사한다.",
+    "이 초기 물고기들에게서는 각 눈의 신호가 뇌의 반대쪽으로 건너갔고, 이것이 물고기가 눈에 보이는 것에 빠르게 반응하도록 도왔다.",
+    "나중에, 눈보다 한참 뒤에 생겨난 촉각과 움직임을 위한 새 경로들이 이 오래된 체계 위에 만들어졌고, 그 교차된 구조를 그대로 물려받았다.",
+    "저자들은 이 교차가 특별한 이점이 아니라 부수적인 결과라고 생각하며, 그 생각은 그 물고기들의 화석 두개골로 검증해 볼 수 있다고 말한다."
+  ],
+  "advanced": [
+    {"word": "hemisphere", "meaning": "(뇌의) 반구", "confuse": null, "example": "Each **hemisphere** of the brain controls the opposite side of the body.", "example_ko": "뇌의 각 반구는 몸의 반대쪽을 조절합니다."},
+    {"word": "originate", "meaning": "비롯되다, 유래하다", "confuse": "original(원래의)과 혼동 주의", "example": "The crossed wiring may have **originated** in the eyes of ancient fish.", "example_ko": "교차된 연결은 고대 물고기의 눈에서 비롯되었을 수 있습니다."},
+    {"word": "inherit", "meaning": "물려받다", "confuse": "inhabit(살다, 거주하다)과 혼동 주의", "example": "Newer pathways **inherited** the crossed design of the old visual system.", "example_ko": "더 새로운 경로들은 오래된 시각 체계의 교차 구조를 물려받았습니다."},
+    {"word": "byproduct", "meaning": "부산물", "confuse": null, "example": "The authors see the crossing as a **byproduct** of evolution.", "example_ko": "저자들은 그 교차를 진화의 부산물로 봅니다."},
+    {"word": "hypothesis", "meaning": "가설", "confuse": null, "example": "Their **hypothesis** has not been proven yet.", "example_ko": "그들의 가설은 아직 증명되지 않았습니다."},
+    {"word": "verify", "meaning": "검증하다, 확인하다", "confuse": null, "example": "Fossil skulls could help scientists **verify** the idea.", "example_ko": "화석 두개골이 과학자들이 그 생각을 검증하는 데 도움이 될 수 있습니다."},
+    {"word": "ancestral", "meaning": "조상의", "confuse": "ancestor(조상)와 품사 구분 주의", "example": "The pattern may come from an **ancestral** fish without jaws.", "example_ko": "그 패턴은 턱이 없는 조상 물고기에게서 왔을 수 있습니다."}
+  ],
+  "source": {"title": "Scientists may have finally explained why our brains and bodies are cross-wired (ScienceDaily, 2026-11-04)", "url": "https://sciencedaily.com/releases/2026/11/261103003146.htm"},
+  "photo_scene": "Close-up of a person's left hand resting on a white anatomical brain model on a wooden desk, warm afternoon window light, soft blurred bookshelf behind.",
+  "levels": {"a": {
+    "sentences": [
+      {"en": "Your left hand sends signals to the right side of your brain.", "chunks": [["Your left hand sends signals", "네 왼손은 신호를 보낸다"], ["to the right side of your brain.", "뇌의 오른쪽으로"]]},
+      {"en": "Scientists know this, but they do not know why it **exists**.", "chunks": [["Scientists know this,", "과학자들은 이것을 안다"], ["but they do not know", "하지만 모른다"], ["why it **exists**.", "왜 그것이 존재하는지"]]},
+      {"en": "A new paper says it started with fish from five hundred million years ago.", "chunks": [["A new paper says", "새 논문은 말한다"], ["it started with fish", "그것이 물고기에서 시작되었다고"], ["from five hundred million years ago.", "5억 년 전의"]]},
+      {"en": "In those fish, signals from each eye went to the **opposite** side of the brain.", "chunks": [["In those fish,", "그 물고기들에서는"], ["signals from each eye", "각 눈의 신호가"], ["went to the **opposite** side", "반대쪽으로 갔다"], ["of the brain.", "뇌의"]]},
+      {"en": "Later, new **pathways** for touch and movement kept the same crossed design.", "chunks": [["Later,", "나중에"], ["new **pathways** for touch and movement", "촉각과 움직임을 위한 새 경로들이"], ["kept the same crossed design.", "같은 교차 구조를 유지했다"]]},
+      {"en": "The authors think it is a **side effect**, not a special **advantage**.", "chunks": [["The authors think", "저자들은 생각한다"], ["it is a **side effect**,", "그것이 부수적인 결과라고"], ["not a special **advantage**.", "특별한 이점이 아니라"]]}
+    ],
+    "answers": [
+      "왼손은 뇌의 오른쪽으로 신호를 보낸다.",
+      "과학자들은 이것을 알지만, 왜 그런지는 모른다.",
+      "새 논문은 그것이 5억 년 전의 물고기에서 시작되었다고 말한다.",
+      "그 물고기들에서는 각 눈의 신호가 뇌의 반대쪽으로 갔다.",
+      "나중에 촉각과 움직임을 위한 새 경로들도 같은 교차 구조를 유지했다.",
+      "저자들은 그것이 특별한 이점이 아니라 부수적인 결과라고 생각한다."
+    ]
+  }}
+}
