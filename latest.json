@@ -1,52 +1,52 @@
 {
  "date": "2026-11-06",
- "words_total": 517,
+ "words_total": 524,
  "langs": {
   "en": {
-   "count": 34,
-   "latest": "2026-11-05",
-   "topic": "로보택시",
+   "count": 35,
+   "latest": "2026-11-06",
+   "topic": "교차된 뇌",
    "sentences": [
-    "Starting on November second, people in Fort Worth, a large American city, can use an app to call a car with nobody in the driver's seat.",
-    "The new service, which is run by Tesla, **covers** about one hundred and forty-five square miles, and each car can carry up to four **passengers**.",
-    "The company says the service is reliable and **convenient**, and about nine out of ten of the first recorded trips cost less than sixteen dollars.",
-    "However, not everyone is ready to **trust** a car that drives itself."
+    "When you touch something with your left hand, the signal goes to the right side of your brain, and when you move your right leg, the order comes from the left side.",
+    "Scientists have known about this crossed wiring for a long time, but they have never fully understood why it **exists**.",
+    "A new paper **suggests** that it all started with the eyes of simple fish that lived more than five hundred million years ago.",
+    "In these early fish, signals from each eye crossed to the **opposite** side of the brain, which helped the fish react quickly to things they saw."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 3분"
    ],
-   "answer": "11월 2일부터 미국의 큰 도시인 포트워스 사람들은 앱으로 운전석에 아무도 없는 차를 부를 수 있다.",
+   "answer": "왼손으로 무언가를 만지면 그 신호는 뇌의 오른쪽으로 가고, 오른쪽 다리를 움직일 때는 그 명령이 왼쪽에서 나온다.",
    "words": [
     [
-     "covers",
-     "(지역을) 아우르다, 포함하다"
+     "exists",
+     "존재하다"
     ],
     [
-     "passengers",
-     "승객들 (복수형)"
+     "suggests",
+     "시사하다, 암시하다"
     ],
     [
-     "convenient",
-     "편리한"
+     "opposite",
+     "반대(쪽)의"
     ],
     [
-     "trust",
-     "믿다, 신뢰하다"
+     "pathways",
+     "경로들 (복수형)"
     ],
     [
-     "worry",
-     "걱정하다"
+     "advantage",
+     "이점, 장점"
     ],
     [
-     "for a living",
-     "생계로, 직업으로"
+     "side effect",
+     "부작용, 부수 효과"
     ],
     [
-     "available",
-     "이용할 수 있는"
+     "fossil",
+     "화석"
     ]
    ],
    "review": {
@@ -164,6 +164,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-06",
+   "topic": "교차된 뇌"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-06",
    "topic": "고가라시"
@@ -262,11 +267,6 @@
    "lang": "de",
    "day": "2026-10-31",
    "topic": "보덴호 여행"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-30",
-   "topic": "유성의 일생"
   }
  ]
 }
