@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>독일어 읽기, 11월 6일 | 독해한입</title>
+<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
+<meta name="description" content="B1~B2 독일어 읽기 — 고슴도치의 겨울잠. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="독해한입: 매일 독일어 읽기">
+<meta property="og:title" content="오늘은 고슴도치의 겨울잠 이야기예요 | 독해한입">
+<meta property="og:description" content="B1~B2 독일어 읽기 — 고슴도치의 겨울잠. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.">
+<meta property="og:url" content="https://read.wspace.ai.kr/de/2026-11-06/">
+<meta property="og:image" content="https://read.wspace.ai.kr/de/2026-11-06/thumb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://read.wspace.ai.kr/de/2026-11-06/">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684;
+    --line: #f2f4f6; --blue: #1b64da; --blue-soft: #e8f3ff; --blue-press: #1550b8;
+    --hl: #fff3c4; --coral: #f04452; --coral-soft: #ffeeee;
+    /* 소프트 UI 공통 값(랜딩과 같은 결): 카드 반경과 아주 옅은 그림자, 떠 있는 위 메뉴 바 그림자 */
+    --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); --bar-sh: 0 2px 10px rgba(16,24,40,.06);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 16px; line-height: 1.6; letter-spacing: -0.01em;
+    word-break: keep-all; overflow-wrap: anywhere;
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 0 0 calc(24px + env(safe-area-inset-bottom)); }
+  .top { background: var(--card); padding: 28px 20px 24px; border-radius: var(--card-r); margin: 12px 12px 0; box-shadow: var(--card-sh); }
+  .date { font-size: 14px; font-weight: 600; color: var(--muted); }
+  h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 14px; letter-spacing: -0.03em; }
+  h1 em { font-style: normal; color: var(--blue); }
+  .top h1 { padding-right: 84px; }  /* 오른쪽 위 썸네일(76px)과 긴 제목이 겹치지 않게 */
+  .headline { margin: -8px 0 14px; font-size: 16px; font-weight: 600; color: var(--sub); letter-spacing: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+  .chip.blue { background: var(--blue-soft); color: var(--blue); }
+  .chip.easy { background: var(--blue); color: #fff; }
+  .card { background: var(--card); border-radius: var(--card-r); margin: 12px 12px 0; padding: 22px 20px; box-shadow: var(--card-sh); }
+  /* 위 메뉴 바가 따라오므로 앵커와 학습 방법 안내가 비추는 카드가 바 아래에 가리지 않게 띄운다 */
+  [id], .card { scroll-margin-top: 84px; }
+  .step { font-size: 13px; font-weight: 700; color: var(--blue); }
+  h2 { font-size: 20px; font-weight: 700; margin: 2px 0 16px; letter-spacing: -0.02em; }
+  .sent { display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .sent:first-of-type { border-top: 0; padding-top: 0; }
+  /* 목록 첫 줄 위에는 구분선을 두지 않는다(앞에 도구 줄이나 STEP 제목이 와서 :first-of-type 이 안 맞는 경우) */
+  .sent:not(.sent + .sent), .word:not(.word + .word), .adv:not(.adv + .adv) { border-top: 0; padding-top: 0; }
+  .sent:last-of-type { padding-bottom: 0; }
+  .no { flex: none; width: 32px; height: 32px; margin-top: 0; border-radius: 10px;
+        background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700;
+        display: grid; place-items: center; position: relative; }
+  .no::before { content: ''; position: absolute; inset: -6px; }
+  .en, .en-a { font-size: 18px; line-height: 1.75; letter-spacing: 0; font-weight: 500; }
+  .en b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .en-a b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
+           background: var(--coral-soft); color: var(--coral); margin-left: 6px; vertical-align: 2px; }
+  .word { display: flex; justify-content: space-between; align-items: center; gap: 16px;
+          padding: 13px 0; border-top: 1px solid var(--line); }
+  .word:first-of-type { border-top: 0; padding-top: 0; }
+  .word:last-of-type { padding-bottom: 0; }
+  .word .wl { display: flex; align-items: center; gap: 4px; }
+  .word .w { font-size: 17px; font-weight: 700; letter-spacing: 0; white-space: nowrap; flex: none; }
+  .word .m { font-size: 15px; color: var(--sub); text-align: right; }
+  .point { background: var(--bg); border-radius: 14px; padding: 14px 16px; }
+  .point + .point { margin-top: 8px; }
+  .point strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .point p { margin: 0; font-size: 15px; color: var(--sub); }
+  code { font-family: inherit; font-weight: 600; color: var(--blue); letter-spacing: 0; }
+  .guide { background: var(--blue-soft); }
+  .guide h2 { margin-bottom: 6px; }
+  .guide p { margin: 0; font-size: 15px; color: var(--sub); }
+  details.card { padding: 0; overflow: hidden; }
+  summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+            gap: 12px; padding: 20px; min-height: 64px; }
+  summary::-webkit-details-marker { display: none; }
+  summary .t { font-size: 17px; font-weight: 700; }
+  summary .s { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 1px; }
+  summary svg { flex: none; width: 20px; height: 20px; color: var(--muted); transition: transform .2s; }
+  details[open] summary svg { transform: rotate(180deg); }
+  summary:active { background: #f9fafb; }
+  .body { padding: 0 20px 22px; }
+  .ko, .ko-a { font-size: 16px; line-height: 1.7; color: var(--ink); }
+  .adv { padding: 14px 0; border-top: 1px solid var(--line); }
+  .adv:first-of-type { border-top: 0; padding-top: 0; }
+  .adv:last-of-type { padding-bottom: 0; }
+  .adv .w { font-size: 17px; font-weight: 700; letter-spacing: 0; display: flex; align-items: center; gap: 4px; }
+  .adv .w .wt { white-space: nowrap; }
+  .adv .m { font-size: 15px; color: var(--sub); margin-top: 2px; }
+  .adv .ex { font-size: 14px; color: var(--sub); background: var(--bg); border-radius: 10px;
+             padding: 9px 12px; margin-top: 8px; letter-spacing: 0; }
+  .adv .ex b { color: var(--blue); font-weight: 700; }
+  .adv .ex-ko { font-size: 13px; color: var(--muted); margin-top: 4px; padding: 0 2px; }
+  /* 단어 발음 버튼 */
+  .wbtn { flex: none; width: 28px; height: 28px; border: 0; border-radius: 8px; background: transparent;
+          color: var(--muted); cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .wbtn:hover { color: var(--blue); }
+  .wbtn.playing { color: var(--blue); }
+  .wbtn svg { width: 16px; height: 16px; }
+  .warn { display: block; color: var(--coral); font-weight: 600; }
+  .tools { display: flex; gap: 8px; margin: -4px 0 16px; }
+  .tool { flex: 1; height: 44px; border: 0; border-radius: 12px; background: var(--bg); color: var(--sub);
+          font: 600 14px Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; cursor: pointer;
+          display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+  .tool.main { background: var(--blue-soft); color: var(--blue); }
+  .tool.on { background: var(--blue); color: #fff; }
+  .tool:active { transform: scale(.97); }
+  .tool svg { width: 16px; height: 16px; flex: none; }
+  .h2row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 2px 0 16px; }
+  .h2row h2 { margin: 0; }
+  .howto { flex: none; height: 32px; padding: 0 12px; border: 0; border-radius: 10px; background: var(--blue-soft); color: var(--blue);
+           font: 700 13px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .tour-spot { position: fixed; z-index: 50; border-radius: 14px; box-shadow: 0 0 0 9999px rgba(25,31,40,.62);
+               transition: top .25s, left .25s, width .25s, height .25s; pointer-events: none; }
+  .tour-tip { position: fixed; z-index: 51; left: 12px; right: 12px; max-width: 420px; margin: 0 auto; background: #fff; border-radius: 18px;
+              padding: 18px 18px 14px; box-shadow: 0 12px 32px rgba(0,0,0,.18); }
+  .tour-tip .n { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--blue); }
+  .tour-tip .n span { color: var(--muted); font-weight: 600; }
+  .tour-tip h3 { font-size: 17px; font-weight: 800; margin: 4px 0 6px; letter-spacing: -0.02em; }
+  .tour-tip p { font-size: 15px; line-height: 1.6; color: var(--sub); margin: 0; }
+  .tour-tip p b { color: var(--ink); }
+  .tour-flow { margin: 2px 0 12px; padding: 0 0 0 20px; display: grid; gap: 4px; }
+  .tour-flow li::marker { color: var(--blue); font-weight: 700; }
+  .tour-tip .act { display: flex; gap: 8px; margin-top: 14px; }
+  .tour-tip button { height: 42px; border: 0; border-radius: 12px; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .tour-tip .skip { background: none; color: var(--muted); padding: 0 6px; margin-right: auto; }
+  .tour-tip .prev { background: var(--bg); color: var(--sub); padding: 0 16px; }
+  .tour-tip .next { background: var(--blue); color: #fff; padding: 0 20px; }
+  .tour-block { position: fixed; inset: 0; z-index: 49; }
+  .tool[aria-pressed="true"] { background: var(--blue); color: #fff; }
+  #passage .say { flex: 1; min-width: 0; }
+  #passage .ko, #passage .ko-a { font-size: 14px; line-height: 1.55; color: var(--sub); margin-top: 3px; }
+  [hidden] { display: none !important; }
+  @media (max-width: 420px) { #passage .tools { flex-wrap: wrap; } #passage .tools .tool { flex: 1 1 calc(50% - 4px); max-width: calc(50% - 4px); } }
+  body.nofuri rt { visibility: hidden; }
+  .hint { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+  #passage .no { border: 0; padding: 0; cursor: pointer; font-family: inherit; }
+  #passage .sent.playing .no { background: var(--blue); color: #fff; }
+  #passage .sent.playing .en, #passage .sent.playing .en-a { color: var(--blue-press); }
+  .mine { margin-top: 24px; }
+  .mine label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .mine textarea { display: block; width: 100%; min-height: 168px; resize: vertical; border: 1.5px solid transparent;
+                   border-radius: 14px; background: var(--bg); color: var(--ink); padding: 14px 16px;
+                   font: 400 16px/1.7 Pretendard, -apple-system, sans-serif; letter-spacing: -0.01em; outline: 0; }
+  .mine textarea:focus { border-color: var(--blue); background: #fff; }
+  .mine textarea::placeholder { color: var(--muted); }
+  .mine .tool { width: 100%; margin-top: 8px; flex: none; }
+  .mine-hint { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 8px 2px 0; }
+  .top { position: relative; }
+  .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
+  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }
+  .site-footer { padding-bottom: 32px; }
+  .sub { scroll-margin-top: 84px; }
+  .sub h2 { margin-bottom: 4px; }
+  .sub p { margin: 0 0 14px; font-size: 15px; color: var(--sub); }
+  .sub form { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sub input[type='email'] { flex: 1 1 auto; min-width: 0; height: 48px; border: 1.5px solid transparent; border-radius: 12px; background: var(--bg); padding: 0 14px; font: 400 16px Pretendard, -apple-system, sans-serif; color: var(--ink); outline: 0; }
+  .sub input[type='email']:focus { border-color: var(--blue); background: #fff; }
+  .sub button[type='submit'] { flex: none; height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: 700 15px Pretendard, -apple-system, sans-serif; cursor: pointer; }
+  .sub .note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+  .sub .levels { flex-basis: 100%; display: flex; flex-direction: column; gap: 8px; margin: 0; border: 0; padding: 0; }
+  .sub .levels legend { font-size: 14px; font-weight: 600; margin: 0 0 8px; padding: 0; }
+  .sub .lvopt { display: flex; flex-direction: column; gap: 3px; border: 1.5px solid #e2e6ea; border-radius: 10px; padding: 12px 14px; cursor: pointer; text-align: left; background: #f4f6f8; position: relative; width: 100%; box-sizing: border-box; }
+  .sub .lvopt input[type='radio'] { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .sub .lvopt:has(input:checked),.sub .lvopt[data-checked] { background: #eff3fd; border-color: #2a52d4; }
+  .sub .lvopt .lv-t { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+  .sub .lvopt .lv-r { font-size: 12px; color: var(--muted); }
+  .sub .lvopt .lv-d { font-size: 13px; color: var(--sub); margin-top: 2px; }
+  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none; display: flex; align-items: center; justify-content: center; color: transparent; }
+  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }
+  .sub .level-note { flex-basis: 100%; display: none; }
+  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
+  .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
+  .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
+  /* drill-css */
+  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
+  .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+  .dr-chip { font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+  .dr-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 12px; }
+  .dr-mode { font: inherit; color: var(--ink); border: 1.5px solid #e2e6ea; background: #f4f6f8; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-mode[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; }
+  .dr-mode b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-mode span { display: block; font-size: 12.5px; color: var(--sub); margin-top: 2px; line-height: 1.45; }
+  .dr-mode[aria-pressed=true] b { color: #2a52d4; }
+  .dr-btn { font: inherit; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; height: 52px; width: 100%; border-radius: 12px; background: #2a52d4; color: #fff; font-size: 16px; font-weight: 700; }
+  .dr-btn:active { background: #2143ad; }
+  .dr-btn.ghost { background: #eff3fd; color: #2a52d4; }
+  .dr-foot { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+  .dr-due { display: flex; align-items: center; gap: 14px; margin: 12px 12px 0; padding: 16px 16px 16px 18px; border-radius: 18px; background: #2a52d4; color: #fff; box-shadow: var(--card-sh); }
+  .dr-due[hidden] { display: none; }
+  .dr-due .ic { flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.16); display: grid; place-items: center; font-size: 18px; font-weight: 800; }
+  .dr-due .tx { flex: 1; min-width: 0; }
+  .dr-due b { display: block; font-size: 16px; font-weight: 700; }
+  .dr-due span { display: block; font-size: 13px; opacity: .85; }
+  .dr-due .go { font: inherit; border: 0; cursor: pointer; flex: none; height: 38px; padding: 0 14px; border-radius: 10px; background: #fff; color: #2a52d4; font-size: 14px; font-weight: 700; }
+  body.dr-open { overflow: hidden; }
+  .dr { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  .dr[hidden] { display: none; }
+  .dr-in { max-width: 560px; min-height: 100%; margin: 0 auto; display: flex; flex-direction: column; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); }
+  .dr-bar { display: flex; align-items: center; gap: 10px; height: 56px; margin: 12px 12px 0; padding: 0 16px 0 10px; border-radius: 16px; background: #fff; box-shadow: var(--bar-sh); }
+  .dr-x { font: inherit; border: 0; background: none; cursor: pointer; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--sub); }
+  .dr-x svg { width: 18px; height: 18px; }
+  .dr-bar .t { font-size: 15px; font-weight: 700; flex: 1; }
+  .dr-bar .n { font-size: 14px; font-weight: 700; color: #2a52d4; }
+  .dr-prog { margin: 14px 24px 0; }
+  .dr-track { height: 6px; border-radius: 999px; background: #e3e7ec; overflow: hidden; display: flex; }
+  .dr-track i { display: block; height: 100%; transition: width .25s; }
+  .dr-track .ok { background: #2a52d4; }
+  .dr-track .re { background: #f5a3aa; }
+  .dr-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--sub); }
+  .dr-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .dr-legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dr-legend i.ok { background: #2a52d4; }
+  .dr-legend i.re { background: #f5a3aa; }
+  .dr-fc { flex: 1; margin: 14px 12px 0; background: #fff; border-radius: 24px; box-shadow: var(--card-sh); padding: 22px 22px 24px; display: flex; flex-direction: column; }
+  .dr-fc.fit { flex: none; }
+  .dr-tag { align-self: flex-start; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+  .dr-tag.re { background: #ffeeee; color: #f04452; }
+  .dr-mid { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 24px 0; }
+  .dr-word { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; word-break: break-word; }
+  .dr-word.sm { font-size: 30px; }
+  .dr-pron { font-size: 15px; color: var(--muted); margin-top: -6px; }
+  .dr-listen { font: inherit; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 16px; border-radius: 999px; background: #eff3fd; color: #2a52d4; font-size: 14px; font-weight: 700; }
+  .dr-listen svg { width: 16px; height: 16px; }
+  .dr-hint { font-size: 13px; color: var(--muted); text-align: center; margin: 4px 0 0; }
+  .dr-mean { font-size: 22px; font-weight: 700; color: #2a52d4; letter-spacing: -0.02em; line-height: 1.4; }
+  .dr-ex { width: 100%; text-align: left; background: var(--bg); border-radius: 14px; padding: 14px 16px; }
+  .dr-ex .lb { font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
+  .dr-ex .en { font-size: 15px; line-height: 1.6; margin: 0; }
+  .dr-ex .en b, .dr-qsub b { background: #fff3c4; font-weight: 700; padding: 0 2px; border-radius: 3px; }
+  .dr-ex .ko { font-size: 13.5px; color: var(--sub); margin: 6px 0 0; line-height: 1.55; }
+  .dr-ex .ko.flat { margin: 0; }
+  .dr-acts { margin: 14px 12px 0; }
+  .dr-judge { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .dr-judge button { font: inherit; border: 0; cursor: pointer; height: 56px; border-radius: 14px; font-size: 16px; font-weight: 700; line-height: 1.3; }
+  .dr-judge .dr-no { background: #ffeeee; color: #f04452; }
+  .dr-judge .dr-yes { background: #2a52d4; color: #fff; }
+  .dr-judge small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .dr-judge.sm button { height: 48px; font-size: 15px; }
+  .dr-fc.tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dr-fc.tap:focus-visible, .dr-fc.swipe:focus-visible { outline: 3px solid #2a52d4; outline-offset: 2px; }
+  .dr-listen.on { background: #2a52d4; color: #fff; }
+  .dr-taphint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; color: #2a52d4; margin: 4px 0 0; }
+  .dr-taphint svg { width: 18px; height: 18px; }
+  .dr-stage { flex: 1; position: relative; display: flex; flex-direction: column; }
+  .dr-fc.swipe { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+  .dr-fc.swipe.back { transition: transform .2s ease; }
+  .dr-fc.under { position: absolute; inset: 8px 20px 0; margin: 14px 0 0; opacity: .6; transform: scale(.96); pointer-events: none; }
+  .dr-fc.fly { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; transition: transform .25s ease-in, opacity .25s ease-in; }
+  /* 지문 페이지에 .no 규칙(문장 번호)이 있어 도장은 sy/sn 으로 쓴다 */
+  .dr-stamp { position: absolute; top: 26px; width: max-content; white-space: nowrap; padding: 4px 12px; border: 3px solid; border-radius: 10px; background: #fff; font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; }
+  .dr-stamp.sy { left: 22px; color: #2a52d4; transform: rotate(-12deg); }
+  .dr-stamp.sn { right: 22px; color: #f04452; transform: rotate(12deg); }
+  .dr-swipehint { display: flex; justify-content: space-between; align-items: center; margin: 14px 16px 0; font-size: 13px; font-weight: 700; }
+  .dr-swipehint .l { color: #f04452; }
+  .dr-swipehint .r { color: #2a52d4; }
+  .dr-swipehint .c { font-size: 12px; font-weight: 600; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .dr-fc.swipe.back, .dr-fc.fly { transition: none; } }
+  .dr-q { font-size: 13px; font-weight: 700; color: #2a52d4; }
+  .dr-qword { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; margin: 6px 0 4px; line-height: 1.25; }
+  .dr-qsub { font-size: 14px; color: var(--sub); margin: 0 0 18px; line-height: 1.6; }
+  .dr-opts { display: flex; flex-direction: column; gap: 8px; }
+  .dr-opt { font: inherit; color: var(--ink); cursor: pointer; display: flex; align-items: center; gap: 12px; text-align: left; border: 1.5px solid #e2e6ea; background: #f4f6f8; border-radius: 12px; padding: 13px 14px; font-size: 15px; font-weight: 600; }
+  .dr-opt:disabled { cursor: default; }
+  .dr-opt .k { flex: none; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #c5ccd6; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--sub); background: #fff; }
+  .dr-opt.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; }
+  .dr-opt.wrong .k { background: #f04452; border-color: #f04452; color: #fff; }
+  .dr-opt.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; }
+  .dr-opt.right .k { background: #0f9d6b; border-color: #0f9d6b; color: #fff; }
+  .dr-opt .r { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; }
+  .dr-verdict { margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: #f04452; }
+  .dr-verdict.ok { color: #0f9d6b; }
+  .dr-qts-lb { font-size: 13px; font-weight: 700; color: var(--sub); margin: 2px 0 8px; }
+  .dr-qtypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 14px; }
+  .dr-qt { font: inherit; cursor: pointer; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 10px; padding: 9px 4px; text-align: center; font-size: 14px; font-weight: 700; color: var(--sub); }
+  .dr-qt small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
+  .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
+  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .dr-field:focus { outline: none; border-color: #2a52d4; }
+  .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .dr-field.wrong { border-color: #f04452; background: #ffeeee; color: #f04452; text-decoration: line-through; opacity: 1; -webkit-text-fill-color: #f04452; }
+  .dr-field.right { border-color: #0f9d6b; background: #e8f7f1; color: #0f9d6b; opacity: 1; -webkit-text-fill-color: #0f9d6b; }
+  .dr-skip { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--sub); margin-top: 8px; padding: 8px 0; }
+  .dr-answer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+  .dr-answer .lb { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .dr-answer b { font-size: 20px; font-weight: 800; }
+  .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
+  .dr-gap10 { margin-top: 10px; }
+  .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
+  .dr-blank:empty::before { content: " a0"; }
+  .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr .card { margin: 12px 12px 0; }
+  .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
+  .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
+  .dr-score span { font-size: 18px; font-weight: 700; color: var(--sub); }
+  .dr-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0 0; }
+  .dr-stat { background: var(--bg); border-radius: 12px; padding: 12px; }
+  .dr-stat b { display: block; font-size: 18px; font-weight: 800; }
+  .dr-stat span { font-size: 12px; color: var(--sub); font-weight: 600; }
+  .dr-in h2.dr-h12 { margin-bottom: 12px; }
+  .dr-in h2.dr-h6 { margin-bottom: 6px; }
+  .dr-in p.dr-next { margin: 0 0 14px; font-size: 14px; color: var(--sub); line-height: 1.6; }
+  .dr-wl { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #eef0f3; }
+  .dr-wl:first-child { border-top: 0; padding-top: 0; }
+  .dr-wl b { font-size: 16px; font-weight: 700; }
+  .dr-wl em { font-style: normal; font-size: 12px; font-weight: 700; color: #f04452; background: #ffeeee; padding: 2px 8px; border-radius: 999px; margin-left: 6px; white-space: nowrap; }
+  .dr-wl span { font-size: 14px; color: var(--sub); text-align: right; }
+  .dr-none { font-size: 14px; color: var(--sub); margin: 0; }
+  .dr-sched { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .dr-dot { text-align: center; padding: 10px 4px; border-radius: 12px; background: var(--bg); }
+  .dr-dot b { display: block; font-size: 14px; font-weight: 800; }
+  .dr-dot span { font-size: 11.5px; color: var(--sub); font-weight: 600; }
+  .dr-dot.next { background: #2a52d4; color: #fff; }
+  .dr-dot.next span { color: rgba(255,255,255,.85); }
+  .dr-gap { margin-top: 16px; }
+  /* /drill-css */
+  .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
+  /* gnb-a */
+  .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb button { font: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
+  .gnb svg, .gnb-sheet svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .gnb-in { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 12px 0 16px; }
+  .gnb-brand { display: flex; align-items: center; gap: 6px; height: 44px; margin-right: auto; flex: none; font-size: 17px; font-weight: 800; letter-spacing: -0.035em; color: #191f28; white-space: nowrap; }
+  .gnb-brand img { display: block; height: 26px; width: auto; }
+  /* 누르는 영역(44px)과 보이는 모양(36px)을 나눈다 */
+  .gnb-tap { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; flex: none; }
+  .gnb-chip .gnb-pill { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px 0 12px; border-radius: 999px; background: #f2f4f6; font-size: 14px; font-weight: 700; color: #191f28; white-space: nowrap; }
+  .gnb-chip .gnb-pill svg { color: #6b7684; }
+  .gnb-chip[aria-expanded="true"] .gnb-pill { background: #e8f3ff; color: var(--gnb-blue, #1b64da); }
+  .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
+  .gnb-seg, .gnb-past { display: none; }
+  .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
+  @media (max-width: 350px) { .gnb-brand span { display: none; } }
+  @media (min-width: 768px) {
+    .gnb-in { max-width: 760px; margin: 0 auto; height: 64px; gap: 8px; box-sizing: content-box; padding: 0 24px; }
+    .gnb-brand { font-size: 18px; margin-right: 24px; }
+    .gnb-brand img { height: 28px; }
+    .gnb-chip { display: none; }
+    /* 보이는 칸은 36px, 누르는 칸은 바 높이 44px 전체. 켜진 칸의 흰 알약은 ::before 로 그린다 */
+    .gnb-seg { display: flex; width: 260px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: #f2f4f6; box-sizing: border-box; }
+    .gnb-seg a { position: relative; z-index: 0; flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; font-size: 14px; font-weight: 600; color: #6b7684; white-space: nowrap; }
+    .gnb-seg a:hover { color: #191f28; }
+    .gnb-seg a.on { color: #191f28; font-weight: 700; }
+    .gnb-seg a.on::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+    .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+    .gnb-past:hover { background: #f2f4f6; }
+    .gnb-past.on { color: #191f28; font-weight: 700; }
+  }
+  /* 언어 시트(휴대폰) */
+  .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
+  .gnb-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 24px 24px 0 0;
+               padding: 8px 16px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(16,24,40,.12); color: #191f28;
+               font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; text-align: left; }
+  .gnb-scrim[hidden], .gnb-sheet[hidden] { display: none; }
+  /* 열 때 포커스는 시트 자체로 옮긴다(링크로 옮기면 iOS Safari가 파란 테두리를 그린다). 시트에는 테두리를 그리지 않는다 */
+  .gnb-sheet:focus { outline: none; }
+  html.gnb-lock, html.gnb-lock body { overflow: hidden; }
+  .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
+  /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
+  .gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
+  .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
+  /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
+  .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
+  .gs-row.on { background: #e8f3ff; }
+  .gs-badge { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #f2f4f6; font-size: 13px; font-weight: 800; color: #4e5968; letter-spacing: 0.02em; }
+  .gs-row.on .gs-badge { background: #fff; color: var(--gnb-blue, #1b64da); }
+  .gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px; border-radius: 16px; }
+  .gs-tt { flex: 1; min-width: 0; }
+  .gs-nm { display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 700; }
+  .gs-row.on .gs-nm { color: var(--gnb-blue, #1b64da); }
+  .gs-ds { display: block; font-size: 13px; color: #6b7684; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gs-past { flex: none; align-self: center; display: inline-flex; align-items: center; gap: 2px; height: 44px; padding: 0 6px 0 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #4e5968; white-space: nowrap; }
+  .gs-row.on .gs-past { color: var(--gnb-blue, #1b64da); }
+  .gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }
+  .gs-review { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 12px; border-radius: 16px; }
+  .gs-review[hidden] { display: none; }
+  .gs-review .gs-badge { color: var(--gnb-blue, #1b64da); background: #e8f3ff; }
+  .gs-review .gs-badge svg { width: 20px; height: 20px; }
+  .gs-review > svg { width: 20px; height: 20px; color: #6b7684; }
+  /* 키보드 포커스 테두리는 줄 모양(둥근 16px) 안쪽에 그린다 */
+  .gnb-sheet .gs-tx:focus-visible, .gnb-sheet .gs-review:focus-visible { outline-offset: -2px; border-radius: 16px; }
+  /* /gnb-a */
+  /* day-a */
+  .lvl { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e5e8eb; }
+  .lvl .lb { font-size: 14px; font-weight: 600; color: var(--sub); white-space: nowrap; }
+  .lvl-seg { display: flex; flex: none; width: 152px; height: 44px; padding: 0 4px; gap: 2px; border-radius: 12px; background: var(--bg); box-sizing: border-box; }
+  .lvl-seg a { position: relative; z-index: 0; flex: 1 1 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  html:not(.level-a) #to-level-b, html.level-a #to-level-a { color: var(--ink); font-weight: 700; }
+  html:not(.level-a) #to-level-b::before, html.level-a #to-level-a::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; border-radius: 9px; background: #fff; box-shadow: 0 1px 3px rgba(16,24,40,.10); }
+  .top h1 { font-size: 24px; line-height: 1.36; letter-spacing: -0.035em; }
+  /* 오른쪽 위 76px 썸네일 자리는 사진 배너가 있는 날에는 필요 없다 */
+  .top:has(> .hero) h1 { padding-right: 0; }
+  @media (min-width: 768px) {
+    body > main { max-width: 784px; }
+    main .pbar { max-width: 760px; }
+    .top { padding: 28px 28px 24px; margin-top: 24px; }
+    .top h1 { font-size: 28px; }
+    .top:has(> .hero) { position: relative; padding-right: 308px; min-height: 300px; }
+    .top > .hero { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; margin: 0; aspect-ratio: auto; border-radius: 0 var(--card-r) var(--card-r) 0; }
+  }
+  /* /day-a */
+  .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+  .src a { color: var(--sub); }
+  /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
+     해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
+  #passage .chunks { display: none; flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  #passage .chunks-a { flex-wrap: wrap; gap: 6px 0; cursor: pointer; }
+  body.chunked #passage .chunks { display: flex; }
+  body.chunked #passage .say > .en, body.chunked #passage .say > .en-a { display: none; }
+  body.chunked #passage .say > .ko, body.chunked #passage .say > .ko-a { display: none !important; }
+  .ck { display: inline-flex; flex-direction: column; padding: 2px 0; }
+  .ck .e { font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; }
+  .ck .e b { font-weight: 600; background: linear-gradient(transparent 58%, var(--hl) 58%); }
+  .ck .s { color: var(--muted); padding: 0 6px; font-weight: 400; }
+  .ck .k { display: none; font-size: 13px; line-height: 1.4; color: var(--blue); margin-top: 2px; }
+  body.chunked #passage .say:has(> .ko:not([hidden])) .ck .k { display: block; }
+  #passage .sent.playing .ck .e { color: var(--blue-press); }
+  /* 수준별 콘텐츠: 기초(.en-a/.ko-a/.chunks-a)는 기본 숨김, 중급(.en/.ko/.chunks)은 기본 표시 */
+  .en-a, .ko-a, .chunks-a { display: none; }
+  .chips-a { display: none; flex-wrap: wrap; gap: 6px; }
+  html.level-a .chips { display: none; }
+  html.level-a .chips-a { display: flex; }
+  html.level-a .en-a { display: block; }
+  html.level-a #passage .say > .en { display: none; }
+  html.level-a .ko-a:not([hidden]) { display: block; }
+  html.level-a #passage .ko { display: none !important; }
+  html.level-a .badge { display: none; }
+  html.level-a .chunks { display: none !important; }
+  html.level-a body.chunked .chunks-a { display: flex; }
+  html.level-a body.chunked #passage .say:has(> .ko-a:not([hidden])) .chunks-a .ck .k { display: block; }
+  /* ── 플레이어 바 ─────────────────────── */
+  .pbar { position: fixed; left: 0; right: 0; margin: 0 auto; width: calc(100% - 24px); max-width: 536px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 30; display: none; align-items: center; gap: 10px; background: rgba(255,255,255,.97); border-radius: 18px; padding: 10px 10px 10px 12px; box-shadow: 0 6px 24px rgba(16,24,40,.14); }
+  .pbar.vis { display: flex; }
+  .pbar .pp { flex: none; width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--blue); color: #fff; cursor: pointer; display: grid; place-items: center; }
+  .pbar .pp svg { width: 18px; height: 18px; }
+  .pbar .mid { flex: 1; min-width: 0; }
+  .pbar .t { font-size: 13px; font-weight: 700; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pbar .prog { height: 4px; border-radius: 2px; background: var(--bg); margin-top: 6px; overflow: hidden; }
+  .pbar .prog i { display: block; height: 100%; width: 0; background: var(--blue); border-radius: 2px; transition: width .25s linear; }
+  .pbar .sp { flex: none; height: 36px; padding: 0 12px; border-radius: 10px; border: 0; background: var(--blue-soft); color: var(--blue); font: 800 14px Pretendard, sans-serif; cursor: pointer; }
+  .pbar-close { flex: none; width: 28px; height: 28px; border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 18px; display: grid; place-items: center; padding: 0; line-height: 1; }
+  body.pbar-vis main { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  /* fb */
+  .fb { max-width: 560px; margin: 0 auto; padding: 20px 20px 4px; box-sizing: border-box; }
+  .fb-q { margin: 0; font-size: 15px; font-weight: 700; color: #191f28; }
+  .fb-d { margin: 3px 0 0; font-size: 13px; color: #6b7684; }
+  .fb-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .fb-btn { display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 16px; box-sizing: border-box; border-radius: 22px; background: #fff; border: 1px solid #e5e8eb; font-size: 14px; font-weight: 600; color: #191f28; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .fb-btn:hover { background: #f9fafb; }
+  .fb-btn svg { width: 17px; height: 17px; flex: none; fill: none; stroke: #4e5968; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .fb + .site-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e8eb; }
+  /* /fb */
+</style>
+<script>try{var _lc=location.pathname.split('/')[1]||'en';var _ql=new URLSearchParams(location.search).get('level');if(!_ql){_ql=localStorage.getItem('read_level:'+_lc);if(!_ql&&_lc==='en'){var _old=localStorage.getItem('read_level');if(_old){_ql=_old;localStorage.setItem('read_level:en',_old);localStorage.removeItem('read_level');}}}if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
+     crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
+</head>
+<body>
+<!-- gnb -->
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de" class="on" aria-current="page">독일어</a></nav><a class="gnb-past" href="/de/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 독일어"><span class="gnb-pill">독일어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a></div></header>
+<div class="gnb-scrim" id="gnb-scrim" hidden></div>
+<div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
+  <div class="gs-handle"></div>
+  <h2 id="gnb-sheet-h">어떤 언어를 읽을까요?</h2>
+  <p class="gs-hint">언어를 누르면 그 언어의 오늘 지문으로 가요</p>
+  <div class="gs-row"><a class="gs-tx" href="/en/" data-today="en"><span class="gs-badge" aria-hidden="true">EN</span><span class="gs-tt"><span class="gs-nm">영어</span><span class="gs-ds" data-ds="en" data-level="B1~B2">B1~B2 영어 읽기</span></span></a><a class="gs-past" href="/en/archive/" aria-label="영어 지난 지문">지난 지문<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="gs-row"><a class="gs-tx" href="/ja/" data-today="ja"><span class="gs-badge" aria-hidden="true">JA</span><span class="gs-tt"><span class="gs-nm">일본어</span><span class="gs-ds" data-ds="ja" data-level="JLPT N3">JLPT N3 일본어 읽기</span></span></a><a class="gs-past" href="/ja/archive/" aria-label="일본어 지난 지문">지난 지문<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="gs-row on"><a class="gs-tx" href="/de/" data-today="de" aria-current="true"><span class="gs-badge" aria-hidden="true">DE</span><span class="gs-tt"><span class="gs-nm">독일어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="gs-ds" data-ds="de" data-level="B1~B2">B1~B2 독일어 읽기</span></span></a><a class="gs-past" href="/de/archive/" aria-label="독일어 지난 지문">지난 지문<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <hr>
+  <a class="gs-review" id="gnb-review" data-lang="de" href="/de/review/2026-11-01/"><span class="gs-badge" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="13" height="15" rx="2.5"/><path d="M8 3h9.5A3 3 0 0 1 20.5 6v11"/></svg></span><span class="gs-tt"><span class="gs-nm">이번 주 단어 복습</span><span class="gs-ds" id="gnb-review-ds">독일어 단어 34개를 다시 봐요</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+</div>
+<!-- /gnb -->
+<main>
+<!-- drill-due -->
+  <div class="dr-due" id="dr-due" hidden><span class="ic" id="dr-due-n"></span><div class="tx"><b id="dr-due-t"></b><span id="dr-due-s"></span></div><button class="go" type="button" id="dr-due-go">복습하기</button></div>
+<!-- /drill-due -->
+  <div class="top">
+    <div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>
+    <div class="date">11월 6일 금요일 <span class="cat cat-science">과학</span></div>
+    <h1>오늘은 <em>고슴도치의 겨울잠</em> 이야기예요</h1>
+    <p class="headline" lang="de">Der Igel schläft im Winter</p>
+    <div class="chips">
+      <span class="chip blue">6문장</span>
+      <span class="chip">B1 위주</span>
+      <span class="chip">B2 2문장</span>
+      <span class="chip">약 4분</span>
+    </div>
+    <div class="chips chips-a">
+      <span class="chip blue">6문장</span>
+      <span class="chip easy">기초 A2~B1</span>
+      <span class="chip">약 2분</span>
+    </div>
+    <p class="intro">매일 아침 새로 올라오는 B1~B2 독일어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요.</p>
+    <div class="lvl" id="level-link"><span class="lb">읽기 수준</span><nav class="lvl-seg" aria-label="읽기 수준"><a href="?level=a" id="to-level-a">기초</a><a href="?level=b" id="to-level-b">중급</a></nav></div>
+  </div>
+
+  <section class="card" id="passage">
+    <div class="step">STEP 1</div>
+    <div class="h2row"><h2>오늘의 지문</h2><button class="howto" id="howto" type="button">학습 방법</button></div>
+    <div class="tools">
+      <button class="tool main" id="play" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span></button>
+      <button class="tool" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>지문 복사</span></button>
+      <button class="tool" id="kobtn" type="button" aria-pressed="false">해석 보기</button>
+      <button class="tool" id="chunkbtn" type="button" aria-pressed="false">끊어 읽기</button>
+    </div>
+    <div class="sent"><button class="no" type="button" data-i="0" aria-label="1번 문장 듣기">1</button><div class="say"><div class="en" lang="de">Im Herbst sucht sich der <b>Igel</b> einen geschützten Platz unter Laub oder Holz, weil er bald seinen Winterschlaf beginnt.</div><div class="chunks"><span class="ck"><span class="e">Im Herbst<span class="s">/</span></span><span class="k">가을에</span></span><span class="ck"><span class="e">sucht sich der <b>Igel</b><span class="s">/</span></span><span class="k">고슴도치는 찾습니다</span></span><span class="ck"><span class="e">einen geschützten Platz<span class="s">/</span></span><span class="k">보호받는 자리를</span></span><span class="ck"><span class="e">unter Laub oder Holz,<span class="s">/</span></span><span class="k">낙엽이나 나무 더미 아래에서</span></span><span class="ck"><span class="e">weil er bald<span class="s">/</span></span><span class="k">왜냐하면 그가 곧</span></span><span class="ck"><span class="e">seinen Winterschlaf beginnt.</span><span class="k">겨울잠을 시작하기 때문에</span></span></div><div class="ko" hidden>가을이 되면 고슴도치는 곧 겨울잠을 시작하기 때문에 낙엽이나 나무 더미 아래에서 보호받을 수 있는 자리를 찾습니다.</div><div class="en-a" lang="de">Im Herbst sucht der <b>Igel</b> einen sicheren Platz unter Laub.</div><div class="chunks-a"><span class="ck"><span class="e">Im Herbst<span class="s">/</span></span><span class="k">가을에</span></span><span class="ck"><span class="e">sucht der <b>Igel</b><span class="s">/</span></span><span class="k">고슴도치는 찾습니다</span></span><span class="ck"><span class="e">einen sicheren Platz<span class="s">/</span></span><span class="k">안전한 자리를</span></span><span class="ck"><span class="e">unter Laub.</span><span class="k">낙엽 아래에서</span></span></div><div class="ko-a" hidden>가을에 고슴도치는 낙엽 아래에서 안전한 자리를 찾습니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="1" aria-label="2번 문장 듣기">2</button><div class="say"><div class="en" lang="de">Während des <b>Winterschlafs</b> sinkt die <b>Körpertemperatur</b> des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.</div><div class="chunks"><span class="ck"><span class="e">Während des <b>Winterschlafs</b><span class="s">/</span></span><span class="k">겨울잠을 자는 동안</span></span><span class="ck"><span class="e">sinkt die <b>Körpertemperatur</b> des Igels stark,<span class="s">/</span></span><span class="k">고슴도치의 체온이 크게 떨어집니다</span></span><span class="ck"><span class="e">und sein Herz schlägt<span class="s">/</span></span><span class="k">그리고 그의 심장은 뜁니다</span></span><span class="ck"><span class="e">dann nur noch sehr langsam.</span><span class="k">그때 아주 느리게만</span></span></div><div class="ko" hidden>겨울잠을 자는 동안 고슴도치의 체온은 크게 떨어지고, 심장도 아주 느리게만 뜁니다.</div><div class="en-a" lang="de">Im <b>Winterschlaf</b> ist seine <b>Körpertemperatur</b> sehr niedrig, und das Herz schlägt langsam.</div><div class="chunks-a"><span class="ck"><span class="e">Im <b>Winterschlaf</b><span class="s">/</span></span><span class="k">겨울잠 중에는</span></span><span class="ck"><span class="e">ist seine <b>Körpertemperatur</b><span class="s">/</span></span><span class="k">그의 체온이</span></span><span class="ck"><span class="e">sehr niedrig,<span class="s">/</span></span><span class="k">아주 낮습니다</span></span><span class="ck"><span class="e">und das Herz<span class="s">/</span></span><span class="k">그리고 심장은</span></span><span class="ck"><span class="e">schlägt langsam.</span><span class="k">느리게 뜁니다</span></span></div><div class="ko-a" hidden>겨울잠을 자는 동안 고슴도치의 체온은 아주 낮고, 심장은 느리게 뜁니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="2" aria-label="3번 문장 듣기">3</button><div class="say"><div class="en" lang="de">Damit er die kalten Monate ohne Nahrung übersteht, frisst sich der Igel im Herbst eine dicke <b>Fettschicht</b> an.</div><div class="chunks"><span class="ck"><span class="e">Damit er<span class="s">/</span></span><span class="k">그가 ~하도록</span></span><span class="ck"><span class="e">die kalten Monate<span class="s">/</span></span><span class="k">추운 몇 달을</span></span><span class="ck"><span class="e">ohne Nahrung übersteht,<span class="s">/</span></span><span class="k">먹이 없이 견뎌 내도록</span></span><span class="ck"><span class="e">frisst sich der Igel<span class="s">/</span></span><span class="k">고슴도치는 먹어서</span></span><span class="ck"><span class="e">im Herbst<span class="s">/</span></span><span class="k">가을에</span></span><span class="ck"><span class="e">eine dicke <b>Fettschicht</b> an.</span><span class="k">두꺼운 지방층을 만들어 둡니다</span></span></div><div class="ko" hidden>추운 몇 달을 먹이 없이 견뎌 내기 위해 고슴도치는 가을에 많이 먹어 두꺼운 지방층을 만들어 둡니다.</div><div class="en-a" lang="de">Vorher frisst der Igel viel und bekommt eine dicke <b>Fettschicht</b>.</div><div class="chunks-a"><span class="ck"><span class="e">Vorher<span class="s">/</span></span><span class="k">그전에</span></span><span class="ck"><span class="e">frisst der Igel viel<span class="s">/</span></span><span class="k">고슴도치는 많이 먹습니다</span></span><span class="ck"><span class="e">und bekommt<span class="s">/</span></span><span class="k">그리고 얻습니다</span></span><span class="ck"><span class="e">eine dicke <b>Fettschicht</b>.</span><span class="k">두꺼운 지방층을</span></span></div><div class="ko-a" hidden>그전에 고슴도치는 많이 먹어서 두꺼운 지방층이 생깁니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="3" aria-label="4번 문장 듣기">4</button><div class="say"><div class="en" lang="de">Die während des Herbstes im Körper gespeicherte <b>Energie</b> reicht aber nur, wenn der Igel nicht zu oft durch Wärme oder Lärm aufwacht.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Die während des Herbstes im Körper gespeicherte <b>Energie</b><span class="s">/</span></span><span class="k">가을 동안 몸속에 저장된 에너지는</span></span><span class="ck"><span class="e">reicht aber nur,<span class="s">/</span></span><span class="k">하지만 충분합니다, 오직</span></span><span class="ck"><span class="e">wenn der Igel<span class="s">/</span></span><span class="k">고슴도치가 ~할 때만</span></span><span class="ck"><span class="e">nicht zu oft<span class="s">/</span></span><span class="k">너무 자주는 아니게</span></span><span class="ck"><span class="e">durch Wärme oder Lärm aufwacht.</span><span class="k">따뜻함이나 소음 때문에 깨어날</span></span></div><div class="ko" hidden>하지만 가을 동안 몸속에 저장해 둔 에너지는 고슴도치가 따뜻함이나 소음 때문에 너무 자주 깨지 않을 때에만 충분합니다.</div><div class="en-a" lang="de">Die <b>Energie</b> im Körper reicht nur, wenn der Igel nicht oft aufwacht.</div><div class="chunks-a"><span class="ck"><span class="e">Die <b>Energie</b> im Körper<span class="s">/</span></span><span class="k">몸속의 에너지는</span></span><span class="ck"><span class="e">reicht nur,<span class="s">/</span></span><span class="k">충분합니다, 오직</span></span><span class="ck"><span class="e">wenn der Igel<span class="s">/</span></span><span class="k">고슴도치가 ~할 때만</span></span><span class="ck"><span class="e">nicht oft aufwacht.</span><span class="k">자주 깨지 않을</span></span></div><div class="ko-a" hidden>몸속의 에너지는 고슴도치가 자주 깨지 않을 때만 충분합니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="4" aria-label="5번 문장 듣기">5</button><div class="say"><div class="en" lang="de">Viele Igel leben heute in Gärten, deshalb ist es hilfreich, im Herbst einen Haufen aus <b>Laub</b> und Ästen liegen zu lassen.</div><div class="chunks"><span class="ck"><span class="e">Viele Igel<span class="s">/</span></span><span class="k">많은 고슴도치가</span></span><span class="ck"><span class="e">leben heute<span class="s">/</span></span><span class="k">오늘날 삽니다</span></span><span class="ck"><span class="e">in Gärten,<span class="s">/</span></span><span class="k">정원에서</span></span><span class="ck"><span class="e">deshalb ist es hilfreich,<span class="s">/</span></span><span class="k">그래서 도움이 됩니다</span></span><span class="ck"><span class="e">im Herbst<span class="s">/</span></span><span class="k">가을에</span></span><span class="ck"><span class="e">einen Haufen aus <b>Laub</b> und Ästen<span class="s">/</span></span><span class="k">낙엽과 나뭇가지 더미를</span></span><span class="ck"><span class="e">liegen zu lassen.</span><span class="k">그대로 두는 것이</span></span></div><div class="ko" hidden>오늘날 많은 고슴도치가 정원에서 살기 때문에, 가을에 낙엽과 나뭇가지 더미를 그대로 남겨 두면 도움이 됩니다.</div><div class="en-a" lang="de">Viele Igel leben in Gärten, darum hilft ein Haufen aus <b>Laub</b> und Ästen.</div><div class="chunks-a"><span class="ck"><span class="e">Viele Igel<span class="s">/</span></span><span class="k">많은 고슴도치가</span></span><span class="ck"><span class="e">leben in Gärten,<span class="s">/</span></span><span class="k">정원에 삽니다</span></span><span class="ck"><span class="e">darum hilft<span class="s">/</span></span><span class="k">그래서 도움이 됩니다</span></span><span class="ck"><span class="e">ein Haufen aus <b>Laub</b> und Ästen.</span><span class="k">낙엽과 나뭇가지 더미가</span></span></div><div class="ko-a" hidden>많은 고슴도치가 정원에 살기 때문에, 낙엽과 나뭇가지 더미가 도움이 됩니다.</div></div></div>
+    <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en" lang="de">Wenn man einen schlafenden Igel stören würde, müsste er viel Energie verbrauchen und könnte den Winter vielleicht nicht <b>überleben</b>.<span class="badge">B2</span></div><div class="chunks"><span class="ck"><span class="e">Wenn man<span class="s">/</span></span><span class="k">만약 사람이</span></span><span class="ck"><span class="e">einen schlafenden Igel<span class="s">/</span></span><span class="k">잠자는 고슴도치를</span></span><span class="ck"><span class="e">stören würde,<span class="s">/</span></span><span class="k">방해한다면</span></span><span class="ck"><span class="e">müsste er<span class="s">/</span></span><span class="k">그는 ~해야 할 것입니다</span></span><span class="ck"><span class="e">viel Energie verbrauchen<span class="s">/</span></span><span class="k">많은 에너지를 써야</span></span><span class="ck"><span class="e">und könnte den Winter<span class="s">/</span></span><span class="k">그리고 겨울을 ~할 수도 있습니다</span></span><span class="ck"><span class="e">vielleicht nicht <b>überleben</b>.</span><span class="k">어쩌면 살아남지 못할</span></span></div><div class="ko" hidden>만약 잠자는 고슴도치를 방해한다면, 고슴도치는 에너지를 많이 써야 하고 어쩌면 겨울을 넘기지 못할 수도 있습니다.</div><div class="en-a" lang="de">Man soll einen schlafenden Igel nicht stören, sonst kann er den Winter nicht <b>überleben</b>.</div><div class="chunks-a"><span class="ck"><span class="e">Man soll<span class="s">/</span></span><span class="k">사람은 ~하면 안 됩니다</span></span><span class="ck"><span class="e">einen schlafenden Igel<span class="s">/</span></span><span class="k">잠자는 고슴도치를</span></span><span class="ck"><span class="e">nicht stören,<span class="s">/</span></span><span class="k">방해하면</span></span><span class="ck"><span class="e">sonst kann er<span class="s">/</span></span><span class="k">그렇지 않으면 그는 ~할 수 없습니다</span></span><span class="ck"><span class="e">den Winter nicht <b>überleben</b>.</span><span class="k">겨울을 살아남지</span></span></div><div class="ko-a" hidden>잠자는 고슴도치를 방해하면 안 됩니다. 그렇지 않으면 겨울을 살아남지 못할 수 있습니다.</div></div></div>
+    <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
+    <p class="src">특정 기사를 바탕으로 하지 않은 학습용 글입니다.</p>
+    <div class="mine">
+      <label for="mine">내 해석</label>
+      <textarea id="mine" placeholder="1. &#10;2. &#10;3. &#10;4. &#10;5. &#10;6. " spellcheck="false"></textarea>
+      <button class="tool main" id="copymine" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M4.5 13V5.5a2 2 0 0 1 2-2H13"/></svg><span>AI 피드백 요청문 복사</span></button>
+      <p class="mine-hint">지문, 내 해석, 피드백 요청이 함께 복사돼요. 평소 쓰는 AI 채팅에 붙여넣으면 문장별로 고쳐 줘요.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="step" id="step-words">STEP 2</div>
+    <h2>주요 단어</h2>
+    <div class="word"><span class="wl"><span class="w" lang="de">Igel</span><button class="wbtn" type="button" data-kind="w" data-i="0" data-word="Igel" aria-label="Igel 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">고슴도치 (남성 der)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="de">Winterschlaf</span><button class="wbtn" type="button" data-kind="w" data-i="1" data-word="Winterschlaf" aria-label="Winterschlaf 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">겨울잠, 동면 (남성 der)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="de">Körpertemperatur</span><button class="wbtn" type="button" data-kind="w" data-i="2" data-word="Körpertemperatur" aria-label="Körpertemperatur 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">체온 (여성 die)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="de">Fettschicht</span><button class="wbtn" type="button" data-kind="w" data-i="3" data-word="Fettschicht" aria-label="Fettschicht 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">지방층 (여성 die)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="de">Energie</span><button class="wbtn" type="button" data-kind="w" data-i="4" data-word="Energie" aria-label="Energie 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">에너지 (여성 die)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="de">Laub</span><button class="wbtn" type="button" data-kind="w" data-i="5" data-word="Laub" aria-label="Laub 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">낙엽, 나뭇잎 (중성 das)</span></div>
+    <div class="word"><span class="wl"><span class="w" lang="de">überleben</span><button class="wbtn" type="button" data-kind="w" data-i="6" data-word="überleben" aria-label="überleben 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span><span class="m">살아남다</span></div>
+  </section>
+
+  <section class="card">
+    <div class="step" id="step-points">STEP 3</div>
+    <h2>오늘의 체크 포인트</h2>
+    <div class="point">
+      <strong>Partizipialattribut — 관사와 명사 사이의 긴 수식어</strong>
+      <p><code>Die während des Herbstes im Körper gespeicherte Energie</code>는 관사 <code>Die</code>와 명사 <code>Energie</code> 사이에 분사 <code>gespeicherte</code>(저장된)와 그 수식어가 들어간 구조예요. 관계절로 풀면 <code>die Energie, die während des Herbstes im Körper gespeichert wurde</code>입니다. 관사를 보면 먼저 명사까지 건너뛰어 주어를 찾고, 가운데 수식어는 뒤에서부터 읽으면 쉬워요.</p>
+    </div>
+    <div class="point">
+      <strong>Konjunktiv II — würde / müsste / könnte (사실이 아닌 가정)</strong>
+      <p><code>Wenn man einen schlafenden Igel stören würde, müsste er ... verbrauchen und könnte ... nicht überleben</code>은 '만약 잠자는 고슴도치를 방해한다면 ~해야 할 것이고 ~하지 못할 수도 있다'는 가정이에요. wenn절은 부문장이라 <code>würde</code>가 맨 끝에 오고, 주문장은 wenn절이 첫 자리를 차지하므로 <code>müsste</code>가 바로 뒤 두 번째 자리에 옵니다.</p>
+    </div>
+  </section>
+
+  <section class="card guide">
+    <div class="step">STEP 4</div>
+    <h2>먼저 해석해보세요</h2>
+    <p>모르는 단어가 나와도 문장을 버리지 말고, 아는 부분만이라도 지문 아래 '내 해석' 칸에 적어 보세요. 다 쓰면 'AI 피드백 요청문 복사'를 눌러 평소 쓰는 AI 채팅에 붙여넣으세요. 어디를 잘 읽었고 어디를 놓쳤는지 문장별로 알려 줘요.</p>
+  </section>
+
+
+<!-- drill-card -->
+  <section class="card dr-card" id="drill" data-v="14">
+    <div class="step">STEP 5</div>
+    <h2>오늘 단어 외우기</h2>
+    <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
+    <div class="dr-chips"><span class="dr-chip" lang="de">Igel</span><span class="dr-chip" lang="de">Winterschlaf</span><span class="dr-chip" lang="de">Körpertemperatur</span><span class="dr-chip" lang="de">Fettschicht</span><span class="dr-chip" lang="de">Energie</span><span class="dr-chip" lang="de">Laub</span><span class="dr-chip" lang="de">überleben</span></div>
+    <div class="dr-modes">
+      <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
+      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
+    </div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
+    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+  </section>
+<!-- /drill-card -->
+
+  <section class="card vote" id="vote" data-v="4" data-cat="science" data-wd="4">
+    <h2>오늘 주제 어땠어요?</h2>
+    <p class="desc">오늘은 <span class="cat cat-science">과학</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
+    <div class="vote-btns">
+      <button class="vote-btn" type="button" data-vote="up" aria-pressed="false"><img src="/assets/vote-up.png" alt="">재밌었어요</button>
+      <button class="vote-btn" type="button" data-vote="down" aria-pressed="false"><img src="/assets/vote-down.png" alt="">별로였어요</button>
+    </div>
+    <p class="thanks" hidden>고마워요. 다음 주제를 고를 때 참고할게요. 다시 누르면 바꿀 수 있어요.</p>
+    <p class="week"><b>요일마다 분야가 바뀌어요</b><br>월 일상생활, 화 독일어권 문화, 수 쉬운 뉴스, 목 일과 학교, <span class="today">금 과학과 자연</span>, 토 여행과 장소, 일 계절과 날씨</p>
+  </section>
+
+  <details class="card">
+    <summary>
+      <span><span class="t">한 단계 위 어휘</span><span class="s">선택 사항, 눈에 익혀두는 용도예요</span></span>
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+    </summary>
+    <div class="body">
+      <div class="adv"><div class="w"><span class="wt" lang="de">überstehen</span><button class="wbtn" type="button" data-kind="v" data-i="0" data-word="überstehen" aria-label="überstehen 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">견뎌 내다, 이겨 내다<span class="warn">überstehen vs. verstehen: `verstehen`은 이해하다, `überstehen`은 힘든 시기를 끝까지 버텨 내다예요. 비분리동사라 `übersteht`처럼 갈라지지 않습니다.</span></div>
+        <div class="ex">Die Pflanze hat den kalten Winter gut <b>überstanden</b>.</div>
+        <div class="ex-ko">그 식물은 추운 겨울을 잘 견뎌 냈습니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt" lang="de">verbrauchen</span><button class="wbtn" type="button" data-kind="v" data-i="1" data-word="verbrauchen" aria-label="verbrauchen 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">소비하다, 쓰다<span class="warn">verbrauchen vs. gebrauchen: `gebrauchen`은 (도구 등을) 사용하다, `verbrauchen`은 에너지나 물처럼 써서 없애다예요.</span></div>
+        <div class="ex">Ein alter Kühlschrank <b>verbraucht</b> viel Strom.</div>
+        <div class="ex-ko">오래된 냉장고는 전기를 많이 씁니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt" lang="de">geschützt</span><button class="wbtn" type="button" data-kind="v" data-i="2" data-word="geschützt" aria-label="geschützt 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">보호된, 바람이 막힌</div>
+        <div class="ex">Die Vögel bauen ihr Nest an einem <b>geschützten</b> Ort.</div>
+        <div class="ex-ko">새들은 보호받는 곳에 둥지를 짓습니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt" lang="de">sinken</span><button class="wbtn" type="button" data-kind="v" data-i="3" data-word="sinken" aria-label="sinken 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">떨어지다, 내려가다<span class="warn">sinken vs. senken: `sinken`은 스스로 내려가다(자동사), `senken`은 무엇을 낮추다(타동사)예요. `Die Temperatur sinkt.` / `Man senkt die Preise.`</span></div>
+        <div class="ex">In der Nacht <b>sinkt</b> die Temperatur unter null.</div>
+        <div class="ex-ko">밤에는 기온이 영하로 떨어집니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt" lang="de">hilfreich</span><button class="wbtn" type="button" data-kind="v" data-i="4" data-word="hilfreich" aria-label="hilfreich 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">도움이 되는, 유익한</div>
+        <div class="ex">Ein Wörterbuch ist beim Lesen sehr <b>hilfreich</b>.</div>
+        <div class="ex-ko">사전은 읽을 때 아주 도움이 됩니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt" lang="de">Nahrung</span><button class="wbtn" type="button" data-kind="v" data-i="5" data-word="Nahrung" aria-label="Nahrung 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">먹이, 양식 (여성 die)<span class="warn">Nahrung vs. Essen: `Essen`은 사람이 먹는 음식이나 식사, `Nahrung`은 생물이 살기 위해 먹는 것 전체를 가리키는 조금 격식 있는 말이에요.</span></div>
+        <div class="ex">Im Winter finden viele Tiere kaum <b>Nahrung</b>.</div>
+        <div class="ex-ko">겨울에는 많은 동물이 먹이를 거의 찾지 못합니다.</div></div>
+      <div class="adv"><div class="w"><span class="wt" lang="de">stören</span><button class="wbtn" type="button" data-kind="v" data-i="6" data-word="stören" aria-label="stören 발음 듣기"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.5 5v10a.5.5 0 0 1-.8.4l-3.2-2.4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1.5L8.7 4.6A.5.5 0 0 1 9.5 5z"/><path d="M12.5 7.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div><div class="m">방해하다, 귀찮게 하다<span class="warn">stören vs. zerstören: `zerstören`은 부수다, 파괴하다예요. `stören`은 잠이나 일을 방해하는 정도입니다.</span></div>
+        <div class="ex">Bitte <b>stören</b> Sie mich nicht, ich muss lernen.</div>
+        <div class="ex-ko">방해하지 말아 주세요, 공부해야 해요.</div></div>
+    </div>
+  </details>
+  <div class="pbar" id="pbar">
+    <button class="pp" id="pbar-pp" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg></button>
+    <div class="mid"><div class="t" id="pbar-label">전체 듣기</div><div class="prog"><i id="pbar-prog"></i></div></div>
+    <button class="sp" id="pbar-sp" type="button">1.0x</button>
+    <button class="pbar-close" id="pbar-close" type="button" aria-label="닫기">&#x2715;</button>
+  </div>
+  <section class="card sub" id="subscribe" data-v="3">
+    <h2>매일 아침 독일어 지문 받기</h2>
+    <p>새 독일어 지문이 올라오면 아침에 메일로 보내 드려요.</p>
+    <form action="https://buttondown.com/api/emails/embed-subscribe/english-reading" method="post" target="_blank">
+      <input type="hidden" name="metadata__lang" value="de">
+      <fieldset class="levels">
+        <legend>수준을 골라 주세요</legend>
+        <label class="lvopt">
+          <input type="radio" name="metadata__level" value="a">
+          <span class="lv-t">기초 <span class="lv-chk">&#10003;</span></span>
+          <span class="lv-r">A2~B1</span>
+          <span class="lv-d">짧고 쉬운 문장. 독일어 읽기를 막 시작했다면</span>
+        </label>
+        <label class="lvopt">
+          <input type="radio" name="metadata__level" value="b" checked>
+          <span class="lv-t">중급 <span class="lv-chk">&#10003;</span></span>
+          <span class="lv-r">B1~B2</span>
+          <span class="lv-d">조금 긴 문장과 B2 문법도 읽어 보고 싶다면</span>
+        </label>
+      </fieldset>
+      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">
+      <button type="submit">구독하기</button>
+    </form>
+    <p class="note">이미 구독 중이어도 같은 이메일로 다시 구독하면 수준과 언어가 바로 바뀌어요. 이메일 주소 하나로는 한 언어만 받을 수 있어요.</p>
+    <p class="note">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>
+    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>
+    <script>(function(){
+      var sec=document.getElementById("subscribe");
+      if(!sec)return;
+      var f=sec.querySelector("form");
+      // GA subscribe event (영어는 level 포함, 다른 언어는 생략)
+      if(f)f.addEventListener("submit",function(){
+        var cl=f.querySelector('input[name="metadata__level"]:checked');
+        try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"de",level:cl?cl.value:"b"});}catch(e){}
+      });
+      // :has() 미지원 브라우저 fallback — data-checked / data-show 속성으로 CSS 를 보조한다
+      var opts=sec.querySelectorAll(".lvopt");
+      var note=sec.querySelector(".level-note");
+      if(opts.length){var update=function(){
+        opts.forEach(function(o){
+          var r=o.querySelector("input[type=\"radio\"]");
+          if(r&&r.checked){o.setAttribute("data-checked","");}else{o.removeAttribute("data-checked");}
+        });
+        if(note){
+          var a=sec.querySelector("input[name=\"metadata__level\"][value=\"a\"]:checked");
+          if(a){note.setAttribute("data-show","");}else{note.removeAttribute("data-show");}
+        }
+      };update();
+      opts.forEach(function(o){var r=o.querySelector("input[type=\"radio\"]");if(r)r.addEventListener("change",update);});
+      }
+    })();</script>
+  </section>
+</main>
+<!-- fb -->
+<section class="fb" aria-label="의견 보내기"><p class="fb-q">독해한입에 바라는 점이 있나요?</p><p class="fb-d">메일 앱이 열려요. 운영자가 직접 읽고 답장해요.</p><div class="fb-row"><a class="fb-btn" data-fb="idea" href="mailto:wonsang.dev@gmail.com?subject=%5B%EB%8F%85%ED%95%B4%ED%95%9C%EC%9E%85%5D%20%EA%B8%B0%EB%8A%A5%20%EA%B1%B4%EC%9D%98&amp;body=%EC%96%B4%EB%96%A4%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%9E%88%EC%9C%BC%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94%3F%0D%0A%0D%0A%0D%0A%EC%99%9C%20%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80%EC%9A%94%3F%20%28%EC%96%B4%EB%96%A4%20%EB%95%8C%20%EB%B6%88%ED%8E%B8%ED%96%88%EB%8A%94%EC%A7%80%29%0D%0A%0D%0A%0D%0A----%0D%0A%EB%B3%B4%EB%8D%98%20%EC%96%B8%EC%96%B4%3A%20%EB%8F%85%EC%9D%BC%EC%96%B4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>기능 건의</a><a class="fb-btn" data-fb="bug" href="mailto:wonsang.dev@gmail.com?subject=%5B%EB%8F%85%ED%95%B4%ED%95%9C%EC%9E%85%5D%20%EB%B2%84%EA%B7%B8%20%EC%A0%9C%EB%B3%B4&amp;body=%EB%AC%B4%EC%8A%A8%20%EC%9D%BC%EC%9D%B4%20%EC%9E%88%EC%97%88%EB%82%98%EC%9A%94%3F%0D%0A%28%EC%98%88%3A%20%EC%9D%8C%EC%84%B1%EC%9D%B4%20%EC%95%88%20%EB%82%98%EC%99%80%EC%9A%94%2C%20%EA%B8%80%EC%9E%90%EA%B0%80%20%EA%B2%B9%EC%B3%90%20%EB%B3%B4%EC%97%AC%EC%9A%94%29%0D%0A%0D%0A%0D%0A----%0D%0A%ED%8E%98%EC%9D%B4%EC%A7%80%3A%20https%3A%2F%2Fread.wspace.ai.kr%2Fde%2F2026-11-06%2F%0D%0A%EA%B8%B0%EA%B8%B0%3A%20%0D%0A%ED%99%94%EB%A9%B4%20%ED%81%AC%EA%B8%B0%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="8" width="10" height="12" rx="5"/><path d="M9 8a3 3 0 0 1 6 0M3 13h4M17 13h4M4 7l3 2M20 7l-3 2M4 19l3-2M20 19l-3-2M12 11v8"/></svg>버그 제보</a></div></section>
+<!-- /fb -->
+<footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a><a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a><a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>
+
+
+
+<script>
+  // 해석: 버튼은 전체를 열고 닫고, 문장을 누르면(클릭하면) 그 문장 해석만 열고 닫는다.
+  var koBtn = document.getElementById('kobtn');
+  var kos = [].slice.call(document.querySelectorAll('#passage .ko'));
+  var kosA = [].slice.call(document.querySelectorAll('#passage .ko-a'));
+  koBtn.addEventListener('click', function () {
+    var on = koBtn.getAttribute('aria-pressed') !== 'true';
+    koBtn.setAttribute('aria-pressed', String(on));
+    // 현재 수준에 맞는 해석 요소만 토글
+    if (isLevelA() && kosA.length) {
+      kosA.forEach(function (k) { k.hidden = !on; });
+    } else {
+      kos.forEach(function (k) { k.hidden = !on; });
+    }
+    gaEvent('ko_toggle', { on: on, lang: _gaLang, day: _gaDay });
+  });
+  // 끊어 읽기 줄(.chunks)도 같은 규칙: 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 덩어리 뜻으로 보인다.
+  [].forEach.call(document.querySelectorAll('#passage .say .en, #passage .say .chunks, #passage .say .en-a, #passage .say .chunks-a'), function (en) {
+    en.style.cursor = 'pointer';
+    en.addEventListener('click', function () {
+      if (String(getSelection())) return;  // 글자를 고르는 중(드래그, 길게 누르기)이면 열지 않는다
+      // 기초 수준이면 .ko-a, 중급이면 .ko 를 토글
+      var kSel = (isLevelA() && en.parentNode.querySelector('.ko-a')) ? '.ko-a' : '.ko';
+      var k = en.parentNode.querySelector(kSel); if (k) k.hidden = !k.hidden;
+    });
+  });
+  var chunkBtn = document.getElementById('chunkbtn');
+  if (chunkBtn) chunkBtn.addEventListener('click', function () {
+    var on = chunkBtn.getAttribute('aria-pressed') !== 'true';
+    chunkBtn.setAttribute('aria-pressed', String(on));
+    document.body.classList.toggle('chunked', on);
+    gaEvent('chunk_toggle', { on: on, lang: _gaLang, day: _gaDay });
+  });
+
+  var _gaPlayed = false;
+  var _gaLang = location.pathname.split('/')[1] || '';
+  var _gaDay = location.pathname.split('/')[2] || '';
+  function gaEvent(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params);
+  }
+
+  // 학습 방법: 화면의 각 기능을 차례로 비추며 설명한다
+  (function () {
+    var FLOW = '<ol class="tour-flow"><li><b>듣기</b> 전체 듣기로 한 번 들어요</li><li><b>내 해석</b> 해석을 보기 전에 내 말로 적어요</li>'
+      + '<li><b>AI 피드백</b> 내 해석을 AI에게 첨삭받아요</li><li><b>맞춰 보기</b> 그다음에 해석을 켜서 비교해요</li><li><b>다시 듣기</b> 한 번 더 들으며 마무리해요</li></ol>'
+      + '해석을 바로 보면 읽는 힘이 잘 늘지 않아요. 막혀도 끝까지 내 말로 적어 본 뒤 맞춰 보는 게 핵심이에요.';
+    var steps = [
+      [null, '이렇게 공부해요', FLOW],
+      ['#play', '먼저 들어 보세요', '전체 듣기로 지문을 한 번 들어요. 재생이 시작되면 화면 아래 바의 속도 버튼을 눌러 0.6x~1.0x로 천천히 들을 수 있어요.'],
+      ['#passage .sent .no', '문장 번호', '번호를 누르면 그 문장만 들려요. 다시 누르면 멈춰요. 안 들리는 문장만 골라 반복하세요.'],
+      ['#chunkbtn', '끊어 읽기', '문장을 의미 덩어리로 끊어 앞에서부터 읽는 연습이에요. 해석 보기나 문장을 누르면 덩어리마다 뜻이 붙어요. 한국어 순서로 뒤집지 말고 영어 순서대로 이해해 보세요.'],
+      ['#furi', '후리가나', '한자 위 읽는 법을 켜고 끌 수 있어요. 익숙해지면 꺼 두고 읽어 보세요.'],
+      ['#mine', '해석을 보기 전에 적어 보세요', '읽은 내용을 내 말로 적어요. 모르는 단어가 있어도 문장을 버리지 말고 아는 만큼만 적으면 돼요. 틀린 곳이 바로 오늘 배울 곳이에요.'],
+      ['#copymine', 'AI 피드백이란?', '누르면 지문, 내 해석, 첨삭 요청이 한 번에 복사돼요. 평소 쓰는 AI 채팅에 붙여넣으면 문장마다 <b>잘 읽은 부분</b>, <b>틀렸거나 놓친 부분과 그 이유</b>, <b>오늘 가져갈 핵심 패턴 하나</b>를 알려 줘요. 과외 선생님께 내 해석을 보여 드리는 것과 같아요.'],
+      ['#passage .sent .en', '그다음에 해석과 맞춰 보세요', '피드백을 받은 뒤에 문장을 눌러 그 문장 해석과 비교해요. 위의 해석 보기를 누르면 모든 문장 해석이 한 번에 열려요.'],
+      ['#step-words', '주요 단어', '지문에서 형광펜으로 표시한 단어의 뜻이에요. 지문으로 돌아가 단어가 쓰인 문장을 다시 읽어 보세요.'],
+      ['#step-points', '체크 포인트', '헷갈리기 쉬운 문장 구조와 해석 요령이에요. AI 피드백에서 틀린 부분이 있었다면 여기서 이유를 한 번 더 확인하세요.'],
+      ['#play', '다시 들으며 마무리', '마지막으로 전체 듣기를 한 번 더 들어 보세요. 처음엔 안 들리던 문장이 들리면 오늘 공부는 성공이에요.'],
+      ['#subscribe', '메일로 받기', '매일 아침 새 지문을 메일로 받아 보세요. 출근길 5분이면 충분해요.']
+    ].filter(function (x) { return x && (x[0] === null || document.querySelector(x[0])); });
+    var i = 0, spot, tip, block;
+    function rectOf(sel) {
+      if (sel === null) return null;
+      var el = document.querySelector(sel);
+      if (sel.indexOf('#step-') === 0) el = el.parentNode;  // STEP 카드 전체를 비춘다
+      return el;
+    }
+    function place() {
+      if (!spot || !steps[i]) return;  // 닫힌 뒤 늦게 도는 위치 계산은 무시
+      var el = rectOf(steps[i][0]), pad = 6;
+      if (!el) {  // 안내만 하는 단계: 화면 전체를 어둡게 하고 카드를 가운데에
+        spot.style.top = '50%'; spot.style.left = '50%'; spot.style.width = '0'; spot.style.height = '0';
+        tip.style.top = Math.max(8, (innerHeight - tip.offsetHeight) / 2) + 'px'; return;
+      }
+      var r = el.getBoundingClientRect();
+      var gnbBot = (document.querySelector('.gnb') || {getBoundingClientRect: function(){return{bottom:80};}}).getBoundingClientRect().bottom;
+      var pbarElP = document.getElementById('pbar');
+      var pbarTopP = (pbarElP && pbarElP.classList.contains('vis')) ? pbarElP.getBoundingClientRect().top : innerHeight;
+      // Clip spot to visible area (between header and pbar)
+      var spotTop = Math.max(r.top - pad, gnbBot);
+      var spotBot = Math.min(r.bottom + pad, pbarTopP);
+      if (spotBot <= spotTop) { spotTop = r.top - pad; spotBot = r.bottom + pad; }
+      spot.style.top = spotTop + 'px'; spot.style.left = (r.left - pad) + 'px';
+      spot.style.width = (r.width + pad * 2) + 'px'; spot.style.height = (spotBot - spotTop) + 'px';
+      var below = r.bottom + 14, th = tip.offsetHeight;
+      var tipMax = pbarTopP - th - 8;
+      tip.style.top = (below + th < pbarTopP - 8 ? below : Math.max(8, Math.min(tipMax, r.top - th - 14))) + 'px';
+    }
+    function show() {
+      var s = steps[i], el = rectOf(s[0]);
+      var STAGE = { '먼저 들어 보세요': 1, '해석을 보기 전에 적어 보세요': 2, 'AI 피드백이란?': 3, '그다음에 해석과 맞춰 보세요': 4, '다시 들으며 마무리': 5 };
+      tip.querySelector('.n').innerHTML = (i === 0 ? '학습 방법' : STAGE[s[1]] ? '학습 순서 ' + STAGE[s[1]] + '단계' : '함께 쓰는 기능')
+        + (i === 0 ? '' : '<span>' + i + ' / ' + (steps.length - 1) + '</span>');
+      tip.querySelector('h3').textContent = s[1];
+      tip.querySelector('p').innerHTML = s[2];
+      tip.querySelector('.prev').hidden = i === 0;
+      tip.querySelector('.next').textContent = i === steps.length - 1 ? '시작하기' : '다음';
+      if (el) {
+        var gnbH = (document.querySelector('.gnb') || {getBoundingClientRect: function(){return{bottom:80};}}).getBoundingClientRect().bottom;
+        var pbarEl = document.getElementById('pbar');
+        var pbarH = (pbarEl && pbarEl.classList.contains('vis')) ? (innerHeight - pbarEl.getBoundingClientRect().top) : 0;
+        var r = el.getBoundingClientRect();
+        var usableH = innerHeight - gnbH - pbarH, pad2 = 8;
+        var tall = r.height > usableH * 0.5;
+        var targetY = tall
+          ? pageYOffset + r.top - gnbH - pad2
+          : pageYOffset + (r.top + r.height / 2) - (gnbH + usableH / 2);
+        window.scrollTo({ top: Math.max(0, targetY) });
+      }
+      setTimeout(place, 80); place();
+    }
+    function end() {
+      [spot, tip, block].forEach(function (x) { x && x.remove(); });
+      spot = tip = block = null;
+      removeEventListener('resize', place); removeEventListener('scroll', place);
+      document.removeEventListener('keydown', key);
+    }
+    function key(e) { if (e.key === 'Escape') end(); if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); }
+    function go(d) { i += d; if (i >= steps.length) return end(); if (i < 0) i = 0; show(); }
+    document.getElementById('howto').addEventListener('click', function () {
+      if (spot) return;
+      i = 0;
+      block = document.createElement('div'); block.className = 'tour-block';
+      spot = document.createElement('div'); spot.className = 'tour-spot';
+      tip = document.createElement('div'); tip.className = 'tour-tip'; tip.setAttribute('role', 'dialog');
+      tip.innerHTML = '<div class="n"></div><h3></h3><p></p><div class="act"><button class="skip" type="button">그만 보기</button>'
+        + '<button class="prev" type="button">이전</button><button class="next" type="button">다음</button></div>';
+      document.body.append(block, spot, tip);
+      tip.querySelector('.skip').onclick = end;
+      tip.querySelector('.prev').onclick = function () { go(-1); };
+      tip.querySelector('.next').onclick = function () { go(1); };
+      block.onclick = function () { go(1); };
+      addEventListener('resize', place); addEventListener('scroll', place, { passive: true });
+      document.addEventListener('keydown', key);
+      show();
+      gaEvent('howto_open', { lang: _gaLang, day: _gaDay });
+    });
+  })();
+
+  var AUDIO = ["audio/s1.mp3", "audio/s2.mp3", "audio/s3.mp3", "audio/s4.mp3", "audio/s5.mp3", "audio/s6.mp3"];
+  var AUDIO_A = ["audio/a1.mp3", "audio/a2.mp3", "audio/a3.mp3", "audio/a4.mp3", "audio/a5.mp3", "audio/a6.mp3"];
+  var WORD_AUDIO = ["audio/w1.mp3", "audio/w2.mp3", "audio/w3.mp3", "audio/w4.mp3", "audio/w5.mp3", "audio/w6.mp3", "audio/w7.mp3"];
+  var ADV_AUDIO = ["audio/v1.mp3", "audio/v2.mp3", "audio/v3.mp3", "audio/v4.mp3", "audio/v5.mp3", "audio/v6.mp3", "audio/v7.mp3"];
+  // 수준 결정: URL ?level= → localStorage → 기본 중급(b)
+  // head 스크립트가 먼저 적용하므로 URL 파라미터가 있을 때만 갱신한다.
+  (function () {
+    try {
+      var lp = new URLSearchParams(location.search).get('level');
+      if (lp === 'a' || lp === 'b') {
+        document.documentElement.classList.toggle('level-a', lp === 'a');
+        localStorage.setItem('read_level:' + _gaLang, lp);
+      }
+    } catch (e) {}
+  })();
+  var rows = [].slice.call(document.querySelectorAll('#passage .sent'));
+  var player = new Audio(), queue = [], rate = 1, token = 0;
+  var wordPlayer = new Audio(), curWbtn = null;
+  var canSpeak = 'speechSynthesis' in window;
+  var playBtn = document.getElementById('play'), copyBtn = document.getElementById('copy');
+  var mine = document.getElementById('mine'), copyMine = document.getElementById('copymine');
+  function isLevelA() { return document.documentElement.classList.contains('level-a'); }
+  function sentenceText(r) {
+    // 기초 수준이면 .en-a, 중급이면 .en 에서 텍스트를 추출한다. 배지와 후리가나(rt, rp)를 제거.
+    var sel = (isLevelA() && r.querySelector('.en-a')) ? '.en-a' : '.en';
+    var c = r.querySelector(sel).cloneNode(true);
+    [].forEach.call(c.querySelectorAll('.badge, rt, rp'), function (x) { x.parentNode.removeChild(x); });
+    return c.textContent.trim();
+  }
+  function mark(i) { rows.forEach(function (r, k) { r.classList.toggle('playing', k === i); }); }
+  var _PBTN_PLAY = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg><span>전체 듣기</span>';
+  var _PBTN_PAUSE = '<svg viewBox="0 0 20 20" fill="currentColor"><rect x="5" y="4" width="3.5" height="12" rx="1.5"/><rect x="11.5" y="4" width="3.5" height="12" rx="1.5"/></svg><span>멈추기</span>';
+  function playBtnSetPlaying(playing) {
+    playBtn.innerHTML = playing ? _PBTN_PAUSE : _PBTN_PLAY;
+    playBtn.classList.toggle('on', playing);
+  }
+  function stop() {
+    token++; player.pause(); if (canSpeak) speechSynthesis.cancel();
+    wordPlayer.pause(); wordPlayer.src = '';
+    if (curWbtn) { curWbtn.classList.remove('playing'); curWbtn = null; }
+    queue = []; mark(-1); playBtnSetPlaying(false);
+    if (typeof pbarSetPlaying === 'function') pbarSetPlaying(false);
+  }
+  var _playMode = ''; // 'full' | 'single' | 'word'
+  var _fullI = 0;    // current sentence index during full passage play
+  function next() {
+    if (!queue.length) { stop(); return; }
+    var i = queue.shift(), t = token; mark(i);
+    if (_playMode === 'full') { _fullI = i; pbarLabel.textContent = '전체 듣기 ' + (i + 1) + '/' + rows.length; }
+    if (!_gaPlayed) { _gaPlayed = true; gaEvent('audio_play', {lang: _gaLang, day: _gaDay}); }
+    function after() { if (t === token) setTimeout(function () { if (t === token) next(); }, queue.length ? 450 : 0); }
+    var audioSrc = isLevelA() ? (AUDIO_A[i] || null) : (AUDIO[i] || null);
+    if (audioSrc) {
+      player.onended = after; player.src = audioSrc;
+      player.playbackRate = rate; player.play().catch(function () { if (t === token) stop(); });
+    } else if (canSpeak) {
+      var u = new SpeechSynthesisUtterance(sentenceText(rows[i]));
+      u.lang = 'de-DE'; u.rate = rate * 0.9; u.onend = after; u.onerror = after; speechSynthesis.speak(u);
+    } else stop();
+  }
+  playBtn.addEventListener('click', function () {
+    if (playBtn.classList.contains('on')) { stop(); return; }
+    stop(); _playMode = 'full'; _fullI = 0;
+    queue = rows.map(function (_, i) { return i; });
+    playBtnSetPlaying(true);
+    pbarShow('전체 듣기 1/' + rows.length); pbarSetPlaying(true); next();
+  });
+  rows.forEach(function (r, i) {
+    r.querySelector('.no').addEventListener('click', function () {
+      var same = r.classList.contains('playing'); stop();
+      if (!same) { _playMode = 'single'; queue = [i]; pbarShow((i + 1) + '번 문장 듣는 중'); pbarSetPlaying(true); next(); }
+    });
+  });
+  // ── 플레이어 바 ────────────────────────────────────────────────────────────
+  var SPEEDS = [1.0, 0.9, 0.8, 0.7, 0.6];
+  var rateIdx = (function () {
+    try { var s = parseFloat(localStorage.getItem('read_speed')); var i = SPEEDS.indexOf(s); return i >= 0 ? i : 0; } catch (e) { return 0; }
+  })();
+  rate = SPEEDS[rateIdx];
+  var pbar = document.getElementById('pbar');
+  var pbarPP = document.getElementById('pbar-pp');
+  var pbarLabel = document.getElementById('pbar-label');
+  var pbarProg = document.getElementById('pbar-prog');
+  var pbarSp = document.getElementById('pbar-sp');
+  var pbarClose = document.getElementById('pbar-close');
+  var ICON_PLAY = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 4.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 6 4.5z"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 20 20" fill="currentColor"><rect x="5" y="4" width="3.5" height="12" rx="1.5"/><rect x="11.5" y="4" width="3.5" height="12" rx="1.5"/></svg>';
+  function pbarShow(label) {
+    pbarLabel.textContent = label;
+    pbar.classList.add('vis'); document.body.classList.add('pbar-vis');
+  }
+  function pbarSetPlaying(playing) {
+    pbarPP.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+  }
+  function pbarUpdateSpeed() { pbarSp.textContent = SPEEDS[rateIdx].toFixed(1) + 'x'; }
+  pbarUpdateSpeed();
+  player.addEventListener('timeupdate', function () {
+    var dur = player.duration;
+    if (!dur || isNaN(dur) || dur === 0) return;
+    var pct;
+    if (_playMode === 'full' && rows.length > 0) {
+      var perSent = 1 / rows.length;
+      pct = (_fullI / rows.length + (player.currentTime / dur) * perSent) * 100;
+    } else {
+      pct = player.currentTime / dur * 100;
+    }
+    pbarProg.style.width = Math.max(3, pct).toFixed(1) + '%';
+  });
+  player.addEventListener('ended', function () { pbarProg.style.width = '0%'; });
+  pbarPP.addEventListener('click', function () {
+    if (!player.paused) {
+      player.pause(); pbarSetPlaying(false); playBtnSetPlaying(false);
+    } else if (player.src) {
+      player.play().catch(function () {}); pbarSetPlaying(true); playBtnSetPlaying(true);
+    }
+  });
+  pbarSp.addEventListener('click', function () {
+    rateIdx = (rateIdx + 1) % SPEEDS.length;
+    rate = SPEEDS[rateIdx];
+    player.playbackRate = rate; wordPlayer.playbackRate = rate;
+    try { localStorage.setItem('read_speed', String(rate)); } catch (e) {}
+    pbarUpdateSpeed();
+    gaEvent('speed_change', { speed: rate, lang: _gaLang, day: _gaDay });
+  });
+  pbarClose.addEventListener('click', function () {
+    stop(); pbar.classList.remove('vis'); document.body.classList.remove('pbar-vis');
+  });
+  // 단어 발음 버튼: w{i}.mp3 / v{i}.mp3 → 없으면 SpeechSynthesis 폴백
+  (function () {
+    var wbtns = [].slice.call(document.querySelectorAll('.wbtn'));
+    wbtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var same = btn === curWbtn && btn.classList.contains('playing');
+        stop();
+        if (same) return;
+        var kind = btn.dataset.kind, i = parseInt(btn.dataset.i, 10), word = btn.dataset.word;
+        var src = (kind === 'v' ? ADV_AUDIO : WORD_AUDIO)[i] || null;
+        gaEvent('word_audio', { lang: _gaLang, day: _gaDay });
+        curWbtn = btn; btn.classList.add('playing');
+        _playMode = 'word'; pbarShow('단어 발음'); pbarSetPlaying(true);
+        function done() {
+          if (curWbtn === btn) { btn.classList.remove('playing'); curWbtn = null; }
+          pbarSetPlaying(false);
+        }
+        if (src) {
+          wordPlayer.onended = done; wordPlayer.onerror = done;
+          wordPlayer.src = src; wordPlayer.playbackRate = rate; wordPlayer.play().catch(done);
+        } else if (canSpeak) {
+          var u = new SpeechSynthesisUtterance(word);
+          u.lang = 'de-DE'; u.rate = rate; u.onend = done; u.onerror = done; speechSynthesis.speak(u);
+        } else { done(); }
+      });
+    });
+  })();
+  function copyText(text, btn, label, okText) {
+    function done(ok) {
+      btn.lastChild.textContent = ok ? (okText || '복사됐어요') : '복사 실패';
+      setTimeout(function () { btn.lastChild.textContent = label; }, okText ? 2600 : 1600);
+    }
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done(ok);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    else fallback();
+  }
+  var HEAD = '나는 CEFR B1~B2 수준의 한국인 독일어 학습자입니다. 아래는 오늘의 독일어 읽기 연습 지문입니다. 주제: ' + document.querySelector('h1 em').textContent + '.';
+  var WEAK = '자주 틀리는 부분(명사 성(der/die/das), 격변화(Kasus), 분리동사(trennbare Verben), 문장 끝 동사 위치(Verbstellung), 복합 명사)도 함께 짚어 주세요.';
+  function passageBlock() {
+    return '[독일어 지문]\n' + rows.map(function (r, i) { return (i + 1) + '. ' + sentenceText(r); }).join('\n');
+  }
+  copyBtn.addEventListener('click', function () {
+    gaEvent('copy_passage', { lang: _gaLang, day: _gaDay });
+    copyText([HEAD, passageBlock(),
+      '[요청]\n이 지문을 바탕으로 내 질문에 답해 주세요. 설명은 한국어 존댓말로, 내 수준에 맞춰 짧고 구체적으로 해 주세요. 지문 자체의 난이도는 바꾸지 마세요.\n' + WEAK
+    ].join('\n\n'), copyBtn, '지문 복사');
+  });
+  copyMine.addEventListener('click', function () {
+    if (!mine.value.trim()) { mine.focus(); return; }
+    gaEvent('feedback_copy', {lang: _gaLang, day: _gaDay});
+    copyText([HEAD, passageBlock(), '[내 해석]\n' + mine.value.trim(),
+      '[요청]\n내 해석을 문장 번호별로 지문과 대조해 피드백해 주세요.\n1) 잘 잡은 것: 한두 줄, 사실만.\n2) 짚을 것: 틀렸거나 놓친 부분, 올바른 해석, 이유를 번호로 정리.\n3) 오늘 하나만 가져간다면: 핵심 패턴 하나.\n' + WEAK + '\n해당되는 약점과 연결해 설명하고, 칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'
+    ].join('\n\n'), copyMine, 'AI 피드백 요청문 복사', '복사됐어요, AI 채팅에 붙여넣으세요');
+  });
+  // 수준 전환(카드 안 읽기 수준 세그먼트): 클릭 시 body 클래스 전환, localStorage 저장, GA 이벤트
+  (function () {
+    var toLevelA = document.getElementById('to-level-a');
+    var toLevelB = document.getElementById('to-level-b');
+    if (!toLevelA || !toLevelB) return;
+    function updateLinks() {
+      var isA = isLevelA();
+      // 켜진 쪽 모양은 CSS(html.level-a)가 정한다. 여기서는 화면 읽기 프로그램용 표시만 맞춘다
+      toLevelA.setAttribute('aria-current', String(isA));
+      toLevelB.setAttribute('aria-current', String(!isA));
+    }
+    updateLinks();
+    function switchLevel(e, to) {
+      e.preventDefault();
+      var from = isLevelA() ? 'a' : 'b';
+      document.documentElement.classList.toggle('level-a', to === 'a');
+      try { localStorage.setItem('read_level:' + _gaLang, to); } catch (ex) {}
+      gaEvent('level_switch', { from: from, to: to, lang: _gaLang, day: _gaDay });
+      updateLinks();
+      // URL 에 ?level= 파라미터 반영 (히스토리 교체)
+      try {
+        var u = new URL(location.href);
+        u.searchParams.set('level', to);
+        history.replaceState(null, '', u.toString());
+      } catch (ex) {}
+    }
+    toLevelA.addEventListener('click', function (e) { switchLevel(e, 'a'); });
+    toLevelB.addEventListener('click', function (e) { switchLevel(e, 'b'); });
+  })();
+  var furi = document.getElementById('furi');
+  if (furi) furi.addEventListener('click', function () {
+    var off = document.body.classList.toggle('nofuri');
+    furi.setAttribute('aria-pressed', String(!off));
+    furi.textContent = off ? '후리가나 켜기' : '후리가나 끄기';
+    gaEvent('furigana_toggle', {on: !off});
+  });
+</script>
+<script type="application/json" id="drill-data">[{"w": "Igel", "m": "고슴도치 (남성 der)", "mh": "고슴도치", "ar": "der", "cz": "Im Herbst sucht sich der <span class=\"dr-blank\"><\/span> einen geschützten Platz unter Laub oder Holz, weil er bald seinen Winterschlaf beginnt.", "ca": "Igel", "ex": "Im Herbst sucht sich der <b>Igel<\/b> einen geschützten Platz unter Laub oder Holz, weil er bald seinen Winterschlaf beginnt.", "sh": "Im Herbst sucht sich der <b>Igel<\/b> einen geschützten Platz unter Laub oder Holz, weil er bald seinen Winterschlaf beginnt.", "ek": "가을이 되면 고슴도치는 곧 겨울잠을 시작하기 때문에 낙엽이나 나무 더미 아래에서 보호받을 수 있는 자리를 찾습니다.", "sa": "/de/2026-11-06/audio/s1.mp3", "au": "/de/2026-11-06/audio/w1.mp3", "alts": ["겨울잠, 동면", "체온", "지방층", "에너지", "낙엽, 나뭇잎", "살아남다"]}, {"w": "Winterschlaf", "m": "겨울잠, 동면 (남성 der)", "mh": "겨울잠, 동면", "ar": "der", "cz": "Während des <span class=\"dr-blank\"><\/span> sinkt die Körpertemperatur des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.", "ca": "Winterschlafs", "ex": "Während des <b>Winterschlafs<\/b> sinkt die Körpertemperatur des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.", "sh": "Während des <b>Winterschlafs<\/b> sinkt die Körpertemperatur des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.", "ek": "겨울잠을 자는 동안 고슴도치의 체온은 크게 떨어지고, 심장도 아주 느리게만 뜁니다.", "sa": "/de/2026-11-06/audio/s2.mp3", "au": "/de/2026-11-06/audio/w2.mp3", "alts": ["고슴도치", "체온", "지방층", "에너지", "낙엽, 나뭇잎", "살아남다"]}, {"w": "Körpertemperatur", "m": "체온 (여성 die)", "mh": "체온", "ar": "die", "cz": "Während des Winterschlafs sinkt die <span class=\"dr-blank\"><\/span> des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.", "ca": "Körpertemperatur", "ex": "Während des Winterschlafs sinkt die <b>Körpertemperatur<\/b> des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.", "sh": "Während des Winterschlafs sinkt die <b>Körpertemperatur<\/b> des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.", "ek": "겨울잠을 자는 동안 고슴도치의 체온은 크게 떨어지고, 심장도 아주 느리게만 뜁니다.", "sa": "/de/2026-11-06/audio/s2.mp3", "au": "/de/2026-11-06/audio/w3.mp3", "alts": ["고슴도치", "겨울잠, 동면", "지방층", "에너지", "낙엽, 나뭇잎", "살아남다"]}, {"w": "Fettschicht", "m": "지방층 (여성 die)", "mh": "지방층", "ar": "die", "cz": "Damit er die kalten Monate ohne Nahrung übersteht, frisst sich der Igel im Herbst eine dicke <span class=\"dr-blank\"><\/span> an.", "ca": "Fettschicht", "ex": "Damit er die kalten Monate ohne Nahrung übersteht, frisst sich der Igel im Herbst eine dicke <b>Fettschicht<\/b> an.", "sh": "Damit er die kalten Monate ohne Nahrung übersteht, frisst sich der Igel im Herbst eine dicke <b>Fettschicht<\/b> an.", "ek": "추운 몇 달을 먹이 없이 견뎌 내기 위해 고슴도치는 가을에 많이 먹어 두꺼운 지방층을 만들어 둡니다.", "sa": "/de/2026-11-06/audio/s3.mp3", "au": "/de/2026-11-06/audio/w4.mp3", "alts": ["고슴도치", "겨울잠, 동면", "체온", "에너지", "낙엽, 나뭇잎", "살아남다"]}, {"w": "Energie", "m": "에너지 (여성 die)", "mh": "에너지", "ar": "die", "cz": "Die während des Herbstes im Körper gespeicherte <span class=\"dr-blank\"><\/span> reicht aber nur, wenn der Igel nicht zu oft durch Wärme oder Lärm aufwacht.", "ca": "Energie", "ex": "Die während des Herbstes im Körper gespeicherte <b>Energie<\/b> reicht aber nur, wenn der Igel nicht zu oft durch Wärme oder Lärm aufwacht.", "sh": "Die während des Herbstes im Körper gespeicherte <b>Energie<\/b> reicht aber nur, wenn der Igel nicht zu oft durch Wärme oder Lärm aufwacht.", "ek": "하지만 가을 동안 몸속에 저장해 둔 에너지는 고슴도치가 따뜻함이나 소음 때문에 너무 자주 깨지 않을 때에만 충분합니다.", "sa": "/de/2026-11-06/audio/s4.mp3", "au": "/de/2026-11-06/audio/w5.mp3", "alts": ["고슴도치", "겨울잠, 동면", "체온", "지방층", "낙엽, 나뭇잎", "살아남다"]}, {"w": "Laub", "m": "낙엽, 나뭇잎 (중성 das)", "mh": "낙엽, 나뭇잎", "ar": "das", "cz": "Viele Igel leben heute in Gärten, deshalb ist es hilfreich, im Herbst einen Haufen aus <span class=\"dr-blank\"><\/span> und Ästen liegen zu lassen.", "ca": "Laub", "ex": "Viele Igel leben heute in Gärten, deshalb ist es hilfreich, im Herbst einen Haufen aus <b>Laub<\/b> und Ästen liegen zu lassen.", "sh": "Viele Igel leben heute in Gärten, deshalb ist es hilfreich, im Herbst einen Haufen aus <b>Laub<\/b> und Ästen liegen zu lassen.", "ek": "오늘날 많은 고슴도치가 정원에서 살기 때문에, 가을에 낙엽과 나뭇가지 더미를 그대로 남겨 두면 도움이 됩니다.", "sa": "/de/2026-11-06/audio/s5.mp3", "au": "/de/2026-11-06/audio/w6.mp3", "alts": ["고슴도치", "겨울잠, 동면", "체온", "지방층", "에너지", "살아남다"]}, {"w": "überleben", "m": "살아남다", "cz": "Wenn man einen schlafenden Igel stören würde, müsste er viel Energie verbrauchen und könnte den Winter vielleicht nicht <span class=\"dr-blank\"><\/span>.", "ca": "überleben", "ex": "Wenn man einen schlafenden Igel stören würde, müsste er viel Energie verbrauchen und könnte den Winter vielleicht nicht <b>überleben<\/b>.", "sh": "Wenn man einen schlafenden Igel stören würde, müsste er viel Energie verbrauchen und könnte den Winter vielleicht nicht <b>überleben<\/b>.", "ek": "만약 잠자는 고슴도치를 방해한다면, 고슴도치는 에너지를 많이 써야 하고 어쩌면 겨울을 넘기지 못할 수도 있습니다.", "sa": "/de/2026-11-06/audio/s6.mp3", "au": "/de/2026-11-06/audio/w7.mp3", "alts": ["고슴도치", "겨울잠, 동면", "체온", "지방층", "에너지", "낙엽, 나뭇잎"]}]</script>
+<script id="drill-js" data-v="14" src="/assets/drill.js?v=14" defer></script>
+<script id="vote-js">
+(function () {
+  var card = document.getElementById('vote'); if (!card) return;
+  var p = location.pathname.split('/'), lang = p[1] || '', day = p[2] || '';
+  var KEY = 'vote:' + lang + '/' + day, btns = card.querySelectorAll('.vote-btn');
+  function show(v) {
+    [].forEach.call(btns, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-vote') === v)); });
+    card.classList.toggle('done', !!v);
+    card.querySelector('.thanks').hidden = !v;
+  }
+  function send(v, from) {
+    var prev = null; try { prev = localStorage.getItem(KEY); } catch (e) {}
+    show(v);
+    if (prev === v) return;
+    try { localStorage.setItem(KEY, v); } catch (e) {}
+    if (typeof gtag === 'function') gtag('event', 'topic_vote', {
+      lang: lang, day: day, cat: card.getAttribute('data-cat'), weekday: card.getAttribute('data-wd'),
+      level: document.documentElement.classList.contains('level-a') ? 'a' : 'b', vote: v, from: from, changed: !!prev
+    });
+  }
+  [].forEach.call(btns, function (b) { b.addEventListener('click', function () { send(b.getAttribute('data-vote'), 'page'); }); });
+  try { var saved = localStorage.getItem(KEY); if (saved) show(saved); } catch (e) {}
+  var q = new URLSearchParams(location.search), v = q.get('vote');
+  if (v === 'up' || v === 'down') {
+    send(v, q.get('from') || 'link');
+    q.delete('vote'); q.delete('from');
+    var s = q.toString();
+    history.replaceState(null, '', location.pathname + (s ? '?' + s : '') + '#vote');
+    card.scrollIntoView({ block: 'center' });
+  }
+})();
+</script>
+<script id="gnb-js">(function(){
+  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
+  if(!chip||!sheet||!scrim)return;
+  var root=document.documentElement;
+  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
+  var tm=null,tprev=null;
+  function tint(on){
+    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
+      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
+      tm.setAttribute('content','#9fa3a9');}
+    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
+  }
+  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
+  function key(e){
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key!=='Tab')return;
+    var f=items();if(!f.length)return;
+    var a=f[0],z=f[f.length-1];
+    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
+    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
+    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
+  }
+  function open(){
+    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
+    tint(true);sheet.focus();
+    document.addEventListener('keydown',key);
+    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
+  }
+  function close(){
+    if(sheet.hidden)return;
+    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
+    document.removeEventListener('keydown',key);chip.focus();
+  }
+  chip.addEventListener('click',function(){sheet.hidden?open():close();});
+  scrim.addEventListener('click',close);
+  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
+  if(!window.fetch)return;
+  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.langs)return;
+    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
+    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
+      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
+    var rv=document.getElementById('gnb-review');
+    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
+      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
+        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
+  }).catch(function(){});
+})();</script>
+<script id="fb-js">
+(function () {
+  function device() {
+    var u = navigator.userAgent, d = 'Windows', b = 'Safari';
+    if (/iPhone/.test(u)) d = 'iPhone';
+    else if (/iPad/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1)) d = 'iPad';
+    else if (/Android/.test(u)) d = 'Android';
+    else if (/Macintosh/.test(u)) d = 'Mac';
+    else if (!/Windows/.test(u)) d = '기타';
+    if (/KAKAOTALK/i.test(u)) b = '카카오톡';
+    else if (/NAVER/.test(u)) b = '네이버';
+    else if (/SamsungBrowser/.test(u)) b = 'Samsung Internet';
+    else if (/Edg/.test(u)) b = 'Edge';
+    else if (/FxiOS|Firefox/.test(u)) b = 'Firefox';
+    else if (/CriOS|Chrome/.test(u)) b = 'Chrome';
+    return d + ', ' + b;
+  }
+  var links = document.querySelectorAll('.fb-btn');
+  for (var i = 0; i < links.length; i++) links[i].addEventListener('click', function () {
+    var type = this.getAttribute('data-fb');
+    if (type === 'bug') {
+      var body = '무슨 일이 있었나요?\n(예: 음성이 안 나와요, 글자가 겹쳐 보여요)\n\n\n----\n페이지: ' + location.href +
+        '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
+      this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
+    }
+    try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
+  });
+})();
+</script>
+<script id="track-js">
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var p = location.pathname.split('/'), base = { lang: p[1] || '', day: p[2] || '' };
+  function ga(name, extra) {
+    var o = {}, k;
+    for (k in base) o[k] = base[k];
+    for (k in extra) o[k] = extra[k];
+    try { if (typeof gtag === 'function') gtag('event', name, o); } catch (e) {}
+  }
+  function card(sel) { var e = document.querySelector(sel); return e && (e.closest('.card') || e); }
+  var parts = [['passage', '#passage'], ['words', '#step-words'], ['points', '#step-points'], ['guide', '.card.guide'], ['subscribe', '#subscribe']];
+  var seen = {}, pts = card('#step-points'), ms = 0, since = 0, read = false, inView = false;
+  // 긴 카드는 절반이 한 화면에 안 들어오므로, 카드 절반과 화면 40% 중 작은 쪽만큼 보이면 본 것으로 친다
+  function enough(en) { return en.isIntersecting && en.intersectionRect.height >= Math.min(en.boundingClientRect.height * 0.5, innerHeight * 0.4); }
+  // 체크 포인트가 보이는 동안의 시간을 더한다. 다른 탭으로 가 있는 동안은 세지 않는다
+  function tick() {
+    var now = Date.now();
+    if (since) ms += now - since;
+    since = inView && !document.hidden ? now : 0;
+    if (!read && ms >= 8000) { read = true; ga('points_read', {}); }
+  }
+  var io = new IntersectionObserver(function (list) {
+    list.forEach(function (en) {
+      var name = en.target.getAttribute('data-track');
+      if (enough(en) && !seen[name]) { seen[name] = 1; ga('section_view', { section: name }); }
+      if (en.target === pts) { inView = enough(en); tick(); }
+    });
+  }, { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
+  parts.forEach(function (x) { var e = card(x[1]); if (e) { e.setAttribute('data-track', x[0]); io.observe(e); } });
+  setInterval(function () { if (since) tick(); }, 1000);
+  document.addEventListener('visibilitychange', tick);
+})();
+</script>
+</body>
+</html>

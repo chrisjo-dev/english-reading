@@ -1,6 +1,6 @@
 {
- "date": "2026-11-05",
- "words_total": 503,
+ "date": "2026-11-06",
+ "words_total": 510,
  "langs": {
   "en": {
    "count": 34,
@@ -109,14 +109,14 @@
    }
   },
   "de": {
-   "count": 9,
-   "latest": "2026-11-05",
-   "topic": "유연 근무제",
+   "count": 10,
+   "latest": "2026-11-06",
+   "topic": "고슴도치 겨울잠",
    "sentences": [
-    "In vielen deutschen Firmen gibt es **Gleitzeit**, sodass die Mitarbeiter selbst entscheiden können, wann sie morgens mit der Arbeit beginnen.",
-    "Meistens gibt es aber eine **Kernzeit**, zum Beispiel von zehn bis fünfzehn Uhr, in der alle im Büro sein sollen.",
-    "Wer früh anfängt, kann am Nachmittag früher **Feierabend** machen und hat mehr Zeit für die Familie oder Hobbys.",
-    "Die von den Mitarbeitern geleisteten Stunden werden auf einem **Arbeitszeitkonto** gespeichert, damit Überstunden später durch freie Tage ausgeglichen werden können."
+    "Im Herbst sucht sich der **Igel** einen geschützten Platz unter Laub oder Holz, weil er bald seinen Winterschlaf beginnt.",
+    "Während des **Winterschlafs** sinkt die **Körpertemperatur** des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.",
+    "Damit er die kalten Monate ohne Nahrung übersteht, frisst sich der Igel im Herbst eine dicke **Fettschicht** an.",
+    "Die während des Herbstes im Körper gespeicherte **Energie** reicht aber nur, wenn der Igel nicht zu oft durch Wärme oder Lärm aufwacht."
    ],
    "chips": [
     "6문장",
@@ -124,31 +124,35 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "많은 독일 회사에는 유연 근무제가 있어서, 직원들이 아침 몇 시에 일을 시작할지 스스로 정할 수 있습니다.",
+   "answer": "가을이 되면 고슴도치는 곧 겨울잠을 시작하기 때문에 낙엽이나 나무 더미 아래에서 보호받을 수 있는 자리를 찾습니다.",
    "words": [
     [
-     "Gleitzeit",
-     "유연 근무제 (여성 die)"
+     "Igel",
+     "고슴도치 (남성 der)"
     ],
     [
-     "Kernzeit",
-     "핵심 근무 시간 (여성 die)"
+     "Winterschlaf",
+     "겨울잠, 동면 (남성 der)"
     ],
     [
-     "Feierabend",
-     "퇴근, 일과 후 (남성 der, 복수 Feierabende)"
+     "Körpertemperatur",
+     "체온 (여성 die)"
     ],
     [
-     "Arbeitszeitkonto",
-     "근무 시간 계좌 (중성 das, 복수 Arbeitszeitkonten)"
+     "Fettschicht",
+     "지방층 (여성 die)"
     ],
     [
-     "erfassen",
-     "기록하다, 파악하다"
+     "Energie",
+     "에너지 (여성 die)"
     ],
     [
-     "vereinbaren",
-     "양립시키다, 조화시키다"
+     "Laub",
+     "낙엽, 나뭇잎 (중성 das)"
+    ],
+    [
+     "überleben",
+     "살아남다"
     ]
    ],
    "review": {
@@ -159,6 +163,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-06",
+   "topic": "고슴도치 겨울잠"
+  },
   {
    "lang": "en",
    "day": "2026-11-05",
@@ -258,11 +267,6 @@
    "lang": "ja",
    "day": "2026-10-30",
    "topic": "서리"
-  },
-  {
-   "lang": "de",
-   "day": "2026-10-30",
-   "topic": "단풍의 과학"
   }
  ]
 }
