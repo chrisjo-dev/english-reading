@@ -1,0 +1,440 @@
+{
+  "date": "2026-11-06",
+  "category": "science",
+  "topic": "고슴도치 겨울잠",
+  "title_ko": "고슴도치의 겨울잠",
+  "headline": "Der Igel schläft im Winter",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "photo_scene": "Close-up of a small brown hedgehog curled up asleep in a nest of dry orange autumn leaves and twigs under a wooden garden bench, soft overcast afternoon light.",
+  "sentences": [
+    {
+      "en": "Im Herbst sucht sich der **Igel** einen geschützten Platz unter Laub oder Holz, weil er bald seinen Winterschlaf beginnt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Im Herbst",
+          "가을에"
+        ],
+        [
+          "sucht sich der **Igel**",
+          "고슴도치는 찾습니다"
+        ],
+        [
+          "einen geschützten Platz",
+          "보호받는 자리를"
+        ],
+        [
+          "unter Laub oder Holz,",
+          "낙엽이나 나무 더미 아래에서"
+        ],
+        [
+          "weil er bald",
+          "왜냐하면 그가 곧"
+        ],
+        [
+          "seinen Winterschlaf beginnt.",
+          "겨울잠을 시작하기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Während des **Winterschlafs** sinkt die **Körpertemperatur** des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.",
+      "b2": false,
+      "chunks": [
+        [
+          "Während des **Winterschlafs**",
+          "겨울잠을 자는 동안"
+        ],
+        [
+          "sinkt die **Körpertemperatur** des Igels stark,",
+          "고슴도치의 체온이 크게 떨어집니다"
+        ],
+        [
+          "und sein Herz schlägt",
+          "그리고 그의 심장은 뜁니다"
+        ],
+        [
+          "dann nur noch sehr langsam.",
+          "그때 아주 느리게만"
+        ]
+      ]
+    },
+    {
+      "en": "Damit er die kalten Monate ohne Nahrung übersteht, frisst sich der Igel im Herbst eine dicke **Fettschicht** an.",
+      "b2": false,
+      "chunks": [
+        [
+          "Damit er",
+          "그가 ~하도록"
+        ],
+        [
+          "die kalten Monate",
+          "추운 몇 달을"
+        ],
+        [
+          "ohne Nahrung übersteht,",
+          "먹이 없이 견뎌 내도록"
+        ],
+        [
+          "frisst sich der Igel",
+          "고슴도치는 먹어서"
+        ],
+        [
+          "im Herbst",
+          "가을에"
+        ],
+        [
+          "eine dicke **Fettschicht** an.",
+          "두꺼운 지방층을 만들어 둡니다"
+        ]
+      ]
+    },
+    {
+      "en": "Die während des Herbstes im Körper gespeicherte **Energie** reicht aber nur, wenn der Igel nicht zu oft durch Wärme oder Lärm aufwacht.",
+      "b2": true,
+      "chunks": [
+        [
+          "Die während des Herbstes im Körper gespeicherte **Energie**",
+          "가을 동안 몸속에 저장된 에너지는"
+        ],
+        [
+          "reicht aber nur,",
+          "하지만 충분합니다, 오직"
+        ],
+        [
+          "wenn der Igel",
+          "고슴도치가 ~할 때만"
+        ],
+        [
+          "nicht zu oft",
+          "너무 자주는 아니게"
+        ],
+        [
+          "durch Wärme oder Lärm aufwacht.",
+          "따뜻함이나 소음 때문에 깨어날"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Igel leben heute in Gärten, deshalb ist es hilfreich, im Herbst einen Haufen aus **Laub** und Ästen liegen zu lassen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viele Igel",
+          "많은 고슴도치가"
+        ],
+        [
+          "leben heute",
+          "오늘날 삽니다"
+        ],
+        [
+          "in Gärten,",
+          "정원에서"
+        ],
+        [
+          "deshalb ist es hilfreich,",
+          "그래서 도움이 됩니다"
+        ],
+        [
+          "im Herbst",
+          "가을에"
+        ],
+        [
+          "einen Haufen aus **Laub** und Ästen",
+          "낙엽과 나뭇가지 더미를"
+        ],
+        [
+          "liegen zu lassen.",
+          "그대로 두는 것이"
+        ]
+      ]
+    },
+    {
+      "en": "Wenn man einen schlafenden Igel stören würde, müsste er viel Energie verbrauchen und könnte den Winter vielleicht nicht **überleben**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Wenn man",
+          "만약 사람이"
+        ],
+        [
+          "einen schlafenden Igel",
+          "잠자는 고슴도치를"
+        ],
+        [
+          "stören würde,",
+          "방해한다면"
+        ],
+        [
+          "müsste er",
+          "그는 ~해야 할 것입니다"
+        ],
+        [
+          "viel Energie verbrauchen",
+          "많은 에너지를 써야"
+        ],
+        [
+          "und könnte den Winter",
+          "그리고 겨울을 ~할 수도 있습니다"
+        ],
+        [
+          "vielleicht nicht **überleben**.",
+          "어쩌면 살아남지 못할"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Igel",
+      "고슴도치 (남성 der)"
+    ],
+    [
+      "Winterschlaf",
+      "겨울잠, 동면 (남성 der)"
+    ],
+    [
+      "Körpertemperatur",
+      "체온 (여성 die)"
+    ],
+    [
+      "Fettschicht",
+      "지방층 (여성 die)"
+    ],
+    [
+      "Energie",
+      "에너지 (여성 die)"
+    ],
+    [
+      "Laub",
+      "낙엽, 나뭇잎 (중성 das)"
+    ],
+    [
+      "überleben",
+      "살아남다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Partizipialattribut — 관사와 명사 사이의 긴 수식어",
+      "body": "`Die während des Herbstes im Körper gespeicherte Energie`는 관사 `Die`와 명사 `Energie` 사이에 분사 `gespeicherte`(저장된)와 그 수식어가 들어간 구조예요. 관계절로 풀면 `die Energie, die während des Herbstes im Körper gespeichert wurde`입니다. 관사를 보면 먼저 명사까지 건너뛰어 주어를 찾고, 가운데 수식어는 뒤에서부터 읽으면 쉬워요."
+    },
+    {
+      "title": "Konjunktiv II — würde / müsste / könnte (사실이 아닌 가정)",
+      "body": "`Wenn man einen schlafenden Igel stören würde, müsste er ... verbrauchen und könnte ... nicht überleben`은 '만약 잠자는 고슴도치를 방해한다면 ~해야 할 것이고 ~하지 못할 수도 있다'는 가정이에요. wenn절은 부문장이라 `würde`가 맨 끝에 오고, 주문장은 wenn절이 첫 자리를 차지하므로 `müsste`가 바로 뒤 두 번째 자리에 옵니다."
+    }
+  ],
+  "answers": [
+    "가을이 되면 고슴도치는 곧 겨울잠을 시작하기 때문에 낙엽이나 나무 더미 아래에서 보호받을 수 있는 자리를 찾습니다.",
+    "겨울잠을 자는 동안 고슴도치의 체온은 크게 떨어지고, 심장도 아주 느리게만 뜁니다.",
+    "추운 몇 달을 먹이 없이 견뎌 내기 위해 고슴도치는 가을에 많이 먹어 두꺼운 지방층을 만들어 둡니다.",
+    "하지만 가을 동안 몸속에 저장해 둔 에너지는 고슴도치가 따뜻함이나 소음 때문에 너무 자주 깨지 않을 때에만 충분합니다.",
+    "오늘날 많은 고슴도치가 정원에서 살기 때문에, 가을에 낙엽과 나뭇가지 더미를 그대로 남겨 두면 도움이 됩니다.",
+    "만약 잠자는 고슴도치를 방해한다면, 고슴도치는 에너지를 많이 써야 하고 어쩌면 겨울을 넘기지 못할 수도 있습니다."
+  ],
+  "advanced": [
+    {
+      "word": "überstehen",
+      "meaning": "견뎌 내다, 이겨 내다",
+      "confuse": "überstehen vs. verstehen: `verstehen`은 이해하다, `überstehen`은 힘든 시기를 끝까지 버텨 내다예요. 비분리동사라 `übersteht`처럼 갈라지지 않습니다.",
+      "example": "Die Pflanze hat den kalten Winter gut **überstanden**.",
+      "example_ko": "그 식물은 추운 겨울을 잘 견뎌 냈습니다."
+    },
+    {
+      "word": "verbrauchen",
+      "meaning": "소비하다, 쓰다",
+      "confuse": "verbrauchen vs. gebrauchen: `gebrauchen`은 (도구 등을) 사용하다, `verbrauchen`은 에너지나 물처럼 써서 없애다예요.",
+      "example": "Ein alter Kühlschrank **verbraucht** viel Strom.",
+      "example_ko": "오래된 냉장고는 전기를 많이 씁니다."
+    },
+    {
+      "word": "geschützt",
+      "meaning": "보호된, 바람이 막힌",
+      "confuse": null,
+      "example": "Die Vögel bauen ihr Nest an einem **geschützten** Ort.",
+      "example_ko": "새들은 보호받는 곳에 둥지를 짓습니다."
+    },
+    {
+      "word": "sinken",
+      "meaning": "떨어지다, 내려가다",
+      "confuse": "sinken vs. senken: `sinken`은 스스로 내려가다(자동사), `senken`은 무엇을 낮추다(타동사)예요. `Die Temperatur sinkt.` / `Man senkt die Preise.`",
+      "example": "In der Nacht **sinkt** die Temperatur unter null.",
+      "example_ko": "밤에는 기온이 영하로 떨어집니다."
+    },
+    {
+      "word": "hilfreich",
+      "meaning": "도움이 되는, 유익한",
+      "confuse": null,
+      "example": "Ein Wörterbuch ist beim Lesen sehr **hilfreich**.",
+      "example_ko": "사전은 읽을 때 아주 도움이 됩니다."
+    },
+    {
+      "word": "Nahrung",
+      "meaning": "먹이, 양식 (여성 die)",
+      "confuse": "Nahrung vs. Essen: `Essen`은 사람이 먹는 음식이나 식사, `Nahrung`은 생물이 살기 위해 먹는 것 전체를 가리키는 조금 격식 있는 말이에요.",
+      "example": "Im Winter finden viele Tiere kaum **Nahrung**.",
+      "example_ko": "겨울에는 많은 동물이 먹이를 거의 찾지 못합니다."
+    },
+    {
+      "word": "stören",
+      "meaning": "방해하다, 귀찮게 하다",
+      "confuse": "stören vs. zerstören: `zerstören`은 부수다, 파괴하다예요. `stören`은 잠이나 일을 방해하는 정도입니다.",
+      "example": "Bitte **stören** Sie mich nicht, ich muss lernen.",
+      "example_ko": "방해하지 말아 주세요, 공부해야 해요."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Im Herbst sucht der **Igel** einen sicheren Platz unter Laub.",
+          "chunks": [
+            [
+              "Im Herbst",
+              "가을에"
+            ],
+            [
+              "sucht der **Igel**",
+              "고슴도치는 찾습니다"
+            ],
+            [
+              "einen sicheren Platz",
+              "안전한 자리를"
+            ],
+            [
+              "unter Laub.",
+              "낙엽 아래에서"
+            ]
+          ]
+        },
+        {
+          "en": "Im **Winterschlaf** ist seine **Körpertemperatur** sehr niedrig, und das Herz schlägt langsam.",
+          "chunks": [
+            [
+              "Im **Winterschlaf**",
+              "겨울잠 중에는"
+            ],
+            [
+              "ist seine **Körpertemperatur**",
+              "그의 체온이"
+            ],
+            [
+              "sehr niedrig,",
+              "아주 낮습니다"
+            ],
+            [
+              "und das Herz",
+              "그리고 심장은"
+            ],
+            [
+              "schlägt langsam.",
+              "느리게 뜁니다"
+            ]
+          ]
+        },
+        {
+          "en": "Vorher frisst der Igel viel und bekommt eine dicke **Fettschicht**.",
+          "chunks": [
+            [
+              "Vorher",
+              "그전에"
+            ],
+            [
+              "frisst der Igel viel",
+              "고슴도치는 많이 먹습니다"
+            ],
+            [
+              "und bekommt",
+              "그리고 얻습니다"
+            ],
+            [
+              "eine dicke **Fettschicht**.",
+              "두꺼운 지방층을"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Energie** im Körper reicht nur, wenn der Igel nicht oft aufwacht.",
+          "chunks": [
+            [
+              "Die **Energie** im Körper",
+              "몸속의 에너지는"
+            ],
+            [
+              "reicht nur,",
+              "충분합니다, 오직"
+            ],
+            [
+              "wenn der Igel",
+              "고슴도치가 ~할 때만"
+            ],
+            [
+              "nicht oft aufwacht.",
+              "자주 깨지 않을"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Igel leben in Gärten, darum hilft ein Haufen aus **Laub** und Ästen.",
+          "chunks": [
+            [
+              "Viele Igel",
+              "많은 고슴도치가"
+            ],
+            [
+              "leben in Gärten,",
+              "정원에 삽니다"
+            ],
+            [
+              "darum hilft",
+              "그래서 도움이 됩니다"
+            ],
+            [
+              "ein Haufen aus **Laub** und Ästen.",
+              "낙엽과 나뭇가지 더미가"
+            ]
+          ]
+        },
+        {
+          "en": "Man soll einen schlafenden Igel nicht stören, sonst kann er den Winter nicht **überleben**.",
+          "chunks": [
+            [
+              "Man soll",
+              "사람은 ~하면 안 됩니다"
+            ],
+            [
+              "einen schlafenden Igel",
+              "잠자는 고슴도치를"
+            ],
+            [
+              "nicht stören,",
+              "방해하면"
+            ],
+            [
+              "sonst kann er",
+              "그렇지 않으면 그는 ~할 수 없습니다"
+            ],
+            [
+              "den Winter nicht **überleben**.",
+              "겨울을 살아남지"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "가을에 고슴도치는 낙엽 아래에서 안전한 자리를 찾습니다.",
+        "겨울잠을 자는 동안 고슴도치의 체온은 아주 낮고, 심장은 느리게 뜁니다.",
+        "그전에 고슴도치는 많이 먹어서 두꺼운 지방층이 생깁니다.",
+        "몸속의 에너지는 고슴도치가 자주 깨지 않을 때만 충분합니다.",
+        "많은 고슴도치가 정원에 살기 때문에, 낙엽과 나뭇가지 더미가 도움이 됩니다.",
+        "잠자는 고슴도치를 방해하면 안 됩니다. 그렇지 않으면 겨울을 살아남지 못할 수 있습니다."
+      ]
+    }
+  }
+}
