@@ -20,6 +20,7 @@ import drill  # noqa: E402
 import gnb  # noqa: E402
 import feedback  # noqa: E402
 import track  # noqa: E402
+import seek  # noqa: E402
 from render import LEVEL_SEG  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -439,6 +440,8 @@ def patch_page(lang, day):
     page = feedback.apply(page, lang, url)
     # 구역 도달 측정(이슈 #24, 문법 섹션 0단계)
     page = track.apply(page)
+    # 재생바 이동(이슈 #26)
+    page = seek.apply(page)
     path.write_text(page, encoding="utf-8")
 
 
