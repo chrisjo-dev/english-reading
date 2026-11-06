@@ -95,14 +95,31 @@ class Plan(unittest.TestCase):
 
     def test_josa_is_ignored(self):
         self.seed("ja", "2026-10-15", topic="도서관", title_ko="동네 도서관")
-        w = self.warns("ja", "2026-11-09", base(title_ko="도서관의 하루"))
+        w = self.warns("ja", "2026-11-09", base(topic="도서관의 하루"))
         self.assertTrue(any("소재 반복" in x for x in w))
 
     def test_generic_words_do_not_warn(self):
         self.seed("ja", "2026-10-15", topic="일본 이야기", title_ko="오늘 일본의 가을 이야기")
         self.seed("de", "2026-10-15", topic="독일 소식", title_ko="독일의 새로운 이야기")
-        self.assertFalse(any("소재 반복" in x for x in self.warns("ja", "2026-11-09", base(title_ko="일본의 가을 소식"))))
-        self.assertFalse(any("소재 반복" in x for x in self.warns("de", "2026-11-09", base(title_ko="독일 이야기"))))
+        self.assertFalse(any("소재 반복" in x for x in self.warns("ja", "2026-11-09", base(topic="일본의 가을 소식"))))
+        self.assertFalse(any("소재 반복" in x for x in self.warns("de", "2026-11-09", base(topic="독일 이야기"))))
+
+    def test_title_only_overlap_does_not_warn(self):
+        self.seed("en", "2026-10-15", topic="새 공룡 화석", title_ko="로봇이 찾은 공룡 화석")
+        self.assertFalse(any("소재 반복" in x for x in self.warns("en", "2026-11-09", base(topic="공장 자동화", title_ko="로봇이 일하는 공장"))))
+
+    def test_city_only_overlap_does_not_warn(self):
+        self.seed("de", "2026-10-15", topic="베를린 빵집", keywords=["베를린", "빵집"])
+        self.assertFalse(any("소재 반복" in x for x in self.warns("de", "2026-11-09", base(topic="베를린 지하철", keywords=["베를린", "지하철"]))))
+
+    def test_scene_type_overlap_warns(self):
+        self.seed("ja", "2026-10-15", topic="꽃집", keywords=["꽃집", "가게 일"])
+        self.assertTrue(any("소재 반복" in x for x in self.warns("ja", "2026-11-09", base(topic="빵집", keywords=["빵집", "가게 일"]))))
+
+    def test_warning_keeps_word_only_overlap(self):
+        self.seed("ja", "2026-10-15", topic="도서관")
+        w = self.warns("ja", "2026-11-09", base(topic="도서관"))
+        self.assertTrue(any("낱말만 겹치면 그대로" in x for x in w))
 
 
 class RealCases(unittest.TestCase):
@@ -120,6 +137,17 @@ class RealCases(unittest.TestCase):
         self.assertEqual(r.returncode, 0)
         self.assertIn("2026-10-15", r.stdout)
         self.assertIn("로보택시", r.stdout)
+
+    def test_topics_list_shows_keywords(self):
+        c = {"topic": "서점", "title_ko": "제목", "keywords": ["서점", "가게 일"]}
+        with tempfile.TemporaryDirectory() as t:
+            d = Path(t) / "content" / "ja"
+            d.mkdir(parents=True)
+            (d / "2026-11-01.json").write_text(json.dumps(c, ensure_ascii=False), encoding="utf-8")
+            rows = check_content.topic_list("ja", "2026-11-09", root=Path(t))
+        self.assertEqual(rows[0][1]["keywords"], ["서점", "가게 일"])
+        src = (ROOT / "tools" / "check_content.py").read_text(encoding="utf-8")
+        self.assertIn("', '.join(c.get('keywords') or [])", src)
 
     def test_topics_list(self):
         r = subprocess.run([sys.executable, "tools/check_content.py", "--topics", "ja", "2026-11-05"], cwd=ROOT, capture_output=True, text=True)

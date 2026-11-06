@@ -224,13 +224,16 @@ GENERIC_WORDS = {
     "이야기", "오늘", "일본", "일본어", "독일", "독일어", "영어", "한국", "세계", "사람", "우리", "소식", "시작",
     "가장", "작은", "새로운", "새로", "방법", "이유", "원리", "시간", "하루", "이날", "모습", "동네", "마을",
     "유럽", "미국", "도시", "문화", "사회", "과학", "기술", "미래", "생활", "준비", "첫날",
-    "가을", "겨울", "여름", "만든", "있는", "거대한", "처음",
+    "가을", "겨울", "여름", "만든", "있는", "거대한", "처음", "경험", "대화", "일상", "장면",
+    "프랑스", "영국", "중국", "스위스", "오스트리아", "이탈리아", "스페인", "캐나다", "호주", "대만",
+    "서울", "부산", "도쿄", "교토", "오사카", "삿포로", "후쿠오카", "베를린", "뮌헨", "함부르크", "쾰른",
+    "빈", "취리히", "런던", "맨체스터", "파리", "뉴욕", "포트워스", "텍사스", "캘리포니아",
 }
 
 
 def _topic_terms(c):
-    """topic, title_ko, keywords 의 한국어 낱말. 조사를 뗀 형태도 넣는다."""
-    text = " ".join([str(c.get("topic") or ""), str(c.get("title_ko") or "")] + [str(k) for k in c.get("keywords") or []])
+    """topic, keywords 의 한국어 낱말. 조사를 뗀 형태도 넣는다. title_ko 는 꾸밈말이 많아 비교하지 않는다."""
+    text = " ".join([str(c.get("topic") or "")] + [str(k) for k in c.get("keywords") or []])
     terms = set()
     for w in _KO_WORD.findall(text):
         stem = _JOSA.sub("", w) if len(w) >= 3 else w
@@ -258,7 +261,7 @@ def topic_repeats(lang, day, c, root=ROOT):
         same = sorted(mine & _topic_terms(old))
         if same:
             out.append(f"소재 반복: {d} '{old.get('topic')}' 와 '{', '.join(same)}' 이 겹쳐요. "
-                       "같은 소재, 상황, 장면이면 다른 소재로 고르세요(뉴스는 핵심 사실이 새로운 후속 사건만 예외, ROUTINE.common.md 5절).")
+                       "같은 소재나 장면이면 고치고, 낱말만 겹치면 그대로 둡니다(ROUTINE.common.md 5절).")
     return out
 
 
@@ -281,7 +284,7 @@ def check_plan(c, path, plan_from=None):
         warnings.append(f"{want} 날은 출처가 필요해요(ROUTINE.common.md 1절). 다시 찾고, 못 찾았으면 마지막 답변에 이유를 적으세요.")
     warnings += _check_grammar(c, lang)
     if "keywords" not in c:
-        warnings.append("keywords 가 없어요. 소재를 나타내는 한국어 명사 2~4개를 쓰세요(ROUTINE.common.md 5절).")
+        warnings.append("keywords 가 없어요. 소재 낱말 2~4개와 장면 유형 1개를 쓰세요(ROUTINE.common.md 1절, 5절).")
     if lang == "en":
         for n, s in enumerate(c.get("sentences", []), 1):
             count = len(_plain(s.get("en", "")).split())
