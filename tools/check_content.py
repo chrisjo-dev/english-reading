@@ -16,6 +16,10 @@
 - 오류: 수준을 나눈 언어(langs 의 levels 플래그)의 기초 지문 levels.a 가 없거나 본문과 문장 수가 다른 경우.
   영어는 LEVELS_FROM, 독일어는 DE_LEVELS_FROM, 일본어는 JA_LEVELS_FROM 이후 지문과 그 언어의 비축분에 필수.
 - 경고: 독일어와 일본어 본문(중급)이 수준에 비해 지나치게 짧은 경우.
+- 경고(PLAN_FROM 이후 지문, ROUTINE.common.md): fit 이 요일과 다름, 소식과 설명 날 출처 없음, grammar 의 id 가 목록에 없거나
+  pattern 이 문장별로 안 걸림, 영어 중급 길이 규칙 위반, 최근 90일 지문과 소재 반복. 비축분에는 적용하지 않는다.
+      python3 tools/check_content.py --topics en 2026-11-09   (최근 90일 소재 목록, 지문을 쓰기 전에 본다)
+      python3 tools/check_content.py --repeat en 2026-11-05   (소재 반복만 검사, PLAN_FROM 과 무관)
 - 오류: 주요 단어(words)의 뜻 괄호에 그 단어나 변형이 들어 있는 경우. 예: ["Ufer", "물가 (das Ufer)"], ["genes", "유전자들 (gene의 복수)"].
   단어 쓰기 문제의 힌트에 답이 보인다. WORD_HINT_FROM 이후 지문과 모든 비축분에 적용.
 """
@@ -27,6 +31,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import grammar_pick as _grammar  # noqa: E402
 import langs as _langs  # noqa: E402
 
 # 화면에서 처리하는 표기: **굵게**, `코드`, {漢字|かな}. 이것을 지운 뒤 남은 기호를 찾는다.
@@ -158,6 +163,7 @@ def check(path):
     style_errors, style_warnings = check_style(c, path)
     errors += style_errors
     warnings += style_warnings
+    warnings += check_plan(c, path)
     return errors, warnings
 
 
@@ -203,9 +209,108 @@ def check_style(c, path):
     t = str(c.get("title_ko") or "")
     if len(t.replace(" ", "")) > 18 or _TITLE_TAIL.search(t):
         warnings.append(f"title_ko '{t}' 가 설명처럼 길어요. 15자 안팎의 명사구로, 원문 제목을 옮기지 말고 새로 지으세요(ROUTINE 의 제목 짓는 법).")
-    if lang == "ja" and day and day.weekday() in (1, 2, 4) and not c.get("source"):
+    if lang == "ja" and day and day < PLAN_FROM and day.weekday() in (1, 2, 4) and not c.get("source"):  # 이후는 check_plan
         warnings.append("화, 수, 금 일본어 지문은 출처가 필요해요(ROUTINE.ja.md 2번). 공식 페이지를 찾아 source 를 달거나, 못 찾았으면 마지막 답변에 이유를 적으세요.")
     return errors, warnings
+
+
+PLAN_FROM = dt.date(2026, 11, 8)  # 이날 지문부터 공통 주간 구조(ROUTINE.common.md)를 검사한다
+TOPIC_DAYS = 90
+EN_WORDS = (12, 26)  # 영어 중급 한 문장 단어 수
+EN_B2_MAX = 30
+_KO_WORD = re.compile(r"[가-힣]{2,}")
+_JOSA = re.compile(r"(에서|으로|에게|부터|까지|의|을|를|은|는|와|과|로|에)$")
+GENERIC_WORDS = {
+    "이야기", "오늘", "일본", "일본어", "독일", "독일어", "영어", "한국", "세계", "사람", "우리", "소식", "시작",
+    "가장", "작은", "새로운", "새로", "방법", "이유", "원리", "시간", "하루", "이날", "모습", "동네", "마을",
+    "유럽", "미국", "도시", "문화", "사회", "과학", "기술", "미래", "생활", "준비", "첫날",
+    "가을", "겨울", "여름", "만든", "있는", "거대한", "처음",
+}
+
+
+def _topic_terms(c):
+    """topic, title_ko, keywords 의 한국어 낱말. 조사를 뗀 형태도 넣는다."""
+    text = " ".join([str(c.get("topic") or ""), str(c.get("title_ko") or "")] + [str(k) for k in c.get("keywords") or []])
+    terms = set()
+    for w in _KO_WORD.findall(text):
+        stem = _JOSA.sub("", w) if len(w) >= 3 else w
+        if stem not in GENERIC_WORDS and w not in GENERIC_WORDS:
+            terms.update(t for t in (w, stem) if len(t) >= 2)
+    return terms
+
+
+def topic_list(lang, day, days=TOPIC_DAYS, root=ROOT):
+    """day 이전 최근 days 일의 (날짜, 지문)을 오래된 순서로 돌려준다."""
+    day = dt.date.fromisoformat(day) if isinstance(day, str) else day
+    start = (day - dt.timedelta(days=days)).isoformat()
+    out = []
+    for p in sorted((root / "content" / lang).glob("*.json")):
+        if start <= p.stem < day.isoformat():
+            out.append((p.stem, json.loads(p.read_text(encoding="utf-8"))))
+    return out
+
+
+def topic_repeats(lang, day, c, root=ROOT):
+    """최근 지문과 소재 낱말이 겹치면 경고를 만든다. 본문 유사도가 아니라 소재를 본다."""
+    mine = _topic_terms(c)
+    out = []
+    for d, old in topic_list(lang, day, root=root):
+        same = sorted(mine & _topic_terms(old))
+        if same:
+            out.append(f"소재 반복: {d} '{old.get('topic')}' 와 '{', '.join(same)}' 이 겹쳐요. "
+                       "같은 소재, 상황, 장면이면 다른 소재로 고르세요(뉴스는 핵심 사실이 새로운 후속 사건만 예외, ROUTINE.common.md 5절).")
+    return out
+
+
+def check_plan(c, path, plan_from=None):
+    """공통 주간 구조 경고. 발행을 막지 않고, 비축분에는 적용하지 않는다."""
+    if path.parent.parent.name == "pool":
+        return []
+    try:
+        day = dt.date.fromisoformat(path.stem)
+    except ValueError:
+        return []
+    if day < (plan_from or PLAN_FROM):
+        return []
+    warnings = []
+    lang = path.parent.name
+    want = _grammar.fit_of(day)
+    if c.get("fit") != want:
+        warnings.append(f"fit 은 요일 유형 '{want}' 이어야 해요(현재 {c.get('fit')!r}, ROUTINE.common.md 1절). 출처를 못 찾은 날도 그대로 둡니다.")
+    if want in ("news", "explain") and not c.get("source"):
+        warnings.append(f"{want} 날은 출처가 필요해요(ROUTINE.common.md 1절). 다시 찾고, 못 찾았으면 마지막 답변에 이유를 적으세요.")
+    warnings += _check_grammar(c, lang)
+    if "keywords" not in c:
+        warnings.append("keywords 가 없어요. 소재를 나타내는 한국어 명사 2~4개를 쓰세요(ROUTINE.common.md 5절).")
+    if lang == "en":
+        for n, s in enumerate(c.get("sentences", []), 1):
+            count = len(_plain(s.get("en", "")).split())
+            top = EN_B2_MAX if s.get("b2") else EN_WORDS[1]
+            if not EN_WORDS[0] <= count <= top:
+                warnings.append(f"sentences {n}번이 {count}단어예요. 중급은 {EN_WORDS[0]}~{EN_WORDS[1]}단어, b2 문장만 {EN_B2_MAX}단어까지입니다.")
+    warnings += topic_repeats(lang, day, c, root=path.parent.parent.parent)
+    return warnings
+
+
+def _check_grammar(c, lang):
+    if "grammar" not in c:
+        return ["grammar 가 없어요. 쓴 문법 id 를 적고, 없으면 빈 목록으로 두세요(ROUTINE.common.md 3절)."]
+    try:
+        table = _grammar.load(lang)
+    except OSError:
+        return []
+    bodies = {"b": c.get("sentences", []), "a": ((c.get("levels") or {}).get("a") or {}).get("sentences", [])}
+    out = []
+    used = c.get("grammar") if isinstance(c.get("grammar"), dict) else {}
+    for level, ids in used.items():
+        items = {i["id"]: i for i in table.get(level, [])}
+        for gid in ids or []:
+            item = items.get(gid)
+            if item is None:
+                out.append(f"grammar: '{gid}' 는 {lang} {level} 목록에 없어요.")
+            elif item["pattern"] and not any(re.search(item["pattern"], _plain(s.get("en", "")).strip()) for s in bodies.get(level, [])):
+                out.append(f"grammar: '{gid}' 를 적었는데 {level} 지문의 어느 문장에서도 찾지 못했어요. 문장을 고치거나 grammar 에서 빼세요.")
+    return out
 
 
 WORD_HINT_FROM = dt.date(2026, 11, 1)  # 이날 지문부터 뜻에 단어를 다시 쓰면 오류(그 전 36개는 페이지에서 가린다)
@@ -562,9 +667,29 @@ def main_overlap(lang, day):
     sys.exit(1 if errors else 0)
 
 
+def main_topics(lang, day):
+    """지문을 쓰기 전에 볼 최근 90일 소재 목록."""
+    for d, c in topic_list(lang, day):
+        print(f"{d} | {c.get('topic')} | {c.get('title_ko')} | {', '.join(c.get('keywords') or [])}")
+
+
+def main_repeat(lang, day):
+    """소재 반복만 검사한다. 날짜 기준 없이 돌리고 종료 코드는 언제나 0."""
+    p = ROOT / "content" / lang / f"{day}.json"
+    found = topic_repeats(lang, day, json.loads(p.read_text(encoding="utf-8")))
+    for w in found:
+        print(f"::warning file={p.relative_to(ROOT)}::{w}")
+    if not found:
+        print(f"no repeat {p.relative_to(ROOT)}")
+
+
 if __name__ == "__main__":
     if sys.argv[1:2] == ["--overlap"]:
         main_overlap(sys.argv[2], sys.argv[3])
+    elif sys.argv[1:2] == ["--topics"]:
+        main_topics(sys.argv[2], sys.argv[3])
+    elif sys.argv[1:2] == ["--repeat"]:
+        main_repeat(sys.argv[2], sys.argv[3])
     elif sys.argv[1:] == ["--all"]:
         main(sorted(ROOT.glob("content/*/*.json")))
     elif sys.argv[1:] == ["--pool"]:

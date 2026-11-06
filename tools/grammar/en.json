@@ -340,15 +340,6 @@
       "pattern": "\\b[Ii]f\\b.*\\bwould\\b"
     },
     {
-      "id": "b-third-conditional",
-      "name": "가정법 과거완료",
-      "example": "If we had left earlier, we would have caught the train.",
-      "fit": [
-        "life"
-      ],
-      "pattern": "\\bwould have\\b"
-    },
-    {
       "id": "b-wish",
       "name": "wish + 과거",
       "example": "I wish I lived near the sea.",
@@ -473,6 +464,15 @@
         "life"
       ],
       "pattern": null
+    },
+    {
+      "id": "b-third-conditional",
+      "name": "가정법 과거완료",
+      "example": "If we had left earlier, we would have caught the train.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\bwould have\\b"
     }
   ]
 }

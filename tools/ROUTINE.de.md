@@ -1,6 +1,6 @@
 # 매일 독일어 읽기: 생성 절차 (독일어, de)
 
-예약 작업이 매일 아침 이 파일을 읽고 따른다. 대상은 CEFR B1~B2 수준의 한국인 독일어 학습자이고, 설명과 뜻은 모두 한국어로 쓴다.
+예약 작업이 매일 아침 이 파일을 읽고 따른다. 대상은 CEFR B1~B2 수준의 한국인 독일어 학습자이고, 설명과 뜻은 모두 한국어로 쓴다. **지문을 쓰기 전에 `tools/ROUTINE.common.md`를 먼저 읽고 따른다.**
 
 ## 난이도 규칙 (매우 중요)
 - **중급(main) 지문**: B1 위주 + B2 1~2문장. 문장은 정확히 6개, 한 문장은 **15~22단어**(공백 기준).
@@ -15,7 +15,7 @@
     - **Nominalstil**: 동사 대신 파생 명사를 쓰는 문장(`die Einführung ... führte zu`).
     - **um...zu + 복잡한 목적어**: `um die heimische Landwirtschaft zu unterstützen und frischere Waren zu bekommen`.
   - Konjunktiv II는 1~2문장에만 사용하고 모든 문장에 쓰지 않는다.
-- **기초(levels.a) 지문**: A2~B1. 중급과 같은 주제·사실을 1:1로 다시 씀. 문장을 짧게(**8~14단어**), 단순 구조(주어+동사+목적어/부사)로. Nebensatz는 최소화.
+- **기초(levels.a) 지문**: A2~B1. 중급과 같은 주제와 사실을 1:1로 다시 씀. 문장을 짧게(**8~14단어**), 단순 구조(주어+동사+목적어/부사)로. Nebensatz는 최소화.
   - **굵은 글자(bold) 규칙**: 중급 문장에서 굵게 표시한 단어(`**단어**`)를 기초 문장에서도 A2~B1 수준에 맞으면 그대로 유지한다. 해당 단어가 기초 수준에 어색하거나 없어서 다른 표현을 써야 할 때에 한해 더 쉬운 동의어를 대신 굵게 표시한다. 굵은 단어를 아예 생략하지 않는다.
 - 문체는 표준 독일어(Hochdeutsch). 방언, 구어체 축약 금지.
 - 스스로 난이도를 올리지 않는다.
@@ -40,20 +40,20 @@
 
 ## 오늘의 소재 정하기 (지문을 쓰기 전에 수행)
 
-**최근 내용 겹치지 않기**: 고르기 전에 아래 명령으로 최근 14편의 주제와 본문을 확인한다.
-`python3 -c "import json,glob; [print(p[-15:-5], json.load(open(p)).get('topic'), '|', ' '.join(s['en'] for s in json.load(open(p))['sentences'])[:200]) for p in sorted(glob.glob('content/de/*.json'))[-14:]]"`
+**최근 소재 확인**: 고르기 전에 `python3 tools/check_content.py --topics de YYYY-MM-DD`로 최근 90일의 주제, 제목, 키워드를 확인한다. 같은 소재, 같은 상황, 같은 장면 구성은 쓰지 않는다(ROUTINE.common.md 5절). 본문까지 볼 때는 `python3 -c "import json,glob; [print(p[-15:-5], json.load(open(p)).get('topic'), '|', ' '.join(s['en'] for s in json.load(open(p))['sentences'])[:200]) for p in sorted(glob.glob('content/de/*.json'))[-14:]]"`를 쓴다.
+**문법 후보**: `python3 tools/grammar_pick.py de b --day YYYY-MM-DD`와 `python3 tools/grammar_pick.py de a --day YYYY-MM-DD`로 후보를 받는다(ROUTINE.common.md 3절).
 
-1. **오늘의 분야와 글의 형태** (Asia/Seoul 기준 요일):
-   - 월: 일상생활 (쇼핑, 교통, 식사)
-   - 화: 독일어권 문화 (음식, 축제, 도시)
-   - 수: 사회/쉬운 뉴스 (독일, 오스트리아, 스위스 소식)
-   - 목: 일과 학교
-   - 금: 과학과 자연
-   - 토: 여행과 장소
-   - 일: 계절과 날씨
+1. **오늘의 분야와 글의 형태** (Asia/Seoul 기준 요일, 유형은 ROUTINE.common.md 1절):
+   - 월: 소식(`news`), 교통, 쇼핑, 생활 소식. **출처 필수**
+   - 화: 설명(`explain`), 독일어권 문화 (음식, 축제, 도시). **출처 필수**
+   - 수: 소식(`news`), 사회와 쉬운 뉴스 (독일, 오스트리아, 스위스 소식). **출처 필수**
+   - 목: 설명(`explain`), 일과 학교의 제도. **출처 필수**
+   - 금: 소식(`news`), 과학과 자연. **출처 필수**
+   - 토: 생활 글(`life`), 가상 여행기. 출처 없음
+   - 일: 생활 글(`life`), 계절 생활 글. 출처 없음
    `category` 값: 생활/문화/여행은 `culture`, 사회는 `society`, 과학과 자연은 `science`, 기술은 `tech`, 미래는 `future`, 우주는 `space`.
-2. **수요일 뉴스**: WebSearch로 최근 독일어권 소식을 찾는다. 원문 문장을 옮기지 말고, 확인한 사실 2~3개로 새로 쓴다. 이때만 `source`를 채운다.
-3. **그 밖의 요일**: 실제 사실을 지어내지 않는 일반적인 생활 글. 특정 가게, 사람, 구체적 수치를 실제인 것처럼 쓰지 않는다. `source`는 `null`.
+2. **소식과 설명 날**: WebSearch(ToolSearch로 불러오기, mode "standard")로 소식 날은 최근 독일어권 소식을, 설명 날은 공식이나 공공 출처를 찾는다. WebFetch로는 검색 결과에 나온 주소만 연다. 원문 문장을 옮기지 말고, 확인한 사실 2~3개로 새로 쓴다. `source`에 제목과 URL을 넣는다.
+3. **토, 일과 출처를 못 찾은 날**: 실제 사실을 지어내지 않는 글. 특정 가게, 사람, 구체적 수치를 실제인 것처럼 쓰지 않는다. `source`는 `null`. 소식이나 설명 날에 못 찾았으면 `fit`은 그대로 두고 마지막 답변에 이유를 적는다.
 4. **무거운 소식 금지**: 재난, 사망, 전쟁, 정치 갈등 금지.
 
 ## 매일 생성할 형식 (content JSON 필드)
@@ -63,10 +63,10 @@
 2. **끊어 읽기** `chunks`: 모든 문장에 필수. 덩어리를 공백 하나로 이으면 `en`과 정확히 같아야 한다(`**` 표시 포함).
 3. **주요 단어** `words`: 5~7개. `["Umwelt", "환경"]` 형태. 뜻에 그 단어나 변형(관사+명사, 복수형)을 다시 쓰지 않는다. 단어 쓰기 문제 힌트에 답이 보이기 때문이다. **명사(대문자로 시작)는 뜻 끝에 성별을 반드시 표기한다.** 관사는 관사만 적는다. 예: `["Dose", "캔 (여성 die)"]` (O), `["Dose", "캔 (die Dose)"]` (X). 복수형이 있으면 `["Blatt", "잎 (중성 das, 복수 Blätter)"]`처럼 한 괄호 안에 쓴다. `check_content.py`가 잡는다.
    **뜻은 한국어 사전의 대응어로 짧게 쓴다.** 풀어 쓴 설명("씻어서 여러 번 쓰는 병", "한 번 쓰고 버리는 병")을 쓰지 않는다. 좋은 예: Einwegflasche → "일회용 병", Mehrwegflasche → "다회용 병", Nebelscheinwerfer → "안개등". 대응어가 둘이면 쉼표로 나란히, 쓰임을 좁혀야 할 때만 앞에 짧은 괄호("(빈 병) 보증금"). 품사를 맞춘다. `advanced`의 뜻도 같은 기준이다.
-4. **체크 포인트** `points`: 1~2개. 그날 지문에 실제로 나온 문법을 한국어로 짧게 설명. 지문 표현은 `` `…` ``로 감싼다.
+4. **체크 포인트** `points`: 2개. ROUTINE.common.md 4절을 따른다. 1개는 그날 배정된 문법 설명, 1개는 자유다. 그날 지문에 실제로 나온 문법을 한국어로 짧게 설명한다. 지문 표현은 `` `…` ``로 감싼다.
 5. **모범 해석** `answers`: 6개. 문장 순서대로 자연스러운 한국어 해석.
 6. **한 단계 위 어휘** `advanced`: **반드시 6~8개**. B2 수준 단어, 한국어 뜻, 혼동 주의(없으면 `null`), 예문(`**…**`), `example_ko`.
-7. 기타: `topic`(한국어 주제어 2~8자), `title_ko`(페이지와 메일 제목. "오늘은 ___ 이야기예요"에 들어갈 자연스러운 한국어 명사구), `headline`(A2 수준 짧은 독일어 제목), `chips`(`["6문장", "B1 위주", "B2 1문장", "약 4분"]`), `date`, `category`.
+7. 기타: `topic`(한국어 주제어 2~8자), `title_ko`(페이지와 메일 제목. "오늘은 ___ 이야기예요"에 들어갈 자연스러운 한국어 명사구), `headline`(A2 수준 짧은 독일어 제목), `chips`(`["6문장", "B1 위주", "B2 1문장", "약 4분"]`), `date`, `category`. `fit`(그날 유형: `news`, `explain`, `life`), `grammar`(쓴 문법 id, 예: `{"b": ["b-will"], "a": ["a-will"]}`, 없으면 각 빈 목록), `keywords`(소재를 나타내는 한국어 명사 2~4개, 예: `["아르바이트", "서점", "첫 출근"]`).
    **제목 짓는 법**: 원문 기사 제목을 옮기거나 줄이지 말고, 한국 잡지 편집자가 내용을 읽고 새로 붙이는 제목처럼 짓는다. 15자 안팎의 명사구로, 핵심 대상(무엇에 대한 이야기인지)을 꼭 넣는다. "~하려고", "~하기까지의" 같은 설명 꼬리를 길게 붙이지 않고, "환경", "현상" 같은 추상어로만 끝내지 않는다. "오늘은 ___ 이야기예요"에 넣어 소리 내어 읽었을 때 자연스러워야 한다. 좋은 예: "일부러 만든 안개 속 카메라 시험", "스스로 허리를 펴는 나무", "땅에 떨어지는 별똥별", "온천 이용 예절", "독일의 빈 병 보증금". 나쁜 예: "카메라를 시험하려고 일부러 만드는 안개와 비"(설명이 길다), "나무가 몸을 펴는 근육"(번역투), "카메라와 인공 기후 환경"(추상적).
    - `photo_scene`: 맥 미니 이미지 API 로 썸네일 사진을 생성할 때 쓰는 장면 설명 **(선택 사항)**. 영어 한 문장, 40~300자. 구체적이고 시각적인 장면으로 쓰고 글자나 간판이 보이는 장면은 피한다. 무엇이(주인공), 어디서(배경), 언제 어떤 빛인지(예: 해질녘, 이른 아침 햇살, 흐린 오후), 얼마나 가까이서 보는지(클로즈업, 넓은 풍경)를 함께 쓴다. 주인공이 화면에서 크고 또렷하게 보이는 장면으로 쓴다. 밤하늘처럼 넓고 어두운 장면은 작게 보이면 썸네일에서 알아보기 어려우니 피하거나 가까이 잡는다. 모델은 비유를 글자 그대로 그리니("고사리 같은 서리"가 진짜 고사리로 나왔다) 비유 대신 실제로 보이는 모습으로 쓴다. 주인공이 둘 이상이면 함께 붙어 있는 장면으로 쓴다(따로 떨어뜨리면 하나가 사라졌다). 추상적인 주제(기억, 물가, 외로움, 인공지능 등)는 뜻을 보여 주는 구체적인 장면 하나로 바꾼다. 예: 외로움은 `"A single empty wooden chair by a large rainy window in a quiet room, soft grey daylight."`, 인공지능은 `"A young woman and a friendly white humanoid robot sitting side by side at a desk, looking at the same paper together."` 예: `"Close-up at sunrise of delicate white frost crystals covering the side window of a parked dark car, frosted grass softly blurred behind, cold blue light touched by the first warm rays of sun."` 이 필드가 있으면 발행 시 맥 미니 이미지 API(Tailscale 경유)가 FLUX.1 사진을 생성해 썸네일에 쓴다. 없거나 API 가 응답하지 않으면 OpenAI API 폴백이나 일러스트를 쓴다.
 
@@ -93,9 +93,10 @@
 2. **content JSON 쓰기**: 중급(`sentences`, `levels.a`)을 포함해 위 형식 그대로 `content/de/YYYY-MM-DD.json`을 쓴다.
 3. **검증**: `python3 tools/render.py de YYYY-MM-DD` → `python3 tools/check_content.py de YYYY-MM-DD`. `::error`가 나오면 JSON을 고쳐 다시 실행.
    - `::warning`(뜻풀이가 설명 같음, 제목이 길다): 해당 필드를 고쳐 다시 실행한다. 경고는 발행을 막지 않지만 그대로 올리지 않는다.
+   - `::warning`(fit, 출처, grammar, keywords, 소재 반복, 문장 길이): 해당 필드나 소재를 고쳐 다시 실행합니다. 출처를 끝내 못 찾았으면 일반 글로 쓰고 `fit`은 그대로 둔 채 마지막 답변에 이유를 적습니다.
 4. **확인 후 되돌리기**: `git checkout -- . && git clean -fd -- de/YYYY-MM-DD`로 생성 파일 삭제, content 파일만 유지.
 5. **push**: `git add content/de/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add de YYYY-MM-DD: 주제어 Refs #9" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 줄 금지.
-6. **마지막 답변**: 한두 문장과 페이지 주소 `https://read.wspace.ai.kr/de/YYYY-MM-DD/`. 실패하면 원인 명시.
+6. **마지막 답변**: 한두 문장과 페이지 주소 `https://read.wspace.ai.kr/de/YYYY-MM-DD/`. 실패하면 원인 명시. 소식이나 설명 날에 출처 없이 썼다면 그 이유를 한 줄로 적는다.
 
 ## 주의사항
 - 음성(TTS)이 없는 날에는 페이지가 브라우저 내장 SpeechSynthesis(de-DE)로 동작.

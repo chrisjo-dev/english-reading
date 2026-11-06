@@ -345,15 +345,6 @@
       "pattern": "\\b(Hätte|Hätten|hätte|hätten|wäre|wären)\\b.*\\bge\\w+(t|en)\\b"
     },
     {
-      "id": "b-konjunktiv-i",
-      "name": "Konjunktiv I 간접화법",
-      "example": "Der Minister sagte, er sei zufrieden.",
-      "fit": [
-        "news"
-      ],
-      "pattern": "\\b(sagte|erklärte|berichtete|meinte)\\b.*\\b(sei|seien|habe|werde|könne)\\b"
-    },
-    {
       "id": "b-obwohl",
       "name": "양보 obwohl",
       "example": "Obwohl die Preise steigen, kaufen viele Leute weiter ein.",
@@ -471,6 +462,15 @@
         "life"
       ],
       "pattern": "\\b(lasse|lässt|lassen|ließ)\\b.*\\b\\w+en\\b"
+    },
+    {
+      "id": "b-konjunktiv-i",
+      "name": "Konjunktiv I 간접화법",
+      "example": "Der Minister sagte, er sei zufrieden.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b(sagte|erklärte|berichtete|meinte)\\b.*\\b(sei|seien|habe|werde|könne)\\b"
     }
   ]
 }
