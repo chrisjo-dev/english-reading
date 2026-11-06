@@ -1,0 +1,478 @@
+{
+  "a": [
+    {
+      "id": "a-present-simple",
+      "name": "현재형 (습관, 사실)",
+      "example": "She walks to work every day.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": null
+    },
+    {
+      "id": "a-past-regular",
+      "name": "과거형 (규칙 동사)",
+      "example": "We visited the museum last week.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b[a-z]+ed\\b"
+    },
+    {
+      "id": "a-past-irregular",
+      "name": "과거형 (불규칙 동사)",
+      "example": "I went home and made dinner.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(went|made|took|came|saw|got|gave|found|said|told|bought|ate)\\b"
+    },
+    {
+      "id": "a-present-continuous",
+      "name": "현재진행",
+      "example": "The children are playing outside.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(am|is|are)\\s+\\w+ing\\b"
+    },
+    {
+      "id": "a-past-continuous",
+      "name": "과거진행",
+      "example": "I was reading when the phone rang.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b(was|were)\\s+\\w+ing\\b"
+    },
+    {
+      "id": "a-will",
+      "name": "미래 will",
+      "example": "It will rain tomorrow.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(will|won't)\\b|'ll\\b"
+    },
+    {
+      "id": "a-going-to",
+      "name": "예정 be going to",
+      "example": "We are going to move next month.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(am|is|are)\\s+going to\\b"
+    },
+    {
+      "id": "a-present-perfect",
+      "name": "현재완료 (지금까지 이어진 일)",
+      "example": "I have lived here for two years.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(have|has)\\s+(?:\\w+ly\\s+|never\\s+|already\\s+|just\\s+|ever\\s+|not\\s+)?(?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "a-present-perfect-ever",
+      "name": "현재완료 (경험)",
+      "example": "Have you ever tried sushi?",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b([Hh]ave|[Hh]as)\\b.*\\b(ever|never)\\b"
+    },
+    {
+      "id": "a-first-conditional",
+      "name": "조건문 if + 현재, will",
+      "example": "If it rains, we will stay home.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Ii]f\\b.*(\\bwill\\b|\\bwon't\\b|'ll\\b)"
+    },
+    {
+      "id": "a-can",
+      "name": "능력, 가능 can",
+      "example": "She can speak two languages.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b(can|can't|cannot)\\b"
+    },
+    {
+      "id": "a-should",
+      "name": "조언 should",
+      "example": "You should drink more water.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\bshould\\b"
+    },
+    {
+      "id": "a-have-to",
+      "name": "의무 have to, must",
+      "example": "I have to leave at seven.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b(must|have to|has to)\\b"
+    },
+    {
+      "id": "a-might",
+      "name": "추측 may, might",
+      "example": "It might snow tonight.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(may|might)\\b"
+    },
+    {
+      "id": "a-comparative",
+      "name": "비교급",
+      "example": "This bag is cheaper than that one.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b\\w+er than\\b|\\bmore \\w+ than\\b"
+    },
+    {
+      "id": "a-superlative",
+      "name": "최상급",
+      "example": "It is the tallest building in the city.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\bthe (most \\w+|\\w+est)\\b"
+    },
+    {
+      "id": "a-because",
+      "name": "이유 because",
+      "example": "I stayed home because I was sick.",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Bb]ecause\\b"
+    },
+    {
+      "id": "a-when-clause",
+      "name": "시간절 when",
+      "example": "When I got home, it was dark.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Ww]hen\\b"
+    },
+    {
+      "id": "a-to-purpose",
+      "name": "목적 to + 동사",
+      "example": "She went to the store to buy milk.",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": null
+    },
+    {
+      "id": "a-gerund",
+      "name": "동명사 enjoy + -ing",
+      "example": "I enjoy cooking on weekends.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b(enjoy|like|love|hate|stop|start|finish)s?\\s+\\w+ing\\b"
+    },
+    {
+      "id": "a-there-is",
+      "name": "there is, there are",
+      "example": "There are many trees in the park.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Tt]here (is|are|was|were)\\b"
+    },
+    {
+      "id": "a-used-to",
+      "name": "과거 습관 used to",
+      "example": "I used to play soccer after school.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\bused to\\b"
+    },
+    {
+      "id": "a-passive-simple",
+      "name": "기본 수동태",
+      "example": "This cheese is made in France.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(is|are|was|were)\\s+(?:\\w+ly\\s+|never\\s+|already\\s+|just\\s+|ever\\s+|not\\s+)?(?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "a-relative-who",
+      "name": "관계절 who, which",
+      "example": "I have a friend who lives in Busan.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b\\w+ (who|which) \\w+"
+    }
+  ],
+  "b": [
+    {
+      "id": "b-present-perfect",
+      "name": "현재완료 (최근의 변화)",
+      "example": "The city has opened a new bridge.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(have|has)\\s+(?:\\w+ly\\s+|never\\s+|already\\s+|just\\s+|ever\\s+|not\\s+)?(?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "b-present-perfect-continuous",
+      "name": "현재완료진행",
+      "example": "Researchers have been studying the lake for years.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(have|has) been \\w+ing\\b"
+    },
+    {
+      "id": "b-past-perfect",
+      "name": "과거완료",
+      "example": "The train had left before we arrived.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\bhad\\s+(?:\\w+ly\\s+|never\\s+|already\\s+|just\\s+|ever\\s+|not\\s+)?(?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "b-will",
+      "name": "미래 will",
+      "example": "The new line will open next spring.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(will|won't)\\b|'ll\\b"
+    },
+    {
+      "id": "b-going-to",
+      "name": "예정 be going to",
+      "example": "The company is going to close two stores.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(am|is|are)\\s+going to\\b"
+    },
+    {
+      "id": "b-future-continuous",
+      "name": "미래진행",
+      "example": "Next week, we will be working from home.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\bwill be \\w+ing\\b"
+    },
+    {
+      "id": "b-future-perfect",
+      "name": "미래완료",
+      "example": "By June, they will have finished the bridge.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\bwill have (?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "b-expected-to",
+      "name": "예정 be expected to, be due to",
+      "example": "The work is expected to finish in May.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b(is|are|was|were) (expected|due|set|likely) to\\b"
+    },
+    {
+      "id": "b-first-conditional",
+      "name": "조건문 if + 현재, will",
+      "example": "If prices rise, fewer people will buy cars.",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Ii]f\\b.*(\\bwill\\b|\\bwon't\\b|'ll\\b)"
+    },
+    {
+      "id": "b-second-conditional",
+      "name": "가정법 과거",
+      "example": "If I had more time, I would learn Spanish.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Ii]f\\b.*\\bwould\\b"
+    },
+    {
+      "id": "b-third-conditional",
+      "name": "가정법 과거완료",
+      "example": "If we had left earlier, we would have caught the train.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\bwould have\\b"
+    },
+    {
+      "id": "b-wish",
+      "name": "wish + 과거",
+      "example": "I wish I lived near the sea.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\bwish\\b"
+    },
+    {
+      "id": "b-passive-past",
+      "name": "과거 수동태",
+      "example": "The bridge was built in 1950.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(was|were)\\s+(?:\\w+ly\\s+|never\\s+|already\\s+|just\\s+|ever\\s+|not\\s+)?(?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "b-passive-perfect",
+      "name": "현재완료 수동태",
+      "example": "A new school has been built near the river.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b(has|have) been (?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "b-passive-modal",
+      "name": "조동사 수동태",
+      "example": "The rules can be changed later.",
+      "fit": [
+        "explain"
+      ],
+      "pattern": "\\b(can|could|may|might|must|should|will|would) be (?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "b-reported-speech",
+      "name": "간접화법",
+      "example": "She said that the plan had changed.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b(said|told|reported|explained|announced)\\b.*\\bthat\\b"
+    },
+    {
+      "id": "b-nonrestrictive-relative",
+      "name": "계속 용법 관계절",
+      "example": "The bridge, which opened in May, is very popular.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": ",\\s*(which|who)\\b"
+    },
+    {
+      "id": "b-reduced-relative",
+      "name": "분사구 수식",
+      "example": "Trucks carrying food crossed the border.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": null
+    },
+    {
+      "id": "b-although",
+      "name": "양보 although",
+      "example": "Although it was raining, they kept walking.",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b([Aa]lthough|[Tt]hough)\\b"
+    },
+    {
+      "id": "b-despite",
+      "name": "양보 despite",
+      "example": "Despite the rain, the game continued.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b([Dd]espite|[Ii]n spite of)\\b"
+    },
+    {
+      "id": "b-modal-perfect",
+      "name": "과거 추측 must have",
+      "example": "They must have left early.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b(must|might|could|can't) have (?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+    },
+    {
+      "id": "b-used-to",
+      "name": "과거 습관 used to",
+      "example": "People used to travel by horse.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\bused to\\b"
+    },
+    {
+      "id": "b-so-that",
+      "name": "목적 so that",
+      "example": "She spoke slowly so that everyone could follow.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\bso that\\b"
+    },
+    {
+      "id": "b-gerund-subject",
+      "name": "동명사 주어",
+      "example": "Walking to work saves money.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": null
+    }
+  ]
+}

@@ -1,0 +1,522 @@
+{
+  "a": [
+    {
+      "id": "a-masu-present",
+      "name": "ます형 현재",
+      "example": "毎朝コーヒーを飲みます。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "ます。"
+    },
+    {
+      "id": "a-mashita-past",
+      "name": "ました 과거",
+      "example": "昨日は友だちに会いました。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "ました。"
+    },
+    {
+      "id": "a-masen-negative",
+      "name": "ません 부정",
+      "example": "今日は雨が降りません。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "ません"
+    },
+    {
+      "id": "a-tai",
+      "name": "희망 たいです",
+      "example": "夏休みに京都へ行きたいです。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "たいです"
+    },
+    {
+      "id": "a-teiru-progress",
+      "name": "진행 ています",
+      "example": "今、弟はテレビを見ています。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "(て|で)います"
+    },
+    {
+      "id": "a-teiru-state",
+      "name": "상태 ています",
+      "example": "姉は大阪に住んでいます。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(て|で)います"
+    },
+    {
+      "id": "a-tsumori",
+      "name": "예정 つもりです",
+      "example": "来年、日本語の試験を受けるつもりです。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "つもり"
+    },
+    {
+      "id": "a-yotei",
+      "name": "예정 予定です",
+      "example": "来週、友だちと旅行する予定です。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "予定"
+    },
+    {
+      "id": "a-mashou",
+      "name": "권유 ましょう",
+      "example": "一緒に昼ご飯を食べましょう。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "ましょう"
+    },
+    {
+      "id": "a-koto-ga-dekiru",
+      "name": "가능 ことができます",
+      "example": "妹はピアノを弾くことができます。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "ことができ"
+    },
+    {
+      "id": "a-potential",
+      "name": "가능형",
+      "example": "私は漢字が少し読めます。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(読め|書け|話せ|行け|買え|飲め|作れ|食べられ|見られ|来られ)ます"
+    },
+    {
+      "id": "a-tara",
+      "name": "조건 たら",
+      "example": "雨が降ったら、家にいます。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(たら|だら)"
+    },
+    {
+      "id": "a-to-natural",
+      "name": "조건 と",
+      "example": "春になると、桜が咲きます。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(ると|ないと|うと|くと)、"
+    },
+    {
+      "id": "a-ba",
+      "name": "조건 ば",
+      "example": "安ければ、買います。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "(れば|ければ|えば|けば)"
+    },
+    {
+      "id": "a-node-kara",
+      "name": "이유 ので, から",
+      "example": "疲れたので、早く寝ました。",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "(ので|から)、"
+    },
+    {
+      "id": "a-ga-contrast",
+      "name": "역접 が",
+      "example": "少し高いですが、おいしいです。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(ですが|ますが|ましたが)"
+    },
+    {
+      "id": "a-te-sequence",
+      "name": "순서 て형",
+      "example": "朝ご飯を食べて、学校へ行きました。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "(て|で)、"
+    },
+    {
+      "id": "a-tekudasai",
+      "name": "요청 てください",
+      "example": "ここに名前を書いてください。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "(て|で)ください"
+    },
+    {
+      "id": "a-temoii",
+      "name": "허가 てもいいです",
+      "example": "ここで写真を撮ってもいいです。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(て|で)もいいです"
+    },
+    {
+      "id": "a-tewaikenai",
+      "name": "금지 てはいけません",
+      "example": "教室で食べてはいけません。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(て|で)はいけません"
+    },
+    {
+      "id": "a-nakereba",
+      "name": "의무 なければなりません",
+      "example": "明日は早く起きなければなりません。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "なければなりません|ないといけません"
+    },
+    {
+      "id": "a-hou-ga-ii",
+      "name": "조언 ほうがいいです",
+      "example": "今日は早く寝たほうがいいです。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "ほうがいい"
+    },
+    {
+      "id": "a-takoto",
+      "name": "경험 たことがあります",
+      "example": "富士山に登ったことがあります。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "(た|だ)ことがあります"
+    },
+    {
+      "id": "a-yori",
+      "name": "비교 より",
+      "example": "今年の夏は去年より暑いです。",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "より"
+    },
+    {
+      "id": "a-sou-looks",
+      "name": "양태 そうです",
+      "example": "この山は高そうです。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "そうです"
+    },
+    {
+      "id": "a-to-omou",
+      "name": "생각 と思います",
+      "example": "明日は晴れると思います。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "と思います"
+    },
+    {
+      "id": "a-deshou",
+      "name": "추측 でしょう",
+      "example": "明日は雪が降るでしょう。",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "でしょう"
+    }
+  ],
+  "b": [
+    {
+      "id": "b-koto-ni-naru",
+      "name": "결정 ことになる",
+      "example": "来月から新しい店で働くことになりました。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "ことにな"
+    },
+    {
+      "id": "b-koto-ni-suru",
+      "name": "결심 ことにする",
+      "example": "毎日三十分歩くことにしました。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "ことにし"
+    },
+    {
+      "id": "b-you-ni-naru",
+      "name": "변화 ようになる",
+      "example": "最近、日本語の新聞が読めるようになりました。",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "ようにな"
+    },
+    {
+      "id": "b-you-ni-suru",
+      "name": "노력 ようにする",
+      "example": "寝る前はスマホを見ないようにしています。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "ようにし"
+    },
+    {
+      "id": "b-yotei",
+      "name": "예정 予定",
+      "example": "新しい駅は来年の春に開く予定です。",
+      "fit": [
+        "news"
+      ],
+      "pattern": "予定"
+    },
+    {
+      "id": "b-tsumori",
+      "name": "의도 つもり",
+      "example": "来年は留学するつもりです。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "つもり"
+    },
+    {
+      "id": "b-you-to-omou",
+      "name": "의지 ようと思う",
+      "example": "週末は部屋を片づけようと思っています。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "(よう|おう)と思"
+    },
+    {
+      "id": "b-sou-hearsay",
+      "name": "전언 によると, そうです",
+      "example": "ニュースによると、今年の冬は寒いそうです。",
+      "fit": [
+        "news"
+      ],
+      "pattern": "そうです"
+    },
+    {
+      "id": "b-rashii",
+      "name": "추측 らしい",
+      "example": "田中さんは会社を辞めるらしいです。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "らしい"
+    },
+    {
+      "id": "b-hazu",
+      "name": "당연한 추측 はず",
+      "example": "荷物は明日届くはずです。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "はず"
+    },
+    {
+      "id": "b-wake-dewa",
+      "name": "부분 부정 わけではない",
+      "example": "高い店がいつもおいしいわけではありません。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "わけではあり"
+    },
+    {
+      "id": "b-tame-purpose",
+      "name": "목적 ために",
+      "example": "試験に合格するために、毎日勉強しています。",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "ために"
+    },
+    {
+      "id": "b-okage-sei",
+      "name": "원인 おかげで, せいで",
+      "example": "友だちが手伝ってくれたおかげで、早く終わりました。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "(おかげで|せいで)"
+    },
+    {
+      "id": "b-tabi",
+      "name": "반복 たびに",
+      "example": "京都へ行くたびに、同じ店に寄ります。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "たびに"
+    },
+    {
+      "id": "b-bakari",
+      "name": "직후 たばかり",
+      "example": "今、駅に着いたばかりです。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "(た|だ)ばかり"
+    },
+    {
+      "id": "b-toori",
+      "name": "대로 とおり",
+      "example": "先生が言ったとおりに作りました。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "とおり"
+    },
+    {
+      "id": "b-ba-hodo",
+      "name": "비례 ば～ほど",
+      "example": "練習すればするほど、上手になります。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "ば.*ほど"
+    },
+    {
+      "id": "b-passive",
+      "name": "수동형",
+      "example": "駅の前に大きな公園が作られました。",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "(られ|され|かれ|まれ|われ)(ます|ました|て)"
+    },
+    {
+      "id": "b-causative",
+      "name": "사역형",
+      "example": "母は弟に野菜を食べさせました。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "(させ|わせ|かせ)(ます|ました|て)"
+    },
+    {
+      "id": "b-potential",
+      "name": "가능형",
+      "example": "駅まで歩いて行けます。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(行け|読め|書け|話せ|買え|作れ|食べられ|見られ)ます"
+    },
+    {
+      "id": "b-nara",
+      "name": "조건 なら",
+      "example": "京都へ行くなら、秋がおすすめです。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "なら、"
+    },
+    {
+      "id": "b-nagara",
+      "name": "동시 ながら",
+      "example": "音楽を聞きながら走ります。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "ながら"
+    },
+    {
+      "id": "b-noni",
+      "name": "역접 のに",
+      "example": "雨なのに、公園には人が多いです。",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "のに"
+    },
+    {
+      "id": "b-teshimau",
+      "name": "완료, 유감 てしまう",
+      "example": "大事な書類を家に忘れてしまいました。",
+      "fit": [
+        "life"
+      ],
+      "pattern": "(て|で)しま"
+    },
+    {
+      "id": "b-teoku",
+      "name": "준비 ておく",
+      "example": "旅行の前にホテルを予約しておきます。",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(て|で)おき"
+    },
+    {
+      "id": "b-tekuru",
+      "name": "변화 てくる",
+      "example": "だんだん寒くなってきました。",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "(て|で)き(ます|ました)"
+    }
+  ]
+}

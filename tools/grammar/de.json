@@ -1,0 +1,476 @@
+{
+  "a": [
+    {
+      "id": "a-praesens",
+      "name": "현재형 (Präsens)",
+      "example": "Ich trinke jeden Morgen Kaffee.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": null
+    },
+    {
+      "id": "a-perfekt-haben",
+      "name": "Perfekt (haben)",
+      "example": "Wir haben gestern Pizza gegessen.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(habe|hast|hat|haben|habt)\\b.*\\b(\\w*ge\\w+(?:t|en)|\\w+iert)\\b"
+    },
+    {
+      "id": "a-perfekt-sein",
+      "name": "Perfekt (sein)",
+      "example": "Sie ist nach Berlin gefahren.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(bin|bist|ist|sind|seid)\\b.*\\bge\\w+en\\b"
+    },
+    {
+      "id": "a-praeteritum-sein-haben",
+      "name": "Präteritum (war, hatte)",
+      "example": "Gestern war ich müde und hatte keine Zeit.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(war|warst|waren|hatte|hattest|hatten)\\b"
+    },
+    {
+      "id": "a-praeteritum-modal",
+      "name": "Präteritum 화법조동사",
+      "example": "Ich musste früh aufstehen.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b(konnte|konnten|musste|mussten|wollte|wollten|durfte|durften)\\b"
+    },
+    {
+      "id": "a-futur",
+      "name": "미래 Futur I",
+      "example": "Morgen werde ich meine Oma besuchen.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(werde|wirst|wird|werden|werdet)\\b.*\\b\\w+en\\.?$"
+    },
+    {
+      "id": "a-modal",
+      "name": "화법조동사 können, müssen",
+      "example": "Du kannst hier parken.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b(kann|kannst|können|muss|musst|müssen|darf|dürfen|soll|sollen|will|willst|wollen)\\b"
+    },
+    {
+      "id": "a-moechte",
+      "name": "희망 möchte",
+      "example": "Ich möchte einen Tee bestellen.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\bmöchte\\w*\\b"
+    },
+    {
+      "id": "a-trennbar",
+      "name": "분리동사",
+      "example": "Der Zug fährt um acht Uhr ab.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b(ab|an|auf|aus|ein|mit|vor|zu)\\.$"
+    },
+    {
+      "id": "a-weil",
+      "name": "이유 weil",
+      "example": "Ich bleibe zu Hause, weil ich krank bin.",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "\\bweil\\b"
+    },
+    {
+      "id": "a-dass",
+      "name": "dass 절",
+      "example": "Ich glaube, dass er recht hat.",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "\\bdass\\b"
+    },
+    {
+      "id": "a-wenn",
+      "name": "조건, 시간 wenn",
+      "example": "Wenn es regnet, nehme ich den Bus.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Ww]enn\\b"
+    },
+    {
+      "id": "a-als-past",
+      "name": "과거 시점 als",
+      "example": "Als ich klein war, wohnten wir in Köln.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\bAls\\b|,\\s*als\\b"
+    },
+    {
+      "id": "a-obwohl",
+      "name": "양보 obwohl",
+      "example": "Obwohl es kalt ist, gehen wir spazieren.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Oo]bwohl\\b"
+    },
+    {
+      "id": "a-wechsel-dativ",
+      "name": "장소 전치사 + Dativ",
+      "example": "Das Buch liegt auf dem Tisch.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b(auf|in|an|unter|über|neben|vor|hinter|zwischen)\\s+(dem|der|den)\\b"
+    },
+    {
+      "id": "a-komparativ",
+      "name": "비교급",
+      "example": "Der Zug ist schneller als das Auto.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b\\w+er als\\b"
+    },
+    {
+      "id": "a-superlativ",
+      "name": "최상급",
+      "example": "Das ist der höchste Berg in Deutschland.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\bam \\w+sten\\b|\\b(der|die|das) \\w+ste\\b"
+    },
+    {
+      "id": "a-reflexiv",
+      "name": "재귀동사",
+      "example": "Ich freue mich auf das Wochenende.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b(mich|dich|sich|uns|euch)\\b"
+    },
+    {
+      "id": "a-imperativ",
+      "name": "요청, 명령",
+      "example": "Bitte nehmen Sie Platz.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b[Bb]itte\\b"
+    },
+    {
+      "id": "a-um-zu",
+      "name": "목적 um ... zu",
+      "example": "Er lernt Deutsch, um in Berlin zu arbeiten.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Uu]m\\b.*\\bzu\\b"
+    },
+    {
+      "id": "a-relativ",
+      "name": "관계절",
+      "example": "Das ist der Mann, der hier wohnt.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": ",\\s*(der|die|das|den|dem)\\b"
+    },
+    {
+      "id": "a-passiv-praesens",
+      "name": "현재 수동태",
+      "example": "Das Brot wird jeden Tag frisch gebacken.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(wird|werden)\\b.*\\b\\w*ge\\w+(?:t|en)\\b"
+    },
+    {
+      "id": "a-es-gibt",
+      "name": "es gibt",
+      "example": "In der Stadt gibt es viele Cafés.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "(?i)\\b(gibt es|es gibt)\\b"
+    },
+    {
+      "id": "a-hoeflich",
+      "name": "공손한 표현 hätte gern",
+      "example": "Ich hätte gern einen Kaffee.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b(hätte gern|würde gern|könnten Sie)\\b"
+    }
+  ],
+  "b": [
+    {
+      "id": "b-perfekt",
+      "name": "Perfekt (최근의 변화)",
+      "example": "Die Stadt hat den Bahnhof modernisiert.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\b(habe|hat|haben|ist|sind)\\b.*\\b(\\w*ge\\w+(?:t|en)|\\w+iert)\\b"
+    },
+    {
+      "id": "b-praeteritum",
+      "name": "Präteritum",
+      "example": "Im Jahr 1990 begann der Umbau der Brücke.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(war|waren|hatte|hatten|wurde|wurden|begann|begannen|kam|kamen|ging|gingen|gab|blieb|stand|fuhr|sagte|zeigte)\\b"
+    },
+    {
+      "id": "b-plusquamperfekt",
+      "name": "Plusquamperfekt",
+      "example": "Nachdem wir gegessen hatten, gingen wir spazieren.",
+      "fit": [
+        "news",
+        "life"
+      ],
+      "pattern": "\\bge\\w+(t|en) (hatte|hatten|war|waren)\\b"
+    },
+    {
+      "id": "b-futur",
+      "name": "미래 Futur I",
+      "example": "Die Bahn wird nächstes Jahr neue Züge einsetzen.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b(werde|wird|werden)\\b.*\\b\\w+en\\.?$"
+    },
+    {
+      "id": "b-futur-vermutung",
+      "name": "Futur 추측 (wohl)",
+      "example": "Er wird wohl noch im Büro sein.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b(wird|werden)\\b.*\\b(wohl|wahrscheinlich)\\b"
+    },
+    {
+      "id": "b-passiv-praesens",
+      "name": "현재 수동태",
+      "example": "Die Waren werden nachts geliefert.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(wird|werden)\\b.*\\b\\w*ge\\w+(?:t|en)\\b"
+    },
+    {
+      "id": "b-passiv-praeteritum",
+      "name": "과거 수동태",
+      "example": "Die Brücke wurde 1950 gebaut.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b(wurde|wurden)\\b.*\\b\\w*ge\\w+(?:t|en)\\b"
+    },
+    {
+      "id": "b-passiv-modal",
+      "name": "화법조동사 수동태",
+      "example": "Die Regeln können geändert werden.",
+      "fit": [
+        "explain"
+      ],
+      "pattern": "\\b(kann|können|muss|müssen|soll|sollen|darf|dürfen)\\b.*\\b\\w*ge\\w+(?:t|en) werden\\b"
+    },
+    {
+      "id": "b-konjunktiv-wuerde",
+      "name": "Konjunktiv II (würde)",
+      "example": "Ich würde gern im Ausland arbeiten.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b(würde|würden)\\b"
+    },
+    {
+      "id": "b-konjunktiv-irreal",
+      "name": "Konjunktiv II 가정",
+      "example": "Wenn ich mehr Zeit hätte, würde ich öfter reisen.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Ww]enn\\b.*\\b(hätte|hätten|wäre|wären|könnte|könnten)\\b"
+    },
+    {
+      "id": "b-konjunktiv-vergangenheit",
+      "name": "Konjunktiv II 과거",
+      "example": "Hätten wir das gewusst, wären wir früher gekommen.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b(Hätte|Hätten|hätte|hätten|wäre|wären)\\b.*\\bge\\w+(t|en)\\b"
+    },
+    {
+      "id": "b-konjunktiv-i",
+      "name": "Konjunktiv I 간접화법",
+      "example": "Der Minister sagte, er sei zufrieden.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b(sagte|erklärte|berichtete|meinte)\\b.*\\b(sei|seien|habe|werde|könne)\\b"
+    },
+    {
+      "id": "b-obwohl",
+      "name": "양보 obwohl",
+      "example": "Obwohl die Preise steigen, kaufen viele Leute weiter ein.",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Oo]bwohl\\b"
+    },
+    {
+      "id": "b-trotz",
+      "name": "양보 trotz + Genitiv",
+      "example": "Trotz des Regens fand das Fest statt.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b[Tt]rotz\\b"
+    },
+    {
+      "id": "b-wegen",
+      "name": "이유 wegen + Genitiv",
+      "example": "Wegen des Streiks fahren heute keine Züge.",
+      "fit": [
+        "news"
+      ],
+      "pattern": "\\b[Ww]egen\\b"
+    },
+    {
+      "id": "b-temporal",
+      "name": "시간절 nachdem, bevor, während",
+      "example": "Bevor wir losfahren, prüfen wir das Wetter.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b([Nn]achdem|[Bb]evor|[Ww]ährend)\\b"
+    },
+    {
+      "id": "b-relativ-praeposition",
+      "name": "전치사 + 관계대명사",
+      "example": "Das ist die Stadt, in der ich geboren bin.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": ",\\s*(in|an|auf|mit|für|von|zu|bei)\\s+(der|dem|den|die|das)\\b"
+    },
+    {
+      "id": "b-damit",
+      "name": "목적 damit",
+      "example": "Er spricht langsam, damit alle ihn verstehen.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\bdamit\\b"
+    },
+    {
+      "id": "b-infinitiv-zu",
+      "name": "zu 부정사구",
+      "example": "Es ist wichtig, genug Wasser zu trinken.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": ",\\s.*\\bzu \\w+en\\b"
+    },
+    {
+      "id": "b-je-desto",
+      "name": "je ... desto",
+      "example": "Je früher du kommst, desto besser ist es.",
+      "fit": [
+        "explain",
+        "life"
+      ],
+      "pattern": "\\b[Jj]e\\b.*\\bdesto\\b"
+    },
+    {
+      "id": "b-sowohl",
+      "name": "sowohl ... als auch",
+      "example": "Sie spricht sowohl Deutsch als auch Englisch.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\bsowohl\\b.*\\bals auch\\b"
+    },
+    {
+      "id": "b-nicht-nur",
+      "name": "nicht nur ... sondern auch",
+      "example": "Er ist nicht nur klug, sondern auch freundlich.",
+      "fit": [
+        "news",
+        "explain",
+        "life"
+      ],
+      "pattern": "\\bnicht nur\\b.*\\bsondern auch\\b"
+    },
+    {
+      "id": "b-partizip",
+      "name": "Partizip 수식",
+      "example": "Das neu gebaute Haus steht am Fluss.",
+      "fit": [
+        "news",
+        "explain"
+      ],
+      "pattern": "\\b([Dd]as|[Dd]ie|[Dd]er|den|dem)\\s+(\\w+\\s+)?ge\\w+(te|ten|ene|enen)\\s+[A-ZÄÖÜ]"
+    },
+    {
+      "id": "b-lassen",
+      "name": "사역 lassen",
+      "example": "Wir lassen das Auto reparieren.",
+      "fit": [
+        "life"
+      ],
+      "pattern": "\\b(lasse|lässt|lassen|ließ)\\b.*\\b\\w+en\\b"
+    }
+  ]
+}
