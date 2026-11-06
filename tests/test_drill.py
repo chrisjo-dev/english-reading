@@ -60,6 +60,12 @@ class TestCards(unittest.TestCase):
         c = next(x for x in drill.cards("de", "2026-10-29") if x["w"] == "Betrieb")
         self.assertIn("Betrieb", c["ex"])
 
+    def test_double_s_plural_is_same_word(self):
+        self.assertTrue(drill._inflected("ersatzbusse", "ersatzbus"))
+        self.assertTrue(drill._inflected("ergebnissen", "ergebnis"))
+        self.assertFalse(drill._inflected("bäckerei", "bäcker"))
+        self.assertFalse(drill._inflected("these", "the"))
+
     def test_every_word_has_an_example(self):
         for f in sorted((ROOT / "content").glob("*/*.json")):
             for c in drill.cards(f.parent.name, f.stem):

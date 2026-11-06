@@ -95,6 +95,9 @@ def _inflected(a, b):
     while i < min(len(a), len(b)) and a[i] == b[i]:
         i += 1
     # 어간은 네 글자 이상, 짧은 단어는 단어 전체가 어간일 때만(Tal ↔ Tälern 은 접은 꼴 tal ↔ talern)
+    # -s 로 끝나는 독일어 명사는 복수에서 s 가 겹친다(Ersatzbus ↔ Ersatzbusse)
+    if i >= 4 and a[i - 1] == "s" and {a[i:], b[i:]} in ({"", "se"}, {"", "sen"}):
+        return True
     return (i >= 4 or (i >= 3 and i == min(len(a), len(b)))) and a[i:] in ENDS and b[i:] in ENDS
 
 
