@@ -5,9 +5,9 @@ import { fireGtag } from "@/lib/gtag";
 import { CONFIRM_NOTE, SUBSCRIBE } from "./forms";
 
 const HELP = {
-  en: "영어 지문 / CEFR B1~B2, 최근 소식을 바탕으로 써요",
-  ja: "일본어 지문 / JLPT N3(기초 N4~N5), 일본의 생활과 문화를 다뤄요",
-  de: "독일어 지문 / CEFR B1~B2, 독일의 생활과 사회를 다뤄요",
+  en: "영어 지문 / CEFR B1~B2, 최근 소식과 생활 글을 번갈아 읽어요",
+  ja: "일본어 지문 / JLPT N3(기초 N4~N5), 일본의 소식과 문화, 생활을 다뤄요",
+  de: "독일어 지문 / CEFR B1~B2, 독일의 소식과 문화, 생활을 다뤄요",
 } as const;
 
 type Lang = keyof typeof HELP;

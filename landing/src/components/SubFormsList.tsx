@@ -5,9 +5,9 @@ import { fireGtag } from "@/lib/gtag";
 import { SUBSCRIBE } from "./forms";
 
 const FORMS = [
-  { lang: "en", name: "영어", label: "영어 지문 받기", level: "EN B1~B2", desc: "최근 소식을 바탕으로 쓴 영어 지문" },
-  { lang: "ja", name: "일본어", label: "일본어 지문 받기", level: "JA N3 / 기초 N4~N5", desc: "일본의 생활과 문화를 다룬 일본어 지문" },
-  { lang: "de", name: "독일어", label: "독일어 지문 받기", level: "DE B1~B2", desc: "독일의 생활과 사회를 다룬 독일어 지문" },
+  { lang: "en", name: "영어", label: "영어 지문 받기", level: "EN B1~B2", desc: "최근 소식과 생활 글로 읽는 영어 지문" },
+  { lang: "ja", name: "일본어", label: "일본어 지문 받기", level: "JA N3 / 기초 N4~N5", desc: "일본의 소식과 문화, 생활을 다룬 일본어 지문" },
+  { lang: "de", name: "독일어", label: "독일어 지문 받기", level: "DE B1~B2", desc: "독일의 소식과 문화, 생활을 다룬 독일어 지문" },
 ];
 
 // levels=True 언어: 수준 선택 라디오를 표시한다(en, de, ja).
