@@ -18,7 +18,7 @@
         "news",
         "life"
       ],
-      "pattern": "\\b[a-z]+ed\\b"
+      "pattern": null
     },
     {
       "id": "a-past-irregular",
@@ -28,7 +28,7 @@
         "news",
         "life"
       ],
-      "pattern": "\\b(went|made|took|came|saw|got|gave|found|said|told|bought|ate)\\b"
+      "pattern": null
     },
     {
       "id": "a-present-continuous",
@@ -106,7 +106,7 @@
         "explain",
         "life"
       ],
-      "pattern": "\\b(can|can't|cannot)\\b"
+      "pattern": null
     },
     {
       "id": "a-should",
@@ -177,7 +177,7 @@
         "explain",
         "life"
       ],
-      "pattern": "\\b[Ww]hen\\b"
+      "pattern": null
     },
     {
       "id": "a-to-purpose",
@@ -226,7 +226,7 @@
         "news",
         "explain"
       ],
-      "pattern": "\\b(is|are|was|were)\\s+(?:\\w+ly\\s+|never\\s+|already\\s+|just\\s+|ever\\s+|not\\s+)?(?:\\w+ed|been|done|gone|seen|made|taken|given|found|known|shown|grown|become|begun|built|brought|come|had|held|kept|left|lost|paid|put|read|run|said|sent|spent|told|thought|understood|won|written|caught|eaten|met|tried)\\b"
+      "pattern": null
     },
     {
       "id": "a-relative-who",
@@ -402,7 +402,7 @@
         "news",
         "explain"
       ],
-      "pattern": ",\\s*(which|who)\\b"
+      "pattern": null
     },
     {
       "id": "b-reduced-relative",

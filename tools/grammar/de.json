@@ -57,7 +57,7 @@
         "news",
         "life"
       ],
-      "pattern": "\\b(werde|wirst|wird|werden|werdet)\\b.*\\b\\w+en\\.?$"
+      "pattern": "\\b([Ww]erde|[Ww]irst|[Ww]ird|[Ww]erden|[Ww]erdet)\\b.*\\b\\w+en[.!?]?$"
     },
     {
       "id": "a-modal",
@@ -67,7 +67,7 @@
         "explain",
         "life"
       ],
-      "pattern": "\\b(kann|kannst|können|muss|musst|müssen|darf|dürfen|soll|sollen|will|willst|wollen)\\b"
+      "pattern": null
     },
     {
       "id": "a-moechte",
@@ -86,7 +86,7 @@
         "explain",
         "life"
       ],
-      "pattern": "\\b(ab|an|auf|aus|ein|mit|vor|zu)\\.$"
+      "pattern": "\\b(ab|an|auf|aus|ein|mit|vor|zu)[.!?]$"
     },
     {
       "id": "a-weil",
@@ -225,7 +225,7 @@
         "explain",
         "life"
       ],
-      "pattern": "(?i)\\b(gibt es|es gibt)\\b"
+      "pattern": null
     },
     {
       "id": "a-hoeflich",
@@ -275,7 +275,7 @@
       "fit": [
         "news"
       ],
-      "pattern": "\\b(werde|wird|werden)\\b.*\\b\\w+en\\.?$"
+      "pattern": "\\b([Ww]erde|[Ww]ird|[Ww]erden)\\b.*\\b\\w+en[.!?]?$"
     },
     {
       "id": "b-futur-vermutung",
@@ -323,7 +323,7 @@
       "fit": [
         "life"
       ],
-      "pattern": "\\b(würde|würden)\\b"
+      "pattern": null
     },
     {
       "id": "b-konjunktiv-irreal",
@@ -420,7 +420,7 @@
         "explain",
         "life"
       ],
-      "pattern": ",\\s.*\\bzu \\w+en\\b"
+      "pattern": null
     },
     {
       "id": "b-je-desto",

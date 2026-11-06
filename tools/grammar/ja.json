@@ -8,7 +8,7 @@
         "explain",
         "life"
       ],
-      "pattern": "ます。"
+      "pattern": null
     },
     {
       "id": "a-mashita-past",
@@ -18,7 +18,7 @@
         "news",
         "life"
       ],
-      "pattern": "ました。"
+      "pattern": null
     },
     {
       "id": "a-masen-negative",
@@ -145,7 +145,7 @@
         "explain",
         "life"
       ],
-      "pattern": "(ので|から)、"
+      "pattern": null
     },
     {
       "id": "a-ga-contrast",
@@ -165,7 +165,7 @@
         "news",
         "life"
       ],
-      "pattern": "(て|で)、"
+      "pattern": null
     },
     {
       "id": "a-tekudasai",
@@ -338,7 +338,7 @@
       "fit": [
         "news"
       ],
-      "pattern": "そうです"
+      "pattern": "によると.*そうです"
     },
     {
       "id": "b-rashii",
@@ -516,7 +516,7 @@
         "explain",
         "life"
       ],
-      "pattern": "(て|で)き(ます|ました)"
+      "pattern": "(?:て|(?<=[んい])で)き(ます|ました)"
     }
   ]
 }
