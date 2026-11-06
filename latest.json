@@ -1,16 +1,16 @@
 {
  "date": "2026-11-07",
- "words_total": 536,
+ "words_total": 543,
  "langs": {
   "en": {
-   "count": 35,
-   "latest": "2026-11-06",
-   "topic": "교차된 뇌",
+   "count": 36,
+   "latest": "2026-11-07",
+   "topic": "빨래방",
    "sentences": [
-    "When you touch something with your left hand, the signal goes to the right side of your brain, and when you move your right leg, the order comes from the left side.",
-    "Scientists have known about this crossed wiring for a long time, but they have never fully understood why it **exists**.",
-    "A new paper **suggests** that it all started with the eyes of simple fish that lived more than five hundred million years ago.",
-    "In these early fish, signals from each eye crossed to the **opposite** side of the brain, which helped the fish react quickly to things they saw."
+    "On Saturday morning, Mina's old washing machine made a loud noise and **suddenly** stopped with all her clothes still inside.",
+    "She had never used a **laundromat** before, so she carried two heavy bags to the one near the subway station.",
+    "The machines were all available, but the **instructions** on the wall were confusing, and she could not find where to put the **detergent**.",
+    "An older man who was **folding** towels at the next table showed her the small drawer and explained how to pay by card."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "왼손으로 무언가를 만지면 그 신호는 뇌의 오른쪽으로 가고, 오른쪽 다리를 움직일 때는 그 명령이 왼쪽에서 나온다.",
+   "answer": "토요일 아침, 미나의 낡은 세탁기가 큰 소리를 내더니 옷이 모두 안에 든 채로 갑자기 멈춰 버렸다.",
    "words": [
     [
-     "exists",
-     "존재하다"
+     "suddenly",
+     "갑자기"
     ],
     [
-     "suggests",
-     "시사하다, 암시하다"
+     "laundromat",
+     "빨래방"
     ],
     [
-     "opposite",
-     "반대(쪽)의"
+     "instructions",
+     "사용 설명, 지시 (복수형)"
     ],
     [
-     "pathways",
-     "경로들 (복수형)"
+     "detergent",
+     "세제"
     ],
     [
-     "advantage",
-     "이점, 장점"
+     "folding",
+     "(빨래를) 개는 중인"
     ],
     [
-     "side effect",
-     "부작용, 부수 효과"
+     "realized",
+     "깨달았다 (과거형)"
     ],
     [
-     "fossil",
-     "화석"
+     "stranger",
+     "낯선 사람"
     ]
    ],
    "review": {
@@ -156,6 +156,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-07",
+   "topic": "빨래방"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-07",
    "topic": "야간버스 여행"
@@ -254,11 +259,6 @@
    "lang": "de",
    "day": "2026-11-01",
    "topic": "11월의 안개"
-  },
-  {
-   "lang": "en",
-   "day": "2026-10-31",
-   "topic": "거대한 카트리나"
   }
  ]
 }
