@@ -44,7 +44,7 @@ class Plan(unittest.TestCase):
     def test_fit_must_match_weekday(self):
         self.assertTrue(any("fit" in w for w in self.warns("en", "2026-11-10", base())))
         self.assertTrue(any("fit" in w for w in self.warns("en", "2026-11-09", base(fit=None))))
-        self.assertEqual(self.warns("en", "2026-11-14", base(fit="life", source=None)), [])
+        self.assertEqual(self.warns("en", "2026-11-14", base(fit="life", source=None, example=True)), [])
 
     def test_source_needed_on_news_and_explain_for_every_language(self):
         for lang in ("en", "ja", "de"):
