@@ -76,7 +76,7 @@ class Plan(unittest.TestCase):
         self.assertFalse(any("단어예요" in w for w in self.warns("de", "2026-11-09", base(sentences=[{"en": long31}]))))
 
     def test_not_applied_before_plan_from(self):
-        self.assertEqual(self.warns("en", "2026-11-07", {"sentences": [{"en": "Short."}]}), [])
+        self.assertEqual(self.warns("en", "2026-11-06", {"sentences": [{"en": "Short."}]}), [])
 
     def test_pool_is_skipped(self):
         self.assertEqual(self.warns("en", "2026-11-10", {"sentences": []}, folder="pool"), [])

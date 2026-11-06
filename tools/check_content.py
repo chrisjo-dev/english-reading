@@ -214,7 +214,7 @@ def check_style(c, path):
     return errors, warnings
 
 
-PLAN_FROM = dt.date(2026, 11, 8)  # 이날 지문부터 공통 주간 구조(ROUTINE.common.md)를 검사한다
+PLAN_FROM = dt.date(2026, 11, 7)  # 이날 지문부터 공통 주간 구조(ROUTINE.common.md)를 검사한다
 TOPIC_DAYS = 90
 EN_WORDS = (12, 26)  # 영어 중급 한 문장 단어 수
 EN_B2_MAX = 30
