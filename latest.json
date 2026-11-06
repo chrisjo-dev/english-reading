@@ -1,6 +1,6 @@
 {
- "date": "2026-11-06",
- "words_total": 524,
+ "date": "2026-11-07",
+ "words_total": 530,
  "langs": {
   "en": {
    "count": 35,
@@ -109,50 +109,46 @@
    }
   },
   "de": {
-   "count": 10,
-   "latest": "2026-11-06",
-   "topic": "고슴도치 겨울잠",
+   "count": 11,
+   "latest": "2026-11-07",
+   "topic": "빈의 카페하우스",
    "sentences": [
-    "Im Herbst sucht sich der **Igel** einen geschützten Platz unter Laub oder Holz, weil er bald seinen Winterschlaf beginnt.",
-    "Während des **Winterschlafs** sinkt die **Körpertemperatur** des Igels stark, und sein Herz schlägt dann nur noch sehr langsam.",
-    "Damit er die kalten Monate ohne Nahrung übersteht, frisst sich der Igel im Herbst eine dicke **Fettschicht** an.",
-    "Die während des Herbstes im Körper gespeicherte **Energie** reicht aber nur, wenn der Igel nicht zu oft durch Wärme oder Lärm aufwacht."
+    "Letzten Samstag bin ich mit dem Zug nach Wien gefahren, weil ich endlich ein echtes **Kaffeehaus** erleben wollte.",
+    "Nachdem ich am Vormittag lange durch die kalte Altstadt gelaufen war, setzte ich mich müde an einen kleinen **Marmortisch** am Fenster.",
+    "Ein älterer **Kellner** brachte mir sowohl einen heißen Kaffee als auch ein Glas Wasser, ohne dass ich danach gefragt hatte.",
+    "Auf dem Tisch lagen mehrere **Zeitungen**, und niemand störte mich, obwohl ich stundenlang nur las und aus dem Fenster schaute."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 4분"
    ],
-   "answer": "가을이 되면 고슴도치는 곧 겨울잠을 시작하기 때문에 낙엽이나 나무 더미 아래에서 보호받을 수 있는 자리를 찾습니다.",
+   "answer": "지난 토요일, 드디어 진짜 카페하우스를 경험해 보고 싶어서 기차를 타고 빈에 갔습니다.",
    "words": [
     [
-     "Igel",
-     "고슴도치 (남성 der)"
+     "Kaffeehaus",
+     "카페, 찻집 (중성 das, 복수 Kaffeehäuser)"
     ],
     [
-     "Winterschlaf",
-     "겨울잠, 동면 (남성 der)"
+     "Marmortisch",
+     "대리석 탁자 (남성 der)"
     ],
     [
-     "Körpertemperatur",
-     "체온 (여성 die)"
+     "Kellner",
+     "웨이터, 종업원 (남성 der)"
     ],
     [
-     "Fettschicht",
-     "지방층 (여성 die)"
+     "Zeitung",
+     "신문 (여성 die, 복수 Zeitungen)"
     ],
     [
-     "Energie",
-     "에너지 (여성 die)"
+     "Apfelstrudel",
+     "사과 파이 (남성 der)"
     ],
     [
-     "Laub",
-     "낙엽, 나뭇잎 (중성 das)"
-    ],
-    [
-     "überleben",
-     "살아남다"
+     "Rechnung",
+     "계산서 (여성 die)"
     ]
    ],
    "review": {
@@ -163,6 +159,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-07",
+   "topic": "빈의 카페하우스"
+  },
   {
    "lang": "en",
    "day": "2026-11-06",
@@ -262,11 +263,6 @@
    "lang": "ja",
    "day": "2026-10-31",
    "topic": "온천 이용법"
-  },
-  {
-   "lang": "de",
-   "day": "2026-10-31",
-   "topic": "보덴호 여행"
   }
  ]
 }
