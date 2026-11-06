@@ -1,0 +1,452 @@
+{
+  "date": "2026-11-07",
+  "category": "culture",
+  "topic": "빈의 카페하우스",
+  "title_ko": "빈 카페하우스에서 보낸 하루",
+  "headline": "Ein Tag im Wiener Kaffeehaus",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "life",
+  "example": true,
+  "grammar": {
+    "b": [
+      "b-plusquamperfekt"
+    ],
+    "a": [
+      "a-perfekt-sein"
+    ]
+  },
+  "keywords": [
+    "카페하우스",
+    "커피",
+    "신문",
+    "여행기"
+  ],
+  "photo_scene": "Close-up of a cup of coffee with milk foam, a glass of water and a slice of apple strudel on a small round white marble table by a tall window in an old Viennese cafe, soft grey November afternoon light.",
+  "sentences": [
+    {
+      "en": "Letzten Samstag bin ich mit dem Zug nach Wien gefahren, weil ich endlich ein echtes **Kaffeehaus** erleben wollte.",
+      "b2": false,
+      "chunks": [
+        [
+          "Letzten Samstag",
+          "지난 토요일에"
+        ],
+        [
+          "bin ich",
+          "나는"
+        ],
+        [
+          "mit dem Zug",
+          "기차를 타고"
+        ],
+        [
+          "nach Wien gefahren,",
+          "빈으로 갔습니다"
+        ],
+        [
+          "weil ich endlich",
+          "왜냐하면 드디어"
+        ],
+        [
+          "ein echtes **Kaffeehaus**",
+          "진짜 카페하우스를"
+        ],
+        [
+          "erleben wollte.",
+          "경험해 보고 싶었기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Nachdem ich am Vormittag lange durch die kalte Altstadt gelaufen war, setzte ich mich müde an einen kleinen **Marmortisch** am Fenster.",
+      "b2": false,
+      "chunks": [
+        [
+          "Nachdem ich",
+          "내가 ~한 뒤에"
+        ],
+        [
+          "am Vormittag",
+          "오전에"
+        ],
+        [
+          "lange durch die kalte Altstadt",
+          "추운 구시가지를 오래"
+        ],
+        [
+          "gelaufen war,",
+          "걸어 다닌 (뒤에)"
+        ],
+        [
+          "setzte ich mich müde",
+          "나는 지쳐서 앉았습니다"
+        ],
+        [
+          "an einen kleinen **Marmortisch**",
+          "작은 대리석 탁자에"
+        ],
+        [
+          "am Fenster.",
+          "창가의"
+        ]
+      ]
+    },
+    {
+      "en": "Ein älterer **Kellner** brachte mir sowohl einen heißen Kaffee als auch ein Glas Wasser, ohne dass ich danach gefragt hatte.",
+      "b2": true,
+      "chunks": [
+        [
+          "Ein älterer **Kellner**",
+          "나이 지긋한 웨이터가"
+        ],
+        [
+          "brachte mir",
+          "내게 가져다주었습니다"
+        ],
+        [
+          "sowohl einen heißen Kaffee",
+          "뜨거운 커피도"
+        ],
+        [
+          "als auch ein Glas Wasser,",
+          "물 한 잔도"
+        ],
+        [
+          "ohne dass ich",
+          "내가 ~하지 않았는데도"
+        ],
+        [
+          "danach gefragt hatte.",
+          "그것을 달라고 하지 (않았는데도)"
+        ]
+      ]
+    },
+    {
+      "en": "Auf dem Tisch lagen mehrere **Zeitungen**, und niemand störte mich, obwohl ich stundenlang nur las und aus dem Fenster schaute.",
+      "b2": false,
+      "chunks": [
+        [
+          "Auf dem Tisch",
+          "탁자 위에는"
+        ],
+        [
+          "lagen mehrere **Zeitungen**,",
+          "신문 여러 개가 놓여 있었습니다"
+        ],
+        [
+          "und niemand störte mich,",
+          "그리고 아무도 나를 방해하지 않았습니다"
+        ],
+        [
+          "obwohl ich stundenlang",
+          "내가 몇 시간 동안"
+        ],
+        [
+          "nur las",
+          "읽기만 하고"
+        ],
+        [
+          "und aus dem Fenster schaute.",
+          "창밖을 바라보기만 했는데도"
+        ]
+      ]
+    },
+    {
+      "en": "Später habe ich einen warmen **Apfelstrudel** bestellt, dessen Duft nach Zimt und Butter sich schnell im ganzen Raum verbreitete.",
+      "b2": false,
+      "chunks": [
+        [
+          "Später",
+          "나중에"
+        ],
+        [
+          "habe ich",
+          "나는"
+        ],
+        [
+          "einen warmen **Apfelstrudel** bestellt,",
+          "따뜻한 사과 슈트루델을 주문했습니다"
+        ],
+        [
+          "dessen Duft nach Zimt und Butter",
+          "그것의 계피와 버터 향기는"
+        ],
+        [
+          "sich schnell",
+          "빠르게"
+        ],
+        [
+          "im ganzen Raum verbreitete.",
+          "온 방 안에 퍼졌습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Beim Bezahlen der **Rechnung** wusste ich schon, dass ich bei meiner nächsten Reise wieder in dieses gemütliche Kaffeehaus kommen werde.",
+      "b2": false,
+      "chunks": [
+        [
+          "Beim Bezahlen der **Rechnung**",
+          "계산서를 치르면서"
+        ],
+        [
+          "wusste ich schon,",
+          "나는 이미 알았습니다"
+        ],
+        [
+          "dass ich",
+          "내가 ~하리라는 것을"
+        ],
+        [
+          "bei meiner nächsten Reise",
+          "다음 여행 때"
+        ],
+        [
+          "wieder in dieses gemütliche Kaffeehaus",
+          "이 아늑한 카페하우스에 다시"
+        ],
+        [
+          "kommen werde.",
+          "오게 될 (것을)"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Kaffeehaus",
+      "카페, 찻집 (중성 das, 복수 Kaffeehäuser)"
+    ],
+    [
+      "Marmortisch",
+      "대리석 탁자 (남성 der)"
+    ],
+    [
+      "Kellner",
+      "웨이터, 종업원 (남성 der)"
+    ],
+    [
+      "Zeitung",
+      "신문 (여성 die, 복수 Zeitungen)"
+    ],
+    [
+      "Apfelstrudel",
+      "사과 파이 (남성 der)"
+    ],
+    [
+      "Rechnung",
+      "계산서 (여성 die)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Plusquamperfekt — nachdem ... gelaufen war",
+      "body": "`Nachdem ich ... durch die kalte Altstadt gelaufen war, setzte ich mich ...`에서 앞부분은 과거완료(hatte/war + 과거분사)예요. 앉은 것(`setzte`)보다 걸어 다닌 일이 더 먼저 일어났다는 걸 보여 줍니다. `laufen`은 이동 동사라 `war`를 쓰고, 3번 문장의 `gefragt hatte`처럼 대부분은 `hatte`를 써요. `nachdem`절은 부문장이라 `war`가 맨 끝에 옵니다."
+    },
+    {
+      "title": "sowohl ... als auch — A도 B도",
+      "body": "`sowohl einen heißen Kaffee als auch ein Glas Wasser`는 '뜨거운 커피도, 물 한 잔도'라는 뜻이에요. 두 목적어를 똑같이 강조해 묶는 표현으로, 그냥 `und`보다 '둘 다'라는 느낌이 강합니다. 둘 다 `brachte`의 목적어라 `einen`, `ein`처럼 각각 4격(Akkusativ)을 씁니다."
+    }
+  ],
+  "answers": [
+    "지난 토요일, 드디어 진짜 카페하우스를 경험해 보고 싶어서 기차를 타고 빈에 갔습니다.",
+    "오전 내내 추운 구시가지를 오래 걸어 다닌 뒤, 저는 지친 채로 창가의 작은 대리석 탁자에 앉았습니다.",
+    "나이 지긋한 웨이터가 제가 달라고 하지도 않았는데 뜨거운 커피와 물 한 잔을 함께 가져다주었습니다.",
+    "탁자 위에는 신문이 여러 개 놓여 있었고, 제가 몇 시간 동안 읽기만 하고 창밖만 바라봐도 아무도 저를 방해하지 않았습니다.",
+    "나중에 따뜻한 사과 슈트루델을 주문했는데, 계피와 버터 향이 금세 방 안 가득 퍼졌습니다.",
+    "계산을 하면서 저는 다음 여행 때 이 아늑한 카페하우스에 다시 오리라는 걸 이미 알고 있었습니다."
+  ],
+  "advanced": [
+    {
+      "word": "verweilen",
+      "meaning": "머무르다, 머물다",
+      "confuse": "verweilen vs. bleiben: `bleiben`은 일상적으로 '머물다, 남다', `verweilen`은 한곳에서 여유 있게 시간을 보내는 조금 문어적인 말이에요.",
+      "example": "Im Kaffeehaus kann man stundenlang **verweilen**.",
+      "example_ko": "카페하우스에서는 몇 시간이고 머무를 수 있습니다."
+    },
+    {
+      "word": "Stammgast",
+      "meaning": "단골손님 (남성 der, 복수 Stammgäste)",
+      "confuse": "Stammgast vs. Stammkunde: `Stammkunde`는 가게에서 물건을 사는 단골, `Stammgast`는 식당이나 카페에 자주 오는 단골이에요.",
+      "example": "Der alte Herr ist seit vielen Jahren **Stammgast** in diesem Café.",
+      "example_ko": "그 노신사는 여러 해째 이 카페의 단골손님입니다."
+    },
+    {
+      "word": "Trinkgeld",
+      "meaning": "팁, 봉사료 (중성 das)",
+      "confuse": null,
+      "example": "In Österreich gibt man meistens etwas **Trinkgeld**.",
+      "example_ko": "오스트리아에서는 보통 팁을 조금 줍니다."
+    },
+    {
+      "word": "sich verbreiten",
+      "meaning": "퍼지다, 확산되다",
+      "confuse": "sich verbreiten vs. verbreiten: 재귀형은 냄새나 소식이 스스로 '퍼지다', 재귀대명사 없이 쓰면 무엇을 '퍼뜨리다'예요.",
+      "example": "Die Nachricht hat sich schnell **verbreitet**.",
+      "example_ko": "그 소식은 빠르게 퍼졌습니다."
+    },
+    {
+      "word": "schlendern",
+      "meaning": "거닐다, 어슬렁거리다",
+      "confuse": "schlendern vs. spazieren gehen: `spazieren gehen`은 산책하다, `schlendern`은 목적 없이 느긋하게 천천히 걷는 모습을 그려요. 완료형은 `ist geschlendert`입니다.",
+      "example": "Wir sind am Abend durch die Gassen **geschlendert**.",
+      "example_ko": "우리는 저녁에 골목길을 거닐었습니다."
+    },
+    {
+      "word": "unaufgefordert",
+      "meaning": "요청 없이, 자진해서",
+      "confuse": null,
+      "example": "Der Kellner brachte **unaufgefordert** ein Glas Wasser.",
+      "example_ko": "웨이터는 요청하지 않았는데도 물 한 잔을 가져왔습니다."
+    },
+    {
+      "word": "Atmosphäre",
+      "meaning": "분위기 (여성 die)",
+      "confuse": "Atmosphäre vs. Stimmung: `Atmosphäre`는 장소가 풍기는 분위기, `Stimmung`은 사람들의 기분이나 그 자리의 흥이에요.",
+      "example": "Das alte Café hat eine ruhige **Atmosphäre**.",
+      "example_ko": "그 오래된 카페는 분위기가 조용합니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Letzten Samstag bin ich nach Wien gefahren, denn ich wollte ein **Kaffeehaus** sehen.",
+          "chunks": [
+            [
+              "Letzten Samstag",
+              "지난 토요일에"
+            ],
+            [
+              "bin ich nach Wien gefahren,",
+              "나는 빈에 갔습니다"
+            ],
+            [
+              "denn ich wollte",
+              "왜냐하면 나는 ~하고 싶었으니까요"
+            ],
+            [
+              "ein **Kaffeehaus** sehen.",
+              "카페하우스를 보고"
+            ]
+          ]
+        },
+        {
+          "en": "Nach einem langen Spaziergang habe ich mich an einen **Marmortisch** gesetzt.",
+          "chunks": [
+            [
+              "Nach einem langen Spaziergang",
+              "오랜 산책 뒤에"
+            ],
+            [
+              "habe ich mich",
+              "나는"
+            ],
+            [
+              "an einen **Marmortisch** gesetzt.",
+              "대리석 탁자에 앉았습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Ein **Kellner** hat mir Kaffee und ein Glas Wasser gebracht.",
+          "chunks": [
+            [
+              "Ein **Kellner**",
+              "웨이터가"
+            ],
+            [
+              "hat mir",
+              "내게"
+            ],
+            [
+              "Kaffee und ein Glas Wasser",
+              "커피와 물 한 잔을"
+            ],
+            [
+              "gebracht.",
+              "가져다주었습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Auf dem Tisch lagen **Zeitungen**, und niemand hat mich gestört.",
+          "chunks": [
+            [
+              "Auf dem Tisch",
+              "탁자 위에는"
+            ],
+            [
+              "lagen **Zeitungen**,",
+              "신문이 놓여 있었습니다"
+            ],
+            [
+              "und niemand",
+              "그리고 아무도"
+            ],
+            [
+              "hat mich gestört.",
+              "나를 방해하지 않았습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Später habe ich einen warmen **Apfelstrudel** mit Zimt bestellt.",
+          "chunks": [
+            [
+              "Später",
+              "나중에"
+            ],
+            [
+              "habe ich",
+              "나는"
+            ],
+            [
+              "einen warmen **Apfelstrudel**",
+              "따뜻한 사과 슈트루델을"
+            ],
+            [
+              "mit Zimt bestellt.",
+              "계피를 곁들여 주문했습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Ich habe die **Rechnung** bezahlt und möchte bald wiederkommen.",
+          "chunks": [
+            [
+              "Ich habe",
+              "나는"
+            ],
+            [
+              "die **Rechnung** bezahlt",
+              "계산서를 치렀습니다"
+            ],
+            [
+              "und möchte",
+              "그리고 ~하고 싶습니다"
+            ],
+            [
+              "bald wiederkommen.",
+              "곧 다시 오고"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "지난 토요일에 저는 빈에 갔습니다. 카페하우스를 보고 싶었거든요.",
+        "오래 산책한 뒤에 저는 대리석 탁자에 앉았습니다.",
+        "웨이터가 커피와 물 한 잔을 가져다주었습니다.",
+        "탁자 위에는 신문이 있었고, 아무도 저를 방해하지 않았습니다.",
+        "나중에 저는 계피를 곁들인 따뜻한 사과 슈트루델을 주문했습니다.",
+        "저는 계산을 했고, 곧 다시 오고 싶습니다."
+      ]
+    }
+  }
+}
