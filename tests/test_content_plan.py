@@ -75,6 +75,12 @@ class Plan(unittest.TestCase):
         self.assertTrue(any("단어예요" in w for w in self.warns("en", "2026-11-09", base(sentences=[{"en": long31, "b2": True}]))))
         self.assertFalse(any("단어예요" in w for w in self.warns("de", "2026-11-09", base(sentences=[{"en": long31}]))))
 
+    def test_life_day_needs_example_flag(self):
+        w = self.warns("en", "2026-11-07", base(fit="life", source=None))
+        self.assertTrue(any("example" in x for x in w))
+        w = self.warns("en", "2026-11-07", base(fit="life", source=None, example=True))
+        self.assertFalse(any("example" in x for x in w))
+
     def test_not_applied_before_plan_from(self):
         self.assertEqual(self.warns("en", "2026-11-06", {"sentences": [{"en": "Short."}]}), [])
 

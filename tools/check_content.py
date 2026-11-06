@@ -278,6 +278,8 @@ def check_plan(c, path, plan_from=None):
     warnings = []
     lang = path.parent.name
     want = _grammar.fit_of(day)
+    if want == "life" and not c.get("example"):
+        warnings.append('생활 글에는 "example": true 가 필요해요. 페이지에 지어낸 이야기라고 표시됩니다(ROUTINE.common.md 2절).')
     if c.get("fit") != want:
         warnings.append(f"fit 은 요일 유형 '{want}' 이어야 해요(현재 {c.get('fit')!r}, ROUTINE.common.md 1절). 출처를 못 찾은 날도 그대로 둡니다.")
     if want in ("news", "explain") and not c.get("source"):
