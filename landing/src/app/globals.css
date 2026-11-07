@@ -115,21 +115,10 @@ input {
   flex: none;
 }
 
-/* PC 에서는 위 메뉴 로고를 배지로 키워 메뉴 아래로 살짝 걸치게 한다(스티커처럼). 제목(위에서 56px)과는 닿지 않는다 */
-@media (min-width: 961px) {
-  .brand-mark {
-    width: 76px;
-    height: 76px;
-    margin: 22px 0 -22px;
-    background-image: url('/assets/brand/badge-192.png');
-    filter: drop-shadow(0 2px 6px rgba(16, 24, 40, 0.14));
-  }
-}
-
 /* ───── hero (C3) ───── */
 
 /* 배지 메인 로고는 휴대폰 첫 화면에만 둔다. PC 첫 화면은 제목, 휴대폰 목업, 카드가 꽉 차 있어
-   제목 옆에 두면 목업과 겹쳤다. PC 는 위 메뉴의 배지(.brand-mark)가 메인 로고 역할을 한다. */
+   제목 옆에 두면 목업과 겹쳤다. PC 는 위 메뉴 로고(.gnb-brand)가 메인 로고 역할을 한다. */
 .hero-badge {
   display: none;
 }
