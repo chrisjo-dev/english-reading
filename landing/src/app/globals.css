@@ -1317,18 +1317,6 @@ html:not(.js) .sw {
   color: #fff;
 }
 
-.lv-level-note {
-  display: none;
-  font-size: 13px;
-  color: var(--mute);
-  margin: -8px 0 12px;
-  line-height: 1.5;
-}
-
-.lv-opts:has(input[value="a"]:checked) ~ .lv-level-note {
-  display: block;
-}
-
 /* 언어 추가 요청 (두 번째 칸, design/lang-request L02, L04) */
 .lang-req {
   display: flex;
@@ -1552,6 +1540,52 @@ html:not(.js) .sw {
   }
   .c3-h2 {
     top: 645px;
+  }
+}
+
+/* 첫 화면 구독 폼이 띠 위에 다 보이도록 위로 올리고 수준 카드를 2칸으로 줄인다(design/hero-form-fit). 띠는 폰보다 위. */
+@media (min-width: 961px) {
+  .c3-form {
+    top: 464px;
+  }
+  /* 해석이 긴 날에도 폼과 겹치지 않게 석 줄까지만 보인다 */
+  .f-tr p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  .c3-form .lv-opts {
+    flex-direction: row;
+    margin-bottom: 12px;
+  }
+  .c3-form .lv-opts legend {
+    margin-bottom: 6px;
+  }
+  .c3-form .lv-opt {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 10px 12px;
+    gap: 1px;
+  }
+  .c3-form .lv-d {
+    font-size: 12px;
+    line-height: 1.45;
+    margin-top: 3px;
+  }
+  .c3-form .c3-stats,
+  .c3-form .confirm-note {
+    display: none;
+  }
+  .c3-band {
+    z-index: 6;
+  }
+}
+
+/* 첫 화면이 900px 인 구간은 해석 카드가 석 줄이 되기 쉬워 폼을 더 내린다 */
+@media (max-width: 1365px) and (min-width: 961px) {
+  .c3-form {
+    top: 484px;
   }
 }
 

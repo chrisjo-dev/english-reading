@@ -95,8 +95,12 @@ class SubHtmlEnTest(unittest.TestCase):
     def test_has_version_marker(self):
         self.assertIn('data-v="3"', self.html, "버전 마커 data-v=3 이 있어야 합니다")
 
-    def test_has_level_note(self):
-        self.assertIn("기초 지문은 준비 중이에요", self.html, "기초 안내 노트가 있어야 합니다")
+    def test_no_level_note(self):
+        self.assertNotIn("기초 지문은 준비 중이에요", self.html)
+
+    def test_no_level_note_in_past_pages(self):
+        pages = [p for p in (Path(__file__).resolve().parents[1] / "en").glob("*/index.html") if "기초 지문은 준비 중이에요" in p.read_text(encoding="utf-8")]
+        self.assertEqual(pages, [], "patch_page 가 지난 페이지의 안내를 지워야 합니다")
 
 
 class SubHtmlJaTest(unittest.TestCase):

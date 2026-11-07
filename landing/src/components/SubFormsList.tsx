@@ -36,8 +36,6 @@ function SubForm({ style }: { style?: React.CSSProperties }) {
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const f = FORMS[i];
   const levels = LEVELS_BY_LANG[f.lang] ?? [];
-  // de, ja는 기초 지문이 이미 매일 있으므로 "기초 지문은 준비 중" 안내는 영어에만 보인다
-  const showLevelNote = f.lang === "en" && level === "a";
   const pick = (n: number) => {
     const next = (n + FORMS.length) % FORMS.length;
     setI(next);
@@ -113,11 +111,6 @@ function SubForm({ style }: { style?: React.CSSProperties }) {
             </label>
           ))}
         </fieldset>
-        {showLevelNote && (
-          <p className="lv-level-note" style={{ display: "block" }}>
-            기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.
-          </p>
-        )}
         <div className="row">
           <input id="email-sub" type="email" name="email" required placeholder="이메일 주소" autoComplete="email" />
           <button type="submit">구독하기</button>

@@ -56,9 +56,6 @@ SUB_CSS = (
     "  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none;"
     " display: flex; align-items: center; justify-content: center; color: transparent; }\n"
     "  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }\n"
-    # level-note 기본 숨김 — :has() 또는 JS data-show 로 표시
-    "  .sub .level-note { flex-basis: 100%; display: none; }\n"
-    "  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }\n"
 )
 
 
@@ -88,7 +85,7 @@ def intro_html(lang):
 def _sub_script(lang):
     """구독 칸 인라인 스크립트.
     - GA subscribe 이벤트: levels=True 언어(en, de)는 level 파라미터 포함, 그 외는 생략.
-    - :has() 미지원 브라우저 fallback: 라디오 change 시 data-checked/data-show 속성으로 CSS 선택 상태와 기초 노트를 제어한다.
+    - :has() 미지원 브라우저 fallback: 라디오 change 시 data-checked 속성으로 CSS 선택 상태를 제어한다.
     """
     if langs.LANGS[lang].get("levels", False):
         ga_event = (
@@ -106,18 +103,13 @@ def _sub_script(lang):
         f'        var cl=f.querySelector(\'input[name="metadata__level"]:checked\');\n'
         f'        try{{if(typeof gtag==="function"){ga_event};}}catch(e){{}}\n'
         f'      }});\n'
-        f'      // :has() 미지원 브라우저 fallback — data-checked / data-show 속성으로 CSS 를 보조한다\n'
+        f'      // :has() 미지원 브라우저 fallback — data-checked 속성으로 CSS 를 보조한다\n'
         f'      var opts=sec.querySelectorAll(".lvopt");\n'
-        f'      var note=sec.querySelector(".level-note");\n'
         f'      if(opts.length){{var update=function(){{\n'
         f'        opts.forEach(function(o){{\n'
         f'          var r=o.querySelector("input[type=\\"radio\\"]");\n'
         f'          if(r&&r.checked){{o.setAttribute("data-checked","");}}else{{o.removeAttribute("data-checked");}}\n'
         f'        }});\n'
-        f'        if(note){{\n'
-        f'          var a=sec.querySelector("input[name=\\"metadata__level\\"][value=\\"a\\"]:checked");\n'
-        f'          if(a){{note.setAttribute("data-show","");}}else{{note.removeAttribute("data-show");}}\n'
-        f'        }}\n'
         f'      }};update();\n'
         f'      opts.forEach(function(o){{var r=o.querySelector("input[type=\\"radio\\"]");if(r)r.addEventListener("change",update);}});\n'
         f'      }}\n'
@@ -125,16 +117,14 @@ def _sub_script(lang):
     )
 
 
-# 수준 선택 카드의 언어별 문구: (기초 범위, 기초 설명, 중급 범위, 중급 설명, 기초 선택 시 안내)
-# 기초 지문이 매일 있는 언어(de, ja)는 "기초 지문은 준비 중" 안내를 넣지 않는다.
+# 수준 선택 카드의 언어별 문구: (기초 범위, 기초 설명, 중급 범위, 중급 설명)
 LEVEL_CHOICES = {
     "en": ("A2~B1", "짧고 쉬운 문장. 영어 읽기를 다시 시작한다면",
-           "B1~B2", "뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면",
-           '      <p class="note level-note">기초 지문은 준비 중이에요. 준비되면 기초 지문으로 보내 드려요. 그전에는 중급 지문이 가요.</p>\n'),
+           "B1~B2", "뉴스 기사에 가까운 문장. 긴 문장도 읽어 보고 싶다면"),
     "de": ("A2~B1", "짧고 쉬운 문장. 독일어 읽기를 막 시작했다면",
-           "B1~B2", "조금 긴 문장과 B2 문법도 읽어 보고 싶다면", ""),
+           "B1~B2", "조금 긴 문장과 B2 문법도 읽어 보고 싶다면"),
     "ja": ("N4~N5", "짧고 쉬운 문장. 일본어 읽기를 막 시작했다면",
-           "N3", "조금 긴 문장과 N3 문법도 읽어 보고 싶다면", ""),
+           "N3", "조금 긴 문장과 N3 문법도 읽어 보고 싶다면"),
 }
 
 
@@ -147,7 +137,7 @@ def sub_html(lang):
     L = langs.get(lang)
     level_html = ""
     if langs.LANGS[lang].get("levels", False):
-        range_a, desc_a, range_b, desc_b, level_note = LEVEL_CHOICES.get(lang, LEVEL_CHOICES["en"])
+        range_a, desc_a, range_b, desc_b = LEVEL_CHOICES.get(lang, LEVEL_CHOICES["en"])
         level_html = (
             '      <fieldset class="levels">\n'
             '        <legend>수준을 골라 주세요</legend>\n'
@@ -164,7 +154,6 @@ def sub_html(lang):
             f'          <span class="lv-d">{desc_b}</span>\n'
             '        </label>\n'
             '      </fieldset>\n'
-            + level_note
         )
     return (
         '  <section class="card sub" id="subscribe" data-v="3">\n'
@@ -392,10 +381,10 @@ def patch_page(lang, day):
                 "  .sub .lvopt .lv-chk { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c5ccd6; flex: none;"
                 " display: flex; align-items: center; justify-content: center; color: transparent; }\n"
                 "  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }\n"
-                "  .sub .level-note { flex-basis: 100%; display: none; }\n"
-                "  .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }\n"
             )
             page = page.replace("  .sub .note {", SUB_EXTRA + "  .sub .note {", 1)
+    # 영어 기초 지문이 매일 나오므로 지난 페이지의 "기초 지문은 준비 중" 안내를 지운다(이슈 #27)
+    page = re.sub(r' *<p class="note level-note">.*?</p>\n', "", page, count=1)
     if "#passage .chunks-a {" not in page:
         for old, new in LEVEL_A_CSS:
             page = page.replace(old, new, 1)
