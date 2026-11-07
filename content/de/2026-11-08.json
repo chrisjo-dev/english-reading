@@ -1,0 +1,444 @@
+{
+  "date": "2026-11-08",
+  "category": "culture",
+  "topic": "겨울 타이어",
+  "title_ko": "첫 서리 내린 날의 타이어 교체",
+  "headline": "Winterreifen am ersten Frosttag",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "fit": "life",
+  "example": true,
+  "grammar": {
+    "b": [
+      "b-perfekt",
+      "b-konjunktiv-wuerde"
+    ],
+    "a": [
+      "a-perfekt-haben"
+    ]
+  },
+  "keywords": [
+    "겨울 타이어",
+    "첫 서리",
+    "가족 대화"
+  ],
+  "photo_scene": "Close-up of a father and his grown son kneeling together beside a car wheel in a home driveway, changing a tyre with a car jack, frost on the grass, cold clear November morning light.",
+  "sentences": [
+    {
+      "en": "Am Sonntagmorgen habe ich gesehen, dass auf unserem Auto zum ersten Mal eine dünne Schicht **Reif** lag.",
+      "b2": false,
+      "chunks": [
+        [
+          "Am Sonntagmorgen",
+          "일요일 아침에"
+        ],
+        [
+          "habe ich gesehen,",
+          "나는 보았습니다"
+        ],
+        [
+          "dass auf unserem Auto",
+          "우리 차 위에"
+        ],
+        [
+          "zum ersten Mal",
+          "처음으로"
+        ],
+        [
+          "eine dünne Schicht **Reif** lag.",
+          "얇은 서리가 한 겹 앉아 있는 것을"
+        ]
+      ]
+    },
+    {
+      "en": "Mein Vater sagt jedes Jahr, dass man die **Winterreifen** spätestens beim ersten Frost **aufziehen** sollte.",
+      "b2": false,
+      "chunks": [
+        [
+          "Mein Vater sagt",
+          "아버지는 말합니다"
+        ],
+        [
+          "jedes Jahr,",
+          "해마다"
+        ],
+        [
+          "dass man die **Winterreifen**",
+          "겨울 타이어를"
+        ],
+        [
+          "spätestens beim ersten Frost",
+          "늦어도 첫 서리 때에는"
+        ],
+        [
+          "**aufziehen** sollte.",
+          "끼워야 한다고"
+        ]
+      ]
+    },
+    {
+      "en": "Deshalb haben wir nach dem Frühstück die Reifen aus dem Keller geholt und sie neben das Auto in die **Einfahrt** gelegt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Deshalb haben wir",
+          "그래서 우리는"
+        ],
+        [
+          "nach dem Frühstück",
+          "아침을 먹고 나서"
+        ],
+        [
+          "die Reifen",
+          "타이어를"
+        ],
+        [
+          "aus dem Keller geholt",
+          "지하실에서 꺼내 와"
+        ],
+        [
+          "und sie",
+          "그것들을"
+        ],
+        [
+          "neben das Auto",
+          "차 옆에"
+        ],
+        [
+          "in die **Einfahrt** gelegt.",
+          "진입로에 놓았습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Das Wechseln der Reifen, für das viele Nachbarn in eine **Werkstatt** fahren, erledigt mein Vater seit Jahren selbst mit einem alten **Wagenheber**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Das Wechseln der Reifen,",
+          "타이어 교체를"
+        ],
+        [
+          "für das viele Nachbarn",
+          "그것 때문에 많은 이웃이"
+        ],
+        [
+          "in eine **Werkstatt** fahren,",
+          "정비소로 가는데"
+        ],
+        [
+          "erledigt mein Vater",
+          "아버지는 해냅니다"
+        ],
+        [
+          "seit Jahren selbst",
+          "몇 년째 직접"
+        ],
+        [
+          "mit einem alten **Wagenheber**.",
+          "낡은 잭 하나로"
+        ]
+      ]
+    },
+    {
+      "en": "Ich würde die Reifen ehrlich gesagt lieber in einer Werkstatt wechseln lassen, doch mein Vater findet die gemeinsame Arbeit sinnvoll.",
+      "b2": true,
+      "chunks": [
+        [
+          "Ich würde die Reifen",
+          "나라면 타이어를"
+        ],
+        [
+          "ehrlich gesagt lieber",
+          "솔직히 말해 차라리"
+        ],
+        [
+          "in einer Werkstatt",
+          "정비소에서"
+        ],
+        [
+          "wechseln lassen,",
+          "갈게 하겠지만"
+        ],
+        [
+          "doch mein Vater findet",
+          "아버지는 여깁니다"
+        ],
+        [
+          "die gemeinsame Arbeit sinnvoll.",
+          "함께 하는 일이 의미 있다고"
+        ]
+      ]
+    },
+    {
+      "en": "Zum Schluss haben wir noch den **Reifendruck** geprüft und danach zusammen einen heißen Tee in der gemütlichen Küche getrunken.",
+      "b2": false,
+      "chunks": [
+        [
+          "Zum Schluss",
+          "마지막으로"
+        ],
+        [
+          "haben wir noch",
+          "우리는 또"
+        ],
+        [
+          "den **Reifendruck** geprüft",
+          "타이어 공기압을 확인했고"
+        ],
+        [
+          "und danach zusammen",
+          "그다음 함께"
+        ],
+        [
+          "einen heißen Tee",
+          "뜨거운 차를"
+        ],
+        [
+          "in der gemütlichen Küche getrunken.",
+          "아늑한 부엌에서 마셨습니다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Reif",
+      "서리 (남성 der)"
+    ],
+    [
+      "Winterreifen",
+      "겨울 타이어, 스노타이어 (남성 der)"
+    ],
+    [
+      "aufziehen",
+      "(타이어를) 끼우다, 장착하다"
+    ],
+    [
+      "Einfahrt",
+      "(차) 진입로 (여성 die)"
+    ],
+    [
+      "Werkstatt",
+      "정비소, 작업장 (여성 die, 복수 Werkstätten)"
+    ],
+    [
+      "Wagenheber",
+      "(자동차) 잭 (남성 der)"
+    ],
+    [
+      "Reifendruck",
+      "타이어 공기압 (남성 der)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Perfekt — haben + 과거분사로 말하는 오늘 일",
+      "body": "`habe ich gesehen`, `haben wir ... geholt und ... gelegt`, `haben wir ... geprüft ... getrunken`처럼 오늘 아침 있었던 일을 말할 때 독일어 구어에서는 주로 현재완료(Perfekt)를 써요. `haben`은 두 번째 자리(V2)에, 과거분사는 문장 맨 끝에 와서 괄호(Verbklammer)를 만듭니다. 3번 문장처럼 `und`로 이으면 `haben`은 한 번만 쓰고 과거분사 두 개(`geholt`, `gelegt`)가 각각 끝에 옵니다."
+    },
+    {
+      "title": "lassen + 동사원형 — 남에게 맡겨서 하다",
+      "body": "`die Reifen ... wechseln lassen`은 '타이어를 (정비소에) 갈게 하다', 즉 직접 하지 않고 맡긴다는 뜻이에요. `wechseln`은 혼자 하는 것, `wechseln lassen`은 남이 하게 하는 것입니다. 5번 문장에서는 `würde`가 두 번째 자리에 오고 `wechseln lassen`이 묶여서 앞부분 끝에 갑니다. 1번 문장의 `Reif`(서리)와 `Reifen`(타이어)은 생김새가 비슷하지만 다른 말이니 함께 기억해 두세요."
+    }
+  ],
+  "answers": [
+    "일요일 아침, 우리 차 위에 처음으로 얇은 서리가 한 겹 내려앉은 것을 보았습니다.",
+    "아버지는 해마다 늦어도 첫 서리가 내릴 때에는 겨울 타이어를 끼워야 한다고 말합니다.",
+    "그래서 우리는 아침을 먹은 뒤 지하실에서 타이어를 꺼내 와 진입로의 차 옆에 놓았습니다.",
+    "많은 이웃이 정비소에 맡기는 타이어 교체를 아버지는 몇 년째 낡은 잭 하나로 직접 해냅니다.",
+    "솔직히 저라면 차라리 정비소에서 타이어를 갈겠지만, 아버지는 함께 하는 이 일이 의미 있다고 여깁니다.",
+    "마지막으로 타이어 공기압까지 확인한 뒤, 우리는 아늑한 부엌에서 함께 뜨거운 차를 마셨습니다."
+  ],
+  "advanced": [
+    {
+      "word": "Glätte",
+      "meaning": "빙판, 미끄러움 (여성 die)",
+      "confuse": "Glätte vs. glatt: `glatt`는 '미끄러운, 매끄러운'이라는 형용사, `Glätte`는 길이 미끄러운 상태를 가리키는 명사예요.",
+      "example": "Bei **Glätte** sollte man langsam und vorsichtig fahren.",
+      "example_ko": "길이 미끄러울 때는 천천히 조심해서 운전해야 합니다."
+    },
+    {
+      "word": "Profil",
+      "meaning": "(타이어) 트레드, 홈 (중성 das)",
+      "confuse": "Profil은 '프로필, 옆모습'이라는 뜻도 있어요. 타이어 이야기에서는 바닥의 홈 무늬를 말합니다.",
+      "example": "Das **Profil** der alten Reifen war schon ziemlich flach.",
+      "example_ko": "낡은 타이어의 홈은 이미 꽤 얕아져 있었습니다."
+    },
+    {
+      "word": "abgefahren",
+      "meaning": "(타이어가) 닳은, 마모된",
+      "confuse": "abgefahren vs. abfahren: `abfahren`은 '출발하다', 과거분사 `abgefahren`이 타이어에 쓰이면 '많이 달려서 닳은'이라는 형용사가 돼요.",
+      "example": "Mit **abgefahrenen** Reifen ist das Fahren im Winter gefährlich.",
+      "example_ko": "닳은 타이어로 겨울에 운전하는 것은 위험합니다."
+    },
+    {
+      "word": "festziehen",
+      "meaning": "꽉 조이다",
+      "confuse": null,
+      "example": "Nach dem Wechsel muss man die Schrauben noch einmal **festziehen**.",
+      "example_ko": "교체한 뒤에는 볼트를 한 번 더 꽉 조여야 합니다."
+    },
+    {
+      "word": "Witterung",
+      "meaning": "날씨, 기상 상태 (여성 die)",
+      "confuse": "Witterung vs. Wetter: `Wetter`는 일상적인 '날씨', `Witterung`은 일정 기간의 기상 상태를 말하는 조금 딱딱한 말이에요.",
+      "example": "Die Reifen sollten immer zur **Witterung** passen.",
+      "example_ko": "타이어는 늘 기상 상태에 맞아야 합니다."
+    },
+    {
+      "word": "sich lohnen",
+      "meaning": "보람이 있다, 할 만하다",
+      "confuse": "sich lohnen vs. Lohn: `Lohn`은 '임금', `sich lohnen`은 들인 수고나 돈만큼 가치가 있다는 뜻이에요.",
+      "example": "Es **lohnt sich**, die Reifen selbst zu wechseln.",
+      "example_ko": "타이어를 직접 가는 것은 해 볼 만합니다."
+    },
+    {
+      "word": "vorsorgen",
+      "meaning": "미리 대비하다",
+      "confuse": "vorsorgen vs. sorgen: `sorgen für`는 '돌보다, 마련하다', `vorsorgen`은 앞으로 생길 일에 미리 준비한다는 뜻이에요.",
+      "example": "Wer früh **vorsorgt**, hat beim ersten Schnee keinen Stress.",
+      "example_ko": "일찍 대비하는 사람은 첫눈이 와도 스트레스가 없습니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Am Sonntagmorgen habe ich dünnen **Reif** auf unserem Auto gesehen.",
+          "chunks": [
+            [
+              "Am Sonntagmorgen",
+              "일요일 아침에"
+            ],
+            [
+              "habe ich",
+              "나는"
+            ],
+            [
+              "dünnen **Reif**",
+              "얇은 서리를"
+            ],
+            [
+              "auf unserem Auto gesehen.",
+              "우리 차 위에서 보았습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Mein Vater sagt, beim ersten Frost muss man **Winterreifen** **aufziehen**.",
+          "chunks": [
+            [
+              "Mein Vater sagt,",
+              "아버지는 말합니다"
+            ],
+            [
+              "beim ersten Frost",
+              "첫 서리 때에는"
+            ],
+            [
+              "muss man **Winterreifen**",
+              "겨울 타이어를"
+            ],
+            [
+              "**aufziehen**.",
+              "끼워야 한다고"
+            ]
+          ]
+        },
+        {
+          "en": "Nach dem Frühstück haben wir die Reifen aus dem Keller in die **Einfahrt** gebracht.",
+          "chunks": [
+            [
+              "Nach dem Frühstück",
+              "아침을 먹고 나서"
+            ],
+            [
+              "haben wir die Reifen",
+              "우리는 타이어를"
+            ],
+            [
+              "aus dem Keller",
+              "지하실에서"
+            ],
+            [
+              "in die **Einfahrt** gebracht.",
+              "진입로로 가져갔습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Viele Nachbarn fahren zur **Werkstatt**, aber mein Vater benutzt seinen alten **Wagenheber**.",
+          "chunks": [
+            [
+              "Viele Nachbarn",
+              "많은 이웃은"
+            ],
+            [
+              "fahren zur **Werkstatt**,",
+              "정비소에 갑니다"
+            ],
+            [
+              "aber mein Vater benutzt",
+              "하지만 아버지는 씁니다"
+            ],
+            [
+              "seinen alten **Wagenheber**.",
+              "자기의 낡은 잭을"
+            ]
+          ]
+        },
+        {
+          "en": "Ich möchte lieber zur Werkstatt, aber mein Vater findet die gemeinsame Arbeit gut.",
+          "chunks": [
+            [
+              "Ich möchte",
+              "나는 ~하고 싶습니다"
+            ],
+            [
+              "lieber zur Werkstatt,",
+              "차라리 정비소에 가고"
+            ],
+            [
+              "aber mein Vater findet",
+              "하지만 아버지는 여깁니다"
+            ],
+            [
+              "die gemeinsame Arbeit gut.",
+              "함께 하는 일을 좋다고"
+            ]
+          ]
+        },
+        {
+          "en": "Am Ende haben wir den **Reifendruck** geprüft und Tee getrunken.",
+          "chunks": [
+            [
+              "Am Ende",
+              "마지막에"
+            ],
+            [
+              "haben wir den **Reifendruck** geprüft",
+              "우리는 타이어 공기압을 확인했고"
+            ],
+            [
+              "und Tee getrunken.",
+              "차를 마셨습니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "일요일 아침, 저는 우리 차 위에 얇은 서리가 내린 것을 보았습니다.",
+        "아버지는 첫 서리가 내리면 겨울 타이어를 끼워야 한다고 말합니다.",
+        "아침을 먹고 나서 우리는 타이어를 지하실에서 진입로로 가져갔습니다.",
+        "많은 이웃은 정비소에 가지만, 아버지는 자기의 낡은 잭을 씁니다.",
+        "저는 차라리 정비소에 가고 싶지만, 아버지는 함께 하는 일이 좋다고 여깁니다.",
+        "마지막에 우리는 타이어 공기압을 확인하고 차를 마셨습니다."
+      ]
+    }
+  }
+}
