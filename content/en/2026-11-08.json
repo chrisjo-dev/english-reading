@@ -1,0 +1,420 @@
+{
+  "date": "2026-11-08",
+  "category": "society",
+  "topic": "포틀럭 점심",
+  "title_ko": "회사에서 연 포틀럭 점심",
+  "headline": "A Potluck Lunch at the Office",
+  "fit": "life",
+  "grammar": {
+    "b": [
+      "b-going-to",
+      "b-first-conditional"
+    ],
+    "a": [
+      "a-present-simple"
+    ]
+  },
+  "keywords": [
+    "포틀럭",
+    "회사 점심",
+    "채식",
+    "직장 대화"
+  ],
+  "example": true,
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "\"We are going to have a **potluck** lunch on Friday,\" Jisu's team leader announced at Monday's meeting, and everyone liked the idea.",
+      "b2": false,
+      "chunks": [
+        [
+          "\"We are going to have",
+          "\"우리는 할 거예요"
+        ],
+        [
+          "a **potluck** lunch on Friday,\"",
+          "금요일에 포틀럭 점심을\""
+        ],
+        [
+          "Jisu's team leader announced",
+          "지수의 팀장이 발표했다"
+        ],
+        [
+          "at Monday's meeting,",
+          "월요일 회의에서"
+        ],
+        [
+          "and everyone liked the idea.",
+          "그리고 모두가 그 생각을 좋아했다"
+        ]
+      ]
+    },
+    {
+      "en": "Each person agreed to bring one **dish** from home, and Jisu **offered** to make kimbap because it is easy to share and nearly everyone likes it.",
+      "b2": false,
+      "chunks": [
+        [
+          "Each person agreed",
+          "각자 동의했다"
+        ],
+        [
+          "to bring one **dish** from home,",
+          "집에서 요리 하나를 가져오기로"
+        ],
+        [
+          "and Jisu **offered**",
+          "그리고 지수는 나섰다"
+        ],
+        [
+          "to make kimbap",
+          "김밥을 만들겠다고"
+        ],
+        [
+          "because it is easy to share",
+          "그것이 나눠 먹기 쉽기 때문에"
+        ],
+        [
+          "and nearly everyone likes it.",
+          "그리고 거의 모두가 좋아하기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "\"If everyone brings dessert, we will have nothing for lunch,\" the team leader **joked**, so they made a shared list in the office chat.",
+      "b2": false,
+      "chunks": [
+        [
+          "\"If everyone brings dessert,",
+          "\"모두가 디저트를 가져오면"
+        ],
+        [
+          "we will have nothing for lunch,\"",
+          "우리는 점심으로 먹을 게 없을 거예요\""
+        ],
+        [
+          "the team leader **joked**,",
+          "팀장이 농담했다"
+        ],
+        [
+          "so they made a shared list",
+          "그래서 그들은 함께 쓰는 목록을 만들었다"
+        ],
+        [
+          "in the office chat.",
+          "회사 단체 대화방에"
+        ]
+      ]
+    },
+    {
+      "en": "A new coworker, who had joined the team only two weeks earlier, quietly **mentioned** that she was **vegetarian** and told everyone not to worry about her.",
+      "b2": true,
+      "chunks": [
+        [
+          "A new coworker,",
+          "새 동료가"
+        ],
+        [
+          "who had joined the team",
+          "팀에 들어온"
+        ],
+        [
+          "only two weeks earlier,",
+          "겨우 2주 전에"
+        ],
+        [
+          "quietly **mentioned**",
+          "조용히 말했다"
+        ],
+        [
+          "that she was **vegetarian**",
+          "자신이 채식주의자라고"
+        ],
+        [
+          "and told everyone",
+          "그리고 모두에게 말했다"
+        ],
+        [
+          "not to worry about her.",
+          "자기 걱정은 하지 말라고"
+        ]
+      ]
+    },
+    {
+      "en": "Jisu decided to fill half of her kimbap rolls with spinach, carrots, and pickled radish instead of ham, so the new coworker could enjoy them too.",
+      "b2": false,
+      "chunks": [
+        [
+          "Jisu decided to fill",
+          "지수는 채우기로 했다"
+        ],
+        [
+          "half of her kimbap rolls",
+          "김밥 줄의 절반을"
+        ],
+        [
+          "with spinach, carrots, and pickled radish",
+          "시금치, 당근, 단무지로"
+        ],
+        [
+          "instead of ham,",
+          "햄 대신"
+        ],
+        [
+          "so the new coworker",
+          "그래서 새 동료가"
+        ],
+        [
+          "could enjoy them too.",
+          "그것을 함께 즐길 수 있도록"
+        ]
+      ]
+    },
+    {
+      "en": "On Friday, the long table was completely full, and there were so many **leftovers** that people took small boxes of food home for dinner.",
+      "b2": false,
+      "chunks": [
+        [
+          "On Friday,",
+          "금요일에"
+        ],
+        [
+          "the long table was completely full,",
+          "긴 테이블이 꽉 찼다"
+        ],
+        [
+          "and there were so many **leftovers**",
+          "그리고 남은 음식이 너무 많아서"
+        ],
+        [
+          "that people took small boxes of food",
+          "사람들은 작은 상자에 담은 음식을 가져갔다"
+        ],
+        [
+          "home for dinner.",
+          "저녁으로 먹으려고 집에"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "potluck",
+      "포틀럭 파티"
+    ],
+    [
+      "dish",
+      "요리"
+    ],
+    [
+      "offered",
+      "(하겠다고) 나섰다"
+    ],
+    [
+      "joked",
+      "농담했다"
+    ],
+    [
+      "mentioned",
+      "언급했다, 말했다"
+    ],
+    [
+      "vegetarian",
+      "채식주의자"
+    ],
+    [
+      "leftovers",
+      "남은 음식"
+    ]
+  ],
+  "points": [
+    {
+      "title": "be going to와 If + 현재, will",
+      "body": "1번 문장 `We are going to have a potluck lunch`는 이미 정해 둔 계획을 말해요. '금요일에 포틀럭 점심을 할 거예요'로 읽으세요. 3번 문장 `If everyone brings dessert, we will have nothing`은 미래 일이지만 if 쪽에는 현재형 `brings`를 써요. '모두가 디저트를 가져오면, 먹을 게 없을 거예요'로 조건과 결과를 나눠 읽으면 돼요."
+    },
+    {
+      "title": "so many ~ that: 너무 ~해서 …하다",
+      "body": "6번 문장 `so many leftovers that people took small boxes of food home`은 '남은 음식이 너무 많아서 사람들이 작은 상자에 담아 갔다'는 뜻이에요. `so many`에서 정도를 말하고, `that` 뒤에 그 결과가 이어져요."
+    }
+  ],
+  "answers": [
+    "\"금요일에 포틀럭 점심을 할 거예요.\" 월요일 회의에서 지수의 팀장이 이렇게 발표했고, 모두 그 생각을 좋아했다.",
+    "각자 집에서 요리를 하나씩 가져오기로 했고, 지수는 나눠 먹기 쉽고 거의 모두가 좋아한다는 이유로 김밥을 만들겠다고 나섰다.",
+    "\"모두가 디저트를 가져오면 점심으로 먹을 게 하나도 없을 거예요.\" 팀장이 이렇게 농담을 해서, 그들은 회사 단체 대화방에 함께 쓰는 목록을 만들었다.",
+    "겨우 2주 전에 팀에 들어온 새 동료가 자신이 채식주의자라고 조용히 말하면서, 모두에게 자기 걱정은 하지 말라고 했다.",
+    "지수는 새 동료도 함께 먹을 수 있도록 김밥 절반에 햄 대신 시금치, 당근, 단무지를 넣기로 했다.",
+    "금요일에 긴 테이블은 음식으로 꽉 찼고, 남은 음식이 너무 많아서 사람들은 작은 상자에 음식을 담아 저녁으로 먹으려고 집에 가져갔다."
+  ],
+  "advanced": [
+    {
+      "word": "contribute",
+      "meaning": "보태다, 기여하다",
+      "confuse": null,
+      "example": "Each person **contributed** one dish to the lunch.",
+      "example_ko": "각자 점심에 요리를 하나씩 보탰습니다."
+    },
+    {
+      "word": "volunteer",
+      "meaning": "자원하다",
+      "confuse": null,
+      "example": "Jisu **volunteered** to make kimbap for the team.",
+      "example_ko": "지수는 팀을 위해 김밥을 만들겠다고 자원했습니다."
+    },
+    {
+      "word": "quip",
+      "meaning": "재치 있게 말하다",
+      "confuse": null,
+      "example": "The team leader **quipped** that too much dessert would ruin lunch.",
+      "example_ko": "팀장은 디저트가 너무 많으면 점심을 망칠 거라고 재치 있게 말했습니다."
+    },
+    {
+      "word": "dietary",
+      "meaning": "식단의, 식이의",
+      "confuse": null,
+      "example": "The team respected the new coworker's **dietary** choice.",
+      "example_ko": "팀은 새 동료의 식단 선택을 존중했습니다."
+    },
+    {
+      "word": "accommodate",
+      "meaning": "배려하다, 맞춰 주다",
+      "confuse": null,
+      "example": "Jisu changed her recipe to **accommodate** her new coworker.",
+      "example_ko": "지수는 새 동료를 배려해 요리법을 바꿨습니다."
+    },
+    {
+      "word": "considerate",
+      "meaning": "사려 깊은",
+      "confuse": "considerable(상당한)과 혼동 주의",
+      "example": "It was **considerate** of Jisu to make vegetable rolls.",
+      "example_ko": "채소 김밥을 만든 것은 지수의 사려 깊은 행동이었습니다."
+    },
+    {
+      "word": "abundant",
+      "meaning": "풍부한, 넉넉한",
+      "confuse": null,
+      "example": "The food was so **abundant** that people took some home.",
+      "example_ko": "음식이 워낙 넉넉해서 사람들이 일부를 집에 가져갔습니다."
+    },
+    {
+      "word": "surplus",
+      "meaning": "남는 양, 잉여",
+      "confuse": null,
+      "example": "The **surplus** food went home in small boxes.",
+      "example_ko": "남은 음식은 작은 상자에 담겨 집으로 갔습니다."
+    }
+  ],
+  "source": null,
+  "photo_scene": "Close-up of a long office table covered with homemade dishes, a plate of neatly sliced kimbap rolls in the front, coworkers' hands reaching for food, bright midday light from a large window.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Jisu's team usually orders pizza, but this Friday they plan a **potluck** lunch.",
+          "chunks": [
+            [
+              "Jisu's team usually orders pizza,",
+              "지수의 팀은 보통 피자를 시킨다"
+            ],
+            [
+              "but this Friday",
+              "하지만 이번 금요일에는"
+            ],
+            [
+              "they plan a **potluck** lunch.",
+              "그들은 포틀럭 점심을 계획한다"
+            ]
+          ]
+        },
+        {
+          "en": "Each person brings one **dish**, and Jisu makes kimbap.",
+          "chunks": [
+            [
+              "Each person brings one **dish**,",
+              "각자 요리 하나를 가져온다"
+            ],
+            [
+              "and Jisu makes kimbap.",
+              "그리고 지수는 김밥을 만든다"
+            ]
+          ]
+        },
+        {
+          "en": "The team leader **joked** about too much dessert, so they made a list.",
+          "chunks": [
+            [
+              "The team leader **joked**",
+              "팀장이 농담했다"
+            ],
+            [
+              "about too much dessert,",
+              "디저트가 너무 많을까 봐"
+            ],
+            [
+              "so they made a list.",
+              "그래서 그들은 목록을 만들었다"
+            ]
+          ]
+        },
+        {
+          "en": "A new coworker **mentioned** that she is **vegetarian**.",
+          "chunks": [
+            [
+              "A new coworker **mentioned**",
+              "새 동료가 말했다"
+            ],
+            [
+              "that she is **vegetarian**.",
+              "자신이 채식주의자라고"
+            ]
+          ]
+        },
+        {
+          "en": "Jisu puts vegetables in half of her kimbap instead of ham.",
+          "chunks": [
+            [
+              "Jisu puts vegetables",
+              "지수는 채소를 넣는다"
+            ],
+            [
+              "in half of her kimbap",
+              "김밥의 절반에"
+            ],
+            [
+              "instead of ham.",
+              "햄 대신"
+            ]
+          ]
+        },
+        {
+          "en": "On Friday, there were many **leftovers**, so people took food home.",
+          "chunks": [
+            [
+              "On Friday,",
+              "금요일에"
+            ],
+            [
+              "there were many **leftovers**,",
+              "남은 음식이 많았다"
+            ],
+            [
+              "so people took food home.",
+              "그래서 사람들은 음식을 집에 가져갔다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "지수의 팀은 보통 피자를 시키지만, 이번 금요일에는 포틀럭 점심을 계획한다.",
+        "각자 요리를 하나씩 가져오고, 지수는 김밥을 만든다.",
+        "팀장이 디저트가 너무 많을까 봐 농담을 해서, 그들은 목록을 만들었다.",
+        "새 동료가 자신이 채식주의자라고 말했다.",
+        "지수는 김밥 절반에 햄 대신 채소를 넣는다.",
+        "금요일에 남은 음식이 많아서, 사람들은 음식을 집에 가져갔다."
+      ]
+    }
+  }
+}
