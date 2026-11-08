@@ -1,16 +1,16 @@
 {
  "date": "2026-11-09",
- "words_total": 576,
+ "words_total": 583,
  "langs": {
   "en": {
-   "count": 37,
-   "latest": "2026-11-08",
-   "topic": "포틀럭 점심",
+   "count": 38,
+   "latest": "2026-11-09",
+   "topic": "스위프트 망원경",
    "sentences": [
-    "\"We are going to have a **potluck** lunch on Friday,\" Jisu's team leader announced at Monday's meeting, and everyone liked the idea.",
-    "Each person agreed to bring one **dish** from home, and Jisu **offered** to make kimbap because it is easy to share and nearly everyone likes it.",
-    "\"If everyone brings dessert, we will have nothing for lunch,\" the team leader **joked**, so they made a shared list in the office chat.",
-    "A new coworker, who had joined the team only two weeks earlier, quietly **mentioned** that she was **vegetarian** and told everyone not to worry about her."
+    "After nearly twenty-two years of watching the sky, NASA's Swift **observatory** has come back to Earth.",
+    "It entered the atmosphere above Indonesia on Wednesday, and NASA expected most of the spacecraft to **burn up** before reaching the ground.",
+    "When Swift was **launched** in 2004, its mission was planned for only two years, so it worked more than ten times longer than **expected**.",
+    "Its main job was to catch gamma-ray bursts, huge flashes of energy that can appear when a giant star **collapses** or when two dead stars crash into each other."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "\"금요일에 포틀럭 점심을 할 거예요.\" 월요일 회의에서 지수의 팀장이 이렇게 발표했고, 모두 그 생각을 좋아했다.",
+   "answer": "거의 22년 동안 하늘을 지켜본 끝에, NASA의 스위프트 관측 위성이 지구로 돌아왔다.",
    "words": [
     [
-     "potluck",
-     "포틀럭 파티"
+     "observatory",
+     "관측소, 관측 위성"
     ],
     [
-     "dish",
-     "요리"
+     "burn up",
+     "다 타 버리다"
     ],
     [
-     "offered",
-     "(하겠다고) 나섰다"
+     "launched",
+     "발사된"
     ],
     [
-     "joked",
-     "농담했다"
+     "expected",
+     "예상된"
     ],
     [
-     "mentioned",
-     "언급했다, 말했다"
+     "collapses",
+     "붕괴하다, 무너지다"
     ],
     [
-     "vegetarian",
-     "채식주의자"
+     "alert",
+     "경보, 알림"
     ],
     [
-     "leftovers",
-     "남은 음식"
+     "comets",
+     "혜성들 (복수형)"
     ]
    ],
    "review": {
@@ -160,6 +160,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-09",
+   "topic": "스위프트 망원경"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-09",
    "topic": "구민 활동 축제"
@@ -258,11 +263,6 @@
    "lang": "de",
    "day": "2026-11-03",
    "topic": "마르틴 축일"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-02",
-   "topic": "나무의 근육"
   }
  ]
 }
