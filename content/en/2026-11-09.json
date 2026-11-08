@@ -1,0 +1,450 @@
+{
+  "date": "2026-11-09",
+  "category": "space",
+  "topic": "스위프트 망원경",
+  "title_ko": "22년 만에 지구로 돌아온 우주 망원경",
+  "headline": "A Space Telescope Comes Home After 22 Years",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-present-perfect"
+    ],
+    "a": [
+      "a-past-regular"
+    ]
+  },
+  "keywords": [
+    "우주 망원경",
+    "대기권 재진입",
+    "감마선 폭발",
+    "임무 종료"
+  ],
+  "sentences": [
+    {
+      "en": "After nearly twenty-two years of watching the sky, NASA's Swift **observatory** has come back to Earth.",
+      "b2": false,
+      "chunks": [
+        [
+          "After nearly twenty-two years",
+          "거의 22년 동안"
+        ],
+        [
+          "of watching the sky,",
+          "하늘을 지켜본 끝에"
+        ],
+        [
+          "NASA's Swift **observatory**",
+          "NASA의 스위프트 관측 위성이"
+        ],
+        [
+          "has come back to Earth.",
+          "지구로 돌아왔다"
+        ]
+      ]
+    },
+    {
+      "en": "It entered the atmosphere above Indonesia on Wednesday, and NASA expected most of the spacecraft to **burn up** before reaching the ground.",
+      "b2": false,
+      "chunks": [
+        [
+          "It entered the atmosphere",
+          "그것은 대기권에 들어왔다"
+        ],
+        [
+          "above Indonesia",
+          "인도네시아 상공에서"
+        ],
+        [
+          "on Wednesday,",
+          "수요일에"
+        ],
+        [
+          "and NASA expected",
+          "그리고 NASA는 예상했다"
+        ],
+        [
+          "most of the spacecraft",
+          "우주선의 대부분이"
+        ],
+        [
+          "to **burn up**",
+          "다 타 버릴 것이라고"
+        ],
+        [
+          "before reaching the ground.",
+          "땅에 닿기 전에"
+        ]
+      ]
+    },
+    {
+      "en": "When Swift was **launched** in 2004, its mission was planned for only two years, so it worked more than ten times longer than **expected**.",
+      "b2": false,
+      "chunks": [
+        [
+          "When Swift was **launched**",
+          "스위프트가 발사되었을 때"
+        ],
+        [
+          "in 2004,",
+          "2004년에"
+        ],
+        [
+          "its mission was planned",
+          "그 임무는 계획되었다"
+        ],
+        [
+          "for only two years,",
+          "겨우 2년으로"
+        ],
+        [
+          "so it worked",
+          "그래서 그것은 일했다"
+        ],
+        [
+          "more than ten times longer",
+          "열 배도 넘게 더 오래"
+        ],
+        [
+          "than **expected**.",
+          "예상보다"
+        ]
+      ]
+    },
+    {
+      "en": "Its main job was to catch gamma-ray bursts, huge flashes of energy that can appear when a giant star **collapses** or when two dead stars crash into each other.",
+      "b2": true,
+      "chunks": [
+        [
+          "Its main job",
+          "그것의 주된 일은"
+        ],
+        [
+          "was to catch gamma-ray bursts,",
+          "감마선 폭발을 잡아내는 것이었다"
+        ],
+        [
+          "huge flashes of energy",
+          "거대한 에너지 섬광으로"
+        ],
+        [
+          "that can appear",
+          "나타날 수 있는"
+        ],
+        [
+          "when a giant star **collapses**",
+          "거대한 별이 붕괴할 때"
+        ],
+        [
+          "or when two dead stars",
+          "또는 두 개의 죽은 별이"
+        ],
+        [
+          "crash into each other.",
+          "서로 충돌할 때"
+        ]
+      ]
+    },
+    {
+      "en": "Because these flashes fade quickly, Swift was built to turn toward them fast and send an **alert** to other observatories around the world.",
+      "b2": false,
+      "chunks": [
+        [
+          "Because these flashes fade quickly,",
+          "이 섬광들은 빨리 사라지기 때문에"
+        ],
+        [
+          "Swift was built",
+          "스위프트는 만들어졌다"
+        ],
+        [
+          "to turn toward them fast",
+          "그쪽으로 빠르게 몸을 돌려"
+        ],
+        [
+          "and send an **alert**",
+          "경보를 보내도록"
+        ],
+        [
+          "to other observatories",
+          "다른 관측소들에"
+        ],
+        [
+          "around the world.",
+          "전 세계의"
+        ]
+      ]
+    },
+    {
+      "en": "Over the years, it also studied black holes at the centers of galaxies, exploding stars, and even **comets** in our own solar system.",
+      "b2": false,
+      "chunks": [
+        [
+          "Over the years,",
+          "여러 해에 걸쳐"
+        ],
+        [
+          "it also studied black holes",
+          "그것은 블랙홀도 연구했다"
+        ],
+        [
+          "at the centers of galaxies,",
+          "은하 중심에 있는"
+        ],
+        [
+          "exploding stars,",
+          "폭발하는 별들"
+        ],
+        [
+          "and even **comets**",
+          "그리고 혜성까지"
+        ],
+        [
+          "in our own solar system.",
+          "우리 태양계 안의"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "observatory",
+      "관측소, 관측 위성"
+    ],
+    [
+      "burn up",
+      "다 타 버리다"
+    ],
+    [
+      "launched",
+      "발사된"
+    ],
+    [
+      "expected",
+      "예상된"
+    ],
+    [
+      "collapses",
+      "붕괴하다, 무너지다"
+    ],
+    [
+      "alert",
+      "경보, 알림"
+    ],
+    [
+      "comets",
+      "혜성들 (복수형)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "현재완료 has come back: 지금 돌아와 있다",
+      "body": "`has come back to Earth`는 '돌아왔다'는 과거 사실과 함께 '그래서 지금은 더 이상 하늘에 없다'는 현재 결과를 말해요. 소식 기사 첫 문장에서 최근 변화를 전할 때 현재완료를 자주 씁니다. 다음 문장의 `entered`, `expected`처럼 구체적인 때(on Wednesday)가 나오면 과거형으로 바뀌어요."
+    },
+    {
+      "title": "ten times longer than expected",
+      "body": "`more than ten times longer than expected`는 '예상보다 열 배도 넘게 더 오래'예요. 숫자 + times + 비교급 + than 순서로 배수를 나타냅니다. 2년 계획이 거의 22년이 되었으니 앞뒤 숫자로 확인해 보세요."
+    }
+  ],
+  "answers": [
+    "거의 22년 동안 하늘을 지켜본 끝에, NASA의 스위프트 관측 위성이 지구로 돌아왔다.",
+    "그것은 수요일 인도네시아 상공에서 대기권에 들어왔고, NASA는 우주선 대부분이 땅에 닿기 전에 다 타 버릴 것으로 예상했다.",
+    "스위프트가 2004년에 발사되었을 때 그 임무는 겨우 2년으로 계획되었으니, 예상보다 열 배도 넘게 오래 일한 셈이다.",
+    "그것의 주된 일은 감마선 폭발을 잡아내는 것이었는데, 이는 거대한 별이 붕괴하거나 죽은 별 두 개가 서로 충돌할 때 나타날 수 있는 거대한 에너지 섬광이다.",
+    "이 섬광들은 금방 사라지기 때문에, 스위프트는 그쪽으로 재빨리 방향을 돌리고 전 세계의 다른 관측소에 알림을 보내도록 만들어졌다.",
+    "여러 해에 걸쳐 그것은 은하 중심의 블랙홀, 폭발하는 별, 그리고 우리 태양계 안의 혜성까지 연구했다."
+  ],
+  "advanced": [
+    {
+      "word": "re-enter",
+      "meaning": "재진입하다",
+      "confuse": null,
+      "example": "Swift **re-entered** the atmosphere above Indonesia on Wednesday.",
+      "example_ko": "스위프트는 수요일에 인도네시아 상공에서 대기권에 재진입했습니다."
+    },
+    {
+      "word": "debris",
+      "meaning": "잔해, 파편",
+      "confuse": null,
+      "example": "A few pieces of **debris** may have survived the fall.",
+      "example_ko": "잔해 몇 조각은 추락에서 살아남았을 수도 있습니다."
+    },
+    {
+      "word": "surpass",
+      "meaning": "넘어서다, 능가하다",
+      "confuse": "surplus(남는 양, 흑자)와 혼동 주의",
+      "example": "The mission **surpassed** its two-year plan by about twenty years.",
+      "example_ko": "그 임무는 2년 계획을 약 20년이나 넘어섰습니다."
+    },
+    {
+      "word": "detect",
+      "meaning": "감지하다, 탐지하다",
+      "confuse": null,
+      "example": "Swift was designed to **detect** short flashes of gamma rays.",
+      "example_ko": "스위프트는 짧은 감마선 섬광을 감지하도록 설계되었습니다."
+    },
+    {
+      "word": "pinpoint",
+      "meaning": "정확히 찾아내다",
+      "confuse": null,
+      "example": "Its telescopes helped **pinpoint** where each burst came from.",
+      "example_ko": "그 망원경들은 각 폭발이 어디서 왔는지 정확히 찾아내는 데 도움을 주었습니다."
+    },
+    {
+      "word": "notify",
+      "meaning": "알리다, 통지하다",
+      "confuse": "notice(알아차리다)와 혼동 주의",
+      "example": "Swift **notified** observatories around the world after each outburst.",
+      "example_ko": "스위프트는 폭발이 있을 때마다 전 세계 관측소에 알렸습니다."
+    },
+    {
+      "word": "celestial",
+      "meaning": "천체의, 하늘의",
+      "confuse": null,
+      "example": "It studied many **celestial** objects, from black holes to comets.",
+      "example_ko": "그것은 블랙홀부터 혜성까지 많은 천체를 연구했습니다."
+    }
+  ],
+  "source": {
+    "title": "NASA's Swift telescope falls to Earth after nearly 22 years in space (ScienceDaily, 2026-11-06)",
+    "url": "https://www.sciencedaily.com/releases/2026/11/261105224545.htm"
+  },
+  "photo_scene": "A glowing orange fireball with a long bright trail crossing a deep blue dawn sky above green tropical hills, seen large and close in the frame.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "NASA's Swift **observatory** watched the sky for almost 22 years.",
+          "chunks": [
+            [
+              "NASA's Swift **observatory**",
+              "NASA의 스위프트 관측 위성은"
+            ],
+            [
+              "watched the sky",
+              "하늘을 지켜봤다"
+            ],
+            [
+              "for almost 22 years.",
+              "거의 22년 동안"
+            ]
+          ]
+        },
+        {
+          "en": "On Wednesday, it fell back to Earth above Indonesia, and most of it was expected to **burn up**.",
+          "chunks": [
+            [
+              "On Wednesday,",
+              "수요일에"
+            ],
+            [
+              "it fell back to Earth",
+              "그것은 지구로 떨어졌다"
+            ],
+            [
+              "above Indonesia,",
+              "인도네시아 상공에서"
+            ],
+            [
+              "and most of it",
+              "그리고 그 대부분은"
+            ],
+            [
+              "was expected to **burn up**.",
+              "다 타 버릴 것으로 예상되었다"
+            ]
+          ]
+        },
+        {
+          "en": "Swift was **launched** in 2004, and it worked ten times longer than **expected**.",
+          "chunks": [
+            [
+              "Swift was **launched** in 2004,",
+              "스위프트는 2004년에 발사되었다"
+            ],
+            [
+              "and it worked",
+              "그리고 그것은 일했다"
+            ],
+            [
+              "ten times longer",
+              "열 배 더 오래"
+            ],
+            [
+              "than **expected**.",
+              "예상보다"
+            ]
+          ]
+        },
+        {
+          "en": "It looked for big flashes of energy, like when a giant star **collapses**.",
+          "chunks": [
+            [
+              "It looked for",
+              "그것은 찾았다"
+            ],
+            [
+              "big flashes of energy,",
+              "큰 에너지 섬광을"
+            ],
+            [
+              "like when a giant star **collapses**.",
+              "거대한 별이 붕괴할 때처럼"
+            ]
+          ]
+        },
+        {
+          "en": "It turned quickly toward these flashes and sent an **alert** to other telescopes.",
+          "chunks": [
+            [
+              "It turned quickly",
+              "그것은 빠르게 돌았다"
+            ],
+            [
+              "toward these flashes",
+              "이 섬광 쪽으로"
+            ],
+            [
+              "and sent an **alert**",
+              "그리고 경보를 보냈다"
+            ],
+            [
+              "to other telescopes.",
+              "다른 망원경들에"
+            ]
+          ]
+        },
+        {
+          "en": "It also studied black holes, exploding stars, and **comets**.",
+          "chunks": [
+            [
+              "It also studied",
+              "그것은 또 연구했다"
+            ],
+            [
+              "black holes, exploding stars,",
+              "블랙홀, 폭발하는 별"
+            ],
+            [
+              "and **comets**.",
+              "그리고 혜성을"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "NASA의 스위프트 관측 위성은 거의 22년 동안 하늘을 지켜봤다.",
+        "수요일에 그것은 인도네시아 상공에서 지구로 떨어졌고, 대부분 다 타 버릴 것으로 예상되었다.",
+        "스위프트는 2004년에 발사되었고, 예상보다 열 배 더 오래 일했다.",
+        "그것은 거대한 별이 붕괴할 때처럼 생기는 큰 에너지 섬광을 찾았다.",
+        "그것은 이 섬광 쪽으로 재빨리 돌아 다른 망원경들에 알림을 보냈다.",
+        "그것은 블랙홀, 폭발하는 별, 그리고 혜성도 연구했다."
+      ]
+    }
+  }
+}
