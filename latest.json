@@ -1,6 +1,6 @@
 {
- "date": "2026-11-08",
- "words_total": 563,
+ "date": "2026-11-09",
+ "words_total": 570,
  "langs": {
   "en": {
    "count": 37,
@@ -50,7 +50,7 @@
     ]
    ],
    "review": {
-    "day": "2026-11-01",
+    "day": "2026-11-08",
     "words": 49,
     "desc": "영어 단어 49개를 다시 봐요"
    }
@@ -99,66 +99,71 @@
     ]
    ],
    "review": {
-    "day": "2026-11-01",
-    "words": 47,
-    "desc": "일본어 단어 47개를 다시 봐요"
+    "day": "2026-11-08",
+    "words": 46,
+    "desc": "일본어 단어 46개를 다시 봐요"
    }
   },
   "de": {
-   "count": 12,
-   "latest": "2026-11-08",
-   "topic": "겨울 타이어",
+   "count": 13,
+   "latest": "2026-11-09",
+   "topic": "가족 기차표",
    "sentences": [
-    "Am Sonntagmorgen habe ich gesehen, dass auf unserem Auto zum ersten Mal eine dünne Schicht **Reif** lag.",
-    "Mein Vater sagt jedes Jahr, dass man die **Winterreifen** spätestens beim ersten Frost **aufziehen** sollte.",
-    "Deshalb haben wir nach dem Frühstück die Reifen aus dem Keller geholt und sie neben das Auto in die **Einfahrt** gelegt.",
-    "Das Wechseln der Reifen, für das viele Nachbarn in eine **Werkstatt** fahren, erledigt mein Vater seit Jahren selbst mit einem alten **Wagenheber**."
+    "Seit dem 1. November bietet die Deutsche Bahn ihr günstiges **Familienticket** dauerhaft an, das es bisher nur in den Sommerferien gab.",
+    "Eine einfache Fahrt im ICE oder IC kostet für die ganze Familie 59,99 Euro, und die **Reservierung** ist schon im Preis enthalten.",
+    "Mit einem Ticket dürfen bis zu fünf Personen reisen, aber **höchstens** zwei von ihnen dürfen älter als 15 Jahre sein.",
+    "Das Ticket wird über die normale Buchungsseite verkauft, wird aber nur angezeigt, wenn man bei der **Suche** ein Kind angibt."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 4분"
    ],
-   "answer": "일요일 아침, 우리 차 위에 처음으로 얇은 서리가 한 겹 내려앉은 것을 보았습니다.",
+   "answer": "11월 1일부터 독일 철도(DB)는 지금까지 여름 방학에만 있던 저렴한 가족 승차권을 상시로 판매합니다.",
    "words": [
     [
-     "Reif",
-     "서리 (남성 der)"
+     "Familienticket",
+     "가족 승차권 (중성 das, 복수 Familientickets)"
     ],
     [
-     "Winterreifen",
-     "겨울 타이어, 스노타이어 (남성 der)"
+     "Reservierung",
+     "예약 (여성 die, 복수 Reservierungen)"
     ],
     [
-     "aufziehen",
-     "(타이어를) 끼우다, 장착하다"
+     "höchstens",
+     "최대, 많아야"
     ],
     [
-     "Einfahrt",
-     "(차) 진입로 (여성 die)"
+     "Suche",
+     "검색 (여성 die)"
     ],
     [
-     "Werkstatt",
-     "정비소, 작업장 (여성 die, 복수 Werkstätten)"
+     "Kontingent",
+     "할당량 (중성 das, 복수 Kontingente)"
     ],
     [
-     "Wagenheber",
-     "(자동차) 잭 (남성 der)"
+     "ausverkauft",
+     "매진된, 품절된"
     ],
     [
-     "Reifendruck",
-     "타이어 공기압 (남성 der)"
+     "Preisvergleich",
+     "가격 비교 (남성 der, 복수 Preisvergleiche)"
     ]
    ],
    "review": {
-    "day": "2026-11-01",
-    "words": 34,
-    "desc": "독일어 단어 34개를 다시 봐요"
+    "day": "2026-11-08",
+    "words": 46,
+    "desc": "독일어 단어 46개를 다시 봐요"
    }
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-09",
+   "topic": "가족 기차표"
+  },
   {
    "lang": "en",
    "day": "2026-11-08",
@@ -258,11 +263,6 @@
    "lang": "ja",
    "day": "2026-11-02",
    "topic": "튤립 심기"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-02",
-   "topic": "병 보증금"
   }
  ]
 }
