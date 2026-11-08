@@ -1,0 +1,446 @@
+{
+  "date": "2026-11-09",
+  "category": "society",
+  "fit": "news",
+  "topic": "가족 기차표",
+  "title_ko": "언제든 살 수 있는 가족 기차표",
+  "headline": "Das Familienticket bleibt",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "keywords": [
+    "가족 승차권",
+    "기차 여행",
+    "할인 요금",
+    "생활 소식"
+  ],
+  "grammar": {
+    "b": [
+      "b-passiv-praesens"
+    ],
+    "a": [
+      "a-weil"
+    ]
+  },
+  "photo_scene": "A mother, a father and two young children sitting close together at a table in a bright modern train carriage, smiling and looking out of the large window at green fields, soft morning sunlight.",
+  "sentences": [
+    {
+      "en": "Seit dem 1. November bietet die Deutsche Bahn ihr günstiges **Familienticket** dauerhaft an, das es bisher nur in den Sommerferien gab.",
+      "b2": false,
+      "chunks": [
+        [
+          "Seit dem 1. November",
+          "11월 1일부터"
+        ],
+        [
+          "bietet die Deutsche Bahn",
+          "독일 철도(DB)는 제공합니다"
+        ],
+        [
+          "ihr günstiges **Familienticket**",
+          "자사의 저렴한 가족 승차권을"
+        ],
+        [
+          "dauerhaft an,",
+          "상시로"
+        ],
+        [
+          "das es bisher",
+          "그것은 지금까지"
+        ],
+        [
+          "nur in den Sommerferien gab.",
+          "여름 방학에만 있었습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Eine einfache Fahrt im ICE oder IC kostet für die ganze Familie 59,99 Euro, und die **Reservierung** ist schon im Preis enthalten.",
+      "b2": false,
+      "chunks": [
+        [
+          "Eine einfache Fahrt",
+          "편도 한 번의 이동은"
+        ],
+        [
+          "im ICE oder IC",
+          "ICE나 IC로"
+        ],
+        [
+          "kostet für die ganze Familie",
+          "가족 전체에 듭니다"
+        ],
+        [
+          "59,99 Euro,",
+          "59.99유로가"
+        ],
+        [
+          "und die **Reservierung**",
+          "그리고 좌석 예약은"
+        ],
+        [
+          "ist schon im Preis enthalten.",
+          "이미 가격에 포함되어 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Mit einem Ticket dürfen bis zu fünf Personen reisen, aber **höchstens** zwei von ihnen dürfen älter als 15 Jahre sein.",
+      "b2": false,
+      "chunks": [
+        [
+          "Mit einem Ticket",
+          "표 한 장으로"
+        ],
+        [
+          "dürfen bis zu fünf Personen reisen,",
+          "최대 다섯 명이 여행할 수 있지만"
+        ],
+        [
+          "aber **höchstens** zwei von ihnen",
+          "그중 많아야 두 명만"
+        ],
+        [
+          "dürfen älter als 15 Jahre sein.",
+          "15세보다 많을 수 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Das Ticket wird über die normale Buchungsseite verkauft, wird aber nur angezeigt, wenn man bei der **Suche** ein Kind angibt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Das Ticket",
+          "이 표는"
+        ],
+        [
+          "wird über die normale Buchungsseite",
+          "일반 예매 페이지를 통해"
+        ],
+        [
+          "verkauft,",
+          "판매되지만"
+        ],
+        [
+          "wird aber nur angezeigt,",
+          "보이는 것은 오직"
+        ],
+        [
+          "wenn man bei der **Suche**",
+          "검색할 때"
+        ],
+        [
+          "ein Kind angibt.",
+          "아이를 입력할 때뿐입니다"
+        ]
+      ]
+    },
+    {
+      "en": "Laut der Bahn gibt es zwar kein festes **Kontingent** pro Zug, doch auf stark gebuchten Strecken kann das Angebot schnell **ausverkauft** sein.",
+      "b2": false,
+      "chunks": [
+        [
+          "Laut der Bahn",
+          "철도 회사에 따르면"
+        ],
+        [
+          "gibt es zwar",
+          "있지는 않습니다"
+        ],
+        [
+          "kein festes **Kontingent** pro Zug,",
+          "열차마다 정해진 할당량은"
+        ],
+        [
+          "doch auf stark gebuchten Strecken",
+          "하지만 예약이 많은 노선에서는"
+        ],
+        [
+          "kann das Angebot",
+          "이 상품이"
+        ],
+        [
+          "schnell **ausverkauft** sein.",
+          "빨리 매진될 수 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Ohne dieses Angebot wäre eine lange Zugreise für viele Familien deutlich teurer, trotzdem ist vor der Buchung ein kurzer **Preisvergleich** sinnvoll.",
+      "b2": true,
+      "chunks": [
+        [
+          "Ohne dieses Angebot",
+          "이 상품이 없다면"
+        ],
+        [
+          "wäre eine lange Zugreise",
+          "긴 기차 여행은"
+        ],
+        [
+          "für viele Familien",
+          "많은 가족에게"
+        ],
+        [
+          "deutlich teurer,",
+          "훨씬 더 비쌀 것입니다"
+        ],
+        [
+          "trotzdem ist vor der Buchung",
+          "그래도 예매 전에는"
+        ],
+        [
+          "ein kurzer **Preisvergleich** sinnvoll.",
+          "간단한 가격 비교가 의미 있습니다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Familienticket",
+      "가족 승차권 (중성 das, 복수 Familientickets)"
+    ],
+    [
+      "Reservierung",
+      "예약 (여성 die, 복수 Reservierungen)"
+    ],
+    [
+      "höchstens",
+      "최대, 많아야"
+    ],
+    [
+      "Suche",
+      "검색 (여성 die)"
+    ],
+    [
+      "Kontingent",
+      "할당량 (중성 das, 복수 Kontingente)"
+    ],
+    [
+      "ausverkauft",
+      "매진된, 품절된"
+    ],
+    [
+      "Preisvergleich",
+      "가격 비교 (남성 der, 복수 Preisvergleiche)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "현재 수동태 — wird + 과거분사",
+      "body": "`Das Ticket wird ... verkauft`와 `wird aber nur angezeigt`는 'werden + 과거분사' 현재 수동태입니다. 누가 파는지보다 표가 '팔린다, 보인다'는 사실이 중요해서 수동태를 썼어요. `werden`은 주어 `das Ticket`에 맞춰 `wird`가 되고, 과거분사 `verkauft`, `angezeigt`는 문장(절) 끝으로 갑니다."
+    },
+    {
+      "title": "zwar ... doch — ~이긴 하지만",
+      "body": "`Laut der Bahn gibt es zwar kein festes Kontingent pro Zug, doch ... kann das Angebot schnell ausverkauft sein`에서 `zwar`는 앞 절에서 한 가지를 인정하고, `doch`(또는 `aber`)가 뒤에서 반대되는 내용을 이어 줍니다. `doch` 뒤에서는 `auf stark gebuchten Strecken`이 첫자리에 와서 정동사 `kann`이 바로 뒤(V2)에 옵니다."
+    }
+  ],
+  "answers": [
+    "11월 1일부터 독일 철도(DB)는 지금까지 여름 방학에만 있던 저렴한 가족 승차권을 상시로 판매합니다.",
+    "ICE나 IC 편도 한 번은 가족 전체가 59.99유로이고, 좌석 예약도 이미 가격에 포함되어 있습니다.",
+    "표 한 장으로 최대 다섯 명이 여행할 수 있지만, 그중 15세가 넘는 사람은 두 명까지만 됩니다.",
+    "이 표는 일반 예매 페이지에서 판매되지만, 검색할 때 아이를 함께 입력해야만 화면에 나타납니다.",
+    "철도 회사에 따르면 열차마다 정해진 할당량은 없지만, 예약이 몰리는 노선에서는 이 상품이 빨리 매진될 수 있습니다.",
+    "이 상품이 없다면 많은 가족에게 긴 기차 여행은 훨씬 더 비쌀 테지만, 그래도 예매 전에 가격을 한번 비교해 보는 것이 좋습니다."
+  ],
+  "advanced": [
+    {
+      "word": "die Hin- und Rückfahrt",
+      "meaning": "왕복",
+      "confuse": "`die einfache Fahrt`는 '편도'예요.",
+      "example": "Die **Hin- und Rückfahrt** nach Hamburg kostet 99,99 Euro.",
+      "example_ko": "함부르크 왕복은 99.99유로입니다."
+    },
+    {
+      "word": "der Fernverkehr",
+      "meaning": "장거리 교통",
+      "confuse": "`der Nahverkehr`는 '근거리 교통, 지역 교통'이에요.",
+      "example": "Im **Fernverkehr** fahren vor allem ICE- und IC-Züge.",
+      "example_ko": "장거리 교통에서는 주로 ICE와 IC 열차가 다닙니다."
+    },
+    {
+      "word": "ausgebucht",
+      "meaning": "예약이 꽉 찬",
+      "confuse": "`ausverkauft`는 표나 물건이 '다 팔린' 것이고, `ausgebucht`는 자리나 방의 '예약이 다 찬' 것이에요.",
+      "example": "Der Zug am Freitagabend ist leider schon **ausgebucht**.",
+      "example_ko": "금요일 저녁 열차는 아쉽게도 이미 예약이 꽉 찼습니다."
+    },
+    {
+      "word": "die Ermäßigung",
+      "meaning": "할인",
+      "confuse": null,
+      "example": "Kinder unter sechs Jahren bekommen eine **Ermäßigung**.",
+      "example_ko": "여섯 살 미만 어린이는 할인을 받습니다."
+    },
+    {
+      "word": "stornieren",
+      "meaning": "취소하다",
+      "confuse": "일상 대화에서는 `absagen`(약속을 취소하다)과 구별해요. `stornieren`은 예약이나 주문을 취소할 때 씁니다.",
+      "example": "Wir mussten die Reise leider **stornieren**.",
+      "example_ko": "우리는 아쉽게도 여행을 취소해야 했습니다."
+    },
+    {
+      "word": "der Gutschein",
+      "meaning": "상품권, 쿠폰",
+      "confuse": null,
+      "example": "Statt Geld bekam sie einen **Gutschein** für die nächste Fahrt.",
+      "example_ko": "그녀는 돈 대신 다음 이동에 쓸 상품권을 받았습니다."
+    },
+    {
+      "word": "die Verbindung",
+      "meaning": "연결편, 교통편",
+      "confuse": "`die Verbindung`은 '관계, 연결'이라는 뜻으로도 써요.",
+      "example": "Die schnellste **Verbindung** nach München fährt um acht Uhr.",
+      "example_ko": "뮌헨으로 가는 가장 빠른 열차편은 8시에 출발합니다."
+    }
+  ],
+  "source": {
+    "title": "Angebot der Deutschen Bahn: Das Familienticket kommt zurück – lohnt es sich? (Stiftung Warentest, 2026-10-26)",
+    "url": "https://www.test.de/Angebot-der-Deutschen-Bahn-Das-Familienticket-kommt-zurueck-lohnt-es-sich-6343695-0/"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Seit November bietet die Deutsche Bahn das **Familienticket** immer an.",
+          "chunks": [
+            [
+              "Seit November",
+              "11월부터"
+            ],
+            [
+              "bietet die Deutsche Bahn",
+              "독일 철도는 제공합니다"
+            ],
+            [
+              "das **Familienticket**",
+              "가족 승차권을"
+            ],
+            [
+              "immer an.",
+              "언제나"
+            ]
+          ]
+        },
+        {
+          "en": "Die Fahrt im ICE kostet 59,99 Euro mit **Reservierung**.",
+          "chunks": [
+            [
+              "Die Fahrt im ICE",
+              "ICE 이동은"
+            ],
+            [
+              "kostet 59,99 Euro",
+              "59.99유로입니다"
+            ],
+            [
+              "mit **Reservierung**.",
+              "좌석 예약 포함으로"
+            ]
+          ]
+        },
+        {
+          "en": "Fünf Personen dürfen mitfahren, aber **höchstens** zwei sind älter als 15.",
+          "chunks": [
+            [
+              "Fünf Personen",
+              "다섯 명이"
+            ],
+            [
+              "dürfen mitfahren,",
+              "함께 탈 수 있지만"
+            ],
+            [
+              "aber **höchstens** zwei",
+              "많아야 두 명만"
+            ],
+            [
+              "sind älter als 15.",
+              "15세보다 많습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Man muss bei der **Suche** ein Kind angeben, weil das Ticket sonst nicht erscheint.",
+          "chunks": [
+            [
+              "Man muss",
+              "꼭 해야 합니다"
+            ],
+            [
+              "bei der **Suche**",
+              "검색할 때"
+            ],
+            [
+              "ein Kind angeben,",
+              "아이를 입력하기를"
+            ],
+            [
+              "weil das Ticket",
+              "왜냐하면 이 표가"
+            ],
+            [
+              "sonst nicht erscheint.",
+              "그렇지 않으면 나타나지 않기 때문에"
+            ]
+          ]
+        },
+        {
+          "en": "Es gibt kein festes **Kontingent**, aber manche Züge sind schnell **ausverkauft**.",
+          "chunks": [
+            [
+              "Es gibt",
+              "없습니다"
+            ],
+            [
+              "kein festes **Kontingent**,",
+              "정해진 할당량은"
+            ],
+            [
+              "aber manche Züge",
+              "하지만 어떤 열차는"
+            ],
+            [
+              "sind schnell **ausverkauft**.",
+              "빨리 매진됩니다"
+            ]
+          ]
+        },
+        {
+          "en": "Normale Tickets sind oft teurer, aber ein **Preisvergleich** ist trotzdem sinnvoll.",
+          "chunks": [
+            [
+              "Normale Tickets",
+              "일반 표는"
+            ],
+            [
+              "sind oft teurer,",
+              "흔히 더 비싸지만"
+            ],
+            [
+              "aber ein **Preisvergleich**",
+              "가격 비교는"
+            ],
+            [
+              "ist trotzdem sinnvoll.",
+              "그래도 의미가 있습니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "11월부터 독일 철도는 가족 승차권을 언제나 판매합니다.",
+        "ICE 이동은 좌석 예약을 포함해 59.99유로입니다.",
+        "다섯 명이 함께 탈 수 있지만, 15세가 넘는 사람은 많아야 두 명입니다.",
+        "검색할 때 아이를 꼭 입력해야 합니다. 그렇지 않으면 표가 나타나지 않기 때문입니다.",
+        "정해진 할당량은 없지만, 어떤 열차는 빨리 매진됩니다.",
+        "일반 표는 흔히 더 비싸지만, 그래도 가격 비교는 해 볼 만합니다."
+      ]
+    }
+  }
+}
