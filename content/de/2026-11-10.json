@@ -1,0 +1,467 @@
+{
+  "date": "2026-11-10",
+  "category": "culture",
+  "fit": "explain",
+  "topic": "카니발 시작일",
+  "title_ko": "11월 11일 11시 11분에 여는 카니발",
+  "headline": "Karneval beginnt am 11.11.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "keywords": [
+    "카니발",
+    "숫자 11",
+    "라인 지방 풍습",
+    "문화 설명"
+  ],
+  "grammar": {
+    "b": [
+      "b-passiv-praeteritum",
+      "b-praeteritum"
+    ],
+    "a": [
+      "a-trennbar"
+    ]
+  },
+  "photo_scene": "Two smiling adults in colourful carnival costumes with red and white jester hats standing close together on a cobblestone old town street, confetti in the air, bright late-morning November sunlight, medium close-up.",
+  "sentences": [
+    {
+      "en": "Am 11. November um 11:11 Uhr beginnt in Köln, Düsseldorf und Mainz die neue **Session**, also die Zeit des **Karnevals**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Am 11. November",
+          "11월 11일"
+        ],
+        [
+          "um 11:11 Uhr",
+          "11시 11분에"
+        ],
+        [
+          "beginnt",
+          "시작된다"
+        ],
+        [
+          "in Köln, Düsseldorf und Mainz",
+          "쾰른, 뒤셀도르프, 마인츠에서"
+        ],
+        [
+          "die neue **Session**,",
+          "새 시즌이"
+        ],
+        [
+          "also die Zeit des **Karnevals**.",
+          "즉 카니발 기간이"
+        ]
+      ]
+    },
+    {
+      "en": "Viele Menschen nennen den Karneval die fünfte Jahreszeit, weil die Feiern mehrere Monate bis zum **Aschermittwoch** dauern.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viele Menschen",
+          "많은 사람들은"
+        ],
+        [
+          "nennen",
+          "부른다"
+        ],
+        [
+          "den Karneval",
+          "카니발을"
+        ],
+        [
+          "die fünfte Jahreszeit,",
+          "다섯 번째 계절이라고"
+        ],
+        [
+          "weil die Feiern",
+          "왜냐하면 축제가"
+        ],
+        [
+          "mehrere Monate",
+          "몇 달 동안"
+        ],
+        [
+          "bis zum **Aschermittwoch** dauern.",
+          "재의 수요일까지 계속되기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Früher begann der Karneval erst am 6. Januar, doch im 19. Jahrhundert wurde der Beginn auf den 11. November **festgelegt**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Früher",
+          "예전에는"
+        ],
+        [
+          "begann der Karneval",
+          "카니발이 시작되었다"
+        ],
+        [
+          "erst am 6. Januar,",
+          "1월 6일에야"
+        ],
+        [
+          "doch im 19. Jahrhundert",
+          "그러나 19세기에"
+        ],
+        [
+          "wurde der Beginn",
+          "시작일이"
+        ],
+        [
+          "auf den 11. November **festgelegt**.",
+          "11월 11일로 정해졌다"
+        ]
+      ]
+    },
+    {
+      "en": "Der aus elf Mitgliedern bestehende **Elferrat** gilt als ironische Antwort auf viele Stadträte, die damals zehn oder zwölf Mitglieder hatten.",
+      "b2": true,
+      "chunks": [
+        [
+          "Der aus elf Mitgliedern bestehende **Elferrat**",
+          "열한 명으로 이루어진 엘퍼라트는"
+        ],
+        [
+          "gilt als ironische Antwort",
+          "풍자적인 대답으로 여겨진다"
+        ],
+        [
+          "auf viele Stadträte,",
+          "많은 시의회에 대한"
+        ],
+        [
+          "die damals",
+          "그 시의회들은 당시"
+        ],
+        [
+          "zehn oder zwölf Mitglieder hatten.",
+          "열 명이나 열두 명의 의원이 있었다"
+        ]
+      ]
+    },
+    {
+      "en": "Außerdem gilt die Elf als Narrenzahl, und manche lesen die zwei Einsen als Zeichen für die **Gleichheit** aller Narren.",
+      "b2": false,
+      "chunks": [
+        [
+          "Außerdem",
+          "게다가"
+        ],
+        [
+          "gilt die Elf",
+          "11은 여겨진다"
+        ],
+        [
+          "als Narrenzahl,",
+          "광대의 숫자로"
+        ],
+        [
+          "und manche lesen",
+          "그리고 어떤 사람들은 읽는다"
+        ],
+        [
+          "die zwei Einsen",
+          "두 개의 1을"
+        ],
+        [
+          "als Zeichen",
+          "표시로"
+        ],
+        [
+          "für die **Gleichheit** aller Narren.",
+          "모든 광대의 평등에 대한"
+        ]
+      ]
+    },
+    {
+      "en": "Eine klare Erklärung für die Elf gibt es nicht, doch nach altem Brauch **verkleiden** sich die Jecken jedes Jahr bunt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Eine klare Erklärung",
+          "분명한 설명은"
+        ],
+        [
+          "für die Elf",
+          "11에 대한"
+        ],
+        [
+          "gibt es nicht,",
+          "없다"
+        ],
+        [
+          "doch nach altem Brauch",
+          "하지만 오랜 풍습에 따라"
+        ],
+        [
+          "**verkleiden** sich",
+          "변장한다"
+        ],
+        [
+          "die Jecken",
+          "카니발 참가자들은"
+        ],
+        [
+          "jedes Jahr bunt.",
+          "해마다 알록달록하게"
+        ]
+      ]
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Die **Session** des **Karnevals** fängt am 11. November um 11:11 Uhr an.",
+          "chunks": [
+            [
+              "Die **Session** des **Karnevals**",
+              "카니발 시즌은"
+            ],
+            [
+              "fängt",
+              "시작합니다"
+            ],
+            [
+              "am 11. November",
+              "11월 11일"
+            ],
+            [
+              "um 11:11 Uhr an.",
+              "11시 11분에"
+            ]
+          ]
+        },
+        {
+          "en": "Man nennt ihn die fünfte Jahreszeit, denn er dauert bis zum **Aschermittwoch**.",
+          "chunks": [
+            [
+              "Man nennt ihn",
+              "사람들은 그것을 부릅니다"
+            ],
+            [
+              "die fünfte Jahreszeit,",
+              "다섯 번째 계절이라고"
+            ],
+            [
+              "denn er dauert",
+              "왜냐하면 그것은 계속됩니다"
+            ],
+            [
+              "bis zum **Aschermittwoch**.",
+              "재의 수요일까지"
+            ]
+          ]
+        },
+        {
+          "en": "Früher war der Beginn im Januar, im 19. Jahrhundert hat man ihn neu **festgelegt**.",
+          "chunks": [
+            [
+              "Früher",
+              "예전에는"
+            ],
+            [
+              "war der Beginn",
+              "시작일이 있었습니다"
+            ],
+            [
+              "im Januar,",
+              "1월에"
+            ],
+            [
+              "im 19. Jahrhundert",
+              "19세기에"
+            ],
+            [
+              "hat man ihn neu **festgelegt**.",
+              "사람들이 그것을 새로 정했습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Der **Elferrat** hat elf Mitglieder, das war ein Witz über die Stadträte.",
+          "chunks": [
+            [
+              "Der **Elferrat**",
+              "엘퍼라트는"
+            ],
+            [
+              "hat elf Mitglieder,",
+              "열한 명의 회원이 있습니다"
+            ],
+            [
+              "das war ein Witz",
+              "그것은 농담이었습니다"
+            ],
+            [
+              "über die Stadträte.",
+              "시의회에 대한"
+            ]
+          ]
+        },
+        {
+          "en": "Die Elf ist die Zahl der Narren, sie steht auch für **Gleichheit**.",
+          "chunks": [
+            [
+              "Die Elf",
+              "11은"
+            ],
+            [
+              "ist die Zahl der Narren,",
+              "광대의 숫자입니다"
+            ],
+            [
+              "sie steht auch",
+              "그것은 또한 나타냅니다"
+            ],
+            [
+              "für **Gleichheit**.",
+              "평등을"
+            ]
+          ]
+        },
+        {
+          "en": "Niemand weiß es genau, aber die Jecken **verkleiden** sich jedes Jahr bunt.",
+          "chunks": [
+            [
+              "Niemand weiß es genau,",
+              "아무도 정확히 모릅니다"
+            ],
+            [
+              "aber die Jecken",
+              "하지만 카니발 참가자들은"
+            ],
+            [
+              "**verkleiden** sich",
+              "변장합니다"
+            ],
+            [
+              "jedes Jahr bunt.",
+              "해마다 알록달록하게"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "카니발 시즌은 11월 11일 11시 11분에 시작합니다.",
+        "사람들은 카니발을 다섯 번째 계절이라고 부릅니다. 재의 수요일까지 계속되기 때문입니다.",
+        "예전에는 시작일이 1월이었는데, 19세기에 날짜를 새로 정했습니다.",
+        "엘퍼라트는 회원이 열한 명인데, 이것은 시의회를 두고 한 농담이었습니다.",
+        "11은 광대의 숫자이고, 평등을 뜻하기도 합니다.",
+        "아무도 정확한 이유를 모르지만, 카니발 참가자들은 해마다 알록달록하게 변장합니다."
+      ]
+    }
+  },
+  "words": [
+    [
+      "Session",
+      "(카니발) 시즌 (여성 die, 복수 Sessionen)"
+    ],
+    [
+      "Karneval",
+      "사육제, 카니발 (남성 der)"
+    ],
+    [
+      "Aschermittwoch",
+      "재의 수요일 (남성 der)"
+    ],
+    [
+      "festlegen",
+      "정하다, 확정하다"
+    ],
+    [
+      "Elferrat",
+      "카니발 11인 위원회 (남성 der)"
+    ],
+    [
+      "Gleichheit",
+      "평등 (여성 die)"
+    ],
+    [
+      "verkleiden",
+      "변장하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "과거 수동태 — wurde + 과거분사",
+      "body": "`im 19. Jahrhundert wurde der Beginn auf den 11. November festgelegt`는 'werden의 과거형 wurde + 과거분사' 과거 수동태입니다. 누가 정했는지보다 시작일이 '정해졌다'는 사실이 중요해서 수동태를 썼어요. `wurde`는 V2 자리, 분리동사 `festlegen`의 과거분사 `festgelegt`는 문장 끝에 와서 틀을 만듭니다. 같은 문장 앞부분 `begann`과 4번 문장의 `hatten`은 글에서 지난 일을 말할 때 쓰는 Präteritum이에요."
+    },
+    {
+      "title": "분사 수식어 — aus elf Mitgliedern bestehende",
+      "body": "`Der aus elf Mitgliedern bestehende Elferrat`는 관사 `Der`와 명사 `Elferrat` 사이에 '열한 명으로 이루어진'이라는 긴 꾸밈말이 들어간 구조입니다. `bestehen aus`(~로 이루어지다)의 현재분사 `bestehend`에 형용사 어미 `-e`가 붙었어요. 관계절로 풀면 `der Elferrat, der aus elf Mitgliedern besteht`입니다."
+    }
+  ],
+  "answers": [
+    "11월 11일 11시 11분, 쾰른과 뒤셀도르프, 마인츠에서 새 시즌, 곧 카니발 기간이 시작됩니다.",
+    "많은 사람이 카니발을 '다섯 번째 계절'이라고 부르는데, 축제가 재의 수요일까지 몇 달 동안 이어지기 때문입니다.",
+    "예전에는 카니발이 1월 6일에야 시작했지만, 19세기에 시작일이 11월 11일로 정해졌습니다.",
+    "열한 명으로 이루어진 엘퍼라트(11인 위원회)는 당시 의원이 열 명이나 열두 명이던 많은 시의회를 비꼰 것으로 여겨집니다.",
+    "게다가 11은 광대의 숫자로 통하고, 어떤 사람들은 나란히 선 두 개의 1을 모든 광대가 평등하다는 표시로 읽습니다.",
+    "11에 대한 분명한 설명은 없지만, 카니발 참가자들은 오랜 풍습대로 해마다 알록달록하게 변장합니다."
+  ],
+  "advanced": [
+    {
+      "word": "die Fastenzeit",
+      "meaning": "사순절, 금식 기간",
+      "confuse": "`fasten`은 '금식하다', `fast`는 '거의'예요.",
+      "example": "Nach dem Karneval beginnt die **Fastenzeit**.",
+      "example_ko": "카니발이 끝나면 사순절이 시작됩니다."
+    },
+    {
+      "word": "das Brauchtum",
+      "meaning": "풍습, 관습",
+      "confuse": "`der Brauch`는 하나하나의 풍습, `das Brauchtum`은 풍습 전체를 묶어 말해요.",
+      "example": "Der Karneval ist ein wichtiges rheinisches **Brauchtum**.",
+      "example_ko": "카니발은 라인 지방의 중요한 풍습입니다."
+    },
+    {
+      "word": "ausgelassen",
+      "meaning": "들뜬, 신나게 노는",
+      "confuse": "분리동사 `auslassen`(빠뜨리다)의 과거분사와 모양이 같아요.",
+      "example": "Auf den Straßen wird **ausgelassen** gefeiert.",
+      "example_ko": "거리에서 신나게 축제를 즐깁니다."
+    },
+    {
+      "word": "verspotten",
+      "meaning": "조롱하다, 비꼬다",
+      "confuse": null,
+      "example": "Die Narren **verspotten** gern die Politiker.",
+      "example_ko": "광대들은 정치인들을 즐겨 비꼽니다."
+    },
+    {
+      "word": "der Umzug",
+      "meaning": "행렬, 퍼레이드",
+      "confuse": "'이사'라는 뜻도 있어요. `umziehen`은 '이사하다', `sich umziehen`은 '옷을 갈아입다'예요.",
+      "example": "Am Rosenmontag zieht ein großer **Umzug** durch die Stadt.",
+      "example_ko": "장미의 월요일에는 큰 행렬이 시내를 지나갑니다."
+    },
+    {
+      "word": "eindeutig",
+      "meaning": "명확한, 분명한",
+      "confuse": "`einzig`(유일한)과 헷갈리지 마세요.",
+      "example": "Für die Zahl Elf gibt es keine **eindeutige** Erklärung.",
+      "example_ko": "숫자 11에 대한 명확한 설명은 없습니다."
+    },
+    {
+      "word": "die Herkunft",
+      "meaning": "유래, 기원",
+      "confuse": "`die Zukunft`는 '미래'예요.",
+      "example": "Die **Herkunft** des Datums ist nicht ganz klar.",
+      "example_ko": "이 날짜의 유래는 아주 분명하지는 않습니다."
+    }
+  ],
+  "source": {
+    "title": "Warum beginnt die Karnevalssaison am 11.11.? (wissen.de)",
+    "url": "https://www.wissen.de/warum-beginnt-die-karnevalssaison-am-1111"
+  }
+}
