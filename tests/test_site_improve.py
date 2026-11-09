@@ -334,11 +334,12 @@ class TestWeeklyPageTitleTask3c(unittest.TestCase):
         if not (ROOT / "content" / "en" / f"{self.END}.json").exists():
             self.skipTest(f"content/en/{self.END}.json 없음")
         self.tmp = Path(tempfile.mkdtemp())
-        # weekly.py 가 ROOT/content 를 읽으므로 실제 ROOT 사용
+        # 실제 콘텐츠는 읽기만 하고, 복습 페이지는 임시 폴더에 쓴다
+        (self.tmp / "content").symlink_to(ROOT / "content")
         import weekly as wk
         self.wk = wk
         self.orig = wk.ROOT
-        wk.ROOT = ROOT  # 실제 콘텐츠 사용
+        wk.ROOT = self.tmp
 
     def tearDown(self):
         self.wk.ROOT = self.orig

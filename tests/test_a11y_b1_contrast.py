@@ -142,10 +142,23 @@ class TestIdempotent(unittest.TestCase):
         p = ROOT / lang / day / "index.html"
         if not p.exists():
             self.skipTest("페이지 없음")
-        publish.patch_page(lang, day)
-        first = p.read_text(encoding="utf-8")
-        publish.patch_page(lang, day)
-        second = p.read_text(encoding="utf-8")
+        # 실제 페이지를 고치지 않도록 임시 폴더 사본에서 실행한다
+        import shutil, tempfile  # noqa: E401
+        tmp = Path(tempfile.mkdtemp())
+        orig = publish.ROOT
+        try:
+            (tmp / lang / day).mkdir(parents=True)
+            shutil.copy(p, tmp / lang / day / "index.html")
+            (tmp / "content").symlink_to(ROOT / "content")
+            p = tmp / lang / day / "index.html"
+            publish.ROOT = tmp
+            publish.patch_page(lang, day)
+            first = p.read_text(encoding="utf-8")
+            publish.patch_page(lang, day)
+            second = p.read_text(encoding="utf-8")
+        finally:
+            publish.ROOT = orig
+            shutil.rmtree(tmp, ignore_errors=True)
         self.assertEqual(first, second, "patch_page 두 번 실행 결과가 다름")
 
 

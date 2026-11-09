@@ -275,6 +275,8 @@ class PatchOldJaPageTest(unittest.TestCase):
             p = re.sub(r'  \.gnb \.brand img \{ vertical-align: middle; \}\n', '', p)
             # drill.py VERSION 변경으로 data-v 값이 바뀌어도 이 테스트(구독 카드 교체)와 무관
             p = re.sub(r'(<script id="drill-js") data-v="[^"]*"', r'\1 data-v=""', p)
+            # 위 메뉴의 '이번 주 단어 복습' 줄은 gnb.apply 가 매주 최신 복습 날짜로 다시 쓴다
+            p = re.sub(r'<a class="gs-review".*?</a>', "", p, flags=re.S)
             return p
         self.assertEqual(strip(before), strip(after), "구독 칸 밖 콘텐츠는 바뀌지 않아야 합니다")
 
