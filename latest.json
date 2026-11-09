@@ -1,16 +1,16 @@
 {
  "date": "2026-11-10",
- "words_total": 597,
+ "words_total": 603,
  "langs": {
   "en": {
-   "count": 38,
-   "latest": "2026-11-09",
-   "topic": "스위프트 망원경",
+   "count": 39,
+   "latest": "2026-11-10",
+   "topic": "인덕션",
    "sentences": [
-    "After nearly twenty-two years of watching the sky, NASA's Swift **observatory** has come back to Earth.",
-    "It entered the atmosphere above Indonesia on Wednesday, and NASA expected most of the spacecraft to **burn up** before reaching the ground.",
-    "When Swift was **launched** in 2004, its mission was planned for only two years, so it worked more than ten times longer than **expected**.",
-    "Its main job was to catch gamma-ray bursts, huge flashes of energy that can appear when a giant star **collapses** or when two dead stars crash into each other."
+    "Most stoves heat a pan with a flame or a hot surface, but an induction cooktop makes the pan itself produce the heat.",
+    "Under the glass top, there is a **coil** of metal wire, and an electric **current** that keeps changing direction flows through it.",
+    "This current creates a **magnetic field**, which produces tiny electric currents inside the bottom of the pan, and because the pan **resists** them, their energy turns into heat.",
+    "However, this only works with magnetic pans made of iron or some kinds of steel, so the cooktop will not heat an aluminum pan."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,31 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "거의 22년 동안 하늘을 지켜본 끝에, NASA의 스위프트 관측 위성이 지구로 돌아왔다.",
+   "answer": "대부분의 레인지는 불꽃이나 뜨거운 표면으로 냄비를 데우지만, 인덕션 레인지는 냄비 자체가 열을 내게 만든다.",
    "words": [
     [
-     "observatory",
-     "관측소, 관측 위성"
+     "coil",
+     "코일, 감은 선"
     ],
     [
-     "burn up",
-     "다 타 버리다"
+     "current",
+     "전류, 흐름"
     ],
     [
-     "launched",
-     "발사된"
+     "magnetic field",
+     "자기장"
     ],
     [
-     "expected",
-     "예상된"
+     "resists",
+     "저항하다, 견디다"
     ],
     [
-     "collapses",
-     "붕괴하다, 무너지다"
+     "efficient",
+     "효율적인"
     ],
     [
-     "alert",
-     "경보, 알림"
-    ],
-    [
-     "comets",
-     "혜성들 (복수형)"
+     "adjusted",
+     "조절된, 조정된"
     ]
    ],
    "review": {
@@ -164,6 +160,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-10",
+   "topic": "인덕션"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-10",
    "topic": "시치고산"
@@ -262,11 +263,6 @@
    "lang": "de",
    "day": "2026-11-04",
    "topic": "철도 대공사"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-03",
-   "topic": "안개 체임버"
   }
  ]
 }
