@@ -1,0 +1,390 @@
+{
+  "date": "2026-11-10",
+  "category": "tech",
+  "topic": "인덕션",
+  "title_ko": "불 없이 냄비를 데우는 인덕션",
+  "headline": "How an Induction Cooktop Heats a Pan",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "explain",
+  "grammar": {
+    "b": [
+      "b-will"
+    ],
+    "a": [
+      "a-first-conditional"
+    ]
+  },
+  "keywords": [
+    "인덕션",
+    "자기장",
+    "주방 기기",
+    "원리 설명"
+  ],
+  "sentences": [
+    {
+      "en": "Most stoves heat a pan with a flame or a hot surface, but an induction cooktop makes the pan itself produce the heat.",
+      "b2": false,
+      "chunks": [
+        [
+          "Most stoves heat a pan",
+          "대부분의 레인지는 냄비를 데운다"
+        ],
+        [
+          "with a flame or a hot surface,",
+          "불꽃이나 뜨거운 표면으로"
+        ],
+        [
+          "but an induction cooktop",
+          "하지만 인덕션 레인지는"
+        ],
+        [
+          "makes the pan itself",
+          "냄비 자체가"
+        ],
+        [
+          "produce the heat.",
+          "열을 내게 만든다"
+        ]
+      ]
+    },
+    {
+      "en": "Under the glass top, there is a **coil** of metal wire, and an electric **current** that keeps changing direction flows through it.",
+      "b2": false,
+      "chunks": [
+        [
+          "Under the glass top,",
+          "유리 상판 아래에"
+        ],
+        [
+          "there is a **coil** of metal wire,",
+          "금속 전선을 감은 코일이 있다"
+        ],
+        [
+          "and an electric **current**",
+          "그리고 전류가"
+        ],
+        [
+          "that keeps changing direction",
+          "계속 방향을 바꾸는"
+        ],
+        [
+          "flows through it.",
+          "그 안으로 흐른다"
+        ]
+      ]
+    },
+    {
+      "en": "This current creates a **magnetic field**, which produces tiny electric currents inside the bottom of the pan, and because the pan **resists** them, their energy turns into heat.",
+      "b2": true,
+      "chunks": [
+        [
+          "This current creates a **magnetic field**,",
+          "이 전류는 자기장을 만들고"
+        ],
+        [
+          "which produces tiny electric currents",
+          "그것이 아주 작은 전류들을 만들어 낸다"
+        ],
+        [
+          "inside the bottom of the pan,",
+          "냄비 바닥 안에"
+        ],
+        [
+          "and because the pan **resists** them,",
+          "그리고 냄비가 그 전류에 저항하기 때문에"
+        ],
+        [
+          "their energy turns into heat.",
+          "그 에너지가 열로 바뀐다"
+        ]
+      ]
+    },
+    {
+      "en": "However, this only works with magnetic pans made of iron or some kinds of steel, so the cooktop will not heat an aluminum pan.",
+      "b2": false,
+      "chunks": [
+        [
+          "However, this only works",
+          "하지만 이것은 ~에서만 작동한다"
+        ],
+        [
+          "with magnetic pans",
+          "자석에 붙는 냄비"
+        ],
+        [
+          "made of iron or some kinds of steel,",
+          "철이나 일부 강철로 만든"
+        ],
+        [
+          "so the cooktop will not heat",
+          "그래서 인덕션은 데우지 못할 것이다"
+        ],
+        [
+          "an aluminum pan.",
+          "알루미늄 냄비를"
+        ]
+      ]
+    },
+    {
+      "en": "According to Energy Star, about 85 percent of the electricity used goes into heating the food, compared with about 32 percent for a gas stove.",
+      "b2": false,
+      "chunks": [
+        [
+          "According to Energy Star,",
+          "에너지 스타에 따르면"
+        ],
+        [
+          "about 85 percent of the electricity used",
+          "사용된 전기의 약 85퍼센트가"
+        ],
+        [
+          "goes into heating the food,",
+          "음식을 데우는 데 들어간다"
+        ],
+        [
+          "compared with about 32 percent",
+          "약 32퍼센트와 비교해"
+        ],
+        [
+          "for a gas stove.",
+          "가스레인지의"
+        ]
+      ]
+    },
+    {
+      "en": "This is why induction is called an **efficient** way to cook, and the heat can be **adjusted** right away, just like gas.",
+      "b2": false,
+      "chunks": [
+        [
+          "This is why induction",
+          "이것이 인덕션이"
+        ],
+        [
+          "is called an **efficient** way to cook,",
+          "효율적인 요리 방법이라 불리는 이유다"
+        ],
+        [
+          "and the heat can be **adjusted** right away,",
+          "그리고 열은 바로 조절될 수 있다"
+        ],
+        [
+          "just like gas.",
+          "가스처럼"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "coil",
+      "코일, 감은 선"
+    ],
+    [
+      "current",
+      "전류, 흐름"
+    ],
+    [
+      "magnetic field",
+      "자기장"
+    ],
+    [
+      "resists",
+      "저항하다, 견디다"
+    ],
+    [
+      "efficient",
+      "효율적인"
+    ],
+    [
+      "adjusted",
+      "조절된, 조정된"
+    ]
+  ],
+  "points": [
+    {
+      "title": "will not: 정해진 결과를 말하는 will",
+      "body": "`the cooktop will not heat an aluminum pan`의 `will`은 먼 미래의 계획이 아니라 '그 조건이면 늘 이렇게 된다'는 예측 가능한 결과를 말해요. 원리를 설명하는 글에서 자주 보이는 쓰임입니다. '데우지 않을 것이다'보다 '데우지 못한다'로 옮기면 자연스러워요."
+    },
+    {
+      "title": "the pan itself: 바로 그것 자체",
+      "body": "`makes the pan itself produce the heat`에서 `itself`는 앞의 명사를 강조해 '냄비 그 자체가'라는 뜻이에요. 열을 내는 것이 불꽃이나 상판이 아니라 냄비라는 점을 대비하고 있어요. `make + 목적어 + 동사원형`(~가 …하게 만들다) 구조도 함께 보세요."
+    }
+  ],
+  "answers": [
+    "대부분의 레인지는 불꽃이나 뜨거운 표면으로 냄비를 데우지만, 인덕션 레인지는 냄비 자체가 열을 내게 만든다.",
+    "유리 상판 아래에는 금속 전선을 감은 코일이 있고, 계속 방향이 바뀌는 전류가 그 안으로 흐른다.",
+    "이 전류는 자기장을 만들고, 자기장은 냄비 바닥 안에 아주 작은 전류들을 만들어 내는데, 냄비가 그 전류에 저항하기 때문에 그 에너지가 열로 바뀐다.",
+    "하지만 이 방식은 철이나 일부 강철로 만든, 자석에 붙는 냄비에서만 작동하므로 인덕션은 알루미늄 냄비를 데우지 못한다.",
+    "에너지 스타에 따르면, 사용된 전기의 약 85퍼센트가 음식을 데우는 데 쓰이는데, 가스레인지는 약 32퍼센트에 그친다.",
+    "이 때문에 인덕션은 효율적인 요리 방법이라고 불리며, 가스처럼 열을 바로 조절할 수 있다."
+  ],
+  "advanced": [
+    {
+      "word": "generate",
+      "meaning": "발생시키다, 만들어 내다",
+      "confuse": null,
+      "example": "The coil itself does not **generate** any heat.",
+      "example_ko": "코일 자체는 열을 전혀 발생시키지 않습니다."
+    },
+    {
+      "word": "induce",
+      "meaning": "유도하다, 일으키다",
+      "confuse": "include(포함하다)와 혼동 주의",
+      "example": "The magnetic field **induces** small currents in the bottom of the pan.",
+      "example_ko": "자기장은 냄비 바닥에 작은 전류를 유도합니다."
+    },
+    {
+      "word": "alternating",
+      "meaning": "교대하는, 번갈아 바뀌는",
+      "confuse": null,
+      "example": "An **alternating** current flows through the coil under the glass.",
+      "example_ko": "유리 아래 코일에는 방향이 번갈아 바뀌는 전류가 흐릅니다."
+    },
+    {
+      "word": "ferrous",
+      "meaning": "철을 함유한",
+      "confuse": "furious(몹시 화난)와 혼동 주의",
+      "example": "Only **ferrous** pans, such as cast iron, work on this cooktop.",
+      "example_ko": "주철처럼 철을 함유한 냄비만 이 레인지에서 쓸 수 있습니다."
+    },
+    {
+      "word": "conventional",
+      "meaning": "기존의, 전통적인",
+      "confuse": null,
+      "example": "**Conventional** electric stoves send less energy into the food.",
+      "example_ko": "기존의 전기레인지는 음식에 전달하는 에너지가 더 적습니다."
+    },
+    {
+      "word": "instantly",
+      "meaning": "즉시, 곧바로",
+      "confuse": "constantly(끊임없이)와 혼동 주의",
+      "example": "The heat can be changed **instantly**, just like a gas flame.",
+      "example_ko": "열은 가스 불꽃처럼 즉시 바꿀 수 있습니다."
+    },
+    {
+      "word": "responsive",
+      "meaning": "반응이 빠른",
+      "confuse": null,
+      "example": "Many cooks like induction because it is so **responsive**.",
+      "example_ko": "많은 요리사가 반응이 아주 빨라서 인덕션을 좋아합니다."
+    }
+  ],
+  "source": {
+    "title": "How do induction stoves work? (NOVA | PBS, 2023-03-07)",
+    "url": "https://www.pbs.org/wgbh/nova/article/how-induction-stoves-work/"
+  },
+  "photo_scene": "Close-up of a black cast iron pan with gently boiling water on a smooth black glass induction cooktop in a bright modern kitchen, soft morning daylight from the side, no flame.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "An induction cooktop has no flame, but it makes the pan itself hot.",
+          "chunks": [
+            [
+              "An induction cooktop has no flame,",
+              "인덕션 레인지에는 불꽃이 없다"
+            ],
+            [
+              "but it makes the pan itself hot.",
+              "하지만 냄비 자체를 뜨겁게 만든다"
+            ]
+          ]
+        },
+        {
+          "en": "Under the glass, a **coil** of wire carries an electric **current**.",
+          "chunks": [
+            [
+              "Under the glass,",
+              "유리 아래에서"
+            ],
+            [
+              "a **coil** of wire",
+              "전선을 감은 코일이"
+            ],
+            [
+              "carries an electric **current**.",
+              "전류를 나른다"
+            ]
+          ]
+        },
+        {
+          "en": "The current makes a **magnetic field**, and the field makes heat inside the pan.",
+          "chunks": [
+            [
+              "The current makes a **magnetic field**,",
+              "전류는 자기장을 만들고"
+            ],
+            [
+              "and the field makes heat",
+              "그 자기장이 열을 만든다"
+            ],
+            [
+              "inside the pan.",
+              "냄비 안에서"
+            ]
+          ]
+        },
+        {
+          "en": "If your pan is made of aluminum, the cooktop will not heat it.",
+          "chunks": [
+            [
+              "If your pan is made of aluminum,",
+              "냄비가 알루미늄으로 만들어졌다면"
+            ],
+            [
+              "the cooktop will not heat it.",
+              "인덕션은 그것을 데우지 않을 것이다"
+            ]
+          ]
+        },
+        {
+          "en": "About 85 percent of the energy heats the food, compared with about 32 percent for gas.",
+          "chunks": [
+            [
+              "About 85 percent of the energy",
+              "에너지의 약 85퍼센트가"
+            ],
+            [
+              "heats the food,",
+              "음식을 데운다"
+            ],
+            [
+              "compared with about 32 percent for gas.",
+              "가스의 약 32퍼센트와 비교해"
+            ]
+          ]
+        },
+        {
+          "en": "It is **efficient**, and you can change the heat right away.",
+          "chunks": [
+            [
+              "It is **efficient**,",
+              "그것은 효율적이고"
+            ],
+            [
+              "and you can change the heat",
+              "그리고 열을 바꿀 수 있다"
+            ],
+            [
+              "right away.",
+              "바로"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "인덕션 레인지에는 불꽃이 없지만, 냄비 자체를 뜨겁게 만든다.",
+        "유리 아래에서 전선을 감은 코일이 전류를 나른다.",
+        "전류는 자기장을 만들고, 자기장은 냄비 안에서 열을 만든다.",
+        "냄비가 알루미늄으로 만들어졌다면 인덕션은 그 냄비를 데우지 못한다.",
+        "에너지의 약 85퍼센트가 음식을 데우는데, 가스는 약 32퍼센트다.",
+        "인덕션은 효율적이고, 열을 바로 바꿀 수 있다."
+      ]
+    }
+  }
+}
