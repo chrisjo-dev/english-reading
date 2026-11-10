@@ -1,16 +1,16 @@
 {
  "date": "2026-11-11",
- "words_total": 615,
+ "words_total": 621,
  "langs": {
   "en": {
-   "count": 39,
-   "latest": "2026-11-10",
-   "topic": "인덕션",
+   "count": 40,
+   "latest": "2026-11-11",
+   "topic": "동네 공원",
    "sentences": [
-    "Most stoves heat a pan with a flame or a hot surface, but an induction cooktop makes the pan itself produce the heat.",
-    "Under the glass top, there is a **coil** of metal wire, and an electric **current** that keeps changing direction flows through it.",
-    "This current creates a **magnetic field**, which produces tiny electric currents inside the bottom of the pan, and because the pan **resists** them, their energy turns into heat.",
-    "However, this only works with magnetic pans made of iron or some kinds of steel, so the cooktop will not heat an aluminum pan."
+    "A piece of **vacant** land owned by the city of Dallas has just opened as a quiet neighborhood park.",
+    "Before it opened, workers cleared the land and **restored** a small pond that had been hidden under thick plants.",
+    "During public meetings about the design, local **residents** asked for a calm place where they could simply enjoy nature.",
+    "So the park now has walking trails, benches, picnic areas, and a spot for watching **wildlife** beside the creek."
    ],
    "chips": [
     "6문장",
@@ -18,31 +18,31 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "대부분의 레인지는 불꽃이나 뜨거운 표면으로 냄비를 데우지만, 인덕션 레인지는 냄비 자체가 열을 내게 만든다.",
+   "answer": "댈러스시가 가진 빈 땅 한 곳이 조용한 동네 공원으로 막 문을 열었다.",
    "words": [
     [
-     "coil",
-     "코일, 감은 선"
+     "vacant",
+     "비어 있는, 빈"
     ],
     [
-     "current",
-     "전류, 흐름"
+     "restored",
+     "복원했다"
     ],
     [
-     "magnetic field",
-     "자기장"
+     "residents",
+     "주민들"
     ],
     [
-     "resists",
-     "저항하다, 견디다"
+     "wildlife",
+     "야생 동물"
     ],
     [
-     "efficient",
-     "효율적인"
+     "unused",
+     "쓰이지 않는"
     ],
     [
-     "adjusted",
-     "조절된, 조정된"
+     "nearby",
+     "근처의, 가까운"
     ]
    ],
    "review": {
@@ -152,6 +152,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-11",
+   "topic": "동네 공원"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-11",
    "topic": "산꼭대기 첫눈"
@@ -250,11 +255,6 @@
    "lang": "de",
    "day": "2026-11-05",
    "topic": "유연 근무제"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-04",
-   "topic": "불 끄는 섬"
   }
  ]
 }
