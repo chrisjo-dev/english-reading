@@ -1,6 +1,6 @@
 {
- "date": "2026-11-10",
- "words_total": 603,
+ "date": "2026-11-11",
+ "words_total": 609,
  "langs": {
   "en": {
    "count": 39,
@@ -105,14 +105,14 @@
    }
   },
   "de": {
-   "count": 14,
-   "latest": "2026-11-10",
-   "topic": "카니발 시작일",
+   "count": 15,
+   "latest": "2026-11-11",
+   "topic": "후불 결제",
    "sentences": [
-    "Am 11. November um 11:11 Uhr beginnt in Köln, Düsseldorf und Mainz die neue **Session**, also die Zeit des **Karnevals**.",
-    "Viele Menschen nennen den Karneval die fünfte Jahreszeit, weil die Feiern mehrere Monate bis zum **Aschermittwoch** dauern.",
-    "Früher begann der Karneval erst am 6. Januar, doch im 19. Jahrhundert wurde der Beginn auf den 11. November **festgelegt**.",
-    "Der aus elf Mitgliedern bestehende **Elferrat** gilt als ironische Antwort auf viele Stadträte, die damals zehn oder zwölf Mitglieder hatten."
+    "Ab dem 20. November gelten in Deutschland neue EU-Regeln für Online-Käufe, die man erst später oder in **Raten** bezahlt.",
+    "Auch kleine **Kredite** bis 200 Euro werden künftig vom gesetzlichen **Verbraucherschutz** erfasst, was früher nicht der Fall war.",
+    "Bevor ein Kauf auf Raten möglich ist, werden die Anbieter die **Kreditwürdigkeit** des Kunden künftig genauer prüfen.",
+    "Dabei dürfen nur passende Finanzdaten genutzt werden, während Angaben aus sozialen Netzwerken oder zur Gesundheit ausgeschlossen bleiben."
    ],
    "chips": [
     "6문장",
@@ -120,35 +120,31 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "11월 11일 11시 11분, 쾰른과 뒤셀도르프, 마인츠에서 새 시즌, 곧 카니발 기간이 시작됩니다.",
+   "answer": "11월 20일부터 독일에서는 나중에 값을 치르거나 할부로 내는 온라인 구매에 새 EU 규칙이 적용됩니다.",
    "words": [
     [
-     "Session",
-     "(카니발) 시즌 (여성 die, 복수 Sessionen)"
+     "Rate",
+     "할부금 (여성 die, 복수 Raten)"
     ],
     [
-     "Karneval",
-     "사육제, 카니발 (남성 der)"
+     "Kredit",
+     "대출 (남성 der, 복수 Kredite)"
     ],
     [
-     "Aschermittwoch",
-     "재의 수요일 (남성 der)"
+     "Verbraucherschutz",
+     "소비자 보호 (남성 der)"
     ],
     [
-     "festlegen",
-     "정하다, 확정하다"
+     "Kreditwürdigkeit",
+     "신용도 (여성 die)"
     ],
     [
-     "Elferrat",
-     "카니발 11인 위원회 (남성 der)"
+     "widerrufen",
+     "철회하다, 취소하다"
     ],
     [
-     "Gleichheit",
-     "평등 (여성 die)"
-    ],
-    [
-     "verkleiden",
-     "변장하다"
+     "Stundung",
+     "지불 유예 (여성 die, 복수 Stundungen)"
     ]
    ],
    "review": {
@@ -159,6 +155,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-11",
+   "topic": "후불 결제"
+  },
   {
    "lang": "en",
    "day": "2026-11-10",
@@ -258,11 +259,6 @@
    "lang": "ja",
    "day": "2026-11-04",
    "topic": "동물원 자원봉사"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-04",
-   "topic": "철도 대공사"
   }
  ]
 }
