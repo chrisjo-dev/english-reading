@@ -1,0 +1,137 @@
+{
+  "date": "2026-11-11",
+  "category": "society",
+  "topic": "동네 공원",
+  "title_ko": "빈 땅에 새로 생긴 동네 공원",
+  "headline": "An Empty Piece of Land Becomes a Park",
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "fit": "news",
+  "grammar": {"b": ["b-present-perfect-continuous"], "a": ["a-going-to"]},
+  "keywords": ["동네 공원", "빈 땅", "도시 녹지", "개장 소식"],
+  "sentences": [
+    {
+      "en": "A piece of **vacant** land owned by the city of Dallas has just opened as a quiet neighborhood park.",
+      "b2": false,
+      "chunks": [
+        ["A piece of **vacant** land", "비어 있는 땅 한 곳이"],
+        ["owned by the city of Dallas", "댈러스시가 가진"],
+        ["has just opened", "막 문을 열었다"],
+        ["as a quiet neighborhood park.", "조용한 동네 공원으로"]
+      ]
+    },
+    {
+      "en": "Before it opened, workers cleared the land and **restored** a small pond that had been hidden under thick plants.",
+      "b2": false,
+      "chunks": [
+        ["Before it opened,", "문을 열기 전에"],
+        ["workers cleared the land", "일꾼들이 땅을 정리했다"],
+        ["and **restored** a small pond", "그리고 작은 연못을 복원했다"],
+        ["that had been hidden", "숨겨져 있던"],
+        ["under thick plants.", "무성한 풀 아래에"]
+      ]
+    },
+    {
+      "en": "During public meetings about the design, local **residents** asked for a calm place where they could simply enjoy nature.",
+      "b2": false,
+      "chunks": [
+        ["During public meetings", "공개 회의에서"],
+        ["about the design,", "설계에 관한"],
+        ["local **residents** asked for", "동네 주민들은 원했다"],
+        ["a calm place", "조용한 곳을"],
+        ["where they could simply enjoy nature.", "그저 자연을 즐길 수 있는"]
+      ]
+    },
+    {
+      "en": "So the park now has walking trails, benches, picnic areas, and a spot for watching **wildlife** beside the creek.",
+      "b2": false,
+      "chunks": [
+        ["So the park now has", "그래서 공원에는 이제 있다"],
+        ["walking trails, benches, picnic areas,", "산책로, 벤치, 피크닉 공간,"],
+        ["and a spot", "그리고 자리가"],
+        ["for watching **wildlife**", "야생 동물을 지켜볼"],
+        ["beside the creek.", "개울 옆에"]
+      ]
+    },
+    {
+      "en": "Since 2022, the city has been working with a nonprofit group to turn **unused** public land into parks for areas without **nearby** parks.",
+      "b2": false,
+      "chunks": [
+        ["Since 2022,", "2022년부터"],
+        ["the city has been working", "시는 일해 오고 있다"],
+        ["with a nonprofit group", "한 비영리 단체와 함께"],
+        ["to turn **unused** public land", "쓰이지 않는 공공 땅을 바꾸려고"],
+        ["into parks", "공원으로"],
+        ["for areas without **nearby** parks.", "근처에 공원이 없는 지역을 위해"]
+      ]
+    },
+    {
+      "en": "About 2,100 people now live within a ten-minute walk of the new park, and the city plans to build fifteen of these green spaces in total.",
+      "b2": true,
+      "chunks": [
+        ["About 2,100 people now live", "약 2,100명이 이제 산다"],
+        ["within a ten-minute walk", "걸어서 10분 안에"],
+        ["of the new park,", "새 공원에서"],
+        ["and the city plans to build", "그리고 시는 지을 계획이다"],
+        ["fifteen of these green spaces", "이런 녹지 열다섯 곳을"],
+        ["in total.", "모두 합쳐"]
+      ]
+    }
+  ],
+  "words": [
+    ["vacant", "비어 있는, 빈"],
+    ["restored", "복원했다"],
+    ["residents", "주민들"],
+    ["wildlife", "야생 동물"],
+    ["unused", "쓰이지 않는"],
+    ["nearby", "근처의, 가까운"]
+  ],
+  "points": [
+    {
+      "title": "현재완료진행 has been working: 지금까지 계속 해 오는 중",
+      "body": "`the city has been working with a nonprofit group`은 '시가 비영리 단체와 함께 일해 오고 있다'예요. `Since 2022`와 함께 쓰여 2022년에 시작한 일이 지금도 이어지고 있다는 뜻입니다. 과거형 worked였다면 이미 끝난 일처럼 들려요. 앞으로 열다섯 곳을 더 짓는다는 마지막 문장과도 이어집니다."
+    },
+    {
+      "title": "within a ten-minute walk: 걸어서 10분 안에",
+      "body": "`within a ten-minute walk of the new park`는 '새 공원에서 걸어서 10분 안에'예요. within은 '~ 안에', `ten-minute`은 하이픈으로 이어 명사 walk를 꾸미므로 minute에 -s가 붙지 않습니다. 이 거리 안에 약 2,100명이 산다는 뜻이에요."
+    }
+  ],
+  "answers": [
+    "댈러스시가 가진 빈 땅 한 곳이 조용한 동네 공원으로 막 문을 열었다.",
+    "문을 열기 전에 일꾼들은 땅을 정리하고, 무성한 풀 아래 숨겨져 있던 작은 연못을 복원했다.",
+    "설계에 관한 공개 회의에서 동네 주민들은 그저 자연을 즐길 수 있는 조용한 곳을 원했다.",
+    "그래서 이제 공원에는 산책로, 벤치, 피크닉 공간, 그리고 개울 옆에서 야생 동물을 지켜볼 수 있는 자리가 있다.",
+    "2022년부터 시는 한 비영리 단체와 함께, 근처에 공원이 없는 지역을 위해 쓰이지 않는 공공 땅을 공원으로 바꾸는 일을 해 오고 있다.",
+    "이제 약 2,100명이 새 공원에서 걸어서 10분 안에 살고 있으며, 시는 이런 녹지를 모두 열다섯 곳 지을 계획이다."
+  ],
+  "advanced": [
+    {"word": "transform", "meaning": "탈바꿈시키다, 바꾸다", "confuse": null, "example": "The city **transformed** a forgotten lot into a neighborhood park.", "example_ko": "시는 잊힌 빈터를 동네 공원으로 탈바꿈시켰습니다."},
+    {"word": "overgrown", "meaning": "잡초가 무성한", "confuse": null, "example": "The pond had been hidden by **overgrown** plants for years.", "example_ko": "그 연못은 몇 년 동안 무성한 풀에 가려져 있었습니다."},
+    {"word": "revive", "meaning": "되살리다", "confuse": null, "example": "Workers **revived** the small pond at the center of the land.", "example_ko": "일꾼들은 땅 한가운데의 작은 연못을 되살렸습니다."},
+    {"word": "tranquil", "meaning": "고요한, 평온한", "confuse": null, "example": "Residents wanted a **tranquil** place to enjoy nature.", "example_ko": "주민들은 자연을 즐길 고요한 곳을 원했습니다."},
+    {"word": "amenities", "meaning": "편의 시설", "confuse": null, "example": "The park's **amenities** include trails, benches, and picnic areas.", "example_ko": "공원의 편의 시설에는 산책로, 벤치, 피크닉 공간이 있습니다."},
+    {"word": "accessible", "meaning": "접근하기 쉬운, 이용할 수 있는", "confuse": "acceptable(받아들일 수 있는)과 혼동 주의", "example": "The new park is **accessible** on foot for about 2,100 people.", "example_ko": "새 공원은 약 2,100명이 걸어서 갈 수 있습니다."},
+    {"word": "allocate", "meaning": "배정하다, 할당하다", "confuse": null, "example": "Each site is **allocated** up to $750,000, including money for upkeep.", "example_ko": "각 부지에는 관리 비용을 포함해 최대 75만 달러가 배정됩니다."}
+  ],
+  "source": {"title": "Ground breaks on new neighborhood greenspace in northeast Dallas (CultureMap Dallas, 2025-10-10)", "url": "https://dallas.culturemap.com/news/city-life/bushmills-neighborhood-green/"},
+  "photo_scene": "A small calm pond surrounded by tall native grasses and wildflowers in a neighborhood park, with a wooden bench and a gravel walking path beside it, warm late afternoon sunlight.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {"en": "A **vacant** piece of city land in Dallas is now a quiet park.", "chunks": [["A **vacant** piece of city land", "비어 있던 시의 땅 한 곳이"], ["in Dallas", "댈러스에 있는"], ["is now a quiet park.", "이제 조용한 공원이다"]]},
+        {"en": "Workers found an old pond under thick plants and **restored** it.", "chunks": [["Workers found an old pond", "일꾼들이 오래된 연못을 찾았다"], ["under thick plants", "무성한 풀 아래에서"], ["and **restored** it.", "그리고 그것을 복원했다"]]},
+        {"en": "Local **residents** asked for a calm place with nature.", "chunks": [["Local **residents** asked for", "동네 주민들은 원했다"], ["a calm place", "조용한 곳을"], ["with nature.", "자연이 있는"]]},
+        {"en": "The park has trails, benches, and a place to watch **wildlife**.", "chunks": [["The park has", "공원에는 있다"], ["trails, benches,", "산책로, 벤치,"], ["and a place", "그리고 자리가"], ["to watch **wildlife**.", "야생 동물을 볼"]]},
+        {"en": "The city started this plan in 2022 for **unused** public land.", "chunks": [["The city started this plan", "시는 이 계획을 시작했다"], ["in 2022", "2022년에"], ["for **unused** public land.", "쓰이지 않는 공공 땅을 위해"]]},
+        {"en": "About 2,100 people live **nearby**, and the city is going to build 15 parks.", "chunks": [["About 2,100 people live **nearby**,", "약 2,100명이 근처에 산다"], ["and the city is going to build", "그리고 시는 지을 예정이다"], ["15 parks.", "공원 15곳을"]]}
+      ],
+      "answers": [
+        "댈러스에 있던 시의 빈 땅 한 곳이 이제 조용한 공원이 되었다.",
+        "일꾼들이 무성한 풀 아래에서 오래된 연못을 찾아 복원했다.",
+        "동네 주민들은 자연이 있는 조용한 곳을 원했다.",
+        "공원에는 산책로, 벤치, 그리고 야생 동물을 볼 수 있는 자리가 있다.",
+        "시는 쓰이지 않는 공공 땅을 위해 2022년에 이 계획을 시작했다.",
+        "약 2,100명이 근처에 살고, 시는 공원 15곳을 지을 예정이다."
+      ]
+    }
+  }
+}
