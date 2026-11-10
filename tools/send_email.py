@@ -253,7 +253,14 @@ def catchup(lang, day, level="b"):
                   _is_main(e.get("metadata") or {})
                   or (e.get("metadata") or {}).get("catchup_of") == catchup_tag_prefix)]
     if not any(_is_main(e.get("metadata") or {}) for e in issues):
-        raise SystemExit(f"{lang} {day} level={level} 본 메일이 없어 보충 발송하지 않음. 본 발송부터 하세요.")
+        # 본 발송이 페이지 배포 지연(wait_live 시간 초과)으로 빠진 날은 보충 대신 본 메일을 보낸다(2026-11-10 ja).
+        # 지난 날짜는 늦은 본 메일이 되므로 자동으로 보내지 않는다. send() 가 같은 메일의 중복 발송을 막는다.
+        today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).date().isoformat()
+        if day != today:
+            raise SystemExit(f"{lang} {day} level={level} 본 메일이 없어 보충 발송하지 않음. 본 발송부터 하세요.")
+        print(f"{lang} {day} level={level} 본 메일이 없어 본 메일을 보냅니다")
+        main(lang, day, level)
+        return
 
     # 본 메일이 30분 이내에 발송됐으면 전달 이벤트가 아직 쌓이는 중일 수 있다. 건너뜀.
     main_emails = [e for e in issues if _is_main(e.get("metadata") or {})]
