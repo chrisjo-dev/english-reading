@@ -89,8 +89,29 @@ def _match(bold, word):
 ENDS = ("", "e", "n", "en", "s", "es", "t", "st", "et", "te", "ten", "er", "ern", "ed", "d", "ing", "ies", "ied")
 
 
+# 분리동사 앞말. 과거분사는 앞말 뒤에 ge 가 들어간다(festlegen ↔ festgelegt)
+SEP = ("", "ab", "an", "auf", "aus", "bei", "ein", "fest", "mit", "nach", "vor", "weg", "zu", "zurück", "zusammen", "her", "hin", "los", "um")
+
+
 def _inflected(a, b):
-    """두 낱말이 같은 어간에 활용 어미만 다른지(erkennen ↔ erkennt)."""
+    """두 낱말이 같은 어간에 활용 어미만 다른지(erkennen ↔ erkennt). 독일어 과거분사의 ge 도 맞춘다(legen ↔ gelegt)."""
+    if _same_stem(a, b):
+        return True
+    for x, y in ((a, b), (b, a)):
+        for pre in SEP:
+            if not (x.startswith(pre + "ge") and y.startswith(pre)):
+                continue
+            cx, cy = x[len(pre) + 2:], y[len(pre):]
+            i = 0
+            while i < min(len(cx), len(cy)) and cx[i] == cy[i]:
+                i += 1
+            # 동사 원형(cy)이 다섯 글자 이상일 때만: gehen ↔ hen, genau ↔ nau 같은 우연한 ge 를 막는다
+            if len(cy) >= 5 and i >= 3 and cx[i:] in ENDS and cy[i:] in ENDS:
+                return True
+    return False
+
+
+def _same_stem(a, b):
     i = 0
     while i < min(len(a), len(b)) and a[i] == b[i]:
         i += 1
