@@ -1,6 +1,6 @@
 {
- "date": "2026-11-11",
- "words_total": 621,
+ "date": "2026-11-12",
+ "words_total": 627,
  "langs": {
   "en": {
    "count": 40,
@@ -101,46 +101,46 @@
    }
   },
   "de": {
-   "count": 15,
-   "latest": "2026-11-11",
-   "topic": "후불 결제",
+   "count": 16,
+   "latest": "2026-11-12",
+   "topic": "교육 휴가",
    "sentences": [
-    "Ab dem 20. November gelten in Deutschland neue EU-Regeln für Online-Käufe, die man erst später oder in **Raten** bezahlt.",
-    "Auch kleine **Kredite** bis 200 Euro werden künftig vom gesetzlichen **Verbraucherschutz** erfasst, was früher nicht der Fall war.",
-    "Bevor ein Kauf auf Raten möglich ist, werden die Anbieter die **Kreditwürdigkeit** des Kunden künftig genauer prüfen.",
-    "Dabei dürfen nur passende Finanzdaten genutzt werden, während Angaben aus sozialen Netzwerken oder zur Gesundheit ausgeschlossen bleiben."
+    "In fast allen deutschen Bundesländern haben Arbeitnehmer ein Recht auf **Bildungsurlaub**, also auf freie Tage zum Lernen.",
+    "Meistens sind es fünf Arbeitstage pro Jahr, und der Arbeitgeber zahlt den **Lohn** in dieser Zeit ganz normal weiter.",
+    "Man kann die Tage auch über zwei Jahre ansparen und dann zum Beispiel einen ganzen Kurs von zehn Tagen besuchen.",
+    "Damit der Urlaub genehmigt wird, muss die **Weiterbildung** vom Bundesland offiziell **anerkannt** werden, zum Beispiel ein Sprachkurs oder ein berufliches Seminar."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 4분"
    ],
-   "answer": "11월 20일부터 독일에서는 나중에 값을 치르거나 할부로 내는 온라인 구매에 새 EU 규칙이 적용됩니다.",
+   "answer": "거의 모든 독일 주에서 근로자는 교육 휴가, 곧 배우기 위해 쉬는 날을 가질 권리가 있습니다.",
    "words": [
     [
-     "Rate",
-     "할부금 (여성 die, 복수 Raten)"
+     "Bildungsurlaub",
+     "교육 휴가 (남성 der)"
     ],
     [
-     "Kredit",
-     "대출 (남성 der, 복수 Kredite)"
+     "Lohn",
+     "임금, 급여 (남성 der, 복수 Löhne)"
     ],
     [
-     "Verbraucherschutz",
-     "소비자 보호 (남성 der)"
+     "Weiterbildung",
+     "재교육, 연수 (여성 die)"
     ],
     [
-     "Kreditwürdigkeit",
-     "신용도 (여성 die)"
+     "anerkannt",
+     "인정된, 공인된"
     ],
     [
-     "widerrufen",
-     "철회하다, 취소하다"
+     "Antrag",
+     "신청(서) (남성 der, 복수 Anträge)"
     ],
     [
-     "Stundung",
-     "지불 유예 (여성 die, 복수 Stundungen)"
+     "Kursgebühr",
+     "수강료 (여성 die, 복수 Kursgebühren)"
     ]
    ],
    "review": {
@@ -151,6 +151,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-12",
+   "topic": "교육 휴가"
+  },
   {
    "lang": "en",
    "day": "2026-11-11",
@@ -250,11 +255,6 @@
    "lang": "ja",
    "day": "2026-11-05",
    "topic": "서점 아르바이트"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-05",
-   "topic": "유연 근무제"
   }
  ]
 }
