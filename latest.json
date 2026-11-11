@@ -1,16 +1,16 @@
 {
  "date": "2026-11-12",
- "words_total": 633,
+ "words_total": 639,
  "langs": {
   "en": {
-   "count": 40,
-   "latest": "2026-11-11",
-   "topic": "동네 공원",
+   "count": 41,
+   "latest": "2026-11-12",
+   "topic": "손가락 주름",
    "sentences": [
-    "A piece of **vacant** land owned by the city of Dallas has just opened as a quiet neighborhood park.",
-    "Before it opened, workers cleared the land and **restored** a small pond that had been hidden under thick plants.",
-    "During public meetings about the design, local **residents** asked for a calm place where they could simply enjoy nature.",
-    "So the park now has walking trails, benches, picnic areas, and a spot for watching **wildlife** beside the creek."
+    "After a long bath, the skin on your fingers and toes starts to **wrinkle**, and for many years people thought it simply soaked up water.",
+    "However, scientists later found that the wrinkles are controlled by the **nervous system**, not just by water.",
+    "When your hands stay in water, your nerves tell the **blood vessels** under the skin to get narrower, and the skin above them forms small folds.",
+    "In a study published in 2013, twenty **volunteers** were asked to pick up wet marbles with normal hands and again after a thirty-minute warm **soak**."
    ],
    "chips": [
     "6문장",
@@ -18,31 +18,31 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "댈러스시가 가진 빈 땅 한 곳이 조용한 동네 공원으로 막 문을 열었다.",
+   "answer": "오래 목욕을 하고 나면 손가락과 발가락의 피부가 쪼글쪼글해지기 시작하는데, 오랫동안 사람들은 피부가 그저 물을 빨아들였기 때문이라고 생각했다.",
    "words": [
     [
-     "vacant",
-     "비어 있는, 빈"
+     "wrinkle",
+     "주름지다, 쪼글쪼글해지다"
     ],
     [
-     "restored",
-     "복원했다"
+     "nervous system",
+     "신경계"
     ],
     [
-     "residents",
-     "주민들"
+     "blood vessels",
+     "혈관들 (복수형)"
     ],
     [
-     "wildlife",
-     "야생 동물"
+     "volunteers",
+     "지원자들, 자원자들 (복수형)"
     ],
     [
-     "unused",
-     "쓰이지 않는"
+     "soak",
+     "담그기, 적시기"
     ],
     [
-     "nearby",
-     "근처의, 가까운"
+     "grip",
+     "꽉 쥐다, 붙잡다"
     ]
    ],
    "review": {
@@ -152,6 +152,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-12",
+   "topic": "손가락 주름"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-12",
    "topic": "유급휴가"
@@ -250,11 +255,6 @@
    "lang": "de",
    "day": "2026-11-06",
    "topic": "고슴도치 겨울잠"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-05",
-   "topic": "로보택시"
   }
  ]
 }
