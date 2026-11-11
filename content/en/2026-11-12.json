@@ -1,0 +1,414 @@
+{
+  "date": "2026-11-12",
+  "category": "science",
+  "topic": "손가락 주름",
+  "title_ko": "물속에서 쪼글쪼글해지는 손가락",
+  "headline": "Why Our Fingers Wrinkle in Water",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "explain",
+  "grammar": {
+    "b": [
+      "b-passive-past"
+    ],
+    "a": [
+      "a-can"
+    ]
+  },
+  "keywords": [
+    "손가락 주름",
+    "신경계",
+    "목욕",
+    "몸의 원리"
+  ],
+  "sentences": [
+    {
+      "en": "After a long bath, the skin on your fingers and toes starts to **wrinkle**, and for many years people thought it simply soaked up water.",
+      "b2": false,
+      "chunks": [
+        [
+          "After a long bath,",
+          "오래 목욕을 하고 나면"
+        ],
+        [
+          "the skin on your fingers and toes",
+          "손가락과 발가락의 피부가"
+        ],
+        [
+          "starts to **wrinkle**,",
+          "주름지기 시작한다"
+        ],
+        [
+          "and for many years",
+          "그리고 오랫동안"
+        ],
+        [
+          "people thought",
+          "사람들은 생각했다"
+        ],
+        [
+          "it simply soaked up water.",
+          "피부가 그저 물을 빨아들인 것이라고"
+        ]
+      ]
+    },
+    {
+      "en": "However, scientists later found that the wrinkles are controlled by the **nervous system**, not just by water.",
+      "b2": false,
+      "chunks": [
+        [
+          "However, scientists later found",
+          "하지만 과학자들은 나중에 알아냈다"
+        ],
+        [
+          "that the wrinkles are controlled",
+          "그 주름이 조절된다는 것을"
+        ],
+        [
+          "by the **nervous system**,",
+          "신경계에 의해"
+        ],
+        [
+          "not just by water.",
+          "물 때문만이 아니라"
+        ]
+      ]
+    },
+    {
+      "en": "When your hands stay in water, your nerves tell the **blood vessels** under the skin to get narrower, and the skin above them forms small folds.",
+      "b2": false,
+      "chunks": [
+        [
+          "When your hands stay in water,",
+          "손이 물속에 있으면"
+        ],
+        [
+          "your nerves tell",
+          "신경이 지시한다"
+        ],
+        [
+          "the **blood vessels** under the skin",
+          "피부 아래 혈관들에게"
+        ],
+        [
+          "to get narrower,",
+          "더 좁아지라고"
+        ],
+        [
+          "and the skin above them",
+          "그러면 그 위의 피부가"
+        ],
+        [
+          "forms small folds.",
+          "작은 주름을 만든다"
+        ]
+      ]
+    },
+    {
+      "en": "In a study published in 2013, twenty **volunteers** were asked to pick up wet marbles with normal hands and again after a thirty-minute warm **soak**.",
+      "b2": true,
+      "chunks": [
+        [
+          "In a study published in 2013,",
+          "2013년에 발표된 한 연구에서"
+        ],
+        [
+          "twenty **volunteers** were asked",
+          "지원자 스무 명이 요청받았다"
+        ],
+        [
+          "to pick up wet marbles",
+          "젖은 구슬을 집어 올리도록"
+        ],
+        [
+          "with normal hands",
+          "평소의 손으로"
+        ],
+        [
+          "and again",
+          "그리고 다시"
+        ],
+        [
+          "after a thirty-minute warm **soak**.",
+          "따뜻한 물에 30분 담근 뒤에"
+        ]
+      ]
+    },
+    {
+      "en": "With wrinkled fingers, they picked up the wet objects 12 percent faster, but the wrinkles gave no advantage with dry ones.",
+      "b2": false,
+      "chunks": [
+        [
+          "With wrinkled fingers,",
+          "주름진 손가락으로"
+        ],
+        [
+          "they picked up the wet objects",
+          "그들은 젖은 물건을 집어 올렸다"
+        ],
+        [
+          "12 percent faster,",
+          "12퍼센트 더 빨리"
+        ],
+        [
+          "but the wrinkles gave no advantage",
+          "하지만 주름은 아무 이점도 주지 않았다"
+        ],
+        [
+          "with dry ones.",
+          "마른 물건에서는"
+        ]
+      ]
+    },
+    {
+      "en": "So the folds may work like the patterns on car tires, helping us **grip** things in wet places.",
+      "b2": false,
+      "chunks": [
+        [
+          "So the folds may work",
+          "그래서 그 주름은 작용할지도 모른다"
+        ],
+        [
+          "like the patterns on car tires,",
+          "자동차 타이어의 무늬처럼"
+        ],
+        [
+          "helping us **grip** things",
+          "우리가 물건을 꽉 쥐도록 도우면서"
+        ],
+        [
+          "in wet places.",
+          "젖은 곳에서"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "wrinkle",
+      "주름지다, 쪼글쪼글해지다"
+    ],
+    [
+      "nervous system",
+      "신경계"
+    ],
+    [
+      "blood vessels",
+      "혈관들 (복수형)"
+    ],
+    [
+      "volunteers",
+      "지원자들, 자원자들 (복수형)"
+    ],
+    [
+      "soak",
+      "담그기, 적시기"
+    ],
+    [
+      "grip",
+      "꽉 쥐다, 붙잡다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "were asked to: 과거 수동태",
+      "body": "`twenty volunteers were asked to pick up wet marbles`는 `was/were + 과거분사` 형태의 과거 수동태예요. 지원자들이 스스로 한 것이 아니라 '요청을 받았다'는 뜻이고, 누가 요청했는지(연구자들)는 뻔해서 생략했어요. 앞의 `a study published in 2013`도 `that was published`에서 `that was`가 빠진 꼴로 '발표된 연구'라는 뜻입니다."
+    },
+    {
+      "title": "tell + 사람 + to 동사: ~에게 …하라고 하다",
+      "body": "`your nerves tell the blood vessels under the skin to get narrower`는 `tell + 목적어 + to 동사원형` 구조예요. '신경이 혈관에게 좁아지라고 지시한다'로 읽으면 됩니다. 목적어 `the blood vessels under the skin`이 길어서 `to get narrower`가 멀리 떨어져 있으니, `to`를 만나면 앞의 `tell`과 이어 보세요."
+    }
+  ],
+  "answers": [
+    "오래 목욕을 하고 나면 손가락과 발가락의 피부가 쪼글쪼글해지기 시작하는데, 오랫동안 사람들은 피부가 그저 물을 빨아들였기 때문이라고 생각했다.",
+    "하지만 과학자들은 나중에 이 주름이 물 때문만이 아니라 신경계에 의해 조절된다는 사실을 알아냈다.",
+    "손이 물속에 있으면 신경이 피부 아래 혈관들에게 좁아지라고 지시하고, 그 위의 피부에 작은 주름이 생긴다.",
+    "2013년에 발표된 한 연구에서 지원자 스무 명은 평소의 손으로, 그리고 따뜻한 물에 30분 동안 손을 담근 뒤에 다시 한 번 젖은 구슬을 집어 올려 달라는 요청을 받았다.",
+    "손가락이 주름졌을 때 그들은 젖은 물건을 12퍼센트 더 빨리 집어 올렸지만, 마른 물건에서는 주름이 아무런 이점도 주지 않았다.",
+    "그래서 이 주름은 자동차 타이어의 무늬처럼 작용해, 우리가 젖은 곳에서 물건을 꽉 붙잡도록 도와주는 것일 수 있다."
+  ],
+  "advanced": [
+    {
+      "word": "constrict",
+      "meaning": "수축시키다, 좁히다",
+      "confuse": "construct(건설하다)와 혼동 주의",
+      "example": "The nerves **constrict** the blood vessels under the skin.",
+      "example_ko": "신경이 피부 아래의 혈관을 수축시킵니다."
+    },
+    {
+      "word": "immerse",
+      "meaning": "담그다",
+      "confuse": null,
+      "example": "The volunteers **immersed** their hands in warm water for thirty minutes.",
+      "example_ko": "지원자들은 따뜻한 물에 30분 동안 손을 담갔습니다."
+    },
+    {
+      "word": "participant",
+      "meaning": "참가자",
+      "confuse": null,
+      "example": "Each **participant** picked up wet marbles twice.",
+      "example_ko": "참가자들은 각자 젖은 구슬을 두 번 집어 올렸습니다."
+    },
+    {
+      "word": "submerged",
+      "meaning": "물에 잠긴",
+      "confuse": null,
+      "example": "Fingers that stay **submerged** for a long time begin to wrinkle.",
+      "example_ko": "오랫동안 물에 잠겨 있는 손가락은 주름지기 시작합니다."
+    },
+    {
+      "word": "traction",
+      "meaning": "접지력, 마찰력",
+      "confuse": "attraction(매력, 끌림)과 혼동 주의",
+      "example": "Wrinkled fingertips may give better **traction** on wet surfaces.",
+      "example_ko": "주름진 손끝은 젖은 표면에서 더 좋은 접지력을 줄 수 있습니다."
+    },
+    {
+      "word": "involuntary",
+      "meaning": "무의식적인, 저절로 일어나는",
+      "confuse": "voluntary(자발적인)와 반대말",
+      "example": "Wrinkling is an **involuntary** reaction controlled by the nerves.",
+      "example_ko": "주름이 생기는 것은 신경이 조절하는 무의식적인 반응입니다."
+    },
+    {
+      "word": "adaptation",
+      "meaning": "적응, 적응 형질",
+      "confuse": "adoption(입양, 채택)과 혼동 주의",
+      "example": "Some scientists see pruney fingers as an **adaptation** for wet conditions.",
+      "example_ko": "일부 과학자들은 쪼글쪼글한 손가락을 젖은 환경에 대한 적응으로 봅니다."
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "After a long bath, your fingers **wrinkle**, and people thought water caused it.",
+          "chunks": [
+            [
+              "After a long bath,",
+              "오래 목욕을 하고 나면"
+            ],
+            [
+              "your fingers **wrinkle**,",
+              "손가락이 주름진다"
+            ],
+            [
+              "and people thought",
+              "그리고 사람들은 생각했다"
+            ],
+            [
+              "water caused it.",
+              "물이 그렇게 만든다고"
+            ]
+          ]
+        },
+        {
+          "en": "But scientists found that the **nervous system** controls the wrinkles.",
+          "chunks": [
+            [
+              "But scientists found",
+              "하지만 과학자들은 알아냈다"
+            ],
+            [
+              "that the **nervous system**",
+              "신경계가"
+            ],
+            [
+              "controls the wrinkles.",
+              "주름을 조절한다는 것을"
+            ]
+          ]
+        },
+        {
+          "en": "Your nerves make the **blood vessels** under the skin narrower, so the skin folds.",
+          "chunks": [
+            [
+              "Your nerves make",
+              "신경은 만든다"
+            ],
+            [
+              "the **blood vessels** under the skin",
+              "피부 아래 혈관들을"
+            ],
+            [
+              "narrower,",
+              "더 좁게"
+            ],
+            [
+              "so the skin folds.",
+              "그래서 피부가 접힌다"
+            ]
+          ]
+        },
+        {
+          "en": "In 2013, twenty **volunteers** picked up wet marbles before and after a warm **soak**.",
+          "chunks": [
+            [
+              "In 2013,",
+              "2013년에"
+            ],
+            [
+              "twenty **volunteers** picked up wet marbles",
+              "지원자 스무 명이 젖은 구슬을 집었다"
+            ],
+            [
+              "before and after a warm **soak**.",
+              "따뜻한 물에 담그기 전과 후에"
+            ]
+          ]
+        },
+        {
+          "en": "Wrinkled fingers can pick up wet things 12 percent faster, but not dry things.",
+          "chunks": [
+            [
+              "Wrinkled fingers can pick up",
+              "주름진 손가락은 집어 올릴 수 있다"
+            ],
+            [
+              "wet things 12 percent faster,",
+              "젖은 물건을 12퍼센트 더 빨리"
+            ],
+            [
+              "but not dry things.",
+              "하지만 마른 물건은 아니다"
+            ]
+          ]
+        },
+        {
+          "en": "So the folds can help us **grip** things in wet places, like tire patterns.",
+          "chunks": [
+            [
+              "So the folds can help us",
+              "그래서 주름은 우리를 도울 수 있다"
+            ],
+            [
+              "**grip** things in wet places,",
+              "젖은 곳에서 물건을 꽉 쥐도록"
+            ],
+            [
+              "like tire patterns.",
+              "타이어 무늬처럼"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "오래 목욕을 하고 나면 손가락이 주름지는데, 사람들은 물 때문이라고 생각했다.",
+        "하지만 과학자들은 신경계가 그 주름을 조절한다는 것을 알아냈다.",
+        "신경이 피부 아래 혈관을 좁게 만들어서 피부가 접힌다.",
+        "2013년에 지원자 스무 명이 따뜻한 물에 손을 담그기 전과 후에 젖은 구슬을 집어 올렸다.",
+        "주름진 손가락은 젖은 물건을 12퍼센트 더 빨리 집을 수 있지만, 마른 물건은 그렇지 않다.",
+        "그래서 주름은 타이어 무늬처럼 우리가 젖은 곳에서 물건을 꽉 쥐도록 도와줄 수 있다."
+      ]
+    }
+  },
+  "photo_scene": "Close-up of two wet, wrinkled human fingertips holding a small clear glass marble just above a bowl of water, soft morning light from the side.",
+  "source": {
+    "title": "Why Fingers & Toes Get Pruney in Water (Live Science, 2013-01-09)",
+    "url": "https://www.livescience.com/26097-why-fingers-pruney-water.html"
+  }
+}
