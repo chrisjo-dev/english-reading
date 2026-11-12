@@ -234,8 +234,8 @@ jobs:
             if git rebase origin/main; then continue; fi
             # rebase 충돌: 생성 파일만 허용한다 (langs 기반으로 동적 구성)
             _all_langs=$(python -c "import sys; sys.path.insert(0,'tools'); import langs; print(' '.join(langs.LANGS))")
-            _pat='latest\.json|sitemap\.xml|robots\.txt'
-            _add_list='latest.json sitemap.xml robots.txt'
+            _pat='latest\.json|sitemap\.xml|robots\.txt|llms\.txt|rss\.xml'
+            _add_list='latest.json sitemap.xml robots.txt llms.txt rss.xml'
             for _l in $_all_langs; do
               _pat="$_pat|${_l}/index\.html|${_l}/archive/index\.html"
               _add_list="$_add_list ${_l}/index.html ${_l}/archive/index.html"
