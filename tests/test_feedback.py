@@ -24,10 +24,10 @@ def query(href):
 
 class TestFeedback(unittest.TestCase):
     def test_mailto_subject_and_body_round_trip(self):
-        to, q = query(feedback.mailto(feedback.BUG_SUBJECT, feedback.bug_body("https://read.wspace.ai.kr/en/2026-11-03/")))
+        to, q = query(feedback.mailto(feedback.BUG_SUBJECT, feedback.bug_body("https://dokhaehanip.com/en/2026-11-03/")))
         self.assertEqual(to, "wonsang.dev@gmail.com")
         self.assertEqual(q["subject"], "[독해한입] 버그 제보")
-        self.assertIn("페이지: https://read.wspace.ai.kr/en/2026-11-03/\r\n기기: ", q["body"])
+        self.assertIn("페이지: https://dokhaehanip.com/en/2026-11-03/\r\n기기: ", q["body"])
         _, q = query(feedback.mailto(feedback.IDEA_SUBJECT, feedback.idea_body("ja")))
         self.assertEqual(q["subject"], "[독해한입] 기능 건의")
         self.assertTrue(q["body"].endswith("보던 언어: 일본어"))
@@ -52,7 +52,7 @@ class TestFeedback(unittest.TestCase):
             self.assertEqual(once.count(mark), 1, mark)
         self.assertLess(once.index('id="subscribe"'), once.index("<!-- fb -->"))
         self.assertIn('<!-- /fb -->\n<footer class="site-footer">', once)
-        self.assertIn("%ED%8E%98%EC%9D%B4%EC%A7%80%3A%20https%3A%2F%2Fread.wspace.ai.kr%2Fen%2F2026-10-29%2F", once)
+        self.assertIn("%ED%8E%98%EC%9D%B4%EC%A7%80%3A%20https%3A%2F%2Fdokhaehanip.com%2Fen%2F2026-10-29%2F", once)
 
     def test_generated_pages_have_block(self):
         for rel in ("en/2026-11-03/index.html", "ja/archive/index.html", "de/index.html", "en/review/2026-11-01/index.html"):

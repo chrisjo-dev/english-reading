@@ -16,8 +16,8 @@ import publish  # noqa: E402
 # 최소한의 day page HTML — OG/thumb/footer 는 이미 있다고 표시해 patch_page 의 카드 삽입 로직만 테스트한다.
 MINIMAL_PAGE = """<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:image" content="https://read.wspace.ai.kr/en/2026-10-22/thumb.png">
-<title>테스트</title><link rel="canonical" href="https://read.wspace.ai.kr/en/2026-10-22/"><link rel="stylesheet" href="../shared/style.css">
+<meta property="og:image" content="https://dokhaehanip.com/en/2026-10-22/thumb.png">
+<title>테스트</title><link rel="canonical" href="https://dokhaehanip.com/en/2026-10-22/"><link rel="stylesheet" href="../shared/style.css">
 <style>
   .gnb { display: flex; }
 </style>
@@ -249,11 +249,11 @@ class SubHtmlDeTest(unittest.TestCase):
 
 # de 날짜 페이지에 구독 카드를 삽입하는 patch_page 테스트 (noindex=True, email=True)
 MINIMAL_PAGE_DE = MINIMAL_PAGE.replace(
-    '<meta property="og:image" content="https://read.wspace.ai.kr/en/2026-10-22/thumb.png">',
-    '<meta property="og:image" content="https://read.wspace.ai.kr/de/2026-10-28/thumb.png">',
+    '<meta property="og:image" content="https://dokhaehanip.com/en/2026-10-22/thumb.png">',
+    '<meta property="og:image" content="https://dokhaehanip.com/de/2026-10-28/thumb.png">',
 ).replace(
-    '<link rel="canonical" href="https://read.wspace.ai.kr/en/2026-10-22/">',
-    '<link rel="canonical" href="https://read.wspace.ai.kr/de/2026-10-28/">',
+    '<link rel="canonical" href="https://dokhaehanip.com/en/2026-10-22/">',
+    '<link rel="canonical" href="https://dokhaehanip.com/de/2026-10-28/">',
 )
 
 

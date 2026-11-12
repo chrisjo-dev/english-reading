@@ -21,6 +21,7 @@ import gnb  # noqa: E402
 import feedback  # noqa: E402
 import track  # noqa: E402
 import seek  # noqa: E402
+import migrate  # noqa: E402
 from render import LEVEL_SEG, MADE_HTML, date_label, page_title  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -517,6 +518,10 @@ def patch_page(lang, day):
     page = re.sub(r"  \.intro a\.lang-go \{[^}]*\}\n", "", page)
     # 소개 문단 끝 '메일로 받기'도 위 메뉴로 옮겼다
     page = re.sub(r'(<p class="intro">[^<]*?) ?<a href="#subscribe">메일로 받기</a>(</p>)', r"\1\2", page, count=1)
+    # 주소(og:url, og:image, canonical)를 지금 SITE 로 맞춘다(도메인 변경 반영, 멱등)
+    page = re.sub(r'<meta property="og:url" content="[^"]*">', lambda m: f'<meta property="og:url" content="{url}">', page, count=1)
+    page = re.sub(r'(<meta property="og:image" content=")https?://[^/"]+/', lambda m: f"{m.group(1)}{SITE}/", page, count=1)
+    page = re.sub(r'<link rel="canonical" href="[^"]*">', lambda m: f'<link rel="canonical" href="{url}">', page, count=1)
     if 'class="site-footer"' not in page:
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
@@ -640,6 +645,7 @@ def patch_page(lang, day):
         page = page.replace('<link rel="stylesheet" href="https://fonts.googleapis.com', PRECONNECT_JA + '<link rel="stylesheet" href="https://fonts.googleapis.com', 1)
     page = page.replace('<div class="hero"><img src="photo.jpg" width="1200" height="630" alt="">',
                         '<div class="hero"><img src="photo.jpg" width="1200" height="630" alt="" fetchpriority="high">', 1)
+    page = migrate.apply(page)  # 예전 주소의 학습 기록 받기
     path.write_text(page, encoding="utf-8")
 
 
@@ -704,6 +710,7 @@ def rebuild_lists(lang):
                 .replace("__META_DESC__", meta_desc).replace("__CANONICAL__", canonical).replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML)
                 .replace("__LD__", ld).replace("__RSS__", RSS_LINK))
         page = feedback.apply(page, lang, page_url)
+        page = migrate.apply(page)
         if L.get("noindex", False):
             page = page.replace('<link rel="stylesheet"', '<meta name="robots" content="noindex">\n<link rel="stylesheet"', 1)
         out.mkdir(parents=True, exist_ok=True)

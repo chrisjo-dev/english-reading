@@ -108,4 +108,4 @@
    - `::warning`(본문 문장 평균 글자 수가 짧음): 중급 문장을 N3 길이(30~45자)로 다시 씁니다.
    - `::warning`(출처 없이 구체적 수치): 출처를 달거나 수치를 빼고, 학습용으로 지어낸 사례라면 JSON에 `"example": true`를 넣습니다(페이지에 "지어낸 이야기"라고 표시됩니다).
 4. **push**: `git add content/ja/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add ja YYYY-MM-DD: 주제어" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 같은 작성자 줄을 붙이지 마세요. 다른 브랜치로 push하지 마세요. 거절되면 `git pull --rebase origin main` 후 한 번만 다시 push합니다.
-5. **마지막 답변**: 한두 문장과 페이지 주소 `https://read.wspace.ai.kr/ja/YYYY-MM-DD/`, 출처가 있으면 `출처: [페이지 제목](URL)` 한 줄. 소식이나 설명 날에 출처 없이 썼다면 그 이유(검색 실패 등)를 한 줄로 적습니다. 실패했다면 원인을 분명히 적습니다.
+5. **마지막 답변**: 한두 문장과 페이지 주소 `https://dokhaehanip.com/ja/YYYY-MM-DD/`, 출처가 있으면 `출처: [페이지 제목](URL)` 한 줄. 소식이나 설명 날에 출처 없이 썼다면 그 이유(검색 실패 등)를 한 줄로 적습니다. 실패했다면 원인을 분명히 적습니다.

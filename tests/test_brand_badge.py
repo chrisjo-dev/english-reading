@@ -21,7 +21,7 @@ import build_email  # noqa: E402
 import publish      # noqa: E402
 import weekly       # noqa: E402
 
-SITE = "https://read.wspace.ai.kr"
+SITE = "https://dokhaehanip.com"
 BADGE_IMG_PATTERN = re.compile(
     r'<img\s[^>]*src="' + re.escape(f"{SITE}/assets/brand/badge-192.png") + r'"',
     re.I,
@@ -30,8 +30,8 @@ BADGE_IMG_PATTERN = re.compile(
 # patch_page 용 최소 페이지 (inline style 있는 구버전 GNB 브랜드)
 MINIMAL_WITH_INLINE_STYLE = """<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
-<meta property="og:image" content="https://read.wspace.ai.kr/en/2026-10-22/thumb.png">
-<title>테스트</title><link rel="canonical" href="https://read.wspace.ai.kr/en/2026-10-22/">
+<meta property="og:image" content="https://dokhaehanip.com/en/2026-10-22/thumb.png">
+<title>테스트</title><link rel="canonical" href="https://dokhaehanip.com/en/2026-10-22/">
 <link rel="stylesheet" href="../shared/style.css">
 <style>
   .gnb { display: flex; }

@@ -97,10 +97,10 @@
    - `::warning`(fit, 출처, grammar, keywords, 소재 반복, 문장 길이): 해당 필드나 소재를 고쳐 다시 실행합니다. 소재 반복 경고는 같은 소재나 장면일 때만 고치고, 낱말만 겹치면 그대로 둡니다. 출처를 끝내 못 찾았으면 일반 글로 쓰고 `fit`은 그대로 둔 채 마지막 답변에 이유를 적습니다.
 4. **확인 후 되돌리기**: `git checkout -- . && git clean -fd -- de/YYYY-MM-DD`로 생성 파일 삭제, content 파일만 유지.
 5. **push**: `git add content/de/YYYY-MM-DD.json && git -c user.name="chrisjo" -c user.email="wonsang.dev@gmail.com" commit -m "Add de YYYY-MM-DD: 주제어 Refs #9" && git push origin HEAD:main`. 커밋 메시지에 Co-Authored-By 줄 금지.
-6. **마지막 답변**: 한두 문장과 페이지 주소 `https://read.wspace.ai.kr/de/YYYY-MM-DD/`. 실패하면 원인 명시. 소식이나 설명 날에 출처 없이 썼다면 그 이유를 한 줄로 적는다.
+6. **마지막 답변**: 한두 문장과 페이지 주소 `https://dokhaehanip.com/de/YYYY-MM-DD/`. 실패하면 원인 명시. 소식이나 설명 날에 출처 없이 썼다면 그 이유를 한 줄로 적는다.
 
 ## 주의사항
 - 음성(TTS)이 없는 날에는 페이지가 브라우저 내장 SpeechSynthesis(de-DE)로 동작.
 - 이미 발행한 날의 지문 문장을 고치면 그 날짜의 `de/<날짜>/audio/` 음성을 지워 다시 만들게 한다. 음성마다 만든 문장 기록(`.text.json`)이 있으면 바뀐 것만 자동으로 다시 만들지만, 기록이 없는 옛 음성은 그대로 믿기 때문이다.
 - 2026-10-30 공식 공개: `noindex: false`, `email: true`. 검색엔진, 사이트맵, 첫 화면, 언어 탭에 나오고 구독자에게 메일이 간다.
-- 발행 후 페이지 `https://read.wspace.ai.kr/de/YYYY-MM-DD/`를 직접 열어 중급/기초 전환, chunks, 번역 토글을 확인.
+- 발행 후 페이지 `https://dokhaehanip.com/de/YYYY-MM-DD/`를 직접 열어 중급/기초 전환, chunks, 번역 토글을 확인.

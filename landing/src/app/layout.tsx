@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FAQ } from "@/lib/faq";
 import { loadLatest } from "@/lib/reading";
+import { MIGRATE_JS } from "@/lib/migrate";
 import { ALT_NAMES, SAME_AS, SITE } from "@/lib/site";
 import "./globals.css";
 import "./gnb.css";
@@ -87,6 +88,8 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
+        {/* 예전 주소에서 넘어온 학습 기록 받기(id="mig", 지문 페이지와 같은 스크립트) */}
+        <script id="mig" dangerouslySetInnerHTML={{ __html: MIGRATE_JS }} />
         {/* 숨김 상태는 .js 일 때만 적용한다(스크립트 없이도 모든 내용이 보이게). */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />

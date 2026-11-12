@@ -12,7 +12,7 @@
 """
 
 # 사이트 주소. 도메인을 옮길 때는 여기 한 곳만 바꾼다(tools/ 전체가 이 값을 쓴다).
-SITE = "https://read.wspace.ai.kr"
+SITE = "https://dokhaehanip.com"
 
 # 서비스 브랜드명. og:title, 제목, 이메일 수신자 표기 등에 쓴다.
 BRAND = "독해한입"

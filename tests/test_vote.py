@@ -50,9 +50,9 @@ class TestVoteEmail(unittest.TestCase):
         b = build_email.build("en", "2026-10-29", "b")["body"]
         self.assertIn(">10월 29일 목요일</p>", b)
         self.assertIn("오늘은 미래 분야였어요", b)
-        self.assertIn('href="https://read.wspace.ai.kr/en/2026-10-29/?vote=up&amp;from=email#vote"', b)
+        self.assertIn('href="https://dokhaehanip.com/en/2026-10-29/?vote=up&amp;from=email#vote"', b)
         a = build_email.build("en", "2026-10-29", "a")["body"]
-        self.assertTrue(re.search(r'href="https://read\.wspace\.ai\.kr/en/2026-10-29/\?level=a&amp;vote=down&amp;from=email#vote"', a))
+        self.assertTrue(re.search(r'href="https://dokhaehanip\.com/en/2026-10-29/\?level=a&amp;vote=down&amp;from=email#vote"', a))
 
 
 if __name__ == "__main__":

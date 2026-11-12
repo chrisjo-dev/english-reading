@@ -258,7 +258,7 @@ class PrevNextTest(unittest.TestCase):
 class FaqTest(unittest.TestCase):
     Q = "독해한입과 한입독해는 같은 서비스인가요?"
     A = ("네, 같은 서비스예요. 정식 이름은 독해한입이고, 외국어 독해를 하루 한입 크기로 나눠 읽는다는 뜻이에요. "
-         "한입독해, 독해 한입, 영문 Dokhaehanip으로 부르셔도 모두 read.wspace.ai.kr 의 같은 사이트예요.")
+         "한입독해, 독해 한입, 영문 Dokhaehanip으로 부르셔도 모두 dokhaehanip.com 의 같은 사이트예요.")
 
     def test_faq_source_has_question(self):
         src = (ROOT / "landing" / "src" / "lib" / "faq.ts").read_text(encoding="utf-8")

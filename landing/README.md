@@ -1,6 +1,6 @@
 # 첫 화면(랜딩) 소스
 
-read.wspace.ai.kr 첫 화면을 만드는 Next.js 프로젝트다. 정적 빌드한 `index.html`과 `_next/`를 저장소 루트로 복사해 배포한다.
+dokhaehanip.com 첫 화면을 만드는 Next.js 프로젝트다. 정적 빌드한 `index.html`과 `_next/`를 저장소 루트로 복사해 배포한다.
 
 - 빌드할 때 `../content/{en,ja}/*.json`을 읽어 지문 수, 오늘 주제, 첫 문장, 최근 지문을 HTML에 넣는다(검색엔진용).
 - 매일 바뀌는 값은 publish.py가 쓰는 `/latest.json`을 화면이 읽어 갱신한다. 그래서 지문이 올라올 때마다 다시 빌드할 필요는 없다.
