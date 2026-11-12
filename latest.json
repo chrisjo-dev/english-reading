@@ -1,6 +1,6 @@
 {
- "date": "2026-11-12",
- "words_total": 639,
+ "date": "2026-11-13",
+ "words_total": 646,
  "langs": {
   "en": {
    "count": 41,
@@ -101,46 +101,50 @@
    }
   },
   "de": {
-   "count": 16,
-   "latest": "2026-11-12",
-   "topic": "교육 휴가",
+   "count": 17,
+   "latest": "2026-11-13",
+   "topic": "침팬지 울음소리",
    "sentences": [
-    "In fast allen deutschen Bundesländern haben Arbeitnehmer ein Recht auf **Bildungsurlaub**, also auf freie Tage zum Lernen.",
-    "Meistens sind es fünf Arbeitstage pro Jahr, und der Arbeitgeber zahlt den **Lohn** in dieser Zeit ganz normal weiter.",
-    "Man kann die Tage auch über zwei Jahre ansparen und dann zum Beispiel einen ganzen Kurs von zehn Tagen besuchen.",
-    "Damit der Urlaub genehmigt wird, muss die **Weiterbildung** vom Bundesland offiziell **anerkannt** werden, zum Beispiel ein Sprachkurs oder ein berufliches Seminar."
+    "Ein Forschungsteam aus Frankreich und der Elfenbeinküste hat bei wilden **Schimpansen** im Taï-Nationalpark einen besonderen Laut genauer untersucht.",
+    "Der Laut klingt ungefähr so, als ob ein Mensch mit den **Lippen** ein prustendes Geräusch machen würde.",
+    "In den vier wilden Gruppen benutzen die Tiere diesen **Ruf** fast nur, wenn sie sich gegenseitig das **Fell** pflegen.",
+    "Obwohl die jungen **Waisen** in einer **Auffangstation** in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 4분"
    ],
-   "answer": "거의 모든 독일 주에서 근로자는 교육 휴가, 곧 배우기 위해 쉬는 날을 가질 권리가 있습니다.",
+   "answer": "프랑스와 코트디부아르의 한 연구팀이 타이 국립공원의 야생 침팬지들이 내는 특별한 소리를 자세히 연구했습니다.",
    "words": [
     [
-     "Bildungsurlaub",
-     "교육 휴가 (남성 der)"
+     "Schimpanse",
+     "침팬지 (남성 der, 복수 Schimpansen)"
     ],
     [
-     "Lohn",
-     "임금, 급여 (남성 der, 복수 Löhne)"
+     "Lippe",
+     "입술 (여성 die, 복수 Lippen)"
     ],
     [
-     "Weiterbildung",
-     "재교육, 연수 (여성 die)"
+     "Ruf",
+     "울음소리, 부르는 소리 (남성 der, 복수 Rufe)"
     ],
     [
-     "anerkannt",
-     "인정된, 공인된"
+     "Fell",
+     "털, 모피 (중성 das)"
     ],
     [
-     "Antrag",
-     "신청(서) (남성 der, 복수 Anträge)"
+     "Waise",
+     "고아 (여성 die, 복수 Waisen)"
     ],
     [
-     "Kursgebühr",
-     "수강료 (여성 die, 복수 Kursgebühren)"
+     "Auffangstation",
+     "보호 시설 (여성 die)"
+    ],
+    [
+     "Vorbild",
+     "본보기, 모범 (중성 das, 복수 Vorbilder)"
     ]
    ],
    "review": {
@@ -151,6 +155,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-13",
+   "topic": "침팬지 울음소리"
+  },
   {
    "lang": "en",
    "day": "2026-11-12",
@@ -250,11 +259,6 @@
    "lang": "ja",
    "day": "2026-11-06",
    "topic": "고가라시"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-06",
-   "topic": "고슴도치 겨울잠"
   }
  ]
 }

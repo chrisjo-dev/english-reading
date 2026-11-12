@@ -6,7 +6,15 @@
   <atom:link href="https://dokhaehanip.com/rss.xml" rel="self" type="application/rss+xml"/>
   <description>매일 아침 새로 올라오는 영어, 일본어, 독일어 독해 지문</description>
   <language>ko</language>
-  <lastBuildDate>Thu, 12 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Fri, 13 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <item>
+    <title>배워서 쓰는 침팬지의 입술 소리: 독일어 독해 B1~B2, 2026년 11월 13일</title>
+    <link>https://dokhaehanip.com/de/2026-11-13/</link>
+    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-13/</guid>
+    <pubDate>Fri, 13 Nov 2026 07:00:00 +0900</pubDate>
+    <category>독일어</category>
+    <description>B1~B2 독일어 읽기 — 배워서 쓰는 침팬지의 입술 소리. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
+  </item>
   <item>
     <title>물속에서 쪼글쪼글해지는 손가락: 영어 독해 B1~B2, 2026년 11월 12일</title>
     <link>https://dokhaehanip.com/en/2026-11-12/</link>
@@ -238,14 +246,6 @@
     <pubDate>Tue, 03 Nov 2026 07:00:00 +0900</pubDate>
     <category>일본어</category>
     <description>JLPT N3 일본어 읽기 — 일본의 공휴일 '문화의 날'. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
-  </item>
-  <item>
-    <title>초롱 들고 걷는 마르틴 축일: 독일어 독해 B1~B2, 2026년 11월 3일</title>
-    <link>https://dokhaehanip.com/de/2026-11-03/</link>
-    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-03/</guid>
-    <pubDate>Tue, 03 Nov 2026 07:00:00 +0900</pubDate>
-    <category>독일어</category>
-    <description>B1~B2 독일어 읽기 — 초롱 들고 걷는 마르틴 축일. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
   </item>
 </channel>
 </rss>

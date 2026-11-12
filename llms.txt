@@ -4,13 +4,13 @@
 
 - 다른 표기: 한입독해, 독해 한입, Dokhaehanip
 - 이용료: 무료
-- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-12
+- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-13
 - 운영: wspace (https://www.wspace.ai.kr/about/)
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 41편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 40편
-- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 16편
+- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 17편
 
 ## 최근 지문
 - [영어, 2026-11-12, 물속에서 쪼글쪼글해지는 손가락](https://dokhaehanip.com/en/2026-11-12/): 출처 Why Fingers & Toes Get Pruney in Water (Live Science, 2013-01-09)
@@ -27,13 +27,13 @@
 - [일본어, 2026-11-08, 이웃과 함께한 낙엽 청소](https://dokhaehanip.com/ja/2026-11-08/)
 - [일본어, 2026-11-07, 야간버스로 떠난 오사카 여행](https://dokhaehanip.com/ja/2026-11-07/)
 - [일본어, 2026-11-06, 겨울을 알리는 첫 찬바람](https://dokhaehanip.com/ja/2026-11-06/): 출처 東京地方で「木枯らし1号」が吹きました (気象庁 東京管区気象台, 2020-11-04)
+- [독일어, 2026-11-13, 배워서 쓰는 침팬지의 입술 소리](https://dokhaehanip.com/de/2026-11-13/): 출처 Schimpansen lernen, wann sie bestimmte Rufe einsetzen (Max-Planck-Institut für evolutionäre Anthropologie / EurekAlert)
 - [독일어, 2026-11-12, 월급 받으며 배우는 교육 휴가](https://dokhaehanip.com/de/2026-11-12/): 출처 Fünf Tage bezahlte Lernzeit im Jahr: Nimm dir deinen Bildungsurlaub (IG Metall)
 - [독일어, 2026-11-11, 할부와 후불 결제의 새 규칙](https://dokhaehanip.com/de/2026-11-11/): 출처 Buy now, pay later & Kleinkredite: Neue Regeln ab November 2026 (Europäisches Verbraucherzentrum Deutschland)
 - [독일어, 2026-11-10, 11월 11일 11시 11분에 여는 카니발](https://dokhaehanip.com/de/2026-11-10/): 출처 Warum beginnt die Karnevalssaison am 11.11.? (wissen.de)
 - [독일어, 2026-11-09, 언제든 살 수 있는 가족 기차표](https://dokhaehanip.com/de/2026-11-09/): 출처 Angebot der Deutschen Bahn: Das Familienticket kommt zurück – lohnt es sich? (Stiftung Warentest, 2026-10-26)
 - [독일어, 2026-11-08, 첫 서리 내린 날의 타이어 교체](https://dokhaehanip.com/de/2026-11-08/)
 - [독일어, 2026-11-07, 빈 카페하우스에서 보낸 하루](https://dokhaehanip.com/de/2026-11-07/)
-- [독일어, 2026-11-06, 고슴도치의 겨울잠](https://dokhaehanip.com/de/2026-11-06/)
 
 ## 주간 단어 복습
 - [영어 주간 단어 복습, 2026-11-08](https://dokhaehanip.com/en/review/2026-11-08/): 그 주 지문의 주요 단어 49개
