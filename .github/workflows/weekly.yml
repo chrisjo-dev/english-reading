@@ -25,11 +25,16 @@ concurrency:
 permissions:
   contents: write
   pages: write
+  id-token: write   # deploy-pages(OIDC)
 
 jobs:
   weekly:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # deploy-pages 는 github-pages 환경에서 도는 job 에서만 배포할 수 있다.
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -71,6 +76,32 @@ jobs:
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "Weekly review ${{ steps.day.outputs.day }}"
           git push || { git pull --rebase origin main && git push; }
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      # 허용 목록 파일만 artifact 로 올려 배포한다(content/, pool/, tools/ 등은 사이트에 올라가지 않는다).
+      # 배포 뒤에 메일을 보내야 wait_live 가 새 페이지를 본다. 배포가 실패해도(branch 배포로 되돌린 경우 포함) 아래 대체 단계로 이어 간다.
+      - name: Prepare site
+        run: python tools/prepare_site.py
+
+      - uses: actions/configure-pages@v5
+        continue-on-error: true
+
+      - uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
+        with:
+          path: _site
+
+      - name: Deploy pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+
+      - name: Fallback pages build
+        # Actions 배포가 실패하면 branch 배포 빌드를 직접 요청한다(GITHUB_TOKEN push 는 Pages 빌드를 보장하지 않는다).
+        if: steps.deploy.outcome != 'success'
+        run: |
+          echo "::warning::deploy-pages 실패(${{ steps.deploy.outcome }}): branch 배포 빌드를 요청합니다"
           gh api -X POST repos/${{ github.repository }}/pages/builds
         env:
           GH_TOKEN: ${{ github.token }}
