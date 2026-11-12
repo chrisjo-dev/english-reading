@@ -1,0 +1,411 @@
+{
+  "date": "2026-11-13",
+  "category": "tech",
+  "topic": "우주 조립 로봇",
+  "title_ko": "우주에서 혼자 안테나를 조립한 로봇",
+  "headline": "A Robot Builds in Space by Itself",
+  "summary_ko": "로봇이 우주에서 스스로 안테나 구조물을 조립한 소식을 다룬 B1~B2 영어 지문이에요. 연구팀은 하루 약 15분만 로봇과 연락할 수 있었고, 시간이 모자라 전체 틀을 끝내지는 못했어요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-reported-speech"
+    ],
+    "a": [
+      "a-present-perfect"
+    ]
+  },
+  "keywords": [
+    "우주 조립",
+    "안테나",
+    "자율 로봇",
+    "기술 소식"
+  ],
+  "sentences": [
+    {
+      "en": "A robot has **assembled** a structure in space by itself, in a project led by engineers at Caltech.",
+      "b2": false,
+      "chunks": [
+        [
+          "A robot has **assembled**",
+          "로봇이 조립했다"
+        ],
+        [
+          "a structure in space",
+          "우주에서 구조물을"
+        ],
+        [
+          "by itself,",
+          "혼자서"
+        ],
+        [
+          "in a project",
+          "한 프로젝트에서"
+        ],
+        [
+          "led by engineers at Caltech.",
+          "칼텍 엔지니어들이 이끈"
+        ]
+      ]
+    },
+    {
+      "en": "The robot was launched in March, and it picked up parts and joined them to make an **antenna** about 1.4 meters wide.",
+      "b2": false,
+      "chunks": [
+        [
+          "The robot was launched in March,",
+          "그 로봇은 3월에 발사되었다"
+        ],
+        [
+          "and it picked up parts",
+          "그리고 부품을 집어 들었다"
+        ],
+        [
+          "and joined them",
+          "그리고 그것들을 이었다"
+        ],
+        [
+          "to make an **antenna**",
+          "안테나를 만들려고"
+        ],
+        [
+          "about 1.4 meters wide.",
+          "폭이 약 1.4미터인"
+        ]
+      ]
+    },
+    {
+      "en": "The team could **communicate** with the robot for only about 15 minutes a day, and they ran out of time before the full frame was finished.",
+      "b2": true,
+      "chunks": [
+        [
+          "The team could **communicate**",
+          "팀은 연락할 수 있었다"
+        ],
+        [
+          "with the robot",
+          "로봇과"
+        ],
+        [
+          "for only about 15 minutes a day,",
+          "하루에 겨우 약 15분 동안"
+        ],
+        [
+          "and they ran out of time",
+          "그리고 시간이 다 떨어졌다"
+        ],
+        [
+          "before the full frame was finished.",
+          "전체 틀이 완성되기 전에"
+        ]
+      ]
+    },
+    {
+      "en": "Sergio Pellegrino, the project leader, said that this was the first time a structure had been built **autonomously** in space.",
+      "b2": false,
+      "chunks": [
+        [
+          "Sergio Pellegrino,",
+          "세르히오 펠레그리노는"
+        ],
+        [
+          "the project leader,",
+          "프로젝트 책임자인"
+        ],
+        [
+          "said that this was the first time",
+          "이번이 처음이라고 말했다"
+        ],
+        [
+          "a structure had been built",
+          "구조물이 지어진 것이"
+        ],
+        [
+          "**autonomously** in space.",
+          "우주에서 자율적으로"
+        ]
+      ]
+    },
+    {
+      "en": "In the future, similar robots could help build large **solar arrays** for energy and equipment for communication and astronomy.",
+      "b2": false,
+      "chunks": [
+        [
+          "In the future,",
+          "앞으로"
+        ],
+        [
+          "similar robots could help build",
+          "비슷한 로봇들이 짓는 것을 도울 수 있다"
+        ],
+        [
+          "large **solar arrays**",
+          "커다란 태양 전지판을"
+        ],
+        [
+          "for energy",
+          "에너지를 위한"
+        ],
+        [
+          "and equipment",
+          "그리고 장비를"
+        ],
+        [
+          "for communication and astronomy.",
+          "통신과 천문학을 위한"
+        ]
+      ]
+    },
+    {
+      "en": "However, the test was still small, and the much larger structures that researchers **eventually** want, hundreds of meters across, cannot be built yet.",
+      "b2": false,
+      "chunks": [
+        [
+          "However, the test was still small,",
+          "하지만 이번 시험은 아직 작았다"
+        ],
+        [
+          "and the much larger structures",
+          "그리고 훨씬 더 큰 구조물들은"
+        ],
+        [
+          "that researchers **eventually** want,",
+          "연구자들이 결국 원하는"
+        ],
+        [
+          "hundreds of meters across,",
+          "폭이 수백 미터인"
+        ],
+        [
+          "cannot be built yet.",
+          "아직 지을 수 없다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "assembled",
+      "조립했다"
+    ],
+    [
+      "antenna",
+      "안테나"
+    ],
+    [
+      "communicate",
+      "연락하다, 소통하다"
+    ],
+    [
+      "autonomously",
+      "자율적으로"
+    ],
+    [
+      "solar arrays",
+      "태양 전지판"
+    ],
+    [
+      "eventually",
+      "결국, 마침내"
+    ]
+  ],
+  "points": [
+    {
+      "title": "간접화법 said that: 말한 때에 맞춰 시제가 한 칸 뒤로",
+      "body": "`said that this was the first time a structure had been built`는 '이번이 구조물이 지어진 첫 번째라고 말했다'예요. 원래 말은 \"This is the first time a structure has been constructed\"처럼 현재형이었지만, said 뒤로 옮기면서 is는 was로, has been은 had been으로 한 칸씩 과거로 갑니다. 해석할 때는 한국어처럼 '처음이라고 말했다'로 자연스럽게 옮기면 돼요."
+    },
+    {
+      "title": "ran out of time: 시간이 다 떨어지다",
+      "body": "`they ran out of time before the full frame was finished`는 '전체 틀이 완성되기 전에 시간이 다 떨어졌다'예요. run out of + 명사는 '~이 다 떨어지다, 바닥나다'라는 숙어입니다. 그래서 이번 시험에서 틀은 끝까지 완성되지 못했다는 뜻이에요. `before ... was finished`의 수동태도 함께 보세요."
+    }
+  ],
+  "answers": [
+    "칼텍 엔지니어들이 이끈 한 프로젝트에서, 로봇이 우주에서 혼자 힘으로 구조물을 조립했다.",
+    "그 로봇은 3월에 발사되었고, 부품을 집어 이어 붙여 폭이 약 1.4미터인 안테나를 만들었다.",
+    "팀은 하루에 겨우 약 15분 동안만 로봇과 연락할 수 있었고, 전체 틀이 완성되기 전에 시간이 다 떨어졌다.",
+    "프로젝트 책임자인 세르히오 펠레그리노는 우주에서 구조물이 자율적으로 지어진 것은 이번이 처음이라고 말했다.",
+    "앞으로 비슷한 로봇들이 에너지를 위한 커다란 태양 전지판과 통신과 천문학을 위한 장비를 짓는 데 도움을 줄 수 있다.",
+    "하지만 이번 시험은 아직 작은 규모였고, 연구자들이 결국 원하는 폭 수백 미터의 훨씬 더 큰 구조물은 아직 지을 수 없다."
+  ],
+  "advanced": [
+    {
+      "word": "construct",
+      "meaning": "건설하다, 짓다",
+      "confuse": "constrict(조이다)와 혼동 주의",
+      "example": "The robot **constructed** an antenna frame in space.",
+      "example_ko": "그 로봇은 우주에서 안테나 틀을 지었습니다."
+    },
+    {
+      "word": "component",
+      "meaning": "부품, 구성 요소",
+      "confuse": null,
+      "example": "It picked up each **component** and joined it to the others.",
+      "example_ko": "로봇은 부품을 하나씩 집어 다른 부품에 이었습니다."
+    },
+    {
+      "word": "unprecedented",
+      "meaning": "전례 없는",
+      "confuse": null,
+      "example": "Building a structure in space without human hands was **unprecedented**.",
+      "example_ko": "사람 손 없이 우주에서 구조물을 짓는 것은 전례 없는 일이었습니다."
+    },
+    {
+      "word": "intermittent",
+      "meaning": "간헐적인",
+      "confuse": null,
+      "example": "Contact with the robot was **intermittent**, only about 15 minutes a day.",
+      "example_ko": "로봇과의 연락은 하루 약 15분뿐인 간헐적인 것이었습니다."
+    },
+    {
+      "word": "milestone",
+      "meaning": "이정표, 획기적인 단계",
+      "confuse": null,
+      "example": "The small antenna was an important **milestone** for building in space.",
+      "example_ko": "그 작은 안테나는 우주 건설의 중요한 이정표였습니다."
+    },
+    {
+      "word": "feasible",
+      "meaning": "실현 가능한",
+      "confuse": null,
+      "example": "Structures hundreds of meters across are not yet **feasible**.",
+      "example_ko": "폭이 수백 미터인 구조물은 아직 실현 가능하지 않습니다."
+    },
+    {
+      "word": "ambitious",
+      "meaning": "야심 찬",
+      "confuse": null,
+      "example": "Researchers have **ambitious** plans for much larger structures.",
+      "example_ko": "연구자들은 훨씬 더 큰 구조물에 대한 야심 찬 계획을 갖고 있습니다."
+    }
+  ],
+  "source": {
+    "title": "A robot just built a structure autonomously in space for the 1st time ever (Space.com, 2026-11-10)",
+    "url": "https://space.com/technology/a-robot-just-built-a-structure-autonomously-in-space-for-the-1st-time-ever"
+  },
+  "photo_scene": "Close-up of a white robotic arm holding a thin dark tube beside a shiny gold film panel in space, the blue curve of Earth softly blurred behind, bright direct sunlight.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "A robot has **assembled** a structure in space by itself.",
+          "chunks": [
+            [
+              "A robot has **assembled**",
+              "로봇이 조립했다"
+            ],
+            [
+              "a structure in space",
+              "우주에서 구조물을"
+            ],
+            [
+              "by itself.",
+              "혼자서"
+            ]
+          ]
+        },
+        {
+          "en": "It was launched in March and built an **antenna** about 1.4 meters wide.",
+          "chunks": [
+            [
+              "It was launched in March",
+              "그것은 3월에 발사되었다"
+            ],
+            [
+              "and built an **antenna**",
+              "그리고 안테나를 만들었다"
+            ],
+            [
+              "about 1.4 meters wide.",
+              "폭이 약 1.4미터인"
+            ]
+          ]
+        },
+        {
+          "en": "The team could **communicate** with it for only about 15 minutes a day.",
+          "chunks": [
+            [
+              "The team could **communicate**",
+              "팀은 연락할 수 있었다"
+            ],
+            [
+              "with it",
+              "그것과"
+            ],
+            [
+              "for only about 15 minutes a day.",
+              "하루에 겨우 약 15분 동안"
+            ]
+          ]
+        },
+        {
+          "en": "The project leader said it was the first structure built **autonomously** in space.",
+          "chunks": [
+            [
+              "The project leader said",
+              "프로젝트 책임자는 말했다"
+            ],
+            [
+              "it was the first structure",
+              "그것이 첫 구조물이라고"
+            ],
+            [
+              "built **autonomously** in space.",
+              "우주에서 자율적으로 지어진"
+            ]
+          ]
+        },
+        {
+          "en": "Robots like this could help build big **solar arrays** in the future.",
+          "chunks": [
+            [
+              "Robots like this",
+              "이런 로봇들이"
+            ],
+            [
+              "could help build",
+              "짓는 것을 도울 수 있다"
+            ],
+            [
+              "big **solar arrays**",
+              "큰 태양 전지판을"
+            ],
+            [
+              "in the future.",
+              "앞으로"
+            ]
+          ]
+        },
+        {
+          "en": "Researchers **eventually** want much bigger structures, but that is not possible yet.",
+          "chunks": [
+            [
+              "Researchers **eventually** want",
+              "연구자들은 결국 원한다"
+            ],
+            [
+              "much bigger structures,",
+              "훨씬 더 큰 구조물을"
+            ],
+            [
+              "but that is not possible yet.",
+              "하지만 그것은 아직 가능하지 않다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "로봇이 우주에서 혼자 힘으로 구조물을 조립했다.",
+        "그 로봇은 3월에 발사되었고 폭이 약 1.4미터인 안테나를 만들었다.",
+        "팀은 하루에 겨우 약 15분 동안만 로봇과 연락할 수 있었다.",
+        "프로젝트 책임자는 그것이 우주에서 자율적으로 지어진 첫 구조물이라고 말했다.",
+        "앞으로 이런 로봇들이 큰 태양 전지판을 짓는 데 도움을 줄 수 있다.",
+        "연구자들은 결국 훨씬 더 큰 구조물을 원하지만, 그것은 아직 가능하지 않다."
+      ]
+    }
+  }
+}
