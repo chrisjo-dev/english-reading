@@ -8,42 +8,42 @@
 - 운영: wspace (https://www.wspace.ai.kr/about/)
 
 ## 언어별 지문
-- [영어 지문 목록](https://read.wspace.ai.kr/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 41편
-- [일본어 지문 목록](https://read.wspace.ai.kr/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 40편
-- [독일어 지문 목록](https://read.wspace.ai.kr/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 16편
+- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 41편
+- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 40편
+- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 16편
 
 ## 최근 지문
-- [영어, 2026-11-12, 물속에서 쪼글쪼글해지는 손가락](https://read.wspace.ai.kr/en/2026-11-12/): 출처 Why Fingers & Toes Get Pruney in Water (Live Science, 2013-01-09)
-- [영어, 2026-11-11, 빈 땅에 새로 생긴 동네 공원](https://read.wspace.ai.kr/en/2026-11-11/): 출처 Ground breaks on new neighborhood greenspace in northeast Dallas (CultureMap Dallas, 2025-10-10)
-- [영어, 2026-11-10, 불 없이 냄비를 데우는 인덕션](https://read.wspace.ai.kr/en/2026-11-10/): 출처 How do induction stoves work? (NOVA | PBS, 2023-03-07)
-- [영어, 2026-11-09, 22년 만에 지구로 돌아온 우주 망원경](https://read.wspace.ai.kr/en/2026-11-09/): 출처 NASA's Swift telescope falls to Earth after nearly 22 years in space (ScienceDaily, 2026-11-06)
-- [영어, 2026-11-08, 회사에서 연 포틀럭 점심](https://read.wspace.ai.kr/en/2026-11-08/)
-- [영어, 2026-11-07, 처음 가 본 동네 빨래방](https://read.wspace.ai.kr/en/2026-11-07/)
-- [영어, 2026-11-06, 왼손을 오른쪽 뇌가 맡는 이유](https://read.wspace.ai.kr/en/2026-11-06/): 출처 Scientists may have finally explained why our brains and bodies are cross-wired (ScienceDaily, 2026-11-04)
-- [일본어, 2026-11-12, 1년에 5일은 꼭 쉬는 유급휴가](https://read.wspace.ai.kr/ja/2026-11-12/): 출처 10月は「年次有給休暇取得促進期間」です (厚生労働省)
-- [일본어, 2026-11-11, 쓰루기산 꼭대기에 내린 첫눈](https://read.wspace.ai.kr/ja/2026-11-11/): 출처 剣山の山頂付近で初雪を確認 徳島 (NHKニュース, 2026-11-10)
-- [일본어, 2026-11-10, 아이의 성장을 비는 시치고산](https://read.wspace.ai.kr/ja/2026-11-10/): 출처 七五三 (意外に知らない「ニッポン入門」, nippon.com)
-- [일본어, 2026-11-09, 요코하마 중구의 동네 활동 축제](https://read.wspace.ai.kr/ja/2026-11-09/): 출처 なか区民活動センターまつり2026 (横浜市, 2026-10-16)
-- [일본어, 2026-11-08, 이웃과 함께한 낙엽 청소](https://read.wspace.ai.kr/ja/2026-11-08/)
-- [일본어, 2026-11-07, 야간버스로 떠난 오사카 여행](https://read.wspace.ai.kr/ja/2026-11-07/)
-- [일본어, 2026-11-06, 겨울을 알리는 첫 찬바람](https://read.wspace.ai.kr/ja/2026-11-06/): 출처 東京地方で「木枯らし1号」が吹きました (気象庁 東京管区気象台, 2020-11-04)
-- [독일어, 2026-11-12, 월급 받으며 배우는 교육 휴가](https://read.wspace.ai.kr/de/2026-11-12/): 출처 Fünf Tage bezahlte Lernzeit im Jahr: Nimm dir deinen Bildungsurlaub (IG Metall)
-- [독일어, 2026-11-11, 할부와 후불 결제의 새 규칙](https://read.wspace.ai.kr/de/2026-11-11/): 출처 Buy now, pay later & Kleinkredite: Neue Regeln ab November 2026 (Europäisches Verbraucherzentrum Deutschland)
-- [독일어, 2026-11-10, 11월 11일 11시 11분에 여는 카니발](https://read.wspace.ai.kr/de/2026-11-10/): 출처 Warum beginnt die Karnevalssaison am 11.11.? (wissen.de)
-- [독일어, 2026-11-09, 언제든 살 수 있는 가족 기차표](https://read.wspace.ai.kr/de/2026-11-09/): 출처 Angebot der Deutschen Bahn: Das Familienticket kommt zurück – lohnt es sich? (Stiftung Warentest, 2026-10-26)
-- [독일어, 2026-11-08, 첫 서리 내린 날의 타이어 교체](https://read.wspace.ai.kr/de/2026-11-08/)
-- [독일어, 2026-11-07, 빈 카페하우스에서 보낸 하루](https://read.wspace.ai.kr/de/2026-11-07/)
-- [독일어, 2026-11-06, 고슴도치의 겨울잠](https://read.wspace.ai.kr/de/2026-11-06/)
+- [영어, 2026-11-12, 물속에서 쪼글쪼글해지는 손가락](https://dokhaehanip.com/en/2026-11-12/): 출처 Why Fingers & Toes Get Pruney in Water (Live Science, 2013-01-09)
+- [영어, 2026-11-11, 빈 땅에 새로 생긴 동네 공원](https://dokhaehanip.com/en/2026-11-11/): 출처 Ground breaks on new neighborhood greenspace in northeast Dallas (CultureMap Dallas, 2025-10-10)
+- [영어, 2026-11-10, 불 없이 냄비를 데우는 인덕션](https://dokhaehanip.com/en/2026-11-10/): 출처 How do induction stoves work? (NOVA | PBS, 2023-03-07)
+- [영어, 2026-11-09, 22년 만에 지구로 돌아온 우주 망원경](https://dokhaehanip.com/en/2026-11-09/): 출처 NASA's Swift telescope falls to Earth after nearly 22 years in space (ScienceDaily, 2026-11-06)
+- [영어, 2026-11-08, 회사에서 연 포틀럭 점심](https://dokhaehanip.com/en/2026-11-08/)
+- [영어, 2026-11-07, 처음 가 본 동네 빨래방](https://dokhaehanip.com/en/2026-11-07/)
+- [영어, 2026-11-06, 왼손을 오른쪽 뇌가 맡는 이유](https://dokhaehanip.com/en/2026-11-06/): 출처 Scientists may have finally explained why our brains and bodies are cross-wired (ScienceDaily, 2026-11-04)
+- [일본어, 2026-11-12, 1년에 5일은 꼭 쉬는 유급휴가](https://dokhaehanip.com/ja/2026-11-12/): 출처 10月は「年次有給休暇取得促進期間」です (厚生労働省)
+- [일본어, 2026-11-11, 쓰루기산 꼭대기에 내린 첫눈](https://dokhaehanip.com/ja/2026-11-11/): 출처 剣山の山頂付近で初雪を確認 徳島 (NHKニュース, 2026-11-10)
+- [일본어, 2026-11-10, 아이의 성장을 비는 시치고산](https://dokhaehanip.com/ja/2026-11-10/): 출처 七五三 (意外に知らない「ニッポン入門」, nippon.com)
+- [일본어, 2026-11-09, 요코하마 중구의 동네 활동 축제](https://dokhaehanip.com/ja/2026-11-09/): 출처 なか区民活動センターまつり2026 (横浜市, 2026-10-16)
+- [일본어, 2026-11-08, 이웃과 함께한 낙엽 청소](https://dokhaehanip.com/ja/2026-11-08/)
+- [일본어, 2026-11-07, 야간버스로 떠난 오사카 여행](https://dokhaehanip.com/ja/2026-11-07/)
+- [일본어, 2026-11-06, 겨울을 알리는 첫 찬바람](https://dokhaehanip.com/ja/2026-11-06/): 출처 東京地方で「木枯らし1号」が吹きました (気象庁 東京管区気象台, 2020-11-04)
+- [독일어, 2026-11-12, 월급 받으며 배우는 교육 휴가](https://dokhaehanip.com/de/2026-11-12/): 출처 Fünf Tage bezahlte Lernzeit im Jahr: Nimm dir deinen Bildungsurlaub (IG Metall)
+- [독일어, 2026-11-11, 할부와 후불 결제의 새 규칙](https://dokhaehanip.com/de/2026-11-11/): 출처 Buy now, pay later & Kleinkredite: Neue Regeln ab November 2026 (Europäisches Verbraucherzentrum Deutschland)
+- [독일어, 2026-11-10, 11월 11일 11시 11분에 여는 카니발](https://dokhaehanip.com/de/2026-11-10/): 출처 Warum beginnt die Karnevalssaison am 11.11.? (wissen.de)
+- [독일어, 2026-11-09, 언제든 살 수 있는 가족 기차표](https://dokhaehanip.com/de/2026-11-09/): 출처 Angebot der Deutschen Bahn: Das Familienticket kommt zurück – lohnt es sich? (Stiftung Warentest, 2026-10-26)
+- [독일어, 2026-11-08, 첫 서리 내린 날의 타이어 교체](https://dokhaehanip.com/de/2026-11-08/)
+- [독일어, 2026-11-07, 빈 카페하우스에서 보낸 하루](https://dokhaehanip.com/de/2026-11-07/)
+- [독일어, 2026-11-06, 고슴도치의 겨울잠](https://dokhaehanip.com/de/2026-11-06/)
 
 ## 주간 단어 복습
-- [영어 주간 단어 복습, 2026-11-08](https://read.wspace.ai.kr/en/review/2026-11-08/): 그 주 지문의 주요 단어 49개
-- [일본어 주간 단어 복습, 2026-11-08](https://read.wspace.ai.kr/ja/review/2026-11-08/): 그 주 지문의 주요 단어 46개
-- [독일어 주간 단어 복습, 2026-11-08](https://read.wspace.ai.kr/de/review/2026-11-08/): 그 주 지문의 주요 단어 46개
+- [영어 주간 단어 복습, 2026-11-08](https://dokhaehanip.com/en/review/2026-11-08/): 그 주 지문의 주요 단어 49개
+- [일본어 주간 단어 복습, 2026-11-08](https://dokhaehanip.com/ja/review/2026-11-08/): 그 주 지문의 주요 단어 46개
+- [독일어 주간 단어 복습, 2026-11-08](https://dokhaehanip.com/de/review/2026-11-08/): 그 주 지문의 주요 단어 46개
 
 ## 이용 방법
-- [첫 화면과 자주 묻는 질문](https://read.wspace.ai.kr/): 구독 방법, 수준 안내
+- [첫 화면과 자주 묻는 질문](https://dokhaehanip.com/): 구독 방법, 수준 안내
 
 ## Optional
-- [사이트맵](https://read.wspace.ai.kr/sitemap.xml)
-- [새 지문 피드(RSS)](https://read.wspace.ai.kr/rss.xml)
+- [사이트맵](https://dokhaehanip.com/sitemap.xml)
+- [새 지문 피드(RSS)](https://dokhaehanip.com/rss.xml)
 - [개인정보처리방침](https://www.wspace.ai.kr/privacy/)

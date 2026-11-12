@@ -2,6 +2,6 @@ User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
-Sitemap: https://read.wspace.ai.kr/sitemap.xml
-Sitemap: https://read.wspace.ai.kr/rss.xml
-# llms.txt: https://read.wspace.ai.kr/llms.txt
+Sitemap: https://dokhaehanip.com/sitemap.xml
+Sitemap: https://dokhaehanip.com/rss.xml
+# llms.txt: https://dokhaehanip.com/llms.txt
