@@ -43,7 +43,7 @@
   }
   main { max-width: 560px; margin: 0 auto; padding: 0 0 calc(24px + env(safe-area-inset-bottom)); }
   .top { background: var(--card); padding: 28px 20px 24px; border-radius: var(--card-r); margin: 12px 12px 0; box-shadow: var(--card-sh); }
-  .date { font-size: 14px; font-weight: 600; color: var(--muted); }
+  .date { display: block; font-size: 14px; font-weight: 600; color: var(--muted); }
   h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 14px; letter-spacing: -0.03em; }
   h1 em { font-style: normal; color: var(--blue); }
   .top h1 { padding-right: 84px; }  /* 오른쪽 위 썸네일(76px)과 긴 제목이 겹치지 않게 */
@@ -363,6 +363,22 @@
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
   /* /drill-css */
+  /* pn-css */
+  .pn .pn-h { font-size: 17px; margin: 0 0 12px; }
+  .pn-i { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid #e5e8eb; color: inherit; text-decoration: none; }
+  .pn-h + .pn-i { border-top: 0; padding-top: 0; }
+  .pn-i img { width: 76px; height: 76px; border-radius: 12px; object-fit: cover; flex: none; background: var(--bg); }
+  .pn-t { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; min-width: 0; }
+  .pn-d { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .pn-d b { color: var(--sub); font-weight: 600; }
+  .pn-n { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+  .pn .cat { margin-left: 0; }
+  .pn-wait .pn-n { color: var(--muted); font-weight: 600; font-size: 15px; }
+  .pn-ic { width: 76px; height: 52px; border-radius: 12px; background: var(--bg); color: var(--muted); display: flex; align-items: center; justify-content: center; flex: none; }
+  .pn-all { display: flex; align-items: center; justify-content: center; gap: 2px; height: 48px; margin-top: 12px; border-radius: 12px; background: var(--bg); font-size: 15px; font-weight: 700; color: var(--sub); text-decoration: none; }
+  .pn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .pn-ic svg { width: 22px; height: 22px; }
+  /* /pn-css */
   .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
   /* gnb-a */
   .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -451,6 +467,7 @@
   }
   /* /day-a */
   .src { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+  .made { font-size: 13px; color: var(--muted); margin: 4px 0 0; line-height: 1.6; }
   .src a { color: var(--sub); }
   /* 끊어 읽기(영어만): 문장을 의미 덩어리로 나눠 보여 준다. 덩어리 뜻은 해석과 같은 규칙으로 열린다.
      해석 보기를 켜거나 문장을 누르면 그 문장의 .ko 가 열리고, 끊어 읽기 중에는 문장 해석 대신 덩어리 뜻을 보여 준다. */
@@ -545,7 +562,7 @@
 <!-- /drill-due -->
   <div class="top">
     <div class="hero"><img src="photo.jpg" width="1200" height="630" alt="" fetchpriority="high"></div>
-    <div class="date">10월 28일 수요일 <span class="cat cat-society">사회</span></div>
+    <time class="date" datetime="2026-10-28">2026년 10월 28일 수요일 <span class="cat cat-society">사회</span></time>
     <h1>오늘은 <em>나라에서 감을 나눠 준 '감의 날'</em> 이야기예요</h1>
     <p class="headline" lang="ja"><ruby>柿<rp>(</rp><rt>かき</rt><rp>)</rp></ruby>の<ruby>日<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby></p>
     <div class="chips">
@@ -554,7 +571,7 @@
       <span class="chip">N4 1문장</span>
       <span class="chip">약 3분</span>
     </div>
-    <p class="intro">매일 아침 새로 올라오는 JLPT N3(기초 N4~N5) 일본어 읽기예요. 듣고, 해석하고, AI에게 피드백을 받아 보세요.</p>
+    <p class="intro">매일 아침 새로 올라오는 JLPT N3(기초 N4~N5) 일본어 읽기예요. 출처: NHK やさしいことばニュース via NHK Easier(2026년 10월 27일 기사). 듣고, 해석하고, AI에게 피드백을 받아 보세요.</p>
   </div>
 
   <section class="card" id="passage">
@@ -574,6 +591,7 @@
     <div class="sent"><button class="no" type="button" data-i="5" aria-label="6번 문장 듣기">6</button><div class="say"><div class="en" lang="ja"><ruby>柿<rp>(</rp><rt>かき</rt><rp>)</rp></ruby>をもらって、「<ruby>秋<rp>(</rp><rt>あき</rt><rp>)</rp></ruby>が<ruby>来<rp>(</rp><rt>き</rt><rp>)</rp></ruby>ました」と<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>う<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>もいました。</div><div class="ko" hidden>감을 받고 '가을이 왔네요'라고 말하는 사람도 있었습니다.</div></div></div>
     <p class="hint"><span id="hinttext">번호를 누르면 그 문장이 들리고, 문장을 누르면 그 문장 해석만 보여요. 먼저 읽어 본 다음에 눌러 보세요.</span></p>
     <p class="src">출처: <a href="https://nhkeasier.com/story/10068/" target="_blank" rel="noopener">10月26日は「柿の日」 奈良県のJAが柿を無料で配った (NHK やさしいことばニュース via NHK Easier, 2026-10-27)</a></p>
+    <p class="made">AI 도구로 초안을 쓰고 자동 검사를 거쳐 올린 학습용 글이에요.</p>
     <div class="mine">
       <label for="mine">내 해석</label>
       <textarea id="mine" placeholder="1. &#10;2. &#10;3. &#10;4. &#10;5. &#10;6. " spellcheck="false"></textarea>
@@ -676,6 +694,12 @@
     <button class="sp" id="pbar-sp" type="button">1.0x</button>
     <button class="pbar-close" id="pbar-close" type="button" aria-label="닫기">&#x2715;</button>
   </div>
+  <nav class="card pn" aria-label="이전, 다음 지문">
+    <h2 class="pn-h">다른 날 지문</h2>
+    <a class="pn-i" href="../2026-10-27/"><img src="../2026-10-27/thumb-sq.jpg" width="76" height="76" alt="" loading="lazy" decoding="async"><span class="pn-t"><span class="pn-d">이전 지문 <b>2026년 10월 27일 화요일</b></span><span class="pn-n">가을의 군고구마</span><span class="cat cat-culture">일상과 문화</span></span></a>
+    <a class="pn-i" href="../2026-10-29/"><img src="../2026-10-29/thumb-sq.jpg" width="76" height="76" alt="" loading="lazy" decoding="async"><span class="pn-t"><span class="pn-d">다음 지문 <b>2026년 10월 29일 목요일</b></span><span class="pn-n">금요일에는 집에서 일하는 회사</span><span class="cat cat-society">사회</span></span></a>
+    <a class="pn-all" href="../archive/">일본어 지난 지문 전체 보기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+  </nav>
   <section class="card sub" id="subscribe" data-v="3">
     <h2>매일 아침 일본어 지문 받기</h2>
     <p>새 일본어 지문이 올라오면 아침에 메일로 보내 드려요.</p>
