@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://read.wspace.ai.kr/sitemap.xml
+Sitemap: https://read.wspace.ai.kr/rss.xml
+# llms.txt: https://read.wspace.ai.kr/llms.txt
