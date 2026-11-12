@@ -56,10 +56,10 @@ def esc(s):
 
 def page_title(lang, day, topic):
     """지문 날짜 페이지 <title> 과 og:title 문구(이스케이프 전). 주제, 언어와 수준, 연도까지 넣어 검색 결과에서 무슨 글인지 보이게 한다.
-    예: "물속에서 쪼글쪼글해지는 손가락 영어 독해 B1~B2, 2026년 11월 12일 | 독해한입". publish.patch_page 가 지난 페이지도 같은 문구로 맞춘다."""
+    예: "물속에서 쪼글쪼글해지는 손가락: 영어 독해 B1~B2, 2026년 11월 12일 | 독해한입". publish.patch_page 가 지난 페이지도 같은 문구로 맞춘다."""
     L = langs.get(lang)
     d = dt.date.fromisoformat(day)
-    head = f"{topic} " if topic else ""
+    head = f"{topic}: " if topic else ""
     return f"{head}{L['name']} 독해 {langs.level_on(lang, day)}, {d.year}년 {d.month}월 {d.day}일 | {langs.BRAND}"
 
 

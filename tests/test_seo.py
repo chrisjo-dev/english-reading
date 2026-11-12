@@ -50,7 +50,7 @@ class ReadingPageTest(unittest.TestCase):
 
     def test_title_has_topic_level_and_year(self):
         page, c = self.patched("en", "2026-11-12")
-        title = f"{c['title_ko']} 영어 독해 B1~B2, 2026년 11월 12일 | 독해한입"
+        title = f"{c['title_ko']}: 영어 독해 B1~B2, 2026년 11월 12일 | 독해한입"
         self.assertIn(f"<title>{title}</title>", page)
         self.assertIn(f'<meta property="og:title" content="{title}">', page)
         self.assertEqual(page.count("<title>"), 1)

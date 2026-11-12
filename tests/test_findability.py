@@ -68,7 +68,7 @@ class TestFindability(unittest.TestCase):
             with mock.patch.object(publish, "ROOT", tmp):
                 publish.patch_page("de", day)
             out = (tmp / "de" / day / "index.html").read_text(encoding="utf-8")
-            self.assertRegex(out, r"<title>[^<]+ 독일어 독해 B1~B2, 2026년 10월 28일 \| 독해한입</title>")
+            self.assertRegex(out, r"<title>[^<]+: 독일어 독해 B1~B2, 2026년 10월 28일 \| 독해한입</title>")
             self.assertNotIn("오늘의", out[:out.index("</title>")])
             self.assertNotIn('name="robots" content="noindex"', out)
         finally:
