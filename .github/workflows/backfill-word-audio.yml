@@ -108,6 +108,8 @@ jobs:
       # 허용 목록 파일만 artifact 로 올려 배포한다(content/, pool/, tools/ 등은 사이트에 올라가지 않는다).
       # 배포 뒤에 메일을 보내야 wait_live 가 새 페이지를 본다. 배포가 실패해도(branch 배포로 되돌린 경우 포함) 아래 대체 단계로 이어 간다.
       - name: Prepare site
+        # 실패해도 메일은 보낸다: 업로드와 배포가 건너뛰어지고 아래 대체 빌드가 돈다
+        continue-on-error: true
         run: python tools/prepare_site.py
 
       - uses: actions/configure-pages@v5
