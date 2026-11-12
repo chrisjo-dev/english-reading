@@ -44,7 +44,7 @@ OLD_CARD = (
     '  <section class="card sub" id="subscribe">\n'
     '    <h2>매일 아침 영어 지문 받기</h2>\n'
     '    <p>새 영어 지문이 올라오면 아침에 메일로 보내 드려요.</p>\n'
-    '    <form action="https://buttondown.com/api/emails/embed-subscribe/english-reading" method="post" target="_blank">\n'
+    '    <form action="https://buttondown.com/api/emails/embed-subscribe/dokhaehanip" method="post" target="_blank">\n'
     '      <input type="hidden" name="metadata__lang" value="en">\n'
     '      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">\n'
     '      <button type="submit">구독하기</button>\n'

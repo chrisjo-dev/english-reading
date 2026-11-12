@@ -26,7 +26,7 @@ from render import LEVEL_SEG, MADE_HTML, date_label, page_title  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = langs.SITE
-SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/english-reading"
+SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/dokhaehanip"
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 DAYS = "월화수목금토일"
 
@@ -522,6 +522,8 @@ def patch_page(lang, day):
     page = re.sub(r'<meta property="og:url" content="[^"]*">', lambda m: f'<meta property="og:url" content="{url}">', page, count=1)
     page = re.sub(r'(<meta property="og:image" content=")https?://[^/"]+/', lambda m: f"{m.group(1)}{SITE}/", page, count=1)
     page = re.sub(r'<link rel="canonical" href="[^"]*">', lambda m: f'<link rel="canonical" href="{url}">', page, count=1)
+    # 구독 폼 주소도 지금 Buttondown 계정 주소로 맞춘다(계정 이름을 바꾼 뒤 지난 페이지 반영)
+    page = re.sub(r'https://buttondown\.com/api/emails/embed-subscribe/[A-Za-z0-9_-]+', SUBSCRIBE, page)
     if 'class="site-footer"' not in page:
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)

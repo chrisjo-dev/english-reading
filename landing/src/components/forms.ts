@@ -1,4 +1,4 @@
-export const SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/english-reading";
+export const SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/dokhaehanip";
 
 // 구독 직후 받는 확인 메일 안내. 첫 화면 폼과 구독 섹션에 같은 문장을 쓴다.
 export const CONFIRM_NOTE =
