@@ -21,7 +21,7 @@ import gnb  # noqa: E402
 import feedback  # noqa: E402
 import track  # noqa: E402
 import seek  # noqa: E402
-from render import LEVEL_SEG, page_title  # noqa: E402
+from render import LEVEL_SEG, MADE_HTML, date_label, page_title  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = langs.SITE
@@ -201,8 +201,116 @@ LEVEL_A_CSS = [
 
 
 def label(day):
-    d = dt.date.fromisoformat(day)
-    return f"{d.month}월 {d.day}일 {DAYS[d.weekday()]}요일"
+    return date_label(day)
+
+
+# 화면 날짜(시안 design/seo-ui S04): 예전 <div class="date">11월 12일 목요일</div> 를
+# <time class="date" datetime="2026-11-12">2026년 11월 12일 목요일</time> 로. 분야 배지는 그대로 둔다(여러 번 돌려도 같다)
+DATE_TAG_RE = re.compile(r'<(div|time) class="date"[^>]*>[^<]*?((?: ?<span class="cat[^"]*">[^<]*</span>)?)</\1>')
+DATE_CSS_OLD = "  .date { font-size: 14px;"
+DATE_CSS_NEW = "  .date { display: block; font-size: 14px;"
+MADE_CSS = "  .made { font-size: 13px; color: var(--muted); margin: 4px 0 0; line-height: 1.6; }\n"
+SRC_RE = re.compile(r'( *<p class="src">.*?</p>\n)', re.S)
+# 출처 제목 끝 괄호 "(매체, YYYY-MM-DD)", "(매체)", "(꼭지 이름, 매체)"
+SRC_TAIL_RE = re.compile(r"\(([^()]+)\)\s*$")
+INTRO_SRC_RE = re.compile(r'(<p class="intro">[^<]*?예요\.)(?: 출처: [^<]*?)?( 듣고, 해석하고)')
+
+
+def date_tag(page, day):
+    return DATE_TAG_RE.sub(lambda m: f'<time class="date" datetime="{day}">{date_label(day)}{m.group(2)}</time>', page, count=1)
+
+
+def source_phrase(c):
+    """소개 문단에 덧붙일 출처 매체 한 마디(시안 S03 B): "출처: Live Science(2013년 1월 9일 기사)." 출처가 없거나 매체를 못 읽으면 빈 문자열."""
+    m = SRC_TAIL_RE.search(((c.get("source") or {}).get("title") or ""))
+    if not m:
+        return ""
+    parts = [p.strip() for p in m.group(1).split(",")]
+    day = parts.pop() if len(parts) > 1 and DATE_RE.fullmatch(parts[-1]) else None
+    medium = parts[-1]
+    if not medium or medium.isdigit():
+        return ""
+    if day:
+        d = dt.date.fromisoformat(day)
+        return f" 출처: {medium}({d.year}년 {d.month}월 {d.day}일 기사)."
+    return f" 출처: {medium}."
+
+
+def intro_source(page, c):
+    return INTRO_SRC_RE.sub(lambda m: m.group(1) + html.escape(source_phrase(c), quote=False) + m.group(2), page, count=1)
+
+
+# 다른 날 지문 카드(시안 design/seo-ui S10 A): 구독 카드 바로 위. 같은 언어 이전, 다음 지문. 최신 지문의 다음 칸은 안내 문구
+PN_RE = re.compile(r' *<nav class="card pn" [^>]*>.*?</nav>\n', re.S)
+PN_CSS_RE = re.compile(r"  /\* pn-css \*/\n.*?  /\* /pn-css \*/\n", re.S)
+PN_ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>'
+PN_CLOCK = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>'
+PN_CSS = (
+    "  /* pn-css */\n"
+    "  .pn .pn-h { font-size: 17px; margin: 0 0 12px; }\n"
+    "  .pn-i { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid #e5e8eb; color: inherit; text-decoration: none; }\n"
+    "  .pn-h + .pn-i { border-top: 0; padding-top: 0; }\n"
+    "  .pn-i img { width: 76px; height: 76px; border-radius: 12px; object-fit: cover; flex: none; background: var(--bg); }\n"
+    "  .pn-t { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; min-width: 0; }\n"
+    "  .pn-d { font-size: 13px; font-weight: 600; color: var(--muted); }\n"
+    "  .pn-d b { color: var(--sub); font-weight: 600; }\n"
+    "  .pn-n { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.4; }\n"
+    "  .pn .cat { margin-left: 0; }\n"
+    "  .pn-wait .pn-n { color: var(--muted); font-weight: 600; font-size: 15px; }\n"
+    "  .pn-ic { width: 76px; height: 52px; border-radius: 12px; background: var(--bg); color: var(--muted); display: flex; align-items: center; justify-content: center; flex: none; }\n"
+    "  .pn-all { display: flex; align-items: center; justify-content: center; gap: 2px; height: 48px; margin-top: 12px; border-radius: 12px; background: var(--bg); font-size: 15px; font-weight: 700; color: var(--sub); text-decoration: none; }\n"
+    "  .pn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }\n"
+    "  .pn-ic svg { width: 22px; height: 22px; }\n"
+    "  /* /pn-css */\n"
+)
+
+
+def neighbors(lang, day):
+    """같은 언어에서 바로 앞, 뒤 날짜의 지문(페이지가 있는 날만). 없으면 None."""
+    days = sorted(days_of(lang))
+    if day not in days:
+        return None, None
+    i = days.index(day)
+    return (days[i - 1] if i > 0 else None), (days[i + 1] if i + 1 < len(days) else None)
+
+
+def pn_item(lang, d, kind):
+    """이전/다음 지문 한 줄. 사진은 정사각 썸네일, 정사각 사진이 없으면 사진, 사진이 없는 날은 분야 일러스트 썸네일."""
+    e = entry(lang, d)
+    cf = ROOT / "content" / lang / f"{d}.json"
+    c = json.loads(cf.read_text(encoding="utf-8")) if cf.exists() else {}
+    name = c.get("title_ko") or e["topic"]
+    folder = ROOT / lang / d
+    src = next((f for f in ("thumb-sq.jpg", "photo.jpg", "thumb.png") if (folder / f).exists()), None)
+    img = f'<img src="../{d}/{src}" width="76" height="76" alt="" loading="lazy" decoding="async">' if src else ""
+    return (f'    <a class="pn-i" href="../{d}/">{img}<span class="pn-t"><span class="pn-d">{kind} <b>{date_label(d)}</b></span>'
+            f'<span class="pn-n">{html.escape(name, quote=False)}</span><span class="cat cat-{e["cat"]}">{e["cat_label"]}</span></span></a>\n')
+
+
+def pn_html(lang, day):
+    L = langs.get(lang)
+    prev, nxt = neighbors(lang, day)
+    rows = pn_item(lang, prev, "이전 지문") if prev else ""
+    if nxt:
+        rows += pn_item(lang, nxt, "다음 지문")
+    else:
+        rows += (f'    <div class="pn-i pn-wait"><span class="pn-ic">{PN_CLOCK}</span><span class="pn-t"><span class="pn-d">다음 지문</span>'
+                 f'<span class="pn-n">내일 아침에 새 {L["name"]} 지문이 올라와요</span></span></div>\n')
+    return ('  <nav class="card pn" aria-label="이전, 다음 지문">\n    <h2 class="pn-h">다른 날 지문</h2>\n' + rows
+            + f'    <a class="pn-all" href="../archive/">{L["name"]} 지난 지문 전체 보기{PN_ARROW}</a>\n  </nav>\n')
+
+
+def apply_pn(page, lang, day):
+    """다른 날 지문 카드를 구독 카드 바로 위(없으면 </main> 앞)에 넣는다. 있던 카드는 이웃 날짜에 맞춰 다시 만든다(여러 번 돌려도 같다)."""
+    page = PN_RE.sub("", page, count=1)
+    # CSS 는 있던 자리에서 바꾼다(지우고 다시 넣으면 다른 블록과 순서가 바뀌어 매번 결과가 달라진다)
+    if PN_CSS_RE.search(page):
+        page = PN_CSS_RE.sub(lambda m: PN_CSS, page, count=1)
+    else:
+        page = page.replace("  .gnb {", PN_CSS + "  .gnb {", 1)
+    nav = pn_html(lang, day)
+    anchor = '  <section class="card sub"' if '  <section class="card sub"' in page else "</main>"
+    return page.replace(anchor, nav + anchor, 1)
 
 
 LEVEL_HEAD_OLD = "<script>try{var _ql=new URLSearchParams(location.search).get('level');if(!_ql)_ql=localStorage.getItem('read_level');if(_ql==='a')document.documentElement.classList.add('level-a')}catch(e){}</script>"
@@ -279,6 +387,8 @@ def reading_ld(lang, day, c, topic, desc):
     if (c.get("levels") or {}).get("a"):
         levels.append(edu_level(L.get("level_a_label", "기초 A2~B1")))
     images = [f"{url}{f}" for f in ("photo.jpg", "thumb.png") if (ROOT / lang / day / f).exists()]
+    summary = c.get("summary_ko")
+    summary = summary.strip() if isinstance(summary, str) else ""
     article = {
         "@type": ["Article", "LearningResource"],
         "@id": f"{url}#reading",
@@ -287,6 +397,8 @@ def reading_ld(lang, day, c, topic, desc):
         "headline": topic,
         "alternativeHeadline": re.sub(r"\{([^{}|]+)\|[^{}|]+\}", r"\1", c["headline"]).replace("**", "") if c.get("headline") else None,
         "description": desc,
+        # 화면 맨 위 요약(content 의 선택 필드 summary_ko, 시안 S03 B)이 있는 날만
+        "abstract": summary or None,
         "datePublished": day,
         "dateModified": day,
         "inLanguage": lang,
@@ -325,6 +437,9 @@ def patch_page(lang, day):
     url = f"{SITE}/{lang}/{day}/"
     cfile = ROOT / "content" / lang / f"{day}.json"
     c = json.loads(cfile.read_text(encoding="utf-8")) if cfile.exists() else {}
+    page = date_tag(page, day)
+    if DATE_CSS_NEW not in page:
+        page = page.replace(DATE_CSS_OLD, DATE_CSS_NEW, 1)
     # 주제를 포함한 메타 설명 (새 페이지/기존 페이지 공통으로 계산). 주제는 content 의 title_ko(h1 과 같은 값)를 먼저 쓴다
     try:
         m_topic = re.search(r"<h1>.*?<em>(.*?)</em>", page, re.S)
@@ -363,7 +478,7 @@ def patch_page(lang, day):
             "  .top .hero img { display: block; width: 100%; height: 100%; object-fit: cover; }\n  .gnb {",
             1,
         )
-        page = page.replace('<div class="date">', '<div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>\n    <div class="date">', 1)
+        page = page.replace('<time class="date"', '<div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>\n    <time class="date"', 1)
     if not photo and 'class="thumb"' not in page and 'class="hero"' not in page:
         page = page.replace(
             "  .gnb {",
@@ -371,8 +486,8 @@ def patch_page(lang, day):
             1,
         )
         page = page.replace(
-            '<div class="date">',
-            f'<img class="thumb" src="thumb.png" width="76" height="76" alt="">\n    <div class="date">',
+            '<time class="date"',
+            f'<img class="thumb" src="thumb.png" width="76" height="76" alt="">\n    <time class="date"',
             1,
         )
     # 제목과 og:title: 주제, 언어와 수준, 연도(render.page_title). 예전 "○○ 읽기, 10월 20일" 제목도 이 문구로 바꾼다
@@ -455,12 +570,19 @@ def patch_page(lang, day):
                 "  .sub .lvopt:has(input:checked) .lv-chk,.sub .lvopt[data-checked] .lv-chk { background: #2a52d4; border-color: #2a52d4; color: #fff; }\n"
             )
             page = page.replace("  .sub .note {", SUB_EXTRA + "  .sub .note {", 1)
+    page = intro_source(page, c)
+    # AI 초안 표기(시안 S06 A, 링크 없이): 출처 줄 바로 아래 회색 한 줄
+    if 'class="made"' not in page:
+        page = SRC_RE.sub(lambda m: m.group(1) + MADE_HTML, page, count=1)
+    if ".made {" not in page:
+        page = page.replace("  .src a {", MADE_CSS + "  .src a {", 1)
     # 영어 기초 지문이 매일 나오므로 지난 페이지의 "기초 지문은 준비 중" 안내를 지운다(이슈 #27)
     page = re.sub(r' *<p class="note level-note">.*?</p>\n', "", page, count=1)
     if "#passage .chunks-a {" not in page:
         for old, new in LEVEL_A_CSS:
             page = page.replace(old, new, 1)
     page = vote.apply(page, lang, day)  # 오늘 분야 배지와 주제 반응 카드(#13)
+    page = apply_pn(page, lang, day)
     # 수준 설정을 언어별로 저장한다(read_level:en 등). 템플릿만 바꾸면 지난 페이지에는 옛 공용 키가 남아 언어끼리 섞였다
     page = page.replace(LEVEL_HEAD_OLD, LEVEL_HEAD_NEW, 1)
     page = page.replace("localStorage.setItem('read_level', lp);", "localStorage.setItem('read_level:' + _gaLang, lp);")
@@ -895,13 +1017,23 @@ __GNB_JS__</body></html>
 """
 
 
-if __name__ == "__main__":
-    lang, day = sys.argv[1], sys.argv[2]
+def publish_day(lang, day, cat=None):
+    """한 날짜를 사이트에 붙인다(맨 위 설명의 1~3). 분야를 생략하면 content JSON 의 category."""
     langs.get(lang)
     content = ROOT / "content" / lang / f"{day}.json"
-    cat = sys.argv[3] if len(sys.argv) > 3 else (json.loads(content.read_text(encoding="utf-8"))["category"] if content.exists() else None)
+    if cat is None and content.exists():
+        cat = json.loads(content.read_text(encoding="utf-8"))["category"]
     thumb.build(lang, day, cat)
     patch_page(lang, day)
+    # 바로 앞, 뒤 날짜 페이지의 '다른 날 지문' 카드도 새 지문에 맞춘다(전날 페이지의 "내일 아침에 올라와요"를 오늘 링크로)
+    for d in neighbors(lang, day):
+        if d:
+            patch_page(lang, d)
     rebuild_lists(lang)
     rebuild_root()
+
+
+if __name__ == "__main__":
+    lang, day = sys.argv[1], sys.argv[2]
+    publish_day(lang, day, sys.argv[3] if len(sys.argv) > 3 else None)
     print(f"{SITE}/{lang}/{day}/")

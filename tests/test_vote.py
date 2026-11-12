@@ -23,7 +23,8 @@ class TestVoteApply(unittest.TestCase):
         self.assertEqual(p.count('id="vote"'), 1)
         self.assertEqual(p.count('<script id="vote-js">'), 1)
         self.assertEqual(p.count("/* vote-css */"), 1)
-        self.assertIn('<div class="date">10월 29일 목요일 <span class="cat cat-future">미래</span></div>', p)
+        # 화면 날짜는 연도와 <time> 으로 바뀌었다(design/seo-ui S04)
+        self.assertIn('<time class="date" datetime="2026-10-29">2026년 10월 29일 목요일 <span class="cat cat-future">미래</span></time>', p)
         self.assertIn('<span class="today">목 미래</span>', p)
         self.assertIn('data-cat="future" data-wd="3"', p)
 
@@ -32,7 +33,8 @@ class TestVoteApply(unittest.TestCase):
         old = self.page.replace(f'id="vote" data-v="{vote.VERSION}"', 'id="vote" data-v="0"')
         again = vote.apply(old, "en", "2026-10-29")
         self.assertEqual(again.count('id="vote"'), 1)
-        self.assertEqual(again.count('class="cat cat-'), 2)
+        # 다른 날 지문 카드(design/seo-ui S10)의 이웃 분야 배지는 vote 가 넣는 것이 아니라 빼고 센다
+        self.assertEqual(re.sub(r'<nav class="card pn" .*?</nav>', "", again, flags=re.S).count('class="cat cat-'), 2)
         self.assertEqual(again.count("/* vote-css */"), 1)
         self.assertEqual(again.count('<script id="vote-js">'), 1)
 

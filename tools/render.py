@@ -19,7 +19,8 @@ content JSON 형식 (지문 안 강조는 **단어**, 체크 포인트 안 코�
   "points": [{"title": "...", "body": "... `one second` ..."}],
   "answers": ["문장 1의 모범 해석", "..."],
   "advanced": [{"word": "precise", "meaning": "정밀한", "confuse": "precious(소중한)와 혼동 주의", "example": "The most **precise** clocks ..."}],
-  "source": {"title": "기사 제목 (매체, YYYY-MM-DD)", "url": "https://..."}   # 검색 없이 쓴 날은 null
+  "source": {"title": "기사 제목 (매체, YYYY-MM-DD)", "url": "https://..."},  # 검색 없이 쓴 날은 null
+  "summary_ko": "무엇을 다룬 글인지 한국어 2문장 안팎"   # 선택. 있으면 칩 아래 요약 문단(시안 design/seo-ui S03 B)
 }
 """
 import datetime as dt
@@ -48,6 +49,21 @@ WARN = '<span class="warn">{}</span>'
 # 출처가 없는 글도 성격을 밝힌다. 기사 없이 쓴 생활 주제 글과, 사례를 지어낸 예문을 구분한다.
 NO_SOURCE_NOTE = "특정 기사를 바탕으로 하지 않은 학습용 글입니다."
 EXAMPLE_NOTE = "실제 사례가 아니라 학습용으로 지어낸 이야기입니다. 등장하는 장소, 인물, 숫자는 예시입니다."
+# 출처 줄 아래 회색 한 줄(시안 design/seo-ui S06 A, 링크 없이). 출처가 없는 날도 둔다. publish.patch_page 가 지난 페이지에도 넣는다
+MADE_HTML = '    <p class="made">AI 도구로 초안을 쓰고 자동 검사를 거쳐 올린 학습용 글이에요.</p>\n'
+
+
+def date_label(day):
+    """화면 날짜: "2026년 11월 12일 목요일"(시안 design/seo-ui S04). 지난 지문 목록(publish.label)도 같은 문구."""
+    d = dt.date.fromisoformat(day)
+    return f"{d.year}년 {d.month}월 {d.day}일 {DAYS[d.weekday()]}요일"
+
+
+def summary_html(c):
+    """content 의 summary_ko 가 있으면 칩 아래 본문 크기 요약 문단(시안 S03 B), 없으면 빈 문자열."""
+    t = c.get("summary_ko")
+    t = t.strip() if isinstance(t, str) else ""
+    return f'    <p class="sum-b">{esc(t)}</p>\n' if t else ""
 
 
 def esc(s):
@@ -207,6 +223,7 @@ def render(lang, day):
         source = f'    <p class="src">{EXAMPLE_NOTE}</p>\n'
     else:
         source = f'    <p class="src">{NO_SOURCE_NOTE}</p>\n'
+    source += MADE_HTML
     words = "".join(
         '    <div class="word">'
         '<span class="wl">'
@@ -276,7 +293,9 @@ def render(lang, day):
         chips_a_html = ""
     values = {
         "title": esc(page_title(lang, day, c.get("title_ko") or c["topic"])),
-        "date_label": f"{d.month}월 {d.day}일 {DAYS[d.weekday()]}요일",
+        "date_label": date_label(day),
+        "date_iso": day,
+        "summary": summary_html(c),
         "topic": esc(c.get("title_ko") or c["topic"]),
         "headline": f'    <p class="headline" lang="{lang}">{marks(c["headline"], "")}</p>\n' if c.get("headline") else "",
         "chips": "\n".join(f'      <span class="chip{" blue" if i == 0 else ""}">{esc(t)}</span>' for i, t in enumerate(c["chips"])),

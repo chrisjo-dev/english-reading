@@ -99,6 +99,29 @@ def check_ja_quality(c, path):
     return []
 
 
+SUMMARY_LEN = (40, 200)  # summary_ko 글자 수(공백 포함). 한국어 2문장 안팎
+
+
+def check_summary(c):
+    """선택 필드 summary_ko(지문 맨 위 요약, design/seo-ui S03 B) 검사. 없으면 통과. 가운뎃점은 texts() 검사가 함께 잡는다."""
+    t = c.get("summary_ko")
+    if t is None:
+        return []
+    if not isinstance(t, str) or not t.strip():
+        return ["summary_ko: 비어 있지 않은 문자열이어야 해요. 쓰지 않을 거면 필드를 빼세요."]
+    t = t.strip()
+    out = []
+    if not SUMMARY_LEN[0] <= len(t) <= SUMMARY_LEN[1]:
+        out.append(f"summary_ko: {SUMMARY_LEN[0]}~{SUMMARY_LEN[1]}자로 써 주세요 (현재 {len(t)}자). 한국어 2문장 안팎이에요.")
+    if "\n" in t:
+        out.append("summary_ko: 줄바꿈 없이 한 문단으로 써 주세요.")
+    if not re.search(r"[가-힣]", t):
+        out.append("summary_ko: 한국어로 써 주세요.")
+    if "**" in t or "{" in t or "`" in t:
+        out.append("summary_ko: 강조(**), 후리가나({漢字|かな}), 코드(`) 표시는 쓰지 않아요. 평문으로 써 주세요.")
+    return out
+
+
 def check(path):
     c = json.loads(path.read_text(encoding="utf-8"))
     errors, warnings = [], []
@@ -117,6 +140,7 @@ def check(path):
             errors.append(f"photo_scene: 40자 이상이어야 해요 (현재 {len(_scene.strip())}자). 구체적인 장면을 더 자세히 설명하세요.")
         elif len(_scene.strip()) > 300:
             errors.append(f"photo_scene: 300자 이하여야 해요 (현재 {len(_scene.strip())}자).")
+    errors += check_summary(c)
     if not c.get("source") and not c.get("example"):  # 지어낸 예문은 페이지에 그렇다고 표시된다
         body = " ".join(SUPPORTED.sub(lambda m: m.group(0).strip("*`"), s.get("en", "")) for s in c.get("sentences", []))
         hits = sorted(set(m.group(0) for m in NUMBER.finditer(body)))

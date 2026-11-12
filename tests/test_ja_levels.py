@@ -279,6 +279,8 @@ class PatchOldJaPageTest(unittest.TestCase):
             p = re.sub(r'<a class="gs-review".*?</a>', "", p, flags=re.S)
             # 구조화 데이터(JSON-LD)는 patch_page 가 content JSON 으로 매번 다시 쓴다
             p = re.sub(r'<script type="application/ld\+json" id="ld">.*?</script>\n', "", p, flags=re.S)
+            # 다른 날 지문 카드(design/seo-ui S10)는 그 폴더에 있는 이웃 날짜로 다시 만든다
+            p = re.sub(r' *<nav class="card pn" .*?</nav>\n', "", p, flags=re.S)
             return p
         self.assertEqual(strip(before), strip(after), "구독 칸 밖 콘텐츠는 바뀌지 않아야 합니다")
 

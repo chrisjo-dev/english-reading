@@ -33,7 +33,9 @@ def parse(lang, day):
     src = re.search(r'<p class="src">출처: <a href="([^"]+)"[^>]*>(.*?)</a></p>', page, re.S)
     return {
         # 날짜 칸에 붙은 분야 배지(#13)는 빼고 읽는다
-        "date": re.sub(r'\s*<span class="cat[^"]*">.*?</span>', "", grab(r'<div class="date">(.*?)</div>', page)),
+        # 화면 날짜는 연도가 붙은 <time class="date">(design/seo-ui S04)로 바뀌었다. 메일 날짜는 예전처럼 연도 없이 둔다
+        "date": re.sub(r"^\d{4}년 ", "", re.sub(r'\s*<span class="cat[^"]*">.*?</span>', "",
+                                               grab(r'<(?:div|time) class="date"[^>]*>(.*?)</(?:div|time)>', page))),
         "topic": html.unescape(grab(r'<h1>.*?<em>(.*?)</em>', page)),
         "headline": (re.search(r'<p class="headline"[^>]*>(.*?)</p>', page, re.S) or [None, ""])[1],
         # 본문(중급) 칩만. 기초 칩(chips-a)은 따로 읽는다.

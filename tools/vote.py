@@ -123,8 +123,9 @@ def apply(page, lang, day):
     page = re.sub(r' <span class="cat cat-[a-z]+">[^<]*</span>', "", page, count=1)
     page = re.sub(r"  /\* vote-css \*/\n.*?  /\* /vote-css \*/\n", "", page, count=1, flags=re.S)
     page = page.replace("  .gnb {", "  /* vote-css */\n" + CSS + "  /* /vote-css */\n  .gnb {", 1)
-    page = re.sub(r'(<div class="date">[^<]*)</div>',
-                  lambda m: f'{m.group(1)} <span class="cat cat-{cat}">{html.escape(thumb.CATS[cat][0])}</span></div>', page, count=1)
+    # 날짜 칸은 예전 <div class="date"> 와 연도를 넣은 <time class="date" datetime=...>(design/seo-ui S04) 둘 다 받는다
+    page = re.sub(r'(<(div|time) class="date"[^>]*>[^<]*)</\2>',
+                  lambda m: f'{m.group(1)} <span class="cat cat-{cat}">{html.escape(thumb.CATS[cat][0])}</span></{m.group(2)}>', page, count=1)
     card = card_html(lang, day, cat)
     for anchor in ('  <details class="card">', '  <section class="card sub"', "</main>"):
         if anchor in page:
