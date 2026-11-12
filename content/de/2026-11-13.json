@@ -1,0 +1,443 @@
+{
+  "date": "2026-11-13",
+  "category": "science",
+  "topic": "침팬지 울음소리",
+  "title_ko": "배워서 쓰는 침팬지의 입술 소리",
+  "headline": "Junge Schimpansen lernen einen Ruf",
+  "summary_ko": "야생 침팬지와 보호 시설의 고아 침팬지가 내는 입술 소리를 비교한 연구를 다룬 B1~B2 독일어 지문이에요. 야생 무리는 이 소리를 거의 털 손질할 때만 쓰고, 어린 침팬지는 그 쓰임을 나이 든 동물에게서 배운다고 해요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-obwohl"
+    ],
+    "a": [
+      "a-dass"
+    ]
+  },
+  "keywords": [
+    "침팬지",
+    "울음소리",
+    "동물 의사소통",
+    "과학 소식"
+  ],
+  "photo_scene": "Close-up of two chimpanzees sitting side by side in a green tropical forest, one gently grooming the dark fur on the other's shoulder with its fingers, soft dappled morning light.",
+  "sentences": [
+    {
+      "en": "Ein Forschungsteam aus Frankreich und der Elfenbeinküste hat bei wilden **Schimpansen** im Taï-Nationalpark einen besonderen Laut genauer untersucht.",
+      "b2": false,
+      "chunks": [
+        [
+          "Ein Forschungsteam",
+          "한 연구팀이"
+        ],
+        [
+          "aus Frankreich und der Elfenbeinküste",
+          "프랑스와 코트디부아르에서 온"
+        ],
+        [
+          "hat bei wilden **Schimpansen**",
+          "야생 침팬지들에게서"
+        ],
+        [
+          "im Taï-Nationalpark",
+          "타이 국립공원의"
+        ],
+        [
+          "einen besonderen Laut",
+          "특별한 소리 하나를"
+        ],
+        [
+          "genauer untersucht.",
+          "자세히 연구했습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Der Laut klingt ungefähr so, als ob ein Mensch mit den **Lippen** ein prustendes Geräusch machen würde.",
+      "b2": true,
+      "chunks": [
+        [
+          "Der Laut klingt",
+          "그 소리는 들립니다"
+        ],
+        [
+          "ungefähr so,",
+          "대략 이렇게"
+        ],
+        [
+          "als ob ein Mensch",
+          "마치 사람이"
+        ],
+        [
+          "mit den **Lippen**",
+          "입술로"
+        ],
+        [
+          "ein prustendes Geräusch",
+          "푸르르 하는 소리를"
+        ],
+        [
+          "machen würde.",
+          "내는 것처럼"
+        ]
+      ]
+    },
+    {
+      "en": "In den vier wilden Gruppen benutzen die Tiere diesen **Ruf** fast nur, wenn sie sich gegenseitig das **Fell** pflegen.",
+      "b2": false,
+      "chunks": [
+        [
+          "In den vier wilden Gruppen",
+          "네 야생 무리에서"
+        ],
+        [
+          "benutzen die Tiere",
+          "동물들은 씁니다"
+        ],
+        [
+          "diesen **Ruf**",
+          "이 울음소리를"
+        ],
+        [
+          "fast nur,",
+          "거의 오직"
+        ],
+        [
+          "wenn sie sich gegenseitig",
+          "서로"
+        ],
+        [
+          "das **Fell** pflegen.",
+          "털을 손질해 줄 때만"
+        ]
+      ]
+    },
+    {
+      "en": "Obwohl die jungen **Waisen** in einer **Auffangstation** in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Obwohl die jungen **Waisen**",
+          "어린 고아 침팬지들은"
+        ],
+        [
+          "in einer **Auffangstation**",
+          "한 보호 시설에 있는"
+        ],
+        [
+          "in Sierra Leone",
+          "시에라리온의"
+        ],
+        [
+          "denselben Laut machen,",
+          "같은 소리를 내지만"
+        ],
+        [
+          "benutzen sie ihn",
+          "그들은 그것을 씁니다"
+        ],
+        [
+          "in vielen verschiedenen Situationen.",
+          "여러 다양한 상황에서"
+        ]
+      ]
+    },
+    {
+      "en": "Als ein erwachsenes Tier in eine solche Gruppe kam, passten die Jungen ihren Gebrauch des Rufs nach und nach dem **Vorbild** an.",
+      "b2": false,
+      "chunks": [
+        [
+          "Als ein erwachsenes Tier",
+          "어른 침팬지 한 마리가"
+        ],
+        [
+          "in eine solche Gruppe kam,",
+          "그런 무리에 들어왔을 때"
+        ],
+        [
+          "passten die Jungen",
+          "어린 침팬지들은 맞췄습니다"
+        ],
+        [
+          "ihren Gebrauch des Rufs",
+          "그 울음소리를 쓰는 방식을"
+        ],
+        [
+          "nach und nach",
+          "조금씩"
+        ],
+        [
+          "dem **Vorbild** an.",
+          "그 본보기에"
+        ]
+      ]
+    },
+    {
+      "en": "Die Forschenden schließen daraus, dass junge Schimpansen die **Bedeutung** des Rufs nicht von Geburt an kennen, sondern von älteren Tieren lernen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Die Forschenden schließen daraus,",
+          "연구자들은 이로부터 결론짓습니다"
+        ],
+        [
+          "dass junge Schimpansen",
+          "어린 침팬지들이"
+        ],
+        [
+          "die **Bedeutung** des Rufs",
+          "그 울음소리의 뜻을"
+        ],
+        [
+          "nicht von Geburt an kennen,",
+          "태어날 때부터 아는 것이 아니라"
+        ],
+        [
+          "sondern von älteren Tieren lernen.",
+          "나이 든 동물들에게서 배운다고"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Schimpanse",
+      "침팬지 (남성 der, 복수 Schimpansen)"
+    ],
+    [
+      "Lippe",
+      "입술 (여성 die, 복수 Lippen)"
+    ],
+    [
+      "Ruf",
+      "울음소리, 부르는 소리 (남성 der, 복수 Rufe)"
+    ],
+    [
+      "Fell",
+      "털, 모피 (중성 das)"
+    ],
+    [
+      "Waise",
+      "고아 (여성 die, 복수 Waisen)"
+    ],
+    [
+      "Auffangstation",
+      "보호 시설 (여성 die)"
+    ],
+    [
+      "Vorbild",
+      "본보기, 모범 (중성 das, 복수 Vorbilder)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "obwohl — ~인데도, ~이지만",
+      "body": "`Obwohl die jungen Waisen ... denselben Laut machen, benutzen sie ihn ...`에서 `obwohl`은 부문장을 이끌어 정동사 `machen`이 부문장 끝으로 갑니다. 부문장이 앞에 오면 그 전체가 첫 자리가 되므로, 주문장은 바로 정동사 `benutzen`으로 시작하고 주어 `sie`가 그 뒤에 옵니다. '같은 소리를 내지만, 쓰는 상황은 다르다'는 대비를 읽어 내는 것이 핵심이에요."
+    },
+    {
+      "title": "als ob ... würde — 마치 ~하는 것처럼",
+      "body": "`als ob ein Mensch mit den Lippen ein prustendes Geräusch machen würde`는 실제로 사람이 내는 소리가 아니라 비유이므로 접속법 2식 `würde`를 씁니다. `als ob`도 부문장이라 `würde`가 맨 끝에 옵니다. `klingt so, als ob ...`는 '~처럼 들린다'로 통째로 익혀 두면 좋아요."
+    }
+  ],
+  "answers": [
+    "프랑스와 코트디부아르의 한 연구팀이 타이 국립공원의 야생 침팬지들이 내는 특별한 소리를 자세히 연구했습니다.",
+    "그 소리는 마치 사람이 입술로 푸르르 하는 소리를 내는 것처럼 들립니다.",
+    "네 개의 야생 무리에서 침팬지들은 이 울음소리를 거의 서로 털을 손질해 줄 때만 씁니다.",
+    "시에라리온의 한 보호 시설에 있는 어린 고아 침팬지들은 같은 소리를 내지만, 그것을 여러 다양한 상황에서 씁니다.",
+    "그런 무리에 어른 침팬지 한 마리가 들어오자, 어린 침팬지들은 울음소리를 쓰는 방식을 조금씩 그 본보기에 맞췄습니다.",
+    "연구자들은 이로부터 어린 침팬지들이 그 울음소리의 뜻을 태어날 때부터 아는 것이 아니라 나이 든 동물들에게서 배운다고 결론짓습니다."
+  ],
+  "advanced": [
+    {
+      "word": "angeboren",
+      "meaning": "타고난, 선천적인",
+      "confuse": "반대말은 `erlernt`(후천적으로 배운)입니다.",
+      "example": "Viele Forscher hielten den Ruf früher für **angeboren**.",
+      "example_ko": "많은 연구자가 예전에는 그 울음소리를 타고난 것으로 여겼습니다."
+    },
+    {
+      "word": "nachahmen",
+      "meaning": "흉내 내다, 모방하다",
+      "confuse": "분리동사라서 `Die Jungen ahmen die Alten nach`처럼 갈라집니다.",
+      "example": "Junge Tiere **ahmen** oft das Verhalten der Erwachsenen **nach**.",
+      "example_ko": "어린 동물들은 종종 어른들의 행동을 흉내 냅니다."
+    },
+    {
+      "word": "sich verständigen",
+      "meaning": "의사소통하다",
+      "confuse": "`verstehen`(이해하다)과 다릅니다. 서로 뜻을 주고받는 것이에요.",
+      "example": "Schimpansen **verständigen sich** mit Rufen und Gesten.",
+      "example_ko": "침팬지는 울음소리와 몸짓으로 의사소통합니다."
+    },
+    {
+      "word": "die Lautäußerung",
+      "meaning": "발성, 소리 내기",
+      "confuse": null,
+      "example": "Die Studie vergleicht die **Lautäußerungen** von 91 Schimpansen.",
+      "example_ko": "그 연구는 침팬지 91마리의 발성을 비교합니다."
+    },
+    {
+      "word": "gegenseitig",
+      "meaning": "서로, 상호의",
+      "confuse": "`einander`와 뜻이 비슷하지만 `gegenseitig`는 형용사로도 씁니다(`die gegenseitige Hilfe`).",
+      "example": "Die Affen helfen sich **gegenseitig** bei der Fellpflege.",
+      "example_ko": "원숭이들은 털 손질할 때 서로 돕습니다."
+    },
+    {
+      "word": "die Gemeinschaft",
+      "meaning": "공동체, 무리",
+      "confuse": "`die Gesellschaft`(사회)보다 작고 가까운 집단을 말할 때 자주 씁니다.",
+      "example": "In jeder **Gemeinschaft** klingt der Ruf ein wenig anders.",
+      "example_ko": "무리마다 그 울음소리가 조금씩 다르게 들립니다."
+    },
+    {
+      "word": "die Verhaltensforschung",
+      "meaning": "행동 연구, 동물행동학",
+      "confuse": null,
+      "example": "Die **Verhaltensforschung** beobachtet Tiere oft über viele Jahre.",
+      "example_ko": "동물행동학은 동물을 흔히 여러 해에 걸쳐 관찰합니다."
+    }
+  ],
+  "source": {
+    "title": "Schimpansen lernen, wann sie bestimmte Rufe einsetzen (Max-Planck-Institut für evolutionäre Anthropologie / EurekAlert)",
+    "url": "https://www.eurekalert.org/news-releases/1150863?language=german"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Ein Team hat einen besonderen Laut von wilden **Schimpansen** untersucht.",
+          "chunks": [
+            [
+              "Ein Team hat",
+              "한 연구팀이"
+            ],
+            [
+              "einen besonderen Laut",
+              "특별한 소리 하나를"
+            ],
+            [
+              "von wilden **Schimpansen**",
+              "야생 침팬지들의"
+            ],
+            [
+              "untersucht.",
+              "연구했습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die Tiere machen diesen Laut mit ihren **Lippen**.",
+          "chunks": [
+            [
+              "Die Tiere machen",
+              "동물들은 냅니다"
+            ],
+            [
+              "diesen Laut",
+              "이 소리를"
+            ],
+            [
+              "mit ihren **Lippen**.",
+              "입술로"
+            ]
+          ]
+        },
+        {
+          "en": "Wilde Schimpansen benutzen den **Ruf** fast nur bei der Pflege ihres **Fells**.",
+          "chunks": [
+            [
+              "Wilde Schimpansen",
+              "야생 침팬지들은"
+            ],
+            [
+              "benutzen den **Ruf**",
+              "그 울음소리를 씁니다"
+            ],
+            [
+              "fast nur",
+              "거의 오직"
+            ],
+            [
+              "bei der Pflege ihres **Fells**.",
+              "털을 손질할 때만"
+            ]
+          ]
+        },
+        {
+          "en": "Junge **Waisen** in einer **Auffangstation** benutzen den Ruf in vielen Situationen.",
+          "chunks": [
+            [
+              "Junge **Waisen**",
+              "어린 고아 침팬지들은"
+            ],
+            [
+              "in einer **Auffangstation**",
+              "보호 시설에 있는"
+            ],
+            [
+              "benutzen den Ruf",
+              "그 울음소리를 씁니다"
+            ],
+            [
+              "in vielen Situationen.",
+              "여러 상황에서"
+            ]
+          ]
+        },
+        {
+          "en": "Später kam ein erwachsenes Tier in die Gruppe und war ein **Vorbild**.",
+          "chunks": [
+            [
+              "Später kam",
+              "나중에 왔습니다"
+            ],
+            [
+              "ein erwachsenes Tier",
+              "어른 침팬지 한 마리가"
+            ],
+            [
+              "in die Gruppe",
+              "무리에"
+            ],
+            [
+              "und war ein **Vorbild**.",
+              "그리고 본보기가 되었습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Das zeigt, dass junge Schimpansen die **Bedeutung** des Rufs lernen.",
+          "chunks": [
+            [
+              "Das zeigt,",
+              "이것은 보여 줍니다"
+            ],
+            [
+              "dass junge Schimpansen",
+              "어린 침팬지들이"
+            ],
+            [
+              "die **Bedeutung** des Rufs lernen.",
+              "그 울음소리의 뜻을 배운다는 것을"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "한 연구팀이 야생 침팬지들의 특별한 소리를 연구했습니다.",
+        "침팬지들은 이 소리를 입술로 냅니다.",
+        "야생 침팬지들은 그 울음소리를 거의 털을 손질할 때만 씁니다.",
+        "보호 시설의 어린 고아 침팬지들은 그 울음소리를 여러 상황에서 씁니다.",
+        "나중에 어른 침팬지 한 마리가 무리에 들어와 본보기가 되었습니다.",
+        "이것은 어린 침팬지들이 그 울음소리의 뜻을 배운다는 것을 보여 줍니다."
+      ]
+    }
+  }
+}
