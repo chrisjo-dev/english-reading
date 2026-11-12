@@ -315,9 +315,9 @@ class TestSitemapLastmodTask3e(unittest.TestCase):
         self.assertIsNotNone(m, "lastmod 태그가 없습니다")
         self.assertEqual(m.group(1), self.day)
 
-    def test_archive_url_included(self):
-        """아카이브 URL(/en/archive/)이 사이트맵에 포함된다."""
-        self.assertIn("/en/archive/", self.sitemap)
+    def test_archive_url_excluded(self):
+        """아카이브(/en/archive/)는 canonical 이 언어 첫 화면이라 사이트맵에 넣지 않는다."""
+        self.assertNotIn("/en/archive/", self.sitemap)
 
     def test_lang_hub_has_lastmod(self):
         """언어 허브 URL 에도 lastmod 가 있다."""

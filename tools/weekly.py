@@ -19,7 +19,7 @@ import gnb  # noqa: E402
 import feedback  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://read.wspace.ai.kr"
+SITE = langs.SITE
 DAYS = "월화수목금토일"
 
 

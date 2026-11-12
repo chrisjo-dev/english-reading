@@ -21,10 +21,10 @@ import gnb  # noqa: E402
 import feedback  # noqa: E402
 import track  # noqa: E402
 import seek  # noqa: E402
-from render import LEVEL_SEG  # noqa: E402
+from render import LEVEL_SEG, page_title  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://read.wspace.ai.kr"
+SITE = langs.SITE
 SUBSCRIBE = "https://buttondown.com/api/emails/embed-subscribe/english-reading"
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 DAYS = "월화수목금토일"
@@ -236,21 +236,84 @@ def credit_to_footer(page, lang):
     return page
 
 
+def edu_level(label):
+    """수준 표기에 체계 이름을 붙인다: "B1~B2" -> "CEFR B1~B2", "JLPT N3" 은 그대로, "기초 N4~N5" -> "JLPT N4~N5"."""
+    v = label.replace("기초", "").strip()
+    return v if v.startswith(("JLPT", "CEFR")) else (f"JLPT {v}" if v.startswith("N") else f"CEFR {v}")
+
+
+def reading_ld(lang, day, c, topic, desc):
+    """지문 날짜 페이지 구조화 데이터: Article + LearningResource 와 BreadcrumbList.
+    값은 content JSON 에 실제로 있는 것만 쓴다(출처가 없는 날은 isBasedOn 을 넣지 않는다).
+    운영 주체는 Organization(SITE/#organization, 랜딩에 전체 정의)을 @id 로 가리킨다."""
+    L = langs.get(lang)
+    url = f"{SITE}/{lang}/{day}/"
+    org = {"@id": f"{SITE}/#organization"}
+    levels = [edu_level(langs.level_on(lang, day))]
+    if (c.get("levels") or {}).get("a"):
+        levels.append(edu_level(L.get("level_a_label", "기초 A2~B1")))
+    images = [f"{url}{f}" for f in ("photo.jpg", "thumb.png") if (ROOT / lang / day / f).exists()]
+    article = {
+        "@type": ["Article", "LearningResource"],
+        "@id": f"{url}#reading",
+        "mainEntityOfPage": url,
+        "url": url,
+        "headline": topic,
+        "alternativeHeadline": re.sub(r"\{([^{}|]+)\|[^{}|]+\}", r"\1", c["headline"]).replace("**", "") if c.get("headline") else None,
+        "description": desc,
+        "datePublished": day,
+        "dateModified": day,
+        "inLanguage": lang,
+        "image": images or None,
+        "keywords": c.get("keywords") or None,
+        "articleSection": thumb.CATS[c["category"]][0] if c.get("category") in thumb.CATS else None,
+        "learningResourceType": "reading passage",
+        "educationalLevel": levels if len(levels) > 1 else levels[0],
+        "teaches": f"{L['name']} 독해",
+        "isAccessibleForFree": True,
+        "isBasedOn": ({"@type": "CreativeWork", "name": c["source"]["title"], "url": c["source"]["url"]}
+                      if (c.get("source") or {}).get("url") else None),
+        "author": {"@type": "Organization", "@id": org["@id"], "name": langs.BRAND, "url": f"{SITE}/"},
+        "publisher": org,
+        "isPartOf": {"@id": f"{SITE}/#website"},
+    }
+    d = dt.date.fromisoformat(day)
+    crumbs = {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": langs.BRAND, "item": f"{SITE}/"},
+            {"@type": "ListItem", "position": 2, "name": f"{L['name']} 지문", "item": f"{SITE}/{lang}/"},
+            {"@type": "ListItem", "position": 3, "name": f"{d.year}년 {d.month}월 {d.day}일", "item": url},
+        ],
+    }
+    data = {"@context": "https://schema.org", "@graph": [{k: v for k, v in article.items() if v is not None}, crumbs]}
+    # </script> 로 블록이 끊기지 않게 "</" 를 막는다
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
+LD_RE = re.compile(r'<script type="application/ld\+json" id="ld">.*?</script>\n', re.S)
+PRECONNECT = '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>\n'
+# 일본어는 Google Fonts(Noto Sans JP) CSS 와 글꼴 파일 서버에도 미리 연결한다
+PRECONNECT_JA = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+                 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n')
+
+
 def patch_page(lang, day):
     L = langs.get(lang)
     path = ROOT / lang / day / "index.html"
     page = path.read_text(encoding="utf-8")
     url = f"{SITE}/{lang}/{day}/"
-    # 주제를 포함한 메타 설명 (새 페이지/기존 페이지 공통으로 계산)
+    cfile = ROOT / "content" / lang / f"{day}.json"
+    c = json.loads(cfile.read_text(encoding="utf-8")) if cfile.exists() else {}
+    # 주제를 포함한 메타 설명 (새 페이지/기존 페이지 공통으로 계산). 주제는 content 의 title_ko(h1 과 같은 값)를 먼저 쓴다
     try:
         m_topic = re.search(r"<h1>.*?<em>(.*?)</em>", page, re.S)
-        topic_text = html.unescape(m_topic.group(1).strip()) if m_topic else topic_of(lang, day)
+        topic_text = c.get("title_ko") or (html.unescape(m_topic.group(1).strip()) if m_topic else topic_of(lang, day))
     except Exception:
         topic_text = ""
-    new_desc = f"{L['level']} {L['name']} 읽기 — {topic_text}. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요."
+    new_desc = f"{langs.level_on(lang, day)} {L['name']} 읽기 — {topic_text}. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요."
     if 'property="og:image"' not in page:
-        # og:title: 브랜드명만 붙인다(og:site_name 에 전체 이름이 들어간다)
-        title = html.escape(f"오늘은 {topic_text} 이야기예요 | {langs.BRAND}")
+        title = html.escape(page_title(lang, day, topic_text), quote=True)
         desc_esc = html.escape(new_desc, quote=True)
         meta = (
             f'<meta name="description" content="{desc_esc}">\n'
@@ -292,21 +355,10 @@ def patch_page(lang, day):
             f'<img class="thumb" src="thumb.png" width="76" height="76" alt="">\n    <div class="date">',
             1,
         )
-    # 지난 날짜에도 "오늘의"가 붙어 헷갈렸다(이슈 #19): 제목은 "○○ 읽기, 10월 20일"
-    page = re.sub(r"<title>오늘의 ([^<]+ 읽기, [^<]+)</title>", r"<title>\1</title>", page, count=1)
-    # ── 브랜드 패치 (독해한입). 아래 항목은 모두 멱등적으로 동작한다. 위 메뉴는 맨 끝 gnb.apply 가 통째로 바꾼다 ──
-    # <title>에 "| 독해한입" 서픽스 추가 (이미 있으면 건드리지 않는다)
-    page = re.sub(
-        r"<title>([^<]+ 읽기, [^<]+)</title>",
-        lambda m: m.group(0) if f"| {langs.BRAND}" in m.group(1) else f"<title>{m.group(1).rstrip()} | {langs.BRAND}</title>",
-        page, count=1,
-    )
-    # og:title 끝의 서비스명을 브랜드명으로 교체 (이미 독해한입이면 재교체해도 동일 결과)
-    page = re.sub(
-        r'(<meta property="og:title" content="[^"]+?) \| [^"]+(")',
-        rf'\1 | {langs.BRAND}\2',
-        page, count=1,
-    )
+    # 제목과 og:title: 주제, 언어와 수준, 연도(render.page_title). 예전 "○○ 읽기, 10월 20일" 제목도 이 문구로 바꾼다
+    title_esc = html.escape(page_title(lang, day, topic_text), quote=True)
+    page = re.sub(r"<title>[^<]*</title>", lambda m: f"<title>{title_esc}</title>", page, count=1)
+    page = re.sub(r'<meta property="og:title" content="[^"]*">', lambda m: f'<meta property="og:title" content="{title_esc}">', page, count=1)
     # og:site_name 을 전체 브랜드+서비스명으로 교체
     page = re.sub(
         r'(<meta property="og:site_name" content=")[^"]+(")',
@@ -431,6 +483,19 @@ def patch_page(lang, day):
     page = track.apply(page)
     # 재생바 이동(이슈 #26)
     page = seek.apply(page)
+    # 구조화 데이터(JSON-LD): 있으면 통째로 바꾸고 없으면 첫 stylesheet 앞에 넣는다(지난 페이지 백필, 도메인 변경 반영)
+    ld = f'<script type="application/ld+json" id="ld">{reading_ld(lang, day, c, topic_text, new_desc)}</script>\n'
+    if LD_RE.search(page):
+        page = LD_RE.sub(lambda m: ld, page, count=1)
+    else:
+        page = page.replace('<link rel="stylesheet"', ld + '<link rel="stylesheet"', 1)
+    # 글꼴 CDN 미리 연결과 첫 화면 사진 우선 로딩(LCP)
+    if 'href="https://cdnjs.cloudflare.com" crossorigin' not in page:
+        page = page.replace('<link rel="stylesheet" href="https://cdnjs.cloudflare.com', PRECONNECT + '<link rel="stylesheet" href="https://cdnjs.cloudflare.com', 1)
+    if lang == "ja" and PRECONNECT_JA not in page:
+        page = page.replace('<link rel="stylesheet" href="https://fonts.googleapis.com', PRECONNECT_JA + '<link rel="stylesheet" href="https://fonts.googleapis.com', 1)
+    page = page.replace('<div class="hero"><img src="photo.jpg" width="1200" height="630" alt="">',
+                        '<div class="hero"><img src="photo.jpg" width="1200" height="630" alt="" fetchpriority="high">', 1)
     path.write_text(page, encoding="utf-8")
 
 
@@ -480,7 +545,9 @@ def rebuild_lists(lang):
         groups.append("    </div>\n  </section>")
         review = (f'  <a class="review" href="{p}review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
         meta_desc = html.escape(f"{L['intro']} 지금까지 {len(entries)}편 수록.", quote=True)
-        canonical = f"{SITE}/{lang}/" if p == "./" else f"{SITE}/{lang}/archive/"
+        # 지난 지문(/archive/)은 언어 첫 화면과 목록이 같아 canonical 을 언어 첫 화면으로 모은다(사이트맵에서도 뺀다)
+        canonical = f"{SITE}/{lang}/"
+        page_url = canonical if p == "./" else f"{SITE}/{lang}/archive/"
         page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
                 .replace("__TITLE__", title).replace("__ARCHIVE__", f"{p}archive/" if p == "./" else "./").replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
                 .replace("__NAME__", L["name"]).replace("__GNB_CSS__", gnb.css_block()).replace("__BRAND__", langs.BRAND)
@@ -489,7 +556,7 @@ def rebuild_lists(lang):
                 .replace("__CHIPS__", chips).replace("__LANGTABS__", tabs).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
                 .replace("__META_DESC__", meta_desc).replace("__CANONICAL__", canonical).replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
-        page = feedback.apply(page, lang, canonical)
+        page = feedback.apply(page, lang, page_url)
         if L.get("noindex", False):
             page = page.replace('<link rel="stylesheet"', '<meta name="robots" content="noindex">\n<link rel="stylesheet"', 1)
         out.mkdir(parents=True, exist_ok=True)
@@ -555,24 +622,29 @@ def rebuild_root():
     write_sitemap()
 
 
-def write_sitemap():
-    """검색엔진용 사이트맵과 robots.txt. 언어 목록, 날짜 페이지, 주간 복습을 모두 싣는다.
+def root_lastmod(days):
+    """첫 화면(/) 의 실제 변경일. 첫 화면 HTML 은 landing 빌드로만 바뀌고, 빌드할 때의 최신 영어 지문 날짜가 og:image 주소에 남는다.
+    그 날짜를 쓰고, 찾지 못하면 가장 최근 지문 날짜를 쓴다(매일 오늘 날짜로 쓰면 바뀌지 않은 페이지가 바뀐 것처럼 보인다)."""
+    f = ROOT / "index.html"
+    m = re.search(r'property="og:image" content="[^"]*/(\d{4}-\d{2}-\d{2})/thumb\.png"', f.read_text(encoding="utf-8")) if f.exists() else None
+    return m.group(1) if m else (max(days) if days else dt.date.today().isoformat())
 
-    noindex 언어는 사이트맵에서 제외한다.
+
+def public_days():
+    """공개 언어별 날짜 목록(최신순). noindex 언어는 뺀다."""
+    return {code: days_of(code) for code, L in langs.LANGS.items() if not L.get("noindex", False) and days_of(code)}
+
+
+def write_sitemap():
+    """검색엔진용 사이트맵과 robots.txt, AI 안내(llms.txt), 새 지문 피드(rss.xml). 언어 목록, 날짜 페이지, 주간 복습을 싣는다.
+
+    noindex 언어는 모두에서 제외한다. 지난 지문(/archive/)은 canonical 이 언어 첫 화면이라 사이트맵에 넣지 않는다.
     """
-    today = dt.date.today().isoformat()
+    by_lang = public_days()
     # (url, lastmod) 쌍의 목록
-    entries = [(f"{SITE}/", today)]
-    for code in langs.LANGS:
-        L = langs.LANGS[code]
-        if L.get("noindex", False):
-            continue  # 숨김 운영 중인 언어는 사이트맵에서 제외
-        days = days_of(code)
-        if not days:
-            continue
-        latest = days[0]
-        entries.append((f"{SITE}/{code}/", latest))
-        entries.append((f"{SITE}/{code}/archive/", latest))
+    entries = [(f"{SITE}/", root_lastmod([d[0] for d in by_lang.values()]))]
+    for code, days in by_lang.items():
+        entries.append((f"{SITE}/{code}/", days[0]))
         entries += [(f"{SITE}/{code}/{d}/", d) for d in days]
         rdir = ROOT / code / "review"
         if rdir.exists():
@@ -580,7 +652,85 @@ def write_sitemap():
     body = "".join(f"  <url><loc>{u}</loc><lastmod>{lm}</lastmod></url>\n" for u, lm in entries)
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
                                       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n", encoding="utf-8")
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    # 구글은 RSS 도 사이트맵으로 읽는다. llms.txt 는 정해진 지시어가 없어 주석으로만 알린다
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/rss.xml\n"
+                                     f"# llms.txt: {SITE}/llms.txt\n", encoding="utf-8")
+    items = feed_items(by_lang)
+    (ROOT / "rss.xml").write_text(rss_xml(items[:RSS_SIZE]), encoding="utf-8")
+    (ROOT / "llms.txt").write_text(llms_txt(by_lang, items), encoding="utf-8")
+
+
+RSS_SIZE = 30
+
+
+def feed_items(by_lang):
+    """모든 공개 언어의 지문을 최신순으로: 날짜가 같으면 langs.LANGS 순서(en, ja, de)."""
+    order = list(langs.LANGS)
+    out = []
+    for code, days in by_lang.items():
+        L = langs.LANGS[code]
+        for d in days[:RSS_SIZE]:
+            cf = ROOT / "content" / code / f"{d}.json"
+            c = json.loads(cf.read_text(encoding="utf-8")) if cf.exists() else {}
+            topic = c.get("title_ko") or entry(code, d)["topic"]
+            src = (c.get("source") or {}).get("title")
+            out.append({"lang": code, "day": d, "topic": topic, "title": page_title(code, d, topic),
+                        "url": f"{SITE}/{code}/{d}/", "src": src,
+                        "desc": f"{langs.level_on(code, d)} {L['name']} 읽기 — {topic}. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요."})
+    return sorted(out, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)
+
+
+def rss_xml(items):
+    """RSS 2.0. 발행 시각은 따로 기록하지 않아 날짜의 0시(KST)로 적고, lastBuildDate 도 가장 새 지문 날짜로 둔다(매번 바뀌지 않게)."""
+    from email.utils import format_datetime
+    kst = dt.timezone(dt.timedelta(hours=9))
+    when = lambda day: format_datetime(dt.datetime.combine(dt.date.fromisoformat(day), dt.time(), kst))
+    esc = lambda t: html.escape(t, quote=False)
+    body = "".join(
+        "  <item>\n"
+        f"    <title>{esc(i['title'])}</title>\n    <link>{i['url']}</link>\n    <guid isPermaLink=\"true\">{i['url']}</guid>\n"
+        f"    <pubDate>{when(i['day'])}</pubDate>\n    <category>{esc(langs.LANGS[i['lang']]['name'])}</category>\n"
+        f"    <description>{esc(i['desc'])}</description>\n"
+        "  </item>\n" for i in items)
+    built = f"  <lastBuildDate>{when(items[0]['day'])}</lastBuildDate>\n" if items else ""
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n'
+            f"  <title>{esc(langs.BRAND_ROOT)}</title>\n  <link>{SITE}/</link>\n"
+            f'  <atom:link href="{SITE}/rss.xml" rel="self" type="application/rss+xml"/>\n'
+            "  <description>매일 아침 새로 올라오는 영어, 일본어, 독일어 독해 지문</description>\n"
+            f"  <language>ko</language>\n{built}{body}</channel>\n</rss>\n")
+
+
+def llms_txt(by_lang, items):
+    """AI 검색 안내(llms.txt). 사실만 적는다: 무엇을, 어떤 수준으로, 어떻게 만드는지와 주요 주소, 언어별 최근 지문."""
+    lines = [
+        f"# {langs.BRAND}", "",
+        f"> {langs.BRAND}(한입독해로도 검색됨)은 한국어 사용자를 위한 무료 외국어 독해 사이트이자 이메일 뉴스레터입니다. "
+        "매일 아침 영어, 일본어, 독일어 짧은 지문을 한 편씩 올리고, 지문마다 문장별 음성, 주요 단어, 한국어 모범 해석, 문법 체크 포인트를 함께 둡니다. "
+        "지문은 AI가 초안을 쓰고 자동 검사(화면 표기 오류, 출처 없는 구체적 수치, 최근 지문과의 겹침 등)를 거쳐 올라갑니다. 기사를 바탕으로 쓴 날은 원출처를 페이지에 밝힙니다.", "",
+        "- 이용료: 무료",
+        "- 운영: wspace (https://www.wspace.ai.kr/about/)", "",
+        "## 언어별 지문",
+    ]
+    for code in by_lang:
+        L = langs.LANGS[code]
+        lv = L["level"] + (f" ({L['level_a_label']})" if L.get("levels") and L.get("level_a_label") else
+                          (" (기초 A2~B1)" if L.get("levels") else ""))
+        lines.append(f"- [{L['name']} 지문 목록]({SITE}/{code}/): {lv} {L['name']} 읽기, 지금까지 {len(by_lang[code])}편")
+    lines += ["", "## 최근 지문"]
+    for code in by_lang:
+        for i in [i for i in items if i["lang"] == code][:7]:
+            src = f": 출처 {i['src']}" if i["src"] else ""
+            lines.append(f"- [{langs.LANGS[code]['name']}, {i['day']}, {i['topic']}]({i['url']}){src}")
+    reviews = [(code, gnb.latest_review(code)) for code in by_lang]
+    reviews = [(code, rv) for code, rv in reviews if rv]
+    if reviews:
+        lines += ["", "## 주간 단어 복습"]
+        lines += [f"- [{langs.LANGS[code]['name']} 주간 단어 복습, {rv[0]}]({SITE}/{code}/review/{rv[0]}/): 그 주 지문의 주요 단어 {rv[1]}개"
+                  for code, rv in reviews]
+    lines += ["", "## 이용 방법", f"- [첫 화면과 자주 묻는 질문]({SITE}/): 구독 방법, 수준 안내",
+              "", "## Optional", f"- [사이트맵]({SITE}/sitemap.xml)", f"- [새 지문 피드(RSS)]({SITE}/rss.xml)",
+              "- [개인정보처리방침](https://www.wspace.ai.kr/privacy/)", ""]
+    return "\n".join(lines)
 
 
 # 지난 지문 페이지. 검색과 분야 필터, 30개씩 더 보기를 브라우저에서 처리한다(스크립트가 없어도 전체 목록은 보인다).
@@ -588,10 +738,13 @@ ARCHIVE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light only"><title>__TITLE__ | __SITE__</title>
 <meta name="description" content="__META_DESC__">
-<meta property="og:title" content="__TITLE__ | __BRAND__"><meta property="og:image" content="__OG_IMAGE__">
+<meta property="og:type" content="website"><meta property="og:site_name" content="__SITE__">
+<meta property="og:title" content="__TITLE__ | __BRAND__"><meta property="og:description" content="__META_DESC__">
+<meta property="og:url" content="__CANONICAL__"><meta property="og:image" content="__OG_IMAGE__">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__CANONICAL__">
 <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #6b7684; --blue: #1b64da; }

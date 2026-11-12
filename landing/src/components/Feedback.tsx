@@ -1,6 +1,7 @@
 "use client";
 
 import { fireGtag } from "@/lib/gtag";
+import { SITE } from "@/lib/site";
 
 // 의견 보내기(이슈 #21, 시안 F03). tools/feedback.py 와 같은 메일 양식이다.
 // 버그 제보는 누르는 순간 페이지 주소, 기기와 브라우저, 화면 크기를 본문에 넣는다.
@@ -31,7 +32,7 @@ function device() {
 }
 
 const IDEA_HREF = mailto("[독해한입] 기능 건의", IDEA_BODY);
-const BUG_HREF = mailto("[독해한입] 버그 제보", `${BUG_HEAD}페이지: https://read.wspace.ai.kr/\n기기: \n화면 크기: `);
+const BUG_HREF = mailto("[독해한입] 버그 제보", `${BUG_HEAD}페이지: ${SITE}/\n기기: \n화면 크기: `);
 
 export default function Feedback() {
   return (

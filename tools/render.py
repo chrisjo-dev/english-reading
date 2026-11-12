@@ -54,6 +54,15 @@ def esc(s):
     return html.escape(s, quote=False)
 
 
+def page_title(lang, day, topic):
+    """지문 날짜 페이지 <title> 과 og:title 문구(이스케이프 전). 주제, 언어와 수준, 연도까지 넣어 검색 결과에서 무슨 글인지 보이게 한다.
+    예: "물속에서 쪼글쪼글해지는 손가락 영어 독해 B1~B2, 2026년 11월 12일 | 독해한입". publish.patch_page 가 지난 페이지도 같은 문구로 맞춘다."""
+    L = langs.get(lang)
+    d = dt.date.fromisoformat(day)
+    head = f"{topic} " if topic else ""
+    return f"{head}{L['name']} 독해 {langs.level_on(lang, day)}, {d.year}년 {d.month}월 {d.day}일 | {langs.BRAND}"
+
+
 def ruby(s):
     """{漢字|かんじ} 를 <ruby>漢字<rt>かんじ</rt></ruby> 로 바꾼다(이스케이프한 문자열에 쓴다)."""
     return re.sub(r"\{([^{}|]+)\|([^{}|]+)\}", r"<ruby>\1<rp>(</rp><rt>\2</rt><rp>)</rp></ruby>", s)
@@ -266,7 +275,7 @@ def render(lang, day):
     else:
         chips_a_html = ""
     values = {
-        "date_short": f"{d.month}월 {d.day}일",
+        "title": esc(page_title(lang, day, c.get("title_ko") or c["topic"])),
         "date_label": f"{d.month}월 {d.day}일 {DAYS[d.weekday()]}요일",
         "topic": esc(c.get("title_ko") or c["topic"]),
         "headline": f'    <p class="headline" lang="{lang}">{marks(c["headline"], "")}</p>\n' if c.get("headline") else "",

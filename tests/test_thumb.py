@@ -1,5 +1,6 @@
 """썸네일: 기사 사진(OpenAI) 합성과 일러스트 대체. 시안: design/article-thumb T11~T13."""
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -115,8 +116,8 @@ class TestPageHero(unittest.TestCase):
         (self.tmp / "en" / self.OLD).mkdir(parents=True)
         # 지금은 모든 날짜에 사진이 있으므로, 배너를 예전 작은 썸네일로 되돌린 페이지를 쓴다
         page = (ROOT / "en" / self.OLD / "index.html").read_text(encoding="utf-8")
-        page = page.replace('<div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""></div>',
-                            '<img class="thumb" src="thumb.png" width="76" height="76" alt="">')
+        page = re.sub(r'<div class="hero"><img src="photo.jpg" width="1200" height="630" alt=""[^>]*></div>',
+                      '<img class="thumb" src="thumb.png" width="76" height="76" alt="">', page)
         (self.tmp / "en" / self.OLD / "index.html").write_text(page, encoding="utf-8")
         self.patch = mock.patch.object(publish, "ROOT", self.tmp)
         self.patch.start()

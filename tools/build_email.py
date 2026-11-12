@@ -14,7 +14,7 @@ import langs  # noqa: E402
 import vote  # noqa: E402
 import feedback  # noqa: E402
 
-SITE = "https://read.wspace.ai.kr"
+SITE = langs.SITE
 BLUE, INK, SUB, MUTED, BG, HL = "#3182f6", "#191f28", "#4e5968", "#8b95a1", "#f2f4f6", "#fff3c4"
 FONT = "-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic','Hiragino Sans','Noto Sans JP',sans-serif"
 

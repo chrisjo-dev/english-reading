@@ -1,4 +1,5 @@
 import Feedback from "./Feedback";
+import { SITE_HOST } from "@/lib/site";
 
 const W = "https://www.wspace.ai.kr";
 
@@ -31,7 +32,7 @@ export default function Footer() {
             </a>
           ))}
         </nav>
-        <span className="mono foot-url">read.wspace.ai.kr</span>
+        <span className="mono foot-url">{SITE_HOST}</span>
       </div>
     </footer>
   );

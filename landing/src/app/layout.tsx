@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
 import { FAQ } from "@/lib/faq";
 import { loadLatest } from "@/lib/reading";
+import { SITE } from "@/lib/site";
 import "./globals.css";
 import "./gnb.css";
 
-const SITE = "https://read.wspace.ai.kr";
 const TITLE = "독해한입 | 매일 영어, 일본어, 독일어 독해 연습 (무료 뉴스레터)";
 const DESCRIPTION =
   "매일 아침 무료로 받는 외국어 읽기 뉴스레터. 영어 B1~B2, 일본어 N3(기초 N4~N5), 독일어 B1~B2 지문을 문장별 음성, 주요 단어, 모범 해석과 함께.";
 const latest = loadLatest();
 const OG_IMAGE = latest.langs.en?.latest ? `${SITE}/en/${latest.langs.en.latest}/thumb.png` : `${SITE}/en/thumb.png`;
 
-// 사이트(WebSite)와 자주 묻는 질문(FAQPage) 구조화 데이터. 상위 사이트 www.wspace.ai.kr 의 일부로 묶는다.
+// 사이트(WebSite), 운영 주체(Organization), 자주 묻는 질문(FAQPage) 구조화 데이터. 상위 사이트 www.wspace.ai.kr 의 일부로 묶는다.
+// 지문 페이지(tools/publish.py reading_ld)는 #organization, #website 를 @id 로만 가리키므로 전체 정의는 여기 한 곳에 둔다.
+// alternateName: 붙여 쓰기, 순서를 바꾼 이름, 로마자로 찾는 사람도 같은 서비스로 이어지게 한다(화면 문구에는 넣지 않는다).
+const ALT_NAMES = ["한입독해", "독해 한입", "Dokhaehanip", "dokhaehanip"];
+const PERSON = "https://www.wspace.ai.kr/#person";
 const JSON_LD = {
   "@context": "https://schema.org",
   "@graph": [
@@ -19,20 +23,31 @@ const JSON_LD = {
       "@type": "WebSite",
       "@id": `${SITE}/#website`,
       name: "독해한입: 매일 외국어 읽기",
-      alternateName: "매일 외국어 읽기",
+      alternateName: ["독해한입", "매일 외국어 읽기", ...ALT_NAMES],
       url: `${SITE}/`,
       inLanguage: ["ko-KR", "en", "ja", "de"],
       description: DESCRIPTION,
       isPartOf: { "@id": "https://www.wspace.ai.kr/#website" },
-      publisher: { "@id": "https://www.wspace.ai.kr/#person" },
+      publisher: { "@id": `${SITE}/#organization` },
     },
     {
       "@type": "Organization",
       "@id": `${SITE}/#organization`,
       name: "독해한입",
-      alternateName: "매일 외국어 읽기",
+      alternateName: ["매일 외국어 읽기", ...ALT_NAMES],
       url: `${SITE}/`,
-      logo: `${SITE}/assets/brand/icon-512.png`,
+      description:
+        "영어, 일본어, 독일어 독해 지문을 문장별 음성, 주요 단어, 모범 해석과 함께 매일 아침 무료로 올리고 메일로 보내는 1인 운영 서비스.",
+      logo: { "@type": "ImageObject", url: `${SITE}/assets/brand/icon-512.png`, width: 512, height: 512 },
+      founder: { "@id": PERSON },
+    },
+    // 운영자. 상위 사이트(www.wspace.ai.kr) 노드에 있는 이름, 주소, 프로필만 옮겨 이 페이지에서도 @id 가 풀리게 한다.
+    {
+      "@type": "Person",
+      "@id": PERSON,
+      name: "Chris Jo",
+      url: "https://www.wspace.ai.kr/about/",
+      sameAs: ["https://github.com/chrisjo-dev"],
     },
     {
       "@type": "FAQPage",
@@ -50,7 +65,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: `${SITE}/` },
+  alternates: { canonical: `${SITE}/`, types: { "application/rss+xml": `${SITE}/rss.xml` } },
   openGraph: {
     type: "website",
     siteName: "독해한입: 매일 외국어 읽기",

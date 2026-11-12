@@ -277,6 +277,8 @@ class PatchOldJaPageTest(unittest.TestCase):
             p = re.sub(r'(<script id="drill-js") data-v="[^"]*"', r'\1 data-v=""', p)
             # 위 메뉴의 '이번 주 단어 복습' 줄은 gnb.apply 가 매주 최신 복습 날짜로 다시 쓴다
             p = re.sub(r'<a class="gs-review".*?</a>', "", p, flags=re.S)
+            # 구조화 데이터(JSON-LD)는 patch_page 가 content JSON 으로 매번 다시 쓴다
+            p = re.sub(r'<script type="application/ld\+json" id="ld">.*?</script>\n', "", p, flags=re.S)
             return p
         self.assertEqual(strip(before), strip(after), "구독 칸 밖 콘텐츠는 바뀌지 않아야 합니다")
 

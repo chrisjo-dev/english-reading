@@ -9,10 +9,11 @@ import json
 import re
 from pathlib import Path
 
+import langs
 import thumb
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://read.wspace.ai.kr"
+SITE = langs.SITE
 VERSION = "4"
 
 # 요일별 분야와 글 형태(tools/ROUTINE*.md 와 같아야 한다). 월요일부터.

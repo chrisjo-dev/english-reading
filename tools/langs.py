@@ -11,6 +11,9 @@
   default_level — 구독 양식에서 수준을 고르지 않은 구독자의 기본 수준(기본 "b"). send_email.fill_missing_level 이 쓴다.
 """
 
+# 사이트 주소. 도메인을 옮길 때는 여기 한 곳만 바꾼다(tools/ 전체가 이 값을 쓴다).
+SITE = "https://read.wspace.ai.kr"
+
 # 서비스 브랜드명. og:title, 제목, 이메일 수신자 표기 등에 쓴다.
 BRAND = "독해한입"
 # 루트/랜딩용 전체 사이트 이름
@@ -49,6 +52,8 @@ LANGS = {
         "site_desc": "매일 일본어 읽기",
         "brand_email": "독해한입 일본어",
         "level": "JLPT N3",
+        # 2026-10-29 전 지문은 본문이 N4~N5 였다(그날부터 본문 N3, 기초 N4~N5). 제목과 구조화 데이터의 수준 표기에 쓴다
+        "level_before": ("2026-10-29", "JLPT N4~N5"),
         "hard_badge": "N3",              # N3 문법이 들어간 문장(content 의 "b2": true)에 붙는 배지
         "intro": "매일 아침 새로 올라오는 JLPT N3(기초 N4~N5) 일본어 읽기예요.",
         "search_example": "駅, 전철",
@@ -106,6 +111,13 @@ LANGS = {
 }
 
 DEFAULT = "en"
+
+
+def level_on(code, day):
+    """그 날짜 지문 본문의 수준 표기. 수준 기준이 바뀌기 전 날짜는 level_before 의 옛 값을 쓴다."""
+    L = get(code)
+    before = L.get("level_before")
+    return before[1] if before and day < before[0] else L["level"]
 
 
 def get(code):
