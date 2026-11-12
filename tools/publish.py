@@ -242,13 +242,39 @@ def edu_level(label):
     return v if v.startswith(("JLPT", "CEFR")) else (f"JLPT {v}" if v.startswith("N") else f"CEFR {v}")
 
 
+ORG_ID = f"{SITE}/#organization"
+WEBSITE_ID = f"{SITE}/#website"
+
+
+def site_nodes():
+    """운영 주체(Organization)와 사이트(WebSite) 노드. 랜딩(layout.tsx)과 같은 @id, 이름, 로고, sameAs 를 짧게 다시 정의해
+    지문, 목록, 복습 페이지 안에서도 publisher, isPartOf 가 풀리게 한다(설명, founder 같은 전체 정의는 랜딩에)."""
+    return [
+        {"@type": "Organization", "@id": ORG_ID, "name": langs.BRAND, "alternateName": langs.ALT_NAMES, "url": f"{SITE}/",
+         "logo": {"@type": "ImageObject", "url": f"{SITE}/assets/brand/icon-512.png", "width": 512, "height": 512},
+         "sameAs": langs.SAME_AS},
+        {"@type": "WebSite", "@id": WEBSITE_ID, "name": langs.BRAND_ROOT, "url": f"{SITE}/", "publisher": {"@id": ORG_ID}},
+    ]
+
+
+def ld_script(nodes):
+    """<script id="ld"> 블록. </script> 로 블록이 끊기지 않게 "</" 를 막는다."""
+    data = json.dumps({"@context": "https://schema.org", "@graph": nodes}, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    return f'<script type="application/ld+json" id="ld">{data}</script>\n'
+
+
+def crumbs_ld(*pairs):
+    """BreadcrumbList: (이름, 주소) 쌍을 순서대로."""
+    return {"@type": "BreadcrumbList",
+            "itemListElement": [{"@type": "ListItem", "position": i, "name": n, "item": u} for i, (n, u) in enumerate(pairs, 1)]}
+
+
 def reading_ld(lang, day, c, topic, desc):
-    """지문 날짜 페이지 구조화 데이터: Article + LearningResource 와 BreadcrumbList.
-    값은 content JSON 에 실제로 있는 것만 쓴다(출처가 없는 날은 isBasedOn 을 넣지 않는다).
-    운영 주체는 Organization(SITE/#organization, 랜딩에 전체 정의)을 @id 로 가리킨다."""
+    """지문 날짜 페이지 구조화 데이터: Article + LearningResource 와 BreadcrumbList, 운영 주체와 사이트 노드.
+    값은 content JSON 에 실제로 있는 것만 쓴다(출처가 없는 날은 isBasedOn 을 넣지 않는다)."""
     L = langs.get(lang)
     url = f"{SITE}/{lang}/{day}/"
-    org = {"@id": f"{SITE}/#organization"}
+    org = {"@id": ORG_ID}
     levels = [edu_level(langs.level_on(lang, day))]
     if (c.get("levels") or {}).get("a"):
         levels.append(edu_level(L.get("level_a_label", "기초 A2~B1")))
@@ -273,25 +299,19 @@ def reading_ld(lang, day, c, topic, desc):
         "isAccessibleForFree": True,
         "isBasedOn": ({"@type": "CreativeWork", "name": c["source"]["title"], "url": c["source"]["url"]}
                       if (c.get("source") or {}).get("url") else None),
-        "author": {"@type": "Organization", "@id": org["@id"], "name": langs.BRAND, "url": f"{SITE}/"},
+        "author": org,
         "publisher": org,
-        "isPartOf": {"@id": f"{SITE}/#website"},
+        "isPartOf": {"@id": WEBSITE_ID},
     }
     d = dt.date.fromisoformat(day)
-    crumbs = {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": langs.BRAND, "item": f"{SITE}/"},
-            {"@type": "ListItem", "position": 2, "name": f"{L['name']} 지문", "item": f"{SITE}/{lang}/"},
-            {"@type": "ListItem", "position": 3, "name": f"{d.year}년 {d.month}월 {d.day}일", "item": url},
-        ],
-    }
-    data = {"@context": "https://schema.org", "@graph": [{k: v for k, v in article.items() if v is not None}, crumbs]}
-    # </script> 로 블록이 끊기지 않게 "</" 를 막는다
-    return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    crumbs = crumbs_ld((langs.BRAND, f"{SITE}/"), (f"{L['name']} 지문", f"{SITE}/{lang}/"), (f"{d.year}년 {d.month}월 {d.day}일", url))
+    return ld_script([{k: v for k, v in article.items() if v is not None}, crumbs, *site_nodes()])
 
 
 LD_RE = re.compile(r'<script type="application/ld\+json" id="ld">.*?</script>\n', re.S)
+# 새 지문 피드 자동 발견. 지문 페이지(template.html 과 patch_page)와 목록 페이지(ARCHIVE)에 같은 줄을 둔다
+ICON_LINKS = '<link rel="apple-touch-icon" href="/apple-icon.png">\n'
+RSS_LINK = f'<link rel="alternate" type="application/rss+xml" title="{langs.BRAND}" href="/rss.xml">\n'
 PRECONNECT = '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>\n'
 # 일본어는 Google Fonts(Noto Sans JP) CSS 와 글꼴 파일 서버에도 미리 연결한다
 PRECONNECT_JA = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
@@ -484,11 +504,13 @@ def patch_page(lang, day):
     # 재생바 이동(이슈 #26)
     page = seek.apply(page)
     # 구조화 데이터(JSON-LD): 있으면 통째로 바꾸고 없으면 첫 stylesheet 앞에 넣는다(지난 페이지 백필, 도메인 변경 반영)
-    ld = f'<script type="application/ld+json" id="ld">{reading_ld(lang, day, c, topic_text, new_desc)}</script>\n'
+    ld = reading_ld(lang, day, c, topic_text, new_desc)
     if LD_RE.search(page):
         page = LD_RE.sub(lambda m: ld, page, count=1)
     else:
         page = page.replace('<link rel="stylesheet"', ld + '<link rel="stylesheet"', 1)
+    if 'type="application/rss+xml"' not in page:
+        page = page.replace(ICON_LINKS, ICON_LINKS + RSS_LINK, 1)
     # 글꼴 CDN 미리 연결과 첫 화면 사진 우선 로딩(LCP)
     if 'href="https://cdnjs.cloudflare.com" crossorigin' not in page:
         page = page.replace('<link rel="stylesheet" href="https://cdnjs.cloudflare.com', PRECONNECT + '<link rel="stylesheet" href="https://cdnjs.cloudflare.com', 1)
@@ -544,10 +566,12 @@ def rebuild_lists(lang):
             )
         groups.append("    </div>\n  </section>")
         review = (f'  <a class="review" href="{p}review/{reviews[0]}/"><span>이번 주 단어 복습</span><span>→</span></a>\n' if reviews else "")
-        meta_desc = html.escape(f"{L['intro']} 지금까지 {len(entries)}편 수록.", quote=True)
+        meta_desc_raw = f"{L['intro']} 지금까지 {len(entries)}편 수록."
+        meta_desc = html.escape(meta_desc_raw, quote=True)
         # 지난 지문(/archive/)은 언어 첫 화면과 목록이 같아 canonical 을 언어 첫 화면으로 모은다(사이트맵에서도 뺀다)
         canonical = f"{SITE}/{lang}/"
         page_url = canonical if p == "./" else f"{SITE}/{lang}/archive/"
+        ld = list_ld(lang, entries, meta_desc_raw)
         page = (ARCHIVE.replace("__REVIEW__", review).replace("__OG_IMAGE__", f"{SITE}/{lang}/{latest}/thumb.png")
                 .replace("__TITLE__", title).replace("__ARCHIVE__", f"{p}archive/" if p == "./" else "./").replace("__TODAY__", f"{p}{latest}/").replace("__HOME__", home)
                 .replace("__NAME__", L["name"]).replace("__GNB_CSS__", gnb.css_block()).replace("__BRAND__", langs.BRAND)
@@ -555,12 +579,34 @@ def rebuild_lists(lang):
                 .replace("__SITE__", L["site"]).replace("__INTRO__", L["intro"]).replace("__SEARCH_EXAMPLE__", L["search_example"])
                 .replace("__CHIPS__", chips).replace("__LANGTABS__", tabs).replace("__SUB_CSS__", SUB_CSS).replace("__INTRO_CSS__", INTRO_CSS)
                 .replace("__SUB_HTML__", sub_html(lang)).replace("__GROUPS__", "\n".join(groups))
-                .replace("__META_DESC__", meta_desc).replace("__CANONICAL__", canonical).replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML))
+                .replace("__META_DESC__", meta_desc).replace("__CANONICAL__", canonical).replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML)
+                .replace("__LD__", ld).replace("__RSS__", RSS_LINK))
         page = feedback.apply(page, lang, page_url)
         if L.get("noindex", False):
             page = page.replace('<link rel="stylesheet"', '<meta name="robots" content="noindex">\n<link rel="stylesheet"', 1)
         out.mkdir(parents=True, exist_ok=True)
         (out / "index.html").write_text(page, encoding="utf-8")
+
+
+LIST_LD_SIZE = 30
+
+
+def list_ld(lang, entries, desc):
+    """언어 목록 페이지 구조화 데이터: CollectionPage + ItemList(최근 지문, 최신순) + BreadcrumbList.
+    /archive/ 도 canonical 이 언어 첫 화면이라 @id, url 은 언어 첫 화면으로 같게 둔다."""
+    L = langs.get(lang)
+    url = f"{SITE}/{lang}/"
+    recent = entries[:LIST_LD_SIZE]
+    page = {
+        "@type": "CollectionPage", "@id": f"{url}#page", "url": url, "name": f"{L['name']} 지문", "description": desc,
+        "inLanguage": "ko-KR", "isPartOf": {"@id": WEBSITE_ID}, "publisher": {"@id": ORG_ID},
+        "mainEntity": {
+            "@type": "ItemList", "itemListOrder": "https://schema.org/ItemListOrderDescending", "numberOfItems": len(recent),
+            "itemListElement": [{"@type": "ListItem", "position": i, "url": f"{url}{e['day']}/", "name": e["topic"]}
+                                for i, e in enumerate(recent, 1)],
+        },
+    }
+    return ld_script([page, crumbs_ld((langs.BRAND, f"{SITE}/"), (f"{L['name']} 지문", url)), *site_nodes()])
 
 
 def entry(lang, day):
@@ -653,7 +699,9 @@ def write_sitemap():
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
                                       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n", encoding="utf-8")
     # 구글은 RSS 도 사이트맵으로 읽는다. llms.txt 는 정해진 지시어가 없어 주석으로만 알린다
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/rss.xml\n"
+    # Content-Signal: 검색, AI 답변 인용, AI 학습 모두 허용(운영자 결정, 2026-11-12)
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nContent-Signal: search=yes, ai-input=yes, ai-train=yes\nAllow: /\n\n"
+                                     f"Sitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/rss.xml\n"
                                      f"# llms.txt: {SITE}/llms.txt\n", encoding="utf-8")
     items = feed_items(by_lang)
     (ROOT / "rss.xml").write_text(rss_xml(items[:RSS_SIZE]), encoding="utf-8")
@@ -674,17 +722,19 @@ def feed_items(by_lang):
             c = json.loads(cf.read_text(encoding="utf-8")) if cf.exists() else {}
             topic = c.get("title_ko") or entry(code, d)["topic"]
             src = (c.get("source") or {}).get("title")
-            out.append({"lang": code, "day": d, "topic": topic, "title": page_title(code, d, topic),
+            # 피드 안에서는 사이트 이름이 반복되므로 페이지 제목 끝의 " | 독해한입" 을 뺀다
+            title = page_title(code, d, topic).removesuffix(f" | {langs.BRAND}")
+            out.append({"lang": code, "day": d, "topic": topic, "title": title,
                         "url": f"{SITE}/{code}/{d}/", "src": src,
                         "desc": f"{langs.level_on(code, d)} {L['name']} 읽기 — {topic}. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요."})
     return sorted(out, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)
 
 
 def rss_xml(items):
-    """RSS 2.0. 발행 시각은 따로 기록하지 않아 날짜의 0시(KST)로 적고, lastBuildDate 도 가장 새 지문 날짜로 둔다(매번 바뀌지 않게)."""
+    """RSS 2.0. 발행 시각은 따로 기록하지 않아 화면 안내와 같은 그날 07:00(KST)로 적고, lastBuildDate 도 가장 새 지문 날짜로 둔다(매번 바뀌지 않게)."""
     from email.utils import format_datetime
     kst = dt.timezone(dt.timedelta(hours=9))
-    when = lambda day: format_datetime(dt.datetime.combine(dt.date.fromisoformat(day), dt.time(), kst))
+    when = lambda day: format_datetime(dt.datetime.combine(dt.date.fromisoformat(day), dt.time(7), kst))
     esc = lambda t: html.escape(t, quote=False)
     body = "".join(
         "  <item>\n"
@@ -702,12 +752,17 @@ def rss_xml(items):
 
 def llms_txt(by_lang, items):
     """AI 검색 안내(llms.txt). 사실만 적는다: 무엇을, 어떤 수준으로, 어떻게 만드는지와 주요 주소, 언어별 최근 지문."""
+    # 다른 표기: 대소문자만 다른 이름과 사이트 이름에 이미 든 설명("매일 외국어 읽기")은 뺀다
+    alt = [n for i, n in enumerate(langs.ALT_NAMES)
+           if n.lower() not in [m.lower() for m in langs.ALT_NAMES[:i]] and n not in langs.BRAND_ROOT]
     lines = [
         f"# {langs.BRAND}", "",
-        f"> {langs.BRAND}(한입독해로도 검색됨)은 한국어 사용자를 위한 무료 외국어 독해 사이트이자 이메일 뉴스레터입니다. "
+        f"> {langs.BRAND}은 한국어 사용자를 위한 무료 외국어 독해 사이트이자 이메일 뉴스레터입니다. "
         "매일 아침 영어, 일본어, 독일어 짧은 지문을 한 편씩 올리고, 지문마다 문장별 음성, 주요 단어, 한국어 모범 해석, 문법 체크 포인트를 함께 둡니다. "
         "지문은 AI가 초안을 쓰고 자동 검사(화면 표기 오류, 출처 없는 구체적 수치, 최근 지문과의 겹침 등)를 거쳐 올라갑니다. 기사를 바탕으로 쓴 날은 원출처를 페이지에 밝힙니다.", "",
+        f"- 다른 표기: {', '.join(alt)}",
         "- 이용료: 무료",
+        "- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습" + (f". 마지막 갱신 {items[0]['day']}" if items else ""),
         "- 운영: wspace (https://www.wspace.ai.kr/about/)", "",
         "## 언어별 지문",
     ]
@@ -744,7 +799,7 @@ ARCHIVE = r"""<!doctype html>
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__CANONICAL__">
 <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+__RSS____LD__<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
   :root { --bg: #f2f4f6; --ink: #191f28; --sub: #4e5968; --muted: #6b7684; --blue: #1b64da; }

@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "14"
+VERSION = "15"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -459,7 +459,7 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-gap10 { margin-top: 10px; }
   .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
   .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
-  .dr-blank:empty::before { content: "\00a0"; }
+  .dr-blank:empty::before { content: "\\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr .card { margin: 12px 12px 0; }

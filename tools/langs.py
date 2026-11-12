@@ -18,6 +18,11 @@ SITE = "https://read.wspace.ai.kr"
 BRAND = "독해한입"
 # 루트/랜딩용 전체 사이트 이름
 BRAND_ROOT = "독해한입: 매일 외국어 읽기"
+# 다른 이름(붙여 쓰기, 순서를 바꾼 이름, 로마자, 설명형). 구조화 데이터 alternateName 과 llms.txt 에 쓴다.
+# 랜딩(landing/src/lib/site.ts 의 ALT_NAMES)도 같은 목록이어야 한다(tests/test_seo.py 가 확인).
+ALT_NAMES = ["한입독해", "독해 한입", "Dokhaehanip", "dokhaehanip", "매일 외국어 읽기"]
+# 운영 주체 Organization 의 sameAs: 공식으로 운영하는 외부 주소만 넣는다(랜딩 layout.tsx 와 지문 JSON-LD 공통)
+SAME_AS = ["https://buttondown.com/english-reading/archive/"]
 
 LANGS = {
     "en": {

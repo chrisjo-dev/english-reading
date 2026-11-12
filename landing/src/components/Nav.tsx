@@ -154,7 +154,7 @@ export default function Nav() {
         hidden={!open}
       >
         <div className="gs-handle" />
-        <h2 id="gnb-sheet-h">어떤 언어를 읽을까요?</h2>
+        <p className="gs-title" id="gnb-sheet-h">어떤 언어를 읽을까요?</p>
         <p className="gs-hint">언어를 누르면 그 언어의 오늘 지문으로 가요</p>
         {LANGS.map((l) => (
           <div className="gs-row" key={l.code}>

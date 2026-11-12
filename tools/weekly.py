@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import langs  # noqa: E402
 from render import ruby  # noqa: E402
-from publish import FOOTER_CSS, FOOTER_HTML  # noqa: E402
+from publish import FOOTER_CSS, FOOTER_HTML, crumbs_ld, ld_script, site_nodes, ORG_ID, WEBSITE_ID  # noqa: E402
 import gnb  # noqa: E402
 import feedback  # noqa: E402
 
@@ -51,6 +51,35 @@ def short(day):
     return f"{d.month}/{d.day}({DAYS[d.weekday()]})"
 
 
+def bare(word):
+    """설명문, 구조화 데이터용: {漢字|かんじ} 를 漢字 로."""
+    return re.sub(r"\{([^{}|]+)\|[^{}|]+\}", r"\1", word)
+
+
+def describe(lang, end, days):
+    """메타 설명. 언어 이름과 그 주 실제 단어 몇 개를 넣어 언어마다, 주마다 다른 문장이 되게 한다."""
+    L = langs.get(lang)
+    total = sum(len(x["words"]) for x in days)
+    sample = ", ".join(bare(w) for w, _ in [x["words"][0] for x in days if x["words"]][:3])
+    return (f"{span(end)} {L['name']} 지문 {len(days)}편에 나온 주요 단어 {total}개를 뜻을 가리고 복습해요."
+            + (f" 예: {sample}." if sample else ""))
+
+
+def review_ld(lang, end, days, desc):
+    """복습 페이지 구조화 데이터: 그 주 단어 목록(DefinedTermSet)과 BreadcrumbList, 운영 주체와 사이트 노드."""
+    L = langs.get(lang)
+    url = f"{SITE}/{lang}/review/{end}/"
+    name = f"이번 주 {L['name']} 단어 복습 ({span(end)})"
+    terms = {
+        "@type": "DefinedTermSet", "@id": f"{url}#words", "url": url, "name": name, "description": desc,
+        "inLanguage": lang, "isPartOf": {"@id": WEBSITE_ID}, "publisher": {"@id": ORG_ID},
+        "hasDefinedTerm": [{"@type": "DefinedTerm", "name": bare(w), "description": m, "inLanguage": lang}
+                           for x in days for w, m in x["words"]],
+    }
+    crumbs = crumbs_ld((langs.BRAND, f"{SITE}/"), (f"{L['name']} 지문", f"{SITE}/{lang}/"), (name, url))
+    return ld_script([terms, crumbs, *site_nodes()])
+
+
 def build_page(lang, end):
     L = langs.get(lang)
     days = collect(lang, end)
@@ -69,6 +98,8 @@ def build_page(lang, end):
             f'    <div class="grid">{cards}</div>\n  </section>'
         )
     page = PAGE.replace("__SITE__", L["site"]).replace("__HEAD_EXTRA__", L["head_extra"]).replace("__SPAN__", span(end)).replace("__TOTAL__", str(total)).replace("__COUNT__", str(len(days))).replace("__LANG_NAME__", L["name"])
+    desc = describe(lang, end, days)
+    page = page.replace("__DESC__", html.escape(desc, quote=True)).replace("__LD__", review_ld(lang, end, days, desc))
     page = page.replace("__GROUPS__", "\n".join(groups)).replace("__URL__", f"{SITE}/{lang}/review/{end}/")
     page = page.replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__FOOTER__", FOOTER_HTML)
     page = page.replace("__OG_IMAGE__", f"{SITE}/{lang}/{days[-1]['day']}/thumb.png")
@@ -121,11 +152,12 @@ def build_email(lang, end):
 PAGE = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light only"><title>이번 주 __LANG_NAME__ 단어 복습 (__SPAN__) | 독해한입</title>
-<meta name="description" content="__SPAN__ 동안 나온 주요 단어 __TOTAL__개를 뜻을 가리고 복습해요.">
-<meta property="og:title" content="이번 주 __LANG_NAME__ 단어 복습 (__SPAN__) | 독해한입">
+<meta name="description" content="__DESC__">
+<meta property="og:type" content="website"><meta property="og:site_name" content="__SITE__">
+<meta property="og:title" content="이번 주 __LANG_NAME__ 단어 복습 (__SPAN__) | 독해한입"><meta property="og:description" content="__DESC__">
 <meta property="og:url" content="__URL__"><meta property="og:image" content="__OG_IMAGE__"><meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__URL__">
-<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
+__LD__<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 __HEAD_EXTRA__
 <style>

@@ -63,7 +63,7 @@ html.gnb-lock, html.gnb-lock body { overflow: hidden; }
 .gnb-sheet a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
 .gnb-sheet .gs-handle { width: 36px; height: 5px; border-radius: 3px; background: #e5e8eb; margin: 0 auto 14px; }
 /* 세로 기준선 하나: 제목, 안내, 구분선, 배지 왼쪽이 모두 시트 안쪽 28px(16 + 12)에서 시작 */
-.gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
+.gnb-sheet .gs-title { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px; margin: 0; line-height: 1.4; }
 .gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px; line-height: 1.5; }
 /* 줄 전체가 링크: .gs-tx 가 배지+이름+설명을 덮는다. "지난 지문"만 따로 */
 .gs-row { display: flex; align-items: stretch; min-height: 68px; padding-right: 8px; border-radius: 16px; box-sizing: border-box; }
@@ -172,6 +172,7 @@ def header_html(lang=None, mail="#subscribe", on_archive=False):
             f'<span class="gs-badge" aria-hidden="true">{ICON_CARDS}</span>'
             f'<span class="gs-tt"><span class="gs-nm">이번 주 단어 복습</span><span class="gs-ds" id="gnb-review-ds">{desc}</span></span>{ICON_RIGHT}</a>\n'
         )
+    # 시트 제목은 본문 h1 보다 앞에 나오므로 heading 이 아닌 p 로 둔다(시트 이름은 aria-labelledby 로 읽힌다)
     return (
         "<!-- gnb -->\n"
         '<header class="gnb"><div class="gnb-in">'
@@ -185,7 +186,7 @@ def header_html(lang=None, mail="#subscribe", on_archive=False):
         '<div class="gnb-scrim" id="gnb-scrim" hidden></div>\n'
         '<div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>\n'
         '  <div class="gs-handle"></div>\n'
-        '  <h2 id="gnb-sheet-h">어떤 언어를 읽을까요?</h2>\n'
+        '  <p class="gs-title" id="gnb-sheet-h">어떤 언어를 읽을까요?</p>\n'
         '  <p class="gs-hint">언어를 누르면 그 언어의 오늘 지문으로 가요</p>\n'
         + "".join(rows) + review +
         "</div>\n"

@@ -218,6 +218,19 @@ jobs:
           LOCAL_IMAGE_URL: ${{ steps.mini_check.outputs.mini == 'ok' && secrets.LOCAL_IMAGE_URL || '' }}
           LOCAL_IMAGE_TOKEN: ${{ secrets.LOCAL_IMAGE_TOKEN }}
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: landing/package-lock.json
+
+      - name: Build landing
+        # 첫 화면(index.html, _next/)은 빌드 때 content JSON 을 읽어 그날 지문을 굽는다. 매일 다시 빌드해야 하루씩 밀리지 않는다.
+        # 실패해도 어제 첫 화면이 그대로 남을 뿐이라 경고만 남기고 발행과 메일은 이어 간다(set -e 아래에서도 || 로 받는다).
+        run: |
+          (cd landing && npm ci --no-audit --no-fund && npm run build && bash scripts/deploy-landing.sh) \
+            || { git checkout -q -- index.html _next 2>/dev/null || true; git clean -fdq -- _next || true; echo "::warning::랜딩 빌드 실패: 첫 화면은 이전 빌드 그대로 둡니다"; }
+
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
@@ -240,6 +253,8 @@ jobs:
               _pat="$_pat|${_l}/index\.html|${_l}/archive/index\.html"
               _add_list="$_add_list ${_l}/index.html ${_l}/archive/index.html"
             done
+            # 첫 화면 빌드 결과(index.html, _next/)도 생성 파일이다. 아래에서 다시 빌드하고, 실패하면 원격 것을 택한다
+            _pat="$_pat|index\.html|_next/.*"
             bad=$(git diff --name-only --diff-filter=U | grep -vxE "$_pat" || true)
             if [ -n "$bad" ]; then
               git rebase --abort
@@ -249,6 +264,12 @@ jobs:
             python -c "import sys; sys.path.insert(0,'tools'); import langs, publish; publish.rebuild_root(); [publish.rebuild_lists(c) for c in langs.LANGS]"
             # shellcheck disable=SC2086
             git add -- $_add_list 2>/dev/null || true
+            # rebase 중 HEAD 는 원격(origin/main) 쪽이다. 랜딩을 다시 빌드하지 못하면 원격의 첫 화면을 그대로 쓴다
+            if ! (cd landing && npm run build && bash scripts/deploy-landing.sh); then
+              echo "::warning::rebase 중 랜딩 재빌드 실패: 원격 첫 화면을 그대로 둡니다"
+              rm -rf _next && git checkout -q HEAD -- index.html _next
+            fi
+            git add -A -- index.html _next
             # 생성 파일만 변경된 커밋은 rebase 후 공백 패치가 될 수 있다 -> --skip
             if git diff --cached --quiet; then
               git rebase --skip

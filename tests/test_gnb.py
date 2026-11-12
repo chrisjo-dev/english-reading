@@ -92,6 +92,12 @@ class TestMenuMarkup(unittest.TestCase):
         self.assertIn('<a href="/de/" data-today="de" class="on" aria-current="page">독일어</a>', h)
         self.assertIn('<span class="gnb-pill">독일어<svg', h)
 
+    def test_sheet_title_is_not_a_heading(self):
+        # 시트는 본문 h1 보다 앞에 있어 제목을 heading 으로 두면 페이지 헤딩 순서가 h2, h1 이 된다
+        h = gnb.header_html("en")
+        self.assertNotRegex(h, r"<h[1-6]")
+        self.assertIn('<p class="gs-title" id="gnb-sheet-h">어떤 언어를 읽을까요?</p>', h)
+
     def test_sheet_focus_goes_to_sheet_itself(self):
         # 시트를 열면 링크가 아니라 시트 자체(tabindex=-1, 테두리 없음)에 포커스. iOS Safari 파란 상자 방지
         h = gnb.header_html("en")
@@ -122,7 +128,7 @@ class TestMenuMarkup(unittest.TestCase):
         c = gnb.CSS
         # 제목, 안내, 구분선, 배지(줄 링크 padding-left 12px) 모두 시트 padding 16 + 12 = 28px
         self.assertIn("padding: 8px 16px calc(12px + env(safe-area-inset-bottom));", c)
-        self.assertIn(".gnb-sheet h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px;", c)
+        self.assertIn(".gnb-sheet .gs-title { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; padding: 0 12px;", c)
         self.assertIn(".gnb-sheet .gs-hint { font-size: 14px; color: #6b7684; margin: 4px 12px 12px;", c)
         self.assertIn(".gnb-sheet hr { border: 0; height: 1px; background: #e5e8eb; margin: 8px 12px; }", c)
         self.assertIn(".gs-tx { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px 0 10px 12px;", c)

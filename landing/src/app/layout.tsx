@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FAQ } from "@/lib/faq";
 import { loadLatest } from "@/lib/reading";
-import { SITE } from "@/lib/site";
+import { ALT_NAMES, SAME_AS, SITE } from "@/lib/site";
 import "./globals.css";
 import "./gnb.css";
 
@@ -12,9 +12,9 @@ const latest = loadLatest();
 const OG_IMAGE = latest.langs.en?.latest ? `${SITE}/en/${latest.langs.en.latest}/thumb.png` : `${SITE}/en/thumb.png`;
 
 // 사이트(WebSite), 운영 주체(Organization), 자주 묻는 질문(FAQPage) 구조화 데이터. 상위 사이트 www.wspace.ai.kr 의 일부로 묶는다.
-// 지문 페이지(tools/publish.py reading_ld)는 #organization, #website 를 @id 로만 가리키므로 전체 정의는 여기 한 곳에 둔다.
-// alternateName: 붙여 쓰기, 순서를 바꾼 이름, 로마자로 찾는 사람도 같은 서비스로 이어지게 한다(화면 문구에는 넣지 않는다).
-const ALT_NAMES = ["한입독해", "독해 한입", "Dokhaehanip", "dokhaehanip"];
+// 지문 페이지(tools/publish.py reading_ld)도 같은 @id 로 #organization, #website 노드를 짧게 다시 정의한다(그 페이지 안에서도 풀리게).
+// 전체 정의(설명, founder, FAQ)는 여기에 두고, 이름, 로고, sameAs 는 양쪽이 같게 둔다.
+// alternateName(ALT_NAMES, lib/site): 붙여 쓰기, 순서를 바꾼 이름, 로마자로 찾는 사람도 같은 서비스로 이어지게 한다(화면 문구에는 넣지 않는다).
 const PERSON = "https://www.wspace.ai.kr/#person";
 const JSON_LD = {
   "@context": "https://schema.org",
@@ -23,7 +23,7 @@ const JSON_LD = {
       "@type": "WebSite",
       "@id": `${SITE}/#website`,
       name: "독해한입: 매일 외국어 읽기",
-      alternateName: ["독해한입", "매일 외국어 읽기", ...ALT_NAMES],
+      alternateName: ["독해한입", ...ALT_NAMES],
       url: `${SITE}/`,
       inLanguage: ["ko-KR", "en", "ja", "de"],
       description: DESCRIPTION,
@@ -34,12 +34,13 @@ const JSON_LD = {
       "@type": "Organization",
       "@id": `${SITE}/#organization`,
       name: "독해한입",
-      alternateName: ["매일 외국어 읽기", ...ALT_NAMES],
+      alternateName: ALT_NAMES,
       url: `${SITE}/`,
       description:
         "영어, 일본어, 독일어 독해 지문을 문장별 음성, 주요 단어, 모범 해석과 함께 매일 아침 무료로 올리고 메일로 보내는 1인 운영 서비스.",
       logo: { "@type": "ImageObject", url: `${SITE}/assets/brand/icon-512.png`, width: 512, height: 512 },
       founder: { "@id": PERSON },
+      sameAs: SAME_AS,
     },
     // 운영자. 상위 사이트(www.wspace.ai.kr) 노드에 있는 이름, 주소, 프로필만 옮겨 이 페이지에서도 @id 가 풀리게 한다.
     {
