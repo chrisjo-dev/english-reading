@@ -1,16 +1,16 @@
 {
  "date": "2026-11-13",
- "words_total": 653,
+ "words_total": 659,
  "langs": {
   "en": {
-   "count": 41,
-   "latest": "2026-11-12",
-   "topic": "손가락 주름",
+   "count": 42,
+   "latest": "2026-11-13",
+   "topic": "우주 조립 로봇",
    "sentences": [
-    "After a long bath, the skin on your fingers and toes starts to **wrinkle**, and for many years people thought it simply soaked up water.",
-    "However, scientists later found that the wrinkles are controlled by the **nervous system**, not just by water.",
-    "When your hands stay in water, your nerves tell the **blood vessels** under the skin to get narrower, and the skin above them forms small folds.",
-    "In a study published in 2013, twenty **volunteers** were asked to pick up wet marbles with normal hands and again after a thirty-minute warm **soak**."
+    "A robot has **assembled** a structure in space by itself, in a project led by engineers at Caltech.",
+    "The robot was launched in March, and it picked up parts and joined them to make an **antenna** about 1.4 meters wide.",
+    "The team could **communicate** with the robot for only about 15 minutes a day, and they ran out of time before the full frame was finished.",
+    "Sergio Pellegrino, the project leader, said that this was the first time a structure had been built **autonomously** in space."
    ],
    "chips": [
     "6문장",
@@ -18,31 +18,31 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "오래 목욕을 하고 나면 손가락과 발가락의 피부가 쪼글쪼글해지기 시작하는데, 오랫동안 사람들은 피부가 그저 물을 빨아들였기 때문이라고 생각했다.",
+   "answer": "칼텍 엔지니어들이 이끈 한 프로젝트에서, 로봇이 우주에서 혼자 힘으로 구조물을 조립했다.",
    "words": [
     [
-     "wrinkle",
-     "주름지다, 쪼글쪼글해지다"
+     "assembled",
+     "조립했다"
     ],
     [
-     "nervous system",
-     "신경계"
+     "antenna",
+     "안테나"
     ],
     [
-     "blood vessels",
-     "혈관들 (복수형)"
+     "communicate",
+     "연락하다, 소통하다"
     ],
     [
-     "volunteers",
-     "지원자들, 자원자들 (복수형)"
+     "autonomously",
+     "자율적으로"
     ],
     [
-     "soak",
-     "담그기, 적시기"
+     "solar arrays",
+     "태양 전지판"
     ],
     [
-     "grip",
-     "꽉 쥐다, 붙잡다"
+     "eventually",
+     "결국, 마침내"
     ]
    ],
    "review": {
@@ -160,6 +160,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-13",
+   "topic": "우주 조립 로봇"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-13",
    "topic": "프라니말 세포"
@@ -258,11 +263,6 @@
    "lang": "de",
    "day": "2026-11-07",
    "topic": "빈의 카페하우스"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-06",
-   "topic": "교차된 뇌"
   }
  ]
 }
