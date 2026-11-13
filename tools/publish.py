@@ -807,7 +807,10 @@ def rebuild_root():
     order = list(langs.LANGS)
     data["recent"] = sorted(recent, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)[:7 * len(data["langs"])]
     (ROOT / "latest.json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    rebuild_info_pages()
+    try:  # 안내 페이지가 실패해도 지문 발행은 계속한다
+        rebuild_info_pages()
+    except Exception as e:
+        print(f"::warning::안내 페이지 생성 실패: {type(e).__name__}: {e}")
     write_sitemap()
 
 
