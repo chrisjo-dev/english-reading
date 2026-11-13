@@ -67,6 +67,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: TITLE,
   description: DESCRIPTION,
+  // 네이버 서치어드바이저 사이트 소유 확인
+  verification: { other: { "naver-site-verification": "dc5a8a2b5894812cb332c4157e26ac4797725675" } },
   alternates: { canonical: `${SITE}/`, types: { "application/rss+xml": `${SITE}/rss.xml` } },
   openGraph: {
     type: "website",
