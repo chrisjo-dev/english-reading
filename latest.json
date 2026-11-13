@@ -1,16 +1,16 @@
 {
  "date": "2026-11-14",
- "words_total": 671,
+ "words_total": 678,
  "langs": {
   "en": {
-   "count": 42,
-   "latest": "2026-11-13",
-   "topic": "우주 조립 로봇",
+   "count": 43,
+   "latest": "2026-11-14",
+   "topic": "목도리 뜨기",
    "sentences": [
-    "A robot has **assembled** a structure in space by itself, in a project led by engineers at Caltech.",
-    "The robot was launched in March, and it picked up parts and joined them to make an **antenna** about 1.4 meters wide.",
-    "The team could **communicate** with the robot for only about 15 minutes a day, and they ran out of time before the full frame was finished.",
-    "Sergio Pellegrino, the project leader, said that this was the first time a structure had been built **autonomously** in space."
+    "\"I wish I could make something warm with my own hands,\" Yuna said to her grandmother when the first cold wind of November arrived.",
+    "Her grandmother smiled, took a basket of soft gray **yarn** out of the closet, and showed her how to hold two long **needles**.",
+    "For the first hour, Yuna kept dropping **stitches**, and the small piece of scarf looked **loose** in some places and too tight in others.",
+    "\"If you knitted a little slower, your hands would relax,\" her grandmother said, and she **patiently** fixed each mistake without pulling out the whole row."
    ],
    "chips": [
     "6문장",
@@ -18,31 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "칼텍 엔지니어들이 이끈 한 프로젝트에서, 로봇이 우주에서 혼자 힘으로 구조물을 조립했다.",
+   "answer": "11월의 첫 찬바람이 불어왔을 때, 유나는 할머니에게 \"내 손으로 따뜻한 걸 만들 수 있으면 좋겠어요\"라고 말했다.",
    "words": [
     [
-     "assembled",
-     "조립했다"
+     "yarn",
+     "털실"
     ],
     [
-     "antenna",
-     "안테나"
+     "needles",
+     "바늘들 (복수형)"
     ],
     [
-     "communicate",
-     "연락하다, 소통하다"
+     "stitches",
+     "(뜨개질의) 코, 땀"
     ],
     [
-     "autonomously",
-     "자율적으로"
+     "loose",
+     "느슨한, 헐거운"
     ],
     [
-     "solar arrays",
-     "태양 전지판"
+     "patiently",
+     "참을성 있게, 끈기 있게"
     ],
     [
-     "eventually",
-     "결국, 마침내"
+     "rhythm",
+     "리듬, 박자"
+    ],
+    [
+     "crooked",
+     "비뚤어진, 구부러진"
     ]
    ],
    "review": {
@@ -152,6 +156,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-14",
+   "topic": "목도리 뜨기"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-14",
    "topic": "도자기 체험"
@@ -250,11 +259,6 @@
    "lang": "de",
    "day": "2026-11-08",
    "topic": "겨울 타이어"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-07",
-   "topic": "빨래방"
   }
  ]
 }
