@@ -6,7 +6,15 @@
   <atom:link href="https://dokhaehanip.com/rss.xml" rel="self" type="application/rss+xml"/>
   <description>매일 아침 새로 올라오는 영어, 일본어, 독일어 독해 지문</description>
   <language>ko</language>
-  <lastBuildDate>Fri, 13 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Sat, 14 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <item>
+    <title>안개가 걷힌 바스타이 돌다리: 독일어 독해 B1~B2, 2026년 11월 14일</title>
+    <link>https://dokhaehanip.com/de/2026-11-14/</link>
+    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-14/</guid>
+    <pubDate>Sat, 14 Nov 2026 07:00:00 +0900</pubDate>
+    <category>독일어</category>
+    <description>B1~B2 독일어 읽기 — 안개가 걷힌 바스타이 돌다리. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
+  </item>
   <item>
     <title>우주에서 혼자 안테나를 조립한 로봇: 영어 독해 B1~B2, 2026년 11월 13일</title>
     <link>https://dokhaehanip.com/en/2026-11-13/</link>
@@ -238,14 +246,6 @@
     <pubDate>Wed, 04 Nov 2026 07:00:00 +0900</pubDate>
     <category>일본어</category>
     <description>JLPT N3 일본어 읽기 — 동물원 자원봉사자의 동물 해설. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
-  </item>
-  <item>
-    <title>대공사에 들어간 하노버–베를린 철도: 독일어 독해 B1~B2, 2026년 11월 4일</title>
-    <link>https://dokhaehanip.com/de/2026-11-04/</link>
-    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-04/</guid>
-    <pubDate>Wed, 04 Nov 2026 07:00:00 +0900</pubDate>
-    <category>독일어</category>
-    <description>B1~B2 독일어 읽기 — 대공사에 들어간 하노버–베를린 철도. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
   </item>
 </channel>
 </rss>

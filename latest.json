@@ -1,6 +1,6 @@
 {
- "date": "2026-11-13",
- "words_total": 659,
+ "date": "2026-11-14",
+ "words_total": 665,
  "langs": {
   "en": {
    "count": 42,
@@ -105,14 +105,14 @@
    }
   },
   "de": {
-   "count": 17,
-   "latest": "2026-11-13",
-   "topic": "침팬지 울음소리",
+   "count": 18,
+   "latest": "2026-11-14",
+   "topic": "작센 스위스 등산",
    "sentences": [
-    "Ein Forschungsteam aus Frankreich und der Elfenbeinküste hat bei wilden **Schimpansen** im Taï-Nationalpark einen besonderen Laut genauer untersucht.",
-    "Der Laut klingt ungefähr so, als ob ein Mensch mit den **Lippen** ein prustendes Geräusch machen würde.",
-    "In den vier wilden Gruppen benutzen die Tiere diesen **Ruf** fast nur, wenn sie sich gegenseitig das **Fell** pflegen.",
-    "Obwohl die jungen **Waisen** in einer **Auffangstation** in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen."
+    "Am Samstagmorgen bin ich mit der S-Bahn von Dresden nach Rathen gefahren, weil ich die berühmten **Felsen** der Sächsischen Schweiz sehen wollte.",
+    "Im Tal lag noch dichter Nebel, und ich dachte: Oben wird es wohl genauso grau und kalt sein.",
+    "Der Weg nach oben führte über viele steile **Stufen**, und mein schwerer Rucksack wurde mit jedem Schritt unbequemer.",
+    "Als ich endlich auf der alten steinernen **Brücke** stand, war der Nebel plötzlich verschwunden, und die Sonne schien auf die Elbe."
    ],
    "chips": [
     "6문장",
@@ -120,35 +120,31 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "프랑스와 코트디부아르의 한 연구팀이 타이 국립공원의 야생 침팬지들이 내는 특별한 소리를 자세히 연구했습니다.",
+   "answer": "토요일 아침, 저는 작센 스위스의 유명한 바위들을 보고 싶어서 S반 전철을 타고 드레스덴에서 라텐으로 갔습니다.",
    "words": [
     [
-     "Schimpanse",
-     "침팬지 (남성 der, 복수 Schimpansen)"
+     "Felsen",
+     "바위, 암벽 (남성 der, 복수 Felsen)"
     ],
     [
-     "Lippe",
-     "입술 (여성 die, 복수 Lippen)"
+     "Stufe",
+     "계단, 층계 (여성 die, 복수 Stufen)"
     ],
     [
-     "Ruf",
-     "울음소리, 부르는 소리 (남성 der, 복수 Rufe)"
+     "Brücke",
+     "다리 (여성 die, 복수 Brücken)"
     ],
     [
-     "Fell",
-     "털, 모피 (중성 das)"
+     "Höhe",
+     "높이, 높은 곳 (여성 die)"
     ],
     [
-     "Waise",
-     "고아 (여성 die, 복수 Waisen)"
+     "Aussicht",
+     "전망, 경치 (여성 die)"
     ],
     [
-     "Auffangstation",
-     "보호 시설 (여성 die)"
-    ],
-    [
-     "Vorbild",
-     "본보기, 모범 (중성 das, 복수 Vorbilder)"
+     "Thermoskanne",
+     "보온병 (여성 die)"
     ]
    ],
    "review": {
@@ -159,6 +155,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-14",
+   "topic": "작센 스위스 등산"
+  },
   {
    "lang": "en",
    "day": "2026-11-13",
@@ -258,11 +259,6 @@
    "lang": "ja",
    "day": "2026-11-07",
    "topic": "야간버스 여행"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-07",
-   "topic": "빈의 카페하우스"
   }
  ]
 }
