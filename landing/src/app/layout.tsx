@@ -8,7 +8,7 @@ import "./gnb.css";
 
 const TITLE = "독해한입 | 매일 영어, 일본어, 독일어 독해 연습 (무료 뉴스레터)";
 const DESCRIPTION =
-  "매일 아침 무료로 받는 외국어 읽기 뉴스레터. 영어 B1~B2, 일본어 N3(기초 N4~N5), 독일어 B1~B2 지문을 문장별 음성, 주요 단어, 모범 해석과 함께.";
+  "매일 아침 무료로 받는 외국어 읽기 뉴스레터. 영어, 일본어, 독일어 짧은 지문을 문장별 음성, 단어, 해석과 함께.";
 const latest = loadLatest();
 const OG_IMAGE = latest.langs.en?.latest ? `${SITE}/en/${latest.langs.en.latest}/thumb.png` : `${SITE}/en/thumb.png`;
 
