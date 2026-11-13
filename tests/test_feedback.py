@@ -25,7 +25,7 @@ def query(href):
 class TestFeedback(unittest.TestCase):
     def test_mailto_subject_and_body_round_trip(self):
         to, q = query(feedback.mailto(feedback.BUG_SUBJECT, feedback.bug_body("https://dokhaehanip.com/en/2026-11-03/")))
-        self.assertEqual(to, "wonsang.dev@gmail.com")
+        self.assertEqual(to, "hello@dokhaehanip.com")
         self.assertEqual(q["subject"], "[독해한입] 버그 제보")
         self.assertIn("페이지: https://dokhaehanip.com/en/2026-11-03/\r\n기기: ", q["body"])
         _, q = query(feedback.mailto(feedback.IDEA_SUBJECT, feedback.idea_body("ja")))

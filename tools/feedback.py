@@ -10,7 +10,7 @@ from urllib.parse import quote
 
 import langs
 
-MAIL = "wonsang.dev@gmail.com"
+MAIL = "hello@dokhaehanip.com"
 IDEA_SUBJECT = f"[{langs.BRAND}] 기능 건의"
 BUG_SUBJECT = f"[{langs.BRAND}] 버그 제보"
 

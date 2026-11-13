@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 // 의견 보내기(이슈 #21, 시안 F03). tools/feedback.py 와 같은 메일 양식이다.
 // 버그 제보는 누르는 순간 페이지 주소, 기기와 브라우저, 화면 크기를 본문에 넣는다.
-const MAIL = "wonsang.dev@gmail.com";
+const MAIL = "hello@dokhaehanip.com";
 const IDEA_BODY = "어떤 기능이 있으면 좋을까요?\n\n\n왜 필요한가요? (어떤 때 불편했는지)";
 const BUG_HEAD = "무슨 일이 있었나요?\n(예: 음성이 안 나와요, 글자가 겹쳐 보여요)\n\n\n----\n";
 
