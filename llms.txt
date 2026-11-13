@@ -9,7 +9,7 @@
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 42편
-- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 41편
+- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 42편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 18편
 
 ## 최근 지문
@@ -20,13 +20,13 @@
 - [영어, 2026-11-09, 22년 만에 지구로 돌아온 우주 망원경](https://dokhaehanip.com/en/2026-11-09/): 출처 NASA's Swift telescope falls to Earth after nearly 22 years in space (ScienceDaily, 2026-11-06)
 - [영어, 2026-11-08, 회사에서 연 포틀럭 점심](https://dokhaehanip.com/en/2026-11-08/)
 - [영어, 2026-11-07, 처음 가 본 동네 빨래방](https://dokhaehanip.com/en/2026-11-07/)
+- [일본어, 2026-11-14, 바닷가 마을의 머그컵 만들기](https://dokhaehanip.com/ja/2026-11-14/)
 - [일본어, 2026-11-13, 식물과 동물을 합친 새 세포](https://dokhaehanip.com/ja/2026-11-13/): 출처 動植物ハイブリッド細胞「プラニマル細胞」の作製に成功 (近畿大学, 2026-11-12)
 - [일본어, 2026-11-12, 1년에 5일은 꼭 쉬는 유급휴가](https://dokhaehanip.com/ja/2026-11-12/): 출처 10月は「年次有給休暇取得促進期間」です (厚生労働省)
 - [일본어, 2026-11-11, 쓰루기산 꼭대기에 내린 첫눈](https://dokhaehanip.com/ja/2026-11-11/): 출처 剣山の山頂付近で初雪を確認 徳島 (NHKニュース, 2026-11-10)
 - [일본어, 2026-11-10, 아이의 성장을 비는 시치고산](https://dokhaehanip.com/ja/2026-11-10/): 출처 七五三 (意外に知らない「ニッポン入門」, nippon.com)
 - [일본어, 2026-11-09, 요코하마 중구의 동네 활동 축제](https://dokhaehanip.com/ja/2026-11-09/): 출처 なか区民活動センターまつり2026 (横浜市, 2026-10-16)
 - [일본어, 2026-11-08, 이웃과 함께한 낙엽 청소](https://dokhaehanip.com/ja/2026-11-08/)
-- [일본어, 2026-11-07, 야간버스로 떠난 오사카 여행](https://dokhaehanip.com/ja/2026-11-07/)
 - [독일어, 2026-11-14, 안개가 걷힌 바스타이 돌다리](https://dokhaehanip.com/de/2026-11-14/)
 - [독일어, 2026-11-13, 배워서 쓰는 침팬지의 입술 소리](https://dokhaehanip.com/de/2026-11-13/): 출처 Schimpansen lernen, wann sie bestimmte Rufe einsetzen (Max-Planck-Institut für evolutionäre Anthropologie / EurekAlert)
 - [독일어, 2026-11-12, 월급 받으며 배우는 교육 휴가](https://dokhaehanip.com/de/2026-11-12/): 출처 Fünf Tage bezahlte Lernzeit im Jahr: Nimm dir deinen Bildungsurlaub (IG Metall)
