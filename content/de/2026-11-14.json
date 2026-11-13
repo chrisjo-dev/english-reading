@@ -1,0 +1,482 @@
+{
+  "date": "2026-11-14",
+  "category": "culture",
+  "topic": "작센 스위스 등산",
+  "title_ko": "안개가 걷힌 바스타이 돌다리",
+  "headline": "Ein Tag in der Sächsischen Schweiz",
+  "summary_ko": "작센 스위스의 사암 바위 지대로 떠난 하루 여행을 지어낸 이야기로 쓴 B1~B2 독일어 지문이에요. 안개 낀 골짜기에서 계단을 올라 오래된 돌다리에 서자 안개가 걷히고 엘베강이 보이는 장면을 그려요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "life",
+  "example": true,
+  "grammar": {
+    "b": [
+      "b-futur-vermutung",
+      "b-konjunktiv-irreal"
+    ],
+    "a": [
+      "a-praeteritum-sein-haben"
+    ]
+  },
+  "keywords": [
+    "사암 바위",
+    "돌다리",
+    "등산",
+    "나들이"
+  ],
+  "photo_scene": "Wide morning view of an old stone arch bridge spanning between tall sandstone rock towers above a river valley, thin fog lifting from the valley below, warm low sunlight on the rocks and orange autumn trees.",
+  "sentences": [
+    {
+      "en": "Am Samstagmorgen bin ich mit der S-Bahn von Dresden nach Rathen gefahren, weil ich die berühmten **Felsen** der Sächsischen Schweiz sehen wollte.",
+      "b2": false,
+      "chunks": [
+        [
+          "Am Samstagmorgen",
+          "토요일 아침에"
+        ],
+        [
+          "bin ich",
+          "나는"
+        ],
+        [
+          "mit der S-Bahn",
+          "S반 전철을 타고"
+        ],
+        [
+          "von Dresden nach Rathen gefahren,",
+          "드레스덴에서 라텐으로 갔습니다"
+        ],
+        [
+          "weil ich",
+          "왜냐하면 내가"
+        ],
+        [
+          "die berühmten **Felsen**",
+          "유명한 바위들을"
+        ],
+        [
+          "der Sächsischen Schweiz",
+          "작센 스위스의"
+        ],
+        [
+          "sehen wollte.",
+          "보고 싶었기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Im Tal lag noch dichter Nebel, und ich dachte: Oben wird es wohl genauso grau und kalt sein.",
+      "b2": false,
+      "chunks": [
+        [
+          "Im Tal",
+          "골짜기에는"
+        ],
+        [
+          "lag noch dichter Nebel,",
+          "아직 짙은 안개가 깔려 있었습니다"
+        ],
+        [
+          "und ich dachte:",
+          "그리고 나는 생각했습니다"
+        ],
+        [
+          "Oben",
+          "위쪽도"
+        ],
+        [
+          "wird es wohl",
+          "아마 ~일 것이다"
+        ],
+        [
+          "genauso grau und kalt sein.",
+          "똑같이 흐리고 춥다고"
+        ]
+      ]
+    },
+    {
+      "en": "Der Weg nach oben führte über viele steile **Stufen**, und mein schwerer Rucksack wurde mit jedem Schritt unbequemer.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der Weg nach oben",
+          "위로 가는 길은"
+        ],
+        [
+          "führte",
+          "이어졌습니다"
+        ],
+        [
+          "über viele steile **Stufen**,",
+          "가파른 계단 여러 개를 지나"
+        ],
+        [
+          "und mein schwerer Rucksack",
+          "그리고 내 무거운 배낭은"
+        ],
+        [
+          "wurde",
+          "되었습니다"
+        ],
+        [
+          "mit jedem Schritt",
+          "한 걸음마다"
+        ],
+        [
+          "unbequemer.",
+          "더 불편하게"
+        ]
+      ]
+    },
+    {
+      "en": "Als ich endlich auf der alten steinernen **Brücke** stand, war der Nebel plötzlich verschwunden, und die Sonne schien auf die Elbe.",
+      "b2": false,
+      "chunks": [
+        [
+          "Als ich endlich",
+          "내가 마침내"
+        ],
+        [
+          "auf der alten steinernen **Brücke**",
+          "오래된 돌다리 위에"
+        ],
+        [
+          "stand,",
+          "섰을 때"
+        ],
+        [
+          "war der Nebel",
+          "안개는"
+        ],
+        [
+          "plötzlich verschwunden,",
+          "갑자기 사라져 있었습니다"
+        ],
+        [
+          "und die Sonne",
+          "그리고 해가"
+        ],
+        [
+          "schien auf die Elbe.",
+          "엘베강을 비추었습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Wenn ich keine Angst vor der **Höhe** hätte, würde ich so eine **Aussicht** jedes Wochenende suchen, denn sie war einfach wunderschön.",
+      "b2": true,
+      "chunks": [
+        [
+          "Wenn ich",
+          "만약 내가"
+        ],
+        [
+          "keine Angst vor der **Höhe** hätte,",
+          "높은 곳을 무서워하지 않는다면"
+        ],
+        [
+          "würde ich",
+          "나는 ~할 텐데"
+        ],
+        [
+          "so eine **Aussicht**",
+          "이런 경치를"
+        ],
+        [
+          "jedes Wochenende suchen,",
+          "주말마다 찾아다닐"
+        ],
+        [
+          "denn sie war",
+          "왜냐하면 그것은 ~했으니까"
+        ],
+        [
+          "einfach wunderschön.",
+          "정말 아름다웠다"
+        ]
+      ]
+    },
+    {
+      "en": "Danach setzte ich mich auf eine Bank, trank Tee aus meiner **Thermoskanne** und genoss gemütlich den Blick auf die Felsen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Danach",
+          "그다음에"
+        ],
+        [
+          "setzte ich mich",
+          "나는 앉았습니다"
+        ],
+        [
+          "auf eine Bank,",
+          "벤치에"
+        ],
+        [
+          "trank Tee",
+          "차를 마셨습니다"
+        ],
+        [
+          "aus meiner **Thermoskanne**",
+          "내 보온병에 든"
+        ],
+        [
+          "und genoss gemütlich",
+          "그리고 느긋하게 즐겼습니다"
+        ],
+        [
+          "den Blick auf die Felsen.",
+          "바위들을 바라보는 경치를"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Felsen",
+      "바위, 암벽 (남성 der, 복수 Felsen)"
+    ],
+    [
+      "Stufe",
+      "계단, 층계 (여성 die, 복수 Stufen)"
+    ],
+    [
+      "Brücke",
+      "다리 (여성 die, 복수 Brücken)"
+    ],
+    [
+      "Höhe",
+      "높이, 높은 곳 (여성 die)"
+    ],
+    [
+      "Aussicht",
+      "전망, 경치 (여성 die)"
+    ],
+    [
+      "Thermoskanne",
+      "보온병 (여성 die)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Futur I + wohl — 아마 ~일 것이다",
+      "body": "`Oben wird es wohl genauso grau und kalt sein.`의 `wird ... sein`은 미래가 아니라 추측이에요. `wohl`(아마)이 붙으면 '위도 아마 똑같이 흐리고 춥겠지'라는 짐작이 됩니다. `werden`은 2번째 자리, 동사원형 `sein`은 문장 맨 끝에 와요."
+    },
+    {
+      "title": "als — 과거에 한 번 있었던 때",
+      "body": "`Als ich endlich auf der alten steinernen Brücke stand, ...`의 `als`는 '~했을 때'예요. 과거에 한 번 일어난 일에는 `als`, 반복된 일이나 현재나 미래에는 `wenn`을 씁니다. 부문장이라 동사 `stand`가 맨 끝에 오고, 뒤 주문장은 동사 `war`로 시작해요."
+    }
+  ],
+  "answers": [
+    "토요일 아침, 저는 작센 스위스의 유명한 바위들을 보고 싶어서 S반 전철을 타고 드레스덴에서 라텐으로 갔습니다.",
+    "골짜기에는 아직 짙은 안개가 깔려 있어서, 저는 '위도 아마 똑같이 흐리고 춥겠지' 하고 생각했습니다.",
+    "위로 올라가는 길은 가파른 계단이 이어졌고, 무거운 배낭은 한 걸음 옮길 때마다 더 불편해졌습니다.",
+    "마침내 오래된 돌다리 위에 섰을 때, 안개는 갑자기 사라져 있었고 햇살이 엘베강을 비추고 있었습니다.",
+    "제가 높은 곳을 무서워하지만 않는다면 이런 경치를 주말마다 찾아다닐 거예요. 그만큼 정말 아름다웠거든요.",
+    "그다음 저는 벤치에 앉아 보온병에 담아 온 차를 마시며 느긋하게 바위들을 바라보았습니다."
+  ],
+  "advanced": [
+    {
+      "word": "Sandstein",
+      "meaning": "사암 (남성 der)",
+      "confuse": null,
+      "example": "Die Felsen an der Elbe bestehen aus **Sandstein**.",
+      "example_ko": "엘베강 가의 바위들은 사암으로 이루어져 있습니다."
+    },
+    {
+      "word": "Aufstieg",
+      "meaning": "오르막길, 등반 (남성 der)",
+      "confuse": "Aufstieg vs. Abstieg: `Aufstieg`는 올라가는 길, `Abstieg`는 내려오는 길이에요.",
+      "example": "Der **Aufstieg** über die Stufen war anstrengend.",
+      "example_ko": "계단을 따라 올라가는 길은 힘들었습니다."
+    },
+    {
+      "word": "Gipfel",
+      "meaning": "정상, 산꼭대기 (남성 der, 복수 Gipfel)",
+      "confuse": null,
+      "example": "Nach zwei Stunden erreichten wir den **Gipfel**.",
+      "example_ko": "두 시간 뒤 우리는 정상에 도착했습니다."
+    },
+    {
+      "word": "Rast",
+      "meaning": "휴식 (여성 die)",
+      "confuse": "Rast vs. Pause: `Pause`는 일이나 수업 중의 쉬는 시간, `Rast`는 걷거나 여행하다가 잠깐 멈춰 쉬는 것이에요. `Rast machen`으로 자주 씁니다.",
+      "example": "Auf halbem Weg haben wir eine kurze **Rast** gemacht.",
+      "example_ko": "우리는 중간쯤에서 잠깐 쉬었습니다."
+    },
+    {
+      "word": "keuchen",
+      "meaning": "헐떡이다",
+      "confuse": null,
+      "example": "Auf den letzten Stufen habe ich laut **gekeucht**.",
+      "example_ko": "마지막 계단에서 저는 크게 헐떡였습니다."
+    },
+    {
+      "word": "sich auflösen",
+      "meaning": "흩어지다, 걷히다",
+      "confuse": "sich auflösen vs. auflösen: 재귀형은 안개나 무리가 스스로 '흩어지다', 재귀대명사 없이 쓰면 설탕 등을 '녹이다, 해체하다'예요.",
+      "example": "Gegen Mittag hat sich der Nebel **aufgelöst**.",
+      "example_ko": "정오 무렵 안개가 걷혔습니다."
+    },
+    {
+      "word": "beeindruckend",
+      "meaning": "인상적인",
+      "confuse": null,
+      "example": "Der Blick von der Brücke war wirklich **beeindruckend**.",
+      "example_ko": "다리에서 본 경치는 정말 인상적이었습니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Am Samstag bin ich nach Rathen gefahren, denn ich wollte die **Felsen** sehen.",
+          "chunks": [
+            [
+              "Am Samstag",
+              "토요일에"
+            ],
+            [
+              "bin ich",
+              "나는"
+            ],
+            [
+              "nach Rathen gefahren,",
+              "라텐에 갔습니다"
+            ],
+            [
+              "denn ich wollte",
+              "왜냐하면 나는 원했으니까"
+            ],
+            [
+              "die **Felsen** sehen.",
+              "바위들을 보기를"
+            ]
+          ]
+        },
+        {
+          "en": "Im Tal war dichter Nebel, und ich dachte: Oben ist es auch grau.",
+          "chunks": [
+            [
+              "Im Tal",
+              "골짜기에는"
+            ],
+            [
+              "war dichter Nebel,",
+              "짙은 안개가 있었습니다"
+            ],
+            [
+              "und ich dachte:",
+              "그리고 나는 생각했습니다"
+            ],
+            [
+              "Oben",
+              "위도"
+            ],
+            [
+              "ist es auch grau.",
+              "흐리겠지"
+            ]
+          ]
+        },
+        {
+          "en": "Der Weg nach oben hatte viele steile **Stufen**, und mein Rucksack war schwer.",
+          "chunks": [
+            [
+              "Der Weg nach oben",
+              "위로 가는 길에는"
+            ],
+            [
+              "hatte viele steile **Stufen**,",
+              "가파른 계단이 많았습니다"
+            ],
+            [
+              "und mein Rucksack",
+              "그리고 내 배낭은"
+            ],
+            [
+              "war schwer.",
+              "무거웠습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Auf der alten **Brücke** war der Nebel weg, und die Sonne schien.",
+          "chunks": [
+            [
+              "Auf der alten **Brücke**",
+              "오래된 다리 위에서는"
+            ],
+            [
+              "war der Nebel weg,",
+              "안개가 걷혀 있었습니다"
+            ],
+            [
+              "und die Sonne schien.",
+              "그리고 해가 비쳤습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Ich habe Angst vor der **Höhe**, aber die **Aussicht** war wunderschön.",
+          "chunks": [
+            [
+              "Ich habe Angst",
+              "나는 무섭습니다"
+            ],
+            [
+              "vor der **Höhe**,",
+              "높은 곳이"
+            ],
+            [
+              "aber die **Aussicht**",
+              "하지만 경치는"
+            ],
+            [
+              "war wunderschön.",
+              "정말 아름다웠습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Danach habe ich auf einer Bank Tee aus meiner **Thermoskanne** getrunken.",
+          "chunks": [
+            [
+              "Danach",
+              "그다음에"
+            ],
+            [
+              "habe ich",
+              "나는"
+            ],
+            [
+              "auf einer Bank",
+              "벤치에서"
+            ],
+            [
+              "Tee aus meiner **Thermoskanne**",
+              "보온병에 든 차를"
+            ],
+            [
+              "getrunken.",
+              "마셨습니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "토요일에 저는 라텐에 갔습니다. 바위들을 보고 싶었거든요.",
+        "골짜기에는 짙은 안개가 있었고, 저는 '위도 흐리겠지' 하고 생각했습니다.",
+        "위로 가는 길에는 가파른 계단이 많았고, 제 배낭은 무거웠습니다.",
+        "오래된 다리 위에서는 안개가 걷혀 있었고 해가 비쳤습니다.",
+        "저는 높은 곳이 무섭지만, 경치는 정말 아름다웠습니다.",
+        "그다음 저는 벤치에서 보온병에 든 차를 마셨습니다."
+      ]
+    }
+  }
+}
