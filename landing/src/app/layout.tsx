@@ -12,7 +12,7 @@ const DESCRIPTION =
 const latest = loadLatest();
 const OG_IMAGE = latest.langs.en?.latest ? `${SITE}/en/${latest.langs.en.latest}/thumb.png` : `${SITE}/en/thumb.png`;
 
-// 사이트(WebSite), 운영 주체(Organization), 자주 묻는 질문(FAQPage) 구조화 데이터. 상위 사이트 www.wspace.ai.kr 의 일부로 묶는다.
+// 사이트(WebSite), 운영 주체(Organization), 자주 묻는 질문(FAQPage) 구조화 데이터.
 // 지문 페이지(tools/publish.py reading_ld)도 같은 @id 로 #organization, #website 노드를 짧게 다시 정의한다(그 페이지 안에서도 풀리게).
 // 전체 정의(설명, FAQ)는 여기에 두고, 이름, 로고, sameAs 는 양쪽이 같게 둔다.
 // alternateName(ALT_NAMES, lib/site): 붙여 쓰기, 순서를 바꾼 이름, 로마자로 찾는 사람도 같은 서비스로 이어지게 한다(화면 문구에는 넣지 않는다).
@@ -27,7 +27,6 @@ const JSON_LD = {
       url: `${SITE}/`,
       inLanguage: ["ko-KR", "en", "ja", "de"],
       description: DESCRIPTION,
-      isPartOf: { "@id": "https://www.wspace.ai.kr/#website" },
       publisher: { "@id": `${SITE}/#organization` },
     },
     {
