@@ -72,8 +72,8 @@ class MigrateScript(unittest.TestCase):
         self.assertIn('<link rel="canonical" href="https://dokhaehanip.com/en/2026-10-04/">', s)
         self.assertIn('<meta property="og:url" content="https://dokhaehanip.com/en/2026-10-04/">', s)
         self.assertIn('"@id":"https://dokhaehanip.com/en/2026-10-04/#reading"', s)
-        # wspace 하단 링크는 그대로
-        self.assertIn('href="https://www.wspace.ai.kr/privacy/"', s)
+        # 하단 링크는 독해한입 자체 안내 페이지(design/own-pages O02)
+        self.assertIn('<a href="/privacy/">개인정보처리방침</a>', s)
 
     @unittest.skipUnless(shutil.which("node"), "node 없음")
     def test_roundtrip_node(self):

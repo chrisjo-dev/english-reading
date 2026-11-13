@@ -5,7 +5,7 @@
 - 다른 표기: 한입독해, 독해 한입, Dokhaehanip
 - 이용료: 무료
 - 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-13
-- 운영: wspace (https://www.wspace.ai.kr/about/)
+- 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 42편
@@ -46,4 +46,4 @@
 ## Optional
 - [사이트맵](https://dokhaehanip.com/sitemap.xml)
 - [새 지문 피드(RSS)](https://dokhaehanip.com/rss.xml)
-- [개인정보처리방침](https://www.wspace.ai.kr/privacy/)
+- [개인정보처리방침](https://dokhaehanip.com/privacy/)

@@ -60,12 +60,22 @@ SUB_CSS = (
 )
 
 
-# wspace 전체 공통 하단. 애드센스 심사에서 정책 페이지로 가는 길이 모든 페이지에 있어야 한다.
+# 모든 페이지 공통 하단: 독해한입 자체 안내 페이지 3개(시안 design/own-pages O02). 애드센스 심사에서 정책 페이지로 가는 길이 모든 페이지에 있어야 한다.
 FOOTER_CSS = (".site-footer { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; font-size: 13px; color: #6b7684; "
               "display: flex; flex-wrap: wrap; gap: 6px 16px; } .site-footer a { color: #4e5968; text-decoration: none; }\n")
-FOOTER_HTML = ('<footer class="site-footer"><a href="https://www.wspace.ai.kr/">wspace 홈</a>'
-               '<a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a>'
-               '<a href="https://www.wspace.ai.kr/contact/">연락처</a></footer>\n')
+FOOTER_PAGES = (("/about/", "소개"), ("/privacy/", "개인정보처리방침"), ("/contact/", "연락처"))
+
+
+def footer_links(cur=None):
+    """하단 링크 줄. cur 는 지금 보고 있는 안내 페이지 주소(굵게, aria-current)."""
+    return "".join(f'<a href="{h}"' + (' class="cur" aria-current="page"' if h == cur else "") + f'>{t}</a>' for h, t in FOOTER_PAGES)
+
+
+FOOTER_HTML = f'<footer class="site-footer">{footer_links()}</footer>\n'
+# 예전 하단 링크(www.wspace.ai.kr 로 나가던 4개). 지난 페이지에서 새 링크로 바꾼다
+OLD_FOOTER_LINKS = ('<a href="https://www.wspace.ai.kr/">wspace 홈</a>'
+                    '<a href="https://www.wspace.ai.kr/about/">소개</a><a href="https://www.wspace.ai.kr/privacy/">개인정보처리방침</a>'
+                    '<a href="https://www.wspace.ai.kr/contact/">연락처</a>')
 
 
 # 지문 페이지 첫 카드가 끝나는 자리. 소개 문단과 읽기 수준 세그먼트를 이 앞에 둔다
@@ -357,7 +367,7 @@ WEBSITE_ID = f"{SITE}/#website"
 
 def site_nodes():
     """운영 주체(Organization)와 사이트(WebSite) 노드. 랜딩(layout.tsx)과 같은 @id, 이름, 로고, sameAs 를 짧게 다시 정의해
-    지문, 목록, 복습 페이지 안에서도 publisher, isPartOf 가 풀리게 한다(설명, founder 같은 전체 정의는 랜딩에)."""
+    지문, 목록, 복습 페이지 안에서도 publisher, isPartOf 가 풀리게 한다(설명 같은 전체 정의는 랜딩에)."""
     return [
         {"@type": "Organization", "@id": ORG_ID, "name": langs.BRAND, "alternateName": langs.ALT_NAMES, "url": f"{SITE}/",
          "logo": {"@type": "ImageObject", "url": f"{SITE}/assets/brand/icon-512.png", "width": 512, "height": 512},
@@ -528,6 +538,7 @@ def patch_page(lang, day):
         page = page.replace("  .gnb {", "  " + FOOTER_CSS + "  .site-footer { padding-bottom: 32px; }\n  .gnb {", 1)
         page = page.replace("</main>", "</main>\n" + FOOTER_HTML, 1)
         page = page.replace("<link rel=\"stylesheet\"", f'<link rel="canonical" href="{url}">\n<link rel="stylesheet"', 1)
+    page = page.replace(OLD_FOOTER_LINKS, footer_links(), 1)
     L_pub = langs.LANGS.get(lang, {})
     if 'class="card sub"' not in page:
         # 카드가 없는 경우: email=False 언어는 구독 카드를 삽입하지 않는다(숨김 운영 중).
@@ -796,6 +807,7 @@ def rebuild_root():
     order = list(langs.LANGS)
     data["recent"] = sorted(recent, key=lambda r: (r["day"], -order.index(r["lang"])), reverse=True)[:7 * len(data["langs"])]
     (ROOT / "latest.json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    rebuild_info_pages()
     write_sitemap()
 
 
@@ -826,6 +838,7 @@ def write_sitemap():
         rdir = ROOT / code / "review"
         if rdir.exists():
             entries += [(f"{SITE}/{code}/review/{r.name}/", r.name) for r in sorted(rdir.iterdir()) if r.is_dir()]
+    entries += [(f"{SITE}{h}", INFO_DATE) for h, _ in FOOTER_PAGES]
     body = "".join(f"  <url><loc>{u}</loc><lastmod>{lm}</lastmod></url>\n" for u, lm in entries)
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
                                       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n", encoding="utf-8")
@@ -837,6 +850,183 @@ def write_sitemap():
     items = feed_items(by_lang)
     (ROOT / "rss.xml").write_text(rss_xml(items[:RSS_SIZE]), encoding="utf-8")
     (ROOT / "llms.txt").write_text(llms_txt(by_lang, items), encoding="utf-8")
+
+
+# 안내 페이지(/about/, /privacy/, /contact/, 시안 design/own-pages O06, O07, O08). 지문 페이지 카드 결과 같은 위 메뉴를 쓴다.
+# 시행일(개인정보처리방침)과 사이트맵 lastmod. 문구를 바꾸면 이 날짜도 바꾼다(매번 오늘 날짜로 쓰지 않아 다시 만들어도 같다)
+INFO_DATE = "2026-11-13"
+NUM = '<span class="num">{}</span>'
+INFO_CSS = """  :root { --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684; --blue: #1b64da; --blue-soft: #e8f3ff; --edge: #e5e8eb;
+           --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+         font-size: 16px; line-height: 1.6; letter-spacing: -0.01em; word-break: keep-all; overflow-wrap: anywhere; }
+  main { max-width: 560px; margin: 0 auto; padding: 0 0 calc(24px + env(safe-area-inset-bottom)); }
+  .top { background: var(--card); padding: 28px 20px 24px; border-radius: var(--card-r); margin: 12px 12px 0; box-shadow: var(--card-sh); }
+  .date { display: block; font-size: 14px; font-weight: 600; color: var(--blue); }
+  h1 { font-size: 26px; font-weight: 800; line-height: 1.35; margin: 6px 0 12px; letter-spacing: -0.03em; }
+  h1 em { font-style: normal; color: var(--blue); }
+  .card { background: var(--card); border-radius: var(--card-r); margin: 12px 12px 0; padding: 22px 20px; box-shadow: var(--card-sh); }
+  [id], .card { scroll-margin-top: 84px; }
+  .lead { margin: 0; font-size: 16px; color: var(--sub); line-height: 1.7; }
+  .eff { margin: 2px 0 0; font-size: 14px; font-weight: 600; color: var(--muted); }
+  .card h2 { margin: 0 0 10px; font-size: 19px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.4; }
+  .card p { margin: 0 0 10px; font-size: 15px; color: var(--sub); line-height: 1.7; }
+  .card p:last-child { margin-bottom: 0; }
+  .card p b { color: var(--ink); }
+  .num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin-right: 8px; border-radius: 8px; background: var(--blue-soft); color: var(--blue); font-size: 13px; font-weight: 800; vertical-align: 2px; }
+  ul.dots { margin: 0; padding: 0; list-style: none; }
+  ul.dots li { position: relative; padding-left: 14px; margin: 0 0 6px; font-size: 15px; color: var(--sub); line-height: 1.65; }
+  ul.dots li::before { content: ""; position: absolute; left: 2px; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: #c5ccd6; }
+  ul.dots li b { color: var(--ink); }
+  .lv { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .lv th, .lv td { text-align: left; padding: 10px 0; border-top: 1px solid var(--edge); vertical-align: top; }
+  .lv tr:first-child th, .lv tr:first-child td { border-top: 0; }
+  .lv th { width: 74px; font-weight: 700; color: var(--ink); }
+  .lv td { color: var(--sub); }
+  .lv td span { display: inline-block; margin: 0 6px 4px 0; padding: 3px 9px; border-radius: 999px; background: var(--bg); font-size: 13px; font-weight: 600; color: var(--sub); }
+  .lv td span.b { background: var(--blue-soft); color: var(--blue); }
+  .row { padding: 14px 0; border-top: 1px solid var(--edge); }
+  .row:first-of-type { border-top: 0; padding-top: 4px; }
+  .row h3 { margin: 0 0 4px; font-size: 15px; font-weight: 700; color: var(--ink); }
+  .row p { margin: 0; font-size: 14px; }
+  .row .who { display: inline-block; margin-top: 6px; padding: 3px 9px; border-radius: 6px; background: var(--bg); font-size: 12px; font-weight: 600; color: var(--muted); }
+  .keys { margin: 4px 0 0; padding: 0; list-style: none; }
+  .keys li { display: flex; gap: 10px; padding: 9px 0; border-top: 1px solid var(--edge); font-size: 14px; color: var(--sub); }
+  .keys li:first-child { border-top: 0; }
+  .keys code { flex: none; width: 128px; font: 600 12px/1.6 ui-monospace, Menlo, monospace; color: var(--ink); overflow-wrap: anywhere; }
+  a.ln { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .mailbox { display: flex; align-items: center; gap: 12px; padding: 16px; border-radius: 16px; background: var(--blue-soft); }
+  .mailbox svg { width: 24px; height: 24px; flex: none; fill: none; stroke: var(--blue); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .mailbox b { display: block; font-size: 17px; color: var(--ink); letter-spacing: 0; }
+  .mailbox span { font-size: 13px; color: var(--sub); }
+  .btn { display: flex; align-items: center; justify-content: center; height: 52px; margin-top: 12px; border-radius: 14px; background: var(--blue); color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .toc { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .toc a { padding: 6px 11px; border-radius: 999px; background: var(--bg); font-size: 13px; font-weight: 600; color: var(--sub); text-decoration: none; }
+  .site-footer a.cur { color: #191f28; font-weight: 700; }
+"""
+MAIL_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>'
+
+
+def info_pages():
+    """(폴더, 페이지 제목, 설명, 구조화 데이터 @type, 본문 HTML). 문구는 승인 시안 그대로."""
+    mail = f'<a class="ln" href="mailto:{feedback.MAIL}">{feedback.MAIL}</a>'
+    about = (
+        '<div class="top"><div class="date">독해한입 소개</div><h1>매일 아침 <em>외국어 지문 한 편</em></h1>'
+        '<p class="lead">독해한입은 한국인 학습자를 위해 매일 아침 영어, 일본어, 독일어 짧은 지문을 한 편씩 올리는 무료 읽기 사이트예요. 페이지에서 바로 읽고, 메일로도 받아 볼 수 있어요.</p></div>\n'
+        f'<section class="card"><h2>{NUM.format(1)}누구를 위한 곳인가요</h2><p>출퇴근길처럼 짧은 틈에 외국어 글 한 편을 읽고, 듣고, 해석까지 확인하고 싶은 분을 위해 만들었어요. 회원 가입 없이 누구나 읽을 수 있어요.</p></section>\n'
+        f'<section class="card"><h2>{NUM.format(2)}매일 무엇이 오나요</h2><table class="lv">'
+        '<tr><th>영어</th><td><span class="b">중급 CEFR B1~B2</span><span>기초 A2~B1</span></td></tr>'
+        '<tr><th>일본어</th><td><span class="b">중급 JLPT N3</span><span>기초 N4~N5</span></td></tr>'
+        '<tr><th>독일어</th><td><span class="b">중급 CEFR B1~B2</span><span>기초 A2~B1</span></td></tr></table>'
+        '<ul class="dots" style="margin-top:12px"><li>지문마다 <b>문장별 음성, 주요 단어, 체크 포인트, 모범 해석</b>이 함께 있어요.</li>'
+        '<li>월, 수, 금은 최근 소식, 화, 목은 원리와 문화 설명, 토, 일은 생활 글이에요.</li>'
+        '<li>일요일에는 한 주 단어를 모은 <b>주간 복습</b>이 와요.</li></ul></section>\n'
+        f'<section class="card"><h2>{NUM.format(3)}어떻게 만드나요</h2><ul class="dots">'
+        '<li><b>AI 도구가 초안을 써요.</b> 언어마다 정해 둔 작성 규칙(수준, 문장 길이, 표기, 요일별 글 유형)을 따라요.</li>'
+        '<li><b>자동 검사를 통과해야 올라가요.</b> 길이와 표기, 형식, 최근 지문과 겹치는 소재와 단어를 검사하고, 오류가 나오면 고쳐서 다시 검사해요.</li>'
+        '<li><b>기사 문장을 옮기지 않아요.</b> 소식과 설명 날에는 원문 기사나 자료를 열어 사실을 확인한 뒤 새로 쓰고, 출처를 페이지에 밝혀요. 기사 없이 쓴 글은 그렇다고 표시해요.</li>'
+        '<li><b>음성은 합성 음성이에요.</b> 사람이 녹음하지 않고 음성 합성 프로그램으로 만들어요.</li>'
+        '<li>틀린 내용을 발견하시면 <a class="ln" href="/contact/">연락처</a>로 알려 주세요. 확인한 뒤 고쳐요.</li></ul></section>\n'
+    )
+    d = dt.date.fromisoformat(INFO_DATE)
+    privacy = (
+        f'<div class="top"><div class="date">독해한입 안내</div><h1>개인정보처리방침</h1><p class="eff">시행일: {d.year}년 {d.month}월 {d.day}일</p>'
+        '<p class="lead" style="margin-top:10px">독해한입(dokhaehanip.com)과 독해한입이 보내는 메일에 적용돼요. 회원 가입이 없고, 아래에 적은 경우가 아니면 개인정보를 모으지 않아요.</p>'
+        '<nav class="toc" aria-label="목차"><a href="#collect">모으는 정보</a><a href="#storage">브라우저 저장값</a><a href="#cookies">쿠키와 광고</a>'
+        '<a href="#retention">구독 해지</a><a href="#ask">문의</a></nav></div>\n'
+        f'<section class="card" id="collect"><h2>{NUM.format(1)}모으는 정보와 쓰는 곳</h2>'
+        '<div class="row"><h3>메일 구독</h3><p>구독 칸에 넣은 <b>이메일 주소</b>와 고른 <b>언어</b>, <b>지문 수준</b>(기초, 중급). 매일 아침 지문 메일과 일요일 주간 복습 메일을 보내는 데만 써요.</p><span class="who">맡긴 곳: Buttondown (미국, 메일 발송)</span></div>'
+        '<div class="row"><h3>방문 통계</h3><p>방문 수, 유입 경로, 페이지 이용 흐름, 버튼 사용(주제 반응, 단어 외우기, 의견 보내기 등)을 익명 통계로 봐요. IP 주소는 익명 처리하고 이름이나 이메일과 연결하지 않아요.</p><span class="who">맡긴 곳: Google Analytics 4, Microsoft Clarity</span></div>'
+        '<div class="row"><h3>광고</h3><p>Google AdSense 광고를 보여 줄 수 있어요. 아래 3번을 봐 주세요.</p><span class="who">맡긴 곳: Google AdSense</span></div>'
+        '<div class="row"><h3>의견 메일</h3><p>기능 건의나 버그 제보 버튼은 메일 앱을 열어요. 버그 제보에는 누른 페이지 주소, 기기와 브라우저 이름, 화면 크기가 미리 채워지고, 보내기 전에 지울 수 있어요. 받은 메일은 답장과 수정에만 써요.</p></div>'
+        '<div class="row"><h3>접속 기록</h3><p>사이트는 GitHub Pages로 제공돼요. GitHub는 보안과 운영을 위해 접속 IP 등을 기록할 수 있어요. 글꼴(cdnjs)을 불러올 때도 그 제공자에게 접속 정보가 전달될 수 있어요.</p><span class="who">제공: GitHub Pages, cdnjs</span></div></section>\n'
+        f'<section class="card" id="storage"><h2>{NUM.format(2)}브라우저에 저장하는 값</h2><p>학습 기록과 설정은 이용자 기기의 브라우저 저장소(localStorage)에만 두고, 독해한입 서버로 보내지 않아요. 브라우저 사이트 데이터를 지우면 함께 사라져요.</p>'
+        '<ul class="keys"><li><code>drill:v1</code><span>단어 외우기 복습 기록(다시 물을 날짜)</span></li><li><code>drill:pref</code><span>단어 외우기 방식(카드, 문제)</span></li>'
+        '<li><code>read_level:언어</code><span>언어별로 고른 지문 수준</span></li><li><code>read_speed</code><span>음성 재생 속도</span></li>'
+        '<li><code>vote:언어/날짜</code><span>오늘 주제 반응(좋아요, 별로예요). 반응 자체는 방문 통계로도 보내요</span></li>'
+        "<li><code>lily.justListen</code><span>릴리 그림책 듣기 페이지의 '듣기만' 설정</span></li></ul></section>\n"
+        f'<section class="card" id="cookies"><h2>{NUM.format(3)}쿠키와 광고</h2><p>Google을 포함한 제3자 광고 업체는 쿠키를 써서, 이 사이트와 다른 사이트를 방문한 기록을 바탕으로 광고를 보여 줄 수 있어요. 자세한 내용은 <a class="ln" href="https://policies.google.com/technologies/partner-sites">Google 파트너 사이트의 데이터 사용 방식</a>에 있어요.</p>'
+        '<p>맞춤 광고는 <a class="ln" href="https://adssettings.google.com/">Google 광고 설정</a>에서, 제3자 업체 맞춤 광고 쿠키는 <a class="ln" href="https://www.aboutads.info/choices/">www.aboutads.info</a>에서 끌 수 있어요. Google Analytics 수집은 <a class="ln" href="https://tools.google.com/dlpage/gaoptout">수집 거부 부가 기능</a>으로 막을 수 있어요. 쿠키를 거부해도 읽기에는 문제가 없어요.</p></section>\n'
+        f'<section class="card" id="retention"><h2>{NUM.format(4)}보관과 구독 해지</h2><ul class="dots"><li>이메일 주소는 수신거부하거나 삭제를 요청할 때까지 보관하고, 요청을 받으면 지체 없이 지워요.</li>'
+        '<li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li>'
+        '<li>만 14세 미만 아동의 개인정보는 알면서 모으지 않아요.</li><li>내용이 바뀌면 이 페이지에 새 시행일과 함께 알려요.</li></ul></section>\n'
+        f'<section class="card" id="ask"><h2>{NUM.format(5)}문의</h2><p>개인정보 문의: {mail} (운영자)</p></section>\n'
+    )
+    buttons = (f'<div class="fb-row"><a class="fb-btn" data-fb="idea" href="{html.escape(feedback.mailto(feedback.IDEA_SUBJECT, feedback.idea_body()))}">{feedback.IDEA_ICON}기능 건의</a>'
+               f'<a class="fb-btn" data-fb="bug" href="{html.escape(feedback.mailto(feedback.BUG_SUBJECT, feedback.bug_body(f"{SITE}/contact/")))}">{feedback.BUG_ICON}버그 제보</a></div>')
+    contact = (
+        '<div class="top"><div class="date">독해한입 안내</div><h1>연락처</h1><p class="lead">지문 오류 제보, 기능 의견, 구독과 개인정보 요청은 메일로 보내 주세요. 운영자가 직접 읽어요.</p></div>\n'
+        f'<section class="card"><h2>이메일</h2><div class="mailbox">{MAIL_ICON}<div><b>{feedback.MAIL}</b><span>운영자</span></div></div>'
+        f'<a class="btn" href="mailto:{feedback.MAIL}">메일 쓰기</a></section>\n'
+        f'<section class="card"><h2>양식이 있는 메일로 보내기</h2><p>누르면 메일 앱이 열리고 제목과 본문 양식이 미리 채워져요. 버그 제보에는 페이지 주소, 기기, 화면 크기가 들어가요.</p>{buttons}</section>\n'
+        '<section class="card"><h2>이런 내용을 보내 주세요</h2><ul class="dots"><li>지문, 해석, 단어 뜻에서 틀린 내용이나 이상한 음성</li><li>화면이 깨지거나 버튼이 안 눌리는 문제</li>'
+        '<li>있으면 좋을 기능이나 읽고 싶은 주제</li><li>구독 해지가 안 되는 경우, 내 정보 삭제 요청</li><li>저작권 관련 문의</li></ul></section>\n'
+        '<section class="card"><h2>답변</h2><p>보통 3일 안에 답장을 드려요. 메일 수신거부는 받은 메일 맨 아래 <b>수신거부</b> 링크로 바로 할 수 있어요.</p></section>\n'
+    )
+    return [
+        ("about", f"{langs.BRAND} 소개", "독해한입은 매일 아침 영어, 일본어, 독일어 짧은 지문을 한 편씩 올리는 무료 읽기 사이트예요. 누구를 위해, 어떻게 만드는지 소개해요.", "AboutPage", about),
+        ("privacy", "개인정보처리방침", "독해한입이 모으는 정보(메일 구독, 방문 통계, 광고)와 브라우저 저장값, 쿠키, 구독 해지 방법을 안내해요.", "WebPage", privacy),
+        ("contact", "연락처", "지문 오류 제보, 기능 의견, 구독과 개인정보 요청은 메일로 보내 주세요. 운영자가 직접 읽어요.", "ContactPage", contact),
+    ]
+
+
+INFO = r"""<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only"><title>__TITLE__ | __BRAND__</title>
+<meta name="description" content="__DESC__">
+<meta property="og:type" content="website"><meta property="og:site_name" content="__BRAND__">
+<meta property="og:title" content="__TITLE__ | __BRAND__"><meta property="og:description" content="__DESC__">
+<meta property="og:url" content="__URL__"><meta property="og:image" content="__SITE__/assets/brand/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="__URL__">
+<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
+__RSS____LD__<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
+<style>
+__INFO_CSS____GNB_CSS____FOOTER_CSS__</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
+     crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
+</head>
+<body>
+__GNB__<main>
+__BODY__</main>
+__FOOTER____GNB_JS__</body></html>
+"""
+
+
+def info_ld(folder, title, desc, kind):
+    url = f"{SITE}/{folder}/"
+    page = {"@type": kind, "@id": f"{url}#page", "url": url, "name": title, "description": desc, "inLanguage": "ko-KR",
+            "dateModified": INFO_DATE, "isPartOf": {"@id": WEBSITE_ID}, "about": {"@id": ORG_ID}, "publisher": {"@id": ORG_ID}}
+    return ld_script([page, crumbs_ld((langs.BRAND, f"{SITE}/"), (title, url)), *site_nodes()])
+
+
+def rebuild_info_pages():
+    """소개, 개인정보처리방침, 연락처 페이지를 만든다. 여러 번 돌려도 같다."""
+    # 언어가 없는 페이지지만 '지난 지문'과 시트를 쓰려고 영어를 기본으로 두고, 언어 탭의 '지금 보는 중' 표시만 뺀다
+    head = gnb.header_html("en", "/#subscribe").replace(' class="on" aria-current="page"', "", 1)
+    for folder, title, desc, kind, body in info_pages():
+        url = f"{SITE}/{folder}/"
+        footer = f'<footer class="site-footer">{footer_links(f"/{folder}/")}</footer>\n'
+        if folder == "contact":
+            # 양식 메일 버튼이 본문 카드에 있어 아래 '바라는 점이 있나요?' 띠는 두지 않는다(시안 O08). 버튼 모양과 스크립트만 쓴다
+            footer += feedback.SCRIPT
+        page = (INFO.replace("__TITLE__", title).replace("__BRAND__", langs.BRAND).replace("__DESC__", html.escape(desc, quote=True))
+                .replace("__URL__", url).replace("__SITE__", SITE).replace("__RSS__", RSS_LINK).replace("__LD__", info_ld(folder, title, desc, kind))
+                .replace("__INFO_CSS__", INFO_CSS + (feedback.CSS if folder == "contact" else "")).replace("__GNB_CSS__", gnb.css_block())
+                .replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__GNB__", head).replace("__BODY__", body)
+                .replace("__FOOTER__", footer).replace("__GNB_JS__", gnb.SCRIPT))
+        if folder != "contact":
+            page = feedback.apply(page, None, url)
+        page = migrate.apply(page)
+        out = ROOT / folder
+        out.mkdir(exist_ok=True)
+        (out / "index.html").write_text(page, encoding="utf-8")
 
 
 RSS_SIZE = 30
@@ -894,7 +1084,7 @@ def llms_txt(by_lang, items):
         f"- 다른 표기: {', '.join(alt)}",
         "- 이용료: 무료",
         "- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습" + (f". 마지막 갱신 {items[0]['day']}" if items else ""),
-        "- 운영: wspace (https://www.wspace.ai.kr/about/)", "",
+        f"- 소개: {SITE}/about/, 연락처: {SITE}/contact/", "",
         "## 언어별 지문",
     ]
     for code in by_lang:
@@ -915,7 +1105,7 @@ def llms_txt(by_lang, items):
                   for code, rv in reviews]
     lines += ["", "## 이용 방법", f"- [첫 화면과 자주 묻는 질문]({SITE}/): 구독 방법, 수준 안내",
               "", "## Optional", f"- [사이트맵]({SITE}/sitemap.xml)", f"- [새 지문 피드(RSS)]({SITE}/rss.xml)",
-              "- [개인정보처리방침](https://www.wspace.ai.kr/privacy/)", ""]
+              f"- [개인정보처리방침]({SITE}/privacy/)", ""]
     return "\n".join(lines)
 
 

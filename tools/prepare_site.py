@@ -23,7 +23,7 @@ FILES = [
     "404.html", ".nojekyll", "latest.json", "sitemap.xml", "robots.txt", "ads.txt", "llms.txt", "rss.xml",
     "favicon.ico", "icon.svg", "icon.png", "icon-32.png", "icon-192.png", "icon-512.png", "apple-icon.png",
 ]
-DIRS = ["_next", "assets", "lily", "listen"]
+DIRS = ["_next", "assets", "lily", "listen", "about", "privacy", "contact"]
 
 
 def dirs():

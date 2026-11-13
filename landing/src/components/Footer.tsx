@@ -1,13 +1,11 @@
 import Feedback from "./Feedback";
 import { SITE_HOST } from "@/lib/site";
 
-const W = "https://www.wspace.ai.kr";
-
+// 독해한입 자체 안내 페이지(tools/publish.py FOOTER_PAGES 와 같게, 시안 design/own-pages O05). 첫 화면 가기는 위 메뉴 로고가 맡는다
 const LINKS = [
-  { label: "홈", href: `${W}/` },
-  { label: "소개", href: `${W}/about/` },
-  { label: "개인정보처리방침", href: `${W}/privacy/` },
-  { label: "연락처", href: `${W}/contact/` },
+  { label: "소개", href: "/about/" },
+  { label: "개인정보처리방침", href: "/privacy/" },
+  { label: "연락처", href: "/contact/" },
 ];
 
 export default function Footer() {
