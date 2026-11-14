@@ -1,16 +1,16 @@
 {
  "date": "2026-11-15",
- "words_total": 691,
+ "words_total": 698,
  "langs": {
   "en": {
-   "count": 43,
-   "latest": "2026-11-14",
-   "topic": "목도리 뜨기",
+   "count": 44,
+   "latest": "2026-11-15",
+   "topic": "발표 연습",
    "sentences": [
-    "\"I wish I could make something warm with my own hands,\" Yuna said to her grandmother when the first cold wind of November arrived.",
-    "Her grandmother smiled, took a basket of soft gray **yarn** out of the closet, and showed her how to hold two long **needles**.",
-    "For the first hour, Yuna kept dropping **stitches**, and the small piece of scarf looked **loose** in some places and too tight in others.",
-    "\"If you knitted a little slower, your hands would relax,\" her grandmother said, and she **patiently** fixed each mistake without pulling out the whole row."
+    "On Sunday evening, Hana was walking around her small room and **practicing** a ten-minute **presentation** for her history class.",
+    "When her roommate Sora came home, Hana asked her to listen, and Sora patiently timed every slide with her phone.",
+    "Although Hana knew the **material** well, she read every word from her notes and spoke too fast, so she finished in only six minutes.",
+    "Sora told her to **pause** after each main point and look at a friendly face in the **audience** instead of the paper, because listeners need time to follow."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,35 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "11월의 첫 찬바람이 불어왔을 때, 유나는 할머니에게 \"내 손으로 따뜻한 걸 만들 수 있으면 좋겠어요\"라고 말했다.",
+   "answer": "일요일 저녁, 하나는 작은 방 안을 돌아다니며 역사 수업에서 할 10분짜리 발표를 연습하고 있었다.",
    "words": [
     [
-     "yarn",
-     "털실"
+     "practicing",
+     "연습하다"
     ],
     [
-     "needles",
-     "바늘들 (복수형)"
+     "presentation",
+     "발표"
     ],
     [
-     "stitches",
-     "(뜨개질의) 코, 땀"
+     "material",
+     "자료, 내용"
     ],
     [
-     "loose",
-     "느슨한, 헐거운"
+     "pause",
+     "잠시 멈추다"
     ],
     [
-     "patiently",
-     "참을성 있게, 끈기 있게"
+     "audience",
+     "청중, 관객"
     ],
     [
-     "rhythm",
-     "리듬, 박자"
+     "confident",
+     "자신 있는"
     ],
     [
-     "crooked",
-     "비뚤어진, 구부러진"
+     "rushing",
+     "서두르다"
     ]
    ],
    "review": {
@@ -160,6 +160,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-15",
+   "topic": "발표 연습"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-15",
    "topic": "올해 첫 나베"
@@ -258,11 +263,6 @@
    "lang": "de",
    "day": "2026-11-09",
    "topic": "가족 기차표"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-08",
-   "topic": "포틀럭 점심"
   }
  ]
 }
