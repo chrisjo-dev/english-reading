@@ -1,0 +1,451 @@
+{
+  "date": "2026-11-16",
+  "category": "space",
+  "topic": "왜행성 후보",
+  "title_ko": "명왕성 너머의 새 얼음 세계",
+  "headline": "A New Icy World Beyond Pluto",
+  "summary_ko": "명왕성 너머에서 발견된 커다란 얼음 천체 소식을 다룬 B1~B2 영어 지문이에요. 이 천체는 지름이 600~1,500킬로미터로 추정되며, 둥글다고 확인되면 여섯 번째 왜행성이 될 수 있어요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-passive-perfect"
+    ],
+    "a": [
+      "a-might"
+    ]
+  },
+  "keywords": [
+    "왜행성",
+    "얼음 천체",
+    "명왕성",
+    "천체 발견"
+  ],
+  "sentences": [
+    {
+      "en": "A large **icy** world has been found far beyond Pluto, and scientists say it could become the sixth known **dwarf planet**.",
+      "b2": false,
+      "chunks": [
+        [
+          "A large **icy** world",
+          "커다란 얼음 세계가"
+        ],
+        [
+          "has been found",
+          "발견되었다"
+        ],
+        [
+          "far beyond Pluto,",
+          "명왕성 훨씬 너머에서"
+        ],
+        [
+          "and scientists say",
+          "그리고 과학자들은 말한다"
+        ],
+        [
+          "it could become",
+          "그것이 될 수도 있다고"
+        ],
+        [
+          "the sixth known **dwarf planet**.",
+          "알려진 여섯 번째 왜행성이"
+        ]
+      ]
+    },
+    {
+      "en": "The object, which only has a **temporary** code name for now, was **spotted** in images from the Rubin Observatory in October.",
+      "b2": false,
+      "chunks": [
+        [
+          "The object,",
+          "그 천체는"
+        ],
+        [
+          "which only has",
+          "오직 가지고 있는데"
+        ],
+        [
+          "a **temporary** code name",
+          "임시 코드 이름만"
+        ],
+        [
+          "for now,",
+          "지금은"
+        ],
+        [
+          "was **spotted** in images",
+          "이미지 속에서 발견되었다"
+        ],
+        [
+          "from the Rubin Observatory",
+          "루빈 천문대에서 찍은"
+        ],
+        [
+          "in October.",
+          "10월에"
+        ]
+      ]
+    },
+    {
+      "en": "Researchers then searched older pictures and found it in images from as far back as 2016, which helped them **trace** its **orbit**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Researchers then searched",
+          "연구자들은 그다음 뒤졌다"
+        ],
+        [
+          "older pictures",
+          "더 오래된 사진들을"
+        ],
+        [
+          "and found it in images",
+          "그리고 이미지들에서 그것을 찾았다"
+        ],
+        [
+          "from as far back as 2016,",
+          "멀리 2016년 것까지"
+        ],
+        [
+          "which helped them",
+          "그것이 그들을 도왔다"
+        ],
+        [
+          "**trace** its **orbit**.",
+          "그것의 궤도를 추적하도록"
+        ]
+      ]
+    },
+    {
+      "en": "It is currently about 46 times as far from the Sun as Earth is, which is **slightly** farther than Pluto's average distance of about 40 times.",
+      "b2": true,
+      "chunks": [
+        [
+          "It is currently",
+          "그것은 현재"
+        ],
+        [
+          "about 46 times as far from the Sun",
+          "태양에서 약 46배 멀리 있다"
+        ],
+        [
+          "as Earth is,",
+          "지구보다"
+        ],
+        [
+          "which is **slightly** farther",
+          "이는 약간 더 먼 것이다"
+        ],
+        [
+          "than Pluto's average distance",
+          "명왕성의 평균 거리보다"
+        ],
+        [
+          "of about 40 times.",
+          "약 40배인"
+        ]
+      ]
+    },
+    {
+      "en": "Its size is still **uncertain**, but it is probably between 600 and 1,500 kilometers **across**, depending on how much sunlight its surface **reflects**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Its size is still **uncertain**,",
+          "그것의 크기는 아직 불확실하다"
+        ],
+        [
+          "but it is probably",
+          "하지만 아마 될 것이다"
+        ],
+        [
+          "between 600 and 1,500 kilometers **across**,",
+          "지름이 600에서 1,500킬로미터 사이가"
+        ],
+        [
+          "depending on",
+          "~에 따라"
+        ],
+        [
+          "how much sunlight",
+          "얼마나 많은 햇빛을"
+        ],
+        [
+          "its surface **reflects**.",
+          "그 표면이 반사하는지"
+        ]
+      ]
+    },
+    {
+      "en": "To be **officially** called a dwarf planet, an object must be round, so scientists need more observations to **confirm** its size and shape.",
+      "b2": false,
+      "chunks": [
+        [
+          "To be **officially** called",
+          "공식적으로 불리려면"
+        ],
+        [
+          "a dwarf planet,",
+          "왜행성이라고"
+        ],
+        [
+          "an object must be round,",
+          "천체는 둥글어야 한다"
+        ],
+        [
+          "so scientists need",
+          "그래서 과학자들은 필요하다"
+        ],
+        [
+          "more observations",
+          "더 많은 관측이"
+        ],
+        [
+          "to **confirm** its size and shape.",
+          "그것의 크기와 모양을 확인하려면"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "icy",
+      "얼음으로 된"
+    ],
+    [
+      "dwarf planet",
+      "왜행성"
+    ],
+    [
+      "temporary",
+      "임시의"
+    ],
+    [
+      "spotted",
+      "발견된, 눈에 띈"
+    ],
+    [
+      "trace",
+      "추적하다, 따라가다"
+    ],
+    [
+      "orbit",
+      "궤도"
+    ],
+    [
+      "slightly",
+      "약간, 조금"
+    ],
+    [
+      "uncertain",
+      "불확실한"
+    ],
+    [
+      "across",
+      "지름으로, 폭이"
+    ],
+    [
+      "reflects",
+      "반사하다"
+    ],
+    [
+      "officially",
+      "공식적으로"
+    ],
+    [
+      "confirm",
+      "확인하다, 확정하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "현재완료 수동태 has been found: 막 발견되어 지금 알려진 상태",
+      "body": "`A large icy world has been found`는 '커다란 얼음 세계가 발견되었다'예요. has been + 과거분사는 현재완료 수동태로, 누가 찾았는지보다 '발견되었고 지금 그 소식이 나와 있다'는 결과에 초점을 둡니다. 소식 기사 첫 문장에 자주 나오는 모양이에요. 바로 뒤 문장의 `was spotted in October`는 10월이라는 지난 때를 콕 집어서 단순 과거 수동태를 썼다는 점도 비교해 보세요."
+    },
+    {
+      "title": "depending on how much: 얼마나 ~하는지에 따라",
+      "body": "`depending on how much sunlight its surface reflects`는 '표면이 햇빛을 얼마나 많이 반사하는지에 따라'예요. depending on 뒤에 how much + 주어 + 동사가 오면 '얼마나 ~하는지에 따라'로 끝에서 앞으로 붙여 해석합니다. 그래서 크기가 600에서 1,500킬로미터로 폭이 넓게 나온 이유가 이 부분에 있어요."
+    }
+  ],
+  "answers": [
+    "명왕성 훨씬 너머에서 커다란 얼음 세계가 발견되었고, 과학자들은 그것이 알려진 여섯 번째 왜행성이 될 수도 있다고 말한다.",
+    "지금은 임시 코드 이름만 있는 그 천체는 10월에 루빈 천문대가 찍은 이미지에서 발견되었다.",
+    "연구자들은 그다음 더 오래된 사진들을 뒤져 멀리 2016년 이미지에서도 그것을 찾아냈고, 이것이 그 궤도를 추적하는 데 도움이 되었다.",
+    "그것은 현재 태양에서 지구보다 약 46배 먼 곳에 있는데, 이는 명왕성의 평균 거리인 약 40배보다 약간 더 멀다.",
+    "그 크기는 아직 불확실하지만, 표면이 햇빛을 얼마나 많이 반사하는지에 따라 아마 지름이 600에서 1,500킬로미터 사이일 것이다.",
+    "공식적으로 왜행성이라고 불리려면 천체가 둥글어야 하므로, 과학자들은 그 크기와 모양을 확인하기 위해 더 많은 관측이 필요하다."
+  ],
+  "advanced": [
+    {
+      "word": "candidate",
+      "meaning": "후보",
+      "confuse": null,
+      "example": "The icy object is now a **candidate** for the sixth dwarf planet.",
+      "example_ko": "그 얼음 천체는 이제 여섯 번째 왜행성 후보입니다."
+    },
+    {
+      "word": "elusive",
+      "meaning": "찾기 어려운",
+      "confuse": "illusive(착각의, 환상의)와 혼동 주의",
+      "example": "The faint object stayed **elusive** in old images until 2026.",
+      "example_ko": "그 흐릿한 천체는 2026년까지 옛 이미지 속에서 찾기 어려운 채로 남아 있었습니다."
+    },
+    {
+      "word": "approximately",
+      "meaning": "대략, 약",
+      "confuse": null,
+      "example": "It is **approximately** 46 times as far from the Sun as Earth is.",
+      "example_ko": "그것은 태양에서 지구보다 대략 46배 멀리 있습니다."
+    },
+    {
+      "word": "estimate",
+      "meaning": "추정하다, 어림잡다",
+      "confuse": null,
+      "example": "Scientists **estimate** that it is 600 to 1,500 kilometers across.",
+      "example_ko": "과학자들은 그것의 지름이 600에서 1,500킬로미터라고 추정합니다."
+    },
+    {
+      "word": "verify",
+      "meaning": "검증하다, 확인하다",
+      "confuse": null,
+      "example": "More observations are needed to **verify** its shape.",
+      "example_ko": "그것의 모양을 검증하려면 더 많은 관측이 필요합니다."
+    },
+    {
+      "word": "spherical",
+      "meaning": "구형의, 둥근",
+      "confuse": null,
+      "example": "A dwarf planet must be nearly **spherical**.",
+      "example_ko": "왜행성은 거의 구형이어야 합니다."
+    },
+    {
+      "word": "celestial",
+      "meaning": "천체의, 하늘의",
+      "confuse": null,
+      "example": "This new **celestial** body lies far beyond Pluto.",
+      "example_ko": "이 새 천체는 명왕성 훨씬 너머에 있습니다."
+    }
+  ],
+  "source": {
+    "title": "A giant icy world hiding beyond Pluto could be our sixth dwarf planet (ScienceDaily, 2026-11-14)",
+    "url": "https://www.sciencedaily.com/releases/2026/11/261112230447.htm"
+  },
+  "photo_scene": "Close-up of a large pale grey icy sphere with a frosty, cratered surface floating in dark space, lit from one side by faint distant sunlight.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "A big **icy** world far past Pluto might be a new **dwarf planet**.",
+          "chunks": [
+            [
+              "A big **icy** world",
+              "커다란 얼음 세계가"
+            ],
+            [
+              "far past Pluto",
+              "명왕성 훨씬 너머의"
+            ],
+            [
+              "might be a new **dwarf planet**.",
+              "새 왜행성일지도 모른다"
+            ]
+          ]
+        },
+        {
+          "en": "It was **spotted** in October in pictures from the Rubin Observatory.",
+          "chunks": [
+            [
+              "It was **spotted** in October",
+              "그것은 10월에 발견되었다"
+            ],
+            [
+              "in pictures",
+              "사진들 속에서"
+            ],
+            [
+              "from the Rubin Observatory.",
+              "루빈 천문대의"
+            ]
+          ]
+        },
+        {
+          "en": "Old pictures from 2016 helped scientists **trace** its **orbit** around the Sun.",
+          "chunks": [
+            [
+              "Old pictures from 2016",
+              "2016년의 옛 사진들이"
+            ],
+            [
+              "helped scientists",
+              "과학자들을 도왔다"
+            ],
+            [
+              "**trace** its **orbit** around the Sun.",
+              "태양을 도는 그것의 궤도를 추적하도록"
+            ]
+          ]
+        },
+        {
+          "en": "It is **slightly** farther from the Sun than Pluto is.",
+          "chunks": [
+            [
+              "It is **slightly** farther",
+              "그것은 약간 더 멀다"
+            ],
+            [
+              "from the Sun",
+              "태양에서"
+            ],
+            [
+              "than Pluto is.",
+              "명왕성보다"
+            ]
+          ]
+        },
+        {
+          "en": "Its size is **uncertain**, but it is about 600 to 1,500 kilometers **across**.",
+          "chunks": [
+            [
+              "Its size is **uncertain**,",
+              "그것의 크기는 불확실하다"
+            ],
+            [
+              "but it is about",
+              "하지만 그것은 약"
+            ],
+            [
+              "600 to 1,500 kilometers **across**.",
+              "지름 600에서 1,500킬로미터이다"
+            ]
+          ]
+        },
+        {
+          "en": "Scientists need to watch it more to **confirm** its size and shape.",
+          "chunks": [
+            [
+              "Scientists need to watch it more",
+              "과학자들은 그것을 더 지켜봐야 한다"
+            ],
+            [
+              "to **confirm** its size and shape.",
+              "그것의 크기와 모양을 확인하려면"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "명왕성 훨씬 너머의 커다란 얼음 세계가 새 왜행성일지도 모른다.",
+        "그것은 10월에 루빈 천문대의 사진들 속에서 발견되었다.",
+        "2016년의 옛 사진들이 과학자들이 태양을 도는 그것의 궤도를 추적하는 데 도움이 되었다.",
+        "그것은 명왕성보다 태양에서 약간 더 멀리 있다.",
+        "그것의 크기는 불확실하지만, 지름이 약 600에서 1,500킬로미터이다.",
+        "과학자들은 그것의 크기와 모양을 확인하려면 그것을 더 지켜봐야 한다."
+      ]
+    }
+  }
+}
