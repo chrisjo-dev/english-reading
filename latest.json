@@ -1,16 +1,16 @@
 {
  "date": "2026-11-16",
- "words_total": 709,
+ "words_total": 721,
  "langs": {
   "en": {
-   "count": 44,
-   "latest": "2026-11-15",
-   "topic": "발표 연습",
+   "count": 45,
+   "latest": "2026-11-16",
+   "topic": "왜행성 후보",
    "sentences": [
-    "On Sunday evening, Hana was walking around her small room and **practicing** a ten-minute **presentation** for her history class.",
-    "When her roommate Sora came home, Hana asked her to listen, and Sora patiently timed every slide with her phone.",
-    "Although Hana knew the **material** well, she read every word from her notes and spoke too fast, so she finished in only six minutes.",
-    "Sora told her to **pause** after each main point and look at a friendly face in the **audience** instead of the paper, because listeners need time to follow."
+    "A large **icy** world has been found far beyond Pluto, and scientists say it could become the sixth known **dwarf planet**.",
+    "The object, which only has a **temporary** code name for now, was **spotted** in images from the Rubin Observatory in October.",
+    "Researchers then searched older pictures and found it in images from as far back as 2016, which helped them **trace** its **orbit**.",
+    "It is currently about 46 times as far from the Sun as Earth is, which is **slightly** farther than Pluto's average distance of about 40 times."
    ],
    "chips": [
     "6문장",
@@ -18,35 +18,55 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "일요일 저녁, 하나는 작은 방 안을 돌아다니며 역사 수업에서 할 10분짜리 발표를 연습하고 있었다.",
+   "answer": "명왕성 훨씬 너머에서 커다란 얼음 세계가 발견되었고, 과학자들은 그것이 알려진 여섯 번째 왜행성이 될 수도 있다고 말한다.",
    "words": [
     [
-     "practicing",
-     "연습하다"
+     "icy",
+     "얼음으로 된"
     ],
     [
-     "presentation",
-     "발표"
+     "dwarf planet",
+     "왜행성"
     ],
     [
-     "material",
-     "자료, 내용"
+     "temporary",
+     "임시의"
     ],
     [
-     "pause",
-     "잠시 멈추다"
+     "spotted",
+     "발견된, 눈에 띈"
     ],
     [
-     "audience",
-     "청중, 관객"
+     "trace",
+     "추적하다, 따라가다"
     ],
     [
-     "confident",
-     "자신 있는"
+     "orbit",
+     "궤도"
     ],
     [
-     "rushing",
-     "서두르다"
+     "slightly",
+     "약간, 조금"
+    ],
+    [
+     "uncertain",
+     "불확실한"
+    ],
+    [
+     "across",
+     "지름으로, 폭이"
+    ],
+    [
+     "reflects",
+     "반사하다"
+    ],
+    [
+     "officially",
+     "공식적으로"
+    ],
+    [
+     "confirm",
+     "확인하다, 확정하다"
     ]
    ],
    "review": {
@@ -176,6 +196,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-16",
+   "topic": "왜행성 후보"
+  },
+  {
    "lang": "de",
    "day": "2026-11-16",
    "topic": "글뤼바인 이름"
@@ -269,11 +294,6 @@
    "lang": "de",
    "day": "2026-11-10",
    "topic": "카니발 시작일"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-09",
-   "topic": "스위프트 망원경"
   },
   {
    "lang": "ja",
