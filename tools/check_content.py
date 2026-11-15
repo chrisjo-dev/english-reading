@@ -20,6 +20,8 @@
   pattern 이 문장별로 안 걸림, 영어 중급 길이 규칙 위반, 최근 90일 지문과 소재 반복. 비축분에는 적용하지 않는다.
       python3 tools/check_content.py --topics en 2026-11-09   (최근 90일 소재 목록, 지문을 쓰기 전에 본다)
       python3 tools/check_content.py --repeat en 2026-11-05   (소재 반복만 검사, PLAN_FROM 과 무관)
+- 오류: WORDS_FROM(2026-11-16) 이후 매일 지문의 주요 단어(words)가 10~12개가 아니거나 본문 형광펜 수와 다른 경우.
+  비축분과 비축분으로 바꾼 날(from_pool)은 5~7개로 쓰므로 보지 않는다.
 - 오류: 주요 단어(words)의 뜻 괄호에 그 단어나 변형이 들어 있는 경우. 예: ["Ufer", "물가 (das Ufer)"], ["genes", "유전자들 (gene의 복수)"].
   단어 쓰기 문제의 힌트에 답이 보인다. WORD_HINT_FROM 이후 지문과 모든 비축분에 적용.
 """
@@ -40,7 +42,7 @@ LEFTOVER = re.compile(r"\*|(?<![\w])_[^_]+_(?![\w])|\[[^\]]+\]\([^)]+\)|^#+\s")
 NUMBER = re.compile(r"\d{2,}|\b(?:hundred|thousand|million|billion|percent)\b|[百千万億]|パーセント|%", re.I)
 
 
-def texts(c, where="", skip=("date", "category", "chips", "source", "photo_scene")):
+def texts(c, where="", skip=("date", "category", "chips", "source", "photo_scene", "from_pool")):
     """지문, 단어, 체크 포인트, 해석 등 화면에 보이는 모든 글을 꺼낸다."""
     if isinstance(c, str):
         yield where, c
@@ -176,6 +178,7 @@ def check(path):
     errors += check_example_ko(c, path)
     errors += overlap(path, c)
     errors += check_word_meanings(c, path)
+    errors += check_word_count(c, path)
     errors += check_duplicate_meanings(c, path)
     errors += check_de_noun_gender(c, path)
     if path.parent.name == "de":
@@ -339,6 +342,31 @@ def _check_grammar(c, lang):
                 out.append(f"grammar: '{gid}' 는 {lang} {level} 목록에 없어요.")
             elif item["pattern"] and not any(re.search(item["pattern"], _plain(s.get("en", "")).strip()) for s in bodies.get(level, [])):
                 out.append(f"grammar: '{gid}' 를 적었는데 {level} 지문의 어느 문장에서도 찾지 못했어요. 문장을 고치거나 grammar 에서 빼세요.")
+    return out
+
+
+WORDS_FROM = dt.date(2026, 11, 16)  # 이날 매일 지문부터 주요 단어(words)를 10~12개로 늘린다. 비축분과 비축분으로 바꾼 날은 5~7개 그대로
+WORDS_COUNT = (10, 12)
+
+
+def check_word_count(c, path):
+    """WORDS_FROM 이후 매일 지문(content/<언어>/날짜.json)의 주요 단어 수와 형광펜 수를 본다.
+    비축분(pool/)과 비축분에서 옮겨 온 날("from_pool")은 5~7개로 쓰므로 보지 않는다."""
+    if path.parent.parent.name != "content" or c.get("from_pool"):
+        return []
+    try:
+        if dt.date.fromisoformat(path.stem) < WORDS_FROM:
+            return []
+    except ValueError:
+        return []
+    n = len(c.get("words", []))
+    lo, hi = WORDS_COUNT
+    out = []
+    if not lo <= n <= hi:
+        out.append(f"words: 주요 단어가 {n}개예요. {WORDS_FROM} 이후 지문은 {lo}~{hi}개여야 해요(ROUTINE 의 주요 단어 설명).")
+    marked = sum(len(re.findall(r"\*\*(.+?)\*\*", s.get("en", ""))) for s in c.get("sentences", []))
+    if marked != n:
+        out.append(f"words: 본문 형광펜(**…**)이 {marked}개, 주요 단어가 {n}개예요. 형광펜과 주요 단어는 1:1로 같은 수여야 해요.")
     return out
 
 

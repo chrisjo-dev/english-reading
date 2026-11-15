@@ -107,6 +107,7 @@ def process_lang(lang: str, day: str, dry_run: bool) -> str:
             continue
 
         c["date"] = day
+        c["from_pool"] = pool_file.name  # 비축분은 주요 단어가 5~7개라 check_content 의 10~12개 검사에서 뺀다
         dest.write_text(json.dumps(c, ensure_ascii=False, indent=2), encoding="utf-8")
 
         # check_content 검증

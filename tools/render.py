@@ -130,8 +130,8 @@ def load(lang, day):
         problems.append("문장은 4~6개")
     if len(c.get("answers", [])) != n:
         problems.append("answers 개수가 문장 수와 다름")
-    if not 5 <= len(c.get("words", [])) <= 7:
-        problems.append("words 는 5~7개")
+    if not 5 <= len(c.get("words", [])) <= 12:  # 2026-11-16 매일 지문부터 10~12개, 비축분과 그 전 지문은 5~7개
+        problems.append("words 는 5~12개")
     if not 1 <= len(c.get("points", [])) <= 2:
         problems.append("points 는 1~2개")
     if not 6 <= len(c.get("advanced", [])) <= 8:
