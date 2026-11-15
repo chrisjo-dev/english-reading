@@ -1,0 +1,478 @@
+{
+  "date": "2026-11-16",
+  "category": "culture",
+  "topic": "글뤼바인 이름",
+  "title_ko": "제 이름을 찾은 무알코올 글뤼바인",
+  "headline": "Glühwein ohne Alkohol darf jetzt so heißen",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-wegen",
+      "b-sowohl"
+    ],
+    "a": [
+      "a-passiv-praesens"
+    ]
+  },
+  "keywords": [
+    "글뤼바인",
+    "무알코올 음료",
+    "상품 이름",
+    "생활 소식"
+  ],
+  "summary_ko": "알코올 없는 글뤼바인이 올해부터 제 이름으로 팔릴 수 있게 된 소식을 다룬 B1~B2 독일어 지문이에요. 예전에는 알코올 7퍼센트 이상이어야 글뤼바인이라 부를 수 있었지만, EU 법이 바뀌어 알코올 0.5퍼센트 미만 제품도 무알코올 글뤼바인이라는 이름을 쓸 수 있어요.",
+  "photo_scene": "Close-up of two steaming red mugs of hot spiced mulled drink on a wooden table, with cinnamon sticks, star anise and orange slices beside them, warm golden evening light and soft blurred string lights behind.",
+  "source": {
+    "title": "Glühwein ohne Alkohol darf jetzt auch so heißen (Tageskarte)",
+    "url": "https://www.tageskarte.io/zahlen/detail/gluehwein-ohne-alkohol-darf-jetzt-auch-so-heissen.html"
+  },
+  "sentences": [
+    {
+      "en": "Seit diesem Jahr darf **alkoholfreier** Glühwein in Deutschland endlich unter seinem eigentlichen **Namen** verkauft werden.",
+      "b2": true,
+      "chunks": [
+        [
+          "Seit diesem Jahr",
+          "올해부터"
+        ],
+        [
+          "darf **alkoholfreier** Glühwein",
+          "무알코올 글뤼바인이"
+        ],
+        [
+          "in Deutschland",
+          "독일에서"
+        ],
+        [
+          "endlich",
+          "마침내"
+        ],
+        [
+          "unter seinem eigentlichen **Namen**",
+          "제 이름으로"
+        ],
+        [
+          "verkauft werden.",
+          "팔릴 수 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Bisher mussten die **Hersteller** solche Getränke unter Fantasienamen wie „Glühpunsch“ oder „Winterzauber“ im Handel anbieten.",
+      "b2": false,
+      "chunks": [
+        [
+          "Bisher mussten",
+          "지금까지는 ~해야 했습니다"
+        ],
+        [
+          "die **Hersteller**",
+          "제조사들은"
+        ],
+        [
+          "solche Getränke",
+          "그런 음료를"
+        ],
+        [
+          "unter Fantasienamen",
+          "지어낸 이름으로"
+        ],
+        [
+          "wie „Glühpunsch“ oder „Winterzauber“",
+          "'글뤼펀치'나 '겨울 마법' 같은"
+        ],
+        [
+          "im Handel anbieten.",
+          "시판해야"
+        ]
+      ]
+    },
+    {
+      "en": "Wegen einer deutschen **Vorschrift** durfte ein Getränk nur dann Glühwein heißen, wenn es **mindestens** sieben Prozent Alkohol enthielt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Wegen einer deutschen **Vorschrift**",
+          "독일의 한 규정 때문에"
+        ],
+        [
+          "durfte ein Getränk",
+          "음료는 ~할 수 있었습니다"
+        ],
+        [
+          "nur dann Glühwein heißen,",
+          "글뤼바인이라고 불릴 수 있는 건 오직"
+        ],
+        [
+          "wenn es **mindestens** sieben Prozent Alkohol enthielt.",
+          "알코올을 최소 7퍼센트 담고 있을 때뿐"
+        ]
+      ]
+    },
+    {
+      "en": "Nach einer **Änderung** im EU-Recht ist der Name jetzt **erlaubt**, wenn das Getränk weniger als 0,5 Prozent Alkohol enthält.",
+      "b2": false,
+      "chunks": [
+        [
+          "Nach einer **Änderung**",
+          "변경 이후"
+        ],
+        [
+          "im EU-Recht",
+          "EU 법의"
+        ],
+        [
+          "ist der Name jetzt **erlaubt**,",
+          "그 이름이 이제 허용됩니다"
+        ],
+        [
+          "wenn das Getränk",
+          "음료가"
+        ],
+        [
+          "weniger als 0,5 Prozent Alkohol enthält.",
+          "알코올을 0.5퍼센트 미만으로 담고 있으면"
+        ]
+      ]
+    },
+    {
+      "en": "Laut dem Deutschen Weininstitut stecken in der alkoholfreien Variante meist sowohl **Gewürze** wie Zimt als auch die **Schale** von Orangen oder Zitronen.",
+      "b2": true,
+      "chunks": [
+        [
+          "Laut dem Deutschen Weininstitut",
+          "독일 와인 협회에 따르면"
+        ],
+        [
+          "stecken in der alkoholfreien Variante",
+          "무알코올 제품에는 들어 있습니다"
+        ],
+        [
+          "meist",
+          "대개"
+        ],
+        [
+          "sowohl **Gewürze** wie Zimt",
+          "계피 같은 향신료도"
+        ],
+        [
+          "als auch die **Schale**",
+          "껍질도"
+        ],
+        [
+          "von Orangen oder Zitronen.",
+          "오렌지나 레몬의"
+        ]
+      ]
+    },
+    {
+      "en": "Anders als beim klassischen Glühwein muss die **Haltbarkeit** angegeben werden, und offene Flaschen sollte man zügig trinken oder im **Kühlschrank** aufbewahren.",
+      "b2": false,
+      "chunks": [
+        [
+          "Anders als beim klassischen Glühwein",
+          "전통 글뤼바인과 달리"
+        ],
+        [
+          "muss die **Haltbarkeit** angegeben werden,",
+          "유통 기한이 표시되어야 하고"
+        ],
+        [
+          "und offene Flaschen",
+          "따 놓은 병은"
+        ],
+        [
+          "sollte man",
+          "~하는 게 좋습니다"
+        ],
+        [
+          "zügig trinken",
+          "빨리 마시거나"
+        ],
+        [
+          "oder im **Kühlschrank** aufbewahren.",
+          "냉장고에 보관하는"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "alkoholfrei",
+      "무알코올의"
+    ],
+    [
+      "Name",
+      "이름 (남성 der, 복수 Namen)"
+    ],
+    [
+      "Hersteller",
+      "제조사 (남성 der, 복수 Hersteller)"
+    ],
+    [
+      "Vorschrift",
+      "규정 (여성 die, 복수 Vorschriften)"
+    ],
+    [
+      "mindestens",
+      "최소한"
+    ],
+    [
+      "Änderung",
+      "변경 (여성 die, 복수 Änderungen)"
+    ],
+    [
+      "erlaubt",
+      "허용된"
+    ],
+    [
+      "Gewürz",
+      "향신료 (중성 das, 복수 Gewürze)"
+    ],
+    [
+      "Schale",
+      "껍질 (여성 die, 복수 Schalen)"
+    ],
+    [
+      "Haltbarkeit",
+      "유통 기한 (여성 die)"
+    ],
+    [
+      "Kühlschrank",
+      "냉장고 (남성 der, 복수 Kühlschränke)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "wegen + 2격(Genitiv): ~ 때문에",
+      "body": "`Wegen einer deutschen Vorschrift`에서 `wegen`은 뒤에 2격을 씁니다. 여성 명사 `Vorschrift`라서 부정관사가 `einer`가 되었어요. 남성, 중성이면 `wegen des Streiks`처럼 `des`와 명사 끝 `-s`가 붙습니다. 일상 회화에서는 3격을 쓰기도 하지만, 기사 문장에서는 2격이 표준입니다."
+    },
+    {
+      "title": "화법 조동사 + 수동태: darf ... verkauft werden",
+      "body": "`darf alkoholfreier Glühwein ... verkauft werden`은 '팔릴 수 있다(팔아도 된다)'는 뜻입니다. 화법 조동사 `darf`가 2번째 자리에, 과거분사 `verkauft`와 `werden`이 문장 맨 끝에 옵니다. 6번 문장의 `muss die Haltbarkeit angegeben werden`(표시되어야 한다)도 같은 구조예요."
+    }
+  ],
+  "answers": [
+    "올해부터 독일에서는 무알코올 글뤼바인을 마침내 제 이름으로 팔 수 있게 되었습니다.",
+    "지금까지 제조사들은 이런 음료를 '글뤼펀치'나 '겨울 마법' 같은 지어낸 이름으로 시판해야 했습니다.",
+    "독일의 한 규정 때문에, 음료는 알코올이 최소 7퍼센트 들어 있어야만 글뤼바인이라고 불릴 수 있었습니다.",
+    "EU 법이 바뀐 뒤로, 알코올이 0.5퍼센트 미만인 음료에도 이제 이 이름이 허용됩니다.",
+    "독일 와인 협회에 따르면, 무알코올 제품에도 대개 계피 같은 향신료와 오렌지나 레몬 껍질이 모두 들어갑니다.",
+    "전통 글뤼바인과 달리 유통 기한을 표시해야 하며, 딴 병은 빨리 마시거나 냉장고에 보관하는 것이 좋습니다."
+  ],
+  "advanced": [
+    {
+      "word": "Kennzeichnung",
+      "meaning": "표시, 라벨링 (여성 die)",
+      "confuse": "`Kennzeichen`(표지, 번호판)과 구별",
+      "example": "Die **Kennzeichnung** muss die Haltbarkeit enthalten.",
+      "example_ko": "표시에는 유통 기한이 들어가야 합니다."
+    },
+    {
+      "word": "entalkoholisiert",
+      "meaning": "알코올을 제거한",
+      "confuse": "`alkoholfrei`는 결과(알코올 없음), `entalkoholisiert`는 과정(알코올을 뺌)을 강조",
+      "example": "Der Glühwein wird aus **entalkoholisiertem** Rotwein gemacht.",
+      "example_ko": "그 글뤼바인은 알코올을 제거한 레드 와인으로 만듭니다."
+    },
+    {
+      "word": "Zutat",
+      "meaning": "재료 (여성 die, 복수 Zutaten)",
+      "confuse": null,
+      "example": "Zimt und Nelken sind typische **Zutaten**.",
+      "example_ko": "계피와 정향은 대표적인 재료입니다."
+    },
+    {
+      "word": "aufbewahren",
+      "meaning": "보관하다",
+      "confuse": "`bewahren`(지키다, 유지하다)과 구별",
+      "example": "Man sollte die Flasche im Kühlschrank **aufbewahren**.",
+      "example_ko": "그 병은 냉장고에 보관하는 것이 좋습니다."
+    },
+    {
+      "word": "Verbraucher",
+      "meaning": "소비자 (남성 der, 복수 Verbraucher)",
+      "confuse": null,
+      "example": "Viele **Verbraucher** suchen Getränke ohne Alkohol.",
+      "example_ko": "많은 소비자가 알코올 없는 음료를 찾습니다."
+    },
+    {
+      "word": "ähneln",
+      "meaning": "닮다, 비슷하다",
+      "confuse": "3격을 씀: `dem Original ähneln`",
+      "example": "Die neue Variante **ähnelt** dem Original sehr.",
+      "example_ko": "새 제품은 원래 것과 아주 비슷합니다."
+    },
+    {
+      "word": "Etikett",
+      "meaning": "라벨 (중성 das, 복수 Etiketten)",
+      "confuse": "`Etikette`(예절)와 구별",
+      "example": "Auf dem **Etikett** steht das Datum.",
+      "example_ko": "라벨에 날짜가 적혀 있습니다."
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Jetzt darf **alkoholfreier** Glühwein endlich auch diesen **Namen** tragen.",
+          "b2": false,
+          "chunks": [
+            [
+              "Jetzt",
+              "이제"
+            ],
+            [
+              "darf **alkoholfreier** Glühwein",
+              "무알코올 글뤼바인도"
+            ],
+            [
+              "endlich auch",
+              "마침내"
+            ],
+            [
+              "diesen **Namen** tragen.",
+              "이 이름을 쓸 수 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Früher gaben die **Hersteller** solchen Getränken andere Namen wie „Glühpunsch“.",
+          "b2": false,
+          "chunks": [
+            [
+              "Früher",
+              "예전에는"
+            ],
+            [
+              "gaben die **Hersteller**",
+              "제조사들이 붙였습니다"
+            ],
+            [
+              "solchen Getränken",
+              "그런 음료에"
+            ],
+            [
+              "andere Namen",
+              "다른 이름을"
+            ],
+            [
+              "wie „Glühpunsch“.",
+              "'글뤼펀치' 같은"
+            ]
+          ]
+        },
+        {
+          "en": "Nach einer deutschen **Vorschrift** brauchte Glühwein bisher **mindestens** sieben Prozent Alkohol.",
+          "b2": false,
+          "chunks": [
+            [
+              "Nach einer deutschen **Vorschrift**",
+              "독일의 한 규정에 따라"
+            ],
+            [
+              "brauchte Glühwein",
+              "글뤼바인에는 필요했습니다"
+            ],
+            [
+              "bisher",
+              "지금까지"
+            ],
+            [
+              "**mindestens** sieben Prozent Alkohol.",
+              "최소 7퍼센트의 알코올이"
+            ]
+          ]
+        },
+        {
+          "en": "Nach einer **Änderung** im EU-Recht ist der Name unter 0,5 Prozent Alkohol **erlaubt**.",
+          "b2": false,
+          "chunks": [
+            [
+              "Nach einer **Änderung**",
+              "변경 이후"
+            ],
+            [
+              "im EU-Recht",
+              "EU 법의"
+            ],
+            [
+              "ist der Name",
+              "그 이름은"
+            ],
+            [
+              "unter 0,5 Prozent Alkohol",
+              "알코올 0.5퍼센트 미만이면"
+            ],
+            [
+              "**erlaubt**.",
+              "허용됩니다"
+            ]
+          ]
+        },
+        {
+          "en": "In das Getränk werden oft **Gewürze** und die **Schale** von Orangen gegeben.",
+          "b2": false,
+          "chunks": [
+            [
+              "In das Getränk",
+              "음료에는"
+            ],
+            [
+              "werden oft",
+              "흔히"
+            ],
+            [
+              "**Gewürze**",
+              "향신료와"
+            ],
+            [
+              "und die **Schale** von Orangen",
+              "오렌지 껍질이"
+            ],
+            [
+              "gegeben.",
+              "들어갑니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Haltbarkeit** steht auf der Flasche, und offene Flaschen kommen in den **Kühlschrank**.",
+          "b2": false,
+          "chunks": [
+            [
+              "Die **Haltbarkeit**",
+              "유통 기한이"
+            ],
+            [
+              "steht auf der Flasche,",
+              "병에 적혀 있고"
+            ],
+            [
+              "und offene Flaschen",
+              "따 놓은 병은"
+            ],
+            [
+              "kommen in den **Kühlschrank**.",
+              "냉장고에 넣습니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "이제 무알코올 글뤼바인도 마침내 이 이름을 쓸 수 있습니다.",
+        "예전에는 제조사들이 이런 음료에 '글뤼펀치' 같은 다른 이름을 붙였습니다.",
+        "독일의 한 규정에 따라 글뤼바인에는 지금까지 알코올이 최소 7퍼센트 필요했습니다.",
+        "EU 법이 바뀐 뒤로 알코올이 0.5퍼센트 미만이면 그 이름이 허용됩니다.",
+        "이 음료에는 흔히 향신료와 오렌지 껍질이 들어갑니다.",
+        "유통 기한은 병에 적혀 있고, 딴 병은 냉장고에 넣습니다."
+      ]
+    }
+  }
+}
