@@ -1,6 +1,6 @@
 {
- "date": "2026-11-15",
- "words_total": 698,
+ "date": "2026-11-16",
+ "words_total": 709,
  "langs": {
   "en": {
    "count": 44,
@@ -50,9 +50,9 @@
     ]
    ],
    "review": {
-    "day": "2026-11-08",
-    "words": 49,
-    "desc": "영어 단어 49개를 다시 봐요"
+    "day": "2026-11-15",
+    "words": 45,
+    "desc": "영어 단어 45개를 다시 봐요"
    }
   },
   "ja": {
@@ -99,66 +99,87 @@
     ]
    ],
    "review": {
-    "day": "2026-11-08",
-    "words": 46,
-    "desc": "일본어 단어 46개를 다시 봐요"
+    "day": "2026-11-15",
+    "words": 44,
+    "desc": "일본어 단어 44개를 다시 봐요"
    }
   },
   "de": {
-   "count": 19,
-   "latest": "2026-11-15",
-   "topic": "대림절 화환",
+   "count": 20,
+   "latest": "2026-11-16",
+   "topic": "글뤼바인 이름",
    "sentences": [
-    "Zwei Wochen vor dem ersten Advent hat meine Oma mich an einem grauen Sonntag eingeladen, mit ihr einen **Adventskranz** zu binden.",
-    "Bevor wir anfangen konnten, haben wir im Garten frische **Tannenzweige** geschnitten und sie auf dem Küchentisch ausgebreitet.",
-    "Meine Oma zeigte mir, wie man die kleinen Zweige mit dünnem **Draht** fest um einen runden Strohring **bindet**.",
-    "Während wir arbeiteten, **duftete** die ganze Küche nach Harz, und draußen fiel ein leichter, kalter Regen auf das Laub."
+    "Seit diesem Jahr darf **alkoholfreier** Glühwein in Deutschland endlich unter seinem eigentlichen **Namen** verkauft werden.",
+    "Bisher mussten die **Hersteller** solche Getränke unter Fantasienamen wie „Glühpunsch“ oder „Winterzauber“ im Handel anbieten.",
+    "Wegen einer deutschen **Vorschrift** durfte ein Getränk nur dann Glühwein heißen, wenn es **mindestens** sieben Prozent Alkohol enthielt.",
+    "Nach einer **Änderung** im EU-Recht ist der Name jetzt **erlaubt**, wenn das Getränk weniger als 0,5 Prozent Alkohol enthält."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 4분"
    ],
-   "answer": "첫 대림절을 2주 앞둔 어느 흐린 일요일, 할머니가 함께 대림절 화환을 엮자며 저를 부르셨습니다.",
+   "answer": "올해부터 독일에서는 무알코올 글뤼바인을 마침내 제 이름으로 팔 수 있게 되었습니다.",
    "words": [
     [
-     "Adventskranz",
-     "대림절 화환 (남성 der, 복수 Adventskränze)"
+     "alkoholfrei",
+     "무알코올의"
     ],
     [
-     "Tannenzweig",
-     "전나무 가지 (남성 der, 복수 Tannenzweige)"
+     "Name",
+     "이름 (남성 der, 복수 Namen)"
     ],
     [
-     "Draht",
-     "철사 (남성 der)"
+     "Hersteller",
+     "제조사 (남성 der, 복수 Hersteller)"
     ],
     [
-     "binden",
-     "묶다, 엮다"
+     "Vorschrift",
+     "규정 (여성 die, 복수 Vorschriften)"
     ],
     [
-     "duften",
-     "향기가 나다"
+     "mindestens",
+     "최소한"
     ],
     [
-     "Kerze",
-     "초, 양초 (여성 die, 복수 Kerzen)"
+     "Änderung",
+     "변경 (여성 die, 복수 Änderungen)"
     ],
     [
-     "Schleife",
-     "리본, 나비매듭 (여성 die)"
+     "erlaubt",
+     "허용된"
+    ],
+    [
+     "Gewürz",
+     "향신료 (중성 das, 복수 Gewürze)"
+    ],
+    [
+     "Schale",
+     "껍질 (여성 die, 복수 Schalen)"
+    ],
+    [
+     "Haltbarkeit",
+     "유통 기한 (여성 die)"
+    ],
+    [
+     "Kühlschrank",
+     "냉장고 (남성 der, 복수 Kühlschränke)"
     ]
    ],
    "review": {
-    "day": "2026-11-08",
+    "day": "2026-11-15",
     "words": 46,
     "desc": "독일어 단어 46개를 다시 봐요"
    }
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-16",
+   "topic": "글뤼바인 이름"
+  },
   {
    "lang": "en",
    "day": "2026-11-15",
@@ -258,11 +279,6 @@
    "lang": "ja",
    "day": "2026-11-09",
    "topic": "구민 활동 축제"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-09",
-   "topic": "가족 기차표"
   }
  ]
 }
