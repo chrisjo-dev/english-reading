@@ -1,0 +1,432 @@
+{
+  "date": "2026-11-17",
+  "category": "tech",
+  "topic": "터치스크린",
+  "title_ko": "손가락을 알아보는 터치스크린",
+  "headline": "How a Touchscreen Knows Your Finger",
+  "summary_ko": "휴대폰 터치스크린이 손가락을 알아보는 원리를 다룬 B1~B2 영어 지문이에요. 화면은 누르는 힘이 아니라 손가락으로 옮겨 가는 작은 전하 때문에 생기는 전압 변화를 감지해요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "explain",
+  "grammar": {
+    "b": [
+      "b-passive-modal",
+      "b-nonrestrictive-relative"
+    ],
+    "a": [
+      "a-comparative"
+    ]
+  },
+  "keywords": [
+    "터치스크린",
+    "정전기",
+    "장갑",
+    "생활 속 과학"
+  ],
+  "sentences": [
+    {
+      "en": "When you **tap** a phone screen, it does not feel the **pressure** of your finger at all; instead, it notices a tiny change in electricity.",
+      "b2": false,
+      "chunks": [
+        [
+          "When you **tap** a phone screen,",
+          "네가 휴대폰 화면을 톡 칠 때"
+        ],
+        [
+          "it does not feel",
+          "화면은 느끼지 않는다"
+        ],
+        [
+          "the **pressure** of your finger at all;",
+          "손가락의 압력을 전혀"
+        ],
+        [
+          "instead, it notices",
+          "대신 화면은 알아챈다"
+        ],
+        [
+          "a tiny change in electricity.",
+          "전기의 아주 작은 변화를"
+        ]
+      ]
+    },
+    {
+      "en": "Under the glass, there is a **grid** of very thin wires, which are each smaller than a human hair and hold a small electrical **charge**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Under the glass,",
+          "유리 아래에는"
+        ],
+        [
+          "there is a **grid**",
+          "격자가 있다"
+        ],
+        [
+          "of very thin wires,",
+          "아주 가는 전선들로 된"
+        ],
+        [
+          "which are each smaller",
+          "그 전선은 하나하나가 더 작다"
+        ],
+        [
+          "than a human hair",
+          "사람 머리카락보다"
+        ],
+        [
+          "and hold a small electrical **charge**.",
+          "그리고 작은 전하를 품고 있다"
+        ]
+      ]
+    },
+    {
+      "en": "Because human skin **conducts** electricity, a little of that charge moves into your finger when it touches the screen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Because human skin **conducts** electricity,",
+          "사람 피부는 전기를 통하게 하기 때문에"
+        ],
+        [
+          "a little of that charge",
+          "그 전하의 일부가"
+        ],
+        [
+          "moves into your finger",
+          "손가락 안으로 옮겨 간다"
+        ],
+        [
+          "when it touches the screen.",
+          "손가락이 화면에 닿을 때"
+        ]
+      ]
+    },
+    {
+      "en": "This causes a small drop in **voltage** at that exact point, which can be **detected** by the software and turned into an action, such as opening an app.",
+      "b2": true,
+      "chunks": [
+        [
+          "This causes a small drop",
+          "이것이 작은 떨어짐을 일으킨다"
+        ],
+        [
+          "in **voltage**",
+          "전압의"
+        ],
+        [
+          "at that exact point,",
+          "바로 그 지점에서"
+        ],
+        [
+          "which can be **detected**",
+          "그리고 그것은 감지될 수 있다"
+        ],
+        [
+          "by the software",
+          "소프트웨어에 의해"
+        ],
+        [
+          "and turned into an action,",
+          "그리고 동작으로 바뀔 수 있다"
+        ],
+        [
+          "such as opening an app.",
+          "앱을 여는 것 같은"
+        ]
+      ]
+    },
+    {
+      "en": "This is also why **ordinary** **gloves** do not work, because cloth does not carry electricity the way skin does.",
+      "b2": false,
+      "chunks": [
+        [
+          "This is also why",
+          "이것은 또한 ~한 이유다"
+        ],
+        [
+          "**ordinary** **gloves** do not work,",
+          "보통 장갑이 작동하지 않는"
+        ],
+        [
+          "because cloth does not carry electricity",
+          "천은 전기를 전달하지 않기 때문에"
+        ],
+        [
+          "the way skin does.",
+          "피부가 그러는 방식으로"
+        ]
+      ]
+    },
+    {
+      "en": "Some winter gloves can be used with phones, however, because special **threads** that conduct electricity are **sewn** into them.",
+      "b2": false,
+      "chunks": [
+        [
+          "Some winter gloves",
+          "어떤 겨울 장갑은"
+        ],
+        [
+          "can be used with phones,",
+          "휴대폰과 함께 쓰일 수 있다"
+        ],
+        [
+          "however,",
+          "하지만"
+        ],
+        [
+          "because special **threads**",
+          "특별한 실이 ~하기 때문에"
+        ],
+        [
+          "that conduct electricity",
+          "전기를 통하게 하는"
+        ],
+        [
+          "are **sewn** into them.",
+          "장갑에 꿰매어 넣어져 있다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "tap",
+      "톡 치다, 두드리다"
+    ],
+    [
+      "pressure",
+      "압력"
+    ],
+    [
+      "grid",
+      "격자, 바둑판 눈금"
+    ],
+    [
+      "charge",
+      "전하"
+    ],
+    [
+      "conducts",
+      "(전기를) 통하게 하다, 전도하다"
+    ],
+    [
+      "voltage",
+      "전압"
+    ],
+    [
+      "detected",
+      "감지되는, 탐지된"
+    ],
+    [
+      "ordinary",
+      "보통의, 평범한"
+    ],
+    [
+      "gloves",
+      "장갑 (복수형)"
+    ],
+    [
+      "threads",
+      "실 (복수형)"
+    ],
+    [
+      "sewn",
+      "꿰매어진, 바느질된"
+    ]
+  ],
+  "points": [
+    {
+      "title": "can be detected: 조동사 + 수동태",
+      "body": "`can be detected`는 '감지될 수 있다', `can be used`는 '쓰일 수 있다'예요. 조동사 뒤에 be + 과거분사가 오면 주어가 그 일을 당하는 쪽이에요. 4번 문장의 `and turned into an action`도 앞의 `can be`를 함께 받아 '동작으로 바뀔 수 있다'로 읽어요."
+    },
+    {
+      "title": "the way skin does: 피부가 그러는 방식으로",
+      "body": "`the way` 뒤에 주어와 동사가 오면 '~가 하는 방식대로'예요. 끝의 `does`는 앞의 `carry electricity`를 다시 쓰지 않으려고 대신 쓴 말이라서, '피부가 전기를 전달하는 것처럼'으로 풀면 돼요."
+    }
+  ],
+  "answers": [
+    "휴대폰 화면을 톡 칠 때, 화면은 손가락의 압력을 전혀 느끼지 않는다. 대신 전기의 아주 작은 변화를 알아챈다.",
+    "유리 아래에는 아주 가는 전선으로 된 격자가 있는데, 전선 하나하나는 사람 머리카락보다 가늘고 작은 전하를 품고 있다.",
+    "사람의 피부는 전기를 통하게 하기 때문에, 손가락이 화면에 닿으면 그 전하의 일부가 손가락으로 옮겨 간다.",
+    "이 때문에 바로 그 지점에서 전압이 조금 떨어지는데, 소프트웨어가 이를 감지해 앱을 여는 것 같은 동작으로 바꿀 수 있다.",
+    "보통 장갑이 작동하지 않는 것도 이 때문인데, 천은 피부처럼 전기를 전달하지 않기 때문이다.",
+    "하지만 어떤 겨울 장갑은 휴대폰에 쓸 수 있는데, 전기가 통하는 특별한 실이 꿰매어 넣어져 있기 때문이다."
+  ],
+  "advanced": [
+    {
+      "word": "capacitive",
+      "meaning": "정전식의",
+      "confuse": "capable(유능한)과 혼동 주의",
+      "example": "Most phones today use a **capacitive** screen that senses electricity, not pressure.",
+      "example_ko": "오늘날 대부분의 휴대폰은 압력이 아니라 전기를 감지하는 정전식 화면을 씁니다."
+    },
+    {
+      "word": "conductive",
+      "meaning": "전도성의",
+      "confuse": "conductor(지휘자, 도체)와 혼동 주의",
+      "example": "Special gloves have **conductive** threads in the fingertips.",
+      "example_ko": "특수 장갑은 손가락 끝에 전도성 실이 들어 있습니다."
+    },
+    {
+      "word": "register",
+      "meaning": "인식하다, 기록하다",
+      "confuse": null,
+      "example": "The screen does not **register** a touch through thick cloth.",
+      "example_ko": "화면은 두꺼운 천을 통한 터치를 인식하지 못합니다."
+    },
+    {
+      "word": "pinpoint",
+      "meaning": "정확히 찾아내다",
+      "confuse": null,
+      "example": "The software can **pinpoint** the exact spot where the voltage drops.",
+      "example_ko": "소프트웨어는 전압이 떨어지는 정확한 지점을 찾아낼 수 있습니다."
+    },
+    {
+      "word": "insulator",
+      "meaning": "절연체",
+      "confuse": "insulin(인슐린)과 혼동 주의",
+      "example": "Cloth acts as an **insulator**, so the charge cannot reach your finger.",
+      "example_ko": "천은 절연체 역할을 해서 전하가 손가락까지 갈 수 없습니다."
+    },
+    {
+      "word": "minuscule",
+      "meaning": "아주 작은, 극소의",
+      "confuse": null,
+      "example": "Only a **minuscule** amount of charge moves into your skin.",
+      "example_ko": "아주 적은 양의 전하만 피부로 옮겨 갑니다."
+    },
+    {
+      "word": "embedded",
+      "meaning": "박혀 있는, 내장된",
+      "confuse": null,
+      "example": "A grid of fine wires is **embedded** under the glass.",
+      "example_ko": "가는 전선으로 된 격자가 유리 아래에 들어 있습니다."
+    }
+  ],
+  "source": {
+    "title": "Okay, but how do touch screens actually work? (Scienceline, 2012-01-17)",
+    "url": "https://scienceline.org/2012/01/okay-but-how-do-touch-screens-actually-work/comment-page-1/"
+  },
+  "photo_scene": "Close-up of a fingertip gently touching a glowing smartphone screen showing soft plain colors, the phone lying on a wooden table in warm morning window light.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "When you **tap** a phone screen, it does not feel the **pressure** of your finger.",
+          "chunks": [
+            [
+              "When you **tap** a phone screen,",
+              "네가 휴대폰 화면을 톡 칠 때"
+            ],
+            [
+              "it does not feel",
+              "화면은 느끼지 않는다"
+            ],
+            [
+              "the **pressure** of your finger.",
+              "손가락의 압력을"
+            ]
+          ]
+        },
+        {
+          "en": "Under the glass, there is a **grid** of wires thinner than a human hair.",
+          "chunks": [
+            [
+              "Under the glass,",
+              "유리 아래에는"
+            ],
+            [
+              "there is a **grid** of wires",
+              "전선으로 된 격자가 있다"
+            ],
+            [
+              "thinner than a human hair.",
+              "사람 머리카락보다 더 가는"
+            ]
+          ]
+        },
+        {
+          "en": "Your skin **conducts** electricity, so a little **charge** moves into your finger.",
+          "chunks": [
+            [
+              "Your skin **conducts** electricity,",
+              "네 피부는 전기를 통하게 한다"
+            ],
+            [
+              "so a little **charge**",
+              "그래서 약간의 전하가"
+            ],
+            [
+              "moves into your finger.",
+              "손가락 안으로 옮겨 간다"
+            ]
+          ]
+        },
+        {
+          "en": "The phone finds this small change in **voltage** and opens your app.",
+          "chunks": [
+            [
+              "The phone finds",
+              "휴대폰은 찾아낸다"
+            ],
+            [
+              "this small change in **voltage**",
+              "이 작은 전압 변화를"
+            ],
+            [
+              "and opens your app.",
+              "그리고 앱을 연다"
+            ]
+          ]
+        },
+        {
+          "en": "**Ordinary** **gloves** do not work, because cloth does not carry electricity.",
+          "chunks": [
+            [
+              "**Ordinary** **gloves** do not work,",
+              "보통 장갑은 작동하지 않는다"
+            ],
+            [
+              "because cloth",
+              "천은 ~하기 때문에"
+            ],
+            [
+              "does not carry electricity.",
+              "전기를 전달하지 않는다"
+            ]
+          ]
+        },
+        {
+          "en": "Some winter gloves have special **threads** in them, so they work with phones.",
+          "chunks": [
+            [
+              "Some winter gloves",
+              "어떤 겨울 장갑은"
+            ],
+            [
+              "have special **threads** in them,",
+              "안에 특별한 실이 들어 있다"
+            ],
+            [
+              "so they work with phones.",
+              "그래서 휴대폰에 작동한다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "휴대폰 화면을 톡 칠 때, 화면은 손가락의 압력을 느끼지 않는다.",
+        "유리 아래에는 사람 머리카락보다 가는 전선으로 된 격자가 있다.",
+        "피부는 전기를 통하게 하기 때문에, 약간의 전하가 손가락으로 옮겨 간다.",
+        "휴대폰은 이 작은 전압 변화를 찾아내고 앱을 연다.",
+        "보통 장갑은 작동하지 않는데, 천은 전기를 전달하지 않기 때문이다.",
+        "어떤 겨울 장갑에는 특별한 실이 들어 있어서 휴대폰에 쓸 수 있다."
+      ]
+    }
+  }
+}
