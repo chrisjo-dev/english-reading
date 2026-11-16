@@ -1,16 +1,16 @@
 {
  "date": "2026-11-17",
- "words_total": 755,
+ "words_total": 766,
  "langs": {
   "en": {
-   "count": 45,
-   "latest": "2026-11-16",
-   "topic": "왜행성 후보",
+   "count": 46,
+   "latest": "2026-11-17",
+   "topic": "터치스크린",
    "sentences": [
-    "A large **icy** world has been found far beyond Pluto, and scientists say it could become the sixth known **dwarf planet**.",
-    "The object, which only has a **temporary** code name for now, was **spotted** in images from the Rubin Observatory in October.",
-    "Researchers then searched older pictures and found it in images from as far back as 2016, which helped them **trace** its **orbit**.",
-    "It is currently about 46 times as far from the Sun as Earth is, which is **slightly** farther than Pluto's average distance of about 40 times."
+    "When you **tap** a phone screen, it does not feel the **pressure** of your finger at all; instead, it notices a tiny change in electricity.",
+    "Under the glass, there is a **grid** of very thin wires, which are each smaller than a human hair and hold a small electrical **charge**.",
+    "Because human skin **conducts** electricity, a little of that charge moves into your finger when it touches the screen.",
+    "This causes a small drop in **voltage** at that exact point, which can be **detected** by the software and turned into an action, such as opening an app."
    ],
    "chips": [
     "6문장",
@@ -18,55 +18,51 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "명왕성 훨씬 너머에서 커다란 얼음 세계가 발견되었고, 과학자들은 그것이 알려진 여섯 번째 왜행성이 될 수도 있다고 말한다.",
+   "answer": "휴대폰 화면을 톡 칠 때, 화면은 손가락의 압력을 전혀 느끼지 않는다. 대신 전기의 아주 작은 변화를 알아챈다.",
    "words": [
     [
-     "icy",
-     "얼음으로 된"
+     "tap",
+     "톡 치다, 두드리다"
     ],
     [
-     "dwarf planet",
-     "왜행성"
+     "pressure",
+     "압력"
     ],
     [
-     "temporary",
-     "임시의"
+     "grid",
+     "격자, 바둑판 눈금"
     ],
     [
-     "spotted",
-     "발견된, 눈에 띈"
+     "charge",
+     "전하"
     ],
     [
-     "trace",
-     "추적하다, 따라가다"
+     "conducts",
+     "(전기를) 통하게 하다, 전도하다"
     ],
     [
-     "orbit",
-     "궤도"
+     "voltage",
+     "전압"
     ],
     [
-     "slightly",
-     "약간, 조금"
+     "detected",
+     "감지되는, 탐지된"
     ],
     [
-     "uncertain",
-     "불확실한"
+     "ordinary",
+     "보통의, 평범한"
     ],
     [
-     "across",
-     "지름으로, 폭이"
+     "gloves",
+     "장갑 (복수형)"
     ],
     [
-     "reflects",
-     "반사하다"
+     "threads",
+     "실 (복수형)"
     ],
     [
-     "officially",
-     "공식적으로"
-    ],
-    [
-     "confirm",
-     "확인하다, 확정하다"
+     "sewn",
+     "꿰매어진, 바느질된"
     ]
    ],
    "review": {
@@ -224,6 +220,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-17",
+   "topic": "터치스크린"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-17",
    "topic": "도리노이치"
@@ -322,11 +323,6 @@
    "lang": "de",
    "day": "2026-11-11",
    "topic": "후불 결제"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-10",
-   "topic": "인덕션"
   }
  ]
 }

@@ -8,18 +8,18 @@
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
-- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 45편
+- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 46편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 45편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 21편
 
 ## 최근 지문
+- [영어, 2026-11-17, 손가락을 알아보는 터치스크린](https://dokhaehanip.com/en/2026-11-17/): 출처 Okay, but how do touch screens actually work? (Scienceline, 2012-01-17)
 - [영어, 2026-11-16, 명왕성 너머의 새 얼음 세계](https://dokhaehanip.com/en/2026-11-16/): 출처 A giant icy world hiding beyond Pluto could be our sixth dwarf planet (ScienceDaily, 2026-11-14)
 - [영어, 2026-11-15, 룸메이트와 함께한 발표 연습](https://dokhaehanip.com/en/2026-11-15/)
 - [영어, 2026-11-14, 할머니에게 배운 첫 목도리 뜨개질](https://dokhaehanip.com/en/2026-11-14/)
 - [영어, 2026-11-13, 우주에서 혼자 안테나를 조립한 로봇](https://dokhaehanip.com/en/2026-11-13/): 출처 A robot just built a structure autonomously in space for the 1st time ever (Space.com, 2026-11-10)
 - [영어, 2026-11-12, 물속에서 쪼글쪼글해지는 손가락](https://dokhaehanip.com/en/2026-11-12/): 출처 Why Fingers & Toes Get Pruney in Water (Live Science, 2013-01-09)
 - [영어, 2026-11-11, 빈 땅에 새로 생긴 동네 공원](https://dokhaehanip.com/en/2026-11-11/): 출처 Ground breaks on new neighborhood greenspace in northeast Dallas (CultureMap Dallas, 2025-10-10)
-- [영어, 2026-11-10, 불 없이 냄비를 데우는 인덕션](https://dokhaehanip.com/en/2026-11-10/): 출처 How do induction stoves work? (NOVA | PBS, 2023-03-07)
 - [일본어, 2026-11-17, 복을 긁어모으는 갈퀴 장터 도리노이치](https://dokhaehanip.com/ja/2026-11-17/): 출처 浅草・鷲神社「酉の市」：福を呼び込む縁起熊手で商売繁盛 (nippon.com, 2018-11-10)
 - [일본어, 2026-11-16, 어선 퍼레이드와 치어 방류](https://dokhaehanip.com/ja/2026-11-16/): 출처 両陛下　キジハタとヒラメ稚魚放流　高等支援学校で生徒に進路の質問 (KAB 熊本朝日放送, 2026-11-16)
 - [일본어, 2026-11-15, 친구와 끓인 올해 첫 전골](https://dokhaehanip.com/ja/2026-11-15/)
