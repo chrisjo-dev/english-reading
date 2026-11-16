@@ -1,6 +1,6 @@
 {
- "date": "2026-11-16",
- "words_total": 731,
+ "date": "2026-11-17",
+ "words_total": 743,
  "langs": {
   "en": {
    "count": 45,
@@ -141,14 +141,14 @@
    }
   },
   "de": {
-   "count": 20,
-   "latest": "2026-11-16",
-   "topic": "글뤼바인 이름",
+   "count": 21,
+   "latest": "2026-11-17",
+   "topic": "드레스덴 슈톨렌",
    "sentences": [
-    "Seit diesem Jahr darf **alkoholfreier** Glühwein in Deutschland endlich unter seinem eigentlichen **Namen** verkauft werden.",
-    "Bisher mussten die **Hersteller** solche Getränke unter Fantasienamen wie „Glühpunsch“ oder „Winterzauber“ im Handel anbieten.",
-    "Wegen einer deutschen **Vorschrift** durfte ein Getränk nur dann Glühwein heißen, wenn es **mindestens** sieben Prozent Alkohol enthielt.",
-    "Nach einer **Änderung** im EU-Recht ist der Name jetzt **erlaubt**, wenn das Getränk weniger als 0,5 Prozent Alkohol enthält."
+    "Der Dresdner Christstollen ist ein schweres **Gebäck**, das in Sachsen traditionell zur **Adventszeit** gehört und gern verschenkt wird.",
+    "Seit 2010 schützt die EU den Namen als geografische **Angabe**, mit der die **Herkunft** des Stollens garantiert wird.",
+    "Deshalb dürfen ihn nur Bäckereien und Konditoreien backen, die in Dresden oder in zwölf **Gemeinden** der **Umgebung** liegen.",
+    "Der **Teig** besteht aus Weizenmehl, Hefe und Vollmilch, außerdem kommen Rosinen, **Mandeln** sowie Orangeat oder Zitronat hinein."
    ],
    "chips": [
     "6문장",
@@ -156,51 +156,55 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "올해부터 독일에서는 무알코올 글뤼바인을 마침내 제 이름으로 팔 수 있게 되었습니다.",
+   "answer": "드레스덴 크리스트슈톨렌은 작센에서 전통적으로 대림절 기간에 빠지지 않고, 선물로도 즐겨 주고받는 묵직한 과자빵입니다.",
    "words": [
     [
-     "alkoholfrei",
-     "무알코올의"
+     "Gebäck",
+     "구운 과자, 빵과자 (중성 das)"
     ],
     [
-     "Name",
-     "이름 (남성 der, 복수 Namen)"
+     "Adventszeit",
+     "대림절 기간 (여성 die)"
     ],
     [
-     "Hersteller",
-     "제조사 (남성 der, 복수 Hersteller)"
+     "Angabe",
+     "표시 (여성 die, 복수 Angaben)"
     ],
     [
-     "Vorschrift",
-     "규정 (여성 die, 복수 Vorschriften)"
+     "Herkunft",
+     "원산지, 출신 (여성 die)"
     ],
     [
-     "mindestens",
-     "최소한"
+     "Gemeinde",
+     "기초 자치단체, 마을 (여성 die, 복수 Gemeinden)"
     ],
     [
-     "Änderung",
-     "변경 (여성 die, 복수 Änderungen)"
+     "Umgebung",
+     "주변, 근교 (여성 die)"
     ],
     [
-     "erlaubt",
-     "허용된"
+     "Teig",
+     "반죽 (남성 der)"
     ],
     [
-     "Gewürz",
-     "향신료 (중성 das, 복수 Gewürze)"
+     "Mandel",
+     "아몬드 (여성 die, 복수 Mandeln)"
     ],
     [
-     "Schale",
-     "껍질 (여성 die, 복수 Schalen)"
+     "Butter",
+     "버터 (여성 die)"
     ],
     [
-     "Haltbarkeit",
-     "유통 기한 (여성 die)"
+     "Puderzucker",
+     "슈거파우더, 가루 설탕 (남성 der)"
     ],
     [
-     "Kühlschrank",
-     "냉장고 (남성 der, 복수 Kühlschränke)"
+     "Siegel",
+     "인증 마크, 도장 (중성 das, 복수 Siegel)"
+    ],
+    [
+     "Prüfung",
+     "심사, 시험 (여성 die, 복수 Prüfungen)"
     ]
    ],
    "review": {
@@ -211,6 +215,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-17",
+   "topic": "드레스덴 슈톨렌"
+  },
   {
    "lang": "en",
    "day": "2026-11-16",
@@ -310,11 +319,6 @@
    "lang": "ja",
    "day": "2026-11-10",
    "topic": "시치고산"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-10",
-   "topic": "카니발 시작일"
   }
  ]
 }
