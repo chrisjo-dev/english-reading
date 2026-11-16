@@ -208,6 +208,7 @@ class TestApply(unittest.TestCase):
         self.assertIn("replace(/^(der|die|das) /, '')", js)  # 관사를 붙여 써도 정답
         for name in ("word_drill_start", "word_drill_done", "word_review_start", "drill:v1"):
             self.assertIn(name, js)
+        self.assertIn("else if (S.mode !== 'card' && it.pick == null) warm();", js)  # \ubb38\uc81c\uac00 \ub098\uc62c \ub54c \ub2f5 \uc18c\ub9ac\ub97c \ubbf8\ub9ac \ubc1b\uc544 \ub454\ub2e4
         self.assertNotIn("\u00b7", js)
         self.assertNotIn('style="', js)  # CSP style-src 대비: 마크업 style 속성 없이 클래스와 CSSOM만
 

@@ -155,6 +155,7 @@
     var f = root.querySelector('.dr-field:not([disabled]),[data-act=flip],[data-act=next],.dr-judge .dr-yes,.dr-opt'); if (f) f.focus({ preventScroll: true });
     // 앞면이 나오자마자 단어를 읽어 준다. 시작, 판정 같은 누름에서 바로 불리므로 브라우저 자동 재생 제한에 걸리지 않는다.
     if (S.mode === 'card' && !S.flip) say(c);
+    else if (S.mode !== 'card' && it.pick == null) warm();
   }
   var STAMPS = '<span class="dr-stamp sy" aria-hidden="true">알았어요</span><span class="dr-stamp sn" aria-hidden="true">몰랐어요</span>';
   function under() {
@@ -274,8 +275,25 @@
     if (!player) player = new Audio();
     player.onended = function () { on(false); };
     player.onerror = function () { if (n === sayN) speak(); };
-    player.src = src; on(true);
+    if (player.src !== abs(src) || player.error) player.src = src; else player.currentTime = 0;  // 미리 받아 둔 소리는 그대로 처음부터
+    on(true);
     var pr = player.play(); if (pr && pr.catch) pr.catch(speak);
+  }
+  // 문제가 나올 때 답 소리를 미리 받아 둔다. 답을 고른 뒤에야 받기 시작하면 받는 시간만큼 늦게 읽는다.
+  // 지금 문제는 재생할 player 에 미리 넣고, 다음 문제 두 개는 HTTP 캐시에 받아 둔다.
+  var warmed = {};
+  function srcOf(it) { return kindOf(it) === 'cloze' ? it.c.sa : it.c.au; }
+  function abs(src) { return new URL(src, location.href).href; }
+  function warm() {
+    var src = srcOf(S.queue[0]);
+    if (src) {
+      if (!player) player = new Audio();
+      if (player.src !== abs(src)) { player.onended = player.onerror = null; player.preload = 'auto'; player.src = src; player.load(); }
+    }
+    S.queue.slice(1, 3).forEach(function (x) {
+      var s = srcOf(x); if (!s || warmed[s]) return; warmed[s] = 1;
+      if (window.fetch) fetch(s).then(function (r) { return r.blob(); }).catch(function () {});
+    });
   }
   function hush() { sayN++; if (player) player.pause(); if ('speechSynthesis' in window) speechSynthesis.cancel(); }
   function flip() { S.flip = true; render(); }
