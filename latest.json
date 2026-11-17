@@ -1,68 +1,68 @@
 {
  "date": "2026-11-18",
- "words_total": 790,
+ "words_total": 801,
  "langs": {
   "en": {
-   "count": 46,
-   "latest": "2026-11-17",
-   "topic": "터치스크린",
+   "count": 47,
+   "latest": "2026-11-18",
+   "topic": "수어 전공",
    "sentences": [
-    "When you **tap** a phone screen, it does not feel the **pressure** of your finger at all; instead, it notices a tiny change in electricity.",
-    "Under the glass, there is a **grid** of very thin wires, which are each smaller than a human hair and hold a small electrical **charge**.",
-    "Because human skin **conducts** electricity, a little of that charge moves into your finger when it touches the screen.",
-    "This causes a small drop in **voltage** at that exact point, which can be **detected** by the software and turned into an action, such as opening an app."
+    "Ohio State University now offers a **major** in American Sign Language, the first one at any Big Ten university.",
+    "Students taking the new program study more than hand **signs**, because they also learn about Deaf **culture** and the history of deaf communities.",
+    "They explore how the sentence **structure** of sign language **differs** from spoken English, and they **take part in** projects with local schools and organizations.",
+    "Only three students have officially joined the major so far, but around 150 are taking the **minor**, and more are expected to **sign up**."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 1문장",
-    "약 3분"
+    "B2 2문장",
+    "약 4분"
    ],
-   "answer": "휴대폰 화면을 톡 칠 때, 화면은 손가락의 압력을 전혀 느끼지 않는다. 대신 전기의 아주 작은 변화를 알아챈다.",
+   "answer": "오하이오 주립대는 이제 미국 수어 전공을 개설했는데, 빅 텐 대학 가운데 처음이다.",
    "words": [
     [
-     "tap",
-     "톡 치다, 두드리다"
+     "major",
+     "전공"
     ],
     [
-     "pressure",
-     "압력"
+     "signs",
+     "수어 동작, 손짓 (복수형)"
     ],
     [
-     "grid",
-     "격자, 바둑판 눈금"
+     "culture",
+     "문화"
     ],
     [
-     "charge",
-     "전하"
+     "structure",
+     "구조"
     ],
     [
-     "conducts",
-     "(전기를) 통하게 하다, 전도하다"
+     "differs",
+     "다르다"
     ],
     [
-     "voltage",
-     "전압"
+     "take part in",
+     "참여하다, 참가하다"
     ],
     [
-     "detected",
-     "감지되는, 탐지된"
+     "minor",
+     "부전공"
     ],
     [
-     "ordinary",
-     "보통의, 평범한"
+     "sign up",
+     "등록하다, 신청하다"
     ],
     [
-     "gloves",
-     "장갑 (복수형)"
+     "introductory",
+     "입문의, 기초의"
     ],
     [
-     "threads",
-     "실 (복수형)"
+     "waiting list",
+     "대기자 명단"
     ],
     [
-     "sewn",
-     "꿰매어진, 바느질된"
+     "put it",
+     "말하다, 표현하다"
     ]
    ],
    "review": {
@@ -220,6 +220,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-18",
+   "topic": "수어 전공"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-18",
    "topic": "자전거 지도"
@@ -318,11 +323,6 @@
    "lang": "de",
    "day": "2026-11-12",
    "topic": "교육 휴가"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-11",
-   "topic": "동네 공원"
   }
  ]
 }
