@@ -414,6 +414,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -631,7 +642,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -640,7 +651,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
     <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1208,7 +1219,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "ノーベル賞", "m": "노벨상", "r": "ノーベルしょう", "cz": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<span class=\"dr-blank\"><\/span>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ca": "ノーベル化学賞", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、<b>ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby><\/b>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "sa": "/ja/2026-10-07/audio/s1.mp3", "au": "/ja/2026-10-07/audio/w1.mp3", "alts": ["화학", "수상", "발표되다", "명예교수", "연구"]}, {"w": "化学", "m": "화학", "r": "かがく", "cz": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、ノーベル<span class=\"dr-blank\"><\/span><ruby>賞<rt>しょう<\/rt><\/ruby>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ca": "化学", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、ノーベル<b><ruby>化学<rt>かがく<\/rt><\/ruby><\/b><ruby>賞<rt>しょう<\/rt><\/ruby>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、ノーベル<b><ruby>化学<rt>かがく<\/rt><\/ruby><\/b><ruby>賞<rt>しょう<\/rt><\/ruby>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "sa": "/ja/2026-10-07/audio/s1.mp3", "au": "/ja/2026-10-07/audio/w2.mp3", "alts": ["노벨상", "수상", "발표되다", "명예교수", "연구"]}, {"w": "受賞", "m": "수상", "r": "じゅしょう", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>硤合<rt>そあい<\/rt><\/ruby><ruby>憲三<rt>けんそう<\/rt><\/ruby>さんとフランスのアンリ・カガンさんが<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>しました。", "ca": "受賞", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>硤合<rt>そあい<\/rt><\/ruby><ruby>憲三<rt>けんそう<\/rt><\/ruby>さんとフランスのアンリ・カガンさんが<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>受賞<rt>じゅしょう<\/rt><\/ruby><\/b>しました。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>硤合<rt>そあい<\/rt><\/ruby><ruby>憲三<rt>けんそう<\/rt><\/ruby>さんとフランスのアンリ・カガンさんが<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<b><ruby>受賞<rt>じゅしょう<\/rt><\/ruby><\/b>しました。", "ek": "일본의 소아이 켄소 씨와 프랑스의 앙리 카강 씨가 함께 수상했습니다.", "sa": "/ja/2026-10-07/audio/s2.mp3", "au": "/ja/2026-10-07/audio/w3.mp3", "alts": ["노벨상", "화학", "발표되다", "명예교수", "연구"]}, {"w": "発表される", "m": "발표되다", "r": "はっぴょうされる", "cz": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>。", "ca": "発表されました", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<b><ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました<\/b>。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>7<ruby>日<rt>にち<\/rt><\/ruby>、ノーベル<ruby>化学<rt>かがく<\/rt><\/ruby><ruby>賞<rt>しょう<\/rt><\/ruby>の<ruby>受賞者<rt>じゅしょうしゃ<\/rt><\/ruby>が<b><ruby>発表<rt>はっぴょう<\/rt><\/ruby>されました<\/b>。", "ek": "10월 7일, 노벨 화학상 수상자가 발표됐습니다.", "sa": "/ja/2026-10-07/audio/s1.mp3", "au": "/ja/2026-10-07/audio/w4.mp3", "alts": ["노벨상", "화학", "수상", "명예교수", "연구"]}, {"w": "名誉教授", "m": "명예교수", "r": "めいよきょうじゅ", "cz": "<ruby>硤合<rt>そあい<\/rt><\/ruby>さんは<ruby>東京<rt>とうきょう<\/rt><\/ruby><ruby>理科<rt>りか<\/rt><\/ruby><ruby>大学<rt>だいがく<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>です。", "ca": "名誉教授", "ex": "<ruby>硤合<rt>そあい<\/rt><\/ruby>さんは<ruby>東京<rt>とうきょう<\/rt><\/ruby><ruby>理科<rt>りか<\/rt><\/ruby><ruby>大学<rt>だいがく<\/rt><\/ruby>の<b><ruby>名誉<rt>めいよ<\/rt><\/ruby><ruby>教授<rt>きょうじゅ<\/rt><\/ruby><\/b>です。", "sh": "<ruby>硤合<rt>そあい<\/rt><\/ruby>さんは<ruby>東京<rt>とうきょう<\/rt><\/ruby><ruby>理科<rt>りか<\/rt><\/ruby><ruby>大学<rt>だいがく<\/rt><\/ruby>の<b><ruby>名誉<rt>めいよ<\/rt><\/ruby><ruby>教授<rt>きょうじゅ<\/rt><\/ruby><\/b>です。", "ek": "소아이 씨는 도쿄이과대학의 명예교수입니다.", "sa": "/ja/2026-10-07/audio/s3.mp3", "au": "/ja/2026-10-07/audio/w5.mp3", "alts": ["노벨상", "화학", "수상", "발표되다", "연구"]}, {"w": "研究", "m": "연구", "r": "けんきゅう", "cz": "ふたりは<ruby>分子<rt>ぶんし<\/rt><\/ruby>の<ruby>形<rt>かたち<\/rt><\/ruby>に<ruby>関<rt>かん<\/rt><\/ruby>する<span class=\"dr-blank\"><\/span>で<ruby>高<rt>たか<\/rt><\/ruby>く<ruby>評価<rt>ひょうか<\/rt><\/ruby>されました。", "ca": "研究", "ex": "ふたりは<ruby>分子<rt>ぶんし<\/rt><\/ruby>の<ruby>形<rt>かたち<\/rt><\/ruby>に<ruby>関<rt>かん<\/rt><\/ruby>する<b><ruby>研究<rt>けんきゅう<\/rt><\/ruby><\/b>で<ruby>高<rt>たか<\/rt><\/ruby>く<ruby>評価<rt>ひょうか<\/rt><\/ruby>されました。", "sh": "ふたりは<ruby>分子<rt>ぶんし<\/rt><\/ruby>の<ruby>形<rt>かたち<\/rt><\/ruby>に<ruby>関<rt>かん<\/rt><\/ruby>する<b><ruby>研究<rt>けんきゅう<\/rt><\/ruby><\/b>で<ruby>高<rt>たか<\/rt><\/ruby>く<ruby>評価<rt>ひょうか<\/rt><\/ruby>されました。", "ek": "두 사람은 분자의 형태에 관한 연구로 높이 평가받았습니다.", "sa": "/ja/2026-10-07/audio/s4.mp3", "au": "/ja/2026-10-07/audio/w6.mp3", "alts": ["노벨상", "화학", "수상", "발표되다", "명예교수"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

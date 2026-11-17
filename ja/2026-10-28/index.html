@@ -338,6 +338,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -633,7 +644,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -642,7 +653,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1214,7 +1225,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "柿", "m": "감", "r": "かき", "cz": "10<ruby>月<rt>がつ<\/rt><\/ruby>26<ruby>日<rt>にち<\/rt><\/ruby>は「<span class=\"dr-blank\"><\/span>の<ruby>日<rt>ひ<\/rt><\/ruby>」です。", "ca": "柿", "ex": "10<ruby>月<rt>がつ<\/rt><\/ruby>26<ruby>日<rt>にち<\/rt><\/ruby>は「<b><ruby>柿<rt>かき<\/rt><\/ruby><\/b>の<ruby>日<rt>ひ<\/rt><\/ruby>」です。", "sh": "10<ruby>月<rt>がつ<\/rt><\/ruby>26<ruby>日<rt>にち<\/rt><\/ruby>は「<b><ruby>柿<rt>かき<\/rt><\/ruby><\/b>の<ruby>日<rt>ひ<\/rt><\/ruby>」です。", "ek": "10월 26일은 '감의 날'입니다.", "sa": "/ja/2026-10-28/audio/s1.mp3", "au": "/ja/2026-10-28/audio/w1.mp3", "alts": ["하이쿠(5, 7, 5 음의 짧은 시)", "나오다, 등장하다", "무료", "나눠 줍니다", "800개", "없어집니다, 다 떨어집니다"]}, {"w": "俳句", "m": "하이쿠(5, 7, 5 음의 짧은 시)", "r": "はいく", "cz": "<ruby>奈良<rt>なら<\/rt><\/ruby>で<ruby>作<rt>つく<\/rt><\/ruby>られた<span class=\"dr-blank\"><\/span>に、<ruby>柿<rt>かき<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>てくるからです。", "ca": "俳句", "ex": "<ruby>奈良<rt>なら<\/rt><\/ruby>で<ruby>作<rt>つく<\/rt><\/ruby>られた<b><ruby>俳句<rt>はいく<\/rt><\/ruby><\/b>に、<ruby>柿<rt>かき<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>てくるからです。", "sh": "<ruby>奈良<rt>なら<\/rt><\/ruby>で<ruby>作<rt>つく<\/rt><\/ruby>られた<b><ruby>俳句<rt>はいく<\/rt><\/ruby><\/b>に、<ruby>柿<rt>かき<\/rt><\/ruby>が<ruby>出<rt>で<\/rt><\/ruby>てくるからです。", "ek": "나라에서 지어진 하이쿠에 감이 나오기 때문입니다.", "sa": "/ja/2026-10-28/audio/s2.mp3", "au": "/ja/2026-10-28/audio/w2.mp3", "alts": ["감", "나오다, 등장하다", "무료", "나눠 줍니다", "800개", "없어집니다, 다 떨어집니다"]}, {"w": "出てくる", "m": "나오다, 등장하다", "r": "でてくる", "cz": "<ruby>奈良<rt>なら<\/rt><\/ruby>で<ruby>作<rt>つく<\/rt><\/ruby>られた<ruby>俳句<rt>はいく<\/rt><\/ruby>に、<ruby>柿<rt>かき<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>からです。", "ca": "出てくる", "ex": "<ruby>奈良<rt>なら<\/rt><\/ruby>で<ruby>作<rt>つく<\/rt><\/ruby>られた<ruby>俳句<rt>はいく<\/rt><\/ruby>に、<ruby>柿<rt>かき<\/rt><\/ruby>が<b><ruby>出<rt>で<\/rt><\/ruby>てくる<\/b>からです。", "sh": "<ruby>奈良<rt>なら<\/rt><\/ruby>で<ruby>作<rt>つく<\/rt><\/ruby>られた<ruby>俳句<rt>はいく<\/rt><\/ruby>に、<ruby>柿<rt>かき<\/rt><\/ruby>が<b><ruby>出<rt>で<\/rt><\/ruby>てくる<\/b>からです。", "ek": "나라에서 지어진 하이쿠에 감이 나오기 때문입니다.", "sa": "/ja/2026-10-28/audio/s2.mp3", "au": "/ja/2026-10-28/audio/w3.mp3", "alts": ["감", "하이쿠(5, 7, 5 음의 짧은 시)", "무료", "나눠 줍니다", "800개", "없어집니다, 다 떨어집니다"]}, {"w": "無料", "m": "무료", "r": "むりょう", "cz": "この<ruby>日<rt>ひ<\/rt><\/ruby>、<ruby>奈良市<rt>ならし<\/rt><\/ruby>でJAの<ruby>人<rt>ひと<\/rt><\/ruby>たちが、<ruby>柿<rt>かき<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span>で<ruby>配<rt>くば<\/rt><\/ruby>りました。", "ca": "無料", "ex": "この<ruby>日<rt>ひ<\/rt><\/ruby>、<ruby>奈良市<rt>ならし<\/rt><\/ruby>でJAの<ruby>人<rt>ひと<\/rt><\/ruby>たちが、<ruby>柿<rt>かき<\/rt><\/ruby>を<b><ruby>無料<rt>むりょう<\/rt><\/ruby><\/b>で<ruby>配<rt>くば<\/rt><\/ruby>りました。", "sh": "この<ruby>日<rt>ひ<\/rt><\/ruby>、<ruby>奈良市<rt>ならし<\/rt><\/ruby>でJAの<ruby>人<rt>ひと<\/rt><\/ruby>たちが、<ruby>柿<rt>かき<\/rt><\/ruby>を<b><ruby>無料<rt>むりょう<\/rt><\/ruby><\/b>で<ruby>配<rt>くば<\/rt><\/ruby>りました。", "ek": "이날 나라시에서 JA(농협) 사람들이 감을 무료로 나눠 주었습니다.", "sa": "/ja/2026-10-28/audio/s4.mp3", "au": "/ja/2026-10-28/audio/w4.mp3", "alts": ["감", "하이쿠(5, 7, 5 음의 짧은 시)", "나오다, 등장하다", "나눠 줍니다", "800개", "없어집니다, 다 떨어집니다"]}, {"w": "配ります", "m": "나눠 줍니다", "r": "くばります", "cz": "この<ruby>日<rt>ひ<\/rt><\/ruby>、<ruby>奈良市<rt>ならし<\/rt><\/ruby>でJAの<ruby>人<rt>ひと<\/rt><\/ruby>たちが、<ruby>柿<rt>かき<\/rt><\/ruby>を<ruby>無料<rt>むりょう<\/rt><\/ruby>で<span class=\"dr-blank\"><\/span>。", "ca": "配りました", "ex": "この<ruby>日<rt>ひ<\/rt><\/ruby>、<ruby>奈良市<rt>ならし<\/rt><\/ruby>でJAの<ruby>人<rt>ひと<\/rt><\/ruby>たちが、<ruby>柿<rt>かき<\/rt><\/ruby>を<ruby>無料<rt>むりょう<\/rt><\/ruby>で<b><ruby>配<rt>くば<\/rt><\/ruby>りました<\/b>。", "sh": "この<ruby>日<rt>ひ<\/rt><\/ruby>、<ruby>奈良市<rt>ならし<\/rt><\/ruby>でJAの<ruby>人<rt>ひと<\/rt><\/ruby>たちが、<ruby>柿<rt>かき<\/rt><\/ruby>を<ruby>無料<rt>むりょう<\/rt><\/ruby>で<b><ruby>配<rt>くば<\/rt><\/ruby>りました<\/b>。", "ek": "이날 나라시에서 JA(농협) 사람들이 감을 무료로 나눠 주었습니다.", "sa": "/ja/2026-10-28/audio/s4.mp3", "au": "/ja/2026-10-28/audio/w5.mp3", "alts": ["감", "하이쿠(5, 7, 5 음의 짧은 시)", "나오다, 등장하다", "무료", "800개", "없어집니다, 다 떨어집니다"]}, {"w": "800個", "m": "800개", "r": "800こ", "cz": "<ruby>柿<rt>かき<\/rt><\/ruby>は<span class=\"dr-blank\"><\/span>ありましたが、すぐになくなりました。", "ca": "800個", "ex": "<ruby>柿<rt>かき<\/rt><\/ruby>は<b>800<ruby>個<rt>こ<\/rt><\/ruby><\/b>ありましたが、すぐになくなりました。", "sh": "<ruby>柿<rt>かき<\/rt><\/ruby>は<b>800<ruby>個<rt>こ<\/rt><\/ruby><\/b>ありましたが、すぐになくなりました。", "ek": "감은 800개가 있었지만, 금방 다 없어졌습니다.", "sa": "/ja/2026-10-28/audio/s5.mp3", "au": "/ja/2026-10-28/audio/w6.mp3", "alts": ["감", "하이쿠(5, 7, 5 음의 짧은 시)", "나오다, 등장하다", "무료", "나눠 줍니다", "없어집니다, 다 떨어집니다"]}, {"w": "なくなります", "m": "없어집니다, 다 떨어집니다", "cz": "<ruby>柿<rt>かき<\/rt><\/ruby>は800<ruby>個<rt>こ<\/rt><\/ruby>ありましたが、すぐに<span class=\"dr-blank\"><\/span>。", "ca": "なくなりました", "ex": "<ruby>柿<rt>かき<\/rt><\/ruby>は800<ruby>個<rt>こ<\/rt><\/ruby>ありましたが、すぐに<b>なくなりました<\/b>。", "sh": "<ruby>柿<rt>かき<\/rt><\/ruby>は800<ruby>個<rt>こ<\/rt><\/ruby>ありましたが、すぐに<b>なくなりました<\/b>。", "ek": "감은 800개가 있었지만, 금방 다 없어졌습니다.", "sa": "/ja/2026-10-28/audio/s5.mp3", "au": "/ja/2026-10-28/audio/w7.mp3", "alts": ["감", "하이쿠(5, 7, 5 음의 짧은 시)", "나오다, 등장하다", "무료", "나눠 줍니다", "800개"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

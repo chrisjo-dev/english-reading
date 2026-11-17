@@ -410,6 +410,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -626,7 +637,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -635,7 +646,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
     <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1206,7 +1217,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "entries", "m": "출품작들, 참가작들 (복수 -s 주의)", "cz": "The Nikon Comedy Wildlife Photography Awards received more than ten thousand <span class=\"dr-blank\"><\/span> in 2026, the highest total in the competition's ten-year history.", "ca": "entries", "ex": "The Nikon Comedy Wildlife Photography Awards received more than ten thousand <b>entries<\/b> in 2026, the highest total in the competition's ten-year history.", "sh": "… received more than ten thousand <b>entries<\/b> in 2026, …", "ek": "2026년 니콘 코미디 야생동물 사진상에 출품작이 만 건 이상 접수되었으며, 이는 대회 10년 역사상 최다 기록이다.", "sa": "/en/2026-10-07/audio/s1.mp3", "au": "/en/2026-10-07/audio/w1.mp3", "alts": ["제출했다, 출품했다", "흩어지다, 뿔뿔이 달아나다", "보전, 자연 보호", "공감, 감정이입", "제출 작품들 (복수 -s 주의)"]}, {"w": "submitted", "m": "제출했다, 출품했다", "cz": "Photographers <span class=\"dr-blank\"><\/span> images of animals caught in funny or surprising moments — one finalist showed seven lions playing beside a riverbed in Zimbabwe, another captured king penguins scattering from an elephant seal in South Georgia.", "ca": "submitted", "ex": "Photographers <b>submitted<\/b> images of animals caught in funny or surprising moments — one finalist showed seven lions playing beside a riverbed in Zimbabwe, another captured king penguins scattering from an elephant seal in South Georgia.", "sh": "Photographers <b>submitted<\/b> images of animals caught in funny or surprising moments …", "ek": "사진작가들은 동물의 우습거나 뜻밖의 순간을 담은 사진을 출품했는데, 한 최종 후보작은 짐바브웨 강가에서 노는 사자 일곱 마리를 담았고, 또 다른 작품은 코끼리물범을 피해 달아나는 임금펭귄들을 포착했다.", "sa": "/en/2026-10-07/audio/s2.mp3", "au": "/en/2026-10-07/audio/w2.mp3", "alts": ["출품작들, 참가작들 (복수 -s 주의)", "흩어지다, 뿔뿔이 달아나다", "보전, 자연 보호", "공감, 감정이입", "제출 작품들 (복수 -s 주의)"]}, {"w": "scattering", "m": "흩어지다, 뿔뿔이 달아나다", "cz": "Photographers submitted images of animals caught in funny or surprising moments — one finalist showed seven lions playing beside a riverbed in Zimbabwe, another captured king penguins <span class=\"dr-blank\"><\/span> from an elephant seal in South Georgia.", "ca": "scattering", "ex": "Photographers submitted images of animals caught in funny or surprising moments — one finalist showed seven lions playing beside a riverbed in Zimbabwe, another captured king penguins <b>scattering<\/b> from an elephant seal in South Georgia.", "sh": "… <b>scattering<\/b> from an elephant seal in South Georgia.", "ek": "사진작가들은 동물의 우습거나 뜻밖의 순간을 담은 사진을 출품했는데, 한 최종 후보작은 짐바브웨 강가에서 노는 사자 일곱 마리를 담았고, 또 다른 작품은 코끼리물범을 피해 달아나는 임금펭귄들을 포착했다.", "sa": "/en/2026-10-07/audio/s2.mp3", "au": "/en/2026-10-07/audio/w3.mp3", "alts": ["출품작들, 참가작들 (복수 -s 주의)", "제출했다, 출품했다", "보전, 자연 보호", "공감, 감정이입", "제출 작품들 (복수 -s 주의)"]}, {"w": "conservation", "m": "보전, 자연 보호", "cz": "The competition links humour with <span class=\"dr-blank\"><\/span>: co-founder Tom Sullam says images that make people laugh also help them feel empathy towards wildlife.", "ca": "conservation", "ex": "The competition links humour with <b>conservation<\/b>: co-founder Tom Sullam says images that make people laugh also help them feel empathy towards wildlife.", "sh": "… with <b>conservation<\/b>: co-founder Tom Sullam says …", "ek": "이 대회는 유머와 자연 보전을 연결하기 위해 만들어졌으며, 공동 창설자 톰 설럼은 사람들을 웃게 만드는 이미지가 야생동물에 대한 공감도 높인다고 말했다.", "sa": "/en/2026-10-07/audio/s3.mp3", "au": "/en/2026-10-07/audio/w4.mp3", "alts": ["출품작들, 참가작들 (복수 -s 주의)", "제출했다, 출품했다", "흩어지다, 뿔뿔이 달아나다", "공감, 감정이입", "제출 작품들 (복수 -s 주의)"]}, {"w": "empathy", "m": "공감, 감정이입", "cz": "The competition links humour with conservation: co-founder Tom Sullam says images that make people laugh also help them feel <span class=\"dr-blank\"><\/span> towards wildlife.", "ca": "empathy", "ex": "The competition links humour with conservation: co-founder Tom Sullam says images that make people laugh also help them feel <b>empathy<\/b> towards wildlife.", "sh": "… also help them feel <b>empathy<\/b> towards wildlife.", "ek": "이 대회는 유머와 자연 보전을 연결하기 위해 만들어졌으며, 공동 창설자 톰 설럼은 사람들을 웃게 만드는 이미지가 야생동물에 대한 공감도 높인다고 말했다.", "sa": "/en/2026-10-07/audio/s3.mp3", "au": "/en/2026-10-07/audio/w5.mp3", "alts": ["출품작들, 참가작들 (복수 -s 주의)", "제출했다, 출품했다", "흩어지다, 뿔뿔이 달아나다", "보전, 자연 보호", "제출 작품들 (복수 -s 주의)"]}, {"w": "submissions", "m": "제출 작품들 (복수 -s 주의)", "cz": "Three judges, including television presenter Kate Humble, selected the finalists from thousands of <span class=\"dr-blank\"><\/span>.", "ca": "submissions", "ex": "Three judges, including television presenter Kate Humble, selected the finalists from thousands of <b>submissions<\/b>.", "sh": "… selected the finalists from thousands of <b>submissions<\/b>.", "ek": "방송 진행자 케이트 험블을 포함한 세 명의 심사위원이 수천 건의 출품작 중에서 최종 후보작을 선정했다.", "sa": "/en/2026-10-07/audio/s4.mp3", "au": "/en/2026-10-07/audio/w6.mp3", "alts": ["출품작들, 참가작들 (복수 -s 주의)", "제출했다, 출품했다", "흩어지다, 뿔뿔이 달아나다", "보전, 자연 보호", "공감, 감정이입"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

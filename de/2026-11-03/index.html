@@ -334,6 +334,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -634,7 +645,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -643,7 +654,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1215,7 +1226,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "Martinstag", "m": "성 마르틴 축일 (남성 der)", "mh": "성 마르틴 축일", "ar": "der", "cz": "Am 11. November feiern viele Kinder in Deutschland den <span class=\"dr-blank\"><\/span>, der an den heiligen Martin von Tours erinnert.", "ca": "Martinstag", "ex": "Am 11. November feiern viele Kinder in Deutschland den <b>Martinstag<\/b>, der an den heiligen Martin von Tours erinnert.", "sh": "Am 11. November feiern viele Kinder in Deutschland den <b>Martinstag<\/b>, der an den heiligen Martin von Tours erinnert.", "ek": "11월 11일에 독일의 많은 아이들은 투르의 성 마르틴을 기리는 마르틴 축일을 기념합니다.", "sa": "/de/2026-11-03/audio/s1.mp3", "au": "/de/2026-11-03/audio/w1.mp3", "alts": ["전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Legende", "m": "전설, 옛이야기 (여성 die, 복수 Legenden)", "mh": "전설, 옛이야기", "ar": "die", "cz": "Nach einer bekannten <span class=\"dr-blank\"><\/span> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "ca": "Legende", "ex": "Nach einer bekannten <b>Legende<\/b> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "sh": "Nach einer bekannten <b>Legende<\/b> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "ek": "잘 알려진 전설에 따르면 마르틴은 어느 추운 저녁, 추위에 떨던 가난한 남자와 자기 외투를 나누었습니다.", "sa": "/de/2026-11-03/audio/s2.mp3", "au": "/de/2026-11-03/audio/w2.mp3", "alts": ["성 마르틴 축일", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Laterne", "m": "초롱, 등불 (여성 die, 복수 Laternen)", "mh": "초롱, 등불", "ar": "die", "cz": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <span class=\"dr-blank\"><\/span> aus Papier und Pappe.", "ca": "Laternen", "ex": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <b>Laternen<\/b> aus Papier und Pappe.", "sh": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <b>Laternen<\/b> aus Papier und Pappe.", "ek": "아이들은 벌써 몇 주 전부터 유치원이나 학교에서 종이와 두꺼운 종이로 알록달록한 초롱을 만듭니다.", "sa": "/de/2026-11-03/audio/s3.mp3", "au": "/de/2026-11-03/audio/w3.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Martinslied", "m": "마르틴 축일 노래 (중성 das, 복수 Martinslieder)", "mh": "마르틴 축일 노래", "ar": "das", "cz": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <span class=\"dr-blank\"><\/span>.", "ca": "Martinslieder", "ex": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <b>Martinslieder<\/b>.", "sh": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <b>Martinslieder<\/b>.", "ek": "날이 어두워지면 아이들은 부모님과 함께 거리를 행진하며 전통 마르틴 노래를 부릅니다.", "sa": "/de/2026-11-03/audio/s4.mp3", "au": "/de/2026-11-03/audio/w4.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Feuer", "m": "불, 모닥불 (중성 das)", "mh": "불, 모닥불", "ar": "das", "cz": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <span class=\"dr-blank\"><\/span>, an dem sich alle aufwärmen können.", "ca": "Feuer", "ex": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <b>Feuer<\/b>, an dem sich alle aufwärmen können.", "sh": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <b>Feuer<\/b>, an dem sich alle aufwärmen können.", "ek": "행진이 끝나는 곳에는 많은 도우미들이 준비한 큰 모닥불이 기다리고 있을 때가 많아, 모두 그 곁에서 몸을 녹일 수 있습니다.", "sa": "/de/2026-11-03/audio/s5.mp3", "au": "/de/2026-11-03/audio/w5.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Brauch", "m": "풍습, 관습 (남성 der, 복수 Bräuche)", "mh": "풍습, 관습", "ar": "der", "cz": "Für viele Familien wäre der November ohne diesen <span class=\"dr-blank\"><\/span> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "ca": "Brauch", "ex": "Für viele Familien wäre der November ohne diesen <b>Brauch<\/b> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "sh": "Für viele Familien wäre der November ohne diesen <b>Brauch<\/b> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "ek": "이 풍습이 없다면 많은 가족에게 11월은 훨씬 더 어둡게 느껴질 텐데, 불빛이 추운 저녁에 따뜻함을 가져다주기 때문입니다.", "sa": "/de/2026-11-03/audio/s6.mp3", "au": "/de/2026-11-03/audio/w6.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "손으로 만들다, 공작하다"]}, {"w": "basteln", "m": "손으로 만들다, 공작하다", "cz": "Schon Wochen vorher <span class=\"dr-blank\"><\/span> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "ca": "basteln", "ex": "Schon Wochen vorher <b>basteln<\/b> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "sh": "Schon Wochen vorher <b>basteln<\/b> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "ek": "아이들은 벌써 몇 주 전부터 유치원이나 학교에서 종이와 두꺼운 종이로 알록달록한 초롱을 만듭니다.", "sa": "/de/2026-11-03/audio/s3.mp3", "au": "/de/2026-11-03/audio/w7.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

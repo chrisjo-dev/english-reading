@@ -338,6 +338,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -632,7 +643,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -641,7 +652,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1213,7 +1224,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "分ける", "m": "나누다", "r": "わける", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<span class=\"dr-blank\"><\/span><ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "分けて", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<b><ruby>分<rt>わ<\/rt><\/ruby>けて<\/b><ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、ごみを<b><ruby>分<rt>わ<\/rt><\/ruby>けて<\/b><ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "일본의 동네에서는 쓰레기를 나눠서 내놓습니다.", "sa": "/ja/2026-10-14/audio/s1.mp3", "au": "/ja/2026-10-14/audio/w1.mp3", "alts": ["쓰레기", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "ごみ", "m": "쓰레기", "cz": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<span class=\"dr-blank\"><\/span>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "ごみ", "ex": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<b>ごみ<\/b>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>町<rt>まち<\/rt><\/ruby>では、<b>ごみ<\/b>を<ruby>分<rt>わ<\/rt><\/ruby>けて<ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "일본의 동네에서는 쓰레기를 나눠서 내놓습니다.", "sa": "/ja/2026-10-14/audio/s1.mp3", "au": "/ja/2026-10-14/audio/w2.mp3", "alts": ["나누다", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "燃える", "m": "타다", "r": "もえる", "cz": "たとえば、<span class=\"dr-blank\"><\/span>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "ca": "燃える", "ex": "たとえば、<b><ruby>燃<rt>も<\/rt><\/ruby>える<\/b>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "sh": "たとえば、<b><ruby>燃<rt>も<\/rt><\/ruby>える<\/b>ごみは<ruby>月曜日<rt>げつようび<\/rt><\/ruby>と<ruby>木曜日<rt>もくようび<\/rt><\/ruby>に<ruby>出<rt>だ<\/rt><\/ruby>します。", "ek": "예를 들어 타는 쓰레기는 월요일과 목요일에 내놓습니다.", "sa": "/ja/2026-10-14/audio/s2.mp3", "au": "/ja/2026-10-14/audio/w3.mp3", "alts": ["나누다", "쓰레기", "일주일", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "一週間", "m": "일주일", "r": "いっしゅうかん", "cz": "ペットボトルやびんは、<span class=\"dr-blank\"><\/span>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "ca": "一週間", "ex": "ペットボトルやびんは、<b><ruby>一週間<rt>いっしゅうかん<\/rt><\/ruby><\/b>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "sh": "ペットボトルやびんは、<b><ruby>一週間<rt>いっしゅうかん<\/rt><\/ruby><\/b>に1<ruby>回<rt>かい<\/rt><\/ruby>だけです。", "ek": "페트병이나 병은 일주일에 한 번뿐입니다.", "sa": "/ja/2026-10-14/audio/s3.mp3", "au": "/ja/2026-10-14/audio/w4.mp3", "alts": ["나누다", "쓰레기", "타다", "장소, 곳", "틀리다, 잘못 알다", "달력"]}, {"w": "場所", "m": "장소, 곳", "r": "ばしょ", "cz": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<span class=\"dr-blank\"><\/span>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "ca": "場所", "ex": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<b><ruby>場所<rt>ばしょ<\/rt><\/ruby><\/b>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "sh": "ごみは<ruby>朝<rt>あさ<\/rt><\/ruby>8<ruby>時<rt>じ<\/rt><\/ruby>までに、<ruby>決<rt>き<\/rt><\/ruby>められた<b><ruby>場所<rt>ばしょ<\/rt><\/ruby><\/b>に<ruby>出<rt>だ<\/rt><\/ruby>さなければなりません。", "ek": "쓰레기는 아침 8시까지 정해진 장소에 내놓아야 합니다.", "sa": "/ja/2026-10-14/audio/s4.mp3", "au": "/ja/2026-10-14/audio/w5.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "틀리다, 잘못 알다", "달력"]}, {"w": "まちがえる", "m": "틀리다, 잘못 알다", "cz": "<ruby>日<rt>ひ<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ca": "まちがえないで", "ex": "<ruby>日<rt>ひ<\/rt><\/ruby>を<b>まちがえないで<\/b>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "sh": "<ruby>日<rt>ひ<\/rt><\/ruby>を<b>まちがえないで<\/b>、カレンダーをよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ek": "날짜를 착각하지 않도록 달력을 잘 봅시다.", "sa": "/ja/2026-10-14/audio/s5.mp3", "au": "/ja/2026-10-14/audio/w6.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "장소, 곳", "달력"]}, {"w": "カレンダー", "m": "달력", "cz": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<span class=\"dr-blank\"><\/span>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ca": "カレンダー", "ex": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<b>カレンダー<\/b>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "sh": "<ruby>日<rt>ひ<\/rt><\/ruby>をまちがえないで、<b>カレンダー<\/b>をよく<ruby>見<rt>み<\/rt><\/ruby>ましょう。", "ek": "날짜를 착각하지 않도록 달력을 잘 봅시다.", "sa": "/ja/2026-10-14/audio/s5.mp3", "au": "/ja/2026-10-14/audio/w7.mp3", "alts": ["나누다", "쓰레기", "타다", "일주일", "장소, 곳", "틀리다, 잘못 알다"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

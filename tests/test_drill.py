@@ -211,6 +211,16 @@ class TestApply(unittest.TestCase):
         self.assertIn("else if (S.mode !== 'card' && it.pick == null) warm();", js)  # \ubb38\uc81c\uac00 \ub098\uc62c \ub54c \ub2f5 \uc18c\ub9ac\ub97c \ubbf8\ub9ac \ubc1b\uc544 \ub454\ub2e4
         self.assertNotIn("\u00b7", js)
         self.assertNotIn('style="', js)  # CSP style-src 대비: 마크업 style 속성 없이 클래스와 CSSOM만
+        # 빈칸 채우기는 보기 없이 직접 쓰고(W19, W20), 예문 속 꼴(c.ca)로 채점한다
+        self.assertNotIn("빈칸에 알맞은 단어를 고르세요", js)
+        self.assertIn("if (k === 'write' || k === 'cloze') {", js)
+        self.assertIn("grade(it.c, f.value, kindOf(it) === 'cloze')", js)
+        # 결과 화면에서 같은 단어로 다른 문제를 바로 시작한다(W15, W16)
+        self.assertIn("nextTypes(tot)", js)
+        self.assertIn('data-act="again"', js)
+        self.assertIn("return start(S.list.map(function (x) { return x.c; }), qt2, S.kind);", js)
+        self.assertIn(".dr-ntype {", drill.CSS)
+        self.assertIn("빈칸 채우기<small>예문 보고 입력</small>", drill.card_html("en", "2026-11-15", [{"w": "a", "m": "b"}], 4))
 
 
 class TestGuard(unittest.TestCase):

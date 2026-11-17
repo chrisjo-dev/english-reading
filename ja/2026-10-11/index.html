@@ -338,6 +338,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -631,7 +642,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -640,7 +651,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
     <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1209,7 +1220,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "鈴虫", "m": "방울벌레", "r": "すずむし", "cz": "「リーリー」という<span class=\"dr-blank\"><\/span>の<ruby>鳴<rt>な<\/rt><\/ruby>き<ruby>声<rt>こえ<\/rt><\/ruby>は、<ruby>秋<rt>あき<\/rt><\/ruby>らしいです。", "ca": "鈴虫", "ex": "「リーリー」という<b><ruby>鈴虫<rt>すずむし<\/rt><\/ruby><\/b>の<ruby>鳴<rt>な<\/rt><\/ruby>き<ruby>声<rt>こえ<\/rt><\/ruby>は、<ruby>秋<rt>あき<\/rt><\/ruby>らしいです。", "sh": "「リーリー」という<b><ruby>鈴虫<rt>すずむし<\/rt><\/ruby><\/b>の<ruby>鳴<rt>な<\/rt><\/ruby>き<ruby>声<rt>こえ<\/rt><\/ruby>は、<ruby>秋<rt>あき<\/rt><\/ruby>らしいです。", "ek": "'리리리'라는 방울벌레 울음소리는 가을답습니다.", "sa": "/ja/2026-10-11/audio/s2.mp3", "au": "/ja/2026-10-11/audio/w1.mp3", "alts": ["울음소리", "기온", "내려가다, 낮아지다", "~답다", "창문"]}, {"w": "鳴き声", "m": "울음소리", "r": "なきこえ", "ex": "「リーリー」という<ruby>鈴虫<rt>すずむし<\/rt><\/ruby>の<b><ruby>鳴<rt>な<\/rt><\/ruby>き<\/b><ruby>声<rt>こえ<\/rt><\/ruby>は、<ruby>秋<rt>あき<\/rt><\/ruby>らしいです。", "sh": "「リーリー」という<ruby>鈴虫<rt>すずむし<\/rt><\/ruby>の<b><ruby>鳴<rt>な<\/rt><\/ruby>き<\/b><ruby>声<rt>こえ<\/rt><\/ruby>は、<ruby>秋<rt>あき<\/rt><\/ruby>らしいです。", "ek": "'리리리'라는 방울벌레 울음소리는 가을답습니다.", "sa": "/ja/2026-10-11/audio/s2.mp3", "au": "/ja/2026-10-11/audio/w2.mp3", "alts": ["방울벌레", "기온", "내려가다, 낮아지다", "~답다", "창문"]}, {"w": "気温", "m": "기온", "r": "きおん", "cz": "<span class=\"dr-blank\"><\/span>が<ruby>下<rt>さ<\/rt><\/ruby>がってくると、<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>は<ruby>少<rt>すく<\/rt><\/ruby>なくなります。", "ca": "気温", "ex": "<b><ruby>気温<rt>きおん<\/rt><\/ruby><\/b>が<ruby>下<rt>さ<\/rt><\/ruby>がってくると、<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>は<ruby>少<rt>すく<\/rt><\/ruby>なくなります。", "sh": "<b><ruby>気温<rt>きおん<\/rt><\/ruby><\/b>が<ruby>下<rt>さ<\/rt><\/ruby>がってくると、<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>は<ruby>少<rt>すく<\/rt><\/ruby>なくなります。", "ek": "기온이 내려가면 벌레 소리는 줄어듭니다.", "sa": "/ja/2026-10-11/audio/s3.mp3", "au": "/ja/2026-10-11/audio/w3.mp3", "alts": ["방울벌레", "울음소리", "내려가다, 낮아지다", "~답다", "창문"]}, {"w": "下がる", "m": "내려가다, 낮아지다", "r": "さがる", "cz": "<ruby>気温<rt>きおん<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>と、<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>は<ruby>少<rt>すく<\/rt><\/ruby>なくなります。", "ca": "下がってくる", "ex": "<ruby>気温<rt>きおん<\/rt><\/ruby>が<b><ruby>下<rt>さ<\/rt><\/ruby>がってくる<\/b>と、<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>は<ruby>少<rt>すく<\/rt><\/ruby>なくなります。", "sh": "<ruby>気温<rt>きおん<\/rt><\/ruby>が<b><ruby>下<rt>さ<\/rt><\/ruby>がってくる<\/b>と、<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>は<ruby>少<rt>すく<\/rt><\/ruby>なくなります。", "ek": "기온이 내려가면 벌레 소리는 줄어듭니다.", "sa": "/ja/2026-10-11/audio/s3.mp3", "au": "/ja/2026-10-11/audio/w4.mp3", "alts": ["방울벌레", "울음소리", "기온", "~답다", "창문"]}, {"w": "〜らしい", "m": "~답다", "cz": "「リーリー」という<ruby>鈴虫<rt>すずむし<\/rt><\/ruby>の<ruby>鳴<rt>な<\/rt><\/ruby>き<ruby>声<rt>こえ<\/rt><\/ruby>は、<ruby>秋<rt>あき<\/rt><\/ruby><span class=\"dr-blank\"><\/span>です。", "ca": "らしい", "ex": "「リーリー」という<ruby>鈴虫<rt>すずむし<\/rt><\/ruby>の<ruby>鳴<rt>な<\/rt><\/ruby>き<ruby>声<rt>こえ<\/rt><\/ruby>は、<ruby>秋<rt>あき<\/rt><\/ruby><b>らしい<\/b>です。", "sh": "「リーリー」という<ruby>鈴虫<rt>すずむし<\/rt><\/ruby>の<ruby>鳴<rt>な<\/rt><\/ruby>き<ruby>声<rt>こえ<\/rt><\/ruby>は、<ruby>秋<rt>あき<\/rt><\/ruby><b>らしい<\/b>です。", "ek": "'리리리'라는 방울벌레 울음소리는 가을답습니다.", "sa": "/ja/2026-10-11/audio/s2.mp3", "au": "/ja/2026-10-11/audio/w5.mp3", "alts": ["방울벌레", "울음소리", "기온", "내려가다, 낮아지다", "창문"]}, {"w": "窓", "m": "창문", "r": "まど", "cz": "<ruby>秋<rt>あき<\/rt><\/ruby>の<ruby>夜<rt>よる<\/rt><\/ruby>、<span class=\"dr-blank\"><\/span>の<ruby>外<rt>そと<\/rt><\/ruby>で<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>が<ruby>聞<rt>き<\/rt><\/ruby>こえます。", "ca": "窓", "ex": "<ruby>秋<rt>あき<\/rt><\/ruby>の<ruby>夜<rt>よる<\/rt><\/ruby>、<b><ruby>窓<rt>まど<\/rt><\/ruby><\/b>の<ruby>外<rt>そと<\/rt><\/ruby>で<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>が<ruby>聞<rt>き<\/rt><\/ruby>こえます。", "sh": "<ruby>秋<rt>あき<\/rt><\/ruby>の<ruby>夜<rt>よる<\/rt><\/ruby>、<b><ruby>窓<rt>まど<\/rt><\/ruby><\/b>の<ruby>外<rt>そと<\/rt><\/ruby>で<ruby>虫<rt>むし<\/rt><\/ruby>の<ruby>声<rt>こえ<\/rt><\/ruby>が<ruby>聞<rt>き<\/rt><\/ruby>こえます。", "ek": "가을 밤, 창문 밖에서 벌레 소리가 들립니다.", "sa": "/ja/2026-10-11/audio/s1.mp3", "au": "/ja/2026-10-11/audio/w6.mp3", "alts": ["방울벌레", "울음소리", "기온", "내려가다, 낮아지다", "~답다"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

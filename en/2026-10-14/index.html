@@ -410,6 +410,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -628,7 +639,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -637,7 +648,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1211,7 +1222,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "bucket", "m": "양동이", "cz": "On hot summer days, a woman in Berlin carries a <span class=\"dr-blank\"><\/span> of water to a tree near her home, and she has even given it a name: Linda.", "ca": "bucket", "ex": "On hot summer days, a woman in Berlin carries a <b>bucket<\/b> of water to a tree near her home, and she has even given it a name: Linda.", "sh": "… a <b>bucket<\/b> of water to a tree near her home, …", "ek": "더운 여름날이면 베를린의 한 여성은 집 근처의 나무 한 그루에 물 한 양동이를 들고 가는데, 그 나무에 '린다'라는 이름까지 지어 주었다.", "sa": "/en/2026-10-14/audio/s1.mp3", "au": "/en/2026-10-14/audio/w1.mp3", "alts": ["나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "appear", "m": "나타나다, ~로 보이다", "cz": "When a tree needs water, it <span class=\"dr-blank\"><\/span> as an orange or red dot, and people can adopt it and get advice on how much water to give.", "ca": "appears", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can adopt it and get advice on how much water to give.", "sh": "… it <b>appears<\/b> as an orange or red dot, …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "sa": "/en/2026-10-14/audio/s3.mp3", "au": "/en/2026-10-14/audio/w2.mp3", "alts": ["양동이", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "adopt", "m": "입양하다, (맡아서) 돌보기로 하다", "cz": "When a tree needs water, it appears as an orange or red dot, and people can <span class=\"dr-blank\"><\/span> it and get advice on how much water to give.", "ca": "adopt", "ex": "When a tree needs water, it appears as an orange or red dot, and people can <b>adopt<\/b> it and get advice on how much water to give.", "sh": "… and people can <b>adopt<\/b> it and get advice …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "sa": "/en/2026-10-14/audio/s3.mp3", "au": "/en/2026-10-14/audio/w3.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "advice", "m": "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "cz": "When a tree needs water, it appears as an orange or red dot, and people can adopt it and get <span class=\"dr-blank\"><\/span> on how much water to give.", "ca": "advice", "ex": "When a tree needs water, it appears as an orange or red dot, and people can adopt it and get <b>advice<\/b> on how much water to give.", "sh": "… and get <b>advice<\/b> on how much water to give.", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "sa": "/en/2026-10-14/audio/s3.mp3", "au": "/en/2026-10-14/audio/w4.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "public", "m": "공공의, 누구나 쓸 수 있는", "cz": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find <span class=\"dr-blank\"><\/span> water pumps on the street.", "ca": "public", "ex": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find <b>public<\/b> water pumps on the street.", "sh": "… where people can find <b>public<\/b> water pumps on the street.", "ek": "도시를 위한 새로운 아이디어를 연구하는 작은 팀이 2020년에 만든 이 앱은, 사람들이 길에서 공용 물 펌프를 어디서 찾을 수 있는지도 보여 준다.", "sa": "/en/2026-10-14/audio/s4.mp3", "au": "/en/2026-10-14/audio/w5.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "~을 돌보다", "몇몇의, 여러"]}, {"w": "look after", "m": "~을 돌보다", "cz": "The woman says that <span class=\"dr-blank\"><\/span> her tree is fun, almost like a video game.", "ca": "looking after", "ex": "The woman says that <b>looking after<\/b> her tree is fun, almost like a video game.", "sh": "The woman says that <b>looking after<\/b> her tree is fun, almost like a video game.", "ek": "그 여성은 자기 나무를 돌보는 일이 재미있고, 거의 비디오 게임 같다고 말한다.", "sa": "/en/2026-10-14/audio/s5.mp3", "au": "/en/2026-10-14/audio/w6.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "몇몇의, 여러"]}, {"w": "several", "m": "몇몇의, 여러", "cz": "Thousands of people now water trees this way, and <span class=\"dr-blank\"><\/span> other cities in Germany and France have started their own versions of the app.", "ca": "several", "ex": "Thousands of people now water trees this way, and <b>several<\/b> other cities in Germany and France have started their own versions of the app.", "sh": "… and <b>several<\/b> other cities in Germany and France …", "ek": "이제 수천 명이 이런 방식으로 나무에 물을 주고 있고, 독일과 프랑스의 다른 여러 도시도 이 앱의 자기들만의 버전을 시작했다.", "sa": "/en/2026-10-14/audio/s6.mp3", "au": "/en/2026-10-14/audio/w7.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

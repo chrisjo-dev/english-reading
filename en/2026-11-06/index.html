@@ -334,6 +334,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -634,7 +645,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -643,7 +654,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1215,7 +1226,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "exists", "m": "존재하다", "cz": "Scientists have known about this crossed wiring for a long time, but they have never fully understood why it <span class=\"dr-blank\"><\/span>.", "ca": "exists", "ex": "Scientists have known about this crossed wiring for a long time, but they have never fully understood why it <b>exists<\/b>.", "sh": "… but they have never fully understood why it <b>exists<\/b>.", "ek": "과학자들은 이 교차된 연결에 대해 오래전부터 알고 있었지만, 그것이 왜 존재하는지는 한 번도 완전히 이해하지 못했다.", "sa": "/en/2026-11-06/audio/s2.mp3", "au": "/en/2026-11-06/audio/w1.mp3", "alts": ["시사하다, 암시하다", "반대(쪽)의", "경로들 (복수형)", "이점, 장점", "부작용, 부수 효과", "화석"]}, {"w": "suggests", "m": "시사하다, 암시하다", "cz": "A new paper <span class=\"dr-blank\"><\/span> that it all started with the eyes of simple fish that lived more than five hundred million years ago.", "ca": "suggests", "ex": "A new paper <b>suggests<\/b> that it all started with the eyes of simple fish that lived more than five hundred million years ago.", "sh": "A new paper <b>suggests<\/b> that it all started …", "ek": "새 논문은 이 모든 것이 5억 년도 더 전에 살았던 단순한 물고기의 눈에서 시작되었다고 시사한다.", "sa": "/en/2026-11-06/audio/s3.mp3", "au": "/en/2026-11-06/audio/w2.mp3", "alts": ["존재하다", "반대(쪽)의", "경로들 (복수형)", "이점, 장점", "부작용, 부수 효과", "화석"]}, {"w": "opposite", "m": "반대(쪽)의", "cz": "In these early fish, signals from each eye crossed to the <span class=\"dr-blank\"><\/span> side of the brain, which helped the fish react quickly to things they saw.", "ca": "opposite", "ex": "In these early fish, signals from each eye crossed to the <b>opposite<\/b> side of the brain, which helped the fish react quickly to things they saw.", "sh": "… crossed to the <b>opposite<\/b> side of the brain, …", "ek": "이 초기 물고기들에게서는 각 눈의 신호가 뇌의 반대쪽으로 건너갔고, 이것이 물고기가 눈에 보이는 것에 빠르게 반응하도록 도왔다.", "sa": "/en/2026-11-06/audio/s4.mp3", "au": "/en/2026-11-06/audio/w3.mp3", "alts": ["존재하다", "시사하다, 암시하다", "경로들 (복수형)", "이점, 장점", "부작용, 부수 효과", "화석"]}, {"w": "pathways", "m": "경로들 (복수형)", "cz": "Later, new <span class=\"dr-blank\"><\/span> for touch and movement, which appeared long after the eyes, were built on top of this old system and kept its crossed design.", "ca": "pathways", "ex": "Later, new <b>pathways<\/b> for touch and movement, which appeared long after the eyes, were built on top of this old system and kept its crossed design.", "sh": "… new <b>pathways<\/b> for touch and movement, which appeared long after the eyes, …", "ek": "나중에, 눈보다 한참 뒤에 생겨난 촉각과 움직임을 위한 새 경로들이 이 오래된 체계 위에 만들어졌고, 그 교차된 구조를 그대로 물려받았다.", "sa": "/en/2026-11-06/audio/s5.mp3", "au": "/en/2026-11-06/audio/w4.mp3", "alts": ["존재하다", "시사하다, 암시하다", "반대(쪽)의", "이점, 장점", "부작용, 부수 효과", "화석"]}, {"w": "advantage", "m": "이점, 장점", "cz": "The authors think this crossing is not a special <span class=\"dr-blank\"><\/span> but a side effect, and they say the idea could be tested with fossil skulls of those fish.", "ca": "advantage", "ex": "The authors think this crossing is not a special <b>advantage<\/b> but a side effect, and they say the idea could be tested with fossil skulls of those fish.", "sh": "… this crossing is not a special <b>advantage<\/b> but a side effect, …", "ek": "저자들은 이 교차가 특별한 이점이 아니라 부수적인 결과라고 생각하며, 그 생각은 그 물고기들의 화석 두개골로 검증해 볼 수 있다고 말한다.", "sa": "/en/2026-11-06/audio/s6.mp3", "au": "/en/2026-11-06/audio/w5.mp3", "alts": ["존재하다", "시사하다, 암시하다", "반대(쪽)의", "경로들 (복수형)", "부작용, 부수 효과", "화석"]}, {"w": "side effect", "m": "부작용, 부수 효과", "cz": "The authors think this crossing is not a special advantage but a <span class=\"dr-blank\"><\/span>, and they say the idea could be tested with fossil skulls of those fish.", "ca": "side effect", "ex": "The authors think this crossing is not a special advantage but a <b>side effect<\/b>, and they say the idea could be tested with fossil skulls of those fish.", "sh": "… but a <b>side effect<\/b>, and they say …", "ek": "저자들은 이 교차가 특별한 이점이 아니라 부수적인 결과라고 생각하며, 그 생각은 그 물고기들의 화석 두개골로 검증해 볼 수 있다고 말한다.", "sa": "/en/2026-11-06/audio/s6.mp3", "au": "/en/2026-11-06/audio/w6.mp3", "alts": ["존재하다", "시사하다, 암시하다", "반대(쪽)의", "경로들 (복수형)", "이점, 장점", "화석"]}, {"w": "fossil", "m": "화석", "cz": "The authors think this crossing is not a special advantage but a side effect, and they say the idea could be tested with <span class=\"dr-blank\"><\/span> skulls of those fish.", "ca": "fossil", "ex": "The authors think this crossing is not a special advantage but a side effect, and they say the idea could be tested with <b>fossil<\/b> skulls of those fish.", "sh": "… the idea could be tested with <b>fossil<\/b> skulls of those fish.", "ek": "저자들은 이 교차가 특별한 이점이 아니라 부수적인 결과라고 생각하며, 그 생각은 그 물고기들의 화석 두개골로 검증해 볼 수 있다고 말한다.", "sa": "/en/2026-11-06/audio/s6.mp3", "au": "/en/2026-11-06/audio/w7.mp3", "alts": ["존재하다", "시사하다, 암시하다", "반대(쪽)의", "경로들 (복수형)", "이점, 장점", "부작용, 부수 효과"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

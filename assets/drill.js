@@ -100,35 +100,39 @@
     if (S.mode !== 'card') {
       var k = kindOf(it), done = it.pick != null, num = '문제 ' + (S.answered + (done ? 0 : 1)) + '. ';
       var nextBtn = '<button class="dr-btn" type="button" data-act="next">' + (S.queue.length > 1 ? '다음 문제' : '결과 보기') + '</button>';
-      if (k === 'write') {
-        h += '<div class="dr-fc fit"><div class="dr-q">' + num + '뜻을 보고 단어를 쓰세요</div><div class="dr-qmean">' + esc(c.mh || c.m) + '</div><p class="dr-qhint">' + hint(c) + '</p>' +
-          '<form class="dr-write" autocomplete="off"><input class="dr-field' + (done ? (it.ok ? ' right' : ' wrong') : '') + '" type="text" lang="' + c.l +
-          '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="단어 입력" placeholder="여기에 쓰세요"' +
+      if (k === 'write' || k === 'cloze') {
+        // 빈칸 채우기도 보기 없이 직접 쓴다(W19, W20). 정답은 예문에 쓰인 꼴(c.ca)이다.
+        var cw = k === 'cloze', ansW = cw ? c.ca : (c.ar ? c.ar + ' ' : '') + c.w;
+        h += '<div class="dr-fc fit"><div class="dr-q">' + num + (cw ? '빈칸에 들어갈 단어를 쓰세요' : '뜻을 보고 단어를 쓰세요') + '</div>';
+        if (cw) h += '<p class="dr-cloze" lang="' + c.l + '">' + c.cz.replace('<span class="dr-blank"></span>', '<span class="dr-blank' + (done ? ' right">' + esc(c.ca) : '">') + '</span>') + '</p>' +
+          (!done ? (c.ek ? '<p class="dr-cko">' + esc(c.ek) + '</p>' : '') + '<p class="dr-qhint">뜻: ' + esc(c.mh || c.m) + '<br>' + hint(c, true) + '</p>' : '');
+        else h += '<div class="dr-qmean">' + esc(c.mh || c.m) + '</div><p class="dr-qhint">' + hint(c) + '</p>';
+        h += '<form class="dr-write" autocomplete="off"><input class="dr-field' + (done ? (it.ok ? ' right' : ' wrong') : '') + '" type="text" lang="' + c.l +
+          '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="단어 입력" placeholder="' + (cw ? '빈칸에 들어갈 단어' : '여기에 쓰세요') + '"' +
           (done ? ' value="' + esc(it.pick) + '" disabled' : '') + '></form>';
         if (!done) h += '<button class="dr-skip" type="button" data-act="giveup">모르겠어요</button>';
-        else h += verdict(it, k) + '<div class="dr-answer"><div><span class="lb">정답</span><b lang="' + c.l + '">' + esc((c.ar ? c.ar + ' ' : '') + c.w) + '</b>' + (c.r ? '<span class="rd" lang="' + c.l + '">' + esc(c.r) + '</span>' : '') +
+        else h += verdict(it, k) + '<div class="dr-answer"><div><span class="lb">정답</span><b lang="' + c.l + '">' + esc(ansW) + '</b>' + (c.r && !cw ? '<span class="rd" lang="' + c.l + '">' + esc(c.r) + '</span>' : '') +
           '</div><button class="dr-listen" type="button" data-act="say">' + ICON_SPK + ' <span>듣기</span></button></div>' +
-          (c.ex ? '<div class="dr-ex dr-gap10"><div class="lb">지문 속 문장</div><p class="en" lang="' + c.l + '">' + c.ex + '</p></div>' : '');
+          (cw ? '<div class="dr-ex dr-gap10"><div class="lb">해석</div><p class="en" lang="' + c.l + '">' + (c.ex || '') + '</p>' + (c.ek ? '<p class="ko">' + esc(c.ek) + ' ' + esc(c.w + ': ' + c.m) + '</p>' : '') + '</div>'
+            : c.ex ? '<div class="dr-ex dr-gap10"><div class="lb">지문 속 문장</div><p class="en" lang="' + c.l + '">' + c.ex + '</p></div>' : '');
         h += '</div><div class="dr-acts">' + (done ? nextBtn : '<button class="dr-btn" type="button" data-act="check">확인</button>') + '</div>';
       } else {
-        var cz = k === 'cloze', ans = cz ? c.ca : (c.mh || c.m);
+        var ans = c.mh || c.m;
         if (!it.opts || it.qk !== k) {
-          var pool = cz ? CARDS.concat(S.list.map(function (x) { return x.c; })).map(function (x) { return x.ca || x.w; }) : (c.alts || []);
+          var pool = c.alts || [];
           pool = pool.filter(function (m, i, a) { return m !== ans && a.indexOf(m) === i; });
           it.opts = shuffle(shuffle(pool).slice(0, 3).concat([ans])); it.qk = k;
         }
-        h += '<div class="dr-fc fit"><div class="dr-q">' + num + (cz ? '빈칸에 알맞은 단어를 고르세요' : '알맞은 뜻을 고르세요') + '</div>';
-        if (cz) h += '<p class="dr-cloze" lang="' + c.l + '">' + c.cz.replace('<span class="dr-blank"></span>', '<span class="dr-blank' + (done ? ' right">' + esc(ans) : '">') + '</span>') + '</p>' +
-          (c.ek ? '<p class="dr-cko">' + esc(c.ek) + '</p>' : '');
-        else h += '<div class="dr-qword" lang="' + c.l + '">' + esc(c.w) + '</div>' + (c.sh ? '<p class="dr-qsub" lang="' + c.l + '">' + c.sh + '</p>' : '');
+        h += '<div class="dr-fc fit"><div class="dr-q">' + num + '알맞은 뜻을 고르세요</div>';
+        h += '<div class="dr-qword" lang="' + c.l + '">' + esc(c.w) + '</div>' + (c.sh ? '<p class="dr-qsub" lang="' + c.l + '">' + c.sh + '</p>' : '');
         h += '<div class="dr-opts">' + it.opts.map(function (m, i) {
           var cls = '', r = '';
           if (done) { if (m === ans) { cls = ' right'; r = '<span class="r">정답</span>'; } else if (i === it.pick) { cls = ' wrong'; r = '<span class="r">내 답</span>'; } }
-          return '<button class="dr-opt' + cls + '" type="button" data-act="pick" data-i="' + i + '"' + (cz ? ' lang="' + c.l + '"' : '') + (done ? ' disabled' : '') + '><span class="k">' + (i + 1) + '</span>' + esc(m) + r + '</button>';
+          return '<button class="dr-opt' + cls + '" type="button" data-act="pick" data-i="' + i + '"' + (done ? ' disabled' : '') + '><span class="k">' + (i + 1) + '</span>' + esc(m) + r + '</button>';
         }).join('') + '</div>';
         if (done) {
           h += verdict(it, k);
-          if (!cz && c.ek) h += '<div class="dr-ex"><div class="lb">해석</div><p class="ko flat">' + esc(c.ek) + '</p></div>';
+          if (c.ek) h += '<div class="dr-ex"><div class="lb">해석</div><p class="ko flat">' + esc(c.ek) + '</p></div>';
         }
         h += '</div>';
         if (done) h += '<div class="dr-acts">' + nextBtn + '</div>';
@@ -168,7 +172,13 @@
     var c = it.c, t = !it.ok ? '틀렸어요. 오답 노트에 담았어요' : it.near ? '맞았어요. 철자를 한 번 더 확인해 보세요' : k === 'cloze' ? '맞았어요. ' + c.w + ': ' + c.m : '맞았어요';
     return '<div class="dr-verdict' + (it.ok ? ' ok' : '') + '">' + esc(t) + '</div>';
   }
-  function hint(c) {
+  // 빈칸 채우기 정답 꼴: 예문에 쓰인 형태(c.ca). 일본어는 사전형과 같을 때만 읽기로 써도 정답이다.
+  function clozeForms(c) { return [c.ca].concat(c.l === 'ja' && c.ca === c.w && c.r ? [c.r] : []); }
+  function hint(c, cw) {
+    if (cw) {
+      var f = clozeForms(c), s = f[f.length - 1], n = s.replace(/\s/g, '').length;
+      return (s !== c.ca ? '읽기 ' : '') + '“' + esc(s.charAt(0)) + '”로 시작하는 ' + n + '글자';
+    }
     // 독일어 명사(ar 있음): 관사 포함 정답이므로 “관사 + 단어” 안내, 첫 글자 힌트
     if (c.ar) {
       var n = c.w.replace(/\s/g, '').length;
@@ -194,7 +204,16 @@
       d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
     return d[a.length][b.length];
   }
-  function grade(c, v) {
+  function grade(c, v, cw) {
+    if (cw) {
+      // 빈칸은 예문 속 꼴 그대로(관사 없음). 대소문자, 문장부호는 보지 않고 한 글자 오타는 봐준다.
+      var tc = norm(v, c.l), fs = clozeForms(c);
+      if (fs.some(function (x) { return norm(x, c.l) === tc; })) return { ok: true };
+      var rc = norm(v, c.l, true), rf = norm(c.ca, c.l, true);
+      var fd = function (x) { return x.replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 's'); };
+      var nr = c.l !== 'ja' && rf.length >= 6 && dist(rc, rf) <= 1 && !(c.l === 'de' && fd(rc) === fd(rf));
+      return { ok: nr, near: nr };
+    }
     // 독일어 명사(ar 있음): 관사 포함 정답, 예: "die Dose"
     if (c.ar) {
       // 관사를 빼지 않는 norm: 대소문자/문장부호/띄어쓰기 정규화, 움라우트는 ae/oe/ue/ss로
@@ -237,7 +256,7 @@
     var it = S.queue[0], f = root.querySelector('.dr-field');
     if (!f || f.disabled) return;
     if (!f.value.trim()) return f.focus();
-    var g = grade(it.c, f.value);
+    var g = grade(it.c, f.value, kindOf(it) === 'cloze');
     // 독일어 명사에서 관사 없이 명사만 쓴 경우: 재시도 허용, 관사 안내 표시
     if (g.missingArticle) {
       var ph = root.querySelector('.dr-qhint');
@@ -397,7 +416,7 @@
     if (act === 'pick') {
       if (it.pick != null) return;
       var i = +b.getAttribute('data-i');
-      return answer(it, i, it.opts[i] === (kindOf(it) === 'cloze' ? it.c.ca : (it.c.mh || it.c.m)));
+      return answer(it, i, it.opts[i] === (it.c.mh || it.c.m));
     }
     if (act === 'check') return check();
     if (act === 'giveup') { if (it.pick == null) answer(it, '', false); return; }
@@ -409,6 +428,11 @@
       else if (it.wrong === 0 || it.streak >= 1) it.done = true;
       else { it.streak++; later(it); }
       return render();
+    }
+    if (act === 'again') {
+      var qt2 = b.getAttribute('data-qt');
+      ga('word_drill_start', { lang: LANG, day: S.kind === 'review' ? 'review' : DAY, mode: qt2, from: 'result' });
+      return start(S.list.map(function (x) { return x.c; }), qt2, S.kind);
     }
     if (act === 'retry') return start(S.list.filter(function (x) { return x.wrong > 0; }).map(function (x) { return x.c; }), S.mode, 'retry');
   }
@@ -449,7 +473,7 @@
       '<section class="card"><div class="step">' + (S.kind === 'retry' ? '오답 다시 결과' : S.kind === 'review' ? '복습 결과' : '오늘 결과') + '</div>' +
       '<div class="dr-score"><b>' + first + '</b><span>/ ' + tot + '개 한 번에 맞혔어요</span></div>' +
       '<div class="dr-stats"><div class="dr-stat"><b>' + tot + '</b><span>외운 단어</span></div><div class="dr-stat"><b>' + S.shown + '</b><span>' + (S.mode !== 'card' ? '푼 문제' : '넘긴 카드') + '</span></div>' +
-      '<div class="dr-stat"><b>' + wrongs.length + '</b><span>틀린 단어</span></div></div></section>' +
+      '<div class="dr-stat"><b>' + wrongs.length + '</b><span>틀린 단어</span></div></div></section>' + nextTypes(tot) +
       '<section class="card"><h2 class="dr-h12">오답 노트</h2>' +
       (wrongs.length ? '<div>' + wrongs.map(function (x) {
         return '<div class="dr-wl"><b lang="' + x.c.l + '">' + esc(x.c.w) + '<em>' + x.wrong + '번 틀림</em></b><span>' + esc(x.c.m) + '</span></div>';
@@ -463,6 +487,19 @@
     root.innerHTML = '<div class="dr-in">' + h + '</div>';
     widths();
     root.scrollTop = 0;
+  }
+
+  // 결과 화면의 "이어서 문제 풀기"(W15, W16): 같은 단어로 다른 문제를 바로 시작한다. 방금 푼 종류는 맨 뒤에 "한 번 더"로.
+  var QTYPES = [['quiz', '뜻 고르기', '4개 중 하나 고르기'], ['write', '단어 쓰기', '뜻 보고 단어 입력'], ['cloze', '빈칸 채우기', '예문 빈칸에 단어 입력']];
+  function nextTypes(tot) {
+    var cur = S.mode, ts = QTYPES.filter(function (q) { return q[0] !== cur; }).concat(QTYPES.filter(function (q) { return q[0] === cur; }));
+    return '<section class="card"><h2 class="dr-h6">' + (cur === 'card' ? '이어서 문제 풀기' : '이어서 다른 문제 풀기') + '</h2>' +
+      '<p class="desc dr-next">' + (cur === 'card' ? '방금 외운 단어 ' + tot + '개로 바로 풀어 봐요.' : '같은 단어 ' + tot + '개를 다른 방식으로 풀어 봐요.') + '</p><div class="dr-ntypes">' +
+      ts.map(function (q, i) {
+        var done = q[0] === cur;
+        return '<button class="dr-ntype' + (done ? ' done' : i === 0 ? ' first' : '') + '" type="button" data-act="again" data-qt="' + q[0] + '"><span class="tx"><b>' + q[1] +
+          (done ? '<i class="badge">방금 풀었어요</i>' : '') + '</b><span>' + q[2] + '</span></span><span class="go">' + (done ? '한 번 더' : '시작') + '</span></button>';
+      }).join('') + '</div></section>';
   }
 
   // 진입 카드

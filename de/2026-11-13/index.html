@@ -350,6 +350,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -635,7 +646,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -644,7 +655,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1211,7 +1222,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "Schimpanse", "m": "침팬지 (남성 der, 복수 Schimpansen)", "mh": "침팬지", "ar": "der", "cz": "Ein Forschungsteam aus Frankreich und der Elfenbeinküste hat bei wilden <span class=\"dr-blank\"><\/span> im Taï-Nationalpark einen besonderen Laut genauer untersucht.", "ca": "Schimpansen", "ex": "Ein Forschungsteam aus Frankreich und der Elfenbeinküste hat bei wilden <b>Schimpansen<\/b> im Taï-Nationalpark einen besonderen Laut genauer untersucht.", "sh": "Ein Forschungsteam aus Frankreich und der Elfenbeinküste hat bei wilden <b>Schimpansen<\/b> im Taï-Nationalpark einen besonderen Laut genauer untersucht.", "ek": "프랑스와 코트디부아르의 한 연구팀이 타이 국립공원의 야생 침팬지들이 내는 특별한 소리를 자세히 연구했습니다.", "sa": "/de/2026-11-13/audio/s1.mp3", "au": "/de/2026-11-13/audio/w1.mp3", "alts": ["입술", "울음소리, 부르는 소리", "털, 모피", "고아", "보호 시설", "본보기, 모범"]}, {"w": "Lippe", "m": "입술 (여성 die, 복수 Lippen)", "mh": "입술", "ar": "die", "cz": "Der Laut klingt ungefähr so, als ob ein Mensch mit den <span class=\"dr-blank\"><\/span> ein prustendes Geräusch machen würde.", "ca": "Lippen", "ex": "Der Laut klingt ungefähr so, als ob ein Mensch mit den <b>Lippen<\/b> ein prustendes Geräusch machen würde.", "sh": "Der Laut klingt ungefähr so, als ob ein Mensch mit den <b>Lippen<\/b> ein prustendes Geräusch machen würde.", "ek": "그 소리는 마치 사람이 입술로 푸르르 하는 소리를 내는 것처럼 들립니다.", "sa": "/de/2026-11-13/audio/s2.mp3", "au": "/de/2026-11-13/audio/w2.mp3", "alts": ["침팬지", "울음소리, 부르는 소리", "털, 모피", "고아", "보호 시설", "본보기, 모범"]}, {"w": "Ruf", "m": "울음소리, 부르는 소리 (남성 der, 복수 Rufe)", "mh": "울음소리, 부르는 소리", "ar": "der", "cz": "In den vier wilden Gruppen benutzen die Tiere diesen <span class=\"dr-blank\"><\/span> fast nur, wenn sie sich gegenseitig das Fell pflegen.", "ca": "Ruf", "ex": "In den vier wilden Gruppen benutzen die Tiere diesen <b>Ruf<\/b> fast nur, wenn sie sich gegenseitig das Fell pflegen.", "sh": "In den vier wilden Gruppen benutzen die Tiere diesen <b>Ruf<\/b> fast nur, wenn sie sich gegenseitig das Fell pflegen.", "ek": "네 개의 야생 무리에서 침팬지들은 이 울음소리를 거의 서로 털을 손질해 줄 때만 씁니다.", "sa": "/de/2026-11-13/audio/s3.mp3", "au": "/de/2026-11-13/audio/w3.mp3", "alts": ["침팬지", "입술", "털, 모피", "고아", "보호 시설", "본보기, 모범"]}, {"w": "Fell", "m": "털, 모피 (중성 das)", "mh": "털, 모피", "ar": "das", "cz": "In den vier wilden Gruppen benutzen die Tiere diesen Ruf fast nur, wenn sie sich gegenseitig das <span class=\"dr-blank\"><\/span> pflegen.", "ca": "Fell", "ex": "In den vier wilden Gruppen benutzen die Tiere diesen Ruf fast nur, wenn sie sich gegenseitig das <b>Fell<\/b> pflegen.", "sh": "In den vier wilden Gruppen benutzen die Tiere diesen Ruf fast nur, wenn sie sich gegenseitig das <b>Fell<\/b> pflegen.", "ek": "네 개의 야생 무리에서 침팬지들은 이 울음소리를 거의 서로 털을 손질해 줄 때만 씁니다.", "sa": "/de/2026-11-13/audio/s3.mp3", "au": "/de/2026-11-13/audio/w4.mp3", "alts": ["침팬지", "입술", "울음소리, 부르는 소리", "고아", "보호 시설", "본보기, 모범"]}, {"w": "Waise", "m": "고아 (여성 die, 복수 Waisen)", "mh": "고아", "ar": "die", "cz": "Obwohl die jungen <span class=\"dr-blank\"><\/span> in einer Auffangstation in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen.", "ca": "Waisen", "ex": "Obwohl die jungen <b>Waisen<\/b> in einer Auffangstation in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen.", "sh": "Obwohl die jungen <b>Waisen<\/b> in einer Auffangstation in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen.", "ek": "시에라리온의 한 보호 시설에 있는 어린 고아 침팬지들은 같은 소리를 내지만, 그것을 여러 다양한 상황에서 씁니다.", "sa": "/de/2026-11-13/audio/s4.mp3", "au": "/de/2026-11-13/audio/w5.mp3", "alts": ["침팬지", "입술", "울음소리, 부르는 소리", "털, 모피", "보호 시설", "본보기, 모범"]}, {"w": "Auffangstation", "m": "보호 시설 (여성 die)", "mh": "보호 시설", "ar": "die", "cz": "Obwohl die jungen Waisen in einer <span class=\"dr-blank\"><\/span> in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen.", "ca": "Auffangstation", "ex": "Obwohl die jungen Waisen in einer <b>Auffangstation<\/b> in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen.", "sh": "Obwohl die jungen Waisen in einer <b>Auffangstation<\/b> in Sierra Leone denselben Laut machen, benutzen sie ihn in vielen verschiedenen Situationen.", "ek": "시에라리온의 한 보호 시설에 있는 어린 고아 침팬지들은 같은 소리를 내지만, 그것을 여러 다양한 상황에서 씁니다.", "sa": "/de/2026-11-13/audio/s4.mp3", "au": "/de/2026-11-13/audio/w6.mp3", "alts": ["침팬지", "입술", "울음소리, 부르는 소리", "털, 모피", "고아", "본보기, 모범"]}, {"w": "Vorbild", "m": "본보기, 모범 (중성 das, 복수 Vorbilder)", "mh": "본보기, 모범", "ar": "das", "cz": "Als ein erwachsenes Tier in eine solche Gruppe kam, passten die Jungen ihren Gebrauch des Rufs nach und nach dem <span class=\"dr-blank\"><\/span> an.", "ca": "Vorbild", "ex": "Als ein erwachsenes Tier in eine solche Gruppe kam, passten die Jungen ihren Gebrauch des Rufs nach und nach dem <b>Vorbild<\/b> an.", "sh": "Als ein erwachsenes Tier in eine solche Gruppe kam, passten die Jungen ihren Gebrauch des Rufs nach und nach dem <b>Vorbild<\/b> an.", "ek": "그런 무리에 어른 침팬지 한 마리가 들어오자, 어린 침팬지들은 울음소리를 쓰는 방식을 조금씩 그 본보기에 맞췄습니다.", "sa": "/de/2026-11-13/audio/s5.mp3", "au": "/de/2026-11-13/audio/w7.mp3", "alts": ["침팬지", "입술", "울음소리, 부르는 소리", "털, 모피", "고아", "보호 시설"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

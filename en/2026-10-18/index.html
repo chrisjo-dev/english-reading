@@ -334,6 +334,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -628,7 +639,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -637,7 +648,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1209,7 +1220,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "astronomers", "m": "천문학자들 (복수 -s)", "cz": "<span class=\"dr-blank\"><\/span> have found that a giant planet outside our solar system is not perfectly round.", "ca": "Astronomers", "ex": "<b>Astronomers<\/b> have found that a giant planet outside our solar system is not perfectly round.", "sh": "<b>Astronomers<\/b> have found that a giant planet outside our solar system is not perfectly round.", "ek": "천문학자들이 우리 태양계 밖의 한 거대 행성이 완벽하게 둥글지 않다는 것을 알아냈다.", "sa": "/en/2026-10-18/audio/s1.mp3", "au": "/en/2026-10-18/audio/w1.mp3", "alts": ["~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 돌출부", "방법"]}, {"w": "faces", "m": "~을 향하다 (face의 3인칭 단수)", "mh": "~을 향하다", "cz": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always <span class=\"dr-blank\"><\/span> its star.", "ca": "faces", "ex": "The planet is a hot gas giant about thirteen hundred light-years from Earth, and one side of it always <b>faces<\/b> its star.", "sh": "… and one side of it always <b>faces<\/b> its star.", "ek": "그 행성은 지구에서 약 1,300광년 떨어진 뜨거운 가스 행성으로, 한쪽 면이 항상 자기 별을 향하고 있다.", "sa": "/en/2026-10-18/audio/s2.mp3", "au": "/en/2026-10-18/audio/w2.mp3", "alts": ["천문학자들 (복수 -s)", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 돌출부", "방법"]}, {"w": "edges", "m": "가장자리들 (edge의 복수)", "mh": "가장자리들", "cz": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the <span class=\"dr-blank\"><\/span> of its atmosphere.", "ca": "edges", "ex": "Using the James Webb Space Telescope, a team of scientists studied the starlight that passes through the <b>edges<\/b> of its atmosphere.", "sh": "… that passes through the <b>edges<\/b> of its atmosphere.", "ek": "한 과학자 팀이 제임스 웹 우주 망원경을 이용해, 그 행성 대기의 가장자리를 통과하는 별빛을 연구했다.", "sa": "/en/2026-10-18/audio/s3.mp3", "au": "/en/2026-10-18/audio/w3.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 돌출부", "방법"]}, {"w": "stretches", "m": "뻗어 나가다, 늘어나다", "cz": "They found that the atmosphere <span class=\"dr-blank\"><\/span> farther out on the evening side than on the cooler morning side.", "ca": "stretches", "ex": "They found that the atmosphere <b>stretches<\/b> farther out on the evening side than on the cooler morning side.", "sh": "They found that the atmosphere <b>stretches<\/b> farther out on the evening side than on the cooler morning side.", "ek": "그들은 대기가 더 서늘한 아침 쪽보다 저녁 쪽에서 더 멀리 바깥으로 뻗어 있다는 것을 발견했다.", "sa": "/en/2026-10-18/audio/s4.mp3", "au": "/en/2026-10-18/audio/w4.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "아마도", "불룩한 부분, 돌출부", "방법"]}, {"w": "probably", "m": "아마도", "cz": "Strong winds, which carry heat from the bright day side to the dark night side, are <span class=\"dr-blank\"><\/span> what causes this bulge.", "ca": "probably", "ex": "Strong winds, which carry heat from the bright day side to the dark night side, are <b>probably<\/b> what causes this bulge.", "sh": "… are <b>probably<\/b> what causes this bulge.", "ek": "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 대기가 이렇게 불룩해진 원인일 것이다.", "sa": "/en/2026-10-18/audio/s5.mp3", "au": "/en/2026-10-18/audio/w5.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "불룩한 부분, 돌출부", "방법"]}, {"w": "bulge", "m": "불룩한 부분, 돌출부", "cz": "Strong winds, which carry heat from the bright day side to the dark night side, are probably what causes this <span class=\"dr-blank\"><\/span>.", "ca": "bulge", "ex": "Strong winds, which carry heat from the bright day side to the dark night side, are probably what causes this <b>bulge<\/b>.", "sh": "… are probably what causes this <b>bulge<\/b>.", "ek": "밝은 낮 쪽에서 어두운 밤 쪽으로 열을 실어 나르는 강한 바람이 아마도 대기가 이렇게 불룩해진 원인일 것이다.", "sa": "/en/2026-10-18/audio/s5.mp3", "au": "/en/2026-10-18/audio/w6.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "방법"]}, {"w": "method", "m": "방법", "cz": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this <span class=\"dr-blank\"><\/span> will help them study the weather on many of them.", "ca": "method", "ex": "Since more than six thousand planets have been found outside our solar system so far, the team hopes this <b>method<\/b> will help them study the weather on many of them.", "sh": "… this <b>method<\/b> will help them study the weather …", "ek": "지금까지 우리 태양계 밖에서 6,000개가 넘는 행성이 발견되었기 때문에, 연구팀은 이 방법이 그중 많은 행성의 날씨를 연구하는 데 도움이 되기를 바란다.", "sa": "/en/2026-10-18/audio/s6.mp3", "au": "/en/2026-10-18/audio/w7.mp3", "alts": ["천문학자들 (복수 -s)", "~을 향하다", "가장자리들", "뻗어 나가다, 늘어나다", "아마도", "불룩한 부분, 돌출부"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

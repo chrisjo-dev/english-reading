@@ -332,6 +332,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -632,7 +643,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -641,7 +652,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1208,7 +1219,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "Reif", "m": "서리 (남성 der)", "mh": "서리", "ar": "der", "cz": "Am Sonntagmorgen habe ich gesehen, dass auf unserem Auto zum ersten Mal eine dünne Schicht <span class=\"dr-blank\"><\/span> lag.", "ca": "Reif", "ex": "Am Sonntagmorgen habe ich gesehen, dass auf unserem Auto zum ersten Mal eine dünne Schicht <b>Reif<\/b> lag.", "sh": "Am Sonntagmorgen habe ich gesehen, dass auf unserem Auto zum ersten Mal eine dünne Schicht <b>Reif<\/b> lag.", "ek": "일요일 아침, 우리 차 위에 처음으로 얇은 서리가 한 겹 내려앉은 것을 보았습니다.", "sa": "/de/2026-11-08/audio/s1.mp3", "au": "/de/2026-11-08/audio/w1.mp3", "alts": ["겨울 타이어, 스노타이어", "(타이어를) 끼우다, 장착하다", "(차) 진입로", "정비소, 작업장", "(자동차) 잭", "타이어 공기압"]}, {"w": "Winterreifen", "m": "겨울 타이어, 스노타이어 (남성 der)", "mh": "겨울 타이어, 스노타이어", "ar": "der", "cz": "Mein Vater sagt jedes Jahr, dass man die <span class=\"dr-blank\"><\/span> spätestens beim ersten Frost aufziehen sollte.", "ca": "Winterreifen", "ex": "Mein Vater sagt jedes Jahr, dass man die <b>Winterreifen<\/b> spätestens beim ersten Frost aufziehen sollte.", "sh": "Mein Vater sagt jedes Jahr, dass man die <b>Winterreifen<\/b> spätestens beim ersten Frost aufziehen sollte.", "ek": "아버지는 해마다 늦어도 첫 서리가 내릴 때에는 겨울 타이어를 끼워야 한다고 말합니다.", "sa": "/de/2026-11-08/audio/s2.mp3", "au": "/de/2026-11-08/audio/w2.mp3", "alts": ["서리", "(타이어를) 끼우다, 장착하다", "(차) 진입로", "정비소, 작업장", "(자동차) 잭", "타이어 공기압"]}, {"w": "aufziehen", "m": "(타이어를) 끼우다, 장착하다", "cz": "Mein Vater sagt jedes Jahr, dass man die Winterreifen spätestens beim ersten Frost <span class=\"dr-blank\"><\/span> sollte.", "ca": "aufziehen", "ex": "Mein Vater sagt jedes Jahr, dass man die Winterreifen spätestens beim ersten Frost <b>aufziehen<\/b> sollte.", "sh": "Mein Vater sagt jedes Jahr, dass man die Winterreifen spätestens beim ersten Frost <b>aufziehen<\/b> sollte.", "ek": "아버지는 해마다 늦어도 첫 서리가 내릴 때에는 겨울 타이어를 끼워야 한다고 말합니다.", "sa": "/de/2026-11-08/audio/s2.mp3", "au": "/de/2026-11-08/audio/w3.mp3", "alts": ["서리", "겨울 타이어, 스노타이어", "(차) 진입로", "정비소, 작업장", "(자동차) 잭", "타이어 공기압"]}, {"w": "Einfahrt", "m": "(차) 진입로 (여성 die)", "mh": "(차) 진입로", "ar": "die", "cz": "Deshalb haben wir nach dem Frühstück die Reifen aus dem Keller geholt und sie neben das Auto in die <span class=\"dr-blank\"><\/span> gelegt.", "ca": "Einfahrt", "ex": "Deshalb haben wir nach dem Frühstück die Reifen aus dem Keller geholt und sie neben das Auto in die <b>Einfahrt<\/b> gelegt.", "sh": "Deshalb haben wir nach dem Frühstück die Reifen aus dem Keller geholt und sie neben das Auto in die <b>Einfahrt<\/b> gelegt.", "ek": "그래서 우리는 아침을 먹은 뒤 지하실에서 타이어를 꺼내 와 진입로의 차 옆에 놓았습니다.", "sa": "/de/2026-11-08/audio/s3.mp3", "au": "/de/2026-11-08/audio/w4.mp3", "alts": ["서리", "겨울 타이어, 스노타이어", "(타이어를) 끼우다, 장착하다", "정비소, 작업장", "(자동차) 잭", "타이어 공기압"]}, {"w": "Werkstatt", "m": "정비소, 작업장 (여성 die, 복수 Werkstätten)", "mh": "정비소, 작업장", "ar": "die", "cz": "Das Wechseln der Reifen, für das viele Nachbarn in eine <span class=\"dr-blank\"><\/span> fahren, erledigt mein Vater seit Jahren selbst mit einem alten Wagenheber.", "ca": "Werkstatt", "ex": "Das Wechseln der Reifen, für das viele Nachbarn in eine <b>Werkstatt<\/b> fahren, erledigt mein Vater seit Jahren selbst mit einem alten Wagenheber.", "sh": "Das Wechseln der Reifen, für das viele Nachbarn in eine <b>Werkstatt<\/b> fahren, erledigt mein Vater seit Jahren selbst mit einem alten Wagenheber.", "ek": "많은 이웃이 정비소에 맡기는 타이어 교체를 아버지는 몇 년째 낡은 잭 하나로 직접 해냅니다.", "sa": "/de/2026-11-08/audio/s4.mp3", "au": "/de/2026-11-08/audio/w5.mp3", "alts": ["서리", "겨울 타이어, 스노타이어", "(타이어를) 끼우다, 장착하다", "(차) 진입로", "(자동차) 잭", "타이어 공기압"]}, {"w": "Wagenheber", "m": "(자동차) 잭 (남성 der)", "mh": "(자동차) 잭", "ar": "der", "cz": "Das Wechseln der Reifen, für das viele Nachbarn in eine Werkstatt fahren, erledigt mein Vater seit Jahren selbst mit einem alten <span class=\"dr-blank\"><\/span>.", "ca": "Wagenheber", "ex": "Das Wechseln der Reifen, für das viele Nachbarn in eine Werkstatt fahren, erledigt mein Vater seit Jahren selbst mit einem alten <b>Wagenheber<\/b>.", "sh": "Das Wechseln der Reifen, für das viele Nachbarn in eine Werkstatt fahren, erledigt mein Vater seit Jahren selbst mit einem alten <b>Wagenheber<\/b>.", "ek": "많은 이웃이 정비소에 맡기는 타이어 교체를 아버지는 몇 년째 낡은 잭 하나로 직접 해냅니다.", "sa": "/de/2026-11-08/audio/s4.mp3", "au": "/de/2026-11-08/audio/w6.mp3", "alts": ["서리", "겨울 타이어, 스노타이어", "(타이어를) 끼우다, 장착하다", "(차) 진입로", "정비소, 작업장", "타이어 공기압"]}, {"w": "Reifendruck", "m": "타이어 공기압 (남성 der)", "mh": "타이어 공기압", "ar": "der", "cz": "Zum Schluss haben wir noch den <span class=\"dr-blank\"><\/span> geprüft und danach zusammen einen heißen Tee in der gemütlichen Küche getrunken.", "ca": "Reifendruck", "ex": "Zum Schluss haben wir noch den <b>Reifendruck<\/b> geprüft und danach zusammen einen heißen Tee in der gemütlichen Küche getrunken.", "sh": "Zum Schluss haben wir noch den <b>Reifendruck<\/b> geprüft und danach zusammen einen heißen Tee in der gemütlichen Küche getrunken.", "ek": "마지막으로 타이어 공기압까지 확인한 뒤, 우리는 아늑한 부엌에서 함께 뜨거운 차를 마셨습니다.", "sa": "/de/2026-11-08/audio/s6.mp3", "au": "/de/2026-11-08/audio/w7.mp3", "alts": ["서리", "겨울 타이어, 스노타이어", "(타이어를) 끼우다, 장착하다", "(차) 진입로", "정비소, 작업장", "(자동차) 잭"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

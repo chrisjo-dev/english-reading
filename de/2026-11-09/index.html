@@ -332,6 +332,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -632,7 +643,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -641,7 +652,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1208,7 +1219,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "Familienticket", "m": "가족 승차권 (중성 das, 복수 Familientickets)", "mh": "가족 승차권", "ar": "das", "cz": "Seit dem 1. November bietet die Deutsche Bahn ihr günstiges <span class=\"dr-blank\"><\/span> dauerhaft an, das es bisher nur in den Sommerferien gab.", "ca": "Familienticket", "ex": "Seit dem 1. November bietet die Deutsche Bahn ihr günstiges <b>Familienticket<\/b> dauerhaft an, das es bisher nur in den Sommerferien gab.", "sh": "Seit dem 1. November bietet die Deutsche Bahn ihr günstiges <b>Familienticket<\/b> dauerhaft an, das es bisher nur in den Sommerferien gab.", "ek": "11월 1일부터 독일 철도(DB)는 지금까지 여름 방학에만 있던 저렴한 가족 승차권을 상시로 판매합니다.", "sa": "/de/2026-11-09/audio/s1.mp3", "au": "/de/2026-11-09/audio/w1.mp3", "alts": ["예약", "최대, 많아야", "검색", "할당량", "매진된, 품절된", "가격 비교"]}, {"w": "Reservierung", "m": "예약 (여성 die, 복수 Reservierungen)", "mh": "예약", "ar": "die", "cz": "Eine einfache Fahrt im ICE oder IC kostet für die ganze Familie 59,99 Euro, und die <span class=\"dr-blank\"><\/span> ist schon im Preis enthalten.", "ca": "Reservierung", "ex": "Eine einfache Fahrt im ICE oder IC kostet für die ganze Familie 59,99 Euro, und die <b>Reservierung<\/b> ist schon im Preis enthalten.", "sh": "Eine einfache Fahrt im ICE oder IC kostet für die ganze Familie 59,99 Euro, und die <b>Reservierung<\/b> ist schon im Preis enthalten.", "ek": "ICE나 IC 편도 한 번은 가족 전체가 59.99유로이고, 좌석 예약도 이미 가격에 포함되어 있습니다.", "sa": "/de/2026-11-09/audio/s2.mp3", "au": "/de/2026-11-09/audio/w2.mp3", "alts": ["가족 승차권", "최대, 많아야", "검색", "할당량", "매진된, 품절된", "가격 비교"]}, {"w": "höchstens", "m": "최대, 많아야", "cz": "Mit einem Ticket dürfen bis zu fünf Personen reisen, aber <span class=\"dr-blank\"><\/span> zwei von ihnen dürfen älter als 15 Jahre sein.", "ca": "höchstens", "ex": "Mit einem Ticket dürfen bis zu fünf Personen reisen, aber <b>höchstens<\/b> zwei von ihnen dürfen älter als 15 Jahre sein.", "sh": "Mit einem Ticket dürfen bis zu fünf Personen reisen, aber <b>höchstens<\/b> zwei von ihnen dürfen älter als 15 Jahre sein.", "ek": "표 한 장으로 최대 다섯 명이 여행할 수 있지만, 그중 15세가 넘는 사람은 두 명까지만 됩니다.", "sa": "/de/2026-11-09/audio/s3.mp3", "au": "/de/2026-11-09/audio/w3.mp3", "alts": ["가족 승차권", "예약", "검색", "할당량", "매진된, 품절된", "가격 비교"]}, {"w": "Suche", "m": "검색 (여성 die)", "mh": "검색", "ar": "die", "cz": "Das Ticket wird über die normale Buchungsseite verkauft, wird aber nur angezeigt, wenn man bei der <span class=\"dr-blank\"><\/span> ein Kind angibt.", "ca": "Suche", "ex": "Das Ticket wird über die normale Buchungsseite verkauft, wird aber nur angezeigt, wenn man bei der <b>Suche<\/b> ein Kind angibt.", "sh": "Das Ticket wird über die normale Buchungsseite verkauft, wird aber nur angezeigt, wenn man bei der <b>Suche<\/b> ein Kind angibt.", "ek": "이 표는 일반 예매 페이지에서 판매되지만, 검색할 때 아이를 함께 입력해야만 화면에 나타납니다.", "sa": "/de/2026-11-09/audio/s4.mp3", "au": "/de/2026-11-09/audio/w4.mp3", "alts": ["가족 승차권", "예약", "최대, 많아야", "할당량", "매진된, 품절된", "가격 비교"]}, {"w": "Kontingent", "m": "할당량 (중성 das, 복수 Kontingente)", "mh": "할당량", "ar": "das", "cz": "Laut der Bahn gibt es zwar kein festes <span class=\"dr-blank\"><\/span> pro Zug, doch auf stark gebuchten Strecken kann das Angebot schnell ausverkauft sein.", "ca": "Kontingent", "ex": "Laut der Bahn gibt es zwar kein festes <b>Kontingent<\/b> pro Zug, doch auf stark gebuchten Strecken kann das Angebot schnell ausverkauft sein.", "sh": "Laut der Bahn gibt es zwar kein festes <b>Kontingent<\/b> pro Zug, doch auf stark gebuchten Strecken kann das Angebot schnell ausverkauft sein.", "ek": "철도 회사에 따르면 열차마다 정해진 할당량은 없지만, 예약이 몰리는 노선에서는 이 상품이 빨리 매진될 수 있습니다.", "sa": "/de/2026-11-09/audio/s5.mp3", "au": "/de/2026-11-09/audio/w5.mp3", "alts": ["가족 승차권", "예약", "최대, 많아야", "검색", "매진된, 품절된", "가격 비교"]}, {"w": "ausverkauft", "m": "매진된, 품절된", "cz": "Laut der Bahn gibt es zwar kein festes Kontingent pro Zug, doch auf stark gebuchten Strecken kann das Angebot schnell <span class=\"dr-blank\"><\/span> sein.", "ca": "ausverkauft", "ex": "Laut der Bahn gibt es zwar kein festes Kontingent pro Zug, doch auf stark gebuchten Strecken kann das Angebot schnell <b>ausverkauft<\/b> sein.", "sh": "Laut der Bahn gibt es zwar kein festes Kontingent pro Zug, doch auf stark gebuchten Strecken kann das Angebot schnell <b>ausverkauft<\/b> sein.", "ek": "철도 회사에 따르면 열차마다 정해진 할당량은 없지만, 예약이 몰리는 노선에서는 이 상품이 빨리 매진될 수 있습니다.", "sa": "/de/2026-11-09/audio/s5.mp3", "au": "/de/2026-11-09/audio/w6.mp3", "alts": ["가족 승차권", "예약", "최대, 많아야", "검색", "할당량", "가격 비교"]}, {"w": "Preisvergleich", "m": "가격 비교 (남성 der, 복수 Preisvergleiche)", "mh": "가격 비교", "ar": "der", "cz": "Ohne dieses Angebot wäre eine lange Zugreise für viele Familien deutlich teurer, trotzdem ist vor der Buchung ein kurzer <span class=\"dr-blank\"><\/span> sinnvoll.", "ca": "Preisvergleich", "ex": "Ohne dieses Angebot wäre eine lange Zugreise für viele Familien deutlich teurer, trotzdem ist vor der Buchung ein kurzer <b>Preisvergleich<\/b> sinnvoll.", "sh": "Ohne dieses Angebot wäre eine lange Zugreise für viele Familien deutlich teurer, trotzdem ist vor der Buchung ein kurzer <b>Preisvergleich<\/b> sinnvoll.", "ek": "이 상품이 없다면 많은 가족에게 긴 기차 여행은 훨씬 더 비쌀 테지만, 그래도 예매 전에 가격을 한번 비교해 보는 것이 좋습니다.", "sa": "/de/2026-11-09/audio/s6.mp3", "au": "/de/2026-11-09/audio/w7.mp3", "alts": ["가족 승차권", "예약", "최대, 많아야", "검색", "할당량", "매진된, 품절된"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

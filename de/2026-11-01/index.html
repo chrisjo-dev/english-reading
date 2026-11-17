@@ -334,6 +334,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -634,7 +645,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -643,7 +654,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
     <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1215,7 +1226,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "Nebel", "m": "안개 (남성 der)", "mh": "안개", "ar": "der", "cz": "Im November ist das Wetter in Deutschland oft grau, und an vielen Morgen liegt dichter <span class=\"dr-blank\"><\/span> über den Feldern und Flüssen.", "ca": "Nebel", "ex": "Im November ist das Wetter in Deutschland oft grau, und an vielen Morgen liegt dichter <b>Nebel<\/b> über den Feldern und Flüssen.", "sh": "Im November ist das Wetter in Deutschland oft grau, und an vielen Morgen liegt dichter <b>Nebel<\/b> über den Feldern und Flüssen.", "ek": "11월에 독일의 날씨는 자주 흐리고, 많은 아침에 들판과 강 위로 짙은 안개가 깔립니다.", "sa": "/de/2026-11-01/audio/s1.mp3", "au": "/de/2026-11-01/audio/w1.mp3", "alts": ["방울, 물방울", "골짜기", "알아보다, 식별하다", "안개등", "아늑한, 편안한", "식다, 차가워지다"]}, {"w": "Tropfen", "m": "방울, 물방울 (남성 der)", "mh": "방울, 물방울", "ar": "der", "cz": "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark abkühlt und sich daraus winzige <span class=\"dr-blank\"><\/span> bilden.", "ca": "Tropfen", "ex": "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark abkühlt und sich daraus winzige <b>Tropfen<\/b> bilden.", "sh": "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark abkühlt und sich daraus winzige <b>Tropfen<\/b> bilden.", "ek": "안개는 맑은 밤에 습한 공기가 크게 식어서 거기에서 아주 작은 물방울이 생길 때 만들어집니다.", "sa": "/de/2026-11-01/audio/s2.mp3", "au": "/de/2026-11-01/audio/w2.mp3", "alts": ["안개", "골짜기", "알아보다, 식별하다", "안개등", "아늑한, 편안한", "식다, 차가워지다"]}, {"w": "Tal", "m": "골짜기 (중성 das)", "mh": "골짜기", "ar": "das", "cz": "Je länger die Nächte im Herbst werden, desto häufiger bildet sich der Nebel, besonders in <span class=\"dr-blank\"><\/span> und an Seen.", "ca": "Tälern", "ex": "Je länger die Nächte im Herbst werden, desto häufiger bildet sich der Nebel, besonders in <b>Tälern<\/b> und an Seen.", "sh": "Je länger die Nächte im Herbst werden, desto häufiger bildet sich der Nebel, besonders in <b>Tälern<\/b> und an Seen.", "ek": "가을에 밤이 길어질수록 안개는 더 자주 생기며, 특히 골짜기와 호숫가에서 그렇습니다.", "sa": "/de/2026-11-01/audio/s3.mp3", "au": "/de/2026-11-01/audio/w3.mp3", "alts": ["안개", "방울, 물방울", "알아보다, 식별하다", "안개등", "아늑한, 편안한", "식다, 차가워지다"]}, {"w": "erkennen", "m": "알아보다, 식별하다", "cz": "Im Straßenverkehr ist Nebel gefährlich, weil man andere Autos und Fußgänger oft erst sehr spät <span class=\"dr-blank\"><\/span>.", "ca": "erkennt", "ex": "Im Straßenverkehr ist Nebel gefährlich, weil man andere Autos und Fußgänger oft erst sehr spät <b>erkennt<\/b>.", "sh": "Im Straßenverkehr ist Nebel gefährlich, weil man andere Autos und Fußgänger oft erst sehr spät <b>erkennt<\/b>.", "ek": "도로에서 안개는 위험한데, 다른 차와 보행자를 아주 늦게야 알아보는 경우가 많기 때문입니다.", "sa": "/de/2026-11-01/audio/s4.mp3", "au": "/de/2026-11-01/audio/w4.mp3", "alts": ["안개", "방울, 물방울", "골짜기", "안개등", "아늑한, 편안한", "식다, 차가워지다"]}, {"w": "Nebelscheinwerfer", "m": "안개등 (남성 der)", "mh": "안개등", "ar": "der", "cz": "Deshalb muss bei dichtem Nebel langsamer gefahren werden, und die <span class=\"dr-blank\"><\/span> dürfen nur bei schlechter Sicht eingeschaltet werden.", "ca": "Nebelscheinwerfer", "ex": "Deshalb muss bei dichtem Nebel langsamer gefahren werden, und die <b>Nebelscheinwerfer<\/b> dürfen nur bei schlechter Sicht eingeschaltet werden.", "sh": "Deshalb muss bei dichtem Nebel langsamer gefahren werden, und die <b>Nebelscheinwerfer<\/b> dürfen nur bei schlechter Sicht eingeschaltet werden.", "ek": "그래서 짙은 안개 속에서는 더 천천히 운전해야 하고, 안개등은 시야가 나쁠 때만 켜야 합니다.", "sa": "/de/2026-11-01/audio/s5.mp3", "au": "/de/2026-11-01/audio/w5.mp3", "alts": ["안개", "방울, 물방울", "골짜기", "알아보다, 식별하다", "아늑한, 편안한", "식다, 차가워지다"]}, {"w": "gemütlich", "m": "아늑한, 편안한", "cz": "Viele Menschen machen es sich an solchen grauen Tagen zu Hause <span class=\"dr-blank\"><\/span>, trinken heißen Tee und zünden eine Kerze an.", "ca": "gemütlich", "ex": "Viele Menschen machen es sich an solchen grauen Tagen zu Hause <b>gemütlich<\/b>, trinken heißen Tee und zünden eine Kerze an.", "sh": "Viele Menschen machen es sich an solchen grauen Tagen zu Hause <b>gemütlich<\/b>, trinken heißen Tee und zünden eine Kerze an.", "ek": "많은 사람들은 이런 흐린 날 집에서 아늑하게 지내며 뜨거운 차를 마시고 초에 불을 켭니다.", "sa": "/de/2026-11-01/audio/s6.mp3", "au": "/de/2026-11-01/audio/w6.mp3", "alts": ["안개", "방울, 물방울", "골짜기", "알아보다, 식별하다", "안개등", "식다, 차가워지다"]}, {"w": "abkühlen", "m": "식다, 차가워지다", "cz": "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark <span class=\"dr-blank\"><\/span> und sich daraus winzige Tropfen bilden.", "ca": "abkühlt", "ex": "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark <b>abkühlt<\/b> und sich daraus winzige Tropfen bilden.", "sh": "Nebel entsteht, wenn sich feuchte Luft in einer klaren Nacht stark <b>abkühlt<\/b> und sich daraus winzige Tropfen bilden.", "ek": "안개는 맑은 밤에 습한 공기가 크게 식어서 거기에서 아주 작은 물방울이 생길 때 만들어집니다.", "sa": "/de/2026-11-01/audio/s2.mp3", "au": "/de/2026-11-01/audio/w7.mp3", "alts": ["안개", "방울, 물방울", "골짜기", "알아보다, 식별하다", "안개등", "아늑한, 편안한"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

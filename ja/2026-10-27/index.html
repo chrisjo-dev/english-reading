@@ -310,6 +310,17 @@
   .dr-blank:empty::before { content: "\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
+  .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
+  .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  .dr-ntype .tx { flex: 1; min-width: 0; }
+  .dr-ntype b { display: block; font-size: 15px; font-weight: 700; }
+  .dr-ntype .tx > span { display: block; font-size: 12.5px; color: var(--sub); line-height: 1.45; }
+  .dr-ntype .go { flex: none; font-size: 13.5px; font-weight: 700; color: #2a52d4; }
+  .dr-ntype.first { border-color: #2a52d4; background: #eff3fd; }
+  .dr-ntype.first b { color: #2a52d4; }
+  .dr-ntype.done { background: #f4f6f8; }
+  .dr-ntype.done b, .dr-ntype.done .go { color: var(--sub); }
+  .dr-ntype .badge { display: inline-block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
   .dr .card { margin: 12px 12px 0; }
   .dr-score { display: flex; align-items: baseline; gap: 6px; margin: 4px 0; }
   .dr-score b { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: #2a52d4; line-height: 1.1; }
@@ -634,7 +645,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="15">
+  <section class="card dr-card" id="drill" data-v="16">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -643,7 +654,7 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문에 맞게</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
     <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
@@ -1214,7 +1225,7 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "焼き芋", "m": "군고구마", "r": "やきいも", "cz": "<ruby>秋<rt>あき<\/rt><\/ruby>になると、<ruby>日本<rt>にほん<\/rt><\/ruby>ではよく<span class=\"dr-blank\"><\/span>を<ruby>食<rt>た<\/rt><\/ruby>べます。", "ca": "焼き芋", "ex": "<ruby>秋<rt>あき<\/rt><\/ruby>になると、<ruby>日本<rt>にほん<\/rt><\/ruby>ではよく<b><ruby>焼<rt>や<\/rt><\/ruby>き<ruby>芋<rt>いも<\/rt><\/ruby><\/b>を<ruby>食<rt>た<\/rt><\/ruby>べます。", "sh": "<ruby>秋<rt>あき<\/rt><\/ruby>になると、<ruby>日本<rt>にほん<\/rt><\/ruby>ではよく<b><ruby>焼<rt>や<\/rt><\/ruby>き<ruby>芋<rt>いも<\/rt><\/ruby><\/b>を<ruby>食<rt>た<\/rt><\/ruby>べます。", "ek": "가을이 되면 일본에서는 군고구마를 자주 먹습니다.", "sa": "/ja/2026-10-27/audio/s1.mp3", "au": "/ja/2026-10-27/audio/w1.mp3", "alts": ["천천히", "달다", "저녁 무렵", "팔다", "간식"]}, {"w": "ゆっくり", "m": "천천히", "cz": "さつまいもを、<ruby>石<rt>いし<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>で<span class=\"dr-blank\"><\/span><ruby>焼<rt>や<\/rt><\/ruby>きます。", "ca": "ゆっくり", "ex": "さつまいもを、<ruby>石<rt>いし<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>で<b>ゆっくり<\/b><ruby>焼<rt>や<\/rt><\/ruby>きます。", "sh": "さつまいもを、<ruby>石<rt>いし<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>で<b>ゆっくり<\/b><ruby>焼<rt>や<\/rt><\/ruby>きます。", "ek": "고구마를 돌 위에서 천천히 굽습니다.", "sa": "/ja/2026-10-27/audio/s2.mp3", "au": "/ja/2026-10-27/audio/w2.mp3", "alts": ["군고구마", "달다", "저녁 무렵", "팔다", "간식"]}, {"w": "甘い", "m": "달다", "r": "あまい", "cz": "<ruby>外<rt>そと<\/rt><\/ruby>は<ruby>茶色<rt>ちゃいろ<\/rt><\/ruby>ですが、<ruby>中<rt>なか<\/rt><\/ruby>は<ruby>黄色<rt>きいろ<\/rt><\/ruby>で、とても<span class=\"dr-blank\"><\/span>です。", "ca": "甘い", "ex": "<ruby>外<rt>そと<\/rt><\/ruby>は<ruby>茶色<rt>ちゃいろ<\/rt><\/ruby>ですが、<ruby>中<rt>なか<\/rt><\/ruby>は<ruby>黄色<rt>きいろ<\/rt><\/ruby>で、とても<b><ruby>甘<rt>あま<\/rt><\/ruby>い<\/b>です。", "sh": "<ruby>外<rt>そと<\/rt><\/ruby>は<ruby>茶色<rt>ちゃいろ<\/rt><\/ruby>ですが、<ruby>中<rt>なか<\/rt><\/ruby>は<ruby>黄色<rt>きいろ<\/rt><\/ruby>で、とても<b><ruby>甘<rt>あま<\/rt><\/ruby>い<\/b>です。", "ek": "겉은 갈색이지만 속은 노랗고 아주 달콤합니다.", "sa": "/ja/2026-10-27/audio/s3.mp3", "au": "/ja/2026-10-27/audio/w3.mp3", "alts": ["군고구마", "천천히", "저녁 무렵", "팔다", "간식"]}, {"w": "夕方", "m": "저녁 무렵", "r": "ゆうがた", "cz": "<span class=\"dr-blank\"><\/span>5<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<ruby>車<rt>くるま<\/rt><\/ruby>で<ruby>焼<rt>や<\/rt><\/ruby>き<ruby>芋<rt>いも<\/rt><\/ruby>を<ruby>売<rt>う<\/rt><\/ruby>りに<ruby>来<rt>く<\/rt><\/ruby>る<ruby>人<rt>ひと<\/rt><\/ruby>もいます。", "ca": "夕方", "ex": "<b><ruby>夕方<rt>ゆうがた<\/rt><\/ruby><\/b>5<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<ruby>車<rt>くるま<\/rt><\/ruby>で<ruby>焼<rt>や<\/rt><\/ruby>き<ruby>芋<rt>いも<\/rt><\/ruby>を<ruby>売<rt>う<\/rt><\/ruby>りに<ruby>来<rt>く<\/rt><\/ruby>る<ruby>人<rt>ひと<\/rt><\/ruby>もいます。", "sh": "<b><ruby>夕方<rt>ゆうがた<\/rt><\/ruby><\/b>5<ruby>時<rt>じ<\/rt><\/ruby>ごろ、<ruby>車<rt>くるま<\/rt><\/ruby>で<ruby>焼<rt>や<\/rt><\/ruby>き<ruby>芋<rt>いも<\/rt><\/ruby>を<ruby>売<rt>う<\/rt><\/ruby>りに<ruby>来<rt>く<\/rt><\/ruby>る<ruby>人<rt>ひと<\/rt><\/ruby>もいます。", "ek": "저녁 5시쯤 차를 타고 군고구마를 팔러 오는 사람도 있습니다.", "sa": "/ja/2026-10-27/audio/s4.mp3", "au": "/ja/2026-10-27/audio/w4.mp3", "alts": ["군고구마", "천천히", "달다", "팔다", "간식"]}, {"w": "売る", "m": "팔다", "r": "うる", "cz": "<ruby>今<rt>いま<\/rt><\/ruby>は、スーパーやコンビニでも<span class=\"dr-blank\"><\/span>います。", "ca": "売って", "ex": "<ruby>今<rt>いま<\/rt><\/ruby>は、スーパーやコンビニでも<b><ruby>売<rt>う<\/rt><\/ruby>って<\/b>います。", "sh": "<ruby>今<rt>いま<\/rt><\/ruby>は、スーパーやコンビニでも<b><ruby>売<rt>う<\/rt><\/ruby>って<\/b>います。", "ek": "요즘은 슈퍼나 편의점에서도 팔고 있습니다.", "sa": "/ja/2026-10-27/audio/s5.mp3", "au": "/ja/2026-10-27/audio/w5.mp3", "alts": ["군고구마", "천천히", "달다", "저녁 무렵", "간식"]}, {"w": "おやつ", "m": "간식", "cz": "<ruby>寒<rt>さむ<\/rt><\/ruby>い<ruby>日<rt>ひ<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>に、<ruby>一<rt>ひと<\/rt><\/ruby>つ<ruby>食<rt>た<\/rt><\/ruby>べてみませんか。", "ca": "おやつ", "ex": "<ruby>寒<rt>さむ<\/rt><\/ruby>い<ruby>日<rt>ひ<\/rt><\/ruby>の<b>おやつ<\/b>に、<ruby>一<rt>ひと<\/rt><\/ruby>つ<ruby>食<rt>た<\/rt><\/ruby>べてみませんか。", "sh": "<ruby>寒<rt>さむ<\/rt><\/ruby>い<ruby>日<rt>ひ<\/rt><\/ruby>の<b>おやつ<\/b>に、<ruby>一<rt>ひと<\/rt><\/ruby>つ<ruby>食<rt>た<\/rt><\/ruby>べてみませんか。", "ek": "추운 날 간식으로 하나 먹어 보지 않겠어요?", "sa": "/ja/2026-10-27/audio/s6.mp3", "au": "/ja/2026-10-27/audio/w6.mp3", "alts": ["군고구마", "천천히", "달다", "저녁 무렵", "팔다"]}]</script>
-<script id="drill-js" data-v="15" src="/assets/drill.js?v=15" defer></script>
+<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
