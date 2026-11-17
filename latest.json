@@ -1,16 +1,16 @@
 {
- "date": "2026-11-16",
- "words_total": 731,
+ "date": "2026-11-17",
+ "words_total": 766,
  "langs": {
   "en": {
-   "count": 45,
-   "latest": "2026-11-16",
-   "topic": "왜행성 후보",
+   "count": 46,
+   "latest": "2026-11-17",
+   "topic": "터치스크린",
    "sentences": [
-    "A large **icy** world has been found far beyond Pluto, and scientists say it could become the sixth known **dwarf planet**.",
-    "The object, which only has a **temporary** code name for now, was **spotted** in images from the Rubin Observatory in October.",
-    "Researchers then searched older pictures and found it in images from as far back as 2016, which helped them **trace** its **orbit**.",
-    "It is currently about 46 times as far from the Sun as Earth is, which is **slightly** farther than Pluto's average distance of about 40 times."
+    "When you **tap** a phone screen, it does not feel the **pressure** of your finger at all; instead, it notices a tiny change in electricity.",
+    "Under the glass, there is a **grid** of very thin wires, which are each smaller than a human hair and hold a small electrical **charge**.",
+    "Because human skin **conducts** electricity, a little of that charge moves into your finger when it touches the screen.",
+    "This causes a small drop in **voltage** at that exact point, which can be **detected** by the software and turned into an action, such as opening an app."
    ],
    "chips": [
     "6문장",
@@ -18,55 +18,51 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "명왕성 훨씬 너머에서 커다란 얼음 세계가 발견되었고, 과학자들은 그것이 알려진 여섯 번째 왜행성이 될 수도 있다고 말한다.",
+   "answer": "휴대폰 화면을 톡 칠 때, 화면은 손가락의 압력을 전혀 느끼지 않는다. 대신 전기의 아주 작은 변화를 알아챈다.",
    "words": [
     [
-     "icy",
-     "얼음으로 된"
+     "tap",
+     "톡 치다, 두드리다"
     ],
     [
-     "dwarf planet",
-     "왜행성"
+     "pressure",
+     "압력"
     ],
     [
-     "temporary",
-     "임시의"
+     "grid",
+     "격자, 바둑판 눈금"
     ],
     [
-     "spotted",
-     "발견된, 눈에 띈"
+     "charge",
+     "전하"
     ],
     [
-     "trace",
-     "추적하다, 따라가다"
+     "conducts",
+     "(전기를) 통하게 하다, 전도하다"
     ],
     [
-     "orbit",
-     "궤도"
+     "voltage",
+     "전압"
     ],
     [
-     "slightly",
-     "약간, 조금"
+     "detected",
+     "감지되는, 탐지된"
     ],
     [
-     "uncertain",
-     "불확실한"
+     "ordinary",
+     "보통의, 평범한"
     ],
     [
-     "across",
-     "지름으로, 폭이"
+     "gloves",
+     "장갑 (복수형)"
     ],
     [
-     "reflects",
-     "반사하다"
+     "threads",
+     "실 (복수형)"
     ],
     [
-     "officially",
-     "공식적으로"
-    ],
-    [
-     "confirm",
-     "확인하다, 확정하다"
+     "sewn",
+     "꿰매어진, 바느질된"
     ]
    ],
    "review": {
@@ -76,14 +72,14 @@
    }
   },
   "ja": {
-   "count": 44,
-   "latest": "2026-11-16",
-   "topic": "어선 퍼레이드",
+   "count": 45,
+   "latest": "2026-11-17",
+   "topic": "도리노이치",
    "sentences": [
-    "{大阪府|おおさかふ}の{泉佐野市|いずみさのし}で、{海|うみ}や{魚|さかな}を**{大切|たいせつ}**にするための「{全国|ぜんこく}{豊|ゆた}かな{海|うみ}づくり{大会|たいかい}」が**{開|ひら}かれました**。",
-    "{海|うみ}の{上|うえ}では、{大漁旗|たいりょうばた}を**{掲|かか}げた**{約|やく}100{隻|せき}の**{漁船|ぎょせん}**が{並|なら}んで{走|はし}る、にぎやかなパレードがありました。",
-    "{大漁旗|たいりょうばた}は、{魚|さかな}がたくさん**とれた**ときなどに{船|ふね}に{立|た}てる**{旗|はた}**で、{明|あか}るい{色|いろ}の{絵|え}や{字|じ}がかいてあります。",
-    "{大会|たいかい}の{最後|さいご}には、キジハタとヒラメという{魚|さかな}の**{稚魚|ちぎょ}**が、{海|うみ}に**{放|はな}されました**。"
+    "「{酉|とり}の{市|いち}」は、{毎年|まいとし}11{月|がつ}の「{酉|とり}の{日|ひ}」に{浅草|あさくさ}などの**{神社|じんじゃ}**で{開|ひら}かれ、{午前|ごぜん}0{時|じ}から24{時間|じかん}{人|ひと}が**{集|あつ}まる**お{祭|まつ}りです。",
+    "{酉|とり}の{日|ひ}は12{日|にち}**ごとに**{来|く}るので、{年|とし}**によって**11{月|がつ}の{酉|とり}の{日|ひ}が2{回|かい}だったり3{回|かい}だったりします。",
+    "{神社|じんじゃ}の{中|なか}には{約|やく}150の**{露店|ろてん}**が{並|なら}んでいて、{飾|かざ}りの「**{熊手|くまで}**」がたくさん{売|う}られています。",
+    "{熊手|くまで}はもともと{落|お}ち{葉|ば}などを{集|あつ}める**{道具|どうぐ}**で、{幸|しあわ}せやお{金|かね}を「かき{込|こ}む」**{縁起物|えんぎもの}**として{人気|にんき}があります。"
    ],
    "chips": [
     "6문장",
@@ -91,47 +87,55 @@
     "N3 문법 2문장",
     "약 4분"
    ],
-   "answer": "오사카부 이즈미사노시에서 바다와 물고기를 소중히 하기 위한 '전국 풍요로운 바다 가꾸기 대회'가 열렸습니다.",
+   "answer": "'도리노이치'는 매년 11월 '유일(酉の日)'에 아사쿠사 등의 신사에서 열리고, 오전 0시부터 24시간 사람들이 모이는 축제입니다.",
    "words": [
     [
-     "{大切|たいせつ}",
-     "소중함, 중요함"
+     "{神社|じんじゃ}",
+     "신사"
     ],
     [
-     "{開|ひら}く",
-     "열다, 개최하다"
+     "{集|あつ}まる",
+     "모이다"
     ],
     [
-     "{掲|かか}げる",
-     "내걸다, 달다"
+     "ごとに",
+     "~마다"
     ],
     [
-     "{漁船|ぎょせん}",
-     "어선"
+     "によって",
+     "~에 따라"
     ],
     [
-     "とれる",
-     "(물고기가) 잡히다"
+     "{露店|ろてん}",
+     "노점"
     ],
     [
-     "{旗|はた}",
-     "깃발"
+     "{熊手|くまで}",
+     "구마데(복을 비는 갈퀴 장식)"
     ],
     [
-     "{稚魚|ちぎょ}",
-     "치어"
+     "{道具|どうぐ}",
+     "도구"
     ],
     [
-     "{放|はな}す",
-     "놓아주다, 풀어 주다"
+     "{縁起物|えんぎもの}",
+     "길상물, 행운의 물건"
     ],
     [
-     "{少|すこ}しずつ",
-     "조금씩"
+     "{値段|ねだん}",
+     "값, 가격"
     ],
     [
-     "{増|ふ}える",
-     "늘다, 늘어나다"
+     "{買|か}い{方|かた}",
+     "사는 법"
+    ],
+    [
+     "{決|き}まる",
+     "정해지다"
+    ],
+    [
+     "{手締|てじ}め",
+     "데지메(손뼉을 맞춰 치는 의식)"
     ]
    ],
    "review": {
@@ -141,14 +145,14 @@
    }
   },
   "de": {
-   "count": 20,
-   "latest": "2026-11-16",
-   "topic": "글뤼바인 이름",
+   "count": 21,
+   "latest": "2026-11-17",
+   "topic": "드레스덴 슈톨렌",
    "sentences": [
-    "Seit diesem Jahr darf **alkoholfreier** Glühwein in Deutschland endlich unter seinem eigentlichen **Namen** verkauft werden.",
-    "Bisher mussten die **Hersteller** solche Getränke unter Fantasienamen wie „Glühpunsch“ oder „Winterzauber“ im Handel anbieten.",
-    "Wegen einer deutschen **Vorschrift** durfte ein Getränk nur dann Glühwein heißen, wenn es **mindestens** sieben Prozent Alkohol enthielt.",
-    "Nach einer **Änderung** im EU-Recht ist der Name jetzt **erlaubt**, wenn das Getränk weniger als 0,5 Prozent Alkohol enthält."
+    "Der Dresdner Christstollen ist ein schweres **Gebäck**, das in Sachsen traditionell zur **Adventszeit** gehört und gern verschenkt wird.",
+    "Seit 2010 schützt die EU den Namen als geografische **Angabe**, mit der die **Herkunft** des Stollens garantiert wird.",
+    "Deshalb dürfen ihn nur Bäckereien und Konditoreien backen, die in Dresden oder in zwölf **Gemeinden** der **Umgebung** liegen.",
+    "Der **Teig** besteht aus Weizenmehl, Hefe und Vollmilch, außerdem kommen Rosinen, **Mandeln** sowie Orangeat oder Zitronat hinein."
    ],
    "chips": [
     "6문장",
@@ -156,51 +160,55 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "올해부터 독일에서는 무알코올 글뤼바인을 마침내 제 이름으로 팔 수 있게 되었습니다.",
+   "answer": "드레스덴 크리스트슈톨렌은 작센에서 전통적으로 대림절 기간에 빠지지 않고, 선물로도 즐겨 주고받는 묵직한 과자빵입니다.",
    "words": [
     [
-     "alkoholfrei",
-     "무알코올의"
+     "Gebäck",
+     "구운 과자, 빵과자 (중성 das)"
     ],
     [
-     "Name",
-     "이름 (남성 der, 복수 Namen)"
+     "Adventszeit",
+     "대림절 기간 (여성 die)"
     ],
     [
-     "Hersteller",
-     "제조사 (남성 der, 복수 Hersteller)"
+     "Angabe",
+     "표시 (여성 die, 복수 Angaben)"
     ],
     [
-     "Vorschrift",
-     "규정 (여성 die, 복수 Vorschriften)"
+     "Herkunft",
+     "원산지, 출신 (여성 die)"
     ],
     [
-     "mindestens",
-     "최소한"
+     "Gemeinde",
+     "기초 자치단체, 마을 (여성 die, 복수 Gemeinden)"
     ],
     [
-     "Änderung",
-     "변경 (여성 die, 복수 Änderungen)"
+     "Umgebung",
+     "주변, 근교 (여성 die)"
     ],
     [
-     "erlaubt",
-     "허용된"
+     "Teig",
+     "반죽 (남성 der)"
     ],
     [
-     "Gewürz",
-     "향신료 (중성 das, 복수 Gewürze)"
+     "Mandel",
+     "아몬드 (여성 die, 복수 Mandeln)"
     ],
     [
-     "Schale",
-     "껍질 (여성 die, 복수 Schalen)"
+     "Butter",
+     "버터 (여성 die)"
     ],
     [
-     "Haltbarkeit",
-     "유통 기한 (여성 die)"
+     "Puderzucker",
+     "슈거파우더, 가루 설탕 (남성 der)"
     ],
     [
-     "Kühlschrank",
-     "냉장고 (남성 der, 복수 Kühlschränke)"
+     "Siegel",
+     "인증 마크, 도장 (중성 das, 복수 Siegel)"
+    ],
+    [
+     "Prüfung",
+     "심사, 시험 (여성 die, 복수 Prüfungen)"
     ]
    ],
    "review": {
@@ -211,6 +219,21 @@
   }
  },
  "recent": [
+  {
+   "lang": "en",
+   "day": "2026-11-17",
+   "topic": "터치스크린"
+  },
+  {
+   "lang": "ja",
+   "day": "2026-11-17",
+   "topic": "도리노이치"
+  },
+  {
+   "lang": "de",
+   "day": "2026-11-17",
+   "topic": "드레스덴 슈톨렌"
+  },
   {
    "lang": "en",
    "day": "2026-11-16",
@@ -300,21 +323,6 @@
    "lang": "de",
    "day": "2026-11-11",
    "topic": "후불 결제"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-10",
-   "topic": "인덕션"
-  },
-  {
-   "lang": "ja",
-   "day": "2026-11-10",
-   "topic": "시치고산"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-10",
-   "topic": "카니발 시작일"
   }
  ]
 }

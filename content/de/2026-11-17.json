@@ -1,0 +1,476 @@
+{
+  "date": "2026-11-17",
+  "category": "culture",
+  "topic": "드레스덴 슈톨렌",
+  "title_ko": "이름을 지키는 드레스덴 슈톨렌",
+  "headline": "Echter Stollen kommt aus Dresden",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 2문장",
+    "약 4분"
+  ],
+  "fit": "explain",
+  "grammar": {
+    "b": [
+      "b-relativ-praeposition",
+      "b-infinitiv-zu"
+    ],
+    "a": [
+      "a-praesens"
+    ]
+  },
+  "keywords": [
+    "슈톨렌",
+    "지리적 표시",
+    "제과점",
+    "문화 설명"
+  ],
+  "summary_ko": "드레스덴 크리스트슈톨렌의 이름이 어떻게 보호되는지 다룬 B1~B2 독일어 지문이에요. 이 이름은 2010년부터 EU의 지리적 표시로 보호되어, 드레스덴과 주변 열두 곳의 빵집과 제과점만 이 이름으로 구울 수 있어요.",
+  "photo_scene": "Close-up of a thick loaf of Christmas stollen dusted with white powdered sugar on a wooden board, one slice cut to show raisins and almonds inside, warm soft morning light in a cozy bakery kitchen.",
+  "source": {
+    "title": "Dresdner Christstollen PGI (European Commission)",
+    "url": "https://agriculture.ec.europa.eu/farming/geographical-indications-and-quality-schemes/geographical-indications-food-and-drink/dresdner-christsollen-pgi_en"
+  },
+  "sentences": [
+    {
+      "en": "Der Dresdner Christstollen ist ein schweres **Gebäck**, das in Sachsen traditionell zur **Adventszeit** gehört und gern verschenkt wird.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der Dresdner Christstollen",
+          "드레스덴 크리스트슈톨렌은"
+        ],
+        [
+          "ist ein schweres **Gebäck**,",
+          "묵직한 구운 과자입니다"
+        ],
+        [
+          "das in Sachsen",
+          "그것은 작센에서"
+        ],
+        [
+          "traditionell",
+          "전통적으로"
+        ],
+        [
+          "zur **Adventszeit** gehört",
+          "대림절 기간에 속하고"
+        ],
+        [
+          "und gern verschenkt wird.",
+          "즐겨 선물됩니다"
+        ]
+      ]
+    },
+    {
+      "en": "Seit 2010 schützt die EU den Namen als geografische **Angabe**, mit der die **Herkunft** des Stollens garantiert wird.",
+      "b2": true,
+      "chunks": [
+        [
+          "Seit 2010",
+          "2010년부터"
+        ],
+        [
+          "schützt die EU",
+          "EU는 보호합니다"
+        ],
+        [
+          "den Namen",
+          "그 이름을"
+        ],
+        [
+          "als geografische **Angabe**,",
+          "지리적 표시로"
+        ],
+        [
+          "mit der",
+          "그것으로"
+        ],
+        [
+          "die **Herkunft** des Stollens",
+          "슈톨렌의 원산지가"
+        ],
+        [
+          "garantiert wird.",
+          "보장됩니다"
+        ]
+      ]
+    },
+    {
+      "en": "Deshalb dürfen ihn nur Bäckereien und Konditoreien backen, die in Dresden oder in zwölf **Gemeinden** der **Umgebung** liegen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Deshalb dürfen ihn",
+          "그래서 그것을 ~해도 됩니다"
+        ],
+        [
+          "nur Bäckereien und Konditoreien",
+          "빵집과 제과점만"
+        ],
+        [
+          "backen,",
+          "굽다"
+        ],
+        [
+          "die in Dresden",
+          "드레스덴에"
+        ],
+        [
+          "oder in zwölf **Gemeinden** der **Umgebung**",
+          "또는 주변 지역 열두 곳의 기초 자치단체에"
+        ],
+        [
+          "liegen.",
+          "있는"
+        ]
+      ]
+    },
+    {
+      "en": "Der **Teig** besteht aus Weizenmehl, Hefe und Vollmilch, außerdem kommen Rosinen, **Mandeln** sowie Orangeat oder Zitronat hinein.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der **Teig**",
+          "반죽은"
+        ],
+        [
+          "besteht aus Weizenmehl, Hefe und Vollmilch,",
+          "밀가루, 효모, 전유로 이루어지고"
+        ],
+        [
+          "außerdem kommen",
+          "그 밖에 들어갑니다"
+        ],
+        [
+          "Rosinen, **Mandeln**",
+          "건포도, 아몬드"
+        ],
+        [
+          "sowie Orangeat oder Zitronat",
+          "그리고 설탕에 절인 오렌지 껍질이나 레몬 껍질이"
+        ],
+        [
+          "hinein.",
+          "안에"
+        ]
+      ]
+    },
+    {
+      "en": "Nach dem Backen wird jeder Stollen noch mit **Butter** bestrichen und anschließend mit **Puderzucker** bestreut.",
+      "b2": false,
+      "chunks": [
+        [
+          "Nach dem Backen",
+          "굽고 나서"
+        ],
+        [
+          "wird jeder Stollen",
+          "모든 슈톨렌은"
+        ],
+        [
+          "noch mit **Butter** bestrichen",
+          "버터가 한 번 더 발리고"
+        ],
+        [
+          "und anschließend",
+          "그다음"
+        ],
+        [
+          "mit **Puderzucker** bestreut.",
+          "슈거파우더가 뿌려집니다"
+        ]
+      ]
+    },
+    {
+      "en": "Um das goldene **Siegel** verwenden zu dürfen, müssen die Bäcker jedes Jahr eine **Prüfung** bestehen, bei der unabhängige Fachleute ihre Stollen bewerten.",
+      "b2": true,
+      "chunks": [
+        [
+          "Um das goldene **Siegel**",
+          "금색 인증 마크를"
+        ],
+        [
+          "verwenden zu dürfen,",
+          "쓸 수 있으려면"
+        ],
+        [
+          "müssen die Bäcker",
+          "제빵사들은 ~해야 합니다"
+        ],
+        [
+          "jedes Jahr",
+          "매년"
+        ],
+        [
+          "eine **Prüfung** bestehen,",
+          "심사를 통과하다"
+        ],
+        [
+          "bei der",
+          "그 심사에서"
+        ],
+        [
+          "unabhängige Fachleute",
+          "독립적인 전문가들이"
+        ],
+        [
+          "ihre Stollen bewerten.",
+          "그들의 슈톨렌을 평가합니다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Gebäck",
+      "구운 과자, 빵과자 (중성 das)"
+    ],
+    [
+      "Adventszeit",
+      "대림절 기간 (여성 die)"
+    ],
+    [
+      "Angabe",
+      "표시 (여성 die, 복수 Angaben)"
+    ],
+    [
+      "Herkunft",
+      "원산지, 출신 (여성 die)"
+    ],
+    [
+      "Gemeinde",
+      "기초 자치단체, 마을 (여성 die, 복수 Gemeinden)"
+    ],
+    [
+      "Umgebung",
+      "주변, 근교 (여성 die)"
+    ],
+    [
+      "Teig",
+      "반죽 (남성 der)"
+    ],
+    [
+      "Mandel",
+      "아몬드 (여성 die, 복수 Mandeln)"
+    ],
+    [
+      "Butter",
+      "버터 (여성 die)"
+    ],
+    [
+      "Puderzucker",
+      "슈거파우더, 가루 설탕 (남성 der)"
+    ],
+    [
+      "Siegel",
+      "인증 마크, 도장 (중성 das, 복수 Siegel)"
+    ],
+    [
+      "Prüfung",
+      "심사, 시험 (여성 die, 복수 Prüfungen)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "전치사 + 관계대명사 — mit der, bei der",
+      "body": "`die geografische Angabe, mit der die Herkunft ... garantiert wird`에서 `mit der`는 '그 표시로'라는 뜻입니다. 관계대명사 `der`는 여성 명사 `Angabe`를 받고, 전치사 `mit` 때문에 3격이 되었어요. 6번 문장 `eine Prüfung ..., bei der unabhängige Fachleute ... bewerten`도 같은 구조이고, 두 관계절 모두 동사(`wird`, `bewerten`)가 맨 끝에 옵니다."
+    },
+    {
+      "title": "um ... zu + 화법 조동사 — verwenden zu dürfen",
+      "body": "`Um das goldene Siegel verwenden zu dürfen`은 '금색 인증 마크를 쓸 수 있으려면'이라는 목적을 나타냅니다. `zu`는 마지막 동사 `dürfen` 바로 앞에 놓이고, 본동사 `verwenden`은 그 앞에 와요. 이 구가 맨 앞 자리를 차지하므로 주문장은 바로 정동사 `müssen`으로 시작합니다(V2)."
+    }
+  ],
+  "answers": [
+    "드레스덴 크리스트슈톨렌은 작센에서 전통적으로 대림절 기간에 빠지지 않고, 선물로도 즐겨 주고받는 묵직한 과자빵입니다.",
+    "2010년부터 EU는 이 이름을 지리적 표시로 보호하고 있으며, 이 표시로 슈톨렌의 원산지가 보장됩니다.",
+    "그래서 드레스덴이나 주변 열두 곳의 지역에 있는 빵집과 제과점만 이 슈톨렌을 구울 수 있습니다.",
+    "반죽은 밀가루와 효모, 전유로 만들고, 여기에 건포도와 아몬드, 설탕에 절인 오렌지 껍질이나 레몬 껍질이 들어갑니다.",
+    "굽고 나면 슈톨렌마다 버터를 한 번 더 바르고, 그 위에 슈거파우더를 뿌립니다.",
+    "금색 인증 마크를 쓰려면 제빵사들은 매년 심사를 통과해야 하는데, 이 심사에서는 독립적인 전문가들이 슈톨렌을 평가합니다."
+  ],
+  "advanced": [
+    {
+      "word": "Konditorei",
+      "meaning": "제과점 (여성 die, 복수 Konditoreien)",
+      "confuse": "`Bäckerei`(빵집)는 빵 중심, `Konditorei`는 케이크와 과자 중심",
+      "example": "In der **Konditorei** gibt es frischen Kuchen.",
+      "example_ko": "그 제과점에는 갓 만든 케이크가 있습니다."
+    },
+    {
+      "word": "bestreichen",
+      "meaning": "바르다, 칠하다",
+      "confuse": "`streichen`(칠하다, 지우다)보다 '표면에 바르다'는 뜻이 뚜렷함",
+      "example": "Sie **bestreicht** das Brot mit Butter.",
+      "example_ko": "그녀는 빵에 버터를 바릅니다."
+    },
+    {
+      "word": "bestreuen",
+      "meaning": "뿌리다, 흩뿌리다",
+      "confuse": "`streuen`은 목적어가 뿌리는 것, `bestreuen`은 목적어가 뿌려지는 대상",
+      "example": "Der Kuchen wird mit Zucker **bestreut**.",
+      "example_ko": "케이크에 설탕이 뿌려집니다."
+    },
+    {
+      "word": "unabhängig",
+      "meaning": "독립적인, 무관한",
+      "confuse": "`unabhängig von`(~와 상관없이)으로도 자주 씀",
+      "example": "Eine **unabhängige** Kommission prüft die Qualität.",
+      "example_ko": "독립적인 위원회가 품질을 심사합니다."
+    },
+    {
+      "word": "Rezeptur",
+      "meaning": "배합, 제조법 (여성 die, 복수 Rezepturen)",
+      "confuse": "`Rezept`(요리법, 처방전)보다 정해진 배합 비율을 강조",
+      "example": "Jede Bäckerei hat ihre eigene **Rezeptur**.",
+      "example_ko": "빵집마다 고유의 배합이 있습니다."
+    },
+    {
+      "word": "Nachahmung",
+      "meaning": "모조품, 모방 (여성 die, 복수 Nachahmungen)",
+      "confuse": null,
+      "example": "Das Siegel schützt vor **Nachahmungen**.",
+      "example_ko": "그 인증 마크는 모조품을 막아 줍니다."
+    },
+    {
+      "word": "verschenken",
+      "meaning": "선물하다",
+      "confuse": "`schenken`과 비슷하지만 '나눠 주다, 내주다'의 느낌이 더 있음",
+      "example": "Viele Familien **verschenken** zu Weihnachten Stollen.",
+      "example_ko": "많은 가족이 크리스마스에 슈톨렌을 선물합니다."
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Der Dresdner Christstollen ist ein **Gebäck** für die **Adventszeit**.",
+          "chunks": [
+            [
+              "Der Dresdner Christstollen",
+              "드레스덴 크리스트슈톨렌은"
+            ],
+            [
+              "ist ein **Gebäck**",
+              "구운 과자입니다"
+            ],
+            [
+              "für die **Adventszeit**.",
+              "대림절 기간을 위한"
+            ]
+          ]
+        },
+        {
+          "en": "Die EU schützt seit 2010 den Namen und die **Herkunft** des Stollens.",
+          "chunks": [
+            [
+              "Die EU schützt",
+              "EU는 보호합니다"
+            ],
+            [
+              "seit 2010",
+              "2010년부터"
+            ],
+            [
+              "den Namen und die **Herkunft**",
+              "이름과 원산지를"
+            ],
+            [
+              "des Stollens.",
+              "슈톨렌의"
+            ]
+          ]
+        },
+        {
+          "en": "Nur Bäcker aus Dresden und zwölf **Gemeinden** in der Nähe dürfen ihn backen.",
+          "chunks": [
+            [
+              "Nur Bäcker",
+              "제빵사만"
+            ],
+            [
+              "aus Dresden und zwölf **Gemeinden**",
+              "드레스덴과 열두 곳의 기초 자치단체 출신의"
+            ],
+            [
+              "in der Nähe",
+              "근처에 있는"
+            ],
+            [
+              "dürfen ihn backen.",
+              "그것을 구울 수 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Im **Teig** sind Mehl, Hefe, Milch, Rosinen und **Mandeln**.",
+          "chunks": [
+            [
+              "Im **Teig**",
+              "반죽 안에는"
+            ],
+            [
+              "sind",
+              "있습니다"
+            ],
+            [
+              "Mehl, Hefe, Milch, Rosinen und **Mandeln**.",
+              "밀가루, 효모, 우유, 건포도와 아몬드가"
+            ]
+          ]
+        },
+        {
+          "en": "Nach dem Backen kommen **Butter** und **Puderzucker** auf den Stollen.",
+          "chunks": [
+            [
+              "Nach dem Backen",
+              "굽고 나서"
+            ],
+            [
+              "kommen",
+              "올라갑니다"
+            ],
+            [
+              "**Butter** und **Puderzucker**",
+              "버터와 슈거파우더가"
+            ],
+            [
+              "auf den Stollen.",
+              "슈톨렌 위에"
+            ]
+          ]
+        },
+        {
+          "en": "Für das goldene **Siegel** machen die Bäcker jedes Jahr eine **Prüfung**.",
+          "chunks": [
+            [
+              "Für das goldene **Siegel**",
+              "금색 인증 마크를 위해"
+            ],
+            [
+              "machen die Bäcker",
+              "제빵사들은 봅니다"
+            ],
+            [
+              "jedes Jahr",
+              "매년"
+            ],
+            [
+              "eine **Prüfung**.",
+              "심사를"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "드레스덴 크리스트슈톨렌은 대림절 기간에 먹는 과자빵입니다.",
+        "EU는 2010년부터 슈톨렌의 이름과 원산지를 보호합니다.",
+        "드레스덴과 근처 열두 곳의 지역 제빵사만 이 슈톨렌을 구울 수 있습니다.",
+        "반죽에는 밀가루, 효모, 우유, 건포도, 아몬드가 들어갑니다.",
+        "굽고 나면 슈톨렌 위에 버터와 슈거파우더를 올립니다.",
+        "금색 인증 마크를 받으려고 제빵사들은 매년 심사를 받습니다."
+      ]
+    }
+  }
+}
