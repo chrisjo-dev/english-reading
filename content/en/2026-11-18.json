@@ -1,0 +1,80 @@
+{
+ "date": "2026-11-18",
+ "category": "society",
+ "topic": "수어 전공",
+ "title_ko": "대학에 새로 생긴 미국 수어 전공",
+ "headline": "A New Sign Language Major at a Big University",
+ "summary_ko": "미국 오하이오 주립대에 새로 생긴 미국 수어 전공을 다룬 B1~B2 영어 지문이에요. 학생들은 손으로 하는 수어뿐 아니라 농인 문화와 역사도 배우고, 지역 학교와 단체에서 함께 활동해요.",
+ "chips": ["6문장", "B1 위주", "B2 2문장", "약 4분"],
+ "fit": "news",
+ "grammar": {"b": ["b-reduced-relative", "b-expected-to"], "a": ["a-present-continuous"]},
+ "keywords": ["수어", "대학 전공", "농인 문화", "교육 소식"],
+ "sentences": [
+  {"en": "Ohio State University now offers a **major** in American Sign Language, the first one at any Big Ten university.", "b2": false,
+   "chunks": [["Ohio State University now offers", "오하이오 주립대가 이제 제공한다"], ["a **major** in American Sign Language,", "미국 수어 전공을"], ["the first one", "첫 번째 전공이다"], ["at any Big Ten university.", "빅 텐에 속한 대학 가운데"]]},
+  {"en": "Students taking the new program study more than hand **signs**, because they also learn about Deaf **culture** and the history of deaf communities.", "b2": false,
+   "chunks": [["Students taking the new program", "새 과정을 듣는 학생들은"], ["study more than hand **signs**,", "손으로 하는 수어 이상을 공부한다"], ["because they also learn", "왜냐하면 그들은 또한 배우기 때문이다"], ["about Deaf **culture**", "농인 문화에 대해"], ["and the history of deaf communities.", "그리고 농인 공동체의 역사에 대해"]]},
+  {"en": "They explore how the sentence **structure** of sign language **differs** from spoken English, and they **take part in** projects with local schools and organizations.", "b2": true,
+   "chunks": [["They explore", "그들은 살펴본다"], ["how the sentence **structure** of sign language", "수어의 문장 구조가 어떻게"], ["**differs** from spoken English,", "말로 하는 영어와 다른지를"], ["and they **take part in** projects", "그리고 그들은 프로젝트에 참여한다"], ["with local schools and organizations.", "지역 학교와 단체와 함께하는"]]},
+  {"en": "Only three students have officially joined the major so far, but around 150 are taking the **minor**, and more are expected to **sign up**.", "b2": false,
+   "chunks": [["Only three students", "학생 세 명만이"], ["have officially joined the major", "정식으로 그 전공에 들어왔다"], ["so far,", "지금까지"], ["but around 150 are taking the **minor**,", "하지만 약 150명이 부전공을 듣고 있다"], ["and more are expected", "그리고 더 많은 학생이 예상된다"], ["to **sign up**.", "등록할 것으로"]]},
+  {"en": "The **introductory** class has also had a long **waiting list**, so many people clearly want to learn the language.", "b2": false,
+   "chunks": [["The **introductory** class", "입문 수업은"], ["has also had", "또한 가져 왔다"], ["a long **waiting list**,", "긴 대기자 명단을"], ["so many people clearly want", "그래서 많은 사람이 분명히 원한다"], ["to learn the language.", "그 언어를 배우기를"]]},
+  {"en": "About 180 high schools in Ohio already teach the language, and as one teacher **put it**, you cannot understand a language without understanding the people who use it.", "b2": true,
+   "chunks": [["About 180 high schools in Ohio", "오하이오의 약 180개 고등학교가"], ["already teach the language,", "이미 그 언어를 가르친다"], ["and as one teacher **put it**,", "그리고 한 교수가 말했듯이"], ["you cannot understand a language", "언어를 이해할 수 없다"], ["without understanding the people", "사람들을 이해하지 않고서는"], ["who use it.", "그 언어를 쓰는"]]}
+ ],
+ "words": [
+  ["major", "전공"],
+  ["signs", "수어 동작, 손짓 (복수형)"],
+  ["culture", "문화"],
+  ["structure", "구조"],
+  ["differs", "다르다"],
+  ["take part in", "참여하다, 참가하다"],
+  ["minor", "부전공"],
+  ["sign up", "등록하다, 신청하다"],
+  ["introductory", "입문의, 기초의"],
+  ["waiting list", "대기자 명단"],
+  ["put it", "말하다, 표현하다"]
+ ],
+ "points": [
+  {"title": "Students taking ~: 명사 뒤에서 꾸미는 -ing", "body": "`Students taking the new program`은 '새 과정을 듣는 학생들'이에요. `Students who are taking`에서 `who are`가 빠진 모양이라서, 명사 바로 뒤의 -ing 덩어리는 앞 명사를 꾸민다고 보면 돼요. 진짜 동사는 그 뒤의 `study`예요."},
+  {"title": "more are expected to sign up: ~할 것으로 예상된다", "body": "`be expected to + 동사`는 '~할 것으로 예상된다'예요. `more` 뒤에 `students`가 생략되어 '더 많은 학생이 등록할 것으로 보인다'로 읽어요. 앞의 `have officially joined`(지금까지 들어온 상태)와 대비되는 앞으로의 일이에요."}
+ ],
+ "answers": [
+  "오하이오 주립대는 이제 미국 수어 전공을 개설했는데, 빅 텐 대학 가운데 처음이다.",
+  "새 과정을 듣는 학생들은 손으로 하는 수어만 배우는 것이 아니라, 농인 문화와 농인 공동체의 역사도 배운다.",
+  "학생들은 수어의 문장 구조가 말로 하는 영어와 어떻게 다른지 살펴보고, 지역 학교와 단체와 함께하는 프로젝트에 참여한다.",
+  "지금까지 정식으로 이 전공에 들어온 학생은 세 명뿐이지만, 약 150명이 부전공을 듣고 있고 더 많은 학생이 등록할 것으로 예상된다.",
+  "입문 수업에도 오랫동안 대기자 명단이 길게 이어져 왔으니, 이 언어를 배우고 싶은 사람이 분명히 많다.",
+  "오하이오에서는 이미 약 180개 고등학교가 이 언어를 가르치고 있으며, 한 교수의 말처럼 그 언어를 쓰는 사람들을 이해하지 않고는 언어를 이해할 수 없다."
+ ],
+ "advanced": [
+  {"word": "enroll", "meaning": "등록하다", "confuse": null, "example": "Only three students have **enrolled** in the new major so far.", "example_ko": "지금까지 새 전공에 등록한 학생은 세 명뿐입니다."},
+  {"word": "curriculum", "meaning": "교육과정", "confuse": null, "example": "Deaf and hearing teachers both helped design the **curriculum**.", "example_ko": "농인 교수와 청인 교수가 함께 교육과정을 설계했습니다."},
+  {"word": "distinct", "meaning": "뚜렷이 다른, 별개의", "confuse": "distinctive(독특한)와 혼동 주의", "example": "Sign language has a sentence structure **distinct** from spoken English.", "example_ko": "수어는 말로 하는 영어와 뚜렷이 다른 문장 구조를 가지고 있습니다."},
+  {"word": "heritage", "meaning": "유산", "confuse": null, "example": "Students learn about the **heritage** of deaf communities.", "example_ko": "학생들은 농인 공동체의 유산에 대해 배웁니다."},
+  {"word": "engage with", "meaning": "~와 교류하다", "confuse": null, "example": "The program lets students **engage with** local deaf organizations.", "example_ko": "이 과정은 학생들이 지역 농인 단체와 교류하게 해 줍니다."},
+  {"word": "prospective", "meaning": "장래의, 예비의", "confuse": "perspective(관점)와 혼동 주의", "example": "Many **prospective** students are on the waiting list for the first class.", "example_ko": "많은 예비 학생들이 첫 수업 대기자 명단에 올라 있습니다."},
+  {"word": "demand", "meaning": "수요", "confuse": null, "example": "The long waiting list shows strong **demand** for sign language classes.", "example_ko": "긴 대기자 명단은 수어 수업에 대한 수요가 크다는 것을 보여 줍니다."}
+ ],
+ "source": {"title": "A sign of progress: ASL major new at Ohio State (Ohio State News, 2026-10-14)", "url": "https://news.osu.edu/a-sign-of-progress-asl-major-new-at-ohio-state/"},
+ "photo_scene": "Close-up of two university students sitting together at a library table, one forming a sign language hand shape while the other watches and copies it, soft afternoon window light, books blurred behind.",
+ "levels": {"a": {
+  "sentences": [
+   {"en": "Ohio State University now has a **major** in American Sign Language.", "chunks": [["Ohio State University now has", "오하이오 주립대에 이제 있다"], ["a **major** in American Sign Language.", "미국 수어 전공이"]]},
+   {"en": "Students learn hand **signs**, and they also learn about Deaf **culture**.", "chunks": [["Students learn hand **signs**,", "학생들은 손 수어를 배운다"], ["and they also learn", "그리고 그들은 또 배운다"], ["about Deaf **culture**.", "농인 문화에 대해"]]},
+   {"en": "They study its sentence **structure** and **take part in** projects with local schools.", "chunks": [["They study its sentence **structure**", "그들은 그 문장 구조를 공부한다"], ["and **take part in** projects", "그리고 프로젝트에 참여한다"], ["with local schools.", "지역 학교와 함께하는"]]},
+   {"en": "Only three students are in the major, but 150 students are taking the **minor**.", "chunks": [["Only three students are in the major,", "학생 세 명만 그 전공에 있다"], ["but 150 students are taking the **minor**.", "하지만 150명이 부전공을 듣고 있다"]]},
+   {"en": "Many people want to take the first class, so there is a **waiting list**.", "chunks": [["Many people want", "많은 사람이 원한다"], ["to take the first class,", "첫 수업을 듣기를"], ["so there is a **waiting list**.", "그래서 대기자 명단이 있다"]]},
+   {"en": "About 180 high schools in Ohio teach the language too.", "chunks": [["About 180 high schools in Ohio", "오하이오의 약 180개 고등학교가"], ["teach the language too.", "그 언어를 가르치기도 한다"]]}
+  ],
+  "answers": [
+   "오하이오 주립대에 이제 미국 수어 전공이 생겼다.",
+   "학생들은 손으로 하는 수어를 배우고, 농인 문화에 대해서도 배운다.",
+   "학생들은 수어의 문장 구조를 공부하고 지역 학교와 함께하는 프로젝트에 참여한다.",
+   "전공 학생은 세 명뿐이지만, 150명의 학생이 부전공을 듣고 있다.",
+   "많은 사람이 첫 수업을 듣고 싶어 해서 대기자 명단이 있다.",
+   "오하이오의 약 180개 고등학교도 이 언어를 가르친다."
+  ]
+ }}
+}
