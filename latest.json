@@ -1,6 +1,6 @@
 {
- "date": "2026-11-17",
- "words_total": 766,
+ "date": "2026-11-18",
+ "words_total": 778,
  "langs": {
   "en": {
    "count": 46,
@@ -145,14 +145,14 @@
    }
   },
   "de": {
-   "count": 21,
-   "latest": "2026-11-17",
-   "topic": "드레스덴 슈톨렌",
+   "count": 22,
+   "latest": "2026-11-18",
+   "topic": "도서관 시스템 교체",
    "sentences": [
-    "Der Dresdner Christstollen ist ein schweres **Gebäck**, das in Sachsen traditionell zur **Adventszeit** gehört und gern verschenkt wird.",
-    "Seit 2010 schützt die EU den Namen als geografische **Angabe**, mit der die **Herkunft** des Stollens garantiert wird.",
-    "Deshalb dürfen ihn nur Bäckereien und Konditoreien backen, die in Dresden oder in zwölf **Gemeinden** der **Umgebung** liegen.",
-    "Der **Teig** besteht aus Weizenmehl, Hefe und Vollmilch, außerdem kommen Rosinen, **Mandeln** sowie Orangeat oder Zitronat hinein."
+    "Die **Stadtbibliothek** Hannover erneuert im November ihr **veraltetes** Computersystem, das sie seit mehr als 25 Jahren für alle Ausleihen nutzt.",
+    "Während der **Umstellung** werden die Daten aller Leserinnen und Leser sowie von mehr als einer Million Medien in das neue System **übertragen**.",
+    "Deshalb können im ganzen November keine Bücher **ausgeliehen** oder **zurückgegeben** werden, und auch neue Ausweise werden nicht ausgestellt.",
+    "Trotz der **Einschränkungen** bleibt die Zentralbibliothek geöffnet, sodass Besucher dort weiterhin Zeitungen lesen, das WLAN nutzen und **drucken** können."
    ],
    "chips": [
     "6문장",
@@ -160,55 +160,55 @@
     "B2 2문장",
     "약 4분"
    ],
-   "answer": "드레스덴 크리스트슈톨렌은 작센에서 전통적으로 대림절 기간에 빠지지 않고, 선물로도 즐겨 주고받는 묵직한 과자빵입니다.",
+   "answer": "하노버 시립 도서관은 25년 넘게 모든 대출에 써 온 낡은 컴퓨터 시스템을 11월에 새로 바꿉니다.",
    "words": [
     [
-     "Gebäck",
-     "구운 과자, 빵과자 (중성 das)"
+     "Stadtbibliothek",
+     "시립 도서관 (여성 die, 복수 Stadtbibliotheken)"
     ],
     [
-     "Adventszeit",
-     "대림절 기간 (여성 die)"
+     "veraltet",
+     "낡은, 구식의"
     ],
     [
-     "Angabe",
-     "표시 (여성 die, 복수 Angaben)"
+     "Umstellung",
+     "전환, 교체 (여성 die)"
     ],
     [
-     "Herkunft",
-     "원산지, 출신 (여성 die)"
+     "übertragen",
+     "옮기다, 이전하다"
     ],
     [
-     "Gemeinde",
-     "기초 자치단체, 마을 (여성 die, 복수 Gemeinden)"
+     "ausleihen",
+     "빌리다, 대출하다"
     ],
     [
-     "Umgebung",
-     "주변, 근교 (여성 die)"
+     "zurückgeben",
+     "돌려주다, 반납하다"
     ],
     [
-     "Teig",
-     "반죽 (남성 der)"
+     "Einschränkung",
+     "제한 (여성 die, 복수 Einschränkungen)"
     ],
     [
-     "Mandel",
-     "아몬드 (여성 die, 복수 Mandeln)"
+     "drucken",
+     "인쇄하다"
     ],
     [
-     "Butter",
-     "버터 (여성 die)"
+     "Rückgabefrist",
+     "반납 기한 (여성 die, 복수 Rückgabefristen)"
     ],
     [
-     "Puderzucker",
-     "슈거파우더, 가루 설탕 (남성 der)"
+     "verlängern",
+     "연장하다"
     ],
     [
-     "Siegel",
-     "인증 마크, 도장 (중성 das, 복수 Siegel)"
+     "Online-Katalog",
+     "온라인 목록 (남성 der, 복수 Online-Kataloge)"
     ],
     [
-     "Prüfung",
-     "심사, 시험 (여성 die, 복수 Prüfungen)"
+     "langfristig",
+     "장기적으로"
     ]
    ],
    "review": {
@@ -219,6 +219,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-18",
+   "topic": "도서관 시스템 교체"
+  },
   {
    "lang": "en",
    "day": "2026-11-17",
@@ -318,11 +323,6 @@
    "lang": "ja",
    "day": "2026-11-11",
    "topic": "산꼭대기 첫눈"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-11",
-   "topic": "후불 결제"
   }
  ]
 }
