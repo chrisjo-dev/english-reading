@@ -1,5 +1,7 @@
 # 로그인 설정 (카카오, Google)
 
+> 2026-11-18 설정 완료: Supabase 프로젝트 `dokhaehanip`(lilyrang 조직, 서울, ref `kfprgssvigujxphfmlth`), 카카오 앱 "독해한입"(ID 1655290), Google Cloud 프로젝트 `dokhaehanip`(OAuth 클라이언트 "dokhaehanip web", 프로덕션 게시), Worker `dokhaehanip-api`(비밀값 2개). 공개값은 `assets/auth.js`에 들어 있습니다.
+
 코드는 `feat/login` 브랜치에 있습니다. `assets/auth.js`의 설정 값이 비어 있으면 로그인 기능이 꺼진 채로 동작합니다. 이때는 문제 풀기도 잠그지 않습니다. 그래서 아래 설정을 끝내기 전에 배포해도 사이트는 지금과 같습니다. 다만 메인의 "03 / 단어 연습" 섹션은 바로 보이므로, 메인(index.html)은 설정을 마친 뒤에 올립니다.
 
 비밀 키(카카오 Client Secret, Google Client Secret, Supabase service role 키, DB 비밀번호)는 채팅에 붙이지 말고 아래에 적은 곳에 직접 넣어 주세요.

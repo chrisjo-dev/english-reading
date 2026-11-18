@@ -9,9 +9,9 @@
   "use strict";
 
   var CFG = window.DKH_AUTH_CONFIG || {
-    supabaseUrl: "",
-    supabaseAnonKey: "",
-    kakaoClientId: "",
+    supabaseUrl: "https://kfprgssvigujxphfmlth.supabase.co",
+    supabaseAnonKey: "sb_publishable_cyzW-kfuGUNsm1mDeyKm1Q_dmlOxt9U",
+    kakaoClientId: "620a2bf2ab9f1cf06a76b9c24ae84f4b",
     api: "https://api.dokhaehanip.com"
   };
   // 버전을 올리면 LIB_SRI 도 같이 바꾼다. 해시: curl -sL <LIB_URL> | openssl dgst -sha384 -binary | openssl base64 -A

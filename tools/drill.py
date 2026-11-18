@@ -560,7 +560,7 @@ def card_html(lang, day, items, step):
 
 
 # auth.js(로그인과 기록 동기화)를 drill.js 보다 먼저 부른다. auth.js 를 고치면 AUTH_V 를 올린다
-AUTH_V = "1"
+AUTH_V = "2"
 SCRIPT = ('<script id="auth-js" src="/assets/auth.js?v=' + AUTH_V + '" defer></script>\n'
           '<script id="drill-js" data-v="__V__" src="/assets/drill.js?v=__V__" defer></script>\n')
 
@@ -572,7 +572,8 @@ def _next_step(page):
 
 def apply(page, lang, day):
     """페이지에 복습 띠, 진입 카드, CSS, 자료, 스크립트를 넣는다. 같은 버전이 있으면 그대로 둔다(여러 번 돌려도 같다)."""
-    if f'<script id="drill-js" data-v="{VERSION}"' in page:
+    # 스크립트 줄(drill.js 버전과 auth.js 버전)이 그대로면 이미 적용된 페이지다
+    if SCRIPT.replace("__V__", VERSION) in page:
         return page
     # 날짜 지문 페이지에만 넣는다(아카이브, 복습 페이지 등은 그대로).
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", day or "") or "</header>\n" not in page or "  .gnb {" not in page:
