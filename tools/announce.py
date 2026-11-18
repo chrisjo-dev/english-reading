@@ -121,7 +121,7 @@ def send(key):
     d = draft(key)
     if d is None:
         return
-    send_email.call("PATCH", f"/emails/{d['id']}", {"status": "about_to_send"})
+    send_email.release(d["id"], ANNOUNCES[key]()["body"])
     send_email.wait_sent(d["id"])
 
 if __name__ == "__main__":

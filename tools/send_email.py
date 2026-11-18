@@ -169,8 +169,35 @@ def send(mail, lang, key, value, level="b", extra_meta=None):
     if draft is None:
         draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked",
                                           "filters": audience(lang, level), "metadata": metadata})
-    call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
+    release(draft["id"], mail["body"])
     wait_sent(draft["id"])
+
+
+# Buttondown 은 발송 패턴이 이상하면 계정을 사람 검토로 멈춘다(2026-11-18 13:09 KST 일시 정지: 5시간 늦은
+# 예약 보충이 소량 발송을 몇 번 더 하고 같은 메일을 다시 보내려다 email_duplicate 로 거절당한 직후).
+# 그래서 모든 발송(send, catchup, announce)은 release() 한 곳을 지나고, 아래에 걸리면 보내지 않고 실패로 드러낸다.
+DAILY_SEND_LIMIT = 20  # 평소 하루 최대는 본 메일 6 + 보충 6 + 주간 3 + 안내 1 = 16
+
+
+def release(email_id, body, now=None):
+    """초안 email_id 를 발송한다. 24시간 안에 보낸 메일이 상한을 넘었거나, 같은 본문을 이미 보냈으면 막는다."""
+    now = now or datetime.datetime.now(datetime.timezone.utc)
+    recent = []
+    for e in recent_emails():
+        if e.get("id") == email_id or e.get("status") == "draft":
+            continue
+        try:
+            at = datetime.datetime.fromisoformat((e.get("publish_date") or e.get("creation_date") or "").replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if (now - at).total_seconds() < 86400:
+            recent.append(e)
+    if len(recent) >= DAILY_SEND_LIMIT:
+        raise SystemExit(f"24시간 발송 상한({DAILY_SEND_LIMIT}통)에 걸려 보내지 않음: {email_id}. 이상 발송인지 확인하세요.")
+    same = next((e for e in recent if body and e.get("body") == body), None)
+    if same:
+        raise SystemExit(f"같은 본문을 24시간 안에 이미 보냄({same['id']}). Buttondown 이 중복으로 막으므로 보내지 않음: {email_id}")
+    call("PATCH", f"/emails/{email_id}", {"status": "about_to_send"})
 
 
 def wait_sent(email_id):
@@ -307,7 +334,7 @@ def catchup(lang, day, level="b"):
                                           "filters": {"predicate": "and", "groups": [], "filters": [
                                               {"field": "subscriber.metadata.catchup", "operator": "equals", "value": tag}]},
                                           "metadata": {"lang": lang, "level": meta_level(effective_level), "catchup_of": catchup_tag_prefix}})
-        call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
+        release(draft["id"], mail["body"])
         for _ in range(30):
             status = call("GET", f"/emails/{draft['id']}")["status"]
             if status == "sent":
