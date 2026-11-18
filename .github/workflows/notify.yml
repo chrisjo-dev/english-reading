@@ -1,0 +1,32 @@
+# 발행, 메일, 배포 워크플로가 실패하면 Slack 으로 알린다. 그 워크플로들은 고치지 않고, 끝난 뒤 여기서 결과만 본다.
+# 사이트가 안 열리거나 아침 지문이 아예 안 올라온 경우는 API Worker 의 감시(worker/watch.js)가 알린다.
+# 비밀값: gh secret set SLACK_WEBHOOK_URL (없으면 건너뛴다)
+name: notify
+
+on:
+  workflow_run:
+    workflows: [publish, de-audio, weekly, catchup, fallback, resend, backfill-word-audio, announce, pages, ci]
+    types: [completed]
+
+permissions: {}
+
+jobs:
+  slack:
+    if: github.event.workflow_run.conclusion == 'failure' || github.event.workflow_run.conclusion == 'timed_out'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          NAME: ${{ github.event.workflow_run.name }}
+          TITLE: ${{ github.event.workflow_run.display_title }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+          TRIGGER: ${{ github.event.workflow_run.event }}
+        run: |
+          [ -n "$SLACK_WEBHOOK_URL" ] || { echo "SLACK_WEBHOOK_URL 이 없어 건너뜀"; exit 0; }
+          # Slack 글에서 &, <, > 는 바꿔 써야 한다(제목은 커밋 메시지라 그대로 넣지 않는다)
+          jq -n --arg n "$NAME" --arg t "$TITLE" --arg u "$RUN_URL" --arg e "$TRIGGER" '
+            def esc: gsub("&"; "&amp;") | gsub("<"; "&lt;") | gsub(">"; "&gt;");
+            {text: ("🔴 \($n) 실패(\($e)): \($t | esc)\n<\($u)|실행 기록 보기>")}' \
+          | curl -sS -f -X POST -H 'Content-Type: application/json' --data @- "$SLACK_WEBHOOK_URL"

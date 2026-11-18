@@ -58,5 +58,29 @@ class SendTest(unittest.TestCase):
         self.assertIn(("PATCH", "/emails/d", {"status": "about_to_send"}), calls)
 
 
+class CatchupOncePerDayTest(unittest.TestCase):
+    """보충 메일은 하루 한 번(두 번째는 본문이 같아 Buttondown 이 email_duplicate 로 막는다, 2026-11-18)."""
+
+    def run_catchup(self, emails):
+        calls = []
+        with mock.patch.object(send_email, "recent_emails", lambda pages=5: iter(emails)), \
+                mock.patch.object(send_email, "call", lambda *a, **k: calls.append(a) or {}), \
+                mock.patch.object(send_email, "subscribers", lambda: calls.append("subscribers") or []), \
+                mock.patch.object(send_email, "reached", lambda i: set()), \
+                mock.patch.object(send_email, "fill_missing_lang", lambda: None):
+            send_email.catchup("en", "2026-11-18", "b")
+        return calls
+
+    MAIN = {"id": "m", "status": "sent", "publish_date": "2026-11-17T21:55:00Z",
+            "metadata": {"lang": "en", "day": "2026-11-18", "level": "b"}}
+
+    def test_second_catchup_is_skipped(self):
+        done = {"id": "c", "status": "sent", "metadata": {"lang": "en", "level": "b", "catchup_of": "en:2026-11-18:b"}}
+        self.assertEqual(self.run_catchup([self.MAIN, done]), [])
+
+    def test_first_catchup_still_looks_for_targets(self):
+        self.assertIn("subscribers", self.run_catchup([self.MAIN]))
+
+
 if __name__ == "__main__":
     unittest.main()

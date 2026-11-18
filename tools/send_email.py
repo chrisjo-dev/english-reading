@@ -262,6 +262,12 @@ def catchup(lang, day, level="b"):
         main(lang, day, level)
         return
 
+    # 보충은 하루 한 번만 보낸다. 두 번째 보충은 첫 보충과 본문이 같아 Buttondown 이 중복 메일(email_duplicate)로 막는다.
+    # (2026-11-18 몇 시간 늦게 돈 예약 실행 두 번이 이 때문에 실패했다)
+    if any((e.get("metadata") or {}).get("catchup_of") == catchup_tag_prefix for e in issues):
+        print(f"오늘 보충은 이미 보냄 ({lang} {day} level={level})")
+        return
+
     # 본 메일이 30분 이내에 발송됐으면 전달 이벤트가 아직 쌓이는 중일 수 있다. 건너뜀.
     main_emails = [e for e in issues if _is_main(e.get("metadata") or {})]
     # 실제 발송된 level 확인: level=None 이면 기초 지문 없어 전체 대상으로 보낸 경우
