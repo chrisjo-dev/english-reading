@@ -10,7 +10,6 @@
 import html
 import json
 import sys
-import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -105,6 +104,9 @@ def draft(key):
     import send_email
     mail = ANNOUNCES[key]()
     e = find(key)
+    if e and e["status"] in ("errored", "throttled"):
+        # 일부 구독자에게 나갔을 수 있으므로 다시 보내지 않고 실패로 드러낸다(send_email.send 와 같다)
+        raise SystemExit(f"Buttondown 발송 오류 상태라 확인 필요: {e['id']} ({e['status']})")
     if e and e["status"] != "draft":
         print(f"이미 처리한 안내 메일이 있어 건너뜀: {e['id']} ({e['status']})")
         return None
@@ -120,18 +122,7 @@ def send(key):
     if d is None:
         return
     send_email.call("PATCH", f"/emails/{d['id']}", {"status": "about_to_send"})
-    status = None
-    for _ in range(30):
-        status = send_email.call("GET", f"/emails/{d['id']}")["status"]
-        if status == "sent":
-            print(f"sent {d['id']}")
-            return
-        time.sleep(10)
-    if status == "in_flight":
-        print(f"::warning::발송 대기 중(in_flight): {d['id']}. Buttondown 큐에 있어 곧 나갈 가능성이 높습니다.")
-        return
-    raise SystemExit(f"발송 상태 확인 실패: {d['id']} ({status})")
-
+    send_email.wait_sent(d["id"])
 
 if __name__ == "__main__":
     if len(sys.argv) != 3 or sys.argv[1] not in ANNOUNCES or sys.argv[2] not in ("html", "draft", "send"):

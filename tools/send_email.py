@@ -170,18 +170,24 @@ def send(mail, lang, key, value, level="b", extra_meta=None):
         draft = call("POST", "/emails", {**mail, "status": "draft", "template": "naked",
                                           "filters": audience(lang, level), "metadata": metadata})
     call("PATCH", f"/emails/{draft['id']}", {"status": "about_to_send"})
+    wait_sent(draft["id"])
+
+
+def wait_sent(email_id):
+    """about_to_send 로 바꾼 메일이 sent 가 될 때까지 기다린다(send, tools/announce.py)."""
+    status = None
     for _ in range(30):
-        status = call("GET", f"/emails/{draft['id']}")["status"]
+        status = call("GET", f"/emails/{email_id}")["status"]
         if status == "sent":
-            print(f"sent {draft['id']}")
+            print(f"sent {email_id}")
             return
         time.sleep(10)
     # in_flight 는 Buttondown 큐에 대기 중인 상태로, 곧 발송될 가능성이 높다. 경고만 남기고 계속 진행한다.
     # 그 외 상태(errored, throttled 등)는 실제 실패이므로 종료한다.
     if status == "in_flight":
-        print(f"::warning::발송 대기 중(in_flight): {draft['id']} — Buttondown 큐에 있어 정상 발송될 가능성이 높습니다. 수동 확인을 권장합니다.")
+        print(f"::warning::발송 대기 중(in_flight): {email_id} — Buttondown 큐에 있어 정상 발송될 가능성이 높습니다. 수동 확인을 권장합니다.")
         return
-    raise SystemExit(f"발송 상태 확인 실패: {draft['id']} ({status})")
+    raise SystemExit(f"발송 상태 확인 실패: {email_id} ({status})")
 
 
 def wants(sub, lang, level="b"):

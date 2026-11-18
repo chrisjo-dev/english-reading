@@ -35,7 +35,7 @@ class SendTest(unittest.TestCase):
             return {"id": "new" if method == "POST" else path.rsplit("/", 1)[1], "status": "draft"}
 
         with mock.patch.object(send_email, "recent_emails", lambda: iter(existing)), \
-                mock.patch.object(send_email, "call", call), mock.patch.object(announce.time, "sleep", lambda s: None):
+                mock.patch.object(send_email, "call", call), mock.patch.object(send_email.time, "sleep", lambda s: None):
             announce.send("login-2026-11")
         return calls
 
@@ -50,6 +50,10 @@ class SendTest(unittest.TestCase):
     def test_already_sent_is_skipped(self):
         calls = self.run_send([{"id": "a", "status": "sent", "metadata": {"announce": "login-2026-11"}}])
         self.assertEqual(calls, [])
+
+    def test_errored_mail_is_not_buried(self):
+        with self.assertRaises(SystemExit):
+            self.run_send([{"id": "e", "status": "errored", "metadata": {"announce": "login-2026-11"}}])
 
     def test_leftover_draft_is_reused(self):
         calls = self.run_send([{"id": "d", "status": "draft", "metadata": {"announce": "login-2026-11"}}])
