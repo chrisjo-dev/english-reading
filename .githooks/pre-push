@@ -1,12 +1,26 @@
 #!/usr/bin/env bash
 # push 전에 단위 테스트를 돌린다. 실패하면 push 하지 않는다(main push 는 바로 배포되고 다음 날 아침 발행이 이 코드를 쓴다).
+# 테스트는 작업 폴더에서 돌므로, push 하는 커밋과 작업 폴더가 같을 때만 의미가 있다.
+# 그래서 고친 채 커밋하지 않은 파일이 있거나, 지금 체크아웃한 커밋이 아닌 커밋을 push 하면 멈춘다.
 # 켜기(저장소마다 한 번): git config core.hooksPath .githooks
 # 급할 때 건너뛰기: git push --no-verify
 set -uo pipefail
 root=$(git rev-parse --show-toplevel)
 [ -f "$root/tools/test.sh" ] || exit 0
+head=$(git rev-parse HEAD)
+zero=0000000000000000000000000000000000000000
+while read -r _lref lsha _rref _rsha; do
+  if [ -n "${lsha:-}" ] && [ "$lsha" != "$zero" ] && [ "$lsha" != "$head" ]; then
+    echo "pre-push: 지금 체크아웃한 커밋(${head:0:8})이 아닌 커밋(${lsha:0:8})을 push 해서 테스트할 수 없어요." >&2
+    echo "pre-push: 그 브랜치를 체크아웃한 워크트리에서 push 해 주세요. 급하면 git push --no-verify" >&2
+    exit 1
+  fi
+done
 if ! git -C "$root" diff --quiet HEAD --; then
-  echo "pre-push: 커밋하지 않은 변경이 있어요. 테스트는 그 변경까지 넣은 작업 폴더로 돕니다." >&2
+  echo "pre-push: 고친 채 커밋하지 않은 파일이 있어요. 테스트가 push 할 커밋이 아닌 작업 폴더를 보게 되므로 멈춥니다." >&2
+  git -C "$root" diff --name-only HEAD -- | head -10 >&2
+  echo "pre-push: 커밋하거나 되돌린 뒤 다시 push 해 주세요. 급하면 git push --no-verify" >&2
+  exit 1
 fi
 log=$(mktemp -t dkh-pre-push)
 echo "pre-push: 단위 테스트(tools/test.sh)를 돌립니다..." >&2
