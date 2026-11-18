@@ -1938,3 +1938,112 @@ html:not(.js) .sw {
     transform: none;
   }
 }
+
+/* 03 / 단어 연습(로그인 유도, 시안 design/kakao-login K09) */
+.sec.words {
+  background: #f4f6f8;
+}
+.words-body {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--g);
+  row-gap: 22px;
+  align-items: start;
+}
+.words-lead {
+  grid-column: 4 / 10;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--mute);
+  word-break: keep-all;
+}
+.words-mini {
+  grid-column: 4 / 8;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(16, 24, 40, 0.07);
+  padding: 18px;
+}
+.words-mini .k {
+  color: var(--blue);
+  font-weight: 700;
+}
+.words-score {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 4px 0 12px;
+}
+.words-score b {
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.words-score span {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--mute);
+}
+.words-saved {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #e8f7f1;
+  color: #0f9d6b;
+  font-size: 14px;
+  font-weight: 700;
+}
+.words-saved span {
+  margin-left: auto;
+  color: var(--ink, #0a0a0a);
+}
+.words-cta {
+  grid-column: 8 / 11;
+  align-self: end;
+}
+.btn-kakao,
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.btn-kakao {
+  background: #fee500;
+  color: rgba(0, 0, 0, 0.85);
+}
+.btn-google {
+  margin-top: 8px;
+  background: #fff;
+  border: 1px solid #747775;
+  color: #1f1f1f;
+  font-weight: 600;
+}
+.btn-kakao svg,
+.btn-google svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.words-note {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--mute);
+}
+@media (max-width: 900px) {
+  .words-lead,
+  .words-mini,
+  .words-cta {
+    grid-column: 1 / -1;
+  }
+}

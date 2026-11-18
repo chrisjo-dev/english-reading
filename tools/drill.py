@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "16"
+VERSION = "17"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -497,7 +497,29 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
 """
+
+# 로그인 버튼 아이콘(카카오 말풍선, Google 컬러 G). 가입 화면(publish.account_pages)도 같은 것을 쓴다
+KAKAO_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>'
+GOOGLE_ICON = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>'
 
 DUE_HTML = (
     "<!-- drill-due -->\n"
@@ -524,17 +546,23 @@ def card_html(lang, day, items, step):
         '      <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>\n'
         "    </div>\n"
         '    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes">'
-        '<button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button>'
-        '<button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button>'
-        '<button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>\n'
+        '<button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button>'
+        '<button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button>'
+        '<button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>\n'
+        '    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p>'
+        f'<a class="dr-kbtn" data-login="kakao" href="/join/">{KAKAO_ICON}카카오로 시작하고 {n}문제 풀기</a>'
+        f'<a class="dr-gbtn" data-login="google" href="/join/">{GOOGLE_ICON}Google로 시작하기</a></div>\n'
         f'    <button class="dr-btn" type="button" id="dr-start">{n}개 외우기 시작</button>\n'
-        f'    <p class="dr-foot">약 {mins}분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>\n'
+        f'    <p class="dr-foot" id="dr-foot">약 {mins}분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>\n'
         "  </section>\n"
         "<!-- /drill-card -->\n"
     )
 
 
-SCRIPT = '<script id="drill-js" data-v="__V__" src="/assets/drill.js?v=__V__" defer></script>\n'
+# auth.js(로그인과 기록 동기화)를 drill.js 보다 먼저 부른다. auth.js 를 고치면 AUTH_V 를 올린다
+AUTH_V = "1"
+SCRIPT = ('<script id="auth-js" src="/assets/auth.js?v=' + AUTH_V + '" defer></script>\n'
+          '<script id="drill-js" data-v="__V__" src="/assets/drill.js?v=__V__" defer></script>\n')
 
 
 def _next_step(page):
@@ -553,6 +581,7 @@ def apply(page, lang, day):
         page = re.sub(re.escape(a) + r".*?" + re.escape(b) + r"\n\n?", "", page, count=1, flags=re.S)
     page = re.sub(r'<script type="application/json" id="drill-data">.*?</script>\n', "", page, count=1, flags=re.S)
     page = re.sub(r'<script id="drill-js"[^>]*>.*?</script>\n', "", page, count=1, flags=re.S)
+    page = re.sub(r'<script id="auth-js"[^>]*>.*?</script>\n', "", page, count=1, flags=re.S)
     # CSS 는 원래 자리에서 바꿔 끼운다(다른 패치가 뒤에 넣은 CSS 와 순서가 바뀌지 않게). 없으면 .gnb 앞에 넣는다
     css_at = re.search(r"  /\* drill-css \*/\n.*?  /\* /drill-css \*/\n", page, flags=re.S)
     if css_at:

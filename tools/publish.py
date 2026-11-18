@@ -809,6 +809,7 @@ def rebuild_root():
     (ROOT / "latest.json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     try:  # 안내 페이지가 실패해도 지문 발행은 계속한다
         rebuild_info_pages()
+        rebuild_account_pages()
     except Exception as e:
         print(f"::warning::안내 페이지 생성 실패: {type(e).__name__}: {e}")
     write_sitemap()
@@ -857,7 +858,7 @@ def write_sitemap():
 
 # 안내 페이지(/about/, /privacy/, /contact/, 시안 design/own-pages O06, O07, O08). 지문 페이지 카드 결과 같은 위 메뉴를 쓴다.
 # 시행일(개인정보처리방침)과 사이트맵 lastmod. 문구를 바꾸면 이 날짜도 바꾼다(매번 오늘 날짜로 쓰지 않아 다시 만들어도 같다)
-INFO_DATE = "2026-11-13"
+INFO_DATE = "2026-11-18"
 NUM = '<span class="num">{}</span>'
 INFO_CSS = """  :root { --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684; --blue: #1b64da; --blue-soft: #e8f3ff; --edge: #e5e8eb;
            --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); }
@@ -936,25 +937,28 @@ def info_pages():
     d = dt.date.fromisoformat(INFO_DATE)
     privacy = (
         f'<div class="top"><div class="date">독해한입 안내</div><h1>개인정보처리방침</h1><p class="eff">시행일: {d.year}년 {d.month}월 {d.day}일</p>'
-        '<p class="lead" style="margin-top:10px">독해한입(dokhaehanip.com)과 독해한입이 보내는 메일에 적용돼요. 회원 가입이 없고, 아래에 적은 경우가 아니면 개인정보를 모으지 않아요.</p>'
-        '<nav class="toc" aria-label="목차"><a href="#collect">모으는 정보</a><a href="#storage">브라우저 저장값</a><a href="#cookies">쿠키와 광고</a>'
+        '<p class="lead" style="margin-top:10px">독해한입(dokhaehanip.com)과 독해한입이 보내는 메일에 적용돼요. 읽기는 가입 없이 쓸 수 있고, 아래에 적은 경우가 아니면 개인정보를 모으지 않아요.</p>'
+        '<nav class="toc" aria-label="목차"><a href="#collect">모으는 정보</a><a href="#account">로그인</a><a href="#storage">브라우저 저장값</a><a href="#cookies">쿠키와 광고</a>'
         '<a href="#retention">구독 해지</a><a href="#ask">문의</a></nav></div>\n'
         f'<section class="card" id="collect"><h2>{NUM.format(1)}모으는 정보와 쓰는 곳</h2>'
         '<div class="row"><h3>메일 구독</h3><p>구독 칸에 넣은 <b>이메일 주소</b>와 고른 <b>언어</b>, <b>지문 수준</b>(기초, 중급). 매일 아침 지문 메일과 일요일 주간 복습 메일을 보내는 데만 써요.</p><span class="who">맡긴 곳: Buttondown (미국, 메일 발송)</span></div>'
+        '<div class="row" id="account"><h3>로그인 (선택)</h3><p>단어 문제 풀기를 쓰려면 카카오나 Google로 로그인해요. 카카오는 <b>회원번호와 닉네임</b>, Google은 <b>계정 식별자, 이메일 주소, 이름</b>(Google이 함께 주는 프로필 사진 주소 포함)을 받아요. '
+        '로그인하면 <b>단어 학습 기록</b>(외운 단어, 복습 날짜, 공부한 날)을 계정에 저장해 여러 기기에서 이어 쓰는 데만 써요. 광고나 메일 발송에는 쓰지 않아요.</p>'
+        '<span class="who">맡긴 곳: Supabase (로그인과 기록 저장), Cloudflare (카카오 로그인 연결)</span></div>'
         '<div class="row"><h3>방문 통계</h3><p>방문 수, 유입 경로, 페이지 이용 흐름, 버튼 사용(주제 반응, 단어 외우기, 의견 보내기 등)을 익명 통계로 봐요. IP 주소는 익명 처리하고 이름이나 이메일과 연결하지 않아요.</p><span class="who">맡긴 곳: Google Analytics 4, Microsoft Clarity</span></div>'
         '<div class="row"><h3>광고</h3><p>Google AdSense 광고를 보여 줄 수 있어요. 아래 3번을 봐 주세요.</p><span class="who">맡긴 곳: Google AdSense</span></div>'
         '<div class="row"><h3>의견 메일</h3><p>기능 건의나 버그 제보 버튼은 메일 앱을 열어요. 버그 제보에는 누른 페이지 주소, 기기와 브라우저 이름, 화면 크기가 미리 채워지고, 보내기 전에 지울 수 있어요. 받은 메일은 답장과 수정에만 써요.</p></div>'
         '<div class="row"><h3>접속 기록</h3><p>사이트는 GitHub Pages로 제공돼요. GitHub는 보안과 운영을 위해 접속 IP 등을 기록할 수 있어요. 글꼴(cdnjs)을 불러올 때도 그 제공자에게 접속 정보가 전달될 수 있어요.</p><span class="who">제공: GitHub Pages, cdnjs</span></div></section>\n'
-        f'<section class="card" id="storage"><h2>{NUM.format(2)}브라우저에 저장하는 값</h2><p>학습 기록과 설정은 이용자 기기의 브라우저 저장소(localStorage)에만 두고, 독해한입 서버로 보내지 않아요. 브라우저 사이트 데이터를 지우면 함께 사라져요.</p>'
-        '<ul class="keys"><li><code>drill:v1</code><span>단어 외우기 복습 기록(다시 물을 날짜)</span></li><li><code>drill:pref</code><span>단어 외우기 방식(카드, 문제)</span></li>'
+        f'<section class="card" id="storage"><h2>{NUM.format(2)}브라우저에 저장하는 값</h2><p>학습 기록과 설정은 이용자 기기의 브라우저 저장소(localStorage)에 둬요. 로그인하지 않으면 서버로 보내지 않고, 로그인하면 단어 기록(<code>drill:v1</code>)만 계정에도 저장해요. 브라우저 사이트 데이터를 지우면 기기에 둔 값은 사라져요.</p>'
+        '<ul class="keys"><li><code>drill:v1</code><span>단어 외우기 복습 기록(다시 물을 날짜)</span></li><li><code>drill:pref</code><span>단어 외우기 방식(카드, 문제)</span></li><li><code>dkh-auth</code><span>로그인 상태 유지(로그인했을 때만)</span></li>'
         '<li><code>read_level:언어</code><span>언어별로 고른 지문 수준</span></li><li><code>read_speed</code><span>음성 재생 속도</span></li>'
         '<li><code>vote:언어/날짜</code><span>오늘 주제 반응(좋아요, 별로예요). 반응 자체는 방문 통계로도 보내요</span></li>'
         "<li><code>lily.justListen</code><span>릴리 그림책 듣기 페이지의 '듣기만' 설정</span></li></ul></section>\n"
         f'<section class="card" id="cookies"><h2>{NUM.format(3)}쿠키와 광고</h2><p>Google을 포함한 제3자 광고 업체는 쿠키를 써서, 이 사이트와 다른 사이트를 방문한 기록을 바탕으로 광고를 보여 줄 수 있어요. 자세한 내용은 <a class="ln" href="https://policies.google.com/technologies/partner-sites">Google 파트너 사이트의 데이터 사용 방식</a>에 있어요.</p>'
         '<p>맞춤 광고는 <a class="ln" href="https://adssettings.google.com/">Google 광고 설정</a>에서, 제3자 업체 맞춤 광고 쿠키는 <a class="ln" href="https://www.aboutads.info/choices/">www.aboutads.info</a>에서 끌 수 있어요. Google Analytics 수집은 <a class="ln" href="https://tools.google.com/dlpage/gaoptout">수집 거부 부가 기능</a>으로 막을 수 있어요. 쿠키를 거부해도 읽기에는 문제가 없어요.</p></section>\n'
         f'<section class="card" id="retention"><h2>{NUM.format(4)}보관과 구독 해지</h2><ul class="dots"><li>이메일 주소는 수신거부하거나 삭제를 요청할 때까지 보관하고, 요청을 받으면 지체 없이 지워요.</li>'
-        '<li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li>'
-        '<li>만 14세 미만 아동의 개인정보는 알면서 모으지 않아요.</li><li>내용이 바뀌면 이 페이지에 새 시행일과 함께 알려요.</li></ul></section>\n'
+        '<li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>로그인 계정과 단어 기록은 탈퇴할 때까지 보관해요. <a class="ln" href="/me/">내 기록</a> 화면에서 탈퇴하면 바로 지워져요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li>'
+        '<li>만 14세 미만은 로그인할 수 없고, 만 14세 미만 아동의 개인정보는 알면서 모으지 않아요.</li><li>내용이 바뀌면 이 페이지에 새 시행일과 함께 알려요.</li></ul></section>\n'
         f'<section class="card" id="ask"><h2>{NUM.format(5)}문의</h2><p>개인정보 문의: {mail} (운영자)</p></section>\n'
     )
     buttons = (f'<div class="fb-row"><a class="fb-btn" data-fb="idea" href="{html.escape(feedback.mailto(feedback.IDEA_SUBJECT, feedback.idea_body()))}">{feedback.IDEA_ICON}기능 건의</a>'
@@ -970,7 +974,7 @@ def info_pages():
     )
     return [
         ("about", f"{langs.BRAND} 소개", "독해한입은 매일 아침 영어, 일본어, 독일어 짧은 지문을 한 편씩 올리는 무료 읽기 사이트예요. 누구를 위해, 어떻게 만드는지 소개해요.", "AboutPage", about),
-        ("privacy", "개인정보처리방침", "독해한입이 모으는 정보(메일 구독, 방문 통계, 광고)와 브라우저 저장값, 쿠키, 구독 해지 방법을 안내해요.", "WebPage", privacy),
+        ("privacy", "개인정보처리방침", "독해한입이 모으는 정보(메일 구독, 로그인, 방문 통계, 광고)와 브라우저 저장값, 쿠키, 구독 해지 방법을 안내해요.", "WebPage", privacy),
         ("contact", "연락처", "지문 오류 제보, 기능 의견, 구독과 개인정보 요청은 메일로 보내 주세요. 운영자가 직접 읽어요.", "ContactPage", contact),
     ]
 
@@ -1031,6 +1035,137 @@ def rebuild_info_pages():
         out.mkdir(exist_ok=True)
         (out / "index.html").write_text(page, encoding="utf-8")
 
+
+
+# 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
+# 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
+ACCOUNT_V = "1"
+ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
+  .step { font-size: 13px; font-weight: 700; color: var(--blue); }
+  .card h1 { font-size: 22px; margin: 2px 0 16px; }
+  .perks { display: flex; flex-direction: column; gap: 12px; margin: 4px 0 20px; }
+  .perk { display: flex; gap: 12px; align-items: flex-start; }
+  .perk i { flex: none; width: 28px; height: 28px; border-radius: 9px; background: var(--blue-soft); color: var(--blue); font-style: normal; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+  .perk b { display: block; font-size: 15px; font-weight: 700; }
+  .perk span { display: block; font-size: 13px; color: var(--sub); line-height: 1.5; }
+  .agree { border-top: 1px solid var(--line); padding-top: 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .chk { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5; cursor: pointer; }
+  .chk input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--blue); cursor: pointer; }
+  .chk em { font-style: normal; color: var(--blue); font-weight: 700; margin-right: 4px; }
+  .chk a { color: var(--sub); text-underline-offset: 3px; }
+  .chk small { display: block; font-size: 12.5px; color: var(--muted); }
+  .kbtn, .gbtn { font: inherit; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .kbtn { border: 0; background: #fee500; color: rgba(0,0,0,.85); }
+  .gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .kbtn:disabled, .gbtn:disabled { opacity: .45; cursor: default; }
+  .kbtn svg, .gbtn svg { width: 18px; height: 18px; flex: none; }
+  .card p.note { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin: 12px 0 0; }
+  .card p.msg { font-size: 14px; color: var(--sub); margin: 12px 0 0; }
+  .card p.msg.err { color: var(--coral); }
+  .ok-box { padding: 14px; border-radius: 12px; background: var(--green-soft); color: var(--green); font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+  .ok-box a { color: inherit; }
+  .center { text-align: center; padding: 40px 20px; }
+  .spin { width: 36px; height: 36px; margin: 0 auto 16px; border-radius: 50%; border: 3.5px solid var(--blue-soft); border-top-color: var(--blue); animation: sp .8s linear infinite; }
+  @keyframes sp { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spin { animation-duration: 2.4s; } }
+  .err-ic { width: 44px; height: 44px; margin: 0 auto 14px; border-radius: 50%; background: var(--coral-soft); color: var(--coral); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; }
+  .later { display: block; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 12px; text-decoration: none; }
+  .me-head { display: flex; align-items: center; gap: 12px; }
+  .me-av { width: 48px; height: 48px; border-radius: 50%; background: var(--blue-soft); color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; }
+  .me-head b { display: block; font-size: 18px; font-weight: 700; }
+  .me-head span { font-size: 13px; color: var(--muted); }
+  .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top: 8px; }
+  .wd { text-align: center; font-size: 12px; color: var(--muted); }
+  .wd i { display: block; height: 30px; border-radius: 9px; background: var(--opt); margin-bottom: 4px; }
+  .wd.on i { background: var(--blue); }
+  .wd.today i { box-shadow: inset 0 0 0 2px var(--blue); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat { background: var(--bg); border-radius: 12px; padding: 12px; }
+  .stat b { display: block; font-size: 18px; font-weight: 800; }
+  .stat span { font-size: 12px; color: var(--sub); font-weight: 600; }
+  .rows button { font: inherit; display: block; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 13px 0; font-size: 15px; color: var(--ink); cursor: pointer; }
+  .rows button:first-child { border-top: 0; }
+  .rows .danger { color: var(--coral); font-weight: 600; }
+  .card .btn { margin-top: 16px; background: var(--blue); }
+"""
+ACCOUNT = r"""<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only"><meta name="robots" content="noindex"><meta name="referrer" content="strict-origin-when-cross-origin">
+<title>__TITLE__ | __BRAND__</title>
+<link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
+__FONT__<style>
+__INFO_CSS____ACCOUNT_CSS____GNB_CSS____FOOTER_CSS__</style>
+__GA__</head>
+<body>
+__GNB__<main>
+__BODY__</main>
+__FOOTER____GNB_JS__<script src="/assets/auth.js?v=__AUTH_V__" defer></script>
+<script src="/assets/__JS__?v=__V__" defer></script>
+</body></html>
+"""
+GA_TAG = ('<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>\n'
+          "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>\n")
+FONT_TAG = ('<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>\n'
+            '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">\n')
+
+
+def account_pages():
+    """(폴더, 제목, 본문, 스크립트, 통계 여부). 문구는 승인 시안(design/kakao-login) 그대로."""
+    perk = '<div class="perk"><i>{}</i><div><b>{}</b><span>{}</span></div></div>'
+    join = (
+        '<div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1><p>조금만 기다려 주세요. 단어 외우기와 문제 풀기는 지금도 쓸 수 있어요.</p></div>\n'
+        '<section class="card" id="joinBox"><div class="step">무료로 시작하기</div><h1>단어 기록을 어디서나 이어서</h1>'
+        '<div class="ok-box" id="already" hidden>이미 로그인했어요. <a id="alreadyNext" href="/">이어서 공부하러 가기</a></div>'
+        '<div class="perks">'
+        + perk.format(1, "외운 단어와 복습 날짜 저장", "기기를 바꿔도 내일 복습할 단어가 그대로 나와요.")
+        + perk.format(2, "연속 학습일", "하루 한 지문, 며칠째 이어 가는지 보여 드려요.")
+        + perk.format(3, "이 기기의 기록도 함께", "로그인 전에 푼 기록은 첫 로그인 때 그대로 옮겨 드려요.")
+        + '</div><div class="agree">'
+        '<label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label>'
+        '<label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요'
+        '<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div>'
+        f'<button class="kbtn" type="button" id="kakao" disabled>{drill.KAKAO_ICON}카카오로 시작하기</button>'
+        f'<button class="gbtn" type="button" id="google" disabled>{drill.GOOGLE_ICON}Google로 시작하기</button>'
+        '<p class="msg" id="msg" role="status" hidden></p>'
+        '<p class="note">가입은 무료이고 결제는 없어요. 탈퇴하면 기록은 바로 지워져요.</p></section>\n'
+    )
+    callback = (
+        '<section class="card center"><div class="spin" id="spin"></div><div class="err-ic" id="errIc" hidden>!</div>'
+        '<h1 id="title">로그인하는 중이에요</h1><p class="lead" id="status" role="status">잠시만 기다려 주세요.</p>'
+        '<div id="retry" hidden><a class="btn" id="retryLink" href="/join/">다시 시도</a><a class="later" id="homeLink" href="/">지문으로 돌아가기</a></div></section>\n'
+    )
+    me = (
+        '<section class="card" id="loading">기록을 불러오고 있어요.</section>\n'
+        '<div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1></div>\n'
+        '<section class="card" id="signedOut" hidden><h1>로그인하면 내 기록을 볼 수 있어요</h1><p>외운 단어, 복습 날짜, 연속 학습일을 어느 기기에서든 이어서 봐요.</p>'
+        '<a class="btn" href="/join/?next=/me/">로그인하러 가기</a></section>\n'
+        '<div id="signedIn" hidden>'
+        '<section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section>'
+        '<section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section>'
+        '<section class="card"><div class="stats"><div class="stat"><b id="nWords">0</b><span>외운 단어</span></div><div class="stat"><b id="nDue">0</b><span>오늘 복습</span></div>'
+        '<div class="stat"><b id="nPages">0</b><span>푼 지문</span></div></div><a class="btn" id="dueGo" href="/" hidden></a></section>'
+        '<section class="card rows"><button type="button" id="logout">로그아웃</button><button type="button" class="danger" id="del">탈퇴하고 기록 지우기</button>'
+        '<p class="msg" id="msg" role="status" hidden></p></section></div>\n'
+    )
+    return [("join", "카카오, Google로 시작하기", join, "join.js", True),
+            ("join/callback", "로그인", callback, "join-callback.js", False),
+            ("me", "내 기록", me, "me.js", True)]
+
+
+def rebuild_account_pages():
+    """가입, 로그인 콜백, 내 기록 페이지를 만든다. 여러 번 돌려도 같다."""
+    head = gnb.header_html("en", "/#subscribe").replace(' class="on" aria-current="page"', "", 1)
+    for folder, title, body, js, with_ga in account_pages():
+        footer = f'<footer class="site-footer">{footer_links()}</footer>\n'
+        page = (ACCOUNT.replace("__TITLE__", title).replace("__BRAND__", langs.BRAND)
+                .replace("__FONT__", FONT_TAG if with_ga else "").replace("__GA__", GA_TAG if with_ga else "")
+                .replace("__INFO_CSS__", INFO_CSS).replace("__ACCOUNT_CSS__", ACCOUNT_CSS).replace("__GNB_CSS__", gnb.css_block())
+                .replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__GNB__", head).replace("__BODY__", body)
+                .replace("__FOOTER__", footer).replace("__GNB_JS__", gnb.SCRIPT)
+                .replace("__AUTH_V__", drill.AUTH_V).replace("__JS__", js).replace("__V__", ACCOUNT_V))
+        out = ROOT / folder
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "index.html").write_text(page, encoding="utf-8")
 
 RSS_SIZE = 30
 

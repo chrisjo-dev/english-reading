@@ -341,6 +341,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   .top { position: relative; }
   .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
@@ -646,7 +664,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -655,9 +673,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1230,7 +1249,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "launched", "m": "발사했다 (launch의 과거형)", "mh": "발사했다", "cz": "Earlier this week, Japan <span class=\"dr-blank\"><\/span> a spacecraft on a long trip to Phobos, one of the two small moons of Mars.", "ca": "launched", "ex": "Earlier this week, Japan <b>launched<\/b> a spacecraft on a long trip to Phobos, one of the two small moons of Mars.", "sh": "Earlier this week, Japan <b>launched<\/b> a spacecraft on a long trip to Phobos, one of the two small moons of Mars.", "ek": "이번 주 초, 일본이 화성의 두 작은 위성 중 하나인 포보스로 가는 긴 여행길에 우주선을 발사했다.", "sa": "/en/2026-10-25/audio/s1.mp3", "au": "/en/2026-10-25/audio/w1.mp3", "alts": ["시료, 표본", "~인지 (아닌지)", "만들어진, 형성된", "소행성", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "sample", "m": "시료, 표본", "cz": "During that time, it will land on Phobos twice and collect a small <span class=\"dr-blank\"><\/span> of about ten grams of rock and dust.", "ca": "sample", "ex": "During that time, it will land on Phobos twice and collect a small <b>sample<\/b> of about ten grams of rock and dust.", "sh": "During that time, it will land on Phobos twice and collect a small <b>sample<\/b> of about ten grams of rock and dust.", "ek": "그동안 우주선은 포보스에 두 번 착륙해 암석과 먼지로 된 약 10그램의 작은 시료를 모을 것이다.", "sa": "/en/2026-10-25/audio/s3.mp3", "au": "/en/2026-10-25/audio/w2.mp3", "alts": ["발사했다", "~인지 (아닌지)", "만들어진, 형성된", "소행성", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "whether", "m": "~인지 (아닌지)", "cz": "Scientists, who have argued about this moon for many years, hope the sample will show <span class=\"dr-blank\"><\/span> Phobos was formed after a giant crash on Mars or was an asteroid captured by the planet's gravity.", "ca": "whether", "ex": "Scientists, who have argued about this moon for many years, hope the sample will show <b>whether<\/b> Phobos was formed after a giant crash on Mars or was an asteroid captured by the planet's gravity.", "sh": "… <b>whether<\/b> Phobos was formed after a giant crash on Mars …", "ek": "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.", "sa": "/en/2026-10-25/audio/s4.mp3", "au": "/en/2026-10-25/audio/w3.mp3", "alts": ["발사했다", "시료, 표본", "만들어진, 형성된", "소행성", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "formed", "m": "만들어진, 형성된", "cz": "Scientists, who have argued about this moon for many years, hope the sample will show whether Phobos was <span class=\"dr-blank\"><\/span> after a giant crash on Mars or was an asteroid captured by the planet's gravity.", "ca": "formed", "ex": "Scientists, who have argued about this moon for many years, hope the sample will show whether Phobos was <b>formed<\/b> after a giant crash on Mars or was an asteroid captured by the planet's gravity.", "sh": "… whether Phobos was <b>formed<\/b> after a giant crash on Mars …", "ek": "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.", "sa": "/en/2026-10-25/audio/s4.mp3", "au": "/en/2026-10-25/audio/w4.mp3", "alts": ["발사했다", "시료, 표본", "~인지 (아닌지)", "소행성", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "asteroid", "m": "소행성", "cz": "Scientists, who have argued about this moon for many years, hope the sample will show whether Phobos was formed after a giant crash on Mars or was an <span class=\"dr-blank\"><\/span> captured by the planet's gravity.", "ca": "asteroid", "ex": "Scientists, who have argued about this moon for many years, hope the sample will show whether Phobos was formed after a giant crash on Mars or was an <b>asteroid<\/b> captured by the planet's gravity.", "sh": "… or was an <b>asteroid<\/b> captured by the planet's gravity.", "ek": "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.", "sa": "/en/2026-10-25/audio/s4.mp3", "au": "/en/2026-10-25/audio/w5.mp3", "alts": ["발사했다", "시료, 표본", "~인지 (아닌지)", "만들어진, 형성된", "중력", "캡슐 (작은 운반 용기)"]}, {"w": "gravity", "m": "중력", "cz": "Scientists, who have argued about this moon for many years, hope the sample will show whether Phobos was formed after a giant crash on Mars or was an asteroid captured by the planet's <span class=\"dr-blank\"><\/span>.", "ca": "gravity", "ex": "Scientists, who have argued about this moon for many years, hope the sample will show whether Phobos was formed after a giant crash on Mars or was an asteroid captured by the planet's <b>gravity<\/b>.", "sh": "… or was an asteroid captured by the planet's <b>gravity<\/b>.", "ek": "여러 해 동안 이 위성을 두고 논쟁해 온 과학자들은, 그 시료가 포보스가 화성에서 일어난 거대한 충돌 뒤에 만들어졌는지, 아니면 화성의 중력에 붙잡힌 소행성이었는지를 보여 주기를 바란다.", "sa": "/en/2026-10-25/audio/s4.mp3", "au": "/en/2026-10-25/audio/w6.mp3", "alts": ["발사했다", "시료, 표본", "~인지 (아닌지)", "만들어진, 형성된", "소행성", "캡슐 (작은 운반 용기)"]}, {"w": "capsule", "m": "캡슐 (작은 운반 용기)", "cz": "If everything goes well, a small <span class=\"dr-blank\"><\/span> carrying the sample will come back to Earth in 2031.", "ca": "capsule", "ex": "If everything goes well, a small <b>capsule<\/b> carrying the sample will come back to Earth in 2031.", "sh": "If everything goes well, a small <b>capsule<\/b> carrying the sample will come back to Earth in 2031.", "ek": "모든 일이 잘 풀리면, 시료를 실은 작은 캡슐이 2031년에 지구로 돌아올 것이다.", "sa": "/en/2026-10-25/audio/s5.mp3", "au": "/en/2026-10-25/audio/w7.mp3", "alts": ["발사했다", "시료, 표본", "~인지 (아닌지)", "만들어진, 형성된", "소행성", "중력"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

@@ -445,6 +445,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   /* vote-css */
   .cat-science { color: #1b64da; background: #e8f3ff; }
@@ -639,7 +657,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -648,9 +666,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1222,7 +1241,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "bucket", "m": "양동이", "cz": "On hot summer days, a woman in Berlin carries a <span class=\"dr-blank\"><\/span> of water to a tree near her home, and she has even given it a name: Linda.", "ca": "bucket", "ex": "On hot summer days, a woman in Berlin carries a <b>bucket<\/b> of water to a tree near her home, and she has even given it a name: Linda.", "sh": "… a <b>bucket<\/b> of water to a tree near her home, …", "ek": "더운 여름날이면 베를린의 한 여성은 집 근처의 나무 한 그루에 물 한 양동이를 들고 가는데, 그 나무에 '린다'라는 이름까지 지어 주었다.", "sa": "/en/2026-10-14/audio/s1.mp3", "au": "/en/2026-10-14/audio/w1.mp3", "alts": ["나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "appear", "m": "나타나다, ~로 보이다", "cz": "When a tree needs water, it <span class=\"dr-blank\"><\/span> as an orange or red dot, and people can adopt it and get advice on how much water to give.", "ca": "appears", "ex": "When a tree needs water, it <b>appears<\/b> as an orange or red dot, and people can adopt it and get advice on how much water to give.", "sh": "… it <b>appears<\/b> as an orange or red dot, …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "sa": "/en/2026-10-14/audio/s3.mp3", "au": "/en/2026-10-14/audio/w2.mp3", "alts": ["양동이", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "adopt", "m": "입양하다, (맡아서) 돌보기로 하다", "cz": "When a tree needs water, it appears as an orange or red dot, and people can <span class=\"dr-blank\"><\/span> it and get advice on how much water to give.", "ca": "adopt", "ex": "When a tree needs water, it appears as an orange or red dot, and people can <b>adopt<\/b> it and get advice on how much water to give.", "sh": "… and people can <b>adopt<\/b> it and get advice …", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "sa": "/en/2026-10-14/audio/s3.mp3", "au": "/en/2026-10-14/audio/w3.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "advice", "m": "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "cz": "When a tree needs water, it appears as an orange or red dot, and people can adopt it and get <span class=\"dr-blank\"><\/span> on how much water to give.", "ca": "advice", "ex": "When a tree needs water, it appears as an orange or red dot, and people can adopt it and get <b>advice<\/b> on how much water to give.", "sh": "… and get <b>advice<\/b> on how much water to give.", "ek": "나무에 물이 필요하면 주황색이나 빨간색 점으로 표시되고, 사람들은 그 나무를 입양해서 물을 얼마나 줘야 하는지 조언을 받을 수 있다.", "sa": "/en/2026-10-14/audio/s3.mp3", "au": "/en/2026-10-14/audio/w4.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "공공의, 누구나 쓸 수 있는", "~을 돌보다", "몇몇의, 여러"]}, {"w": "public", "m": "공공의, 누구나 쓸 수 있는", "cz": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find <span class=\"dr-blank\"><\/span> water pumps on the street.", "ca": "public", "ex": "The app, which was created in 2020 by a small team that works on new ideas for the city, also shows where people can find <b>public<\/b> water pumps on the street.", "sh": "… where people can find <b>public<\/b> water pumps on the street.", "ek": "도시를 위한 새로운 아이디어를 연구하는 작은 팀이 2020년에 만든 이 앱은, 사람들이 길에서 공용 물 펌프를 어디서 찾을 수 있는지도 보여 준다.", "sa": "/en/2026-10-14/audio/s4.mp3", "au": "/en/2026-10-14/audio/w5.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "~을 돌보다", "몇몇의, 여러"]}, {"w": "look after", "m": "~을 돌보다", "cz": "The woman says that <span class=\"dr-blank\"><\/span> her tree is fun, almost like a video game.", "ca": "looking after", "ex": "The woman says that <b>looking after<\/b> her tree is fun, almost like a video game.", "sh": "The woman says that <b>looking after<\/b> her tree is fun, almost like a video game.", "ek": "그 여성은 자기 나무를 돌보는 일이 재미있고, 거의 비디오 게임 같다고 말한다.", "sa": "/en/2026-10-14/audio/s5.mp3", "au": "/en/2026-10-14/audio/w6.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "몇몇의, 여러"]}, {"w": "several", "m": "몇몇의, 여러", "cz": "Thousands of people now water trees this way, and <span class=\"dr-blank\"><\/span> other cities in Germany and France have started their own versions of the app.", "ca": "several", "ex": "Thousands of people now water trees this way, and <b>several<\/b> other cities in Germany and France have started their own versions of the app.", "sh": "… and <b>several<\/b> other cities in Germany and France …", "ek": "이제 수천 명이 이런 방식으로 나무에 물을 주고 있고, 독일과 프랑스의 다른 여러 도시도 이 앱의 자기들만의 버전을 시작했다.", "sa": "/en/2026-10-14/audio/s6.mp3", "au": "/en/2026-10-14/audio/w7.mp3", "alts": ["양동이", "나타나다, ~로 보이다", "입양하다, (맡아서) 돌보기로 하다", "조언 (셀 수 없는 명사라 -s를 붙이지 않음)", "공공의, 누구나 쓸 수 있는", "~을 돌보다"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

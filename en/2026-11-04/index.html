@@ -369,6 +369,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   /* pn-css */
   .pn .pn-h { font-size: 17px; margin: 0 0 12px; }
@@ -645,7 +663,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -654,9 +672,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1226,7 +1245,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "blackout", "m": "소등, 정전", "cz": "Since October twenty-first, the streets and public buildings have turned off their lights at night, and the <span class=\"dr-blank\"><\/span> will last for almost three weeks.", "ca": "blackout", "ex": "Since October twenty-first, the streets and public buildings have turned off their lights at night, and the <b>blackout<\/b> will last for almost three weeks.", "sh": "… and the <b>blackout<\/b> will last for almost three weeks.", "ek": "10월 21일부터 거리와 공공건물은 밤마다 불을 꺼 왔고, 이 소등은 거의 3주 동안 이어진다.", "sa": "/en/2026-11-04/audio/s2.mp3", "au": "/en/2026-11-04/audio/w1.mp3", "alts": ["둥지를 틀다", "혼란스러운", "내륙으로", "충돌하다, 부딪히다", "줄이다 (과거분사형)", "새끼 새"]}, {"w": "nest", "m": "둥지를 틀다", "cz": "The reason is a seabird called the shearwater: around six thousand pairs <span class=\"dr-blank\"><\/span> on the island, and their young birds leave home at this time of year.", "ca": "nest", "ex": "The reason is a seabird called the shearwater: around six thousand pairs <b>nest<\/b> on the island, and their young birds leave home at this time of year.", "sh": "… <b>nest<\/b> on the island, and their young birds leave home …", "ek": "그 이유는 슴새라는 바닷새 때문이다. 약 6,000쌍이 그 섬에 둥지를 틀고 사는데, 해마다 이맘때 어린 새들이 둥지를 떠난다.", "sa": "/en/2026-11-04/audio/s3.mp3", "au": "/en/2026-11-04/audio/w2.mp3", "alts": ["소등, 정전", "혼란스러운", "내륙으로", "충돌하다, 부딪히다", "줄이다 (과거분사형)", "새끼 새"]}, {"w": "confused", "m": "혼란스러운", "cz": "The young birds, which usually find their way to the ocean by following the light of the stars, can easily be <span class=\"dr-blank\"><\/span> by bright street lamps and fly inland instead.", "ca": "confused", "ex": "The young birds, which usually find their way to the ocean by following the light of the stars, can easily be <b>confused<\/b> by bright street lamps and fly inland instead.", "sh": "… can easily be <b>confused<\/b> by bright street lamps …", "ek": "보통 별빛을 따라 바다로 가는 길을 찾는 어린 새들은 밝은 가로등 때문에 쉽게 혼란에 빠져 바다 대신 내륙으로 날아갈 수 있다.", "sa": "/en/2026-11-04/audio/s4.mp3", "au": "/en/2026-11-04/audio/w3.mp3", "alts": ["소등, 정전", "둥지를 틀다", "내륙으로", "충돌하다, 부딪히다", "줄이다 (과거분사형)", "새끼 새"]}, {"w": "inland", "m": "내륙으로", "cz": "The young birds, which usually find their way to the ocean by following the light of the stars, can easily be confused by bright street lamps and fly <span class=\"dr-blank\"><\/span> instead.", "ca": "inland", "ex": "The young birds, which usually find their way to the ocean by following the light of the stars, can easily be confused by bright street lamps and fly <b>inland<\/b> instead.", "sh": "… by bright street lamps and fly <b>inland<\/b> instead.", "ek": "보통 별빛을 따라 바다로 가는 길을 찾는 어린 새들은 밝은 가로등 때문에 쉽게 혼란에 빠져 바다 대신 내륙으로 날아갈 수 있다.", "sa": "/en/2026-11-04/audio/s4.mp3", "au": "/en/2026-11-04/audio/w4.mp3", "alts": ["소등, 정전", "둥지를 틀다", "혼란스러운", "충돌하다, 부딪히다", "줄이다 (과거분사형)", "새끼 새"]}, {"w": "crash", "m": "충돌하다, 부딪히다", "cz": "Many of them then <span class=\"dr-blank\"><\/span> into buildings or end up on roads, far from the sea.", "ca": "crash", "ex": "Many of them then <b>crash<\/b> into buildings or end up on roads, far from the sea.", "sh": "Many of them then <b>crash<\/b> into buildings or end up on roads, far from the sea.", "ek": "그러면 그중 많은 새가 건물에 부딪히거나, 바다에서 멀리 떨어진 도로 위에 내려앉게 된다.", "sa": "/en/2026-11-04/audio/s5.mp3", "au": "/en/2026-11-04/audio/w5.mp3", "alts": ["소등, 정전", "둥지를 틀다", "혼란스러운", "내륙으로", "줄이다 (과거분사형)", "새끼 새"]}, {"w": "reduced", "m": "줄이다 (과거분사형)", "cz": "A local bird group says that the dark nights have <span class=\"dr-blank\"><\/span> the number of birds that are found on the ground or killed, which is important because each pair raises only one chick a year.", "ca": "reduced", "ex": "A local bird group says that the dark nights have <b>reduced<\/b> the number of birds that are found on the ground or killed, which is important because each pair raises only one chick a year.", "sh": "… that the dark nights have <b>reduced<\/b> the number of birds …", "ek": "한 지역 조류 단체는 어두운 밤 덕분에 땅에서 발견되거나 죽는 새의 수가 줄었다고 말하는데, 각 쌍이 1년에 새끼를 한 마리만 키우기 때문에 이는 중요한 일이다.", "sa": "/en/2026-11-04/audio/s6.mp3", "au": "/en/2026-11-04/audio/w6.mp3", "alts": ["소등, 정전", "둥지를 틀다", "혼란스러운", "내륙으로", "충돌하다, 부딪히다", "새끼 새"]}, {"w": "chick", "m": "새끼 새", "cz": "A local bird group says that the dark nights have reduced the number of birds that are found on the ground or killed, which is important because each pair raises only one <span class=\"dr-blank\"><\/span> a year.", "ca": "chick", "ex": "A local bird group says that the dark nights have reduced the number of birds that are found on the ground or killed, which is important because each pair raises only one <b>chick<\/b> a year.", "sh": "… because each pair raises only one <b>chick<\/b> a year.", "ek": "한 지역 조류 단체는 어두운 밤 덕분에 땅에서 발견되거나 죽는 새의 수가 줄었다고 말하는데, 각 쌍이 1년에 새끼를 한 마리만 키우기 때문에 이는 중요한 일이다.", "sa": "/en/2026-11-04/audio/s6.mp3", "au": "/en/2026-11-04/audio/w7.mp3", "alts": ["소등, 정전", "둥지를 틀다", "혼란스러운", "내륙으로", "충돌하다, 부딪히다", "줄이다 (과거분사형)"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

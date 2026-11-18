@@ -341,6 +341,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   .top { position: relative; }
   .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
@@ -647,7 +665,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -656,9 +674,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1231,7 +1250,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "pop-up", "m": "펼치면 그림이 튀어나오는", "cz": "It is the world's largest <span class=\"dr-blank\"><\/span> book, and when it is open, it measures thirty-one feet by twenty feet and weighs more than eighteen hundred pounds.", "ca": "pop-up", "ex": "It is the world's largest <b>pop-up<\/b> book, and when it is open, it measures thirty-one feet by twenty feet and weighs more than eighteen hundred pounds.", "sh": "… <b>pop-up<\/b> book, and when it is open, …", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "sa": "/en/2026-10-28/audio/s2.mp3", "au": "/en/2026-10-28/audio/w1.mp3", "alts": ["크기가 ~이다", "무게가 ~이다", "기념하다, 축하하다", "부분들, 구역들", "설렘, 신남", "전시"]}, {"w": "measures", "m": "크기가 ~이다 (measure + -s)", "mh": "크기가 ~이다", "cz": "It is the world's largest pop-up book, and when it is open, it <span class=\"dr-blank\"><\/span> thirty-one feet by twenty feet and weighs more than eighteen hundred pounds.", "ca": "measures", "ex": "It is the world's largest pop-up book, and when it is open, it <b>measures<\/b> thirty-one feet by twenty feet and weighs more than eighteen hundred pounds.", "sh": "… it <b>measures<\/b> thirty-one feet by twenty feet …", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "sa": "/en/2026-10-28/audio/s2.mp3", "au": "/en/2026-10-28/audio/w2.mp3", "alts": ["펼치면 그림이 튀어나오는", "무게가 ~이다", "기념하다, 축하하다", "부분들, 구역들", "설렘, 신남", "전시"]}, {"w": "weighs", "m": "무게가 ~이다 (weigh + -s)", "mh": "무게가 ~이다", "cz": "It is the world's largest pop-up book, and when it is open, it measures thirty-one feet by twenty feet and <span class=\"dr-blank\"><\/span> more than eighteen hundred pounds.", "ca": "weighs", "ex": "It is the world's largest pop-up book, and when it is open, it measures thirty-one feet by twenty feet and <b>weighs<\/b> more than eighteen hundred pounds.", "sh": "… and <b>weighs<\/b> more than eighteen hundred pounds.", "ek": "그것은 세계에서 가장 큰 팝업북으로, 펼치면 크기가 31피트 × 20피트이고 무게는 1,800파운드가 넘는다.", "sa": "/en/2026-10-28/audio/s2.mp3", "au": "/en/2026-10-28/audio/w3.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다", "기념하다, 축하하다", "부분들, 구역들", "설렘, 신남", "전시"]}, {"w": "celebrate", "m": "기념하다, 축하하다", "cz": "The book was designed by a local artist, Daniel González, who worked with a paper engineer, and it was made to <span class=\"dr-blank\"><\/span> the library's one hundredth birthday.", "ca": "celebrate", "ex": "The book was designed by a local artist, Daniel González, who worked with a paper engineer, and it was made to <b>celebrate<\/b> the library's one hundredth birthday.", "sh": "… to <b>celebrate<\/b> the library's one hundredth birthday.", "ek": "이 책은 지역 예술가 다니엘 곤살레스가 종이 공학자와 함께 디자인했으며, 도서관의 100번째 생일을 기념하기 위해 만들어졌다.", "sa": "/en/2026-10-28/audio/s3.mp3", "au": "/en/2026-10-28/audio/w4.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다", "무게가 ~이다", "부분들, 구역들", "설렘, 신남", "전시"]}, {"w": "sections", "m": "부분들, 구역들 (section의 복수)", "mh": "부분들, 구역들", "cz": "The finished book was too large for the library's doors, so it was built in smaller <span class=\"dr-blank\"><\/span> and put together inside the hall.", "ca": "sections", "ex": "The finished book was too large for the library's doors, so it was built in smaller <b>sections<\/b> and put together inside the hall.", "sh": "… in smaller <b>sections<\/b> and put together …", "ek": "완성된 책은 도서관 문을 통과하기에는 너무 커서, 더 작은 부분들로 나누어 만든 뒤 홀 안에서 조립했다.", "sa": "/en/2026-10-28/audio/s4.mp3", "au": "/en/2026-10-28/audio/w5.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다", "무게가 ~이다", "기념하다, 축하하다", "설렘, 신남", "전시"]}, {"w": "excitement", "m": "설렘, 신남", "cz": "Its pictures, which show famous places in the city and the library's long history, are meant to remind people of the <span class=\"dr-blank\"><\/span> they felt as children when they opened a pop-up book.", "ca": "excitement", "ex": "Its pictures, which show famous places in the city and the library's long history, are meant to remind people of the <b>excitement<\/b> they felt as children when they opened a pop-up book.", "sh": "… of the <b>excitement<\/b> they felt as children …", "ek": "도시의 유명한 장소들과 도서관의 긴 역사를 보여 주는 이 책의 그림들은, 사람들이 어린 시절 팝업북을 펼칠 때 느꼈던 설렘을 떠올리게 하려는 것이다.", "sa": "/en/2026-10-28/audio/s5.mp3", "au": "/en/2026-10-28/audio/w6.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다", "무게가 ~이다", "기념하다, 축하하다", "부분들, 구역들", "전시"]}, {"w": "display", "m": "전시", "cz": "The book will stay on <span class=\"dr-blank\"><\/span> until the end of November, so there is still time to see it.", "ca": "display", "ex": "The book will stay on <b>display<\/b> until the end of November, so there is still time to see it.", "sh": "The book will stay on <b>display<\/b> until the end of November, so there is still time to see it.", "ek": "이 책은 11월 말까지 전시되니, 아직 볼 시간이 있다.", "sa": "/en/2026-10-28/audio/s6.mp3", "au": "/en/2026-10-28/audio/w7.mp3", "alts": ["펼치면 그림이 튀어나오는", "크기가 ~이다", "무게가 ~이다", "기념하다, 축하하다", "부분들, 구역들", "설렘, 신남"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

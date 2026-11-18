@@ -373,6 +373,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   /* pn-css */
   .pn .pn-h { font-size: 17px; margin: 0 0 12px; }
@@ -643,7 +661,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -652,9 +670,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 6문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">6개 외우기 시작</button>
-    <p class="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 2분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1224,7 +1243,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "手紙", "m": "편지", "r": "てがみ", "cz": "きのうの<ruby>夜<rt>よる<\/rt><\/ruby>、<ruby>友<rt>とも<\/rt><\/ruby>だちに<span class=\"dr-blank\"><\/span>を<ruby>書<rt>か<\/rt><\/ruby>きました。", "ca": "手紙", "ex": "きのうの<ruby>夜<rt>よる<\/rt><\/ruby>、<ruby>友<rt>とも<\/rt><\/ruby>だちに<b><ruby>手紙<rt>てがみ<\/rt><\/ruby><\/b>を<ruby>書<rt>か<\/rt><\/ruby>きました。", "sh": "きのうの<ruby>夜<rt>よる<\/rt><\/ruby>、<ruby>友<rt>とも<\/rt><\/ruby>だちに<b><ruby>手紙<rt>てがみ<\/rt><\/ruby><\/b>を<ruby>書<rt>か<\/rt><\/ruby>きました。", "ek": "어젯밤에 친구에게 편지를 썼습니다.", "sa": "/ja/2026-10-26/audio/s1.mp3", "au": "/ja/2026-10-26/audio/w1.mp3", "alts": ["살다(거주하다)", "편지지", "시간이 걸리다", "우표", "답장, 대답"]}, {"w": "住む", "m": "살다(거주하다)", "r": "すむ", "cz": "<ruby>友<rt>とも<\/rt><\/ruby>だちは<ruby>去年<rt>きょねん<\/rt><\/ruby>から<ruby>大阪<rt>おおさか<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>います。", "ca": "住んで", "ex": "<ruby>友<rt>とも<\/rt><\/ruby>だちは<ruby>去年<rt>きょねん<\/rt><\/ruby>から<ruby>大阪<rt>おおさか<\/rt><\/ruby>に<b><ruby>住<rt>す<\/rt><\/ruby>んで<\/b>います。", "sh": "<ruby>友<rt>とも<\/rt><\/ruby>だちは<ruby>去年<rt>きょねん<\/rt><\/ruby>から<ruby>大阪<rt>おおさか<\/rt><\/ruby>に<b><ruby>住<rt>す<\/rt><\/ruby>んで<\/b>います。", "ek": "친구는 작년부터 오사카에 살고 있습니다.", "sa": "/ja/2026-10-26/audio/s2.mp3", "au": "/ja/2026-10-26/audio/w2.mp3", "alts": ["편지", "편지지", "시간이 걸리다", "우표", "답장, 대답"]}, {"w": "便箋", "m": "편지지", "r": "びんせん", "cz": "かわいい<span class=\"dr-blank\"><\/span>に、<ruby>最近<rt>さいきん<\/rt><\/ruby>のことを<ruby>書<rt>か<\/rt><\/ruby>きました。", "ca": "便箋", "ex": "かわいい<b><ruby>便箋<rt>びんせん<\/rt><\/ruby><\/b>に、<ruby>最近<rt>さいきん<\/rt><\/ruby>のことを<ruby>書<rt>か<\/rt><\/ruby>きました。", "sh": "かわいい<b><ruby>便箋<rt>びんせん<\/rt><\/ruby><\/b>に、<ruby>最近<rt>さいきん<\/rt><\/ruby>のことを<ruby>書<rt>か<\/rt><\/ruby>きました。", "ek": "귀여운 편지지에 요즘 있었던 일을 썼습니다.", "sa": "/ja/2026-10-26/audio/s3.mp3", "au": "/ja/2026-10-26/audio/w3.mp3", "alts": ["편지", "살다(거주하다)", "시간이 걸리다", "우표", "답장, 대답"]}, {"w": "時間がかかる", "m": "시간이 걸리다", "r": "じかんがかかる", "cz": "メールより<span class=\"dr-blank\"><\/span>が、<ruby>手<rt>て<\/rt><\/ruby>で<ruby>書<rt>か<\/rt><\/ruby>くのが<ruby>好<rt>す<\/rt><\/ruby>きです。", "ca": "時間がかかります", "ex": "メールより<b><ruby>時間<rt>じかん<\/rt><\/ruby>がかかります<\/b>が、<ruby>手<rt>て<\/rt><\/ruby>で<ruby>書<rt>か<\/rt><\/ruby>くのが<ruby>好<rt>す<\/rt><\/ruby>きです。", "sh": "メールより<b><ruby>時間<rt>じかん<\/rt><\/ruby>がかかります<\/b>が、<ruby>手<rt>て<\/rt><\/ruby>で<ruby>書<rt>か<\/rt><\/ruby>くのが<ruby>好<rt>す<\/rt><\/ruby>きです。", "ek": "메일보다 시간이 걸리지만, 손으로 쓰는 것을 좋아합니다.", "sa": "/ja/2026-10-26/audio/s4.mp3", "au": "/ja/2026-10-26/audio/w4.mp3", "alts": ["편지", "살다(거주하다)", "편지지", "우표", "답장, 대답"]}, {"w": "切手", "m": "우표", "r": "きって", "cz": "<ruby>今朝<rt>けさ<\/rt><\/ruby>、<ruby>郵便局<rt>ゆうびんきょく<\/rt><\/ruby>で110<ruby>円<rt>えん<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>を<ruby>買<rt>か<\/rt><\/ruby>いました。", "ca": "切手", "ex": "<ruby>今朝<rt>けさ<\/rt><\/ruby>、<ruby>郵便局<rt>ゆうびんきょく<\/rt><\/ruby>で110<ruby>円<rt>えん<\/rt><\/ruby>の<b><ruby>切手<rt>きって<\/rt><\/ruby><\/b>を<ruby>買<rt>か<\/rt><\/ruby>いました。", "sh": "<ruby>今朝<rt>けさ<\/rt><\/ruby>、<ruby>郵便局<rt>ゆうびんきょく<\/rt><\/ruby>で110<ruby>円<rt>えん<\/rt><\/ruby>の<b><ruby>切手<rt>きって<\/rt><\/ruby><\/b>を<ruby>買<rt>か<\/rt><\/ruby>いました。", "ek": "오늘 아침 우체국에서 110엔짜리 우표를 샀습니다.", "sa": "/ja/2026-10-26/audio/s5.mp3", "au": "/ja/2026-10-26/audio/w5.mp3", "alts": ["편지", "살다(거주하다)", "편지지", "시간이 걸리다", "답장, 대답"]}, {"w": "返事", "m": "답장, 대답", "r": "へんじ", "cz": "<ruby>友<rt>とも<\/rt><\/ruby>だちの<span class=\"dr-blank\"><\/span>が、<ruby>今<rt>いま<\/rt><\/ruby>から<ruby>楽<rt>たの<\/rt><\/ruby>しみです。", "ca": "返事", "ex": "<ruby>友<rt>とも<\/rt><\/ruby>だちの<b><ruby>返事<rt>へんじ<\/rt><\/ruby><\/b>が、<ruby>今<rt>いま<\/rt><\/ruby>から<ruby>楽<rt>たの<\/rt><\/ruby>しみです。", "sh": "<ruby>友<rt>とも<\/rt><\/ruby>だちの<b><ruby>返事<rt>へんじ<\/rt><\/ruby><\/b>が、<ruby>今<rt>いま<\/rt><\/ruby>から<ruby>楽<rt>たの<\/rt><\/ruby>しみです。", "ek": "친구의 답장이 벌써부터 기대됩니다.", "sa": "/ja/2026-10-26/audio/s6.mp3", "au": "/ja/2026-10-26/audio/w6.mp3", "alts": ["편지", "살다(거주하다)", "편지지", "시간이 걸리다", "우표"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

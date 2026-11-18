@@ -369,6 +369,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   /* pn-css */
   .pn .pn-h { font-size: 17px; margin: 0 0 12px; }
@@ -638,7 +656,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -647,9 +665,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1222,7 +1241,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "exact", "m": "꼭 맞는, 정확한", "cz": "Most of us check the time on our phones, but the most <span class=\"dr-blank\"><\/span> clocks in the world work in a very different way.", "ca": "exact", "ex": "Most of us check the time on our phones, but the most <b>exact<\/b> clocks in the world work in a very different way.", "sh": "Most of us check the time on our phones, but the most <b>exact<\/b> clocks in the world work in a very different way.", "ek": "우리 대부분은 휴대폰으로 시간을 확인하지만, 세계에서 가장 정확한 시계들은 아주 다른 방식으로 작동한다.", "sa": "/en/2026-10-12/audio/s1.mp3", "au": "/en/2026-10-12/audio/w1.mp3", "alts": ["(원자)핵", "결정, 결정체", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "정확한, 틀림없는", "개선하다, 향상시키다"]}, {"w": "nucleus", "m": "(원자)핵", "cz": "Earlier this month, scientists in Vienna reported that they had built a new kind of clock that uses the center of an atom, called the <span class=\"dr-blank\"><\/span>.", "ca": "nucleus", "ex": "Earlier this month, scientists in Vienna reported that they had built a new kind of clock that uses the center of an atom, called the <b>nucleus<\/b>.", "sh": "… that uses the center of an atom, called the <b>nucleus<\/b>.", "ek": "이달 초, 빈의 과학자들은 원자의 중심, 즉 원자핵을 이용하는 새로운 종류의 시계를 만들었다고 발표했다.", "sa": "/en/2026-10-12/audio/s2.mp3", "au": "/en/2026-10-12/audio/w2.mp3", "alts": ["꼭 맞는, 정확한", "결정, 결정체", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "정확한, 틀림없는", "개선하다, 향상시키다"]}, {"w": "crystal", "m": "결정, 결정체", "cz": "A laser shines on a special <span class=\"dr-blank\"><\/span> that was made by the team, and the clock corrects the laser by itself when it goes off track.", "ca": "crystal", "ex": "A laser shines on a special <b>crystal<\/b> that was made by the team, and the clock corrects the laser by itself when it goes off track.", "sh": "… on a special <b>crystal<\/b> that was made by the team, …", "ek": "레이저가 연구팀이 만든 특수한 결정에 빛을 비추고, 레이저가 어긋나면 시계가 스스로 레이저를 바로잡는다.", "sa": "/en/2026-10-12/audio/s3.mp3", "au": "/en/2026-10-12/audio/w3.mp3", "alts": ["꼭 맞는, 정확한", "(원자)핵", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "정확한, 틀림없는", "개선하다, 향상시키다"]}, {"w": "correct", "m": "바로잡다, 고치다 (동사)", "cz": "A laser shines on a special crystal that was made by the team, and the clock <span class=\"dr-blank\"><\/span> the laser by itself when it goes off track.", "ca": "corrects", "ex": "A laser shines on a special crystal that was made by the team, and the clock <b>corrects<\/b> the laser by itself when it goes off track.", "sh": "… and the clock <b>corrects<\/b> the laser by itself …", "ek": "레이저가 연구팀이 만든 특수한 결정에 빛을 비추고, 레이저가 어긋나면 시계가 스스로 레이저를 바로잡는다.", "sa": "/en/2026-10-12/audio/s3.mp3", "au": "/en/2026-10-12/audio/w4.mp3", "alts": ["꼭 맞는, 정확한", "(원자)핵", "결정, 결정체", "궤도를 벗어난, 어긋난", "정확한, 틀림없는", "개선하다, 향상시키다"]}, {"w": "off track", "m": "궤도를 벗어난, 어긋난", "cz": "A laser shines on a special crystal that was made by the team, and the clock corrects the laser by itself when it goes <span class=\"dr-blank\"><\/span>.", "ca": "off track", "ex": "A laser shines on a special crystal that was made by the team, and the clock corrects the laser by itself when it goes <b>off track<\/b>.", "sh": "… by itself when it goes <b>off track<\/b>.", "ek": "레이저가 연구팀이 만든 특수한 결정에 빛을 비추고, 레이저가 어긋나면 시계가 스스로 레이저를 바로잡는다.", "sa": "/en/2026-10-12/audio/s3.mp3", "au": "/en/2026-10-12/audio/w5.mp3", "alts": ["꼭 맞는, 정확한", "(원자)핵", "결정, 결정체", "바로잡다, 고치다 (동사)", "정확한, 틀림없는", "개선하다, 향상시키다"]}, {"w": "accurate", "m": "정확한, 틀림없는", "cz": "It is not yet as <span class=\"dr-blank\"><\/span> as the best atomic clocks, but the researchers plan to improve it with stronger lasers and better crystals.", "ca": "accurate", "ex": "It is not yet as <b>accurate<\/b> as the best atomic clocks, but the researchers plan to improve it with stronger lasers and better crystals.", "sh": "It is not yet as <b>accurate<\/b> as the best atomic clocks, …", "ek": "아직 최고의 원자시계만큼 정확하지는 않지만, 연구자들은 더 강한 레이저와 더 좋은 결정으로 시계를 개선할 계획이다.", "sa": "/en/2026-10-12/audio/s5.mp3", "au": "/en/2026-10-12/audio/w6.mp3", "alts": ["꼭 맞는, 정확한", "(원자)핵", "결정, 결정체", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "개선하다, 향상시키다"]}, {"w": "improve", "m": "개선하다, 향상시키다", "cz": "It is not yet as accurate as the best atomic clocks, but the researchers plan to <span class=\"dr-blank\"><\/span> it with stronger lasers and better crystals.", "ca": "improve", "ex": "It is not yet as accurate as the best atomic clocks, but the researchers plan to <b>improve<\/b> it with stronger lasers and better crystals.", "sh": "… to <b>improve<\/b> it with stronger lasers and better crystals.", "ek": "아직 최고의 원자시계만큼 정확하지는 않지만, 연구자들은 더 강한 레이저와 더 좋은 결정으로 시계를 개선할 계획이다.", "sa": "/en/2026-10-12/audio/s5.mp3", "au": "/en/2026-10-12/audio/w7.mp3", "alts": ["꼭 맞는, 정확한", "(원자)핵", "결정, 결정체", "바로잡다, 고치다 (동사)", "궤도를 벗어난, 어긋난", "정확한, 틀림없는"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

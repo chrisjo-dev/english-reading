@@ -445,6 +445,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   /* vote-css */
   .cat-science { color: #1b64da; background: #e8f3ff; }
@@ -639,7 +657,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -648,9 +666,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1219,7 +1238,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "deliveries", "m": "배송들 (delivery의 복수)", "cz": "Amazon hopes to make this normal in Tallahassee, where it plans to start drone <span class=\"dr-blank\"><\/span> in mid-November if a building permit is approved in time.", "ca": "deliveries", "ex": "Amazon hopes to make this normal in Tallahassee, where it plans to start drone <b>deliveries<\/b> in mid-November if a building permit is approved in time.", "sh": "… to start drone <b>deliveries<\/b> in mid-November …", "ek": "아마존은 탤러해시에서 이것을 일상적인 일로 만들고 싶어 하는데, 건축 허가가 제때 승인되면 11월 중순에 드론 배송을 시작할 계획이다.", "sa": "/en/2026-10-22/audio/s2.mp3", "au": "/en/2026-10-22/audio/w1.mp3", "alts": ["창고, 물류 센터", "무게가 ~이다", "지지자들, 찬성하는 사람들", "비교했다", "우려, 걱정", "동네들, 지역들"]}, {"w": "warehouse", "m": "창고, 물류 센터", "cz": "Up to twenty-one drones will fly from a <span class=\"dr-blank\"><\/span> in the city, and each one can carry a package that weighs up to five pounds to homes within seven and a half miles.", "ca": "warehouse", "ex": "Up to twenty-one drones will fly from a <b>warehouse<\/b> in the city, and each one can carry a package that weighs up to five pounds to homes within seven and a half miles.", "sh": "… from a <b>warehouse<\/b> in the city, and each one can carry …", "ek": "최대 21대의 드론이 시내의 한 물류 창고에서 날아오를 예정이며, 각 드론은 무게가 최대 5파운드인 소포 하나를 7.5마일 이내의 집까지 실어 나를 수 있다.", "sa": "/en/2026-10-22/audio/s3.mp3", "au": "/en/2026-10-22/audio/w2.mp3", "alts": ["배송들 (delivery의 복수)", "무게가 ~이다", "지지자들, 찬성하는 사람들", "비교했다", "우려, 걱정", "동네들, 지역들"]}, {"w": "weighs", "m": "무게가 ~이다 (weigh + -s)", "mh": "무게가 ~이다", "cz": "Up to twenty-one drones will fly from a warehouse in the city, and each one can carry a package that <span class=\"dr-blank\"><\/span> up to five pounds to homes within seven and a half miles.", "ca": "weighs", "ex": "Up to twenty-one drones will fly from a warehouse in the city, and each one can carry a package that <b>weighs<\/b> up to five pounds to homes within seven and a half miles.", "sh": "… that <b>weighs<\/b> up to five pounds to homes …", "ek": "최대 21대의 드론이 시내의 한 물류 창고에서 날아오를 예정이며, 각 드론은 무게가 최대 5파운드인 소포 하나를 7.5마일 이내의 집까지 실어 나를 수 있다.", "sa": "/en/2026-10-22/audio/s3.mp3", "au": "/en/2026-10-22/audio/w3.mp3", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "지지자들, 찬성하는 사람들", "비교했다", "우려, 걱정", "동네들, 지역들"]}, {"w": "supporters", "m": "지지자들, 찬성하는 사람들", "cz": "<span class=\"dr-blank\"><\/span> say the service could save people a trip to the store, since some orders may arrive in as little as thirty minutes.", "ca": "Supporters", "ex": "<b>Supporters<\/b> say the service could save people a trip to the store, since some orders may arrive in as little as thirty minutes.", "sh": "<b>Supporters<\/b> say the service could save people …", "ek": "찬성하는 사람들은 일부 주문이 빠르면 30분 만에 도착할 수 있기 때문에, 이 서비스가 사람들이 가게에 다녀오는 수고를 덜어 줄 수 있다고 말한다.", "sa": "/en/2026-10-22/audio/s4.mp3", "au": "/en/2026-10-22/audio/w4.mp3", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "무게가 ~이다", "비교했다", "우려, 걱정", "동네들, 지역들"]}, {"w": "compared", "m": "비교했다 (compare A to B: A를 B에 비유하다)", "mh": "비교했다", "cz": "However, the drones, which drop each package from about twelve feet above the ground, make a noise that a company manager himself <span class=\"dr-blank\"><\/span> to a vacuum cleaner or a lawn mower.", "ca": "compared", "ex": "However, the drones, which drop each package from about twelve feet above the ground, make a noise that a company manager himself <b>compared<\/b> to a vacuum cleaner or a lawn mower.", "sh": "… that a company manager himself <b>compared<\/b> to a vacuum cleaner or a lawn mower.", "ek": "하지만 각 소포를 지상 약 12피트 높이에서 떨어뜨리는 이 드론들은, 회사 관계자조차 진공청소기나 잔디 깎는 기계에 비유한 소음을 낸다.", "sa": "/en/2026-10-22/audio/s5.mp3", "au": "/en/2026-10-22/audio/w5.mp3", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "무게가 ~이다", "지지자들, 찬성하는 사람들", "우려, 걱정", "동네들, 지역들"]}, {"w": "concerns", "m": "우려, 걱정 (concern의 복수)", "mh": "우려, 걱정", "cz": "A city official has also raised <span class=\"dr-blank\"><\/span> that the city's thick tree cover could make many neighborhoods hard to serve, which means the service may not reach everyone.", "ca": "concerns", "ex": "A city official has also raised <b>concerns<\/b> that the city's thick tree cover could make many neighborhoods hard to serve, which means the service may not reach everyone.", "sh": "… has also raised <b>concerns<\/b> that the city's thick tree cover …", "ek": "한 시 관계자는 또한 도시의 울창한 나무들 때문에 많은 동네에 배송하기 어려울 수 있다는 우려를 제기했는데, 이는 이 서비스가 모든 사람에게 닿지 않을 수도 있다는 뜻이다.", "sa": "/en/2026-10-22/audio/s6.mp3", "au": "/en/2026-10-22/audio/w6.mp3", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "무게가 ~이다", "지지자들, 찬성하는 사람들", "비교했다", "동네들, 지역들"]}, {"w": "neighborhoods", "m": "동네들, 지역들", "cz": "A city official has also raised concerns that the city's thick tree cover could make many <span class=\"dr-blank\"><\/span> hard to serve, which means the service may not reach everyone.", "ca": "neighborhoods", "ex": "A city official has also raised concerns that the city's thick tree cover could make many <b>neighborhoods<\/b> hard to serve, which means the service may not reach everyone.", "sh": "… could make many <b>neighborhoods<\/b> hard to serve, …", "ek": "한 시 관계자는 또한 도시의 울창한 나무들 때문에 많은 동네에 배송하기 어려울 수 있다는 우려를 제기했는데, 이는 이 서비스가 모든 사람에게 닿지 않을 수도 있다는 뜻이다.", "sa": "/en/2026-10-22/audio/s6.mp3", "au": "/en/2026-10-22/audio/w7.mp3", "alts": ["배송들 (delivery의 복수)", "창고, 물류 센터", "무게가 ~이다", "지지자들, 찬성하는 사람들", "비교했다", "우려, 걱정"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

@@ -341,6 +341,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   .top { position: relative; }
   .top .hero { margin: -28px -20px 20px; aspect-ratio: 40 / 21; overflow: hidden; border-radius: var(--card-r) var(--card-r) 0 0; background: var(--bg); }
@@ -647,7 +665,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -656,9 +674,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1228,7 +1247,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "particles", "m": "입자들 (particle의 복수)", "mh": "입자들", "cz": "When the sun has a big storm, it throws huge clouds of tiny charged <span class=\"dr-blank\"><\/span> into space, and some of them can reach Earth.", "ca": "particles", "ex": "When the sun has a big storm, it throws huge clouds of tiny charged <b>particles<\/b> into space, and some of them can reach Earth.", "sh": "… of tiny charged <b>particles<\/b> into space, …", "ek": "태양에 큰 폭풍이 일면, 태양은 전기를 띤 작은 입자들로 이루어진 거대한 구름을 우주로 내던지고, 그중 일부는 지구에 닿을 수 있다.", "sa": "/en/2026-10-23/audio/s1.mp3", "au": "/en/2026-10-23/audio/w1.mp3", "alts": ["자기장", "전류", "신호들", "지연된, 늦어진", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "magnetic field", "m": "자기장", "cz": "These particles shake Earth's <span class=\"dr-blank\"><\/span>, and this can create electric currents in long metal wires on the ground.", "ca": "magnetic field", "ex": "These particles shake Earth's <b>magnetic field<\/b>, and this can create electric currents in long metal wires on the ground.", "sh": "… Earth's <b>magnetic field<\/b>, and this can create …", "ek": "이 입자들은 지구의 자기장을 흔들고, 이것은 땅 위의 긴 금속 전선 속에 전류를 만들어 낼 수 있다.", "sa": "/en/2026-10-23/audio/s2.mp3", "au": "/en/2026-10-23/audio/w2.mp3", "alts": ["입자들", "전류", "신호들", "지연된, 늦어진", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "currents", "m": "전류 (current의 복수, '현재의'라는 뜻의 current와 구분)", "mh": "전류", "cz": "These particles shake Earth's magnetic field, and this can create electric <span class=\"dr-blank\"><\/span> in long metal wires on the ground.", "ca": "currents", "ex": "These particles shake Earth's magnetic field, and this can create electric <b>currents<\/b> in long metal wires on the ground.", "sh": "… electric <b>currents<\/b> in long metal wires …", "ek": "이 입자들은 지구의 자기장을 흔들고, 이것은 땅 위의 긴 금속 전선 속에 전류를 만들어 낼 수 있다.", "sa": "/en/2026-10-23/audio/s2.mp3", "au": "/en/2026-10-23/audio/w3.mp3", "alts": ["입자들", "자기장", "신호들", "지연된, 늦어진", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "signals", "m": "신호들", "cz": "In the 1800s, railway <span class=\"dr-blank\"><\/span> were sent through such long wires, so a strong solar storm could mix up the messages and hold trains back.", "ca": "signals", "ex": "In the 1800s, railway <b>signals<\/b> were sent through such long wires, so a strong solar storm could mix up the messages and hold trains back.", "sh": "… railway <b>signals<\/b> were sent through such long wires, …", "ek": "1800년대에는 철도 신호가 그런 긴 전선을 통해 보내졌기 때문에, 강한 태양 폭풍은 메시지를 뒤섞어 기차를 멈춰 세울 수 있었다.", "sa": "/en/2026-10-23/audio/s3.mp3", "au": "/en/2026-10-23/audio/w4.mp3", "alts": ["입자들", "자기장", "전류", "지연된, 늦어진", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "delayed", "m": "지연된, 늦어진 (be delayed by + 시간: ~만큼 늦어지다)", "mh": "지연된, 늦어진", "cz": "An old report, published in a science journal in 1871, said that a train in Exeter, England, was <span class=\"dr-blank\"><\/span> this way by sixteen minutes in October 1841.", "ca": "delayed", "ex": "An old report, published in a science journal in 1871, said that a train in Exeter, England, was <b>delayed<\/b> this way by sixteen minutes in October 1841.", "sh": "… was <b>delayed<\/b> this way by sixteen minutes …", "ek": "1871년에 한 과학 학술지에 실린 오래된 보고서에는 1841년 10월 잉글랜드 엑서터의 한 기차가 이런 식으로 16분 늦어졌다고 적혀 있었다.", "sa": "/en/2026-10-23/audio/s4.mp3", "au": "/en/2026-10-23/audio/w5.mp3", "alts": ["입자들", "자기장", "전류", "신호들", "오타, 잘못 친 글자", "실제로, 사실은"]}, {"w": "typo", "m": "오타, 잘못 친 글자", "cz": "After checking other records, they decided that the date was a <span class=\"dr-blank\"><\/span> and the delay actually happened seven years later, in 1848.", "ca": "typo", "ex": "After checking other records, they decided that the date was a <b>typo<\/b> and the delay actually happened seven years later, in 1848.", "sh": "… that the date was a <b>typo<\/b> and the delay actually happened …", "ek": "다른 기록들을 확인한 뒤, 그들은 그 날짜가 오타였고 지연은 실제로 7년 뒤인 1848년에 일어났다고 결론 내렸다.", "sa": "/en/2026-10-23/audio/s6.mp3", "au": "/en/2026-10-23/audio/w6.mp3", "alts": ["입자들", "자기장", "전류", "신호들", "지연된, 늦어진", "실제로, 사실은"]}, {"w": "actually", "m": "실제로, 사실은", "cz": "After checking other records, they decided that the date was a typo and the delay <span class=\"dr-blank\"><\/span> happened seven years later, in 1848.", "ca": "actually", "ex": "After checking other records, they decided that the date was a typo and the delay <b>actually<\/b> happened seven years later, in 1848.", "sh": "… and the delay <b>actually<\/b> happened seven years later, …", "ek": "다른 기록들을 확인한 뒤, 그들은 그 날짜가 오타였고 지연은 실제로 7년 뒤인 1848년에 일어났다고 결론 내렸다.", "sa": "/en/2026-10-23/audio/s6.mp3", "au": "/en/2026-10-23/audio/w7.mp3", "alts": ["입자들", "자기장", "전류", "신호들", "지연된, 늦어진", "오타, 잘못 친 글자"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

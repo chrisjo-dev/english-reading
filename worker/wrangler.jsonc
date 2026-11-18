@@ -1,0 +1,10 @@
+{
+  // 독해한입 API Worker. 배포: cd worker && npx wrangler deploy (사용자 승인 뒤)
+  // 비밀값: npx wrangler secret put KAKAO_REST_API_KEY, npx wrangler secret put KAKAO_CLIENT_SECRET
+  "name": "dokhaehanip-api",
+  "main": "index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  // dokhaehanip.com 존이 이 Cloudflare 계정에 있어야 한다. 첫 배포 때 DNS 레코드와 인증서를 만든다.
+  "routes": [{ "pattern": "api.dokhaehanip.com", "custom_domain": true }]
+}

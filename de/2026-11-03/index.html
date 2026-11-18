@@ -369,6 +369,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   /* pn-css */
   .pn .pn-h { font-size: 17px; margin: 0 0 12px; }
@@ -645,7 +663,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -654,9 +672,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1226,7 +1245,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "Martinstag", "m": "성 마르틴 축일 (남성 der)", "mh": "성 마르틴 축일", "ar": "der", "cz": "Am 11. November feiern viele Kinder in Deutschland den <span class=\"dr-blank\"><\/span>, der an den heiligen Martin von Tours erinnert.", "ca": "Martinstag", "ex": "Am 11. November feiern viele Kinder in Deutschland den <b>Martinstag<\/b>, der an den heiligen Martin von Tours erinnert.", "sh": "Am 11. November feiern viele Kinder in Deutschland den <b>Martinstag<\/b>, der an den heiligen Martin von Tours erinnert.", "ek": "11월 11일에 독일의 많은 아이들은 투르의 성 마르틴을 기리는 마르틴 축일을 기념합니다.", "sa": "/de/2026-11-03/audio/s1.mp3", "au": "/de/2026-11-03/audio/w1.mp3", "alts": ["전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Legende", "m": "전설, 옛이야기 (여성 die, 복수 Legenden)", "mh": "전설, 옛이야기", "ar": "die", "cz": "Nach einer bekannten <span class=\"dr-blank\"><\/span> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "ca": "Legende", "ex": "Nach einer bekannten <b>Legende<\/b> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "sh": "Nach einer bekannten <b>Legende<\/b> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "ek": "잘 알려진 전설에 따르면 마르틴은 어느 추운 저녁, 추위에 떨던 가난한 남자와 자기 외투를 나누었습니다.", "sa": "/de/2026-11-03/audio/s2.mp3", "au": "/de/2026-11-03/audio/w2.mp3", "alts": ["성 마르틴 축일", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Laterne", "m": "초롱, 등불 (여성 die, 복수 Laternen)", "mh": "초롱, 등불", "ar": "die", "cz": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <span class=\"dr-blank\"><\/span> aus Papier und Pappe.", "ca": "Laternen", "ex": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <b>Laternen<\/b> aus Papier und Pappe.", "sh": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <b>Laternen<\/b> aus Papier und Pappe.", "ek": "아이들은 벌써 몇 주 전부터 유치원이나 학교에서 종이와 두꺼운 종이로 알록달록한 초롱을 만듭니다.", "sa": "/de/2026-11-03/audio/s3.mp3", "au": "/de/2026-11-03/audio/w3.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Martinslied", "m": "마르틴 축일 노래 (중성 das, 복수 Martinslieder)", "mh": "마르틴 축일 노래", "ar": "das", "cz": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <span class=\"dr-blank\"><\/span>.", "ca": "Martinslieder", "ex": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <b>Martinslieder<\/b>.", "sh": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <b>Martinslieder<\/b>.", "ek": "날이 어두워지면 아이들은 부모님과 함께 거리를 행진하며 전통 마르틴 노래를 부릅니다.", "sa": "/de/2026-11-03/audio/s4.mp3", "au": "/de/2026-11-03/audio/w4.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Feuer", "m": "불, 모닥불 (중성 das)", "mh": "불, 모닥불", "ar": "das", "cz": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <span class=\"dr-blank\"><\/span>, an dem sich alle aufwärmen können.", "ca": "Feuer", "ex": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <b>Feuer<\/b>, an dem sich alle aufwärmen können.", "sh": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <b>Feuer<\/b>, an dem sich alle aufwärmen können.", "ek": "행진이 끝나는 곳에는 많은 도우미들이 준비한 큰 모닥불이 기다리고 있을 때가 많아, 모두 그 곁에서 몸을 녹일 수 있습니다.", "sa": "/de/2026-11-03/audio/s5.mp3", "au": "/de/2026-11-03/audio/w5.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Brauch", "m": "풍습, 관습 (남성 der, 복수 Bräuche)", "mh": "풍습, 관습", "ar": "der", "cz": "Für viele Familien wäre der November ohne diesen <span class=\"dr-blank\"><\/span> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "ca": "Brauch", "ex": "Für viele Familien wäre der November ohne diesen <b>Brauch<\/b> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "sh": "Für viele Familien wäre der November ohne diesen <b>Brauch<\/b> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "ek": "이 풍습이 없다면 많은 가족에게 11월은 훨씬 더 어둡게 느껴질 텐데, 불빛이 추운 저녁에 따뜻함을 가져다주기 때문입니다.", "sa": "/de/2026-11-03/audio/s6.mp3", "au": "/de/2026-11-03/audio/w6.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "손으로 만들다, 공작하다"]}, {"w": "basteln", "m": "손으로 만들다, 공작하다", "cz": "Schon Wochen vorher <span class=\"dr-blank\"><\/span> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "ca": "basteln", "ex": "Schon Wochen vorher <b>basteln<\/b> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "sh": "Schon Wochen vorher <b>basteln<\/b> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "ek": "아이들은 벌써 몇 주 전부터 유치원이나 학교에서 종이와 두꺼운 종이로 알록달록한 초롱을 만듭니다.", "sa": "/de/2026-11-03/audio/s3.mp3", "au": "/de/2026-11-03/audio/w7.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;

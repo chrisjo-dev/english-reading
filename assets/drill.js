@@ -8,6 +8,24 @@
   var ICON_X = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>';
   var ICON_SPK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
   var ICON_TAP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5a2 2 0 0 1 4 0v6"/><path d="M13 10a2 2 0 0 1 4 0v2"/><path d="M17 12a2 2 0 0 1 4 0v3a7 7 0 0 1-7 7h-1a7 7 0 0 1-5.6-2.8L4 15.5a2 2 0 0 1 3-2.6L9 15"/></svg>';
+  // 로그인(assets/auth.js). 설정 전(ready=false)에는 잠금 없이 예전처럼 동작한다.
+  var AUTH = window.dkhAuth || { ready: false, hasSession: function () { return false; } };
+  function locked() { return AUTH.ready && !AUTH.hasSession(); }
+  var KICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>';
+  var GICON = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
+  function joinHref(from) { return AUTH.joinUrl ? AUTH.joinUrl(location.pathname + '#drill', from) : '/join/'; }
+  // 로그인 화면으로 갈 때: 돌아오면 문제 풀기가 골라져 있게 하고, 몇 명이 눌렀는지 센다
+  function toJoin(from) {
+    try { var p = JSON.parse(localStorage.getItem('drill:pref')) || {}; p.m = 'quiz'; localStorage.setItem('drill:pref', JSON.stringify(p)); } catch (e) {}
+    ga('word_gate_click', { lang: LANG, day: DAY, from: from });
+    if (AUTH.logEvent) AUTH.logEvent('gate_join_click', LANG);
+  }
+  var gateSeen = false;
+  function gateShown(from) {
+    if (gateSeen) return; gateSeen = true;
+    ga('word_gate_shown', { lang: LANG, day: DAY, from: from });
+    if (AUTH.logEvent) AUTH.logEvent('gate_shown', LANG);
+  }
   CARDS.forEach(function (c) { c.l = LANG; c.d = DAY; c.k = LANG + '|' + DAY + '|' + c.w; });
 
   function load() { try { var v = JSON.parse(localStorage.getItem(KEY)); if (v && v.items) return v; } catch (e) {} return { items: {} }; }
@@ -406,6 +424,7 @@
   }
 
   function onClick(e) {
+    var lg = e.target.closest('[data-login]'); if (lg) return toJoin('result');
     var b = e.target.closest('[data-act]'); if (!b || !S) return;
     if (Date.now() < noClick && b.getAttribute('data-act') === 'flip') return;
     var act = b.getAttribute('data-act'), it = S.queue[0];
@@ -448,16 +467,17 @@
 
   // 회차를 마치면 단어를 담고 복습일을 정한다. 처음 담는 단어와 틀린 단어는 1일 뒤, 복습에서 한 번에 맞히면 다음 간격으로.
   function commit() {
-    var db = load(), t = today();
+    var db = load(), t = today(), now = new Date().toISOString();
     S.list.forEach(function (it) {
       var c = it.c, rec = db.items[c.k];
       if (!rec) { rec = {}; rec.s = 0; rec.due = add(t, 1); }
       else if (it.wrong > 0) { rec.s = 0; rec.due = add(t, 1); }
       else if (rec.due && rec.due <= t) { rec.s = (rec.s || 0) + 1; rec.due = rec.s >= INT.length ? null : add(t, INT[rec.s]); }
       ['k', 'l', 'd', 'w', 'r', 'm', 'mh', 'ex', 'sh', 'ek', 'au', 'sa', 'alts'].forEach(function (f) { if (c[f] != null) rec[f] = c[f]; });
-      rec.x = it.wrong;
+      rec.x = it.wrong; rec.t = now;
       db.items[c.k] = rec;
     });
+    db.days = (db.days || []).filter(function (d) { return d !== t; }).concat([t]).slice(-400);
     store(db);
   }
 
@@ -473,7 +493,8 @@
       '<section class="card"><div class="step">' + (S.kind === 'retry' ? '오답 다시 결과' : S.kind === 'review' ? '복습 결과' : '오늘 결과') + '</div>' +
       '<div class="dr-score"><b>' + first + '</b><span>/ ' + tot + '개 한 번에 맞혔어요</span></div>' +
       '<div class="dr-stats"><div class="dr-stat"><b>' + tot + '</b><span>외운 단어</span></div><div class="dr-stat"><b>' + S.shown + '</b><span>' + (S.mode !== 'card' ? '푼 문제' : '넘긴 카드') + '</span></div>' +
-      '<div class="dr-stat"><b>' + wrongs.length + '</b><span>틀린 단어</span></div></div></section>' + nextTypes(tot) +
+      '<div class="dr-stat"><b>' + wrongs.length + '</b><span>틀린 단어</span></div></div>' +
+      (AUTH.hasSession() && S.kind !== 'retry' ? '<div class="dr-saved" id="dr-saved">기록을 저장하는 중이에요</div>' : '') + '</section>' + nextTypes(tot) +
       '<section class="card"><h2 class="dr-h12">오답 노트</h2>' +
       (wrongs.length ? '<div>' + wrongs.map(function (x) {
         return '<div class="dr-wl"><b lang="' + x.c.l + '">' + esc(x.c.w) + '<em>' + x.wrong + '번 틀림</em></b><span>' + esc(x.c.m) + '</span></div>';
@@ -487,11 +508,29 @@
     root.innerHTML = '<div class="dr-in">' + h + '</div>';
     widths();
     root.scrollTop = 0;
+    if (locked()) gateShown('result');
+    var sv = document.getElementById('dr-saved');
+    if (sv && AUTH.sync) AUTH.sync().then(function (db) {
+      if (!db) { sv.hidden = true; return; }
+      var st = AUTH.streak(db.days);
+      sv.innerHTML = '✓ 기록을 저장했어요<a href="/me/">' + (st.now > 1 ? '🔥 연속 ' + st.now + '일' : '내 기록') + '</a>';
+    }).catch(function () {
+      sv.className = 'dr-saved err'; sv.textContent = '지금은 저장하지 못했어요. 다음에 열 때 함께 올려요.';
+    });
   }
 
   // 결과 화면의 "이어서 문제 풀기"(W15, W16): 같은 단어로 다른 문제를 바로 시작한다. 방금 푼 종류는 맨 뒤에 "한 번 더"로.
   var QTYPES = [['quiz', '뜻 고르기', '4개 중 하나 고르기'], ['write', '단어 쓰기', '뜻 보고 단어 입력'], ['cloze', '빈칸 채우기', '예문 빈칸에 단어 입력']];
   function nextTypes(tot) {
+    if (locked()) {
+      // 로그인 전(K08): 문제는 잠그고 카카오, Google 로 시작하게 한다
+      return '<section class="card"><h2 class="dr-h6">이제 문제로 확인해 볼까요?</h2><p class="desc dr-next">외운 단어 ' + tot + '개를 문제로 풀면 진짜 기억에 남아요.</p><div class="dr-ntypes">' +
+        QTYPES.map(function (q) {
+          return '<div class="dr-ntype lk"><span class="tx"><b>' + q[1] + '</b><span>' + q[2] + '</span></span><span class="go" aria-label="로그인 필요">🔒</span></div>';
+        }).join('') + '</div><div class="dr-gap"><a class="dr-kbtn" data-login="kakao" href="' + joinHref('result') + '">' + KICON + '카카오로 시작하고 문제 풀기</a>' +
+        '<a class="dr-gbtn" data-login="google" href="' + joinHref('result') + '">' + GICON + 'Google로 시작하기</a>' +
+        '<button class="dr-later" type="button" data-act="close">오늘은 여기까지</button></div></section>';
+    }
     var cur = S.mode, ts = QTYPES.filter(function (q) { return q[0] !== cur; }).concat(QTYPES.filter(function (q) { return q[0] === cur; }));
     return '<section class="card"><h2 class="dr-h6">' + (cur === 'card' ? '이어서 문제 풀기' : '이어서 다른 문제 풀기') + '</h2>' +
       '<p class="desc dr-next">' + (cur === 'card' ? '방금 외운 단어 ' + tot + '개로 바로 풀어 봐요.' : '같은 단어 ' + tot + '개를 다른 방식으로 풀어 봐요.') + '</p><div class="dr-ntypes">' +
@@ -510,11 +549,23 @@
     try { pref = JSON.parse(localStorage.getItem(PREF)) || {}; } catch (e) {}
     var mode = pref.m === 'quiz' ? 'quiz' : 'card', qt = ['quiz', 'write', 'cloze'].indexOf(pref.q) >= 0 ? pref.q : 'quiz';
     var modes = card.querySelectorAll('.dr-mode'), qts = card.querySelectorAll('.dr-qt'), qbox = document.getElementById('dr-qts'), go1 = document.getElementById('dr-start');
+    var gate = document.getElementById('dr-gate'), foot = document.getElementById('dr-foot');
+    [].forEach.call(card.querySelectorAll('[data-login]'), function (a) { a.href = joinHref('entry'); a.addEventListener('click', function () { toJoin('entry'); }); });
     function paint() {
       [].forEach.call(modes, function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-mode') === mode)); });
       [].forEach.call(qts, function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-qt') === qt)); });
       if (qbox) qbox.hidden = mode !== 'quiz';
       go1.textContent = CARDS.length + (mode === 'card' ? '개 외우기 시작' : '문제 풀기 시작');
+      // 로그인 전 문제 풀기(K07): 종류에 자물쇠, 시작 버튼 대신 로그인 안내
+      var lk = mode === 'quiz' && locked();
+      if (qbox) qbox.classList.toggle('locked', lk);
+      if (gate) gate.hidden = !lk;
+      go1.hidden = lk;
+      if (foot) foot.hidden = lk && !!gate;
+      if (lk) gateShown('entry');
+      var sub = card.querySelector('.dr-mode[data-mode="quiz"] span');
+      if (sub) sub.textContent = locked() ? '로그인하면 열려요' : '문제 종류를 골라요';
+      if (foot && AUTH.hasSession()) foot.textContent = foot.textContent.replace('고른 방식과 기록은 이 기기에만 남아요.', '기록은 내 계정에 저장돼요.');
     }
     [].forEach.call(modes, function (m) { m.addEventListener('click', function () { mode = m.getAttribute('data-mode'); paint(); }); });
     [].forEach.call(qts, function (m) { m.addEventListener('click', function () { qt = m.getAttribute('data-qt'); paint(); }); });
@@ -533,4 +584,6 @@
     start(due, 'card', 'review');
   });
   showDue();
+  // 로그인한 사람은 다른 기기에서 쌓은 기록을 받아 와 복습 띠를 다시 그린다
+  if (AUTH.hasSession() && AUTH.sync) AUTH.sync().then(function (db) { if (db) showDue(); }, function () {});
 })();

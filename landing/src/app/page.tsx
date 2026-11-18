@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import { CONFIRM_NOTE } from "@/components/forms";
 import Hero from "@/components/Hero";
+import LoginSection from "@/components/LoginSection";
 import Motion from "@/components/Motion";
 import Nav from "@/components/Nav";
 import SubFormsList from "@/components/SubFormsList";
@@ -63,10 +64,12 @@ export default function Home() {
           </div>
         </section>
 
+        <LoginSection />
+
         <section className="sec" id="week" data-reveal aria-labelledby="week-h">
           <div className="wrap">
             <div className="sec-head">
-              <span className="mono">03 / 이번 주 지문</span>
+              <span className="mono">04 / 이번 주 지문</span>
               <h2 id="week-h">이번 주에 나온 지문이에요.</h2>
               <span className="mono sec-meta">
                 <WeekMeta />
@@ -86,7 +89,7 @@ export default function Home() {
           <div className="wrap">
             <div className="sec-head">
               <h2 id="glance-h" className="mono">
-                04 / 서비스 한눈에 보기
+                05 / 서비스 한눈에 보기
               </h2>
             </div>
             <p className="glance rv">{GLANCE}</p>
@@ -96,7 +99,7 @@ export default function Home() {
         <section className="sec" id="faq" data-reveal aria-labelledby="faq-h">
           <div className="wrap">
             <div className="sec-head">
-              <span className="mono">05 / 자주 묻는 질문</span>
+              <span className="mono">06 / 자주 묻는 질문</span>
               <h2 id="faq-h">궁금한 점이 있나요?</h2>
               <span className="mono sec-meta">{FAQ.length}개 질문</span>
             </div>
@@ -118,7 +121,7 @@ export default function Home() {
         <section className="sec sub" id="subscribe" data-reveal aria-labelledby="sub-h">
           <div className="wrap">
             <div className="sec-head">
-              <span className="mono">06 / 무료 구독</span>
+              <span className="mono">07 / 무료 구독</span>
               <h2 id="sub-h">매일 아침 메일로 받아 보세요.</h2>
             </div>
             <div className="sub-forms">

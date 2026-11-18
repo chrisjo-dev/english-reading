@@ -22,6 +22,8 @@ jobs:
           python-version: "3.12"
       - name: Unit tests
         run: pip install -q pytest pillow && python -m pytest -q tests
+      - name: Login script and API Worker tests
+        run: node --test tests/auth.test.mjs worker/kakao.test.mjs
       - name: Content checks (all published passages, then the reserve pool)
         run: |
           python tools/check_content.py --all

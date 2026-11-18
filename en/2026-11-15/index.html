@@ -385,6 +385,24 @@
   .dr-dot.next { background: #2a52d4; color: #fff; }
   .dr-dot.next span { color: rgba(255,255,255,.85); }
   .dr-gap { margin-top: 16px; }
+  /* 문제 풀기 잠금과 기록 저장(시안 design/kakao-login K05, K07, K08) */
+  .dr-lk { display: none; font-size: 11px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+  .dr-qts.locked .dr-lk { display: block; }
+  .dr-qts.locked .dr-qt, .dr-qts.locked .dr-qt[aria-pressed=true] { border-color: #e2e6ea; background: #fff; color: var(--sub); }
+  .dr-qts.locked .dr-qt small { color: var(--muted); opacity: 1; }
+  .dr-gate { margin: 4px 0 0; padding: 14px; border-radius: 12px; background: #eff3fd; }
+  .dr-gate b { display: block; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .dr-gate p { font-size: 13px; color: var(--sub); line-height: 1.5; margin: 2px 0 12px; }
+  .dr-kbtn, .dr-gbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dr-kbtn { background: #fee500; color: rgba(0,0,0,.85); }
+  .dr-gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
+  .dr-kbtn svg, .dr-gbtn svg { width: 18px; height: 18px; flex: none; }
+  .dr-later { font: inherit; display: block; width: 100%; border: 0; background: none; cursor: pointer; text-align: center; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 10px; padding: 4px 0; }
+  .dr-ntype.lk { cursor: default; }
+  .dr-ntype.lk .go { color: var(--muted); }
+  .dr-saved { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; border-radius: 12px; background: #e8f7f1; color: #0f9d6b; font-size: 13.5px; font-weight: 700; }
+  .dr-saved.err { background: #f4f6f8; color: var(--sub); }
+  .dr-saved a { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration: none; }
   /* /drill-css */
   .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
   /* gnb-a */
@@ -646,7 +664,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="16">
+  <section class="card dr-card" id="drill" data-v="17">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -655,9 +673,10 @@
       <button class="dr-mode" type="button" data-mode="card" aria-pressed="true"><b>카드로 외우기</b><span>단어를 보고 뜻을 떠올려요</span></button>
       <button class="dr-mode" type="button" data-mode="quiz" aria-pressed="false"><b>문제 풀기</b><span>문제 종류를 골라요</span></button>
     </div>
-    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small></button></div></div>
+    <div class="dr-qts" id="dr-qts" hidden><div class="dr-qts-lb">문제 종류</div><div class="dr-qtypes"><button class="dr-qt" type="button" data-qt="quiz" aria-pressed="true">뜻 고르기<small>4개 중 하나</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="write" aria-pressed="false">단어 쓰기<small>뜻 보고 입력</small><span class="dr-lk">🔒 로그인</span></button><button class="dr-qt" type="button" data-qt="cloze" aria-pressed="false">빈칸 채우기<small>예문 보고 입력</small><span class="dr-lk">🔒 로그인</span></button></div></div>
+    <div class="dr-gate" id="dr-gate" hidden><b>문제 풀기는 로그인하면 열려요</b><p>푼 기록과 복습 날짜가 저장돼서 내일 어느 기기에서든 이어서 풀 수 있어요. 무료예요.</p><a class="dr-kbtn" data-login="kakao" href="/join/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하고 7문제 풀기</a><a class="dr-gbtn" data-login="google" href="/join/"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</a></div>
     <button class="dr-btn" type="button" id="dr-start">7개 외우기 시작</button>
-    <p class="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
+    <p class="dr-foot" id="dr-foot">약 3분 걸려요. 고른 방식과 기록은 이 기기에만 남아요.</p>
   </section>
 <!-- /drill-card -->
 
@@ -1222,7 +1241,8 @@
   });
 </script>
 <script type="application/json" id="drill-data">[{"w": "practicing", "m": "연습하다", "cz": "On Sunday evening, Hana was walking around her small room and <span class=\"dr-blank\"><\/span> a ten-minute presentation for her history class.", "ca": "practicing", "ex": "On Sunday evening, Hana was walking around her small room and <b>practicing<\/b> a ten-minute presentation for her history class.", "sh": "… and <b>practicing<\/b> a ten-minute presentation for her history class.", "ek": "일요일 저녁, 하나는 작은 방 안을 돌아다니며 역사 수업에서 할 10분짜리 발표를 연습하고 있었다.", "sa": "/en/2026-11-15/audio/s1.mp3", "au": "/en/2026-11-15/audio/w1.mp3", "alts": ["발표", "자료, 내용", "잠시 멈추다", "청중, 관객", "자신 있는", "서두르다"]}, {"w": "presentation", "m": "발표", "cz": "On Sunday evening, Hana was walking around her small room and practicing a ten-minute <span class=\"dr-blank\"><\/span> for her history class.", "ca": "presentation", "ex": "On Sunday evening, Hana was walking around her small room and practicing a ten-minute <b>presentation<\/b> for her history class.", "sh": "… a ten-minute <b>presentation<\/b> for her history class.", "ek": "일요일 저녁, 하나는 작은 방 안을 돌아다니며 역사 수업에서 할 10분짜리 발표를 연습하고 있었다.", "sa": "/en/2026-11-15/audio/s1.mp3", "au": "/en/2026-11-15/audio/w2.mp3", "alts": ["연습하다", "자료, 내용", "잠시 멈추다", "청중, 관객", "자신 있는", "서두르다"]}, {"w": "material", "m": "자료, 내용", "cz": "Although Hana knew the <span class=\"dr-blank\"><\/span> well, she read every word from her notes and spoke too fast, so she finished in only six minutes.", "ca": "material", "ex": "Although Hana knew the <b>material<\/b> well, she read every word from her notes and spoke too fast, so she finished in only six minutes.", "sh": "… the <b>material<\/b> well, she read every word …", "ek": "하나는 내용을 잘 알고 있었지만 메모에 적힌 단어를 하나하나 읽었고 너무 빨리 말해서 겨우 6분 만에 끝내 버렸다.", "sa": "/en/2026-11-15/audio/s3.mp3", "au": "/en/2026-11-15/audio/w3.mp3", "alts": ["연습하다", "발표", "잠시 멈추다", "청중, 관객", "자신 있는", "서두르다"]}, {"w": "pause", "m": "잠시 멈추다", "cz": "Sora told her to <span class=\"dr-blank\"><\/span> after each main point and look at a friendly face in the audience instead of the paper, because listeners need time to follow.", "ca": "pause", "ex": "Sora told her to <b>pause<\/b> after each main point and look at a friendly face in the audience instead of the paper, because listeners need time to follow.", "sh": "… to <b>pause<\/b> after each main point …", "ek": "소라는 듣는 사람들이 따라오려면 시간이 필요하니, 중요한 내용이 끝날 때마다 잠시 멈추고 종이 대신 청중 속 다정한 얼굴을 보라고 말했다.", "sa": "/en/2026-11-15/audio/s4.mp3", "au": "/en/2026-11-15/audio/w4.mp3", "alts": ["연습하다", "발표", "자료, 내용", "청중, 관객", "자신 있는", "서두르다"]}, {"w": "audience", "m": "청중, 관객", "cz": "Sora told her to pause after each main point and look at a friendly face in the <span class=\"dr-blank\"><\/span> instead of the paper, because listeners need time to follow.", "ca": "audience", "ex": "Sora told her to pause after each main point and look at a friendly face in the <b>audience<\/b> instead of the paper, because listeners need time to follow.", "sh": "… in the <b>audience<\/b> instead of the paper, …", "ek": "소라는 듣는 사람들이 따라오려면 시간이 필요하니, 중요한 내용이 끝날 때마다 잠시 멈추고 종이 대신 청중 속 다정한 얼굴을 보라고 말했다.", "sa": "/en/2026-11-15/audio/s4.mp3", "au": "/en/2026-11-15/audio/w5.mp3", "alts": ["연습하다", "발표", "자료, 내용", "잠시 멈추다", "자신 있는", "서두르다"]}, {"w": "confident", "m": "자신 있는", "cz": "On the third try, Hana realized that her slower speech sounded much more <span class=\"dr-blank\"><\/span>, and she finished at exactly nine and a half minutes.", "ca": "confident", "ex": "On the third try, Hana realized that her slower speech sounded much more <b>confident<\/b>, and she finished at exactly nine and a half minutes.", "sh": "… sounded much more <b>confident<\/b>, and she finished …", "ek": "세 번째 시도에서 하나는 더 천천히 말하니 훨씬 자신 있게 들린다는 것을 깨달았고, 정확히 9분 30초에 발표를 마쳤다.", "sa": "/en/2026-11-15/audio/s5.mp3", "au": "/en/2026-11-15/audio/w6.mp3", "alts": ["연습하다", "발표", "자료, 내용", "잠시 멈추다", "청중, 관객", "서두르다"]}, {"w": "rushing", "m": "서두르다", "cz": "\"This time tomorrow, I will be standing in front of thirty classmates, but at least I won't be <span class=\"dr-blank\"><\/span> anymore,\" Hana said with a smile.", "ca": "rushing", "ex": "\"This time tomorrow, I will be standing in front of thirty classmates, but at least I won't be <b>rushing<\/b> anymore,\" Hana said with a smile.", "sh": "… I won't be <b>rushing<\/b> anymore,\" Hana said with a smile.", "ek": "\"내일 이맘때면 같은 반 친구 서른 명 앞에 서 있겠지만, 적어도 이제는 서두르지 않을 거야.\" 하나가 웃으며 말했다.", "sa": "/en/2026-11-15/audio/s6.mp3", "au": "/en/2026-11-15/audio/w7.mp3", "alts": ["연습하다", "발표", "자료, 내용", "잠시 멈추다", "청중, 관객", "자신 있는"]}]</script>
-<script id="drill-js" data-v="16" src="/assets/drill.js?v=16" defer></script>
+<script id="auth-js" src="/assets/auth.js?v=1" defer></script>
+<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
