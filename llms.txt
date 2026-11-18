@@ -9,7 +9,7 @@
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 47편
-- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 46편
+- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 47편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 23편
 
 ## 최근 지문
@@ -20,13 +20,13 @@
 - [영어, 2026-11-14, 할머니에게 배운 첫 목도리 뜨개질](https://dokhaehanip.com/en/2026-11-14/)
 - [영어, 2026-11-13, 우주에서 혼자 안테나를 조립한 로봇](https://dokhaehanip.com/en/2026-11-13/): 출처 A robot just built a structure autonomously in space for the 1st time ever (Space.com, 2026-11-10)
 - [영어, 2026-11-12, 물속에서 쪼글쪼글해지는 손가락](https://dokhaehanip.com/en/2026-11-12/): 출처 Why Fingers & Toes Get Pruney in Water (Live Science, 2013-01-09)
+- [일본어, 2026-11-19, 일본의 최저임금 시급](https://dokhaehanip.com/ja/2026-11-19/): 출처 令和８年度最低賃金額答申 (厚生労働省, 2026-09-03)
 - [일본어, 2026-11-18, 주민과 함께 만드는 자전거 산책 지도](https://dokhaehanip.com/ja/2026-11-18/): 출처 「南西部地域自転車さんぽマップ」に関する意見を募集します (埼玉県, 2026-11-17)
 - [일본어, 2026-11-17, 복을 긁어모으는 갈퀴 장터 도리노이치](https://dokhaehanip.com/ja/2026-11-17/): 출처 浅草・鷲神社「酉の市」：福を呼び込む縁起熊手で商売繁盛 (nippon.com, 2018-11-10)
 - [일본어, 2026-11-16, 어선 퍼레이드와 치어 방류](https://dokhaehanip.com/ja/2026-11-16/): 출처 両陛下　キジハタとヒラメ稚魚放流　高等支援学校で生徒に進路の質問 (KAB 熊本朝日放送, 2026-11-16)
 - [일본어, 2026-11-15, 친구와 끓인 올해 첫 전골](https://dokhaehanip.com/ja/2026-11-15/)
 - [일본어, 2026-11-14, 바닷가 마을의 머그컵 만들기](https://dokhaehanip.com/ja/2026-11-14/)
 - [일본어, 2026-11-13, 식물과 동물을 합친 새 세포](https://dokhaehanip.com/ja/2026-11-13/): 출처 動植物ハイブリッド細胞「プラニマル細胞」の作製に成功 (近畿大学, 2026-11-12)
-- [일본어, 2026-11-12, 1년에 5일은 꼭 쉬는 유급휴가](https://dokhaehanip.com/ja/2026-11-12/): 출처 10月は「年次有給休暇取得促進期間」です (厚生労働省)
 - [독일어, 2026-11-19, 퇴사할 때 받는 독일의 근무 증명서](https://dokhaehanip.com/de/2026-11-19/): 출처 § 109 Zeugnis, Gewerbeordnung (gesetze-im-internet.de)
 - [독일어, 2026-11-18, 한 달 동안 책을 못 빌리는 하노버 도서관](https://dokhaehanip.com/de/2026-11-18/): 출처 Neues Bibliothekssystem für die Stadtbibliothek Hannover ab Dezember 2026 (hannover.de)
 - [독일어, 2026-11-17, 이름을 지키는 드레스덴 슈톨렌](https://dokhaehanip.com/de/2026-11-17/): 출처 Dresdner Christstollen PGI (European Commission)
