@@ -113,6 +113,51 @@ class HeaderMeTest(unittest.TestCase):
         self.assertIn('id="gnb-me"', (ROOT / "index.html").read_text(encoding="utf-8"))
         self.assertIn("function MeButton", (ROOT / "landing/src/components/Nav.tsx").read_text(encoding="utf-8"))
 
+    def test_landing_me_markup_matches_gnb(self):
+        # 첫 화면(Nav.tsx 빌드 결과)과 지문 페이지(gnb.ME_HTML)의 버튼이 같은 마크업이어야 같은 CSS 로 같게 보인다.
+        # 주소와 읽기 이름표는 페이지마다 달라 뺀다. 저장값을 읽는 규칙이 같은지는 tests/contract.test.mjs 가 본다.
+        import gnb
+        from html.parser import HTMLParser
+
+        def skeleton(h):
+            out = []
+
+            class P(HTMLParser):
+                def handle_starttag(self, tag, attrs):
+                    out.append(("<", tag, tuple(sorted((k, v or "") for k, v in attrs if k not in ("href", "aria-label")))))
+
+                def handle_startendtag(self, tag, attrs):
+                    self.handle_starttag(tag, attrs)
+                    out.append((">", tag))
+
+                def handle_endtag(self, tag):
+                    out.append((">", tag))
+
+                def handle_data(self, d):
+                    if d.strip():
+                        out.append(("t", d.strip()))
+
+            P().feed(h)
+            return out
+
+        s = (ROOT / "index.html").read_text(encoding="utf-8")
+        i = s.index('id="gnb-me"')
+        landing = s[s.rindex("<a", 0, i):s.index("</a>", i) + 4]
+        self.assertEqual(skeleton(landing), skeleton(gnb.ME_HTML))
+
+    def test_date_pages_keep_patch_anchors(self):
+        # drill, vote, publish 는 지난 지문 페이지에 CSS 와 카드를 '  .gnb {', </header>, </main> 앞뒤로 끼워 넣는다.
+        # drill.apply 는 이 줄이 없으면 조용히 건너뛰므로(아카이브 같은 다른 페이지 때문), 날짜 페이지에서 사라지면 여기서 알린다.
+        pages = [p for p in ROOT.glob("*/*/index.html") if re.fullmatch(r"[a-z]{2}/\d{4}-\d{2}-\d{2}", p.parent.relative_to(ROOT).as_posix())]
+        self.assertGreater(len(pages), 100)
+        for p in pages:
+            s = p.read_text(encoding="utf-8")
+            name = p.relative_to(ROOT).as_posix()
+            self.assertEqual(s.count("  .gnb {"), 1, name)
+            self.assertIn("</header>\n", s, name)
+            self.assertIn("</main>", s, name)
+            self.assertIn('id="drill-js"', s, name)
+
     def test_mypage_name(self):
         self.assertIn("<title>마이페이지 |", (ROOT / "me/index.html").read_text(encoding="utf-8"))
 

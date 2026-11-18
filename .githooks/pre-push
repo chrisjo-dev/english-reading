@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# push 전에 단위 테스트를 돌린다. 실패하면 push 하지 않는다(main push 는 바로 배포되고 다음 날 아침 발행이 이 코드를 쓴다).
+# 켜기(저장소마다 한 번): git config core.hooksPath .githooks
+# 급할 때 건너뛰기: git push --no-verify
+set -uo pipefail
+root=$(git rev-parse --show-toplevel)
+[ -f "$root/tools/test.sh" ] || exit 0
+if ! git -C "$root" diff --quiet HEAD --; then
+  echo "pre-push: 커밋하지 않은 변경이 있어요. 테스트는 그 변경까지 넣은 작업 폴더로 돕니다." >&2
+fi
+log=$(mktemp -t dkh-pre-push)
+echo "pre-push: 단위 테스트(tools/test.sh)를 돌립니다..." >&2
+if ! bash "$root/tools/test.sh" >"$log" 2>&1; then
+  tail -30 "$log" >&2
+  echo "pre-push: 테스트가 실패해 push 를 멈췄어요. 전체 기록: $log" >&2
+  exit 1
+fi
+grep -E " passed|^ℹ (pass|fail) " "$log" >&2
+rm -f "$log"

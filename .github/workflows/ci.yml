@@ -1,11 +1,12 @@
-# 도구, 테스트, 지문을 고친 push 마다 단위 테스트와 지문 검사를 돌린다.
+# 도구, 테스트, 지문, 브라우저 스크립트, 첫 화면, API Worker 를 고친 push 마다 단위 테스트와 지문 검사를 돌린다.
 # 실패하면 빨간불로 알려 줄 뿐 발행을 막지는 않는다. 발행 직전 막는 일은 publish 의 Guard 단계가 한다.
+# 같은 단위 테스트(tools/test.sh)를 push 전에도 돌린다(.githooks/pre-push).
 name: ci
 
 on:
   push:
     branches: [main]
-    paths: ["tools/**", "tests/**", "content/**", "pool/**", ".github/workflows/**"]
+    paths: ["tools/**", "tests/**", "content/**", "pool/**", "assets/**", "landing/src/**", "worker/**", ".githooks/**", ".github/workflows/**"]
   workflow_dispatch:
 
 permissions:
@@ -20,10 +21,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Unit tests
-        run: pip install -q pytest pillow && python -m pytest -q tests
-      - name: Login script and API Worker tests
-        run: node --test tests/auth.test.mjs worker/kakao.test.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"   # tests/contract.test.mjs 가 landing/src/lib/me.ts 를 타입만 지워 바로 읽는다
+      - name: Unit tests (Python, browser scripts, API Worker)
+        run: pip install -q pytest pillow && bash tools/test.sh
       - name: Content checks (all published passages, then the reserve pool)
         run: |
           python tools/check_content.py --all
