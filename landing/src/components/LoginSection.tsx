@@ -56,7 +56,7 @@ export default function LoginSection() {
               <GoogleIcon />
               Google로 시작하기
             </a>
-            <p className="words-note">무료예요. 이름(닉네임)만 받아요.</p>
+            <p className="words-note">무료예요. 로그인에 필요한 정보만 받아요.</p>
           </div>
         </div>
       </div>
