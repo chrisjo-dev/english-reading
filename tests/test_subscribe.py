@@ -87,13 +87,13 @@ class SubHtmlEnTest(unittest.TestCase):
         self.assertNotIn("checked", a_match.group(), "기초(a)가 기본 선택이면 안 됩니다")
 
     def test_radio_name_is_metadata__level(self):
-        # 모든 라디오의 name이 metadata__level 이어야 한다
+        # 모든 라디오의 name 이 level 이어야 한다(가입 화면 /join/ 으로 GET 으로 넘긴다)
         for m in re.finditer(r'<input[^>]+type=["\']radio["\'][^>]*>', self.html):
-            self.assertIn('name="metadata__level"', m.group(),
+            self.assertIn('name="level"', m.group(),
                           f"라디오 name 이 metadata__level 이어야 합니다: {m.group()}")
 
     def test_has_version_marker(self):
-        self.assertIn('data-v="3"', self.html, "버전 마커 data-v=3 이 있어야 합니다")
+        self.assertIn('data-v="4"', self.html, "버전 마커 data-v=4 이 있어야 합니다")
 
     def test_no_level_note(self):
         self.assertNotIn("기초 지문은 준비 중이에요", self.html)
@@ -114,13 +114,13 @@ class SubHtmlJaTest(unittest.TestCase):
         self.assertEqual(len(radios), 2, "일본어 구독 카드에 라디오가 2개여야 합니다")
 
     def test_metadata__level_inputs(self):
-        values = re.findall(r'<input[^>]+name="metadata__level" value="(\w)"', self.html)
+        values = re.findall(r'<input[^>]+name="level" value="(\w)"', self.html)
         self.assertEqual(values, ["a", "b"])
 
     def test_b_is_checked_by_default(self):
         b_match = re.search(r'<input[^>]+value="b"[^>]*>', self.html)
         self.assertIn("checked", b_match.group(), "중급(b)이 기본 선택이어야 합니다")
-        a_match = re.search(r'<input[^>]+name="metadata__level" value="a"[^>]*>', self.html)
+        a_match = re.search(r'<input[^>]+name="level" value="a"[^>]*>', self.html)
         self.assertNotIn("checked", a_match.group())
 
     def test_ja_ranges_and_desc(self):
@@ -172,7 +172,7 @@ class PatchPageTest(unittest.TestCase):
         # 카드가 없는 새 페이지에 카드가 삽입된다
         result = self._patch(MINIMAL_PAGE)
         self.assertIn('class="card sub"', result)
-        self.assertIn('data-v="3"', result)
+        self.assertIn('data-v="4"', result)
 
     def test_fresh_page_has_radios_for_en(self):
         result = self._patch(MINIMAL_PAGE)
@@ -182,7 +182,7 @@ class PatchPageTest(unittest.TestCase):
     def test_old_card_replaced(self):
         # 이전 버전 카드(data-v 없음)가 새 카드로 교체된다
         result = self._patch(PAGE_WITH_OLD_CARD)
-        self.assertIn('data-v="3"', result, "이전 카드가 새 버전으로 교체되어야 합니다")
+        self.assertIn('data-v="4"', result, "이전 카드가 새 버전으로 교체되어야 합니다")
         # 이전 카드가 남아 있으면 안 된다 (section 이 두 개면 안 된다)
         count = result.count('class="card sub"')
         self.assertEqual(count, 1, f"카드가 하나만 있어야 하는데 {count}개입니다")
@@ -232,7 +232,7 @@ class SubHtmlDeTest(unittest.TestCase):
         self.assertIn('value="de"', self.html, "독일어 lang 값이 있어야 합니다")
 
     def test_has_version_marker(self):
-        self.assertIn('data-v="3"', self.html, "버전 마커 data-v=3 이 있어야 합니다")
+        self.assertIn('data-v="4"', self.html, "버전 마커 data-v=4 이 있어야 합니다")
 
     def test_de_level_desc_a(self):
         self.assertIn("독일어 읽기를 막 시작했다면", self.html,
@@ -293,9 +293,25 @@ class PatchPageDeTest(unittest.TestCase):
 
     def test_de_subscribe_metadata_lang(self):
         result = self._patch(MINIMAL_PAGE_DE)
-        self.assertIn('name="metadata__lang"', result)
+        self.assertIn('name="lang"', result)
         self.assertIn('value="de"', result)
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class JoinCardTest(unittest.TestCase):
+    """메일은 가입한 사람만(2026-11-18, 시안 kakao-login K22): 카드는 Buttondown 이 아니라 가입 화면으로 보낸다."""
+
+    def test_card_goes_to_join(self):
+        for lang in ("en", "ja", "de"):
+            h = publish.sub_html(lang)
+            self.assertIn('<form action="/join/" method="get">', h)
+            self.assertIn('name="mail" value="1"', h)
+            self.assertIn(f'name="lang" value="{lang}"', h)
+            self.assertIn("선착순 100명 무료", h)
+            self.assertIn("가입하고 아침 메일 받기", h)
+            self.assertNotIn("buttondown", h.lower())
+            self.assertNotIn('type="email"', h)
+            self.assertNotIn("·", h)

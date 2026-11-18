@@ -104,6 +104,18 @@
   .card .btn { margin-top: 16px; background: var(--blue); width: 100%; border: 0; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
   .card .btn.line { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; margin-top: 12px; }
   .optbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .pick { margin: 12px 0 0; }
+  .pick .h { font-size: 13px; font-weight: 700; margin: 0 0 8px; }
+  .seg { display: flex; gap: 6px; margin: 0 0 8px; }
+  .seg button { flex: 1; font: inherit; font-size: 14px; font-weight: 600; color: var(--sub); background: #fff; border: 1.5px solid #e2e6ea; border-radius: 10px; padding: 9px 4px; cursor: pointer; }
+  .seg button small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); }
+  .seg button[aria-pressed="true"] { color: var(--blue); border-color: var(--blue); background: var(--blue-soft); }
+  .pick .t, .mbox .t { font-size: 12.5px; color: var(--sub); margin: 4px 0 0; }
+  .mbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .mbox .h { font-size: 13px; font-weight: 700; margin: 0 0 6px; }
+  .mbox .v { font-size: 14px; margin: 0; }
+  .seat { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; background: var(--coral-soft); color: var(--coral); font-size: 12px; font-weight: 700; vertical-align: 1px; }
+  .waitbox { margin: 0 0 16px; padding: 12px 14px; border-radius: 12px; background: #fff3c4; font-size: 14px; line-height: 1.6; }
   .chk em.op { color: var(--sub); }
   .flabel { display: block; font-size: 13px; font-weight: 700; color: var(--sub); margin-top: 8px; }
   .field { display: block; box-sizing: border-box; width: 100%; height: 52px; margin-top: 6px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 16px; color: var(--ink); }
@@ -224,7 +236,8 @@
 </div>
 <!-- /gnb -->
 <main>
-<section class="card"><div class="step">거의 다 됐어요</div><h1>메일 받을 주소를 알려 주세요</h1><p>카카오 로그인에서는 이메일을 받지 않아서 직접 적어 주셔야 해요. 매일 아침 7시 전후로 지문 한 편을 보내 드려요.</p><form id="mailForm" novalidate><label class="flabel" for="mail">이메일</label><input class="field" id="mail" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required><button class="btn" type="submit" id="mailSave">이 주소로 받기</button></form><a class="later" id="skip" href="/">다음에 할게요</a><p class="msg" id="msg" role="status" hidden></p><p class="note">입력한 주소로 확인 메일을 한 번 보내요. 링크를 눌러야 발송이 시작돼요. 마이페이지에서 바꾸거나 끌 수 있어요.</p></section>
+<section class="card"><div class="step">거의 다 됐어요</div><h1>메일 받을 주소를 알려 주세요</h1><p>카카오 로그인에서는 이메일을 받지 않아서 직접 적어 주셔야 해요. 매일 아침 7시 전후로 지문 한 편을 보내 드려요.</p><form id="mailForm" novalidate><label class="flabel" for="mail">이메일</label><input class="field" id="mail" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required><button class="btn" type="submit" id="mailSave">이 주소로 받기</button></form><a class="later" id="skip" href="/">다음에 할게요</a><p class="msg" id="msg" role="status" hidden></p><p class="note">입력한 주소로 영문 확인 메일(Confirm your subscription)을 한 번 보내요. 메일 속 버튼을 눌러야 발송이 시작돼요. 안 보이면 스팸함도 확인해 주세요. 마이페이지에서 바꾸거나 끌 수 있어요.</p></section>
+<section class="card" id="sentBox" hidden><div class="step">마지막 단계</div><h1 id="sTitle">받은편지함을 확인해 주세요</h1><div class="waitbox" id="sWait" hidden>선착순 무료 구독 100명이 다 찼어요. 대기 명단에 올려 드렸고, 자리가 나면 가입한 순서대로 확인 메일을 보내 드려요.</div><p id="sLead"><b id="sAddr"></b> 으로 영문 확인 메일(Confirm your subscription)을 보내 드려요. 보통 한 시간 안에 가요. 메일 속 버튼을 누르면 다음 날 아침부터 지문이 와요.</p><div class="mbox"><div class="h">메일이 안 보이면</div><p class="t">스팸함이나 프로모션함을 확인해 주세요. 주소가 틀렸다면 마이페이지에서 고칠 수 있어요.</p></div><a class="btn" id="sGo" href="/">오늘 지문 읽기</a><a class="later" href="/me/#mailcard">주소 고치기</a></section>
 </main>
 <footer class="site-footer"><a href="/about/">소개</a><a href="/privacy/">개인정보처리방침</a><a href="/contact/">연락처</a></footer>
 <script id="gnb-js">(function(){
@@ -294,5 +307,5 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=3" defer></script>
-<script src="/assets/join-email.js?v=4" defer></script>
+<script src="/assets/join-email.js?v=5" defer></script>
 </body></html>

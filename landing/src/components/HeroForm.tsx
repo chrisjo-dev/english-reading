@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { fireGtag } from "@/lib/gtag";
-import { CONFIRM_NOTE, SUBSCRIBE } from "./forms";
+import { FULL_NOTE, SEATS_NOTE, useJoinHref, useMailFull } from "./forms";
 
 const HELP = {
   en: "영어 지문 / CEFR B1~B2, 최근 소식과 생활 글을 번갈아 읽어요",
@@ -31,27 +31,22 @@ const LEVELS_BY_LANG: Record<string, { value: Level; title: string; range: strin
   ],
 };
 
-// 첫 화면 구독 폼. 언어 전환은 숨은 metadata__lang 값과 안내 문구만 바꾼다.
+// 첫 화면 메일 받기(시안 K20). 언어와 수준을 고르면 가입 화면(/join/?mail=1)으로 그대로 넘긴다.
 // en, de, ja 선택 시 수준 선택 카드(기초/중급)가 표시된다. 기본 선택은 세 언어 모두 중급.
-// 스크립트가 없으면 전환 버튼은 숨겨지고 영어로 구독된다(다른 언어는 아래 구독 섹션에서 고를 수 있다).
+// 스크립트가 없으면 전환 버튼은 숨겨지고 영어 중급으로 가입 화면에 간다.
 export default function HeroForm({ stats }: { stats: string }) {
   const [lang, setLang] = useState<Lang>("en");
   const [level, setLevel] = useState<Level>("b");
   const hasLevels = LEVELS_LANGS.includes(lang);
   const levels = LEVELS_BY_LANG[lang] ?? [];
+  const href = useJoinHref(lang, level);
+  const full = useMailFull();
   return (
-    <form
-      className="c3-form"
-      action={SUBSCRIBE}
-      method="post"
-      target="_blank"
-      rel="noopener noreferrer"
-      onSubmit={() => fireGtag("subscribe_submit", { lang, level: hasLevels ? level : undefined, placement: "hero" })}
-    >
+    <div className="c3-form">
       <div className="c3-form-top">
-        <label className="mono" htmlFor="hero-email">
-          무료 구독 / 매일 07:00 전후
-        </label>
+        <span className="mono">
+          매일 아침 메일 / 07:00 전후
+        </span>
         <div className="sw" role="group" aria-label="받을 언어">
           {(["en", "ja", "de"] as const).map((l) => (
             <button
@@ -68,7 +63,6 @@ export default function HeroForm({ stats }: { stats: string }) {
           ))}
         </div>
       </div>
-      <input type="hidden" name="metadata__lang" value={lang} />
       {hasLevels && (
         <fieldset className="lv-opts">
           <legend>수준을 골라 주세요</legend>
@@ -76,7 +70,7 @@ export default function HeroForm({ stats }: { stats: string }) {
             <label key={lv.value} className="lv-opt">
               <input
                 type="radio"
-                name="metadata__level"
+                name="hero-level"
                 value={lv.value}
                 checked={level === lv.value}
                 onChange={() => setLevel(lv.value)}
@@ -91,15 +85,15 @@ export default function HeroForm({ stats }: { stats: string }) {
           ))}
         </fieldset>
       )}
-      <div className="row">
-        <input id="hero-email" type="email" name="email" required placeholder="이메일 주소" autoComplete="email" />
-        <button type="submit">무료로 시작하기</button>
-      </div>
+      <span className="seat-pill">선착순 100명 무료</span>
+      <a className="join-cta" href={href} onClick={() => fireGtag("subscribe_submit", { lang, level, placement: "hero" })}>
+        가입하고 아침 메일 받기
+      </a>
+      <p className="join-note">{full ? FULL_NOTE : SEATS_NOTE}</p>
       <p className="mono c3-help" aria-live="polite">
         {HELP[lang]}
       </p>
       <p className="mono c3-stats">{stats}</p>
-      <p className="confirm-note">{CONFIRM_NOTE}</p>
-    </form>
+    </div>
   );
 }

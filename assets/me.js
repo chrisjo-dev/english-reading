@@ -44,7 +44,7 @@
     if (!s) { show("signedOut"); return; }
     uid = s.user.id;
     var prov = s.user.app_metadata && s.user.app_metadata.provider;
-    c.from("profiles").select("nickname, email, mail_opt_in, mail_verified").eq("user_id", uid).maybeSingle().then(function (p) {
+    c.from("profiles").select("nickname, email, mail_opt_in, mail_verified, mail_lang, mail_level, mail_wait").eq("user_id", uid).maybeSingle().then(function (p) {
       var row = p.data || {};
       head(row.nickname, prov);
       try { localStorage.setItem("dkh-me", JSON.stringify({ n: row.nickname || "" })); } catch (e) {}
@@ -83,18 +83,23 @@
     else if (latest && latest.langs && latest.langs.en) { go.href = "/en/" + latest.langs.en.latest + "/#drill"; go.textContent = "오늘 지문 단어 외우러 가기"; go.hidden = false; }
   }
 
-  // 아침 지문 메일(시안 K18): 주소, 켜고 끄기, 확인 대기 표시, 주소 바꾸기
+  // 아침 지문 메일(시안 K18, K26): 주소, 켜고 끄기, 확인 대기와 대기 명단 표시, 받을 언어와 수준, 주소 바꾸기
   var RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
   function mailSay(t, err) { var m = $("mailMsg"); m.textContent = t; m.classList.toggle("err", !!err); m.hidden = !t; }
   function mailPaint(p) {
     mail = p;
     $("mailAddr").textContent = p.email || "받을 주소가 없어요";
     $("mailTg").setAttribute("aria-checked", String(!!p.mail_opt_in));
-    $("mailPend").hidden = !(p.mail_opt_in && p.email && !p.mail_verified);
+    $("mailWait").hidden = !(p.mail_opt_in && p.mail_wait);
+    $("mailPend").hidden = !(p.mail_opt_in && p.email && !p.mail_verified && !p.mail_wait);
+    var L = RANGE[p.mail_lang] ? p.mail_lang : "en";
+    [].forEach.call($("pickLang").children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === L)); });
+    [].forEach.call($("pickLevel").children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === (p.mail_level === "a" ? "a" : "b"))); });
+    $("rangeA").textContent = RANGE[L][0]; $("rangeB").textContent = RANGE[L][1];
     $("mailEdit").textContent = p.email ? "주소 바꾸기" : "주소 적기";
   }
   function save(patch) {
-    return c.from("profiles").update(patch).eq("user_id", uid).select("nickname, email, mail_opt_in, mail_verified").maybeSingle()
+    return c.from("profiles").update(patch).eq("user_id", uid).select("nickname, email, mail_opt_in, mail_verified, mail_lang, mail_level, mail_wait").maybeSingle()
       .then(function (r) { if (r.error) throw r.error; mailPaint(r.data || mail); });
   }
   $("mailTg").addEventListener("click", function () {
@@ -106,6 +111,18 @@
       function () { mailSay("바꾸지 못했어요. 잠시 뒤에 다시 해 주세요.", true); })
       .then(function () { $("mailTg").disabled = false; });
   });
+  var RANGE = { en: ["A2~B1", "B1~B2"], ja: ["N4~N5", "N3"], de: ["A2~B1", "B1~B2"] };
+  function pick(field) {
+    return function (e) {
+      var b = e.target.closest("button");
+      if (!b || !uid || b.getAttribute("aria-pressed") === "true") return;
+      var patch = {}; patch[field] = b.dataset.v;
+      save(patch).then(function () { mailSay("받을 메일을 바꿨어요. 다음 날 아침 메일부터 적용돼요."); },
+        function () { mailSay("바꾸지 못했어요. 잠시 뒤에 다시 해 주세요.", true); });
+    };
+  }
+  $("pickLang").addEventListener("click", pick("mail_lang"));
+  $("pickLevel").addEventListener("click", pick("mail_level"));
   $("mailEdit").addEventListener("click", function () { $("mailForm").hidden = false; $("mail").value = mail.email || ""; $("mail").focus(); });
   $("mailForm").addEventListener("submit", function (e) {
     e.preventDefault();

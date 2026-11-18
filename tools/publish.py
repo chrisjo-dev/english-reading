@@ -94,38 +94,41 @@ def intro_html(lang):
 
 
 def _sub_script(lang):
-    """구독 칸 인라인 스크립트.
-    - GA subscribe 이벤트: levels=True 언어(en, de)는 level 파라미터 포함, 그 외는 생략.
-    - :has() 미지원 브라우저 fallback: 라디오 change 시 data-checked 속성으로 CSS 선택 상태를 제어한다.
+    """메일 받기 칸 스크립트(시안 design/kakao-login K22).
+    - 돌아올 곳(next)을 이 페이지로 채운다. 로그인했으면 가입 화면 대신 마이페이지 메일 칸으로 보낸다.
+    - 선착순 자리(public.mail_seats)가 찼으면 안내 문구를 대기 명단으로 바꾼다. 못 읽으면 그대로 둔다.
+    - GA subscribe 이벤트, :has() 미지원 브라우저의 선택 표시(data-checked)
     """
-    if langs.LANGS[lang].get("levels", False):
-        ga_event = (
-            f'gtag("event","subscribe",{{lang:"{lang}",level:cl?cl.value:"b"}})'
-        )
-    else:
-        ga_event = f'gtag("event","subscribe",{{lang:"{lang}"}})'
     return (
         f'    <script>(function(){{\n'
-        f'      var sec=document.getElementById("subscribe");\n'
-        f'      if(!sec)return;\n'
-        f'      var f=sec.querySelector("form");\n'
-        f'      // GA subscribe event (영어는 level 포함, 다른 언어는 생략)\n'
-        f'      if(f)f.addEventListener("submit",function(){{\n'
-        f'        var cl=f.querySelector(\'input[name="metadata__level"]:checked\');\n'
-        f'        try{{if(typeof gtag==="function"){ga_event};}}catch(e){{}}\n'
+        f'      var sec=document.getElementById("subscribe");if(!sec)return;\n'
+        f'      var f=sec.querySelector("form");if(!f)return;\n'
+        f'      f.elements.next.value=location.pathname;\n'
+        f'      f.addEventListener("submit",function(e){{\n'
+        f'        var cl=f.querySelector(\'input[name="level"]:checked\');\n'
+        f'        try{{if(typeof gtag==="function")gtag("event","subscribe",{{lang:"{lang}",level:cl?cl.value:"b"}});}}catch(x){{}}\n'
+        f'        try{{if(localStorage.getItem("dkh-auth")){{e.preventDefault();location.href="/me/#mailcard";}}}}catch(x){{}}\n'
         f'      }});\n'
-        f'      // :has() 미지원 브라우저 fallback — data-checked 속성으로 CSS 를 보조한다\n'
+        f'      fetch("{SEATS_URL}",{{headers:{{apikey:"{SEATS_KEY}"}}}}).then(function(r){{return r.ok?r.json():[];}}).then(function(a){{\n'
+        f'        if(a[0]&&a[0].taken>=a[0].cap)sec.querySelector(".join-note").textContent="{FULL_NOTE}";\n'
+        f'      }}).catch(function(){{}});\n'
         f'      var opts=sec.querySelectorAll(".lvopt");\n'
-        f'      if(opts.length){{var update=function(){{\n'
-        f'        opts.forEach(function(o){{\n'
-        f'          var r=o.querySelector("input[type=\\"radio\\"]");\n'
-        f'          if(r&&r.checked){{o.setAttribute("data-checked","");}}else{{o.removeAttribute("data-checked");}}\n'
-        f'        }});\n'
-        f'      }};update();\n'
-        f'      opts.forEach(function(o){{var r=o.querySelector("input[type=\\"radio\\"]");if(r)r.addEventListener("change",update);}});\n'
-        f'      }}\n'
+        f'      var update=function(){{opts.forEach(function(o){{var r=o.querySelector("input");if(r&&r.checked)o.setAttribute("data-checked","");else o.removeAttribute("data-checked");}});}};\n'
+        f'      update();opts.forEach(function(o){{var r=o.querySelector("input");if(r)r.addEventListener("change",update);}});\n'
         f'    }})();</script>\n'
     )
+
+
+# 선착순 무료 자리(동기화 tools/sync_members.py 가 매시 갱신). 공개 읽기 전용 표, 공개 키.
+SEATS_URL = "https://kfprgssvigujxphfmlth.supabase.co/rest/v1/mail_seats?select=taken,cap&id=eq.1"
+SEATS_KEY = "sb_publishable_cyzW-kfuGUNsm1mDeyKm1Q_dmlOxt9U"
+SEATS_NOTE = "카카오나 Google 계정으로 가입해요. 무료예요."
+FULL_NOTE = "선착순 100명이 다 찼어요. 지금 가입하면 대기 명단에 올려 드려요."
+# 카드 안에 넣는 추가 스타일(지난 페이지는 카드만 바꾸므로 머리 CSS 를 건드리지 않게 카드에 둔다)
+SUB_V4_CSS = ("<style>.sub .seat-pill{display:block;width:max-content;margin:6px auto 2px;padding:5px 12px;border-radius:999px;"
+              "background:#ffeeee;color:#f04452;font-size:13px;font-weight:700}"
+              ".sub form button[type='submit']{flex:1 1 100%;height:54px;font-size:16px}"
+              ".sub .join-note{flex-basis:100%;margin:2px 0 0;text-align:center;font-size:13px;color:var(--sub)}</style>")
 
 
 # 수준 선택 카드의 언어별 문구: (기초 범위, 기초 설명, 중급 범위, 중급 설명)
@@ -140,10 +143,10 @@ LEVEL_CHOICES = {
 
 
 def sub_html(lang):
-    """구독 칸. 숨은 입력값 metadata__lang 으로 구독자의 언어를 Buttondown 에 저장해 언어별로 보낸다.
-    levels=True 언어(en, de, ja)에는 수준 선택 라디오 카드(metadata__level: a=기초, b=중급)를 표시한다. 기본 선택은 중급.
-    문구는 LEVEL_CHOICES. levels=False 언어는 수준 선택 없이 기존 형태를 유지한다.
-    버전 마커: data-v="3" — patch_page 가 이 값으로 이전 카드를 교체한다.
+    """메일 받기 칸(시안 design/kakao-login K22). 메일은 가입한 사람만 받는다(2026-11-18).
+    폼은 가입 화면(/join/)으로 GET 으로 넘긴다: mail=1, lang, level(a=기초, b=중급, 기본 중급), next(스크립트가 채움).
+    스크립트가 없어도 가입 화면으로 간다. levels=False 언어는 수준 고르기 없이 같은 버튼만.
+    버전 마커: data-v="4" — patch_page 가 이 값으로 이전 카드를 교체한다.
     """
     L = langs.get(lang)
     level_html = ""
@@ -153,13 +156,13 @@ def sub_html(lang):
             '      <fieldset class="levels">\n'
             '        <legend>수준을 골라 주세요</legend>\n'
             '        <label class="lvopt">\n'
-            '          <input type="radio" name="metadata__level" value="a">\n'
+            '          <input type="radio" name="level" value="a">\n'
             '          <span class="lv-t">기초 <span class="lv-chk">&#10003;</span></span>\n'
             f'          <span class="lv-r">{range_a}</span>\n'
             f'          <span class="lv-d">{desc_a}</span>\n'
             '        </label>\n'
             '        <label class="lvopt">\n'
-            '          <input type="radio" name="metadata__level" value="b" checked>\n'
+            '          <input type="radio" name="level" value="b" checked>\n'
             '          <span class="lv-t">중급 <span class="lv-chk">&#10003;</span></span>\n'
             f'          <span class="lv-r">{range_b}</span>\n'
             f'          <span class="lv-d">{desc_b}</span>\n'
@@ -167,18 +170,18 @@ def sub_html(lang):
             '      </fieldset>\n'
         )
     return (
-        '  <section class="card sub" id="subscribe" data-v="3">\n'
+        '  <section class="card sub" id="subscribe" data-v="4">' + SUB_V4_CSS + "\n"
         f"    <h2>매일 아침 {L['name']} 지문 받기</h2>\n"
-        f"    <p>새 {L['name']} 지문이 올라오면 아침에 메일로 보내 드려요.</p>\n"
-        f'    <form action="{SUBSCRIBE}" method="post" target="_blank">\n'
-        f'      <input type="hidden" name="metadata__lang" value="{lang}">\n'
+        f"    <p>가입하면 새 {L['name']} 지문을 아침에 메일로 보내 드려요.</p>\n"
+        '    <form action="/join/" method="get">\n'
+        f'      <input type="hidden" name="mail" value="1"><input type="hidden" name="lang" value="{lang}">'
+        '<input type="hidden" name="next" value="/"><input type="hidden" name="from" value="page">\n'
         + level_html +
-        '      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">\n'
-        '      <button type="submit">구독하기</button>\n'
+        '      <span class="seat-pill">선착순 100명 무료</span>\n'
+        '      <button type="submit">가입하고 아침 메일 받기</button>\n'
+        f'      <p class="join-note">{SEATS_NOTE}</p>\n'
         "    </form>\n"
-        "    <p class=\"note\">이미 구독 중이어도 같은 이메일로 다시 구독하면 수준과 언어가 바로 바뀌어요. 이메일 주소 하나로는 한 언어만 받을 수 있어요.</p>\n"
-        "    <p class=\"note\">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>\n"
-        '    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>\n'
+        '    <p class="note">이미 가입했다면 마이페이지에서 아침 메일을 켜고 끌 수 있어요.</p>\n'
         + _sub_script(lang) +
         "  </section>\n"
     )
@@ -550,7 +553,7 @@ def patch_page(lang, day):
             page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
             page = page.replace("</main>", sub_html(lang) + "</main>", 1)
             page = page.replace(TOP_END, "\n" + intro_html(lang) + TOP_END[1:], 1)
-    elif 'data-v="3"' not in page or (L_pub.get("levels") and not re.search(r'<input[^>]+name="metadata__level"', page)):
+    elif 'id="subscribe" data-v="4"' not in page:  # data-v 는 다른 요소(주제 카드 등)에도 있어 카드 표시로 본다
         # 수준 선택이 새로 생긴 언어(ja, 2026-10-29)의 지난 페이지 카드도 같은 방식으로 바꾼다.
         # 이전 버전 카드가 있는 경우: 카드 HTML만 교체하고 수준 선택 CSS를 추가한다
         page = re.sub(
@@ -1041,7 +1044,7 @@ def rebuild_info_pages():
 
 # 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
 # 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
-ACCOUNT_V = "4"
+ACCOUNT_V = "5"
 ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
   .card h1 { font-size: 22px; margin: 2px 0 16px; }
@@ -1091,6 +1094,18 @@ ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d
   .card .btn { margin-top: 16px; background: var(--blue); width: 100%; border: 0; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
   .card .btn.line { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; margin-top: 12px; }
   .optbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .pick { margin: 12px 0 0; }
+  .pick .h { font-size: 13px; font-weight: 700; margin: 0 0 8px; }
+  .seg { display: flex; gap: 6px; margin: 0 0 8px; }
+  .seg button { flex: 1; font: inherit; font-size: 14px; font-weight: 600; color: var(--sub); background: #fff; border: 1.5px solid #e2e6ea; border-radius: 10px; padding: 9px 4px; cursor: pointer; }
+  .seg button small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); }
+  .seg button[aria-pressed="true"] { color: var(--blue); border-color: var(--blue); background: var(--blue-soft); }
+  .pick .t, .mbox .t { font-size: 12.5px; color: var(--sub); margin: 4px 0 0; }
+  .mbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .mbox .h { font-size: 13px; font-weight: 700; margin: 0 0 6px; }
+  .mbox .v { font-size: 14px; margin: 0; }
+  .seat { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; background: var(--coral-soft); color: var(--coral); font-size: 12px; font-weight: 700; vertical-align: 1px; }
+  .waitbox { margin: 0 0 16px; padding: 12px 14px; border-radius: 12px; background: #fff3c4; font-size: 14px; line-height: 1.6; }
   .chk em.op { color: var(--sub); }
   .flabel { display: block; font-size: 13px; font-weight: 700; color: var(--sub); margin-top: 8px; }
   .field { display: block; box-sizing: border-box; width: 100%; height: 52px; margin-top: 6px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 16px; color: var(--ink); }
@@ -1129,20 +1144,22 @@ FONT_TAG = ('<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossori
 def account_pages():
     """(폴더, 제목, 본문, 스크립트, 통계 여부). 문구는 승인 시안(design/kakao-login) 그대로."""
     perk = '<div class="perk"><i>{}</i><div><b>{}</b><span>{}</span></div></div>'
+    PICK = ('<div class="pick" id="mailPick" hidden><div class="h">받을 메일</div><div class="seg" id="pickLang"><button type="button" data-v="en">영어</button><button type="button" data-v="ja">일본어</button><button type="button" data-v="de">독일어</button></div><div class="seg" id="pickLevel"><button type="button" data-v="a">기초<small id="rangeA">A2~B1</small></button><button type="button" data-v="b">중급<small id="rangeB">B1~B2</small></button></div><p class="t" id="pickNote">매일 07:00 전후에 한 통 와요. 가입한 뒤 마이페이지에서 바꿀 수 있어요.</p></div>')  # 받을 메일 고르기(시안 K21, K26)
     join = (
         '<div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1><p>조금만 기다려 주세요. 단어 외우기와 문제 풀기는 지금도 쓸 수 있어요.</p></div>\n'
-        '<section class="card" id="joinBox"><div class="step">무료로 시작하기</div><h1>단어 기록을 어디서나 이어서</h1>'
+        '<section class="card" id="joinBox"><div class="step" id="jStep">무료로 시작하기</div><h1 id="jTitle">단어 기록을 어디서나 이어서</h1>'
         '<div class="ok-box" id="already" hidden>이미 로그인했어요. <a id="alreadyNext" href="/">이어서 공부하러 가기</a></div>'
         '<div class="perks">'
         + perk.format(1, "외운 단어와 복습 날짜 저장", "기기를 바꿔도 내일 복습할 단어가 그대로 나와요.")
         + perk.format(2, "연속 학습일", "하루 한 지문, 며칠째 이어 가는지 보여 드려요.")
-        + perk.format(3, "이 기기의 기록도 함께", "로그인 전에 푼 기록은 첫 로그인 때 그대로 옮겨 드려요.")
+        + perk.format(3, "이 기기의 기록도 함께", "로그인 전에 푼 기록은 첫 로그인 때 그대로 옮겨 드려요.").replace('<div class="perk">', '<div class="perk" id="perk3">')
         + '</div><div class="agree">'
         '<label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label>'
         '<label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요'
         '<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div>'
-        '<div class="optbox"><label class="chk"><input type="checkbox" id="agreeMail"><span><em class="op">선택</em>매일 아침 지문 메일도 받을래요'
-        '<small>Google은 로그인한 이메일로 보내요. 카카오는 다음 화면에서 받을 주소를 적어 주세요. 언제든 끌 수 있어요.</small></span></label></div>'
+        '<div class="optbox"><label class="chk"><input type="checkbox" id="agreeMail"><span><em class="op">선택</em><b id="mailLabel" style="font-weight:400">매일 아침 지문 메일도 받을래요</b>'
+        '<small>Google은 로그인한 이메일로 보내요. 카카오는 다음 화면에서 받을 주소를 적어 주세요. 언제든 끌 수 있어요.</small></span></label>'
+        + PICK + '</div>'
         f'<button class="kbtn" type="button" id="kakao" disabled>{drill.KAKAO_ICON}카카오로 시작하기</button>'
         f'<button class="gbtn" type="button" id="google" disabled>{drill.GOOGLE_ICON}Google로 시작하기</button>'
         '<p class="msg" id="msg" role="status" hidden></p>'
@@ -1163,9 +1180,10 @@ def account_pages():
         '<section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section>'
         '<section class="card"><div class="stats"><div class="stat"><b id="nWords">0</b><span>외운 단어</span></div><div class="stat"><b id="nDue">0</b><span>오늘 복습</span></div>'
         '<div class="stat"><b id="nPages">0</b><span>푼 지문</span></div></div><a class="btn" id="dueGo" href="/" hidden></a></section>'
-        '<section class="card"><div class="mailrow"><div><b>아침 지문 메일</b><span id="mailAddr">받을 주소가 없어요</span></div>'
+        '<section class="card" id="mailcard"><div class="mailrow"><div><b>아침 지문 메일</b><span id="mailAddr">받을 주소가 없어요</span></div>'
         '<button class="tg" type="button" id="mailTg" role="switch" aria-checked="false" aria-label="아침 지문 메일 받기"></button></div>'
-        '<span class="pend" id="mailPend" hidden>확인 메일을 기다리는 중</span>'
+        '<span class="pend" id="mailPend" hidden>확인 메일을 기다리는 중</span><span class="pend" id="mailWait" hidden>대기 명단에 있어요</span>'
+        + PICK.replace('id="mailPick" hidden', 'id="mailPick"').replace('매일 07:00 전후에 한 통 와요. 가입한 뒤 마이페이지에서 바꿀 수 있어요.', '바꾼 내용은 다음 날 아침 메일부터 적용돼요.') +
         '<form id="mailForm" hidden novalidate><input class="field" id="mail" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com">'
         '<button class="btn" type="submit">저장</button></form>'
         '<button class="btn line" type="button" id="mailEdit">주소 바꾸기</button><p class="msg" id="mailMsg" role="status" hidden></p></section>'
@@ -1180,10 +1198,24 @@ def account_pages():
         '<button class="btn" type="submit" id="mailSave">이 주소로 받기</button></form>'
         '<a class="later" id="skip" href="/">다음에 할게요</a>'
         '<p class="msg" id="msg" role="status" hidden></p>'
-        '<p class="note">입력한 주소로 확인 메일을 한 번 보내요. 링크를 눌러야 발송이 시작돼요. 마이페이지에서 바꾸거나 끌 수 있어요.</p></section>\n'
+        '<p class="note">입력한 주소로 영문 확인 메일(Confirm your subscription)을 한 번 보내요. 메일 속 버튼을 눌러야 발송이 시작돼요. 안 보이면 스팸함도 확인해 주세요. 마이페이지에서 바꾸거나 끌 수 있어요.</p></section>\n'
+        '<section class="card" id="sentBox" hidden><div class="step">마지막 단계</div><h1 id="sTitle">받은편지함을 확인해 주세요</h1>'
+        '<div class="waitbox" id="sWait" hidden>선착순 무료 구독 100명이 다 찼어요. 대기 명단에 올려 드렸고, 자리가 나면 가입한 순서대로 확인 메일을 보내 드려요.</div>'
+        '<p id="sLead"><b id="sAddr"></b> 으로 영문 확인 메일(Confirm your subscription)을 보내 드려요. 보통 한 시간 안에 가요. 메일 속 버튼을 누르면 다음 날 아침부터 지문이 와요.</p>'
+        '<div class="mbox"><div class="h">메일이 안 보이면</div><p class="t">스팸함이나 프로모션함을 확인해 주세요. 주소가 틀렸다면 마이페이지에서 고칠 수 있어요.</p></div>'
+        '<a class="btn" id="sGo" href="/">오늘 지문 읽기</a><a class="later" href="/me/#mailcard">주소 고치기</a></section>\n'
+    )
+    done = (
+        '<section class="card" id="doneBox"><div class="step">가입 완료</div><h1 id="dTitle">내일 아침부터 메일이 가요</h1>'
+        '<div class="waitbox" id="dWait" hidden>선착순 무료 구독 100명이 다 찼어요. 자리가 나면 가입한 순서대로 아침 메일을 보내 드려요.</div>'
+        '<p id="dLead">매일 07:00 전후에 오늘의 지문 한 편을 보내 드려요.</p>'
+        '<div class="mbox"><div class="h">받을 메일</div><p class="v" id="dWhat"></p><p class="t" id="dAddr"></p></div>'
+        '<a class="btn" id="dGo" href="/">오늘 지문 읽기</a>'
+        '<p class="note" id="dNote">언어, 수준, 메일 켜고 끄기는 마이페이지에서 바꿀 수 있어요.</p></section>\n'
     )
     return [("join", "카카오, Google로 시작하기", join, "join.js", True),
             ("join/email", "메일 받을 주소", email, "join-email.js", True),
+            ("join/done", "가입 완료", done, "join-done.js", True),
             ("join/callback", "로그인", callback, "join-callback.js", False),
             ("me", "마이페이지", me, "me.js", True)]
 

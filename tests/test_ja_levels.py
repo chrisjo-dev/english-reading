@@ -258,7 +258,7 @@ class PatchOldJaPageTest(unittest.TestCase):
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
         self.assertEqual(after, again, "두 번 실행해도 같아야 합니다")
-        self.assertEqual(len(re.findall(r'<input[^>]+name="metadata__level"', after)), 2)
+        self.assertEqual(len(re.findall(r'<input[^>]+name="level"', after)), 2)
         self.assertEqual(after.count('class="card sub"'), 1)
         def strip(p):
             # 구독 카드와 rebrand patch 가 바꾸는 요소(제목/OG/파비콘/GNB 브랜드)를 제외하고 비교한다.

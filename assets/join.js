@@ -16,6 +16,27 @@
   var next = A.safeNext(q.get("next") || "/");
   var from = q.get("from") || "";
   var busy = false;
+  // 받을 메일(시안 K21): 랜딩이나 지문 페이지에서 고른 언어와 수준을 채운다. 메일은 가입한 사람만 받는다.
+  var LANGS = { en: ["A2~B1", "B1~B2"], ja: ["N4~N5", "N3"], de: ["A2~B1", "B1~B2"] };
+  var mailLang = LANGS[q.get("lang")] ? q.get("lang") : "en";
+  var mailLevel = q.get("level") === "a" ? "a" : "b";
+  function paintPick() {
+    [].forEach.call($("pickLang").children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === mailLang)); });
+    [].forEach.call($("pickLevel").children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === mailLevel)); });
+    $("rangeA").textContent = LANGS[mailLang][0]; $("rangeB").textContent = LANGS[mailLang][1];
+    $("mailPick").hidden = !mailOpt.checked;
+  }
+  $("pickLang").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { mailLang = b.dataset.v; paintPick(); } });
+  $("pickLevel").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { mailLevel = b.dataset.v; paintPick(); } });
+  mailOpt.addEventListener("change", paintPick);
+  if (q.get("mail") === "1") {
+    mailOpt.checked = true;
+    $("jStep").innerHTML = '아침 메일 받기 <span class="seat">선착순 100명 무료</span>';
+    $("jTitle").textContent = "가입하면 매일 아침 지문이 와요";
+    $("mailLabel").textContent = "매일 아침 지문 메일을 받을래요";
+    $("perk3").style.display = "none";  // .perk 의 display:flex 가 hidden 을 이긴다
+  }
+  paintPick();
 
   function say(text, err) { msg.textContent = text; msg.classList.toggle("err", !!err); msg.hidden = !text; }
   function ok() { return A.ready && age.checked && priv.checked && !busy; }
@@ -24,7 +45,7 @@
     google.disabled = !ok();
   }
   function remember(p) {
-    try { localStorage.setItem(NEXT_KEY, JSON.stringify({ next: next, mail: !!(mailOpt && mailOpt.checked), at: Date.now() })); } catch (e) {}
+    try { localStorage.setItem(NEXT_KEY, JSON.stringify({ next: next, mail: !!(mailOpt && mailOpt.checked), lang: mailLang, level: mailLevel, at: Date.now() })); } catch (e) {}
     try { sessionStorage.setItem(OIDC_KEY, JSON.stringify(p)); } catch (e) {}
   }
   function hex(buf) { return Array.prototype.map.call(new Uint8Array(buf), function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); }

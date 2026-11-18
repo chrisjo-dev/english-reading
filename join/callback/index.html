@@ -102,6 +102,18 @@
   .card .btn { margin-top: 16px; background: var(--blue); width: 100%; border: 0; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
   .card .btn.line { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; margin-top: 12px; }
   .optbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .pick { margin: 12px 0 0; }
+  .pick .h { font-size: 13px; font-weight: 700; margin: 0 0 8px; }
+  .seg { display: flex; gap: 6px; margin: 0 0 8px; }
+  .seg button { flex: 1; font: inherit; font-size: 14px; font-weight: 600; color: var(--sub); background: #fff; border: 1.5px solid #e2e6ea; border-radius: 10px; padding: 9px 4px; cursor: pointer; }
+  .seg button small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); }
+  .seg button[aria-pressed="true"] { color: var(--blue); border-color: var(--blue); background: var(--blue-soft); }
+  .pick .t, .mbox .t { font-size: 12.5px; color: var(--sub); margin: 4px 0 0; }
+  .mbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .mbox .h { font-size: 13px; font-weight: 700; margin: 0 0 6px; }
+  .mbox .v { font-size: 14px; margin: 0; }
+  .seat { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; background: var(--coral-soft); color: var(--coral); font-size: 12px; font-weight: 700; vertical-align: 1px; }
+  .waitbox { margin: 0 0 16px; padding: 12px 14px; border-radius: 12px; background: #fff3c4; font-size: 14px; line-height: 1.6; }
   .chk em.op { color: var(--sub); }
   .flabel { display: block; font-size: 13px; font-weight: 700; color: var(--sub); margin-top: 8px; }
   .field { display: block; box-sizing: border-box; width: 100%; height: 52px; margin-top: 6px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 16px; color: var(--ink); }
@@ -290,5 +302,5 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=3" defer></script>
-<script src="/assets/join-callback.js?v=4" defer></script>
+<script src="/assets/join-callback.js?v=5" defer></script>
 </body></html>

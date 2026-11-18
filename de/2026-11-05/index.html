@@ -595,7 +595,7 @@
   <div class="gs-row"><a class="gs-tx" href="/ja/" data-today="ja"><span class="gs-badge" aria-hidden="true">JA</span><span class="gs-tt"><span class="gs-nm">일본어</span><span class="gs-ds" data-ds="ja" data-level="JLPT N3">JLPT N3 일본어 읽기</span></span></a><a class="gs-past" href="/ja/archive/" aria-label="일본어 지난 지문">지난 지문<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></div>
   <div class="gs-row on"><a class="gs-tx" href="/de/" data-today="de" aria-current="true"><span class="gs-badge" aria-hidden="true">DE</span><span class="gs-tt"><span class="gs-nm">독일어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="gs-ds" data-ds="de" data-level="B1~B2">B1~B2 독일어 읽기</span></span></a><a class="gs-past" href="/de/archive/" aria-label="독일어 지난 지문">지난 지문<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></div>
   <hr>
-  <a class="gs-review" id="gnb-review" data-lang="de" href="/de/review/2026-11-08/"><span class="gs-badge" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="13" height="15" rx="2.5"/><path d="M8 3h9.5A3 3 0 0 1 20.5 6v11"/></svg></span><span class="gs-tt"><span class="gs-nm">이번 주 단어 복습</span><span class="gs-ds" id="gnb-review-ds">독일어 단어 46개를 다시 봐요</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+  <a class="gs-review" id="gnb-review" data-lang="de" href="/de/review/2026-11-15/"><span class="gs-badge" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="13" height="15" rx="2.5"/><path d="M8 3h9.5A3 3 0 0 1 20.5 6v11"/></svg></span><span class="gs-tt"><span class="gs-nm">이번 주 단어 복습</span><span class="gs-ds" id="gnb-review-ds">독일어 단어 46개를 다시 봐요</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
 </div>
 <!-- /gnb -->
 <main>
@@ -748,56 +748,46 @@
     <a class="pn-i" href="../2026-11-06/"><img src="../2026-11-06/thumb-sq.jpg" width="76" height="76" alt="" loading="lazy" decoding="async"><span class="pn-t"><span class="pn-d">다음 지문 <b>2026년 11월 6일 금요일</b></span><span class="pn-n">고슴도치의 겨울잠</span><span class="cat cat-science">과학</span></span></a>
     <a class="pn-all" href="../archive/">독일어 지난 지문 전체 보기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
   </nav>
-  <section class="card sub" id="subscribe" data-v="3">
+  <section class="card sub" id="subscribe" data-v="4"><style>.sub .seat-pill{display:block;width:max-content;margin:6px auto 2px;padding:5px 12px;border-radius:999px;background:#ffeeee;color:#f04452;font-size:13px;font-weight:700}.sub form button[type='submit']{flex:1 1 100%;height:54px;font-size:16px}.sub .join-note{flex-basis:100%;margin:2px 0 0;text-align:center;font-size:13px;color:var(--sub)}</style>
     <h2>매일 아침 독일어 지문 받기</h2>
-    <p>새 독일어 지문이 올라오면 아침에 메일로 보내 드려요.</p>
-    <form action="https://buttondown.com/api/emails/embed-subscribe/dokhaehanip" method="post" target="_blank">
-      <input type="hidden" name="metadata__lang" value="de">
+    <p>가입하면 새 독일어 지문을 아침에 메일로 보내 드려요.</p>
+    <form action="/join/" method="get">
+      <input type="hidden" name="mail" value="1"><input type="hidden" name="lang" value="de"><input type="hidden" name="next" value="/"><input type="hidden" name="from" value="page">
       <fieldset class="levels">
         <legend>수준을 골라 주세요</legend>
         <label class="lvopt">
-          <input type="radio" name="metadata__level" value="a">
+          <input type="radio" name="level" value="a">
           <span class="lv-t">기초 <span class="lv-chk">&#10003;</span></span>
           <span class="lv-r">A2~B1</span>
           <span class="lv-d">짧고 쉬운 문장. 독일어 읽기를 막 시작했다면</span>
         </label>
         <label class="lvopt">
-          <input type="radio" name="metadata__level" value="b" checked>
+          <input type="radio" name="level" value="b" checked>
           <span class="lv-t">중급 <span class="lv-chk">&#10003;</span></span>
           <span class="lv-r">B1~B2</span>
           <span class="lv-d">조금 긴 문장과 B2 문법도 읽어 보고 싶다면</span>
         </label>
       </fieldset>
-      <input type="email" name="email" required placeholder="이메일 주소" autocomplete="email" aria-label="이메일 주소">
-      <button type="submit">구독하기</button>
+      <span class="seat-pill">선착순 100명 무료</span>
+      <button type="submit">가입하고 아침 메일 받기</button>
+      <p class="join-note">카카오나 Google 계정으로 가입해요. 무료예요.</p>
     </form>
-    <p class="note">이미 구독 중이어도 같은 이메일로 다시 구독하면 수준과 언어가 바로 바뀌어요. 이메일 주소 하나로는 한 언어만 받을 수 있어요.</p>
-    <p class="note">구독하면 영문 확인 메일(Confirm your subscription)이 가요. 메일 속 버튼을 눌러야 구독이 끝나요. 메일이 안 보이면 스팸함도 확인해 주세요.</p>
-    <p class="note">이메일은 뉴스레터 발송에만 쓰이고, 언제든 메일 하단에서 수신거부할 수 있어요.</p>
+    <p class="note">이미 가입했다면 마이페이지에서 아침 메일을 켜고 끌 수 있어요.</p>
     <script>(function(){
-      var sec=document.getElementById("subscribe");
-      if(!sec)return;
-      var f=sec.querySelector("form");
-      // GA subscribe event (영어는 level 포함, 다른 언어는 생략)
-      if(f)f.addEventListener("submit",function(){
-        var cl=f.querySelector('input[name="metadata__level"]:checked');
-        try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"de",level:cl?cl.value:"b"});}catch(e){}
+      var sec=document.getElementById("subscribe");if(!sec)return;
+      var f=sec.querySelector("form");if(!f)return;
+      f.elements.next.value=location.pathname;
+      f.addEventListener("submit",function(e){
+        var cl=f.querySelector('input[name="level"]:checked');
+        try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"de",level:cl?cl.value:"b"});}catch(x){}
+        try{if(localStorage.getItem("dkh-auth")){e.preventDefault();location.href="/me/#mailcard";}}catch(x){}
       });
-      // :has() 미지원 브라우저 fallback — data-checked / data-show 속성으로 CSS 를 보조한다
+      fetch("https://kfprgssvigujxphfmlth.supabase.co/rest/v1/mail_seats?select=taken,cap&id=eq.1",{headers:{apikey:"sb_publishable_cyzW-kfuGUNsm1mDeyKm1Q_dmlOxt9U"}}).then(function(r){return r.ok?r.json():[];}).then(function(a){
+        if(a[0]&&a[0].taken>=a[0].cap)sec.querySelector(".join-note").textContent="선착순 100명이 다 찼어요. 지금 가입하면 대기 명단에 올려 드려요.";
+      }).catch(function(){});
       var opts=sec.querySelectorAll(".lvopt");
-      var note=sec.querySelector(".level-note");
-      if(opts.length){var update=function(){
-        opts.forEach(function(o){
-          var r=o.querySelector("input[type=\"radio\"]");
-          if(r&&r.checked){o.setAttribute("data-checked","");}else{o.removeAttribute("data-checked");}
-        });
-        if(note){
-          var a=sec.querySelector("input[name=\"metadata__level\"][value=\"a\"]:checked");
-          if(a){note.setAttribute("data-show","");}else{note.removeAttribute("data-show");}
-        }
-      };update();
-      opts.forEach(function(o){var r=o.querySelector("input[type=\"radio\"]");if(r)r.addEventListener("change",update);});
-      }
+      var update=function(){opts.forEach(function(o){var r=o.querySelector("input");if(r&&r.checked)o.setAttribute("data-checked","");else o.removeAttribute("data-checked");});};
+      update();opts.forEach(function(o){var r=o.querySelector("input");if(r)r.addEventListener("change",update);});
     })();</script>
   </section>
 </main>

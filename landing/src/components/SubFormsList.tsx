@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { fireGtag } from "@/lib/gtag";
-import { SUBSCRIBE } from "./forms";
+import { FULL_NOTE, SEATS_NOTE, useJoinHref, useMailFull } from "./forms";
 
 const FORMS = [
   { lang: "en", name: "영어", label: "영어 지문 받기", level: "EN B1~B2", desc: "최근 소식과 생활 글로 읽는 영어 지문" },
@@ -28,7 +28,7 @@ const LEVELS_BY_LANG: Record<string, { value: "a" | "b"; title: string; range: s
 
 const delay = (i: number) => ({ transitionDelay: `${i * 60}ms` });
 
-// 구독 폼 하나(design/sub-tabs 시안 A). 이메일 하나에 언어 하나(metadata.lang)라, 언어를 탭으로 고르게 해
+// 메일 받기 칸(design/sub-tabs 시안 A, 가입으로 바꾼 것은 kakao-login K20). 메일 하나에 언어 하나라, 언어를 탭으로 고르게 해
 // 여러 언어를 함께 받을 수 있는 것처럼 보이지 않게 한다. 수준은 언어를 바꿔도 유지하고 기본은 중급.
 function SubForm({ style }: { style?: React.CSSProperties }) {
   const [i, setI] = useState(0);
@@ -36,21 +36,15 @@ function SubForm({ style }: { style?: React.CSSProperties }) {
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const f = FORMS[i];
   const levels = LEVELS_BY_LANG[f.lang] ?? [];
+  const href = useJoinHref(f.lang, level);
+  const full = useMailFull();
   const pick = (n: number) => {
     const next = (n + FORMS.length) % FORMS.length;
     setI(next);
     tabs.current[next]?.focus();
   };
   return (
-    <form
-      className="sub-form rv"
-      style={style}
-      action={SUBSCRIBE}
-      method="post"
-      target="_blank"
-      rel="noopener noreferrer"
-      onSubmit={() => fireGtag("subscribe_submit", { lang: f.lang, level, placement: "section" })}
-    >
+    <div className="sub-form rv" style={style}>
       <div
         className="sub-tabs"
         role="tablist"
@@ -87,17 +81,14 @@ function SubForm({ style }: { style?: React.CSSProperties }) {
           <span>{f.level}</span>
           <span>{f.desc}</span>
         </div>
-        <label className="sub-label" htmlFor="email-sub">
-          {f.label}
-        </label>
-        <input type="hidden" name="metadata__lang" value={f.lang} />
+        <span className="sub-label">{f.label}</span>
         <fieldset className="lv-opts">
           <legend>수준을 골라 주세요</legend>
           {levels.map((lv) => (
             <label key={lv.value} className="lv-opt">
               <input
                 type="radio"
-                name="metadata__level"
+                name="sub-level"
                 value={lv.value}
                 checked={level === lv.value}
                 onChange={() => setLevel(lv.value)}
@@ -111,13 +102,13 @@ function SubForm({ style }: { style?: React.CSSProperties }) {
             </label>
           ))}
         </fieldset>
-        <div className="row">
-          <input id="email-sub" type="email" name="email" required placeholder="이메일 주소" autoComplete="email" />
-          <button type="submit">구독하기</button>
-        </div>
-        <p className="sub-one">이메일 하나로 한 언어를 받아요. 나중에 같은 이메일로 다시 구독하면 언어와 수준이 바로 바뀌어요.</p>
+        <span className="seat-pill">선착순 100명 무료</span>
+        <a className="join-cta" href={href} onClick={() => fireGtag("subscribe_submit", { lang: f.lang, level, placement: "section" })}>
+          가입하고 아침 메일 받기
+        </a>
+        <p className="join-note">{full ? FULL_NOTE : SEATS_NOTE}</p>
       </div>
-    </form>
+    </div>
   );
 }
 

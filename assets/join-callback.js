@@ -44,7 +44,7 @@
     return;
   }
 
-  var needEmail = false;
+  var needEmail = false, mailDone = false;
   var n = count();
   if (n) $("status").textContent = "이 기기의 단어 기록 " + n + "개를 함께 옮기고 있어요.";
 
@@ -68,10 +68,15 @@
       // 위 메뉴의 마이페이지 동그라미가 쓰는 닉네임(첫 글자)을 이 기기에 둔다
       var nick = c.from("profiles").select("nickname, email").eq("user_id", uid).maybeSingle().then(function (p) {
         try { localStorage.setItem("dkh-me", JSON.stringify({ n: (p.data && p.data.nickname) || "" })); } catch (e) {}
-        // 가입 화면에서 메일 받기를 골랐으면 켠다. 주소가 없으면(카카오) 주소 적는 화면으로 보낸다(시안 K17)
+        // 가입 화면에서 메일 받기를 골랐으면 고른 언어, 수준과 함께 켠다(시안 K21).
+        // 주소가 없으면(카카오) 주소 적는 화면(K17), 있으면(Google) 가입 완료 화면(K24)으로 보낸다.
         if (saved.mail === true) {
-          if (!(p.data && p.data.email)) needEmail = true;
-          return c.from("profiles").update({ mail_opt_in: true }).eq("user_id", uid);
+          if (!(p.data && p.data.email)) needEmail = true; else mailDone = true;
+          return c.from("profiles").update({
+            mail_opt_in: true,
+            mail_lang: ["en", "ja", "de"].indexOf(saved.lang) >= 0 ? saved.lang : "en",
+            mail_level: saved.level === "a" ? "a" : "b"
+          }).eq("user_id", uid);
         }
       }, function () {});
       return Promise.all([A.logEvent(isNew ? "signup" : "login"), A.sync().catch(function () { return null; }), nick]);
@@ -79,7 +84,8 @@
   }).then(function () {
     $("title").textContent = "로그인했어요";
     $("status").textContent = "이어서 공부하러 가요.";
-    location.replace(needEmail ? "/join/email/?" + new URLSearchParams({ next: next }).toString() : next);
+    var nq = "?" + new URLSearchParams({ next: next }).toString();
+    location.replace(needEmail ? "/join/email/" + nq : mailDone ? "/join/done/" + nq : next);
   }).catch(function () {
     fail("로그인을 마치지 못했어요. 이 기기의 기록은 그대로 남아 있어요.");
   });

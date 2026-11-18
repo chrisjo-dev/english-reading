@@ -1,5 +1,4 @@
 import Footer from "@/components/Footer";
-import { CONFIRM_NOTE } from "@/components/forms";
 import Hero from "@/components/Hero";
 import LoginSection from "@/components/LoginSection";
 import Motion from "@/components/Motion";
@@ -121,15 +120,12 @@ export default function Home() {
         <section className="sec sub" id="subscribe" data-reveal aria-labelledby="sub-h">
           <div className="wrap">
             <div className="sec-head">
-              <span className="mono">07 / 무료 구독</span>
+              <span className="mono">07 / 아침 메일</span>
               <h2 id="sub-h">매일 아침 메일로 받아 보세요.</h2>
             </div>
             <div className="sub-forms">
               <SubFormsList />
             </div>
-            <p className="note mono rv" style={delay(3)}>
-              <span className="confirm-note">{CONFIRM_NOTE}</span>
-            </p>
           </div>
         </section>
       </main>

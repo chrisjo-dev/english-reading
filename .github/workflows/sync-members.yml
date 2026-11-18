@@ -1,0 +1,26 @@
+# 가입자의 아침 메일 설정(Supabase)을 Buttondown 구독자로 맞춘다(tools/sync_members.py). 메일은 가입한 사람만 받는다.
+# 매시 한 번이라 마이페이지 스위치를 여러 번 눌러도 Buttondown 에는 한 번만 반영된다. 실패하면 notify.yml 이 Slack 으로 알린다.
+name: sync-members
+on:
+  schedule:
+    - cron: "10 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sync-members
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q pillow
+      - run: python tools/sync_members.py
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}

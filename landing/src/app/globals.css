@@ -521,6 +521,44 @@ html:not(.js) .sw {
   color: var(--mute);
 }
 
+/* 가입하고 메일 받기(시안 design/kakao-login K20): 선착순 표시, 버튼, 안내 */
+.seat-pill {
+  display: block;
+  width: max-content;
+  margin: 14px auto 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #ffeeee;
+  color: #f04452;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.join-cta {
+  display: block;
+  text-align: center;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  padding: 17px 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.join-cta:hover {
+  background: var(--blue-h);
+}
+
+.join-note {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink2);
+}
+
 /* 확인 메일 안내: 첫 화면 폼과 구독 섹션 */
 .confirm-note {
   display: block;
