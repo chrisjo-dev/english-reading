@@ -560,7 +560,7 @@ def card_html(lang, day, items, step):
 
 
 # auth.js(로그인과 기록 동기화)를 drill.js 보다 먼저 부른다. auth.js 를 고치면 AUTH_V 를 올린다
-AUTH_V = "2"
+AUTH_V = "3"
 SCRIPT = ('<script id="auth-js" src="/assets/auth.js?v=' + AUTH_V + '" defer></script>\n'
           '<script id="drill-js" data-v="__V__" src="/assets/drill.js?v=__V__" defer></script>\n')
 

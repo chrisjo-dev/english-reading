@@ -1,7 +1,8 @@
 -- 아침 지문 메일 수신(선택, 시안 design/kakao-login K16~K18)
 -- Google 가입자는 로그인한 이메일을 쓰고(확인된 주소), 카카오 가입자는 직접 적는다(확인 메일 전까지 mail_verified=false).
 -- 클라이언트는 email, mail_opt_in 만 고칠 수 있다. mail_verified 는 트리거와 나중의 발송 서비스(서버)만 바꾼다.
--- 발송 대상: select email from public.profiles where mail_opt_in and mail_verified and email is not null;
+-- 발송 대상(같은 주소는 한 번만, 주소 중복은 막지 않는다: 막으면 다른 사람이 그 주소를 쓰는지 드러난다):
+--   select distinct lower(email) from public.profiles where mail_opt_in and mail_verified and email is not null;
 
 alter table public.profiles
   add column email        text check (email is null or (char_length(email) <= 254 and email ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$')),

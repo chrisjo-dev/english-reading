@@ -142,3 +142,12 @@ class MailOptInTest(unittest.TestCase):
         s = (ROOT / "privacy/index.html").read_text(encoding="utf-8")
         self.assertIn('id="mail"', s)
         self.assertIn("수신에 동의한 시각", s)
+
+
+class NoAnonEventsTest(unittest.TestCase):
+    def test_anon_events_closed(self):
+        auth = (ROOT / "assets/auth.js").read_text(encoding="utf-8")
+        self.assertNotIn("insertAnon", auth)
+        sql = (ROOT / "supabase/migrations/0003_no_anon_events.sql").read_text(encoding="utf-8")
+        self.assertIn("revoke insert on public.events from anon;", sql)
+        self.assertIn("drop policy if exists events_insert_anon", sql)

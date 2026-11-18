@@ -94,18 +94,11 @@
     return "/join/?" + new URLSearchParams(q).toString();
   }
 
-  // 비로그인 이벤트는 라이브러리 없이 REST 로 바로(user_id 칸은 DB 가 받지 않는다)
-  function insertAnon(row) {
-    var headers = { "apikey": key, "Content-Type": "application/json", "Prefer": "return=minimal" };
-    if (key.indexOf("sb_") !== 0) headers.Authorization = "Bearer " + key;
-    return fetch(url + "/rest/v1/events", { method: "POST", headers: headers, keepalive: true, credentials: "omit",
-      body: JSON.stringify(row) }).then(function (r) { return r.ok; });
-  }
   function logEvent(name, lang) {
     if (!ready || EVENTS.indexOf(name) === -1) return Promise.resolve(false);
     var l = typeof lang === "string" && /^[a-z]{2}$/.test(lang) ? lang : null;
     return session().then(function (s) {
-      if (!s) return insertAnon({ name: name, lang: l });
+      if (!s) return false;  // 비로그인 이벤트는 받지 않는다(supabase/migrations/0003). 통계는 GA 로 센다
       return client().then(function (c) {
         return c.from("events").insert({ user_id: s.user.id, name: name, lang: l }).then(function (r) { return !r.error; });
       });
