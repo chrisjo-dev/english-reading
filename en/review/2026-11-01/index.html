@@ -201,35 +201,6 @@
     all.textContent = open ? '뜻 모두 가리기' : '뜻 모두 보기';
   });
 </script>
-<script id="fb-js">
-(function () {
-  function device() {
-    var u = navigator.userAgent, d = 'Windows', b = 'Safari';
-    if (/iPhone/.test(u)) d = 'iPhone';
-    else if (/iPad/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1)) d = 'iPad';
-    else if (/Android/.test(u)) d = 'Android';
-    else if (/Macintosh/.test(u)) d = 'Mac';
-    else if (!/Windows/.test(u)) d = '기타';
-    if (/KAKAOTALK/i.test(u)) b = '카카오톡';
-    else if (/NAVER/.test(u)) b = '네이버';
-    else if (/SamsungBrowser/.test(u)) b = 'Samsung Internet';
-    else if (/Edg/.test(u)) b = 'Edge';
-    else if (/FxiOS|Firefox/.test(u)) b = 'Firefox';
-    else if (/CriOS|Chrome/.test(u)) b = 'Chrome';
-    return d + ', ' + b;
-  }
-  var links = document.querySelectorAll('.fb-btn');
-  for (var i = 0; i < links.length; i++) links[i].addEventListener('click', function () {
-    var type = this.getAttribute('data-fb');
-    if (type === 'bug') {
-      var body = '무슨 일이 있었나요?\n(예: 음성이 안 나와요, 글자가 겹쳐 보여요)\n\n\n----\n페이지: ' + location.href +
-        '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
-      this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
-    }
-    try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
-  });
-})();
-</script>
 <script id="gnb-js">(function(){
   var me=document.getElementById('gnb-me');
   if(me){try{
@@ -296,4 +267,33 @@
         document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
   }).catch(function(){});
 })();</script>
+<script id="fb-js">
+(function () {
+  function device() {
+    var u = navigator.userAgent, d = 'Windows', b = 'Safari';
+    if (/iPhone/.test(u)) d = 'iPhone';
+    else if (/iPad/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1)) d = 'iPad';
+    else if (/Android/.test(u)) d = 'Android';
+    else if (/Macintosh/.test(u)) d = 'Mac';
+    else if (!/Windows/.test(u)) d = '기타';
+    if (/KAKAOTALK/i.test(u)) b = '카카오톡';
+    else if (/NAVER/.test(u)) b = '네이버';
+    else if (/SamsungBrowser/.test(u)) b = 'Samsung Internet';
+    else if (/Edg/.test(u)) b = 'Edge';
+    else if (/FxiOS|Firefox/.test(u)) b = 'Firefox';
+    else if (/CriOS|Chrome/.test(u)) b = 'Chrome';
+    return d + ', ' + b;
+  }
+  var links = document.querySelectorAll('.fb-btn');
+  for (var i = 0; i < links.length; i++) links[i].addEventListener('click', function () {
+    var type = this.getAttribute('data-fb');
+    if (type === 'bug') {
+      var body = '무슨 일이 있었나요?\n(예: 음성이 안 나와요, 글자가 겹쳐 보여요)\n\n\n----\n페이지: ' + location.href +
+        '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
+      this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
+    }
+    try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
+  });
+})();
+</script>
 </body></html>

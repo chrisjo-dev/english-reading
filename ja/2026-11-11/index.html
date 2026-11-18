@@ -1294,69 +1294,6 @@
   }
 })();
 </script>
-<script id="fb-js">
-(function () {
-  function device() {
-    var u = navigator.userAgent, d = 'Windows', b = 'Safari';
-    if (/iPhone/.test(u)) d = 'iPhone';
-    else if (/iPad/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1)) d = 'iPad';
-    else if (/Android/.test(u)) d = 'Android';
-    else if (/Macintosh/.test(u)) d = 'Mac';
-    else if (!/Windows/.test(u)) d = '기타';
-    if (/KAKAOTALK/i.test(u)) b = '카카오톡';
-    else if (/NAVER/.test(u)) b = '네이버';
-    else if (/SamsungBrowser/.test(u)) b = 'Samsung Internet';
-    else if (/Edg/.test(u)) b = 'Edge';
-    else if (/FxiOS|Firefox/.test(u)) b = 'Firefox';
-    else if (/CriOS|Chrome/.test(u)) b = 'Chrome';
-    return d + ', ' + b;
-  }
-  var links = document.querySelectorAll('.fb-btn');
-  for (var i = 0; i < links.length; i++) links[i].addEventListener('click', function () {
-    var type = this.getAttribute('data-fb');
-    if (type === 'bug') {
-      var body = '무슨 일이 있었나요?\n(예: 음성이 안 나와요, 글자가 겹쳐 보여요)\n\n\n----\n페이지: ' + location.href +
-        '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
-      this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
-    }
-    try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
-  });
-})();
-</script>
-<script id="track-js">
-(function () {
-  if (!('IntersectionObserver' in window)) return;
-  var p = location.pathname.split('/'), base = { lang: p[1] || '', day: p[2] || '' };
-  function ga(name, extra) {
-    var o = {}, k;
-    for (k in base) o[k] = base[k];
-    for (k in extra) o[k] = extra[k];
-    try { if (typeof gtag === 'function') gtag('event', name, o); } catch (e) {}
-  }
-  function card(sel) { var e = document.querySelector(sel); return e && (e.closest('.card') || e); }
-  var parts = [['passage', '#passage'], ['words', '#step-words'], ['points', '#step-points'], ['guide', '.card.guide'], ['subscribe', '#subscribe']];
-  var seen = {}, pts = card('#step-points'), ms = 0, since = 0, read = false, inView = false;
-  // 긴 카드는 절반이 한 화면에 안 들어오므로, 카드 절반과 화면 40% 중 작은 쪽만큼 보이면 본 것으로 친다
-  function enough(en) { return en.isIntersecting && en.intersectionRect.height >= Math.min(en.boundingClientRect.height * 0.5, innerHeight * 0.4); }
-  // 체크 포인트가 보이는 동안의 시간을 더한다. 다른 탭으로 가 있는 동안은 세지 않는다
-  function tick() {
-    var now = Date.now();
-    if (since) ms += now - since;
-    since = inView && !document.hidden ? now : 0;
-    if (!read && ms >= 8000) { read = true; ga('points_read', {}); }
-  }
-  var io = new IntersectionObserver(function (list) {
-    list.forEach(function (en) {
-      var name = en.target.getAttribute('data-track');
-      if (enough(en) && !seen[name]) { seen[name] = 1; ga('section_view', { section: name }); }
-      if (en.target === pts) { inView = enough(en); tick(); }
-    });
-  }, { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
-  parts.forEach(function (x) { var e = card(x[1]); if (e) { e.setAttribute('data-track', x[0]); io.observe(e); } });
-  setInterval(function () { if (since) tick(); }, 1000);
-  document.addEventListener('visibilitychange', tick);
-})();
-</script>
 <script id="gnb-js">(function(){
   var me=document.getElementById('gnb-me');
   if(me){try{
@@ -1423,5 +1360,68 @@
         document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
   }).catch(function(){});
 })();</script>
+<script id="fb-js">
+(function () {
+  function device() {
+    var u = navigator.userAgent, d = 'Windows', b = 'Safari';
+    if (/iPhone/.test(u)) d = 'iPhone';
+    else if (/iPad/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1)) d = 'iPad';
+    else if (/Android/.test(u)) d = 'Android';
+    else if (/Macintosh/.test(u)) d = 'Mac';
+    else if (!/Windows/.test(u)) d = '기타';
+    if (/KAKAOTALK/i.test(u)) b = '카카오톡';
+    else if (/NAVER/.test(u)) b = '네이버';
+    else if (/SamsungBrowser/.test(u)) b = 'Samsung Internet';
+    else if (/Edg/.test(u)) b = 'Edge';
+    else if (/FxiOS|Firefox/.test(u)) b = 'Firefox';
+    else if (/CriOS|Chrome/.test(u)) b = 'Chrome';
+    return d + ', ' + b;
+  }
+  var links = document.querySelectorAll('.fb-btn');
+  for (var i = 0; i < links.length; i++) links[i].addEventListener('click', function () {
+    var type = this.getAttribute('data-fb');
+    if (type === 'bug') {
+      var body = '무슨 일이 있었나요?\n(예: 음성이 안 나와요, 글자가 겹쳐 보여요)\n\n\n----\n페이지: ' + location.href +
+        '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
+      this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
+    }
+    try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
+  });
+})();
+</script>
+<script id="track-js">
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var p = location.pathname.split('/'), base = { lang: p[1] || '', day: p[2] || '' };
+  function ga(name, extra) {
+    var o = {}, k;
+    for (k in base) o[k] = base[k];
+    for (k in extra) o[k] = extra[k];
+    try { if (typeof gtag === 'function') gtag('event', name, o); } catch (e) {}
+  }
+  function card(sel) { var e = document.querySelector(sel); return e && (e.closest('.card') || e); }
+  var parts = [['passage', '#passage'], ['words', '#step-words'], ['points', '#step-points'], ['guide', '.card.guide'], ['subscribe', '#subscribe']];
+  var seen = {}, pts = card('#step-points'), ms = 0, since = 0, read = false, inView = false;
+  // 긴 카드는 절반이 한 화면에 안 들어오므로, 카드 절반과 화면 40% 중 작은 쪽만큼 보이면 본 것으로 친다
+  function enough(en) { return en.isIntersecting && en.intersectionRect.height >= Math.min(en.boundingClientRect.height * 0.5, innerHeight * 0.4); }
+  // 체크 포인트가 보이는 동안의 시간을 더한다. 다른 탭으로 가 있는 동안은 세지 않는다
+  function tick() {
+    var now = Date.now();
+    if (since) ms += now - since;
+    since = inView && !document.hidden ? now : 0;
+    if (!read && ms >= 8000) { read = true; ga('points_read', {}); }
+  }
+  var io = new IntersectionObserver(function (list) {
+    list.forEach(function (en) {
+      var name = en.target.getAttribute('data-track');
+      if (enough(en) && !seen[name]) { seen[name] = 1; ga('section_view', { section: name }); }
+      if (en.target === pts) { inView = enough(en); tick(); }
+    });
+  }, { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
+  parts.forEach(function (x) { var e = card(x[1]); if (e) { e.setAttribute('data-track', x[0]); io.observe(e); } });
+  setInterval(function () { if (since) tick(); }, 1000);
+  document.addEventListener('visibilitychange', tick);
+})();
+</script>
 </body>
 </html>

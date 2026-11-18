@@ -353,6 +353,6 @@ def refresh(page):
         page = apply_css(page, day)
     if 'id="gnb-me"' not in page:
         page = page.replace('<span class="gnb-pill">메일로 받기</span></a>', '<span class="gnb-pill">메일로 받기</span></a>' + ME_HTML, 1)
-    if '<script id="gnb-js">' in page:
-        page = apply_script(page)
+    # 스크립트는 제자리에서 바꾼다(다른 스크립트와 순서가 바뀌지 않게)
+    page = re.sub(r'<script id="gnb-js">.*?</script>\n', lambda m: SCRIPT, page, count=1, flags=re.S)
     return page
