@@ -1,0 +1,42 @@
+# 기존 메일 구독자 전원에게 한 번 보내는 안내 메일(tools/announce.py). 손으로만 돌린다.
+# draft: Buttondown 에 초안만 만든다(대시보드에서 미리 보고 나에게 시험 발송). send: 구독자 전원에게 보낸다.
+# 같은 안내를 이미 보냈으면 다시 보내지 않는다.
+name: announce
+
+on:
+  workflow_dispatch:
+    inputs:
+      key:
+        description: "안내 이름 (tools/announce.py 의 ANNOUNCES)"
+        required: true
+        default: login-2026-11
+      mode:
+        description: "draft: 초안만, send: 구독자 전원에게 발송"
+        type: choice
+        options: [draft, send]
+        default: draft
+
+concurrency:
+  group: announce
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # announce 가 send_email, build_email 을 거쳐 thumb(Pillow)을 불러온다
+      - run: pip install -q pillow
+      - name: Announce
+        run: python tools/announce.py "$KEY" "$MODE"
+        env:
+          KEY: ${{ inputs.key }}
+          MODE: ${{ inputs.mode }}
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
