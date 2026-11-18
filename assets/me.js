@@ -14,31 +14,46 @@
   if (!A.ready) { show("notReady"); return; }
   if (!A.hasSession()) { show("signedOut"); return; }
 
-  var c = null, uid = null, mail = {};
+  var c = null, uid = null, mail = {}, db = null, latest = null;
+  function localDb() { try { return JSON.parse(localStorage.getItem(A.drillKey)) || { items: {} }; } catch (e) { return { items: {} }; } }
+  function head(nick, prov) {
+    nick = nick || "독해한입 회원";
+    $("nick").textContent = nick + "님";
+    $("av").textContent = nick.charAt(0);
+    $("who").textContent = (prov === "google" ? "Google" : "카카오") + "로 로그인함";
+  }
+  function repaint() { paint(db || localDb(), latest); }
+
+  // 1) 기다리지 않는다: 이 기기에 있는 값(닉네임 dkh-me, 로그인 정보 dkh-auth, 단어 기록 drill:v1)으로 바로 그린다
+  var me0 = {}, ses0 = null;
+  try { me0 = JSON.parse(localStorage.getItem("dkh-me")) || {}; } catch (e) {}
+  try { ses0 = JSON.parse(localStorage.getItem("dkh-auth")); } catch (e) {}
+  head(me0.n, ses0 && ses0.user && ses0.user.app_metadata && ses0.user.app_metadata.provider);
+  $("mailTg").disabled = true;  // 메일 설정은 서버 값이 와야 정확하다
+  $("mailEdit").disabled = true;
+  repaint();
+  show("signedIn");
+
+  // 2) 서버 값이 오면 조용히 바꾼다(닉네임과 메일 설정, 다른 기기 기록을 합친 숫자, 오늘 지문 링크)
+  fetch("/latest.json", { cache: "no-store" }).then(function (x) { return x.json(); }).then(function (d) { latest = d; repaint(); }, function () {});
   A.client().then(function (client) {
     c = client;
     return c.auth.getSession();
   }).then(function (r) {
     var s = r && r.data && r.data.session;
     if (!s) { show("signedOut"); return; }
-    var prov = (s.user.app_metadata && s.user.app_metadata.provider) === "google" ? "Google" : "카카오";
-    return Promise.all([
-      c.from("profiles").select("nickname, email, mail_opt_in, mail_verified").eq("user_id", s.user.id).maybeSingle(),
-      A.sync().catch(function () { return null; }),
-      fetch("/latest.json", { cache: "no-store" }).then(function (x) { return x.json(); }).catch(function () { return null; })
-    ]).then(function (rs) {
-      var nick = (rs[0].data && rs[0].data.nickname) || "독해한입 회원";
-      $("nick").textContent = nick + "님";
-      try { localStorage.setItem("dkh-me", JSON.stringify({ n: (rs[0].data && rs[0].data.nickname) || "" })); } catch (e) {}
-      $("av").textContent = nick.charAt(0);
-      $("who").textContent = prov + "로 로그인함";
-      uid = s.user.id;
-      mailPaint(rs[0].data || {});
-      paint(rs[1] || JSON.parse(localStorage.getItem(A.drillKey) || '{"items":{}}'), rs[2]);
-      show("signedIn");
-    });
+    uid = s.user.id;
+    var prov = s.user.app_metadata && s.user.app_metadata.provider;
+    c.from("profiles").select("nickname, email, mail_opt_in, mail_verified").eq("user_id", uid).maybeSingle().then(function (p) {
+      var row = p.data || {};
+      head(row.nickname, prov);
+      try { localStorage.setItem("dkh-me", JSON.stringify({ n: row.nickname || "" })); } catch (e) {}
+      mailPaint(row);
+      $("mailTg").disabled = false; $("mailEdit").disabled = false;
+    }, function () { mailSay("메일 설정을 불러오지 못했어요. 잠시 뒤에 다시 열어 주세요.", true); });
+    A.sync().then(function (merged) { if (merged) { db = merged; repaint(); } }, function () {});
   }).catch(function () {
-    $("loading").textContent = "기록을 불러오지 못했어요. 잠시 뒤에 다시 열어 주세요.";
+    mailSay("서버에 연결하지 못했어요. 이 기기의 기록만 보여 드려요.", true);
   });
 
   function paint(db, latest) {
