@@ -89,3 +89,29 @@ class DrillGateTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class HeaderMeTest(unittest.TestCase):
+    """위 메뉴 로그인, 마이페이지 버튼(시안 design/kakao-login K15)."""
+
+    def test_header_has_me_button(self):
+        import gnb
+        h = gnb.header_html("en")
+        self.assertIn('id="gnb-me"', h)
+        self.assertLess(h.index("gnb-mail"), h.index('id="gnb-me"'))
+        self.assertIn("dkh-auth", gnb.SCRIPT)
+        self.assertIn("'/me/'", gnb.SCRIPT)
+
+    def test_refresh_idempotent_and_all_pages_have_it(self):
+        import gnb
+        for f in ("en/2026-11-18/index.html", "en/archive/index.html", "privacy/index.html", "me/index.html", "join/index.html"):
+            s = (ROOT / f).read_text(encoding="utf-8")
+            self.assertEqual(s.count('id="gnb-me"'), 1, f)
+            self.assertEqual(gnb.refresh(s), s, f)
+
+    def test_landing_has_me_button(self):
+        self.assertIn('id="gnb-me"', (ROOT / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("function MeButton", (ROOT / "landing/src/components/Nav.tsx").read_text(encoding="utf-8"))
+
+    def test_mypage_name(self):
+        self.assertIn("<title>마이페이지 |", (ROOT / "me/index.html").read_text(encoding="utf-8"))

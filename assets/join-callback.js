@@ -63,7 +63,12 @@
       if (r.error || !r.data || !r.data.user) throw r.error || new Error("no session");
       var isNew = Date.now() - Date.parse(r.data.user.created_at) < NEW_USER_WINDOW;
       if (typeof gtag === "function") gtag("event", isNew ? "sign_up" : "login", { method: oidc.p });
-      return Promise.all([A.logEvent(isNew ? "signup" : "login"), A.sync().catch(function () { return null; })]);
+      var uid = r.data.user.id;
+      // 위 메뉴의 마이페이지 동그라미가 쓰는 닉네임(첫 글자)을 이 기기에 둔다
+      var nick = c.from("profiles").select("nickname").eq("user_id", uid).maybeSingle().then(function (p) {
+        try { localStorage.setItem("dkh-me", JSON.stringify({ n: (p.data && p.data.nickname) || "" })); } catch (e) {}
+      }, function () {});
+      return Promise.all([A.logEvent(isNew ? "signup" : "login"), A.sync().catch(function () { return null; }), nick]);
     });
   }).then(function () {
     $("title").textContent = "로그인했어요";

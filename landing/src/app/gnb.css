@@ -14,6 +14,17 @@
 .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
 .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
 .gnb-seg, .gnb-past { display: none; }
+/* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+.gnb-me { position: relative; }
+.gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+.gnb-me .gm-t { display: none; }
+.gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+.gnb-me.in .gnb-pill { background: none; }
+.gnb-me.in .gm-ic { display: none; }
+.gnb-me.in .gm-av { display: inline-flex; }
+.gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+.gnb-me .gm-b[hidden] { display: none; }
 .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
 @media (max-width: 350px) { .gnb-brand span { display: none; } }
 @media (min-width: 768px) {
@@ -30,6 +41,13 @@
   .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
   .gnb-past:hover { background: #f2f4f6; }
   .gnb-past.on { color: #191f28; font-weight: 700; }
+  .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+  .gnb-me .gnb-pill:hover { background: #e9ecef; }
+  .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+  .gnb-me .gm-t { display: inline; }
+  .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+  .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+  .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
 }
 /* 언어 시트(휴대폰) */
 .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }

@@ -193,6 +193,17 @@
   .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
   .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
   .gnb-seg, .gnb-past { display: none; }
+  /* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+  .gnb-me { position: relative; }
+  .gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+  .gnb-me .gm-t { display: none; }
+  .gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+  .gnb-me.in .gnb-pill { background: none; }
+  .gnb-me.in .gm-ic { display: none; }
+  .gnb-me.in .gm-av { display: inline-flex; }
+  .gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+  .gnb-me .gm-b[hidden] { display: none; }
   .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
   @media (max-width: 350px) { .gnb-brand span { display: none; } }
   @media (min-width: 768px) {
@@ -209,6 +220,13 @@
     .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
     .gnb-past:hover { background: #f2f4f6; }
     .gnb-past.on { color: #191f28; font-weight: 700; }
+    .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+    .gnb-me .gnb-pill:hover { background: #e9ecef; }
+    .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+    .gnb-me .gm-t { display: inline; }
+    .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+    .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+    .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
   }
   /* 언어 시트(휴대폰) */
   .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
@@ -567,7 +585,7 @@
 </head>
 <body>
 <!-- gnb -->
-<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en" class="on" aria-current="page">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/en/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 영어"><span class="gnb-pill">영어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a></div></header>
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en" class="on" aria-current="page">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/en/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 영어"><span class="gnb-pill">영어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
 <div class="gnb-scrim" id="gnb-scrim" hidden></div>
 <div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
   <div class="gs-handle"></div>
@@ -657,7 +675,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="17">
+  <section class="card dr-card" id="drill" data-v="18">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -1242,7 +1260,7 @@
 </script>
 <script type="application/json" id="drill-data">[{"w": "antenna", "m": "안테나", "cz": "A normal <span class=\"dr-blank\"><\/span> is a piece of metal, but what if you could make one out of light and air?", "ca": "antenna", "ex": "A normal <b>antenna<\/b> is a piece of metal, but what if you could make one out of light and air?", "sh": "A normal <b>antenna<\/b> is a piece of metal, but what if you could make one out of light and air?", "ek": "보통의 안테나는 금속 조각이지만, 빛과 공기로 안테나를 만들 수 있다면 어떨까?", "sa": "/en/2026-10-13/audio/s1.mp3", "au": "/en/2026-10-13/audio/w1.mp3", "alts": ["플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "plasma", "m": "플라스마 (전기를 띤 기체)", "cz": "The laser turns a thin line of air into <span class=\"dr-blank\"><\/span>, a special kind of gas that can carry electricity.", "ca": "plasma", "ex": "The laser turns a thin line of air into <b>plasma<\/b>, a special kind of gas that can carry electricity.", "sh": "The laser turns a thin line of air into <b>plasma<\/b>, a special kind of gas that can carry electricity.", "ek": "레이저는 가느다란 줄 모양의 공기를 플라스마, 즉 전기를 전달할 수 있는 특별한 종류의 기체로 바꾼다.", "sa": "/en/2026-10-13/audio/s3.mp3", "au": "/en/2026-10-13/audio/w2.mp3", "alts": ["안테나", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "send out", "m": "내보내다", "ex": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma <b>sends out<\/b> radio waves that vibrate thirty million times a second.", "sh": "… the plasma <b>sends out<\/b> radio waves that vibrate thirty million times a second.", "ek": "이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.", "sa": "/en/2026-10-13/audio/s4.mp3", "au": "/en/2026-10-13/audio/w3.mp3", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "vibrate", "m": "진동하다, 떨리다", "cz": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma sends out radio waves that <span class=\"dr-blank\"><\/span> thirty million times a second.", "ca": "vibrate", "ex": "This line passes through a metal ring, and when a radio signal is sent into the ring, the plasma sends out radio waves that <b>vibrate<\/b> thirty million times a second.", "sh": "… the plasma sends out radio waves that <b>vibrate<\/b> thirty million times a second.", "ek": "이 줄은 금속 고리를 통과하는데, 고리에 무선 신호를 보내면 플라스마가 1초에 3천만 번 진동하는 전파를 내보낸다.", "sa": "/en/2026-10-13/audio/s4.mp3", "au": "/en/2026-10-13/audio/w4.mp3", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "조정하다, 맞추다", "지금까지 (는)", "인공위성"]}, {"w": "adjust", "m": "조정하다, 맞추다", "cz": "The length of this light-made antenna, which is controlled only by the laser's settings, can be <span class=\"dr-blank\"><\/span> for different signals without any moving parts.", "ca": "adjusted", "ex": "The length of this light-made antenna, which is controlled only by the laser's settings, can be <b>adjusted<\/b> for different signals without any moving parts.", "sh": "… can be <b>adjusted<\/b> for different signals …", "ek": "레이저의 설정만으로 조절되는 이 '빛으로 만든 안테나'의 길이는 움직이는 부품 없이도 다른 신호에 맞게 조정할 수 있다.", "sa": "/en/2026-10-13/audio/s5.mp3", "au": "/en/2026-10-13/audio/w5.mp3", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "지금까지 (는)", "인공위성"]}, {"w": "so far", "m": "지금까지 (는)", "cz": "<span class=\"dr-blank\"><\/span>, the device can only send signals, but the team hopes it could one day help satellites that need to stay light.", "ca": "So far", "ex": "<b>So far<\/b>, the device can only send signals, but the team hopes it could one day help satellites that need to stay light.", "sh": "<b>So far<\/b>, the device can only send signals, …", "ek": "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.", "sa": "/en/2026-10-13/audio/s6.mp3", "au": "/en/2026-10-13/audio/w6.mp3", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "인공위성"]}, {"w": "satellite", "m": "인공위성", "cz": "So far, the device can only send signals, but the team hopes it could one day help <span class=\"dr-blank\"><\/span> that need to stay light.", "ca": "satellites", "ex": "So far, the device can only send signals, but the team hopes it could one day help <b>satellites<\/b> that need to stay light.", "sh": "… it could one day help <b>satellites<\/b> that need to stay light.", "ek": "지금까지 이 장치는 신호를 보내기만 할 수 있지만, 연구팀은 이것이 언젠가 가벼워야 하는 인공위성에 도움이 되기를 바란다.", "sa": "/en/2026-10-13/audio/s6.mp3", "au": "/en/2026-10-13/audio/w7.mp3", "alts": ["안테나", "플라스마 (전기를 띤 기체)", "내보내다", "진동하다, 떨리다", "조정하다, 맞추다", "지금까지 (는)"]}]</script>
 <script id="auth-js" src="/assets/auth.js?v=2" defer></script>
-<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
+<script id="drill-js" data-v="18" src="/assets/drill.js?v=18" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1275,55 +1293,6 @@
   }
 })();
 </script>
-<script id="gnb-js">(function(){
-  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
-  if(!chip||!sheet||!scrim)return;
-  var root=document.documentElement;
-  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
-  var tm=null,tprev=null;
-  function tint(on){
-    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
-      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
-      tm.setAttribute('content','#9fa3a9');}
-    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
-  }
-  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
-  function key(e){
-    if(e.key==='Escape'){e.preventDefault();close();return;}
-    if(e.key!=='Tab')return;
-    var f=items();if(!f.length)return;
-    var a=f[0],z=f[f.length-1];
-    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
-    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
-    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
-    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
-  }
-  function open(){
-    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
-    tint(true);sheet.focus();
-    document.addEventListener('keydown',key);
-    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
-  }
-  function close(){
-    if(sheet.hidden)return;
-    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
-    document.removeEventListener('keydown',key);chip.focus();
-  }
-  chip.addEventListener('click',function(){sheet.hidden?open():close();});
-  scrim.addEventListener('click',close);
-  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
-  if(!window.fetch)return;
-  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
-    if(!d||!d.langs)return;
-    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
-    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
-      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
-    var rv=document.getElementById('gnb-review');
-    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
-      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
-        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
-  }).catch(function(){});
-})();</script>
 <script id="fb-js">
 (function () {
   function device() {
@@ -1387,5 +1356,71 @@
   document.addEventListener('visibilitychange', tick);
 })();
 </script>
+<script id="gnb-js">(function(){
+  var me=document.getElementById('gnb-me');
+  if(me){try{
+    var on=localStorage.getItem('dkh-auth')!==null,info=JSON.parse(localStorage.getItem('dkh-me')||'null')||{};
+    if(on){
+      var nick=String(info.n||''),days=(JSON.parse(localStorage.getItem('drill:v1')||'null')||{}).days||[],set={},n=0,d=new Date();
+      days.forEach(function(x){set[x]=1;});
+      function k(t){return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);}
+      if(!set[k(d)])d.setDate(d.getDate()-1);
+      while(set[k(d)]){n++;d.setDate(d.getDate()-1);}
+      me.href='/me/';me.classList.add('in');me.setAttribute('aria-label','마이페이지'+(n?', 연속 '+n+'일':''));
+      me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
+      me.querySelector('.gm-t').textContent='마이페이지';
+      var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
+      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }
+  }catch(e){}}
+  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
+  if(!chip||!sheet||!scrim)return;
+  var root=document.documentElement;
+  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
+  var tm=null,tprev=null;
+  function tint(on){
+    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
+      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
+      tm.setAttribute('content','#9fa3a9');}
+    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
+  }
+  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
+  function key(e){
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key!=='Tab')return;
+    var f=items();if(!f.length)return;
+    var a=f[0],z=f[f.length-1];
+    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
+    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
+    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
+  }
+  function open(){
+    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
+    tint(true);sheet.focus();
+    document.addEventListener('keydown',key);
+    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
+  }
+  function close(){
+    if(sheet.hidden)return;
+    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
+    document.removeEventListener('keydown',key);chip.focus();
+  }
+  chip.addEventListener('click',function(){sheet.hidden?open():close();});
+  scrim.addEventListener('click',close);
+  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
+  if(!window.fetch)return;
+  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.langs)return;
+    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
+    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
+      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
+    var rv=document.getElementById('gnb-review');
+    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
+      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
+        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
+  }).catch(function(){});
+})();</script>
 </body>
 </html>

@@ -78,6 +78,17 @@
   .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
   .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
   .gnb-seg, .gnb-past { display: none; }
+  /* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+  .gnb-me { position: relative; }
+  .gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+  .gnb-me .gm-t { display: none; }
+  .gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+  .gnb-me.in .gnb-pill { background: none; }
+  .gnb-me.in .gm-ic { display: none; }
+  .gnb-me.in .gm-av { display: inline-flex; }
+  .gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+  .gnb-me .gm-b[hidden] { display: none; }
   .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
   @media (max-width: 350px) { .gnb-brand span { display: none; } }
   @media (min-width: 768px) {
@@ -94,6 +105,13 @@
     .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
     .gnb-past:hover { background: #f2f4f6; }
     .gnb-past.on { color: #191f28; font-weight: 700; }
+    .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+    .gnb-me .gnb-pill:hover { background: #e9ecef; }
+    .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+    .gnb-me .gm-t { display: inline; }
+    .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+    .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+    .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
   }
   /* 언어 시트(휴대폰) */
   .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
@@ -150,7 +168,7 @@
 </head>
 <body>
 <!-- gnb -->
-<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/en/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 영어"><span class="gnb-pill">영어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="/#subscribe"><span class="gnb-pill">메일로 받기</span></a></div></header>
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/en/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 영어"><span class="gnb-pill">영어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="/#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
 <div class="gnb-scrim" id="gnb-scrim" hidden></div>
 <div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
   <div class="gs-handle"></div>
@@ -166,16 +184,62 @@
 <main>
 <div class="top"><div class="date">독해한입 안내</div><h1>개인정보처리방침</h1><p class="eff">시행일: 2026년 11월 18일</p><p class="lead" style="margin-top:10px">독해한입(dokhaehanip.com)과 독해한입이 보내는 메일에 적용돼요. 읽기는 가입 없이 쓸 수 있고, 아래에 적은 경우가 아니면 개인정보를 모으지 않아요.</p><nav class="toc" aria-label="목차"><a href="#collect">모으는 정보</a><a href="#account">로그인</a><a href="#storage">브라우저 저장값</a><a href="#cookies">쿠키와 광고</a><a href="#retention">구독 해지</a><a href="#ask">문의</a></nav></div>
 <section class="card" id="collect"><h2><span class="num">1</span>모으는 정보와 쓰는 곳</h2><div class="row"><h3>메일 구독</h3><p>구독 칸에 넣은 <b>이메일 주소</b>와 고른 <b>언어</b>, <b>지문 수준</b>(기초, 중급). 매일 아침 지문 메일과 일요일 주간 복습 메일을 보내는 데만 써요.</p><span class="who">맡긴 곳: Buttondown (미국, 메일 발송)</span></div><div class="row" id="account"><h3>로그인 (선택)</h3><p>단어 문제 풀기를 쓰려면 카카오나 Google로 로그인해요. 카카오는 <b>회원번호와 닉네임</b>, Google은 <b>계정 식별자, 이메일 주소, 이름</b>(Google이 함께 주는 프로필 사진 주소 포함)을 받아요. 로그인하면 <b>단어 학습 기록</b>(외운 단어, 복습 날짜, 공부한 날)을 계정에 저장해 여러 기기에서 이어 쓰는 데만 써요. 광고나 메일 발송에는 쓰지 않아요.</p><span class="who">맡긴 곳: Supabase (로그인과 기록 저장), Cloudflare (카카오 로그인 연결)</span></div><div class="row"><h3>방문 통계</h3><p>방문 수, 유입 경로, 페이지 이용 흐름, 버튼 사용(주제 반응, 단어 외우기, 의견 보내기 등)을 익명 통계로 봐요. IP 주소는 익명 처리하고 이름이나 이메일과 연결하지 않아요.</p><span class="who">맡긴 곳: Google Analytics 4, Microsoft Clarity</span></div><div class="row"><h3>광고</h3><p>Google AdSense 광고를 보여 줄 수 있어요. 아래 3번을 봐 주세요.</p><span class="who">맡긴 곳: Google AdSense</span></div><div class="row"><h3>의견 메일</h3><p>기능 건의나 버그 제보 버튼은 메일 앱을 열어요. 버그 제보에는 누른 페이지 주소, 기기와 브라우저 이름, 화면 크기가 미리 채워지고, 보내기 전에 지울 수 있어요. 받은 메일은 답장과 수정에만 써요.</p></div><div class="row"><h3>접속 기록</h3><p>사이트는 GitHub Pages로 제공돼요. GitHub는 보안과 운영을 위해 접속 IP 등을 기록할 수 있어요. 글꼴(cdnjs)을 불러올 때도 그 제공자에게 접속 정보가 전달될 수 있어요.</p><span class="who">제공: GitHub Pages, cdnjs</span></div></section>
-<section class="card" id="storage"><h2><span class="num">2</span>브라우저에 저장하는 값</h2><p>학습 기록과 설정은 이용자 기기의 브라우저 저장소(localStorage)에 둬요. 로그인하지 않으면 서버로 보내지 않고, 로그인하면 단어 기록(<code>drill:v1</code>)만 계정에도 저장해요. 브라우저 사이트 데이터를 지우면 기기에 둔 값은 사라져요.</p><ul class="keys"><li><code>drill:v1</code><span>단어 외우기 복습 기록(다시 물을 날짜)</span></li><li><code>drill:pref</code><span>단어 외우기 방식(카드, 문제)</span></li><li><code>dkh-auth</code><span>로그인 상태 유지(로그인했을 때만)</span></li><li><code>read_level:언어</code><span>언어별로 고른 지문 수준</span></li><li><code>read_speed</code><span>음성 재생 속도</span></li><li><code>vote:언어/날짜</code><span>오늘 주제 반응(좋아요, 별로예요). 반응 자체는 방문 통계로도 보내요</span></li><li><code>lily.justListen</code><span>릴리 그림책 듣기 페이지의 '듣기만' 설정</span></li></ul></section>
+<section class="card" id="storage"><h2><span class="num">2</span>브라우저에 저장하는 값</h2><p>학습 기록과 설정은 이용자 기기의 브라우저 저장소(localStorage)에 둬요. 로그인하지 않으면 서버로 보내지 않고, 로그인하면 단어 기록(<code>drill:v1</code>)만 계정에도 저장해요. 브라우저 사이트 데이터를 지우면 기기에 둔 값은 사라져요.</p><ul class="keys"><li><code>drill:v1</code><span>단어 외우기 복습 기록(다시 물을 날짜)</span></li><li><code>drill:pref</code><span>단어 외우기 방식(카드, 문제)</span></li><li><code>dkh-auth</code><span>로그인 상태 유지(로그인했을 때만)</span></li><li><code>dkh-me</code><span>위 메뉴에 보일 닉네임(로그인했을 때만)</span></li><li><code>read_level:언어</code><span>언어별로 고른 지문 수준</span></li><li><code>read_speed</code><span>음성 재생 속도</span></li><li><code>vote:언어/날짜</code><span>오늘 주제 반응(좋아요, 별로예요). 반응 자체는 방문 통계로도 보내요</span></li><li><code>lily.justListen</code><span>릴리 그림책 듣기 페이지의 '듣기만' 설정</span></li></ul></section>
 <section class="card" id="cookies"><h2><span class="num">3</span>쿠키와 광고</h2><p>Google을 포함한 제3자 광고 업체는 쿠키를 써서, 이 사이트와 다른 사이트를 방문한 기록을 바탕으로 광고를 보여 줄 수 있어요. 자세한 내용은 <a class="ln" href="https://policies.google.com/technologies/partner-sites">Google 파트너 사이트의 데이터 사용 방식</a>에 있어요.</p><p>맞춤 광고는 <a class="ln" href="https://adssettings.google.com/">Google 광고 설정</a>에서, 제3자 업체 맞춤 광고 쿠키는 <a class="ln" href="https://www.aboutads.info/choices/">www.aboutads.info</a>에서 끌 수 있어요. Google Analytics 수집은 <a class="ln" href="https://tools.google.com/dlpage/gaoptout">수집 거부 부가 기능</a>으로 막을 수 있어요. 쿠키를 거부해도 읽기에는 문제가 없어요.</p></section>
-<section class="card" id="retention"><h2><span class="num">4</span>보관과 구독 해지</h2><ul class="dots"><li>이메일 주소는 수신거부하거나 삭제를 요청할 때까지 보관하고, 요청을 받으면 지체 없이 지워요.</li><li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>로그인 계정과 단어 기록은 탈퇴할 때까지 보관해요. <a class="ln" href="/me/">내 기록</a> 화면에서 탈퇴하면 바로 지워져요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li><li>만 14세 미만은 로그인할 수 없고, 만 14세 미만 아동의 개인정보는 알면서 모으지 않아요.</li><li>내용이 바뀌면 이 페이지에 새 시행일과 함께 알려요.</li></ul></section>
+<section class="card" id="retention"><h2><span class="num">4</span>보관과 구독 해지</h2><ul class="dots"><li>이메일 주소는 수신거부하거나 삭제를 요청할 때까지 보관하고, 요청을 받으면 지체 없이 지워요.</li><li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>로그인 계정과 단어 기록은 탈퇴할 때까지 보관해요. <a class="ln" href="/me/">마이페이지</a>에서 탈퇴하면 바로 지워져요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li><li>만 14세 미만은 로그인할 수 없고, 만 14세 미만 아동의 개인정보는 알면서 모으지 않아요.</li><li>내용이 바뀌면 이 페이지에 새 시행일과 함께 알려요.</li></ul></section>
 <section class="card" id="ask"><h2><span class="num">5</span>문의</h2><p>개인정보 문의: <a class="ln" href="mailto:hello@dokhaehanip.com">hello@dokhaehanip.com</a> (운영자)</p></section>
 </main>
 <!-- fb -->
 <section class="fb" aria-label="의견 보내기"><p class="fb-q">독해한입에 바라는 점이 있나요?</p><p class="fb-d">메일 앱이 열려요. 운영자가 직접 읽고 답장해요.</p><div class="fb-row"><a class="fb-btn" data-fb="idea" href="mailto:hello@dokhaehanip.com?subject=%5B%EB%8F%85%ED%95%B4%ED%95%9C%EC%9E%85%5D%20%EA%B8%B0%EB%8A%A5%20%EA%B1%B4%EC%9D%98&amp;body=%EC%96%B4%EB%96%A4%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%9E%88%EC%9C%BC%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94%3F%0D%0A%0D%0A%0D%0A%EC%99%9C%20%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80%EC%9A%94%3F%20%28%EC%96%B4%EB%96%A4%20%EB%95%8C%20%EB%B6%88%ED%8E%B8%ED%96%88%EB%8A%94%EC%A7%80%29"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>기능 건의</a><a class="fb-btn" data-fb="bug" href="mailto:hello@dokhaehanip.com?subject=%5B%EB%8F%85%ED%95%B4%ED%95%9C%EC%9E%85%5D%20%EB%B2%84%EA%B7%B8%20%EC%A0%9C%EB%B3%B4&amp;body=%EB%AC%B4%EC%8A%A8%20%EC%9D%BC%EC%9D%B4%20%EC%9E%88%EC%97%88%EB%82%98%EC%9A%94%3F%0D%0A%28%EC%98%88%3A%20%EC%9D%8C%EC%84%B1%EC%9D%B4%20%EC%95%88%20%EB%82%98%EC%99%80%EC%9A%94%2C%20%EA%B8%80%EC%9E%90%EA%B0%80%20%EA%B2%B9%EC%B3%90%20%EB%B3%B4%EC%97%AC%EC%9A%94%29%0D%0A%0D%0A%0D%0A----%0D%0A%ED%8E%98%EC%9D%B4%EC%A7%80%3A%20https%3A%2F%2Fdokhaehanip.com%2Fprivacy%2F%0D%0A%EA%B8%B0%EA%B8%B0%3A%20%0D%0A%ED%99%94%EB%A9%B4%20%ED%81%AC%EA%B8%B0%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="8" width="10" height="12" rx="5"/><path d="M9 8a3 3 0 0 1 6 0M3 13h4M17 13h4M4 7l3 2M20 7l-3 2M4 19l3-2M20 19l-3-2M12 11v8"/></svg>버그 제보</a></div></section>
 <!-- /fb -->
 <footer class="site-footer"><a href="/about/">소개</a><a href="/privacy/" class="cur" aria-current="page">개인정보처리방침</a><a href="/contact/">연락처</a></footer>
+<script id="fb-js">
+(function () {
+  function device() {
+    var u = navigator.userAgent, d = 'Windows', b = 'Safari';
+    if (/iPhone/.test(u)) d = 'iPhone';
+    else if (/iPad/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1)) d = 'iPad';
+    else if (/Android/.test(u)) d = 'Android';
+    else if (/Macintosh/.test(u)) d = 'Mac';
+    else if (!/Windows/.test(u)) d = '기타';
+    if (/KAKAOTALK/i.test(u)) b = '카카오톡';
+    else if (/NAVER/.test(u)) b = '네이버';
+    else if (/SamsungBrowser/.test(u)) b = 'Samsung Internet';
+    else if (/Edg/.test(u)) b = 'Edge';
+    else if (/FxiOS|Firefox/.test(u)) b = 'Firefox';
+    else if (/CriOS|Chrome/.test(u)) b = 'Chrome';
+    return d + ', ' + b;
+  }
+  var links = document.querySelectorAll('.fb-btn');
+  for (var i = 0; i < links.length; i++) links[i].addEventListener('click', function () {
+    var type = this.getAttribute('data-fb');
+    if (type === 'bug') {
+      var body = '무슨 일이 있었나요?\n(예: 음성이 안 나와요, 글자가 겹쳐 보여요)\n\n\n----\n페이지: ' + location.href +
+        '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
+      this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
+    }
+    try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
+  });
+})();
+</script>
 <script id="gnb-js">(function(){
+  var me=document.getElementById('gnb-me');
+  if(me){try{
+    var on=localStorage.getItem('dkh-auth')!==null,info=JSON.parse(localStorage.getItem('dkh-me')||'null')||{};
+    if(on){
+      var nick=String(info.n||''),days=(JSON.parse(localStorage.getItem('drill:v1')||'null')||{}).days||[],set={},n=0,d=new Date();
+      days.forEach(function(x){set[x]=1;});
+      function k(t){return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);}
+      if(!set[k(d)])d.setDate(d.getDate()-1);
+      while(set[k(d)]){n++;d.setDate(d.getDate()-1);}
+      me.href='/me/';me.classList.add('in');me.setAttribute('aria-label','마이페이지'+(n?', 연속 '+n+'일':''));
+      me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
+      me.querySelector('.gm-t').textContent='마이페이지';
+      var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
+      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }
+  }catch(e){}}
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
   if(!chip||!sheet||!scrim)return;
   var root=document.documentElement;
@@ -224,33 +288,4 @@
         document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
   }).catch(function(){});
 })();</script>
-<script id="fb-js">
-(function () {
-  function device() {
-    var u = navigator.userAgent, d = 'Windows', b = 'Safari';
-    if (/iPhone/.test(u)) d = 'iPhone';
-    else if (/iPad/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1)) d = 'iPad';
-    else if (/Android/.test(u)) d = 'Android';
-    else if (/Macintosh/.test(u)) d = 'Mac';
-    else if (!/Windows/.test(u)) d = '기타';
-    if (/KAKAOTALK/i.test(u)) b = '카카오톡';
-    else if (/NAVER/.test(u)) b = '네이버';
-    else if (/SamsungBrowser/.test(u)) b = 'Samsung Internet';
-    else if (/Edg/.test(u)) b = 'Edge';
-    else if (/FxiOS|Firefox/.test(u)) b = 'Firefox';
-    else if (/CriOS|Chrome/.test(u)) b = 'Chrome';
-    return d + ', ' + b;
-  }
-  var links = document.querySelectorAll('.fb-btn');
-  for (var i = 0; i < links.length; i++) links[i].addEventListener('click', function () {
-    var type = this.getAttribute('data-fb');
-    if (type === 'bug') {
-      var body = '무슨 일이 있었나요?\n(예: 음성이 안 나와요, 글자가 겹쳐 보여요)\n\n\n----\n페이지: ' + location.href +
-        '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
-      this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
-    }
-    try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
-  });
-})();
-</script>
 </body></html>

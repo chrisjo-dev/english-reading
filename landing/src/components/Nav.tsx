@@ -140,6 +140,7 @@ export default function Nav() {
           <a className="gnb-tap gnb-mail" href="#subscribe">
             <span className="gnb-pill">메일로 받기</span>
           </a>
+          <MeButton />
         </div>
       </header>
       <div className="gnb-scrim" id="gnb-scrim" hidden={!open} onClick={close} />
@@ -177,5 +178,57 @@ export default function Nav() {
         ))}
       </div>
     </>
+  );
+}
+
+// 로그인과 마이페이지(시안 design/kakao-login K15). tools/gnb.py 의 ME_HTML, SCRIPT 와 같은 규칙:
+// 로그인 상태(dkh-auth), 닉네임(dkh-me), 공부한 날(drill:v1 의 days)을 이 기기 저장값에서 읽는다.
+type Me = { on: boolean; nick: string; streak: number };
+function ymd(t: Date) {
+  return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+}
+function readMe(): Me {
+  try {
+    const on = localStorage.getItem("dkh-auth") !== null;
+    if (!on) return { on, nick: "", streak: 0 };
+    const nick = String((JSON.parse(localStorage.getItem("dkh-me") || "null") || {}).n || "");
+    const days: string[] = (JSON.parse(localStorage.getItem("drill:v1") || "null") || {}).days || [];
+    const set = new Set(days);
+    const d = new Date();
+    if (!set.has(ymd(d))) d.setDate(d.getDate() - 1);
+    let n = 0;
+    while (set.has(ymd(d))) {
+      n++;
+      d.setDate(d.getDate() - 1);
+    }
+    return { on, nick, streak: n };
+  } catch {
+    return { on: false, nick: "", streak: 0 };
+  }
+}
+function MeButton() {
+  const [me, setMe] = useState<Me>({ on: false, nick: "", streak: 0 });
+  useEffect(() => setMe(readMe()), []);
+  return (
+    <a
+      className={`gnb-tap gnb-me${me.on ? " in" : ""}`}
+      id="gnb-me"
+      href={me.on ? "/me/" : "/join/?next=%2F"}
+      aria-label={me.on ? `마이페이지${me.streak ? `, 연속 ${me.streak}일` : ""}` : "로그인"}
+    >
+      <span className="gnb-pill">
+        <span className="gm-ic">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
+          </svg>
+        </span>
+        <span className="gm-av">{me.on ? me.nick.charAt(0) || "나" : ""}</span>
+        <span className="gm-t">{me.on ? "마이페이지" : "로그인"}</span>
+        <span className="gm-b" hidden={!me.streak}>
+          {me.streak ? `🔥${me.streak}` : ""}
+        </span>
+      </span>
+    </a>
   );
 }

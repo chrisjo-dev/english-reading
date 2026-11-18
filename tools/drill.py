@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "17"
+VERSION = "18"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 

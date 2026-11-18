@@ -422,6 +422,17 @@
   .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
   .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
   .gnb-seg, .gnb-past { display: none; }
+  /* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+  .gnb-me { position: relative; }
+  .gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+  .gnb-me .gm-t { display: none; }
+  .gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+  .gnb-me.in .gnb-pill { background: none; }
+  .gnb-me.in .gm-ic { display: none; }
+  .gnb-me.in .gm-av { display: inline-flex; }
+  .gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+  .gnb-me .gm-b[hidden] { display: none; }
   .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
   @media (max-width: 350px) { .gnb-brand span { display: none; } }
   @media (min-width: 768px) {
@@ -438,6 +449,13 @@
     .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
     .gnb-past:hover { background: #f2f4f6; }
     .gnb-past.on { color: #191f28; font-weight: 700; }
+    .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+    .gnb-me .gnb-pill:hover { background: #e9ecef; }
+    .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+    .gnb-me .gm-t { display: inline; }
+    .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+    .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+    .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
   }
   /* 언어 시트(휴대폰) */
   .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
@@ -570,7 +588,7 @@
 </head>
 <body>
 <!-- gnb -->
-<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja" class="on" aria-current="page">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/ja/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 일본어"><span class="gnb-pill">일본어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a></div></header>
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja" class="on" aria-current="page">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/ja/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 일본어"><span class="gnb-pill">일본어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
 <div class="gnb-scrim" id="gnb-scrim" hidden></div>
 <div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
   <div class="gs-handle"></div>
@@ -666,7 +684,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="17">
+  <section class="card dr-card" id="drill" data-v="18">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -1244,7 +1262,7 @@
 </script>
 <script type="application/json" id="drill-data">[{"w": "着物", "m": "기모노(일본 전통 옷)", "r": "きもの", "cz": "11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>神社<rt>じんじゃ<\/rt><\/ruby>では、<span class=\"dr-blank\"><\/span>を<ruby>着<rt>き<\/rt><\/ruby>た<ruby>小<rt>ちい<\/rt><\/ruby>さな<ruby>子<rt>こ<\/rt><\/ruby>どもと、その<ruby>家族<rt>かぞく<\/rt><\/ruby>の<ruby>姿<rt>すがた<\/rt><\/ruby>をよく<ruby>見<rt>み<\/rt><\/ruby>かけます。", "ca": "着物", "ex": "11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>神社<rt>じんじゃ<\/rt><\/ruby>では、<b><ruby>着物<rt>きもの<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>た<ruby>小<rt>ちい<\/rt><\/ruby>さな<ruby>子<rt>こ<\/rt><\/ruby>どもと、その<ruby>家族<rt>かぞく<\/rt><\/ruby>の<ruby>姿<rt>すがた<\/rt><\/ruby>をよく<ruby>見<rt>み<\/rt><\/ruby>かけます。", "sh": "11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>日本<rt>にほん<\/rt><\/ruby>の<ruby>神社<rt>じんじゃ<\/rt><\/ruby>では、<b><ruby>着物<rt>きもの<\/rt><\/ruby><\/b>を<ruby>着<rt>き<\/rt><\/ruby>た<ruby>小<rt>ちい<\/rt><\/ruby>さな<ruby>子<rt>こ<\/rt><\/ruby>どもと、その<ruby>家族<rt>かぞく<\/rt><\/ruby>の<ruby>姿<rt>すがた<\/rt><\/ruby>をよく<ruby>見<rt>み<\/rt><\/ruby>かけます。", "ek": "11월 일본의 신사에서는 기모노를 입은 어린아이와 그 가족의 모습을 자주 볼 수 있습니다.", "sa": "/ja/2026-11-10/audio/s1.mp3", "au": "/ja/2026-11-10/audio/w1.mp3", "alts": ["성장", "빌다, 기도하다", "축하하다", "참배", "치토세아메(시치고산 때 먹는 길쭉한 사탕)", "장수, 오래 삶"]}, {"w": "成長", "m": "성장", "r": "せいちょう", "cz": "これは<ruby>七五三<rt>しちごさん<\/rt><\/ruby>という<ruby>行事<rt>ぎょうじ<\/rt><\/ruby>で、<ruby>子<rt>こ<\/rt><\/ruby>どもの<span class=\"dr-blank\"><\/span>を<ruby>神様<rt>かみさま<\/rt><\/ruby>に<ruby>感謝<rt>かんしゃ<\/rt><\/ruby>し、これからの<ruby>安全<rt>あんぜん<\/rt><\/ruby>を<ruby>祈<rt>いの<\/rt><\/ruby>るために<ruby>行<rt>おこな<\/rt><\/ruby>います。", "ca": "成長", "ex": "これは<ruby>七五三<rt>しちごさん<\/rt><\/ruby>という<ruby>行事<rt>ぎょうじ<\/rt><\/ruby>で、<ruby>子<rt>こ<\/rt><\/ruby>どもの<b><ruby>成長<rt>せいちょう<\/rt><\/ruby><\/b>を<ruby>神様<rt>かみさま<\/rt><\/ruby>に<ruby>感謝<rt>かんしゃ<\/rt><\/ruby>し、これからの<ruby>安全<rt>あんぜん<\/rt><\/ruby>を<ruby>祈<rt>いの<\/rt><\/ruby>るために<ruby>行<rt>おこな<\/rt><\/ruby>います。", "sh": "これは<ruby>七五三<rt>しちごさん<\/rt><\/ruby>という<ruby>行事<rt>ぎょうじ<\/rt><\/ruby>で、<ruby>子<rt>こ<\/rt><\/ruby>どもの<b><ruby>成長<rt>せいちょう<\/rt><\/ruby><\/b>を<ruby>神様<rt>かみさま<\/rt><\/ruby>に<ruby>感謝<rt>かんしゃ<\/rt><\/ruby>し、これからの<ruby>安全<rt>あんぜん<\/rt><\/ruby>を<ruby>祈<rt>いの<\/rt><\/ruby>るために<ruby>行<rt>おこな<\/rt><\/ruby>います。", "ek": "이것은 시치고산이라는 행사로, 아이의 성장을 신에게 감사하고 앞으로의 안전을 빌기 위해 합니다.", "sa": "/ja/2026-11-10/audio/s2.mp3", "au": "/ja/2026-11-10/audio/w2.mp3", "alts": ["기모노(일본 전통 옷)", "빌다, 기도하다", "축하하다", "참배", "치토세아메(시치고산 때 먹는 길쭉한 사탕)", "장수, 오래 삶"]}, {"w": "祈る", "m": "빌다, 기도하다", "r": "いのる", "cz": "これは<ruby>七五三<rt>しちごさん<\/rt><\/ruby>という<ruby>行事<rt>ぎょうじ<\/rt><\/ruby>で、<ruby>子<rt>こ<\/rt><\/ruby>どもの<ruby>成長<rt>せいちょう<\/rt><\/ruby>を<ruby>神様<rt>かみさま<\/rt><\/ruby>に<ruby>感謝<rt>かんしゃ<\/rt><\/ruby>し、これからの<ruby>安全<rt>あんぜん<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span>ために<ruby>行<rt>おこな<\/rt><\/ruby>います。", "ca": "祈る", "ex": "これは<ruby>七五三<rt>しちごさん<\/rt><\/ruby>という<ruby>行事<rt>ぎょうじ<\/rt><\/ruby>で、<ruby>子<rt>こ<\/rt><\/ruby>どもの<ruby>成長<rt>せいちょう<\/rt><\/ruby>を<ruby>神様<rt>かみさま<\/rt><\/ruby>に<ruby>感謝<rt>かんしゃ<\/rt><\/ruby>し、これからの<ruby>安全<rt>あんぜん<\/rt><\/ruby>を<b><ruby>祈<rt>いの<\/rt><\/ruby>る<\/b>ために<ruby>行<rt>おこな<\/rt><\/ruby>います。", "sh": "これは<ruby>七五三<rt>しちごさん<\/rt><\/ruby>という<ruby>行事<rt>ぎょうじ<\/rt><\/ruby>で、<ruby>子<rt>こ<\/rt><\/ruby>どもの<ruby>成長<rt>せいちょう<\/rt><\/ruby>を<ruby>神様<rt>かみさま<\/rt><\/ruby>に<ruby>感謝<rt>かんしゃ<\/rt><\/ruby>し、これからの<ruby>安全<rt>あんぜん<\/rt><\/ruby>を<b><ruby>祈<rt>いの<\/rt><\/ruby>る<\/b>ために<ruby>行<rt>おこな<\/rt><\/ruby>います。", "ek": "이것은 시치고산이라는 행사로, 아이의 성장을 신에게 감사하고 앞으로의 안전을 빌기 위해 합니다.", "sa": "/ja/2026-11-10/audio/s2.mp3", "au": "/ja/2026-11-10/audio/w3.mp3", "alts": ["기모노(일본 전통 옷)", "성장", "축하하다", "참배", "치토세아메(시치고산 때 먹는 길쭉한 사탕)", "장수, 오래 삶"]}, {"w": "祝う", "m": "축하하다", "r": "いわう", "cz": "<ruby>今<rt>いま<\/rt><\/ruby>は<ruby>一般的<rt>いっぱんてき<\/rt><\/ruby>に、<ruby>女<rt>おんな<\/rt><\/ruby>の<ruby>子<rt>こ<\/rt><\/ruby>は3<ruby>歳<rt>さい<\/rt><\/ruby>と7<ruby>歳<rt>さい<\/rt><\/ruby>、<ruby>男<rt>おとこ<\/rt><\/ruby>の<ruby>子<rt>こ<\/rt><\/ruby>は5<ruby>歳<rt>さい<\/rt><\/ruby>のときに<span class=\"dr-blank\"><\/span>ことが<ruby>多<rt>おお<\/rt><\/ruby>いです。", "ca": "祝う", "ex": "<ruby>今<rt>いま<\/rt><\/ruby>は<ruby>一般的<rt>いっぱんてき<\/rt><\/ruby>に、<ruby>女<rt>おんな<\/rt><\/ruby>の<ruby>子<rt>こ<\/rt><\/ruby>は3<ruby>歳<rt>さい<\/rt><\/ruby>と7<ruby>歳<rt>さい<\/rt><\/ruby>、<ruby>男<rt>おとこ<\/rt><\/ruby>の<ruby>子<rt>こ<\/rt><\/ruby>は5<ruby>歳<rt>さい<\/rt><\/ruby>のときに<b><ruby>祝<rt>いわ<\/rt><\/ruby>う<\/b>ことが<ruby>多<rt>おお<\/rt><\/ruby>いです。", "sh": "<ruby>今<rt>いま<\/rt><\/ruby>は<ruby>一般的<rt>いっぱんてき<\/rt><\/ruby>に、<ruby>女<rt>おんな<\/rt><\/ruby>の<ruby>子<rt>こ<\/rt><\/ruby>は3<ruby>歳<rt>さい<\/rt><\/ruby>と7<ruby>歳<rt>さい<\/rt><\/ruby>、<ruby>男<rt>おとこ<\/rt><\/ruby>の<ruby>子<rt>こ<\/rt><\/ruby>は5<ruby>歳<rt>さい<\/rt><\/ruby>のときに<b><ruby>祝<rt>いわ<\/rt><\/ruby>う<\/b>ことが<ruby>多<rt>おお<\/rt><\/ruby>いです。", "ek": "지금은 일반적으로 여자아이는 세 살과 일곱 살, 남자아이는 다섯 살 때 축하하는 경우가 많습니다.", "sa": "/ja/2026-11-10/audio/s3.mp3", "au": "/ja/2026-11-10/audio/w4.mp3", "alts": ["기모노(일본 전통 옷)", "성장", "빌다, 기도하다", "참배", "치토세아메(시치고산 때 먹는 길쭉한 사탕)", "장수, 오래 삶"]}, {"w": "お参り", "m": "참배", "r": "おまいり", "cz": "<ruby>昔<rt>むかし<\/rt><\/ruby>は11<ruby>月<rt>がつ<\/rt><\/ruby>15<ruby>日<rt>にち<\/rt><\/ruby>と<ruby>決<rt>き<\/rt><\/ruby>まっていましたが、<ruby>今<rt>いま<\/rt><\/ruby>は<ruby>必<rt>かなら<\/rt><\/ruby>ずその<ruby>日<rt>ひ<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>するわけではありません。", "ca": "お参り", "ex": "<ruby>昔<rt>むかし<\/rt><\/ruby>は11<ruby>月<rt>がつ<\/rt><\/ruby>15<ruby>日<rt>にち<\/rt><\/ruby>と<ruby>決<rt>き<\/rt><\/ruby>まっていましたが、<ruby>今<rt>いま<\/rt><\/ruby>は<ruby>必<rt>かなら<\/rt><\/ruby>ずその<ruby>日<rt>ひ<\/rt><\/ruby>に<b>お<ruby>参<rt>まい<\/rt><\/ruby>り<\/b>するわけではありません。", "sh": "<ruby>昔<rt>むかし<\/rt><\/ruby>は11<ruby>月<rt>がつ<\/rt><\/ruby>15<ruby>日<rt>にち<\/rt><\/ruby>と<ruby>決<rt>き<\/rt><\/ruby>まっていましたが、<ruby>今<rt>いま<\/rt><\/ruby>は<ruby>必<rt>かなら<\/rt><\/ruby>ずその<ruby>日<rt>ひ<\/rt><\/ruby>に<b>お<ruby>参<rt>まい<\/rt><\/ruby>り<\/b>するわけではありません。", "ek": "예전에는 11월 15일로 정해져 있었지만, 지금은 꼭 그날 참배하는 것은 아닙니다.", "sa": "/ja/2026-11-10/audio/s4.mp3", "au": "/ja/2026-11-10/audio/w5.mp3", "alts": ["기모노(일본 전통 옷)", "성장", "빌다, 기도하다", "축하하다", "치토세아메(시치고산 때 먹는 길쭉한 사탕)", "장수, 오래 삶"]}, {"w": "千歳飴", "m": "치토세아메(시치고산 때 먹는 길쭉한 사탕)", "r": "ちとせあめ", "cz": "<ruby>七五三<rt>しちごさん<\/rt><\/ruby>でよく<ruby>見<rt>み<\/rt><\/ruby>る<ruby>紅白<rt>こうはく<\/rt><\/ruby>の<ruby>細長<rt>ほそなが<\/rt><\/ruby>い<span class=\"dr-blank\"><\/span>は、<ruby>子<rt>こ<\/rt><\/ruby>どもの<ruby>長生<rt>ながい<\/rt><\/ruby>きを<ruby>願<rt>ねが<\/rt><\/ruby>って<ruby>作<rt>つく<\/rt><\/ruby>られたものです。", "ca": "千歳飴", "ex": "<ruby>七五三<rt>しちごさん<\/rt><\/ruby>でよく<ruby>見<rt>み<\/rt><\/ruby>る<ruby>紅白<rt>こうはく<\/rt><\/ruby>の<ruby>細長<rt>ほそなが<\/rt><\/ruby>い<b><ruby>千歳飴<rt>ちとせあめ<\/rt><\/ruby><\/b>は、<ruby>子<rt>こ<\/rt><\/ruby>どもの<ruby>長生<rt>ながい<\/rt><\/ruby>きを<ruby>願<rt>ねが<\/rt><\/ruby>って<ruby>作<rt>つく<\/rt><\/ruby>られたものです。", "sh": "<ruby>七五三<rt>しちごさん<\/rt><\/ruby>でよく<ruby>見<rt>み<\/rt><\/ruby>る<ruby>紅白<rt>こうはく<\/rt><\/ruby>の<ruby>細長<rt>ほそなが<\/rt><\/ruby>い<b><ruby>千歳飴<rt>ちとせあめ<\/rt><\/ruby><\/b>は、<ruby>子<rt>こ<\/rt><\/ruby>どもの<ruby>長生<rt>ながい<\/rt><\/ruby>きを<ruby>願<rt>ねが<\/rt><\/ruby>って<ruby>作<rt>つく<\/rt><\/ruby>られたものです。", "ek": "시치고산 때 자주 보는 붉은색과 흰색의 가늘고 긴 치토세아메는 아이가 오래 살기를 바라며 만들어진 것입니다.", "sa": "/ja/2026-11-10/audio/s6.mp3", "au": "/ja/2026-11-10/audio/w6.mp3", "alts": ["기모노(일본 전통 옷)", "성장", "빌다, 기도하다", "축하하다", "참배", "장수, 오래 삶"]}, {"w": "長生き", "m": "장수, 오래 삶", "r": "ながいき", "cz": "<ruby>七五三<rt>しちごさん<\/rt><\/ruby>でよく<ruby>見<rt>み<\/rt><\/ruby>る<ruby>紅白<rt>こうはく<\/rt><\/ruby>の<ruby>細長<rt>ほそなが<\/rt><\/ruby>い<ruby>千歳飴<rt>ちとせあめ<\/rt><\/ruby>は、<ruby>子<rt>こ<\/rt><\/ruby>どもの<span class=\"dr-blank\"><\/span>を<ruby>願<rt>ねが<\/rt><\/ruby>って<ruby>作<rt>つく<\/rt><\/ruby>られたものです。", "ca": "長生き", "ex": "<ruby>七五三<rt>しちごさん<\/rt><\/ruby>でよく<ruby>見<rt>み<\/rt><\/ruby>る<ruby>紅白<rt>こうはく<\/rt><\/ruby>の<ruby>細長<rt>ほそなが<\/rt><\/ruby>い<ruby>千歳飴<rt>ちとせあめ<\/rt><\/ruby>は、<ruby>子<rt>こ<\/rt><\/ruby>どもの<b><ruby>長生<rt>ながい<\/rt><\/ruby>き<\/b>を<ruby>願<rt>ねが<\/rt><\/ruby>って<ruby>作<rt>つく<\/rt><\/ruby>られたものです。", "sh": "<ruby>七五三<rt>しちごさん<\/rt><\/ruby>でよく<ruby>見<rt>み<\/rt><\/ruby>る<ruby>紅白<rt>こうはく<\/rt><\/ruby>の<ruby>細長<rt>ほそなが<\/rt><\/ruby>い<ruby>千歳飴<rt>ちとせあめ<\/rt><\/ruby>は、<ruby>子<rt>こ<\/rt><\/ruby>どもの<b><ruby>長生<rt>ながい<\/rt><\/ruby>き<\/b>を<ruby>願<rt>ねが<\/rt><\/ruby>って<ruby>作<rt>つく<\/rt><\/ruby>られたものです。", "ek": "시치고산 때 자주 보는 붉은색과 흰색의 가늘고 긴 치토세아메는 아이가 오래 살기를 바라며 만들어진 것입니다.", "sa": "/ja/2026-11-10/audio/s6.mp3", "au": "/ja/2026-11-10/audio/w7.mp3", "alts": ["기모노(일본 전통 옷)", "성장", "빌다, 기도하다", "축하하다", "참배", "치토세아메(시치고산 때 먹는 길쭉한 사탕)"]}]</script>
 <script id="auth-js" src="/assets/auth.js?v=2" defer></script>
-<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
+<script id="drill-js" data-v="18" src="/assets/drill.js?v=18" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1277,55 +1295,6 @@
   }
 })();
 </script>
-<script id="gnb-js">(function(){
-  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
-  if(!chip||!sheet||!scrim)return;
-  var root=document.documentElement;
-  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
-  var tm=null,tprev=null;
-  function tint(on){
-    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
-      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
-      tm.setAttribute('content','#9fa3a9');}
-    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
-  }
-  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
-  function key(e){
-    if(e.key==='Escape'){e.preventDefault();close();return;}
-    if(e.key!=='Tab')return;
-    var f=items();if(!f.length)return;
-    var a=f[0],z=f[f.length-1];
-    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
-    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
-    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
-    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
-  }
-  function open(){
-    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
-    tint(true);sheet.focus();
-    document.addEventListener('keydown',key);
-    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
-  }
-  function close(){
-    if(sheet.hidden)return;
-    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
-    document.removeEventListener('keydown',key);chip.focus();
-  }
-  chip.addEventListener('click',function(){sheet.hidden?open():close();});
-  scrim.addEventListener('click',close);
-  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
-  if(!window.fetch)return;
-  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
-    if(!d||!d.langs)return;
-    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
-    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
-      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
-    var rv=document.getElementById('gnb-review');
-    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
-      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
-        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
-  }).catch(function(){});
-})();</script>
 <script id="fb-js">
 (function () {
   function device() {
@@ -1389,5 +1358,71 @@
   document.addEventListener('visibilitychange', tick);
 })();
 </script>
+<script id="gnb-js">(function(){
+  var me=document.getElementById('gnb-me');
+  if(me){try{
+    var on=localStorage.getItem('dkh-auth')!==null,info=JSON.parse(localStorage.getItem('dkh-me')||'null')||{};
+    if(on){
+      var nick=String(info.n||''),days=(JSON.parse(localStorage.getItem('drill:v1')||'null')||{}).days||[],set={},n=0,d=new Date();
+      days.forEach(function(x){set[x]=1;});
+      function k(t){return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);}
+      if(!set[k(d)])d.setDate(d.getDate()-1);
+      while(set[k(d)]){n++;d.setDate(d.getDate()-1);}
+      me.href='/me/';me.classList.add('in');me.setAttribute('aria-label','마이페이지'+(n?', 연속 '+n+'일':''));
+      me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
+      me.querySelector('.gm-t').textContent='마이페이지';
+      var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
+      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }
+  }catch(e){}}
+  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
+  if(!chip||!sheet||!scrim)return;
+  var root=document.documentElement;
+  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
+  var tm=null,tprev=null;
+  function tint(on){
+    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
+      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
+      tm.setAttribute('content','#9fa3a9');}
+    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
+  }
+  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
+  function key(e){
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key!=='Tab')return;
+    var f=items();if(!f.length)return;
+    var a=f[0],z=f[f.length-1];
+    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
+    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
+    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
+  }
+  function open(){
+    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
+    tint(true);sheet.focus();
+    document.addEventListener('keydown',key);
+    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
+  }
+  function close(){
+    if(sheet.hidden)return;
+    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
+    document.removeEventListener('keydown',key);chip.focus();
+  }
+  chip.addEventListener('click',function(){sheet.hidden?open():close();});
+  scrim.addEventListener('click',close);
+  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
+  if(!window.fetch)return;
+  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.langs)return;
+    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
+    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
+      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
+    var rv=document.getElementById('gnb-review');
+    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
+      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
+        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
+  }).catch(function(){});
+})();</script>
 </body>
 </html>

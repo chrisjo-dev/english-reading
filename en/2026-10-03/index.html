@@ -420,6 +420,17 @@
   .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
   .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
   .gnb-seg, .gnb-past { display: none; }
+  /* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+  .gnb-me { position: relative; }
+  .gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+  .gnb-me .gm-t { display: none; }
+  .gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+  .gnb-me.in .gnb-pill { background: none; }
+  .gnb-me.in .gm-ic { display: none; }
+  .gnb-me.in .gm-av { display: inline-flex; }
+  .gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+  .gnb-me .gm-b[hidden] { display: none; }
   .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
   @media (max-width: 350px) { .gnb-brand span { display: none; } }
   @media (min-width: 768px) {
@@ -436,6 +447,13 @@
     .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
     .gnb-past:hover { background: #f2f4f6; }
     .gnb-past.on { color: #191f28; font-weight: 700; }
+    .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+    .gnb-me .gnb-pill:hover { background: #e9ecef; }
+    .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+    .gnb-me .gm-t { display: inline; }
+    .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+    .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+    .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
   }
   /* 언어 시트(휴대폰) */
   .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
@@ -567,7 +585,7 @@
 </head>
 <body>
 <!-- gnb -->
-<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en" class="on" aria-current="page">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/en/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 영어"><span class="gnb-pill">영어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a></div></header>
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en" class="on" aria-current="page">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/en/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 영어"><span class="gnb-pill">영어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
 <div class="gnb-scrim" id="gnb-scrim" hidden></div>
 <div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
   <div class="gs-handle"></div>
@@ -656,7 +674,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="17">
+  <section class="card dr-card" id="drill" data-v="18">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 6개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -1238,7 +1256,7 @@
 </script>
 <script type="application/json" id="drill-data">[{"w": "travel", "m": "이동하다, (소리 등이) 전달되다", "cz": "Sound <span class=\"dr-blank\"><\/span> through the air as a wave, a pattern of high and low pressure.", "ca": "travels", "ex": "Sound <b>travels<\/b> through the air as a wave, a pattern of high and low pressure.", "sh": "Sound <b>travels<\/b> through the air as a wave, a pattern of high and low pressure.", "ek": "소리는 높고 낮은 압력이 번갈아 나타나는 패턴, 즉 파동의 형태로 공기 중을 이동한다.", "sa": "/en/2026-10-03/audio/s2.mp3", "au": "/en/2026-10-03/audio/w1.mp3", "alts": ["마이크", "정반대(의 것)", "상쇄하다, 서로 없애다", "완전히", "쿠션, 완충재"]}, {"w": "microphone", "m": "마이크", "cz": "Tiny <span class=\"dr-blank\"><\/span> on the headphones listen to the noise around you, and a small chip quickly creates a new sound wave that is its exact opposite.", "ca": "microphones", "ex": "Tiny <b>microphones<\/b> on the headphones listen to the noise around you, and a small chip quickly creates a new sound wave that is its exact opposite.", "sh": "Tiny <b>microphones<\/b> on the headphones listen to the noise around you, …", "ek": "헤드폰에 달린 아주 작은 마이크가 주변 소음을 듣고, 작은 칩이 그 소음과 정확히 반대인 새로운 음파를 재빨리 만들어 낸다.", "sa": "/en/2026-10-03/audio/s3.mp3", "au": "/en/2026-10-03/audio/w2.mp3", "alts": ["이동하다, (소리 등이) 전달되다", "정반대(의 것)", "상쇄하다, 서로 없애다", "완전히", "쿠션, 완충재"]}, {"w": "opposite", "m": "정반대(의 것)", "cz": "Tiny microphones on the headphones listen to the noise around you, and a small chip quickly creates a new sound wave that is its exact <span class=\"dr-blank\"><\/span>.", "ca": "opposite", "ex": "Tiny microphones on the headphones listen to the noise around you, and a small chip quickly creates a new sound wave that is its exact <b>opposite<\/b>.", "sh": "… a new sound wave that is its exact <b>opposite<\/b>.", "ek": "헤드폰에 달린 아주 작은 마이크가 주변 소음을 듣고, 작은 칩이 그 소음과 정확히 반대인 새로운 음파를 재빨리 만들어 낸다.", "sa": "/en/2026-10-03/audio/s3.mp3", "au": "/en/2026-10-03/audio/w3.mp3", "alts": ["이동하다, (소리 등이) 전달되다", "마이크", "상쇄하다, 서로 없애다", "완전히", "쿠션, 완충재"]}, {"w": "cancel out", "m": "상쇄하다, 서로 없애다", "cz": "When the two waves meet, the high parts of one fill the low parts of the other, so they <span class=\"dr-blank\"><\/span> each other out.", "ca": "cancel", "ex": "When the two waves meet, the high parts of one fill the low parts of the other, so they <b>cancel<\/b> each other out.", "sh": "When the two waves meet, the high parts of one fill the low parts of the other, so they <b>cancel<\/b> each other out.", "ek": "두 파동이 만나면 한쪽의 높은 부분이 다른 쪽의 낮은 부분을 채워서, 두 파동이 서로를 상쇄한다.", "sa": "/en/2026-10-03/audio/s4.mp3", "au": "/en/2026-10-03/audio/w4.mp3", "alts": ["이동하다, (소리 등이) 전달되다", "마이크", "정반대(의 것)", "완전히", "쿠션, 완충재"]}, {"w": "completely", "m": "완전히", "cz": "This trick works best on steady, low sounds such as the hum of an engine, while sudden or high sounds, like a baby crying, are harder to remove <span class=\"dr-blank\"><\/span>.", "ca": "completely", "ex": "This trick works best on steady, low sounds such as the hum of an engine, while sudden or high sounds, like a baby crying, are harder to remove <b>completely<\/b>.", "sh": "… like a baby crying, are harder to remove <b>completely<\/b>.", "ek": "이 방법은 엔진의 웅웅거림처럼 일정하고 낮은 소리에 가장 잘 통하는 반면, 아기 울음소리처럼 갑작스럽거나 높은 소리는 완전히 없애기가 더 어렵다.", "sa": "/en/2026-10-03/audio/s5.mp3", "au": "/en/2026-10-03/audio/w5.mp3", "alts": ["이동하다, (소리 등이) 전달되다", "마이크", "정반대(의 것)", "상쇄하다, 서로 없애다", "쿠션, 완충재"]}, {"w": "cushion", "m": "쿠션, 완충재", "cz": "That is why many headphones also use soft ear <span class=\"dr-blank\"><\/span>, which block some of the noise before it even reaches your ears.", "ca": "cushions", "ex": "That is why many headphones also use soft ear <b>cushions<\/b>, which block some of the noise before it even reaches your ears.", "sh": "… soft ear <b>cushions<\/b>, which block some of the noise …", "ek": "그래서 많은 헤드폰은 부드러운 귀 쿠션도 함께 쓰는데, 이 쿠션이 소음의 일부를 귀에 닿기도 전에 막아 준다.", "sa": "/en/2026-10-03/audio/s6.mp3", "au": "/en/2026-10-03/audio/w6.mp3", "alts": ["이동하다, (소리 등이) 전달되다", "마이크", "정반대(의 것)", "상쇄하다, 서로 없애다", "완전히"]}]</script>
 <script id="auth-js" src="/assets/auth.js?v=2" defer></script>
-<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
+<script id="drill-js" data-v="18" src="/assets/drill.js?v=18" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1271,55 +1289,6 @@
   }
 })();
 </script>
-<script id="gnb-js">(function(){
-  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
-  if(!chip||!sheet||!scrim)return;
-  var root=document.documentElement;
-  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
-  var tm=null,tprev=null;
-  function tint(on){
-    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
-      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
-      tm.setAttribute('content','#9fa3a9');}
-    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
-  }
-  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
-  function key(e){
-    if(e.key==='Escape'){e.preventDefault();close();return;}
-    if(e.key!=='Tab')return;
-    var f=items();if(!f.length)return;
-    var a=f[0],z=f[f.length-1];
-    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
-    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
-    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
-    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
-  }
-  function open(){
-    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
-    tint(true);sheet.focus();
-    document.addEventListener('keydown',key);
-    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
-  }
-  function close(){
-    if(sheet.hidden)return;
-    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
-    document.removeEventListener('keydown',key);chip.focus();
-  }
-  chip.addEventListener('click',function(){sheet.hidden?open():close();});
-  scrim.addEventListener('click',close);
-  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
-  if(!window.fetch)return;
-  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
-    if(!d||!d.langs)return;
-    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
-    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
-      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
-    var rv=document.getElementById('gnb-review');
-    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
-      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
-        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
-  }).catch(function(){});
-})();</script>
 <script id="fb-js">
 (function () {
   function device() {
@@ -1383,5 +1352,71 @@
   document.addEventListener('visibilitychange', tick);
 })();
 </script>
+<script id="gnb-js">(function(){
+  var me=document.getElementById('gnb-me');
+  if(me){try{
+    var on=localStorage.getItem('dkh-auth')!==null,info=JSON.parse(localStorage.getItem('dkh-me')||'null')||{};
+    if(on){
+      var nick=String(info.n||''),days=(JSON.parse(localStorage.getItem('drill:v1')||'null')||{}).days||[],set={},n=0,d=new Date();
+      days.forEach(function(x){set[x]=1;});
+      function k(t){return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);}
+      if(!set[k(d)])d.setDate(d.getDate()-1);
+      while(set[k(d)]){n++;d.setDate(d.getDate()-1);}
+      me.href='/me/';me.classList.add('in');me.setAttribute('aria-label','마이페이지'+(n?', 연속 '+n+'일':''));
+      me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
+      me.querySelector('.gm-t').textContent='마이페이지';
+      var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
+      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }
+  }catch(e){}}
+  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
+  if(!chip||!sheet||!scrim)return;
+  var root=document.documentElement;
+  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
+  var tm=null,tprev=null;
+  function tint(on){
+    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
+      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
+      tm.setAttribute('content','#9fa3a9');}
+    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
+  }
+  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
+  function key(e){
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key!=='Tab')return;
+    var f=items();if(!f.length)return;
+    var a=f[0],z=f[f.length-1];
+    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
+    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
+    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
+  }
+  function open(){
+    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
+    tint(true);sheet.focus();
+    document.addEventListener('keydown',key);
+    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
+  }
+  function close(){
+    if(sheet.hidden)return;
+    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
+    document.removeEventListener('keydown',key);chip.focus();
+  }
+  chip.addEventListener('click',function(){sheet.hidden?open():close();});
+  scrim.addEventListener('click',close);
+  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
+  if(!window.fetch)return;
+  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.langs)return;
+    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
+    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
+      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
+    var rv=document.getElementById('gnb-review');
+    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
+      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
+        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
+  }).catch(function(){});
+})();</script>
 </body>
 </html>

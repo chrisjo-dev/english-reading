@@ -34,6 +34,17 @@ CSS = """.gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-
 .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
 .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
 .gnb-seg, .gnb-past { display: none; }
+/* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+.gnb-me { position: relative; }
+.gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+.gnb-me .gm-t { display: none; }
+.gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+.gnb-me.in .gnb-pill { background: none; }
+.gnb-me.in .gm-ic { display: none; }
+.gnb-me.in .gm-av { display: inline-flex; }
+.gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+.gnb-me .gm-b[hidden] { display: none; }
 .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
 @media (max-width: 350px) { .gnb-brand span { display: none; } }
 @media (min-width: 768px) {
@@ -50,6 +61,13 @@ CSS = """.gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-
   .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
   .gnb-past:hover { background: #f2f4f6; }
   .gnb-past.on { color: #191f28; font-weight: 700; }
+  .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+  .gnb-me .gnb-pill:hover { background: #e9ecef; }
+  .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+  .gnb-me .gm-t { display: inline; }
+  .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+  .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+  .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
 }
 /* 언어 시트(휴대폰) */
 .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
@@ -182,6 +200,7 @@ def header_html(lang=None, mail="#subscribe", on_archive=False):
         f' aria-label="{chip_label}">'
         f'<span class="gnb-pill">{chip}{ICON_DOWN}</span></button>'
         f'<a class="gnb-tap gnb-mail" href="{mail}"><span class="gnb-pill">메일로 받기</span></a>'
+        + ME_HTML +
         "</div></header>\n"
         '<div class="gnb-scrim" id="gnb-scrim" hidden></div>\n'
         '<div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>\n'
@@ -194,8 +213,31 @@ def header_html(lang=None, mail="#subscribe", on_archive=False):
     )
 
 
+# 로그인 버튼. 로그인 상태(dkh-auth), 닉네임(dkh-me), 공부한 날(drill:v1 의 days)은 브라우저 저장값으로 SCRIPT 가 그린다
+ME_HTML = ('<a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill">'
+           '<span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span>'
+           '<span class="gm-b" hidden></span></span></a>')
+
+
 # 시트 열고 닫기(바깥 누르기, ESC, 포커스 가두기와 되돌리기)와 /latest.json 으로 오늘 지문 링크 맞추기
 SCRIPT = r"""<script id="gnb-js">(function(){
+  var me=document.getElementById('gnb-me');
+  if(me){try{
+    var on=localStorage.getItem('dkh-auth')!==null,info=JSON.parse(localStorage.getItem('dkh-me')||'null')||{};
+    if(on){
+      var nick=String(info.n||''),days=(JSON.parse(localStorage.getItem('drill:v1')||'null')||{}).days||[],set={},n=0,d=new Date();
+      days.forEach(function(x){set[x]=1;});
+      function k(t){return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);}
+      if(!set[k(d)])d.setDate(d.getDate()-1);
+      while(set[k(d)]){n++;d.setDate(d.getDate()-1);}
+      me.href='/me/';me.classList.add('in');me.setAttribute('aria-label','마이페이지'+(n?', 연속 '+n+'일':''));
+      me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
+      me.querySelector('.gm-t').textContent='마이페이지';
+      var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
+      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }
+  }catch(e){}}
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
   if(!chip||!sheet||!scrim)return;
   var root=document.documentElement;
@@ -300,3 +342,17 @@ def apply_script(page):
 
 def apply(page, lang, mail="#subscribe", on_archive=False, day=False):
     return apply_script(apply_html(apply_css(page, day), lang, mail, on_archive))
+
+
+def refresh(page):
+    """이미 만든 페이지의 위 메뉴를 지금 모양으로 맞춘다(CSS 블록, 로그인 버튼, 스크립트). 여러 번 돌려도 같다."""
+    if "<!-- gnb -->" not in page:
+        return page
+    day = MARK_DAY_CSS[0] in page
+    if _BLOCK_RE.search(page):
+        page = apply_css(page, day)
+    if 'id="gnb-me"' not in page:
+        page = page.replace('<span class="gnb-pill">메일로 받기</span></a>', '<span class="gnb-pill">메일로 받기</span></a>' + ME_HTML, 1)
+    if '<script id="gnb-js">' in page:
+        page = apply_script(page)
+    return page

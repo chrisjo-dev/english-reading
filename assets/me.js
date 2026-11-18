@@ -1,4 +1,4 @@
-// 내 기록(/me/, 시안 design/kakao-login K06): 닉네임, 연속 학습일과 최근 7일, 외운 단어, 오늘 복습, 로그아웃, 탈퇴.
+// 마이페이지(/me/, 시안 design/kakao-login K06): 닉네임, 연속 학습일과 최근 7일, 외운 단어, 오늘 복습, 로그아웃, 탈퇴.
 // 숫자는 계정 기록과 이 기기 기록을 합친 값(dkhAuth.sync)으로 센다.
 (function () {
   "use strict";
@@ -29,6 +29,7 @@
     ]).then(function (rs) {
       var nick = (rs[0].data && rs[0].data.nickname) || "독해한입 회원";
       $("nick").textContent = nick + "님";
+      try { localStorage.setItem("dkh-me", JSON.stringify({ n: (rs[0].data && rs[0].data.nickname) || "" })); } catch (e) {}
       $("av").textContent = nick.charAt(0);
       $("who").textContent = prov + "로 로그인함";
       paint(rs[1] || JSON.parse(localStorage.getItem(A.drillKey) || '{"items":{}}'), rs[2]);
@@ -66,13 +67,14 @@
   }
 
   $("logout").addEventListener("click", function () {
-    A.logEvent("logout").then(function () { return c.auth.signOut(); }).then(function () { location.replace("/"); },
+    A.logEvent("logout").then(function () { try { localStorage.removeItem("dkh-me"); } catch (e) {} return c.auth.signOut(); }).then(function () { location.replace("/"); },
       function () { say("로그아웃하지 못했어요. 다시 눌러 주세요.", true); });
   });
   $("del").addEventListener("click", function () {
     if (!confirm("탈퇴하면 계정과 저장된 단어 기록이 바로 지워지고 되돌릴 수 없어요. 이 기기에 남은 기록은 그대로예요. 탈퇴할까요?")) return;
     c.rpc("delete_my_account").then(function (r) {
       if (r.error) throw r.error;
+      try { localStorage.removeItem("dkh-me"); } catch (e) {}
       return c.auth.signOut({ scope: "local" });
     }).then(function () { alert("탈퇴했어요. 그동안 고마웠어요."); location.replace("/"); },
       function () { say("탈퇴하지 못했어요. 잠시 뒤에 다시 하거나 연락처로 알려 주세요.", true); });

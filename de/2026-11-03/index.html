@@ -420,6 +420,17 @@
   .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
   .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
   .gnb-seg, .gnb-past { display: none; }
+  /* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+  .gnb-me { position: relative; }
+  .gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+  .gnb-me .gm-t { display: none; }
+  .gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+  .gnb-me.in .gnb-pill { background: none; }
+  .gnb-me.in .gm-ic { display: none; }
+  .gnb-me.in .gm-av { display: inline-flex; }
+  .gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+  .gnb-me .gm-b[hidden] { display: none; }
   .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
   @media (max-width: 350px) { .gnb-brand span { display: none; } }
   @media (min-width: 768px) {
@@ -436,6 +447,13 @@
     .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
     .gnb-past:hover { background: #f2f4f6; }
     .gnb-past.on { color: #191f28; font-weight: 700; }
+    .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+    .gnb-me .gnb-pill:hover { background: #e9ecef; }
+    .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+    .gnb-me .gm-t { display: inline; }
+    .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+    .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+    .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
   }
   /* 언어 시트(휴대폰) */
   .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
@@ -567,7 +585,7 @@
 </head>
 <body>
 <!-- gnb -->
-<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de" class="on" aria-current="page">독일어</a></nav><a class="gnb-past" href="/de/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 독일어"><span class="gnb-pill">독일어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a></div></header>
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de" class="on" aria-current="page">독일어</a></nav><a class="gnb-past" href="/de/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 독일어"><span class="gnb-pill">독일어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
 <div class="gnb-scrim" id="gnb-scrim" hidden></div>
 <div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
   <div class="gs-handle"></div>
@@ -663,7 +681,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="17">
+  <section class="card dr-card" id="drill" data-v="18">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 7개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -1246,7 +1264,7 @@
 </script>
 <script type="application/json" id="drill-data">[{"w": "Martinstag", "m": "성 마르틴 축일 (남성 der)", "mh": "성 마르틴 축일", "ar": "der", "cz": "Am 11. November feiern viele Kinder in Deutschland den <span class=\"dr-blank\"><\/span>, der an den heiligen Martin von Tours erinnert.", "ca": "Martinstag", "ex": "Am 11. November feiern viele Kinder in Deutschland den <b>Martinstag<\/b>, der an den heiligen Martin von Tours erinnert.", "sh": "Am 11. November feiern viele Kinder in Deutschland den <b>Martinstag<\/b>, der an den heiligen Martin von Tours erinnert.", "ek": "11월 11일에 독일의 많은 아이들은 투르의 성 마르틴을 기리는 마르틴 축일을 기념합니다.", "sa": "/de/2026-11-03/audio/s1.mp3", "au": "/de/2026-11-03/audio/w1.mp3", "alts": ["전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Legende", "m": "전설, 옛이야기 (여성 die, 복수 Legenden)", "mh": "전설, 옛이야기", "ar": "die", "cz": "Nach einer bekannten <span class=\"dr-blank\"><\/span> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "ca": "Legende", "ex": "Nach einer bekannten <b>Legende<\/b> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "sh": "Nach einer bekannten <b>Legende<\/b> teilte Martin an einem kalten Abend seinen Mantel mit einem armen Mann, der fror.", "ek": "잘 알려진 전설에 따르면 마르틴은 어느 추운 저녁, 추위에 떨던 가난한 남자와 자기 외투를 나누었습니다.", "sa": "/de/2026-11-03/audio/s2.mp3", "au": "/de/2026-11-03/audio/w2.mp3", "alts": ["성 마르틴 축일", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Laterne", "m": "초롱, 등불 (여성 die, 복수 Laternen)", "mh": "초롱, 등불", "ar": "die", "cz": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <span class=\"dr-blank\"><\/span> aus Papier und Pappe.", "ca": "Laternen", "ex": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <b>Laternen<\/b> aus Papier und Pappe.", "sh": "Schon Wochen vorher basteln die Kinder im Kindergarten oder in der Schule bunte <b>Laternen<\/b> aus Papier und Pappe.", "ek": "아이들은 벌써 몇 주 전부터 유치원이나 학교에서 종이와 두꺼운 종이로 알록달록한 초롱을 만듭니다.", "sa": "/de/2026-11-03/audio/s3.mp3", "au": "/de/2026-11-03/audio/w3.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Martinslied", "m": "마르틴 축일 노래 (중성 das, 복수 Martinslieder)", "mh": "마르틴 축일 노래", "ar": "das", "cz": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <span class=\"dr-blank\"><\/span>.", "ca": "Martinslieder", "ex": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <b>Martinslieder<\/b>.", "sh": "Wenn es dunkel wird, ziehen sie mit ihren Eltern durch die Straßen und singen dabei traditionelle <b>Martinslieder<\/b>.", "ek": "날이 어두워지면 아이들은 부모님과 함께 거리를 행진하며 전통 마르틴 노래를 부릅니다.", "sa": "/de/2026-11-03/audio/s4.mp3", "au": "/de/2026-11-03/audio/w4.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "불, 모닥불", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Feuer", "m": "불, 모닥불 (중성 das)", "mh": "불, 모닥불", "ar": "das", "cz": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <span class=\"dr-blank\"><\/span>, an dem sich alle aufwärmen können.", "ca": "Feuer", "ex": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <b>Feuer<\/b>, an dem sich alle aufwärmen können.", "sh": "Am Ende des Umzugs wartet oft ein großes, von vielen Helfern vorbereitetes <b>Feuer<\/b>, an dem sich alle aufwärmen können.", "ek": "행진이 끝나는 곳에는 많은 도우미들이 준비한 큰 모닥불이 기다리고 있을 때가 많아, 모두 그 곁에서 몸을 녹일 수 있습니다.", "sa": "/de/2026-11-03/audio/s5.mp3", "au": "/de/2026-11-03/audio/w5.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "풍습, 관습", "손으로 만들다, 공작하다"]}, {"w": "Brauch", "m": "풍습, 관습 (남성 der, 복수 Bräuche)", "mh": "풍습, 관습", "ar": "der", "cz": "Für viele Familien wäre der November ohne diesen <span class=\"dr-blank\"><\/span> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "ca": "Brauch", "ex": "Für viele Familien wäre der November ohne diesen <b>Brauch<\/b> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "sh": "Für viele Familien wäre der November ohne diesen <b>Brauch<\/b> viel dunkler, denn die Lichter bringen Wärme in die kalten Abende.", "ek": "이 풍습이 없다면 많은 가족에게 11월은 훨씬 더 어둡게 느껴질 텐데, 불빛이 추운 저녁에 따뜻함을 가져다주기 때문입니다.", "sa": "/de/2026-11-03/audio/s6.mp3", "au": "/de/2026-11-03/audio/w6.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "손으로 만들다, 공작하다"]}, {"w": "basteln", "m": "손으로 만들다, 공작하다", "cz": "Schon Wochen vorher <span class=\"dr-blank\"><\/span> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "ca": "basteln", "ex": "Schon Wochen vorher <b>basteln<\/b> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "sh": "Schon Wochen vorher <b>basteln<\/b> die Kinder im Kindergarten oder in der Schule bunte Laternen aus Papier und Pappe.", "ek": "아이들은 벌써 몇 주 전부터 유치원이나 학교에서 종이와 두꺼운 종이로 알록달록한 초롱을 만듭니다.", "sa": "/de/2026-11-03/audio/s3.mp3", "au": "/de/2026-11-03/audio/w7.mp3", "alts": ["성 마르틴 축일", "전설, 옛이야기", "초롱, 등불", "마르틴 축일 노래", "불, 모닥불", "풍습, 관습"]}]</script>
 <script id="auth-js" src="/assets/auth.js?v=2" defer></script>
-<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
+<script id="drill-js" data-v="18" src="/assets/drill.js?v=18" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1279,55 +1297,6 @@
   }
 })();
 </script>
-<script id="gnb-js">(function(){
-  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
-  if(!chip||!sheet||!scrim)return;
-  var root=document.documentElement;
-  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
-  var tm=null,tprev=null;
-  function tint(on){
-    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
-      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
-      tm.setAttribute('content','#9fa3a9');}
-    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
-  }
-  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
-  function key(e){
-    if(e.key==='Escape'){e.preventDefault();close();return;}
-    if(e.key!=='Tab')return;
-    var f=items();if(!f.length)return;
-    var a=f[0],z=f[f.length-1];
-    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
-    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
-    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
-    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
-  }
-  function open(){
-    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
-    tint(true);sheet.focus();
-    document.addEventListener('keydown',key);
-    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
-  }
-  function close(){
-    if(sheet.hidden)return;
-    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
-    document.removeEventListener('keydown',key);chip.focus();
-  }
-  chip.addEventListener('click',function(){sheet.hidden?open():close();});
-  scrim.addEventListener('click',close);
-  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
-  if(!window.fetch)return;
-  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
-    if(!d||!d.langs)return;
-    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
-    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
-      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
-    var rv=document.getElementById('gnb-review');
-    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
-      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
-        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
-  }).catch(function(){});
-})();</script>
 <script id="fb-js">
 (function () {
   function device() {
@@ -1391,5 +1360,71 @@
   document.addEventListener('visibilitychange', tick);
 })();
 </script>
+<script id="gnb-js">(function(){
+  var me=document.getElementById('gnb-me');
+  if(me){try{
+    var on=localStorage.getItem('dkh-auth')!==null,info=JSON.parse(localStorage.getItem('dkh-me')||'null')||{};
+    if(on){
+      var nick=String(info.n||''),days=(JSON.parse(localStorage.getItem('drill:v1')||'null')||{}).days||[],set={},n=0,d=new Date();
+      days.forEach(function(x){set[x]=1;});
+      function k(t){return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);}
+      if(!set[k(d)])d.setDate(d.getDate()-1);
+      while(set[k(d)]){n++;d.setDate(d.getDate()-1);}
+      me.href='/me/';me.classList.add('in');me.setAttribute('aria-label','마이페이지'+(n?', 연속 '+n+'일':''));
+      me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
+      me.querySelector('.gm-t').textContent='마이페이지';
+      var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
+      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }
+  }catch(e){}}
+  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
+  if(!chip||!sheet||!scrim)return;
+  var root=document.documentElement;
+  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
+  var tm=null,tprev=null;
+  function tint(on){
+    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
+      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
+      tm.setAttribute('content','#9fa3a9');}
+    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
+  }
+  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
+  function key(e){
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key!=='Tab')return;
+    var f=items();if(!f.length)return;
+    var a=f[0],z=f[f.length-1];
+    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
+    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
+    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
+  }
+  function open(){
+    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
+    tint(true);sheet.focus();
+    document.addEventListener('keydown',key);
+    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
+  }
+  function close(){
+    if(sheet.hidden)return;
+    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
+    document.removeEventListener('keydown',key);chip.focus();
+  }
+  chip.addEventListener('click',function(){sheet.hidden?open():close();});
+  scrim.addEventListener('click',close);
+  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
+  if(!window.fetch)return;
+  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.langs)return;
+    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
+    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
+      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
+    var rv=document.getElementById('gnb-review');
+    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
+      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
+        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
+  }).catch(function(){});
+})();</script>
 </body>
 </html>

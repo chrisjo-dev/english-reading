@@ -513,7 +513,7 @@
     if (sv && AUTH.sync) AUTH.sync().then(function (db) {
       if (!db) { sv.hidden = true; return; }
       var st = AUTH.streak(db.days);
-      sv.innerHTML = '✓ 기록을 저장했어요<a href="/me/">' + (st.now > 1 ? '🔥 연속 ' + st.now + '일' : '내 기록') + '</a>';
+      sv.innerHTML = '✓ 기록을 저장했어요<a href="/me/">' + (st.now > 1 ? '🔥 연속 ' + st.now + '일' : '마이페이지') + '</a>';
     }).catch(function () {
       sv.className = 'dr-saved err'; sv.textContent = '지금은 저장하지 못했어요. 다음에 열 때 함께 올려요.';
     });

@@ -950,14 +950,14 @@ def info_pages():
         '<div class="row"><h3>의견 메일</h3><p>기능 건의나 버그 제보 버튼은 메일 앱을 열어요. 버그 제보에는 누른 페이지 주소, 기기와 브라우저 이름, 화면 크기가 미리 채워지고, 보내기 전에 지울 수 있어요. 받은 메일은 답장과 수정에만 써요.</p></div>'
         '<div class="row"><h3>접속 기록</h3><p>사이트는 GitHub Pages로 제공돼요. GitHub는 보안과 운영을 위해 접속 IP 등을 기록할 수 있어요. 글꼴(cdnjs)을 불러올 때도 그 제공자에게 접속 정보가 전달될 수 있어요.</p><span class="who">제공: GitHub Pages, cdnjs</span></div></section>\n'
         f'<section class="card" id="storage"><h2>{NUM.format(2)}브라우저에 저장하는 값</h2><p>학습 기록과 설정은 이용자 기기의 브라우저 저장소(localStorage)에 둬요. 로그인하지 않으면 서버로 보내지 않고, 로그인하면 단어 기록(<code>drill:v1</code>)만 계정에도 저장해요. 브라우저 사이트 데이터를 지우면 기기에 둔 값은 사라져요.</p>'
-        '<ul class="keys"><li><code>drill:v1</code><span>단어 외우기 복습 기록(다시 물을 날짜)</span></li><li><code>drill:pref</code><span>단어 외우기 방식(카드, 문제)</span></li><li><code>dkh-auth</code><span>로그인 상태 유지(로그인했을 때만)</span></li>'
+        '<ul class="keys"><li><code>drill:v1</code><span>단어 외우기 복습 기록(다시 물을 날짜)</span></li><li><code>drill:pref</code><span>단어 외우기 방식(카드, 문제)</span></li><li><code>dkh-auth</code><span>로그인 상태 유지(로그인했을 때만)</span></li><li><code>dkh-me</code><span>위 메뉴에 보일 닉네임(로그인했을 때만)</span></li>'
         '<li><code>read_level:언어</code><span>언어별로 고른 지문 수준</span></li><li><code>read_speed</code><span>음성 재생 속도</span></li>'
         '<li><code>vote:언어/날짜</code><span>오늘 주제 반응(좋아요, 별로예요). 반응 자체는 방문 통계로도 보내요</span></li>'
         "<li><code>lily.justListen</code><span>릴리 그림책 듣기 페이지의 '듣기만' 설정</span></li></ul></section>\n"
         f'<section class="card" id="cookies"><h2>{NUM.format(3)}쿠키와 광고</h2><p>Google을 포함한 제3자 광고 업체는 쿠키를 써서, 이 사이트와 다른 사이트를 방문한 기록을 바탕으로 광고를 보여 줄 수 있어요. 자세한 내용은 <a class="ln" href="https://policies.google.com/technologies/partner-sites">Google 파트너 사이트의 데이터 사용 방식</a>에 있어요.</p>'
         '<p>맞춤 광고는 <a class="ln" href="https://adssettings.google.com/">Google 광고 설정</a>에서, 제3자 업체 맞춤 광고 쿠키는 <a class="ln" href="https://www.aboutads.info/choices/">www.aboutads.info</a>에서 끌 수 있어요. Google Analytics 수집은 <a class="ln" href="https://tools.google.com/dlpage/gaoptout">수집 거부 부가 기능</a>으로 막을 수 있어요. 쿠키를 거부해도 읽기에는 문제가 없어요.</p></section>\n'
         f'<section class="card" id="retention"><h2>{NUM.format(4)}보관과 구독 해지</h2><ul class="dots"><li>이메일 주소는 수신거부하거나 삭제를 요청할 때까지 보관하고, 요청을 받으면 지체 없이 지워요.</li>'
-        '<li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>로그인 계정과 단어 기록은 탈퇴할 때까지 보관해요. <a class="ln" href="/me/">내 기록</a> 화면에서 탈퇴하면 바로 지워져요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li>'
+        '<li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>로그인 계정과 단어 기록은 탈퇴할 때까지 보관해요. <a class="ln" href="/me/">마이페이지</a>에서 탈퇴하면 바로 지워져요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li>'
         '<li>만 14세 미만은 로그인할 수 없고, 만 14세 미만 아동의 개인정보는 알면서 모으지 않아요.</li><li>내용이 바뀌면 이 페이지에 새 시행일과 함께 알려요.</li></ul></section>\n'
         f'<section class="card" id="ask"><h2>{NUM.format(5)}문의</h2><p>개인정보 문의: {mail} (운영자)</p></section>\n'
     )
@@ -1039,7 +1039,7 @@ def rebuild_info_pages():
 
 # 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
 # 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
-ACCOUNT_V = "1"
+ACCOUNT_V = "2"
 ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
   .card h1 { font-size: 22px; margin: 2px 0 16px; }
@@ -1137,7 +1137,7 @@ def account_pages():
     me = (
         '<section class="card" id="loading">기록을 불러오고 있어요.</section>\n'
         '<div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1></div>\n'
-        '<section class="card" id="signedOut" hidden><h1>로그인하면 내 기록을 볼 수 있어요</h1><p>외운 단어, 복습 날짜, 연속 학습일을 어느 기기에서든 이어서 봐요.</p>'
+        '<section class="card" id="signedOut" hidden><h1>로그인하면 마이페이지를 볼 수 있어요</h1><p>외운 단어, 복습 날짜, 연속 학습일을 어느 기기에서든 이어서 봐요.</p>'
         '<a class="btn" href="/join/?next=/me/">로그인하러 가기</a></section>\n'
         '<div id="signedIn" hidden>'
         '<section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section>'
@@ -1149,7 +1149,7 @@ def account_pages():
     )
     return [("join", "카카오, Google로 시작하기", join, "join.js", True),
             ("join/callback", "로그인", callback, "join-callback.js", False),
-            ("me", "내 기록", me, "me.js", True)]
+            ("me", "마이페이지", me, "me.js", True)]
 
 
 def rebuild_account_pages():

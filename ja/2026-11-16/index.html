@@ -424,6 +424,17 @@
   .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
   .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
   .gnb-seg, .gnb-past { display: none; }
+  /* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+  .gnb-me { position: relative; }
+  .gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+  .gnb-me .gm-t { display: none; }
+  .gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+  .gnb-me.in .gnb-pill { background: none; }
+  .gnb-me.in .gm-ic { display: none; }
+  .gnb-me.in .gm-av { display: inline-flex; }
+  .gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+  .gnb-me .gm-b[hidden] { display: none; }
   .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
   @media (max-width: 350px) { .gnb-brand span { display: none; } }
   @media (min-width: 768px) {
@@ -440,6 +451,13 @@
     .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
     .gnb-past:hover { background: #f2f4f6; }
     .gnb-past.on { color: #191f28; font-weight: 700; }
+    .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+    .gnb-me .gnb-pill:hover { background: #e9ecef; }
+    .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+    .gnb-me .gm-t { display: inline; }
+    .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+    .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+    .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
   }
   /* 언어 시트(휴대폰) */
   .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
@@ -572,7 +590,7 @@
 </head>
 <body>
 <!-- gnb -->
-<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja" class="on" aria-current="page">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/ja/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 일본어"><span class="gnb-pill">일본어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a></div></header>
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja" class="on" aria-current="page">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/ja/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 일본어"><span class="gnb-pill">일본어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
 <div class="gnb-scrim" id="gnb-scrim" hidden></div>
 <div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
   <div class="gs-handle"></div>
@@ -672,7 +690,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="17">
+  <section class="card dr-card" id="drill" data-v="18">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 10개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -1247,7 +1265,7 @@
 </script>
 <script type="application/json" id="drill-data">[{"w": "大切", "m": "소중함, 중요함", "r": "たいせつ", "cz": "<ruby>大阪府<rt>おおさかふ<\/rt><\/ruby>の<ruby>泉佐野市<rt>いずみさのし<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span>にするための「<ruby>全国<rt>ぜんこく<\/rt><\/ruby><ruby>豊<rt>ゆた<\/rt><\/ruby>かな<ruby>海<rt>うみ<\/rt><\/ruby>づくり<ruby>大会<rt>たいかい<\/rt><\/ruby>」が<ruby>開<rt>ひら<\/rt><\/ruby>かれました。", "ca": "大切", "ex": "<ruby>大阪府<rt>おおさかふ<\/rt><\/ruby>の<ruby>泉佐野市<rt>いずみさのし<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<b><ruby>大切<rt>たいせつ<\/rt><\/ruby><\/b>にするための「<ruby>全国<rt>ぜんこく<\/rt><\/ruby><ruby>豊<rt>ゆた<\/rt><\/ruby>かな<ruby>海<rt>うみ<\/rt><\/ruby>づくり<ruby>大会<rt>たいかい<\/rt><\/ruby>」が<ruby>開<rt>ひら<\/rt><\/ruby>かれました。", "sh": "<ruby>大阪府<rt>おおさかふ<\/rt><\/ruby>の<ruby>泉佐野市<rt>いずみさのし<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<b><ruby>大切<rt>たいせつ<\/rt><\/ruby><\/b>にするための「<ruby>全国<rt>ぜんこく<\/rt><\/ruby><ruby>豊<rt>ゆた<\/rt><\/ruby>かな<ruby>海<rt>うみ<\/rt><\/ruby>づくり<ruby>大会<rt>たいかい<\/rt><\/ruby>」が<ruby>開<rt>ひら<\/rt><\/ruby>かれました。", "ek": "오사카부 이즈미사노시에서 바다와 물고기를 소중히 하기 위한 '전국 풍요로운 바다 가꾸기 대회'가 열렸습니다.", "sa": "/ja/2026-11-16/audio/s1.mp3", "au": "/ja/2026-11-16/audio/w1.mp3", "alts": ["열다, 개최하다", "내걸다, 달다", "어선", "(물고기가) 잡히다", "깃발", "치어", "놓아주다, 풀어 주다", "조금씩", "늘다, 늘어나다"]}, {"w": "開く", "m": "열다, 개최하다", "r": "ひらく", "cz": "<ruby>大阪府<rt>おおさかふ<\/rt><\/ruby>の<ruby>泉佐野市<rt>いずみさのし<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<ruby>大切<rt>たいせつ<\/rt><\/ruby>にするための「<ruby>全国<rt>ぜんこく<\/rt><\/ruby><ruby>豊<rt>ゆた<\/rt><\/ruby>かな<ruby>海<rt>うみ<\/rt><\/ruby>づくり<ruby>大会<rt>たいかい<\/rt><\/ruby>」が<span class=\"dr-blank\"><\/span>。", "ca": "開かれました", "ex": "<ruby>大阪府<rt>おおさかふ<\/rt><\/ruby>の<ruby>泉佐野市<rt>いずみさのし<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<ruby>大切<rt>たいせつ<\/rt><\/ruby>にするための「<ruby>全国<rt>ぜんこく<\/rt><\/ruby><ruby>豊<rt>ゆた<\/rt><\/ruby>かな<ruby>海<rt>うみ<\/rt><\/ruby>づくり<ruby>大会<rt>たいかい<\/rt><\/ruby>」が<b><ruby>開<rt>ひら<\/rt><\/ruby>かれました<\/b>。", "sh": "<ruby>大阪府<rt>おおさかふ<\/rt><\/ruby>の<ruby>泉佐野市<rt>いずみさのし<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>や<ruby>魚<rt>さかな<\/rt><\/ruby>を<ruby>大切<rt>たいせつ<\/rt><\/ruby>にするための「<ruby>全国<rt>ぜんこく<\/rt><\/ruby><ruby>豊<rt>ゆた<\/rt><\/ruby>かな<ruby>海<rt>うみ<\/rt><\/ruby>づくり<ruby>大会<rt>たいかい<\/rt><\/ruby>」が<b><ruby>開<rt>ひら<\/rt><\/ruby>かれました<\/b>。", "ek": "오사카부 이즈미사노시에서 바다와 물고기를 소중히 하기 위한 '전국 풍요로운 바다 가꾸기 대회'가 열렸습니다.", "sa": "/ja/2026-11-16/audio/s1.mp3", "au": "/ja/2026-11-16/audio/w2.mp3", "alts": ["소중함, 중요함", "내걸다, 달다", "어선", "(물고기가) 잡히다", "깃발", "치어", "놓아주다, 풀어 주다", "조금씩", "늘다, 늘어나다"]}, {"w": "掲げる", "m": "내걸다, 달다", "r": "かかげる", "cz": "<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>では、<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>を<span class=\"dr-blank\"><\/span><ruby>約<rt>やく<\/rt><\/ruby>100<ruby>隻<rt>せき<\/rt><\/ruby>の<ruby>漁船<rt>ぎょせん<\/rt><\/ruby>が<ruby>並<rt>なら<\/rt><\/ruby>んで<ruby>走<rt>はし<\/rt><\/ruby>る、にぎやかなパレードがありました。", "ca": "掲げた", "ex": "<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>では、<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>を<b><ruby>掲<rt>かか<\/rt><\/ruby>げた<\/b><ruby>約<rt>やく<\/rt><\/ruby>100<ruby>隻<rt>せき<\/rt><\/ruby>の<ruby>漁船<rt>ぎょせん<\/rt><\/ruby>が<ruby>並<rt>なら<\/rt><\/ruby>んで<ruby>走<rt>はし<\/rt><\/ruby>る、にぎやかなパレードがありました。", "sh": "<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>では、<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>を<b><ruby>掲<rt>かか<\/rt><\/ruby>げた<\/b><ruby>約<rt>やく<\/rt><\/ruby>100<ruby>隻<rt>せき<\/rt><\/ruby>の<ruby>漁船<rt>ぎょせん<\/rt><\/ruby>が<ruby>並<rt>なら<\/rt><\/ruby>んで<ruby>走<rt>はし<\/rt><\/ruby>る、にぎやかなパレードがありました。", "ek": "바다 위에서는 풍어기를 내건 약 100척의 어선이 나란히 달리는 떠들썩한 퍼레이드가 있었습니다.", "sa": "/ja/2026-11-16/audio/s2.mp3", "au": "/ja/2026-11-16/audio/w3.mp3", "alts": ["소중함, 중요함", "열다, 개최하다", "어선", "(물고기가) 잡히다", "깃발", "치어", "놓아주다, 풀어 주다", "조금씩", "늘다, 늘어나다"]}, {"w": "漁船", "m": "어선", "r": "ぎょせん", "cz": "<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>では、<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>を<ruby>掲<rt>かか<\/rt><\/ruby>げた<ruby>約<rt>やく<\/rt><\/ruby>100<ruby>隻<rt>せき<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>が<ruby>並<rt>なら<\/rt><\/ruby>んで<ruby>走<rt>はし<\/rt><\/ruby>る、にぎやかなパレードがありました。", "ca": "漁船", "ex": "<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>では、<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>を<ruby>掲<rt>かか<\/rt><\/ruby>げた<ruby>約<rt>やく<\/rt><\/ruby>100<ruby>隻<rt>せき<\/rt><\/ruby>の<b><ruby>漁船<rt>ぎょせん<\/rt><\/ruby><\/b>が<ruby>並<rt>なら<\/rt><\/ruby>んで<ruby>走<rt>はし<\/rt><\/ruby>る、にぎやかなパレードがありました。", "sh": "<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>上<rt>うえ<\/rt><\/ruby>では、<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>を<ruby>掲<rt>かか<\/rt><\/ruby>げた<ruby>約<rt>やく<\/rt><\/ruby>100<ruby>隻<rt>せき<\/rt><\/ruby>の<b><ruby>漁船<rt>ぎょせん<\/rt><\/ruby><\/b>が<ruby>並<rt>なら<\/rt><\/ruby>んで<ruby>走<rt>はし<\/rt><\/ruby>る、にぎやかなパレードがありました。", "ek": "바다 위에서는 풍어기를 내건 약 100척의 어선이 나란히 달리는 떠들썩한 퍼레이드가 있었습니다.", "sa": "/ja/2026-11-16/audio/s2.mp3", "au": "/ja/2026-11-16/audio/w4.mp3", "alts": ["소중함, 중요함", "열다, 개최하다", "내걸다, 달다", "(물고기가) 잡히다", "깃발", "치어", "놓아주다, 풀어 주다", "조금씩", "늘다, 늘어나다"]}, {"w": "とれる", "m": "(물고기가) 잡히다", "cz": "<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>は、<ruby>魚<rt>さかな<\/rt><\/ruby>がたくさん<span class=\"dr-blank\"><\/span>ときなどに<ruby>船<rt>ふね<\/rt><\/ruby>に<ruby>立<rt>た<\/rt><\/ruby>てる<ruby>旗<rt>はた<\/rt><\/ruby>で、<ruby>明<rt>あか<\/rt><\/ruby>るい<ruby>色<rt>いろ<\/rt><\/ruby>の<ruby>絵<rt>え<\/rt><\/ruby>や<ruby>字<rt>じ<\/rt><\/ruby>がかいてあります。", "ca": "とれた", "ex": "<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>は、<ruby>魚<rt>さかな<\/rt><\/ruby>がたくさん<b>とれた<\/b>ときなどに<ruby>船<rt>ふね<\/rt><\/ruby>に<ruby>立<rt>た<\/rt><\/ruby>てる<ruby>旗<rt>はた<\/rt><\/ruby>で、<ruby>明<rt>あか<\/rt><\/ruby>るい<ruby>色<rt>いろ<\/rt><\/ruby>の<ruby>絵<rt>え<\/rt><\/ruby>や<ruby>字<rt>じ<\/rt><\/ruby>がかいてあります。", "sh": "<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>は、<ruby>魚<rt>さかな<\/rt><\/ruby>がたくさん<b>とれた<\/b>ときなどに<ruby>船<rt>ふね<\/rt><\/ruby>に<ruby>立<rt>た<\/rt><\/ruby>てる<ruby>旗<rt>はた<\/rt><\/ruby>で、<ruby>明<rt>あか<\/rt><\/ruby>るい<ruby>色<rt>いろ<\/rt><\/ruby>の<ruby>絵<rt>え<\/rt><\/ruby>や<ruby>字<rt>じ<\/rt><\/ruby>がかいてあります。", "ek": "풍어기는 물고기가 많이 잡혔을 때 등에 배에 세우는 깃발로, 밝은 색의 그림이나 글자가 그려져 있습니다.", "sa": "/ja/2026-11-16/audio/s3.mp3", "au": "/ja/2026-11-16/audio/w5.mp3", "alts": ["소중함, 중요함", "열다, 개최하다", "내걸다, 달다", "어선", "깃발", "치어", "놓아주다, 풀어 주다", "조금씩", "늘다, 늘어나다"]}, {"w": "旗", "m": "깃발", "r": "はた", "ex": "<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>は、<ruby>魚<rt>さかな<\/rt><\/ruby>がたくさんとれたときなどに<ruby>船<rt>ふね<\/rt><\/ruby>に<ruby>立<rt>た<\/rt><\/ruby>てる<b><ruby>旗<rt>はた<\/rt><\/ruby><\/b>で、<ruby>明<rt>あか<\/rt><\/ruby>るい<ruby>色<rt>いろ<\/rt><\/ruby>の<ruby>絵<rt>え<\/rt><\/ruby>や<ruby>字<rt>じ<\/rt><\/ruby>がかいてあります。", "sh": "<ruby>大漁旗<rt>たいりょうばた<\/rt><\/ruby>は、<ruby>魚<rt>さかな<\/rt><\/ruby>がたくさんとれたときなどに<ruby>船<rt>ふね<\/rt><\/ruby>に<ruby>立<rt>た<\/rt><\/ruby>てる<b><ruby>旗<rt>はた<\/rt><\/ruby><\/b>で、<ruby>明<rt>あか<\/rt><\/ruby>るい<ruby>色<rt>いろ<\/rt><\/ruby>の<ruby>絵<rt>え<\/rt><\/ruby>や<ruby>字<rt>じ<\/rt><\/ruby>がかいてあります。", "ek": "풍어기는 물고기가 많이 잡혔을 때 등에 배에 세우는 깃발로, 밝은 색의 그림이나 글자가 그려져 있습니다.", "sa": "/ja/2026-11-16/audio/s3.mp3", "au": "/ja/2026-11-16/audio/w6.mp3", "alts": ["소중함, 중요함", "열다, 개최하다", "내걸다, 달다", "어선", "(물고기가) 잡히다", "치어", "놓아주다, 풀어 주다", "조금씩", "늘다, 늘어나다"]}, {"w": "稚魚", "m": "치어", "r": "ちぎょ", "cz": "<ruby>大会<rt>たいかい<\/rt><\/ruby>の<ruby>最後<rt>さいご<\/rt><\/ruby>には、キジハタとヒラメという<ruby>魚<rt>さかな<\/rt><\/ruby>の<span class=\"dr-blank\"><\/span>が、<ruby>海<rt>うみ<\/rt><\/ruby>に<ruby>放<rt>はな<\/rt><\/ruby>されました。", "ca": "稚魚", "ex": "<ruby>大会<rt>たいかい<\/rt><\/ruby>の<ruby>最後<rt>さいご<\/rt><\/ruby>には、キジハタとヒラメという<ruby>魚<rt>さかな<\/rt><\/ruby>の<b><ruby>稚魚<rt>ちぎょ<\/rt><\/ruby><\/b>が、<ruby>海<rt>うみ<\/rt><\/ruby>に<ruby>放<rt>はな<\/rt><\/ruby>されました。", "sh": "<ruby>大会<rt>たいかい<\/rt><\/ruby>の<ruby>最後<rt>さいご<\/rt><\/ruby>には、キジハタとヒラメという<ruby>魚<rt>さかな<\/rt><\/ruby>の<b><ruby>稚魚<rt>ちぎょ<\/rt><\/ruby><\/b>が、<ruby>海<rt>うみ<\/rt><\/ruby>に<ruby>放<rt>はな<\/rt><\/ruby>されました。", "ek": "대회 마지막에는 붉바리와 넙치라는 물고기의 치어가 바다에 방류되었습니다.", "sa": "/ja/2026-11-16/audio/s4.mp3", "au": "/ja/2026-11-16/audio/w7.mp3", "alts": ["소중함, 중요함", "열다, 개최하다", "내걸다, 달다", "어선", "(물고기가) 잡히다", "깃발", "놓아주다, 풀어 주다", "조금씩", "늘다, 늘어나다"]}, {"w": "放す", "m": "놓아주다, 풀어 주다", "r": "はなす", "cz": "<ruby>大会<rt>たいかい<\/rt><\/ruby>の<ruby>最後<rt>さいご<\/rt><\/ruby>には、キジハタとヒラメという<ruby>魚<rt>さかな<\/rt><\/ruby>の<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>が、<ruby>海<rt>うみ<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>。", "ca": "放されました", "ex": "<ruby>大会<rt>たいかい<\/rt><\/ruby>の<ruby>最後<rt>さいご<\/rt><\/ruby>には、キジハタとヒラメという<ruby>魚<rt>さかな<\/rt><\/ruby>の<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>が、<ruby>海<rt>うみ<\/rt><\/ruby>に<b><ruby>放<rt>はな<\/rt><\/ruby>されました<\/b>。", "sh": "<ruby>大会<rt>たいかい<\/rt><\/ruby>の<ruby>最後<rt>さいご<\/rt><\/ruby>には、キジハタとヒラメという<ruby>魚<rt>さかな<\/rt><\/ruby>の<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>が、<ruby>海<rt>うみ<\/rt><\/ruby>に<b><ruby>放<rt>はな<\/rt><\/ruby>されました<\/b>。", "ek": "대회 마지막에는 붉바리와 넙치라는 물고기의 치어가 바다에 방류되었습니다.", "sa": "/ja/2026-11-16/audio/s4.mp3", "au": "/ja/2026-11-16/audio/w8.mp3", "alts": ["소중함, 중요함", "열다, 개최하다", "내걸다, 달다", "어선", "(물고기가) 잡히다", "깃발", "치어", "조금씩", "늘다, 늘어나다"]}, {"w": "少しずつ", "m": "조금씩", "r": "すこしずつ", "cz": "<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>は<ruby>生<rt>う<\/rt><\/ruby>まれてからまだ<ruby>時間<rt>じかん<\/rt><\/ruby>がたっていない<ruby>小<rt>ちい<\/rt><\/ruby>さな<ruby>魚<rt>さかな<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>で<span class=\"dr-blank\"><\/span><ruby>大<rt>おお<\/rt><\/ruby>きくなります。", "ca": "少しずつ", "ex": "<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>は<ruby>生<rt>う<\/rt><\/ruby>まれてからまだ<ruby>時間<rt>じかん<\/rt><\/ruby>がたっていない<ruby>小<rt>ちい<\/rt><\/ruby>さな<ruby>魚<rt>さかな<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>で<b><ruby>少<rt>すこ<\/rt><\/ruby>しずつ<\/b><ruby>大<rt>おお<\/rt><\/ruby>きくなります。", "sh": "<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>は<ruby>生<rt>う<\/rt><\/ruby>まれてからまだ<ruby>時間<rt>じかん<\/rt><\/ruby>がたっていない<ruby>小<rt>ちい<\/rt><\/ruby>さな<ruby>魚<rt>さかな<\/rt><\/ruby>で、<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>で<b><ruby>少<rt>すこ<\/rt><\/ruby>しずつ<\/b><ruby>大<rt>おお<\/rt><\/ruby>きくなります。", "ek": "치어는 태어난 지 아직 얼마 되지 않은 작은 물고기로, 바닷속에서 조금씩 자랍니다.", "sa": "/ja/2026-11-16/audio/s5.mp3", "au": "/ja/2026-11-16/audio/w9.mp3", "alts": ["소중함, 중요함", "열다, 개최하다", "내걸다, 달다", "어선", "(물고기가) 잡히다", "깃발", "치어", "놓아주다, 풀어 주다", "늘다, 늘어나다"]}, {"w": "増える", "m": "늘다, 늘어나다", "r": "ふえる", "cz": "<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>を<ruby>海<rt>うみ<\/rt><\/ruby>に<ruby>放<rt>はな<\/rt><\/ruby>すのは、<ruby>魚<rt>さかな<\/rt><\/ruby>が<ruby>育<rt>そだ<\/rt><\/ruby>って<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>でまた<span class=\"dr-blank\"><\/span>ようにするためです。", "ca": "増える", "ex": "<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>を<ruby>海<rt>うみ<\/rt><\/ruby>に<ruby>放<rt>はな<\/rt><\/ruby>すのは、<ruby>魚<rt>さかな<\/rt><\/ruby>が<ruby>育<rt>そだ<\/rt><\/ruby>って<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>でまた<b><ruby>増<rt>ふ<\/rt><\/ruby>える<\/b>ようにするためです。", "sh": "<ruby>稚魚<rt>ちぎょ<\/rt><\/ruby>を<ruby>海<rt>うみ<\/rt><\/ruby>に<ruby>放<rt>はな<\/rt><\/ruby>すのは、<ruby>魚<rt>さかな<\/rt><\/ruby>が<ruby>育<rt>そだ<\/rt><\/ruby>って<ruby>海<rt>うみ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>でまた<b><ruby>増<rt>ふ<\/rt><\/ruby>える<\/b>ようにするためです。", "ek": "치어를 바다에 놓아주는 것은 물고기가 자라서 바닷속에서 다시 늘어나도록 하기 위해서입니다.", "sa": "/ja/2026-11-16/audio/s6.mp3", "au": "/ja/2026-11-16/audio/w10.mp3", "alts": ["소중함, 중요함", "열다, 개최하다", "내걸다, 달다", "어선", "(물고기가) 잡히다", "깃발", "치어", "놓아주다, 풀어 주다", "조금씩"]}]</script>
 <script id="auth-js" src="/assets/auth.js?v=2" defer></script>
-<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
+<script id="drill-js" data-v="18" src="/assets/drill.js?v=18" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1280,55 +1298,6 @@
   }
 })();
 </script>
-<script id="gnb-js">(function(){
-  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
-  if(!chip||!sheet||!scrim)return;
-  var root=document.documentElement;
-  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
-  var tm=null,tprev=null;
-  function tint(on){
-    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
-      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
-      tm.setAttribute('content','#9fa3a9');}
-    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
-  }
-  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
-  function key(e){
-    if(e.key==='Escape'){e.preventDefault();close();return;}
-    if(e.key!=='Tab')return;
-    var f=items();if(!f.length)return;
-    var a=f[0],z=f[f.length-1];
-    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
-    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
-    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
-    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
-  }
-  function open(){
-    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
-    tint(true);sheet.focus();
-    document.addEventListener('keydown',key);
-    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
-  }
-  function close(){
-    if(sheet.hidden)return;
-    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
-    document.removeEventListener('keydown',key);chip.focus();
-  }
-  chip.addEventListener('click',function(){sheet.hidden?open():close();});
-  scrim.addEventListener('click',close);
-  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
-  if(!window.fetch)return;
-  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
-    if(!d||!d.langs)return;
-    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
-    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
-      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
-    var rv=document.getElementById('gnb-review');
-    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
-      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
-        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
-  }).catch(function(){});
-})();</script>
 <script id="fb-js">
 (function () {
   function device() {
@@ -1392,5 +1361,71 @@
   document.addEventListener('visibilitychange', tick);
 })();
 </script>
+<script id="gnb-js">(function(){
+  var me=document.getElementById('gnb-me');
+  if(me){try{
+    var on=localStorage.getItem('dkh-auth')!==null,info=JSON.parse(localStorage.getItem('dkh-me')||'null')||{};
+    if(on){
+      var nick=String(info.n||''),days=(JSON.parse(localStorage.getItem('drill:v1')||'null')||{}).days||[],set={},n=0,d=new Date();
+      days.forEach(function(x){set[x]=1;});
+      function k(t){return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);}
+      if(!set[k(d)])d.setDate(d.getDate()-1);
+      while(set[k(d)]){n++;d.setDate(d.getDate()-1);}
+      me.href='/me/';me.classList.add('in');me.setAttribute('aria-label','마이페이지'+(n?', 연속 '+n+'일':''));
+      me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
+      me.querySelector('.gm-t').textContent='마이페이지';
+      var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
+      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }
+  }catch(e){}}
+  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
+  if(!chip||!sheet||!scrim)return;
+  var root=document.documentElement;
+  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
+  var tm=null,tprev=null;
+  function tint(on){
+    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
+      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
+      tm.setAttribute('content','#9fa3a9');}
+    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
+  }
+  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
+  function key(e){
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key!=='Tab')return;
+    var f=items();if(!f.length)return;
+    var a=f[0],z=f[f.length-1];
+    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
+    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
+    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
+  }
+  function open(){
+    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
+    tint(true);sheet.focus();
+    document.addEventListener('keydown',key);
+    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
+  }
+  function close(){
+    if(sheet.hidden)return;
+    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
+    document.removeEventListener('keydown',key);chip.focus();
+  }
+  chip.addEventListener('click',function(){sheet.hidden?open():close();});
+  scrim.addEventListener('click',close);
+  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
+  if(!window.fetch)return;
+  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.langs)return;
+    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
+    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
+      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
+    var rv=document.getElementById('gnb-review');
+    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
+      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
+        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
+  }).catch(function(){});
+})();</script>
 </body>
 </html>

@@ -424,6 +424,17 @@
   .gnb-mail .gnb-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; }
   .gnb-mail:hover .gnb-pill { filter: brightness(.92); }
   .gnb-seg, .gnb-past { display: none; }
+  /* 로그인과 마이페이지(시안 design/kakao-login K15): 휴대폰은 동그라미만, 로그인 뒤 첫 글자와 연속 학습일 배지 */
+  .gnb-me { position: relative; }
+  .gnb-me .gnb-pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 36px; height: 36px; border-radius: 999px; background: #f2f4f6; color: #191f28; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .gnb-me .gm-ic svg { width: 20px; height: 20px; color: #4e5968; display: block; }
+  .gnb-me .gm-t { display: none; }
+  .gnb-me .gm-av { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gnb-blue, #1b64da); color: #fff; font-size: 14px; font-weight: 800; }
+  .gnb-me.in .gnb-pill { background: none; }
+  .gnb-me.in .gm-ic { display: none; }
+  .gnb-me.in .gm-av { display: inline-flex; }
+  .gnb-me .gm-b { position: absolute; right: -2px; bottom: 2px; display: inline-flex; align-items: center; height: 18px; padding: 0 5px; border-radius: 999px; background: #fff; border: 1px solid #e5e8eb; font-size: 11px; font-weight: 800; color: #f04452; box-shadow: 0 1px 3px rgba(16,24,40,.12); }
+  .gnb-me .gm-b[hidden] { display: none; }
   .gnb a:focus-visible, .gnb button:focus-visible, .gnb-sheet a:focus-visible { outline: 2px solid var(--gnb-blue, #1b64da); outline-offset: 2px; border-radius: 10px; }
   @media (max-width: 350px) { .gnb-brand span { display: none; } }
   @media (min-width: 768px) {
@@ -440,6 +451,13 @@
     .gnb-past { display: inline-flex; align-items: center; height: 44px; padding: 0 12px; margin-left: auto; border-radius: 10px; font-size: 15px; font-weight: 600; color: #4e5968; white-space: nowrap; }
     .gnb-past:hover { background: #f2f4f6; }
     .gnb-past.on { color: #191f28; font-weight: 700; }
+    .gnb-me .gnb-pill { width: auto; padding: 0 12px 0 10px; }
+    .gnb-me .gnb-pill:hover { background: #e9ecef; }
+    .gnb-me .gm-ic svg { width: 18px; height: 18px; }
+    .gnb-me .gm-t { display: inline; }
+    .gnb-me.in .gnb-pill { background: #f2f4f6; padding: 0 12px 0 4px; }
+    .gnb-me .gm-av { width: 28px; height: 28px; font-size: 13px; }
+    .gnb-me .gm-b { position: static; border: 0; box-shadow: none; background: #ffeeee; }
   }
   /* 언어 시트(휴대폰) */
   .gnb-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.40); }
@@ -572,7 +590,7 @@
 </head>
 <body>
 <!-- gnb -->
-<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja" class="on" aria-current="page">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/ja/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 일본어"><span class="gnb-pill">일본어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a></div></header>
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja" class="on" aria-current="page">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/ja/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 일본어"><span class="gnb-pill">일본어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
 <div class="gnb-scrim" id="gnb-scrim" hidden></div>
 <div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
   <div class="gs-handle"></div>
@@ -674,7 +692,7 @@
 
 
 <!-- drill-card -->
-  <section class="card dr-card" id="drill" data-v="17">
+  <section class="card dr-card" id="drill" data-v="18">
     <div class="step">STEP 5</div>
     <h2>오늘 단어 외우기</h2>
     <p class="desc">지문에 나온 단어 12개를 외울 때까지 반복해요. 몰랐던 단어는 다시 나와요.</p>
@@ -1249,7 +1267,7 @@
 </script>
 <script type="application/json" id="drill-data">[{"w": "神社", "m": "신사", "r": "じんじゃ", "cz": "「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>市<rt>いち<\/rt><\/ruby>」は、<ruby>毎年<rt>まいとし<\/rt><\/ruby>11<ruby>月<rt>がつ<\/rt><\/ruby>の「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>」に<ruby>浅草<rt>あさくさ<\/rt><\/ruby>などの<span class=\"dr-blank\"><\/span>で<ruby>開<rt>ひら<\/rt><\/ruby>かれ、<ruby>午前<rt>ごぜん<\/rt><\/ruby>0<ruby>時<rt>じ<\/rt><\/ruby>から24<ruby>時間<rt>じかん<\/rt><\/ruby><ruby>人<rt>ひと<\/rt><\/ruby>が<ruby>集<rt>あつ<\/rt><\/ruby>まるお<ruby>祭<rt>まつ<\/rt><\/ruby>りです。", "ca": "神社", "ex": "「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>市<rt>いち<\/rt><\/ruby>」は、<ruby>毎年<rt>まいとし<\/rt><\/ruby>11<ruby>月<rt>がつ<\/rt><\/ruby>の「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>」に<ruby>浅草<rt>あさくさ<\/rt><\/ruby>などの<b><ruby>神社<rt>じんじゃ<\/rt><\/ruby><\/b>で<ruby>開<rt>ひら<\/rt><\/ruby>かれ、<ruby>午前<rt>ごぜん<\/rt><\/ruby>0<ruby>時<rt>じ<\/rt><\/ruby>から24<ruby>時間<rt>じかん<\/rt><\/ruby><ruby>人<rt>ひと<\/rt><\/ruby>が<ruby>集<rt>あつ<\/rt><\/ruby>まるお<ruby>祭<rt>まつ<\/rt><\/ruby>りです。", "sh": "「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>市<rt>いち<\/rt><\/ruby>」は、<ruby>毎年<rt>まいとし<\/rt><\/ruby>11<ruby>月<rt>がつ<\/rt><\/ruby>の「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>」に<ruby>浅草<rt>あさくさ<\/rt><\/ruby>などの<b><ruby>神社<rt>じんじゃ<\/rt><\/ruby><\/b>で<ruby>開<rt>ひら<\/rt><\/ruby>かれ、<ruby>午前<rt>ごぜん<\/rt><\/ruby>0<ruby>時<rt>じ<\/rt><\/ruby>から24<ruby>時間<rt>じかん<\/rt><\/ruby><ruby>人<rt>ひと<\/rt><\/ruby>が<ruby>集<rt>あつ<\/rt><\/ruby>まるお<ruby>祭<rt>まつ<\/rt><\/ruby>りです。", "ek": "'도리노이치'는 매년 11월 '유일(酉の日)'에 아사쿠사 등의 신사에서 열리고, 오전 0시부터 24시간 사람들이 모이는 축제입니다.", "sa": "/ja/2026-11-17/audio/s1.mp3", "au": "/ja/2026-11-17/audio/w1.mp3", "alts": ["모이다", "~마다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "값, 가격", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "集まる", "m": "모이다", "r": "あつまる", "cz": "「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>市<rt>いち<\/rt><\/ruby>」は、<ruby>毎年<rt>まいとし<\/rt><\/ruby>11<ruby>月<rt>がつ<\/rt><\/ruby>の「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>」に<ruby>浅草<rt>あさくさ<\/rt><\/ruby>などの<ruby>神社<rt>じんじゃ<\/rt><\/ruby>で<ruby>開<rt>ひら<\/rt><\/ruby>かれ、<ruby>午前<rt>ごぜん<\/rt><\/ruby>0<ruby>時<rt>じ<\/rt><\/ruby>から24<ruby>時間<rt>じかん<\/rt><\/ruby><ruby>人<rt>ひと<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>お<ruby>祭<rt>まつ<\/rt><\/ruby>りです。", "ca": "集まる", "ex": "「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>市<rt>いち<\/rt><\/ruby>」は、<ruby>毎年<rt>まいとし<\/rt><\/ruby>11<ruby>月<rt>がつ<\/rt><\/ruby>の「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>」に<ruby>浅草<rt>あさくさ<\/rt><\/ruby>などの<ruby>神社<rt>じんじゃ<\/rt><\/ruby>で<ruby>開<rt>ひら<\/rt><\/ruby>かれ、<ruby>午前<rt>ごぜん<\/rt><\/ruby>0<ruby>時<rt>じ<\/rt><\/ruby>から24<ruby>時間<rt>じかん<\/rt><\/ruby><ruby>人<rt>ひと<\/rt><\/ruby>が<b><ruby>集<rt>あつ<\/rt><\/ruby>まる<\/b>お<ruby>祭<rt>まつ<\/rt><\/ruby>りです。", "sh": "「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>市<rt>いち<\/rt><\/ruby>」は、<ruby>毎年<rt>まいとし<\/rt><\/ruby>11<ruby>月<rt>がつ<\/rt><\/ruby>の「<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>」に<ruby>浅草<rt>あさくさ<\/rt><\/ruby>などの<ruby>神社<rt>じんじゃ<\/rt><\/ruby>で<ruby>開<rt>ひら<\/rt><\/ruby>かれ、<ruby>午前<rt>ごぜん<\/rt><\/ruby>0<ruby>時<rt>じ<\/rt><\/ruby>から24<ruby>時間<rt>じかん<\/rt><\/ruby><ruby>人<rt>ひと<\/rt><\/ruby>が<b><ruby>集<rt>あつ<\/rt><\/ruby>まる<\/b>お<ruby>祭<rt>まつ<\/rt><\/ruby>りです。", "ek": "'도리노이치'는 매년 11월 '유일(酉の日)'에 아사쿠사 등의 신사에서 열리고, 오전 0시부터 24시간 사람들이 모이는 축제입니다.", "sa": "/ja/2026-11-17/audio/s1.mp3", "au": "/ja/2026-11-17/audio/w2.mp3", "alts": ["신사", "~마다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "값, 가격", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "ごとに", "m": "~마다", "cz": "<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>は12<ruby>日<rt>にち<\/rt><\/ruby><span class=\"dr-blank\"><\/span><ruby>来<rt>く<\/rt><\/ruby>るので、<ruby>年<rt>とし<\/rt><\/ruby>によって11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>が2<ruby>回<rt>かい<\/rt><\/ruby>だったり3<ruby>回<rt>かい<\/rt><\/ruby>だったりします。", "ca": "ごとに", "ex": "<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>は12<ruby>日<rt>にち<\/rt><\/ruby><b>ごとに<\/b><ruby>来<rt>く<\/rt><\/ruby>るので、<ruby>年<rt>とし<\/rt><\/ruby>によって11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>が2<ruby>回<rt>かい<\/rt><\/ruby>だったり3<ruby>回<rt>かい<\/rt><\/ruby>だったりします。", "sh": "<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>は12<ruby>日<rt>にち<\/rt><\/ruby><b>ごとに<\/b><ruby>来<rt>く<\/rt><\/ruby>るので、<ruby>年<rt>とし<\/rt><\/ruby>によって11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>が2<ruby>回<rt>かい<\/rt><\/ruby>だったり3<ruby>回<rt>かい<\/rt><\/ruby>だったりします。", "ek": "유일은 12일마다 돌아오기 때문에, 해에 따라 11월의 유일이 두 번이기도 하고 세 번이기도 합니다.", "sa": "/ja/2026-11-17/audio/s2.mp3", "au": "/ja/2026-11-17/audio/w3.mp3", "alts": ["신사", "모이다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "값, 가격", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "によって", "m": "~에 따라", "cz": "<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>は12<ruby>日<rt>にち<\/rt><\/ruby>ごとに<ruby>来<rt>く<\/rt><\/ruby>るので、<ruby>年<rt>とし<\/rt><\/ruby><span class=\"dr-blank\"><\/span>11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>が2<ruby>回<rt>かい<\/rt><\/ruby>だったり3<ruby>回<rt>かい<\/rt><\/ruby>だったりします。", "ca": "によって", "ex": "<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>は12<ruby>日<rt>にち<\/rt><\/ruby>ごとに<ruby>来<rt>く<\/rt><\/ruby>るので、<ruby>年<rt>とし<\/rt><\/ruby><b>によって<\/b>11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>が2<ruby>回<rt>かい<\/rt><\/ruby>だったり3<ruby>回<rt>かい<\/rt><\/ruby>だったりします。", "sh": "<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>は12<ruby>日<rt>にち<\/rt><\/ruby>ごとに<ruby>来<rt>く<\/rt><\/ruby>るので、<ruby>年<rt>とし<\/rt><\/ruby><b>によって<\/b>11<ruby>月<rt>がつ<\/rt><\/ruby>の<ruby>酉<rt>とり<\/rt><\/ruby>の<ruby>日<rt>ひ<\/rt><\/ruby>が2<ruby>回<rt>かい<\/rt><\/ruby>だったり3<ruby>回<rt>かい<\/rt><\/ruby>だったりします。", "ek": "유일은 12일마다 돌아오기 때문에, 해에 따라 11월의 유일이 두 번이기도 하고 세 번이기도 합니다.", "sa": "/ja/2026-11-17/audio/s2.mp3", "au": "/ja/2026-11-17/audio/w4.mp3", "alts": ["신사", "모이다", "~마다", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "값, 가격", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "露店", "m": "노점", "r": "ろてん", "cz": "<ruby>神社<rt>じんじゃ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>約<rt>やく<\/rt><\/ruby>150の<span class=\"dr-blank\"><\/span>が<ruby>並<rt>なら<\/rt><\/ruby>んでいて、<ruby>飾<rt>かざ<\/rt><\/ruby>りの「<ruby>熊手<rt>くまで<\/rt><\/ruby>」がたくさん<ruby>売<rt>う<\/rt><\/ruby>られています。", "ca": "露店", "ex": "<ruby>神社<rt>じんじゃ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>約<rt>やく<\/rt><\/ruby>150の<b><ruby>露店<rt>ろてん<\/rt><\/ruby><\/b>が<ruby>並<rt>なら<\/rt><\/ruby>んでいて、<ruby>飾<rt>かざ<\/rt><\/ruby>りの「<ruby>熊手<rt>くまで<\/rt><\/ruby>」がたくさん<ruby>売<rt>う<\/rt><\/ruby>られています。", "sh": "<ruby>神社<rt>じんじゃ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>約<rt>やく<\/rt><\/ruby>150の<b><ruby>露店<rt>ろてん<\/rt><\/ruby><\/b>が<ruby>並<rt>なら<\/rt><\/ruby>んでいて、<ruby>飾<rt>かざ<\/rt><\/ruby>りの「<ruby>熊手<rt>くまで<\/rt><\/ruby>」がたくさん<ruby>売<rt>う<\/rt><\/ruby>られています。", "ek": "신사 안에는 약 150개의 노점이 늘어서 있고, 장식용 '구마데'가 많이 팔리고 있습니다.", "sa": "/ja/2026-11-17/audio/s3.mp3", "au": "/ja/2026-11-17/audio/w5.mp3", "alts": ["신사", "모이다", "~마다", "~에 따라", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "값, 가격", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "熊手", "m": "구마데(복을 비는 갈퀴 장식)", "r": "くまで", "cz": "<ruby>神社<rt>じんじゃ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>約<rt>やく<\/rt><\/ruby>150の<ruby>露店<rt>ろてん<\/rt><\/ruby>が<ruby>並<rt>なら<\/rt><\/ruby>んでいて、<ruby>飾<rt>かざ<\/rt><\/ruby>りの「<span class=\"dr-blank\"><\/span>」がたくさん<ruby>売<rt>う<\/rt><\/ruby>られています。", "ca": "熊手", "ex": "<ruby>神社<rt>じんじゃ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>約<rt>やく<\/rt><\/ruby>150の<ruby>露店<rt>ろてん<\/rt><\/ruby>が<ruby>並<rt>なら<\/rt><\/ruby>んでいて、<ruby>飾<rt>かざ<\/rt><\/ruby>りの「<b><ruby>熊手<rt>くまで<\/rt><\/ruby><\/b>」がたくさん<ruby>売<rt>う<\/rt><\/ruby>られています。", "sh": "<ruby>神社<rt>じんじゃ<\/rt><\/ruby>の<ruby>中<rt>なか<\/rt><\/ruby>には<ruby>約<rt>やく<\/rt><\/ruby>150の<ruby>露店<rt>ろてん<\/rt><\/ruby>が<ruby>並<rt>なら<\/rt><\/ruby>んでいて、<ruby>飾<rt>かざ<\/rt><\/ruby>りの「<b><ruby>熊手<rt>くまで<\/rt><\/ruby><\/b>」がたくさん<ruby>売<rt>う<\/rt><\/ruby>られています。", "ek": "신사 안에는 약 150개의 노점이 늘어서 있고, 장식용 '구마데'가 많이 팔리고 있습니다.", "sa": "/ja/2026-11-17/audio/s3.mp3", "au": "/ja/2026-11-17/audio/w6.mp3", "alts": ["신사", "모이다", "~마다", "~에 따라", "노점", "도구", "길상물, 행운의 물건", "값, 가격", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "道具", "m": "도구", "r": "どうぐ", "cz": "<ruby>熊手<rt>くまで<\/rt><\/ruby>はもともと<ruby>落<rt>お<\/rt><\/ruby>ち<ruby>葉<rt>ば<\/rt><\/ruby>などを<ruby>集<rt>あつ<\/rt><\/ruby>める<span class=\"dr-blank\"><\/span>で、<ruby>幸<rt>しあわ<\/rt><\/ruby>せやお<ruby>金<rt>かね<\/rt><\/ruby>を「かき<ruby>込<rt>こ<\/rt><\/ruby>む」<ruby>縁起物<rt>えんぎもの<\/rt><\/ruby>として<ruby>人気<rt>にんき<\/rt><\/ruby>があります。", "ca": "道具", "ex": "<ruby>熊手<rt>くまで<\/rt><\/ruby>はもともと<ruby>落<rt>お<\/rt><\/ruby>ち<ruby>葉<rt>ば<\/rt><\/ruby>などを<ruby>集<rt>あつ<\/rt><\/ruby>める<b><ruby>道具<rt>どうぐ<\/rt><\/ruby><\/b>で、<ruby>幸<rt>しあわ<\/rt><\/ruby>せやお<ruby>金<rt>かね<\/rt><\/ruby>を「かき<ruby>込<rt>こ<\/rt><\/ruby>む」<ruby>縁起物<rt>えんぎもの<\/rt><\/ruby>として<ruby>人気<rt>にんき<\/rt><\/ruby>があります。", "sh": "<ruby>熊手<rt>くまで<\/rt><\/ruby>はもともと<ruby>落<rt>お<\/rt><\/ruby>ち<ruby>葉<rt>ば<\/rt><\/ruby>などを<ruby>集<rt>あつ<\/rt><\/ruby>める<b><ruby>道具<rt>どうぐ<\/rt><\/ruby><\/b>で、<ruby>幸<rt>しあわ<\/rt><\/ruby>せやお<ruby>金<rt>かね<\/rt><\/ruby>を「かき<ruby>込<rt>こ<\/rt><\/ruby>む」<ruby>縁起物<rt>えんぎもの<\/rt><\/ruby>として<ruby>人気<rt>にんき<\/rt><\/ruby>があります。", "ek": "구마데는 원래 낙엽 등을 모으는 도구로, 행복이나 돈을 '긁어모은다'는 행운의 물건으로 인기가 있습니다.", "sa": "/ja/2026-11-17/audio/s4.mp3", "au": "/ja/2026-11-17/audio/w7.mp3", "alts": ["신사", "모이다", "~마다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "길상물, 행운의 물건", "값, 가격", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "縁起物", "m": "길상물, 행운의 물건", "r": "えんぎもの", "cz": "<ruby>熊手<rt>くまで<\/rt><\/ruby>はもともと<ruby>落<rt>お<\/rt><\/ruby>ち<ruby>葉<rt>ば<\/rt><\/ruby>などを<ruby>集<rt>あつ<\/rt><\/ruby>める<ruby>道具<rt>どうぐ<\/rt><\/ruby>で、<ruby>幸<rt>しあわ<\/rt><\/ruby>せやお<ruby>金<rt>かね<\/rt><\/ruby>を「かき<ruby>込<rt>こ<\/rt><\/ruby>む」<span class=\"dr-blank\"><\/span>として<ruby>人気<rt>にんき<\/rt><\/ruby>があります。", "ca": "縁起物", "ex": "<ruby>熊手<rt>くまで<\/rt><\/ruby>はもともと<ruby>落<rt>お<\/rt><\/ruby>ち<ruby>葉<rt>ば<\/rt><\/ruby>などを<ruby>集<rt>あつ<\/rt><\/ruby>める<ruby>道具<rt>どうぐ<\/rt><\/ruby>で、<ruby>幸<rt>しあわ<\/rt><\/ruby>せやお<ruby>金<rt>かね<\/rt><\/ruby>を「かき<ruby>込<rt>こ<\/rt><\/ruby>む」<b><ruby>縁起物<rt>えんぎもの<\/rt><\/ruby><\/b>として<ruby>人気<rt>にんき<\/rt><\/ruby>があります。", "sh": "<ruby>熊手<rt>くまで<\/rt><\/ruby>はもともと<ruby>落<rt>お<\/rt><\/ruby>ち<ruby>葉<rt>ば<\/rt><\/ruby>などを<ruby>集<rt>あつ<\/rt><\/ruby>める<ruby>道具<rt>どうぐ<\/rt><\/ruby>で、<ruby>幸<rt>しあわ<\/rt><\/ruby>せやお<ruby>金<rt>かね<\/rt><\/ruby>を「かき<ruby>込<rt>こ<\/rt><\/ruby>む」<b><ruby>縁起物<rt>えんぎもの<\/rt><\/ruby><\/b>として<ruby>人気<rt>にんき<\/rt><\/ruby>があります。", "ek": "구마데는 원래 낙엽 등을 모으는 도구로, 행복이나 돈을 '긁어모은다'는 행운의 물건으로 인기가 있습니다.", "sa": "/ja/2026-11-17/audio/s4.mp3", "au": "/ja/2026-11-17/audio/w8.mp3", "alts": ["신사", "모이다", "~마다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "값, 가격", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "値段", "m": "값, 가격", "r": "ねだん", "cz": "<ruby>熊手<rt>くまで<\/rt><\/ruby>を<ruby>買<rt>か<\/rt><\/ruby>うなら、まず<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>に<span class=\"dr-blank\"><\/span>を<ruby>聞<rt>き<\/rt><\/ruby>いて、<ruby>少<rt>すこ<\/rt><\/ruby>し<ruby>安<rt>やす<\/rt><\/ruby>くしてもらうのが<ruby>昔<rt>むかし<\/rt><\/ruby>からの<ruby>買<rt>か<\/rt><\/ruby>い<ruby>方<rt>かた<\/rt><\/ruby>です。", "ca": "値段", "ex": "<ruby>熊手<rt>くまで<\/rt><\/ruby>を<ruby>買<rt>か<\/rt><\/ruby>うなら、まず<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>に<b><ruby>値段<rt>ねだん<\/rt><\/ruby><\/b>を<ruby>聞<rt>き<\/rt><\/ruby>いて、<ruby>少<rt>すこ<\/rt><\/ruby>し<ruby>安<rt>やす<\/rt><\/ruby>くしてもらうのが<ruby>昔<rt>むかし<\/rt><\/ruby>からの<ruby>買<rt>か<\/rt><\/ruby>い<ruby>方<rt>かた<\/rt><\/ruby>です。", "sh": "<ruby>熊手<rt>くまで<\/rt><\/ruby>を<ruby>買<rt>か<\/rt><\/ruby>うなら、まず<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>に<b><ruby>値段<rt>ねだん<\/rt><\/ruby><\/b>を<ruby>聞<rt>き<\/rt><\/ruby>いて、<ruby>少<rt>すこ<\/rt><\/ruby>し<ruby>安<rt>やす<\/rt><\/ruby>くしてもらうのが<ruby>昔<rt>むかし<\/rt><\/ruby>からの<ruby>買<rt>か<\/rt><\/ruby>い<ruby>方<rt>かた<\/rt><\/ruby>です。", "ek": "구마데를 살 거라면 먼저 가게 사람에게 값을 물어보고 조금 깎아 받는 것이 예부터 내려온 사는 방법입니다.", "sa": "/ja/2026-11-17/audio/s5.mp3", "au": "/ja/2026-11-17/audio/w9.mp3", "alts": ["신사", "모이다", "~마다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "사는 법", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "買い方", "m": "사는 법", "r": "かいかた", "cz": "<ruby>熊手<rt>くまで<\/rt><\/ruby>を<ruby>買<rt>か<\/rt><\/ruby>うなら、まず<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>に<ruby>値段<rt>ねだん<\/rt><\/ruby>を<ruby>聞<rt>き<\/rt><\/ruby>いて、<ruby>少<rt>すこ<\/rt><\/ruby>し<ruby>安<rt>やす<\/rt><\/ruby>くしてもらうのが<ruby>昔<rt>むかし<\/rt><\/ruby>からの<span class=\"dr-blank\"><\/span>です。", "ca": "買い方", "ex": "<ruby>熊手<rt>くまで<\/rt><\/ruby>を<ruby>買<rt>か<\/rt><\/ruby>うなら、まず<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>に<ruby>値段<rt>ねだん<\/rt><\/ruby>を<ruby>聞<rt>き<\/rt><\/ruby>いて、<ruby>少<rt>すこ<\/rt><\/ruby>し<ruby>安<rt>やす<\/rt><\/ruby>くしてもらうのが<ruby>昔<rt>むかし<\/rt><\/ruby>からの<b><ruby>買<rt>か<\/rt><\/ruby>い<ruby>方<rt>かた<\/rt><\/ruby><\/b>です。", "sh": "<ruby>熊手<rt>くまで<\/rt><\/ruby>を<ruby>買<rt>か<\/rt><\/ruby>うなら、まず<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>に<ruby>値段<rt>ねだん<\/rt><\/ruby>を<ruby>聞<rt>き<\/rt><\/ruby>いて、<ruby>少<rt>すこ<\/rt><\/ruby>し<ruby>安<rt>やす<\/rt><\/ruby>くしてもらうのが<ruby>昔<rt>むかし<\/rt><\/ruby>からの<b><ruby>買<rt>か<\/rt><\/ruby>い<ruby>方<rt>かた<\/rt><\/ruby><\/b>です。", "ek": "구마데를 살 거라면 먼저 가게 사람에게 값을 물어보고 조금 깎아 받는 것이 예부터 내려온 사는 방법입니다.", "sa": "/ja/2026-11-17/audio/s5.mp3", "au": "/ja/2026-11-17/audio/w10.mp3", "alts": ["신사", "모이다", "~마다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "값, 가격", "정해지다", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "決まる", "m": "정해지다", "r": "きまる", "cz": "<ruby>値段<rt>ねだん<\/rt><\/ruby>が<span class=\"dr-blank\"><\/span>と、<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>と<ruby>客<rt>きゃく<\/rt><\/ruby>が<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>手<rt>て<\/rt><\/ruby>を<ruby>打<rt>う<\/rt><\/ruby>つ「<ruby>手締<rt>てじ<\/rt><\/ruby>め」が<ruby>行<rt>おこな<\/rt><\/ruby>われます。", "ca": "決まる", "ex": "<ruby>値段<rt>ねだん<\/rt><\/ruby>が<b><ruby>決<rt>き<\/rt><\/ruby>まる<\/b>と、<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>と<ruby>客<rt>きゃく<\/rt><\/ruby>が<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>手<rt>て<\/rt><\/ruby>を<ruby>打<rt>う<\/rt><\/ruby>つ「<ruby>手締<rt>てじ<\/rt><\/ruby>め」が<ruby>行<rt>おこな<\/rt><\/ruby>われます。", "sh": "<ruby>値段<rt>ねだん<\/rt><\/ruby>が<b><ruby>決<rt>き<\/rt><\/ruby>まる<\/b>と、<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>と<ruby>客<rt>きゃく<\/rt><\/ruby>が<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>手<rt>て<\/rt><\/ruby>を<ruby>打<rt>う<\/rt><\/ruby>つ「<ruby>手締<rt>てじ<\/rt><\/ruby>め」が<ruby>行<rt>おこな<\/rt><\/ruby>われます。", "ek": "값이 정해지면 가게 사람과 손님이 함께 손뼉을 치는 '데지메'가 행해집니다.", "sa": "/ja/2026-11-17/audio/s6.mp3", "au": "/ja/2026-11-17/audio/w11.mp3", "alts": ["신사", "모이다", "~마다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "값, 가격", "사는 법", "데지메(손뼉을 맞춰 치는 의식)"]}, {"w": "手締め", "m": "데지메(손뼉을 맞춰 치는 의식)", "r": "てじめ", "cz": "<ruby>値段<rt>ねだん<\/rt><\/ruby>が<ruby>決<rt>き<\/rt><\/ruby>まると、<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>と<ruby>客<rt>きゃく<\/rt><\/ruby>が<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>手<rt>て<\/rt><\/ruby>を<ruby>打<rt>う<\/rt><\/ruby>つ「<span class=\"dr-blank\"><\/span>」が<ruby>行<rt>おこな<\/rt><\/ruby>われます。", "ca": "手締め", "ex": "<ruby>値段<rt>ねだん<\/rt><\/ruby>が<ruby>決<rt>き<\/rt><\/ruby>まると、<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>と<ruby>客<rt>きゃく<\/rt><\/ruby>が<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>手<rt>て<\/rt><\/ruby>を<ruby>打<rt>う<\/rt><\/ruby>つ「<b><ruby>手締<rt>てじ<\/rt><\/ruby>め<\/b>」が<ruby>行<rt>おこな<\/rt><\/ruby>われます。", "sh": "<ruby>値段<rt>ねだん<\/rt><\/ruby>が<ruby>決<rt>き<\/rt><\/ruby>まると、<ruby>店<rt>みせ<\/rt><\/ruby>の<ruby>人<rt>ひと<\/rt><\/ruby>と<ruby>客<rt>きゃく<\/rt><\/ruby>が<ruby>一緒<rt>いっしょ<\/rt><\/ruby>に<ruby>手<rt>て<\/rt><\/ruby>を<ruby>打<rt>う<\/rt><\/ruby>つ「<b><ruby>手締<rt>てじ<\/rt><\/ruby>め<\/b>」が<ruby>行<rt>おこな<\/rt><\/ruby>われます。", "ek": "값이 정해지면 가게 사람과 손님이 함께 손뼉을 치는 '데지메'가 행해집니다.", "sa": "/ja/2026-11-17/audio/s6.mp3", "au": "/ja/2026-11-17/audio/w12.mp3", "alts": ["신사", "모이다", "~마다", "~에 따라", "노점", "구마데(복을 비는 갈퀴 장식)", "도구", "길상물, 행운의 물건", "값, 가격", "사는 법", "정해지다"]}]</script>
 <script id="auth-js" src="/assets/auth.js?v=2" defer></script>
-<script id="drill-js" data-v="17" src="/assets/drill.js?v=17" defer></script>
+<script id="drill-js" data-v="18" src="/assets/drill.js?v=18" defer></script>
 <script id="vote-js">
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
@@ -1282,55 +1300,6 @@
   }
 })();
 </script>
-<script id="gnb-js">(function(){
-  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
-  if(!chip||!sheet||!scrim)return;
-  var root=document.documentElement;
-  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
-  var tm=null,tprev=null;
-  function tint(on){
-    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
-      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
-      tm.setAttribute('content','#9fa3a9');}
-    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
-  }
-  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
-  function key(e){
-    if(e.key==='Escape'){e.preventDefault();close();return;}
-    if(e.key!=='Tab')return;
-    var f=items();if(!f.length)return;
-    var a=f[0],z=f[f.length-1];
-    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
-    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
-    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
-    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
-  }
-  function open(){
-    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
-    tint(true);sheet.focus();
-    document.addEventListener('keydown',key);
-    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
-  }
-  function close(){
-    if(sheet.hidden)return;
-    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
-    document.removeEventListener('keydown',key);chip.focus();
-  }
-  chip.addEventListener('click',function(){sheet.hidden?open():close();});
-  scrim.addEventListener('click',close);
-  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
-  if(!window.fetch)return;
-  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
-    if(!d||!d.langs)return;
-    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
-    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
-      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
-    var rv=document.getElementById('gnb-review');
-    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
-      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
-        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
-  }).catch(function(){});
-})();</script>
 <script id="fb-js">
 (function () {
   function device() {
@@ -1394,5 +1363,71 @@
   document.addEventListener('visibilitychange', tick);
 })();
 </script>
+<script id="gnb-js">(function(){
+  var me=document.getElementById('gnb-me');
+  if(me){try{
+    var on=localStorage.getItem('dkh-auth')!==null,info=JSON.parse(localStorage.getItem('dkh-me')||'null')||{};
+    if(on){
+      var nick=String(info.n||''),days=(JSON.parse(localStorage.getItem('drill:v1')||'null')||{}).days||[],set={},n=0,d=new Date();
+      days.forEach(function(x){set[x]=1;});
+      function k(t){return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);}
+      if(!set[k(d)])d.setDate(d.getDate()-1);
+      while(set[k(d)]){n++;d.setDate(d.getDate()-1);}
+      me.href='/me/';me.classList.add('in');me.setAttribute('aria-label','마이페이지'+(n?', 연속 '+n+'일':''));
+      me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
+      me.querySelector('.gm-t').textContent='마이페이지';
+      var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
+      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }
+  }catch(e){}}
+  var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
+  if(!chip||!sheet||!scrim)return;
+  var root=document.documentElement;
+  // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
+  var tm=null,tprev=null;
+  function tint(on){
+    if(on){tm=document.querySelector('meta[name="theme-color"]');tprev=tm?tm.getAttribute('content'):null;
+      if(!tm){tm=document.createElement('meta');tm.name='theme-color';document.head.appendChild(tm);}
+      tm.setAttribute('content','#9fa3a9');}
+    else if(tm){if(tprev===null)tm.remove();else tm.setAttribute('content',tprev);tm=null;}
+  }
+  function items(){return [].filter.call(sheet.querySelectorAll('a[href]'),function(a){return !a.hidden;});}
+  function key(e){
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key!=='Tab')return;
+    var f=items();if(!f.length)return;
+    var a=f[0],z=f[f.length-1];
+    if(document.activeElement===sheet){e.preventDefault();(e.shiftKey?z:a).focus();}
+    else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
+    else if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();}
+  }
+  function open(){
+    sheet.hidden=false;scrim.hidden=false;chip.setAttribute('aria-expanded','true');root.classList.add('gnb-lock');
+    tint(true);sheet.focus();
+    document.addEventListener('keydown',key);
+    try{if(typeof gtag==='function')gtag('event','gnb_sheet_open',{lang:location.pathname.split('/')[1]||''});}catch(e){}
+  }
+  function close(){
+    if(sheet.hidden)return;
+    sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);
+    document.removeEventListener('keydown',key);chip.focus();
+  }
+  chip.addEventListener('click',function(){sheet.hidden?open():close();});
+  scrim.addEventListener('click',close);
+  addEventListener('pageshow',function(){if(!sheet.hidden){sheet.hidden=true;scrim.hidden=true;chip.setAttribute('aria-expanded','false');root.classList.remove('gnb-lock');tint(false);}});
+  if(!window.fetch)return;
+  fetch('/latest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.langs)return;
+    [].forEach.call(document.querySelectorAll('[data-today]'),function(a){var x=d.langs[a.getAttribute('data-today')];if(x&&x.latest)a.href='/'+a.getAttribute('data-today')+'/'+x.latest+'/';});
+    [].forEach.call(sheet.querySelectorAll('[data-ds]'),function(s){var x=d.langs[s.getAttribute('data-ds')];
+      if(x&&x.topic)s.textContent=s.getAttribute('data-level')+', 오늘은 '+String(x.topic).replace(/\{([^{}|]+)\|[^{}|]+\}/g,'$1');});
+    var rv=document.getElementById('gnb-review');
+    if(rv){var x=d.langs[rv.getAttribute('data-lang')];
+      if(x&&x.review&&x.review.day){rv.href='/'+rv.getAttribute('data-lang')+'/review/'+x.review.day+'/';
+        document.getElementById('gnb-review-ds').textContent=x.review.desc||'';rv.hidden=false;}}
+  }).catch(function(){});
+})();</script>
 </body>
 </html>
