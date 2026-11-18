@@ -1,0 +1,154 @@
+{
+  "date": "2026-11-19",
+  "category": "culture",
+  "topic": "소름",
+  "title_ko": "추울 때 돋는 소름의 비밀",
+  "headline": "Why We Get Goosebumps",
+  "summary_ko": "춥거나 감동받을 때 팔에 돋는 소름의 원리를 다룬 B1~B2 영어 지문이에요. 털마다 붙은 작은 근육이 신경 신호를 받아 오그라들면서 털을 세우는 것이 소름이에요.",
+  "chips": ["6문장", "B1 위주", "B2 2문장", "약 3분"],
+  "fit": "explain",
+  "grammar": {"b": ["b-used-to"], "a": ["a-superlative"]},
+  "keywords": ["소름", "털", "포유류 조상", "진화의 흔적"],
+  "sentences": [
+    {
+      "en": "When you feel cold or hear a moving piece of music, tiny **bumps** often appear on your arms, and the small hairs there **stand up**.",
+      "b2": false,
+      "chunks": [
+        ["When you feel cold", "추위를 느끼거나"],
+        ["or hear a moving piece of music,", "감동적인 음악을 들을 때"],
+        ["tiny **bumps** often appear", "작은 돌기들이 자주 생긴다"],
+        ["on your arms,", "팔에"],
+        ["and the small hairs there", "그리고 거기 난 가는 털들이"],
+        ["**stand up**.", "곤두선다"]
+      ]
+    },
+    {
+      "en": "This happens because each hair has its own tiny **muscle**, and when a **nerve** sends a signal, the muscle **tightens** and pulls the hair upright.",
+      "b2": false,
+      "chunks": [
+        ["This happens because", "이런 일이 생기는 까닭은"],
+        ["each hair has its own tiny **muscle**,", "털마다 저마다의 작은 근육이 있기 때문이다"],
+        ["and when a **nerve** sends a signal,", "그리고 신경이 신호를 보내면"],
+        ["the muscle **tightens**", "그 근육이 오그라들어"],
+        ["and pulls the hair upright.", "털을 똑바로 당겨 세운다"]
+      ]
+    },
+    {
+      "en": "Animals with thick **fur** still use this trick, because raised fur **traps** a warm layer of air and makes them look bigger to enemies.",
+      "b2": false,
+      "chunks": [
+        ["Animals with thick **fur**", "두꺼운 털을 가진 동물들은"],
+        ["still use this trick,", "지금도 이 방법을 쓴다"],
+        ["because raised fur **traps**", "세운 털이 가둬 두기 때문이다"],
+        ["a warm layer of air", "따뜻한 공기층을"],
+        ["and makes them look bigger", "그리고 그들을 더 커 보이게 한다"],
+        ["to enemies.", "적에게"]
+      ]
+    },
+    {
+      "en": "Scientists believe the reaction goes back to the earliest mammals, and our hairier **ancestors** used to rely on it, but for us today it is mostly a **leftover**.",
+      "b2": true,
+      "chunks": [
+        ["Scientists believe", "과학자들은 생각한다"],
+        ["the reaction goes back", "이 반응이 거슬러 올라간다고"],
+        ["to the earliest mammals,", "가장 이른 포유류까지"],
+        ["and our hairier **ancestors**", "그리고 털이 더 많던 우리 조상들은"],
+        ["used to rely on it,", "예전에는 그것에 의지했다"],
+        ["but for us today", "하지만 오늘날 우리에게"],
+        ["it is mostly a **leftover**.", "그것은 대부분 남은 흔적이다"]
+      ]
+    },
+    {
+      "en": "Strong feelings such as fear, pride, or **excitement** can also cause goosebumps, because they **activate** the same part of the nervous system.",
+      "b2": false,
+      "chunks": [
+        ["Strong feelings", "강한 감정들도"],
+        ["such as fear, pride, or **excitement**", "두려움, 자부심, 흥분 같은"],
+        ["can also cause goosebumps,", "소름을 일으킬 수 있다"],
+        ["because they **activate**", "그 감정들이 작동시키기 때문이다"],
+        ["the same part of the nervous system.", "신경계의 같은 부분을"]
+      ]
+    },
+    {
+      "en": "In a 2020 study with mice, researchers found that these nerves also connect to hair **stem cells**, which may help animals grow more fur when it gets cold.",
+      "b2": true,
+      "chunks": [
+        ["In a 2020 study with mice,", "생쥐를 대상으로 한 2020년 연구에서"],
+        ["researchers found", "연구진은 알아냈다"],
+        ["that these nerves also connect", "이 신경들이 연결되어 있기도 하다는 것을"],
+        ["to hair **stem cells**,", "털의 줄기세포에"],
+        ["which may help animals grow more fur", "그리고 그것이 동물이 털을 더 기르도록 도울 수 있다"],
+        ["when it gets cold.", "날이 추워질 때"]
+      ]
+    }
+  ],
+  "words": [
+    ["bumps", "돌기들, 혹들 (복수형)"],
+    ["stand up", "곤두서다, 서다"],
+    ["muscle", "근육"],
+    ["nerve", "신경"],
+    ["tightens", "오그라들다, 조여지다 (3인칭 단수)"],
+    ["fur", "털, 모피"],
+    ["traps", "가두다 (3인칭 단수)"],
+    ["ancestors", "조상들 (복수형)"],
+    ["leftover", "남은 것, 흔적"],
+    ["excitement", "흥분, 설렘"],
+    ["activate", "작동시키다, 활성화하다"],
+    ["stem cells", "줄기세포"]
+  ],
+  "points": [
+    {
+      "title": "used to + 동사원형: 예전에는 ~했다(지금은 아니다)",
+      "body": "`our hairier ancestors used to rely on it`은 털이 많던 조상들이 예전에는 그 반응에 의지했다는 뜻이에요. `used to`는 과거에 되풀이되던 일이나 상태를 말하면서 지금은 그렇지 않다는 느낌을 줘요. 바로 뒤의 `but for us today`가 그 대비를 분명히 해 줍니다."
+    },
+    {
+      "title": "make + 목적어 + 동사원형: ~을 …하게 만들다",
+      "body": "`makes them look bigger`에서 `look` 앞에 to가 없어요. make가 '시키다, 만들다'의 뜻일 때는 목적어 뒤에 동사원형을 씁니다. 그래서 '그들이 더 커 보이게 한다'로 읽어요."
+    }
+  ],
+  "answers": [
+    "추위를 느끼거나 감동적인 음악을 들을 때 팔에 작은 돌기들이 자주 돋고, 거기 난 가는 털들이 곤두선다.",
+    "이런 일이 생기는 까닭은 털마다 저마다 작은 근육이 붙어 있어서, 신경이 신호를 보내면 그 근육이 오그라들며 털을 똑바로 당겨 세우기 때문이다.",
+    "두꺼운 털을 가진 동물들은 지금도 이 방법을 쓰는데, 세운 털이 따뜻한 공기층을 가둬 두고 적에게 몸을 더 커 보이게 하기 때문이다.",
+    "과학자들은 이 반응이 가장 이른 포유류까지 거슬러 올라간다고 보며, 털이 더 많던 우리 조상들은 예전에 이 반응에 의지했지만 오늘날 우리에게는 대부분 남은 흔적일 뿐이다.",
+    "두려움, 자부심, 흥분 같은 강한 감정도 소름을 일으킬 수 있는데, 그 감정들이 신경계의 같은 부분을 작동시키기 때문이다.",
+    "생쥐를 대상으로 한 2020년 연구에서 연구진은 이 신경들이 털의 줄기세포와도 연결되어 있다는 것을 알아냈고, 이는 날이 추워질 때 동물이 털을 더 기르도록 도울 수 있다."
+  ],
+  "advanced": [
+    {"word": "contract", "meaning": "수축하다", "confuse": "contact(접촉하다)와 혼동 주의", "example": "When a nerve sends a signal, the tiny muscle **contracts** and lifts the hair.", "example_ko": "신경이 신호를 보내면 작은 근육이 수축해 털을 들어 올립니다."},
+    {"word": "insulate", "meaning": "단열하다, 보온하다", "confuse": "isolate(고립시키다)와 혼동 주의", "example": "Raised fur **insulates** the animal by trapping warm air.", "example_ko": "세운 털은 따뜻한 공기를 가둬 동물의 체온을 지켜 줍니다."},
+    {"word": "vestigial", "meaning": "흔적만 남은, 퇴화한", "confuse": null, "example": "For humans, goosebumps are a **vestigial** reaction from our ancestors.", "example_ko": "사람에게 소름은 조상에게서 내려온 흔적 같은 반응입니다."},
+    {"word": "trigger", "meaning": "유발하다, 일으키다", "confuse": null, "example": "A moving song can **trigger** goosebumps just like the cold can.", "example_ko": "감동적인 노래도 추위처럼 소름을 일으킬 수 있습니다."},
+    {"word": "intimidate", "meaning": "겁주다, 위협하다", "confuse": null, "example": "Furry animals raise their fur to **intimidate** their enemies.", "example_ko": "털이 많은 동물은 적에게 겁을 주려고 털을 세웁니다."},
+    {"word": "inherit", "meaning": "물려받다", "confuse": "inhibit(억제하다)와 혼동 주의", "example": "Humans **inherited** this reaction from the earliest mammals.", "example_ko": "사람은 가장 이른 포유류에게서 이 반응을 물려받았습니다."},
+    {"word": "regenerate", "meaning": "재생하다, 다시 자라다", "confuse": null, "example": "The nerves may help hair stem cells **regenerate** fur in cold weather.", "example_ko": "그 신경들은 추운 날씨에 털의 줄기세포가 털을 다시 기르도록 도울 수 있습니다."}
+  ],
+  "source": {"title": "Why do we get goosebumps? (Live Science, 2022-07-18)", "url": "https://www.livescience.com/32349-what-causes-goose-bumps.html"},
+  "photo_scene": "Extreme close-up of a person's bare forearm covered in tiny goosebumps with fine hairs standing up, soft cool morning light from a window, shallow depth of field.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {"en": "When you feel cold, tiny **bumps** appear on your arms, and the hairs **stand up**.",
+         "chunks": [["When you feel cold,", "추위를 느끼면"], ["tiny **bumps** appear", "작은 돌기들이 생긴다"], ["on your arms,", "팔에"], ["and the hairs **stand up**.", "그리고 털이 곤두선다"]]},
+        {"en": "Each hair has a small **muscle**, and a **nerve** tells it to move.",
+         "chunks": [["Each hair has a small **muscle**,", "털마다 작은 근육이 있다"], ["and a **nerve** tells it", "그리고 신경이 그것에게 말한다"], ["to move.", "움직이라고"]]},
+        {"en": "Animals with thick **fur** stay warm this way and look bigger to enemies.",
+         "chunks": [["Animals with thick **fur**", "두꺼운 털을 가진 동물들은"], ["stay warm this way", "이렇게 따뜻함을 지키고"], ["and look bigger to enemies.", "적에게 더 커 보인다"]]},
+        {"en": "It is one of the oldest reactions in mammals, and our **ancestors** needed it.",
+         "chunks": [["It is one of the oldest reactions", "그것은 가장 오래된 반응 중 하나다"], ["in mammals,", "포유류에서"], ["and our **ancestors** needed it.", "그리고 우리 조상들은 그것이 필요했다"]]},
+        {"en": "Fear and **excitement** can also give you goosebumps.",
+         "chunks": [["Fear and **excitement**", "두려움과 흥분도"], ["can also give you goosebumps.", "소름이 돋게 할 수 있다"]]},
+        {"en": "In 2020, scientists found that these nerves also help new hair grow in mice.",
+         "chunks": [["In 2020, scientists found", "2020년에 과학자들은 알아냈다"], ["that these nerves also help", "이 신경들이 돕기도 한다는 것을"], ["new hair grow in mice.", "생쥐에게서 새 털이 자라도록"]]}
+      ],
+      "answers": [
+        "추위를 느끼면 팔에 작은 돌기들이 생기고 털이 곤두선다.",
+        "털마다 작은 근육이 있고, 신경이 그 근육에게 움직이라고 알린다.",
+        "두꺼운 털을 가진 동물들은 이렇게 따뜻함을 지키고 적에게 더 커 보인다.",
+        "그것은 포유류에서 가장 오래된 반응 중 하나이고, 우리 조상들에게는 꼭 필요했다.",
+        "두려움과 흥분도 소름이 돋게 할 수 있다.",
+        "2020년에 과학자들은 이 신경들이 생쥐에게서 새 털이 자라는 것도 돕는다는 것을 알아냈다."
+      ]
+    }
+  }
+}
