@@ -34,6 +34,19 @@ class ReleaseTest(unittest.TestCase):
             self.release([sent(1, 5, "catchup en b")], body="catchup en b")
         self.assertIn("e1", str(cm.exception))
 
+    def test_list_without_body_fetches_each_email(self):
+        listed = [{k: v for k, v in sent(1, 2).items() if k != "body"}]
+        calls = []
+
+        def call(m, p, b=None):
+            calls.append((m, p))
+            return {"body": "dup"} if m == "GET" else {}
+
+        with mock.patch.object(send_email, "recent_emails", lambda: iter(listed)), \
+                mock.patch.object(send_email, "call", call), self.assertRaises(SystemExit):
+            send_email.release("d1", "dup", now=NOW)
+        self.assertEqual(calls, [("GET", "/emails/e1")])  # 받아서 비교했고, 발송(PATCH)은 하지 않았다
+
     def test_same_body_older_than_a_day_is_fine(self):
         self.assertEqual(len(self.release([sent(1, 25, "same")], body="same")), 1)
 

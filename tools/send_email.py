@@ -194,7 +194,9 @@ def release(email_id, body, now=None):
             recent.append(e)
     if len(recent) >= DAILY_SEND_LIMIT:
         raise SystemExit(f"24시간 발송 상한({DAILY_SEND_LIMIT}통)에 걸려 보내지 않음: {email_id}. 이상 발송인지 확인하세요.")
-    same = next((e for e in recent if body and e.get("body") == body), None)
+    # 목록 응답에 본문이 빠져 있으면(API 문서에 명시가 없다) 한 통씩 받아 비교한다. 24시간 안 메일은 상한 20통 미만이다.
+    same = next((e for e in recent if body and
+                 (e["body"] if "body" in e else call("GET", f"/emails/{e['id']}").get("body")) == body), None)
     if same:
         raise SystemExit(f"같은 본문을 24시간 안에 이미 보냄({same['id']}). Buttondown 이 중복으로 막으므로 보내지 않음: {email_id}")
     call("PATCH", f"/emails/{email_id}", {"status": "about_to_send"})
