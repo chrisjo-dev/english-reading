@@ -959,7 +959,7 @@ def info_pages():
         f'<section class="card" id="cookies"><h2>{NUM.format(3)}쿠키와 광고</h2><p>Google을 포함한 제3자 광고 업체는 쿠키를 써서, 이 사이트와 다른 사이트를 방문한 기록을 바탕으로 광고를 보여 줄 수 있어요. 자세한 내용은 <a class="ln" href="https://policies.google.com/technologies/partner-sites">Google 파트너 사이트의 데이터 사용 방식</a>에 있어요.</p>'
         '<p>맞춤 광고는 <a class="ln" href="https://adssettings.google.com/">Google 광고 설정</a>에서, 제3자 업체 맞춤 광고 쿠키는 <a class="ln" href="https://www.aboutads.info/choices/">www.aboutads.info</a>에서 끌 수 있어요. Google Analytics 수집은 <a class="ln" href="https://tools.google.com/dlpage/gaoptout">수집 거부 부가 기능</a>으로 막을 수 있어요. 쿠키를 거부해도 읽기에는 문제가 없어요.</p></section>\n'
         f'<section class="card" id="retention"><h2>{NUM.format(4)}보관과 구독 해지</h2><ul class="dots"><li>이메일 주소는 수신거부하거나 삭제를 요청할 때까지 보관하고, 요청을 받으면 지체 없이 지워요.</li>'
-        '<li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>로그인 계정과 단어 기록은 탈퇴할 때까지 보관해요. <a class="ln" href="/me/">마이페이지</a>에서 탈퇴하면 바로 지워져요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li>'
+        '<li>모든 메일 맨 아래 <b>수신거부</b> 링크를 누르면 바로 해지돼요.</li><li>아침 지문 메일은 마이페이지에서 끄면 바로 보내지 않아요. 적은 주소는 탈퇴할 때 계정과 함께 지워지고, 그 전에 지우고 싶으면 아래 메일로 요청해 주세요.</li><li>로그인 계정과 단어 기록은 탈퇴할 때까지 보관해요. <a class="ln" href="/me/">마이페이지</a>에서 탈퇴하면 바로 지워져요.</li><li>내 정보 열람, 정정, 삭제, 처리 정지는 아래 메일로 요청해 주세요.</li>'
         '<li>만 14세 미만은 로그인할 수 없고, 만 14세 미만 아동의 개인정보는 알면서 모으지 않아요.</li><li>내용이 바뀌면 이 페이지에 새 시행일과 함께 알려요.</li></ul></section>\n'
         f'<section class="card" id="ask"><h2>{NUM.format(5)}문의</h2><p>개인정보 문의: {mail} (운영자)</p></section>\n'
     )
