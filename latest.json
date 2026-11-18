@@ -1,6 +1,6 @@
 {
- "date": "2026-11-18",
- "words_total": 801,
+ "date": "2026-11-19",
+ "words_total": 813,
  "langs": {
   "en": {
    "count": 47,
@@ -145,70 +145,70 @@
    }
   },
   "de": {
-   "count": 22,
-   "latest": "2026-11-18",
-   "topic": "도서관 시스템 교체",
+   "count": 23,
+   "latest": "2026-11-19",
+   "topic": "근무 증명서",
    "sentences": [
-    "Die **Stadtbibliothek** Hannover erneuert im November ihr **veraltetes** Computersystem, das sie seit mehr als 25 Jahren für alle Ausleihen nutzt.",
-    "Während der **Umstellung** werden die Daten aller Leserinnen und Leser sowie von mehr als einer Million Medien in das neue System **übertragen**.",
-    "Deshalb können im ganzen November keine Bücher **ausgeliehen** oder **zurückgegeben** werden, und auch neue Ausweise werden nicht ausgestellt.",
-    "Trotz der **Einschränkungen** bleibt die Zentralbibliothek geöffnet, sodass Besucher dort weiterhin Zeitungen lesen, das WLAN nutzen und **drucken** können."
+    "Wenn ein **Arbeitsverhältnis** endet, haben Arbeitnehmer in Deutschland einen gesetzlichen **Anspruch** auf ein schriftliches Arbeitszeugnis von ihrer Firma.",
+    "Ein einfaches **Zeugnis** nennt nur die Art und die **Dauer** der Tätigkeit, also was man gemacht hat und wie lange.",
+    "Auf Wunsch muss die Firma ein qualifiziertes Zeugnis schreiben, das nicht nur die **Leistung**, sondern auch das **Verhalten** beschreibt.",
+    "Der Text muss klar und **verständlich** formuliert sein, damit spätere Arbeitgeber ihn bei einer **Bewerbung** richtig lesen können."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 4분"
    ],
-   "answer": "하노버 시립 도서관은 25년 넘게 모든 대출에 써 온 낡은 컴퓨터 시스템을 11월에 새로 바꿉니다.",
+   "answer": "독일에서는 고용 관계가 끝나면 근로자가 회사로부터 서면 근무 증명서를 받을 법적 권리가 있습니다.",
    "words": [
     [
-     "Stadtbibliothek",
-     "시립 도서관 (여성 die, 복수 Stadtbibliotheken)"
+     "Arbeitsverhältnis",
+     "고용 관계 (중성 das, 복수 Arbeitsverhältnisse)"
     ],
     [
-     "veraltet",
-     "낡은, 구식의"
+     "Anspruch",
+     "권리, 청구권 (남성 der, 복수 Ansprüche)"
     ],
     [
-     "Umstellung",
-     "전환, 교체 (여성 die)"
+     "Zeugnis",
+     "증명서 (중성 das, 복수 Zeugnisse)"
     ],
     [
-     "übertragen",
-     "옮기다, 이전하다"
+     "Dauer",
+     "기간 (여성 die)"
     ],
     [
-     "ausleihen",
-     "빌리다, 대출하다"
+     "Leistung",
+     "성과, 실적 (여성 die, 복수 Leistungen)"
     ],
     [
-     "zurückgeben",
-     "돌려주다, 반납하다"
+     "Verhalten",
+     "태도, 행동 (중성 das)"
     ],
     [
-     "Einschränkung",
-     "제한 (여성 die, 복수 Einschränkungen)"
+     "verständlich",
+     "이해하기 쉬운"
     ],
     [
-     "drucken",
-     "인쇄하다"
+     "Bewerbung",
+     "지원, 응모 (여성 die, 복수 Bewerbungen)"
     ],
     [
-     "Rückgabefrist",
-     "반납 기한 (여성 die, 복수 Rückgabefristen)"
+     "Formulierung",
+     "표현, 문구 (여성 die, 복수 Formulierungen)"
     ],
     [
-     "verlängern",
-     "연장하다"
+     "heimlich",
+     "몰래, 은밀히"
     ],
     [
-     "Online-Katalog",
-     "온라인 목록 (남성 der, 복수 Online-Kataloge)"
+     "Zustimmung",
+     "동의 (여성 die)"
     ],
     [
-     "langfristig",
-     "장기적으로"
+     "elektronisch",
+     "전자적으로"
     ]
    ],
    "review": {
@@ -219,6 +219,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-19",
+   "topic": "근무 증명서"
+  },
   {
    "lang": "en",
    "day": "2026-11-18",
@@ -318,11 +323,6 @@
    "lang": "ja",
    "day": "2026-11-12",
    "topic": "유급휴가"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-12",
-   "topic": "교육 휴가"
   }
  ]
 }
