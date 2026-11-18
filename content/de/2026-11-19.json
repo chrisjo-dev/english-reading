@@ -1,0 +1,420 @@
+{
+  "date": "2026-11-19",
+  "category": "society",
+  "topic": "근무 증명서",
+  "title_ko": "퇴사할 때 받는 독일의 근무 증명서",
+  "headline": "Ein Zeugnis zum Abschied",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "explain",
+  "grammar": {
+    "b": [
+      "b-damit",
+      "b-nicht-nur"
+    ],
+    "a": [
+      "a-wenn"
+    ]
+  },
+  "keywords": [
+    "근무 증명서",
+    "퇴사",
+    "인사 평가",
+    "제도 설명"
+  ],
+  "summary_ko": "독일에서 회사를 떠날 때 받는 근무 증명서 제도를 다룬 B1~B2 독일어 지문이에요. 근로자가 원하면 성과와 태도까지 적은 증명서를 받을 수 있고, 몰래 불리한 뜻을 담은 문구는 법으로 금지되어 있어요.",
+  "photo_scene": "Close-up in soft afternoon window light of two hands passing a plain white sheet of paper in a cardboard folder across a wooden office desk, a pen and a potted plant softly blurred behind.",
+  "sentences": [
+    {
+      "en": "Wenn ein **Arbeitsverhältnis** endet, haben Arbeitnehmer in Deutschland einen gesetzlichen **Anspruch** auf ein schriftliches Arbeitszeugnis von ihrer Firma.",
+      "b2": false,
+      "chunks": [
+        [
+          "Wenn ein **Arbeitsverhältnis** endet,",
+          "고용 관계가 끝나면"
+        ],
+        [
+          "haben Arbeitnehmer in Deutschland",
+          "독일의 근로자들은 가집니다"
+        ],
+        [
+          "einen gesetzlichen **Anspruch**",
+          "법적인 권리를"
+        ],
+        [
+          "auf ein schriftliches Arbeitszeugnis",
+          "서면 근무 증명서에 대한"
+        ],
+        [
+          "von ihrer Firma.",
+          "자기 회사로부터"
+        ]
+      ]
+    },
+    {
+      "en": "Ein einfaches **Zeugnis** nennt nur die Art und die **Dauer** der Tätigkeit, also was man gemacht hat und wie lange.",
+      "b2": false,
+      "chunks": [
+        [
+          "Ein einfaches **Zeugnis**",
+          "단순 증명서는"
+        ],
+        [
+          "nennt nur",
+          "적을 뿐입니다"
+        ],
+        [
+          "die Art und die **Dauer** der Tätigkeit,",
+          "업무의 종류와 기간만"
+        ],
+        [
+          "also was man gemacht hat",
+          "즉 무슨 일을 했는지"
+        ],
+        [
+          "und wie lange.",
+          "그리고 얼마나 오래"
+        ]
+      ]
+    },
+    {
+      "en": "Auf Wunsch muss die Firma ein qualifiziertes Zeugnis schreiben, das nicht nur die **Leistung**, sondern auch das **Verhalten** beschreibt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Auf Wunsch",
+          "원하면"
+        ],
+        [
+          "muss die Firma",
+          "회사는 해야 합니다"
+        ],
+        [
+          "ein qualifiziertes Zeugnis schreiben,",
+          "평가가 담긴 증명서를 써야"
+        ],
+        [
+          "das nicht nur die **Leistung**,",
+          "그 증명서는 성과뿐 아니라"
+        ],
+        [
+          "sondern auch das **Verhalten** beschreibt.",
+          "태도도 기술합니다"
+        ]
+      ]
+    },
+    {
+      "en": "Der Text muss klar und **verständlich** formuliert sein, damit spätere Arbeitgeber ihn bei einer **Bewerbung** richtig lesen können.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der Text muss",
+          "그 글은 해야 합니다"
+        ],
+        [
+          "klar und **verständlich** formuliert sein,",
+          "분명하고 이해하기 쉽게 쓰여야"
+        ],
+        [
+          "damit spätere Arbeitgeber ihn",
+          "나중의 고용주들이 그것을"
+        ],
+        [
+          "bei einer **Bewerbung**",
+          "지원할 때"
+        ],
+        [
+          "richtig lesen können.",
+          "제대로 읽을 수 있도록"
+        ]
+      ]
+    },
+    {
+      "en": "Geheime **Formulierungen**, die dem nächsten Arbeitgeber **heimlich** etwas Negatives über den Mitarbeiter mitteilen, dürfen nicht verwendet werden.",
+      "b2": true,
+      "chunks": [
+        [
+          "Geheime **Formulierungen**,",
+          "비밀 문구들은"
+        ],
+        [
+          "die dem nächsten Arbeitgeber",
+          "다음 고용주에게"
+        ],
+        [
+          "**heimlich** etwas Negatives",
+          "몰래 무언가 부정적인 것을"
+        ],
+        [
+          "über den Mitarbeiter mitteilen,",
+          "그 직원에 대해 알리는"
+        ],
+        [
+          "dürfen nicht verwendet werden.",
+          "사용되어서는 안 됩니다"
+        ]
+      ]
+    },
+    {
+      "en": "Mit **Zustimmung** des Mitarbeiters darf die Firma das Zeugnis auch **elektronisch** schicken, statt es auf Papier auszudrucken.",
+      "b2": false,
+      "chunks": [
+        [
+          "Mit **Zustimmung** des Mitarbeiters",
+          "직원의 동의가 있으면"
+        ],
+        [
+          "darf die Firma",
+          "회사는 해도 됩니다"
+        ],
+        [
+          "das Zeugnis auch **elektronisch** schicken,",
+          "증명서를 전자 방식으로도 보내도"
+        ],
+        [
+          "statt es auf Papier auszudrucken.",
+          "그것을 종이에 출력하는 대신"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Arbeitsverhältnis",
+      "고용 관계 (중성 das, 복수 Arbeitsverhältnisse)"
+    ],
+    [
+      "Anspruch",
+      "권리, 청구권 (남성 der, 복수 Ansprüche)"
+    ],
+    [
+      "Zeugnis",
+      "증명서 (중성 das, 복수 Zeugnisse)"
+    ],
+    [
+      "Dauer",
+      "기간 (여성 die)"
+    ],
+    [
+      "Leistung",
+      "성과, 실적 (여성 die, 복수 Leistungen)"
+    ],
+    [
+      "Verhalten",
+      "태도, 행동 (중성 das)"
+    ],
+    [
+      "verständlich",
+      "이해하기 쉬운"
+    ],
+    [
+      "Bewerbung",
+      "지원, 응모 (여성 die, 복수 Bewerbungen)"
+    ],
+    [
+      "Formulierung",
+      "표현, 문구 (여성 die, 복수 Formulierungen)"
+    ],
+    [
+      "heimlich",
+      "몰래, 은밀히"
+    ],
+    [
+      "Zustimmung",
+      "동의 (여성 die)"
+    ],
+    [
+      "elektronisch",
+      "전자적으로"
+    ]
+  ],
+  "points": [
+    {
+      "title": "damit — ~하도록 (목적)",
+      "body": "`damit spätere Arbeitgeber ihn bei einer Bewerbung richtig lesen können`은 '나중의 고용주들이 지원 서류에서 그것을 제대로 읽을 수 있도록'이라는 목적을 나타냅니다. `damit`은 부문장을 이끌어서 정동사 `können`이 문장 맨 끝으로 갑니다. 주문장 주어(`der Text`)와 부문장 주어(`spätere Arbeitgeber`)가 달라서 `um ... zu`가 아니라 `damit`을 썼어요."
+    },
+    {
+      "title": "nicht nur ... sondern auch — A뿐 아니라 B도",
+      "body": "`das nicht nur die Leistung, sondern auch das Verhalten beschreibt`에서 `das`는 앞의 `ein qualifiziertes Zeugnis`를 받는 관계대명사(중성 1격)입니다. 관계절이라 동사 `beschreibt`가 끝에 오고, 그 사이에 `nicht nur A, sondern auch B`가 들어가 '성과뿐 아니라 태도도'라는 뜻이 됩니다. `die Leistung`, `das Verhalten`은 모두 4격 목적어예요."
+    }
+  ],
+  "answers": [
+    "독일에서는 고용 관계가 끝나면 근로자가 회사로부터 서면 근무 증명서를 받을 법적 권리가 있습니다.",
+    "단순 증명서에는 업무의 종류와 기간, 즉 무슨 일을 얼마나 오래 했는지만 적힙니다.",
+    "근로자가 원하면 회사는 성과뿐 아니라 태도까지 기술한 평가형 증명서를 써 주어야 합니다.",
+    "나중의 고용주가 지원 서류에서 제대로 읽을 수 있도록, 글은 분명하고 이해하기 쉽게 써야 합니다.",
+    "다음 고용주에게 그 직원에 대해 몰래 부정적인 뜻을 전하는 비밀 문구는 써서는 안 됩니다.",
+    "직원이 동의하면 회사는 증명서를 종이에 출력하는 대신 전자 방식으로 보내도 됩니다."
+  ],
+  "advanced": [
+    {
+      "word": "ausstellen",
+      "meaning": "발급하다",
+      "confuse": "'전시하다'라는 뜻도 있어요. `ein Zeugnis ausstellen`으로 묶어 외우세요.",
+      "example": "Die Firma hat mir das Zeugnis schnell **ausgestellt**.",
+      "example_ko": "회사가 증명서를 빨리 발급해 주었습니다."
+    },
+    {
+      "word": "die Tätigkeit",
+      "meaning": "업무, 활동",
+      "confuse": "`die Arbeit`보다 격식 있는 말로, 서류에 자주 나옵니다.",
+      "example": "Im Zeugnis steht eine kurze Beschreibung meiner **Tätigkeit**.",
+      "example_ko": "증명서에는 제 업무에 대한 짧은 설명이 있습니다."
+    },
+    {
+      "word": "der Arbeitnehmer",
+      "meaning": "근로자",
+      "confuse": "`der Arbeitgeber`(고용주)와 반대말입니다.",
+      "example": "Jeder **Arbeitnehmer** kann ein Zeugnis verlangen.",
+      "example_ko": "모든 근로자는 증명서를 요구할 수 있습니다."
+    },
+    {
+      "word": "verlangen",
+      "meaning": "요구하다",
+      "confuse": "`verlängern`(연장하다)과 철자가 비슷하니 주의하세요.",
+      "example": "Sie hat ein qualifiziertes Zeugnis **verlangt**.",
+      "example_ko": "그녀는 평가가 담긴 증명서를 요구했습니다."
+    },
+    {
+      "word": "die Beurteilung",
+      "meaning": "평가",
+      "confuse": "동사형은 `beurteilen`(평가하다)입니다.",
+      "example": "Die **Beurteilung** war fair und ehrlich.",
+      "example_ko": "그 평가는 공정하고 솔직했습니다."
+    },
+    {
+      "word": "kündigen",
+      "meaning": "해고하다, 그만두다",
+      "confuse": "사람을 해고할 때는 `jemandem kündigen`처럼 3격을 씁니다.",
+      "example": "Er hat nach fünf Jahren **gekündigt**.",
+      "example_ko": "그는 5년 만에 회사를 그만두었습니다."
+    },
+    {
+      "word": "wohlwollend",
+      "meaning": "호의적인",
+      "confuse": null,
+      "example": "Das Zeugnis ist sehr **wohlwollend** formuliert.",
+      "example_ko": "그 증명서는 매우 호의적으로 쓰여 있습니다."
+    }
+  ],
+  "source": {
+    "title": "§ 109 Zeugnis, Gewerbeordnung (gesetze-im-internet.de)",
+    "url": "https://www.gesetze-im-internet.de/gewo/__109.html"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Wenn ein **Arbeitsverhältnis** endet, haben Arbeitnehmer einen **Anspruch** auf ein Zeugnis.",
+          "chunks": [
+            [
+              "Wenn ein **Arbeitsverhältnis** endet,",
+              "고용 관계가 끝나면"
+            ],
+            [
+              "haben Arbeitnehmer",
+              "근로자들은 가집니다"
+            ],
+            [
+              "einen **Anspruch** auf ein Zeugnis.",
+              "증명서를 받을 권리를"
+            ]
+          ]
+        },
+        {
+          "en": "Ein einfaches **Zeugnis** nennt die Arbeit und ihre **Dauer**.",
+          "chunks": [
+            [
+              "Ein einfaches **Zeugnis**",
+              "단순 증명서는"
+            ],
+            [
+              "nennt die Arbeit",
+              "업무를 적습니다"
+            ],
+            [
+              "und ihre **Dauer**.",
+              "그리고 그 기간을"
+            ]
+          ]
+        },
+        {
+          "en": "Man kann auch ein Zeugnis über **Leistung** und **Verhalten** bekommen.",
+          "chunks": [
+            [
+              "Man kann auch",
+              "또한 할 수 있습니다"
+            ],
+            [
+              "ein Zeugnis über **Leistung** und **Verhalten**",
+              "성과와 태도에 대한 증명서를"
+            ],
+            [
+              "bekommen.",
+              "받을 수"
+            ]
+          ]
+        },
+        {
+          "en": "Der Text muss **verständlich** sein, auch für eine spätere **Bewerbung**.",
+          "chunks": [
+            [
+              "Der Text muss",
+              "그 글은 해야 합니다"
+            ],
+            [
+              "**verständlich** sein,",
+              "이해하기 쉬워야"
+            ],
+            [
+              "auch für eine spätere **Bewerbung**.",
+              "나중의 지원을 위해서도"
+            ]
+          ]
+        },
+        {
+          "en": "Geheime **Formulierungen** gegen den Mitarbeiter sind im Zeugnis verboten.",
+          "chunks": [
+            [
+              "Geheime **Formulierungen** gegen den Mitarbeiter",
+              "직원에게 불리한 비밀 문구는"
+            ],
+            [
+              "sind im Zeugnis verboten.",
+              "증명서에서 금지되어 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Mit seiner **Zustimmung** darf die Firma das Zeugnis **elektronisch** schicken.",
+          "chunks": [
+            [
+              "Mit seiner **Zustimmung**",
+              "그의 동의가 있으면"
+            ],
+            [
+              "darf die Firma",
+              "회사는 해도 됩니다"
+            ],
+            [
+              "das Zeugnis **elektronisch** schicken.",
+              "증명서를 전자 방식으로 보내도"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "고용 관계가 끝나면 근로자는 증명서를 받을 권리가 있습니다.",
+        "단순 증명서에는 업무와 그 기간이 적힙니다.",
+        "성과와 태도에 대한 증명서를 받을 수도 있습니다.",
+        "나중에 지원할 때를 위해서도 글은 이해하기 쉬워야 합니다.",
+        "직원에게 불리한 비밀 문구는 증명서에서 금지되어 있습니다.",
+        "직원이 동의하면 회사는 증명서를 전자 방식으로 보내도 됩니다."
+      ]
+    }
+  }
+}
