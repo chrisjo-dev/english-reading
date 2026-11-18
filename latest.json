@@ -1,68 +1,72 @@
 {
  "date": "2026-11-19",
- "words_total": 823,
+ "words_total": 835,
  "langs": {
   "en": {
-   "count": 47,
-   "latest": "2026-11-18",
-   "topic": "수어 전공",
+   "count": 48,
+   "latest": "2026-11-19",
+   "topic": "소름",
    "sentences": [
-    "Ohio State University now offers a **major** in American Sign Language, the first one at any Big Ten university.",
-    "Students taking the new program study more than hand **signs**, because they also learn about Deaf **culture** and the history of deaf communities.",
-    "They explore how the sentence **structure** of sign language **differs** from spoken English, and they **take part in** projects with local schools and organizations.",
-    "Only three students have officially joined the major so far, but around 150 are taking the **minor**, and more are expected to **sign up**."
+    "When you feel cold or hear a moving piece of music, tiny **bumps** often appear on your arms, and the small hairs there **stand up**.",
+    "This happens because each hair has its own tiny **muscle**, and when a **nerve** sends a signal, the muscle **tightens** and pulls the hair upright.",
+    "Animals with thick **fur** still use this trick, because raised fur **traps** a warm layer of air and makes them look bigger to enemies.",
+    "Scientists believe the reaction goes back to the earliest mammals, and our hairier **ancestors** used to rely on it, but for us today it is mostly a **leftover**."
    ],
    "chips": [
     "6문장",
     "B1 위주",
     "B2 2문장",
-    "약 4분"
+    "약 3분"
    ],
-   "answer": "오하이오 주립대는 이제 미국 수어 전공을 개설했는데, 빅 텐 대학 가운데 처음이다.",
+   "answer": "추위를 느끼거나 감동적인 음악을 들을 때 팔에 작은 돌기들이 자주 돋고, 거기 난 가는 털들이 곤두선다.",
    "words": [
     [
-     "major",
-     "전공"
+     "bumps",
+     "돌기들, 혹들 (복수형)"
     ],
     [
-     "signs",
-     "수어 동작, 손짓 (복수형)"
+     "stand up",
+     "곤두서다, 서다"
     ],
     [
-     "culture",
-     "문화"
+     "muscle",
+     "근육"
     ],
     [
-     "structure",
-     "구조"
+     "nerve",
+     "신경"
     ],
     [
-     "differs",
-     "다르다"
+     "tightens",
+     "오그라들다, 조여지다 (3인칭 단수)"
     ],
     [
-     "take part in",
-     "참여하다, 참가하다"
+     "fur",
+     "털, 모피"
     ],
     [
-     "minor",
-     "부전공"
+     "traps",
+     "가두다 (3인칭 단수)"
     ],
     [
-     "sign up",
-     "등록하다, 신청하다"
+     "ancestors",
+     "조상들 (복수형)"
     ],
     [
-     "introductory",
-     "입문의, 기초의"
+     "leftover",
+     "남은 것, 흔적"
     ],
     [
-     "waiting list",
-     "대기자 명단"
+     "excitement",
+     "흥분, 설렘"
     ],
     [
-     "put it",
-     "말하다, 표현하다"
+     "activate",
+     "작동시키다, 활성화하다"
+    ],
+    [
+     "stem cells",
+     "줄기세포"
     ]
    ],
    "review": {
@@ -212,6 +216,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-19",
+   "topic": "소름"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-19",
    "topic": "최저임금"
@@ -310,11 +319,6 @@
    "lang": "de",
    "day": "2026-11-13",
    "topic": "침팬지 울음소리"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-12",
-   "topic": "손가락 주름"
   }
  ]
 }
