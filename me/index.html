@@ -101,7 +101,22 @@
   .rows button { font: inherit; display: block; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 13px 0; font-size: 15px; color: var(--ink); cursor: pointer; }
   .rows button:first-child { border-top: 0; }
   .rows .danger { color: var(--coral); font-weight: 600; }
-  .card .btn { margin-top: 16px; background: var(--blue); }
+  .card .btn { margin-top: 16px; background: var(--blue); width: 100%; border: 0; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
+  .card .btn.line { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; margin-top: 12px; }
+  .optbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .chk em.op { color: var(--sub); }
+  .flabel { display: block; font-size: 13px; font-weight: 700; color: var(--sub); margin-top: 8px; }
+  .field { display: block; box-sizing: border-box; width: 100%; height: 52px; margin-top: 6px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 16px; color: var(--ink); }
+  .field:focus { outline: none; border-color: var(--blue); }
+  .mailrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .mailrow b { display: block; font-size: 15px; }
+  .mailrow span { font-size: 13px; color: var(--sub); overflow-wrap: anywhere; }
+  .tg { flex: none; position: relative; width: 48px; height: 28px; border: 0; border-radius: 999px; background: #d1d6db; cursor: pointer; padding: 0; }
+  .tg::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; transition: left .15s; }
+  .tg[aria-checked="true"] { background: var(--blue); }
+  .tg[aria-checked="true"]::after { left: 23px; }
+  .tg:disabled { opacity: .5; }
+  .pend { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 700; color: #b26a00; background: #fff4e0; padding: 3px 8px; border-radius: 6px; }
   .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
   /* gnb-a */
   .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -212,7 +227,7 @@
 <section class="card" id="loading">기록을 불러오고 있어요.</section>
 <div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1></div>
 <section class="card" id="signedOut" hidden><h1>로그인하면 마이페이지를 볼 수 있어요</h1><p>외운 단어, 복습 날짜, 연속 학습일을 어느 기기에서든 이어서 봐요.</p><a class="btn" href="/join/?next=/me/">로그인하러 가기</a></section>
-<div id="signedIn" hidden><section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section><section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section><section class="card"><div class="stats"><div class="stat"><b id="nWords">0</b><span>외운 단어</span></div><div class="stat"><b id="nDue">0</b><span>오늘 복습</span></div><div class="stat"><b id="nPages">0</b><span>푼 지문</span></div></div><a class="btn" id="dueGo" href="/" hidden></a></section><section class="card rows"><button type="button" id="logout">로그아웃</button><button type="button" class="danger" id="del">탈퇴하고 기록 지우기</button><p class="msg" id="msg" role="status" hidden></p></section></div>
+<div id="signedIn" hidden><section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section><section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section><section class="card"><div class="stats"><div class="stat"><b id="nWords">0</b><span>외운 단어</span></div><div class="stat"><b id="nDue">0</b><span>오늘 복습</span></div><div class="stat"><b id="nPages">0</b><span>푼 지문</span></div></div><a class="btn" id="dueGo" href="/" hidden></a></section><section class="card"><div class="mailrow"><div><b>아침 지문 메일</b><span id="mailAddr">받을 주소가 없어요</span></div><button class="tg" type="button" id="mailTg" role="switch" aria-checked="false" aria-label="아침 지문 메일 받기"></button></div><span class="pend" id="mailPend" hidden>확인 메일을 기다리는 중</span><form id="mailForm" hidden novalidate><input class="field" id="mail" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com"><button class="btn" type="submit">저장</button></form><button class="btn line" type="button" id="mailEdit">주소 바꾸기</button><p class="msg" id="mailMsg" role="status" hidden></p></section><section class="card rows"><button type="button" id="logout">로그아웃</button><button type="button" class="danger" id="del">탈퇴하고 기록 지우기</button><p class="msg" id="msg" role="status" hidden></p></section></div>
 </main>
 <footer class="site-footer"><a href="/about/">소개</a><a href="/privacy/">개인정보처리방침</a><a href="/contact/">연락처</a></footer>
 <script id="gnb-js">(function(){
@@ -282,5 +297,5 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=2" defer></script>
-<script src="/assets/me.js?v=2" defer></script>
+<script src="/assets/me.js?v=3" defer></script>
 </body></html>

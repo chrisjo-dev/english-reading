@@ -945,6 +945,8 @@ def info_pages():
         '<div class="row" id="account"><h3>로그인 (선택)</h3><p>단어 문제 풀기를 쓰려면 카카오나 Google로 로그인해요. 카카오는 <b>회원번호와 닉네임</b>, Google은 <b>계정 식별자, 이메일 주소, 이름</b>(Google이 함께 주는 프로필 사진 주소 포함)을 받아요. '
         '로그인하면 <b>단어 학습 기록</b>(외운 단어, 복습 날짜, 공부한 날)을 계정에 저장해 여러 기기에서 이어 쓰는 데만 써요. 광고나 메일 발송에는 쓰지 않아요.</p>'
         '<span class="who">맡긴 곳: Supabase (로그인과 기록 저장), Cloudflare (카카오 로그인 연결)</span></div>'
+        '<div class="row" id="mail"><h3>아침 지문 메일 (선택)</h3><p>가입할 때나 마이페이지에서 메일 받기를 켜면 <b>이메일 주소</b>와 <b>수신에 동의한 시각</b>을 저장해요. Google 가입자는 로그인한 이메일을, 카카오 가입자는 직접 적은 주소를 써요. '
+        '매일 아침 지문 메일과 주간 복습 메일을 보내는 데만 쓰고, 마이페이지에서 언제든 끄면 보내지 않아요.</p><span class="who">맡긴 곳: Supabase (주소 저장)</span></div>'
         '<div class="row"><h3>방문 통계</h3><p>방문 수, 유입 경로, 페이지 이용 흐름, 버튼 사용(주제 반응, 단어 외우기, 의견 보내기 등)을 익명 통계로 봐요. IP 주소는 익명 처리하고 이름이나 이메일과 연결하지 않아요.</p><span class="who">맡긴 곳: Google Analytics 4, Microsoft Clarity</span></div>'
         '<div class="row"><h3>광고</h3><p>Google AdSense 광고를 보여 줄 수 있어요. 아래 3번을 봐 주세요.</p><span class="who">맡긴 곳: Google AdSense</span></div>'
         '<div class="row"><h3>의견 메일</h3><p>기능 건의나 버그 제보 버튼은 메일 앱을 열어요. 버그 제보에는 누른 페이지 주소, 기기와 브라우저 이름, 화면 크기가 미리 채워지고, 보내기 전에 지울 수 있어요. 받은 메일은 답장과 수정에만 써요.</p></div>'
@@ -1039,7 +1041,7 @@ def rebuild_info_pages():
 
 # 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
 # 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
-ACCOUNT_V = "2"
+ACCOUNT_V = "3"
 ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
   .card h1 { font-size: 22px; margin: 2px 0 16px; }
@@ -1086,7 +1088,22 @@ ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d
   .rows button { font: inherit; display: block; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 13px 0; font-size: 15px; color: var(--ink); cursor: pointer; }
   .rows button:first-child { border-top: 0; }
   .rows .danger { color: var(--coral); font-weight: 600; }
-  .card .btn { margin-top: 16px; background: var(--blue); }
+  .card .btn { margin-top: 16px; background: var(--blue); width: 100%; border: 0; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
+  .card .btn.line { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; margin-top: 12px; }
+  .optbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .chk em.op { color: var(--sub); }
+  .flabel { display: block; font-size: 13px; font-weight: 700; color: var(--sub); margin-top: 8px; }
+  .field { display: block; box-sizing: border-box; width: 100%; height: 52px; margin-top: 6px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 16px; color: var(--ink); }
+  .field:focus { outline: none; border-color: var(--blue); }
+  .mailrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .mailrow b { display: block; font-size: 15px; }
+  .mailrow span { font-size: 13px; color: var(--sub); overflow-wrap: anywhere; }
+  .tg { flex: none; position: relative; width: 48px; height: 28px; border: 0; border-radius: 999px; background: #d1d6db; cursor: pointer; padding: 0; }
+  .tg::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; transition: left .15s; }
+  .tg[aria-checked="true"] { background: var(--blue); }
+  .tg[aria-checked="true"]::after { left: 23px; }
+  .tg:disabled { opacity: .5; }
+  .pend { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 700; color: #b26a00; background: #fff4e0; padding: 3px 8px; border-radius: 6px; }
 """
 ACCOUNT = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -1124,6 +1141,8 @@ def account_pages():
         '<label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label>'
         '<label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요'
         '<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div>'
+        '<div class="optbox"><label class="chk"><input type="checkbox" id="agreeMail"><span><em class="op">선택</em>매일 아침 지문 메일도 받을래요'
+        '<small>Google은 로그인한 이메일로 보내요. 카카오는 다음 화면에서 받을 주소를 적어 주세요. 언제든 끌 수 있어요.</small></span></label></div>'
         f'<button class="kbtn" type="button" id="kakao" disabled>{drill.KAKAO_ICON}카카오로 시작하기</button>'
         f'<button class="gbtn" type="button" id="google" disabled>{drill.GOOGLE_ICON}Google로 시작하기</button>'
         '<p class="msg" id="msg" role="status" hidden></p>'
@@ -1144,10 +1163,27 @@ def account_pages():
         '<section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section>'
         '<section class="card"><div class="stats"><div class="stat"><b id="nWords">0</b><span>외운 단어</span></div><div class="stat"><b id="nDue">0</b><span>오늘 복습</span></div>'
         '<div class="stat"><b id="nPages">0</b><span>푼 지문</span></div></div><a class="btn" id="dueGo" href="/" hidden></a></section>'
+        '<section class="card"><div class="mailrow"><div><b>아침 지문 메일</b><span id="mailAddr">받을 주소가 없어요</span></div>'
+        '<button class="tg" type="button" id="mailTg" role="switch" aria-checked="false" aria-label="아침 지문 메일 받기"></button></div>'
+        '<span class="pend" id="mailPend" hidden>확인 메일을 기다리는 중</span>'
+        '<form id="mailForm" hidden novalidate><input class="field" id="mail" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com">'
+        '<button class="btn" type="submit">저장</button></form>'
+        '<button class="btn line" type="button" id="mailEdit">주소 바꾸기</button><p class="msg" id="mailMsg" role="status" hidden></p></section>'
         '<section class="card rows"><button type="button" id="logout">로그아웃</button><button type="button" class="danger" id="del">탈퇴하고 기록 지우기</button>'
         '<p class="msg" id="msg" role="status" hidden></p></section></div>\n'
     )
+    email = (
+        '<section class="card"><div class="step">거의 다 됐어요</div><h1>메일 받을 주소를 알려 주세요</h1>'
+        '<p>카카오 로그인에서는 이메일을 받지 않아서 직접 적어 주셔야 해요. 매일 아침 7시 전후로 지문 한 편을 보내 드려요.</p>'
+        '<form id="mailForm" novalidate><label class="flabel" for="mail">이메일</label>'
+        '<input class="field" id="mail" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required>'
+        '<button class="btn" type="submit" id="mailSave">이 주소로 받기</button></form>'
+        '<a class="later" id="skip" href="/">다음에 할게요</a>'
+        '<p class="msg" id="msg" role="status" hidden></p>'
+        '<p class="note">입력한 주소로 확인 메일을 한 번 보내요. 링크를 눌러야 발송이 시작돼요. 마이페이지에서 바꾸거나 끌 수 있어요.</p></section>\n'
+    )
     return [("join", "카카오, Google로 시작하기", join, "join.js", True),
+            ("join/email", "메일 받을 주소", email, "join-email.js", True),
             ("join/callback", "로그인", callback, "join-callback.js", False),
             ("me", "마이페이지", me, "me.js", True)]
 

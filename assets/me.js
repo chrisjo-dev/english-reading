@@ -14,7 +14,7 @@
   if (!A.ready) { show("notReady"); return; }
   if (!A.hasSession()) { show("signedOut"); return; }
 
-  var c = null;
+  var c = null, uid = null, mail = {};
   A.client().then(function (client) {
     c = client;
     return c.auth.getSession();
@@ -23,7 +23,7 @@
     if (!s) { show("signedOut"); return; }
     var prov = (s.user.app_metadata && s.user.app_metadata.provider) === "google" ? "Google" : "카카오";
     return Promise.all([
-      c.from("profiles").select("nickname").eq("user_id", s.user.id).maybeSingle(),
+      c.from("profiles").select("nickname, email, mail_opt_in, mail_verified").eq("user_id", s.user.id).maybeSingle(),
       A.sync().catch(function () { return null; }),
       fetch("/latest.json", { cache: "no-store" }).then(function (x) { return x.json(); }).catch(function () { return null; })
     ]).then(function (rs) {
@@ -32,6 +32,8 @@
       try { localStorage.setItem("dkh-me", JSON.stringify({ n: (rs[0].data && rs[0].data.nickname) || "" })); } catch (e) {}
       $("av").textContent = nick.charAt(0);
       $("who").textContent = prov + "로 로그인함";
+      uid = s.user.id;
+      mailPaint(rs[0].data || {});
       paint(rs[1] || JSON.parse(localStorage.getItem(A.drillKey) || '{"items":{}}'), rs[2]);
       show("signedIn");
     });
@@ -65,6 +67,38 @@
     if (lang && day) { go.href = "/" + lang + "/" + day + "/#drill"; go.textContent = (LNAME[lang] || "") + " 오늘 복습 " + due[lang] + "개 풀기"; go.hidden = false; }
     else if (latest && latest.langs && latest.langs.en) { go.href = "/en/" + latest.langs.en.latest + "/#drill"; go.textContent = "오늘 지문 단어 외우러 가기"; go.hidden = false; }
   }
+
+  // 아침 지문 메일(시안 K18): 주소, 켜고 끄기, 확인 대기 표시, 주소 바꾸기
+  var RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  function mailSay(t, err) { var m = $("mailMsg"); m.textContent = t; m.classList.toggle("err", !!err); m.hidden = !t; }
+  function mailPaint(p) {
+    mail = p;
+    $("mailAddr").textContent = p.email || "받을 주소가 없어요";
+    $("mailTg").setAttribute("aria-checked", String(!!p.mail_opt_in));
+    $("mailPend").hidden = !(p.mail_opt_in && p.email && !p.mail_verified);
+    $("mailEdit").textContent = p.email ? "주소 바꾸기" : "주소 적기";
+  }
+  function save(patch) {
+    return c.from("profiles").update(patch).eq("user_id", uid).select("nickname, email, mail_opt_in, mail_verified").maybeSingle()
+      .then(function (r) { if (r.error) throw r.error; mailPaint(r.data || mail); });
+  }
+  $("mailTg").addEventListener("click", function () {
+    if (!uid) return;
+    var on = !mail.mail_opt_in;
+    if (on && !mail.email) { $("mailForm").hidden = false; $("mail").focus(); mailSay("받을 주소를 먼저 적어 주세요."); return; }
+    $("mailTg").disabled = true;
+    save({ mail_opt_in: on }).then(function () { mailSay(on ? "아침 지문 메일을 켰어요." : "아침 지문 메일을 껐어요."); },
+      function () { mailSay("바꾸지 못했어요. 잠시 뒤에 다시 해 주세요.", true); })
+      .then(function () { $("mailTg").disabled = false; });
+  });
+  $("mailEdit").addEventListener("click", function () { $("mailForm").hidden = false; $("mail").value = mail.email || ""; $("mail").focus(); });
+  $("mailForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var v = $("mail").value.trim();
+    if (!RE.test(v) || v.length > 254) { mailSay("이메일 주소를 다시 확인해 주세요.", true); return; }
+    save({ email: v, mail_opt_in: true }).then(function () { $("mailForm").hidden = true; mailSay("저장했어요."); },
+      function () { mailSay("저장하지 못했어요. 잠시 뒤에 다시 해 주세요.", true); });
+  });
 
   $("logout").addEventListener("click", function () {
     A.logEvent("logout").then(function () { try { localStorage.removeItem("dkh-me"); } catch (e) {} return c.auth.signOut(); }).then(function () { location.replace("/"); },

@@ -1,6 +1,6 @@
 # 로그인 설정 (카카오, Google)
 
-> 2026-11-18 설정 완료: Supabase 프로젝트 `dokhaehanip`(lilyrang 조직, 서울, ref `kfprgssvigujxphfmlth`), 카카오 앱 "독해한입"(ID 1655290), Google Cloud 프로젝트 `dokhaehanip`(OAuth 클라이언트 "dokhaehanip web", 프로덕션 게시), Worker `dokhaehanip-api`(비밀값 2개). 공개값은 `assets/auth.js`에 들어 있습니다.
+> 2026-11-18 설정 완료: Supabase 프로젝트 `dokhaehanip`(lilyrang 조직, 서울, ref `kfprgssvigujxphfmlth`), 카카오 앱 "독해한입"(ID 1655290), Google Cloud 프로젝트 `dokhaehanip`(OAuth 클라이언트 "dokhaehanip web", 프로덕션 게시), Worker `dokhaehanip-api`(비밀값 2개). 공개값은 `assets/auth.js`에 들어 있습니다. 2026-11-18 `migrations/0002_mail.sql`(메일 수신 칸)도 적용했습니다. 카카오는 비즈 앱 심사 전이라 이메일을 직접 입력받습니다.
 
 코드는 `feat/login` 브랜치에 있습니다. `assets/auth.js`의 설정 값이 비어 있으면 로그인 기능이 꺼진 채로 동작합니다. 이때는 문제 풀기도 잠그지 않습니다. 그래서 아래 설정을 끝내기 전에 배포해도 사이트는 지금과 같습니다. 다만 메인의 "03 / 단어 연습" 섹션은 바로 보이므로, 메인(index.html)은 설정을 마친 뒤에 올립니다.
 
@@ -71,5 +71,6 @@ Supabase SQL Editor에서 다음을 실행합니다.
 select count(*) from public.profiles;                                   -- 전체 가입자
 select provider, count(*) from public.profiles group by 1;               -- 카카오, Google 별
 select date(created_at), count(*) from public.profiles group by 1 order by 1;  -- 날짜별 가입
+select count(*) filter (where mail_opt_in) as mail_on, count(*) filter (where mail_opt_in and mail_verified) as mail_ready from public.profiles;  -- 메일 수신
 select name, count(*) from public.events where at > now() - interval '7 days' group by 1;  -- 잠금 노출, 클릭, 가입
 ```

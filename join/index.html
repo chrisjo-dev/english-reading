@@ -101,7 +101,22 @@
   .rows button { font: inherit; display: block; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 13px 0; font-size: 15px; color: var(--ink); cursor: pointer; }
   .rows button:first-child { border-top: 0; }
   .rows .danger { color: var(--coral); font-weight: 600; }
-  .card .btn { margin-top: 16px; background: var(--blue); }
+  .card .btn { margin-top: 16px; background: var(--blue); width: 100%; border: 0; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
+  .card .btn.line { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; margin-top: 12px; }
+  .optbox { margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--opt); }
+  .chk em.op { color: var(--sub); }
+  .flabel { display: block; font-size: 13px; font-weight: 700; color: var(--sub); margin-top: 8px; }
+  .field { display: block; box-sizing: border-box; width: 100%; height: 52px; margin-top: 6px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 16px; color: var(--ink); }
+  .field:focus { outline: none; border-color: var(--blue); }
+  .mailrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .mailrow b { display: block; font-size: 15px; }
+  .mailrow span { font-size: 13px; color: var(--sub); overflow-wrap: anywhere; }
+  .tg { flex: none; position: relative; width: 48px; height: 28px; border: 0; border-radius: 999px; background: #d1d6db; cursor: pointer; padding: 0; }
+  .tg::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; transition: left .15s; }
+  .tg[aria-checked="true"] { background: var(--blue); }
+  .tg[aria-checked="true"]::after { left: 23px; }
+  .tg:disabled { opacity: .5; }
+  .pend { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 700; color: #b26a00; background: #fff4e0; padding: 3px 8px; border-radius: 6px; }
   .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
   /* gnb-a */
   .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -210,7 +225,7 @@
 <!-- /gnb -->
 <main>
 <div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1><p>조금만 기다려 주세요. 단어 외우기와 문제 풀기는 지금도 쓸 수 있어요.</p></div>
-<section class="card" id="joinBox"><div class="step">무료로 시작하기</div><h1>단어 기록을 어디서나 이어서</h1><div class="ok-box" id="already" hidden>이미 로그인했어요. <a id="alreadyNext" href="/">이어서 공부하러 가기</a></div><div class="perks"><div class="perk"><i>1</i><div><b>외운 단어와 복습 날짜 저장</b><span>기기를 바꿔도 내일 복습할 단어가 그대로 나와요.</span></div></div><div class="perk"><i>2</i><div><b>연속 학습일</b><span>하루 한 지문, 며칠째 이어 가는지 보여 드려요.</span></div></div><div class="perk"><i>3</i><div><b>이 기기의 기록도 함께</b><span>로그인 전에 푼 기록은 첫 로그인 때 그대로 옮겨 드려요.</span></div></div></div><div class="agree"><label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label><label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div><button class="kbtn" type="button" id="kakao" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하기</button><button class="gbtn" type="button" id="google" disabled><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</button><p class="msg" id="msg" role="status" hidden></p><p class="note">가입은 무료이고 결제는 없어요. 탈퇴하면 기록은 바로 지워져요.</p></section>
+<section class="card" id="joinBox"><div class="step">무료로 시작하기</div><h1>단어 기록을 어디서나 이어서</h1><div class="ok-box" id="already" hidden>이미 로그인했어요. <a id="alreadyNext" href="/">이어서 공부하러 가기</a></div><div class="perks"><div class="perk"><i>1</i><div><b>외운 단어와 복습 날짜 저장</b><span>기기를 바꿔도 내일 복습할 단어가 그대로 나와요.</span></div></div><div class="perk"><i>2</i><div><b>연속 학습일</b><span>하루 한 지문, 며칠째 이어 가는지 보여 드려요.</span></div></div><div class="perk"><i>3</i><div><b>이 기기의 기록도 함께</b><span>로그인 전에 푼 기록은 첫 로그인 때 그대로 옮겨 드려요.</span></div></div></div><div class="agree"><label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label><label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div><div class="optbox"><label class="chk"><input type="checkbox" id="agreeMail"><span><em class="op">선택</em>매일 아침 지문 메일도 받을래요<small>Google은 로그인한 이메일로 보내요. 카카오는 다음 화면에서 받을 주소를 적어 주세요. 언제든 끌 수 있어요.</small></span></label></div><button class="kbtn" type="button" id="kakao" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하기</button><button class="gbtn" type="button" id="google" disabled><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</button><p class="msg" id="msg" role="status" hidden></p><p class="note">가입은 무료이고 결제는 없어요. 탈퇴하면 기록은 바로 지워져요.</p></section>
 </main>
 <footer class="site-footer"><a href="/about/">소개</a><a href="/privacy/">개인정보처리방침</a><a href="/contact/">연락처</a></footer>
 <script id="gnb-js">(function(){
@@ -280,5 +295,5 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=2" defer></script>
-<script src="/assets/join.js?v=2" defer></script>
+<script src="/assets/join.js?v=3" defer></script>
 </body></html>

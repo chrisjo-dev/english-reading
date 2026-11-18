@@ -115,3 +115,30 @@ class HeaderMeTest(unittest.TestCase):
 
     def test_mypage_name(self):
         self.assertIn("<title>마이페이지 |", (ROOT / "me/index.html").read_text(encoding="utf-8"))
+
+
+class MailOptInTest(unittest.TestCase):
+    """아침 지문 메일 수신(선택, 시안 K16~K18)."""
+
+    def test_join_has_optional_mail_checkbox(self):
+        s = (ROOT / "join/index.html").read_text(encoding="utf-8")
+        self.assertIn('id="agreeMail"', s)
+        self.assertNotIn('id="agreeMail" checked', s)  # 기본은 꺼짐
+
+    def test_email_page_and_me_mail_card(self):
+        e = (ROOT / "join/email/index.html").read_text(encoding="utf-8")
+        self.assertIn('id="mailForm"', e)
+        self.assertIn("/assets/join-email.js?v=", e)
+        m = (ROOT / "me/index.html").read_text(encoding="utf-8")
+        for needle in ('id="mailTg"', 'role="switch"', 'id="mailPend"', 'id="mailEdit"'):
+            self.assertIn(needle, m)
+
+    def test_client_cannot_set_verified(self):
+        sql = (ROOT / "supabase/migrations/0002_mail.sql").read_text(encoding="utf-8")
+        self.assertIn("grant update (email, mail_opt_in) on public.profiles to authenticated;", sql)
+        self.assertNotIn("mail_verified) on public.profiles to authenticated", sql)
+
+    def test_privacy_mentions_mail(self):
+        s = (ROOT / "privacy/index.html").read_text(encoding="utf-8")
+        self.assertIn('id="mail"', s)
+        self.assertIn("수신에 동의한 시각", s)

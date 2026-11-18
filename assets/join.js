@@ -11,7 +11,7 @@
   var AUTHORIZE = "https://kauth.kakao.com/oauth/authorize";
   var CALLBACK = location.origin + "/join/callback/";
   function $(id) { return document.getElementById(id); }
-  var age = $("agreeAge"), priv = $("agreePriv"), kakao = $("kakao"), google = $("google"), msg = $("msg");
+  var age = $("agreeAge"), priv = $("agreePriv"), mailOpt = $("agreeMail"), kakao = $("kakao"), google = $("google"), msg = $("msg");
   var q = new URLSearchParams(location.search);
   var next = A.safeNext(q.get("next") || "/");
   var from = q.get("from") || "";
@@ -24,7 +24,7 @@
     google.disabled = !ok();
   }
   function remember(p) {
-    try { localStorage.setItem(NEXT_KEY, JSON.stringify({ next: next, at: Date.now() })); } catch (e) {}
+    try { localStorage.setItem(NEXT_KEY, JSON.stringify({ next: next, mail: !!(mailOpt && mailOpt.checked), at: Date.now() })); } catch (e) {}
     try { sessionStorage.setItem(OIDC_KEY, JSON.stringify(p)); } catch (e) {}
   }
   function hex(buf) { return Array.prototype.map.call(new Uint8Array(buf), function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); }
