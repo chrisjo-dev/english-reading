@@ -24,7 +24,10 @@
     $("spin").hidden = true; $("errIc").hidden = false;
     $("title").textContent = "로그인하지 못했어요";
     $("status").textContent = text;
-    $("retryLink").href = "/join/?" + new URLSearchParams({ next: next }).toString();
+    // 다시 시도해도 가입 화면에서 고른 메일 받기와 언어, 수준이 그대로 남게 한다
+    var rq = { next: next };
+    if (saved.mail === true) { rq.mail = "1"; rq.lang = saved.lang || "en"; rq.level = saved.level || "b"; }
+    $("retryLink").href = "/join/?" + new URLSearchParams(rq).toString();
     $("homeLink").href = next.replace(/#drill$/, "");
     $("retry").hidden = false;
   }
@@ -76,7 +79,10 @@
             mail_opt_in: true,
             mail_lang: ["en", "ja", "de"].indexOf(saved.lang) >= 0 ? saved.lang : "en",
             mail_level: saved.level === "a" ? "a" : "b"
-          }).eq("user_id", uid);
+          }).eq("user_id", uid).then(function (u) {
+            // 저장하지 못했으면 메일이 간다고 말하지 않는다(마이페이지에서 다시 켤 수 있다)
+            if (u && u.error) { needEmail = false; mailDone = false; }
+          });
         }
       }, function () {});
       return Promise.all([A.logEvent(isNew ? "signup" : "login"), A.sync().catch(function () { return null; }), nick]);
