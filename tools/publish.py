@@ -1047,7 +1047,7 @@ def rebuild_info_pages():
 
 # 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
 # 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
-ACCOUNT_V = "7"
+ACCOUNT_V = "8"
 ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
   .card h1 { font-size: 22px; margin: 2px 0 16px; }
@@ -1189,7 +1189,8 @@ def account_pages():
     callback = (
         '<section class="card center"><div class="spin" id="spin"></div><div class="err-ic" id="errIc" hidden>!</div>'
         '<h1 id="title">로그인하는 중이에요</h1><p class="lead" id="status" role="status">잠시만 기다려 주세요.</p>'
-        '<div id="retry" hidden><a class="btn" id="retryLink" href="/join/">다시 시도</a><a class="later" id="homeLink" href="/">지문으로 돌아가기</a></div></section>\n'
+        '<div id="retry" hidden><a class="gbtn" id="googleLink" href="/join/" hidden>' + drill.GOOGLE_ICON + 'Google로 시작하기</a>'
+        '<a class="btn" id="retryLink" href="/join/">다시 시도</a><a class="later" id="homeLink" href="/">지문으로 돌아가기</a></div></section>\n'
     )
     me = (
         '<section class="card" id="loading">기록을 불러오고 있어요.</section>\n'

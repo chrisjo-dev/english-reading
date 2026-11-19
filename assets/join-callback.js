@@ -20,14 +20,19 @@
   try { oidc = JSON.parse(localStorage.getItem(OIDC_KEY) || "null"); localStorage.removeItem(OIDC_KEY); } catch (e) {}
 
   function $(id) { return document.getElementById(id); }
-  function fail(text) {
+  function fail(text, kakaoDown) {
     $("spin").hidden = true; $("errIc").hidden = false;
-    $("title").textContent = "로그인하지 못했어요";
+    $("title").textContent = kakaoDown ? "카카오 로그인 연결이 잠깐 안 돼요" : "로그인하지 못했어요";
     $("status").textContent = text;
     // 다시 시도해도 가입 화면에서 고른 메일 받기와 언어, 수준이 그대로 남게 한다
     var rq = { next: next };
     if (saved.mail === true) { rq.mail = "1"; rq.lang = saved.lang || "en"; rq.level = saved.level || "b"; }
     $("retryLink").href = "/join/?" + new URLSearchParams(rq).toString();
+    // 카카오 토큰 교환(api Worker)이 안 되면(하루 한도, 횟수 제한, 장애) Worker 를 거치지 않는 Google 로그인을 먼저 권한다(시안 K30)
+    if (kakaoDown) {
+      $("googleLink").href = $("retryLink").href; $("googleLink").hidden = false;
+      $("retryLink").textContent = "카카오로 다시 시도"; $("retryLink").classList.add("line");
+    }
     $("homeLink").href = next.replace(/#drill$/, "");
     $("retry").hidden = false;
   }
@@ -51,11 +56,16 @@
   var n = count();
   if (n) $("status").textContent = "이 기기의 단어 기록 " + n + "개를 함께 옮기고 있어요.";
 
+  function down() { var e = new Error("kakao unavailable"); e.kakaoDown = true; return e; }
   function signIn(c) {
     if (oidc.p === "google") return c.auth.exchangeCodeForSession(code);
     return fetch(A.api + "/kakao/token", {
       method: "POST", credentials: "omit", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: code })
-    }).then(function (r) { if (!r.ok) throw new Error("exchange " + r.status); return r.json(); })
+    }).then(function (r) {
+      if (r.status === 429 || r.status >= 500) throw down();
+      if (!r.ok) throw new Error("exchange " + r.status);
+      return r.json();
+    }, function () { throw down(); })  // 한도를 넘으면 Cloudflare 오류 페이지라 CORS 로 막혀 연결 실패로 온다
       .then(function (t) {
         if (!t || typeof t.id_token !== "string") throw new Error("no id_token");
         return c.auth.signInWithIdToken({ provider: "kakao", token: t.id_token, nonce: oidc.nonce });
@@ -96,7 +106,8 @@
     var nq = "?" + new URLSearchParams({ next: next }).toString();
     var mq = "?" + new URLSearchParams({ mail: "1", lang: saved.lang || "en", level: saved.level || "b" }).toString();
     location.replace(mailRetry ? "/me/" + mq + "#mailcard" : needEmail ? "/join/email/" + nq : mailDone ? "/join/done/" + nq : next);
-  }).catch(function () {
-    fail("로그인을 마치지 못했어요. 이 기기의 기록은 그대로 남아 있어요.");
+  }).catch(function (e) {
+    if (e && e.kakaoDown) fail("로그인 서버에 요청이 몰렸거나 연결이 끊겼어요. Google로 로그인하거나 잠시 뒤에 다시 해 주세요. 이 기기의 기록과 고른 메일 설정은 그대로 남아 있어요.", true);
+    else fail("로그인을 마치지 못했어요. 이 기기의 기록은 그대로 남아 있어요.");
   });
 })();
