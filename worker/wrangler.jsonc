@@ -10,7 +10,7 @@
   // 사이트 감시(watch.js): 5분마다 열리는지, 매일 08:40 KST 오늘 지문이 올라왔는지
   "triggers": { "crons": ["*/5 * * * *", "40 23 * * *"] },
   // 감시 상태(다운 여부, 연속 실패 수). 만들기: npx wrangler kv namespace create ALERTS
-  // 사이트 반응(/events): IP 마다 1분에 20번까지(지역마다 따로 세는 대략의 제한)
-  "ratelimits": [{ "name": "EVENTS_LIMIT", "namespace_id": "1001", "simple": { "limit": 20, "period": 60 } }],
+  // 사이트 반응(/events): IP 마다 1분에 120번까지(지역마다 따로 세는 대략의 제한). 통신사, 학교, 회사는 여러 사람이 IP 하나를 나눠 쓰므로 넉넉히 둔다
+  "ratelimits": [{ "name": "EVENTS_LIMIT", "namespace_id": "1001", "simple": { "limit": 120, "period": 60 } }],
   "kv_namespaces": [{ "binding": "ALERTS", "id": "08a1980f153a4df98be709db38dd4b13" }]
 }

@@ -59,7 +59,7 @@ index.html, _next/               landing 빌드 결과(손으로 고치지 않�
 
 **사이트 반응**
 - 지문 페이지의 "오늘 주제 어땠어요?", 언어 추가 요청, 기능 건의와 버그 제보 누름은 브라우저가 `sendBeacon`으로 Worker `/events`에 보냅니다(`tools/siteevent.py`, `landing/src/lib/event.ts`).
-- Worker(`worker/events.js`)가 출처와 값을 검사하고 IP마다 1분 20번으로 제한한 뒤, 서비스 키로 `site_events`에 씁니다. 브라우저에는 이 표의 권한이 없습니다.
+- Worker(`worker/events.js`)가 출처와 값을 검사하고 IP마다 1분 120번으로 제한한 뒤, 서비스 키로 `site_events`에 씁니다. 브라우저에는 이 표의 권한이 없습니다.
 - 클릭과 화면 측정은 GA에만 남깁니다.
 
 **알림**

@@ -1,6 +1,6 @@
 // 사이트 반응을 Supabase public.site_events 에 쌓는다(supabase/migrations/0006_site_events.sql).
 // 받는 것: 오늘 주제 반응(topic_vote), 언어 추가 요청(lang_request), 기능 건의와 버그 제보 누름(feedback).
-// 브라우저는 navigator.sendBeacon(text/plain)으로 보낸다. 사이트 출처만 받고, IP 마다 1분에 EVENTS_LIMIT 번까지만 받는다.
+// 브라우저는 navigator.sendBeacon(text/plain)으로 보낸다. 사이트 출처만 받고, IP 마다 1분에 EVENTS_LIMIT 번(wrangler.jsonc, 120)까지만 받는다.
 // 비밀값: npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY. 브라우저에는 이 표의 권한이 없다.
 const SUPABASE = 'https://kfprgssvigujxphfmlth.supabase.co/rest/v1/site_events?on_conflict=kind,vid,lang,day';
 const SITE = 'https://dokhaehanip.com';
