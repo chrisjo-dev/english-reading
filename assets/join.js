@@ -1,4 +1,5 @@
 // 가입 화면(/join/, 시안 design/kakao-login K02): 필수 동의 두 개 뒤 카카오 또는 Google 로그인.
+// 로그인 화면(/login/, 시안 K32)도 이 스크립트를 쓴다. 동의 칸이 없으면 로그인 화면이고, 처음인 계정이면 콜백이 동의 화면(K33)으로 보낸다.
 // 카카오: 인가는 여기서 직접 시작하고(닉네임만, OpenID Connect), 콜백이 api Worker 로 id_token 을 받아 signInWithIdToken 한다.
 //   Supabase 의 카카오 OAuth 는 이메일과 프로필 사진을 늘 함께 요청해서 쓰지 않는다(릴리랑과 같은 이유).
 // Google: Supabase OAuth(PKCE)로 보내고, 콜백에서 exchangeCodeForSession 한다.
@@ -13,6 +14,7 @@
   var CALLBACK = location.origin + "/join/callback/";
   function $(id) { return document.getElementById(id); }
   var age = $("agreeAge"), priv = $("agreePriv"), mailOpt = $("agreeMail"), kakao = $("kakao"), google = $("google"), msg = $("msg");
+  var login = !age;  // 로그인 화면: 동의는 콜백이 처음인 계정에만 받는다
   var q = new URLSearchParams(location.search);
   var next = A.safeNext(q.get("next") || "/");
   var from = q.get("from") || "";
@@ -22,6 +24,7 @@
   var mailLang = LANGS[q.get("lang")] ? q.get("lang") : "en";
   var mailLevel = q.get("level") === "a" ? "a" : "b";
   function paintPick() {
+    if (login) return;
     [].forEach.call($("pickLang").children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === mailLang)); });
     [].forEach.call($("pickLevel").children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === mailLevel)); });
     $("rangeA").textContent = LANGS[mailLang][0]; $("rangeB").textContent = LANGS[mailLang][1];
@@ -33,10 +36,15 @@
       an.href = "/me/?" + new URLSearchParams({ mail: "1", lang: mailLang, level: mailLevel }).toString() + "#mailcard";
     } else { an.textContent = "이어서 공부하러 가기"; an.href = next; }
   }
-  $("pickLang").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { mailLang = b.dataset.v; paintPick(); } });
-  $("pickLevel").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { mailLevel = b.dataset.v; paintPick(); } });
-  mailOpt.addEventListener("change", paintPick);
-  if (q.get("mail") === "1") {
+  if (!login) {
+    $("pickLang").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { mailLang = b.dataset.v; paintPick(); } });
+    $("pickLevel").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { mailLevel = b.dataset.v; paintPick(); } });
+    mailOpt.addEventListener("change", paintPick);
+  } else {
+    $("alreadyNext").href = next;
+    $("toJoin").href = "/join/?" + new URLSearchParams({ next: next }).toString();
+  }
+  if (!login && q.get("mail") === "1") {
     mailOpt.checked = true;
     $("jStep").innerHTML = '아침 메일 받기 <span class="seat">선착순 100명 무료</span>';
     $("jTitle").textContent = "가입하면 매일 아침 지문이 와요";
@@ -46,7 +54,8 @@
   paintPick();
 
   function say(text, err) { msg.textContent = text; msg.classList.toggle("err", !!err); msg.hidden = !text; }
-  function ok() { return A.ready && age.checked && priv.checked && !busy; }
+  function agreed() { return login || (age.checked && priv.checked); }
+  function ok() { return A.ready && agreed() && !busy; }
   // 앱 안 브라우저(스레드, 인스타그램, 카카오톡 등)는 Google 이 로그인을 막는다(disallowed_useragent). 시안 K29
   var UA = navigator.userAgent, inApp = /KAKAOTALK|Instagram|FBAN|FBAV|Barcelona|Threads|NAVER\(inapp|\bLine\/|DaumApps|everytimeApp/i.test(UA);
   // 버튼은 막지 않고 흐리게만 둔다: 동의 전에 누르면 무엇을 해야 하는지 알려 준다(시안 K27)
@@ -55,25 +64,26 @@
     google.disabled = inApp || busy;
     kakao.classList.toggle("off", !ok()); kakao.setAttribute("aria-disabled", String(!ok()));
     google.classList.toggle("off", !ok() || inApp); google.setAttribute("aria-disabled", String(!ok() || inApp));
-    if (age.checked && priv.checked) need(false);
+    if (agreed()) need(false);
   }
   function need(on) {
+    if (login) return;
     document.querySelector(".agree").classList.toggle("need", on); $("needMsg").hidden = !on;
     if (on) document.querySelector(".agree").scrollIntoView({ behavior: "smooth", block: "center" });
   }
   function go() {
     if (busy || !A.ready) return false;
-    if (!age.checked || !priv.checked) { need(true); return false; }
+    if (!agreed()) { need(true); return false; }
     return true;
   }
   function here() {  // 지금 고른 메일 설정을 실은 이 화면 주소(밖 브라우저에서 그대로 이어지게)
     var rq = { next: next };
     if (from) rq.from = from;
-    if (mailOpt.checked) { rq.mail = "1"; rq.lang = mailLang; rq.level = mailLevel; }
-    return location.origin + "/join/?" + new URLSearchParams(rq).toString();
+    if (mailOpt && mailOpt.checked) { rq.mail = "1"; rq.lang = mailLang; rq.level = mailLevel; }
+    return location.origin + (login ? "/login/?" : "/join/?") + new URLSearchParams(rq).toString();
   }
   function remember(p) {
-    try { localStorage.setItem(NEXT_KEY, JSON.stringify({ next: next, mail: !!(mailOpt && mailOpt.checked), lang: mailLang, level: mailLevel, at: Date.now() })); } catch (e) {}
+    try { localStorage.setItem(NEXT_KEY, JSON.stringify({ next: next, mail: !!(mailOpt && mailOpt.checked), lang: mailLang, level: mailLevel, agreed: !login, at: Date.now() })); } catch (e) {}
     try { localStorage.setItem(OIDC_KEY, JSON.stringify(p)); } catch (e) {}
   }
   function hex(buf) { return Array.prototype.map.call(new Uint8Array(buf), function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); }
@@ -87,9 +97,10 @@
   A.isMember().then(function (m) {
     if (!m) return;
     $("already").hidden = false;
+    $("joinBox").classList.add("member");  // 이미 로그인했으면 동의 칸과 로그인 버튼을 감춘다(배너 링크로 이어 간다)
   });
 
-  [age, priv].forEach(function (x) { x.addEventListener("change", update); });
+  if (!login) [age, priv].forEach(function (x) { x.addEventListener("change", update); });
   if (inApp) {
     $("inApp").hidden = false; $("gNote").hidden = false;
     var kakaoApp = /KAKAOTALK/i.test(UA), android = /Android/i.test(UA);
@@ -107,7 +118,7 @@
     });
   }
   update();
-  ga("login_view", { from: from || "direct" });
+  ga("login_view", { from: from || (login ? "login" : "direct") });
 
   kakao.addEventListener("click", function () {
     if (kakao.disabled || !go()) return;

@@ -193,7 +193,7 @@ function MeButton() {
     <a
       className={`gnb-tap gnb-me${me.on ? " in" : ""}`}
       id="gnb-me"
-      href={me.on ? "/me/" : "/join/?next=%2F"}
+      href={me.on ? "/me/" : "/login/?next=%2F"}
       aria-label={me.on ? `마이페이지${me.streak ? `, 연속 ${me.streak}일` : ""}` : "로그인"}
     >
       <span className="gnb-pill">

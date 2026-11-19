@@ -74,6 +74,11 @@
   .kbtn { border: 0; background: #fee500; color: rgba(0,0,0,.85); }
   .gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
   .kbtn:disabled, .gbtn:disabled, .kbtn.off, .gbtn.off { opacity: .45; cursor: default; }
+  #joinBox.member .agree, #joinBox.member .perks, #joinBox.member #kakao, #joinBox.member #google, #joinBox.member #inApp, #joinBox.member #gNote, #joinBox.member #needMsg { display: none !important; }
+  .card p.sw { text-align: center; margin: 18px 0 0; font-size: 14px; color: var(--sub); }
+  .card p.sw a { color: var(--blue); font-weight: 700; text-underline-offset: 3px; }
+  #agreeBox .btn { display: block; text-align: center; }
+  #agreeBox .later { display: block; width: 100%; margin-top: 12px; background: none; border: 0; font: inherit; font-size: 13.5px; color: var(--muted); cursor: pointer; }
   .agree.need { border: 1.5px solid var(--coral); border-radius: 12px; padding: 14px; background: var(--coral-soft); }
   .need-msg { display: flex; align-items: center; gap: 6px; margin: -4px 0 14px; font-size: 13.5px; font-weight: 700; color: var(--coral); }
   .need-msg i { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--coral); color: #fff; font-style: normal; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
@@ -235,7 +240,7 @@
 </head>
 <body>
 <!-- gnb -->
-<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/en/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 영어"><span class="gnb-pill">영어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="/#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
+<header class="gnb"><div class="gnb-in"><a class="gnb-brand" href="/"><img src="/assets/brand/duck-lying-64.png" alt="" width="40" height="26"><span>독해한입</span></a><nav class="gnb-seg" aria-label="언어"><a href="/en/" data-today="en">영어</a><a href="/ja/" data-today="ja">일본어</a><a href="/de/" data-today="de">독일어</a></nav><a class="gnb-past" href="/en/archive/">지난 지문</a><button class="gnb-tap gnb-chip" id="gnb-chip" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="gnb-sheet" aria-label="언어 고르기, 지금 영어"><span class="gnb-pill">영어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><a class="gnb-tap gnb-mail" href="/#subscribe"><span class="gnb-pill">메일로 받기</span></a><a class="gnb-tap gnb-me" id="gnb-me" href="/login/" aria-label="로그인"><span class="gnb-pill"><span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span><span class="gm-b" hidden></span></span></a></div></header>
 <div class="gnb-scrim" id="gnb-scrim" hidden></div>
 <div class="gnb-sheet" id="gnb-sheet" role="dialog" aria-modal="true" aria-labelledby="gnb-sheet-h" tabindex="-1" hidden>
   <div class="gs-handle"></div>
@@ -266,8 +271,8 @@
       me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
       me.querySelector('.gm-t').textContent='마이페이지';
       var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
-    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
-      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0&&location.pathname.indexOf('/login/')!==0){
+      me.href='/login/?next='+encodeURIComponent(location.pathname);
     }
   }catch(e){}}
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
@@ -328,5 +333,5 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=3" defer></script>
-<script src="/assets/join-done.js?v=11" defer></script>
+<script src="/assets/join-done.js?v=12" defer></script>
 </body></html>

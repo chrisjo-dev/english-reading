@@ -1053,7 +1053,7 @@ def rebuild_info_pages():
 
 # 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
 # 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
-ACCOUNT_V = "11"
+ACCOUNT_V = "12"
 ACCOUNT_CSS = """  [hidden] { display: none !important; }  /* .pend, .need-msg, .gbtn 처럼 display 를 정한 요소도 hidden 이면 숨긴다 */
   :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
@@ -1073,6 +1073,11 @@ ACCOUNT_CSS = """  [hidden] { display: none !important; }  /* .pend, .need-msg, 
   .kbtn { border: 0; background: #fee500; color: rgba(0,0,0,.85); }
   .gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
   .kbtn:disabled, .gbtn:disabled, .kbtn.off, .gbtn.off { opacity: .45; cursor: default; }
+  #joinBox.member .agree, #joinBox.member .perks, #joinBox.member #kakao, #joinBox.member #google, #joinBox.member #inApp, #joinBox.member #gNote, #joinBox.member #needMsg { display: none !important; }
+  .card p.sw { text-align: center; margin: 18px 0 0; font-size: 14px; color: var(--sub); }
+  .card p.sw a { color: var(--blue); font-weight: 700; text-underline-offset: 3px; }
+  #agreeBox .btn { display: block; text-align: center; }
+  #agreeBox .later { display: block; width: 100%; margin-top: 12px; background: none; border: 0; font: inherit; font-size: 13.5px; color: var(--muted); cursor: pointer; }
   .agree.need { border: 1.5px solid var(--coral); border-radius: 12px; padding: 14px; background: var(--coral-soft); }
   .need-msg { display: flex; align-items: center; gap: 6px; margin: -4px 0 14px; font-size: 13.5px; font-weight: 700; color: var(--coral); }
   .need-msg i { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--coral); color: #fff; font-style: normal; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
@@ -1193,6 +1198,34 @@ def account_pages():
         '<p class="msg" id="msg" role="status" hidden></p>'
         '<p class="note">가입은 무료이고 결제는 없어요. 탈퇴하면 기록은 바로 지워져요.</p></section>\n'
     )
+    # 로그인 화면(시안 K32): 동의 칸 없이 버튼만. 처음인 계정이면 콜백이 동의 화면(K33, join/agree)으로 보낸다. 스크립트는 join.js 를 같이 쓴다
+    login = (
+        '<div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1><p>조금만 기다려 주세요. 단어 외우기와 문제 풀기는 지금도 쓸 수 있어요.</p></div>\n'
+        '<section class="card" id="joinBox"><div class="step">로그인</div><h1>다시 오셨네요</h1>'
+        '<p class="lead">쓰던 카카오나 Google 계정으로 로그인하면 단어 기록과 메일 설정을 이어서 볼 수 있어요.</p>'
+        '<div class="ok-box" id="already" hidden>이미 로그인했어요. <a id="alreadyNext" href="/">이어서 공부하러 가기</a></div>'
+        '<div class="inapp" id="inApp" hidden><b>Google 로그인은 브라우저에서 열어 주세요</b>'
+        '<p>스레드, 인스타그램, 카카오톡 같은 앱 안 화면에서는 Google이 로그인을 막아요. 카카오 로그인은 여기서 바로 돼요.</p>'
+        '<div class="acts"><button type="button" class="pri" id="openOut" hidden>브라우저로 열기</button><button type="button" class="sec" id="copyLink">링크 복사</button></div>'
+        '<p class="how">"브라우저로 열기"가 안 되면 오른쪽 위 메뉴(⋯)에서 "브라우저에서 열기"를 눌러 주세요. 고른 메일 설정은 그대로 이어져요.</p></div>'
+        f'<button class="kbtn" type="button" id="kakao">{drill.KAKAO_ICON}카카오로 로그인</button>'
+        f'<button class="gbtn" type="button" id="google">{drill.GOOGLE_ICON}Google로 로그인</button>'
+        '<p class="gnote" id="gNote" hidden>Google은 브라우저에서 열면 눌러져요</p>'
+        '<p class="msg" id="msg" role="status" hidden></p>'
+        '<p class="sw">처음이세요? <a id="toJoin" href="/join/">가입하기</a></p></section>\n'
+    )
+    # 동의 화면(시안 K33): 로그인 화면에서 처음 만든 계정. 동의하지 않으면 계정을 지운다(join-agree.js)
+    agree = (
+        '<section class="card" id="agreeBox"><div class="step">거의 다 됐어요</div><h1>처음 오셨네요. 동의만 해 주세요</h1>'
+        '<p class="lead">이 계정은 처음이에요. 아래 두 가지에 동의하면 가입이 끝나요.</p><div class="agree">'
+        '<label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label>'
+        '<label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요'
+        '<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div>'
+        '<p class="need-msg" id="needMsg" hidden><i>!</i>필수 항목 두 개에 동의해 주세요</p>'
+        '<button class="btn" type="button" id="agreeGo">동의하고 시작하기</button>'
+        '<button class="later" type="button" id="agreeNo">동의하지 않음(계정을 만들지 않아요)</button>'
+        '<p class="msg" id="msg" role="status" hidden></p></section>\n'
+    )
     callback = (
         '<section class="card center"><div class="spin" id="spin"></div><div class="err-ic" id="errIc" hidden>!</div>'
         '<h1 id="title">로그인하는 중이에요</h1><p class="lead" id="status" role="status">잠시만 기다려 주세요.</p>'
@@ -1203,7 +1236,7 @@ def account_pages():
         '<section class="card" id="loading">기록을 불러오고 있어요.</section>\n'
         '<div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1></div>\n'
         '<section class="card" id="signedOut" hidden><h1>로그인하면 마이페이지를 볼 수 있어요</h1><p>외운 단어, 복습 날짜, 연속 학습일을 어느 기기에서든 이어서 봐요.</p>'
-        '<a class="btn" href="/join/?next=/me/">로그인하러 가기</a></section>\n'
+        '<a class="btn" href="/login/?next=/me/">로그인하러 가기</a></section>\n'
         '<div id="signedIn" hidden>'
         '<section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section>'
         '<section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section>'
@@ -1246,6 +1279,8 @@ def account_pages():
             ("join/email", "메일 받을 주소", email, "join-email.js", True),
             ("join/done", "가입 완료", done, "join-done.js", True),
             ("join/callback", "로그인", callback, "join-callback.js", False),
+            ("login", "로그인", login, "join.js", True),
+            ("join/agree", "가입 동의", agree, "join-agree.js", True),
             ("me", "마이페이지", me, "me.js", True)]
 
 

@@ -26,8 +26,9 @@
     $("status").textContent = text;
     // 다시 시도해도 가입 화면에서 고른 메일 받기와 언어, 수준이 그대로 남게 한다
     var rq = { next: next };
+    var base = saved.agreed === false ? "/login/?" : "/join/?";  // 로그인 화면에서 왔으면 로그인 화면으로
     if (saved.mail === true) { rq.mail = "1"; rq.lang = saved.lang || "en"; rq.level = saved.level || "b"; }
-    $("retryLink").href = "/join/?" + new URLSearchParams(rq).toString();
+    $("retryLink").href = base + new URLSearchParams(rq).toString();
     // 카카오 토큰 교환(api Worker)이 안 되면(하루 한도, 횟수 제한, 장애) Worker 를 거치지 않는 Google 로그인을 먼저 권한다(시안 K30)
     if (kakaoDown) {
       $("googleLink").href = $("retryLink").href; $("googleLink").hidden = false;
@@ -52,7 +53,7 @@
     return;
   }
 
-  var needEmail = false, mailDone = false, mailRetry = false;
+  var needEmail = false, mailDone = false, mailRetry = false, needAgree = false;
   var n = count();
   if (n) $("status").textContent = "이 기기의 단어 기록 " + n + "개를 함께 옮기고 있어요.";
 
@@ -76,6 +77,9 @@
     return signIn(c).then(function (r) {
       if (r.error || !r.data || !r.data.user) throw r.error || new Error("no session");
       var isNew = Date.now() - Date.parse(r.data.user.created_at) < NEW_USER_WINDOW;
+      // 로그인 화면(동의 칸 없음)에서 처음 만든 계정이면 동의 화면(K33)을 거친다. 처음인지는 만든 시각과 이번 로그인 시각이 거의 같은지로 본다
+      var u0 = r.data.user, first = Math.abs(Date.parse(u0.last_sign_in_at) - Date.parse(u0.created_at)) < 60 * 1000;
+      if (saved.agreed === false && first) needAgree = true;
       if (typeof gtag === "function") gtag("event", isNew ? "sign_up" : "login", { method: oidc.p });
       var uid = r.data.user.id;
       // 위 메뉴의 마이페이지 동그라미가 쓰는 닉네임(첫 글자)을 이 기기에 둔다
@@ -105,6 +109,7 @@
     $("status").textContent = "이어서 공부하러 가요.";
     var nq = "?" + new URLSearchParams({ next: next }).toString();
     var mq = "?" + new URLSearchParams({ mail: "1", lang: saved.lang || "en", level: saved.level || "b" }).toString();
+    if (needAgree) { location.replace("/join/agree/" + nq); return; }
     location.replace(mailRetry ? "/me/" + mq + "#mailcard" : needEmail ? "/join/email/" + nq : mailDone ? "/join/done/" + nq : next);
   }).catch(function (e) {
     if (e && e.kakaoDown) fail("로그인 서버에 요청이 몰렸거나 연결이 끊겼어요. Google로 로그인하거나 잠시 뒤에 다시 해 주세요. 이 기기의 기록과 고른 메일 설정은 그대로 남아 있어요.", true);

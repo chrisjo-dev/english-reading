@@ -90,7 +90,7 @@ test('로그인 상태와 닉네임: 두 위 메뉴가 같은 저장 키를 읽�
   const off = state({ on: false, nick: '원상', days: ['2026-11-18'] });
   const g = gnbHeader(off, D), l = readMe(storeOf(off), new D());
   assert.equal(g.on, false); assert.equal(l.on, false); assert.equal(l.streak, 0);
-  assert.equal(g.href, '/join/?next=' + encodeURIComponent('/en/2026-11-18/'));
+  assert.equal(g.href, '/login/?next=' + encodeURIComponent('/en/2026-11-18/'));
 });
 
 test('저장 키: 로그인 흐름이 쓰는 키와 위 메뉴가 읽는 키가 같다', () => {

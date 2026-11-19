@@ -20,6 +20,19 @@ class AccountPagesTest(unittest.TestCase):
         for f, s in before.items():
             self.assertEqual((ROOT / f / "index.html").read_text(encoding="utf-8"), s, f)
 
+    def test_login_page_has_no_consent_and_agree_page_does(self):
+        # 로그인 화면(K32)은 버튼만, 처음인 계정은 콜백이 동의 화면(K33)으로 보낸다
+        s = (ROOT / "login/index.html").read_text(encoding="utf-8")
+        self.assertNotIn('id="agreeAge"', s)
+        for needle in ('id="kakao"', 'id="google"', 'id="toJoin"', 'id="inApp"', "/assets/join.js?v="):
+            self.assertIn(needle, s)
+        a = (ROOT / "join/agree/index.html").read_text(encoding="utf-8")
+        for needle in ('id="agreeAge"', 'id="agreePriv"', 'id="agreeGo"', 'id="agreeNo"', "/assets/join-agree.js?v="):
+            self.assertIn(needle, a)
+        cb = (ROOT / "assets/join-callback.js").read_text(encoding="utf-8")
+        self.assertIn('saved.agreed === false && first', cb)
+        self.assertIn("agreed: !login", (ROOT / "assets/join.js").read_text(encoding="utf-8"))
+
     def test_join_has_consents_and_two_providers(self):
         s = (ROOT / "join/index.html").read_text(encoding="utf-8")
         for needle in ('id="agreeAge"', 'id="agreePriv"', 'id="kakao" aria-disabled="true"', 'id="google" aria-disabled="true"', 'id="needMsg"', 'id="inApp"',

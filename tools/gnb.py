@@ -214,7 +214,7 @@ def header_html(lang=None, mail="#subscribe", on_archive=False):
 
 
 # 로그인 버튼. 로그인 상태(dkh-auth), 닉네임(dkh-me), 공부한 날(drill:v1 의 days)은 브라우저 저장값으로 SCRIPT 가 그린다
-ME_HTML = ('<a class="gnb-tap gnb-me" id="gnb-me" href="/join/" aria-label="로그인"><span class="gnb-pill">'
+ME_HTML = ('<a class="gnb-tap gnb-me" id="gnb-me" href="/login/" aria-label="로그인"><span class="gnb-pill">'
            '<span class="gm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="gm-av"></span><span class="gm-t">로그인</span>'
            '<span class="gm-b" hidden></span></span></a>')
 
@@ -234,8 +234,8 @@ SCRIPT = r"""<script id="gnb-js">(function(){
       me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
       me.querySelector('.gm-t').textContent='마이페이지';
       var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
-    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
-      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0&&location.pathname.indexOf('/login/')!==0){
+      me.href='/login/?next='+encodeURIComponent(location.pathname);
     }
   }catch(e){}}
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');

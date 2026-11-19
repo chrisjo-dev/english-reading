@@ -215,8 +215,8 @@
       me.querySelector('.gm-av').textContent=nick?nick.charAt(0):'나';
       me.querySelector('.gm-t').textContent='마이페이지';
       var b=me.querySelector('.gm-b');if(n){b.textContent='\ud83d\udd25'+n;b.hidden=false;}
-    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0){
-      me.href='/join/?next='+encodeURIComponent(location.pathname);
+    }else if(/^\/[A-Za-z0-9._\/-]*$/.test(location.pathname)&&location.pathname.indexOf('/join/')!==0&&location.pathname.indexOf('/login/')!==0){
+      me.href='/login/?next='+encodeURIComponent(location.pathname);
     }
   }catch(e){}}
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
