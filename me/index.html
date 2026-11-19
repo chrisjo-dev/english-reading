@@ -55,6 +55,7 @@
   .toc { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
   .toc a { padding: 6px 11px; border-radius: 999px; background: var(--bg); font-size: 13px; font-weight: 600; color: var(--sub); text-decoration: none; }
   .site-footer a.cur { color: #191f28; font-weight: 700; }
+  [hidden] { display: none !important; }  /* .pend, .need-msg, .gbtn 처럼 display 를 정한 요소도 hidden 이면 숨긴다 */
   :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
   .card h1 { font-size: 22px; margin: 2px 0 16px; }
@@ -328,5 +329,5 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=3" defer></script>
-<script src="/assets/me.js?v=8" defer></script>
+<script src="/assets/me.js?v=9" defer></script>
 </body></html>
