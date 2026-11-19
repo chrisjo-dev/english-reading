@@ -155,7 +155,7 @@
     e.preventDefault();
     var v = $("mail").value.trim();
     if (!RE.test(v) || v.length > 254) { mailSay("이메일 주소를 다시 확인해 주세요.", true); return; }
-    save({ email: v, mail_opt_in: true }).then(function () { $("mailForm").hidden = true; mailSay("저장했어요."); },
+    save({ email: v, mail_opt_in: true }).then(function () { $("mailForm").hidden = true; mailSay("저장했어요. 영어 확인 메일의 버튼을 누르면 시작돼요."); },
       function () { mailSay("저장하지 못했어요. 잠시 뒤에 다시 해 주세요.", true); });
   });
 

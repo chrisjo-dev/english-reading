@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { fireGtag } from "@/lib/gtag";
-import { FULL_NOTE, SEATS_NOTE, useJoinHref, useMailFull } from "./forms";
+import { MEMBER_CTA, joinNote, useJoinHref, useMailFull, useMember } from "./forms";
 
 const HELP = {
   en: "영어 지문 / CEFR B1~B2, 최근 소식과 생활 글을 번갈아 읽어요",
@@ -41,6 +41,7 @@ export default function HeroForm({ stats }: { stats: string }) {
   const levels = LEVELS_BY_LANG[lang] ?? [];
   const href = useJoinHref(lang, level);
   const full = useMailFull();
+  const member = useMember();
   return (
     <div className="c3-form">
       <div className="c3-form-top">
@@ -87,9 +88,9 @@ export default function HeroForm({ stats }: { stats: string }) {
       )}
       <span className="seat-pill">선착순 100명 무료</span>
       <a className="join-cta" href={href} onClick={() => fireGtag("subscribe_submit", { lang, level, placement: "hero" })}>
-        가입하고 아침 메일 받기
+        {member ? MEMBER_CTA : "가입하고 아침 메일 받기"}
       </a>
-      <p className="join-note">{full ? FULL_NOTE : SEATS_NOTE}</p>
+      <p className="join-note">{joinNote(full, member)}</p>
       <p className="mono c3-help" aria-live="polite">
         {HELP[lang]}
       </p>

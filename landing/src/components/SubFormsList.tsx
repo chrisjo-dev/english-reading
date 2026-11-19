@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import { fireGtag } from "@/lib/gtag";
 import { sendEvent } from "@/lib/event";
-import { FULL_NOTE, SEATS_NOTE, useJoinHref, useMailFull } from "./forms";
+import { MEMBER_CTA, joinNote, useJoinHref, useMailFull, useMember } from "./forms";
 
 const FORMS = [
   { lang: "en", name: "영어", label: "영어 지문 받기", level: "EN B1~B2", desc: "최근 소식과 생활 글로 읽는 영어 지문" },
@@ -39,6 +39,7 @@ function SubForm({ style }: { style?: React.CSSProperties }) {
   const levels = LEVELS_BY_LANG[f.lang] ?? [];
   const href = useJoinHref(f.lang, level);
   const full = useMailFull();
+  const member = useMember();
   const pick = (n: number) => {
     const next = (n + FORMS.length) % FORMS.length;
     setI(next);
@@ -105,9 +106,9 @@ function SubForm({ style }: { style?: React.CSSProperties }) {
         </fieldset>
         <span className="seat-pill">선착순 100명 무료</span>
         <a className="join-cta" href={href} onClick={() => fireGtag("subscribe_submit", { lang: f.lang, level, placement: "section" })}>
-          가입하고 아침 메일 받기
+          {member ? MEMBER_CTA : "가입하고 아침 메일 받기"}
         </a>
-        <p className="join-note">{full ? FULL_NOTE : SEATS_NOTE}</p>
+        <p className="join-note">{joinNote(full, member)}</p>
       </div>
     </div>
   );

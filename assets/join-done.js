@@ -22,6 +22,11 @@
         $("dWhat").textContent = NAME[lang] + " " + (lv ? "중급" : "기초") + " (" + RANGE[lang][lv] + ")";
         $("dAddr").textContent = p.email || "";
         $("dLead").textContent = "매일 07:00 전후에 오늘의 " + NAME[lang] + " 지문 한 편을 보내 드려요.";
+        // 돌아갈 곳이 없으면(첫 화면에서 옴) "오늘 지문 읽기"는 고른 언어의 오늘 지문으로
+        if (next === "/") fetch("/latest.json", { cache: "no-store" }).then(function (x) { return x.json(); }).then(function (d) {
+          var x = d && d.langs && d.langs[lang];
+          if (x && x.latest) $("dGo").href = "/" + lang + "/" + x.latest + "/";
+        }).catch(function () {});
         if (p.mail_wait || (seats && seats.taken >= seats.cap)) {
           $("dTitle").textContent = "대기 명단에 올려 드렸어요";
           $("dWait").hidden = false; $("dLead").hidden = true;
