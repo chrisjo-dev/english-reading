@@ -5,7 +5,7 @@ import { readMe } from "@/lib/me";
 // 메일은 가입한 사람만 받는다(2026-11-18, 시안 design/kakao-login K20). 구독 버튼은 가입 화면으로 보낸다.
 // 고른 언어와 수준을 가입 화면(K21)이 그대로 채운다. 이미 로그인했으면 마이페이지 메일 칸으로 보낸다.
 export function joinHref(lang: string, level: string): string {
-  if (readMe().on) return "/me/#mailcard";
+  if (readMe().on) return "/me/?" + new URLSearchParams({ mail: "1", lang, level }).toString() + "#mailcard";
   return "/join/?" + new URLSearchParams({ mail: "1", lang, level, next: "/", from: "landing" }).toString();
 }
 

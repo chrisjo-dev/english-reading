@@ -333,6 +333,13 @@
   }catch(e){}}
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
   if(!chip||!sheet||!scrim)return;
+  // 메일로 받기(시안 K28b): 아래 메일 칸으로 내리지 않고 바로 가입 화면으로. 이 지문의 언어와 수준을 채운다. 로그인했으면 마이페이지 메일 칸
+  [].forEach.call(document.querySelectorAll('.gnb-mail'),function(a){a.addEventListener('click',function(e){try{
+    var p=location.pathname,l=p.split('/')[1],q={mail:'1',lang:/^(en|ja|de)$/.test(l)?l:'en',level:document.documentElement.classList.contains('level-a')?'a':'b'};
+    if(localStorage.getItem('dkh-auth')!==null){e.preventDefault();location.href='/me/?'+new URLSearchParams(q)+'#mailcard';return;}
+    q.next=/^\/[A-Za-z0-9._\/-]*$/.test(p)&&p.indexOf('/join/')!==0&&p.length<=100?p:'/';q.from='gnb';
+    e.preventDefault();location.href='/join/?'+new URLSearchParams(q);
+  }catch(x){}});});
   var root=document.documentElement;
   // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
   var tm=null,tprev=null;

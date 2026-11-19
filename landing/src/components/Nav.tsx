@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { fireGtag } from "@/lib/gtag";
 import { readMe, type Me } from "@/lib/me";
 import { useLatest } from "./ref/latest";
+import { useJoinHref } from "./forms";
 
 // 위 메뉴(GNB) 시안 A(design/gnb-mobile G01, G02, G03). 지문 페이지와 같은 마크업, 같은 CSS(../app/gnb.css)를 쓴다.
 // 첫 화면은 언어가 정해지지 않아 칩 문구를 "언어"로 두고, 시트에는 언어별 단어 복습 줄을 넣지 않는다.
@@ -48,6 +49,8 @@ const Right = () => (
 export default function Nav() {
   const data = useLatest().langs;
   const [open, setOpen] = useState(false);
+  // 메일로 받기는 아래 메일 칸으로 내리지 않고 바로 가입 화면으로(시안 K28b). 로그인했으면 마이페이지 메일 칸
+  const mailHref = useJoinHref("en", "b");
   const chip = useRef<HTMLButtonElement>(null);
   const sheet = useRef<HTMLDivElement>(null);
   const today = (c: string) => (data[c]?.latest ? `/${c}/${data[c].latest}/` : `/${c}/`);
@@ -138,7 +141,7 @@ export default function Nav() {
               <Down />
             </span>
           </button>
-          <a className="gnb-tap gnb-mail" href="#subscribe">
+          <a className="gnb-tap gnb-mail" href={mailHref}>
             <span className="gnb-pill">메일로 받기</span>
           </a>
           <MeButton />

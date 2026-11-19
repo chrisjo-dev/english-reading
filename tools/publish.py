@@ -1047,7 +1047,7 @@ def rebuild_info_pages():
 
 # 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
 # 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
-ACCOUNT_V = "6"
+ACCOUNT_V = "7"
 ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
   .card h1 { font-size: 22px; margin: 2px 0 16px; }
@@ -1065,7 +1065,19 @@ ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d
   .kbtn, .gbtn { font: inherit; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
   .kbtn { border: 0; background: #fee500; color: rgba(0,0,0,.85); }
   .gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
-  .kbtn:disabled, .gbtn:disabled { opacity: .45; cursor: default; }
+  .kbtn:disabled, .gbtn:disabled, .kbtn.off, .gbtn.off { opacity: .45; cursor: default; }
+  .agree.need { border: 1.5px solid var(--coral); border-radius: 12px; padding: 14px; background: var(--coral-soft); }
+  .need-msg { display: flex; align-items: center; gap: 6px; margin: -4px 0 14px; font-size: 13.5px; font-weight: 700; color: var(--coral); }
+  .need-msg i { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--coral); color: #fff; font-style: normal; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .inapp { margin: 0 0 14px; padding: 14px; border-radius: 12px; background: var(--blue-soft); }
+  .inapp b { display: block; font-size: 15px; font-weight: 700; }
+  .inapp p { font-size: 13px; color: var(--sub); line-height: 1.55; margin: 4px 0 12px; }
+  .inapp .acts { display: flex; gap: 8px; }
+  .inapp .acts button { font: inherit; flex: 1; height: 44px; border-radius: 10px; font-size: 14.5px; font-weight: 700; cursor: pointer; }
+  .inapp .acts .pri { border: 0; background: var(--blue); color: #fff; }
+  .inapp .acts .sec { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; }
+  .inapp p.how { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; }
+  .gnote { font-size: 12.5px; color: var(--muted); text-align: center; margin: 6px 0 0; }
   .kbtn svg, .gbtn svg { width: 18px; height: 18px; flex: none; }
   .card p.note { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin: 12px 0 0; }
   .card p.msg { font-size: 14px; color: var(--sub); margin: 12px 0 0; }
@@ -1160,11 +1172,17 @@ def account_pages():
         '<label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label>'
         '<label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요'
         '<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div>'
+        '<p class="need-msg" id="needMsg" hidden><i>!</i>필수 항목 두 개에 동의하면 로그인할 수 있어요</p>'
         '<div class="optbox"><label class="chk"><input type="checkbox" id="agreeMail"><span><em class="op">선택</em><b id="mailLabel" style="font-weight:400">매일 아침 지문 메일도 받을래요</b>'
         '<small>Google은 로그인한 이메일로 보내요. 카카오는 다음 화면에서 받을 주소를 적어 주세요. 언제든 끌 수 있어요.</small></span></label>'
         + PICK + '</div>'
-        f'<button class="kbtn" type="button" id="kakao" disabled>{drill.KAKAO_ICON}카카오로 시작하기</button>'
-        f'<button class="gbtn" type="button" id="google" disabled>{drill.GOOGLE_ICON}Google로 시작하기</button>'
+        '<div class="inapp" id="inApp" hidden><b>Google 로그인은 브라우저에서 열어 주세요</b>'
+        '<p>스레드, 인스타그램, 카카오톡 같은 앱 안 화면에서는 Google이 로그인을 막아요. 카카오 로그인은 여기서 바로 돼요.</p>'
+        '<div class="acts"><button type="button" class="pri" id="openOut" hidden>브라우저로 열기</button><button type="button" class="sec" id="copyLink">링크 복사</button></div>'
+        '<p class="how">"브라우저로 열기"가 안 되면 오른쪽 위 메뉴(⋯)에서 "브라우저에서 열기"를 눌러 주세요. 고른 메일 설정은 그대로 이어져요.</p></div>'
+        f'<button class="kbtn off" type="button" id="kakao" aria-disabled="true">{drill.KAKAO_ICON}카카오로 시작하기</button>'
+        f'<button class="gbtn off" type="button" id="google" aria-disabled="true">{drill.GOOGLE_ICON}Google로 시작하기</button>'
+        '<p class="gnote" id="gNote" hidden>Google은 브라우저에서 열면 눌러져요</p>'
         '<p class="msg" id="msg" role="status" hidden></p>'
         '<p class="note">가입은 무료이고 결제는 없어요. 탈퇴하면 기록은 바로 지워져요.</p></section>\n'
     )

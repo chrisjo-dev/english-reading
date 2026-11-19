@@ -70,7 +70,19 @@
   .kbtn, .gbtn { font: inherit; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
   .kbtn { border: 0; background: #fee500; color: rgba(0,0,0,.85); }
   .gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
-  .kbtn:disabled, .gbtn:disabled { opacity: .45; cursor: default; }
+  .kbtn:disabled, .gbtn:disabled, .kbtn.off, .gbtn.off { opacity: .45; cursor: default; }
+  .agree.need { border: 1.5px solid var(--coral); border-radius: 12px; padding: 14px; background: var(--coral-soft); }
+  .need-msg { display: flex; align-items: center; gap: 6px; margin: -4px 0 14px; font-size: 13.5px; font-weight: 700; color: var(--coral); }
+  .need-msg i { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--coral); color: #fff; font-style: normal; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .inapp { margin: 0 0 14px; padding: 14px; border-radius: 12px; background: var(--blue-soft); }
+  .inapp b { display: block; font-size: 15px; font-weight: 700; }
+  .inapp p { font-size: 13px; color: var(--sub); line-height: 1.55; margin: 4px 0 12px; }
+  .inapp .acts { display: flex; gap: 8px; }
+  .inapp .acts button { font: inherit; flex: 1; height: 44px; border-radius: 10px; font-size: 14.5px; font-weight: 700; cursor: pointer; }
+  .inapp .acts .pri { border: 0; background: var(--blue); color: #fff; }
+  .inapp .acts .sec { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; }
+  .inapp p.how { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; }
+  .gnote { font-size: 12.5px; color: var(--muted); text-align: center; margin: 6px 0 0; }
   .kbtn svg, .gbtn svg { width: 18px; height: 18px; flex: none; }
   .card p.note { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin: 12px 0 0; }
   .card p.msg { font-size: 14px; color: var(--sub); margin: 12px 0 0; }
@@ -255,6 +267,13 @@
   }catch(e){}}
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
   if(!chip||!sheet||!scrim)return;
+  // 메일로 받기(시안 K28b): 아래 메일 칸으로 내리지 않고 바로 가입 화면으로. 이 지문의 언어와 수준을 채운다. 로그인했으면 마이페이지 메일 칸
+  [].forEach.call(document.querySelectorAll('.gnb-mail'),function(a){a.addEventListener('click',function(e){try{
+    var p=location.pathname,l=p.split('/')[1],q={mail:'1',lang:/^(en|ja|de)$/.test(l)?l:'en',level:document.documentElement.classList.contains('level-a')?'a':'b'};
+    if(localStorage.getItem('dkh-auth')!==null){e.preventDefault();location.href='/me/?'+new URLSearchParams(q)+'#mailcard';return;}
+    q.next=/^\/[A-Za-z0-9._\/-]*$/.test(p)&&p.indexOf('/join/')!==0&&p.length<=100?p:'/';q.from='gnb';
+    e.preventDefault();location.href='/join/?'+new URLSearchParams(q);
+  }catch(x){}});});
   var root=document.documentElement;
   // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
   var tm=null,tprev=null;
@@ -302,5 +321,5 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=3" defer></script>
-<script src="/assets/join-callback.js?v=6" defer></script>
+<script src="/assets/join-callback.js?v=7" defer></script>
 </body></html>

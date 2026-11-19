@@ -22,7 +22,7 @@ class AccountPagesTest(unittest.TestCase):
 
     def test_join_has_consents_and_two_providers(self):
         s = (ROOT / "join/index.html").read_text(encoding="utf-8")
-        for needle in ('id="agreeAge"', 'id="agreePriv"', 'id="kakao" disabled', 'id="google" disabled',
+        for needle in ('id="agreeAge"', 'id="agreePriv"', 'id="kakao" aria-disabled="true"', 'id="google" aria-disabled="true"', 'id="needMsg"', 'id="inApp"',
                        'href="/privacy/#account"', "/assets/auth.js?v=", "/assets/join.js?v=", 'name="robots" content="noindex"'):
             self.assertIn(needle, s)
         self.assertLess(s.index("/assets/auth.js"), s.index("/assets/join.js"))

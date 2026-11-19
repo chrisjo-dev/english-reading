@@ -72,7 +72,19 @@
   .kbtn, .gbtn { font: inherit; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
   .kbtn { border: 0; background: #fee500; color: rgba(0,0,0,.85); }
   .gbtn { margin-top: 8px; background: #fff; border: 1px solid #747775; color: #1f1f1f; font-weight: 600; }
-  .kbtn:disabled, .gbtn:disabled { opacity: .45; cursor: default; }
+  .kbtn:disabled, .gbtn:disabled, .kbtn.off, .gbtn.off { opacity: .45; cursor: default; }
+  .agree.need { border: 1.5px solid var(--coral); border-radius: 12px; padding: 14px; background: var(--coral-soft); }
+  .need-msg { display: flex; align-items: center; gap: 6px; margin: -4px 0 14px; font-size: 13.5px; font-weight: 700; color: var(--coral); }
+  .need-msg i { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--coral); color: #fff; font-style: normal; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .inapp { margin: 0 0 14px; padding: 14px; border-radius: 12px; background: var(--blue-soft); }
+  .inapp b { display: block; font-size: 15px; font-weight: 700; }
+  .inapp p { font-size: 13px; color: var(--sub); line-height: 1.55; margin: 4px 0 12px; }
+  .inapp .acts { display: flex; gap: 8px; }
+  .inapp .acts button { font: inherit; flex: 1; height: 44px; border-radius: 10px; font-size: 14.5px; font-weight: 700; cursor: pointer; }
+  .inapp .acts .pri { border: 0; background: var(--blue); color: #fff; }
+  .inapp .acts .sec { background: #fff; color: var(--ink); border: 1.5px solid #e2e6ea; }
+  .inapp p.how { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; }
+  .gnote { font-size: 12.5px; color: var(--muted); text-align: center; margin: 6px 0 0; }
   .kbtn svg, .gbtn svg { width: 18px; height: 18px; flex: none; }
   .card p.note { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin: 12px 0 0; }
   .card p.msg { font-size: 14px; color: var(--sub); margin: 12px 0 0; }
@@ -237,7 +249,7 @@
 <!-- /gnb -->
 <main>
 <div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1><p>조금만 기다려 주세요. 단어 외우기와 문제 풀기는 지금도 쓸 수 있어요.</p></div>
-<section class="card" id="joinBox"><div class="step" id="jStep">무료로 시작하기</div><h1 id="jTitle">단어 기록을 어디서나 이어서</h1><div class="ok-box" id="already" hidden>이미 로그인했어요. <a id="alreadyNext" href="/">이어서 공부하러 가기</a></div><div class="perks"><div class="perk"><i>1</i><div><b>외운 단어와 복습 날짜 저장</b><span>기기를 바꿔도 내일 복습할 단어가 그대로 나와요.</span></div></div><div class="perk"><i>2</i><div><b>연속 학습일</b><span>하루 한 지문, 며칠째 이어 가는지 보여 드려요.</span></div></div><div class="perk" id="perk3"><i>3</i><div><b>이 기기의 기록도 함께</b><span>로그인 전에 푼 기록은 첫 로그인 때 그대로 옮겨 드려요.</span></div></div></div><div class="agree"><label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label><label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div><div class="optbox"><label class="chk"><input type="checkbox" id="agreeMail"><span><em class="op">선택</em><b id="mailLabel" style="font-weight:400">매일 아침 지문 메일도 받을래요</b><small>Google은 로그인한 이메일로 보내요. 카카오는 다음 화면에서 받을 주소를 적어 주세요. 언제든 끌 수 있어요.</small></span></label><div class="pick" id="mailPick" hidden><div class="h">받을 메일</div><div class="seg" id="pickLang"><button type="button" data-v="en">영어</button><button type="button" data-v="ja">일본어</button><button type="button" data-v="de">독일어</button></div><div class="seg" id="pickLevel"><button type="button" data-v="a">기초<small id="rangeA">A2~B1</small></button><button type="button" data-v="b">중급<small id="rangeB">B1~B2</small></button></div><p class="t" id="pickNote">매일 07:00 전후에 한 통 와요. 가입한 뒤 마이페이지에서 바꿀 수 있어요.</p></div></div><button class="kbtn" type="button" id="kakao" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하기</button><button class="gbtn" type="button" id="google" disabled><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</button><p class="msg" id="msg" role="status" hidden></p><p class="note">가입은 무료이고 결제는 없어요. 탈퇴하면 기록은 바로 지워져요.</p></section>
+<section class="card" id="joinBox"><div class="step" id="jStep">무료로 시작하기</div><h1 id="jTitle">단어 기록을 어디서나 이어서</h1><div class="ok-box" id="already" hidden>이미 로그인했어요. <a id="alreadyNext" href="/">이어서 공부하러 가기</a></div><div class="perks"><div class="perk"><i>1</i><div><b>외운 단어와 복습 날짜 저장</b><span>기기를 바꿔도 내일 복습할 단어가 그대로 나와요.</span></div></div><div class="perk"><i>2</i><div><b>연속 학습일</b><span>하루 한 지문, 며칠째 이어 가는지 보여 드려요.</span></div></div><div class="perk" id="perk3"><i>3</i><div><b>이 기기의 기록도 함께</b><span>로그인 전에 푼 기록은 첫 로그인 때 그대로 옮겨 드려요.</span></div></div></div><div class="agree"><label class="chk"><input type="checkbox" id="agreeAge"><span><em>필수</em>만 14세 이상이에요</span></label><label class="chk"><input type="checkbox" id="agreePriv"><span><em>필수</em><a href="/privacy/#account" target="_blank">개인정보 수집과 이용</a>에 동의해요<small>로그인에 필요한 정보만 받아요. 카카오는 닉네임, Google은 이메일과 이름이에요.</small></span></label></div><p class="need-msg" id="needMsg" hidden><i>!</i>필수 항목 두 개에 동의하면 로그인할 수 있어요</p><div class="optbox"><label class="chk"><input type="checkbox" id="agreeMail"><span><em class="op">선택</em><b id="mailLabel" style="font-weight:400">매일 아침 지문 메일도 받을래요</b><small>Google은 로그인한 이메일로 보내요. 카카오는 다음 화면에서 받을 주소를 적어 주세요. 언제든 끌 수 있어요.</small></span></label><div class="pick" id="mailPick" hidden><div class="h">받을 메일</div><div class="seg" id="pickLang"><button type="button" data-v="en">영어</button><button type="button" data-v="ja">일본어</button><button type="button" data-v="de">독일어</button></div><div class="seg" id="pickLevel"><button type="button" data-v="a">기초<small id="rangeA">A2~B1</small></button><button type="button" data-v="b">중급<small id="rangeB">B1~B2</small></button></div><p class="t" id="pickNote">매일 07:00 전후에 한 통 와요. 가입한 뒤 마이페이지에서 바꿀 수 있어요.</p></div></div><div class="inapp" id="inApp" hidden><b>Google 로그인은 브라우저에서 열어 주세요</b><p>스레드, 인스타그램, 카카오톡 같은 앱 안 화면에서는 Google이 로그인을 막아요. 카카오 로그인은 여기서 바로 돼요.</p><div class="acts"><button type="button" class="pri" id="openOut" hidden>브라우저로 열기</button><button type="button" class="sec" id="copyLink">링크 복사</button></div><p class="how">"브라우저로 열기"가 안 되면 오른쪽 위 메뉴(⋯)에서 "브라우저에서 열기"를 눌러 주세요. 고른 메일 설정은 그대로 이어져요.</p></div><button class="kbtn off" type="button" id="kakao" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.5 2 10.8c0 2.78 1.87 5.22 4.68 6.6l-.95 3.48c-.08.3.26.55.52.38l4.15-2.74c.52.06 1.06.1 1.6.1 5.52 0 10-3.5 10-7.82S17.52 3 12 3z"/></svg>카카오로 시작하기</button><button class="gbtn off" type="button" id="google" aria-disabled="true"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 시작하기</button><p class="gnote" id="gNote" hidden>Google은 브라우저에서 열면 눌러져요</p><p class="msg" id="msg" role="status" hidden></p><p class="note">가입은 무료이고 결제는 없어요. 탈퇴하면 기록은 바로 지워져요.</p></section>
 </main>
 <footer class="site-footer"><a href="/about/">소개</a><a href="/privacy/">개인정보처리방침</a><a href="/contact/">연락처</a></footer>
 <script id="gnb-js">(function(){
@@ -260,6 +272,13 @@
   }catch(e){}}
   var chip=document.getElementById('gnb-chip'),sheet=document.getElementById('gnb-sheet'),scrim=document.getElementById('gnb-scrim');
   if(!chip||!sheet||!scrim)return;
+  // 메일로 받기(시안 K28b): 아래 메일 칸으로 내리지 않고 바로 가입 화면으로. 이 지문의 언어와 수준을 채운다. 로그인했으면 마이페이지 메일 칸
+  [].forEach.call(document.querySelectorAll('.gnb-mail'),function(a){a.addEventListener('click',function(e){try{
+    var p=location.pathname,l=p.split('/')[1],q={mail:'1',lang:/^(en|ja|de)$/.test(l)?l:'en',level:document.documentElement.classList.contains('level-a')?'a':'b'};
+    if(localStorage.getItem('dkh-auth')!==null){e.preventDefault();location.href='/me/?'+new URLSearchParams(q)+'#mailcard';return;}
+    q.next=/^\/[A-Za-z0-9._\/-]*$/.test(p)&&p.indexOf('/join/')!==0&&p.length<=100?p:'/';q.from='gnb';
+    e.preventDefault();location.href='/join/?'+new URLSearchParams(q);
+  }catch(x){}});});
   var root=document.documentElement;
   // 시트가 열린 동안 iOS 상태 표시줄도 어둡게: 흰 바탕 위 rgba(16,24,40,.40) 합성색. 닫으면 원래대로(없었으면 지운다)
   var tm=null,tprev=null;
@@ -307,5 +326,5 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=3" defer></script>
-<script src="/assets/join.js?v=6" defer></script>
+<script src="/assets/join.js?v=7" defer></script>
 </body></html>

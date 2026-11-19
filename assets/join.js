@@ -47,9 +47,30 @@
 
   function say(text, err) { msg.textContent = text; msg.classList.toggle("err", !!err); msg.hidden = !text; }
   function ok() { return A.ready && age.checked && priv.checked && !busy; }
+  // 앱 안 브라우저(스레드, 인스타그램, 카카오톡 등)는 Google 이 로그인을 막는다(disallowed_useragent). 시안 K29
+  var UA = navigator.userAgent, inApp = /KAKAOTALK|Instagram|FBAN|FBAV|Barcelona|Threads|NAVER\(inapp|\bLine\/|DaumApps|everytimeApp/i.test(UA);
+  // 버튼은 막지 않고 흐리게만 둔다: 동의 전에 누르면 무엇을 해야 하는지 알려 준다(시안 K27)
   function update() {
-    kakao.disabled = !(ok() && A.kakaoClientId);
-    google.disabled = !ok();
+    kakao.disabled = !A.kakaoClientId || busy;
+    google.disabled = inApp || busy;
+    kakao.classList.toggle("off", !ok()); kakao.setAttribute("aria-disabled", String(!ok()));
+    google.classList.toggle("off", !ok() || inApp); google.setAttribute("aria-disabled", String(!ok() || inApp));
+    if (age.checked && priv.checked) need(false);
+  }
+  function need(on) {
+    document.querySelector(".agree").classList.toggle("need", on); $("needMsg").hidden = !on;
+    if (on) document.querySelector(".agree").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+  function go() {
+    if (busy || !A.ready) return false;
+    if (!age.checked || !priv.checked) { need(true); return false; }
+    return true;
+  }
+  function here() {  // 지금 고른 메일 설정을 실은 이 화면 주소(밖 브라우저에서 그대로 이어지게)
+    var rq = { next: next };
+    if (from) rq.from = from;
+    if (mailOpt.checked) { rq.mail = "1"; rq.lang = mailLang; rq.level = mailLevel; }
+    return location.origin + "/join/?" + new URLSearchParams(rq).toString();
   }
   function remember(p) {
     try { localStorage.setItem(NEXT_KEY, JSON.stringify({ next: next, mail: !!(mailOpt && mailOpt.checked), lang: mailLang, level: mailLevel, at: Date.now() })); } catch (e) {}
@@ -69,11 +90,27 @@
   });
 
   [age, priv].forEach(function (x) { x.addEventListener("change", update); });
+  if (inApp) {
+    $("inApp").hidden = false; $("gNote").hidden = false;
+    var kakaoApp = /KAKAOTALK/i.test(UA), android = /Android/i.test(UA);
+    $("openOut").hidden = !(kakaoApp || android);  // iOS 의 다른 앱은 밖으로 여는 주소가 없어 메뉴 안내만 둔다
+    $("openOut").addEventListener("click", function () {
+      var u = here();
+      location.href = kakaoApp ? "kakaotalk://web/openExternal?url=" + encodeURIComponent(u)
+        : "intent://" + u.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
+    });
+    $("copyLink").addEventListener("click", function () {
+      var u = here();
+      (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () {
+        say("링크를 복사했어요. Safari나 Chrome 주소창에 붙여 넣어 주세요.");
+      }, function () { say("복사하지 못했어요. 오른쪽 위 메뉴(⋯)에서 \"브라우저에서 열기\"를 눌러 주세요.", true); });
+    });
+  }
   update();
   ga("login_view", { from: from || "direct" });
 
   kakao.addEventListener("click", function () {
-    if (kakao.disabled) return;
+    if (kakao.disabled || !go()) return;
     busy = true; update(); say("카카오로 이동하고 있어요.");
     ga("login_start", { provider: "kakao", from: from || "direct" });
     var state = random(), nonce = random();
@@ -87,7 +124,7 @@
   });
 
   google.addEventListener("click", function () {
-    if (google.disabled) return;
+    if (google.disabled || !go()) return;
     busy = true; update(); say("Google로 이동하고 있어요.");
     ga("login_start", { provider: "google", from: from || "direct" });
     remember({ p: "google", at: Date.now() });
