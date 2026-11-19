@@ -17,7 +17,7 @@
   try { saved = JSON.parse(localStorage.getItem(NEXT_KEY) || "null"); localStorage.removeItem(NEXT_KEY); } catch (e) {}
   if (!saved || !(Date.now() - saved.at < NEXT_TTL)) saved = { next: "/", mail: false };
   var next = A.safeNext(saved.next);
-  try { oidc = JSON.parse(sessionStorage.getItem(OIDC_KEY) || "null"); sessionStorage.removeItem(OIDC_KEY); } catch (e) {}
+  try { oidc = JSON.parse(localStorage.getItem(OIDC_KEY) || "null"); localStorage.removeItem(OIDC_KEY); } catch (e) {}
 
   function $(id) { return document.getElementById(id); }
   function fail(text) {
@@ -47,7 +47,7 @@
     return;
   }
 
-  var needEmail = false, mailDone = false;
+  var needEmail = false, mailDone = false, mailRetry = false;
   var n = count();
   if (n) $("status").textContent = "이 기기의 단어 기록 " + n + "개를 함께 옮기고 있어요.";
 
@@ -70,6 +70,7 @@
       var uid = r.data.user.id;
       // 위 메뉴의 마이페이지 동그라미가 쓰는 닉네임(첫 글자)을 이 기기에 둔다
       var nick = c.from("profiles").select("nickname, email").eq("user_id", uid).maybeSingle().then(function (p) {
+        if (p.error) throw p.error;
         try { localStorage.setItem("dkh-me", JSON.stringify({ n: (p.data && p.data.nickname) || "" })); } catch (e) {}
         // 가입 화면에서 메일 받기를 골랐으면 고른 언어, 수준과 함께 켠다(시안 K21).
         // 주소가 없으면(카카오) 주소 적는 화면(K17), 있으면(Google) 가입 완료 화면(K24)으로 보낸다.
@@ -79,19 +80,22 @@
             mail_opt_in: true,
             mail_lang: ["en", "ja", "de"].indexOf(saved.lang) >= 0 ? saved.lang : "en",
             mail_level: saved.level === "a" ? "a" : "b"
-          }).eq("user_id", uid).then(function (u) {
-            // 저장하지 못했으면 메일이 간다고 말하지 않는다(마이페이지에서 다시 켤 수 있다)
-            if (u && u.error) { needEmail = false; mailDone = false; }
+          }).eq("user_id", uid).select("user_id").maybeSingle().then(function (u) {
+            if (u.error || !u.data) throw u.error || new Error("profile not updated");
           });
         }
-      }, function () {});
+      }).catch(function () {
+        // 메일 설정을 저장하지 못했으면 메일이 간다고 말하지 않고, 마이페이지가 고른 설정으로 한 번 더 켜게 한다(me.js)
+        if (saved.mail === true) { needEmail = false; mailDone = false; mailRetry = true; }
+      });
       return Promise.all([A.logEvent(isNew ? "signup" : "login"), A.sync().catch(function () { return null; }), nick]);
     });
   }).then(function () {
     $("title").textContent = "로그인했어요";
     $("status").textContent = "이어서 공부하러 가요.";
     var nq = "?" + new URLSearchParams({ next: next }).toString();
-    location.replace(needEmail ? "/join/email/" + nq : mailDone ? "/join/done/" + nq : next);
+    var mq = "?" + new URLSearchParams({ mail: "1", lang: saved.lang || "en", level: saved.level || "b" }).toString();
+    location.replace(mailRetry ? "/me/" + mq + "#mailcard" : needEmail ? "/join/email/" + nq : mailDone ? "/join/done/" + nq : next);
   }).catch(function () {
     fail("로그인을 마치지 못했어요. 이 기기의 기록은 그대로 남아 있어요.");
   });

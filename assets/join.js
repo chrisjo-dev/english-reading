@@ -2,7 +2,8 @@
 // 카카오: 인가는 여기서 직접 시작하고(닉네임만, OpenID Connect), 콜백이 api Worker 로 id_token 을 받아 signInWithIdToken 한다.
 //   Supabase 의 카카오 OAuth 는 이메일과 프로필 사진을 늘 함께 요청해서 쓰지 않는다(릴리랑과 같은 이유).
 // Google: Supabase OAuth(PKCE)로 보내고, 콜백에서 exchangeCodeForSession 한다.
-// 돌아올 곳(next)은 콜백까지 localStorage 로, 어느 쪽으로 갔는지와 state, nonce 는 sessionStorage 로 넘긴다.
+// 돌아올 곳(next)과 어느 쪽으로 갔는지, state, nonce 는 콜백까지 localStorage 로 넘긴다.
+// (인앱 브라우저는 로그인 뒤 새 창으로 돌아오기도 해서 창마다 따로인 sessionStorage 는 쓰지 않는다. 콜백이 읽자마자 지운다)
 // 리디렉트 주소는 언제나 정확히 <이 주소>/join/callback/ 하나(쿼리 없음). 카카오 콘솔과 Supabase 의 허용 주소와 같아야 한다.
 (function () {
   "use strict";
@@ -25,6 +26,12 @@
     [].forEach.call($("pickLevel").children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === mailLevel)); });
     $("rangeA").textContent = LANGS[mailLang][0]; $("rangeB").textContent = LANGS[mailLang][1];
     $("mailPick").hidden = !mailOpt.checked;
+    // 이미 가입한 사람: 메일 받기를 골랐으면 고른 언어, 수준으로 마이페이지에서 바로 켠다(me.js)
+    var an = $("alreadyNext");
+    if (mailOpt.checked) {
+      an.textContent = "고른 설정으로 아침 메일 켜기";
+      an.href = "/me/?" + new URLSearchParams({ mail: "1", lang: mailLang, level: mailLevel }).toString() + "#mailcard";
+    } else { an.textContent = "이어서 공부하러 가기"; an.href = next; }
   }
   $("pickLang").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { mailLang = b.dataset.v; paintPick(); } });
   $("pickLevel").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { mailLevel = b.dataset.v; paintPick(); } });
@@ -46,7 +53,7 @@
   }
   function remember(p) {
     try { localStorage.setItem(NEXT_KEY, JSON.stringify({ next: next, mail: !!(mailOpt && mailOpt.checked), lang: mailLang, level: mailLevel, at: Date.now() })); } catch (e) {}
-    try { sessionStorage.setItem(OIDC_KEY, JSON.stringify(p)); } catch (e) {}
+    try { localStorage.setItem(OIDC_KEY, JSON.stringify(p)); } catch (e) {}
   }
   function hex(buf) { return Array.prototype.map.call(new Uint8Array(buf), function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); }
   function random() { var b = new Uint8Array(32); crypto.getRandomValues(b); return hex(b); }
@@ -58,7 +65,7 @@
 
   A.isMember().then(function (m) {
     if (!m) return;
-    $("already").hidden = false; $("alreadyNext").href = next;
+    $("already").hidden = false;
   });
 
   [age, priv].forEach(function (x) { x.addEventListener("change", update); });

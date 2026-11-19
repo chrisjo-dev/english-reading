@@ -747,7 +747,7 @@
     <a class="pn-i" href="../2026-11-10/"><img src="../2026-11-10/thumb-sq.jpg" width="76" height="76" alt="" loading="lazy" decoding="async"><span class="pn-t"><span class="pn-d">다음 지문 <b>2026년 11월 10일 화요일</b></span><span class="pn-n">11월 11일 11시 11분에 여는 카니발</span><span class="cat cat-culture">일상과 문화</span></span></a>
     <a class="pn-all" href="../archive/">독일어 지난 지문 전체 보기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
   </nav>
-  <section class="card sub" id="subscribe" data-v="4"><style>.sub .seat-pill{display:block;width:max-content;margin:6px auto 2px;padding:5px 12px;border-radius:999px;background:#ffeeee;color:#f04452;font-size:13px;font-weight:700}.sub form button[type='submit']{flex:1 1 100%;height:54px;font-size:16px}.sub .join-note{flex-basis:100%;margin:2px 0 0;text-align:center;font-size:13px;color:var(--sub)}</style>
+  <section class="card sub" id="subscribe" data-v="6"><style>.sub .seat-pill{display:block;width:max-content;margin:6px auto 2px;padding:5px 12px;border-radius:999px;background:#ffeeee;color:#f04452;font-size:13px;font-weight:700}.sub form button[type='submit']{flex:1 1 100%;height:54px;font-size:16px}.sub .join-note{flex-basis:100%;margin:2px 0 0;text-align:center;font-size:13px;color:var(--sub)}</style>
     <h2>매일 아침 독일어 지문 받기</h2>
     <p>가입하면 새 독일어 지문을 아침에 메일로 보내 드려요.</p>
     <form action="/join/" method="get">
@@ -776,10 +776,11 @@
       var sec=document.getElementById("subscribe");if(!sec)return;
       var f=sec.querySelector("form");if(!f)return;
       f.elements.next.value=location.pathname;
+      if(document.documentElement.classList.contains("level-a")){var ra=f.querySelector('input[name="level"][value="a"]');if(ra)ra.checked=true;}
       f.addEventListener("submit",function(e){
         var cl=f.querySelector('input[name="level"]:checked');
         try{if(typeof gtag==="function")gtag("event","subscribe",{lang:"de",level:cl?cl.value:"b"});}catch(x){}
-        try{if(localStorage.getItem("dkh-auth")){e.preventDefault();location.href="/me/#mailcard";}}catch(x){}
+        try{if(localStorage.getItem("dkh-auth")){e.preventDefault();location.href="/me/?"+new URLSearchParams({mail:"1",lang:"de",level:cl?cl.value:"b"})+"#mailcard";}}catch(x){}
       });
       fetch("https://kfprgssvigujxphfmlth.supabase.co/rest/v1/mail_seats?select=taken,cap&id=eq.1",{headers:{apikey:"sb_publishable_cyzW-kfuGUNsm1mDeyKm1Q_dmlOxt9U"}}).then(function(r){return r.ok?r.json():[];}).then(function(a){
         if(a[0]&&a[0].taken>=a[0].cap)sec.querySelector(".join-note").textContent="선착순 100명이 다 찼어요. 지금 가입하면 대기 명단에 올려 드려요.";

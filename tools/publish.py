@@ -95,7 +95,9 @@ def intro_html(lang):
 
 def _sub_script(lang):
     """메일 받기 칸 스크립트(시안 design/kakao-login K22).
-    - 돌아올 곳(next)을 이 페이지로 채운다. 로그인했으면 가입 화면 대신 마이페이지 메일 칸으로 보낸다.
+    - 돌아올 곳(next)을 이 페이지로 채운다(safeNext 가 쿼리를 받지 않는다. 기초 보기는 페이지가 read_level 로 기억한다).
+    - 기초 지문이면 메일 수준도 기초로 미리 고른다.
+    - 로그인했으면 가입 화면 대신 마이페이지 메일 칸으로 고른 언어, 수준과 함께 보낸다(me.js 가 켠다).
     - 선착순 자리(public.mail_seats)가 찼으면 안내 문구를 대기 명단으로 바꾼다. 못 읽으면 그대로 둔다.
     - GA subscribe 이벤트, :has() 미지원 브라우저의 선택 표시(data-checked)
     """
@@ -104,10 +106,11 @@ def _sub_script(lang):
         f'      var sec=document.getElementById("subscribe");if(!sec)return;\n'
         f'      var f=sec.querySelector("form");if(!f)return;\n'
         f'      f.elements.next.value=location.pathname;\n'
+        f'      if(document.documentElement.classList.contains("level-a")){{var ra=f.querySelector(\'input[name="level"][value="a"]\');if(ra)ra.checked=true;}}\n'
         f'      f.addEventListener("submit",function(e){{\n'
         f'        var cl=f.querySelector(\'input[name="level"]:checked\');\n'
         f'        try{{if(typeof gtag==="function")gtag("event","subscribe",{{lang:"{lang}",level:cl?cl.value:"b"}});}}catch(x){{}}\n'
-        f'        try{{if(localStorage.getItem("dkh-auth")){{e.preventDefault();location.href="/me/#mailcard";}}}}catch(x){{}}\n'
+        f'        try{{if(localStorage.getItem("dkh-auth")){{e.preventDefault();location.href="/me/?"+new URLSearchParams({{mail:"1",lang:"{lang}",level:cl?cl.value:"b"}})+"#mailcard";}}}}catch(x){{}}\n'
         f'      }});\n'
         f'      fetch("{SEATS_URL}",{{headers:{{apikey:"{SEATS_KEY}"}}}}).then(function(r){{return r.ok?r.json():[];}}).then(function(a){{\n'
         f'        if(a[0]&&a[0].taken>=a[0].cap)sec.querySelector(".join-note").textContent="{FULL_NOTE}";\n'
@@ -146,7 +149,7 @@ def sub_html(lang):
     """메일 받기 칸(시안 design/kakao-login K22). 메일은 가입한 사람만 받는다(2026-11-18).
     폼은 가입 화면(/join/)으로 GET 으로 넘긴다: mail=1, lang, level(a=기초, b=중급, 기본 중급), next(스크립트가 채움).
     스크립트가 없어도 가입 화면으로 간다. levels=False 언어는 수준 고르기 없이 같은 버튼만.
-    버전 마커: data-v="4" — patch_page 가 이 값으로 이전 카드를 교체한다.
+    버전 마커: data-v="6" — patch_page 가 이 값으로 이전 카드를 교체한다.
     """
     L = langs.get(lang)
     level_html = ""
@@ -170,7 +173,7 @@ def sub_html(lang):
             '      </fieldset>\n'
         )
     return (
-        '  <section class="card sub" id="subscribe" data-v="4">' + SUB_V4_CSS + "\n"
+        '  <section class="card sub" id="subscribe" data-v="6">' + SUB_V4_CSS + "\n"
         f"    <h2>매일 아침 {L['name']} 지문 받기</h2>\n"
         f"    <p>가입하면 새 {L['name']} 지문을 아침에 메일로 보내 드려요.</p>\n"
         '    <form action="/join/" method="get">\n'
@@ -553,7 +556,7 @@ def patch_page(lang, day):
             page = page.replace("  .intro {", INTRO_CSS + "  .gnb {", 1)
             page = page.replace("</main>", sub_html(lang) + "</main>", 1)
             page = page.replace(TOP_END, "\n" + intro_html(lang) + TOP_END[1:], 1)
-    elif 'id="subscribe" data-v="4"' not in page:  # data-v 는 다른 요소(주제 카드 등)에도 있어 카드 표시로 본다
+    elif 'id="subscribe" data-v="6"' not in page:  # data-v 는 다른 요소(주제 카드 등)에도 있어 카드 표시로 본다
         # 수준 선택이 새로 생긴 언어(ja, 2026-10-29)의 지난 페이지 카드도 같은 방식으로 바꾼다.
         # 이전 버전 카드가 있는 경우: 카드 HTML만 교체하고 수준 선택 CSS를 추가한다
         page = re.sub(
@@ -1044,7 +1047,7 @@ def rebuild_info_pages():
 
 # 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
 # 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
-ACCOUNT_V = "5"
+ACCOUNT_V = "6"
 ACCOUNT_CSS = """  :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
   .card h1 { font-size: 22px; margin: 2px 0 16px; }

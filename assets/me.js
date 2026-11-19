@@ -11,8 +11,20 @@
   function show(id) { ["loading", "signedOut", "signedIn", "notReady"].forEach(function (x) { $(x).hidden = x !== id; }); }
   function say(text, err) { var m = $("msg"); m.textContent = text; m.classList.toggle("err", !!err); m.hidden = !text; }
 
+  // 지문 페이지나 가입 화면에서 "아침 메일 받기"로 왔으면(?mail=1&lang=&level=) 고른 설정으로 메일을 켠다.
+  // 로그인이 풀렸으면 로그인 링크에 같은 설정을 실어 가입 화면으로 넘긴다.
+  var Q = new URLSearchParams(location.search), want = null;
+  if (Q.get("mail") === "1") {
+    want = { mail_lang: ["en", "ja", "de"].indexOf(Q.get("lang")) >= 0 ? Q.get("lang") : "en", mail_level: Q.get("level") === "a" ? "a" : "b" };
+    try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
+  }
+  function signedOut() {
+    if (want) $("signedOut").querySelector("a.btn").href = "/join/?" + new URLSearchParams({ mail: "1", lang: want.mail_lang, level: want.mail_level, next: "/me/" }).toString();
+    show("signedOut");
+  }
+
   if (!A.ready) { show("notReady"); return; }
-  if (!A.hasSession()) { show("signedOut"); return; }
+  if (!A.hasSession()) { signedOut(); return; }
 
   var c = null, uid = null, mail = {}, db = null, latest = null;
   function localDb() { try { return JSON.parse(localStorage.getItem(A.drillKey)) || { items: {} }; } catch (e) { return { items: {} }; } }
@@ -41,7 +53,7 @@
     return c.auth.getSession();
   }).then(function (r) {
     var s = r && r.data && r.data.session;
-    if (!s) { show("signedOut"); return; }
+    if (!s) { signedOut(); return; }
     uid = s.user.id;
     var prov = s.user.app_metadata && s.user.app_metadata.provider;
     c.from("profiles").select("nickname, email, mail_opt_in, mail_verified, mail_lang, mail_level, mail_wait").eq("user_id", uid).maybeSingle().then(function (p) {
@@ -50,6 +62,7 @@
       try { localStorage.setItem("dkh-me", JSON.stringify({ n: row.nickname || "" })); } catch (e) {}
       mailPaint(row);
       $("mailTg").disabled = false; $("mailEdit").disabled = false;
+      if (want) turnOn(row);
     }, function () { mailSay("메일 설정을 불러오지 못했어요. 잠시 뒤에 다시 열어 주세요.", true); });
     A.sync().then(function (merged) { if (merged) { db = merged; repaint(); } }, function () {});
   }).catch(function () {
@@ -100,7 +113,21 @@
   }
   function save(patch) {
     return c.from("profiles").update(patch).eq("user_id", uid).select("nickname, email, mail_opt_in, mail_verified, mail_lang, mail_level, mail_wait").maybeSingle()
-      .then(function (r) { if (r.error) throw r.error; mailPaint(r.data || mail); });
+      .then(function (r) { if (r.error || !r.data) throw r.error || new Error("profile not updated"); mailPaint(r.data); });
+  }
+  function turnOn(row) {
+    if (row.mail_opt_in) {
+      mailSay(row.mail_lang === want.mail_lang && row.mail_level === want.mail_level ? "이미 이 설정으로 아침 메일을 받고 있어요."
+        : "이미 아침 메일을 받고 있어요. 받을 언어와 수준은 아래에서 바꿀 수 있어요.");
+      return;
+    }
+    if (!row.email) {  // 주소가 없으면(카카오) 언어, 수준만 저장하고 주소를 받는다. 주소를 저장하면 메일이 켜진다.
+      save(want).then(null, function () {});
+      $("mailForm").hidden = false; $("mail").focus(); mailSay("받을 주소를 적으면 아침 메일이 켜져요.");
+      return;
+    }
+    save({ mail_opt_in: true, mail_lang: want.mail_lang, mail_level: want.mail_level })
+      .then(function () { mailSay("아침 지문 메일을 켰어요."); }, function () { mailSay("메일을 켜지 못했어요. 아래 스위치로 다시 켜 주세요.", true); });
   }
   $("mailTg").addEventListener("click", function () {
     if (!uid) return;
