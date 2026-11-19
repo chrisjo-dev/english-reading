@@ -8,18 +8,18 @@
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
-- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 48편
+- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 49편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 48편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 24편
 
 ## 최근 지문
+- [영어, 2026-11-20, 로봇 팔이 꽂아 주는 전기차 충전기](https://dokhaehanip.com/en/2026-11-20/): 출처 BYD Unveils World's First Integrated Solar, Storage, FLASH and Robotic EV Charging System in Abu Dhabi (SolarQuarter, 2026-11-18)
 - [영어, 2026-11-19, 추울 때 돋는 소름의 비밀](https://dokhaehanip.com/en/2026-11-19/): 출처 Why do we get goosebumps? (Live Science, 2022-07-18)
 - [영어, 2026-11-18, 대학에 새로 생긴 미국 수어 전공](https://dokhaehanip.com/en/2026-11-18/): 출처 A sign of progress: ASL major new at Ohio State (Ohio State News, 2026-10-14)
 - [영어, 2026-11-17, 손가락을 알아보는 터치스크린](https://dokhaehanip.com/en/2026-11-17/): 출처 Okay, but how do touch screens actually work? (Scienceline, 2012-01-17)
 - [영어, 2026-11-16, 명왕성 너머의 새 얼음 세계](https://dokhaehanip.com/en/2026-11-16/): 출처 A giant icy world hiding beyond Pluto could be our sixth dwarf planet (ScienceDaily, 2026-11-14)
 - [영어, 2026-11-15, 룸메이트와 함께한 발표 연습](https://dokhaehanip.com/en/2026-11-15/)
 - [영어, 2026-11-14, 할머니에게 배운 첫 목도리 뜨개질](https://dokhaehanip.com/en/2026-11-14/)
-- [영어, 2026-11-13, 우주에서 혼자 안테나를 조립한 로봇](https://dokhaehanip.com/en/2026-11-13/): 출처 A robot just built a structure autonomously in space for the 1st time ever (Space.com, 2026-11-10)
 - [일본어, 2026-11-20, 빛으로 하루 거리에 닿은 보이저 1호](https://dokhaehanip.com/ja/2026-11-20/): 출처 探査機ボイジャー1号 トラブル発生も「1光日」到達確認 NASA (NHK, 2026-11-20)
 - [일본어, 2026-11-19, 일본의 최저임금 시급](https://dokhaehanip.com/ja/2026-11-19/): 출처 令和８年度最低賃金額答申 (厚生労働省, 2026-09-03)
 - [일본어, 2026-11-18, 주민과 함께 만드는 자전거 산책 지도](https://dokhaehanip.com/ja/2026-11-18/): 출처 「南西部地域自転車さんぽマップ」に関する意見を募集します (埼玉県, 2026-11-17)

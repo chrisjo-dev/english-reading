@@ -1,72 +1,68 @@
 {
  "date": "2026-11-20",
- "words_total": 857,
+ "words_total": 868,
  "langs": {
   "en": {
-   "count": 48,
-   "latest": "2026-11-19",
-   "topic": "소름",
+   "count": 49,
+   "latest": "2026-11-20",
+   "topic": "사막 충전소",
    "sentences": [
-    "When you feel cold or hear a moving piece of music, tiny **bumps** often appear on your arms, and the small hairs there **stand up**.",
-    "This happens because each hair has its own tiny **muscle**, and when a **nerve** sends a signal, the muscle **tightens** and pulls the hair upright.",
-    "Animals with thick **fur** still use this trick, because raised fur **traps** a warm layer of air and makes them look bigger to enemies.",
-    "Scientists believe the reaction goes back to the earliest mammals, and our hairier **ancestors** used to rely on it, but for us today it is mostly a **leftover**."
+    "In the desert of Abu Dhabi, the car maker BYD has shown a charging station that **combines** solar panels, large batteries and a **robotic** arm.",
+    "Energy from the sun is stored in the batteries, so the station can **supply** power to cars without being **connected** to the main grid.",
+    "When a car arrives, the arm finds the **charging port** and **inserts** the cable, so drivers never have to plug it in by hand.",
+    "Drivers can even lock the car and **walk away**, while the car drives itself to a free space, which saves people from waiting outside in the **extreme** desert heat."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 3분"
    ],
-   "answer": "추위를 느끼거나 감동적인 음악을 들을 때 팔에 작은 돌기들이 자주 돋고, 거기 난 가는 털들이 곤두선다.",
+   "answer": "아부다비의 사막에서 자동차 회사 BYD가 태양광 패널, 대형 배터리, 로봇 팔을 하나로 결합한 충전소를 선보였다.",
    "words": [
     [
-     "bumps",
-     "돌기들, 혹들 (복수형)"
+     "combines",
+     "결합하다, 합치다"
     ],
     [
-     "stand up",
-     "곤두서다, 서다"
+     "robotic",
+     "로봇의"
     ],
     [
-     "muscle",
-     "근육"
+     "supply",
+     "공급하다"
     ],
     [
-     "nerve",
-     "신경"
+     "connected",
+     "연결된"
     ],
     [
-     "tightens",
-     "오그라들다, 조여지다 (3인칭 단수)"
+     "charging port",
+     "충전구"
     ],
     [
-     "fur",
-     "털, 모피"
+     "inserts",
+     "끼워 넣다, 삽입하다"
     ],
     [
-     "traps",
-     "가두다 (3인칭 단수)"
+     "walk away",
+     "자리를 뜨다, 떠나다"
     ],
     [
-     "ancestors",
-     "조상들 (복수형)"
+     "extreme",
+     "극심한"
     ],
     [
-     "leftover",
-     "남은 것, 흔적"
+     "claims",
+     "주장하다"
     ],
     [
-     "excitement",
-     "흥분, 설렘"
+     "figures",
+     "수치"
     ],
     [
-     "activate",
-     "작동시키다, 활성화하다"
-    ],
-    [
-     "stem cells",
-     "줄기세포"
+     "worldwide",
+     "전 세계에"
     ]
    ],
    "review": {
@@ -216,6 +212,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-20",
+   "topic": "사막 충전소"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-20",
    "topic": "보이저 1호"
@@ -314,11 +315,6 @@
    "lang": "de",
    "day": "2026-11-14",
    "topic": "작센 스위스 등산"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-13",
-   "topic": "우주 조립 로봇"
   }
  ]
 }
