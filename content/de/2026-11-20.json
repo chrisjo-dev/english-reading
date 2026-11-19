@@ -1,0 +1,463 @@
+{
+  "date": "2026-11-20",
+  "category": "science",
+  "topic": "에티오피아 물쥐",
+  "title_ko": "백 년 만에 다시 나타난 물쥐",
+  "headline": "Die Wassermaus ist wieder da",
+  "summary_ko": "거의 백 년 동안 행방이 알려지지 않았던 에티오피아 물쥐를 다시 찾은 소식을 다룬 B1~B2 독일어 지문이에요. 연구자들은 10월 중순 야유 생물권 보전지역에서 덫으로 한 마리를 잡았고, 곧이어 두 마리를 더 잡았어요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-konjunktiv-i"
+    ],
+    "a": [
+      "a-perfekt-sein"
+    ]
+  },
+  "keywords": [
+    "물쥐",
+    "희귀종",
+    "재발견",
+    "과학 소식"
+  ],
+  "photo_scene": "Close-up of a small slate-grey mouse with a white belly, long whiskers and large hind feet, sitting on a wet mossy stone beside a clear forest stream, soft green morning light.",
+  "sentences": [
+    {
+      "en": "Fast hundert Jahre lang galt die Äthiopische **Wassermaus** als **verschollen**, doch jetzt haben Forschende in Äthiopien wieder lebende Tiere gefunden.",
+      "b2": false,
+      "chunks": [
+        [
+          "Fast hundert Jahre lang",
+          "거의 백 년 동안"
+        ],
+        [
+          "galt die Äthiopische **Wassermaus**",
+          "에티오피아 물쥐는 여겨졌습니다"
+        ],
+        [
+          "als **verschollen**,",
+          "행방불명된 것으로"
+        ],
+        [
+          "doch jetzt haben Forschende",
+          "하지만 이제 연구자들이"
+        ],
+        [
+          "in Äthiopien",
+          "에티오피아에서"
+        ],
+        [
+          "wieder lebende Tiere gefunden.",
+          "다시 살아 있는 동물들을 찾았습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Das einzige bekannte Tier, ein im Jahr 1927 in einem **Bergbach** gefundenes **Männchen**, wurde ein Jahr später wissenschaftlich beschrieben.",
+      "b2": true,
+      "chunks": [
+        [
+          "Das einzige bekannte Tier,",
+          "유일하게 알려진 동물은"
+        ],
+        [
+          "ein im Jahr 1927",
+          "1927년에"
+        ],
+        [
+          "in einem **Bergbach** gefundenes **Männchen**,",
+          "산골짜기 개울에서 발견된 수컷 한 마리로"
+        ],
+        [
+          "wurde ein Jahr später",
+          "1년 뒤에"
+        ],
+        [
+          "wissenschaftlich beschrieben.",
+          "학술적으로 기록되었습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Katharina Kühnert vom Naturschutzbund NABU sagte, das gesamte **Wissen** über diese Art habe bisher fast nur auf einem einzigen **Exemplar** beruht.",
+      "b2": false,
+      "chunks": [
+        [
+          "Katharina Kühnert",
+          "카타리나 퀴너트는"
+        ],
+        [
+          "vom Naturschutzbund NABU",
+          "자연보호연맹 NABU의"
+        ],
+        [
+          "sagte,",
+          "말했습니다"
+        ],
+        [
+          "das gesamte **Wissen** über diese Art",
+          "이 종에 대한 모든 지식이"
+        ],
+        [
+          "habe bisher fast nur",
+          "지금까지 거의 오직"
+        ],
+        [
+          "auf einem einzigen **Exemplar** beruht.",
+          "단 한 개체에 근거해 왔다고"
+        ]
+      ]
+    },
+    {
+      "en": "Mitte Oktober fand der Ökologe Mengistu Wale eines der Tiere in einer **Falle** im Yayu-Biosphärenreservat, einem **Schutzgebiet** mit Regenwald.",
+      "b2": false,
+      "chunks": [
+        [
+          "Mitte Oktober fand",
+          "10월 중순에 찾았습니다"
+        ],
+        [
+          "der Ökologe Mengistu Wale",
+          "생태학자 멩기스투 왈레가"
+        ],
+        [
+          "eines der Tiere",
+          "그 동물 한 마리를"
+        ],
+        [
+          "in einer **Falle**",
+          "덫 안에서"
+        ],
+        [
+          "im Yayu-Biosphärenreservat,",
+          "야유 생물권 보전지역의"
+        ],
+        [
+          "einem **Schutzgebiet** mit Regenwald.",
+          "열대우림이 있는 보호구역인"
+        ]
+      ]
+    },
+    {
+      "en": "Kurz danach fingen er und seine Kollegen noch zwei Tiere mit dichtem, **wasserabweisendem** Fell und großen **Hinterfüßen**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Kurz danach fingen",
+          "곧이어 잡았습니다"
+        ],
+        [
+          "er und seine Kollegen",
+          "그와 동료들은"
+        ],
+        [
+          "noch zwei Tiere",
+          "두 마리를 더"
+        ],
+        [
+          "mit dichtem, **wasserabweisendem** Fell",
+          "촘촘하고 물이 스며들지 않는 털과"
+        ],
+        [
+          "und großen **Hinterfüßen**.",
+          "큰 뒷발을 가진"
+        ]
+      ]
+    },
+    {
+      "en": "Bemerkenswert ist, dass die Mäuse am **Rand** des Reservats in einem Bach lebten, in dem Dorfbewohner ihre **Wäsche** waschen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Bemerkenswert ist,",
+          "주목할 만한 점은"
+        ],
+        [
+          "dass die Mäuse",
+          "그 쥐들이"
+        ],
+        [
+          "am **Rand** des Reservats",
+          "보전지역의 가장자리에서"
+        ],
+        [
+          "in einem Bach lebten,",
+          "한 개울에 살았다는 것입니다"
+        ],
+        [
+          "in dem Dorfbewohner",
+          "그 개울에서 마을 사람들이"
+        ],
+        [
+          "ihre **Wäsche** waschen.",
+          "빨래를 합니다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Wassermaus",
+      "물쥐 (여성 die, 복수 Wassermäuse)"
+    ],
+    [
+      "verschollen",
+      "행방불명된, 소식이 끊긴"
+    ],
+    [
+      "Bergbach",
+      "산골짜기 개울 (남성 der, 복수 Bergbäche)"
+    ],
+    [
+      "Männchen",
+      "수컷 (중성 das, 복수 Männchen)"
+    ],
+    [
+      "Wissen",
+      "지식 (중성 das)"
+    ],
+    [
+      "Exemplar",
+      "개체, 표본 (중성 das, 복수 Exemplare)"
+    ],
+    [
+      "Falle",
+      "덫 (여성 die, 복수 Fallen)"
+    ],
+    [
+      "Schutzgebiet",
+      "보호구역 (중성 das, 복수 Schutzgebiete)"
+    ],
+    [
+      "wasserabweisend",
+      "방수의, 발수성의"
+    ],
+    [
+      "Hinterfuß",
+      "뒷발 (남성 der, 복수 Hinterfüße)"
+    ],
+    [
+      "Rand",
+      "가장자리 (남성 der, 복수 Ränder)"
+    ],
+    [
+      "Wäsche",
+      "빨래, 세탁물 (여성 die)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Konjunktiv I — 남의 말을 옮길 때",
+      "body": "`Katharina Kühnert ... sagte, das gesamte Wissen ... habe bisher fast nur auf einem einzigen Exemplar beruht.`에서 `habe ... beruht`는 접속법 1식 현재완료입니다. 기사는 이렇게 `habe`, `sei` 같은 형태로 '그 사람이 그렇게 말했다'는 것을 드러내고, 기자 자신의 주장과 구별해요. `dass` 없이 쓴 간접화법이라 정동사 `habe`가 두 번째 자리에 오고, 과거분사 `beruht`는 끝으로 갑니다."
+    },
+    {
+      "title": "분사 수식어 — 관사와 명사 사이의 긴 꾸밈말",
+      "body": "`ein im Jahr 1927 in einem Bergbach gefundenes Männchen`은 관사 `ein`과 명사 `Männchen` 사이에 `im Jahr 1927 in einem Bergbach gefunden`이 통째로 들어간 구조예요. 과거분사 `gefunden`이 형용사처럼 어미 `-es`를 받아 '1927년에 산골짜기 개울에서 발견된 수컷'이 됩니다. 관사를 본 뒤 명사가 나올 때까지 묶어서 읽으면 쉬워요."
+    }
+  ],
+  "answers": [
+    "에티오피아 물쥐는 거의 백 년 동안 행방불명된 것으로 여겨졌지만, 이제 연구자들이 에티오피아에서 다시 살아 있는 개체들을 찾았습니다.",
+    "유일하게 알려진 개체는 1927년에 산골짜기 개울에서 발견된 수컷 한 마리로, 1년 뒤에 학술적으로 기록되었습니다.",
+    "자연보호연맹 NABU의 카타리나 퀴너트는 이 종에 대한 모든 지식이 지금까지 거의 단 한 개체에만 근거해 왔다고 말했습니다.",
+    "10월 중순, 생태학자 멩기스투 왈레가 열대우림이 있는 보호구역인 야유 생물권 보전지역에서 덫에 걸린 한 마리를 찾았습니다.",
+    "곧이어 그와 동료들은 촘촘하고 물이 스며들지 않는 털과 큰 뒷발을 가진 개체를 두 마리 더 잡았습니다.",
+    "주목할 만한 점은 이 쥐들이 보전지역 가장자리, 마을 사람들이 빨래를 하는 개울에 살았다는 것입니다."
+  ],
+  "advanced": [
+    {
+      "word": "wiederentdecken",
+      "meaning": "재발견하다",
+      "confuse": "분리동사라서 `Man entdeckte die Art wieder`처럼 `wieder`가 끝으로 갑니다.",
+      "example": "Die Forschenden haben die seltene Maus **wiederentdeckt**.",
+      "example_ko": "연구자들은 그 희귀한 쥐를 다시 발견했습니다."
+    },
+    {
+      "word": "ausgestorben",
+      "meaning": "멸종한",
+      "confuse": "`verschollen`은 '소식이 끊긴'이고, `ausgestorben`은 '완전히 사라진'입니다.",
+      "example": "Viele hielten die Art schon für **ausgestorben**.",
+      "example_ko": "많은 사람이 그 종이 이미 멸종했다고 여겼습니다."
+    },
+    {
+      "word": "der Lebensraum",
+      "meaning": "서식지",
+      "confuse": null,
+      "example": "Der Bach ist der **Lebensraum** der Wassermaus.",
+      "example_ko": "개울은 물쥐의 서식지입니다."
+    },
+    {
+      "word": "bedroht",
+      "meaning": "위협받는, 멸종 위기의",
+      "confuse": "`bedrohen`(위협하다)의 과거분사로, `vom Aussterben bedroht`(멸종 위기에 처한)로 자주 씁니다.",
+      "example": "Die Art gilt als stark **bedroht**.",
+      "example_ko": "그 종은 심각한 멸종 위기종으로 여겨집니다."
+    },
+    {
+      "word": "die Artenvielfalt",
+      "meaning": "생물 다양성",
+      "confuse": "`die Biodiversität`와 같은 뜻의 독일어 고유어입니다.",
+      "example": "Im Regenwald ist die **Artenvielfalt** besonders groß.",
+      "example_ko": "열대우림에서는 생물 다양성이 특히 큽니다."
+    },
+    {
+      "word": "die Bestätigung",
+      "meaning": "확인, 입증",
+      "confuse": null,
+      "example": "Für eine sichere **Bestätigung** sind noch genetische Tests nötig.",
+      "example_ko": "확실한 입증을 위해서는 아직 유전자 검사가 필요합니다."
+    },
+    {
+      "word": "die Erhebung",
+      "meaning": "조사",
+      "confuse": "'융기, 봉기'라는 뜻도 있어 문맥으로 구별해야 합니다.",
+      "example": "Die **Erhebung** im Reservat dauerte mehrere Wochen.",
+      "example_ko": "보전지역에서의 조사는 몇 주 동안 이어졌습니다."
+    }
+  ],
+  "source": {
+    "title": "Äthiopische Wassermaus nach fast 100 Jahren wiederentdeckt (National Geographic Deutschland)",
+    "url": "https://nationalgeographic.de/tiere/2026/11/aethiopische-wassermaus-nach-fast-100-jahren-wiederentdeckt/"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Die **Wassermaus** ist lange **verschollen** gewesen, aber jetzt hat man sie gefunden.",
+          "chunks": [
+            [
+              "Die **Wassermaus**",
+              "물쥐는"
+            ],
+            [
+              "ist lange **verschollen** gewesen,",
+              "오랫동안 행방불명이었습니다"
+            ],
+            [
+              "aber jetzt",
+              "하지만 이제"
+            ],
+            [
+              "hat man sie gefunden.",
+              "사람들이 그것을 찾았습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Im Jahr 1927 fand man ein **Männchen** in einem **Bergbach**.",
+          "chunks": [
+            [
+              "Im Jahr 1927",
+              "1927년에"
+            ],
+            [
+              "fand man",
+              "사람들이 찾았습니다"
+            ],
+            [
+              "ein **Männchen**",
+              "수컷 한 마리를"
+            ],
+            [
+              "in einem **Bergbach**.",
+              "산골짜기 개울에서"
+            ]
+          ]
+        },
+        {
+          "en": "Laut Katharina Kühnert kam das ganze **Wissen** von diesem einen **Exemplar**.",
+          "chunks": [
+            [
+              "Laut Katharina Kühnert",
+              "카타리나 퀴너트에 따르면"
+            ],
+            [
+              "kam das ganze **Wissen**",
+              "모든 지식은 나왔습니다"
+            ],
+            [
+              "von diesem einen **Exemplar**.",
+              "이 한 개체에서"
+            ]
+          ]
+        },
+        {
+          "en": "Im Oktober fand ein Forscher eine Wassermaus in einer **Falle** im **Schutzgebiet**.",
+          "chunks": [
+            [
+              "Im Oktober",
+              "10월에"
+            ],
+            [
+              "fand ein Forscher",
+              "한 연구자가 찾았습니다"
+            ],
+            [
+              "eine Wassermaus",
+              "물쥐 한 마리를"
+            ],
+            [
+              "in einer **Falle**",
+              "덫 안에서"
+            ],
+            [
+              "im **Schutzgebiet**.",
+              "보호구역의"
+            ]
+          ]
+        },
+        {
+          "en": "Danach fing das Team noch zwei Tiere mit **wasserabweisendem** Fell.",
+          "chunks": [
+            [
+              "Danach fing das Team",
+              "그다음 연구팀은 잡았습니다"
+            ],
+            [
+              "noch zwei Tiere",
+              "두 마리를 더"
+            ],
+            [
+              "mit **wasserabweisendem** Fell.",
+              "물이 스며들지 않는 털을 가진"
+            ]
+          ]
+        },
+        {
+          "en": "Sie lebten am **Rand** des Gebiets, wo Menschen ihre **Wäsche** waschen.",
+          "chunks": [
+            [
+              "Sie lebten",
+              "그 쥐들은 살았습니다"
+            ],
+            [
+              "am **Rand** des Gebiets,",
+              "그 지역의 가장자리에"
+            ],
+            [
+              "wo Menschen",
+              "사람들이"
+            ],
+            [
+              "ihre **Wäsche** waschen.",
+              "빨래를 하는 곳에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "물쥐는 오랫동안 행방불명이었지만, 이제 사람들이 그것을 찾았습니다.",
+        "1927년에 사람들은 산골짜기 개울에서 수컷 한 마리를 찾았습니다.",
+        "카타리나 퀴너트에 따르면 모든 지식은 이 한 개체에서 나왔습니다.",
+        "10월에 한 연구자가 보호구역에서 덫에 걸린 물쥐 한 마리를 찾았습니다.",
+        "그다음 연구팀은 물이 스며들지 않는 털을 가진 개체를 두 마리 더 잡았습니다.",
+        "그 쥐들은 그 지역의 가장자리, 사람들이 빨래를 하는 곳에 살았습니다."
+      ]
+    }
+  }
+}
