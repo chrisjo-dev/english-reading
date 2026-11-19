@@ -16,8 +16,8 @@
   var Q = new URLSearchParams(location.search), want = null;
   if (Q.get("mail") === "1") {
     want = { mail_lang: ["en", "ja", "de"].indexOf(Q.get("lang")) >= 0 ? Q.get("lang") : "en", mail_level: Q.get("level") === "a" ? "a" : "b" };
-    try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
   }
+  function clearWant() { try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {} }
   function signedOut() {
     if (want) $("signedOut").querySelector("a.btn").href = "/join/?" + new URLSearchParams({ mail: "1", lang: want.mail_lang, level: want.mail_level, next: "/me/" }).toString();
     show("signedOut");
@@ -63,11 +63,19 @@
       mailPaint(row);
       $("mailTg").disabled = false; $("mailEdit").disabled = false;
       if (want) turnOn(row);
-    }, function () { mailSay("메일 설정을 불러오지 못했어요. 잠시 뒤에 다시 열어 주세요.", true); });
+    }, function () { loadFail("메일 설정을 불러오지 못했어요."); });
     A.sync().then(function (merged) { if (merged) { db = merged; repaint(); } }, function () {});
   }).catch(function () {
-    mailSay("서버에 연결하지 못했어요. 이 기기의 기록만 보여 드려요.", true);
+    loadFail("서버에 연결하지 못했어요. 이 기기의 기록만 보여 드려요.");
   });
+  function loadFail(t) {
+    mailSay(t + " ", true);
+    var b = document.createElement("button");
+    b.type = "button"; b.textContent = "다시 불러오기";
+    b.style.cssText = "font:inherit;font-weight:700;color:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer";
+    b.addEventListener("click", function () { location.reload(); });  // 주소의 고른 설정(?mail=1)은 남아 있다
+    $("mailMsg").appendChild(b);
+  }
 
   function paint(db, latest) {
     var days = db.days || [], st = A.streak(days), set = {};
@@ -116,6 +124,7 @@
       .then(function (r) { if (r.error || !r.data) throw r.error || new Error("profile not updated"); mailPaint(r.data); });
   }
   function turnOn(row) {
+    clearWant();
     if (row.mail_opt_in) {
       mailSay(row.mail_lang === want.mail_lang && row.mail_level === want.mail_level ? "이미 이 설정으로 아침 메일을 받고 있어요."
         : "이미 아침 메일을 받고 있어요. 받을 언어와 수준은 아래에서 바꿀 수 있어요.");
@@ -155,7 +164,9 @@
     e.preventDefault();
     var v = $("mail").value.trim();
     if (!RE.test(v) || v.length > 254) { mailSay("이메일 주소를 다시 확인해 주세요.", true); return; }
-    save({ email: v, mail_opt_in: true }).then(function () { $("mailForm").hidden = true; mailSay("저장했어요. 영어 확인 메일의 버튼을 누르면 시작돼요."); },
+    var patch = { email: v, mail_opt_in: true };
+    if (want && !mail.mail_opt_in) { patch.mail_lang = want.mail_lang; patch.mail_level = want.mail_level; }
+    save(patch).then(function () { $("mailForm").hidden = true; mailSay("저장했어요. 영어 확인 메일의 버튼을 누르면 시작돼요."); },
       function () { mailSay("저장하지 못했어요. 잠시 뒤에 다시 해 주세요.", true); });
   });
 
