@@ -9,6 +9,7 @@
 - 메일 하단에서 수신거부한 사람은 다시 넣지 않고 profiles.mail_opt_in 을 끈다.
   단, 마지막 동기화 뒤에 마이페이지에서 다시 켰으면(mail_opt_at > mail_synced_at) 다시 넣는다.
 - 바뀐 것만 쓴다. 매시 한 번이라 스위치를 여러 번 눌러도 Buttondown 에는 한 번만 반영된다(빠른 구독/해지 반복 방지).
+- Buttondown 방화벽이 막은 주소(subscriber_blocked)는 실패로 치지 않고 그 계정의 메일 받기를 끈다. 같은 주소를 매시 다시 넣지 않는다(2026-11-19 결정).
 """
 import datetime
 import json
@@ -175,7 +176,7 @@ def run():
     profiles = all_profiles()
     ops, fix, taken = plan(profiles, all_subscribers())
     # 주소 하나가 실패해도(Buttondown 이 거절하는 주소 등) 나머지는 계속한다. 실패한 주소의 계정은 고치지 않고 끝에 실패로 드러낸다
-    failed = set()
+    failed, blocked = set(), set()
     for op in ops:
         e = quote(op[1], safe="")
         try:
@@ -188,19 +189,26 @@ def run():
             else:
                 _bd("DELETE", f"/subscribers/{e}")
         except SystemExit as err:
-            failed.add(op[1])
             if op[0] == "create":
                 taken -= 1
+            if op[0] == "create" and "subscriber_blocked" in str(err):
+                blocked.add(op[1])  # 막힌 주소는 우리가 풀 수 없다. 다시 시도하지 않게 메일 받기를 끈다(아래)
+                print(f"::warning::Buttondown 이 막은 주소라 메일 받기를 끔: {err}")
+                continue
+            failed.add(op[1])
             print(f"::warning::{op[0]} 실패: {err}")
-    skip = {p["user_id"] for p in profiles if (p.get("email") or "").lower() in failed}
+    skip = {p["user_id"] for p in profiles if (p.get("email") or "").lower() in failed | blocked}
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    for p in profiles:
+        if (p.get("email") or "").lower() in blocked and p.get("mail_opt_in"):
+            _sb("PATCH", f"/profiles?user_id=eq.{p['user_id']}", {"mail_opt_in": False, "mail_wait": False, "mail_synced_at": now})
     for uid, patch in fix.items():
         if uid in skip:
             continue
         patch = {k: (now if v is True and k == "mail_synced_at" else v) for k, v in patch.items()}
         _sb("PATCH", f"/profiles?user_id=eq.{uid}", patch)
     _sb("PATCH", "/mail_seats?id=eq.1", {"taken": max(taken, 0), "cap": CAP, "updated_at": now})
-    print(f"동기화: Buttondown 작업 {len(ops)}건(실패 {len(failed)}), 계정 고침 {len(fix) - len(skip & set(fix))}건, 자리 {max(taken, 0)}/{CAP}")
+    print(f"동기화: Buttondown 작업 {len(ops)}건(실패 {len(failed)}, 막힌 주소 {len(blocked)}), 계정 고침 {len(fix) - len(skip & set(fix))}건, 자리 {max(taken, 0)}/{CAP}")
     if failed:
         raise SystemExit(f"Buttondown 작업 {len(failed)}건 실패(나머지는 반영함). 위 경고를 확인하세요.")
 

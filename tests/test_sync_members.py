@@ -134,6 +134,21 @@ class RunTest(unittest.TestCase):
         seats = [c.args[2] for c in sb.call_args_list if c.args[1].startswith("/mail_seats")][0]
         self.assertEqual(seats["taken"], 1)
 
+    def test_blocked_address_turns_mail_off_without_failing(self):
+        from unittest import mock
+        def bd(method, path, body=None, collision=False):
+            if method == "POST" and body["email_address"] == "blk@x.com":
+                raise SystemExit('Buttondown POST /subscribers -> 400: {"code":"subscriber_blocked"}')
+        sb = mock.Mock(return_value=None)
+        with mock.patch.object(S, "all_profiles", return_value=[prof("blk", "blk@x.com"), prof("ok", "ok@x.com")]), \
+                mock.patch.object(S, "all_subscribers", return_value=[]), \
+                mock.patch.object(S, "_bd", bd), mock.patch.object(S, "_sb", sb):
+            S.run()  # 실패로 끝나지 않는다
+        patches = {c.args[1]: c.args[2] for c in sb.call_args_list}
+        self.assertFalse(patches["/profiles?user_id=eq.blk"]["mail_opt_in"])
+        self.assertIn("/profiles?user_id=eq.ok", patches)
+        self.assertEqual(patches["/mail_seats?id=eq.1"]["taken"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()
