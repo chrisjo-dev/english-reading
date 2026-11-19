@@ -411,6 +411,7 @@
   }).catch(function(){});
 })();</script>
 <script id="fb-js">
+window.dkhEvent=window.dkhEvent||function(o){try{var k='dkh-vid',v=localStorage.getItem(k);if(!/^[a-f0-9]{32}$/.test(v||'')){v=[].map.call(crypto.getRandomValues(new Uint8Array(16)),function(b){return('0'+b.toString(16)).slice(-2);}).join('');localStorage.setItem(k,v);}o.vid=v;navigator.sendBeacon('https://api.dokhaehanip.com/events',JSON.stringify(o));}catch(e){}};
 (function () {
   function device() {
     var u = navigator.userAgent, d = 'Windows', b = 'Safari';
@@ -435,6 +436,7 @@
         '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
       this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
     }
+    window.dkhEvent({ kind: 'feedback', value: type, src: 'page' });
     try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
   });
 })();

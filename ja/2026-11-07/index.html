@@ -189,33 +189,6 @@
   .sub .levels:has(input[value='a']:checked) ~ .level-note,.sub .level-note[data-show] { display: block; }
   .intro { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--sub); }
   .intro a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 6px; }
-  /* vote-css */
-  .cat-science { color: #1b64da; background: #e8f3ff; }
-  .cat-tech { color: #6b5cf6; background: #f0eeff; }
-  .cat-society { color: #f07040; background: #fff0e9; }
-  .cat-future { color: #12ac7c; background: #e6f8f1; }
-  .cat-culture { color: #a25c00; background: #fff5e0; }
-  .cat-space { color: #3d4cc4; background: #eaecfc; }
-  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
-  .vote h2 { margin: 0 0 6px; }
-  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
-  .vote .desc .cat { margin-left: 0; }
-  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
-  .vote-btn img { width: 22px; height: 22px; }
-  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
-  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
-  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
-  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
-  .vote .week b { color: var(--ink); }
-  .vote .week .today { font-weight: 700; }
-  .vote[data-cat="science"] .week .today { color: #1b64da; }
-  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
-  .vote[data-cat="society"] .week .today { color: #f07040; }
-  .vote[data-cat="future"] .week .today { color: #12ac7c; }
-  .vote[data-cat="culture"] .week .today { color: #a25c00; }
-  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
-  /* /vote-css */
   /* drill-css */
   .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: -8px 0 16px; }
   .dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
@@ -408,6 +381,33 @@
   .pn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
   .pn-ic svg { width: 22px; height: 22px; }
   /* /pn-css */
+  /* vote-css */
+  .cat-science { color: #1b64da; background: #e8f3ff; }
+  .cat-tech { color: #6b5cf6; background: #f0eeff; }
+  .cat-society { color: #f07040; background: #fff0e9; }
+  .cat-future { color: #12ac7c; background: #e6f8f1; }
+  .cat-culture { color: #a25c00; background: #fff5e0; }
+  .cat-space { color: #3d4cc4; background: #eaecfc; }
+  .cat { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .vote h2 { margin: 0 0 6px; }
+  .vote .desc { font-size: 14px; color: var(--sub); line-height: 1.6; margin: 0 0 14px; }
+  .vote .desc .cat { margin-left: 0; }
+  .vote-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vote-btn { display: flex; align-items: center; justify-content: center; gap: 6px; height: 48px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .vote-btn img { width: 22px; height: 22px; }
+  .vote-btn[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
+  .vote.done .vote-btn[aria-pressed=false] { opacity: .55; }
+  .vote .thanks { font-size: 14px; font-weight: 600; color: #2a52d4; margin: 12px 0 0; }
+  .vote .week { font-size: 12.5px; color: var(--sub); line-height: 1.6; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #e2e6ea; }
+  .vote .week b { color: var(--ink); }
+  .vote .week .today { font-weight: 700; }
+  .vote[data-cat="science"] .week .today { color: #1b64da; }
+  .vote[data-cat="tech"] .week .today { color: #6b5cf6; }
+  .vote[data-cat="society"] .week .today { color: #f07040; }
+  .vote[data-cat="future"] .week .today { color: #12ac7c; }
+  .vote[data-cat="culture"] .week .today { color: #a25c00; }
+  .vote[data-cat="space"] .week .today { color: #3d4cc4; }
+  /* /vote-css */
   .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
   /* gnb-a */
   .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -701,7 +701,7 @@
   </section>
 <!-- /drill-card -->
 
-  <section class="card vote" id="vote" data-v="4" data-cat="culture" data-wd="5">
+  <section class="card vote" id="vote" data-v="5" data-cat="culture" data-wd="5">
     <h2>오늘 주제 어땠어요?</h2>
     <p class="desc">오늘은 <span class="cat cat-culture">일상과 문화</span> 분야였어요. 눌러 주시면 앞으로 어떤 주제를 더 자주 다룰지 정하는 데 써요.</p>
     <div class="vote-btns">
@@ -1261,6 +1261,7 @@
 <script id="auth-js" src="/assets/auth.js?v=3" defer></script>
 <script id="drill-js" data-v="18" src="/assets/drill.js?v=18" defer></script>
 <script id="vote-js">
+window.dkhEvent=window.dkhEvent||function(o){try{var k='dkh-vid',v=localStorage.getItem(k);if(!/^[a-f0-9]{32}$/.test(v||'')){v=[].map.call(crypto.getRandomValues(new Uint8Array(16)),function(b){return('0'+b.toString(16)).slice(-2);}).join('');localStorage.setItem(k,v);}o.vid=v;navigator.sendBeacon('https://api.dokhaehanip.com/events',JSON.stringify(o));}catch(e){}};
 (function () {
   var card = document.getElementById('vote'); if (!card) return;
   var p = location.pathname.split('/'), lang = p[1] || '', day = p[2] || '';
@@ -1275,6 +1276,8 @@
     show(v);
     if (prev === v) return;
     try { localStorage.setItem(KEY, v); } catch (e) {}
+    window.dkhEvent({ kind: 'topic_vote', lang: lang, day: day, value: v,
+      level: document.documentElement.classList.contains('level-a') ? 'a' : 'b', src: /^[a-z]{1,12}$/.test(from) ? from : 'link' });
     if (typeof gtag === 'function') gtag('event', 'topic_vote', {
       lang: lang, day: day, cat: card.getAttribute('data-cat'), weekday: card.getAttribute('data-wd'),
       level: document.documentElement.classList.contains('level-a') ? 'a' : 'b', vote: v, from: from, changed: !!prev
@@ -1366,6 +1369,7 @@
   }).catch(function(){});
 })();</script>
 <script id="fb-js">
+window.dkhEvent=window.dkhEvent||function(o){try{var k='dkh-vid',v=localStorage.getItem(k);if(!/^[a-f0-9]{32}$/.test(v||'')){v=[].map.call(crypto.getRandomValues(new Uint8Array(16)),function(b){return('0'+b.toString(16)).slice(-2);}).join('');localStorage.setItem(k,v);}o.vid=v;navigator.sendBeacon('https://api.dokhaehanip.com/events',JSON.stringify(o));}catch(e){}};
 (function () {
   function device() {
     var u = navigator.userAgent, d = 'Windows', b = 'Safari';
@@ -1390,6 +1394,7 @@
         '\n기기: ' + device() + '\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
       this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
     }
+    window.dkhEvent({ kind: 'feedback', value: type, src: 'page' });
     try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
   });
 })();

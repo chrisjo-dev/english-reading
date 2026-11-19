@@ -9,6 +9,7 @@ import re
 from urllib.parse import quote
 
 import langs
+import siteevent
 
 MAIL = "hello@dokhaehanip.com"
 IDEA_SUBJECT = f"[{langs.BRAND}] 기능 건의"
@@ -60,7 +61,7 @@ def block_html(lang=None, url=""):
 
 # 누르는 순간 버그 제보 본문의 '페이지, 기기, 화면 크기' 세 줄을 채운다. 기능 건의는 그대로 둔다
 SCRIPT = """<script id="fb-js">
-(function () {
+""" + siteevent.JS + """(function () {
   function device() {
     var u = navigator.userAgent, d = 'Windows', b = 'Safari';
     if (/iPhone/.test(u)) d = 'iPhone';
@@ -84,6 +85,7 @@ SCRIPT = """<script id="fb-js">
         '\\n기기: ' + device() + '\\n화면 크기: ' + window.innerWidth + ' x ' + window.innerHeight;
       this.href = this.href.split('&body=')[0] + '&body=' + encodeURIComponent(body.replace(/\\n/g, '\\r\\n'));
     }
+    window.dkhEvent({ kind: 'feedback', value: type, src: 'page' });
     try { if (typeof gtag === 'function') gtag('event', 'feedback', { type: type }); } catch (e) {}
   });
 })();

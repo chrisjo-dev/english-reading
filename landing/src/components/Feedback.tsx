@@ -1,6 +1,7 @@
 "use client";
 
 import { fireGtag } from "@/lib/gtag";
+import { sendEvent } from "@/lib/event";
 import { SITE } from "@/lib/site";
 
 // 의견 보내기(이슈 #21, 시안 F03). tools/feedback.py 와 같은 메일 양식이다.
@@ -37,7 +38,7 @@ const BUG_HREF = mailto("[독해한입] 버그 제보", `${BUG_HEAD}페이지: $
 export default function Feedback() {
   return (
     <div className="fb-row">
-      <a className="fb-btn" href={IDEA_HREF} onClick={() => fireGtag("feedback", { type: "idea" })}>
+      <a className="fb-btn" href={IDEA_HREF} onClick={() => { fireGtag("feedback", { type: "idea" }); sendEvent({ kind: "feedback", value: "idea", src: "landing" }); }}>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z" />
         </svg>
@@ -52,6 +53,7 @@ export default function Feedback() {
             `${BUG_HEAD}페이지: ${location.href}\n기기: ${device()}\n화면 크기: ${window.innerWidth} x ${window.innerHeight}`,
           );
           fireGtag("feedback", { type: "bug" });
+          sendEvent({ kind: "feedback", value: "bug", src: "landing" });
         }}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true">

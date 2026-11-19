@@ -1,6 +1,6 @@
 """지문 페이지의 오늘 분야 배지와 '오늘 주제 어땠어요?' 반응 카드(이슈 #13).
 
-publish.patch_page 가 새 페이지와 지난 페이지 모두에 넣는다. 반응은 서버 없이 GA 이벤트 topic_vote 로만 모은다.
+publish.patch_page 가 새 페이지와 지난 페이지 모두에 넣는다. 반응은 GA 이벤트 topic_vote 와 함께 DB(site_events, tools/siteevent.py)에도 쌓는다.
 메일의 👍/👎 링크는 페이지를 ?vote=up|down&from=email 로 열고, 페이지가 같은 이벤트를 보낸다.
 """
 import datetime as dt
@@ -10,11 +10,12 @@ import re
 from pathlib import Path
 
 import langs
+import siteevent
 import thumb
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = langs.SITE
-VERSION = "4"
+VERSION = "5"
 
 # 요일별 분야와 글 형태(tools/ROUTINE*.md 와 같아야 한다). 월요일부터.
 WEEK = {
@@ -79,7 +80,7 @@ def card_html(lang, day, cat):
 
 
 SCRIPT = """<script id="vote-js">
-(function () {
+""" + siteevent.JS + """(function () {
   var card = document.getElementById('vote'); if (!card) return;
   var p = location.pathname.split('/'), lang = p[1] || '', day = p[2] || '';
   var KEY = 'vote:' + lang + '/' + day, btns = card.querySelectorAll('.vote-btn');
@@ -93,6 +94,8 @@ SCRIPT = """<script id="vote-js">
     show(v);
     if (prev === v) return;
     try { localStorage.setItem(KEY, v); } catch (e) {}
+    window.dkhEvent({ kind: 'topic_vote', lang: lang, day: day, value: v,
+      level: document.documentElement.classList.contains('level-a') ? 'a' : 'b', src: /^[a-z]{1,12}$/.test(from) ? from : 'link' });
     if (typeof gtag === 'function') gtag('event', 'topic_vote', {
       lang: lang, day: day, cat: card.getAttribute('data-cat'), weekday: card.getAttribute('data-wd'),
       level: document.documentElement.classList.contains('level-a') ? 'a' : 'b', vote: v, from: from, changed: !!prev

@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { fireGtag } from "@/lib/gtag";
+import { sendEvent } from "@/lib/event";
 import { FULL_NOTE, SEATS_NOTE, useJoinHref, useMailFull } from "./forms";
 
 const FORMS = [
@@ -112,7 +113,7 @@ function SubForm({ style }: { style?: React.CSSProperties }) {
   );
 }
 
-// 두 번째 칸: 다음에 추가할 언어 요청. 서버 없이 GA 이벤트 lang_request 로 언어별 요청 수만 센다.
+// 두 번째 칸: 다음에 추가할 언어 요청. GA 이벤트 lang_request 와 함께 DB(site_events)에도 쌓는다.
 const REQUEST_LANGS = ["중국어", "스페인어", "프랑스어", "베트남어", "러시아어", "이탈리아어"];
 
 function LangRequest({ style }: { style?: React.CSSProperties }) {
@@ -129,6 +130,7 @@ function LangRequest({ style }: { style?: React.CSSProperties }) {
         e.preventDefault();
         if (!lang || sent) return;
         fireGtag("lang_request", { lang: lang.slice(0, 20), custom: other });
+        sendEvent({ kind: "lang_request", value: lang.slice(0, 20), src: other ? "custom" : "list" });
         setSent(true);
       }}
     >
