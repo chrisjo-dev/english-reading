@@ -1,6 +1,6 @@
 {
- "date": "2026-11-19",
- "words_total": 835,
+ "date": "2026-11-20",
+ "words_total": 847,
  "langs": {
   "en": {
    "count": 48,
@@ -141,14 +141,14 @@
    }
   },
   "de": {
-   "count": 23,
-   "latest": "2026-11-19",
-   "topic": "근무 증명서",
+   "count": 24,
+   "latest": "2026-11-20",
+   "topic": "에티오피아 물쥐",
    "sentences": [
-    "Wenn ein **Arbeitsverhältnis** endet, haben Arbeitnehmer in Deutschland einen gesetzlichen **Anspruch** auf ein schriftliches Arbeitszeugnis von ihrer Firma.",
-    "Ein einfaches **Zeugnis** nennt nur die Art und die **Dauer** der Tätigkeit, also was man gemacht hat und wie lange.",
-    "Auf Wunsch muss die Firma ein qualifiziertes Zeugnis schreiben, das nicht nur die **Leistung**, sondern auch das **Verhalten** beschreibt.",
-    "Der Text muss klar und **verständlich** formuliert sein, damit spätere Arbeitgeber ihn bei einer **Bewerbung** richtig lesen können."
+    "Fast hundert Jahre lang galt die Äthiopische **Wassermaus** als **verschollen**, doch jetzt haben Forschende in Äthiopien wieder lebende Tiere gefunden.",
+    "Das einzige bekannte Tier, ein im Jahr 1927 in einem **Bergbach** gefundenes **Männchen**, wurde ein Jahr später wissenschaftlich beschrieben.",
+    "Katharina Kühnert vom Naturschutzbund NABU sagte, das gesamte **Wissen** über diese Art habe bisher fast nur auf einem einzigen **Exemplar** beruht.",
+    "Mitte Oktober fand der Ökologe Mengistu Wale eines der Tiere in einer **Falle** im Yayu-Biosphärenreservat, einem **Schutzgebiet** mit Regenwald."
    ],
    "chips": [
     "6문장",
@@ -156,55 +156,55 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "독일에서는 고용 관계가 끝나면 근로자가 회사로부터 서면 근무 증명서를 받을 법적 권리가 있습니다.",
+   "answer": "에티오피아 물쥐는 거의 백 년 동안 행방불명된 것으로 여겨졌지만, 이제 연구자들이 에티오피아에서 다시 살아 있는 개체들을 찾았습니다.",
    "words": [
     [
-     "Arbeitsverhältnis",
-     "고용 관계 (중성 das, 복수 Arbeitsverhältnisse)"
+     "Wassermaus",
+     "물쥐 (여성 die, 복수 Wassermäuse)"
     ],
     [
-     "Anspruch",
-     "권리, 청구권 (남성 der, 복수 Ansprüche)"
+     "verschollen",
+     "행방불명된, 소식이 끊긴"
     ],
     [
-     "Zeugnis",
-     "증명서 (중성 das, 복수 Zeugnisse)"
+     "Bergbach",
+     "산골짜기 개울 (남성 der, 복수 Bergbäche)"
     ],
     [
-     "Dauer",
-     "기간 (여성 die)"
+     "Männchen",
+     "수컷 (중성 das, 복수 Männchen)"
     ],
     [
-     "Leistung",
-     "성과, 실적 (여성 die, 복수 Leistungen)"
+     "Wissen",
+     "지식 (중성 das)"
     ],
     [
-     "Verhalten",
-     "태도, 행동 (중성 das)"
+     "Exemplar",
+     "개체, 표본 (중성 das, 복수 Exemplare)"
     ],
     [
-     "verständlich",
-     "이해하기 쉬운"
+     "Falle",
+     "덫 (여성 die, 복수 Fallen)"
     ],
     [
-     "Bewerbung",
-     "지원, 응모 (여성 die, 복수 Bewerbungen)"
+     "Schutzgebiet",
+     "보호구역 (중성 das, 복수 Schutzgebiete)"
     ],
     [
-     "Formulierung",
-     "표현, 문구 (여성 die, 복수 Formulierungen)"
+     "wasserabweisend",
+     "방수의, 발수성의"
     ],
     [
-     "heimlich",
-     "몰래, 은밀히"
+     "Hinterfuß",
+     "뒷발 (남성 der, 복수 Hinterfüße)"
     ],
     [
-     "Zustimmung",
-     "동의 (여성 die)"
+     "Rand",
+     "가장자리 (남성 der, 복수 Ränder)"
     ],
     [
-     "elektronisch",
-     "전자적으로"
+     "Wäsche",
+     "빨래, 세탁물 (여성 die)"
     ]
    ],
    "review": {
@@ -215,6 +215,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-20",
+   "topic": "에티오피아 물쥐"
+  },
   {
    "lang": "en",
    "day": "2026-11-19",
@@ -314,11 +319,6 @@
    "lang": "ja",
    "day": "2026-11-13",
    "topic": "프라니말 세포"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-13",
-   "topic": "침팬지 울음소리"
   }
  ]
 }
