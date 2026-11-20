@@ -1,16 +1,16 @@
 {
  "date": "2026-11-21",
- "words_total": 890,
+ "words_total": 902,
  "langs": {
   "en": {
-   "count": 49,
-   "latest": "2026-11-20",
-   "topic": "사막 충전소",
+   "count": 50,
+   "latest": "2026-11-21",
+   "topic": "정전",
    "sentences": [
-    "In the desert of Abu Dhabi, the car maker BYD has shown a charging station that **combines** solar panels, large batteries and a **robotic** arm.",
-    "Energy from the sun is stored in the batteries, so the station can **supply** power to cars without being **connected** to the main grid.",
-    "When a car arrives, the arm finds the **charging port** and **inserts** the cable, so drivers never have to plug it in by hand.",
-    "Drivers can even lock the car and **walk away**, while the car drives itself to a free space, which saves people from waiting outside in the **extreme** desert heat."
+    "On Saturday evening, Jiwoo was cooking dinner with her younger brother when suddenly all the lights in the apartment **went out**.",
+    "She looked out the window and saw that the whole street was dark, so the strong wind must have **damaged** a **power line** nearby.",
+    "Her brother wanted to use his phone as a **flashlight**, but Jiwoo told him to keep the **battery** for emergencies and found some old **candles** instead.",
+    "They **placed** the candles on the kitchen table so that they could see each other's faces, and then they **dug out** a board game they had not played for years."
    ],
    "chips": [
     "6문장",
@@ -18,51 +18,55 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "아부다비의 사막에서 자동차 회사 BYD가 태양광 패널, 대형 배터리, 로봇 팔을 하나로 결합한 충전소를 선보였다.",
+   "answer": "토요일 저녁, 지우가 남동생과 함께 저녁을 만들고 있는데 갑자기 아파트의 불이 모두 꺼졌다.",
    "words": [
     [
-     "combines",
-     "결합하다, 합치다"
+     "went out",
+     "(불이) 꺼지다"
     ],
     [
-     "robotic",
-     "로봇의"
+     "damaged",
+     "손상시키다, 망가뜨리다"
     ],
     [
-     "supply",
-     "공급하다"
+     "power line",
+     "전선, 송전선"
     ],
     [
-     "connected",
-     "연결된"
+     "flashlight",
+     "손전등"
     ],
     [
-     "charging port",
-     "충전구"
+     "battery",
+     "전지, 배터리"
     ],
     [
-     "inserts",
-     "끼워 넣다, 삽입하다"
+     "candles",
+     "양초들"
     ],
     [
-     "walk away",
-     "자리를 뜨다, 떠나다"
+     "placed",
+     "놓다, 두다"
     ],
     [
-     "extreme",
-     "극심한"
+     "dug out",
+     "찾아 꺼내다"
     ],
     [
-     "claims",
-     "주장하다"
+     "strangely",
+     "이상하게"
     ],
     [
-     "figures",
-     "수치"
+     "calm",
+     "고요한, 차분한"
     ],
     [
-     "worldwide",
-     "전 세계에"
+     "switched off",
+     "(전원을) 끄다"
+    ],
+    [
+     "round",
+     "(게임의) 판, 회"
     ]
    ],
    "review": {
@@ -212,6 +216,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-21",
+   "topic": "정전"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-21",
    "topic": "시골 열차"
@@ -310,11 +319,6 @@
    "lang": "de",
    "day": "2026-11-15",
    "topic": "대림절 화환"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-14",
-   "topic": "목도리 뜨기"
   }
  ]
 }
