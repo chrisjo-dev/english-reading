@@ -1,0 +1,482 @@
+{
+  "date": "2026-11-21",
+  "category": "culture",
+  "topic": "정전",
+  "title_ko": "정전된 밤의 촛불 보드게임",
+  "summary_ko": "갑자기 전기가 나간 토요일 저녁을 남동생과 촛불 아래에서 보낸 이야기를 담은 B1~B2 영어 지문이에요. 학습용으로 지어낸 이야기로, 두 남매는 오래된 보드게임을 꺼내 몇 달 만에 가장 많이 웃어요.",
+  "headline": "A Night Without Power",
+  "fit": "life",
+  "grammar": {
+    "b": [
+      "b-modal-perfect",
+      "b-so-that"
+    ],
+    "a": [
+      "a-should"
+    ]
+  },
+  "keywords": [
+    "정전",
+    "촛불",
+    "보드게임",
+    "뜻밖의 저녁"
+  ],
+  "example": true,
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "sentences": [
+    {
+      "en": "On Saturday evening, Jiwoo was cooking dinner with her younger brother when suddenly all the lights in the apartment **went out**.",
+      "b2": false,
+      "chunks": [
+        [
+          "On Saturday evening,",
+          "토요일 저녁에"
+        ],
+        [
+          "Jiwoo was cooking dinner",
+          "지우는 저녁을 만들고 있었다"
+        ],
+        [
+          "with her younger brother",
+          "남동생과 함께"
+        ],
+        [
+          "when suddenly",
+          "그때 갑자기"
+        ],
+        [
+          "all the lights",
+          "모든 불이"
+        ],
+        [
+          "in the apartment",
+          "아파트 안의"
+        ],
+        [
+          "**went out**.",
+          "꺼졌다"
+        ]
+      ]
+    },
+    {
+      "en": "She looked out the window and saw that the whole street was dark, so the strong wind must have **damaged** a **power line** nearby.",
+      "b2": false,
+      "chunks": [
+        [
+          "She looked out the window",
+          "그녀는 창밖을 내다보았다"
+        ],
+        [
+          "and saw",
+          "그리고 보았다"
+        ],
+        [
+          "that the whole street was dark,",
+          "거리 전체가 깜깜하다는 것을"
+        ],
+        [
+          "so the strong wind",
+          "그래서 강한 바람이"
+        ],
+        [
+          "must have **damaged**",
+          "손상시킨 게 틀림없었다"
+        ],
+        [
+          "a **power line** nearby.",
+          "근처의 전선을"
+        ]
+      ]
+    },
+    {
+      "en": "Her brother wanted to use his phone as a **flashlight**, but Jiwoo told him to keep the **battery** for emergencies and found some old **candles** instead.",
+      "b2": false,
+      "chunks": [
+        [
+          "Her brother wanted",
+          "남동생은 원했다"
+        ],
+        [
+          "to use his phone",
+          "휴대폰을 쓰기를"
+        ],
+        [
+          "as a **flashlight**,",
+          "손전등으로"
+        ],
+        [
+          "but Jiwoo told him",
+          "하지만 지우는 그에게 말했다"
+        ],
+        [
+          "to keep the **battery**",
+          "배터리를 아껴 두라고"
+        ],
+        [
+          "for emergencies",
+          "비상시를 위해"
+        ],
+        [
+          "and found some old **candles**",
+          "그리고 오래된 양초 몇 개를 찾았다"
+        ],
+        [
+          "instead.",
+          "그 대신"
+        ]
+      ]
+    },
+    {
+      "en": "They **placed** the candles on the kitchen table so that they could see each other's faces, and then they **dug out** a board game they had not played for years.",
+      "b2": true,
+      "chunks": [
+        [
+          "They **placed** the candles",
+          "그들은 양초를 놓았다"
+        ],
+        [
+          "on the kitchen table",
+          "부엌 식탁 위에"
+        ],
+        [
+          "so that they could see",
+          "볼 수 있도록"
+        ],
+        [
+          "each other's faces,",
+          "서로의 얼굴을"
+        ],
+        [
+          "and then they **dug out**",
+          "그러고 나서 찾아 꺼냈다"
+        ],
+        [
+          "a board game",
+          "보드게임 하나를"
+        ],
+        [
+          "they had not played",
+          "그들이 하지 않았던"
+        ],
+        [
+          "for years.",
+          "몇 년 동안"
+        ]
+      ]
+    },
+    {
+      "en": "Without the TV or the internet, the apartment felt **strangely** **calm**, and the two of them laughed more than they had in months.",
+      "b2": false,
+      "chunks": [
+        [
+          "Without the TV or the internet,",
+          "텔레비전도 인터넷도 없이"
+        ],
+        [
+          "the apartment felt",
+          "아파트는 느껴졌다"
+        ],
+        [
+          "**strangely** **calm**,",
+          "이상하게 고요하게"
+        ],
+        [
+          "and the two of them laughed more",
+          "그리고 두 사람은 더 많이 웃었다"
+        ],
+        [
+          "than they had in months.",
+          "몇 달 동안 웃었던 것보다"
+        ]
+      ]
+    },
+    {
+      "en": "When the power eventually came back two hours later, her brother **switched off** the lights again and asked for one more **round**.",
+      "b2": false,
+      "chunks": [
+        [
+          "When the power",
+          "전기가"
+        ],
+        [
+          "eventually came back",
+          "마침내 돌아왔을 때"
+        ],
+        [
+          "two hours later,",
+          "두 시간 뒤에"
+        ],
+        [
+          "her brother **switched off**",
+          "남동생은 껐다"
+        ],
+        [
+          "the lights again",
+          "불을 다시"
+        ],
+        [
+          "and asked for one more **round**.",
+          "그리고 한 판 더 하자고 했다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "went out",
+      "(불이) 꺼지다"
+    ],
+    [
+      "damaged",
+      "손상시키다, 망가뜨리다"
+    ],
+    [
+      "power line",
+      "전선, 송전선"
+    ],
+    [
+      "flashlight",
+      "손전등"
+    ],
+    [
+      "battery",
+      "전지, 배터리"
+    ],
+    [
+      "candles",
+      "양초들"
+    ],
+    [
+      "placed",
+      "놓다, 두다"
+    ],
+    [
+      "dug out",
+      "찾아 꺼내다"
+    ],
+    [
+      "strangely",
+      "이상하게"
+    ],
+    [
+      "calm",
+      "고요한, 차분한"
+    ],
+    [
+      "switched off",
+      "(전원을) 끄다"
+    ],
+    [
+      "round",
+      "(게임의) 판, 회"
+    ]
+  ],
+  "points": [
+    {
+      "title": "must have + p.p.: ~했던 게 틀림없다",
+      "body": "2번 문장 `the strong wind must have damaged a power line nearby`는 직접 보지는 못했지만 거리 전체가 깜깜한 걸 보고 '강한 바람이 전선을 망가뜨린 게 틀림없다'고 과거 일을 추측하는 말이에요. `must damage`가 아니라 `must have damaged`라서 이미 일어난 일에 대한 확신이에요. 4번 문장의 `so that they could see each other's faces`는 '서로 얼굴을 볼 수 있도록'이라는 목적이에요."
+    },
+    {
+      "title": "than they had in months: 뒤에서 줄어든 동사",
+      "body": "5번 문장 `laughed more than they had in months`는 `than they had laughed in months`에서 앞에 나온 `laughed`가 빠진 모양이에요. '몇 달 동안 웃었던 것보다 더 많이 웃었다', 즉 '몇 달 만에 가장 많이 웃었다'로 읽으세요. `had`만 보고 '가졌다'로 해석하지 않도록 주의하세요."
+    }
+  ],
+  "answers": [
+    "토요일 저녁, 지우가 남동생과 함께 저녁을 만들고 있는데 갑자기 아파트의 불이 모두 꺼졌다.",
+    "창밖을 내다보니 거리 전체가 깜깜했고, 그래서 강한 바람이 근처 전선을 망가뜨린 게 틀림없었다.",
+    "남동생은 휴대폰을 손전등으로 쓰고 싶어 했지만, 지우는 비상시를 위해 배터리를 아껴 두라고 하고는 대신 오래된 양초 몇 개를 찾아냈다.",
+    "두 사람은 서로의 얼굴을 볼 수 있도록 부엌 식탁 위에 양초를 놓았고, 그러고 나서 몇 년 동안 하지 않았던 보드게임을 꺼냈다.",
+    "텔레비전도 인터넷도 없으니 아파트는 이상하게 고요했고, 두 사람은 몇 달 만에 가장 많이 웃었다.",
+    "두 시간 뒤 마침내 전기가 돌아오자, 남동생은 불을 다시 끄고 한 판만 더 하자고 했다."
+  ],
+  "advanced": [
+    {
+      "word": "outage",
+      "meaning": "정전, (전기) 공급 중단",
+      "confuse": "outrage(격분)와 혼동 주의",
+      "example": "The **outage** lasted about two hours.",
+      "example_ko": "정전은 두 시간쯤 이어졌습니다."
+    },
+    {
+      "word": "flicker",
+      "meaning": "깜빡이다, 일렁이다",
+      "confuse": null,
+      "example": "The candles **flickered** on the kitchen table.",
+      "example_ko": "부엌 식탁 위에서 양초가 일렁였습니다."
+    },
+    {
+      "word": "illuminate",
+      "meaning": "비추다, 밝히다",
+      "confuse": "eliminate(없애다)와 혼동 주의",
+      "example": "A few old candles **illuminated** their faces.",
+      "example_ko": "오래된 양초 몇 개가 두 사람의 얼굴을 비췄습니다."
+    },
+    {
+      "word": "conserve",
+      "meaning": "아끼다, 보존하다",
+      "confuse": "converse(대화하다)와 혼동 주의",
+      "example": "Jiwoo wanted to **conserve** the phone battery.",
+      "example_ko": "지우는 휴대폰 배터리를 아끼고 싶었습니다."
+    },
+    {
+      "word": "retrieve",
+      "meaning": "되찾아 오다, 꺼내 오다",
+      "confuse": null,
+      "example": "They **retrieved** an old board game from the closet.",
+      "example_ko": "두 사람은 벽장에서 오래된 보드게임을 꺼내 왔습니다."
+    },
+    {
+      "word": "serene",
+      "meaning": "고요한, 평온한",
+      "confuse": null,
+      "example": "Without any screens, the apartment felt **serene**.",
+      "example_ko": "화면이 하나도 없으니 아파트는 평온하게 느껴졌습니다."
+    },
+    {
+      "word": "unexpectedly",
+      "meaning": "뜻밖에, 예상외로",
+      "confuse": null,
+      "example": "The dark evening turned out **unexpectedly** fun.",
+      "example_ko": "깜깜한 저녁은 뜻밖에 즐거웠습니다."
+    }
+  ],
+  "source": null,
+  "photo_scene": "Close view of a young woman and her teenage brother sitting side by side at a kitchen table, playing a board game by the warm light of three candles, the room around them dark, cozy evening mood.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "On Saturday evening, the lights in Jiwoo's apartment **went out**.",
+          "chunks": [
+            [
+              "On Saturday evening,",
+              "토요일 저녁에"
+            ],
+            [
+              "the lights",
+              "불이"
+            ],
+            [
+              "in Jiwoo's apartment",
+              "지우의 아파트에서"
+            ],
+            [
+              "**went out**.",
+              "꺼졌다"
+            ]
+          ]
+        },
+        {
+          "en": "The whole street was dark because the wind **damaged** a **power line**.",
+          "chunks": [
+            [
+              "The whole street was dark",
+              "거리 전체가 깜깜했다"
+            ],
+            [
+              "because the wind",
+              "바람이"
+            ],
+            [
+              "**damaged** a **power line**.",
+              "전선을 손상시켰기 때문에"
+            ]
+          ]
+        },
+        {
+          "en": "Jiwoo said, \"You should save your phone **battery**,\" and found some **candles**.",
+          "chunks": [
+            [
+              "Jiwoo said,",
+              "지우가 말했다"
+            ],
+            [
+              "\"You should save",
+              "\"아껴 둬야 해"
+            ],
+            [
+              "your phone **battery**,\"",
+              "네 휴대폰 배터리를\""
+            ],
+            [
+              "and found some **candles**.",
+              "그리고 양초 몇 개를 찾았다"
+            ]
+          ]
+        },
+        {
+          "en": "They **placed** the candles on the table and played an old board game.",
+          "chunks": [
+            [
+              "They **placed** the candles",
+              "그들은 양초를 놓았다"
+            ],
+            [
+              "on the table",
+              "식탁 위에"
+            ],
+            [
+              "and played",
+              "그리고 했다"
+            ],
+            [
+              "an old board game.",
+              "오래된 보드게임을"
+            ]
+          ]
+        },
+        {
+          "en": "The apartment was **strangely** **calm**, and they laughed a lot.",
+          "chunks": [
+            [
+              "The apartment was",
+              "아파트는"
+            ],
+            [
+              "**strangely** **calm**,",
+              "이상하게 고요했다"
+            ],
+            [
+              "and they laughed a lot.",
+              "그리고 그들은 많이 웃었다"
+            ]
+          ]
+        },
+        {
+          "en": "The power came back two hours later, but her brother **switched off** the lights again.",
+          "chunks": [
+            [
+              "The power came back",
+              "전기가 돌아왔다"
+            ],
+            [
+              "two hours later,",
+              "두 시간 뒤에"
+            ],
+            [
+              "but her brother **switched off**",
+              "하지만 남동생은 껐다"
+            ],
+            [
+              "the lights again.",
+              "불을 다시"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "토요일 저녁, 지우의 아파트에서 불이 꺼졌다.",
+        "바람이 전선을 망가뜨려서 거리 전체가 깜깜했다.",
+        "지우는 \"휴대폰 배터리는 아껴 둬야 해.\"라고 말하고 양초 몇 개를 찾았다.",
+        "두 사람은 식탁 위에 양초를 놓고 오래된 보드게임을 했다.",
+        "아파트는 이상하게 고요했고, 두 사람은 많이 웃었다.",
+        "두 시간 뒤에 전기가 돌아왔지만, 남동생은 불을 다시 껐다."
+      ]
+    }
+  }
+}
