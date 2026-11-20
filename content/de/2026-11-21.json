@@ -1,0 +1,518 @@
+{
+  "date": "2026-11-21",
+  "category": "culture",
+  "topic": "함부르크 항구 배",
+  "title_ko": "승차권 한 장으로 둘러본 함부르크 항구",
+  "headline": "Mit der Fähre durch den Hamburger Hafen",
+  "summary_ko": "함부르크에서 하루를 보내며 평범한 승차권으로 항구 배를 타 본 여행을 지어낸 이야기로 쓴 B1~B2 독일어 지문이에요. 갈매기와 컨테이너선 사이를 지나 강가에서 생선 샌드위치를 먹고 돌아오는 하루를 그려요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "life",
+  "example": true,
+  "grammar": {
+    "b": [
+      "b-je-desto",
+      "b-plusquamperfekt"
+    ],
+    "a": [
+      "a-als-past"
+    ]
+  },
+  "keywords": [
+    "항구",
+    "여객선",
+    "갈매기",
+    "하루 여행"
+  ],
+  "photo_scene": "Close-up on the open deck of a small harbour ferry on a grey windy November morning, a person in a thick scarf holding a fish sandwich at the railing, seagulls flying close, large cranes and container ships softly blurred behind.",
+  "sentences": [
+    {
+      "en": "Weil ich nur einen Tag in Hamburg hatte, wollte ich den **Hafen** vom Wasser aus sehen und ging am Vormittag zum **Anleger**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Weil ich",
+          "왜냐하면 나는"
+        ],
+        [
+          "nur einen Tag",
+          "단 하루만"
+        ],
+        [
+          "in Hamburg hatte,",
+          "함부르크에 있었기 때문에"
+        ],
+        [
+          "wollte ich",
+          "나는 원했습니다"
+        ],
+        [
+          "den **Hafen**",
+          "항구를"
+        ],
+        [
+          "vom Wasser aus sehen",
+          "물 위에서 보기를"
+        ],
+        [
+          "und ging",
+          "그리고 갔습니다"
+        ],
+        [
+          "am Vormittag",
+          "오전에"
+        ],
+        [
+          "zum **Anleger**.",
+          "선착장으로"
+        ]
+      ]
+    },
+    {
+      "en": "Nachdem ich am Automaten eine ganz normale **Fahrkarte** gekauft hatte, setzte ich mich draußen auf das kalte **Deck**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Nachdem ich",
+          "내가 ~한 뒤에"
+        ],
+        [
+          "am Automaten",
+          "자동판매기에서"
+        ],
+        [
+          "eine ganz normale **Fahrkarte**",
+          "아주 평범한 승차권을"
+        ],
+        [
+          "gekauft hatte,",
+          "사고 난"
+        ],
+        [
+          "setzte ich mich",
+          "나는 앉았습니다"
+        ],
+        [
+          "draußen",
+          "바깥"
+        ],
+        [
+          "auf das kalte **Deck**.",
+          "차가운 갑판 위에"
+        ]
+      ]
+    },
+    {
+      "en": "Die **Fähre** fuhr langsam an riesigen Containerschiffen vorbei, und über uns kreisten laute **Möwen**, die auf Brotkrumen hofften.",
+      "b2": false,
+      "chunks": [
+        [
+          "Die **Fähre**",
+          "배는"
+        ],
+        [
+          "fuhr langsam",
+          "천천히 지나갔습니다"
+        ],
+        [
+          "an riesigen Containerschiffen vorbei,",
+          "거대한 컨테이너선들 옆을"
+        ],
+        [
+          "und über uns",
+          "그리고 우리 위에서"
+        ],
+        [
+          "kreisten laute **Möwen**,",
+          "시끄러운 갈매기들이 맴돌았습니다"
+        ],
+        [
+          "die auf Brotkrumen hofften.",
+          "빵 부스러기를 기대하던"
+        ]
+      ]
+    },
+    {
+      "en": "Je weiter wir nach Westen fuhren, desto stärker wurde der **Wind**, und ich zog meinen **Schal** fest um den Hals.",
+      "b2": true,
+      "chunks": [
+        [
+          "Je weiter",
+          "더 멀리 ~할수록"
+        ],
+        [
+          "wir nach Westen fuhren,",
+          "우리가 서쪽으로 갈"
+        ],
+        [
+          "desto stärker",
+          "그만큼 더 세게"
+        ],
+        [
+          "wurde der **Wind**,",
+          "바람이 불었습니다"
+        ],
+        [
+          "und ich zog",
+          "그리고 나는 당겼습니다"
+        ],
+        [
+          "meinen **Schal**",
+          "내 목도리를"
+        ],
+        [
+          "fest um den Hals.",
+          "목에 단단히"
+        ]
+      ]
+    },
+    {
+      "en": "In Finkenwerder stieg ich kurz aus, aß am **Ufer** ein frisches **Fischbrötchen** und genoss die Aussicht auf die Stadt.",
+      "b2": false,
+      "chunks": [
+        [
+          "In Finkenwerder",
+          "핑켄베르더에서"
+        ],
+        [
+          "stieg ich kurz aus,",
+          "나는 잠깐 내렸습니다"
+        ],
+        [
+          "aß",
+          "먹었습니다"
+        ],
+        [
+          "am **Ufer**",
+          "강가에서"
+        ],
+        [
+          "ein frisches **Fischbrötchen**",
+          "신선한 생선 샌드위치를"
+        ],
+        [
+          "und genoss",
+          "그리고 즐겼습니다"
+        ],
+        [
+          "die Aussicht",
+          "경치를"
+        ],
+        [
+          "auf die Stadt.",
+          "도시 쪽으로 펼쳐진"
+        ]
+      ]
+    },
+    {
+      "en": "Auf der **Rückfahrt** war ich müde, aber glücklich, denn ich hatte für wenig Geld fast eine richtige **Hafenrundfahrt** erlebt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Auf der **Rückfahrt**",
+          "돌아오는 길에"
+        ],
+        [
+          "war ich",
+          "나는 ~였습니다"
+        ],
+        [
+          "müde, aber glücklich,",
+          "피곤하지만 행복했습니다"
+        ],
+        [
+          "denn ich hatte",
+          "왜냐하면 나는"
+        ],
+        [
+          "für wenig Geld",
+          "적은 돈으로"
+        ],
+        [
+          "fast eine richtige **Hafenrundfahrt**",
+          "거의 제대로 된 항구 유람을"
+        ],
+        [
+          "erlebt.",
+          "경험했으니까요"
+        ]
+      ]
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Ich war nur einen Tag in Hamburg und wollte den **Hafen** sehen.",
+          "chunks": [
+            [
+              "Ich war",
+              "나는 있었습니다"
+            ],
+            [
+              "nur einen Tag",
+              "단 하루만"
+            ],
+            [
+              "in Hamburg",
+              "함부르크에"
+            ],
+            [
+              "und wollte",
+              "그리고 원했습니다"
+            ],
+            [
+              "den **Hafen** sehen.",
+              "항구를 보기를"
+            ]
+          ]
+        },
+        {
+          "en": "Ich kaufte eine normale **Fahrkarte** und saß draußen auf dem **Deck**.",
+          "chunks": [
+            [
+              "Ich kaufte",
+              "나는 샀습니다"
+            ],
+            [
+              "eine normale **Fahrkarte**",
+              "평범한 승차권을"
+            ],
+            [
+              "und saß",
+              "그리고 앉았습니다"
+            ],
+            [
+              "draußen",
+              "바깥"
+            ],
+            [
+              "auf dem **Deck**.",
+              "갑판 위에"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Fähre** fuhr langsam, und über uns flogen laute **Möwen**.",
+          "chunks": [
+            [
+              "Die **Fähre**",
+              "배는"
+            ],
+            [
+              "fuhr langsam,",
+              "천천히 갔습니다"
+            ],
+            [
+              "und über uns",
+              "그리고 우리 위로"
+            ],
+            [
+              "flogen laute **Möwen**.",
+              "시끄러운 갈매기들이 날았습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Auf dem Wasser wurde der **Wind** immer stärker, deshalb trug ich meinen **Schal**.",
+          "chunks": [
+            [
+              "Auf dem Wasser",
+              "물 위에서"
+            ],
+            [
+              "wurde der **Wind**",
+              "바람은 ~해졌습니다"
+            ],
+            [
+              "immer stärker,",
+              "점점 더 세게"
+            ],
+            [
+              "deshalb trug ich",
+              "그래서 나는 둘렀습니다"
+            ],
+            [
+              "meinen **Schal**.",
+              "내 목도리를"
+            ]
+          ]
+        },
+        {
+          "en": "In Finkenwerder aß ich am **Ufer** ein frisches **Fischbrötchen**.",
+          "chunks": [
+            [
+              "In Finkenwerder",
+              "핑켄베르더에서"
+            ],
+            [
+              "aß ich",
+              "나는 먹었습니다"
+            ],
+            [
+              "am **Ufer**",
+              "강가에서"
+            ],
+            [
+              "ein frisches **Fischbrötchen**.",
+              "신선한 생선 샌드위치를"
+            ]
+          ]
+        },
+        {
+          "en": "Als die **Rückfahrt** begann, war ich müde, aber sehr glücklich.",
+          "chunks": [
+            [
+              "Als die **Rückfahrt** begann,",
+              "돌아오는 길이 시작되었을 때"
+            ],
+            [
+              "war ich",
+              "나는 ~였습니다"
+            ],
+            [
+              "müde,",
+              "피곤했지만"
+            ],
+            [
+              "aber sehr glücklich.",
+              "아주 행복했습니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "저는 함부르크에 단 하루만 있었고, 항구를 보고 싶었습니다.",
+        "저는 평범한 승차권을 사서 바깥 갑판에 앉았습니다.",
+        "배는 천천히 갔고, 우리 위로 시끄러운 갈매기들이 날아다녔습니다.",
+        "물 위에서는 바람이 점점 세져서 저는 목도리를 둘렀습니다.",
+        "핑켄베르더에서 저는 강가에 앉아 신선한 생선 샌드위치를 먹었습니다.",
+        "돌아오는 길이 시작되었을 때, 저는 피곤했지만 아주 행복했습니다."
+      ]
+    }
+  },
+  "words": [
+    [
+      "Hafen",
+      "항구 (남성 der, 복수 Häfen)"
+    ],
+    [
+      "Anleger",
+      "선착장 (남성 der, 복수 Anleger)"
+    ],
+    [
+      "Fahrkarte",
+      "승차권, 차표 (여성 die, 복수 Fahrkarten)"
+    ],
+    [
+      "Deck",
+      "갑판 (중성 das, 복수 Decks)"
+    ],
+    [
+      "Fähre",
+      "연락선, 페리 (여성 die, 복수 Fähren)"
+    ],
+    [
+      "Möwe",
+      "갈매기 (여성 die, 복수 Möwen)"
+    ],
+    [
+      "Wind",
+      "바람 (남성 der)"
+    ],
+    [
+      "Schal",
+      "목도리 (남성 der, 복수 Schals)"
+    ],
+    [
+      "Ufer",
+      "강가, 물가 (중성 das, 복수 Ufer)"
+    ],
+    [
+      "Fischbrötchen",
+      "생선 샌드위치 (중성 das, 복수 Fischbrötchen)"
+    ],
+    [
+      "Rückfahrt",
+      "귀로, 돌아오는 길 (여성 die)"
+    ],
+    [
+      "Hafenrundfahrt",
+      "항구 유람 (여성 die, 복수 Hafenrundfahrten)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "je ... desto — ~할수록 더 ~하다",
+      "body": "`Je weiter wir nach Westen fuhren, desto stärker wurde der Wind.`에서 `je` 부분은 부문장이라 동사 `fuhren`이 끝에 가요. `desto` 뒤에는 비교급 `stärker`가 바로 오고, 그다음 자리에 동사 `wurde`가 와서 주어 `der Wind`가 뒤로 밀립니다. '서쪽으로 갈수록 바람이 더 세졌다'로 읽으면 돼요."
+    },
+    {
+      "title": "nachdem + Plusquamperfekt — 먼저 끝난 일",
+      "body": "`Nachdem ich ... eine Fahrkarte gekauft hatte, setzte ich mich ...`에서 승차권을 산 일이 앉은 일보다 먼저예요. 과거(`setzte`)보다 앞선 일은 `hatte` + 과거분사(`gekauft hatte`)로 씁니다. 6번 문장 `ich hatte ... erlebt`도 같은 시제로, 돌아오는 길보다 앞서 이미 겪은 일을 가리켜요."
+    }
+  ],
+  "answers": [
+    "함부르크에 하루밖에 없었기 때문에, 저는 항구를 물 위에서 보고 싶어서 오전에 선착장으로 갔습니다.",
+    "자동판매기에서 아주 평범한 승차권을 산 뒤, 저는 바깥의 차가운 갑판에 앉았습니다.",
+    "배는 거대한 컨테이너선들 옆을 천천히 지나갔고, 우리 머리 위에서는 빵 부스러기를 바라는 시끄러운 갈매기들이 맴돌았습니다.",
+    "서쪽으로 갈수록 바람은 더 세졌고, 저는 목도리를 목에 단단히 둘렀습니다.",
+    "핑켄베르더에서 잠깐 내려, 강가에서 신선한 생선 샌드위치를 먹으며 도시 쪽 경치를 즐겼습니다.",
+    "돌아오는 길에 저는 피곤했지만 행복했습니다. 적은 돈으로 거의 제대로 된 항구 유람을 한 셈이었으니까요."
+  ],
+  "advanced": [
+    {
+      "word": "ablegen",
+      "meaning": "(배가) 출항하다, 떠나다",
+      "confuse": "ablegen vs. anlegen: `ablegen`은 배가 부두를 떠나는 것, `anlegen`은 부두에 대는 것이에요. 옷을 '벗다'라는 뜻의 `ablegen`도 있어요.",
+      "example": "Die Fähre hat pünktlich um zehn Uhr **abgelegt**.",
+      "example_ko": "배는 10시 정각에 출항했습니다."
+    },
+    {
+      "word": "Reling",
+      "meaning": "(배의) 난간 (여성 die)",
+      "confuse": null,
+      "example": "Ich hielt mich bei dem starken Wind an der **Reling** fest.",
+      "example_ko": "바람이 세서 저는 배 난간을 꽉 붙잡았습니다."
+    },
+    {
+      "word": "Gezeiten",
+      "meaning": "조수, 밀물과 썰물 (복수 die)",
+      "confuse": "Gezeiten vs. Zeiten: `Gezeiten`은 바다의 밀물과 썰물만 가리키고, `Zeiten`은 일반적인 '시간들, 시대'예요.",
+      "example": "Wegen der **Gezeiten** steigt und sinkt das Wasser im Hafen.",
+      "example_ko": "조수 때문에 항구의 물이 높아졌다 낮아집니다."
+    },
+    {
+      "word": "Kran",
+      "meaning": "기중기, 크레인 (남성 der, 복수 Kräne)",
+      "confuse": null,
+      "example": "Ein riesiger **Kran** hob einen roten Container vom Schiff.",
+      "example_ko": "거대한 크레인이 배에서 빨간 컨테이너를 들어 올렸습니다."
+    },
+    {
+      "word": "schaukeln",
+      "meaning": "흔들리다, 출렁이다",
+      "confuse": null,
+      "example": "Bei den hohen Wellen hat das kleine Boot stark **geschaukelt**.",
+      "example_ko": "높은 파도에 작은 배가 심하게 흔들렸습니다."
+    },
+    {
+      "word": "Seeluft",
+      "meaning": "바닷바람, 바다 공기 (여성 die)",
+      "confuse": null,
+      "example": "Nach einem Tag voller **Seeluft** habe ich tief geschlafen.",
+      "example_ko": "바다 공기를 실컷 마신 하루를 보내고 저는 깊이 잠들었습니다."
+    },
+    {
+      "word": "sich lohnen",
+      "meaning": "보람이 있다, 할 만하다",
+      "confuse": "sich lohnen vs. belohnen: `sich lohnen`은 '~할 가치가 있다', `belohnen`은 누군가에게 '상을 주다'예요.",
+      "example": "Die kurze Fahrt hat sich wirklich **gelohnt**.",
+      "example_ko": "짧은 뱃길이었지만 정말 탈 만했습니다."
+    }
+  ],
+  "source": null
+}
