@@ -56,8 +56,11 @@
     if (!s) { signedOut(); return; }
     uid = s.user.id;
     var prov = s.user.app_metadata && s.user.app_metadata.provider;
-    c.from("profiles").select("nickname, email, mail_opt_in, mail_verified, mail_lang, mail_level, mail_wait").eq("user_id", uid).maybeSingle().then(function (p) {
+    c.from("profiles").select("nickname, email, mail_opt_in, mail_verified, mail_lang, mail_level, mail_wait, agreed_at").eq("user_id", uid).maybeSingle().then(function (p) {
+      if (p.error) throw p.error;
       var row = p.data || {};
+      // 필수 동의 기록이 없으면(로그인 화면에서 처음 만들고 동의 화면을 떠난 계정) 동의 화면부터(K33)
+      if (p.data && !p.data.agreed_at) { location.replace("/join/agree/?" + new URLSearchParams({ next: "/me/" }).toString()); return; }
       head(row.nickname, prov);
       try { localStorage.setItem("dkh-me", JSON.stringify({ n: row.nickname || "" })); } catch (e) {}
       mailPaint(row);

@@ -7,9 +7,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
 import sync_members as S  # noqa: E402
 
 
-def prof(uid, email, on=True, verified=False, lang="en", level="b", wait=False, opt_at="2026-11-18T01:00:00Z", synced=None):
+def prof(uid, email, on=True, verified=False, lang="en", level="b", wait=False, opt_at="2026-11-18T01:00:00Z", synced=None,
+         agreed="2026-11-18T00:00:00Z"):
     return {"user_id": uid, "email": email, "mail_opt_in": on, "mail_verified": verified, "mail_lang": lang,
-            "mail_level": level, "mail_wait": wait, "mail_opt_at": opt_at, "mail_synced_at": synced}
+            "mail_level": level, "mail_wait": wait, "mail_opt_at": opt_at, "mail_synced_at": synced, "agreed_at": agreed}
 
 
 def sub(email, type_="regular", **meta):
@@ -111,6 +112,16 @@ class PlanTest(unittest.TestCase):
 
 
 class RunTest(unittest.TestCase):
+    def test_account_without_consent_is_left_alone(self):
+        # 필수 동의(0009) 전: 켜 두었어도 넣지 않고, 이미 있는 계정 구독도 빼거나 지우지 않는다
+        ops, fix, taken = S.plan([prof("u1", "a@x.com", agreed=None)], [])
+        self.assertEqual((ops, fix, taken), ([], {}, 0))
+        ops, fix, _ = S.plan([prof("u1", "a@x.com", on=False, agreed=None)], [sub("a@x.com", account="1")])
+        self.assertEqual((ops, fix), ([], {}))
+        # 같은 주소의 동의한 계정이 있으면 그 계정 기준으로 들어간다
+        ops, _, _ = S.plan([prof("u1", "a@x.com", agreed=None), prof("u2", "a@x.com")], [])
+        self.assertEqual([o[0] for o in ops], ["create"])
+
     def test_one_failing_address_does_not_stop_the_rest(self):
         from unittest import mock
         calls = []

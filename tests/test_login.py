@@ -30,7 +30,16 @@ class AccountPagesTest(unittest.TestCase):
         for needle in ('id="agreeAge"', 'id="agreePriv"', 'id="agreeGo"', 'id="agreeNo"', "/assets/join-agree.js?v="):
             self.assertIn(needle, a)
         cb = (ROOT / "assets/join-callback.js").read_text(encoding="utf-8")
-        self.assertIn('saved.agreed === false && first', cb)
+        self.assertIn('c.rpc("agree_terms")', cb)  # 가입 화면 동의는 서버에 남긴다(0009)
+        self.assertIn("agreed_at", cb)
+        self.assertNotIn("last_sign_in_at", cb)  # 처음인 계정 추정 대신 서버 기록으로 본다
+        self.assertIn('mail: false, agreed: false', cb)  # 저장값이 없으면 동의를 거친다
+        self.assertIn('c.rpc("agree_terms")', (ROOT / "assets/join-agree.js").read_text(encoding="utf-8"))
+        self.assertIn("agreed_at", (ROOT / "assets/me.js").read_text(encoding="utf-8"))
+        sql = (ROOT / "supabase/migrations/0009_consent.sql").read_text(encoding="utf-8")
+        self.assertIn("security definer", sql)
+        self.assertIn("coalesce(agreed_at, now())", sql)
+        self.assertNotIn("grant update (agreed_at", sql)  # 클라이언트는 칸을 직접 쓰지 못한다
         self.assertIn("agreed: !login", (ROOT / "assets/join.js").read_text(encoding="utf-8"))
 
     def test_join_has_consents_and_two_providers(self):

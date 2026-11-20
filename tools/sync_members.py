@@ -26,7 +26,7 @@ SUPABASE = "https://kfprgssvigujxphfmlth.supabase.co/rest/v1"
 CAP = 100
 LIVE = ("regular", "unactivated")
 GONE = ("unsubscribed", "complained", "blocked", "undeliverable")
-FIELDS = "user_id,email,mail_opt_in,mail_verified,mail_lang,mail_level,mail_wait,mail_opt_at,mail_synced_at"
+FIELDS = "user_id,email,agreed_at,mail_opt_in,mail_verified,mail_lang,mail_level,mail_wait,mail_opt_at,mail_synced_at"
 
 
 def _ts(v):
@@ -48,12 +48,15 @@ def plan(profiles, subs, cap=CAP):
     taken = sum(1 for s in by.values() if s.get("type") in LIVE)
     ops, fix, seen = [], {}, set()
     # 주소가 같은 계정이 여럿이면(주소 중복은 막지 않는다) 하나라도 켜 둔 동안은 끄지 않는다
-    wanted = {p["email"].lower() for p in profiles if p.get("email") and p.get("mail_opt_in")}
+    wanted = {p["email"].lower() for p in profiles if p.get("email") and p.get("mail_opt_in") and p.get("agreed_at")}
     for p in profiles:
         if not p.get("email"):
             continue
         e = p["email"].lower()
         seen.add(e)
+        if not p.get("agreed_at"):
+            # 필수 동의 기록(0009)이 없는 계정은 동의할 때까지 넣지도 빼지도 않는다(이미 있는 구독도 그대로 둔다)
+            continue
         s = by.get(e)
         meta = {"lang": p.get("mail_lang") or "en", "level": p.get("mail_level") or "b", "account": "1"}
         patch = {}

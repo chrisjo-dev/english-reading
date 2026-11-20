@@ -15,7 +15,7 @@
 
   var saved = null, oidc = null;
   try { saved = JSON.parse(localStorage.getItem(NEXT_KEY) || "null"); localStorage.removeItem(NEXT_KEY); } catch (e) {}
-  if (!saved || !(Date.now() - saved.at < NEXT_TTL)) saved = { next: "/", mail: false };
+  if (!saved || !(Date.now() - saved.at < NEXT_TTL)) saved = { next: "/", mail: false, agreed: false };  // 동의 여부를 모르면 동의 화면을 거친다
   var next = A.safeNext(saved.next);
   try { oidc = JSON.parse(localStorage.getItem(OIDC_KEY) || "null"); localStorage.removeItem(OIDC_KEY); } catch (e) {}
 
@@ -77,14 +77,16 @@
     return signIn(c).then(function (r) {
       if (r.error || !r.data || !r.data.user) throw r.error || new Error("no session");
       var isNew = Date.now() - Date.parse(r.data.user.created_at) < NEW_USER_WINDOW;
-      // 로그인 화면(동의 칸 없음)에서 처음 만든 계정이면 동의 화면(K33)을 거친다. 처음인지는 만든 시각과 이번 로그인 시각이 거의 같은지로 본다
-      var u0 = r.data.user, first = Math.abs(Date.parse(u0.last_sign_in_at) - Date.parse(u0.created_at)) < 60 * 1000;
-      if (saved.agreed === false && first) needAgree = true;
       if (typeof gtag === "function") gtag("event", isNew ? "sign_up" : "login", { method: oidc.p });
       var uid = r.data.user.id;
       // 위 메뉴의 마이페이지 동그라미가 쓰는 닉네임(첫 글자)을 이 기기에 둔다
-      var nick = c.from("profiles").select("nickname, email").eq("user_id", uid).maybeSingle().then(function (p) {
+      // 가입 화면에서 필수 동의를 했으면 서버에 남긴다(agree_terms, 0009). 동의 기록이 없는 계정은 동의 화면(K33)을 거친다
+      var agree = saved.agreed === true ? c.rpc("agree_terms").then(function () {}, function () {}) : Promise.resolve();
+      var nick = agree.then(function () {
+        return c.from("profiles").select("nickname, email, agreed_at").eq("user_id", uid).maybeSingle();
+      }).then(function (p) {
         if (p.error) throw p.error;
+        if (!(p.data && p.data.agreed_at)) { needAgree = true; return; }
         try { localStorage.setItem("dkh-me", JSON.stringify({ n: (p.data && p.data.nickname) || "" })); } catch (e) {}
         // 가입 화면에서 메일 받기를 골랐으면 고른 언어, 수준과 함께 켠다(시안 K21).
         // 주소가 없으면(카카오) 주소 적는 화면(K17), 있으면(Google) 가입 완료 화면(K24)으로 보낸다.
@@ -99,6 +101,7 @@
           });
         }
       }).catch(function () {
+        if (saved.agreed !== true) needAgree = true;  // 동의 기록을 읽지 못했으면 로그인 화면에서 온 사람은 동의 화면에서 다시 확인한다
         // 메일 설정을 저장하지 못했으면 메일이 간다고 말하지 않고, 마이페이지가 고른 설정으로 한 번 더 켜게 한다(me.js)
         if (saved.mail === true) { needEmail = false; mailDone = false; mailRetry = true; }
       });
