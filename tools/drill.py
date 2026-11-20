@@ -86,7 +86,7 @@ def _match(bold, word):
 
 
 # 활용 어미. 이 어미끼리만 다르면 같은 단어로 본다(Bäcker ↔ Bäckerei 는 "ei" 라 다른 단어)
-ENDS = ("", "e", "n", "en", "s", "es", "t", "st", "et", "te", "ten", "er", "ern", "ed", "d", "ing", "ies", "ied")
+ENDS = ("", "e", "n", "en", "em", "s", "es", "t", "st", "et", "te", "ten", "er", "ern", "ed", "d", "ing", "ies", "ied")
 
 
 # 분리동사 앞말. 과거분사는 앞말 뒤에 ge 가 들어간다(festlegen ↔ festgelegt)

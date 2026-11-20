@@ -63,6 +63,7 @@ class TestCards(unittest.TestCase):
     def test_double_s_plural_is_same_word(self):
         self.assertTrue(drill._inflected("ersatzbusse", "ersatzbus"))
         self.assertTrue(drill._inflected("ergebnissen", "ergebnis"))
+        self.assertTrue(drill._inflected("wasserabweisendem", "wasserabweisend"))  # 형용사 어미 -em(3격)
         self.assertFalse(drill._inflected("bäckerei", "bäcker"))
         self.assertFalse(drill._inflected("these", "the"))
 
