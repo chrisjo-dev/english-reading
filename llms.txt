@@ -4,13 +4,13 @@
 
 - 다른 표기: 한입독해, 독해 한입, Dokhaehanip
 - 이용료: 무료
-- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-20
+- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-21
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 49편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 48편
-- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 24편
+- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 25편
 
 ## 최근 지문
 - [영어, 2026-11-20, 로봇 팔이 꽂아 주는 전기차 충전기](https://dokhaehanip.com/en/2026-11-20/): 출처 BYD Unveils World's First Integrated Solar, Storage, FLASH and Robotic EV Charging System in Abu Dhabi (SolarQuarter, 2026-11-18)
@@ -27,13 +27,13 @@
 - [일본어, 2026-11-16, 어선 퍼레이드와 치어 방류](https://dokhaehanip.com/ja/2026-11-16/): 출처 両陛下　キジハタとヒラメ稚魚放流　高等支援学校で生徒に進路の質問 (KAB 熊本朝日放送, 2026-11-16)
 - [일본어, 2026-11-15, 친구와 끓인 올해 첫 전골](https://dokhaehanip.com/ja/2026-11-15/)
 - [일본어, 2026-11-14, 바닷가 마을의 머그컵 만들기](https://dokhaehanip.com/ja/2026-11-14/)
+- [독일어, 2026-11-21, 승차권 한 장으로 둘러본 함부르크 항구](https://dokhaehanip.com/de/2026-11-21/)
 - [독일어, 2026-11-20, 백 년 만에 다시 나타난 물쥐](https://dokhaehanip.com/de/2026-11-20/): 출처 Äthiopische Wassermaus nach fast 100 Jahren wiederentdeckt (National Geographic Deutschland)
 - [독일어, 2026-11-19, 퇴사할 때 받는 독일의 근무 증명서](https://dokhaehanip.com/de/2026-11-19/): 출처 § 109 Zeugnis, Gewerbeordnung (gesetze-im-internet.de)
 - [독일어, 2026-11-18, 한 달 동안 책을 못 빌리는 하노버 도서관](https://dokhaehanip.com/de/2026-11-18/): 출처 Neues Bibliothekssystem für die Stadtbibliothek Hannover ab Dezember 2026 (hannover.de)
 - [독일어, 2026-11-17, 이름을 지키는 드레스덴 슈톨렌](https://dokhaehanip.com/de/2026-11-17/): 출처 Dresdner Christstollen PGI (European Commission)
 - [독일어, 2026-11-16, 제 이름을 찾은 무알코올 글뤼바인](https://dokhaehanip.com/de/2026-11-16/): 출처 Glühwein ohne Alkohol darf jetzt auch so heißen (Tageskarte)
 - [독일어, 2026-11-15, 할머니와 엮은 대림절 화환](https://dokhaehanip.com/de/2026-11-15/)
-- [독일어, 2026-11-14, 안개가 걷힌 바스타이 돌다리](https://dokhaehanip.com/de/2026-11-14/)
 
 ## 주간 단어 복습
 - [영어 주간 단어 복습, 2026-11-15](https://dokhaehanip.com/en/review/2026-11-15/): 그 주 지문의 주요 단어 45개

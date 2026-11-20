@@ -1,6 +1,6 @@
 {
- "date": "2026-11-20",
- "words_total": 868,
+ "date": "2026-11-21",
+ "words_total": 880,
  "langs": {
   "en": {
    "count": 49,
@@ -137,14 +137,14 @@
    }
   },
   "de": {
-   "count": 24,
-   "latest": "2026-11-20",
-   "topic": "에티오피아 물쥐",
+   "count": 25,
+   "latest": "2026-11-21",
+   "topic": "함부르크 항구 배",
    "sentences": [
-    "Fast hundert Jahre lang galt die Äthiopische **Wassermaus** als **verschollen**, doch jetzt haben Forschende in Äthiopien wieder lebende Tiere gefunden.",
-    "Das einzige bekannte Tier, ein im Jahr 1927 in einem **Bergbach** gefundenes **Männchen**, wurde ein Jahr später wissenschaftlich beschrieben.",
-    "Katharina Kühnert vom Naturschutzbund NABU sagte, das gesamte **Wissen** über diese Art habe bisher fast nur auf einem einzigen **Exemplar** beruht.",
-    "Mitte Oktober fand der Ökologe Mengistu Wale eines der Tiere in einer **Falle** im Yayu-Biosphärenreservat, einem **Schutzgebiet** mit Regenwald."
+    "Weil ich nur einen Tag in Hamburg hatte, wollte ich den **Hafen** vom Wasser aus sehen und ging am Vormittag zum **Anleger**.",
+    "Nachdem ich am Automaten eine ganz normale **Fahrkarte** gekauft hatte, setzte ich mich draußen auf das kalte **Deck**.",
+    "Die **Fähre** fuhr langsam an riesigen Containerschiffen vorbei, und über uns kreisten laute **Möwen**, die auf Brotkrumen hofften.",
+    "Je weiter wir nach Westen fuhren, desto stärker wurde der **Wind**, und ich zog meinen **Schal** fest um den Hals."
    ],
    "chips": [
     "6문장",
@@ -152,55 +152,55 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "에티오피아 물쥐는 거의 백 년 동안 행방불명된 것으로 여겨졌지만, 이제 연구자들이 에티오피아에서 다시 살아 있는 개체들을 찾았습니다.",
+   "answer": "함부르크에 하루밖에 없었기 때문에, 저는 항구를 물 위에서 보고 싶어서 오전에 선착장으로 갔습니다.",
    "words": [
     [
-     "Wassermaus",
-     "물쥐 (여성 die, 복수 Wassermäuse)"
+     "Hafen",
+     "항구 (남성 der, 복수 Häfen)"
     ],
     [
-     "verschollen",
-     "행방불명된, 소식이 끊긴"
+     "Anleger",
+     "선착장 (남성 der, 복수 Anleger)"
     ],
     [
-     "Bergbach",
-     "산골짜기 개울 (남성 der, 복수 Bergbäche)"
+     "Fahrkarte",
+     "승차권, 차표 (여성 die, 복수 Fahrkarten)"
     ],
     [
-     "Männchen",
-     "수컷 (중성 das, 복수 Männchen)"
+     "Deck",
+     "갑판 (중성 das, 복수 Decks)"
     ],
     [
-     "Wissen",
-     "지식 (중성 das)"
+     "Fähre",
+     "연락선, 페리 (여성 die, 복수 Fähren)"
     ],
     [
-     "Exemplar",
-     "개체, 표본 (중성 das, 복수 Exemplare)"
+     "Möwe",
+     "갈매기 (여성 die, 복수 Möwen)"
     ],
     [
-     "Falle",
-     "덫 (여성 die, 복수 Fallen)"
+     "Wind",
+     "바람 (남성 der)"
     ],
     [
-     "Schutzgebiet",
-     "보호구역 (중성 das, 복수 Schutzgebiete)"
+     "Schal",
+     "목도리 (남성 der, 복수 Schals)"
     ],
     [
-     "wasserabweisend",
-     "방수의, 발수성의"
+     "Ufer",
+     "강가, 물가 (중성 das, 복수 Ufer)"
     ],
     [
-     "Hinterfuß",
-     "뒷발 (남성 der, 복수 Hinterfüße)"
+     "Fischbrötchen",
+     "생선 샌드위치 (중성 das, 복수 Fischbrötchen)"
     ],
     [
-     "Rand",
-     "가장자리 (남성 der, 복수 Ränder)"
+     "Rückfahrt",
+     "귀로, 돌아오는 길 (여성 die)"
     ],
     [
-     "Wäsche",
-     "빨래, 세탁물 (여성 die)"
+     "Hafenrundfahrt",
+     "항구 유람 (여성 die, 복수 Hafenrundfahrten)"
     ]
    ],
    "review": {
@@ -211,6 +211,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-21",
+   "topic": "함부르크 항구 배"
+  },
   {
    "lang": "en",
    "day": "2026-11-20",
@@ -310,11 +315,6 @@
    "lang": "ja",
    "day": "2026-11-14",
    "topic": "도자기 체험"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-14",
-   "topic": "작센 스위스 등산"
   }
  ]
 }
