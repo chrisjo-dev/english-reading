@@ -1,0 +1,446 @@
+{
+  "date": "2026-11-22",
+  "category": "culture",
+  "topic": "겨울철 환기",
+  "title_ko": "룸메이트가 알려 준 겨울 환기법",
+  "headline": "Richtig lüften im Winter",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "life",
+  "example": true,
+  "grammar": {
+    "b": [
+      "b-konjunktiv-wuerde",
+      "b-lassen"
+    ],
+    "a": [
+      "a-moechte"
+    ]
+  },
+  "keywords": [
+    "환기",
+    "창문",
+    "곰팡이",
+    "룸메이트 대화"
+  ],
+  "summary_ko": "겨울에 창문을 젖혀 두던 내가 룸메이트에게 제대로 환기하는 법을 배운 이야기를 담은 B1~B2 독일어 생활 글이에요. 학습용으로 지어낸 이야기로, 창문을 오래 젖혀 두는 대신 하루 몇 번 활짝 열어 짧게 환기하는 독일식 습관을 다뤄요.",
+  "photo_scene": "Close-up of a wide-open white wooden window in a cozy student bedroom on a cold November morning, cold mist drifting in, a steaming mug of tea on the windowsill beside a white radiator, soft grey daylight.",
+  "sentences": [
+    {
+      "en": "An einem kalten Sonntag im November klopfte mein **Mitbewohner** Paul an meine Tür, weil mein Fenster schon wieder **gekippt** war.",
+      "b2": false,
+      "chunks": [
+        [
+          "An einem kalten Sonntag im November",
+          "11월의 어느 추운 일요일에"
+        ],
+        [
+          "klopfte mein **Mitbewohner** Paul",
+          "내 룸메이트 파울이 두드렸습니다"
+        ],
+        [
+          "an meine Tür,",
+          "내 방문을"
+        ],
+        [
+          "weil mein Fenster",
+          "왜냐하면 내 창문이"
+        ],
+        [
+          "schon wieder **gekippt** war.",
+          "또 젖혀 열려 있었기 때문에"
+        ]
+      ]
+    },
+    {
+      "en": "Er erklärte mir, dass ein gekipptes Fenster kaum frische Luft bringt, während die **Heizung** darunter die ganze Zeit gegen die **Kälte** arbeitet.",
+      "b2": false,
+      "chunks": [
+        [
+          "Er erklärte mir,",
+          "그는 내게 설명했습니다"
+        ],
+        [
+          "dass ein gekipptes Fenster",
+          "젖혀 연 창문은"
+        ],
+        [
+          "kaum frische Luft bringt,",
+          "신선한 공기를 거의 들이지 못한다고"
+        ],
+        [
+          "während die **Heizung** darunter",
+          "그동안 그 아래의 난방기는"
+        ],
+        [
+          "die ganze Zeit",
+          "내내"
+        ],
+        [
+          "gegen die **Kälte** arbeitet.",
+          "추위와 싸운다고"
+        ]
+      ]
+    },
+    {
+      "en": "Viel besser ist das sogenannte **Stoßlüften**: Man öffnet mehrmals am Tag alle Fenster weit und lässt für einige Minuten kalte Luft hereinströmen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Viel besser ist",
+          "훨씬 더 좋은 것은"
+        ],
+        [
+          "das sogenannte **Stoßlüften**:",
+          "이른바 '집중 환기'입니다"
+        ],
+        [
+          "Man öffnet",
+          "사람들은 엽니다"
+        ],
+        [
+          "mehrmals am Tag",
+          "하루에 여러 번"
+        ],
+        [
+          "alle Fenster weit",
+          "모든 창문을 활짝"
+        ],
+        [
+          "und lässt für einige Minuten",
+          "그리고 몇 분 동안 ~하게 합니다"
+        ],
+        [
+          "kalte Luft hereinströmen.",
+          "찬 공기가 흘러 들어오게"
+        ]
+      ]
+    },
+    {
+      "en": "Weil wir unsere nasse Wäsche im Flur trocknen, ist die **Luftfeuchtigkeit** hoch, und in den Ecken kann sich leicht **Schimmel** bilden.",
+      "b2": false,
+      "chunks": [
+        [
+          "Weil wir unsere nasse Wäsche",
+          "우리가 젖은 빨래를"
+        ],
+        [
+          "im Flur trocknen,",
+          "복도에서 말리기 때문에"
+        ],
+        [
+          "ist die **Luftfeuchtigkeit** hoch,",
+          "습도가 높습니다"
+        ],
+        [
+          "und in den Ecken",
+          "그리고 구석에는"
+        ],
+        [
+          "kann sich leicht **Schimmel** bilden.",
+          "곰팡이가 쉽게 생길 수 있습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Paul meinte, wenn ich mein Fenster weiter den ganzen Tag gekippt lassen würde, würden wir am Ende eine viel höhere **Rechnung** bekommen.",
+      "b2": true,
+      "chunks": [
+        [
+          "Paul meinte,",
+          "파울은 말했습니다"
+        ],
+        [
+          "wenn ich mein Fenster weiter",
+          "만약 내가 창문을 계속"
+        ],
+        [
+          "den ganzen Tag gekippt lassen würde,",
+          "하루 종일 젖혀 둔다면"
+        ],
+        [
+          "würden wir am Ende",
+          "우리는 결국"
+        ],
+        [
+          "eine viel höhere **Rechnung** bekommen.",
+          "훨씬 많은 청구서를 받게 될 거라고"
+        ]
+      ]
+    },
+    {
+      "en": "Seitdem stelle ich mir einen **Wecker**, öffne dreimal am Tag das Fenster weit und trinke danach im warmen Zimmer eine **Tasse** Tee.",
+      "b2": false,
+      "chunks": [
+        [
+          "Seitdem stelle ich mir",
+          "그 뒤로 나는 맞춰 둡니다"
+        ],
+        [
+          "einen **Wecker**,",
+          "알람을"
+        ],
+        [
+          "öffne dreimal am Tag",
+          "하루 세 번 엽니다"
+        ],
+        [
+          "das Fenster weit",
+          "창문을 활짝"
+        ],
+        [
+          "und trinke danach",
+          "그리고 그다음에 마십니다"
+        ],
+        [
+          "im warmen Zimmer",
+          "따뜻한 방에서"
+        ],
+        [
+          "eine **Tasse** Tee.",
+          "차 한 잔을"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Mitbewohner",
+      "룸메이트, 동거인 (남성 der)"
+    ],
+    [
+      "kippen",
+      "(창문을) 젖혀 열다"
+    ],
+    [
+      "Heizung",
+      "난방기, 난방 (여성 die)"
+    ],
+    [
+      "Kälte",
+      "추위 (여성 die)"
+    ],
+    [
+      "Stoßlüften",
+      "집중 환기 (중성 das)"
+    ],
+    [
+      "Luftfeuchtigkeit",
+      "습도 (여성 die)"
+    ],
+    [
+      "Schimmel",
+      "곰팡이 (남성 der)"
+    ],
+    [
+      "Rechnung",
+      "청구서, 계산서 (여성 die, 복수 Rechnungen)"
+    ],
+    [
+      "Wecker",
+      "알람 시계, 자명종 (남성 der)"
+    ],
+    [
+      "Tasse",
+      "잔, 찻잔 (여성 die, 복수 Tassen)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Konjunktiv II — wenn ... würde, würden ...",
+      "body": "5번 문장 `wenn ich mein Fenster weiter den ganzen Tag gekippt lassen würde, würden wir ... bekommen`은 아직 일어나지 않은 일을 가정해요. '계속 ~한다면 ~하게 될 거예요'라는 뜻입니다. `würde` + 동사원형으로 만들고, `wenn` 부문장에서는 `würde`가 맨 끝에 옵니다. 부문장이 앞에 왔으니 쉼표 바로 뒤에 주문장의 정동사 `würden`이 오고, 동사원형 `bekommen`은 문장 끝으로 갑니다."
+    },
+    {
+      "title": "과거분사를 형용사로 — ein gekipptes Fenster",
+      "body": "`kippen`(젖혀 열다)의 과거분사 `gekippt`는 `war gekippt`처럼 서술어로도 쓰고, `ein gekipptes Fenster`처럼 명사 앞에서 형용사로도 써요. 명사 앞에 올 때는 보통 형용사처럼 어미가 붙습니다. `ein` + 중성 명사(`das Fenster`) 1격이라 `-es`가 붙어 `gekipptes`가 되었어요. 기초 지문의 `mein gekipptes Fenster`(4격)도 같은 어미예요."
+    }
+  ],
+  "answers": [
+    "11월의 어느 추운 일요일, 제 창문이 또 젖혀 열려 있어서 룸메이트 파울이 제 방문을 두드렸습니다.",
+    "그는 젖혀 둔 창문으로는 신선한 공기가 거의 들어오지 않고, 그동안 그 아래 난방기만 내내 추위와 씨름한다고 설명해 주었습니다.",
+    "훨씬 좋은 방법은 이른바 '집중 환기'로, 하루에 여러 번 모든 창문을 활짝 열고 몇 분 동안 찬 공기를 들이는 것입니다.",
+    "우리는 젖은 빨래를 복도에서 말리기 때문에 습도가 높고, 구석에는 곰팡이가 쉽게 생길 수 있습니다.",
+    "파울은 제가 창문을 계속 하루 종일 젖혀 둔다면 결국 우리가 훨씬 많은 청구서를 받게 될 거라고 했습니다.",
+    "그 뒤로 저는 알람을 맞춰 두고 하루 세 번 창문을 활짝 연 다음, 따뜻한 방에서 차 한 잔을 마십니다."
+  ],
+  "advanced": [
+    {
+      "word": "lüften",
+      "meaning": "환기하다",
+      "confuse": "lüften의 다른 뜻: `ein Geheimnis lüften`처럼 쓰면 '비밀을 밝히다'라는 뜻이 돼요.",
+      "example": "Im Winter sollte man mehrmals am Tag kurz **lüften**.",
+      "example_ko": "겨울에는 하루에 여러 번 짧게 환기하는 것이 좋습니다."
+    },
+    {
+      "word": "beschlagen",
+      "meaning": "(유리에) 김이 서리다",
+      "confuse": "beschlagen vs. schlagen: `schlagen`은 '치다, 때리다', `beschlagen`은 유리나 거울이 뿌옇게 흐려지는 것을 말해요.",
+      "example": "Nach dem Duschen ist der Spiegel völlig **beschlagen**.",
+      "example_ko": "샤워하고 나면 거울에 김이 잔뜩 서립니다."
+    },
+    {
+      "word": "Thermostat",
+      "meaning": "온도 조절기 (남성 der)",
+      "confuse": null,
+      "example": "Ich drehe den **Thermostat** beim Lüften kurz herunter.",
+      "example_ko": "나는 환기할 때 온도 조절기를 잠깐 낮춥니다."
+    },
+    {
+      "word": "Durchzug",
+      "meaning": "맞바람, 통풍 (남성 der)",
+      "confuse": "Durchzug vs. Zug: `der Zug`는 '기차'이자 '바람이 새는 것'도 뜻하지만, 창문 두 개를 마주 열어 바람이 지나가게 하는 것은 `Durchzug`라고 해요.",
+      "example": "Wenn wir beide Fenster öffnen, entsteht schnell **Durchzug**.",
+      "example_ko": "창문 두 개를 다 열면 금방 맞바람이 생깁니다."
+    },
+    {
+      "word": "sparsam",
+      "meaning": "절약하는, 알뜰한",
+      "confuse": "sparsam vs. spärlich: `sparsam`은 '아껴 쓰는', `spärlich`는 '드문드문한, 빈약한'이에요.",
+      "example": "Paul geht sehr **sparsam** mit der Heizung um.",
+      "example_ko": "파울은 난방을 아주 알뜰하게 씁니다."
+    },
+    {
+      "word": "feucht",
+      "meaning": "축축한, 습한",
+      "confuse": "feucht vs. nass: `nass`는 물에 흠뻑 젖은 것, `feucht`는 살짝 축축한 것이에요.",
+      "example": "Die Wand hinter dem Schrank fühlt sich **feucht** an.",
+      "example_ko": "옷장 뒤의 벽이 축축하게 느껴집니다."
+    },
+    {
+      "word": "einsehen",
+      "meaning": "깨닫다, 인정하다",
+      "confuse": "einsehen vs. ansehen: `ansehen`은 '바라보다', `einsehen`은 잘못이나 사실을 '인정하다'예요.",
+      "example": "Am Ende musste ich **einsehen**, dass Paul recht hatte.",
+      "example_ko": "결국 나는 파울이 옳았다는 것을 인정해야 했습니다."
+    }
+  ],
+  "source": null,
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Am Sonntag sah mein **Mitbewohner** Paul mein **gekipptes** Fenster.",
+          "chunks": [
+            [
+              "Am Sonntag",
+              "일요일에"
+            ],
+            [
+              "sah mein **Mitbewohner** Paul",
+              "내 룸메이트 파울이 보았습니다"
+            ],
+            [
+              "mein **gekipptes** Fenster.",
+              "젖혀 연 내 창문을"
+            ]
+          ]
+        },
+        {
+          "en": "Er sagte: Die **Heizung** arbeitet dann umsonst gegen die **Kälte**.",
+          "chunks": [
+            [
+              "Er sagte:",
+              "그가 말했습니다"
+            ],
+            [
+              "Die **Heizung** arbeitet dann",
+              "그러면 난방기가 일합니다"
+            ],
+            [
+              "umsonst",
+              "헛되이"
+            ],
+            [
+              "gegen die **Kälte**.",
+              "추위에 맞서"
+            ]
+          ]
+        },
+        {
+          "en": "Besser ist **Stoßlüften**: Man öffnet alle Fenster für ein paar Minuten weit.",
+          "chunks": [
+            [
+              "Besser ist **Stoßlüften**:",
+              "집중 환기가 더 좋습니다"
+            ],
+            [
+              "Man öffnet alle Fenster",
+              "모든 창문을 엽니다"
+            ],
+            [
+              "für ein paar Minuten weit.",
+              "몇 분 동안 활짝"
+            ]
+          ]
+        },
+        {
+          "en": "Unsere nasse Wäsche trocknet im Flur, und in den Ecken kann **Schimmel** wachsen.",
+          "chunks": [
+            [
+              "Unsere nasse Wäsche",
+              "우리의 젖은 빨래가"
+            ],
+            [
+              "trocknet im Flur,",
+              "복도에서 마릅니다"
+            ],
+            [
+              "und in den Ecken",
+              "그리고 구석에서"
+            ],
+            [
+              "kann **Schimmel** wachsen.",
+              "곰팡이가 자랄 수 있습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Paul möchte keine hohe **Rechnung** für die Heizung bezahlen.",
+          "chunks": [
+            [
+              "Paul möchte",
+              "파울은 ~하고 싶지 않습니다"
+            ],
+            [
+              "keine hohe **Rechnung**",
+              "많은 청구서를"
+            ],
+            [
+              "für die Heizung bezahlen.",
+              "난방비로 내기를"
+            ]
+          ]
+        },
+        {
+          "en": "Jetzt stelle ich mir einen **Wecker** und lüfte dreimal am Tag.",
+          "chunks": [
+            [
+              "Jetzt stelle ich mir",
+              "이제 나는 맞춰 둡니다"
+            ],
+            [
+              "einen **Wecker**",
+              "알람을"
+            ],
+            [
+              "und lüfte dreimal am Tag.",
+              "그리고 하루 세 번 환기합니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "일요일에 룸메이트 파울이 젖혀 열린 제 창문을 보았습니다.",
+        "그는 그러면 난방기가 헛되이 추위와 싸운다고 말했습니다.",
+        "집중 환기가 더 좋습니다. 모든 창문을 몇 분 동안 활짝 여는 것입니다.",
+        "우리의 젖은 빨래가 복도에서 마르고 있어서, 구석에 곰팡이가 생길 수 있습니다.",
+        "파울은 난방비로 많은 청구서를 내고 싶어 하지 않습니다.",
+        "이제 저는 알람을 맞춰 두고 하루 세 번 환기합니다."
+      ]
+    }
+  }
+}
