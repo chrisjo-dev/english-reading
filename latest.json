@@ -1,16 +1,16 @@
 {
  "date": "2026-11-22",
- "words_total": 924,
+ "words_total": 935,
  "langs": {
   "en": {
-   "count": 50,
-   "latest": "2026-11-21",
-   "topic": "정전",
+   "count": 51,
+   "latest": "2026-11-22",
+   "topic": "전체 답장",
    "sentences": [
-    "On Saturday evening, Jiwoo was cooking dinner with her younger brother when suddenly all the lights in the apartment **went out**.",
-    "She looked out the window and saw that the whole street was dark, so the strong wind must have **damaged** a **power line** nearby.",
-    "Her brother wanted to use his phone as a **flashlight**, but Jiwoo told him to keep the **battery** for emergencies and found some old **candles** instead.",
-    "They **placed** the candles on the kitchen table so that they could see each other's faces, and then they **dug out** a board game they had not played for years."
+    "During his second week at a small design company, Minho was asked to send a short **update** about a **client** project to his team leader.",
+    "He was **in a hurry**, so he typed the message quickly and pressed \"Reply All\" instead of \"Reply\" without **noticing**.",
+    "A few minutes later, he realized that his **unfinished** note, full of spelling mistakes, had gone to all forty people in the **department**.",
+    "His face turned red, and he kept thinking that if he had checked the address line before clicking, he would have **avoided** the whole **embarrassing** moment."
    ],
    "chips": [
     "6문장",
@@ -18,55 +18,51 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "토요일 저녁, 지우가 남동생과 함께 저녁을 만들고 있는데 갑자기 아파트의 불이 모두 꺼졌다.",
+   "answer": "작은 디자인 회사에 들어간 지 두 번째 주, 민호는 한 고객 프로젝트에 관한 짧은 경과 보고를 팀장에게 보내 달라는 부탁을 받았다.",
    "words": [
     [
-     "went out",
-     "(불이) 꺼지다"
+     "update",
+     "경과 보고, 새 소식"
     ],
     [
-     "damaged",
-     "손상시키다, 망가뜨리다"
+     "client",
+     "고객, 의뢰인"
     ],
     [
-     "power line",
-     "전선, 송전선"
+     "in a hurry",
+     "서둘러, 급히"
     ],
     [
-     "flashlight",
-     "손전등"
+     "noticing",
+     "알아차리다, 눈치채다"
     ],
     [
-     "battery",
-     "전지, 배터리"
+     "unfinished",
+     "미완성의, 끝나지 않은"
     ],
     [
-     "candles",
-     "양초들"
+     "department",
+     "부서"
     ],
     [
-     "placed",
-     "놓다, 두다"
+     "avoided",
+     "피하다, 막다"
     ],
     [
-     "dug out",
-     "찾아 꺼내다"
+     "embarrassing",
+     "창피한, 당황스러운"
     ],
     [
-     "strangely",
-     "이상하게"
+     "nervously",
+     "초조하게, 긴장해서"
     ],
     [
-     "calm",
-     "고요한, 차분한"
+     "apologized",
+     "사과하다"
     ],
     [
-     "switched off",
-     "(전원을) 끄다"
-    ],
-    [
-     "round",
-     "(게임의) 판, 회"
+     "delay",
+     "미루다, 늦추다"
     ]
    ],
    "review": {
@@ -216,6 +212,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-22",
+   "topic": "전체 답장"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-22",
    "topic": "보온 물주머니"
@@ -314,11 +315,6 @@
    "lang": "de",
    "day": "2026-11-16",
    "topic": "글뤼바인 이름"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-15",
-   "topic": "발표 연습"
   }
  ]
 }
