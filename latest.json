@@ -1,6 +1,6 @@
 {
- "date": "2026-11-21",
- "words_total": 902,
+ "date": "2026-11-22",
+ "words_total": 912,
  "langs": {
   "en": {
    "count": 50,
@@ -141,14 +141,14 @@
    }
   },
   "de": {
-   "count": 25,
-   "latest": "2026-11-21",
-   "topic": "함부르크 항구 배",
+   "count": 26,
+   "latest": "2026-11-22",
+   "topic": "겨울철 환기",
    "sentences": [
-    "Weil ich nur einen Tag in Hamburg hatte, wollte ich den **Hafen** vom Wasser aus sehen und ging am Vormittag zum **Anleger**.",
-    "Nachdem ich am Automaten eine ganz normale **Fahrkarte** gekauft hatte, setzte ich mich draußen auf das kalte **Deck**.",
-    "Die **Fähre** fuhr langsam an riesigen Containerschiffen vorbei, und über uns kreisten laute **Möwen**, die auf Brotkrumen hofften.",
-    "Je weiter wir nach Westen fuhren, desto stärker wurde der **Wind**, und ich zog meinen **Schal** fest um den Hals."
+    "An einem kalten Sonntag im November klopfte mein **Mitbewohner** Paul an meine Tür, weil mein Fenster schon wieder **gekippt** war.",
+    "Er erklärte mir, dass ein gekipptes Fenster kaum frische Luft bringt, während die **Heizung** darunter die ganze Zeit gegen die **Kälte** arbeitet.",
+    "Viel besser ist das sogenannte **Stoßlüften**: Man öffnet mehrmals am Tag alle Fenster weit und lässt für einige Minuten kalte Luft hereinströmen.",
+    "Weil wir unsere nasse Wäsche im Flur trocknen, ist die **Luftfeuchtigkeit** hoch, und in den Ecken kann sich leicht **Schimmel** bilden."
    ],
    "chips": [
     "6문장",
@@ -156,55 +156,47 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "함부르크에 하루밖에 없었기 때문에, 저는 항구를 물 위에서 보고 싶어서 오전에 선착장으로 갔습니다.",
+   "answer": "11월의 어느 추운 일요일, 제 창문이 또 젖혀 열려 있어서 룸메이트 파울이 제 방문을 두드렸습니다.",
    "words": [
     [
-     "Hafen",
-     "항구 (남성 der, 복수 Häfen)"
+     "Mitbewohner",
+     "룸메이트, 동거인 (남성 der)"
     ],
     [
-     "Anleger",
-     "선착장 (남성 der, 복수 Anleger)"
+     "kippen",
+     "(창문을) 젖혀 열다"
     ],
     [
-     "Fahrkarte",
-     "승차권, 차표 (여성 die, 복수 Fahrkarten)"
+     "Heizung",
+     "난방기, 난방 (여성 die)"
     ],
     [
-     "Deck",
-     "갑판 (중성 das, 복수 Decks)"
+     "Kälte",
+     "추위 (여성 die)"
     ],
     [
-     "Fähre",
-     "연락선, 페리 (여성 die, 복수 Fähren)"
+     "Stoßlüften",
+     "집중 환기 (중성 das)"
     ],
     [
-     "Möwe",
-     "갈매기 (여성 die, 복수 Möwen)"
+     "Luftfeuchtigkeit",
+     "습도 (여성 die)"
     ],
     [
-     "Wind",
-     "바람 (남성 der)"
+     "Schimmel",
+     "곰팡이 (남성 der)"
     ],
     [
-     "Schal",
-     "목도리 (남성 der, 복수 Schals)"
+     "Rechnung",
+     "청구서, 계산서 (여성 die, 복수 Rechnungen)"
     ],
     [
-     "Ufer",
-     "강가, 물가 (중성 das, 복수 Ufer)"
+     "Wecker",
+     "알람 시계, 자명종 (남성 der)"
     ],
     [
-     "Fischbrötchen",
-     "생선 샌드위치 (중성 das, 복수 Fischbrötchen)"
-    ],
-    [
-     "Rückfahrt",
-     "귀로, 돌아오는 길 (여성 die)"
-    ],
-    [
-     "Hafenrundfahrt",
-     "항구 유람 (여성 die, 복수 Hafenrundfahrten)"
+     "Tasse",
+     "잔, 찻잔 (여성 die, 복수 Tassen)"
     ]
    ],
    "review": {
@@ -215,6 +207,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-22",
+   "topic": "겨울철 환기"
+  },
   {
    "lang": "en",
    "day": "2026-11-21",
@@ -314,11 +311,6 @@
    "lang": "ja",
    "day": "2026-11-15",
    "topic": "올해 첫 나베"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-15",
-   "topic": "대림절 화환"
   }
  ]
 }
