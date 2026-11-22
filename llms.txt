@@ -8,18 +8,18 @@
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
-- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 51편
+- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 52편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 51편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 27편
 
 ## 최근 지문
+- [영어, 2026-11-23, 빛으로 하루 거리에 닿은 보이저 1호](https://dokhaehanip.com/en/2026-11-23/): 출처 NASA's Voyager 1 is now so far away that light takes 24 hours to reach it (ScienceDaily, 2026-11-20)
 - [영어, 2026-11-22, 전 부서에 잘못 보낸 첫 업무 메일](https://dokhaehanip.com/en/2026-11-22/)
 - [영어, 2026-11-21, 정전된 밤의 촛불 보드게임](https://dokhaehanip.com/en/2026-11-21/)
 - [영어, 2026-11-20, 로봇 팔이 꽂아 주는 전기차 충전기](https://dokhaehanip.com/en/2026-11-20/): 출처 BYD Unveils World's First Integrated Solar, Storage, FLASH and Robotic EV Charging System in Abu Dhabi (SolarQuarter, 2026-11-18)
 - [영어, 2026-11-19, 추울 때 돋는 소름의 비밀](https://dokhaehanip.com/en/2026-11-19/): 출처 Why do we get goosebumps? (Live Science, 2022-07-18)
 - [영어, 2026-11-18, 대학에 새로 생긴 미국 수어 전공](https://dokhaehanip.com/en/2026-11-18/): 출처 A sign of progress: ASL major new at Ohio State (Ohio State News, 2026-10-14)
 - [영어, 2026-11-17, 손가락을 알아보는 터치스크린](https://dokhaehanip.com/en/2026-11-17/): 출처 Okay, but how do touch screens actually work? (Scienceline, 2012-01-17)
-- [영어, 2026-11-16, 명왕성 너머의 새 얼음 세계](https://dokhaehanip.com/en/2026-11-16/): 출처 A giant icy world hiding beyond Pluto could be our sixth dwarf planet (ScienceDaily, 2026-11-14)
 - [일본어, 2026-11-23, 역 앞 광장의 햇와인과 바비큐](https://dokhaehanip.com/ja/2026-11-23/): 출처 ＪＲ秋田駅前でワインの新酒とバーベキュー楽しむイベント (NHK, 2026-11-21)
 - [일본어, 2026-11-22, 할머니께 배운 보온 물주머니](https://dokhaehanip.com/ja/2026-11-22/)
 - [일본어, 2026-11-21, 한 량짜리 열차로 가는 호숫가](https://dokhaehanip.com/ja/2026-11-21/)

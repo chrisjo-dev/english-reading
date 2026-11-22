@@ -1,16 +1,16 @@
 {
  "date": "2026-11-23",
- "words_total": 957,
+ "words_total": 968,
  "langs": {
   "en": {
-   "count": 51,
-   "latest": "2026-11-22",
-   "topic": "전체 답장",
+   "count": 52,
+   "latest": "2026-11-23",
+   "topic": "보이저 1호",
    "sentences": [
-    "During his second week at a small design company, Minho was asked to send a short **update** about a **client** project to his team leader.",
-    "He was **in a hurry**, so he typed the message quickly and pressed \"Reply All\" instead of \"Reply\" without **noticing**.",
-    "A few minutes later, he realized that his **unfinished** note, full of spelling mistakes, had gone to all forty people in the **department**.",
-    "His face turned red, and he kept thinking that if he had checked the address line before clicking, he would have **avoided** the whole **embarrassing** moment."
+    "On November 18, NASA's Voyager 1 reached a **historic** **milestone** when it became one light-day away from Earth.",
+    "This means a radio **signal** from the **spacecraft** now needs a full 24 hours to travel home, even at the speed of light.",
+    "Voyager 1 left Earth in 1977 and is now about 25.9 billion kilometers away, moving through **interstellar** space at more than 61,000 kilometers per hour.",
+    "Despite its age, Voyager 1 still **transmits** a basic signal, but NASA has not received any scientific or engineering data from it since November 14."
    ],
    "chips": [
     "6문장",
@@ -18,51 +18,51 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "작은 디자인 회사에 들어간 지 두 번째 주, 민호는 한 고객 프로젝트에 관한 짧은 경과 보고를 팀장에게 보내 달라는 부탁을 받았다.",
+   "answer": "11월 18일, NASA의 보이저 1호는 지구에서 빛으로 하루 걸리는 거리만큼 멀어지면서 역사적인 이정표에 도달했다.",
    "words": [
     [
-     "update",
-     "경과 보고, 새 소식"
+     "historic",
+     "역사적인"
     ],
     [
-     "client",
-     "고객, 의뢰인"
+     "milestone",
+     "이정표, 획기적인 단계"
     ],
     [
-     "in a hurry",
-     "서둘러, 급히"
+     "signal",
+     "신호"
     ],
     [
-     "noticing",
-     "알아차리다, 눈치채다"
+     "spacecraft",
+     "우주선"
     ],
     [
-     "unfinished",
-     "미완성의, 끝나지 않은"
+     "interstellar",
+     "성간의, 별과 별 사이의"
     ],
     [
-     "department",
-     "부서"
+     "transmits",
+     "보내다, 송신하다"
     ],
     [
-     "avoided",
-     "피하다, 막다"
+     "generator",
+     "발전기"
     ],
     [
-     "embarrassing",
-     "창피한, 당황스러운"
+     "engineers",
+     "기술자들, 엔지니어들"
     ],
     [
-     "nervously",
-     "초조하게, 긴장해서"
+     "replaced",
+     "교체했다, 바꿨다"
     ],
     [
-     "apologized",
-     "사과하다"
+     "instruments",
+     "(관측) 장비들, 기기들"
     ],
     [
-     "delay",
-     "미루다, 늦추다"
+     "anniversary",
+     "기념일, 주년"
     ]
    ],
    "review": {
@@ -212,6 +212,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-23",
+   "topic": "보이저 1호"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-23",
    "topic": "햇와인 바비큐"
@@ -310,11 +315,6 @@
    "lang": "de",
    "day": "2026-11-17",
    "topic": "드레스덴 슈톨렌"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-16",
-   "topic": "왜행성 후보"
   }
  ]
 }
