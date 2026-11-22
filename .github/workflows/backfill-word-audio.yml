@@ -29,7 +29,7 @@ jobs:
     # deploy-pages 는 github-pages 환경에서 도는 job 에서만 배포할 수 있다.
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy_retry.outputs.page_url }}
     services:
       voicevox:
         image: voicevox/voicevox_engine:cpu-latest
@@ -135,5 +135,6 @@ jobs:
           sleep 60
 
       - name: Deploy pages (retry)
+        id: deploy_retry
         if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4

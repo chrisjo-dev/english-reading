@@ -80,6 +80,10 @@ class WorkflowWiringTest(unittest.TestCase):
                 self.assertLess(i_prep, i_deploy)
                 self.assertLess(i_deploy, i_retry)
                 self.assertEqual(text.count("actions/deploy-pages@"), 2)
+                # 첫 배포는 id 가 deploy 이고 실패를 삼켜야 재시도 조건이 산다
+                first = text[text.rfind("- name:", 0, i_deploy):i_retry]
+                self.assertIn("id: deploy\n", first)
+                self.assertIn("continue-on-error: true", first)
                 # 다시 하는 배포는 실패를 삼키지 않는다(둘 다 실패하면 잡이 실패해 메일이 나가지 않는다)
                 end = text.find("\n\n", i_retry)
                 retry = text[i_retry:] if end < 0 else text[i_retry:end]

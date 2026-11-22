@@ -45,7 +45,7 @@ jobs:
     # deploy-pages 는 github-pages 환경에서 도는 job 에서만 배포할 수 있다.
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy_retry.outputs.page_url }}
     env:
       # secrets 는 단계 if: 에 바로 쓸 수 없어 여기서 참거짓으로 옮긴다
       HAS_TS: ${{ secrets.TS_OAUTH_CLIENT_ID != '' }}
@@ -316,6 +316,7 @@ jobs:
           sleep 60
 
       - name: Deploy pages (retry)
+        id: deploy_retry
         if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
 
