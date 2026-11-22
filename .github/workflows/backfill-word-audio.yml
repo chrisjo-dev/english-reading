@@ -29,7 +29,7 @@ jobs:
     # deploy-pages 는 github-pages 환경에서 도는 job 에서만 배포할 수 있다.
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy_retry.outputs.page_url }}
     services:
       voicevox:
         image: voicevox/voicevox_engine:cpu-latest
@@ -125,11 +125,16 @@ jobs:
         uses: actions/deploy-pages@v4
         continue-on-error: true
 
-      - name: Fallback pages build
-        # Actions 배포가 실패하면 branch 배포 빌드를 직접 요청한다(GITHUB_TOKEN push 는 Pages 빌드를 보장하지 않는다).
-        if: steps.deploy.outcome != 'success'
+      # 첫 배포가 GitHub 쪽 일시 오류(예: 2026-11-21 "Fetching artifact metadata failed")로 실패하면 잠깐 기다렸다 한 번 더 배포한다.
+      # 예전 예비 단계(branch 빌드 요청 API)는 Pages 설정이 Actions 배포(build_type=workflow)라 늘 403 이었다.
+      # 다시 해도 실패하면 잡이 실패해 메일을 보내지 않는다(페이지가 열리기 전 메일이 나가지 않게). 메일은 catchup 이 보충한다.
+      - name: Wait before retrying deploy
+        if: steps.deploy.outcome == 'failure'
         run: |
-          echo "::warning::deploy-pages 실패(${{ steps.deploy.outcome }}): branch 배포 빌드를 요청합니다"
-          gh api -X POST repos/${{ github.repository }}/pages/builds
-        env:
-          GH_TOKEN: ${{ github.token }}
+          echo "::warning::deploy-pages 실패: 60초 뒤 한 번 더 배포합니다"
+          sleep 60
+
+      - name: Deploy pages (retry)
+        id: deploy_retry
+        if: steps.deploy.outcome == 'failure'
+        uses: actions/deploy-pages@v4

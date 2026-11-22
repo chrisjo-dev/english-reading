@@ -64,9 +64,9 @@ class PrepareSiteTest(unittest.TestCase):
 
 
 class WorkflowWiringTest(unittest.TestCase):
-    """메일이 걸린 워크플로는 push 뒤 같은 job 에서 배포하고, 배포 실패 때만 branch 빌드를 요청한다."""
+    """메일이 걸린 워크플로는 push 뒤 같은 job 에서 배포하고, 배포가 실패하면 한 번 더 배포한 뒤에야 메일을 보낸다."""
 
-    def test_deploy_before_email_with_fallback(self):
+    def test_deploy_before_email_with_retry(self):
         for name in ["publish.yml", "weekly.yml", "backfill-word-audio.yml"]:
             text = (ROOT / ".github/workflows" / name).read_text(encoding="utf-8")
             with self.subTest(name):
@@ -75,14 +75,30 @@ class WorkflowWiringTest(unittest.TestCase):
                 i_push = text.index("git push")
                 i_prep = text.index("python tools/prepare_site.py")
                 i_deploy = text.index("actions/deploy-pages@")
-                i_fb = text.index("pages/builds")
+                i_retry = text.index("name: Deploy pages (retry)")
                 self.assertLess(i_push, i_prep)
                 self.assertLess(i_prep, i_deploy)
-                self.assertLess(i_deploy, i_fb)
-                self.assertEqual(text.count("pages/builds"), 1)
-                self.assertIn("if: steps.deploy.outcome != 'success'", text)
+                self.assertLess(i_deploy, i_retry)
+                self.assertEqual(text.count("actions/deploy-pages@"), 2)
+                # 첫 배포는 id 가 deploy 이고 실패를 삼켜야 재시도 조건이 산다
+                first = text[text.rfind("- name:", 0, i_deploy):i_retry]
+                self.assertIn("id: deploy\n", first)
+                self.assertIn("continue-on-error: true", first)
+                # 다시 하는 배포는 실패를 삼키지 않는다(둘 다 실패하면 잡이 실패해 메일이 나가지 않는다)
+                end = text.find("\n\n", i_retry)
+                retry = text[i_retry:] if end < 0 else text[i_retry:end]
+                self.assertIn("if: steps.deploy.outcome == 'failure'", retry)
+                self.assertNotIn("continue-on-error", retry)
+                # Pages 가 Actions 배포라 branch 빌드 요청 API 는 늘 403 이다(2026-11-21 장애)
+                self.assertNotIn("gh api -X POST", text)
                 if "send_email.py" in text:
-                    self.assertLess(i_fb, text.index("send_email.py"))
+                    self.assertLess(i_retry, text.index("send_email.py"))
+
+    def test_weekly_rebuilds_root_menu(self):
+        # 주간 복습이 생기면 위 메뉴의 복습 링크가 든 안내, 가입 페이지도 다시 만든다
+        text = (ROOT / ".github/workflows/weekly.yml").read_text(encoding="utf-8")
+        self.assertLess(text.index("tools/weekly.py"), text.index("publish.rebuild_root()"))
+        self.assertLess(text.index("publish.rebuild_root()"), text.index("name: Commit"))
 
     def test_pages_workflow(self):
         text = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
