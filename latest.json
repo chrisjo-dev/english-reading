@@ -1,6 +1,6 @@
 {
- "date": "2026-11-22",
- "words_total": 935,
+ "date": "2026-11-23",
+ "words_total": 946,
  "langs": {
   "en": {
    "count": 51,
@@ -145,14 +145,14 @@
    }
   },
   "de": {
-   "count": 26,
-   "latest": "2026-11-22",
-   "topic": "겨울철 환기",
+   "count": 27,
+   "latest": "2026-11-23",
+   "topic": "본 크리스마스 시장",
    "sentences": [
-    "An einem kalten Sonntag im November klopfte mein **Mitbewohner** Paul an meine Tür, weil mein Fenster schon wieder **gekippt** war.",
-    "Er erklärte mir, dass ein gekipptes Fenster kaum frische Luft bringt, während die **Heizung** darunter die ganze Zeit gegen die **Kälte** arbeitet.",
-    "Viel besser ist das sogenannte **Stoßlüften**: Man öffnet mehrmals am Tag alle Fenster weit und lässt für einige Minuten kalte Luft hereinströmen.",
-    "Weil wir unsere nasse Wäsche im Flur trocknen, ist die **Luftfeuchtigkeit** hoch, und in den Ecken kann sich leicht **Schimmel** bilden."
+    "Der Bonner **Weihnachtsmarkt** ist in diesem Jahr zum ersten Mal an einem Mittwoch **gestartet**, nämlich am 18. November statt an einem Freitag.",
+    "Außerdem öffnen die rund 160 **Stände** jeden Tag erst um 12 Uhr und nicht mehr wie früher um 11 Uhr.",
+    "Mit den neuen Zeiten will die Stadt sowohl die **Anforderungen** an die Sicherheit als auch den **Lieferverkehr** in der Innenstadt besser vereinbaren.",
+    "Am Totensonntag, dem 22. November, war der Markt **geschlossen**, und die offizielle **Eröffnung** wird erst am 27. November vor dem Münster gefeiert."
    ],
    "chips": [
     "6문장",
@@ -160,47 +160,51 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "11월의 어느 추운 일요일, 제 창문이 또 젖혀 열려 있어서 룸메이트 파울이 제 방문을 두드렸습니다.",
+   "answer": "본의 크리스마스 시장은 올해 처음으로 금요일이 아닌 수요일, 즉 11월 18일에 시작했습니다.",
    "words": [
     [
-     "Mitbewohner",
-     "룸메이트, 동거인 (남성 der)"
+     "Weihnachtsmarkt",
+     "크리스마스 시장 (남성 der, 복수 Weihnachtsmärkte)"
     ],
     [
-     "kippen",
-     "(창문을) 젖혀 열다"
+     "starten",
+     "시작하다, 출발하다"
     ],
     [
-     "Heizung",
-     "난방기, 난방 (여성 die)"
+     "Stand",
+     "가판대, 노점 (남성 der, 복수 Stände)"
     ],
     [
-     "Kälte",
-     "추위 (여성 die)"
+     "Anforderung",
+     "요구 사항, 요건 (여성 die, 복수 Anforderungen)"
     ],
     [
-     "Stoßlüften",
-     "집중 환기 (중성 das)"
+     "Lieferverkehr",
+     "배송 차량 통행 (남성 der)"
     ],
     [
-     "Luftfeuchtigkeit",
-     "습도 (여성 die)"
+     "geschlossen",
+     "닫힌, 휴업한"
     ],
     [
-     "Schimmel",
-     "곰팡이 (남성 der)"
+     "Eröffnung",
+     "개막, 개장 (여성 die, 복수 Eröffnungen)"
     ],
     [
-     "Rechnung",
-     "청구서, 계산서 (여성 die, 복수 Rechnungen)"
+     "Gastronomie",
+     "요식업, 음식점 (여성 die)"
     ],
     [
-     "Wecker",
-     "알람 시계, 자명종 (남성 der)"
+     "Kunsthandwerk",
+     "공예, 수공예품 (중성 das)"
     ],
     [
-     "Tasse",
-     "잔, 찻잔 (여성 die, 복수 Tassen)"
+     "Beleuchtung",
+     "조명 (여성 die, 복수 Beleuchtungen)"
+    ],
+    [
+     "anstrahlen",
+     "비추다, 조명하다"
     ]
    ],
    "review": {
@@ -211,6 +215,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-23",
+   "topic": "본 크리스마스 시장"
+  },
   {
    "lang": "en",
    "day": "2026-11-22",
@@ -310,11 +319,6 @@
    "lang": "ja",
    "day": "2026-11-16",
    "topic": "어선 퍼레이드"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-16",
-   "topic": "글뤼바인 이름"
   }
  ]
 }

@@ -4,13 +4,13 @@
 
 - 다른 표기: 한입독해, 독해 한입, Dokhaehanip
 - 이용료: 무료
-- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-22
+- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-23
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 51편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 50편
-- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 26편
+- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 27편
 
 ## 최근 지문
 - [영어, 2026-11-22, 전 부서에 잘못 보낸 첫 업무 메일](https://dokhaehanip.com/en/2026-11-22/)
@@ -27,13 +27,13 @@
 - [일본어, 2026-11-18, 주민과 함께 만드는 자전거 산책 지도](https://dokhaehanip.com/ja/2026-11-18/): 출처 「南西部地域自転車さんぽマップ」に関する意見を募集します (埼玉県, 2026-11-17)
 - [일본어, 2026-11-17, 복을 긁어모으는 갈퀴 장터 도리노이치](https://dokhaehanip.com/ja/2026-11-17/): 출처 浅草・鷲神社「酉の市」：福を呼び込む縁起熊手で商売繁盛 (nippon.com, 2018-11-10)
 - [일본어, 2026-11-16, 어선 퍼레이드와 치어 방류](https://dokhaehanip.com/ja/2026-11-16/): 출처 両陛下　キジハタとヒラメ稚魚放流　高等支援学校で生徒に進路の質問 (KAB 熊本朝日放送, 2026-11-16)
+- [독일어, 2026-11-23, 수요일에 문을 연 본 크리스마스 시장](https://dokhaehanip.com/de/2026-11-23/): 출처 Bonner Weihnachtsmarkt lädt ab 18. November in die Innenstadt ein (bonn.de)
 - [독일어, 2026-11-22, 룸메이트가 알려 준 겨울 환기법](https://dokhaehanip.com/de/2026-11-22/)
 - [독일어, 2026-11-21, 승차권 한 장으로 둘러본 함부르크 항구](https://dokhaehanip.com/de/2026-11-21/)
 - [독일어, 2026-11-20, 백 년 만에 다시 나타난 물쥐](https://dokhaehanip.com/de/2026-11-20/): 출처 Äthiopische Wassermaus nach fast 100 Jahren wiederentdeckt (National Geographic Deutschland)
 - [독일어, 2026-11-19, 퇴사할 때 받는 독일의 근무 증명서](https://dokhaehanip.com/de/2026-11-19/): 출처 § 109 Zeugnis, Gewerbeordnung (gesetze-im-internet.de)
 - [독일어, 2026-11-18, 한 달 동안 책을 못 빌리는 하노버 도서관](https://dokhaehanip.com/de/2026-11-18/): 출처 Neues Bibliothekssystem für die Stadtbibliothek Hannover ab Dezember 2026 (hannover.de)
 - [독일어, 2026-11-17, 이름을 지키는 드레스덴 슈톨렌](https://dokhaehanip.com/de/2026-11-17/): 출처 Dresdner Christstollen PGI (European Commission)
-- [독일어, 2026-11-16, 제 이름을 찾은 무알코올 글뤼바인](https://dokhaehanip.com/de/2026-11-16/): 출처 Glühwein ohne Alkohol darf jetzt auch so heißen (Tageskarte)
 
 ## 주간 단어 복습
 - [영어 주간 단어 복습, 2026-11-22](https://dokhaehanip.com/en/review/2026-11-22/): 그 주 지문의 주요 단어 80개
