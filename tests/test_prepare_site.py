@@ -90,6 +90,12 @@ class WorkflowWiringTest(unittest.TestCase):
                 if "send_email.py" in text:
                     self.assertLess(i_retry, text.index("send_email.py"))
 
+    def test_weekly_rebuilds_root_menu(self):
+        # 주간 복습이 생기면 위 메뉴의 복습 링크가 든 안내, 가입 페이지도 다시 만든다
+        text = (ROOT / ".github/workflows/weekly.yml").read_text(encoding="utf-8")
+        self.assertLess(text.index("tools/weekly.py"), text.index("publish.rebuild_root()"))
+        self.assertLess(text.index("publish.rebuild_root()"), text.index("name: Commit"))
+
     def test_pages_workflow(self):
         text = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
         self.assertIn("group: pages", text)
