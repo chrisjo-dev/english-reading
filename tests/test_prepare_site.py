@@ -105,6 +105,14 @@ class WorkflowWiringTest(unittest.TestCase):
         self.assertIn("group: pages", text)
         self.assertIn("python tools/prepare_site.py", text)
         self.assertIn("actions/deploy-pages@", text)
+        # 아티팩트가 늦게 보이는 일이 있어 같은 실행 안에서 한 번 더 배포한다(2026-11-22)
+        self.assertEqual(text.count("actions/deploy-pages@"), 2)
+        i_retry = text.index("name: Deploy pages (retry)")
+        first = text[text.index("name: Deploy pages"):i_retry]
+        self.assertIn("id: deploy\n", first)
+        self.assertIn("continue-on-error: true", first)
+        self.assertNotIn("continue-on-error", text[i_retry:])
+        self.assertIn("if: steps.deploy.outcome == 'failure'", text[i_retry:])
 
 
 if __name__ == "__main__":
