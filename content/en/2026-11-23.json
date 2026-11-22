@@ -1,0 +1,411 @@
+{
+  "date": "2026-11-23",
+  "category": "space",
+  "topic": "보이저 1호",
+  "title_ko": "빛으로 하루 거리에 닿은 보이저 1호",
+  "headline": "Voyager 1 Is Now One Light-Day Away",
+  "summary_ko": "보이저 1호가 지구에서 빛으로 하루 걸리는 거리에 닿았다는 소식을 다룬 B1~B2 영어 지문이에요. 1977년에 떠난 이 우주선의 신호는 이제 지구까지 오는 데 24시간이 걸려요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-despite"
+    ],
+    "a": [
+      "a-because"
+    ]
+  },
+  "keywords": [
+    "보이저 1호",
+    "빛의 하루 거리",
+    "성간 공간",
+    "탐사선 소식"
+  ],
+  "sentences": [
+    {
+      "en": "On November 18, NASA's Voyager 1 reached a **historic** **milestone** when it became one light-day away from Earth.",
+      "b2": false,
+      "chunks": [
+        [
+          "On November 18,",
+          "11월 18일에"
+        ],
+        [
+          "NASA's Voyager 1 reached",
+          "NASA의 보이저 1호가 도달했다"
+        ],
+        [
+          "a **historic** **milestone**",
+          "역사적인 이정표에"
+        ],
+        [
+          "when it became",
+          "~가 되면서"
+        ],
+        [
+          "one light-day away from Earth.",
+          "지구에서 빛으로 하루 거리만큼 떨어진 곳이"
+        ]
+      ]
+    },
+    {
+      "en": "This means a radio **signal** from the **spacecraft** now needs a full 24 hours to travel home, even at the speed of light.",
+      "b2": false,
+      "chunks": [
+        [
+          "This means",
+          "이것은 뜻한다"
+        ],
+        [
+          "a radio **signal**",
+          "전파 신호가"
+        ],
+        [
+          "from the **spacecraft**",
+          "그 우주선에서 나온"
+        ],
+        [
+          "now needs a full 24 hours",
+          "이제 꼬박 24시간이 필요하다는 것을"
+        ],
+        [
+          "to travel home,",
+          "집(지구)까지 가는 데"
+        ],
+        [
+          "even at the speed of light.",
+          "빛의 속도로도"
+        ]
+      ]
+    },
+    {
+      "en": "Voyager 1 left Earth in 1977 and is now about 25.9 billion kilometers away, moving through **interstellar** space at more than 61,000 kilometers per hour.",
+      "b2": false,
+      "chunks": [
+        [
+          "Voyager 1 left Earth in 1977",
+          "보이저 1호는 1977년에 지구를 떠났다"
+        ],
+        [
+          "and is now",
+          "그리고 지금"
+        ],
+        [
+          "about 25.9 billion kilometers away,",
+          "약 259억 킬로미터 떨어져 있다"
+        ],
+        [
+          "moving through **interstellar** space",
+          "성간 우주를 지나가면서"
+        ],
+        [
+          "at more than 61,000 kilometers per hour.",
+          "시속 6만 1천 킬로미터가 넘는 속도로"
+        ]
+      ]
+    },
+    {
+      "en": "Despite its age, Voyager 1 still **transmits** a basic signal, but NASA has not received any scientific or engineering data from it since November 14.",
+      "b2": true,
+      "chunks": [
+        [
+          "Despite its age,",
+          "나이가 많은데도"
+        ],
+        [
+          "Voyager 1 still **transmits**",
+          "보이저 1호는 여전히 보낸다"
+        ],
+        [
+          "a basic signal,",
+          "기본 신호를"
+        ],
+        [
+          "but NASA has not received",
+          "하지만 NASA는 받지 못했다"
+        ],
+        [
+          "any scientific or engineering data",
+          "과학 데이터나 기술 데이터를 하나도"
+        ],
+        [
+          "from it since November 14.",
+          "11월 14일 이후로 그것에서"
+        ]
+      ]
+    },
+    {
+      "en": "Its power **generator** loses about four watts every year, so **engineers** have **replaced** some devices with ones that use less power.",
+      "b2": false,
+      "chunks": [
+        [
+          "Its power **generator** loses",
+          "그것의 전력 발전기는 잃는다"
+        ],
+        [
+          "about four watts every year,",
+          "매년 약 4와트를"
+        ],
+        [
+          "so **engineers** have **replaced**",
+          "그래서 엔지니어들은 교체했다"
+        ],
+        [
+          "some devices",
+          "일부 장치를"
+        ],
+        [
+          "with ones that use less power.",
+          "전력을 덜 쓰는 것들로"
+        ]
+      ]
+    },
+    {
+      "en": "NASA expects these changes to keep its science **instruments** working until at least the summer of 2027, the 50th **anniversary** of its launch.",
+      "b2": false,
+      "chunks": [
+        [
+          "NASA expects these changes",
+          "NASA는 이 변화들이 ~하리라 예상한다"
+        ],
+        [
+          "to keep its science **instruments** working",
+          "과학 장비들이 계속 작동하게 할 것이라고"
+        ],
+        [
+          "until at least the summer of 2027,",
+          "적어도 2027년 여름까지"
+        ],
+        [
+          "the 50th **anniversary** of its launch.",
+          "그것의 발사 50주년인"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "historic",
+      "역사적인"
+    ],
+    [
+      "milestone",
+      "이정표, 획기적인 단계"
+    ],
+    [
+      "signal",
+      "신호"
+    ],
+    [
+      "spacecraft",
+      "우주선"
+    ],
+    [
+      "interstellar",
+      "성간의, 별과 별 사이의"
+    ],
+    [
+      "transmits",
+      "보내다, 송신하다"
+    ],
+    [
+      "generator",
+      "발전기"
+    ],
+    [
+      "engineers",
+      "기술자들, 엔지니어들"
+    ],
+    [
+      "replaced",
+      "교체했다, 바꿨다"
+    ],
+    [
+      "instruments",
+      "(관측) 장비들, 기기들"
+    ],
+    [
+      "anniversary",
+      "기념일, 주년"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Despite + 명사: ~에도 불구하고",
+      "body": "`Despite its age,`는 '나이가 많은데도'라는 뜻이에요. `despite` 뒤에는 절(주어+동사)이 아니라 `its age` 같은 명사가 옵니다. 같은 뜻을 절로 쓰려면 `Although it is old,`처럼 `although`를 써요. 이 문장에는 뒤에 `but`도 있어서, '오래됐지만 신호는 보낸다, 하지만 데이터는 없다'로 대조가 두 번 이어진다는 점도 함께 보세요."
+    },
+    {
+      "title": "one light-day: 시간처럼 보이는 거리 단위",
+      "body": "`one light-day away`의 `light-day`는 시간이 아니라 거리예요. 빛이 24시간 동안 가는 거리를 뜻해서, 다음 문장의 `needs a full 24 hours to travel home`이 바로 그 풀이입니다. `a full 24 hours`의 `full`은 '꼬박'이라는 뜻으로, 숫자 앞에 붙어 그 시간을 다 채운다는 느낌을 줘요."
+    }
+  ],
+  "answers": [
+    "11월 18일, NASA의 보이저 1호는 지구에서 빛으로 하루 걸리는 거리만큼 멀어지면서 역사적인 이정표에 도달했다.",
+    "이것은 이제 그 우주선에서 보낸 전파 신호가 빛의 속도로도 지구까지 오는 데 꼬박 24시간이 걸린다는 뜻이다.",
+    "보이저 1호는 1977년에 지구를 떠났고, 지금은 약 259억 킬로미터 떨어진 곳에서 시속 6만 1천 킬로미터가 넘는 속도로 성간 우주를 지나가고 있다.",
+    "오래되었는데도 보이저 1호는 여전히 기본 신호를 보내고 있지만, NASA는 11월 14일 이후로 이 우주선에서 과학 데이터나 기술 데이터를 하나도 받지 못했다.",
+    "이 우주선의 전력 발전기는 해마다 약 4와트씩 출력이 줄어들기 때문에, 엔지니어들은 일부 장치를 전력을 덜 쓰는 장치로 교체했다.",
+    "NASA는 이런 변화 덕분에 과학 장비들이 적어도 발사 50주년인 2027년 여름까지는 계속 작동할 것으로 예상한다."
+  ],
+  "advanced": [
+    {
+      "word": "landmark",
+      "meaning": "획기적인 사건",
+      "confuse": null,
+      "example": "Reaching one light-day is a **landmark** for space travel.",
+      "example_ko": "빛으로 하루 거리에 닿은 것은 우주 탐사의 획기적인 사건입니다."
+    },
+    {
+      "word": "probe",
+      "meaning": "탐사선",
+      "confuse": null,
+      "example": "The **probe** left Earth almost 50 years ago.",
+      "example_ko": "그 탐사선은 거의 50년 전에 지구를 떠났습니다."
+    },
+    {
+      "word": "remote",
+      "meaning": "멀리 떨어진, 외딴",
+      "confuse": null,
+      "example": "No other spacecraft has reached such a **remote** place.",
+      "example_ko": "그렇게 멀리 떨어진 곳에 닿은 다른 우주선은 없습니다."
+    },
+    {
+      "word": "emit",
+      "meaning": "내보내다, 방출하다",
+      "confuse": "omit(빠뜨리다)와 혼동 주의",
+      "example": "Voyager 1 still **emits** a faint radio signal.",
+      "example_ko": "보이저 1호는 여전히 희미한 전파 신호를 내보냅니다."
+    },
+    {
+      "word": "diminish",
+      "meaning": "줄어들다, 약해지다",
+      "confuse": null,
+      "example": "Its power **diminishes** by about four watts each year.",
+      "example_ko": "그 전력은 해마다 약 4와트씩 줄어듭니다."
+    },
+    {
+      "word": "conserve",
+      "meaning": "아끼다, 보존하다",
+      "confuse": "converse(대화하다)와 혼동 주의",
+      "example": "Engineers changed some devices to **conserve** power.",
+      "example_ko": "엔지니어들은 전력을 아끼려고 일부 장치를 바꿨습니다."
+    },
+    {
+      "word": "endure",
+      "meaning": "견디다, 오래가다",
+      "confuse": null,
+      "example": "The mission has **endured** for nearly half a century.",
+      "example_ko": "그 임무는 거의 반세기 동안 이어져 왔습니다."
+    }
+  ],
+  "source": {
+    "title": "NASA's Voyager 1 is now so far away that light takes 24 hours to reach it (ScienceDaily, 2026-11-20)",
+    "url": "https://www.sciencedaily.com/releases/2026/11/261120075554.htm"
+  },
+  "photo_scene": "Close-up of a large white satellite dish antenna pointing up into a clear deep blue evening sky at dusk, warm orange light on its edge, quiet hills softly blurred behind.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "On November 18, NASA's Voyager 1 reached an important **milestone**.",
+          "chunks": [
+            [
+              "On November 18,",
+              "11월 18일에"
+            ],
+            [
+              "NASA's Voyager 1 reached",
+              "NASA의 보이저 1호가 도달했다"
+            ],
+            [
+              "an important **milestone**.",
+              "중요한 이정표에"
+            ]
+          ]
+        },
+        {
+          "en": "Now its **signal** needs 24 hours to come back to Earth.",
+          "chunks": [
+            [
+              "Now its **signal** needs 24 hours",
+              "이제 그 신호는 24시간이 필요하다"
+            ],
+            [
+              "to come back to Earth.",
+              "지구로 돌아오는 데"
+            ]
+          ]
+        },
+        {
+          "en": "It left Earth in 1977 and is now 25.9 billion kilometers away.",
+          "chunks": [
+            [
+              "It left Earth in 1977",
+              "그것은 1977년에 지구를 떠났다"
+            ],
+            [
+              "and is now 25.9 billion kilometers away.",
+              "그리고 지금 259억 킬로미터 떨어져 있다"
+            ]
+          ]
+        },
+        {
+          "en": "It still **transmits** a simple signal, but NASA has not received data since November 14.",
+          "chunks": [
+            [
+              "It still **transmits** a simple signal,",
+              "그것은 여전히 간단한 신호를 보낸다"
+            ],
+            [
+              "but NASA has not received data",
+              "하지만 NASA는 데이터를 받지 못했다"
+            ],
+            [
+              "since November 14.",
+              "11월 14일 이후로"
+            ]
+          ]
+        },
+        {
+          "en": "**Engineers** **replaced** some devices because its power is getting weaker.",
+          "chunks": [
+            [
+              "**Engineers** **replaced** some devices",
+              "엔지니어들은 일부 장치를 바꿨다"
+            ],
+            [
+              "because its power is getting weaker.",
+              "그것의 전력이 약해지고 있기 때문에"
+            ]
+          ]
+        },
+        {
+          "en": "Its **instruments** will probably work until the summer of 2027.",
+          "chunks": [
+            [
+              "Its **instruments** will probably work",
+              "그 장비들은 아마 작동할 것이다"
+            ],
+            [
+              "until the summer of 2027.",
+              "2027년 여름까지"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "11월 18일, NASA의 보이저 1호가 중요한 이정표에 도달했다.",
+        "이제 그 신호가 지구로 돌아오는 데 24시간이 걸린다.",
+        "보이저 1호는 1977년에 지구를 떠났고, 지금은 259억 킬로미터 떨어져 있다.",
+        "보이저 1호는 여전히 간단한 신호를 보내지만, NASA는 11월 14일 이후로 데이터를 받지 못했다.",
+        "전력이 약해지고 있기 때문에 엔지니어들은 일부 장치를 바꿨다.",
+        "보이저 1호의 장비들은 아마 2027년 여름까지 작동할 것이다."
+      ]
+    }
+  }
+}
