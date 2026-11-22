@@ -1,0 +1,456 @@
+{
+  "date": "2026-11-23",
+  "category": "culture",
+  "topic": "본 크리스마스 시장",
+  "title_ko": "수요일에 문을 연 본 크리스마스 시장",
+  "headline": "Der Weihnachtsmarkt in Bonn hat neue Zeiten",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-perfekt",
+      "b-passiv-praesens"
+    ],
+    "a": [
+      "a-weil"
+    ]
+  },
+  "keywords": [
+    "크리스마스 시장",
+    "영업시간",
+    "배송 차량",
+    "생활 소식"
+  ],
+  "summary_ko": "본 크리스마스 시장의 바뀐 운영 시간을 다룬 B1~B2 독일어 지문이에요. 올해 시장은 처음으로 수요일에 문을 열었고, 안전과 배송 차량 통행을 함께 고려해 매일 낮 12시에 시작해요.",
+  "photo_scene": "Close-up in the early evening of a wooden Christmas market stall decorated with fir branches and warm string lights, a tall tree lit softly from below behind it, blue dusk sky over an old city square.",
+  "source": {
+    "title": "Bonner Weihnachtsmarkt lädt ab 18. November in die Innenstadt ein (bonn.de)",
+    "url": "https://www.bonn.de/pressemitteilungen/november-2026/bonner-weihnachtsmarkt-laedt-ab-18.november-in-die-innenstadt-ein.php?loc=de"
+  },
+  "sentences": [
+    {
+      "en": "Der Bonner **Weihnachtsmarkt** ist in diesem Jahr zum ersten Mal an einem Mittwoch **gestartet**, nämlich am 18. November statt an einem Freitag.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der Bonner **Weihnachtsmarkt**",
+          "본의 크리스마스 시장은"
+        ],
+        [
+          "ist in diesem Jahr",
+          "올해"
+        ],
+        [
+          "zum ersten Mal",
+          "처음으로"
+        ],
+        [
+          "an einem Mittwoch **gestartet**,",
+          "수요일에 시작했습니다"
+        ],
+        [
+          "nämlich am 18. November",
+          "즉 11월 18일에"
+        ],
+        [
+          "statt an einem Freitag.",
+          "금요일 대신"
+        ]
+      ]
+    },
+    {
+      "en": "Außerdem öffnen die rund 160 **Stände** jeden Tag erst um 12 Uhr und nicht mehr wie früher um 11 Uhr.",
+      "b2": false,
+      "chunks": [
+        [
+          "Außerdem öffnen",
+          "또 문을 엽니다"
+        ],
+        [
+          "die rund 160 **Stände**",
+          "약 160개의 가판대가"
+        ],
+        [
+          "jeden Tag",
+          "매일"
+        ],
+        [
+          "erst um 12 Uhr",
+          "12시가 되어서야"
+        ],
+        [
+          "und nicht mehr wie früher",
+          "그리고 더 이상 예전처럼 ~아니라"
+        ],
+        [
+          "um 11 Uhr.",
+          "11시에"
+        ]
+      ]
+    },
+    {
+      "en": "Mit den neuen Zeiten will die Stadt sowohl die **Anforderungen** an die Sicherheit als auch den **Lieferverkehr** in der Innenstadt besser vereinbaren.",
+      "b2": true,
+      "chunks": [
+        [
+          "Mit den neuen Zeiten",
+          "새 시간으로"
+        ],
+        [
+          "will die Stadt",
+          "시는 ~하려고 합니다"
+        ],
+        [
+          "sowohl die **Anforderungen** an die Sicherheit",
+          "안전에 대한 요구 사항뿐 아니라"
+        ],
+        [
+          "als auch den **Lieferverkehr**",
+          "배송 차량 통행도"
+        ],
+        [
+          "in der Innenstadt",
+          "도심의"
+        ],
+        [
+          "besser vereinbaren.",
+          "더 잘 조화시키려고"
+        ]
+      ]
+    },
+    {
+      "en": "Am Totensonntag, dem 22. November, war der Markt **geschlossen**, und die offizielle **Eröffnung** wird erst am 27. November vor dem Münster gefeiert.",
+      "b2": false,
+      "chunks": [
+        [
+          "Am Totensonntag,",
+          "망자의 일요일에"
+        ],
+        [
+          "dem 22. November,",
+          "즉 11월 22일에"
+        ],
+        [
+          "war der Markt **geschlossen**,",
+          "시장은 문을 닫았고"
+        ],
+        [
+          "und die offizielle **Eröffnung**",
+          "공식 개막식은"
+        ],
+        [
+          "wird erst am 27. November",
+          "11월 27일에야"
+        ],
+        [
+          "vor dem Münster gefeiert.",
+          "대성당 앞에서 열립니다"
+        ]
+      ]
+    },
+    {
+      "en": "Die **Gastronomie** hat freitags und samstags bis 22:30 Uhr geöffnet, während **Kunsthandwerk** und Weihnachtsschmuck täglich bis 21 Uhr verkauft werden.",
+      "b2": false,
+      "chunks": [
+        [
+          "Die **Gastronomie** hat",
+          "음식 가판대는 엽니다"
+        ],
+        [
+          "freitags und samstags",
+          "금요일과 토요일에는"
+        ],
+        [
+          "bis 22:30 Uhr geöffnet,",
+          "밤 10시 30분까지"
+        ],
+        [
+          "während **Kunsthandwerk** und Weihnachtsschmuck",
+          "반면 수공예품과 성탄 장식은"
+        ],
+        [
+          "täglich bis 21 Uhr",
+          "매일 밤 9시까지"
+        ],
+        [
+          "verkauft werden.",
+          "판매됩니다"
+        ]
+      ]
+    },
+    {
+      "en": "Neu ist auch die **Beleuchtung**, denn die Bäume und das Sterntor werden in diesem Jahr von unten **angestrahlt**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Neu ist auch",
+          "또 새로운 것은"
+        ],
+        [
+          "die **Beleuchtung**,",
+          "조명입니다"
+        ],
+        [
+          "denn die Bäume und das Sterntor",
+          "왜냐하면 나무와 슈테른토어가"
+        ],
+        [
+          "werden in diesem Jahr",
+          "올해"
+        ],
+        [
+          "von unten **angestrahlt**.",
+          "아래에서 비춰지기 때문입니다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Weihnachtsmarkt",
+      "크리스마스 시장 (남성 der, 복수 Weihnachtsmärkte)"
+    ],
+    [
+      "starten",
+      "시작하다, 출발하다"
+    ],
+    [
+      "Stand",
+      "가판대, 노점 (남성 der, 복수 Stände)"
+    ],
+    [
+      "Anforderung",
+      "요구 사항, 요건 (여성 die, 복수 Anforderungen)"
+    ],
+    [
+      "Lieferverkehr",
+      "배송 차량 통행 (남성 der)"
+    ],
+    [
+      "geschlossen",
+      "닫힌, 휴업한"
+    ],
+    [
+      "Eröffnung",
+      "개막, 개장 (여성 die, 복수 Eröffnungen)"
+    ],
+    [
+      "Gastronomie",
+      "요식업, 음식점 (여성 die)"
+    ],
+    [
+      "Kunsthandwerk",
+      "공예, 수공예품 (중성 das)"
+    ],
+    [
+      "Beleuchtung",
+      "조명 (여성 die, 복수 Beleuchtungen)"
+    ],
+    [
+      "anstrahlen",
+      "비추다, 조명하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "sein + Partizip II 현재완료 — ist ... gestartet",
+      "body": "`ist in diesem Jahr zum ersten Mal an einem Mittwoch gestartet`는 '올해 처음으로 수요일에 시작했다'는 뜻의 현재완료(Perfekt)입니다. `starten`이 목적어 없이 '시작하다, 출발하다'로 쓰이면 상태 변화를 나타내므로 조동사 `haben`이 아니라 `sein`을 씁니다. 조동사 `ist`는 둘째 자리(V2)에, 과거분사 `gestartet`는 문장 끝에 와서 그 사이를 감쌉니다(Satzklammer). 기초 지문의 `ist dieses Jahr an einem Mittwoch gestartet`도 같은 구조예요."
+    },
+    {
+      "title": "현재 수동태 — wird gefeiert, werden verkauft",
+      "body": "`die offizielle Eröffnung wird erst am 27. November vor dem Münster gefeiert`는 '공식 개막식은 11월 27일에야 대성당 앞에서 열린다'는 뜻입니다. `werden` + 과거분사로 '~된다'를 나타내고, 누가 하는지보다 무엇이 일어나는지가 중요할 때 씁니다. 부문장 `während Kunsthandwerk und Weihnachtsschmuck täglich bis 21 Uhr verkauft werden`에서는 정동사 `werden`이 문장 맨 끝으로 가서 `verkauft werden` 순서가 됩니다."
+    }
+  ],
+  "answers": [
+    "본의 크리스마스 시장은 올해 처음으로 금요일이 아닌 수요일, 즉 11월 18일에 시작했습니다.",
+    "또 약 160개의 가판대는 예전처럼 11시가 아니라 매일 12시에야 문을 엽니다.",
+    "시는 새 운영 시간으로 안전에 대한 요구 사항과 도심의 배송 차량 통행을 더 잘 조화시키려고 합니다.",
+    "망자의 일요일인 11월 22일에는 시장이 문을 닫았고, 공식 개막식은 11월 27일에야 대성당 앞에서 열립니다.",
+    "음식 가판대는 금요일과 토요일에 밤 10시 30분까지 열고, 수공예품과 성탄 장식은 매일 밤 9시까지 판매됩니다.",
+    "조명도 새로워졌는데, 올해는 나무와 슈테른토어를 아래에서 비추기 때문입니다."
+  ],
+  "advanced": [
+    {
+      "word": "Sicherheitskonzept",
+      "meaning": "안전 대책 (중성 das, 복수 Sicherheitskonzepte)",
+      "confuse": "`Konzept`는 '초안'보다 '계획, 방안'의 뜻으로 자주 씀",
+      "example": "Für den Markt gibt es ein neues **Sicherheitskonzept**.",
+      "example_ko": "그 시장에는 새 안전 대책이 있습니다."
+    },
+    {
+      "word": "Anlieferung",
+      "meaning": "납품, 반입 (여성 die)",
+      "confuse": "`Lieferung`(배달)보다 가게나 행사장으로 물건을 들여오는 일을 가리킴",
+      "example": "Die **Anlieferung** ist nur am Vormittag erlaubt.",
+      "example_ko": "반입은 오전에만 허용됩니다."
+    },
+    {
+      "word": "Fußgängerzone",
+      "meaning": "보행자 구역 (여성 die, 복수 Fußgängerzonen)",
+      "confuse": null,
+      "example": "In der **Fußgängerzone** dürfen keine Autos fahren.",
+      "example_ko": "보행자 구역에서는 자동차가 다닐 수 없습니다."
+    },
+    {
+      "word": "Andrang",
+      "meaning": "혼잡, 붐빔 (남성 der)",
+      "confuse": "`Drang`(충동)과 다름",
+      "example": "Am Samstag war der **Andrang** besonders groß.",
+      "example_ko": "토요일에는 특히 붐볐습니다."
+    },
+    {
+      "word": "verlegen",
+      "meaning": "옮기다, 연기하다",
+      "confuse": "형용사 `verlegen`은 '당황한, 쑥스러운'",
+      "example": "Die Stadt hat den Beginn auf 12 Uhr **verlegt**.",
+      "example_ko": "시는 시작 시간을 12시로 옮겼습니다."
+    },
+    {
+      "word": "Schausteller",
+      "meaning": "흥행업자, 놀이기구 운영자 (남성 der, 복수 Schausteller)",
+      "confuse": "`Schauspieler`(배우)와 헷갈리기 쉬움",
+      "example": "Die **Schausteller** bauen das Karussell auf.",
+      "example_ko": "흥행업자들이 회전목마를 세웁니다."
+    },
+    {
+      "word": "Besucherstrom",
+      "meaning": "인파, 방문객 행렬 (남성 der, 복수 Besucherströme)",
+      "confuse": null,
+      "example": "Der **Besucherstrom** verteilt sich über mehrere Plätze.",
+      "example_ko": "인파가 여러 광장으로 나뉩니다."
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Der Bonner **Weihnachtsmarkt** ist dieses Jahr an einem Mittwoch **gestartet**.",
+          "chunks": [
+            [
+              "Der Bonner **Weihnachtsmarkt**",
+              "본의 크리스마스 시장은"
+            ],
+            [
+              "ist dieses Jahr",
+              "올해"
+            ],
+            [
+              "an einem Mittwoch",
+              "수요일에"
+            ],
+            [
+              "**gestartet**.",
+              "시작했습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Stände** öffnen jetzt erst um 12 Uhr, nicht um 11 Uhr.",
+          "chunks": [
+            [
+              "Die **Stände**",
+              "가판대는"
+            ],
+            [
+              "öffnen jetzt",
+              "이제 문을 엽니다"
+            ],
+            [
+              "erst um 12 Uhr,",
+              "12시가 되어서야"
+            ],
+            [
+              "nicht um 11 Uhr.",
+              "11시가 아니라"
+            ]
+          ]
+        },
+        {
+          "en": "Die Stadt macht das, weil sie **Sicherheit** und **Lieferverkehr** besser planen will.",
+          "chunks": [
+            [
+              "Die Stadt macht das,",
+              "시는 그렇게 합니다"
+            ],
+            [
+              "weil sie **Sicherheit** und **Lieferverkehr**",
+              "안전과 배송 차량 통행을"
+            ],
+            [
+              "besser planen will.",
+              "더 잘 계획하고 싶기 때문에"
+            ]
+          ]
+        },
+        {
+          "en": "Am 22. November war der Markt **geschlossen**, die **Eröffnung** ist am 27. November.",
+          "chunks": [
+            [
+              "Am 22. November",
+              "11월 22일에"
+            ],
+            [
+              "war der Markt **geschlossen**,",
+              "시장은 문을 닫았고"
+            ],
+            [
+              "die **Eröffnung**",
+              "개막식은"
+            ],
+            [
+              "ist am 27. November.",
+              "11월 27일입니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Gastronomie** ist am Freitag und Samstag bis 22:30 Uhr offen.",
+          "chunks": [
+            [
+              "Die **Gastronomie**",
+              "음식 가판대는"
+            ],
+            [
+              "ist am Freitag und Samstag",
+              "금요일과 토요일에"
+            ],
+            [
+              "bis 22:30 Uhr offen.",
+              "밤 10시 30분까지 엽니다"
+            ]
+          ]
+        },
+        {
+          "en": "Neu ist auch die **Beleuchtung** von unten an Bäumen und am Sterntor.",
+          "chunks": [
+            [
+              "Neu ist auch",
+              "또 새로운 것은"
+            ],
+            [
+              "die **Beleuchtung** von unten",
+              "아래에서 비추는 조명입니다"
+            ],
+            [
+              "an Bäumen und am Sterntor.",
+              "나무와 슈테른토어에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "본의 크리스마스 시장은 올해 수요일에 시작했습니다.",
+        "가판대는 이제 11시가 아니라 12시에야 문을 엽니다.",
+        "시는 안전과 배송 차량 통행을 더 잘 계획하고 싶어서 그렇게 합니다.",
+        "11월 22일에는 시장이 문을 닫았고, 개막식은 11월 27일입니다.",
+        "음식 가판대는 금요일과 토요일에 밤 10시 30분까지 엽니다.",
+        "나무와 슈테른토어를 아래에서 비추는 조명도 새로워졌습니다."
+      ]
+    }
+  }
+}
