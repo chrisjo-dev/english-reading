@@ -9,7 +9,7 @@
   var cmps = rows.map(function (r) { return r.querySelector('.lw-cmp'); });
   var path = location.pathname.split('/'), lang = path[1], day = path[2];
   var topic = document.querySelector('h1 em').textContent;
-  var id, timer = 0, dirty = false, started = false, state = '';
+  var id, timer = 0, dirty = false, started = false, state = '', ens = [];
   var $ = function (x) { return document.getElementById(x); };
   var hintEl = $('hinttext'), hint0 = hintEl ? hintEl.textContent : '';
 
@@ -23,7 +23,7 @@
     var s = {};
     tas.forEach(function (t, i) {
       var v = t.value.trim(), st = stars[i].getAttribute('aria-pressed') === 'true';
-      if (v || st) s[i] = { v: v, st: st, e: sentenceText(rows[i]) };
+      if (v || st) s[i] = { v: v, st: st, e: ens[i] };
     });
     return s;
   }
@@ -51,6 +51,7 @@
   }
   function fill() {
     id = lang + '/' + day + '/' + pos();
+    ens = rows.map(sentenceText);  // 수준을 바꾼 뒤 저장돼도 쓸 때의 원문이 남게 미리 담아 둔다
     var d = load()[id], s = (d && d.s) || {};
     tas.forEach(function (t, i) {
       t.value = (s[i] && s[i].v) || '';
