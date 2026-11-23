@@ -1,0 +1,448 @@
+{
+  "date": "2026-11-24",
+  "category": "tech",
+  "topic": "QR 코드",
+  "title_ko": "긁혀도 읽히는 QR 코드",
+  "headline": "Why a QR Code Still Works When It Is Scratched",
+  "summary_ko": "QR 코드가 어떻게 읽히고 왜 일부가 가려져도 작동하는지 다룬 B1~B2 영어 지문이에요. 모서리의 큰 네모 세 개가 방향을 알려 주고, 가장 강한 오류 정정 설정은 데이터의 약 30퍼센트를 되살릴 수 있어요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "explain",
+  "grammar": {
+    "b": [
+      "b-gerund-subject",
+      "b-first-conditional"
+    ],
+    "a": [
+      "a-passive-simple"
+    ]
+  },
+  "keywords": [
+    "QR 코드",
+    "오류 정정",
+    "스캐너",
+    "원리 설명"
+  ],
+  "sentences": [
+    {
+      "en": "The black-and-white squares on a QR code look **random**, but each tiny square **stores** a piece of data as a one or a zero.",
+      "b2": false,
+      "chunks": [
+        [
+          "The black-and-white squares",
+          "검고 흰 네모들은"
+        ],
+        [
+          "on a QR code",
+          "QR 코드 위의"
+        ],
+        [
+          "look **random**,",
+          "제멋대로인 것처럼 보인다"
+        ],
+        [
+          "but each tiny square",
+          "하지만 작은 네모 하나하나는"
+        ],
+        [
+          "**stores** a piece of data",
+          "데이터 한 조각을 저장한다"
+        ],
+        [
+          "as a one or a zero.",
+          "1 또는 0으로"
+        ]
+      ]
+    },
+    {
+      "en": "Three larger squares sit in the **corners**, and they tell the camera where the code is and which way it is **rotated**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Three larger squares",
+          "더 큰 네모 세 개가"
+        ],
+        [
+          "sit in the **corners**,",
+          "모서리에 자리 잡고 있다"
+        ],
+        [
+          "and they tell the camera",
+          "그리고 그것들은 카메라에게 알려 준다"
+        ],
+        [
+          "where the code is",
+          "코드가 어디 있는지"
+        ],
+        [
+          "and which way it is **rotated**.",
+          "그리고 어느 쪽으로 돌아가 있는지를"
+        ]
+      ]
+    },
+    {
+      "en": "Because the fourth corner has no large square, the scanner can read the code from any **angle**, even **upside down**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Because the fourth corner",
+          "네 번째 모서리에는"
+        ],
+        [
+          "has no large square,",
+          "큰 네모가 없기 때문에"
+        ],
+        [
+          "the scanner can read the code",
+          "스캐너는 코드를 읽을 수 있다"
+        ],
+        [
+          "from any **angle**,",
+          "어떤 각도에서든"
+        ],
+        [
+          "even **upside down**.",
+          "심지어 거꾸로 뒤집혀 있어도"
+        ]
+      ]
+    },
+    {
+      "en": "Adding extra **backup** information, calculated with clever mathematics, makes the code surprisingly strong, a feature called **error correction**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Adding extra **backup** information,",
+          "여분의 예비 정보를 더하는 것이"
+        ],
+        [
+          "calculated with clever mathematics,",
+          "영리한 수학으로 계산된"
+        ],
+        [
+          "makes the code surprisingly strong,",
+          "코드를 놀랄 만큼 튼튼하게 만든다"
+        ],
+        [
+          "a feature called **error correction**.",
+          "오류 정정이라고 불리는 기능이다"
+        ]
+      ]
+    },
+    {
+      "en": "If a **scratch** covers part of the code, the scanner will usually still work, because the strongest setting can **restore** about 30 percent of the data.",
+      "b2": false,
+      "chunks": [
+        [
+          "If a **scratch** covers",
+          "만약 긁힌 자국이 덮으면"
+        ],
+        [
+          "part of the code,",
+          "코드의 일부를"
+        ],
+        [
+          "the scanner will usually still work,",
+          "스캐너는 대개 그래도 작동할 것이다"
+        ],
+        [
+          "because the strongest setting",
+          "가장 강한 설정은"
+        ],
+        [
+          "can **restore**",
+          "되살릴 수 있기 때문에"
+        ],
+        [
+          "about 30 percent of the data.",
+          "데이터의 약 30퍼센트를"
+        ]
+      ]
+    },
+    {
+      "en": "The system was **invented** in 1994 by a team at Denso, a Japanese company that needed a faster way to **track** parts in its factories.",
+      "b2": false,
+      "chunks": [
+        [
+          "The system was **invented**",
+          "이 방식은 발명되었다"
+        ],
+        [
+          "in 1994",
+          "1994년에"
+        ],
+        [
+          "by a team at Denso,",
+          "덴소의 한 팀에 의해"
+        ],
+        [
+          "a Japanese company",
+          "일본 회사인"
+        ],
+        [
+          "that needed a faster way",
+          "더 빠른 방법이 필요했던"
+        ],
+        [
+          "to **track** parts",
+          "부품을 추적할"
+        ],
+        [
+          "in its factories.",
+          "자기 공장에서"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "random",
+      "무작위의, 제멋대로인"
+    ],
+    [
+      "stores",
+      "저장하다"
+    ],
+    [
+      "corners",
+      "모서리, 구석 (복수형)"
+    ],
+    [
+      "rotated",
+      "회전된, 돌아간"
+    ],
+    [
+      "angle",
+      "각도"
+    ],
+    [
+      "upside down",
+      "거꾸로, 뒤집혀"
+    ],
+    [
+      "backup",
+      "예비의, 백업"
+    ],
+    [
+      "error correction",
+      "오류 정정"
+    ],
+    [
+      "scratch",
+      "긁힌 자국, 흠집"
+    ],
+    [
+      "restore",
+      "복원하다, 되살리다"
+    ],
+    [
+      "invented",
+      "발명된"
+    ],
+    [
+      "track",
+      "추적하다"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Adding ... makes: 동명사 주어",
+      "body": "4번 문장은 `Adding extra backup information`까지가 주어예요. 동사 add에 -ing를 붙여 '더하는 것'이라는 명사처럼 쓰고, 진짜 동사는 한참 뒤의 `makes`예요. 주어가 '하는 것' 하나라서 makes에 -s가 붙어요. 5번 문장의 `If a scratch covers ..., the scanner will ... work`는 if + 현재, 뒤는 will로 '그러면 이렇게 될 것이다'를 말하는 조건문이에요."
+    },
+    {
+      "title": "which way it is rotated: 문장 속에 들어간 질문",
+      "body": "`where the code is`와 `which way it is rotated`는 '코드가 어디 있는지', '어느 쪽으로 돌아가 있는지'라는 뜻으로 tell의 목적어예요. 질문이 문장 안에 들어가면 `where is the code`가 아니라 `where the code is`처럼 주어 + 동사 순서가 돼요."
+    }
+  ],
+  "answers": [
+    "QR 코드 위의 검고 흰 네모들은 제멋대로인 것처럼 보이지만, 작은 네모 하나하나는 데이터 한 조각을 1 또는 0으로 저장한다.",
+    "더 큰 네모 세 개가 모서리에 자리 잡고 있는데, 이것들이 카메라에게 코드가 어디 있는지, 그리고 어느 쪽으로 돌아가 있는지 알려 준다.",
+    "네 번째 모서리에는 큰 네모가 없기 때문에, 스캐너는 어떤 각도에서든, 심지어 거꾸로 뒤집혀 있어도 코드를 읽을 수 있다.",
+    "영리한 수학으로 계산한 여분의 예비 정보를 더하면 코드가 놀랄 만큼 튼튼해지는데, 이를 오류 정정이라고 부른다.",
+    "긁힌 자국이 코드 일부를 덮더라도 스캐너는 대개 그대로 작동하는데, 가장 강한 설정은 데이터의 약 30퍼센트를 되살릴 수 있기 때문이다.",
+    "이 방식은 1994년 일본 회사 덴소의 한 팀이 발명했는데, 이 회사는 공장에서 부품을 더 빨리 추적할 방법이 필요했다."
+  ],
+  "advanced": [
+    {
+      "word": "orientation",
+      "meaning": "방향, 방위",
+      "confuse": "orientation(신입 교육)이라는 뜻과 혼동 주의",
+      "example": "The three corner squares show the scanner the code's **orientation**.",
+      "example_ko": "모서리의 네모 세 개는 스캐너에게 코드의 방향을 알려 줍니다."
+    },
+    {
+      "word": "redundancy",
+      "meaning": "중복, 여분",
+      "confuse": null,
+      "example": "Error correction works by adding **redundancy** to the data.",
+      "example_ko": "오류 정정은 데이터에 여분을 더하는 방식으로 작동합니다."
+    },
+    {
+      "word": "decode",
+      "meaning": "해독하다",
+      "confuse": null,
+      "example": "Your phone can **decode** the pattern in less than a second.",
+      "example_ko": "휴대폰은 1초도 안 되어 그 무늬를 해독할 수 있습니다."
+    },
+    {
+      "word": "legible",
+      "meaning": "읽을 수 있는",
+      "confuse": "eligible(자격이 있는)과 혼동 주의",
+      "example": "Even with a scratch, the code stays **legible** to the scanner.",
+      "example_ko": "긁힌 자국이 있어도 코드는 스캐너가 읽을 수 있는 상태로 남습니다."
+    },
+    {
+      "word": "resilient",
+      "meaning": "잘 견디는, 회복력 있는",
+      "confuse": null,
+      "example": "Error correction makes QR codes surprisingly **resilient**.",
+      "example_ko": "오류 정정 덕분에 QR 코드는 놀랄 만큼 잘 견딥니다."
+    },
+    {
+      "word": "obscure",
+      "meaning": "가리다, 덮어 감추다",
+      "confuse": "obscure(잘 알려지지 않은)라는 형용사 뜻과 혼동 주의",
+      "example": "A scratch may **obscure** part of the pattern.",
+      "example_ko": "긁힌 자국이 무늬 일부를 가릴 수 있습니다."
+    },
+    {
+      "word": "ubiquitous",
+      "meaning": "어디에나 있는",
+      "confuse": null,
+      "example": "First made to track parts, QR codes are now **ubiquitous** on menus and tickets.",
+      "example_ko": "처음에는 부품을 추적하려고 만들어졌지만, 이제 QR 코드는 메뉴판과 표 어디에나 있습니다."
+    }
+  ],
+  "source": {
+    "title": "Standard QR codes hide three larger squares in their corners so scanners can orient them from any angle (Make Tech Easier, 2026-07-24)",
+    "url": "https://maketecheasier.com/how-qr-codes-survive-damage/"
+  },
+  "photo_scene": "Close-up of a hand holding a smartphone over a slightly scratched black-and-white QR code printed on a paper card lying on a wooden cafe table, warm afternoon window light.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "The squares look **random**, but each one **stores** a one or a zero.",
+          "chunks": [
+            [
+              "The squares look **random**,",
+              "네모들은 제멋대로처럼 보인다"
+            ],
+            [
+              "but each one **stores**",
+              "하지만 하나하나가 저장한다"
+            ],
+            [
+              "a one or a zero.",
+              "1 또는 0을"
+            ]
+          ]
+        },
+        {
+          "en": "There are three big squares in the **corners**, and they show how the code is **rotated**.",
+          "chunks": [
+            [
+              "There are three big squares",
+              "큰 네모가 세 개 있다"
+            ],
+            [
+              "in the **corners**,",
+              "모서리에"
+            ],
+            [
+              "and they show",
+              "그리고 그것들은 보여 준다"
+            ],
+            [
+              "how the code is **rotated**.",
+              "코드가 어떻게 돌아가 있는지를"
+            ]
+          ]
+        },
+        {
+          "en": "So a phone can read the code from any **angle**, even **upside down**.",
+          "chunks": [
+            [
+              "So a phone can read the code",
+              "그래서 휴대폰은 코드를 읽을 수 있다"
+            ],
+            [
+              "from any **angle**,",
+              "어떤 각도에서든"
+            ],
+            [
+              "even **upside down**.",
+              "심지어 거꾸로여도"
+            ]
+          ]
+        },
+        {
+          "en": "The code also keeps **backup** information, and this is called **error correction**.",
+          "chunks": [
+            [
+              "The code also keeps",
+              "코드는 또한 가지고 있다"
+            ],
+            [
+              "**backup** information,",
+              "예비 정보를"
+            ],
+            [
+              "and this is called",
+              "그리고 이것은 불린다"
+            ],
+            [
+              "**error correction**.",
+              "오류 정정이라고"
+            ]
+          ]
+        },
+        {
+          "en": "Even with a **scratch**, the code can **restore** about 30 percent of its data.",
+          "chunks": [
+            [
+              "Even with a **scratch**,",
+              "긁힌 자국이 있어도"
+            ],
+            [
+              "the code can **restore**",
+              "코드는 되살릴 수 있다"
+            ],
+            [
+              "about 30 percent of its data.",
+              "데이터의 약 30퍼센트를"
+            ]
+          ]
+        },
+        {
+          "en": "It was **invented** in 1994 at Denso to **track** parts in factories.",
+          "chunks": [
+            [
+              "It was **invented**",
+              "그것은 발명되었다"
+            ],
+            [
+              "in 1994 at Denso",
+              "1994년에 덴소에서"
+            ],
+            [
+              "to **track** parts in factories.",
+              "공장에서 부품을 추적하려고"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "네모들은 제멋대로인 것처럼 보이지만, 하나하나가 1 또는 0을 저장한다.",
+        "모서리에 큰 네모가 세 개 있고, 그것들은 코드가 어떻게 돌아가 있는지 보여 준다.",
+        "그래서 휴대폰은 어떤 각도에서든, 심지어 거꾸로여도 코드를 읽을 수 있다.",
+        "코드에는 예비 정보도 들어 있는데, 이것을 오류 정정이라고 부른다.",
+        "긁힌 자국이 있어도, 코드는 데이터의 약 30퍼센트를 되살릴 수 있다.",
+        "그것은 공장에서 부품을 추적하려고 1994년에 덴소에서 발명되었다."
+      ]
+    }
+  }
+}
