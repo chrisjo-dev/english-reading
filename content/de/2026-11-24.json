@@ -1,0 +1,468 @@
+{
+  "date": "2026-11-24",
+  "category": "culture",
+  "topic": "바르바라 가지",
+  "title_ko": "크리스마스에 꽃 피는 바르바라 가지",
+  "headline": "Kirschzweige blühen an Weihnachten",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "explain",
+  "grammar": {
+    "b": [
+      "b-praeteritum",
+      "b-passiv-modal"
+    ],
+    "a": [
+      "a-wechsel-dativ"
+    ]
+  },
+  "keywords": [
+    "바르바라 가지",
+    "벚나무",
+    "성녀 바르바라",
+    "계절 풍습"
+  ],
+  "summary_ko": "12월 4일 바르바라 축일에 벚나무 가지를 잘라 크리스마스에 꽃을 피우는 풍습을 다룬 B1~B2 독일어 지문이에요. 꽃눈은 며칠 서리를 맞아야 벌어지기 때문에, 날씨가 따뜻하면 가지를 하루나 이틀 냉동실에 넣어 두기도 해요.",
+  "photo_scene": "Close-up of bare cherry branches with small white blossoms opening in a simple glass vase of water on a wooden windowsill, snowy garden softly blurred outside, soft bright winter morning light.",
+  "source": {
+    "title": "Barbaratag: So gibt es ein Blütenwunder an Weihnachten (NABU)",
+    "url": "https://www.nabu.de/aktiv-werden/tipps-und-anleitungen/nachhaltig-feiern/barbaratag-so-gibt-es-ein-bluetenwunder-an-weihnachten"
+  },
+  "sentences": [
+    {
+      "en": "Am 4. Dezember, dem Tag der heiligen Barbara, schneiden viele Menschen **Zweige** von Kirschbäumen ab, damit sie an Weihnachten **blühen**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Am 4. Dezember,",
+          "12월 4일,"
+        ],
+        [
+          "dem Tag der heiligen Barbara,",
+          "성녀 바르바라의 날에"
+        ],
+        [
+          "schneiden viele Menschen",
+          "많은 사람이 잘라 냅니다"
+        ],
+        [
+          "**Zweige** von Kirschbäumen ab,",
+          "벚나무 가지를"
+        ],
+        [
+          "damit sie an Weihnachten **blühen**.",
+          "그것들이 크리스마스에 꽃 피도록"
+        ]
+      ]
+    },
+    {
+      "en": "Der **Legende** nach blieb ein Kirschzweig an Barbaras Kleid hängen, als sie um das Jahr 300 ins **Gefängnis** gebracht wurde.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der **Legende** nach",
+          "전설에 따르면"
+        ],
+        [
+          "blieb ein Kirschzweig",
+          "벚나무 가지 하나가"
+        ],
+        [
+          "an Barbaras Kleid hängen,",
+          "바르바라의 옷에 걸렸습니다"
+        ],
+        [
+          "als sie um das Jahr 300",
+          "그녀가 300년 무렵"
+        ],
+        [
+          "ins **Gefängnis** gebracht wurde.",
+          "감옥으로 끌려갔을 때"
+        ]
+      ]
+    },
+    {
+      "en": "Sie gab ihm Wasser aus ihrem **Becher**, und am Tag ihres Todes öffneten sich seine **Blüten**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Sie gab ihm Wasser",
+          "그녀는 그것에 물을 주었습니다"
+        ],
+        [
+          "aus ihrem **Becher**,",
+          "자기 컵에서"
+        ],
+        [
+          "und am Tag ihres Todes",
+          "그리고 그녀가 죽던 날"
+        ],
+        [
+          "öffneten sich",
+          "열렸습니다"
+        ],
+        [
+          "seine **Blüten**.",
+          "그 가지의 꽃들이"
+        ]
+      ]
+    },
+    {
+      "en": "Weil die **Knospen** nur nach einigen Frosttagen aufgehen, können die Zweige bei mildem Wetter ein bis zwei Tage ins **Gefrierfach** gelegt werden.",
+      "b2": true,
+      "chunks": [
+        [
+          "Weil die **Knospen**",
+          "꽃눈은"
+        ],
+        [
+          "nur nach einigen Frosttagen aufgehen,",
+          "며칠 서리가 내린 뒤에야 벌어지기 때문에"
+        ],
+        [
+          "können die Zweige",
+          "가지는 ~될 수 있습니다"
+        ],
+        [
+          "bei mildem Wetter",
+          "날씨가 따뜻하면"
+        ],
+        [
+          "ein bis zwei Tage",
+          "하루나 이틀 동안"
+        ],
+        [
+          "ins **Gefrierfach** gelegt werden.",
+          "냉동실에 넣어질"
+        ]
+      ]
+    },
+    {
+      "en": "Außerdem legt man sie über Nacht in **lauwarmes** Wasser und stellt sie dann in eine **Vase** mit frischem Wasser.",
+      "b2": false,
+      "chunks": [
+        [
+          "Außerdem legt man sie",
+          "또 그것들을 담가 둡니다"
+        ],
+        [
+          "über Nacht",
+          "하룻밤 동안"
+        ],
+        [
+          "in **lauwarmes** Wasser",
+          "미지근한 물에"
+        ],
+        [
+          "und stellt sie dann",
+          "그리고 그다음 꽂습니다"
+        ],
+        [
+          "in eine **Vase**",
+          "꽃병에"
+        ],
+        [
+          "mit frischem Wasser.",
+          "새 물을 담은"
+        ]
+      ]
+    },
+    {
+      "en": "Wenn die Blüten genau am Weihnachtsmorgen aufgehen, sollen sie nach altem **Glauben** im neuen Jahr **Glück** bringen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Wenn die Blüten",
+          "꽃이 ~하면"
+        ],
+        [
+          "genau am Weihnachtsmorgen aufgehen,",
+          "딱 크리스마스 아침에 피면"
+        ],
+        [
+          "sollen sie",
+          "그것들은 ~한다고 합니다"
+        ],
+        [
+          "nach altem **Glauben**",
+          "옛 믿음에 따르면"
+        ],
+        [
+          "im neuen Jahr",
+          "새해에"
+        ],
+        [
+          "**Glück** bringen.",
+          "행운을 가져다준다고"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Zweig",
+      "가지 (남성 der, 복수 Zweige)"
+    ],
+    [
+      "blühen",
+      "꽃이 피다"
+    ],
+    [
+      "Legende",
+      "전설 (여성 die, 복수 Legenden)"
+    ],
+    [
+      "Gefängnis",
+      "감옥 (중성 das, 복수 Gefängnisse)"
+    ],
+    [
+      "Becher",
+      "컵, 잔 (남성 der, 복수 Becher)"
+    ],
+    [
+      "Blüte",
+      "꽃 (여성 die, 복수 Blüten)"
+    ],
+    [
+      "Knospe",
+      "꽃눈, 봉오리 (여성 die, 복수 Knospen)"
+    ],
+    [
+      "Gefrierfach",
+      "냉동실 (중성 das, 복수 Gefrierfächer)"
+    ],
+    [
+      "lauwarm",
+      "미지근한"
+    ],
+    [
+      "Vase",
+      "꽃병 (여성 die, 복수 Vasen)"
+    ],
+    [
+      "Glaube",
+      "믿음 (남성 der)"
+    ],
+    [
+      "Glück",
+      "행운 (중성 das)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "Präteritum — 전설을 이야기하는 과거형",
+      "body": "2번과 3번 문장은 전설을 들려주므로 글말 과거형 Präteritum을 씁니다. `blieb ... hängen`(bleiben), `gab`(geben), `öffneten sich`(öffnen)가 그 예예요. `blieb`와 `gab`처럼 강변화 동사는 모음이 바뀌고 어미가 없지만, 약변화 동사 `öffnen`은 `-te-`가 붙습니다. 부문장 `als sie ... gebracht wurde`의 `wurde`도 Präteritum 수동태예요."
+    },
+    {
+      "title": "화법조동사 수동태 — können ... gelegt werden",
+      "body": "4번 문장 `können die Zweige ... ins Gefrierfach gelegt werden`은 '가지를 냉동실에 넣을 수 있다'는 뜻입니다. 정동사 `können`은 둘째 자리에, 과거분사 `gelegt`와 `werden`은 문장 맨 끝에 옵니다. 앞의 `Weil`절이 첫 자리를 차지했기 때문에 `können`이 곧바로 이어져요(V2)."
+    }
+  ],
+  "answers": [
+    "성녀 바르바라의 날인 12월 4일, 많은 사람이 크리스마스에 꽃이 피도록 벚나무 가지를 잘라 둡니다.",
+    "전설에 따르면 바르바라가 300년 무렵 감옥으로 끌려갈 때 벚나무 가지 하나가 그녀의 옷에 걸렸습니다.",
+    "그녀는 자기 컵의 물을 그 가지에 주었고, 그녀가 죽던 날 가지에서 꽃이 피었습니다.",
+    "꽃눈은 며칠 서리를 맞은 뒤에야 벌어지기 때문에, 날씨가 포근하면 가지를 하루나 이틀 냉동실에 넣어 둘 수 있습니다.",
+    "또 가지를 하룻밤 미지근한 물에 담갔다가, 새 물을 담은 꽃병에 꽂습니다.",
+    "옛 믿음에 따르면 꽃이 딱 크리스마스 아침에 피면 새해에 행운을 가져다준다고 합니다."
+  ],
+  "advanced": [
+    {
+      "word": "Brauch",
+      "meaning": "풍습, 관습 (남성 der, 복수 Bräuche)",
+      "confuse": "`brauchen`(필요하다)과 형태가 비슷하지만 뜻이 다름",
+      "example": "Das Schneiden der Zweige ist ein alter **Brauch**.",
+      "example_ko": "가지를 자르는 것은 오래된 풍습입니다."
+    },
+    {
+      "word": "Heilige",
+      "meaning": "성녀 (여성 die)",
+      "confuse": "`der Heilige Abend`(크리스마스이브)처럼 형용사로도 쓰임",
+      "example": "Barbara ist eine **Heilige** der Kirche.",
+      "example_ko": "바르바라는 교회의 성녀입니다."
+    },
+    {
+      "word": "austreiben",
+      "meaning": "싹이 트다, 움트다",
+      "confuse": "'몰아내다'라는 뜻도 있어 문맥으로 구분",
+      "example": "Im Frühling **treiben** die Bäume wieder **aus**.",
+      "example_ko": "봄에 나무들은 다시 싹을 틔웁니다."
+    },
+    {
+      "word": "schräg",
+      "meaning": "비스듬한, 비스듬히",
+      "confuse": null,
+      "example": "Man schneidet die Zweige **schräg** an.",
+      "example_ko": "가지를 비스듬히 자릅니다."
+    },
+    {
+      "word": "Heizkörper",
+      "meaning": "라디에이터, 방열기 (남성 der, 복수 Heizkörper)",
+      "confuse": "`Heizung`은 난방 전체, `Heizkörper`는 벽에 달린 기기",
+      "example": "Stell die Vase nicht direkt neben den **Heizkörper**.",
+      "example_ko": "꽃병을 라디에이터 바로 옆에 두지 마세요."
+    },
+    {
+      "word": "austrocknen",
+      "meaning": "마르다, 말라 버리다",
+      "confuse": "`trocknen`은 '말리다'(일부러), `austrocknen`은 '바싹 말라 버리다'",
+      "example": "In warmer Luft **trocknen** die Knospen schnell **aus**.",
+      "example_ko": "따뜻한 공기에서는 꽃눈이 빨리 말라 버립니다."
+    },
+    {
+      "word": "Orakel",
+      "meaning": "신탁, 점 (중성 das, 복수 Orakel)",
+      "confuse": null,
+      "example": "Früher galten die Zweige als **Orakel** für das neue Jahr.",
+      "example_ko": "예전에는 그 가지가 새해를 점치는 것으로 여겨졌습니다."
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Viele Menschen schneiden am 4. Dezember **Zweige** ab, denn sie sollen an Weihnachten **blühen**.",
+          "chunks": [
+            [
+              "Viele Menschen",
+              "많은 사람이"
+            ],
+            [
+              "schneiden am 4. Dezember",
+              "12월 4일에 잘라 냅니다"
+            ],
+            [
+              "**Zweige** ab,",
+              "가지를"
+            ],
+            [
+              "denn sie sollen",
+              "왜냐하면 그것들이 ~해야 하니까요"
+            ],
+            [
+              "an Weihnachten **blühen**.",
+              "크리스마스에 꽃 피어야"
+            ]
+          ]
+        },
+        {
+          "en": "Nach einer **Legende** hing auf dem Weg ins **Gefängnis** ein Kirschzweig an Barbaras Kleid.",
+          "chunks": [
+            [
+              "Nach einer **Legende**",
+              "한 전설에 따르면"
+            ],
+            [
+              "hing",
+              "걸려 있었습니다"
+            ],
+            [
+              "auf dem Weg ins **Gefängnis**",
+              "감옥으로 가는 길에"
+            ],
+            [
+              "ein Kirschzweig",
+              "벚나무 가지 하나가"
+            ],
+            [
+              "an Barbaras Kleid.",
+              "바르바라의 옷에"
+            ]
+          ]
+        },
+        {
+          "en": "Sie gab dem Zweig Wasser aus ihrem **Becher**, und später kamen **Blüten**.",
+          "chunks": [
+            [
+              "Sie gab dem Zweig Wasser",
+              "그녀는 가지에 물을 주었습니다"
+            ],
+            [
+              "aus ihrem **Becher**,",
+              "자기 컵에서"
+            ],
+            [
+              "und später kamen **Blüten**.",
+              "그리고 나중에 꽃이 피었습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Knospen** brauchen Frost, sonst legt man die Zweige kurz ins **Gefrierfach**.",
+          "chunks": [
+            [
+              "Die **Knospen** brauchen Frost,",
+              "꽃눈은 서리가 필요합니다"
+            ],
+            [
+              "sonst legt man die Zweige",
+              "그렇지 않으면 가지를 넣습니다"
+            ],
+            [
+              "kurz ins **Gefrierfach**.",
+              "잠깐 냉동실에"
+            ]
+          ]
+        },
+        {
+          "en": "Die Zweige liegen eine Nacht in **lauwarmem** Wasser, dann stehen sie in der **Vase**.",
+          "chunks": [
+            [
+              "Die Zweige liegen",
+              "가지는 담가 둡니다"
+            ],
+            [
+              "eine Nacht",
+              "하룻밤"
+            ],
+            [
+              "in **lauwarmem** Wasser,",
+              "미지근한 물에"
+            ],
+            [
+              "dann stehen sie",
+              "그다음 그것들은 꽂혀 있습니다"
+            ],
+            [
+              "in der **Vase**.",
+              "꽃병에"
+            ]
+          ]
+        },
+        {
+          "en": "Viele **glauben**: Blüten am Weihnachtsmorgen bringen **Glück** für das neue Jahr.",
+          "chunks": [
+            [
+              "Viele **glauben**:",
+              "많은 사람이 믿습니다"
+            ],
+            [
+              "Blüten am Weihnachtsmorgen",
+              "크리스마스 아침의 꽃은"
+            ],
+            [
+              "bringen **Glück**",
+              "행운을 가져다줍니다"
+            ],
+            [
+              "für das neue Jahr.",
+              "새해에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "많은 사람이 12월 4일에 가지를 잘라 둡니다. 크리스마스에 꽃이 피어야 하니까요.",
+        "한 전설에 따르면 감옥으로 가는 길에 벚나무 가지 하나가 바르바라의 옷에 걸려 있었습니다.",
+        "그녀는 자기 컵의 물을 가지에 주었고, 나중에 꽃이 피었습니다.",
+        "꽃눈은 서리가 필요해서, 서리가 없으면 가지를 잠깐 냉동실에 넣습니다.",
+        "가지를 하룻밤 미지근한 물에 담갔다가, 그다음 꽃병에 꽂아 둡니다.",
+        "많은 사람이 크리스마스 아침에 핀 꽃이 새해에 행운을 가져다준다고 믿습니다."
+      ]
+    }
+  }
+}
