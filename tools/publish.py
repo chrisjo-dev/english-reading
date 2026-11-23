@@ -21,6 +21,7 @@ import gnb  # noqa: E402
 import feedback  # noqa: E402
 import track  # noqa: E402
 import seek  # noqa: E402
+import linewrite  # noqa: E402
 import migrate  # noqa: E402
 from render import LEVEL_SEG, MADE_HTML, date_label, page_title  # noqa: E402
 
@@ -655,6 +656,8 @@ def patch_page(lang, day):
     page = track.apply(page)
     # 재생바 이동(이슈 #26)
     page = seek.apply(page)
+    # 문장마다 내 해석 쓰기(시안 design/mine-notes)
+    page = linewrite.apply(page)
     # 구조화 데이터(JSON-LD): 있으면 통째로 바꾸고 없으면 첫 stylesheet 앞에 넣는다(지난 페이지 백필, 도메인 변경 반영)
     ld = reading_ld(lang, day, c, topic_text, new_desc)
     if LD_RE.search(page):

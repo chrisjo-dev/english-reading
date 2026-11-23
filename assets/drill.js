@@ -119,15 +119,18 @@
       var k = kindOf(it), done = it.pick != null, num = '문제 ' + (S.answered + (done ? 0 : 1)) + '. ';
       var nextBtn = '<button class="dr-btn" type="button" data-act="next">' + (S.queue.length > 1 ? '다음 문제' : '결과 보기') + '</button>';
       if (k === 'write' || k === 'cloze') {
-        // 빈칸 채우기도 보기 없이 직접 쓴다(W19, W20). 정답은 예문에 쓰인 꼴(c.ca)이다.
+        // 빈칸 채우기도 보기 없이 직접 쓴다. 쓰는 칸은 따로 두지 않고 예문 속 빈칸이 입력 칸이다(W22, W23). 정답은 예문에 쓰인 꼴(c.ca)이다.
         var cw = k === 'cloze', ansW = cw ? c.ca : (c.ar ? c.ar + ' ' : '') + c.w;
-        h += '<div class="dr-fc fit"><div class="dr-q">' + num + (cw ? '빈칸에 들어갈 단어를 쓰세요' : '뜻을 보고 단어를 쓰세요') + '</div>';
-        if (cw) h += '<p class="dr-cloze" lang="' + c.l + '">' + c.cz.replace('<span class="dr-blank"></span>', '<span class="dr-blank' + (done ? ' right">' + esc(c.ca) : '">') + '</span>') + '</p>' +
+        var input = '<input class="dr-field' + (cw ? ' dr-inb' : '') + (done ? (it.ok ? ' right' : ' wrong') : '') + '" type="text" lang="' + c.l +
+          '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="' + (cw ? '빈칸에 들어갈 단어' : '단어 입력') + '"' + (cw ? ' size="' + blankSize(c) + '"' : ' placeholder="여기에 쓰세요"') +
+          (done ? ' value="' + esc(it.pick) + '" disabled' : '') + '>';
+        h += '<div class="dr-fc fit"><div class="dr-q">' + num + (cw ? '문장 속 빈칸에 바로 쓰세요' : '뜻을 보고 단어를 쓰세요') + '</div><form class="dr-write" autocomplete="off">';
+        if (cw) h += '<p class="dr-cloze" lang="' + c.l + '">' + c.cz.replace('<span class="dr-blank"></span>', function () {
+            return done ? (it.ok && !it.near ? '' : it.pick ? '<s class="dr-inw">' + esc(it.pick) + '</s>' : '') + '<span class="dr-blank right">' + esc(c.ca) + '</span>' : input;
+          }) + '</p>' +
           (!done ? (c.ek ? '<p class="dr-cko">' + esc(c.ek) + '</p>' : '') + '<p class="dr-qhint">뜻: ' + esc(c.mh || c.m) + '<br>' + hint(c, true) + '</p>' : '');
-        else h += '<div class="dr-qmean">' + esc(c.mh || c.m) + '</div><p class="dr-qhint">' + hint(c) + '</p>';
-        h += '<form class="dr-write" autocomplete="off"><input class="dr-field' + (done ? (it.ok ? ' right' : ' wrong') : '') + '" type="text" lang="' + c.l +
-          '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="단어 입력" placeholder="' + (cw ? '빈칸에 들어갈 단어' : '여기에 쓰세요') + '"' +
-          (done ? ' value="' + esc(it.pick) + '" disabled' : '') + '></form>';
+        else h += '<div class="dr-qmean">' + esc(c.mh || c.m) + '</div><p class="dr-qhint">' + hint(c) + '</p>' + input;
+        h += '</form>';
         if (!done) h += '<button class="dr-skip" type="button" data-act="giveup">모르겠어요</button>';
         else h += verdict(it, k) + '<div class="dr-answer"><div><span class="lb">정답</span><b lang="' + c.l + '">' + esc(ansW) + '</b>' + (c.r && !cw ? '<span class="rd" lang="' + c.l + '">' + esc(c.r) + '</span>' : '') +
           '</div><button class="dr-listen" type="button" data-act="say">' + ICON_SPK + ' <span>듣기</span></button></div>' +
@@ -192,6 +195,8 @@
   }
   // 빈칸 채우기 정답 꼴: 예문에 쓰인 형태(c.ca). 일본어는 사전형과 같을 때만 읽기로 써도 정답이다.
   function clozeForms(c) { return [c.ca].concat(c.l === 'ja' && c.ca === c.w && c.r ? [c.r] : []); }
+  // 빈칸 폭: 힌트로 알려 주는 글자 수에 맞추고 너무 좁거나 넓지 않게
+  function blankSize(c) { return Math.max(6, Math.min(18, c.ca.length * (c.l === 'ja' ? 2 : 1) + 2)); }
   function hint(c, cw) {
     if (cw) {
       var f = clozeForms(c), s = f[f.length - 1], n = s.replace(/\s/g, '').length;

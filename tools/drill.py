@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "18"
+VERSION = "20"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
@@ -458,9 +458,13 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-answer .rd { margin-left: 8px; font-size: 14px; color: var(--sub); }
   .dr-gap10 { margin-top: 10px; }
   .dr-cloze { font-size: 17px; line-height: 1.8; font-weight: 600; margin: 10px 0 8px; }
+  .dr-cloze[lang=ja] { line-height: 2.6; }
   .dr-blank { display: inline-block; min-width: 88px; border-bottom: 2.5px solid #2a52d4; margin: 0 3px; text-align: center; color: #2a52d4; line-height: 1.4; }
   .dr-blank:empty::before { content: "\\00a0"; }
   .dr-blank.right { border-color: #0f9d6b; color: #0f9d6b; background: #e8f7f1; border-radius: 4px 4px 0 0; padding: 0 4px; }
+  .dr-inw { color: #f04452; margin-right: 4px; }
+  .dr-field.dr-inb { display: inline-block; width: auto; max-width: 100%; height: 36px; box-sizing: border-box; padding: 0 6px; margin: 0 3px; border: 0; border-bottom: 2.5px solid #2a52d4; border-radius: 6px 6px 0 0; background: #eff3fd; color: #2a52d4; font-size: 17px; text-align: center; vertical-align: baseline; }
+  .dr-field.dr-inb:focus { background: #dfe7fc; }
   .dr-cko { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin: 0 0 16px; }
   .dr-ntypes { display: flex; flex-direction: column; gap: 8px; }
   .dr-ntype { font: inherit; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 12px; border: 1.5px solid #e2e6ea; background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; }
