@@ -9,7 +9,7 @@
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 52편
-- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 51편
+- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 52편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 28편
 
 ## 최근 지문
@@ -20,13 +20,13 @@
 - [영어, 2026-11-19, 추울 때 돋는 소름의 비밀](https://dokhaehanip.com/en/2026-11-19/): 출처 Why do we get goosebumps? (Live Science, 2022-07-18)
 - [영어, 2026-11-18, 대학에 새로 생긴 미국 수어 전공](https://dokhaehanip.com/en/2026-11-18/): 출처 A sign of progress: ASL major new at Ohio State (Ohio State News, 2026-10-14)
 - [영어, 2026-11-17, 손가락을 알아보는 터치스크린](https://dokhaehanip.com/en/2026-11-17/): 출처 Okay, but how do touch screens actually work? (Scienceline, 2012-01-17)
+- [일본어, 2026-11-24, 눈에서 소나무를 지키는 유키즈리](https://dokhaehanip.com/ja/2026-11-24/): 출처 兼六園の雪吊りについて (石川県 金沢城・兼六園管理事務所, 2025-10-27)
 - [일본어, 2026-11-23, 역 앞 광장의 햇와인과 바비큐](https://dokhaehanip.com/ja/2026-11-23/): 출처 ＪＲ秋田駅前でワインの新酒とバーベキュー楽しむイベント (NHK, 2026-11-21)
 - [일본어, 2026-11-22, 할머니께 배운 보온 물주머니](https://dokhaehanip.com/ja/2026-11-22/)
 - [일본어, 2026-11-21, 한 량짜리 열차로 가는 호숫가](https://dokhaehanip.com/ja/2026-11-21/)
 - [일본어, 2026-11-20, 빛으로 하루 거리에 닿은 보이저 1호](https://dokhaehanip.com/ja/2026-11-20/): 출처 探査機ボイジャー1号 トラブル発生も「1光日」到達確認 NASA (NHK, 2026-11-20)
 - [일본어, 2026-11-19, 일본의 최저임금 시급](https://dokhaehanip.com/ja/2026-11-19/): 출처 令和８年度最低賃金額答申 (厚生労働省, 2026-09-03)
 - [일본어, 2026-11-18, 주민과 함께 만드는 자전거 산책 지도](https://dokhaehanip.com/ja/2026-11-18/): 출처 「南西部地域自転車さんぽマップ」に関する意見を募集します (埼玉県, 2026-11-17)
-- [일본어, 2026-11-17, 복을 긁어모으는 갈퀴 장터 도리노이치](https://dokhaehanip.com/ja/2026-11-17/): 출처 浅草・鷲神社「酉の市」：福を呼び込む縁起熊手で商売繁盛 (nippon.com, 2018-11-10)
 - [독일어, 2026-11-24, 크리스마스에 꽃 피는 바르바라 가지](https://dokhaehanip.com/de/2026-11-24/): 출처 Barbaratag: So gibt es ein Blütenwunder an Weihnachten (NABU)
 - [독일어, 2026-11-23, 수요일에 문을 연 본 크리스마스 시장](https://dokhaehanip.com/de/2026-11-23/): 출처 Bonner Weihnachtsmarkt lädt ab 18. November in die Innenstadt ein (bonn.de)
 - [독일어, 2026-11-22, 룸메이트가 알려 준 겨울 환기법](https://dokhaehanip.com/de/2026-11-22/)
