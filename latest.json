@@ -1,16 +1,16 @@
 {
  "date": "2026-11-24",
- "words_total": 992,
+ "words_total": 1004,
  "langs": {
   "en": {
-   "count": 52,
-   "latest": "2026-11-23",
-   "topic": "보이저 1호",
+   "count": 53,
+   "latest": "2026-11-24",
+   "topic": "QR 코드",
    "sentences": [
-    "On November 18, NASA's Voyager 1 reached a **historic** **milestone** when it became one light-day away from Earth.",
-    "This means a radio **signal** from the **spacecraft** now needs a full 24 hours to travel home, even at the speed of light.",
-    "Voyager 1 left Earth in 1977 and is now about 25.9 billion kilometers away, moving through **interstellar** space at more than 61,000 kilometers per hour.",
-    "Despite its age, Voyager 1 still **transmits** a basic signal, but NASA has not received any scientific or engineering data from it since November 14."
+    "The black-and-white squares on a QR code look **random**, but each tiny square **stores** a piece of data as a one or a zero.",
+    "Three larger squares sit in the **corners**, and they tell the camera where the code is and which way it is **rotated**.",
+    "Because the fourth corner has no large square, the scanner can read the code from any **angle**, even **upside down**.",
+    "Adding extra **backup** information, calculated with clever mathematics, makes the code surprisingly strong, a feature called **error correction**."
    ],
    "chips": [
     "6문장",
@@ -18,51 +18,55 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "11월 18일, NASA의 보이저 1호는 지구에서 빛으로 하루 걸리는 거리만큼 멀어지면서 역사적인 이정표에 도달했다.",
+   "answer": "QR 코드 위의 검고 흰 네모들은 제멋대로인 것처럼 보이지만, 작은 네모 하나하나는 데이터 한 조각을 1 또는 0으로 저장한다.",
    "words": [
     [
-     "historic",
-     "역사적인"
+     "random",
+     "무작위의, 제멋대로인"
     ],
     [
-     "milestone",
-     "이정표, 획기적인 단계"
+     "stores",
+     "저장하다"
     ],
     [
-     "signal",
-     "신호"
+     "corners",
+     "모서리, 구석 (복수형)"
     ],
     [
-     "spacecraft",
-     "우주선"
+     "rotated",
+     "회전된, 돌아간"
     ],
     [
-     "interstellar",
-     "성간의, 별과 별 사이의"
+     "angle",
+     "각도"
     ],
     [
-     "transmits",
-     "보내다, 송신하다"
+     "upside down",
+     "거꾸로, 뒤집혀"
     ],
     [
-     "generator",
-     "발전기"
+     "backup",
+     "예비의, 백업"
     ],
     [
-     "engineers",
-     "기술자들, 엔지니어들"
+     "error correction",
+     "오류 정정"
     ],
     [
-     "replaced",
-     "교체했다, 바꿨다"
+     "scratch",
+     "긁힌 자국, 흠집"
     ],
     [
-     "instruments",
-     "(관측) 장비들, 기기들"
+     "restore",
+     "복원하다, 되살리다"
     ],
     [
-     "anniversary",
-     "기념일, 주년"
+     "invented",
+     "발명된"
+    ],
+    [
+     "track",
+     "추적하다"
     ]
    ],
    "review": {
@@ -220,6 +224,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-24",
+   "topic": "QR 코드"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-24",
    "topic": "유키즈리"
@@ -318,11 +327,6 @@
    "lang": "de",
    "day": "2026-11-18",
    "topic": "도서관 시스템 교체"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-17",
-   "topic": "터치스크린"
   }
  ]
 }
