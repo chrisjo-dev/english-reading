@@ -1,6 +1,6 @@
 {
- "date": "2026-11-23",
- "words_total": 968,
+ "date": "2026-11-24",
+ "words_total": 980,
  "langs": {
   "en": {
    "count": 52,
@@ -141,14 +141,14 @@
    }
   },
   "de": {
-   "count": 27,
-   "latest": "2026-11-23",
-   "topic": "본 크리스마스 시장",
+   "count": 28,
+   "latest": "2026-11-24",
+   "topic": "바르바라 가지",
    "sentences": [
-    "Der Bonner **Weihnachtsmarkt** ist in diesem Jahr zum ersten Mal an einem Mittwoch **gestartet**, nämlich am 18. November statt an einem Freitag.",
-    "Außerdem öffnen die rund 160 **Stände** jeden Tag erst um 12 Uhr und nicht mehr wie früher um 11 Uhr.",
-    "Mit den neuen Zeiten will die Stadt sowohl die **Anforderungen** an die Sicherheit als auch den **Lieferverkehr** in der Innenstadt besser vereinbaren.",
-    "Am Totensonntag, dem 22. November, war der Markt **geschlossen**, und die offizielle **Eröffnung** wird erst am 27. November vor dem Münster gefeiert."
+    "Am 4. Dezember, dem Tag der heiligen Barbara, schneiden viele Menschen **Zweige** von Kirschbäumen ab, damit sie an Weihnachten **blühen**.",
+    "Der **Legende** nach blieb ein Kirschzweig an Barbaras Kleid hängen, als sie um das Jahr 300 ins **Gefängnis** gebracht wurde.",
+    "Sie gab ihm Wasser aus ihrem **Becher**, und am Tag ihres Todes öffneten sich seine **Blüten**.",
+    "Weil die **Knospen** nur nach einigen Frosttagen aufgehen, können die Zweige bei mildem Wetter ein bis zwei Tage ins **Gefrierfach** gelegt werden."
    ],
    "chips": [
     "6문장",
@@ -156,51 +156,55 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "본의 크리스마스 시장은 올해 처음으로 금요일이 아닌 수요일, 즉 11월 18일에 시작했습니다.",
+   "answer": "성녀 바르바라의 날인 12월 4일, 많은 사람이 크리스마스에 꽃이 피도록 벚나무 가지를 잘라 둡니다.",
    "words": [
     [
-     "Weihnachtsmarkt",
-     "크리스마스 시장 (남성 der, 복수 Weihnachtsmärkte)"
+     "Zweig",
+     "가지 (남성 der, 복수 Zweige)"
     ],
     [
-     "starten",
-     "시작하다, 출발하다"
+     "blühen",
+     "꽃이 피다"
     ],
     [
-     "Stand",
-     "가판대, 노점 (남성 der, 복수 Stände)"
+     "Legende",
+     "전설 (여성 die, 복수 Legenden)"
     ],
     [
-     "Anforderung",
-     "요구 사항, 요건 (여성 die, 복수 Anforderungen)"
+     "Gefängnis",
+     "감옥 (중성 das, 복수 Gefängnisse)"
     ],
     [
-     "Lieferverkehr",
-     "배송 차량 통행 (남성 der)"
+     "Becher",
+     "컵, 잔 (남성 der, 복수 Becher)"
     ],
     [
-     "geschlossen",
-     "닫힌, 휴업한"
+     "Blüte",
+     "꽃 (여성 die, 복수 Blüten)"
     ],
     [
-     "Eröffnung",
-     "개막, 개장 (여성 die, 복수 Eröffnungen)"
+     "Knospe",
+     "꽃눈, 봉오리 (여성 die, 복수 Knospen)"
     ],
     [
-     "Gastronomie",
-     "요식업, 음식점 (여성 die)"
+     "Gefrierfach",
+     "냉동실 (중성 das, 복수 Gefrierfächer)"
     ],
     [
-     "Kunsthandwerk",
-     "공예, 수공예품 (중성 das)"
+     "lauwarm",
+     "미지근한"
     ],
     [
-     "Beleuchtung",
-     "조명 (여성 die, 복수 Beleuchtungen)"
+     "Vase",
+     "꽃병 (여성 die, 복수 Vasen)"
     ],
     [
-     "anstrahlen",
-     "비추다, 조명하다"
+     "Glaube",
+     "믿음 (남성 der)"
+    ],
+    [
+     "Glück",
+     "행운 (중성 das)"
     ]
    ],
    "review": {
@@ -211,6 +215,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-24",
+   "topic": "바르바라 가지"
+  },
   {
    "lang": "en",
    "day": "2026-11-23",
@@ -310,11 +319,6 @@
    "lang": "ja",
    "day": "2026-11-17",
    "topic": "도리노이치"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-17",
-   "topic": "드레스덴 슈톨렌"
   }
  ]
 }

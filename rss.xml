@@ -6,7 +6,15 @@
   <atom:link href="https://dokhaehanip.com/rss.xml" rel="self" type="application/rss+xml"/>
   <description>매일 아침 새로 올라오는 영어, 일본어, 독일어 독해 지문</description>
   <language>ko</language>
-  <lastBuildDate>Mon, 23 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <item>
+    <title>크리스마스에 꽃 피는 바르바라 가지: 독일어 독해 B1~B2, 2026년 11월 24일</title>
+    <link>https://dokhaehanip.com/de/2026-11-24/</link>
+    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-24/</guid>
+    <pubDate>Tue, 24 Nov 2026 07:00:00 +0900</pubDate>
+    <category>독일어</category>
+    <description>B1~B2 독일어 읽기 — 크리스마스에 꽃 피는 바르바라 가지. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
+  </item>
   <item>
     <title>빛으로 하루 거리에 닿은 보이저 1호: 영어 독해 B1~B2, 2026년 11월 23일</title>
     <link>https://dokhaehanip.com/en/2026-11-23/</link>
@@ -238,14 +246,6 @@
     <pubDate>Sat, 14 Nov 2026 07:00:00 +0900</pubDate>
     <category>일본어</category>
     <description>JLPT N3 일본어 읽기 — 바닷가 마을의 머그컵 만들기. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
-  </item>
-  <item>
-    <title>안개가 걷힌 바스타이 돌다리: 독일어 독해 B1~B2, 2026년 11월 14일</title>
-    <link>https://dokhaehanip.com/de/2026-11-14/</link>
-    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-14/</guid>
-    <pubDate>Sat, 14 Nov 2026 07:00:00 +0900</pubDate>
-    <category>독일어</category>
-    <description>B1~B2 독일어 읽기 — 안개가 걷힌 바스타이 돌다리. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
   </item>
 </channel>
 </rss>
