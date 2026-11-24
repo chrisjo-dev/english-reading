@@ -94,6 +94,19 @@ class WorkflowWiringTest(unittest.TestCase):
                 if "send_email.py" in text:
                     self.assertLess(i_retry, text.index("send_email.py"))
 
+    def test_artifact_name_per_attempt(self):
+        # 올리기와 두 번의 배포가 시도 번호 붙은 같은 이름을 쓴다(다시 돌릴 때 아티팩트 2개로 실패하지 않게, 2026-11-22)
+        name = "github-pages-${{ github.run_attempt }}"
+        for f in ["publish.yml", "weekly.yml", "backfill-word-audio.yml", "pages.yml"]:
+            text = (ROOT / ".github/workflows" / f).read_text(encoding="utf-8")
+            with self.subTest(f):
+                i_up = text.index("actions/upload-pages-artifact@")
+                i_deploy = text.index("actions/deploy-pages@")
+                self.assertIn(f"          name: {name}\n", text[i_up:i_deploy])
+                for part in text[i_deploy:].split("actions/deploy-pages@"):
+                    if part:
+                        self.assertIn(f"artifact_name: {name}\n", part.split("- name:")[0])
+
     def test_weekly_rebuilds_root_menu(self):
         # 주간 복습이 생기면 위 메뉴의 복습 링크가 든 안내, 가입 페이지도 다시 만든다
         text = (ROOT / ".github/workflows/weekly.yml").read_text(encoding="utf-8")
