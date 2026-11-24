@@ -1,6 +1,6 @@
 {
- "date": "2026-11-24",
- "words_total": 1004,
+ "date": "2026-11-25",
+ "words_total": 1016,
  "langs": {
   "en": {
    "count": 53,
@@ -149,70 +149,70 @@
    }
   },
   "de": {
-   "count": 28,
-   "latest": "2026-11-24",
-   "topic": "바르바라 가지",
+   "count": 29,
+   "latest": "2026-11-25",
+   "topic": "편지 요금",
    "sentences": [
-    "Am 4. Dezember, dem Tag der heiligen Barbara, schneiden viele Menschen **Zweige** von Kirschbäumen ab, damit sie an Weihnachten **blühen**.",
-    "Der **Legende** nach blieb ein Kirschzweig an Barbaras Kleid hängen, als sie um das Jahr 300 ins **Gefängnis** gebracht wurde.",
-    "Sie gab ihm Wasser aus ihrem **Becher**, und am Tag ihres Todes öffneten sich seine **Blüten**.",
-    "Weil die **Knospen** nur nach einigen Frosttagen aufgehen, können die Zweige bei mildem Wetter ein bis zwei Tage ins **Gefrierfach** gelegt werden."
+    "Wenn die Bundesnetzagentur **zustimmt**, wird ein **Standardbrief** innerhalb Deutschlands ab Januar 2027 1,15 Euro statt 95 Cent kosten.",
+    "Auch die **Postkarte** soll 1,15 Euro kosten, und für einen **Großbrief** zahlt man dann 2,35 Euro statt 1,80 Euro.",
+    "Als Grund nennt die Post die seit Jahren **sinkende** Zahl der Briefe, während die Kosten für **Personal** und Energie weiter steigen.",
+    "Gleichzeitig ändern sich die **Formate**, denn Briefe dürfen künftig bis zu drei Zentimeter **dick** sein."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 4분"
    ],
-   "answer": "성녀 바르바라의 날인 12월 4일, 많은 사람이 크리스마스에 꽃이 피도록 벚나무 가지를 잘라 둡니다.",
+   "answer": "연방망청이 승인하면 독일 국내 일반 편지는 2027년 1월부터 95센트가 아니라 1.15유로가 됩니다.",
    "words": [
     [
-     "Zweig",
-     "가지 (남성 der, 복수 Zweige)"
+     "Standardbrief",
+     "일반 편지, 표준 규격 우편 (남성 der, 복수 Standardbriefe)"
     ],
     [
-     "blühen",
-     "꽃이 피다"
+     "zustimmen",
+     "동의하다, 승인하다"
     ],
     [
-     "Legende",
-     "전설 (여성 die, 복수 Legenden)"
+     "Postkarte",
+     "엽서 (여성 die, 복수 Postkarten)"
     ],
     [
-     "Gefängnis",
-     "감옥 (중성 das, 복수 Gefängnisse)"
+     "Großbrief",
+     "대형 우편물 (남성 der, 복수 Großbriefe)"
     ],
     [
-     "Becher",
-     "컵, 잔 (남성 der, 복수 Becher)"
+     "sinken",
+     "줄다, 떨어지다"
     ],
     [
-     "Blüte",
-     "꽃 (여성 die, 복수 Blüten)"
+     "Personal",
+     "인력, 직원 (중성 das)"
     ],
     [
-     "Knospe",
-     "꽃눈, 봉오리 (여성 die, 복수 Knospen)"
+     "Format",
+     "규격, 형식 (중성 das, 복수 Formate)"
     ],
     [
-     "Gefrierfach",
-     "냉동실 (중성 das, 복수 Gefrierfächer)"
+     "dick",
+     "두꺼운"
     ],
     [
-     "lauwarm",
-     "미지근한"
+     "wiegen",
+     "무게가 나가다"
     ],
     [
-     "Vase",
-     "꽃병 (여성 die, 복수 Vasen)"
+     "Ware",
+     "상품, 물건 (여성 die, 복수 Waren)"
     ],
     [
-     "Glaube",
-     "믿음 (남성 der)"
+     "durchschnittlich",
+     "평균의, 보통의"
     ],
     [
-     "Glück",
-     "행운 (중성 das)"
+     "Haushalt",
+     "가구, 가정 (남성 der, 복수 Haushalte)"
     ]
    ],
    "review": {
@@ -223,6 +223,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-25",
+   "topic": "편지 요금"
+  },
   {
    "lang": "en",
    "day": "2026-11-24",
@@ -322,11 +327,6 @@
    "lang": "ja",
    "day": "2026-11-18",
    "topic": "자전거 지도"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-18",
-   "topic": "도서관 시스템 교체"
   }
  ]
 }

@@ -4,13 +4,13 @@
 
 - 다른 표기: 한입독해, 독해 한입, Dokhaehanip
 - 이용료: 무료
-- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-24
+- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-25
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 53편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 52편
-- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 28편
+- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 29편
 
 ## 최근 지문
 - [영어, 2026-11-24, 긁혀도 읽히는 QR 코드](https://dokhaehanip.com/en/2026-11-24/): 출처 Standard QR codes hide three larger squares in their corners so scanners can orient them from any angle (Make Tech Easier, 2026-07-24)
@@ -27,13 +27,13 @@
 - [일본어, 2026-11-20, 빛으로 하루 거리에 닿은 보이저 1호](https://dokhaehanip.com/ja/2026-11-20/): 출처 探査機ボイジャー1号 トラブル発生も「1光日」到達確認 NASA (NHK, 2026-11-20)
 - [일본어, 2026-11-19, 일본의 최저임금 시급](https://dokhaehanip.com/ja/2026-11-19/): 출처 令和８年度最低賃金額答申 (厚生労働省, 2026-09-03)
 - [일본어, 2026-11-18, 주민과 함께 만드는 자전거 산책 지도](https://dokhaehanip.com/ja/2026-11-18/): 출처 「南西部地域自転車さんぽマップ」に関する意見を募集します (埼玉県, 2026-11-17)
+- [독일어, 2026-11-25, 1유로를 넘는 독일 편지 요금](https://dokhaehanip.com/de/2026-11-25/): 출처 Deutsche Post AG passt Briefporto und Produkte zum 1. Januar 2027 an (DHL Group)
 - [독일어, 2026-11-24, 크리스마스에 꽃 피는 바르바라 가지](https://dokhaehanip.com/de/2026-11-24/): 출처 Barbaratag: So gibt es ein Blütenwunder an Weihnachten (NABU)
 - [독일어, 2026-11-23, 수요일에 문을 연 본 크리스마스 시장](https://dokhaehanip.com/de/2026-11-23/): 출처 Bonner Weihnachtsmarkt lädt ab 18. November in die Innenstadt ein (bonn.de)
 - [독일어, 2026-11-22, 룸메이트가 알려 준 겨울 환기법](https://dokhaehanip.com/de/2026-11-22/)
 - [독일어, 2026-11-21, 승차권 한 장으로 둘러본 함부르크 항구](https://dokhaehanip.com/de/2026-11-21/)
 - [독일어, 2026-11-20, 백 년 만에 다시 나타난 물쥐](https://dokhaehanip.com/de/2026-11-20/): 출처 Äthiopische Wassermaus nach fast 100 Jahren wiederentdeckt (National Geographic Deutschland)
 - [독일어, 2026-11-19, 퇴사할 때 받는 독일의 근무 증명서](https://dokhaehanip.com/de/2026-11-19/): 출처 § 109 Zeugnis, Gewerbeordnung (gesetze-im-internet.de)
-- [독일어, 2026-11-18, 한 달 동안 책을 못 빌리는 하노버 도서관](https://dokhaehanip.com/de/2026-11-18/): 출처 Neues Bibliothekssystem für die Stadtbibliothek Hannover ab Dezember 2026 (hannover.de)
 
 ## 주간 단어 복습
 - [영어 주간 단어 복습, 2026-11-22](https://dokhaehanip.com/en/review/2026-11-22/): 그 주 지문의 주요 단어 80개

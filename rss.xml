@@ -6,7 +6,15 @@
   <atom:link href="https://dokhaehanip.com/rss.xml" rel="self" type="application/rss+xml"/>
   <description>매일 아침 새로 올라오는 영어, 일본어, 독일어 독해 지문</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 24 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Wed, 25 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <item>
+    <title>1유로를 넘는 독일 편지 요금: 독일어 독해 B1~B2, 2026년 11월 25일</title>
+    <link>https://dokhaehanip.com/de/2026-11-25/</link>
+    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-25/</guid>
+    <pubDate>Wed, 25 Nov 2026 07:00:00 +0900</pubDate>
+    <category>독일어</category>
+    <description>B1~B2 독일어 읽기 — 1유로를 넘는 독일 편지 요금. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
+  </item>
   <item>
     <title>긁혀도 읽히는 QR 코드: 영어 독해 B1~B2, 2026년 11월 24일</title>
     <link>https://dokhaehanip.com/en/2026-11-24/</link>
@@ -238,14 +246,6 @@
     <pubDate>Sun, 15 Nov 2026 07:00:00 +0900</pubDate>
     <category>일본어</category>
     <description>JLPT N3 일본어 읽기 — 친구와 끓인 올해 첫 전골. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
-  </item>
-  <item>
-    <title>할머니와 엮은 대림절 화환: 독일어 독해 B1~B2, 2026년 11월 15일</title>
-    <link>https://dokhaehanip.com/de/2026-11-15/</link>
-    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-15/</guid>
-    <pubDate>Sun, 15 Nov 2026 07:00:00 +0900</pubDate>
-    <category>독일어</category>
-    <description>B1~B2 독일어 읽기 — 할머니와 엮은 대림절 화환. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
   </item>
 </channel>
 </rss>
