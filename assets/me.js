@@ -20,6 +20,7 @@
   function clearWant() { try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {} }
   function signedOut() {
     if (want) $("signedOut").querySelector("a.btn").href = "/join/?" + new URLSearchParams({ mail: "1", lang: want.mail_lang, level: want.mail_level, next: "/me/" }).toString();
+    $("signedOut").after(document.querySelector(".mc"));  // 노트는 이 기기 기록이라 로그인 전에도 보인다(시안 mine-notes M28)
     show("signedOut");
   }
 

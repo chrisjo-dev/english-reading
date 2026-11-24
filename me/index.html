@@ -147,6 +147,20 @@
   .tg[aria-checked="true"]::after { left: 23px; }
   .tg:disabled { opacity: .5; }
   .pend { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 700; color: #b26a00; background: #fff4e0; padding: 3px 8px; border-radius: 6px; }
+  .mc { background: #fff; border-radius: 20px; margin: 12px 12px 0; padding: 18px; box-shadow: 0 4px 18px rgba(16,24,40,.07); }
+  .mc, .mc * { box-sizing: border-box; }
+  .mc[hidden], .mc [hidden] { display: none !important; }
+  main > .mc.wk { margin: 12px 0 0; }
+  .mc h2 { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -0.03em; }
+  .mc h2 svg { width: 32px; height: 32px; padding: 7px; border-radius: 10px; background: #eff3fd; color: #2a52d4; }
+  .mc-new { font-size: 11px; font-weight: 800; color: #fff; background: #d92d3a; border-radius: 6px; padding: 1px 6px; }
+  .mc-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0 14px; }
+  .mc-tiles div { background: #f2f4f6; border-radius: 12px; padding: 12px; }
+  .mc-tiles b { display: block; font-size: 20px; font-weight: 800; }
+  .mc-tiles span { display: block; line-height: 1.4; font-size: 12.5px; color: #4e5968; font-weight: 600; }
+  .mc-row { display: flex; gap: 8px; }
+  .mc-row a { flex: 1; min-height: 44px; display: flex; align-items: center; justify-content: center; padding: 8px 10px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; text-align: center; color: #191f28; background: #fff; box-shadow: inset 0 0 0 1.5px #e2e6ea; }
+  .mc-row a.on { background: #2a52d4; color: #fff; box-shadow: none; }
   .gnb { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #e5e8eb; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; letter-spacing: -0.01em; line-height: normal; }
   /* gnb-a */
   .gnb a, .gnb button { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -257,7 +271,9 @@
 <section class="card" id="loading">기록을 불러오고 있어요.</section>
 <div class="card" id="notReady" hidden><h1>로그인은 준비 중이에요</h1></div>
 <section class="card" id="signedOut" hidden><h1>로그인하면 마이페이지를 볼 수 있어요</h1><p>외운 단어, 복습 날짜, 연속 학습일을 어느 기기에서든 이어서 봐요.</p><a class="btn" href="/login/?next=/me/">로그인하러 가기</a></section>
-<div id="signedIn" hidden><section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section><section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section><section class="card"><div class="stats"><div class="stat"><b id="nWords">0</b><span>외운 단어</span></div><div class="stat"><b id="nDue">0</b><span>오늘 복습</span></div><div class="stat"><b id="nPages">0</b><span>푼 지문</span></div></div><a class="btn" id="dueGo" href="/" hidden></a></section><section class="card" id="mailcard"><div class="mailrow"><div><b>아침 지문 메일</b><span id="mailAddr">받을 주소가 없어요</span></div><button class="tg" type="button" id="mailTg" role="switch" aria-checked="false" aria-label="아침 지문 메일 받기"></button></div><span class="pend" id="mailPend" hidden>확인 메일을 기다리는 중</span><span class="pend" id="mailWait" hidden>대기 명단에 있어요</span><div class="pick" id="mailPick"><div class="h">받을 메일</div><div class="seg" id="pickLang"><button type="button" data-v="en">영어</button><button type="button" data-v="ja">일본어</button><button type="button" data-v="de">독일어</button></div><div class="seg" id="pickLevel"><button type="button" data-v="a">기초<small id="rangeA">A2~B1</small></button><button type="button" data-v="b">중급<small id="rangeB">B1~B2</small></button></div><p class="t" id="pickNote">바꾼 내용은 다음 날 아침 메일부터 적용돼요.</p></div><form id="mailForm" hidden novalidate><input class="field" id="mail" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com"><button class="btn" type="submit">저장</button></form><button class="btn line" type="button" id="mailEdit">주소 바꾸기</button><p class="msg" id="mailMsg" role="status" hidden></p></section><section class="card rows"><button type="button" id="logout">로그아웃</button><button type="button" class="danger" id="del">탈퇴하고 기록 지우기</button><p class="msg" id="msg" role="status" hidden></p></section></div>
+<div id="signedIn" hidden><section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section>
+<section class="mc" data-mine-card><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1-4L16 5l3 3L8 19z"/></svg>내 해석 노트<span class="mc-new" hidden>NEW</span></h2><div class="mc-tiles"><div><b data-n="w">0</b><span>최근 7일 쓴 문장</span></div><div><b data-n="s">0</b><span>헷갈림 ★</span></div><div><b data-n="a">0</b><span>붙인 AI 답</span></div></div><div class="mc-row"><a href="/me/notes/">노트 열기</a><a data-n="retry" href="/me/notes/#retry" hidden></a></div></section>
+<section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section><section class="card"><div class="stats"><div class="stat"><b id="nWords">0</b><span>외운 단어</span></div><div class="stat"><b id="nDue">0</b><span>오늘 복습</span></div><div class="stat"><b id="nPages">0</b><span>푼 지문</span></div></div><a class="btn" id="dueGo" href="/" hidden></a></section><section class="card" id="mailcard"><div class="mailrow"><div><b>아침 지문 메일</b><span id="mailAddr">받을 주소가 없어요</span></div><button class="tg" type="button" id="mailTg" role="switch" aria-checked="false" aria-label="아침 지문 메일 받기"></button></div><span class="pend" id="mailPend" hidden>확인 메일을 기다리는 중</span><span class="pend" id="mailWait" hidden>대기 명단에 있어요</span><div class="pick" id="mailPick"><div class="h">받을 메일</div><div class="seg" id="pickLang"><button type="button" data-v="en">영어</button><button type="button" data-v="ja">일본어</button><button type="button" data-v="de">독일어</button></div><div class="seg" id="pickLevel"><button type="button" data-v="a">기초<small id="rangeA">A2~B1</small></button><button type="button" data-v="b">중급<small id="rangeB">B1~B2</small></button></div><p class="t" id="pickNote">바꾼 내용은 다음 날 아침 메일부터 적용돼요.</p></div><form id="mailForm" hidden novalidate><input class="field" id="mail" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com"><button class="btn" type="submit">저장</button></form><button class="btn line" type="button" id="mailEdit">주소 바꾸기</button><p class="msg" id="mailMsg" role="status" hidden></p></section><section class="card rows"><button type="button" id="logout">로그아웃</button><button type="button" class="danger" id="del">탈퇴하고 기록 지우기</button><p class="msg" id="msg" role="status" hidden></p></section></div>
 </main>
 <footer class="site-footer"><a href="/about/">소개</a><a href="/privacy/">개인정보처리방침</a><a href="/contact/">연락처</a></footer>
 <script id="gnb-js">(function(){
@@ -336,5 +352,6 @@
   }).catch(function(){});
 })();</script>
 <script src="/assets/auth.js?v=3" defer></script>
-<script src="/assets/me.js?v=13" defer></script>
+<script id="mine-js" src="/assets/mine.js?v=2" defer></script>
+<script src="/assets/me.js?v=14" defer></script>
 </body></html>

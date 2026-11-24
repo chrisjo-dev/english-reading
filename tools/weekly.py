@@ -17,6 +17,7 @@ from render import ruby  # noqa: E402
 from publish import FOOTER_CSS, FOOTER_HTML, crumbs_ld, ld_script, site_nodes, ORG_ID, WEBSITE_ID  # noqa: E402
 import gnb  # noqa: E402
 import feedback  # noqa: E402
+import linewrite  # noqa: E402
 import migrate  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -108,6 +109,7 @@ def build_page(lang, end):
     page = page.replace("__GNB_CSS__", gnb.css_block()).replace("__GNB_JS__", gnb.SCRIPT).replace("__GNB__", gnb.header_html(lang, f"/{lang}/#subscribe"))
     page = feedback.apply(page, lang, f"{SITE}/{lang}/review/{end}/")
     page = migrate.apply(page)  # 예전 주소의 학습 기록 받기
+    page = linewrite.weekly(page, lang, end)
     out = ROOT / lang / "review" / end / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")

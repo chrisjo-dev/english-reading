@@ -127,6 +127,22 @@
   .fb-btn svg { width: 17px; height: 17px; flex: none; fill: none; stroke: #4e5968; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .fb + .site-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e8eb; }
   /* /fb */
+  /* mc-css */
+  .mc { background: #fff; border-radius: 20px; margin: 12px 12px 0; padding: 18px; box-shadow: 0 4px 18px rgba(16,24,40,.07); }
+  .mc, .mc * { box-sizing: border-box; }
+  .mc[hidden], .mc [hidden] { display: none !important; }
+  main > .mc.wk { margin: 12px 0 0; }
+  .mc h2 { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -0.03em; }
+  .mc h2 svg { width: 32px; height: 32px; padding: 7px; border-radius: 10px; background: #eff3fd; color: #2a52d4; }
+  .mc-new { font-size: 11px; font-weight: 800; color: #fff; background: #d92d3a; border-radius: 6px; padding: 1px 6px; }
+  .mc-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0 14px; }
+  .mc-tiles div { background: #f2f4f6; border-radius: 12px; padding: 12px; }
+  .mc-tiles b { display: block; font-size: 20px; font-weight: 800; }
+  .mc-tiles span { display: block; line-height: 1.4; font-size: 12.5px; color: #4e5968; font-weight: 600; }
+  .mc-row { display: flex; gap: 8px; }
+  .mc-row a { flex: 1; min-height: 44px; display: flex; align-items: center; justify-content: center; padding: 8px 10px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; text-align: center; color: #191f28; background: #fff; box-shadow: inset 0 0 0 1.5px #e2e6ea; }
+  .mc-row a.on { background: #2a52d4; color: #fff; box-shadow: none; }
+  /* /mc-css */
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
      crossorigin="anonymous"></script>
@@ -157,6 +173,7 @@
     <p class="lead">7일 동안 나온 주요 단어예요. 뜻을 먼저 떠올려 보고, 카드를 눌러 확인하세요.</p>
     <button class="toggle" id="all" type="button">뜻 모두 보기</button>
   </div>
+  <!-- mc --><section class="mc wk" data-mine-card data-lang="en" data-from="2026-10-19" data-to="2026-10-25" hidden><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1-4L16 5l3 3L8 19z"/></svg>이번 주 내가 쓴 해석</h2><div class="mc-tiles"><div><b data-n="w">0</b><span>쓴 문장</span></div><div><b data-n="s">0</b><span>헷갈림 ★</span></div><div><b data-n="a">0</b><span>붙인 AI 답</span></div></div><div class="mc-row"><a data-n="retry" href="/me/notes/#retry" hidden></a><a class="on" href="/me/notes/#ask/en">AI에게 물어보기</a></div></section><!-- /mc -->
   <section class="day">
     <h2>10/19(월) <a href="../../2026-10-19/">쏙독새 날개</a></h2>
     <div class="grid"><button class="w" type="button" aria-expanded="false"><span class="en">nightjar</span><span class="ko">쏙독새 (밤에 사냥하는 새)</span></button><button class="w" type="button" aria-expanded="false"><span class="en">designed</span><span class="ko">만들어진, 설계된</span></button><button class="w" type="button" aria-expanded="false"><span class="en">recorded</span><span class="ko">기록했다, 촬영했다</span></button><button class="w" type="button" aria-expanded="false"><span class="en">tips</span><span class="ko">끝부분들 (tip의 복수)</span></button><button class="w" type="button" aria-expanded="false"><span class="en">efficient</span><span class="ko">효율적인</span></button><button class="w" type="button" aria-expanded="false"><span class="en">thrust</span><span class="ko">추진력, 앞으로 미는 힘</span></button><button class="w" type="button" aria-expanded="false"><span class="en">findings</span><span class="ko">연구 결과 (보통 복수로 씀)</span></button></div>
@@ -307,4 +324,5 @@ window.dkhEvent=window.dkhEvent||function(o){try{var k='dkh-vid',v=localStorage.
   });
 })();
 </script>
+<script id="mine-js" src="/assets/mine.js?v=2" defer></script>
 </body></html>
