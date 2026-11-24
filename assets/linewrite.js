@@ -9,7 +9,7 @@
   var cmps = rows.map(function (r) { return r.querySelector('.lw-cmp'); });
   var path = location.pathname.split('/'), lang = path[1], day = path[2];
   var topic = document.querySelector('h1 em').textContent;
-  var id, timer = 0, dirty = false, started = false, state = '', ens = [];
+  var id, timer = 0, dirty = false, started = false, state = '', ens = [], chV = {}, chS = {};
   var $ = function (x) { return document.getElementById(x); };
   var hintEl = $('hinttext'), hint0 = hintEl ? hintEl.textContent : '';
 
@@ -17,20 +17,15 @@
   function has(i) { return !!tas[i].value.trim(); }
   function count() { return tas.filter(function (_, i) { return has(i); }).length; }
   function grow(t) { t.style.height = 'auto'; t.style.height = (t.scrollHeight + 2) + 'px'; }
-  function current(old) {
-    var s = {};
-    tas.forEach(function (t, i) {
-      var v = t.value.trim(), st = stars[i].getAttribute('aria-pressed') === 'true', r = old[i] && old[i].r;
-      if (v || st || r) { s[i] = { v: v, st: st, e: ens[i] }; if (r) s[i].r = r; }  // r: 노트에서 다시 쓴 해석
-    });
-    return s;
-  }
-  // 다른 탭이 쓴 다른 날 기록을 지우지 않게, 저장할 때마다 새로 읽어 이 지문 것만 바꾼다
+  // 다른 탭이나 노트에서 고친 것을 지우지 않게, 저장할 때마다 새로 읽어 이 탭에서 바꾼 글과 별표만 얹는다
   function save() {
     clearTimeout(timer); timer = 0;
     if (!dirty) return;
-    var d = M.load()[id];
-    if (M.put(id, { t: topic, u: Date.now(), n: rows.length, s: current((d && d.s) || {}) })) { dirty = false; state = 'ok'; }
+    var d = M.load()[id], s = (d && d.s) || {};
+    function at(i) { return s[i] || (s[i] = { v: '', st: false, e: ens[i] }); }
+    Object.keys(chV).forEach(function (i) { var x = at(i); x.v = tas[i].value.trim(); x.e = ens[i]; });
+    Object.keys(chS).forEach(function (i) { at(i).st = stars[i].getAttribute('aria-pressed') === 'true'; });
+    if (M.put(id, { t: topic, u: Date.now(), m: d && d.m, n: rows.length, s: s })) { dirty = false; chV = {}; chS = {}; state = 'ok'; }
     else state = 'bad';
     paint();
   }
@@ -53,7 +48,7 @@
       stars[i].setAttribute('aria-pressed', String(!!(s[i] && s[i].st)));
       grow(t);
     });
-    dirty = false; state = d ? 'ok' : ''; paint();
+    dirty = false; chV = {}; chS = {}; state = d ? 'ok' : ''; paint();
   }
   function setOn(on, keep) {
     root.classList.toggle('lw-off', !on); sw.setAttribute('aria-checked', String(on));
@@ -77,7 +72,7 @@
 
   tas.forEach(function (t, i) {
     t.addEventListener('input', function () {
-      grow(t); touch();
+      grow(t); chV[i] = 1; touch();
       if (!started) { started = true; gaEvent('line_write', { lang: lang, day: day }); }
     });
     t.addEventListener('focus', function () {
@@ -89,7 +84,7 @@
       if (e.key === 'Enter' && !e.shiftKey && !e.isComposing && e.keyCode !== 229) { e.preventDefault(); go(i + 1); }
     });
     stars[i].addEventListener('click', function () {
-      stars[i].setAttribute('aria-pressed', String(stars[i].getAttribute('aria-pressed') !== 'true')); touch();
+      stars[i].setAttribute('aria-pressed', String(stars[i].getAttribute('aria-pressed') !== 'true')); chS[i] = 1; touch();
     });
     cmps[i].addEventListener('click', function () {
       var k = rows[i].querySelector(isLevelA() && rows[i].querySelector('.ko-a') ? '.ko-a' : '.ko');

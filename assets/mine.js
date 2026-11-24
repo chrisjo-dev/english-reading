@@ -24,9 +24,10 @@
   }
   function put(id, d) { var all = load(); if (d && trim(d)) all[id] = d; else delete all[id]; return write(KEY, all); }
   // 문장 하나를 고친다. 저장할 때마다 새로 읽어 다른 탭이 쓴 것을 지우지 않는다
-  function edit(id, i, fn) {
+  // 기록이 없으면(별표 하나뿐이던 지문의 별표를 풀었거나 AI 답만 있는 지문) base 의 주제와 문장 수로 새로 만든다
+  function edit(id, i, fn, base) {
     var d = load()[id];
-    if (!d || !d.s) return false;
+    if (!d || !d.s) d = { t: (base && base.t) || '', u: (base && base.u) || Date.now(), n: (base && base.n) || 0, s: {} };
     if (!d.s[i]) d.s[i] = { v: '', st: false, e: '' };
     fn(d.s[i]); d.m = Date.now(); return put(id, d);  // u(지문에 쓴 때)는 그대로 두고 m 만 바꾼다
   }
@@ -74,7 +75,21 @@
   function dump() { return JSON.stringify({ app: 'dokhaehanip-mine', ver: 1, mine: load(), ai: loadAi() }); }
   function str(v, max) { return typeof v === 'string' ? v.slice(0, max) : ''; }
   function time(v) { return typeof v === 'number' && isFinite(v) && v > 0 ? Math.min(v, Date.now()) : 0; }
-  function last(d) { return Math.max(d.u || 0, d.m || 0); }
+  // 문장마다 합친다. 이 기기에 쓴 글은 덮지 않고 빈 곳만 채운다(기기 시계를 믿지 않아도 된다). 바뀌었으면 true
+  function blend(mine, d) {
+    var ch = false;
+    Object.keys(d.s).forEach(function (i) {
+      var x = mine.s[i], y = d.s[i];
+      if (!x) { mine.s[i] = y; ch = true; return; }
+      if (x.e && y.e && x.e !== y.e) return;  // 지문이 바뀌어 다른 문장이면 섞지 않는다
+      if (!x.v && y.v) { x.v = y.v; ch = true; }
+      if (!x.st && y.st) { x.st = true; ch = true; }
+      if (y.r && !x.r) { x.r = y.r; ch = true; }
+      if (!x.e) x.e = y.e;
+    });
+    if (ch) { mine.n = mine.n || d.n; mine.u = Math.max(mine.u || 0, d.u); }
+    return ch;
+  }
   function cleanDay(d) {
     if (!d || typeof d !== 'object' || !d.s || typeof d.s !== 'object') return null;
     var o = { t: str(d.t, 200), u: time(d.u), m: time(d.m), n: d.n > 0 && d.n < 100 ? Math.floor(d.n) : 0, s: {} };
@@ -87,14 +102,15 @@
     });
     return trim(o);
   }
-  // 합치기: 같은 지문은 나중에 고친 쪽, AI 답은 글이 다른 것만 더한다. 받은 지문과 답의 수를 돌려준다(못 읽으면 null)
+  // 합치기: 문장은 blend, AI 답은 글이 다른 것만 더한다. 받은 지문과 답의 수를 돌려준다(못 읽으면 null)
   function restore(text) {
     var f; try { f = JSON.parse(text); } catch (e) { return null; }
     if (!f || f.app !== 'dokhaehanip-mine' || !f.mine || typeof f.mine !== 'object') return null;
     var all = load(), ai = loadAi(), days = 0, answers = 0, old = localStorage.getItem(KEY);
     Object.keys(f.mine).forEach(function (k) {
       var d = DAYKEY.test(k) && cleanDay(f.mine[k]);
-      if (d && !(all[k] && last(all[k]) >= last(d))) { all[k] = d; days++; }
+      if (!d) return;
+      if (!all[k] || !all[k].s) { all[k] = d; days++; } else if (blend(all[k], d)) days++;
     });
     if (f.ai && typeof f.ai === 'object') Object.keys(f.ai).forEach(function (k) {
       if (!AIKEY.test(k) || !Array.isArray(f.ai[k])) return;
@@ -158,7 +174,7 @@
     quiz: ['복습 문제 받기', '내가 틀린 부분으로 짧은 해석 문제 5개', '내 해석에서 틀렸거나 어색한 부분을 먼저 짧게 짚고, 그 부분을 연습할 짧은 해석 문제 5개를 같은 난이도로 내 주세요. 정답은 내가 답한 뒤에 알려 주세요.']
   };
   var sel = { range: 'today', ask: 'fix' };
-  function query(ctx, range) { return range === 'today' ? { lang: ctx.lang, id: ctx.id } : range === 'week' ? { lang: ctx.lang, week: true } : { lang: ctx.lang, star: true }; }
+  function query(ctx, range) { return range === 'today' ? { lang: ctx.lang, id: ctx.id } : range === 'week' ? (ctx.from ? { lang: ctx.lang, from: ctx.from, to: ctx.to } : { lang: ctx.lang, week: true }) : { lang: ctx.lang, star: true }; }
   function compose(ctx, range, ask) {
     var body = pick(query(ctx, range)).map(function (d) {
       return '[지문] ' + d.t + ' (' + d.d + ')\n\n' + d.list.map(function (x) {
@@ -166,7 +182,7 @@
       }).join('\n\n');
     }).join('\n\n');
     return [WHO[ctx.lang][0] + ' 아래는 읽은 문장과 내가 쓴 해석입니다.', body,
-      '[요청]\n' + ASK[ask][2] + '\n' + WHO[ctx.lang][1] + '\n칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'].join('\n\n');
+      '[요청]\n' + ASK[ask][2] + (ask === 'fix' && range === 'today' ? '\n문장을 짚을 때는 줄을 "2번:"처럼 문장 번호로 시작해 주세요.' : '') + '\n' + WHO[ctx.lang][1] + '\n칭찬은 과하지 않게, 한국어 존댓말로 답해 주세요.'].join('\n\n');
   }
   function askSheet(ctx) {
     var n = { today: ctx.id ? size(query(ctx, 'today')) : 0, week: size(query(ctx, 'week')), star: size(query(ctx, 'star')) };
@@ -175,7 +191,7 @@
       return '<label><input type="radio" name="lw-r" value="' + k + '"' + (sel.range === k ? ' checked' : '') + (n[k] ? '' : ' disabled') + '>' + t + '<small>' + n[k] + '문장</small></label>';
     }
     var s = open('<h3>AI에게 물어보기</h3><p>원문과 내 해석을 질문과 함께 복사해요. 평소 쓰는 AI 채팅에 붙여 넣으면 돼요.</p>' +
-      '<fieldset><legend>범위</legend><div class="lw-seg">' + (ctx.id ? seg('today', '이 지문') : '') + seg('week', '최근 7일') + seg('star', '헷갈림') + '</div></fieldset>' +
+      '<fieldset><legend>범위</legend><div class="lw-seg">' + (ctx.id ? seg('today', '이 지문') : '') + seg('week', ctx.from ? Number(ctx.from.slice(5, 7)) + '.' + Number(ctx.from.slice(8)) + '~' + Number(ctx.to.slice(5, 7)) + '.' + Number(ctx.to.slice(8)) : '최근 7일') + seg('star', '헷갈림') + '</div></fieldset>' +
       '<fieldset><legend>무엇을 물어볼까요</legend>' + Object.keys(ASK).map(function (k) {
         return '<label class="lw-rad"><input type="radio" name="lw-a" value="' + k + '"' + (sel.ask === k ? ' checked' : '') + '><span><b>' + ASK[k][0] + '</b><span>' + ASK[k][1] + '</span></span></label>';
       }).join('') + '</fieldset><p>안 쓴 문장은 빼고 보내요. 헷갈림은 안 쓴 문장도 보내요.</p>' +

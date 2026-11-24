@@ -251,7 +251,7 @@ def weekly(page, lang, end):
     import datetime as dt
     start = (dt.date.fromisoformat(end) - dt.timedelta(days=6)).isoformat()
     page = _SCRIPT_RE.sub("", _WK_CSS_RE.sub("", _WK_RE.sub("", page)))
-    html = card("이번 주 내가 쓴 해석", attrs=f' data-lang="{lang}" data-from="{start}" data-to="{end}" hidden') + f'<a class="on" href="/me/notes/#ask/{lang}">AI에게 물어보기</a></div></section>'
+    html = card("이번 주 내가 쓴 해석", attrs=f' data-lang="{lang}" data-from="{start}" data-to="{end}" hidden') + f'<a class="on" href="/me/notes/#ask/{lang}/{start}/{end}">AI에게 물어보기</a></div></section>'
     page = page.replace('  <section class="day">', f'  <!-- mc -->{html}<!-- /mc -->\n  <section class="day">', 1)
     page = page.replace("</style>", f"  /* mc-css */\n{CARD_CSS}  /* /mc-css */\n</style>", 1)
     return page.replace("</body>", MINE + "</body>", 1)

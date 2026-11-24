@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   var M = window.mineNotes, box = document.getElementById('mn'), esc = M.esc;
-  var WD = '일월화수목금토', LNAME = { en: '영어', ja: '일본어', de: '독일어' };
+  var YMD = /^\d{4}-\d\d-\d\d$/, WD = '일월화수목금토', LNAME = { en: '영어', ja: '일본어', de: '독일어' };
   var lang = '', week = true, pages = {}, run = null, view = 0;
   try { localStorage.setItem('mine:seen', '1'); } catch (e) {}
   function ic(d, fill) { return '<svg viewBox="0 0 24 24" fill="' + (fill ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d + '"/></svg>'; }
@@ -44,12 +44,12 @@
     if (x) [].slice.call(document.importNode(x.node, true).childNodes).forEach(function (n) { el.appendChild(n); }); else el.textContent = e || '';
   }
 
-  // 붙인 답에서 그 문장 번호로 시작하는 부분(다음 번호 전까지). 못 찾으면 빈 글
+  // 붙인 답에서 "2번"처럼 문장 번호가 또렷한 줄부터 다음 번호나 다음 제목 전까지. "2)", "2." 는 소제목일 수 있어 쓰지 않는다. 못 찾으면 빈 글
   function part(text, n) {
-    var lines = text.split('\n'), out = [], hit = false, head = /^[\s#>*-]*\**(?:문장\s*)?(\d{1,2})\s*(?:번|[.)])/;
+    var lines = text.split('\n'), out = [], hit = false, head = /^[\s#>*-]*(\d{1,2})\s*번(?=[\s:.,)*]|문장|$)/, stop = /^(?:\s*\**\d{1,2}[.)]|\s*#|\s*\**오늘\s)/;
     lines.forEach(function (l) {
       var m = head.exec(l);
-      if (m) hit = Number(m[1]) === n;
+      if (m) hit = Number(m[1]) === n; else if (stop.test(l)) hit = false;
       if (hit) out.push(l);
     });
     return out.join('\n').trim();
@@ -107,9 +107,10 @@
       '<select aria-label="언어">' + ls.map(function (l) { return '<option value="' + l + '"' + (l === lang ? ' selected' : '') + '>' + LNAME[l] + '</option>'; }).join('') + '</select></div>' +
       '<section class="mn-card mn-list">' + (rowsHtml || '<p>최근 7일에는 쓴 해석이 없어요. 전체에서 지난 기록을 볼 수 있어요.</p>') + '</section>' +
       '<p class="mn-note">이 기기에만 저장돼요. 기기를 바꾸기 전에 <button type="button" id="mnFile">내보내기</button>로 파일을 받아 두세요.</p>';
-    function openAsk() {
-      if (!M.size({ lang: lang, week: true }) && !M.size({ lang: lang, star: true })) return M.toast('물어볼 문장이 없어요', '최근 7일에 쓴 해석이나 헷갈림 표시가 있어야 해요.');
-      M.askSheet({ lang: lang, saved: list });
+    function openAsk(span) {
+      span = span && span.from ? span : {};
+      if (!M.size(span.from ? { lang: lang, from: span.from, to: span.to } : { lang: lang, week: true }) && !M.size({ lang: lang, star: true })) return M.toast('물어볼 문장이 없어요', '최근 7일에 쓴 해석이나 헷갈림 표시가 있어야 해요.');
+      M.askSheet({ lang: lang, from: span.from, to: span.to, saved: function () { list(); } });
     }
     on('#mnAsk', openAsk); on('#mnFile', files);
     [].forEach.call(box.querySelectorAll('[data-w]'), function (b) {
@@ -117,7 +118,7 @@
     });
     q('select').addEventListener('change', function (e) { lang = e.target.value; list(); q('select').focus(); });
     h1();
-    if (ask === true) openAsk();
+    if (ask) openAsk(ask);
   }
   function row(id, d, t, ai, n, s) {
     return '<a class="mn-li" href="#' + id + '"><span class="d">' + Number(d.slice(5, 7)) + '.' + Number(d.slice(8, 10)) + '<small>' + WD[date(d).getDay()] + '</small></span><span class="t">' + t + '</span>' +
@@ -129,7 +130,7 @@
     var n = M.size({}), a = M.aiCount({});
     var s = M.open('<h3>내보내기와 가져오기</h3><p>쓴 해석, 헷갈림 표시, 붙인 AI 답을 파일 하나로 옮겨요.</p>' +
       '<button class="mn-opt" type="button" data-x="out"' + (n || a ? '' : ' disabled') + '><b>파일로 내보내기</b><span>지금까지 쓴 것 ' + n + '문장, AI 답 ' + a + '개</span></button>' +
-      '<button class="mn-opt" type="button" data-x="in"><b>파일에서 가져오기</b><span>지금 있는 기록과 합쳐요. 같은 지문은 나중에 쓴 쪽이 남아요.</span></button>' +
+      '<button class="mn-opt" type="button" data-x="in"><b>파일에서 가져오기</b><span>지금 있는 기록에 더해요. 이 기기에 쓴 글은 바뀌지 않아요.</span></button>' +
       '<input type="file" accept=".json,application/json" hidden><p class="lw-err" role="alert" hidden></p><div class="lw-row"><button class="lw-btn line" type="button" data-x="no">닫기</button></div>', '내보내기와 가져오기');
     var inp = s.querySelector('input'), err = s.querySelector('.lw-err');
     function say(t) { err.textContent = t; err.hidden = false; }
@@ -195,8 +196,8 @@
       var st = el.querySelector('.lw-star'), c = el.querySelector('.mn-cmp');
       st.addEventListener('click', function () {
         var now = st.getAttribute('aria-pressed') !== 'true';
-        if (!M.edit(id, i, function (s) { s.st = now; if (!s.e && hit) s.e = hit.e; })) return M.toast('저장하지 못했어요', '이 기기의 저장 공간을 확인해 주세요.');
-        st.setAttribute('aria-pressed', String(now)); d = M.load()[id] || d;
+        if (!M.edit(id, i, function (s) { s.st = now; if (!s.e && hit) s.e = hit.e; }, { t: d.t, u: d.u, n: d.n || (sents && sents.length) })) return M.toast('저장하지 못했어요', '이 기기의 저장 공간을 확인해 주세요.');
+        st.setAttribute('aria-pressed', String(now)); d = M.load()[id] || { t: d.t, u: d.u, n: d.n, s: {} };
         var any = Object.keys(d.s).some(function (k) { return d.s[k].st; }), b = q('.mn-dock a');
         b.textContent = any ? '다시 풀기' : '지문 열기'; b.href = any ? '#retry/' + id : '/' + p[0] + '/' + p[1] + '/?level=' + p[2];
       });
@@ -245,15 +246,16 @@
     var ai = (M.loadAi()[x.id] || []).map(function (a) { return part(a.v, x.i + 1); }).filter(Boolean)[0];
     box.innerHTML = head(x) + '<small>지금 쓴 해석</small><div class="q' + (v ? '' : ' none') + '">' + (v ? esc(v) : '모르겠어요') + '</div>' +
       (old ? '<small>' + old.t + '</small><div class="q old">' + esc(old.v) + '</div>' : '') + '<div class="mn-model"><small>모범 해석</small><span id="mnKo"></span></div>' +
-      (ai ? '<div class="mn-ai"><div class="h">' + ic(CHAT) + '붙여 둔 AI 답</div><div class="t">' + esc(ai) + '</div></div>' : '') + '</section>' +
+      (ai ? '<div class="mn-ai"><div class="h">' + ic(CHAT) + '붙여 둔 AI 답</div><div class="t">' + esc(ai) + '</div></div>' : aiHtml(x.id)) + '</section>' +
       '<div class="mn-dock"><button class="lw-btn line" type="button" id="mnStill">' + ic(STAR, 1) + '아직 헷갈려요</button><button class="lw-btn" type="button" id="mnKnow">이제 알아요</button></div>';
     x.late = function () {
       putText(q('.big'), x.hit, x.e);
       q('#mnKo').textContent = x.hit && x.hit.ko ? x.hit.ko : x.hit !== undefined || x.failed ? '모범 해석을 불러오지 못했어요.' : '불러오는 중이에요.';
     };
+    if (!ai) wireAi(x.id, function () { check(v); });
     x.late(); h1();
     function next(know) {
-      var ok = M.edit(x.id, x.i, function (s) { if (v) s.r = { v: v, u: Date.now() }; s.st = !know; if (!s.e) s.e = x.e; });
+      var ok = M.edit(x.id, x.i, function (s) { if (v) s.r = { v: v, u: Date.now() }; s.st = !know; if (!s.e) s.e = x.e; }, { t: x.t });
       if (!ok) return M.toast('저장하지 못했어요', '이 기기의 저장 공간을 확인해 주세요.');
       if (know) run.known++;
       if (++run.at < run.items.length) return write();
@@ -271,7 +273,7 @@
     view++; run = null; M.close();
     if (a[0] === 'retry') return retry(a.slice(1));
     if (M.AIKEY.test(h)) { lang = a[0]; return day(h); }
-    if (a[0] === 'ask' && LNAME[a[1]]) { lang = a[1]; history.replaceState(null, '', location.pathname); return list(true); }
+    if (a[0] === 'ask' && LNAME[a[1]]) { lang = a[1]; history.replaceState(null, '', location.pathname); return list(YMD.test(a[2]) && YMD.test(a[3]) ? { from: a[2], to: a[3] } : {}); }
     list();
   }
   window.addEventListener('hashchange', route);
