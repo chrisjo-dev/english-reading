@@ -1,72 +1,72 @@
 {
  "date": "2026-11-25",
- "words_total": 1028,
+ "words_total": 1040,
  "langs": {
   "en": {
-   "count": 53,
-   "latest": "2026-11-24",
-   "topic": "QR 코드",
+   "count": 54,
+   "latest": "2026-11-25",
+   "topic": "휴대폰 금지",
    "sentences": [
-    "The black-and-white squares on a QR code look **random**, but each tiny square **stores** a piece of data as a one or a zero.",
-    "Three larger squares sit in the **corners**, and they tell the camera where the code is and which way it is **rotated**.",
-    "Because the fourth corner has no large square, the scanner can read the code from any **angle**, even **upside down**.",
-    "Adding extra **backup** information, calculated with clever mathematics, makes the code surprisingly strong, a feature called **error correction**."
+    "Many American schools have **banned** phones during the school day, and some ask students to put them in locked **pouches**.",
+    "Researchers at Harvard University have now **analyzed** test **scores** from 3.3 million students at 4,600 schools.",
+    "They found that students in schools with **strict** bans made **progress** in math and reading equal to about two **extra** weeks of school each year.",
+    "The pouches also helped **reduce** the number of phones **in use** on school grounds by about 20 percent."
    ],
    "chips": [
-    "6문장",
+    "5문장",
     "B1 위주",
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "QR 코드 위의 검고 흰 네모들은 제멋대로인 것처럼 보이지만, 작은 네모 하나하나는 데이터 한 조각을 1 또는 0으로 저장한다.",
+   "answer": "미국의 많은 학교가 학교 일과 시간 동안 휴대폰을 금지했고, 일부 학교는 학생들에게 휴대폰을 잠기는 파우치에 넣게 한다.",
    "words": [
     [
-     "random",
-     "무작위의, 제멋대로인"
+     "banned",
+     "금지했다 (현재완료 have p.p.)"
     ],
     [
-     "stores",
-     "저장하다"
+     "pouches",
+     "주머니들, 파우치 (복수형)"
     ],
     [
-     "corners",
-     "모서리, 구석 (복수형)"
+     "analyzed",
+     "분석했다"
     ],
     [
-     "rotated",
-     "회전된, 돌아간"
+     "scores",
+     "점수들 (복수형)"
     ],
     [
-     "angle",
-     "각도"
+     "strict",
+     "엄격한"
     ],
     [
-     "upside down",
-     "거꾸로, 뒤집혀"
+     "progress",
+     "진전, 발전"
     ],
     [
-     "backup",
-     "예비의, 백업"
+     "extra",
+     "추가의, 여분의"
     ],
     [
-     "error correction",
-     "오류 정정"
+     "reduce",
+     "줄이다"
     ],
     [
-     "scratch",
-     "긁힌 자국, 흠집"
+     "in use",
+     "사용 중인"
     ],
     [
-     "restore",
-     "복원하다, 되살리다"
+     "modest",
+     "(양이) 크지 않은, 적당한"
     ],
     [
-     "invented",
-     "발명된"
+     "effect",
+     "효과, 영향"
     ],
     [
-     "track",
-     "추적하다"
+     "add up",
+     "쌓이다, 늘어나다"
     ]
    ],
    "review": {
@@ -224,6 +224,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-25",
+   "topic": "휴대폰 금지"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-25",
    "topic": "아이들 발명전"
@@ -322,11 +327,6 @@
    "lang": "de",
    "day": "2026-11-19",
    "topic": "근무 증명서"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-18",
-   "topic": "수어 전공"
   }
  ]
 }

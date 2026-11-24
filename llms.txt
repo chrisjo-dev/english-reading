@@ -8,18 +8,18 @@
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
-- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 53편
+- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 54편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 53편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 29편
 
 ## 최근 지문
+- [영어, 2026-11-25, 휴대폰을 잠근 학교의 성적 변화](https://dokhaehanip.com/en/2026-11-25/): 출처 Students Made More Math, Reading Progress After Their Schools Banned Phones (Education Week, 2026-11-18)
 - [영어, 2026-11-24, 긁혀도 읽히는 QR 코드](https://dokhaehanip.com/en/2026-11-24/): 출처 Standard QR codes hide three larger squares in their corners so scanners can orient them from any angle (Make Tech Easier, 2026-07-24)
 - [영어, 2026-11-23, 빛으로 하루 거리에 닿은 보이저 1호](https://dokhaehanip.com/en/2026-11-23/): 출처 NASA's Voyager 1 is now so far away that light takes 24 hours to reach it (ScienceDaily, 2026-11-20)
 - [영어, 2026-11-22, 전 부서에 잘못 보낸 첫 업무 메일](https://dokhaehanip.com/en/2026-11-22/)
 - [영어, 2026-11-21, 정전된 밤의 촛불 보드게임](https://dokhaehanip.com/en/2026-11-21/)
 - [영어, 2026-11-20, 로봇 팔이 꽂아 주는 전기차 충전기](https://dokhaehanip.com/en/2026-11-20/): 출처 BYD Unveils World's First Integrated Solar, Storage, FLASH and Robotic EV Charging System in Abu Dhabi (SolarQuarter, 2026-11-18)
 - [영어, 2026-11-19, 추울 때 돋는 소름의 비밀](https://dokhaehanip.com/en/2026-11-19/): 출처 Why do we get goosebumps? (Live Science, 2022-07-18)
-- [영어, 2026-11-18, 대학에 새로 생긴 미국 수어 전공](https://dokhaehanip.com/en/2026-11-18/): 출처 A sign of progress: ASL major new at Ohio State (Ohio State News, 2026-10-14)
 - [일본어, 2026-11-25, 아이들의 발명 작품 전시회](https://dokhaehanip.com/ja/2026-11-25/): 출처 報道発表 2026年11月「第69回東京都児童生徒発明くふう展受賞作品90点を決定」 (東京都, 2026-11-24)
 - [일본어, 2026-11-24, 눈에서 소나무를 지키는 유키즈리](https://dokhaehanip.com/ja/2026-11-24/): 출처 兼六園の雪吊りについて (石川県 金沢城・兼六園管理事務所, 2025-10-27)
 - [일본어, 2026-11-23, 역 앞 광장의 햇와인과 바비큐](https://dokhaehanip.com/ja/2026-11-23/): 출처 ＪＲ秋田駅前でワインの新酒とバーベキュー楽しむイベント (NHK, 2026-11-21)
