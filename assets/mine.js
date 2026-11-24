@@ -77,17 +77,17 @@
   function time(v) { return typeof v === 'number' && isFinite(v) && v > 0 ? Math.min(v, Date.now()) : 0; }
   // 문장마다 합친다. 이 기기에 쓴 글은 덮지 않고 빈 곳만 채운다(기기 시계를 믿지 않아도 된다). 바뀌었으면 true
   function blend(mine, d) {
-    var ch = false;
+    var ch = false, wrote = false;
     Object.keys(d.s).forEach(function (i) {
       var x = mine.s[i], y = d.s[i];
-      if (!x) { mine.s[i] = y; ch = true; return; }
+      if (!x) { mine.s[i] = y; ch = true; if (y.v) wrote = true; return; }
       if (x.e && y.e && x.e !== y.e) return;  // 지문이 바뀌어 다른 문장이면 섞지 않는다
-      if (!x.v && y.v) { x.v = y.v; ch = true; }
+      if (!x.v && y.v) { x.v = y.v; ch = wrote = true; }
       if (!x.st && y.st) { x.st = true; ch = true; }
       if (y.r && !x.r) { x.r = y.r; ch = true; }
       if (!x.e) x.e = y.e;
     });
-    if (ch) { mine.n = mine.n || d.n; mine.u = Math.max(mine.u || 0, d.u); }
+    if (ch) { mine.n = mine.n || d.n; if (wrote) mine.u = Math.max(mine.u || 0, d.u); }  // 쓴 글이 들어왔을 때만 쓴 때를 올린다
     return ch;
   }
   function cleanDay(d) {

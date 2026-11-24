@@ -116,6 +116,9 @@ test('붙인 답 나누기: "N번"만 쓰고 소제목 번호는 문장 번호�
   assert.equal(part('1) 잘 잡은 것\n2) 짚을 것: 전반', 2), '');
   assert.equal(part('**1번 문장**\n1. 주어 찾기\n2. 동사 찾기', 2), '');
   assert.equal(part('12번: 열둘', 2), '');
+  assert.equal(part('1번: 좋아요\n- 3번 문장도 비슷해요\n2번: 시제', 3), '');
+  assert.equal(part('1번: 좋아요\n- 3번: 참고\n2번: 시제', 3), '');
+  assert.equal(part('**2번 문장**\n시제', 2), '**2번 문장**\n시제');
 });
 
 // linewrite.js 를 흉내 낸 화면에서 돌려 저장만 본다
@@ -143,4 +146,12 @@ test('지문 저장은 이 탭에서 바꾼 칸만: 다른 탭이 푼 별표와 
   p.ta[1].value = ''; p.ta[1].fire('input'); p.st[0].fire('click'); p.save();
   const s2 = plain(p.M.load()['en/2026-11-24/b'].s);
   assert.equal(s2[1], undefined);
+});
+
+test('가져오기로 별표만 들어온 옛 지문은 최근 7일에 들어오지 않는다', () => {
+  const f = JSON.parse(load(seed()).M.dump()), d = f.mine['en/2026-10-20/b'];
+  d.u = now; d.s[4] = { v: '', st: true, e: 'Five.' };
+  const { M } = load(seed());
+  assert.equal(M.restore(JSON.stringify(f)).days, 1);
+  assert.equal(M.load()['en/2026-10-20/b'].u, old);
 });

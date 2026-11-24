@@ -46,13 +46,13 @@
 
   // 붙인 답에서 "2번"처럼 문장 번호가 또렷한 줄부터 다음 번호나 다음 제목 전까지. "2)", "2." 는 소제목일 수 있어 쓰지 않는다. 못 찾으면 빈 글
   function part(text, n) {
-    var lines = text.split('\n'), out = [], hit = false, head = /^[\s#>*-]*(\d{1,2})\s*번(?=[\s:.,)*]|문장|$)/, stop = /^(?:\s*\**\d{1,2}[.)]|\s*#|\s*\**오늘\s)/;
+    var lines = text.split('\n'), out = [], hit = false, prev = 0, mixed = false, head = /^[\s#>*-]*(\d{1,2})\s*번(?:\s*문장)?[\s*]*(?:[:.)]|$)/, stop = /^(?:\s*\**\d{1,2}[.)]|\s*#|\s*\**오늘\s)/;
     lines.forEach(function (l) {
       var m = head.exec(l);
-      if (m) hit = Number(m[1]) === n; else if (stop.test(l)) hit = false;
+      if (m) { hit = Number(m[1]) === n; if (Number(m[1]) <= prev) mixed = true; prev = Number(m[1]); } else if (stop.test(l)) hit = false;
       if (hit) out.push(l);
     });
-    return out.join('\n').trim();
+    return mixed ? '' : out.join('\n').trim();  // 번호가 뒤섞이면 다른 문장을 말한 줄일 수 있다
   }
   function aiHtml(id, n) {
     return (M.loadAi()[id] || []).map(function (x) {
@@ -130,7 +130,7 @@
     var n = M.size({}), a = M.aiCount({});
     var s = M.open('<h3>내보내기와 가져오기</h3><p>쓴 해석, 헷갈림 표시, 붙인 AI 답을 파일 하나로 옮겨요.</p>' +
       '<button class="mn-opt" type="button" data-x="out"' + (n || a ? '' : ' disabled') + '><b>파일로 내보내기</b><span>지금까지 쓴 것 ' + n + '문장, AI 답 ' + a + '개</span></button>' +
-      '<button class="mn-opt" type="button" data-x="in"><b>파일에서 가져오기</b><span>지금 있는 기록에 더해요. 이 기기에 쓴 글은 바뀌지 않아요.</span></button>' +
+      '<button class="mn-opt" type="button" data-x="in"><b>파일에서 가져오기</b><span>지금 있는 기록에 더해요. 이 기기에 쓴 글은 그대로예요.</span></button>' +
       '<input type="file" accept=".json,application/json" hidden><p class="lw-err" role="alert" hidden></p><div class="lw-row"><button class="lw-btn line" type="button" data-x="no">닫기</button></div>', '내보내기와 가져오기');
     var inp = s.querySelector('input'), err = s.querySelector('.lw-err');
     function say(t) { err.textContent = t; err.hidden = false; }
