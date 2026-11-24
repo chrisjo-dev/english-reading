@@ -1,0 +1,443 @@
+{
+ "date": "2026-11-25",
+ "category": "society",
+ "topic": "편지 요금",
+ "title_ko": "1유로를 넘는 독일 편지 요금",
+ "headline": "Briefe werden teurer",
+ "chips": [
+  "6문장",
+  "B1 위주",
+  "B2 2문장",
+  "약 4분"
+ ],
+ "fit": "news",
+ "grammar": {
+  "b": [
+   "b-futur"
+  ],
+  "a": [
+   "a-futur"
+  ]
+ },
+ "keywords": [
+  "우편 요금",
+  "편지",
+  "가격 인상",
+  "생활 소식"
+ ],
+ "summary_ko": "독일 우체국의 2027년 편지 요금 인상 계획을 다룬 B1~B2 독일어 지문이에요. 연방망청이 승인하면 일반 편지 요금이 95센트에서 1.15유로로 오르고 편지 규격도 바뀌어요.",
+ "photo_scene": "Close-up in soft morning light of a small stack of blank white envelopes with colorful postage stamps on a wooden table, a hand placing one more envelope on top, a bright yellow mailbox softly blurred behind.",
+ "source": {
+  "title": "Deutsche Post AG passt Briefporto und Produkte zum 1. Januar 2027 an (DHL Group)",
+  "url": "https://group.dhl.com/de/presse/pressemitteilungen/2026/deutsche-post-ag-passt-briefporto-und-produkte-zum-ersten-januar-2027-an.html"
+ },
+ "sentences": [
+  {
+   "en": "Wenn die Bundesnetzagentur **zustimmt**, wird ein **Standardbrief** innerhalb Deutschlands ab Januar 2027 1,15 Euro statt 95 Cent kosten.",
+   "b2": false,
+   "chunks": [
+    [
+     "Wenn die Bundesnetzagentur **zustimmt**,",
+     "연방망청이 승인하면"
+    ],
+    [
+     "wird ein **Standardbrief**",
+     "일반 편지는"
+    ],
+    [
+     "innerhalb Deutschlands",
+     "독일 안에서"
+    ],
+    [
+     "ab Januar 2027",
+     "2027년 1월부터"
+    ],
+    [
+     "1,15 Euro statt 95 Cent kosten.",
+     "95센트 대신 1.15유로가 들 것입니다"
+    ]
+   ]
+  },
+  {
+   "en": "Auch die **Postkarte** soll 1,15 Euro kosten, und für einen **Großbrief** zahlt man dann 2,35 Euro statt 1,80 Euro.",
+   "b2": false,
+   "chunks": [
+    [
+     "Auch die **Postkarte**",
+     "엽서도"
+    ],
+    [
+     "soll 1,15 Euro kosten,",
+     "1.15유로가 될 예정이고"
+    ],
+    [
+     "und für einen **Großbrief**",
+     "대형 편지에는"
+    ],
+    [
+     "zahlt man dann",
+     "그때 낸다"
+    ],
+    [
+     "2,35 Euro statt 1,80 Euro.",
+     "1.80유로 대신 2.35유로를"
+    ]
+   ]
+  },
+  {
+   "en": "Als Grund nennt die Post die seit Jahren **sinkende** Zahl der Briefe, während die Kosten für **Personal** und Energie weiter steigen.",
+   "b2": true,
+   "chunks": [
+    [
+     "Als Grund nennt die Post",
+     "이유로 우체국은 든다"
+    ],
+    [
+     "die seit Jahren **sinkende** Zahl der Briefe,",
+     "수년째 줄고 있는 편지 수를"
+    ],
+    [
+     "während die Kosten",
+     "반면 비용은"
+    ],
+    [
+     "für **Personal** und Energie",
+     "인력과 에너지에 드는"
+    ],
+    [
+     "weiter steigen.",
+     "계속 오른다"
+    ]
+   ]
+  },
+  {
+   "en": "Gleichzeitig ändern sich die **Formate**, denn Briefe dürfen künftig bis zu drei Zentimeter **dick** sein.",
+   "b2": false,
+   "chunks": [
+    [
+     "Gleichzeitig ändern sich",
+     "동시에 바뀝니다"
+    ],
+    [
+     "die **Formate**,",
+     "규격이"
+    ],
+    [
+     "denn Briefe dürfen künftig",
+     "왜냐하면 편지는 앞으로 ~해도 되기 때문입니다"
+    ],
+    [
+     "bis zu drei Zentimeter **dick** sein.",
+     "3센티미터 두께까지"
+    ]
+   ]
+  },
+  {
+   "en": "Ein Großbrief darf dann bis zu 1000 Gramm **wiegen**, doch **Waren** sollen künftig als Paket verschickt werden.",
+   "b2": true,
+   "chunks": [
+    [
+     "Ein Großbrief darf dann",
+     "대형 편지는 그때 ~해도 됩니다"
+    ],
+    [
+     "bis zu 1000 Gramm **wiegen**,",
+     "1000그램까지 나가도"
+    ],
+    [
+     "doch **Waren** sollen künftig",
+     "하지만 상품은 앞으로 ~해야 합니다"
+    ],
+    [
+     "als Paket",
+     "소포로"
+    ],
+    [
+     "verschickt werden.",
+     "보내져야"
+    ]
+   ]
+  },
+  {
+   "en": "Laut der Post gibt ein **durchschnittlicher** **Haushalt** pro Monat etwas über vier Euro für Briefe und Pakete aus.",
+   "b2": false,
+   "chunks": [
+    [
+     "Laut der Post",
+     "우체국에 따르면"
+    ],
+    [
+     "gibt ein **durchschnittlicher** **Haushalt**",
+     "평균적인 가구는 쓴다"
+    ],
+    [
+     "pro Monat",
+     "한 달에"
+    ],
+    [
+     "etwas über vier Euro",
+     "4유로 조금 넘게"
+    ],
+    [
+     "für Briefe und Pakete aus.",
+     "편지와 소포에"
+    ]
+   ]
+  }
+ ],
+ "words": [
+  [
+   "Standardbrief",
+   "일반 편지, 표준 규격 우편 (남성 der, 복수 Standardbriefe)"
+  ],
+  [
+   "zustimmen",
+   "동의하다, 승인하다"
+  ],
+  [
+   "Postkarte",
+   "엽서 (여성 die, 복수 Postkarten)"
+  ],
+  [
+   "Großbrief",
+   "대형 우편물 (남성 der, 복수 Großbriefe)"
+  ],
+  [
+   "sinken",
+   "줄다, 떨어지다"
+  ],
+  [
+   "Personal",
+   "인력, 직원 (중성 das)"
+  ],
+  [
+   "Format",
+   "규격, 형식 (중성 das, 복수 Formate)"
+  ],
+  [
+   "dick",
+   "두꺼운"
+  ],
+  [
+   "wiegen",
+   "무게가 나가다"
+  ],
+  [
+   "Ware",
+   "상품, 물건 (여성 die, 복수 Waren)"
+  ],
+  [
+   "durchschnittlich",
+   "평균의, 보통의"
+  ],
+  [
+   "Haushalt",
+   "가구, 가정 (남성 der, 복수 Haushalte)"
+  ]
+ ],
+ "points": [
+  {
+   "title": "미래 Futur I — wird ... kosten",
+   "body": "`wird ein Standardbrief ... 1,15 Euro statt 95 Cent kosten`는 '일반 편지는 1.15유로가 들 것이다'라는 뜻의 미래 Futur I입니다. `werden`의 인칭 변화형(`wird`)이 둘째 자리에, 동사 원형 `kosten`이 문장 맨 끝에 와서 그 사이를 감쌉니다. 앞에 `Wenn die Bundesnetzagentur zustimmt,`라는 부문장이 먼저 나오면 이 부문장 전체가 첫째 자리가 되므로 바로 `wird`가 이어집니다. 기초 지문의 `wird ein Standardbrief wohl 1,15 Euro ... kosten`도 같은 구조예요."
+  },
+  {
+   "title": "분사 수식어 — die seit Jahren sinkende Zahl",
+   "body": "`die seit Jahren sinkende Zahl der Briefe`는 '수년째 줄고 있는 편지 수'라는 뜻입니다. 현재분사 `sinkend`(줄고 있는)가 관사 `die`와 명사 `Zahl` 사이에서 형용사처럼 어미 `-e`를 붙여 명사를 꾸미고, `seit Jahren`이 그 분사 앞에 붙어 수식어가 길어졌습니다. 관계문으로 풀면 `die Zahl der Briefe, die seit Jahren sinkt`입니다. 관사를 보고 명사까지 건너뛴 다음, 사이에 낀 말을 거꾸로 붙여 읽으면 쉬워요."
+  }
+ ],
+ "answers": [
+  "연방망청이 승인하면 독일 국내 일반 편지는 2027년 1월부터 95센트가 아니라 1.15유로가 됩니다.",
+  "엽서도 1.15유로가 될 예정이고, 대형 우편물은 1.80유로 대신 2.35유로를 내야 합니다.",
+  "우체국은 그 이유로 수년째 줄고 있는 편지 수를 들면서, 인력과 에너지 비용은 계속 오른다고 설명합니다.",
+  "동시에 규격도 바뀌는데, 앞으로 편지는 두께 3센티미터까지 허용되기 때문입니다.",
+  "대형 우편물은 그때부터 1000그램까지 될 수 있지만, 상품은 앞으로 소포로 보내야 합니다.",
+  "우체국에 따르면 평균적인 가구는 한 달에 편지와 소포에 4유로 조금 넘게 씁니다."
+ ],
+ "advanced": [
+  {
+   "word": "Porto",
+   "meaning": "우편 요금 (중성 das, 복수 Portos)",
+   "confuse": "도시 이름 Porto(포르투)와 철자가 같음",
+   "example": "Das **Porto** für eine Karte nach Korea ist höher.",
+   "example_ko": "한국으로 보내는 엽서의 우편 요금은 더 비쌉니다."
+  },
+  {
+   "word": "Briefmarke",
+   "meaning": "우표 (여성 die, 복수 Briefmarken)",
+   "confuse": null,
+   "example": "Ich klebe eine **Briefmarke** auf den Umschlag.",
+   "example_ko": "저는 봉투에 우표를 붙입니다."
+  },
+  {
+   "word": "Preiserhöhung",
+   "meaning": "가격 인상 (여성 die, 복수 Preiserhöhungen)",
+   "confuse": "`Preissenkung`은 반대말 '가격 인하'",
+   "example": "Die **Preiserhöhung** gilt ab Januar.",
+   "example_ko": "가격 인상은 1월부터 적용됩니다."
+  },
+  {
+   "word": "Genehmigung",
+   "meaning": "승인, 허가 (여성 die, 복수 Genehmigungen)",
+   "confuse": "`Genehmigung`은 관청의 공식 허가, `Erlaubnis`는 일상적인 허락",
+   "example": "Für den neuen Preis braucht die Post eine **Genehmigung**.",
+   "example_ko": "새 요금에는 우체국이 승인을 받아야 합니다."
+  },
+  {
+   "word": "Sendung",
+   "meaning": "우편물, 발송물 (여성 die, 복수 Sendungen)",
+   "confuse": "'방송 프로그램'이라는 뜻으로도 자주 씀",
+   "example": "Die **Sendung** kommt morgen an.",
+   "example_ko": "그 우편물은 내일 도착합니다."
+  },
+  {
+   "word": "Absender",
+   "meaning": "발신인 (남성 der, 복수 Absender)",
+   "confuse": "`Empfänger`는 반대말 '수신인'",
+   "example": "Auf dem Umschlag fehlt der **Absender**.",
+   "example_ko": "봉투에 발신인이 빠져 있습니다."
+  },
+  {
+   "word": "Zustellung",
+   "meaning": "배달, 송달 (여성 die)",
+   "confuse": null,
+   "example": "Die **Zustellung** dauert meistens zwei Tage.",
+   "example_ko": "배달은 보통 이틀 걸립니다."
+  }
+ ],
+ "levels": {
+  "a": {
+   "sentences": [
+    {
+     "en": "Ab Januar 2027 wird ein **Standardbrief** wohl 1,15 Euro statt 95 Cent kosten.",
+     "chunks": [
+      [
+       "Ab Januar 2027",
+       "2027년 1월부터"
+      ],
+      [
+       "wird ein **Standardbrief**",
+       "일반 편지는"
+      ],
+      [
+       "wohl 1,15 Euro",
+       "아마 1.15유로가"
+      ],
+      [
+       "statt 95 Cent kosten.",
+       "95센트 대신 들 것입니다"
+      ]
+     ]
+    },
+    {
+     "en": "Eine **Postkarte** kostet auch 1,15 Euro, ein **Großbrief** 2,35 Euro.",
+     "chunks": [
+      [
+       "Eine **Postkarte** kostet",
+       "엽서는 듭니다"
+      ],
+      [
+       "auch 1,15 Euro,",
+       "역시 1.15유로가"
+      ],
+      [
+       "ein **Großbrief**",
+       "대형 편지는"
+      ],
+      [
+       "2,35 Euro.",
+       "2.35유로가"
+      ]
+     ]
+    },
+    {
+     "en": "Die Leute schreiben weniger Briefe, aber **Personal** und Energie kosten mehr.",
+     "chunks": [
+      [
+       "Die Leute schreiben",
+       "사람들은 씁니다"
+      ],
+      [
+       "weniger Briefe,",
+       "더 적은 편지를"
+      ],
+      [
+       "aber **Personal** und Energie",
+       "하지만 인력과 에너지는"
+      ],
+      [
+       "kosten mehr.",
+       "더 많이 듭니다"
+      ]
+     ]
+    },
+    {
+     "en": "Die **Formate** ändern sich: Briefe dürfen bald drei Zentimeter **dick** sein.",
+     "chunks": [
+      [
+       "Die **Formate** ändern sich:",
+       "규격이 바뀝니다"
+      ],
+      [
+       "Briefe dürfen bald",
+       "편지는 곧 ~해도 됩니다"
+      ],
+      [
+       "drei Zentimeter **dick** sein.",
+       "3센티미터 두께여도"
+      ]
+     ]
+    },
+    {
+     "en": "Ein Großbrief darf 1000 Gramm **wiegen**, aber **Waren** kommen ins Paket.",
+     "chunks": [
+      [
+       "Ein Großbrief darf",
+       "대형 편지는 ~해도 됩니다"
+      ],
+      [
+       "1000 Gramm **wiegen**,",
+       "1000그램 나가도"
+      ],
+      [
+       "aber **Waren**",
+       "하지만 상품은"
+      ],
+      [
+       "kommen ins Paket.",
+       "소포에 들어갑니다"
+      ]
+     ]
+    },
+    {
+     "en": "Ein **Haushalt** gibt pro Monat etwa vier Euro für Post aus.",
+     "chunks": [
+      [
+       "Ein **Haushalt** gibt",
+       "한 가구는 씁니다"
+      ],
+      [
+       "pro Monat",
+       "한 달에"
+      ],
+      [
+       "etwa vier Euro",
+       "약 4유로를"
+      ],
+      [
+       "für Post aus.",
+       "우편에"
+      ]
+     ]
+    }
+   ],
+   "answers": [
+    "2027년 1월부터 일반 편지는 아마 95센트 대신 1.15유로가 들 것입니다.",
+    "엽서도 1.15유로이고, 대형 우편물은 2.35유로입니다.",
+    "사람들은 편지를 덜 쓰지만, 인력과 에너지에는 돈이 더 듭니다.",
+    "규격이 바뀝니다. 편지는 곧 두께 3센티미터까지 될 수 있습니다.",
+    "대형 우편물은 1000그램까지 될 수 있지만, 상품은 소포로 보냅니다.",
+    "한 가구는 한 달에 우편에 약 4유로를 씁니다."
+   ]
+  }
+ }
+}
