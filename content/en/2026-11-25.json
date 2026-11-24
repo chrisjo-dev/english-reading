@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-25",
+  "category": "society",
+  "topic": "휴대폰 금지",
+  "title_ko": "휴대폰을 잠근 학교의 성적 변화",
+  "headline": "Phone-Free Schools and Test Scores",
+  "summary_ko": "학교의 휴대폰 금지가 성적에 주는 영향을 다룬 B1~B2 영어 지문이에요. 하버드 연구진은 엄격하게 금지한 학교의 학생들이 해마다 약 2주의 수업을 더 받은 만큼 성장했다고 밝혔어요.",
+  "fit": "news",
+  "grammar": {"b": ["b-present-perfect", "b-will"], "a": ["a-past-regular"]},
+  "keywords": ["휴대폰 금지", "시험 점수", "교실", "연구 소식"],
+  "chips": ["5문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "Many American schools have **banned** phones during the school day, and some ask students to put them in locked **pouches**.", "b2": false,
+     "chunks": [["Many American schools", "미국의 많은 학교가"], ["have **banned** phones", "휴대폰을 금지해 왔다"], ["during the school day,", "학교 일과 시간 동안"], ["and some ask students", "그리고 일부는 학생들에게 요구한다"], ["to put them", "그것을 넣으라고"], ["in locked **pouches**.", "잠기는 파우치 안에"]]},
+    {"en": "Researchers at Harvard University have now **analyzed** test **scores** from 3.3 million students at 4,600 schools.", "b2": false,
+     "chunks": [["Researchers at Harvard University", "하버드 대학교 연구진이"], ["have now **analyzed**", "이번에 분석했다"], ["test **scores**", "시험 점수를"], ["from 3.3 million students", "330만 명 학생의"], ["at 4,600 schools.", "4,600개 학교에 다니는"]]},
+    {"en": "They found that students in schools with **strict** bans made **progress** in math and reading equal to about two **extra** weeks of school each year.", "b2": true,
+     "chunks": [["They found that", "그들은 알아냈다"], ["students in schools", "학교의 학생들이"], ["with **strict** bans", "엄격한 금지를 하는"], ["made **progress**", "진전을 이뤘다는 것을"], ["in math and reading", "수학과 읽기에서"], ["equal to about two **extra** weeks", "약 2주를 더한 것과 맞먹는"], ["of school each year.", "해마다 학교 수업을"]]},
+    {"en": "The pouches also helped **reduce** the number of phones **in use** on school grounds by about 20 percent.", "b2": false,
+     "chunks": [["The pouches also helped", "파우치는 또한 도왔다"], ["**reduce** the number of phones", "휴대폰 수를 줄이는 데"], ["**in use** on school grounds", "학교 안에서 사용 중인"], ["by about 20 percent.", "약 20퍼센트만큼"]]},
+    {"en": "The gains are **modest**, and an earlier study found little **effect**, but the researchers expect the benefits will **add up** over time.", "b2": false,
+     "chunks": [["The gains are **modest**,", "그 성과는 크지 않다"], ["and an earlier study", "그리고 앞선 한 연구는"], ["found little **effect**,", "효과를 거의 찾지 못했다"], ["but the researchers expect", "하지만 연구진은 예상한다"], ["the benefits will **add up**", "그 이점이 쌓일 것이라고"], ["over time.", "시간이 지나면서"]]}
+  ],
+  "words": [
+    ["banned", "금지했다 (현재완료 have p.p.)"],
+    ["pouches", "주머니들, 파우치 (복수형)"],
+    ["analyzed", "분석했다"],
+    ["scores", "점수들 (복수형)"],
+    ["strict", "엄격한"],
+    ["progress", "진전, 발전"],
+    ["extra", "추가의, 여분의"],
+    ["reduce", "줄이다"],
+    ["in use", "사용 중인"],
+    ["modest", "(양이) 크지 않은, 적당한"],
+    ["effect", "효과, 영향"],
+    ["add up", "쌓이다, 늘어나다"]
+  ],
+  "points": [
+    {"title": "현재완료 have banned: 최근에 생겨 지금도 이어지는 변화", "body": "`have banned`, `have now analyzed`는 과거에 시작된 일이 지금까지 영향을 주고 있음을 나타내요. '금지했다(지금도 금지 중)', '이번에 분석을 마쳤다(그 결과가 지금 나왔다)'로 읽으면 자연스러워요."},
+    {"title": "equal to about two extra weeks: 효과를 수업 기간으로 바꿔 말하기", "body": "`made progress ... equal to about two extra weeks of school`은 성적 향상을 '학교를 2주 더 다닌 것과 맞먹는 정도'로 바꿔 말한 표현이에요. `equal to`(~와 같은, 맞먹는) 뒤에 비교 기준이 오고, `each year`는 문장 끝에서 '해마다'라는 빈도를 덧붙여요."}
+  ],
+  "answers": [
+    "미국의 많은 학교가 학교 일과 시간 동안 휴대폰을 금지했고, 일부 학교는 학생들에게 휴대폰을 잠기는 파우치에 넣게 한다.",
+    "하버드 대학교 연구진이 이번에 4,600개 학교 330만 명 학생의 시험 점수를 분석했다.",
+    "연구진은 휴대폰을 엄격하게 금지한 학교의 학생들이 수학과 읽기에서 해마다 약 2주의 수업을 더 받은 것과 맞먹는 진전을 보였다는 것을 알아냈다.",
+    "파우치는 또한 학교 안에서 사용 중인 휴대폰 수를 약 20퍼센트 줄이는 데 도움이 되었다.",
+    "그 성과는 크지 않고 앞선 한 연구에서는 효과가 거의 없었지만, 연구진은 그 이점이 시간이 지나면서 쌓일 것으로 예상한다."
+  ],
+  "advanced": [
+    {"word": "prohibit", "meaning": "금지하다", "confuse": null, "example": "Many American schools now **prohibit** phones during the school day.", "example_ko": "미국의 많은 학교가 이제 학교 일과 시간 동안 휴대폰을 금지합니다."},
+    {"word": "scrutinize", "meaning": "면밀히 조사하다", "confuse": null, "example": "Researchers **scrutinized** test scores from 3.3 million students.", "example_ko": "연구진은 330만 명 학생의 시험 점수를 면밀히 조사했습니다."},
+    {"word": "rigorous", "meaning": "엄격한, 철저한", "confuse": "vigorous(활기찬)와 혼동 주의", "example": "Schools with **rigorous** phone rules saw more progress in math and reading.", "example_ko": "휴대폰 규칙이 엄격한 학교는 수학과 읽기에서 더 큰 진전을 보였습니다."},
+    {"word": "equivalent", "meaning": "등가물, 상당량", "confuse": null, "example": "The gain was the **equivalent** of two extra weeks of school each year.", "example_ko": "그 향상은 해마다 학교를 2주 더 다닌 것에 맞먹었습니다."},
+    {"word": "curb", "meaning": "억제하다, 줄이다", "confuse": "curve(곡선)와 혼동 주의", "example": "The pouches helped **curb** phone use on school grounds.", "example_ko": "파우치는 학교 안에서 휴대폰 사용을 억제하는 데 도움이 되었습니다."},
+    {"word": "marginal", "meaning": "미미한, 아주 적은", "confuse": null, "example": "The gains were **marginal**, but they may grow larger over the years.", "example_ko": "그 성과는 미미했지만, 해가 갈수록 커질 수 있습니다."},
+    {"word": "cumulative", "meaning": "누적되는", "confuse": null, "example": "The researchers expect the effect of the bans to be **cumulative**.", "example_ko": "연구진은 금지의 효과가 누적될 것으로 예상합니다."}
+  ],
+  "source": {"title": "Students Made More Math, Reading Progress After Their Schools Banned Phones (Education Week, 2026-11-18)", "url": "https://www.edweek.org/technology/students-made-more-math-reading-progress-after-their-schools-banned-phones/2026/11"},
+  "photo_scene": "Close-up of a teenage student's hands sliding a smartphone into a grey fabric pouch on a wooden school desk, soft morning classroom light from a window, empty desks blurred behind.",
+  "levels": {"a": {
+    "sentences": [
+      {"en": "Many American schools **banned** phones and asked students to use locked **pouches**.", "chunks": [["Many American schools", "미국의 많은 학교가"], ["**banned** phones", "휴대폰을 금지했다"], ["and asked students", "그리고 학생들에게 요청했다"], ["to use locked **pouches**.", "잠기는 파우치를 쓰라고"]]},
+      {"en": "Harvard researchers **analyzed** test **scores** from 3.3 million students at 4,600 schools.", "chunks": [["Harvard researchers", "하버드 연구진이"], ["**analyzed** test **scores**", "시험 점수를 분석했다"], ["from 3.3 million students", "330만 명 학생의"], ["at 4,600 schools.", "4,600개 학교의"]]},
+      {"en": "With **strict** bans, students gained about two **extra** weeks of learning each year.", "chunks": [["With **strict** bans,", "엄격한 금지가 있으면"], ["students gained", "학생들은 얻었다"], ["about two **extra** weeks of learning", "약 2주의 추가 학습을"], ["each year.", "해마다"]]},
+      {"en": "The pouches also helped **reduce** phone use by about 20 percent.", "chunks": [["The pouches also helped", "파우치는 또한 도왔다"], ["**reduce** phone use", "휴대폰 사용을 줄이는 것을"], ["by about 20 percent.", "약 20퍼센트만큼"]]},
+      {"en": "The gains are **modest**, but the researchers expect them to **add up**.", "chunks": [["The gains are **modest**,", "그 성과는 크지 않다"], ["but the researchers expect", "하지만 연구진은 예상한다"], ["them to **add up**.", "그것이 쌓일 것이라고"]]}
+    ],
+    "answers": [
+      "미국의 많은 학교가 휴대폰을 금지하고 학생들에게 잠기는 파우치를 쓰라고 했다.",
+      "하버드 연구진이 4,600개 학교 330만 명 학생의 시험 점수를 분석했다.",
+      "엄격하게 금지한 학교의 학생들은 해마다 약 2주만큼의 학습을 더 얻었다.",
+      "파우치는 또한 휴대폰 사용을 약 20퍼센트 줄이는 데 도움이 되었다.",
+      "그 성과는 크지 않지만, 연구진은 그것이 쌓일 것으로 예상한다."
+    ]
+  }}
+}
