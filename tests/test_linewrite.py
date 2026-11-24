@@ -42,3 +42,35 @@ class Cloze(unittest.TestCase):
         js = (ROOT / "assets" / "drill.js").read_text(encoding="utf-8")
         self.assertIn("dr-inb", js)
         self.assertNotIn('placeholder="빈칸에', js)
+
+
+class Notes(unittest.TestCase):
+    MINE = (ROOT / "assets" / "mine.js").read_text(encoding="utf-8")
+
+    def test_prompts_match_langs(self):
+        import langs
+        for code in ("en", "ja", "de"):
+            L = langs.LANGS[code]
+            self.assertIn(f"'{L['copy_head'].split('입니다.')[0]}입니다.', '{L['copy_weak']}'", self.MINE, code)
+
+    def test_mine_before_linewrite(self):
+        p = linewrite.apply(OLD)
+        self.assertEqual(p.count('id="mine-js"'), 1)
+        self.assertLess(p.index('id="mine-js"'), p.index('id="linewrite-js"'))
+
+    def test_notes_page_and_card(self):
+        notes = (ROOT / "me/notes/index.html").read_text(encoding="utf-8")
+        for need in ('id="mn"', "/assets/mine.js", "/assets/notes.js", 'content="noindex"', ".lw-sheet {", ".mn-card {"):
+            self.assertIn(need, notes)
+        me = (ROOT / "me/index.html").read_text(encoding="utf-8")
+        self.assertEqual(me.count("data-mine-card"), 1)
+        self.assertIn("/assets/mine.js", me)
+        self.assertNotIn("mine.js", (ROOT / "join/index.html").read_text(encoding="utf-8"))
+
+    def test_weekly_card(self):
+        for lang in ("en", "ja", "de"):
+            for f in sorted((ROOT / lang / "review").glob("*/index.html")):
+                p = f.read_text(encoding="utf-8")
+                self.assertEqual(p.count("data-mine-card"), 1, f)
+                self.assertEqual(linewrite.weekly(p, lang, f.parent.name), p, f)
+        self.assertIn('data-from="2026-11-16" data-to="2026-11-22"', (ROOT / "en/review/2026-11-22/index.html").read_text(encoding="utf-8"))

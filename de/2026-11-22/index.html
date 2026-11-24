@@ -182,11 +182,11 @@
   .lw-dock .bad { color: #d92d3a; }
   body.pbar-vis .lw-dock { bottom: calc(86px + env(safe-area-inset-bottom)); }
   body.lw-typing .lw-dock, body.lw-typing .pbar { display: none; }
+  .lw-acc { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: none; justify-content: space-between; align-items: center; gap: 8px; background: #fff; border-top: 1px solid #e2e6ea; padding: 6px 12px; font-size: 13px; color: var(--sub); }
+  body.lw-typing .lw-acc { display: flex; }
   .lw-btn { border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: inherit; font-size: 15px; font-weight: 700; min-height: 44px; padding: 10px 14px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; cursor: pointer; }
   .lw-btn.line { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px #e2e6ea; }
   .lw-btn:disabled { opacity: .4; cursor: default; }
-  .lw-acc { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: none; justify-content: space-between; align-items: center; gap: 8px; background: #fff; border-top: 1px solid #e2e6ea; padding: 6px 12px; font-size: 13px; color: var(--sub); }
-  body.lw-typing .lw-acc { display: flex; }
   .lw-dim { position: fixed; inset: 0; z-index: 70; background: rgba(15,20,30,.45); }
   .lw-sheet { outline: 0; position: fixed; left: 0; right: 0; bottom: 0; z-index: 71; max-width: 560px; max-height: 92vh; overflow-y: auto; margin: 0 auto; box-sizing: border-box; background: #fff; border-radius: 22px 22px 0 0; padding: 22px 18px calc(22px + env(safe-area-inset-bottom)); }
   .lw-sheet h3 { font-size: 19px; margin: 0 0 4px; }
@@ -205,10 +205,17 @@
   .lw-sheet label:has(input:checked) { border-color: var(--blue); background: var(--blue-soft); color: var(--ink); }
   .lw-sheet label:has(input:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
   .lw-sheet label:has(input:disabled) { opacity: .45; cursor: default; }
+  .lw-seg:not(:has(label:nth-child(3))) { grid-template-columns: repeat(2, 1fr); }
+  .lw-link { display: block; width: 100%; margin-top: 8px; min-height: 44px; border: 0; background: none; font: inherit; font-size: 14px; font-weight: 700; color: var(--blue); cursor: pointer; }
+  .lw-sheet > .lw-btn { width: 100%; margin-bottom: 10px; }
+  .lw-sheet .lw-err { color: #d92d3a; }
   .lw-row { display: flex; gap: 8px; }
   .lw-row > * { flex: 1; }
-  .lw-area { width: 100%; height: 40vh; box-sizing: border-box; border: 0; border-radius: 12px; background: var(--bg); padding: 12px; font: inherit; font-size: 14px; line-height: 1.6; color: var(--ink); margin: 0 0 12px; resize: none; }
-  .lw-toast { position: fixed; left: 12px; right: 12px; bottom: calc(96px + env(safe-area-inset-bottom)); z-index: 72; max-width: 536px; margin: 0 auto; box-sizing: border-box; background: var(--ink); color: #fff; border-radius: 16px; padding: 12px 16px; font-size: 14px; line-height: 1.45; }
+  .lw-area { width: 100%; height: 40vh; box-sizing: border-box; border: 0; border-radius: 12px; background: #f2f4f6; padding: 12px; font: inherit; font-size: 16px; line-height: 1.6; color: var(--ink); margin: 0 0 12px; resize: none; }
+  .lw-area.short { height: 26vh; }
+  .lw-toast { position: fixed; left: 12px; right: 12px; bottom: calc(96px + env(safe-area-inset-bottom)); z-index: 72; max-width: 536px; margin: 0 auto; box-sizing: border-box; background: var(--ink); color: #fff; border-radius: 16px; padding: 12px 16px; font-size: 14px; line-height: 1.45; display: flex; align-items: center; gap: 10px; }
+  .lw-toast div { flex: 1; }
+  .lw-toast button { flex: none; min-height: 44px; border: 0; border-radius: 10px; padding: 0 14px; background: rgba(255,255,255,.18); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
   .lw-toast b { display: block; font-size: 15px; }
   /* /linewrite-css */
   .top { position: relative; }
@@ -1480,6 +1487,7 @@ window.dkhEvent=window.dkhEvent||function(o){try{var k='dkh-vid',v=localStorage.
   document.addEventListener('visibilitychange', tick);
 })();
 </script>
-<script id="linewrite-js" src="/assets/linewrite.js?v=1" defer></script>
+<script id="mine-js" src="/assets/mine.js?v=2" defer></script>
+<script id="linewrite-js" src="/assets/linewrite.js?v=2" defer></script>
 </body>
 </html>

@@ -1056,7 +1056,7 @@ def rebuild_info_pages():
 
 # 로그인 페이지(/join/, /join/callback/, /me/, 시안 design/kakao-login K02, K03, K04, K06). 검색에는 내보내지 않는다.
 # 스크립트: assets/auth.js(설정과 Supabase 연결) 다음에 화면별 스크립트. 콜백 페이지는 광고와 통계를 부르지 않는다.
-ACCOUNT_V = "13"
+ACCOUNT_V = "14"
 ACCOUNT_CSS = """  [hidden] { display: none !important; }  /* .pend, .need-msg, .gbtn 처럼 display 를 정한 요소도 hidden 이면 숨긴다 */
   :root { --blue: #2a52d4; --blue-soft: #eff3fd; --green: #0f9d6b; --green-soft: #e8f7f1; --coral: #f04452; --coral-soft: #ffeeee; --opt: #f4f6f8; --line: #eef0f3; }
   .step { font-size: 13px; font-weight: 700; color: var(--blue); }
@@ -1156,13 +1156,13 @@ ACCOUNT = r"""<!doctype html>
 <title>__TITLE__ | __BRAND__</title>
 <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
 __FONT__<style>
-__INFO_CSS____ACCOUNT_CSS____GNB_CSS____FOOTER_CSS__</style>
+__INFO_CSS____ACCOUNT_CSS____MINE_CSS____GNB_CSS____FOOTER_CSS__</style>
 __GA__</head>
 <body>
 __GNB__<main>
 __BODY__</main>
 __FOOTER____GNB_JS__<script src="/assets/auth.js?v=__AUTH_V__" defer></script>
-<script src="/assets/__JS__?v=__V__" defer></script>
+__MINE__<script src="/assets/__JS__?v=__V__" defer></script>
 </body></html>
 """
 GA_TAG = ('<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>\n'
@@ -1241,7 +1241,8 @@ def account_pages():
         '<section class="card" id="signedOut" hidden><h1>로그인하면 마이페이지를 볼 수 있어요</h1><p>외운 단어, 복습 날짜, 연속 학습일을 어느 기기에서든 이어서 봐요.</p>'
         '<a class="btn" href="/login/?next=/me/">로그인하러 가기</a></section>\n'
         '<div id="signedIn" hidden>'
-        '<section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section>'
+        '<section class="card"><div class="me-head"><div class="me-av" id="av"></div><div><b id="nick"></b><span id="who"></span></div></div></section>\n'
+        + linewrite.me_card() +
         '<section class="card"><h2 id="streak"></h2><p class="eff" id="best"></p><div class="week" id="week"></div></section>'
         '<section class="card"><div class="stats"><div class="stat"><b id="nWords">0</b><span>외운 단어</span></div><div class="stat"><b id="nDue">0</b><span>오늘 복습</span></div>'
         '<div class="stat"><b id="nPages">0</b><span>푼 지문</span></div></div><a class="btn" id="dueGo" href="/" hidden></a></section>'
@@ -1284,7 +1285,8 @@ def account_pages():
             ("join/callback", "로그인", callback, "join-callback.js", False),
             ("login", "로그인", login, "join.js", True),
             ("join/agree", "가입 동의", agree, "join-agree.js", True),
-            ("me", "마이페이지", me, "me.js", True)]
+            ("me", "마이페이지", me, "me.js", True),
+            ("me/notes", "내 해석 노트", '<div id="mn"></div>\n', "notes.js", True)]
 
 
 def rebuild_account_pages():
@@ -1292,9 +1294,12 @@ def rebuild_account_pages():
     head = gnb.header_html("en", "/#subscribe").replace(' class="on" aria-current="page"', "", 1)
     for folder, title, body, js, with_ga in account_pages():
         footer = f'<footer class="site-footer">{footer_links()}</footer>\n'
+        mine = folder.startswith("me")  # 내 해석 노트와 그 카드(시안 mine-notes)
         page = (ACCOUNT.replace("__TITLE__", title).replace("__BRAND__", langs.BRAND)
                 .replace("__FONT__", FONT_TAG if with_ga else "").replace("__GA__", GA_TAG if with_ga else "")
                 .replace("__INFO_CSS__", INFO_CSS).replace("__ACCOUNT_CSS__", ACCOUNT_CSS).replace("__GNB_CSS__", gnb.css_block())
+                .replace("__MINE_CSS__", "" if not mine else linewrite.CARD_CSS if folder == "me" else linewrite.SHEET_CSS + linewrite.NOTES_CSS)
+                .replace("__MINE__", linewrite.MINE if mine else "")
                 .replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__GNB__", head).replace("__BODY__", body)
                 .replace("__FOOTER__", footer).replace("__GNB_JS__", gnb.SCRIPT)
                 .replace("__AUTH_V__", drill.AUTH_V).replace("__JS__", js).replace("__V__", ACCOUNT_V))
