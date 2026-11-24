@@ -873,7 +873,7 @@ def write_sitemap():
 
 # 안내 페이지(/about/, /privacy/, /contact/, 시안 design/own-pages O06, O07, O08). 지문 페이지 카드 결과 같은 위 메뉴를 쓴다.
 # 시행일(개인정보처리방침)과 사이트맵 lastmod. 문구를 바꾸면 이 날짜도 바꾼다(매번 오늘 날짜로 쓰지 않아 다시 만들어도 같다)
-INFO_DATE = "2026-11-18"
+INFO_DATE = "2026-11-24"
 NUM = '<span class="num">{}</span>'
 INFO_CSS = """  :root { --bg: #f2f4f6; --card: #ffffff; --ink: #191f28; --sub: #4e5968; --muted: #6b7684; --blue: #1b64da; --blue-soft: #e8f3ff; --edge: #e5e8eb;
            --card-r: 20px; --card-sh: 0 4px 18px rgba(16,24,40,.07); }
@@ -962,13 +962,13 @@ def info_pages():
         '<span class="who">맡긴 곳: Supabase (로그인과 기록 저장), Cloudflare (카카오 로그인 연결)</span></div>'
         '<div class="row" id="mail"><h3>아침 지문 메일 (선택)</h3><p>가입할 때나 마이페이지에서 메일 받기를 켜면 <b>이메일 주소</b>와 <b>수신에 동의한 시각</b>을 저장해요. Google 가입자는 로그인한 이메일을, 카카오 가입자는 직접 적은 주소를 써요. '
         '매일 아침 지문 메일과 주간 복습 메일을 보내는 데만 쓰고, 마이페이지에서 언제든 끄면 보내지 않아요.</p><span class="who">맡긴 곳: Supabase (주소 저장)</span></div>'
-        '<div class="row"><h3>방문 통계</h3><p>방문 수, 유입 경로, 페이지 이용 흐름, 버튼 사용(주제 반응, 단어 외우기, 의견 보내기 등)을 익명 통계로 봐요. IP 주소는 익명 처리하고 이름이나 이메일과 연결하지 않아요.</p><span class="who">맡긴 곳: Google Analytics 4, Microsoft Clarity</span></div>'
+        '<div class="row"><h3>방문 통계</h3><p>방문 수, 유입 경로, 페이지 이용 흐름, 버튼 사용(주제 반응, 단어 외우기, 의견 보내기 등)을 익명 통계로 봐요. IP 주소는 익명 처리하고 이름이나 이메일과 연결하지 않아요. 주제 반응, 언어 요청, 의견 버튼은 무작위 방문 번호와 함께 우리 통계에도 남겨요.</p><span class="who">맡긴 곳: Google Analytics 4, Microsoft Clarity, Cloudflare와 Supabase(반응 통계)</span></div>'
         '<div class="row"><h3>광고</h3><p>Google AdSense 광고를 보여 줄 수 있어요. 아래 3번을 봐 주세요.</p><span class="who">맡긴 곳: Google AdSense</span></div>'
         '<div class="row"><h3>의견 메일</h3><p>기능 건의나 버그 제보 버튼은 메일 앱을 열어요. 버그 제보에는 누른 페이지 주소, 기기와 브라우저 이름, 화면 크기가 미리 채워지고, 보내기 전에 지울 수 있어요. 받은 메일은 답장과 수정에만 써요.</p></div>'
-        '<div class="row"><h3>접속 기록</h3><p>사이트는 GitHub Pages로 제공돼요. GitHub는 보안과 운영을 위해 접속 IP 등을 기록할 수 있어요. 글꼴(cdnjs)을 불러올 때도 그 제공자에게 접속 정보가 전달될 수 있어요.</p><span class="who">제공: GitHub Pages, cdnjs</span></div></section>\n'
-        f'<section class="card" id="storage"><h2>{NUM.format(2)}브라우저에 저장하는 값</h2><p>학습 기록과 설정은 이용자 기기의 브라우저 저장소(localStorage)에 둬요. 로그인하지 않으면 서버로 보내지 않고, 로그인하면 단어 기록(<code>drill:v1</code>)만 계정에도 저장해요. 브라우저 사이트 데이터를 지우면 기기에 둔 값은 사라져요.</p>'
+        '<div class="row"><h3>접속 기록</h3><p>사이트는 GitHub Pages로 제공돼요. GitHub는 보안과 운영을 위해 접속 IP 등을 기록할 수 있어요. 글꼴(cdnjs, 일본어 화면과 릴리 그림책 화면은 Google Fonts도)을 불러올 때도 그 제공자에게 접속 정보가 전달될 수 있어요.</p><span class="who">제공: GitHub Pages, cdnjs, Google Fonts</span></div></section>\n'
+        f'<section class="card" id="storage"><h2>{NUM.format(2)}브라우저에 저장하는 값</h2><p>학습 기록과 설정은 이용자 기기의 브라우저 저장소(localStorage)에 둬요. 로그인하지 않으면 서버로 보내지 않고, 로그인하면 단어 기록(<code>drill:v1</code>)만 계정에도 저장해요. 내 해석 노트는 로그인해도 이 기기에만 있어요. 브라우저 사이트 데이터를 지우면 기기에 둔 값은 사라져요.</p>'
         '<ul class="keys"><li><code>drill:v1</code><span>단어 외우기 복습 기록(다시 물을 날짜)</span></li><li><code>drill:pref</code><span>단어 외우기 방식(카드, 문제)</span></li><li><code>dkh-auth</code><span>로그인 상태 유지(로그인했을 때만)</span></li><li><code>dkh-me</code><span>위 메뉴에 보일 닉네임(로그인했을 때만)</span></li>'
-        '<li><code>read_level:언어</code><span>언어별로 고른 지문 수준</span></li><li><code>read_speed</code><span>음성 재생 속도</span></li>'
+        '<li><code>dkh-vid</code><span>주제 반응, 언어 요청, 의견 버튼을 셀 때 쓰는 무작위 방문 번호(누르면 반응 내용과 함께 보내요. 이름이나 이메일과 연결하지 않아요)</span></li><li><code>mine:v1</code><span>문장마다 쓴 내 해석, 헷갈림 표시, 다시 쓴 해석(서버로 보내지 않아요)</span></li><li><code>mine:ai</code><span>붙여 둔 AI 답(서버로 보내지 않아요)</span></li><li><code>mine:on</code>, <code>mine:seen</code><span>해석 쓰기 켜고 끄기, 노트를 열어 봤는지</span></li><li><code>dkh-next</code>, <code>dkh-oidc</code><span>로그인하는 동안 돌아갈 곳과 확인값(로그인할 때만)</span></li><li><code>read_level:언어</code><span>언어별로 고른 지문 수준</span></li><li><code>read_speed</code><span>음성 재생 속도</span></li>'
         '<li><code>vote:언어/날짜</code><span>오늘 주제 반응(좋아요, 별로예요). 반응 자체는 방문 통계로도 보내요</span></li>'
         "<li><code>lily.justListen</code><span>릴리 그림책 듣기 페이지의 '듣기만' 설정</span></li></ul></section>\n"
         f'<section class="card" id="cookies"><h2>{NUM.format(3)}쿠키와 광고</h2><p>Google을 포함한 제3자 광고 업체는 쿠키를 써서, 이 사이트와 다른 사이트를 방문한 기록을 바탕으로 광고를 보여 줄 수 있어요. 자세한 내용은 <a class="ln" href="https://policies.google.com/technologies/partner-sites">Google 파트너 사이트의 데이터 사용 방식</a>에 있어요.</p>'
@@ -996,6 +996,10 @@ def info_pages():
     ]
 
 
+# 광고 코드는 읽을거리가 있는 소개에만. 연락처와 방침처럼 안내용 화면에는 넣지 않는다(404.html 도 같다)
+AD_TAG = '''<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
+     crossorigin="anonymous"></script>
+'''
 INFO = r"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only"><title>__TITLE__ | __BRAND__</title>
@@ -1010,9 +1014,7 @@ __RSS____LD__<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossori
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css">
 <style>
 __INFO_CSS____GNB_CSS____FOOTER_CSS__</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2339195232447097"
-     crossorigin="anonymous"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
+__AD__<script async src="https://www.googletagmanager.com/gtag/js?id=G-43L9WRDB2N"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43L9WRDB2N',{anonymize_ip:true});</script>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yxuphaowch");</script>
 </head>
@@ -1040,7 +1042,7 @@ def rebuild_info_pages():
         if folder == "contact":
             # 양식 메일 버튼이 본문 카드에 있어 아래 '바라는 점이 있나요?' 띠는 두지 않는다(시안 O08). 버튼 모양과 스크립트만 쓴다
             footer += feedback.SCRIPT
-        page = (INFO.replace("__TITLE__", title).replace("__BRAND__", langs.BRAND).replace("__DESC__", html.escape(desc, quote=True))
+        page = (INFO.replace("__AD__", AD_TAG if folder == "about" else "").replace("__TITLE__", title).replace("__BRAND__", langs.BRAND).replace("__DESC__", html.escape(desc, quote=True))
                 .replace("__URL__", url).replace("__SITE__", SITE).replace("__RSS__", RSS_LINK).replace("__LD__", info_ld(folder, title, desc, kind))
                 .replace("__INFO_CSS__", INFO_CSS + (feedback.CSS if folder == "contact" else "")).replace("__GNB_CSS__", gnb.css_block())
                 .replace("__FOOTER_CSS__", "  " + FOOTER_CSS).replace("__GNB__", head).replace("__BODY__", body)
