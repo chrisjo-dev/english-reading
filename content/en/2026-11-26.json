@@ -1,0 +1,455 @@
+{
+ "date": "2026-11-26",
+ "category": "culture",
+ "topic": "칠면조 식곤증",
+ "title_ko": "추수감사절 칠면조와 식곤증",
+ "headline": "Does Turkey Really Make You Sleepy?",
+ "summary_ko": "추수감사절 저녁 뒤 졸음이 정말 칠면조 때문인지 살펴본 B1~B2 영어 지문이에요. 칠면조 1인분의 트립토판은 닭고기나 연어와 비슷한 양이라, 졸음의 더 그럴듯한 이유는 큰 식사의 소화와 술이에요.",
+ "chips": [
+  "6문장",
+  "B1 위주",
+  "B2 2문장",
+  "약 3분"
+ ],
+ "fit": "explain",
+ "grammar": {
+  "b": [
+   "b-second-conditional"
+  ],
+  "a": [
+   "a-when-clause"
+  ]
+ },
+ "keywords": [
+  "칠면조",
+  "트립토판",
+  "식곤증",
+  "음식 속설"
+ ],
+ "sentences": [
+  {
+   "en": "On Thanksgiving, many American families share a huge turkey dinner, and afterward people often **blame** the bird when they feel **drowsy** on the sofa.",
+   "b2": false,
+   "chunks": [
+    [
+     "On Thanksgiving,",
+     "추수감사절에"
+    ],
+    [
+     "many American families share",
+     "많은 미국 가족들이 함께 먹는다"
+    ],
+    [
+     "a huge turkey dinner,",
+     "거대한 칠면조 저녁을"
+    ],
+    [
+     "and afterward people often **blame** the bird",
+     "그리고 그 뒤 사람들은 흔히 그 새를 탓한다"
+    ],
+    [
+     "when they feel **drowsy**",
+     "졸음이 올 때"
+    ],
+    [
+     "on the sofa.",
+     "소파 위에서"
+    ]
+   ]
+  },
+  {
+   "en": "The popular **explanation** is that turkey contains **tryptophan**, an amino acid that the body uses to make serotonin, a brain chemical that **regulates** mood.",
+   "b2": false,
+   "chunks": [
+    [
+     "The popular **explanation** is",
+     "널리 알려진 설명은"
+    ],
+    [
+     "that turkey contains **tryptophan**,",
+     "칠면조에 트립토판이 들어 있다는 것이다"
+    ],
+    [
+     "an amino acid",
+     "아미노산인데"
+    ],
+    [
+     "that the body uses",
+     "몸이 쓴다"
+    ],
+    [
+     "to make serotonin,",
+     "세로토닌을 만드는 데"
+    ],
+    [
+     "a brain chemical",
+     "뇌 화학 물질인"
+    ],
+    [
+     "that **regulates** mood.",
+     "기분을 조절하는"
+    ]
+   ]
+  },
+  {
+   "en": "However, a typical three-ounce **serving** of turkey has about 250 milligrams of it, which is **roughly** the same amount found in chicken, beef or salmon.",
+   "b2": false,
+   "chunks": [
+    [
+     "However,",
+     "하지만"
+    ],
+    [
+     "a typical three-ounce **serving** of turkey",
+     "보통의 3온스짜리 칠면조 1인분에는"
+    ],
+    [
+     "has about 250 milligrams of it,",
+     "그것이 약 250밀리그램 들어 있다"
+    ],
+    [
+     "which is **roughly** the same amount",
+     "이는 대략 같은 양이다"
+    ],
+    [
+     "found in chicken, beef or salmon.",
+     "닭고기, 소고기, 연어에 든 것과"
+    ]
+   ]
+  },
+  {
+   "en": "If turkey really made people sleepy, a plate of salmon would do the same thing, so the bird **alone** cannot explain the feeling.",
+   "b2": true,
+   "chunks": [
+    [
+     "If turkey really made people sleepy,",
+     "만약 칠면조가 정말 사람을 졸리게 한다면"
+    ],
+    [
+     "a plate of salmon",
+     "연어 한 접시도"
+    ],
+    [
+     "would do the same thing,",
+     "똑같은 일을 할 것이다"
+    ],
+    [
+     "so the bird **alone**",
+     "그러니 그 새 하나만으로는"
+    ],
+    [
+     "cannot explain the feeling.",
+     "그 느낌을 설명할 수 없다"
+    ]
+   ]
+  },
+  {
+   "en": "Experts point out that the brain **tightly** controls how much serotonin it makes, so eating extra tryptophan does not simply **boost** it.",
+   "b2": true,
+   "chunks": [
+    [
+     "Experts point out",
+     "전문가들은 짚는다"
+    ],
+    [
+     "that the brain **tightly** controls",
+     "뇌가 엄격하게 조절한다고"
+    ],
+    [
+     "how much serotonin it makes,",
+     "세로토닌을 얼마나 만들지를"
+    ],
+    [
+     "so eating extra tryptophan",
+     "그래서 트립토판을 더 먹는다고"
+    ],
+    [
+     "does not simply **boost** it.",
+     "그것이 그냥 늘어나지는 않는다"
+    ]
+   ]
+  },
+  {
+   "en": "The more likely reasons are simple: **digesting** a huge meal makes us tired, and many people also drink **alcohol** with it.",
+   "b2": false,
+   "chunks": [
+    [
+     "The more likely reasons are simple:",
+     "더 그럴듯한 이유는 단순하다"
+    ],
+    [
+     "**digesting** a huge meal",
+     "거대한 식사를 소화하는 일이"
+    ],
+    [
+     "makes us tired,",
+     "우리를 지치게 한다"
+    ],
+    [
+     "and many people also drink **alcohol**",
+     "그리고 많은 사람이 술도 마신다"
+    ],
+    [
+     "with it.",
+     "식사와 함께"
+    ]
+   ]
+  }
+ ],
+ "words": [
+  [
+   "blame",
+   "탓하다, 나무라다"
+  ],
+  [
+   "drowsy",
+   "졸린, 나른한"
+  ],
+  [
+   "explanation",
+   "설명"
+  ],
+  [
+   "tryptophan",
+   "트립토판"
+  ],
+  [
+   "regulates",
+   "조절하다 (3인칭 단수)"
+  ],
+  [
+   "serving",
+   "(음식의) 1인분"
+  ],
+  [
+   "roughly",
+   "대략, 거의"
+  ],
+  [
+   "alone",
+   "혼자서, 그것만으로"
+  ],
+  [
+   "tightly",
+   "엄격하게, 단단히"
+  ],
+  [
+   "boost",
+   "끌어올리다, 늘리다"
+  ],
+  [
+   "digesting",
+   "소화하기 (동명사형)"
+  ],
+  [
+   "alcohol",
+   "술, 알코올"
+  ]
+ ],
+ "points": [
+  {
+   "title": "가정법 과거 If + 과거, would: 사실이 아닌 일을 가정하기",
+   "body": "`If turkey really made people sleepy, a plate of salmon would do the same thing`은 '칠면조가 정말 졸리게 한다면 연어도 그럴 것'이라는 뜻이에요. `made`는 과거형이지만 지난 일이 아니라 지금 사실이 아닌 일을 가정하는 표시예요. 그래서 '실제로는 그렇지 않다'는 결론(`cannot explain`)으로 이어집니다."
+  },
+  {
+   "title": "the same amount found in: 명사 뒤에서 꾸미는 과거분사",
+   "body": "`the same amount found in chicken, beef or salmon`에서 `found`는 문장의 동사가 아니라 앞의 `amount`를 꾸며요. `that is found in`에서 `that is`가 빠진 모양으로, '닭고기, 소고기, 연어에서 발견되는 것과 같은 양'으로 읽으면 됩니다."
+  }
+ ],
+ "answers": [
+  "추수감사절에 많은 미국 가족이 거대한 칠면조 저녁을 함께 먹고, 그 뒤 소파에서 졸음이 오면 사람들은 흔히 칠면조를 탓한다.",
+  "널리 알려진 설명은 칠면조에 트립토판이 들어 있다는 것인데, 트립토판은 몸이 기분을 조절하는 뇌 화학 물질인 세로토닌을 만드는 데 쓰는 아미노산이다.",
+  "하지만 보통의 3온스짜리 칠면조 1인분에는 트립토판이 약 250밀리그램 들어 있으며, 이는 닭고기, 소고기, 연어에 든 양과 대략 같다.",
+  "칠면조가 정말 사람을 졸리게 한다면 연어 한 접시도 똑같이 그럴 테니, 칠면조만으로는 그 졸음을 설명할 수 없다.",
+  "전문가들은 뇌가 세로토닌을 얼마나 만들지 엄격하게 조절하기 때문에, 트립토판을 더 먹는다고 세로토닌이 그냥 늘어나지는 않는다고 짚는다.",
+  "더 그럴듯한 이유는 단순하다. 거대한 식사를 소화하느라 우리가 피곤해지고, 많은 사람이 식사와 함께 술도 마신다는 것이다."
+ ],
+ "advanced": [
+  {
+   "word": "attribute",
+   "meaning": "(~의) 탓으로 돌리다",
+   "confuse": "contribute(기여하다)와 혼동 주의",
+   "example": "Many people **attribute** their sleepiness after dinner to the turkey.",
+   "example_ko": "많은 사람이 저녁 뒤의 졸음을 칠면조 탓으로 돌립니다."
+  },
+  {
+   "word": "lethargic",
+   "meaning": "무기력한, 나른한",
+   "confuse": null,
+   "example": "After a huge holiday meal, people often feel **lethargic** on the sofa.",
+   "example_ko": "거대한 명절 식사 뒤에 사람들은 소파에서 흔히 나른함을 느낍니다."
+  },
+  {
+   "word": "misconception",
+   "meaning": "오해, 잘못된 생각",
+   "confuse": null,
+   "example": "The idea that turkey alone causes drowsiness is a common **misconception**.",
+   "example_ko": "칠면조만으로 졸음이 온다는 생각은 흔한 오해입니다."
+  },
+  {
+   "word": "comparable",
+   "meaning": "비슷한, 비교할 만한",
+   "confuse": "compatible(호환되는)과 혼동 주의",
+   "example": "Chicken and salmon contain a **comparable** amount of tryptophan.",
+   "example_ko": "닭고기와 연어에도 비슷한 양의 트립토판이 들어 있습니다."
+  },
+  {
+   "word": "sedative",
+   "meaning": "진정시키는, 진정제",
+   "confuse": null,
+   "example": "Tryptophan is often called **sedative**, but one serving of turkey has too little to matter.",
+   "example_ko": "트립토판은 흔히 진정 작용을 한다고 하지만, 칠면조 1인분에는 효과를 낼 만큼 들어 있지 않습니다."
+  },
+  {
+   "word": "synthesis",
+   "meaning": "합성",
+   "confuse": null,
+   "example": "The brain keeps serotonin **synthesis** under tight control.",
+   "example_ko": "뇌는 세로토닌 합성을 엄격하게 조절합니다."
+  },
+  {
+   "word": "consumption",
+   "meaning": "섭취, 소비",
+   "confuse": null,
+   "example": "Alcohol **consumption** during a big meal can make people even more tired.",
+   "example_ko": "큰 식사 중의 음주는 사람들을 더 피곤하게 만들 수 있습니다."
+  }
+ ],
+ "source": {
+  "title": "The turkey coma — fact or fiction? (Harvard Health Publishing, 2026-04-24)",
+  "url": "https://www.health.harvard.edu/diet-and-nutrition/the-turkey-coma-fact-or-fiction"
+ },
+ "photo_scene": "Close-up of a golden roasted turkey on a large white plate on a cozy dinner table, with mashed potatoes and green beans beside it, warm evening lamp light.",
+ "levels": {
+  "a": {
+   "sentences": [
+    {
+     "en": "Many Americans eat turkey on Thanksgiving, and later they often **blame** it for feeling sleepy.",
+     "chunks": [
+      [
+       "Many Americans eat turkey",
+       "많은 미국인이 칠면조를 먹는다"
+      ],
+      [
+       "on Thanksgiving,",
+       "추수감사절에"
+      ],
+      [
+       "and later they often **blame** it",
+       "그리고 나중에 흔히 그것을 탓한다"
+      ],
+      [
+       "for feeling sleepy.",
+       "졸린 것에 대해"
+      ]
+     ]
+    },
+    {
+     "en": "People say turkey has **tryptophan**, and the body uses it to make a brain chemical.",
+     "chunks": [
+      [
+       "People say",
+       "사람들은 말한다"
+      ],
+      [
+       "turkey has **tryptophan**,",
+       "칠면조에 트립토판이 있다고"
+      ],
+      [
+       "and the body uses it",
+       "그리고 몸은 그것을 쓴다"
+      ],
+      [
+       "to make a brain chemical.",
+       "뇌 화학 물질을 만드는 데"
+      ]
+     ]
+    },
+    {
+     "en": "But a normal **serving** of turkey has about 250 milligrams, like chicken or salmon.",
+     "chunks": [
+      [
+       "But a normal **serving** of turkey",
+       "하지만 보통 칠면조 1인분에는"
+      ],
+      [
+       "has about 250 milligrams,",
+       "약 250밀리그램이 들어 있다"
+      ],
+      [
+       "like chicken or salmon.",
+       "닭고기나 연어처럼"
+      ]
+     ]
+    },
+    {
+     "en": "When people eat salmon, they don't feel sleepy, so turkey **alone** isn't the answer.",
+     "chunks": [
+      [
+       "When people eat salmon,",
+       "사람들이 연어를 먹을 때"
+      ],
+      [
+       "they don't feel sleepy,",
+       "졸리지 않다"
+      ],
+      [
+       "so turkey **alone**",
+       "그러니 칠면조만으로는"
+      ],
+      [
+       "isn't the answer.",
+       "답이 아니다"
+      ]
+     ]
+    },
+    {
+     "en": "The brain controls its serotonin **tightly**, so extra tryptophan does not help much.",
+     "chunks": [
+      [
+       "The brain controls its serotonin **tightly**,",
+       "뇌는 세로토닌을 엄격하게 조절한다"
+      ],
+      [
+       "so extra tryptophan",
+       "그래서 트립토판을 더 먹어도"
+      ],
+      [
+       "does not help much.",
+       "별 도움이 안 된다"
+      ]
+     ]
+    },
+    {
+     "en": "**Digesting** a huge meal and drinking **alcohol** are the real reasons for feeling tired.",
+     "chunks": [
+      [
+       "**Digesting** a huge meal",
+       "거대한 식사를 소화하는 것과"
+      ],
+      [
+       "and drinking **alcohol**",
+       "술을 마시는 것이"
+      ],
+      [
+       "are the real reasons",
+       "진짜 이유다"
+      ],
+      [
+       "for feeling tired.",
+       "피곤함을 느끼는"
+      ]
+     ]
+    }
+   ],
+   "answers": [
+    "많은 미국인이 추수감사절에 칠면조를 먹고, 나중에 졸리면 흔히 칠면조 탓을 한다.",
+    "사람들은 칠면조에 트립토판이 들어 있고, 몸이 그것으로 뇌 화학 물질을 만든다고 말한다.",
+    "하지만 보통 칠면조 1인분에는 닭고기나 연어처럼 약 250밀리그램이 들어 있다.",
+    "사람들은 연어를 먹을 때 졸리지 않으니, 칠면조 하나만으로는 답이 되지 않는다.",
+    "뇌는 세로토닌을 엄격하게 조절하므로, 트립토판을 더 먹어도 별 도움이 되지 않는다.",
+    "거대한 식사를 소화하는 일과 술을 마시는 일이 피곤함을 느끼는 진짜 이유다."
+   ]
+  }
+ }
+}
