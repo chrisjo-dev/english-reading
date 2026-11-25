@@ -1,0 +1,443 @@
+{
+  "date": "2026-11-26",
+  "category": "society",
+  "topic": "초등 종일 돌봄",
+  "title_ko": "초등학생 종일 돌봄 권리",
+  "headline": "Ganztag für Grundschulkinder",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "explain",
+  "grammar": {
+    "b": [
+      "b-passiv-praeteritum"
+    ],
+    "a": [
+      "a-komparativ"
+    ]
+  },
+  "keywords": [
+    "종일 돌봄",
+    "초등학교",
+    "방과 후",
+    "제도 설명"
+  ],
+  "summary_ko": "독일 초등학생의 종일 돌봄 권리를 다룬 B1~B2 독일어 지문이에요. 2026년 8월부터 1학년에게 먼저 적용되고 해마다 한 학년씩 넓어지지만, 이용할지는 부모가 자유롭게 정해요.",
+  "photo_scene": "Close-up in warm afternoon light of a small child's hands drawing with colored pencils on paper at a low wooden table in a bright after-school classroom, school backpack and toy blocks softly blurred behind.",
+  "source": {
+    "title": "Recht auf Ganztag startet (Bundesregierung)",
+    "url": "https://www.bundesregierung.de/breg-de/aktuelles/recht-auf-ganztagsfoerderung-2386432"
+  },
+  "sentences": [
+    {
+      "en": "Seit dem 1. August 2026 haben Kinder der ersten Klasse in Deutschland einen **Rechtsanspruch** auf ganztägige **Betreuung**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Seit dem 1. August 2026",
+          "2026년 8월 1일부터"
+        ],
+        [
+          "haben Kinder der ersten Klasse",
+          "1학년 아이들은 가집니다"
+        ],
+        [
+          "in Deutschland",
+          "독일에서"
+        ],
+        [
+          "einen **Rechtsanspruch**",
+          "법적 권리를"
+        ],
+        [
+          "auf ganztägige **Betreuung**.",
+          "종일 돌봄에 대한"
+        ]
+      ]
+    },
+    {
+      "en": "Das **Gesetz** dazu wurde bereits 2021 auf den Weg gebracht, und seitdem bauen Bund, Länder und Kommunen gemeinsam neue **Angebote** aus.",
+      "b2": false,
+      "chunks": [
+        [
+          "Das **Gesetz** dazu",
+          "그에 관한 법은"
+        ],
+        [
+          "wurde bereits 2021",
+          "이미 2021년에"
+        ],
+        [
+          "auf den Weg gebracht,",
+          "추진되었고"
+        ],
+        [
+          "und seitdem bauen",
+          "그때부터 늘리고 있습니다"
+        ],
+        [
+          "Bund, Länder und Kommunen",
+          "연방, 주, 지자체가"
+        ],
+        [
+          "gemeinsam",
+          "함께"
+        ],
+        [
+          "neue **Angebote** aus.",
+          "새 프로그램들을"
+        ]
+      ]
+    },
+    {
+      "en": "Der Anspruch wird jedes Jahr um eine **Klassenstufe** erweitert, bis er im Schuljahr 2029/30 für alle vier Jahrgänge der **Grundschule** gilt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Der Anspruch wird",
+          "그 권리는"
+        ],
+        [
+          "jedes Jahr",
+          "매년"
+        ],
+        [
+          "um eine **Klassenstufe** erweitert,",
+          "한 학년씩 넓혀집니다"
+        ],
+        [
+          "bis er im Schuljahr 2029/30",
+          "2029/30학년도에 그것이"
+        ],
+        [
+          "für alle vier Jahrgänge der **Grundschule** gilt.",
+          "초등학교 네 학년 모두에 적용될 때까지"
+        ]
+      ]
+    },
+    {
+      "en": "Mit der **Einführung** des Rechtsanspruchs ist jedoch keine **Pflicht** verbunden, denn Eltern können frei wählen, ob ihr Kind das Angebot nutzt.",
+      "b2": true,
+      "chunks": [
+        [
+          "Mit der **Einführung** des Rechtsanspruchs",
+          "법적 권리의 도입에는"
+        ],
+        [
+          "ist jedoch keine **Pflicht** verbunden,",
+          "그러나 의무가 따르지 않습니다"
+        ],
+        [
+          "denn Eltern können frei wählen,",
+          "부모가 자유롭게 고를 수 있기 때문입니다"
+        ],
+        [
+          "ob ihr Kind das Angebot nutzt.",
+          "자기 아이가 그 프로그램을 이용할지를"
+        ]
+      ]
+    },
+    {
+      "en": "In den Schulferien können seit August auch Angebote der **Jugendarbeit** den Anspruch erfüllen, wenn sie von anerkannten gemeinnützigen **Trägern** kommen.",
+      "b2": false,
+      "chunks": [
+        [
+          "In den Schulferien",
+          "학교 방학에는"
+        ],
+        [
+          "können seit August",
+          "8월부터 할 수 있습니다"
+        ],
+        [
+          "auch Angebote der **Jugendarbeit**",
+          "청소년 활동 프로그램도"
+        ],
+        [
+          "den Anspruch erfüllen,",
+          "그 권리를 채우는 것을"
+        ],
+        [
+          "wenn sie von anerkannten gemeinnützigen **Trägern** kommen.",
+          "그것이 인정받은 공익 운영 기관에서 나온다면"
+        ]
+      ]
+    },
+    {
+      "en": "Die Kinder verbringen die Zeit je nach Ort in der Schule oder im **Hort**, wo sie nach dem **Unterricht** spielen und lernen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Die Kinder verbringen die Zeit",
+          "아이들은 그 시간을 보냅니다"
+        ],
+        [
+          "je nach Ort",
+          "지역에 따라"
+        ],
+        [
+          "in der Schule oder im **Hort**,",
+          "학교나 방과 후 돌봄 교실에서"
+        ],
+        [
+          "wo sie nach dem **Unterricht**",
+          "그곳에서 그들은 수업 뒤에"
+        ],
+        [
+          "spielen und lernen.",
+          "놀고 배웁니다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Rechtsanspruch",
+      "법적 권리 (남성 der, 복수 Rechtsansprüche)"
+    ],
+    [
+      "Betreuung",
+      "돌봄 (여성 die)"
+    ],
+    [
+      "Gesetz",
+      "법률 (중성 das, 복수 Gesetze)"
+    ],
+    [
+      "Angebot",
+      "프로그램, 제공 (중성 das, 복수 Angebote)"
+    ],
+    [
+      "Klassenstufe",
+      "학년 (여성 die, 복수 Klassenstufen)"
+    ],
+    [
+      "Grundschule",
+      "초등학교 (여성 die, 복수 Grundschulen)"
+    ],
+    [
+      "Einführung",
+      "도입 (여성 die)"
+    ],
+    [
+      "Pflicht",
+      "의무 (여성 die, 복수 Pflichten)"
+    ],
+    [
+      "Jugendarbeit",
+      "청소년 활동 (여성 die)"
+    ],
+    [
+      "Träger",
+      "운영 기관 (남성 der, 복수 Träger)"
+    ],
+    [
+      "Hort",
+      "방과 후 돌봄 교실 (남성 der, 복수 Horte)"
+    ],
+    [
+      "Unterricht",
+      "수업 (남성 der)"
+    ]
+  ],
+  "points": [
+    {
+      "title": "과거 수동태 — wurde ... gebracht",
+      "body": "`Das Gesetz dazu wurde bereits 2021 auf den Weg gebracht`는 '그 법은 이미 2021년에 추진되었다'는 뜻입니다. `werden`의 과거형 `wurde`가 둘째 자리에, 과거분사 `gebracht`가 문장 끝에 와서 틀(Verbklammer)을 만듭니다. 누가 했는지보다 법이 '만들어졌다'는 사실이 중요해서 수동태를 썼어요. `etwas auf den Weg bringen`은 '~을 추진하다, 시작하다'라는 관용 표현입니다."
+    },
+    {
+      "title": "명사 문체 — Mit der Einführung ... ist ... verbunden",
+      "body": "`Mit der Einführung des Rechtsanspruchs ist jedoch keine Pflicht verbunden`은 '법적 권리를 도입한다고 해서 의무가 따르지는 않는다'는 뜻입니다. 동사 `einführen` 대신 명사 `die Einführung`을 쓰고, 뒤의 `des Rechtsanspruchs`는 2격(Genitiv)으로 '무엇의 도입인지'를 나타냅니다. `mit etwas verbunden sein`은 '~에 따르다, ~와 결부되다'로 공문서에 자주 나와요."
+    }
+  ],
+  "answers": [
+    "2026년 8월 1일부터 독일의 1학년 아이들은 종일 돌봄을 받을 법적 권리를 가집니다.",
+    "이를 위한 법은 이미 2021년에 추진되었고, 그때부터 연방과 주, 지자체가 함께 새 프로그램을 늘려 왔습니다.",
+    "이 권리는 매년 한 학년씩 넓어져, 2029/30학년도에는 초등학교 네 학년 모두에 적용됩니다.",
+    "하지만 법적 권리가 도입되었다고 의무가 생기는 것은 아니며, 아이가 프로그램을 이용할지는 부모가 자유롭게 고를 수 있습니다.",
+    "8월부터는 학교 방학 동안 인정받은 공익 운영 기관의 청소년 활동 프로그램도 이 권리를 채울 수 있습니다.",
+    "아이들은 지역에 따라 학교나 방과 후 돌봄 교실에서 시간을 보내며, 수업 뒤에 놀고 배웁니다."
+  ],
+  "advanced": [
+    {
+      "word": "der Erstklässler",
+      "meaning": "1학년생",
+      "confuse": "여자아이는 `die Erstklässlerin`입니다.",
+      "example": "Mein Sohn ist seit September **Erstklässler**.",
+      "example_ko": "제 아들은 9월부터 1학년생입니다."
+    },
+    {
+      "word": "die Ganztagsschule",
+      "meaning": "종일제 학교",
+      "confuse": "`die Halbtagsschule`(반일제 학교)와 반대말입니다.",
+      "example": "Unsere **Ganztagsschule** endet erst um 16 Uhr.",
+      "example_ko": "우리 종일제 학교는 오후 4시에야 끝납니다."
+    },
+    {
+      "word": "erfüllen",
+      "meaning": "충족하다, 이행하다",
+      "confuse": "`füllen`(채우다, 붓다)은 물건을 채울 때 씁니다.",
+      "example": "Das Angebot **erfüllt** alle Bedingungen.",
+      "example_ko": "그 프로그램은 모든 조건을 충족합니다."
+    },
+    {
+      "word": "gemeinnützig",
+      "meaning": "공익의, 비영리의",
+      "confuse": null,
+      "example": "Der Verein ist **gemeinnützig** und arbeitet ohne Gewinn.",
+      "example_ko": "그 협회는 비영리 단체로 이익 없이 운영됩니다."
+    },
+    {
+      "word": "die Kommune",
+      "meaning": "지방 자치 단체",
+      "confuse": "일상에서는 `die Gemeinde`, `die Stadt`를 더 자주 씁니다.",
+      "example": "Die **Kommune** baut eine neue Mensa für die Schule.",
+      "example_ko": "지자체가 학교에 새 급식실을 짓고 있습니다."
+    },
+    {
+      "word": "der Jahrgang",
+      "meaning": "학년, 연도별 그룹",
+      "confuse": "와인에서는 '빈티지'라는 뜻으로도 씁니다.",
+      "example": "Im neuen **Jahrgang** gibt es drei Klassen.",
+      "example_ko": "새 학년에는 세 반이 있습니다."
+    },
+    {
+      "word": "erweitern",
+      "meaning": "넓히다, 확대하다",
+      "confuse": "`verlängern`(연장하다)은 시간을 늘릴 때 씁니다.",
+      "example": "Die Stadt will das Angebot im Sommer **erweitern**.",
+      "example_ko": "시는 여름에 프로그램을 확대하려고 합니다."
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Seit August 2026 haben Kinder der ersten Klasse einen **Rechtsanspruch** auf **Betreuung**.",
+          "chunks": [
+            [
+              "Seit August 2026",
+              "2026년 8월부터"
+            ],
+            [
+              "haben Kinder der ersten Klasse",
+              "1학년 아이들은 가집니다"
+            ],
+            [
+              "einen **Rechtsanspruch**",
+              "법적 권리를"
+            ],
+            [
+              "auf **Betreuung**.",
+              "돌봄에 대한"
+            ]
+          ]
+        },
+        {
+          "en": "Das **Gesetz** kam schon 2021, und seitdem entstehen neue **Angebote**.",
+          "chunks": [
+            [
+              "Das **Gesetz** kam",
+              "법은 나왔습니다"
+            ],
+            [
+              "schon 2021,",
+              "이미 2021년에"
+            ],
+            [
+              "und seitdem entstehen",
+              "그때부터 생기고 있습니다"
+            ],
+            [
+              "neue **Angebote**.",
+              "새 프로그램들이"
+            ]
+          ]
+        },
+        {
+          "en": "Höhere **Klassenstufen** folgen später als die erste Klasse, bis 2029/30 alle dabei sind.",
+          "chunks": [
+            [
+              "Höhere **Klassenstufen**",
+              "높은 학년들은"
+            ],
+            [
+              "folgen später",
+              "나중에 뒤따릅니다"
+            ],
+            [
+              "als die erste Klasse,",
+              "1학년보다"
+            ],
+            [
+              "bis 2029/30 alle dabei sind.",
+              "2029/30년에 모두 들어갈 때까지"
+            ]
+          ]
+        },
+        {
+          "en": "Das Angebot ist aber keine **Pflicht**, die Eltern entscheiden frei.",
+          "chunks": [
+            [
+              "Das Angebot ist",
+              "그 프로그램은 ~입니다"
+            ],
+            [
+              "aber keine **Pflicht**,",
+              "하지만 의무가 아닙니다"
+            ],
+            [
+              "die Eltern entscheiden frei.",
+              "부모가 자유롭게 정합니다"
+            ]
+          ]
+        },
+        {
+          "en": "Auch in den Schulferien gibt es Angebote der **Jugendarbeit** von anerkannten **Trägern**.",
+          "chunks": [
+            [
+              "Auch in den Schulferien",
+              "학교 방학에도"
+            ],
+            [
+              "gibt es Angebote der **Jugendarbeit**",
+              "청소년 활동 프로그램이 있습니다"
+            ],
+            [
+              "von anerkannten **Trägern**.",
+              "인정받은 운영 기관의"
+            ]
+          ]
+        },
+        {
+          "en": "Die Kinder bleiben nach dem **Unterricht** in der Schule oder im **Hort**.",
+          "chunks": [
+            [
+              "Die Kinder bleiben",
+              "아이들은 머뭅니다"
+            ],
+            [
+              "nach dem **Unterricht**",
+              "수업 뒤에"
+            ],
+            [
+              "in der Schule oder im **Hort**.",
+              "학교나 방과 후 돌봄 교실에"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "2026년 8월부터 1학년 아이들은 돌봄을 받을 법적 권리가 있습니다.",
+        "법은 이미 2021년에 나왔고, 그때부터 새 프로그램들이 생기고 있습니다.",
+        "높은 학년은 1학년보다 나중에 뒤따르고, 2029/30년에는 모두 포함됩니다.",
+        "하지만 그 프로그램은 의무가 아니고, 부모가 자유롭게 정합니다.",
+        "학교 방학에도 인정받은 운영 기관의 청소년 활동 프로그램이 있습니다.",
+        "아이들은 수업 뒤에 학교나 방과 후 돌봄 교실에 머뭅니다."
+      ]
+    }
+  }
+}
