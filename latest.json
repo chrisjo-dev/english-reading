@@ -1,72 +1,72 @@
 {
  "date": "2026-11-26",
- "words_total": 1064,
+ "words_total": 1076,
  "langs": {
   "en": {
-   "count": 54,
-   "latest": "2026-11-25",
-   "topic": "휴대폰 금지",
+   "count": 55,
+   "latest": "2026-11-26",
+   "topic": "칠면조 식곤증",
    "sentences": [
-    "Many American schools have **banned** phones during the school day, and some ask students to put them in locked **pouches**.",
-    "Researchers at Harvard University have now **analyzed** test **scores** from 3.3 million students at 4,600 schools.",
-    "They found that students in schools with **strict** bans made **progress** in math and reading equal to about two **extra** weeks of school each year.",
-    "The pouches also helped **reduce** the number of phones **in use** on school grounds by about 20 percent."
+    "On Thanksgiving, many American families share a huge turkey dinner, and afterward people often **blame** the bird when they feel **drowsy** on the sofa.",
+    "The popular **explanation** is that turkey contains **tryptophan**, an amino acid that the body uses to make serotonin, a brain chemical that **regulates** mood.",
+    "However, a typical three-ounce **serving** of turkey has about 250 milligrams of it, which is **roughly** the same amount found in chicken, beef or salmon.",
+    "If turkey really made people sleepy, a plate of salmon would do the same thing, so the bird **alone** cannot explain the feeling."
    ],
    "chips": [
-    "5문장",
+    "6문장",
     "B1 위주",
-    "B2 1문장",
+    "B2 2문장",
     "약 3분"
    ],
-   "answer": "미국의 많은 학교가 학교 일과 시간 동안 휴대폰을 금지했고, 일부 학교는 학생들에게 휴대폰을 잠기는 파우치에 넣게 한다.",
+   "answer": "추수감사절에 많은 미국 가족이 거대한 칠면조 저녁을 함께 먹고, 그 뒤 소파에서 졸음이 오면 사람들은 흔히 칠면조를 탓한다.",
    "words": [
     [
-     "banned",
-     "금지했다 (현재완료 have p.p.)"
+     "blame",
+     "탓하다, 나무라다"
     ],
     [
-     "pouches",
-     "주머니들, 파우치 (복수형)"
+     "drowsy",
+     "졸린, 나른한"
     ],
     [
-     "analyzed",
-     "분석했다"
+     "explanation",
+     "설명"
     ],
     [
-     "scores",
-     "점수들 (복수형)"
+     "tryptophan",
+     "트립토판"
     ],
     [
-     "strict",
-     "엄격한"
+     "regulates",
+     "조절하다 (3인칭 단수)"
     ],
     [
-     "progress",
-     "진전, 발전"
+     "serving",
+     "(음식의) 1인분"
     ],
     [
-     "extra",
-     "추가의, 여분의"
+     "roughly",
+     "대략, 거의"
     ],
     [
-     "reduce",
-     "줄이다"
+     "alone",
+     "혼자서, 그것만으로"
     ],
     [
-     "in use",
-     "사용 중인"
+     "tightly",
+     "엄격하게, 단단히"
     ],
     [
-     "modest",
-     "(양이) 크지 않은, 적당한"
+     "boost",
+     "끌어올리다, 늘리다"
     ],
     [
-     "effect",
-     "효과, 영향"
+     "digesting",
+     "소화하기 (동명사형)"
     ],
     [
-     "add up",
-     "쌓이다, 늘어나다"
+     "alcohol",
+     "술, 알코올"
     ]
    ],
    "review": {
@@ -224,6 +224,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-26",
+   "topic": "칠면조 식곤증"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-26",
    "topic": "공통테스트"
@@ -322,11 +327,6 @@
    "lang": "de",
    "day": "2026-11-20",
    "topic": "에티오피아 물쥐"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-19",
-   "topic": "소름"
   }
  ]
 }
