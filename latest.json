@@ -1,6 +1,6 @@
 {
- "date": "2026-11-25",
- "words_total": 1040,
+ "date": "2026-11-26",
+ "words_total": 1052,
  "langs": {
   "en": {
    "count": 54,
@@ -149,70 +149,70 @@
    }
   },
   "de": {
-   "count": 29,
-   "latest": "2026-11-25",
-   "topic": "편지 요금",
+   "count": 30,
+   "latest": "2026-11-26",
+   "topic": "초등 종일 돌봄",
    "sentences": [
-    "Wenn die Bundesnetzagentur **zustimmt**, wird ein **Standardbrief** innerhalb Deutschlands ab Januar 2027 1,15 Euro statt 95 Cent kosten.",
-    "Auch die **Postkarte** soll 1,15 Euro kosten, und für einen **Großbrief** zahlt man dann 2,35 Euro statt 1,80 Euro.",
-    "Als Grund nennt die Post die seit Jahren **sinkende** Zahl der Briefe, während die Kosten für **Personal** und Energie weiter steigen.",
-    "Gleichzeitig ändern sich die **Formate**, denn Briefe dürfen künftig bis zu drei Zentimeter **dick** sein."
+    "Seit dem 1. August 2026 haben Kinder der ersten Klasse in Deutschland einen **Rechtsanspruch** auf ganztägige **Betreuung**.",
+    "Das **Gesetz** dazu wurde bereits 2021 auf den Weg gebracht, und seitdem bauen Bund, Länder und Kommunen gemeinsam neue **Angebote** aus.",
+    "Der Anspruch wird jedes Jahr um eine **Klassenstufe** erweitert, bis er im Schuljahr 2029/30 für alle vier Jahrgänge der **Grundschule** gilt.",
+    "Mit der **Einführung** des Rechtsanspruchs ist jedoch keine **Pflicht** verbunden, denn Eltern können frei wählen, ob ihr Kind das Angebot nutzt."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 4분"
    ],
-   "answer": "연방망청이 승인하면 독일 국내 일반 편지는 2027년 1월부터 95센트가 아니라 1.15유로가 됩니다.",
+   "answer": "2026년 8월 1일부터 독일의 1학년 아이들은 종일 돌봄을 받을 법적 권리를 가집니다.",
    "words": [
     [
-     "Standardbrief",
-     "일반 편지, 표준 규격 우편 (남성 der, 복수 Standardbriefe)"
+     "Rechtsanspruch",
+     "법적 권리 (남성 der, 복수 Rechtsansprüche)"
     ],
     [
-     "zustimmen",
-     "동의하다, 승인하다"
+     "Betreuung",
+     "돌봄 (여성 die)"
     ],
     [
-     "Postkarte",
-     "엽서 (여성 die, 복수 Postkarten)"
+     "Gesetz",
+     "법률 (중성 das, 복수 Gesetze)"
     ],
     [
-     "Großbrief",
-     "대형 우편물 (남성 der, 복수 Großbriefe)"
+     "Angebot",
+     "프로그램, 제공 (중성 das, 복수 Angebote)"
     ],
     [
-     "sinken",
-     "줄다, 떨어지다"
+     "Klassenstufe",
+     "학년 (여성 die, 복수 Klassenstufen)"
     ],
     [
-     "Personal",
-     "인력, 직원 (중성 das)"
+     "Grundschule",
+     "초등학교 (여성 die, 복수 Grundschulen)"
     ],
     [
-     "Format",
-     "규격, 형식 (중성 das, 복수 Formate)"
+     "Einführung",
+     "도입 (여성 die)"
     ],
     [
-     "dick",
-     "두꺼운"
+     "Pflicht",
+     "의무 (여성 die, 복수 Pflichten)"
     ],
     [
-     "wiegen",
-     "무게가 나가다"
+     "Jugendarbeit",
+     "청소년 활동 (여성 die)"
     ],
     [
-     "Ware",
-     "상품, 물건 (여성 die, 복수 Waren)"
+     "Träger",
+     "운영 기관 (남성 der, 복수 Träger)"
     ],
     [
-     "durchschnittlich",
-     "평균의, 보통의"
+     "Hort",
+     "방과 후 돌봄 교실 (남성 der, 복수 Horte)"
     ],
     [
-     "Haushalt",
-     "가구, 가정 (남성 der, 복수 Haushalte)"
+     "Unterricht",
+     "수업 (남성 der)"
     ]
    ],
    "review": {
@@ -223,6 +223,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-26",
+   "topic": "초등 종일 돌봄"
+  },
   {
    "lang": "en",
    "day": "2026-11-25",
@@ -322,11 +327,6 @@
    "lang": "ja",
    "day": "2026-11-19",
    "topic": "최저임금"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-19",
-   "topic": "근무 증명서"
   }
  ]
 }

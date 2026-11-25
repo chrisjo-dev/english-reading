@@ -6,7 +6,15 @@
   <atom:link href="https://dokhaehanip.com/rss.xml" rel="self" type="application/rss+xml"/>
   <description>매일 아침 새로 올라오는 영어, 일본어, 독일어 독해 지문</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 25 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Thu, 26 Nov 2026 07:00:00 +0900</lastBuildDate>
+  <item>
+    <title>초등학생 종일 돌봄 권리: 독일어 독해 B1~B2, 2026년 11월 26일</title>
+    <link>https://dokhaehanip.com/de/2026-11-26/</link>
+    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-26/</guid>
+    <pubDate>Thu, 26 Nov 2026 07:00:00 +0900</pubDate>
+    <category>독일어</category>
+    <description>B1~B2 독일어 읽기 — 초등학생 종일 돌봄 권리. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
+  </item>
   <item>
     <title>휴대폰을 잠근 학교의 성적 변화: 영어 독해 B1~B2, 2026년 11월 25일</title>
     <link>https://dokhaehanip.com/en/2026-11-25/</link>
@@ -238,14 +246,6 @@
     <pubDate>Mon, 16 Nov 2026 07:00:00 +0900</pubDate>
     <category>일본어</category>
     <description>JLPT N3 일본어 읽기 — 어선 퍼레이드와 치어 방류. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
-  </item>
-  <item>
-    <title>제 이름을 찾은 무알코올 글뤼바인: 독일어 독해 B1~B2, 2026년 11월 16일</title>
-    <link>https://dokhaehanip.com/de/2026-11-16/</link>
-    <guid isPermaLink="true">https://dokhaehanip.com/de/2026-11-16/</guid>
-    <pubDate>Mon, 16 Nov 2026 07:00:00 +0900</pubDate>
-    <category>독일어</category>
-    <description>B1~B2 독일어 읽기 — 제 이름을 찾은 무알코올 글뤼바인. 문장별 음성과 모범 해석으로 하루 한 단락을 공부해요.</description>
   </item>
 </channel>
 </rss>
