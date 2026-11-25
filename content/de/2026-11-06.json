@@ -402,7 +402,7 @@
           ]
         },
         {
-          "en": "Man soll einen schlafenden Igel nicht stören, sonst kann er den Winter nicht **überleben**.",
+          "en": "Man soll einen schlafenden Igel nicht stören, sonst kann er den Winter vielleicht nicht **überleben**.",
           "chunks": [
             [
               "Man soll",
@@ -418,11 +418,11 @@
             ],
             [
               "sonst kann er",
-              "그렇지 않으면 그는 ~할 수 없습니다"
+              "그렇지 않으면 그는 ~할 수 있습니다"
             ],
             [
-              "den Winter nicht **überleben**.",
-              "겨울을 살아남지"
+              "den Winter vielleicht nicht **überleben**.",
+              "어쩌면 겨울을 살아남지 못할"
             ]
           ]
         }

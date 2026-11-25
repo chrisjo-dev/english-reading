@@ -241,7 +241,7 @@
     "안개는 맑은 밤에 습한 공기가 크게 식어서 거기에서 아주 작은 물방울이 생길 때 만들어집니다.",
     "가을에 밤이 길어질수록 안개는 더 자주 생기며, 특히 골짜기와 호숫가에서 그렇습니다.",
     "도로에서 안개는 위험한데, 다른 차와 보행자를 아주 늦게야 알아보는 경우가 많기 때문입니다.",
-    "그래서 짙은 안개 속에서는 더 천천히 운전해야 하고, 안개등은 시야가 나쁠 때만 켜야 합니다.",
+    "그래서 짙은 안개 속에서는 더 천천히 운전해야 하고, 안개등은 시야가 나쁠 때만 켤 수 있습니다.",
     "많은 사람들은 이런 흐린 날 집에서 아늑하게 지내며 뜨거운 차를 마시고 초에 불을 켭니다."
   ],
   "advanced": [
@@ -384,7 +384,7 @@
           ]
         },
         {
-          "en": "Autofahrer müssen dann langsam fahren und die **Nebelscheinwerfer** einschalten.",
+          "en": "Autofahrer müssen dann langsam fahren und dürfen bei schlechter Sicht die **Nebelscheinwerfer** einschalten.",
           "chunks": [
             [
               "Autofahrer müssen dann",
@@ -392,15 +392,19 @@
             ],
             [
               "langsam fahren",
-              "천천히 운전하고"
+              "천천히 운전해야"
             ],
             [
-              "und die **Nebelscheinwerfer**",
-              "그리고 안개등을"
+              "und dürfen bei schlechter Sicht",
+              "그리고 시야가 나쁘면 ~해도 됩니다"
+            ],
+            [
+              "die **Nebelscheinwerfer**",
+              "안개등을"
             ],
             [
               "einschalten.",
-              "켜야"
+              "켜도"
             ]
           ]
         },
@@ -431,7 +435,7 @@
         "맑은 밤에는 공기가 차가워지고, 작은 물방울이 생깁니다.",
         "가을에는 밤이 길어서 골짜기에 안개가 자주 낍니다.",
         "안개는 위험합니다. 다른 차를 너무 늦게 알아보는 경우가 많기 때문입니다.",
-        "그럴 때 운전자는 천천히 달리고 안개등을 켜야 합니다.",
+        "그럴 때 운전자는 천천히 달려야 하고, 시야가 나쁘면 안개등을 켜도 됩니다.",
         "많은 사람들은 그럴 때 집에 머물며 차를 마시고 아늑함을 즐깁니다."
       ]
     }
