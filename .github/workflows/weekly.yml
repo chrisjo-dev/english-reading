@@ -95,11 +95,15 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         continue-on-error: true
         with:
+          # 실행을 다시 돌려도 이전 시도의 아티팩트와 이름이 겹치지 않게 시도 번호를 붙인다(겹치면 Multiple artifacts 로 실패)
+          name: github-pages-${{ github.run_attempt }}
           path: _site
 
       - name: Deploy pages
         id: deploy
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
         continue-on-error: true
 
       # 첫 배포가 GitHub 쪽 일시 오류(예: 2026-11-21 "Fetching artifact metadata failed")로 실패하면 잠깐 기다렸다 한 번 더 배포한다.
@@ -115,6 +119,8 @@ jobs:
         id: deploy_retry
         if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
 
       - name: Send email
         if: steps.day.outputs.day == steps.day.outputs.today || inputs.send
