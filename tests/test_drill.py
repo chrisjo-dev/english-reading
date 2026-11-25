@@ -75,6 +75,14 @@ class TestCards(unittest.TestCase):
         c = next(x for x in drill.cards("de", "2026-11-10") if x["w"] == "festlegen")
         self.assertIn("<b>festgelegt</b>", c["ex"])
 
+    def test_de_present_participle_is_same_word(self):
+        self.assertTrue(drill._inflected("sinkende", "sinken"))
+        self.assertTrue(drill._inflected("folgenden", "folgen"))
+        self.assertFalse(drill._inflected("legende", "legen"))
+        c = next(x for x in drill.cards("de", "2026-11-25") if x["w"] == "sinken")
+        self.assertIn("<b>sinkende</b>", c["ex"])
+        self.assertEqual(c["ca"], "sinkende")
+
     def test_every_word_has_an_example(self):
         for f in sorted((ROOT / "content").glob("*/*.json")):
             for c in drill.cards(f.parent.name, f.stem):

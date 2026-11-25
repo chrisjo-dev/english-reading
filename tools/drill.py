@@ -98,6 +98,9 @@ def _inflected(a, b):
     if _same_stem(a, b):
         return True
     for x, y in ((a, b), (b, a)):
+        # 독일어 현재분사(sinken ↔ sinkende). 원형이 여섯 글자 이상일 때만: legen ↔ Legende 를 막는다
+        if len(y) >= 6 and y.endswith("n") and x.startswith(y + "d") and x[len(y) + 1:] in ("", "e", "en", "em", "er", "es"):
+            return True
         for pre in SEP:
             if not (x.startswith(pre + "ge") and y.startswith(pre)):
                 continue
