@@ -12,12 +12,12 @@
   ],
   "sentences": [
     {
-      "en": "In fast jedem deutschen Stadtviertel gibt es eine **Bäckerei**, die täglich frisches Brot und Brötchen für ihre Kundschaft herstellt.",
+      "en": "In vielen deutschen Stadtvierteln gibt es eine **Bäckerei**, die täglich frisches Brot und Brötchen für ihre Kundschaft anbietet.",
       "b2": false,
       "chunks": [
         [
-          "In fast jedem deutschen Stadtviertel",
-          "거의 모든 독일 주거 지역에는"
+          "In vielen deutschen Stadtvierteln",
+          "많은 독일 주거 지역에는"
         ],
         [
           "gibt es",
@@ -36,22 +36,22 @@
           "신선한 빵과 롤빵을"
         ],
         [
-          "für ihre Kundschaft herstellt.",
-          "손님들을 위해 만드는"
+          "für ihre Kundschaft anbietet.",
+          "손님들에게 내놓는"
         ]
       ]
     },
     {
-      "en": "Die meisten **Bäckereien** öffnen schon um sechs Uhr morgens, weil viele Berufstätige ihr Frühstück vor der Arbeit einkaufen.",
+      "en": "Viele **Bäckereien** öffnen schon früh am Morgen, weil viele Berufstätige ihr Frühstück vor der Arbeit einkaufen.",
       "b2": false,
       "chunks": [
         [
-          "Die meisten **Bäckereien**",
-          "대부분의 빵집은"
+          "Viele **Bäckereien**",
+          "많은 빵집은"
         ],
         [
-          "öffnen schon um sechs Uhr morgens,",
-          "이미 아침 6시에 문을 엽니다"
+          "öffnen schon früh am Morgen,",
+          "이미 이른 아침에 문을 엽니다"
         ],
         [
           "weil viele Berufstätige",
@@ -90,15 +90,15 @@
       ]
     },
     {
-      "en": "Der **Bäcker** muss schon in der Nacht aufstehen, damit das frisch gebackene Brot morgens rechtzeitig für die Kunden bereitsteht.",
+      "en": "Viele **Bäcker** müssen schon in der Nacht aufstehen, damit das frisch gebackene Brot morgens rechtzeitig für die Kunden bereitsteht.",
       "b2": false,
       "chunks": [
         [
-          "Der **Bäcker**",
-          "제빵사는"
+          "Viele **Bäcker**",
+          "많은 제빵사는"
         ],
         [
-          "muss schon in der Nacht aufstehen,",
+          "müssen schon in der Nacht aufstehen,",
           "이미 밤중에 일어나야 합니다"
         ],
         [
@@ -116,7 +116,7 @@
       ]
     },
     {
-      "en": "Viele **Stammkunden** würden das handwerklich gebackene Brot dem maschinell hergestellten Supermarktbrot vorziehen, weil der Geschmack deutlich besser ist.",
+      "en": "Viele **Stammkunden** würden das handwerklich gebackene Brot dem maschinell hergestellten Supermarktbrot vorziehen, weil ihnen der Geschmack besser gefällt.",
       "b2": true,
       "chunks": [
         [
@@ -132,12 +132,12 @@
           "기계로 만든 슈퍼마켓 빵보다 더 좋아할 것이며"
         ],
         [
-          "weil der Geschmack",
-          "맛이"
+          "weil ihnen der Geschmack",
+          "그들에게 맛이"
         ],
         [
-          "deutlich besser ist.",
-          "확연히 더 좋기 때문입니다"
+          "besser gefällt.",
+          "더 마음에 들기 때문입니다"
         ]
       ]
     },
@@ -205,11 +205,11 @@
     }
   ],
   "answers": [
-    "거의 모든 독일 주거 지역에는 매일 손님들을 위해 신선한 빵과 롤빵을 만드는 빵집이 있습니다.",
-    "많은 직장인들이 출근 전에 아침을 사기 때문에 대부분의 빵집은 이미 아침 6시에 문을 엽니다.",
+    "많은 독일 주거 지역에는 매일 손님들에게 신선한 빵과 롤빵을 내놓는 빵집이 있습니다.",
+    "많은 직장인들이 출근 전에 아침을 사기 때문에 많은 빵집은 이미 이른 아침에 문을 엽니다.",
     "잘 갖춰진 빵집은 호밀빵과 흰 빵 외에도 모든 입맛에 맞게 롤빵, 케이크, 계절 특선 제품을 제공합니다.",
-    "신선하게 구운 빵이 아침에 손님들을 위해 제때 준비될 수 있도록 제빵사는 이미 밤중에 일어나야 합니다.",
-    "맛이 확연히 더 좋기 때문에 많은 단골 고객들은 기계로 만든 슈퍼마켓 빵보다 수제로 구운 빵을 더 좋아할 것입니다.",
+    "신선하게 구운 빵이 아침에 손님들을 위해 제때 준비될 수 있도록 많은 제빵사는 이미 밤중에 일어나야 합니다.",
+    "맛이 더 마음에 들기 때문에 많은 단골 고객들은 기계로 만든 슈퍼마켓 빵보다 수제로 구운 빵을 더 좋아할 것입니다.",
     "신선하게 구운 빵의 향기가 이미 거리에서부터 손님들을 빵집 안으로 끌어들입니다."
   ],
   "advanced": [
@@ -238,8 +238,8 @@
       "word": "maschinell",
       "meaning": "기계로, 기계식의",
       "confuse": "maschinell vs. handwerklich: `maschinell`은 기계로 대량 생산한 것, `handwerklich`는 손으로 만든 것을 뜻해요.",
-      "example": "**Maschinell** hergestelltes Brot ist günstiger, aber weniger aromatisch.",
-      "example_ko": "기계로 만든 빵은 더 저렴하지만 향이 덜합니다."
+      "example": "**Maschinell** hergestelltes Brot ist oft günstiger.",
+      "example_ko": "기계로 만든 빵은 더 저렴한 경우가 많습니다."
     },
     {
       "word": "bereitstehen",
@@ -264,7 +264,6 @@
     }
   ],
   "source": null,
-  "example": true,
   "levels": {
     "a": {
       "sentences": [
@@ -286,19 +285,19 @@
           ]
         },
         {
-          "en": "Die meisten **Bäckereien** öffnen früh morgens um sechs Uhr.",
+          "en": "Viele **Bäckereien** öffnen früh am Morgen.",
           "chunks": [
             [
-              "Die meisten **Bäckereien**",
-              "대부분의 빵집은"
+              "Viele **Bäckereien**",
+              "많은 빵집은"
             ],
             [
-              "öffnen früh morgens",
-              "이른 아침에 문을 엽니다"
+              "öffnen",
+              "문을 엽니다"
             ],
             [
-              "um sechs Uhr.",
-              "6시에"
+              "früh am Morgen.",
+              "이른 아침에"
             ]
           ]
         },
@@ -320,14 +319,14 @@
           ]
         },
         {
-          "en": "Der **Bäcker** steht schon in der Nacht auf, damit das Brot fertig ist.",
+          "en": "Viele **Bäcker** stehen schon in der Nacht auf, damit das Brot fertig ist.",
           "chunks": [
             [
-              "Der **Bäcker**",
-              "제빵사는"
+              "Viele **Bäcker**",
+              "많은 제빵사는"
             ],
             [
-              "steht schon in der Nacht auf,",
+              "stehen schon in der Nacht auf,",
               "이미 밤중에 일어납니다"
             ],
             [
@@ -345,7 +344,7 @@
             ],
             [
               "kaufen lieber",
-              "더 좋아합니다"
+              "더 즐겨 삽니다"
             ],
             [
               "das handgemachte Brot",
@@ -381,10 +380,10 @@
       ],
       "answers": [
         "많은 독일 주거 지역에는 빵집이 있습니다.",
-        "대부분의 빵집은 이른 아침 6시에 문을 엽니다.",
+        "많은 빵집은 이른 아침에 문을 엽니다.",
         "빵집은 호밀빵 외에도 롤빵과 케이크를 팝니다.",
-        "제빵사는 빵이 준비될 수 있도록 이미 밤중에 일어납니다.",
-        "많은 단골 고객들은 슈퍼마켓 빵보다 수제 빵을 더 좋아합니다.",
+        "많은 제빵사는 빵이 준비될 수 있도록 이미 밤중에 일어납니다.",
+        "많은 단골 고객들은 슈퍼마켓 빵보다 수제 빵을 더 즐겨 삽니다.",
         "신선한 빵의 향기가 사람들을 빵집으로 끌어들입니다."
       ]
     }
