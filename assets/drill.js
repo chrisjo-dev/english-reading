@@ -122,7 +122,7 @@
         // 빈칸 채우기도 보기 없이 직접 쓴다. 쓰는 칸은 따로 두지 않고 예문 속 빈칸이 입력 칸이다(W22, W23). 정답은 예문에 쓰인 꼴(c.ca)이다.
         var cw = k === 'cloze', ansW = cw ? c.ca : (c.ar ? c.ar + ' ' : '') + c.w;
         var input = '<input class="dr-field' + (cw ? ' dr-inb' : '') + (done ? (it.ok ? ' right' : ' wrong') : '') + '" type="text" lang="' + c.l +
-          '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="' + (cw ? '빈칸에 들어갈 단어' : '단어 입력') + '"' + (cw ? ' size="' + blankSize(c) + '"' : ' placeholder="여기에 쓰세요"') +
+          '" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" aria-label="' + (cw ? '빈칸에 들어갈 단어' : '단어 입력') + '"' + (cw ? ' size="' + blankSize(c) + '"' : ' placeholder="여기에 쓰세요"') +
           (done ? ' value="' + esc(it.pick) + '" disabled' : '') + '>';
         h += '<div class="dr-fc fit"><div class="dr-q">' + num + (cw ? '문장 속 빈칸에 바로 쓰세요' : '뜻을 보고 단어를 쓰세요') + '</div><form class="dr-write" autocomplete="off">';
         if (cw) h += '<p class="dr-cloze" lang="' + c.l + '">' + c.cz.replace('<span class="dr-blank"></span>', function () {
