@@ -14,11 +14,14 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = "20"
+VERSION = "21"
 SPEECH = {"en": "en-US", "ja": "ja-JP", "de": "de-DE"}
 DAYS = "월화수목금토일"
 
 RUBY = re.compile(r"\{([^|{}]+)\|([^{}]+)\}")
+# 지난 지문의 동의어 {lang: {day: {단어: [동의어]}}}. content/ 를 고치면 그날이 다시 발행돼 메일이 나가므로 따로 둔다.
+# 새 지문은 content JSON 의 syn 에 쓴다(ROUTINE). 일본어 값은 {漢字|かな} 로 적어 읽기로 써도 알아본다
+SYN_BACKFILL = json.loads((ROOT / "tools" / "synonyms_backfill.json").read_text(encoding="utf-8"))
 
 
 def base(s):
@@ -299,9 +302,12 @@ def cards(lang, day):
         return []
     d = json.loads(p.read_text(encoding="utf-8"))
     words, sents, answers = d.get("words") or [], d.get("sentences") or [], d.get("answers") or []
+    syn = {**SYN_BACKFILL.get(lang, {}).get(day, {}), **(d.get("syn") or {})}
     out = []
     for i, (w, m) in enumerate(words):
         c = {"w": base(w), "m": m}
+        if syn.get(c["w"]):  # 단어 쓰기에서 동의어를 쓰면 틀림 대신 안내한다(drill.js check)
+            c["sy"] = sorted({x for s in syn[c["w"]] for x in (base(s), reading(s)) if x})
         mh = _hint(m, w)
         if mh != m:
             c["mh"] = mh
@@ -464,7 +470,7 @@ CSS = """  .dr-card .desc { font-size: 14px; color: var(--sub); line-height: 1.6
   .dr-qt[aria-pressed=true] { border-color: #2a52d4; background: #eff3fd; color: #2a52d4; }
   .dr-qt[aria-pressed=true] small { color: #2a52d4; opacity: .8; }
   .dr-qmean { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; color: #2a52d4; margin: 8px 0 6px; line-height: 1.35; }
-  .dr-qhint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+  .dr-qhint { font-size: 13.5px; line-height: 1.55; color: #2a52d4; background: #eff3fd; border-radius: 10px; padding: 10px 12px; margin: 12px 0 0; }
   .dr-field { font: inherit; width: 100%; height: 56px; border-radius: 12px; border: 1.5px solid #e2e6ea; background: #fff; padding: 0 16px; font-size: 18px; font-weight: 600; color: var(--ink); }
   .dr-field:focus { outline: none; border-color: #2a52d4; }
   .dr-field::placeholder { color: var(--muted); font-weight: 500; font-size: 16px; }
