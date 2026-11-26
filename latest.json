@@ -1,72 +1,68 @@
 {
  "date": "2026-11-27",
- "words_total": 1100,
+ "words_total": 1111,
  "langs": {
   "en": {
-   "count": 55,
-   "latest": "2026-11-26",
-   "topic": "칠면조 식곤증",
+   "count": 56,
+   "latest": "2026-11-27",
+   "topic": "식물 벽",
    "sentences": [
-    "On Thanksgiving, many American families share a huge turkey dinner, and afterward people often **blame** the bird when they feel **drowsy** on the sofa.",
-    "The popular **explanation** is that turkey contains **tryptophan**, an amino acid that the body uses to make serotonin, a brain chemical that **regulates** mood.",
-    "However, a typical three-ounce **serving** of turkey has about 250 milligrams of it, which is **roughly** the same amount found in chicken, beef or salmon.",
-    "If turkey really made people sleepy, a plate of salmon would do the same thing, so the bird **alone** cannot explain the feeling."
+    "If you have ever felt sleepy in a **stuffy** classroom, part of the reason may be the **carbon dioxide** that people breathe out.",
+    "Researchers at Yale have been testing a wall of plants that could **remove** this gas from **indoor** air.",
+    "The wall is built from small 3D-printed **modules**, and each one holds three plants that grow in water instead of soil.",
+    "Fans push room air through the **roots** and leaves, and the plants **absorb** the gas as they make food from light."
    ],
    "chips": [
     "6문장",
     "B1 위주",
-    "B2 2문장",
+    "B2 1문장",
     "약 3분"
    ],
-   "answer": "추수감사절에 많은 미국 가족이 거대한 칠면조 저녁을 함께 먹고, 그 뒤 소파에서 졸음이 오면 사람들은 흔히 칠면조를 탓한다.",
+   "answer": "답답한 교실에서 졸렸던 적이 있다면, 그 이유 가운데 하나는 사람들이 내쉬는 이산화탄소일지도 모른다.",
    "words": [
     [
-     "blame",
-     "탓하다, 나무라다"
+     "stuffy",
+     "답답한, 숨 막히는"
     ],
     [
-     "drowsy",
-     "졸린, 나른한"
+     "carbon dioxide",
+     "이산화탄소"
     ],
     [
-     "explanation",
-     "설명"
+     "remove",
+     "없애다, 제거하다"
     ],
     [
-     "tryptophan",
-     "트립토판"
+     "indoor",
+     "실내의"
     ],
     [
-     "regulates",
-     "조절하다 (3인칭 단수)"
+     "module",
+     "모듈, 구성 단위"
     ],
     [
-     "serving",
-     "(음식의) 1인분"
+     "root",
+     "뿌리"
     ],
     [
-     "roughly",
-     "대략, 거의"
+     "absorb",
+     "흡수하다"
     ],
     [
-     "alone",
-     "혼자서, 그것만으로"
+     "simulation",
+     "시뮬레이션, 모의실험"
     ],
     [
-     "tightly",
-     "엄격하게, 단단히"
+     "ventilation",
+     "환기"
     ],
     [
-     "boost",
-     "끌어올리다, 늘리다"
+     "sealed",
+     "밀폐된"
     ],
     [
-     "digesting",
-     "소화하기 (동명사형)"
-    ],
-    [
-     "alcohol",
-     "술, 알코올"
+     "chamber",
+     "(특수 목적의) 방, 실"
     ]
    ],
    "review": {
@@ -224,6 +220,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-27",
+   "topic": "식물 벽"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-27",
    "topic": "윙크하는 복어"
@@ -322,11 +323,6 @@
    "lang": "de",
    "day": "2026-11-21",
    "topic": "함부르크 항구 배"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-20",
-   "topic": "사막 충전소"
   }
  ]
 }
