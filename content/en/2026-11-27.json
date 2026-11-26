@@ -1,0 +1,453 @@
+{
+  "date": "2026-11-27",
+  "category": "tech",
+  "topic": "식물 벽",
+  "title_ko": "이산화탄소를 빨아들이는 식물 벽",
+  "headline": "A Plant Wall for Cleaner Indoor Air",
+  "summary_ko": "실내 이산화탄소를 줄이는 식물 벽 연구를 다룬 B1~B2 영어 지문이에요. 컴퓨터 시뮬레이션에서는 모듈 363개로 실험실 이산화탄소를 바깥 수준까지 낮췄지만, 아직 밀폐된 시험실에서만 시험했어요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 3분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-present-perfect-continuous"
+    ],
+    "a": [
+      "a-will"
+    ]
+  },
+  "keywords": [
+    "식물 벽",
+    "실내 공기",
+    "이산화탄소",
+    "기술 소식"
+  ],
+  "sentences": [
+    {
+      "en": "If you have ever felt sleepy in a **stuffy** classroom, part of the reason may be the **carbon dioxide** that people breathe out.",
+      "b2": false,
+      "chunks": [
+        [
+          "If you have ever felt sleepy",
+          "혹시 졸렸던 적이 있다면"
+        ],
+        [
+          "in a **stuffy** classroom,",
+          "답답한 교실에서"
+        ],
+        [
+          "part of the reason",
+          "이유의 일부는"
+        ],
+        [
+          "may be the **carbon dioxide**",
+          "이산화탄소일지도 모른다"
+        ],
+        [
+          "that people breathe out.",
+          "사람들이 내쉬는"
+        ]
+      ]
+    },
+    {
+      "en": "Researchers at Yale have been testing a wall of plants that could **remove** this gas from **indoor** air.",
+      "b2": false,
+      "chunks": [
+        [
+          "Researchers at Yale",
+          "예일대 연구자들은"
+        ],
+        [
+          "have been testing a wall of plants",
+          "식물 벽 하나를 시험해 오고 있다"
+        ],
+        [
+          "that could **remove** this gas",
+          "이 기체를 없앨 수 있는"
+        ],
+        [
+          "from **indoor** air.",
+          "실내 공기에서"
+        ]
+      ]
+    },
+    {
+      "en": "The wall is built from small 3D-printed **modules**, and each one holds three plants that grow in water instead of soil.",
+      "b2": false,
+      "chunks": [
+        [
+          "The wall is built",
+          "그 벽은 만들어진다"
+        ],
+        [
+          "from small 3D-printed **modules**,",
+          "작은 3D 프린팅 모듈들로"
+        ],
+        [
+          "and each one holds three plants",
+          "그리고 하나마다 식물 세 포기가 들어 있다"
+        ],
+        [
+          "that grow in water",
+          "물에서 자라는"
+        ],
+        [
+          "instead of soil.",
+          "흙 대신"
+        ]
+      ]
+    },
+    {
+      "en": "Fans push room air through the **roots** and leaves, and the plants **absorb** the gas as they make food from light.",
+      "b2": false,
+      "chunks": [
+        [
+          "Fans push room air",
+          "팬이 방 공기를 밀어 넣는다"
+        ],
+        [
+          "through the **roots** and leaves,",
+          "뿌리와 잎 사이로"
+        ],
+        [
+          "and the plants **absorb** the gas",
+          "그리고 식물이 그 기체를 흡수한다"
+        ],
+        [
+          "as they make food from light.",
+          "빛으로 양분을 만들면서"
+        ]
+      ]
+    },
+    {
+      "en": "In computer **simulations** of one busy lab, 363 modules were enough to bring carbon dioxide down to outdoor levels, while ordinary **ventilation** can never go lower than that.",
+      "b2": true,
+      "chunks": [
+        [
+          "In computer **simulations**",
+          "컴퓨터 시뮬레이션에서"
+        ],
+        [
+          "of one busy lab,",
+          "붐비는 실험실 한 곳의"
+        ],
+        [
+          "363 modules were enough",
+          "모듈 363개면 충분했다"
+        ],
+        [
+          "to bring carbon dioxide down",
+          "이산화탄소를 낮추기에"
+        ],
+        [
+          "to outdoor levels,",
+          "바깥 수준까지"
+        ],
+        [
+          "while ordinary **ventilation**",
+          "반면 보통의 환기는"
+        ],
+        [
+          "can never go lower than that.",
+          "결코 그보다 더 낮출 수 없다"
+        ]
+      ]
+    },
+    {
+      "en": "However, the system has only been tested in a **sealed** **chamber**, and its grow lights and fans need electricity too.",
+      "b2": false,
+      "chunks": [
+        [
+          "However,",
+          "하지만"
+        ],
+        [
+          "the system has only been tested",
+          "그 장치는 시험만 되어 왔다"
+        ],
+        [
+          "in a **sealed** **chamber**,",
+          "밀폐된 시험실에서"
+        ],
+        [
+          "and its grow lights and fans",
+          "그리고 그 재배등과 팬은"
+        ],
+        [
+          "need electricity too.",
+          "전기도 필요로 한다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "stuffy",
+      "답답한, 숨 막히는"
+    ],
+    [
+      "carbon dioxide",
+      "이산화탄소"
+    ],
+    [
+      "remove",
+      "없애다, 제거하다"
+    ],
+    [
+      "indoor",
+      "실내의"
+    ],
+    [
+      "module",
+      "모듈, 구성 단위"
+    ],
+    [
+      "root",
+      "뿌리"
+    ],
+    [
+      "absorb",
+      "흡수하다"
+    ],
+    [
+      "simulation",
+      "시뮬레이션, 모의실험"
+    ],
+    [
+      "ventilation",
+      "환기"
+    ],
+    [
+      "sealed",
+      "밀폐된"
+    ],
+    [
+      "chamber",
+      "(특수 목적의) 방, 실"
+    ]
+  ],
+  "syn": {
+    "remove": [
+      "eliminate",
+      "get rid of"
+    ],
+    "absorb": [
+      "take in",
+      "soak up"
+    ],
+    "sealed": [
+      "airtight",
+      "closed"
+    ]
+  },
+  "points": [
+    {
+      "title": "현재완료진행 have been testing: 얼마 전부터 지금까지 계속 시험 중",
+      "body": "`have been testing a wall of plants`는 시험을 한 번 하고 끝낸 것이 아니라, 얼마 전에 시작해 지금도 이어지고 있다는 뜻이에요. '시험했다'보다 '시험해 오고 있다'로 옮기면 시간의 흐름이 살아납니다. 마지막 문장의 `has only been tested`(현재완료 수동태)와 비교해 보면, 지금까지 어디서 시험됐는지를 말하는 쪽은 결과에 초점이 있어요."
+    },
+    {
+      "title": "were enough to + 동사: ~하기에 충분했다",
+      "body": "`363 modules were enough to bring carbon dioxide down`은 '모듈 363개면 이산화탄소를 낮추기에 충분했다'는 뜻이에요. `enough`가 명사 뒤가 아니라 be동사 뒤에 와서 '그만큼이면 된다'는 기준을 나타내요. 뒤의 `while`은 '~하는 동안'이 아니라 '반면에'로 앞뒤를 대조합니다."
+    }
+  ],
+  "answers": [
+    "답답한 교실에서 졸렸던 적이 있다면, 그 이유 가운데 하나는 사람들이 내쉬는 이산화탄소일지도 모른다.",
+    "예일대 연구자들은 실내 공기에서 이 기체를 없앨 수 있는 식물 벽을 시험해 오고 있다.",
+    "이 벽은 작은 3D 프린팅 모듈로 만들어지고, 모듈마다 흙 대신 물에서 자라는 식물이 세 포기씩 들어 있다.",
+    "팬이 방 공기를 뿌리와 잎 사이로 밀어 넣으면, 식물은 빛으로 양분을 만들면서 그 기체를 흡수한다.",
+    "붐비는 실험실 한 곳을 컴퓨터로 시뮬레이션해 보니 모듈 363개면 이산화탄소를 바깥 수준까지 낮추기에 충분했는데, 보통의 환기로는 결코 그보다 더 낮출 수 없다.",
+    "하지만 이 장치는 아직 밀폐된 시험실에서만 시험되었고, 재배등과 팬에는 전기도 든다."
+  ],
+  "advanced": [
+    {
+      "word": "poorly ventilated",
+      "meaning": "환기가 잘 안 되는",
+      "confuse": null,
+      "example": "Students often feel sleepy in **poorly ventilated** classrooms.",
+      "example_ko": "학생들은 환기가 잘 안 되는 교실에서 자주 졸음을 느낍니다."
+    },
+    {
+      "word": "extract",
+      "meaning": "뽑아내다, 추출하다",
+      "confuse": "exact(정확한)와 혼동 주의",
+      "example": "The wall is designed to **extract** carbon dioxide from indoor air.",
+      "example_ko": "이 벽은 실내 공기에서 이산화탄소를 뽑아내도록 설계되었습니다."
+    },
+    {
+      "word": "hydroponic",
+      "meaning": "수경 재배의",
+      "confuse": null,
+      "example": "Each module holds three **hydroponic** plants.",
+      "example_ko": "모듈마다 수경 재배 식물이 세 포기씩 들어 있습니다."
+    },
+    {
+      "word": "photosynthesis",
+      "meaning": "광합성",
+      "confuse": null,
+      "example": "The plants take in the gas through **photosynthesis**.",
+      "example_ko": "식물은 광합성을 통해 그 기체를 받아들입니다."
+    },
+    {
+      "word": "concentration",
+      "meaning": "농도",
+      "confuse": null,
+      "example": "The modules lowered the **concentration** of carbon dioxide in the lab.",
+      "example_ko": "모듈들이 실험실의 이산화탄소 농도를 낮췄습니다."
+    },
+    {
+      "word": "airtight",
+      "meaning": "밀폐된, 공기가 통하지 않는",
+      "confuse": null,
+      "example": "So far, the system has only been tested in an **airtight** chamber.",
+      "example_ko": "지금까지 이 장치는 밀폐된 시험실에서만 시험되었습니다."
+    },
+    {
+      "word": "consume",
+      "meaning": "소비하다",
+      "confuse": "assume(가정하다)와 혼동 주의",
+      "example": "The grow lights and fans **consume** extra electricity.",
+      "example_ko": "재배등과 팬이 전기를 추가로 소비합니다."
+    }
+  ],
+  "source": {
+    "title": "Yale study models plant wall needing 363 modules to reach outdoor CO2 (MarketScale, 2026-11-18)",
+    "url": "https://www.marketscale.com/industries/building-management/yales-plant-wall-could-pull-lab-co2-below-outdoor-air-with-363-modules"
+  },
+  "photo_scene": "Close-up in soft morning daylight of a white indoor wall covered with rows of small white 3D-printed plant pots full of green heart-shaped pothos leaves, a bright modern laboratory softly blurred behind.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "A **stuffy** room can make you sleepy because of **carbon dioxide** from our breath.",
+          "chunks": [
+            [
+              "A **stuffy** room",
+              "답답한 방은"
+            ],
+            [
+              "can make you sleepy",
+              "당신을 졸리게 할 수 있다"
+            ],
+            [
+              "because of **carbon dioxide**",
+              "이산화탄소 때문에"
+            ],
+            [
+              "from our breath.",
+              "우리 숨에서 나온"
+            ]
+          ]
+        },
+        {
+          "en": "Researchers at Yale made a plant wall to **remove** this gas from **indoor** air.",
+          "chunks": [
+            [
+              "Researchers at Yale",
+              "예일대 연구자들은"
+            ],
+            [
+              "made a plant wall",
+              "식물 벽을 만들었다"
+            ],
+            [
+              "to **remove** this gas",
+              "이 기체를 없애려고"
+            ],
+            [
+              "from **indoor** air.",
+              "실내 공기에서"
+            ]
+          ]
+        },
+        {
+          "en": "The wall has many small **modules**, and each one has three plants in water.",
+          "chunks": [
+            [
+              "The wall has many small **modules**,",
+              "그 벽에는 작은 모듈이 많다"
+            ],
+            [
+              "and each one has three plants",
+              "그리고 하나마다 식물 세 포기가 있다"
+            ],
+            [
+              "in water.",
+              "물속에"
+            ]
+          ]
+        },
+        {
+          "en": "Fans push air to the **roots** and leaves, and the plants **absorb** the gas.",
+          "chunks": [
+            [
+              "Fans push air",
+              "팬이 공기를 밀어 보낸다"
+            ],
+            [
+              "to the **roots** and leaves,",
+              "뿌리와 잎으로"
+            ],
+            [
+              "and the plants **absorb** the gas.",
+              "그리고 식물이 그 기체를 흡수한다"
+            ]
+          ]
+        },
+        {
+          "en": "In computer **simulations**, 363 modules brought the gas in a lab down to outdoor levels.",
+          "chunks": [
+            [
+              "In computer **simulations**,",
+              "컴퓨터 시뮬레이션에서"
+            ],
+            [
+              "363 modules brought the gas",
+              "모듈 363개가 그 기체를 낮췄다"
+            ],
+            [
+              "in a lab",
+              "실험실 안의"
+            ],
+            [
+              "down to outdoor levels.",
+              "바깥 수준까지"
+            ]
+          ]
+        },
+        {
+          "en": "But they only tested it in a **sealed** room, and the lights and fans will use electricity.",
+          "chunks": [
+            [
+              "But they only tested it",
+              "하지만 그들은 그것을 시험만 했다"
+            ],
+            [
+              "in a **sealed** room,",
+              "밀폐된 방에서"
+            ],
+            [
+              "and the lights and fans",
+              "그리고 조명과 팬은"
+            ],
+            [
+              "will use electricity.",
+              "전기를 쓸 것이다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "답답한 방에서는 우리 숨에서 나온 이산화탄소 때문에 졸릴 수 있다.",
+        "예일대 연구자들은 실내 공기에서 이 기체를 없애려고 식물 벽을 만들었다.",
+        "그 벽에는 작은 모듈이 많고, 모듈마다 물속에 식물이 세 포기씩 있다.",
+        "팬이 공기를 뿌리와 잎으로 보내면 식물이 그 기체를 흡수한다.",
+        "컴퓨터 시뮬레이션에서 모듈 363개가 실험실 안의 그 기체를 바깥 수준까지 낮췄다.",
+        "하지만 그들은 밀폐된 방에서만 시험했고, 조명과 팬은 전기를 쓸 것이다."
+      ]
+    }
+  }
+}
