@@ -98,6 +98,10 @@ def _inflected(a, b):
     if _same_stem(a, b):
         return True
     for x, y in ((a, b), (b, a)):
+        # 영어 철자 변화: study ↔ studies, make ↔ making, plan ↔ planned. 표제어는 원형으로 쓴다(2026-11-26)
+        r, ss = (y[:-1] + "i", ("es", "ed")) if y.endswith("y") else (y[:-1], ("ing",)) if y.endswith("e") else (y + y[-1:], ("ing", "ed"))
+        if len(y) >= 3 and x.startswith(r) and x[len(r):] in ss:
+            return True
         # 독일어 현재분사(sinken ↔ sinkende). 원형이 여섯 글자 이상일 때만: legen ↔ Legende 를 막는다
         if len(y) >= 6 and y.endswith("n") and x.startswith(y + "d") and x[len(y) + 1:] in ("", "e", "en", "em", "er", "es"):
             return True
@@ -151,6 +155,18 @@ def _short(sent, bold=None, lang="en"):
     if bold:
         part = re.sub(r"(?<![\wÄÖÜäöüß])" + re.escape(bold) + r"(?![\wÄÖÜäöüß])", lambda m: f"**{m.group(0)}**", part, count=1)
     return ("… " if a > 0 else "") + part + (" …" if b < len(ch) else "")
+
+
+def _find_forms(word, m, sents):
+    """원형 표제어로 문장을 찾고, 못 찾으면 뜻 괄호의 불규칙 꼴((복수 shelves), (과거 rose))로 찾는다. (문장 번호, 강조 낱말, 찾은 꼴)"""
+    k, b = _find(word, sents)
+    if k is None:
+        for g in re.findall(r"\((?:복수|과거)\s+([^()]+)\)", m):
+            for f in re.split(r"[,\s]+", g.strip()):
+                k, b = _find(f, sents)
+                if k is not None:
+                    return k, b, f
+    return k, b, word
 
 
 def _find(word, sents):
@@ -297,13 +313,13 @@ def cards(lang, day):
         r = reading(w)
         if r and r != c["w"]:
             c["r"] = r
-        k, b = _find(w, sents)
+        k, b, fw = _find_forms(w, m, sents)
         if k is not None:
             raw = sents[k]["en"]
-            span = _target(raw, w, b)
+            span = _target(raw, fw, b)
             if span:  # 카드와 문제에 그 단어만 강조하고, 빈칸 채우기 자료를 만든다
                 cz, ca = _cloze(raw, span)
-                if _fits(ca, w) and not _shown(cz, ca, lang):
+                if _fits(ca, fw) and not _shown(cz, ca, lang):
                     c["cz"], c["ca"] = cz, ca
                 raw = _marked(raw, span)
                 b = base(raw[raw.index("**") + 2:raw.index("**", raw.index("**") + 2)])

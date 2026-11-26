@@ -142,13 +142,25 @@ class TestCards(unittest.TestCase):
         self.assertEqual(len(check_content.check_word_meanings(new, ROOT / "pool" / "de" / "x.json")), 1)
 
     def test_irregular_form_note_allowed_and_hidden_in_write(self):
-        """영어 표제어는 원형, 불규칙 변화만 괄호에 적는다(2026-11-26). 검사는 통과, 단어 쓰기 힌트에서는 답과 닮은 꼴을 가린다."""
+        """영어 표제어는 원형, 불규칙 변화만 괄호에 적는다(2026-11-26). 검사는 통과하고, 답과 앞부분이 같은 꼴(shelves)은 단어 쓰기 힌트에서 가린다."""
         import check_content
         new = {"words": [["shelf", "선반 (복수 shelves)"], ["rise", "오르다 (과거 rose)"], ["gene", "유전자 (gene의 복수)"]]}
         errs = check_content.check_word_meanings(new, ROOT / "pool" / "en" / "x.json")
         self.assertEqual(len(errs), 1)
         self.assertIn("gene", errs[0])
         self.assertEqual(drill._hint("선반 (복수 shelves)", "shelf"), "선반")
+
+    def test_lemma_headword_finds_inflected_sentence_form(self):
+        """원형 표제어가 본문의 활용형을 찾아야 예문과 빈칸 채우기가 생긴다(리뷰 2026-11-26)."""
+        for w, form in (("study", "studies"), ("battery", "batteries"), ("make", "making"), ("begin", "beginning"),
+                        ("plan", "planned"), ("stop", "stopped"), ("gather", "gathered"), ("gene", "genes")):
+            sents = [{"en": "Nothing here."}, {"en": f"They were **{form}** it yesterday."}]
+            self.assertEqual(drill._find(w, sents), (1, form), w)
+            self.assertTrue(drill._fits(form, w), w)
+        sents = [{"en": "The **shelves** were full."}]
+        self.assertEqual(drill._find_forms("shelf", "선반 (복수 shelves)", sents), (0, "shelves", "shelves"))
+        self.assertEqual(drill._find_forms("rise", "오르다 (과거 rose)", [{"en": "Prices **rose** fast."}]), (0, "rose", "rose"))
+        self.assertFalse(drill._inflected("cars", "care"))  # e 를 떼는 건 -ing 일 때만
 
     def test_de_word_found_through_umlaut_form(self):
         c = next(x for x in drill.cards("de", "2026-10-31") if x["w"] == "Hang")  # 문장에는 Hängen
