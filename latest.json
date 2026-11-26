@@ -1,6 +1,6 @@
 {
- "date": "2026-11-26",
- "words_total": 1076,
+ "date": "2026-11-27",
+ "words_total": 1088,
  "langs": {
   "en": {
    "count": 55,
@@ -149,14 +149,14 @@
    }
   },
   "de": {
-   "count": 30,
-   "latest": "2026-11-26",
-   "topic": "초등 종일 돌봄",
+   "count": 31,
+   "latest": "2026-11-27",
+   "topic": "담배 식물 항암제",
    "sentences": [
-    "Seit dem 1. August 2026 haben Kinder der ersten Klasse in Deutschland einen **Rechtsanspruch** auf ganztägige **Betreuung**.",
-    "Das **Gesetz** dazu wurde bereits 2021 auf den Weg gebracht, und seitdem bauen Bund, Länder und Kommunen gemeinsam neue **Angebote** aus.",
-    "Der Anspruch wird jedes Jahr um eine **Klassenstufe** erweitert, bis er im Schuljahr 2029/30 für alle vier Jahrgänge der **Grundschule** gilt.",
-    "Mit der **Einführung** des Rechtsanspruchs ist jedoch keine **Pflicht** verbunden, denn Eltern können frei wählen, ob ihr Kind das Angebot nutzt."
+    "Forschende aus Kopenhagen haben eine **Tabakpflanze** dazu gebracht, Paclitaxel herzustellen, ein wichtiges **Medikament** gegen verschiedene Krebsarten.",
+    "Bisher gewinnt man den Wirkstoff aus der Eibe, und zwar sowohl aus ihrer **Rinde** als auch aus ihren **Nadeln**.",
+    "Bei der Pazifischen Eibe ist diese Methode nicht **nachhaltig**, weil der Baum nach der **Ernte** der Rinde stirbt.",
+    "Das Team hat den vollständigen Herstellungsweg nachgebaut und die nötigen **Gene** mithilfe von **Bakterien** in eine Verwandte des Tabaks übertragen."
    ],
    "chips": [
     "6문장",
@@ -164,55 +164,55 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "2026년 8월 1일부터 독일의 1학년 아이들은 종일 돌봄을 받을 법적 권리를 가집니다.",
+   "answer": "코펜하겐의 연구자들이 담배 식물로 하여금 여러 종류의 암에 쓰는 중요한 약인 파클리탁셀을 만들게 했습니다.",
    "words": [
     [
-     "Rechtsanspruch",
-     "법적 권리 (남성 der, 복수 Rechtsansprüche)"
+     "Tabakpflanze",
+     "담배 식물 (여성 die, 복수 Tabakpflanzen)"
     ],
     [
-     "Betreuung",
-     "돌봄 (여성 die)"
+     "Medikament",
+     "약, 의약품 (중성 das, 복수 Medikamente)"
     ],
     [
-     "Gesetz",
-     "법률 (중성 das, 복수 Gesetze)"
+     "Rinde",
+     "나무껍질 (여성 die)"
     ],
     [
-     "Angebot",
-     "프로그램, 제공 (중성 das, 복수 Angebote)"
+     "Nadel",
+     "바늘잎, 침엽 (여성 die, 복수 Nadeln)"
     ],
     [
-     "Klassenstufe",
-     "학년 (여성 die, 복수 Klassenstufen)"
+     "nachhaltig",
+     "지속 가능한"
     ],
     [
-     "Grundschule",
-     "초등학교 (여성 die, 복수 Grundschulen)"
+     "Ernte",
+     "수확 (여성 die)"
     ],
     [
-     "Einführung",
-     "도입 (여성 die)"
+     "Gen",
+     "유전자 (중성 das, 복수 Gene)"
     ],
     [
-     "Pflicht",
-     "의무 (여성 die, 복수 Pflichten)"
+     "Bakterie",
+     "세균 (여성 die, 복수 Bakterien)"
     ],
     [
-     "Jugendarbeit",
-     "청소년 활동 (여성 die)"
+     "Menge",
+     "양 (여성 die)"
     ],
     [
-     "Träger",
-     "운영 기관 (남성 der, 복수 Träger)"
+     "vergleichbar",
+     "비슷한, 견줄 만한"
     ],
     [
-     "Hort",
-     "방과 후 돌봄 교실 (남성 der, 복수 Horte)"
+     "Fortschritt",
+     "진전, 발전 (남성 der, 복수 Fortschritte)"
     ],
     [
-     "Unterricht",
-     "수업 (남성 der)"
+     "Fachmann",
+     "전문가 (남성 der, 복수 Fachleute)"
     ]
    ],
    "review": {
@@ -223,6 +223,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-27",
+   "topic": "담배 식물 항암제"
+  },
   {
    "lang": "en",
    "day": "2026-11-26",
@@ -322,11 +327,6 @@
    "lang": "ja",
    "day": "2026-11-20",
    "topic": "보이저 1호"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-20",
-   "topic": "에티오피아 물쥐"
   }
  ]
 }
