@@ -141,6 +141,15 @@ class TestCards(unittest.TestCase):
         self.assertEqual(check_content.check_word_meanings(new, ROOT / "content" / "de" / "2026-10-31.json"), [])
         self.assertEqual(len(check_content.check_word_meanings(new, ROOT / "pool" / "de" / "x.json")), 1)
 
+    def test_irregular_form_note_allowed_and_hidden_in_write(self):
+        """영어 표제어는 원형, 불규칙 변화만 괄호에 적는다(2026-11-26). 검사는 통과, 단어 쓰기 힌트에서는 답과 닮은 꼴을 가린다."""
+        import check_content
+        new = {"words": [["shelf", "선반 (복수 shelves)"], ["rise", "오르다 (과거 rose)"], ["gene", "유전자 (gene의 복수)"]]}
+        errs = check_content.check_word_meanings(new, ROOT / "pool" / "en" / "x.json")
+        self.assertEqual(len(errs), 1)
+        self.assertIn("gene", errs[0])
+        self.assertEqual(drill._hint("선반 (복수 shelves)", "shelf"), "선반")
+
     def test_de_word_found_through_umlaut_form(self):
         c = next(x for x in drill.cards("de", "2026-10-31") if x["w"] == "Hang")  # 문장에는 Hängen
         self.assertIn("<b>Hängen</b>", c["ex"])
