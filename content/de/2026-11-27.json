@@ -1,0 +1,475 @@
+{
+  "date": "2026-11-27",
+  "category": "science",
+  "topic": "담배 식물 항암제",
+  "title_ko": "주목 대신 항암제를 만드는 담배 식물",
+  "headline": "Eine Pflanze macht ein Medikament",
+  "summary_ko": "덴마크 코펜하겐의 연구팀이 담배의 친척 식물로 항암제 파클리탁셀을 만든 소식을 다룬 B1~B2 독일어 지문이에요. 지금까지 이 성분은 주목의 껍질과 바늘잎에서 얻었고, 새 방법으로 만든 양은 주목 껍질과 견줄 만해졌어요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "news",
+  "grammar": {
+    "b": [
+      "b-sowohl",
+      "b-obwohl"
+    ],
+    "a": [
+      "a-dass"
+    ]
+  },
+  "keywords": [
+    "담배 식물",
+    "항암제",
+    "주목",
+    "과학 소식"
+  ],
+  "photo_scene": "Close-up of a young green tobacco plant with broad soft leaves growing in a pot on a laboratory bench, a sprig of dark green yew needles lying beside it, bright clean daylight.",
+  "sentences": [
+    {
+      "en": "Forschende aus Kopenhagen haben eine **Tabakpflanze** dazu gebracht, Paclitaxel herzustellen, ein wichtiges **Medikament** gegen verschiedene Krebsarten.",
+      "b2": false,
+      "chunks": [
+        [
+          "Forschende aus Kopenhagen",
+          "코펜하겐의 연구자들이"
+        ],
+        [
+          "haben eine **Tabakpflanze**",
+          "담배 식물을"
+        ],
+        [
+          "dazu gebracht,",
+          "~하게 만들었습니다"
+        ],
+        [
+          "Paclitaxel herzustellen,",
+          "파클리탁셀을 만들도록"
+        ],
+        [
+          "ein wichtiges **Medikament**",
+          "중요한 약인"
+        ],
+        [
+          "gegen verschiedene Krebsarten.",
+          "여러 종류의 암에 쓰는"
+        ]
+      ]
+    },
+    {
+      "en": "Bisher gewinnt man den Wirkstoff aus der Eibe, und zwar sowohl aus ihrer **Rinde** als auch aus ihren **Nadeln**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Bisher gewinnt man",
+          "지금까지 사람들은 얻습니다"
+        ],
+        [
+          "den Wirkstoff",
+          "그 성분을"
+        ],
+        [
+          "aus der Eibe,",
+          "주목에서"
+        ],
+        [
+          "und zwar",
+          "정확히 말하면"
+        ],
+        [
+          "sowohl aus ihrer **Rinde**",
+          "나무껍질에서도"
+        ],
+        [
+          "als auch aus ihren **Nadeln**.",
+          "바늘잎에서도"
+        ]
+      ]
+    },
+    {
+      "en": "Bei der Pazifischen Eibe ist diese Methode nicht **nachhaltig**, weil der Baum nach der **Ernte** der Rinde stirbt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Bei der Pazifischen Eibe",
+          "태평양주목의 경우"
+        ],
+        [
+          "ist diese Methode",
+          "이 방법은"
+        ],
+        [
+          "nicht **nachhaltig**,",
+          "지속 가능하지 않습니다"
+        ],
+        [
+          "weil der Baum",
+          "왜냐하면 나무가"
+        ],
+        [
+          "nach der **Ernte** der Rinde",
+          "껍질을 거둔 뒤에"
+        ],
+        [
+          "stirbt.",
+          "죽기 때문입니다"
+        ]
+      ]
+    },
+    {
+      "en": "Das Team hat den vollständigen Herstellungsweg nachgebaut und die nötigen **Gene** mithilfe von **Bakterien** in eine Verwandte des Tabaks übertragen.",
+      "b2": false,
+      "chunks": [
+        [
+          "Das Team hat",
+          "연구팀은"
+        ],
+        [
+          "den vollständigen Herstellungsweg",
+          "전체 생산 경로를"
+        ],
+        [
+          "nachgebaut",
+          "재현했고"
+        ],
+        [
+          "und die nötigen **Gene**",
+          "필요한 유전자들을"
+        ],
+        [
+          "mithilfe von **Bakterien**",
+          "세균의 도움으로"
+        ],
+        [
+          "in eine Verwandte des Tabaks",
+          "담배의 친척 식물에"
+        ],
+        [
+          "übertragen.",
+          "옮겨 넣었습니다"
+        ]
+      ]
+    },
+    {
+      "en": "Durch weitere Verbesserungen stieg die **Menge** des Wirkstoffs um mehr als das Fünfhundertfache und ist jetzt mit der Eibenrinde **vergleichbar**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Durch weitere Verbesserungen",
+          "추가 개선을 통해"
+        ],
+        [
+          "stieg die **Menge** des Wirkstoffs",
+          "성분의 양이 늘었습니다"
+        ],
+        [
+          "um mehr als das Fünfhundertfache",
+          "500배 넘게"
+        ],
+        [
+          "und ist jetzt",
+          "그리고 이제"
+        ],
+        [
+          "mit der Eibenrinde **vergleichbar**.",
+          "주목 껍질과 견줄 만합니다"
+        ]
+      ]
+    },
+    {
+      "en": "Obwohl das ein großer **Fortschritt** ist, ist die neue Methode laut einem **Fachmann** aus Darmstadt noch zu teuer.",
+      "b2": false,
+      "chunks": [
+        [
+          "Obwohl das",
+          "비록 이것이"
+        ],
+        [
+          "ein großer **Fortschritt** ist,",
+          "큰 진전이지만"
+        ],
+        [
+          "ist die neue Methode",
+          "새 방법은"
+        ],
+        [
+          "laut einem **Fachmann** aus Darmstadt",
+          "다름슈타트의 한 전문가에 따르면"
+        ],
+        [
+          "noch zu teuer.",
+          "아직 너무 비쌉니다"
+        ]
+      ]
+    }
+  ],
+  "words": [
+    [
+      "Tabakpflanze",
+      "담배 식물 (여성 die, 복수 Tabakpflanzen)"
+    ],
+    [
+      "Medikament",
+      "약, 의약품 (중성 das, 복수 Medikamente)"
+    ],
+    [
+      "Rinde",
+      "나무껍질 (여성 die)"
+    ],
+    [
+      "Nadel",
+      "바늘잎, 침엽 (여성 die, 복수 Nadeln)"
+    ],
+    [
+      "nachhaltig",
+      "지속 가능한"
+    ],
+    [
+      "Ernte",
+      "수확 (여성 die)"
+    ],
+    [
+      "Gen",
+      "유전자 (중성 das, 복수 Gene)"
+    ],
+    [
+      "Bakterie",
+      "세균 (여성 die, 복수 Bakterien)"
+    ],
+    [
+      "Menge",
+      "양 (여성 die)"
+    ],
+    [
+      "vergleichbar",
+      "비슷한, 견줄 만한"
+    ],
+    [
+      "Fortschritt",
+      "진전, 발전 (남성 der, 복수 Fortschritte)"
+    ],
+    [
+      "Fachmann",
+      "전문가 (남성 der, 복수 Fachleute)"
+    ]
+  ],
+  "syn": {
+    "Medikament": [
+      "Arzneimittel"
+    ],
+    "Fachmann": [
+      "Experte"
+    ],
+    "Menge": [
+      "Ausbeute"
+    ]
+  },
+  "points": [
+    {
+      "title": "sowohl ... als auch — 둘 다 해당할 때",
+      "body": "`sowohl aus ihrer Rinde als auch aus ihren Nadeln`은 '껍질에서도, 바늘잎에서도'라는 뜻이에요. `sowohl`이 첫 번째 것 앞에, `als auch`가 두 번째 것 앞에 와서 둘이 모두 해당한다는 것을 강조합니다. 여기서는 두 부분이 모두 `aus` + 3격(`ihrer Rinde`, `ihren Nadeln`)이라 형태가 나란히 맞춰져 있어요."
+    },
+    {
+      "title": "dazu bringen, ... zu + 부정사",
+      "body": "`haben eine Tabakpflanze dazu gebracht, Paclitaxel herzustellen`에서 `jemanden dazu bringen, etwas zu tun`은 '누구를 ~하게 만들다'라는 구조예요. `dazu`가 뒤의 zu 부정사를 미리 가리킵니다. 분리동사 `herstellen`은 zu 부정사에서 `zu`가 전철과 어간 사이에 들어가 `herzustellen`이 돼요."
+    }
+  ],
+  "answers": [
+    "코펜하겐의 연구자들이 담배 식물로 하여금 여러 종류의 암에 쓰는 중요한 약인 파클리탁셀을 만들게 했습니다.",
+    "지금까지 이 성분은 주목에서, 정확히는 그 껍질과 바늘잎 모두에서 얻어 왔습니다.",
+    "태평양주목의 경우 껍질을 거두고 나면 나무가 죽기 때문에 이 방법은 지속 가능하지 않습니다.",
+    "연구팀은 전체 생산 경로를 재현하고, 필요한 유전자들을 세균의 도움으로 담배의 친척 식물에 옮겨 넣었습니다.",
+    "추가 개선을 통해 성분의 양이 500배 넘게 늘어 이제 주목 껍질과 견줄 만한 수준이 되었습니다.",
+    "이것은 큰 진전이지만, 다름슈타트의 한 전문가에 따르면 새 방법은 아직 너무 비쌉니다."
+  ],
+  "advanced": [
+    {
+      "word": "der Wirkstoff",
+      "meaning": "유효 성분",
+      "confuse": "약 전체는 `das Medikament`, 그 안에서 효과를 내는 물질이 `der Wirkstoff`예요.",
+      "example": "Der **Wirkstoff** wird aus einer Pflanze gewonnen.",
+      "example_ko": "그 유효 성분은 식물에서 얻습니다."
+    },
+    {
+      "word": "gewinnen",
+      "meaning": "얻다, 추출하다",
+      "confuse": "'이기다'라는 뜻도 있어서, `aus` + 3격과 함께 쓰이면 '~에서 얻다'로 읽어요.",
+      "example": "Man **gewinnt** Öl aus Oliven.",
+      "example_ko": "사람들은 올리브에서 기름을 얻습니다."
+    },
+    {
+      "word": "die Ausbeute",
+      "meaning": "수확량, 수율",
+      "confuse": null,
+      "example": "Die **Ausbeute** war viel höher als erwartet.",
+      "example_ko": "수율이 예상보다 훨씬 높았습니다."
+    },
+    {
+      "word": "gentechnisch",
+      "meaning": "유전공학적인",
+      "confuse": "`gentechnisch verändert`(유전자 변형된)로 자주 씁니다.",
+      "example": "Die Pflanze wurde **gentechnisch** verändert.",
+      "example_ko": "그 식물은 유전공학적으로 변형되었습니다."
+    },
+    {
+      "word": "die Heilpflanze",
+      "meaning": "약용 식물",
+      "confuse": null,
+      "example": "Kamille ist eine bekannte **Heilpflanze**.",
+      "example_ko": "카밀레는 잘 알려진 약용 식물입니다."
+    },
+    {
+      "word": "kostengünstig",
+      "meaning": "비용이 적게 드는, 저렴한",
+      "confuse": "`billig`는 '싸구려'라는 느낌이 있을 수 있고, `kostengünstig`는 중립적인 말이에요.",
+      "example": "Die Firma sucht eine **kostengünstige** Lösung.",
+      "example_ko": "그 회사는 비용이 적게 드는 해결책을 찾고 있습니다."
+    },
+    {
+      "word": "die Nebenwirkung",
+      "meaning": "부작용",
+      "confuse": null,
+      "example": "Jedes Medikament kann **Nebenwirkungen** haben.",
+      "example_ko": "모든 약은 부작용이 있을 수 있습니다."
+    }
+  ],
+  "source": {
+    "title": "Krebsmedikament erfolgreich in Tabakpflanze hergestellt (wissenschaft.de)",
+    "url": "https://wissenschaft.de/artikel/krebsmedikament-erfolgreich-in-tabakpflanze-hergestellt"
+  },
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Eine **Tabakpflanze** stellt jetzt ein wichtiges **Medikament** gegen Krebs her.",
+          "chunks": [
+            [
+              "Eine **Tabakpflanze**",
+              "담배 식물이"
+            ],
+            [
+              "stellt jetzt",
+              "이제 만듭니다"
+            ],
+            [
+              "ein wichtiges **Medikament**",
+              "중요한 약을"
+            ],
+            [
+              "gegen Krebs her.",
+              "암에 쓰는"
+            ]
+          ]
+        },
+        {
+          "en": "Bisher holt man den Stoff aus der **Rinde** und den **Nadeln** der Eibe.",
+          "chunks": [
+            [
+              "Bisher holt man",
+              "지금까지 사람들은 얻습니다"
+            ],
+            [
+              "den Stoff",
+              "그 물질을"
+            ],
+            [
+              "aus der **Rinde** und den **Nadeln**",
+              "껍질과 바늘잎에서"
+            ],
+            [
+              "der Eibe.",
+              "주목의"
+            ]
+          ]
+        },
+        {
+          "en": "Das ist nicht **nachhaltig**, denn manche Eiben sterben nach der **Ernte**.",
+          "chunks": [
+            [
+              "Das ist",
+              "그것은"
+            ],
+            [
+              "nicht **nachhaltig**,",
+              "지속 가능하지 않습니다"
+            ],
+            [
+              "denn manche Eiben sterben",
+              "왜냐하면 어떤 주목은 죽기 때문입니다"
+            ],
+            [
+              "nach der **Ernte**.",
+              "수확 뒤에"
+            ]
+          ]
+        },
+        {
+          "en": "Das Team hat die nötigen **Gene** mit **Bakterien** in die Pflanze gebracht.",
+          "chunks": [
+            [
+              "Das Team hat",
+              "연구팀은"
+            ],
+            [
+              "die nötigen **Gene**",
+              "필요한 유전자들을"
+            ],
+            [
+              "mit **Bakterien**",
+              "세균으로"
+            ],
+            [
+              "in die Pflanze gebracht.",
+              "식물 안에 넣었습니다"
+            ]
+          ]
+        },
+        {
+          "en": "Die **Menge** ist jetzt 500-mal größer und mit der Eibe **vergleichbar**.",
+          "chunks": [
+            [
+              "Die **Menge**",
+              "양은"
+            ],
+            [
+              "ist jetzt 500-mal größer",
+              "이제 500배 더 많고"
+            ],
+            [
+              "und mit der Eibe **vergleichbar**.",
+              "주목과 비슷합니다"
+            ]
+          ]
+        },
+        {
+          "en": "Ein **Fachmann** sagt, dass die Methode noch zu teuer ist.",
+          "chunks": [
+            [
+              "Ein **Fachmann** sagt,",
+              "한 전문가는 말합니다"
+            ],
+            [
+              "dass die Methode",
+              "그 방법이"
+            ],
+            [
+              "noch zu teuer ist.",
+              "아직 너무 비싸다고"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "담배 식물이 이제 암에 쓰는 중요한 약을 만듭니다.",
+        "지금까지 사람들은 그 물질을 주목의 껍질과 바늘잎에서 얻었습니다.",
+        "그것은 지속 가능하지 않습니다. 어떤 주목은 수확 뒤에 죽기 때문입니다.",
+        "연구팀은 필요한 유전자들을 세균으로 식물 안에 넣었습니다.",
+        "양은 이제 500배 더 많아져서 주목과 비슷합니다.",
+        "한 전문가는 그 방법이 아직 너무 비싸다고 말합니다."
+      ]
+    }
+  }
+}
