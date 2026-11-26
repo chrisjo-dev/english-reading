@@ -24,6 +24,7 @@
   비축분과 비축분으로 바꾼 날(from_pool)은 5~7개로 쓰므로 보지 않는다.
 - 오류: 주요 단어(words)의 뜻 괄호에 그 단어나 변형이 들어 있는 경우. 예: ["Ufer", "물가 (das Ufer)"], ["genes", "유전자들 (gene의 복수)"].
   단어 쓰기 문제의 힌트에 답이 보인다. WORD_HINT_FROM 이후 지문과 모든 비축분에 적용.
+- 오류: 동의어(syn, tools/synonyms_backfill.json)의 열쇠가 그날 단어에 없거나, 값이 글자 목록이 아니거나, 그 단어 자신이 든 경우.
 """
 import datetime as dt
 import json
@@ -178,6 +179,7 @@ def check(path):
     errors += check_example_ko(c, path)
     errors += overlap(path, c)
     errors += check_word_meanings(c, path)
+    errors += check_synonyms(c, path)
     errors += check_word_count(c, path)
     errors += check_duplicate_meanings(c, path)
     errors += check_de_noun_gender(c, path)
@@ -414,6 +416,25 @@ def check_word_meanings(c, path):
         if drill._hint(m_clean, w[0]) != m_clean:
             out.append(f"words: '{w[0]}' 의 뜻 괄호에 그 단어가 들어 있어 단어 쓰기 힌트에 답이 보여요: {w[1]}. "
                        "관사는 '(중성 das)'처럼 관사만 적고, 단어는 원형으로 쓰세요. 불규칙 변화만 '(복수 shelves)', '(과거 rose)'처럼 적습니다.")
+    return out
+
+
+def check_synonyms(c, path):
+    """동의어(content 의 syn, 지난 지문은 tools/synonyms_backfill.json). 열쇠가 그날 단어에 없으면 아무 일도 안 일어나 조용히 묻힌다."""
+    import drill  # noqa: PLC0415
+    lang, day = path.parent.name, path.stem
+    heads = {drill.base(w[0]) for w in c.get("words", []) if w}
+    out = []
+    # 지난 지문 동의어는 실제 content/ 지문에만 붙는다(시험용 임시 지문은 같은 날짜라도 단어가 다르다)
+    back = drill.SYN_BACKFILL.get(lang, {}).get(day) if path.resolve().parent.parent == drill.ROOT / "content" else None
+    for where, syn in (("syn", c.get("syn")), ("synonyms_backfill.json", back)):
+        for w, vs in (syn or {}).items():
+            if w not in heads:
+                out.append(f"{where}: '{w}' 는 그날 주요 단어(words)에 없어요. 단어를 표기 그대로(일본어는 한자만) 쓰세요.")
+            elif not isinstance(vs, list) or not vs or not all(isinstance(v, str) and v.strip() for v in vs):
+                out.append(f"{where}: '{w}' 의 동의어는 글자 목록이어야 해요: {vs}")
+            elif any(drill.base(v).lower() == w.lower() for v in vs):
+                out.append(f"{where}: '{w}' 의 동의어에 그 단어 자신이 들어 있어요(정답이 안내로 바뀝니다).")
     return out
 
 

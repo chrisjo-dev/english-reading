@@ -261,6 +261,11 @@
     var near = c.l !== 'ja' && rk.length >= 6 && dist(rt, rk) <= 1 && !(c.l === 'de' && fold(rt) === fold(rk));
     return { ok: near, near: near };
   }
+  // 입력이 동의어(c.sy)인지. 빈칸은 예문 속 꼴로, 예전 표제어는 복수형으로 쓰여 있어 흔한 어미를 붙인 꼴까지 본다(portion → portions)
+  function synOf(c, v) {
+    var t = norm(v, c.l), ends = c.l !== 'ja' ? ['', 's', 'es', 'ed', 'd', 'ing', 'e', 'en', 'er', 'n'] : [''];
+    return (c.sy || []).filter(function (s) { return ends.some(function (e) { return norm(s, c.l) + e === t; }); })[0];
+  }
   function answer(it, v, ok, near) {
     it.pick = v; it.ok = ok; it.near = !!near;
     if (it.first === null) it.first = ok;
@@ -274,10 +279,11 @@
     if (!f || f.disabled) return;
     if (!f.value.trim()) return f.focus();
     var g = grade(it.c, f.value, kindOf(it) === 'cloze');
-    // 독일어 명사에서 관사 없이 명사만 쓴 경우: 재시도 허용, 관사 안내 표시
-    if (g.missingArticle) {
+    // 다시 쓰게 하는 두 경우(틀림으로 치지 않는다): 독일어 명사에 관사를 빠뜨림, 같은 뜻의 다른 단어를 씀(시안 W26, W27)
+    var sy = !g.ok && synOf(it.c, f.value);
+    if (g.missingArticle || sy) {
       var ph = root.querySelector('.dr-qhint');
-      if (ph) { ph.textContent = '관사도 함께 써 주세요 (예: der …)'; ph.hidden = false; }
+      if (ph) { ph.textContent = sy ? sy + '도 같은 뜻이에요. 이번 지문에 나온 단어는 따로 있어요. 다시 써 보세요.' : '관사도 함께 써 주세요 (예: der …)'; ph.hidden = false; }
       f.select();
       return;
     }
@@ -471,7 +477,7 @@
       if (!rec) { rec = {}; rec.s = 0; rec.due = add(t, 1); }
       else if (it.wrong > 0) { rec.s = 0; rec.due = add(t, 1); }
       else if (rec.due && rec.due <= t) { rec.s = (rec.s || 0) + 1; rec.due = rec.s >= INT.length ? null : add(t, INT[rec.s]); }
-      ['k', 'l', 'd', 'w', 'r', 'm', 'mh', 'ex', 'sh', 'ek', 'au', 'sa', 'alts'].forEach(function (f) { if (c[f] != null) rec[f] = c[f]; });
+      ['k', 'l', 'd', 'w', 'r', 'm', 'mh', 'ex', 'sh', 'ek', 'au', 'sa', 'alts', 'sy'].forEach(function (f) { if (c[f] != null) rec[f] = c[f]; });
       rec.x = it.wrong; rec.t = now;
       db.items[c.k] = rec;
     });

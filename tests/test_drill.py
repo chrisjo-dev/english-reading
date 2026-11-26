@@ -150,6 +150,22 @@ class TestCards(unittest.TestCase):
         self.assertIn("gene", errs[0])
         self.assertEqual(drill._hint("선반 (복수 shelves)", "shelf"), "선반")
 
+    def test_synonyms_reach_cards_and_are_checked(self):
+        """동의어는 카드 sy 로 간다(지난 지문은 synonyms_backfill.json, 새 지문은 content 의 syn). 일본어는 읽기도 함께(2026-11-26)."""
+        import check_content
+        sv = next(x for x in drill.cards("en", "2026-11-26") if x["w"] == "serving")
+        self.assertIn("portion", sv["sy"])
+        jk = next(x for x in drill.cards("ja", "2026-10-13") if x["w"] == "近く")
+        self.assertIn("近所", jk["sy"]); self.assertIn("きんじょ", jk["sy"])
+        # 지난 지문 파일의 날짜와 단어가 모두 실제 지문에 있다(오타면 조용히 묻힌다)
+        for lang, days in drill.SYN_BACKFILL.items():
+            for day in days:
+                p = ROOT / "content" / lang / f"{day}.json"
+                self.assertTrue(p.exists(), p)
+                self.assertEqual(check_content.check_synonyms(json.loads(p.read_text(encoding="utf-8")), p), [], p)
+        bad = {"words": [["serving", "1인분"]], "syn": {"servng": ["portion"], "serving": ["serving"]}}
+        self.assertEqual(len(check_content.check_synonyms(bad, ROOT / "content" / "en" / "2099-01-01.json")), 2)
+
     def test_lemma_headword_finds_inflected_sentence_form(self):
         """원형 표제어가 본문의 활용형을 찾아야 예문과 빈칸 채우기가 생긴다(리뷰 2026-11-26)."""
         for w, form in (("study", "studies"), ("battery", "batteries"), ("make", "making"), ("begin", "beginning"),
