@@ -9,7 +9,7 @@
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 55편
-- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 54편
+- [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 55편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 31편
 
 ## 최근 지문
@@ -20,13 +20,13 @@
 - [영어, 2026-11-22, 전 부서에 잘못 보낸 첫 업무 메일](https://dokhaehanip.com/en/2026-11-22/)
 - [영어, 2026-11-21, 정전된 밤의 촛불 보드게임](https://dokhaehanip.com/en/2026-11-21/)
 - [영어, 2026-11-20, 로봇 팔이 꽂아 주는 전기차 충전기](https://dokhaehanip.com/en/2026-11-20/): 출처 BYD Unveils World's First Integrated Solar, Storage, FLASH and Robotic EV Charging System in Abu Dhabi (SolarQuarter, 2026-11-18)
+- [일본어, 2026-11-27, 눈을 감는 복어의 비밀](https://dokhaehanip.com/ja/2026-11-27/): 출처 Kaikyokan finds pufferfish wink evolved from muscles used to inflate the body (Science Japan, 2026-11-24)
 - [일본어, 2026-11-26, 1월의 대학 입시 공통테스트](https://dokhaehanip.com/ja/2026-11-26/): 출처 大学入試センターの取組について (大学入試センター, 文部科学省)
 - [일본어, 2026-11-25, 아이들의 발명 작품 전시회](https://dokhaehanip.com/ja/2026-11-25/): 출처 報道発表 2026年11月「第69回東京都児童生徒発明くふう展受賞作品90点を決定」 (東京都, 2026-11-24)
 - [일본어, 2026-11-24, 눈에서 소나무를 지키는 유키즈리](https://dokhaehanip.com/ja/2026-11-24/): 출처 兼六園の雪吊りについて (石川県 金沢城・兼六園管理事務所, 2025-10-27)
 - [일본어, 2026-11-23, 역 앞 광장의 햇와인과 바비큐](https://dokhaehanip.com/ja/2026-11-23/): 출처 ＪＲ秋田駅前でワインの新酒とバーベキュー楽しむイベント (NHK, 2026-11-21)
 - [일본어, 2026-11-22, 할머니께 배운 보온 물주머니](https://dokhaehanip.com/ja/2026-11-22/)
 - [일본어, 2026-11-21, 한 량짜리 열차로 가는 호숫가](https://dokhaehanip.com/ja/2026-11-21/)
-- [일본어, 2026-11-20, 빛으로 하루 거리에 닿은 보이저 1호](https://dokhaehanip.com/ja/2026-11-20/): 출처 探査機ボイジャー1号 トラブル発生も「1光日」到達確認 NASA (NHK, 2026-11-20)
 - [독일어, 2026-11-27, 주목 대신 항암제를 만드는 담배 식물](https://dokhaehanip.com/de/2026-11-27/): 출처 Krebsmedikament erfolgreich in Tabakpflanze hergestellt (wissenschaft.de)
 - [독일어, 2026-11-26, 초등학생 종일 돌봄 권리](https://dokhaehanip.com/de/2026-11-26/): 출처 Recht auf Ganztag startet (Bundesregierung)
 - [독일어, 2026-11-25, 1유로를 넘는 독일 편지 요금](https://dokhaehanip.com/de/2026-11-25/): 출처 Deutsche Post AG passt Briefporto und Produkte zum 1. Januar 2027 an (DHL Group)
