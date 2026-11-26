@@ -66,6 +66,11 @@
       root = document.createElement('div'); root.className = 'dr'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true');
       root.addEventListener('click', onClick);
       root.addEventListener('submit', function (e) { e.preventDefault(); if (S) check(); });
+      // 키보드가 올라오면 확인 단추까지 보이게 올린다(작은 휴대폰)
+      root.addEventListener('focusin', function (e) {
+        if (!e.target.classList || !e.target.classList.contains('dr-field')) return;
+        setTimeout(function () { var b = root.querySelector('.dr-write [type=submit]'); if (b) b.scrollIntoView({ block: 'nearest' }); }, 350);
+      });
       root.addEventListener('pointerdown', onDown);
       root.addEventListener('touchstart', onTouchStart, { passive: true });
       root.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -128,15 +133,17 @@
         if (cw) h += '<p class="dr-cloze" lang="' + c.l + '">' + c.cz.replace('<span class="dr-blank"></span>', function () {
             return done ? (it.ok && !it.near ? '' : it.pick ? '<s class="dr-inw">' + esc(it.pick) + '</s>' : '') + '<span class="dr-blank right">' + esc(c.ca) + '</span>' : input;
           }) + '</p>' +
-          (!done ? (c.ek ? '<p class="dr-cko">' + esc(c.ek) + '</p>' : '') + '<p class="dr-qhint">뜻: ' + esc(c.mh || c.m) + '<br>' + hint(c, true) + '</p>' : '');
-        else h += '<div class="dr-qmean">' + esc(c.mh || c.m) + '</div><p class="dr-qhint">' + hint(c) + '</p>' + input;
+          (!done ? '<p class="dr-cko">' + esc(c.ek || '뜻: ' + (c.mh || c.m)) + '</p>' : '');
+        else h += '<div class="dr-qmean">' + esc(c.mh || c.m) + '</div>' + input;
+        // 힌트는 빼고 해석만 둔다. 확인 단추는 form 안 입력 칸 바로 아래에 둬 휴대폰 키보드에 가리지 않게 한다(시안 W24, W25)
+        if (!done) h += '<p class="dr-qhint" hidden></p><button class="dr-btn dr-gap" type="submit">확인</button>';
         h += '</form>';
         if (!done) h += '<button class="dr-skip" type="button" data-act="giveup">모르겠어요</button>';
         else h += verdict(it, k) + '<div class="dr-answer"><div><span class="lb">정답</span><b lang="' + c.l + '">' + esc(ansW) + '</b>' + (c.r && !cw ? '<span class="rd" lang="' + c.l + '">' + esc(c.r) + '</span>' : '') +
           '</div><button class="dr-listen" type="button" data-act="say">' + ICON_SPK + ' <span>듣기</span></button></div>' +
           (cw ? '<div class="dr-ex dr-gap10"><div class="lb">해석</div><p class="en" lang="' + c.l + '">' + (c.ex || '') + '</p>' + (c.ek ? '<p class="ko">' + esc(c.ek) + ' ' + esc(c.w + ': ' + c.m) + '</p>' : '') + '</div>'
             : c.ex ? '<div class="dr-ex dr-gap10"><div class="lb">지문 속 문장</div><p class="en" lang="' + c.l + '">' + c.ex + '</p></div>' : '');
-        h += '</div><div class="dr-acts">' + (done ? nextBtn : '<button class="dr-btn" type="button" data-act="check">확인</button>') + '</div>';
+        h += '</div>' + (done ? '<div class="dr-acts">' + nextBtn + '</div>' : '');
       } else {
         var ans = c.mh || c.m;
         if (!it.opts || it.qk !== k) {
@@ -197,19 +204,6 @@
   function clozeForms(c) { return [c.ca].concat(c.l === 'ja' && c.ca === c.w && c.r ? [c.r] : []); }
   // 빈칸 폭: 힌트로 알려 주는 글자 수에 맞추고 너무 좁거나 넓지 않게
   function blankSize(c) { return Math.max(6, Math.min(18, c.ca.length * (c.l === 'ja' ? 2 : 1) + 2)); }
-  function hint(c, cw) {
-    if (cw) {
-      var f = clozeForms(c), s = f[f.length - 1], n = s.replace(/\s/g, '').length;
-      return (s !== c.ca ? '읽기 ' : '') + '“' + esc(s.charAt(0)) + '”로 시작하는 ' + n + '글자';
-    }
-    // 독일어 명사(ar 있음): 관사 포함 정답이므로 “관사 + 단어” 안내, 첫 글자 힌트
-    if (c.ar) {
-      var n = c.w.replace(/\s/g, '').length;
-      return '관사 + 단어 | “' + esc(c.w.charAt(0)) + '”로 시작하는 ' + n + '글자';
-    }
-    var s = c.l === 'ja' ? (c.r || c.w) : c.w.replace(/\s*\([^)]*\)/g, ''), n = s.replace(/\s/g, '').length;
-    return (c.l === 'ja' ? '읽기 ' : '') + '”' + esc(s.charAt(0)) + '”로 시작하는 ' + n + '글자' + (c.l !== 'ja' && /\s/.test(s.trim()) ? ', 낱말 ' + s.trim().split(/\s+/).length + '개' : '');
-  }
   // 쓰기 채점: 대소문자, 띄어쓰기, 문장부호, 괄호 속 말은 보지 않는다. 독일어는 ae/oe/ue/ss, 일본어는 가타카나와 읽기도 정답.
   function norm(s, l, raw) {
     s = String(s).normalize('NFKC').toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[.,!?'"’`…~〜]/g, '').replace(/\s+/g, ' ').trim();
@@ -283,7 +277,7 @@
     // 독일어 명사에서 관사 없이 명사만 쓴 경우: 재시도 허용, 관사 안내 표시
     if (g.missingArticle) {
       var ph = root.querySelector('.dr-qhint');
-      if (ph) ph.textContent = '관사도 함께 써 주세요 (예: der …)';
+      if (ph) { ph.textContent = '관사도 함께 써 주세요 (예: der …)'; ph.hidden = false; }
       f.select();
       return;
     }
@@ -442,7 +436,6 @@
       var i = +b.getAttribute('data-i');
       return answer(it, i, it.opts[i] === (it.c.mh || it.c.m));
     }
-    if (act === 'check') return check();
     if (act === 'giveup') { if (it.pick == null) answer(it, '', false); return; }
     if (act === 'next') {
       // 카드와 같은 규칙: 틀리면 같은 회차 뒤로, 한 번에 못 맞힌 단어는 연속 2번 맞혀야 빠진다.
