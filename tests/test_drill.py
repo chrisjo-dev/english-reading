@@ -163,8 +163,9 @@ class TestCards(unittest.TestCase):
                 p = ROOT / "content" / lang / f"{day}.json"
                 self.assertTrue(p.exists(), p)
                 self.assertEqual(check_content.check_synonyms(json.loads(p.read_text(encoding="utf-8")), p), [], p)
-        bad = {"words": [["serving", "1인분"]], "syn": {"servng": ["portion"], "serving": ["serving"]}}
-        self.assertEqual(len(check_content.check_synonyms(bad, ROOT / "content" / "en" / "2099-01-01.json")), 2)
+        bad = {"words": [["serving", "1인분"], ["exact", "정확한"], ["accurate", "정확한"]],
+               "syn": {"servng": ["portion"], "serving": ["serving"], "exact": ["accurate"]}}
+        self.assertEqual(len(check_content.check_synonyms(bad, ROOT / "content" / "en" / "2099-01-01.json")), 3)
 
     def test_lemma_headword_finds_inflected_sentence_form(self):
         """원형 표제어가 본문의 활용형을 찾아야 예문과 빈칸 채우기가 생긴다(리뷰 2026-11-26)."""

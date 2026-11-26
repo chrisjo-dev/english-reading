@@ -263,7 +263,7 @@
   }
   // 입력이 동의어(c.sy)인지. 빈칸은 예문 속 꼴로, 예전 표제어는 복수형으로 쓰여 있어 흔한 어미를 붙인 꼴까지 본다(portion → portions)
   function synOf(c, v) {
-    var t = norm(v, c.l), ends = c.l !== 'ja' ? ['', 's', 'es', 'ed', 'd', 'ing', 'e', 'en', 'er', 'n'] : [''];
+    var t = norm(v, c.l), ends = ['', 's', 'es', 'ed', 'd', 'ing', 'e', 'en', 'er', 'n'];
     return (c.sy || []).filter(function (s) { return ends.some(function (e) { return norm(s, c.l) + e === t; }); })[0];
   }
   function answer(it, v, ok, near) {

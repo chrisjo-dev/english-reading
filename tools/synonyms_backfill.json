@@ -42,8 +42,7 @@
     "Nahrung"
    ],
    "austrocknen": [
-    "vertrocknen",
-    "trocknen"
+    "vertrocknen"
    ]
   },
   "2026-10-31": {
@@ -72,7 +71,6 @@
     "Wassertropfen"
    ],
    "abkühlen": [
-    "kühlen",
     "erkalten"
    ],
    "erkennen": [
@@ -288,7 +286,6 @@
     "Ausblick"
    ],
    "Felsen": [
-    "Fels",
     "Stein"
    ],
    "Stufe": [
@@ -383,7 +380,6 @@
     "dauerhaft"
    ],
    "veraltet": [
-    "alt",
     "altmodisch"
    ],
    "verlängern": [
@@ -578,9 +574,6 @@
    ],
    "blühen": [
     "aufblühen"
-   ],
-   "lauwarm": [
-    "warm"
    ]
   },
   "2026-11-25": {
@@ -636,9 +629,6 @@
     "Recht",
     "Vorschrift"
    ],
-   "Hort": [
-    "Betreuung"
-   ],
    "Klassenstufe": [
     "Klasse",
     "Jahrgang"
@@ -654,8 +644,7 @@
     "Betreiber"
    ],
    "Unterricht": [
-    "Stunde",
-    "Schule"
+    "Stunde"
    ]
   }
  },
@@ -730,17 +719,9 @@
    "empathy": [
     "sympathy"
    ],
-   "entries": [
-    "submission",
-    "submissions"
-   ],
    "scattering": [
     "dispersing",
     "spreading"
-   ],
-   "submissions": [
-    "entry",
-    "entries"
    ],
    "submitted": [
     "entered",
@@ -827,9 +808,7 @@
   },
   "2026-10-12": {
    "accurate": [
-    "precise",
-    "exact",
-    "correct"
+    "precise"
    ],
    "correct": [
     "fix",
@@ -837,8 +816,7 @@
     "amend"
    ],
    "exact": [
-    "precise",
-    "accurate"
+    "precise"
    ],
    "improve": [
     "enhance",
@@ -1282,7 +1260,6 @@
     "contrast"
    ],
    "netting": [
-    "net",
     "mesh"
    ],
    "nozzles": [
@@ -1405,9 +1382,6 @@
    "alert": [
     "warning",
     "alarm"
-   ],
-   "burn up": [
-    "burn out"
    ],
    "collapses": [
     "fall down",
@@ -2381,9 +2355,6 @@
    ],
    "楽しみ": [
     "{期待|きたい}"
-   ],
-   "球根": [
-    "{根|ね}"
    ]
   },
   "2026-11-03": {
@@ -2434,12 +2405,6 @@
    "合図": [
     "{信号|しんごう}",
     "サイン"
-   ],
-   "期間": [
-    "{間|あいだ}"
-   ],
-   "気象庁": [
-    "{気象台|きしょうだい}"
    ]
   },
   "2026-11-07": {
@@ -2532,9 +2497,6 @@
    ]
   },
   "2026-11-14": {
-   "やり直す": [
-    "{直|なお}す"
-   ],
    "乾かす": [
     "{乾燥|かんそう}させる"
    ],
@@ -2547,9 +2509,6 @@
    ],
    "焼き物": [
     "{陶器|とうき}"
-   ],
-   "粘土": [
-    "{土|つち}"
    ]
   },
   "2026-11-15": {
@@ -2559,15 +2518,9 @@
    ],
    "喜ぶ": [
     "{嬉|うれ}しがる"
-   ],
-   "温まる": [
-    "{暖|あたた}まる"
    ]
   },
   "2026-11-16": {
-   "とれる": [
-    "{獲|と}れる"
-   ],
    "増える": [
     "{増加|ぞうか}する"
    ],
@@ -2734,12 +2687,6 @@
    ],
    "守る": [
     "{保護|ほご}する"
-   ],
-   "折れる": [
-    "{曲|ま}がる"
-   ],
-   "支える": [
-    "{守|まも}る"
    ],
    "方法": [
     "{手段|しゅだん}",

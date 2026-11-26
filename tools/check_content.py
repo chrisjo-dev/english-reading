@@ -435,6 +435,8 @@ def check_synonyms(c, path):
                 out.append(f"{where}: '{w}' 의 동의어는 글자 목록이어야 해요: {vs}")
             elif any(drill.base(v).lower() == w.lower() for v in vs):
                 out.append(f"{where}: '{w}' 의 동의어에 그 단어 자신이 들어 있어요(정답이 안내로 바뀝니다).")
+            elif heads & {drill.base(v) for v in vs}:
+                out.append(f"{where}: '{w}' 의 동의어 {sorted(heads & {drill.base(v) for v in vs})} 는 그날 다른 카드의 단어예요. 그 카드의 정답이라 빼세요.")
     return out
 
 
