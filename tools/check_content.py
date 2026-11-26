@@ -392,6 +392,7 @@ def check_duplicate_meanings(c, path):
 
 
 _GENDER_BRACKET = re.compile(r'\s*\((?:남성|여성|중성)\b[^()]*\)')  # (남성 der), (여성 die), (중성 das, 복수 …) 등
+_IRREGULAR = re.compile(r'\s*\((?:복수|과거)\s[^()]*\)')  # 영어 불규칙 변화 (복수 shelves), (과거 rose). 문제 화면에서는 drill._hint 가 가린다
 
 
 def check_word_meanings(c, path):
@@ -409,10 +410,10 @@ def check_word_meanings(c, path):
         if len(w) < 2:
             continue
         # 관사 표기 괄호를 제외한 뜻 기준으로 검사: (여성 die), (중성 das, 복수 Blätter) 등은 정상
-        m_clean = _GENDER_BRACKET.sub("", w[1]).strip()
+        m_clean = _IRREGULAR.sub("", _GENDER_BRACKET.sub("", w[1])).strip()
         if drill._hint(m_clean, w[0]) != m_clean:
             out.append(f"words: '{w[0]}' 의 뜻 괄호에 그 단어가 들어 있어 단어 쓰기 힌트에 답이 보여요: {w[1]}. "
-                       "관사는 '(중성 das)'처럼 관사만, 복수형이나 과거형은 '(복수형)', '(과거형)'처럼 단어를 쓰지 말고 적으세요.")
+                       "관사는 '(중성 das)'처럼 관사만 적고, 단어는 원형으로 쓰세요. 불규칙 변화만 '(복수 shelves)', '(과거 rose)'처럼 적습니다.")
     return out
 
 
