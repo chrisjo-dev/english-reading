@@ -89,6 +89,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           USED_PAIRS: ${{ steps.fallback.outputs.used_pairs }}
         run: |
+          # en, ja 는 publish 를 한 번만 부른다. 언어마다 따로 부르면 publish 그룹의 대기 실행이 서로 취소된다.
+          rest=""
           for pair in $USED_PAIRS; do
             lang="${pair%%:*}"; day="${pair#*:}"
             if [ "$lang" = "de" ]; then
@@ -97,10 +99,13 @@ jobs:
               echo "de 오디오+publish 트리거: de-audio.yml day=$day"
               gh workflow run de-audio.yml -f day="$day"
             else
-              echo "publish 트리거: $lang $day"
-              gh workflow run publish.yml -f lang="$lang" -f day="$day"
+              rest="$rest $pair"
             fi
           done
+          if [ -n "$rest" ]; then
+            echo "publish 트리거:$rest"
+            gh workflow run publish.yml -f day="${rest# }"
+          fi
 
       - name: Open issues for used langs
         if: steps.fallback.outputs.used_pairs != ''

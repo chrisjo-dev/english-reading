@@ -17,7 +17,9 @@ on:
         required: true
         default: en
       day:
-        description: "YYYY-MM-DD"
+        # 같은 그룹(publish)의 대기 실행은 하나뿐이라, 여러 번 따로 부르면 앞선 대기 실행이 알림 없이 취소된다.
+        # 그래서 여러 날짜와 언어를 한 실행에 몰아 넘긴다.
+        description: "YYYY-MM-DD. 여러 개는 공백으로 구분하고, 다른 언어는 ja:YYYY-MM-DD 처럼 적는다"
         required: true
       send:
         description: "오늘 날짜가 아니어도 메일 발송"
@@ -62,9 +64,19 @@ jobs:
 
       - name: Pick language and day
         id: pick
+        env:
+          IN_LANG: ${{ inputs.lang }}
+          IN_DAY: ${{ inputs.day }}
         run: |
-          if [ -n "${{ inputs.day }}" ]; then
-            pairs="${{ inputs.lang }}:${{ inputs.day }}"
+          if [ -n "$IN_DAY" ]; then
+            # 입력은 env 로 받아 형식을 확인한 뒤에만 쓴다. 언어가 없는 항목은 lang 입력을 붙인다.
+            pairs=""
+            for item in $IN_DAY; do
+              case "$item" in *:*) ;; *) item="$IN_LANG:$item" ;; esac
+              [[ "$item" =~ ^(en|ja|de):[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || { echo "::error::잘못된 입력: $item"; exit 1; }
+              pairs="$pairs $item"
+            done
+            pairs="${pairs# }"
           else
             # 한 번에 여러 커밋이 push돼도 놓치지 않도록 push 직전 커밋과 비교한다.
             base="${{ github.event.before }}"
