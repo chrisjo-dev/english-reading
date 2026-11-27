@@ -1,16 +1,16 @@
 {
  "date": "2026-11-28",
- "words_total": 1135,
+ "words_total": 1147,
  "langs": {
   "en": {
-   "count": 56,
-   "latest": "2026-11-27",
-   "topic": "식물 벽",
+   "count": 57,
+   "latest": "2026-11-28",
+   "topic": "보호소 봉사",
    "sentences": [
-    "If you have ever felt sleepy in a **stuffy** classroom, part of the reason may be the **carbon dioxide** that people breathe out.",
-    "Researchers at Yale have been testing a wall of plants that could **remove** this gas from **indoor** air.",
-    "The wall is built from small 3D-printed **modules**, and each one holds three plants that grow in water instead of soil.",
-    "Fans push room air through the **roots** and leaves, and the plants **absorb** the gas as they make food from light."
+    "On Saturday morning, Minseo arrived at an animal **shelter** near her apartment for her first day as a **volunteer**.",
+    "A staff member handed her a **leash** and asked her to walk Bori, a small brown dog who had been found on the street.",
+    "At first, Bori was so **shy** that she hid behind the door and **refused** to come out, so Minseo sat down and waited patiently.",
+    "After about ten minutes, the dog slowly came closer, **sniffed** her hand, and began to **wag** her tail, which the staff said was a sign of **trust**."
    ],
    "chips": [
     "6문장",
@@ -18,51 +18,55 @@
     "B2 1문장",
     "약 3분"
    ],
-   "answer": "답답한 교실에서 졸렸던 적이 있다면, 그 이유 가운데 하나는 사람들이 내쉬는 이산화탄소일지도 모른다.",
+   "answer": "토요일 아침, 민서는 봉사자로 일하는 첫날을 맞아 아파트 근처의 동물 보호소에 도착했다.",
    "words": [
     [
-     "stuffy",
-     "답답한, 숨 막히는"
+     "shelter",
+     "보호소, 쉼터"
     ],
     [
-     "carbon dioxide",
-     "이산화탄소"
+     "volunteer",
+     "자원봉사자"
     ],
     [
-     "remove",
-     "없애다, 제거하다"
+     "leash",
+     "(개의) 목줄"
     ],
     [
-     "indoor",
-     "실내의"
+     "shy",
+     "수줍은, 겁이 많은"
     ],
     [
-     "module",
-     "모듈, 구성 단위"
+     "refuse",
+     "거부하다, 거절하다"
     ],
     [
-     "root",
-     "뿌리"
+     "sniff",
+     "냄새를 맡다"
     ],
     [
-     "absorb",
-     "흡수하다"
+     "wag",
+     "(꼬리를) 흔들다"
     ],
     [
-     "simulation",
-     "시뮬레이션, 모의실험"
+     "trust",
+     "신뢰, 믿음"
     ],
     [
-     "ventilation",
-     "환기"
+     "stay close",
+     "가까이 붙어 있다"
     ],
     [
-     "sealed",
-     "밀폐된"
+     "whenever",
+     "~할 때마다"
     ],
     [
-     "chamber",
-     "(특수 목적의) 방, 실"
+     "secretly",
+     "남몰래, 몰래"
+    ],
+    [
+     "scent",
+     "냄새, 체취"
     ]
    ],
    "review": {
@@ -220,6 +224,11 @@
  },
  "recent": [
   {
+   "lang": "en",
+   "day": "2026-11-28",
+   "topic": "보호소 봉사"
+  },
+  {
    "lang": "ja",
    "day": "2026-11-28",
    "topic": "겨울 일루미네이션"
@@ -318,11 +327,6 @@
    "lang": "de",
    "day": "2026-11-22",
    "topic": "겨울철 환기"
-  },
-  {
-   "lang": "en",
-   "day": "2026-11-21",
-   "topic": "정전"
   }
  ]
 }

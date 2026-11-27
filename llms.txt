@@ -8,18 +8,18 @@
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
-- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 56편
+- [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 57편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 56편
 - [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 32편
 
 ## 최근 지문
+- [영어, 2026-11-28, 유기견 보호소에서 보낸 첫 토요일](https://dokhaehanip.com/en/2026-11-28/)
 - [영어, 2026-11-27, 이산화탄소를 빨아들이는 식물 벽](https://dokhaehanip.com/en/2026-11-27/): 출처 Yale study models plant wall needing 363 modules to reach outdoor CO2 (MarketScale, 2026-11-18)
 - [영어, 2026-11-26, 추수감사절 칠면조와 식곤증](https://dokhaehanip.com/en/2026-11-26/): 출처 The turkey coma — fact or fiction? (Harvard Health Publishing, 2026-04-24)
 - [영어, 2026-11-25, 휴대폰을 잠근 학교의 성적 변화](https://dokhaehanip.com/en/2026-11-25/): 출처 Students Made More Math, Reading Progress After Their Schools Banned Phones (Education Week, 2026-11-18)
 - [영어, 2026-11-24, 긁혀도 읽히는 QR 코드](https://dokhaehanip.com/en/2026-11-24/): 출처 Standard QR codes hide three larger squares in their corners so scanners can orient them from any angle (Make Tech Easier, 2026-07-24)
 - [영어, 2026-11-23, 빛으로 하루 거리에 닿은 보이저 1호](https://dokhaehanip.com/en/2026-11-23/): 출처 NASA's Voyager 1 is now so far away that light takes 24 hours to reach it (ScienceDaily, 2026-11-20)
 - [영어, 2026-11-22, 전 부서에 잘못 보낸 첫 업무 메일](https://dokhaehanip.com/en/2026-11-22/)
-- [영어, 2026-11-21, 정전된 밤의 촛불 보드게임](https://dokhaehanip.com/en/2026-11-21/)
 - [일본어, 2026-11-28, 강변에서 본 겨울 일루미네이션](https://dokhaehanip.com/ja/2026-11-28/)
 - [일본어, 2026-11-27, 눈을 감는 복어의 비밀](https://dokhaehanip.com/ja/2026-11-27/): 출처 Kaikyokan finds pufferfish wink evolved from muscles used to inflate the body (Science Japan, 2026-11-24)
 - [일본어, 2026-11-26, 1월의 대학 입시 공통테스트](https://dokhaehanip.com/ja/2026-11-26/): 출처 大学入試センターの取組について (大学入試センター, 文部科学省)
