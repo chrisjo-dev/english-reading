@@ -1,6 +1,6 @@
 {
- "date": "2026-11-27",
- "words_total": 1111,
+ "date": "2026-11-28",
+ "words_total": 1123,
  "langs": {
   "en": {
    "count": 56,
@@ -145,14 +145,14 @@
    }
   },
   "de": {
-   "count": 31,
-   "latest": "2026-11-27",
-   "topic": "담배 식물 항암제",
+   "count": 32,
+   "latest": "2026-11-28",
+   "topic": "프라이부르크 물길",
    "sentences": [
-    "Forschende aus Kopenhagen haben eine **Tabakpflanze** dazu gebracht, Paclitaxel herzustellen, ein wichtiges **Medikament** gegen verschiedene Krebsarten.",
-    "Bisher gewinnt man den Wirkstoff aus der Eibe, und zwar sowohl aus ihrer **Rinde** als auch aus ihren **Nadeln**.",
-    "Bei der Pazifischen Eibe ist diese Methode nicht **nachhaltig**, weil der Baum nach der **Ernte** der Rinde stirbt.",
-    "Das Team hat den vollständigen Herstellungsweg nachgebaut und die nötigen **Gene** mithilfe von **Bakterien** in eine Verwandte des Tabaks übertragen."
+    "An einem grauen Samstag im November kam ich mit dem Zug nach Freiburg und lief in die **Altstadt** mit ihren engen **Gassen**.",
+    "Überall am Rand der Straßen fließen schmale **Rinnen** mit klarem Wasser, die man in Freiburg liebevoll **Bächle** nennt.",
+    "Ein Mann an einem Stand erzählte mir lachend, dass man einen Freiburger **heiraten** muss, wenn man aus Versehen in ein Bächle **tritt**.",
+    "Wenn es jetzt Sommer wäre, würde ich wie viele Kinder meine nackten **Füße** in das kühle Wasser **halten**."
    ],
    "chips": [
     "6문장",
@@ -160,55 +160,55 @@
     "B2 1문장",
     "약 4분"
    ],
-   "answer": "코펜하겐의 연구자들이 담배 식물로 하여금 여러 종류의 암에 쓰는 중요한 약인 파클리탁셀을 만들게 했습니다.",
+   "answer": "11월의 어느 흐린 토요일, 저는 기차를 타고 프라이부르크에 와서 좁은 골목이 이어진 구시가지로 걸어 들어갔습니다.",
    "words": [
     [
-     "Tabakpflanze",
-     "담배 식물 (여성 die, 복수 Tabakpflanzen)"
+     "Altstadt",
+     "구시가지 (여성 die)"
     ],
     [
-     "Medikament",
-     "약, 의약품 (중성 das, 복수 Medikamente)"
+     "Gasse",
+     "골목 (여성 die, 복수 Gassen)"
     ],
     [
-     "Rinde",
-     "나무껍질 (여성 die)"
+     "Rinne",
+     "도랑, 물길 (여성 die, 복수 Rinnen)"
     ],
     [
-     "Nadel",
-     "바늘잎, 침엽 (여성 die, 복수 Nadeln)"
+     "Bächle",
+     "실개천, 시내 (중성 das, 복수 Bächle)"
     ],
     [
-     "nachhaltig",
-     "지속 가능한"
+     "heiraten",
+     "결혼하다"
     ],
     [
-     "Ernte",
-     "수확 (여성 die)"
+     "treten",
+     "밟다, 디디다"
     ],
     [
-     "Gen",
-     "유전자 (중성 das, 복수 Gene)"
+     "Fuß",
+     "발 (남성 der, 복수 Füße)"
     ],
     [
-     "Bakterie",
-     "세균 (여성 die, 복수 Bakterien)"
+     "halten",
+     "담그다, 대다"
     ],
     [
-     "Menge",
-     "양 (여성 die)"
+     "Turm",
+     "탑 (남성 der, 복수 Türme)"
     ],
     [
-     "vergleichbar",
-     "비슷한, 견줄 만한"
+     "Dach",
+     "지붕 (중성 das, 복수 Dächer)"
     ],
     [
-     "Fortschritt",
-     "진전, 발전 (남성 der, 복수 Fortschritte)"
+     "Pension",
+     "민박, 펜션 (여성 die, 복수 Pensionen)"
     ],
     [
-     "Fachmann",
-     "전문가 (남성 der, 복수 Fachleute)"
+     "trocken",
+     "마른, 건조한"
     ]
    ],
    "review": {
@@ -219,6 +219,11 @@
   }
  },
  "recent": [
+  {
+   "lang": "de",
+   "day": "2026-11-28",
+   "topic": "프라이부르크 물길"
+  },
   {
    "lang": "en",
    "day": "2026-11-27",
@@ -318,11 +323,6 @@
    "lang": "ja",
    "day": "2026-11-21",
    "topic": "시골 열차"
-  },
-  {
-   "lang": "de",
-   "day": "2026-11-21",
-   "topic": "함부르크 항구 배"
   }
  ]
 }

@@ -4,13 +4,13 @@
 
 - 다른 표기: 한입독해, 독해 한입, Dokhaehanip
 - 이용료: 무료
-- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-27
+- 갱신: 매일 오전 7시 전후(KST)에 언어별 새 지문, 일요일에는 주간 단어 복습. 마지막 갱신 2026-11-28
 - 소개: https://dokhaehanip.com/about/, 연락처: https://dokhaehanip.com/contact/
 
 ## 언어별 지문
 - [영어 지문 목록](https://dokhaehanip.com/en/): B1~B2 (기초 A2~B1) 영어 읽기, 지금까지 56편
 - [일본어 지문 목록](https://dokhaehanip.com/ja/): JLPT N3 (기초 N4~N5) 일본어 읽기, 지금까지 55편
-- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 31편
+- [독일어 지문 목록](https://dokhaehanip.com/de/): B1~B2 (기초 A2~B1) 독일어 읽기, 지금까지 32편
 
 ## 최근 지문
 - [영어, 2026-11-27, 이산화탄소를 빨아들이는 식물 벽](https://dokhaehanip.com/en/2026-11-27/): 출처 Yale study models plant wall needing 363 modules to reach outdoor CO2 (MarketScale, 2026-11-18)
@@ -27,13 +27,13 @@
 - [일본어, 2026-11-23, 역 앞 광장의 햇와인과 바비큐](https://dokhaehanip.com/ja/2026-11-23/): 출처 ＪＲ秋田駅前でワインの新酒とバーベキュー楽しむイベント (NHK, 2026-11-21)
 - [일본어, 2026-11-22, 할머니께 배운 보온 물주머니](https://dokhaehanip.com/ja/2026-11-22/)
 - [일본어, 2026-11-21, 한 량짜리 열차로 가는 호숫가](https://dokhaehanip.com/ja/2026-11-21/)
+- [독일어, 2026-11-28, 골목마다 물이 흐르는 프라이부르크](https://dokhaehanip.com/de/2026-11-28/)
 - [독일어, 2026-11-27, 주목 대신 항암제를 만드는 담배 식물](https://dokhaehanip.com/de/2026-11-27/): 출처 Krebsmedikament erfolgreich in Tabakpflanze hergestellt (wissenschaft.de)
 - [독일어, 2026-11-26, 초등학생 종일 돌봄 권리](https://dokhaehanip.com/de/2026-11-26/): 출처 Recht auf Ganztag startet (Bundesregierung)
 - [독일어, 2026-11-25, 1유로를 넘는 독일 편지 요금](https://dokhaehanip.com/de/2026-11-25/): 출처 Deutsche Post AG passt Briefporto und Produkte zum 1. Januar 2027 an (DHL Group)
 - [독일어, 2026-11-24, 크리스마스에 꽃 피는 바르바라 가지](https://dokhaehanip.com/de/2026-11-24/): 출처 Barbaratag: So gibt es ein Blütenwunder an Weihnachten (NABU)
 - [독일어, 2026-11-23, 수요일에 문을 연 본 크리스마스 시장](https://dokhaehanip.com/de/2026-11-23/): 출처 Bonner Weihnachtsmarkt lädt ab 18. November in die Innenstadt ein (bonn.de)
 - [독일어, 2026-11-22, 룸메이트가 알려 준 겨울 환기법](https://dokhaehanip.com/de/2026-11-22/)
-- [독일어, 2026-11-21, 승차권 한 장으로 둘러본 함부르크 항구](https://dokhaehanip.com/de/2026-11-21/)
 
 ## 주간 단어 복습
 - [영어 주간 단어 복습, 2026-11-22](https://dokhaehanip.com/en/review/2026-11-22/): 그 주 지문의 주요 단어 80개
