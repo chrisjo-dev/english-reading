@@ -1,0 +1,97 @@
+{
+  "date": "2026-11-28",
+  "category": "culture",
+  "topic": "보호소 봉사",
+  "title_ko": "유기견 보호소에서 보낸 첫 토요일",
+  "summary_ko": "동물 보호소에서 처음 봉사를 한 토요일 아침을 담은 B1~B2 영어 지문이에요. 학습용으로 지어낸 이야기로, 겁 많은 강아지 보리가 천천히 민서에게 마음을 열어요.",
+  "headline": "My First Day at the Animal Shelter",
+  "fit": "life",
+  "grammar": {"b": ["b-going-to"], "a": ["a-gerund"]},
+  "keywords": ["동물 보호소", "봉사활동", "강아지 산책", "첫 경험"],
+  "example": true,
+  "chips": ["6문장", "B1 위주", "B2 1문장", "약 3분"],
+  "sentences": [
+    {"en": "On Saturday morning, Minseo arrived at an animal **shelter** near her apartment for her first day as a **volunteer**.", "b2": false,
+     "chunks": [["On Saturday morning,", "토요일 아침에"], ["Minseo arrived", "민서는 도착했다"], ["at an animal **shelter**", "동물 보호소에"], ["near her apartment", "그녀의 아파트 근처의"], ["for her first day", "첫날을 위해"], ["as a **volunteer**.", "봉사자로서의"]]},
+    {"en": "A staff member handed her a **leash** and asked her to walk Bori, a small brown dog who had been found on the street.", "b2": false,
+     "chunks": [["A staff member handed her", "직원 한 명이 그녀에게 건넸다"], ["a **leash**", "목줄을"], ["and asked her", "그리고 그녀에게 부탁했다"], ["to walk Bori,", "보리를 산책시켜 달라고"], ["a small brown dog", "작은 갈색 개인"], ["who had been found", "발견되었던"], ["on the street.", "길에서"]]},
+    {"en": "At first, Bori was so **shy** that she hid behind the door and **refused** to come out, so Minseo sat down and waited patiently.", "b2": false,
+     "chunks": [["At first,", "처음에"], ["Bori was so **shy**", "보리는 너무 겁이 많아서"], ["that she hid", "숨었다"], ["behind the door", "문 뒤에"], ["and **refused** to come out,", "그리고 나오려 하지 않았다"], ["so Minseo sat down", "그래서 민서는 앉았다"], ["and waited patiently.", "그리고 참을성 있게 기다렸다"]]},
+    {"en": "After about ten minutes, the dog slowly came closer, **sniffed** her hand, and began to **wag** her tail, which the staff said was a sign of **trust**.", "b2": true,
+     "chunks": [["After about ten minutes,", "10분쯤 지나서"], ["the dog slowly came closer,", "그 개는 천천히 다가왔다"], ["**sniffed** her hand,", "그녀의 손 냄새를 맡았다"], ["and began to **wag** her tail,", "그리고 꼬리를 흔들기 시작했다"], ["which the staff said", "그것을 직원은 말했다"], ["was a sign of **trust**.", "믿음의 표시라고"]]},
+    {"en": "During their walk in the park, Bori **stayed close** to Minseo's legs and looked up at her nervously **whenever** a bicycle passed.", "b2": false,
+     "chunks": [["During their walk", "그들이 산책하는 동안"], ["in the park,", "공원에서"], ["Bori **stayed close**", "보리는 바짝 붙어 있었다"], ["to Minseo's legs", "민서의 다리에"], ["and looked up at her nervously", "그리고 불안하게 그녀를 올려다보았다"], ["**whenever** a bicycle passed.", "자전거가 지나갈 때마다"]]},
+    {"en": "Minseo is going to return next Saturday, and she **secretly** hopes that Bori will remember her **scent** by then.", "b2": false,
+     "chunks": [["Minseo is going to return", "민서는 다시 올 예정이다"], ["next Saturday,", "다음 토요일에"], ["and she **secretly** hopes", "그리고 그녀는 남몰래 바란다"], ["that Bori will remember", "보리가 기억하기를"], ["her **scent**", "그녀의 냄새를"], ["by then.", "그때까지"]]}
+  ],
+  "words": [
+    ["shelter", "보호소, 쉼터"],
+    ["volunteer", "자원봉사자"],
+    ["leash", "(개의) 목줄"],
+    ["shy", "수줍은, 겁이 많은"],
+    ["refuse", "거부하다, 거절하다"],
+    ["sniff", "냄새를 맡다"],
+    ["wag", "(꼬리를) 흔들다"],
+    ["trust", "신뢰, 믿음"],
+    ["stay close", "가까이 붙어 있다"],
+    ["whenever", "~할 때마다"],
+    ["secretly", "남몰래, 몰래"],
+    ["scent", "냄새, 체취"]
+  ],
+  "syn": {
+    "shy": ["timid"],
+    "refuse": ["decline"],
+    "trust": ["faith"],
+    "secretly": ["privately"],
+    "scent": ["smell"]
+  },
+  "points": [
+    {"title": "be going to: 이미 정해 둔 계획", "body": "6번 문장 `Minseo is going to return next Saturday`는 '다음 토요일에 다시 올 예정이다'라는 뜻이에요. 말하는 순간 떠올린 생각이 아니라 민서가 이미 마음먹은 계획이라서 `will`보다 `is going to`가 자연스러워요. 뒤의 `she secretly hopes that Bori will remember`에서는 바람을 말하는 `will`이 쓰였으니 두 표현을 비교해 보세요."},
+    {"title": "앞 내용 전체를 받는 , which", "body": "4번 문장 `began to wag her tail, which the staff said was a sign of trust`에서 `which`는 바로 앞의 `tail`이 아니라 '꼬리를 흔들기 시작한 일' 전체를 받아요. `the staff said`는 중간에 끼어든 말이라 빼고 읽으면 `which was a sign of trust`(그건 믿음의 표시였다)가 됩니다. '직원 말로는 그게 믿음의 표시래요'로 풀어 보세요."}
+  ],
+  "answers": [
+    "토요일 아침, 민서는 봉사자로 일하는 첫날을 맞아 아파트 근처의 동물 보호소에 도착했다.",
+    "직원 한 명이 민서에게 목줄을 건네며, 길에서 발견된 작은 갈색 개 보리를 산책시켜 달라고 부탁했다.",
+    "처음에 보리는 너무 겁이 많아 문 뒤에 숨어서 나오려 하지 않았고, 그래서 민서는 앉아서 참을성 있게 기다렸다.",
+    "10분쯤 지나자 개는 천천히 다가와 민서의 손 냄새를 맡더니 꼬리를 흔들기 시작했는데, 직원 말로는 그것이 믿음의 표시라고 했다.",
+    "공원을 산책하는 동안 보리는 민서의 다리에 바짝 붙어 있었고, 자전거가 지나갈 때마다 불안한 듯 민서를 올려다보았다.",
+    "민서는 다음 토요일에 다시 갈 예정이고, 그때까지 보리가 자기 냄새를 기억해 주기를 남몰래 바라고 있다."
+  ],
+  "advanced": [
+    {"word": "timid", "meaning": "소심한, 겁 많은", "confuse": "timed(시간을 잰)와 혼동 주의", "example": "Bori was too **timid** to come out from behind the door.", "example_ko": "보리는 너무 겁이 많아서 문 뒤에서 나오지 못했습니다."},
+    {"word": "hesitant", "meaning": "주저하는, 망설이는", "confuse": null, "example": "The dog was **hesitant** to approach a stranger.", "example_ko": "그 개는 낯선 사람에게 다가가기를 망설였습니다."},
+    {"word": "cautiously", "meaning": "조심스럽게", "confuse": null, "example": "Bori **cautiously** sniffed Minseo's hand.", "example_ko": "보리는 조심스럽게 민서의 손 냄새를 맡았습니다."},
+    {"word": "reassure", "meaning": "안심시키다", "confuse": null, "example": "Minseo sat quietly to **reassure** the nervous dog.", "example_ko": "민서는 불안해하는 개를 안심시키려고 조용히 앉아 있었습니다."},
+    {"word": "bond", "meaning": "유대, 끈", "confuse": "bound(묶인, ~할 것 같은)와 혼동 주의", "example": "A small **bond** formed between Minseo and Bori.", "example_ko": "민서와 보리 사이에 작은 유대가 생겼습니다."},
+    {"word": "companion", "meaning": "동반자, 친구", "confuse": "compassion(연민)과 혼동 주의", "example": "Bori became a quiet **companion** on the walk.", "example_ko": "보리는 산책길의 조용한 동반자가 되었습니다."},
+    {"word": "foster", "meaning": "(임시로) 맡아 기르다", "confuse": null, "example": "Someday, Minseo might **foster** a dog like Bori.", "example_ko": "언젠가 민서는 보리 같은 개를 임시로 맡아 기를지도 모릅니다."}
+  ],
+  "source": null,
+  "photo_scene": "Close view of a young woman crouching on a wooden floor in a bright animal shelter, holding out her hand to a small shy brown dog that is sniffing it, soft morning sunlight from a side window.",
+  "levels": {
+    "a": {
+      "sentences": [
+        {"en": "On Saturday, Minseo went to an animal **shelter** as a **volunteer**.",
+         "chunks": [["On Saturday,", "토요일에"], ["Minseo went", "민서는 갔다"], ["to an animal **shelter**", "동물 보호소에"], ["as a **volunteer**.", "봉사자로"]]},
+        {"en": "A staff member gave her a **leash** for Bori, a small brown dog.",
+         "chunks": [["A staff member gave her", "직원 한 명이 그녀에게 주었다"], ["a **leash**", "목줄을"], ["for Bori,", "보리를 위한"], ["a small brown dog.", "작은 갈색 개인"]]},
+        {"en": "Bori was **shy** and hid behind the door, so Minseo waited.",
+         "chunks": [["Bori was **shy**", "보리는 겁이 많았다"], ["and hid behind the door,", "그리고 문 뒤에 숨었다"], ["so Minseo waited.", "그래서 민서는 기다렸다"]]},
+        {"en": "Later, Bori **sniffed** her hand and started to **wag** her tail.",
+         "chunks": [["Later,", "나중에"], ["Bori **sniffed** her hand", "보리는 그녀의 손 냄새를 맡았다"], ["and started to **wag** her tail.", "그리고 꼬리를 흔들기 시작했다"]]},
+        {"en": "In the park, Bori **stayed close** to Minseo all the time.",
+         "chunks": [["In the park,", "공원에서"], ["Bori **stayed close**", "보리는 가까이 붙어 있었다"], ["to Minseo", "민서에게"], ["all the time.", "내내"]]},
+        {"en": "Minseo loves walking Bori and hopes Bori will remember her **scent**.",
+         "chunks": [["Minseo loves walking Bori", "민서는 보리를 산책시키는 것을 아주 좋아한다"], ["and hopes", "그리고 바란다"], ["Bori will remember", "보리가 기억하기를"], ["her **scent**.", "그녀의 냄새를"]]}
+      ],
+      "answers": [
+        "토요일에 민서는 봉사자로 동물 보호소에 갔다.",
+        "직원 한 명이 작은 갈색 개 보리의 목줄을 민서에게 주었다.",
+        "보리는 겁이 많아 문 뒤에 숨었고, 그래서 민서는 기다렸다.",
+        "나중에 보리는 민서의 손 냄새를 맡고 꼬리를 흔들기 시작했다.",
+        "공원에서 보리는 내내 민서에게 가까이 붙어 있었다.",
+        "민서는 보리를 산책시키는 것을 아주 좋아하고, 보리가 자기 냄새를 기억해 주기를 바란다."
+      ]
+    }
+  }
+}
