@@ -1,0 +1,502 @@
+{
+  "date": "2026-11-28",
+  "category": "culture",
+  "topic": "프라이부르크 물길",
+  "title_ko": "골목마다 물이 흐르는 프라이부르크",
+  "headline": "Ein Tag an den Freiburger Bächle",
+  "summary_ko": "프라이부르크 구시가지의 작은 물길 베힐레를 따라 걸은 하루를 지어낸 이야기로 쓴 B1~B2 독일어 지문이에요. 물길에 발을 디디면 그 도시 사람과 결혼한다는 이야기를 듣고 조심조심 걷다가 대성당 탑에 오르는 하루를 그려요.",
+  "chips": [
+    "6문장",
+    "B1 위주",
+    "B2 1문장",
+    "약 4분"
+  ],
+  "fit": "life",
+  "example": true,
+  "grammar": {
+    "b": [
+      "b-konjunktiv-irreal"
+    ],
+    "a": [
+      "a-obwohl"
+    ]
+  },
+  "keywords": [
+    "물길",
+    "구시가지",
+    "대성당 탑",
+    "골목 산책"
+  ],
+  "photo_scene": "Close-up on a grey misty November afternoon of a narrow stone water channel running beside cobblestones in an old town street, clear water flowing, a walker's leather boots carefully stepping beside it, old houses with red roofs softly blurred behind.",
+  "sentences": [
+    {
+      "en": "An einem grauen Samstag im November kam ich mit dem Zug nach Freiburg und lief in die **Altstadt** mit ihren engen **Gassen**.",
+      "b2": false,
+      "chunks": [
+        [
+          "An einem grauen Samstag",
+          "어느 흐린 토요일에"
+        ],
+        [
+          "im November",
+          "11월의"
+        ],
+        [
+          "kam ich",
+          "나는 왔습니다"
+        ],
+        [
+          "mit dem Zug",
+          "기차를 타고"
+        ],
+        [
+          "nach Freiburg",
+          "프라이부르크로"
+        ],
+        [
+          "und lief",
+          "그리고 걸어갔습니다"
+        ],
+        [
+          "in die **Altstadt**",
+          "구시가지로"
+        ],
+        [
+          "mit ihren engen **Gassen**.",
+          "좁은 골목들이 있는"
+        ]
+      ]
+    },
+    {
+      "en": "Überall am Rand der Straßen fließen schmale **Rinnen** mit klarem Wasser, die man in Freiburg liebevoll **Bächle** nennt.",
+      "b2": false,
+      "chunks": [
+        [
+          "Überall",
+          "곳곳에"
+        ],
+        [
+          "am Rand der Straßen",
+          "길가를 따라"
+        ],
+        [
+          "fließen schmale **Rinnen**",
+          "좁은 물길들이 흐릅니다"
+        ],
+        [
+          "mit klarem Wasser,",
+          "맑은 물이 담긴"
+        ],
+        [
+          "die man in Freiburg",
+          "프라이부르크에서는 그것을"
+        ],
+        [
+          "liebevoll **Bächle** nennt.",
+          "정답게 '베힐레'라고 부릅니다"
+        ]
+      ]
+    },
+    {
+      "en": "Ein Mann an einem Stand erzählte mir lachend, dass man einen Freiburger **heiraten** muss, wenn man aus Versehen in ein Bächle **tritt**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Ein Mann an einem Stand",
+          "노점의 한 남자가"
+        ],
+        [
+          "erzählte mir lachend,",
+          "웃으며 내게 말해 주었습니다"
+        ],
+        [
+          "dass man",
+          "~해야 한다고"
+        ],
+        [
+          "einen Freiburger **heiraten** muss,",
+          "프라이부르크 사람과 결혼해야 한다고"
+        ],
+        [
+          "wenn man aus Versehen",
+          "실수로 ~하면"
+        ],
+        [
+          "in ein Bächle **tritt**.",
+          "베힐레에 발을 디디면"
+        ]
+      ]
+    },
+    {
+      "en": "Wenn es jetzt Sommer wäre, würde ich wie viele Kinder meine nackten **Füße** in das kühle Wasser **halten**.",
+      "b2": true,
+      "chunks": [
+        [
+          "Wenn es jetzt Sommer wäre,",
+          "지금이 여름이라면"
+        ],
+        [
+          "würde ich",
+          "나는 ~할 텐데"
+        ],
+        [
+          "wie viele Kinder",
+          "많은 아이들처럼"
+        ],
+        [
+          "meine nackten **Füße**",
+          "내 맨발을"
+        ],
+        [
+          "in das kühle Wasser **halten**.",
+          "시원한 물에 담글 텐데"
+        ]
+      ]
+    },
+    {
+      "en": "Danach stieg ich auf den **Turm** des Münsters, und obwohl es neblig war, hatte ich eine schöne Aussicht über die roten **Dächer**.",
+      "b2": false,
+      "chunks": [
+        [
+          "Danach stieg ich",
+          "그다음 나는 올라갔습니다"
+        ],
+        [
+          "auf den **Turm** des Münsters,",
+          "대성당의 탑에"
+        ],
+        [
+          "und obwohl es neblig war,",
+          "그리고 안개가 꼈지만"
+        ],
+        [
+          "hatte ich",
+          "나는 가졌습니다"
+        ],
+        [
+          "eine schöne Aussicht",
+          "멋진 전망을"
+        ],
+        [
+          "über die roten **Dächer**.",
+          "붉은 지붕들 너머로"
+        ]
+      ]
+    },
+    {
+      "en": "Am Abend saß ich mit einer Tasse Tee am Fenster meiner kleinen **Pension** und war froh, dass meine Schuhe **trocken** geblieben waren.",
+      "b2": false,
+      "chunks": [
+        [
+          "Am Abend",
+          "저녁에"
+        ],
+        [
+          "saß ich",
+          "나는 앉아 있었습니다"
+        ],
+        [
+          "mit einer Tasse Tee",
+          "차 한 잔을 들고"
+        ],
+        [
+          "am Fenster",
+          "창가에"
+        ],
+        [
+          "meiner kleinen **Pension**",
+          "내가 묵은 작은 민박의"
+        ],
+        [
+          "und war froh,",
+          "그리고 기뻤습니다"
+        ],
+        [
+          "dass meine Schuhe",
+          "내 신발이"
+        ],
+        [
+          "**trocken** geblieben waren.",
+          "마른 채로 남아 있어서"
+        ]
+      ]
+    }
+  ],
+  "levels": {
+    "a": {
+      "sentences": [
+        {
+          "en": "Im November fuhr ich mit dem Zug nach Freiburg in die **Altstadt**.",
+          "chunks": [
+            [
+              "Im November",
+              "11월에"
+            ],
+            [
+              "fuhr ich",
+              "나는 갔습니다"
+            ],
+            [
+              "mit dem Zug",
+              "기차를 타고"
+            ],
+            [
+              "nach Freiburg",
+              "프라이부르크로"
+            ],
+            [
+              "in die **Altstadt**.",
+              "구시가지로"
+            ]
+          ]
+        },
+        {
+          "en": "Neben den Straßen fließt klares Wasser in schmalen **Rinnen**, den **Bächle**.",
+          "chunks": [
+            [
+              "Neben den Straßen",
+              "길 옆으로"
+            ],
+            [
+              "fließt klares Wasser",
+              "맑은 물이 흐릅니다"
+            ],
+            [
+              "in schmalen **Rinnen**,",
+              "좁은 물길 속으로"
+            ],
+            [
+              "den **Bächle**.",
+              "베힐레라는"
+            ]
+          ]
+        },
+        {
+          "en": "Ein Mann sagte mir: Wer in ein Bächle **tritt**, muss einen Freiburger **heiraten**.",
+          "chunks": [
+            [
+              "Ein Mann sagte mir:",
+              "한 남자가 내게 말했습니다"
+            ],
+            [
+              "Wer in ein Bächle **tritt**,",
+              "베힐레에 발을 디디는 사람은"
+            ],
+            [
+              "muss einen Freiburger **heiraten**.",
+              "프라이부르크 사람과 결혼해야 해요"
+            ]
+          ]
+        },
+        {
+          "en": "Im Sommer **halten** Kinder ihre **Füße** ins kühle Wasser.",
+          "chunks": [
+            [
+              "Im Sommer",
+              "여름에는"
+            ],
+            [
+              "**halten** Kinder",
+              "아이들이 담급니다"
+            ],
+            [
+              "ihre **Füße**",
+              "발을"
+            ],
+            [
+              "ins kühle Wasser.",
+              "시원한 물에"
+            ]
+          ]
+        },
+        {
+          "en": "Obwohl es neblig war, sah ich vom **Turm** viele rote **Dächer**.",
+          "chunks": [
+            [
+              "Obwohl es neblig war,",
+              "안개가 꼈지만"
+            ],
+            [
+              "sah ich",
+              "나는 보았습니다"
+            ],
+            [
+              "vom **Turm**",
+              "탑에서"
+            ],
+            [
+              "viele rote **Dächer**.",
+              "많은 붉은 지붕들을"
+            ]
+          ]
+        },
+        {
+          "en": "Am Abend trank ich Tee in meiner **Pension**, und meine Schuhe waren **trocken**.",
+          "chunks": [
+            [
+              "Am Abend",
+              "저녁에"
+            ],
+            [
+              "trank ich Tee",
+              "나는 차를 마셨습니다"
+            ],
+            [
+              "in meiner **Pension**,",
+              "내 민박에서"
+            ],
+            [
+              "und meine Schuhe",
+              "그리고 내 신발은"
+            ],
+            [
+              "waren **trocken**.",
+              "말라 있었습니다"
+            ]
+          ]
+        }
+      ],
+      "answers": [
+        "11월에 저는 기차를 타고 프라이부르크 구시가지로 갔습니다.",
+        "길 옆으로 '베힐레'라는 좁은 물길에 맑은 물이 흐릅니다.",
+        "한 남자가 제게 말했습니다. \"베힐레에 발을 디디는 사람은 프라이부르크 사람과 결혼해야 해요.\"",
+        "여름에는 아이들이 시원한 물에 발을 담급니다.",
+        "안개가 꼈지만 저는 탑에서 붉은 지붕들을 많이 보았습니다.",
+        "저녁에 저는 민박에서 차를 마셨고, 제 신발은 말라 있었습니다."
+      ]
+    }
+  },
+  "words": [
+    [
+      "Altstadt",
+      "구시가지 (여성 die)"
+    ],
+    [
+      "Gasse",
+      "골목 (여성 die, 복수 Gassen)"
+    ],
+    [
+      "Rinne",
+      "도랑, 물길 (여성 die, 복수 Rinnen)"
+    ],
+    [
+      "Bächle",
+      "실개천, 시내 (중성 das, 복수 Bächle)"
+    ],
+    [
+      "heiraten",
+      "결혼하다"
+    ],
+    [
+      "treten",
+      "밟다, 디디다"
+    ],
+    [
+      "Fuß",
+      "발 (남성 der, 복수 Füße)"
+    ],
+    [
+      "halten",
+      "담그다, 대다"
+    ],
+    [
+      "Turm",
+      "탑 (남성 der, 복수 Türme)"
+    ],
+    [
+      "Dach",
+      "지붕 (중성 das, 복수 Dächer)"
+    ],
+    [
+      "Pension",
+      "민박, 펜션 (여성 die, 복수 Pensionen)"
+    ],
+    [
+      "trocken",
+      "마른, 건조한"
+    ]
+  ],
+  "syn": {
+    "Gasse": [
+      "Straße"
+    ],
+    "Pension": [
+      "Gästehaus",
+      "Unterkunft"
+    ],
+    "Rinne": [
+      "Graben",
+      "Kanal"
+    ]
+  },
+  "points": [
+    {
+      "title": "Konjunktiv II — 지금 사실이 아닌 일을 가정할 때",
+      "body": "`Wenn es jetzt Sommer wäre, würde ich ... meine nackten Füße in das kühle Wasser halten.`은 지금이 11월이라 실제로는 하지 않는 일을 상상하는 문장이에요. `wenn` 부문장에는 `wäre`(sein의 접속법 2식)가 끝에 오고, 주문장은 `würde` + 동사원형(`halten`)으로 씁니다. 사실이라면 `Wenn es Sommer ist, halte ich ...`가 되지만, 가정이라서 '여름이라면 ~할 텐데'로 읽어요."
+    },
+    {
+      "title": "dass, wenn 부문장 — 동사가 맨 끝으로",
+      "body": "3번 문장 `dass man einen Freiburger heiraten muss, wenn man aus Versehen in ein Bächle tritt`에서 `dass`절은 조동사 `muss`가, `wenn`절은 `tritt`가 맨 끝에 옵니다. `treten`은 현재형에서 `du trittst, er tritt`처럼 모음이 바뀌는 불규칙 동사예요. 끝에 오는 동사까지 읽어야 '실수로 발을 디디면 결혼해야 한다'는 뜻이 완성돼요."
+    }
+  ],
+  "answers": [
+    "11월의 어느 흐린 토요일, 저는 기차를 타고 프라이부르크에 와서 좁은 골목이 이어진 구시가지로 걸어 들어갔습니다.",
+    "길가 곳곳에는 맑은 물이 흐르는 좁은 물길이 있는데, 프라이부르크에서는 이것을 정답게 '베힐레'라고 부릅니다.",
+    "노점의 한 남자가 웃으며, 실수로 베힐레에 발을 디디면 프라이부르크 사람과 결혼해야 한다고 알려 주었습니다.",
+    "지금이 여름이라면 저도 많은 아이들처럼 맨발을 시원한 물에 담글 텐데요.",
+    "그다음 저는 대성당 탑에 올랐고, 안개가 꼈는데도 붉은 지붕들 너머로 멋진 전망을 볼 수 있었습니다.",
+    "저녁에 저는 작은 민박의 창가에 차 한 잔을 들고 앉아, 신발이 젖지 않아서 다행이라고 생각했습니다."
+  ],
+  "advanced": [
+    {
+      "word": "Münster",
+      "meaning": "대성당 (중성 das, 복수 Münster)",
+      "confuse": "das Münster vs. Münster: 중성 명사 `das Münster`는 대성당이고, 관사 없는 `Münster`는 베스트팔렌의 도시 이름이에요.",
+      "example": "Das **Münster** steht mitten auf dem großen Platz.",
+      "example_ko": "대성당은 큰 광장 한가운데에 서 있습니다."
+    },
+    {
+      "word": "Kopfsteinpflaster",
+      "meaning": "자갈 포장길, 돌길 (중성 das)",
+      "confuse": null,
+      "example": "Mit dem Koffer war das **Kopfsteinpflaster** ziemlich anstrengend.",
+      "example_ko": "여행 가방을 끌고 가니 돌길이 꽤 힘들었습니다."
+    },
+    {
+      "word": "ausrutschen",
+      "meaning": "미끄러지다",
+      "confuse": "ausrutschen vs. stolpern: `ausrutschen`은 젖거나 미끄러운 바닥에서 발이 미끄러지는 것, `stolpern`은 무언가에 걸려 비틀거리는 것이에요.",
+      "example": "Auf den nassen Steinen bin ich fast **ausgerutscht**.",
+      "example_ko": "젖은 돌 위에서 저는 하마터면 미끄러질 뻔했습니다."
+    },
+    {
+      "word": "Aberglaube",
+      "meaning": "미신 (남성 der)",
+      "confuse": "Aberglaube vs. Glaube: `Glaube`는 믿음, 신앙이고, `Aberglaube`는 근거 없는 미신이에요.",
+      "example": "Viele Touristen lachen über den alten **Aberglauben**.",
+      "example_ko": "많은 관광객이 그 오래된 미신을 듣고 웃습니다."
+    },
+    {
+      "word": "plätschern",
+      "meaning": "졸졸 흐르다",
+      "confuse": null,
+      "example": "Neben dem Weg **plätschert** ein kleiner Bach.",
+      "example_ko": "길 옆으로 작은 개울이 졸졸 흐릅니다."
+    },
+    {
+      "word": "Wahrzeichen",
+      "meaning": "랜드마크, 상징물 (중성 das, 복수 Wahrzeichen)",
+      "confuse": null,
+      "example": "Der Turm ist das bekannteste **Wahrzeichen** der Stadt.",
+      "example_ko": "그 탑은 도시에서 가장 유명한 상징물입니다."
+    },
+    {
+      "word": "durchnässt",
+      "meaning": "흠뻑 젖은",
+      "confuse": "durchnässt vs. nass: `nass`는 그냥 '젖은', `durchnässt`는 속까지 '흠뻑 젖은'이에요.",
+      "example": "Nach dem Regen waren meine Socken völlig **durchnässt**.",
+      "example_ko": "비를 맞고 나니 양말이 완전히 흠뻑 젖어 있었습니다."
+    }
+  ],
+  "source": null
+}
